@@ -2171,7 +2171,7 @@ class CreateLaunchTemplateRequest(AbstractModel):
         :type LaunchTemplateVersionDescription: str
         :param _InstanceType: Instance model. Different instance models specify different resource specifications.
 
-<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained BY calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) api to get the latest specification table or referring to the [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) description. if this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><li>for instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
+<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained by calling the DescribeInstanceTypeConfigs api to get the latest specification table or referring to the [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) description. if this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><li>for instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
         :type InstanceType: str
         :param _SystemDisk: Instance system disk configuration information. If this parameter is not specified, it will be assigned based on the system default values.
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
@@ -2221,7 +2221,12 @@ false (default): sends a normal request. after passing the check, creates an ins
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param _DisableApiTermination: Instance destruction protection flag: indicates whether an instance is allowed to be deleted through an api. value ranges from: - **TRUE**: indicates that instance protection is enabled, deletion through apis is not allowed. - **FALSE**: indicates that instance protection is disabled, deletion through apis is allowed.  default value: FALSE.
         :type DisableApiTermination: bool
-        :param _EnableJumboFrame: Whether jumbo frames are enabled for the instance. Valid values: <br><li/> true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.<br><li/>false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.<br> Supported instance types: [Instance Types](https://cloud.tencent.com/document/product/213/11518)
+        :param _EnableJumboFrame: Whether jumbo frames are enabled for the instance. Valid values:
+- true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.
+- false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.
+
+
+ Supported instance types: [Instance Types](https://www.tencentcloud.com/zh/document/api/213/11518)
         :type EnableJumboFrame: bool
         :param _LaunchTemplateTagSpecification: Description list of tags. by specifying this parameter, tags can be bound to the instance launch template.
         :type LaunchTemplateTagSpecification: list of TagSpecification
@@ -2315,7 +2320,7 @@ Note: this field is in beta test.
     def InstanceType(self):
         r"""Instance model. Different instance models specify different resource specifications.
 
-<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained BY calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) api to get the latest specification table or referring to the [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) description. if this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><li>for instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
+<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained by calling the DescribeInstanceTypeConfigs api to get the latest specification table or referring to the [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) description. if this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><li>for instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. the specific format is: CDH_XCXG. for example, for creating a CDH instance with 1 CPU core and 1 gb memory, this parameter should be CDH_1C1G.</li>.
         :rtype: str
         """
         return self._InstanceType
@@ -2572,7 +2577,12 @@ false (default): sends a normal request. after passing the check, creates an ins
 
     @property
     def EnableJumboFrame(self):
-        r"""Whether jumbo frames are enabled for the instance. Valid values: <br><li/> true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.<br><li/>false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.<br> Supported instance types: [Instance Types](https://cloud.tencent.com/document/product/213/11518)
+        r"""Whether jumbo frames are enabled for the instance. Valid values:
+- true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.
+- false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.
+
+
+ Supported instance types: [Instance Types](https://www.tencentcloud.com/zh/document/api/213/11518)
         :rtype: bool
         """
         return self._EnableJumboFrame
@@ -2757,7 +2767,7 @@ class CreateLaunchTemplateVersionRequest(AbstractModel):
         :type LaunchTemplateVersionDescription: str
         :param _InstanceType: Instance model. Different instance models specify different resource specifications.
 
-<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API for the latest specification table or referring to [Instance Specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>For instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. The specific format is: CDH_XCXG. For example, for creating a CDH instance with 1 CPU core and 1 GB memory, this parameter should be CDH_1C1G.</li>
+<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained by calling the DescribeInstanceTypeConfigs API for the latest specification table or referring to [Instance Specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>For instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. The specific format is: CDH_XCXG. For example, for creating a CDH instance with 1 CPU core and 1 GB memory, this parameter should be CDH_1C1G.</li>
         :type InstanceType: str
         :param _ImageId: Assign an effective [mirror](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format like `img-xxx`. there are four image types: <br/><li>PUBLIC image</li><li>custom image</li><li>shared image</li><li>cloud image market</li><br/>you can obtain available mirror ids in the following ways: <br/><li>the mirror ids of `PUBLIC image`, `custom image` and `shared image` can be queried by logging in to the [console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_image); the mirror ID of `cloud image market` can be queried through the [cloud market](https://market.cloud.tencent.com/list).</li><li>call the api [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), input InstanceType to obtain the list of images supported by the current model, and take the `ImageId` field from the return information.</li>.
         :type ImageId: str
@@ -2809,7 +2819,12 @@ If the dry run succeeds, the RequestId will be returned.
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param _DisableApiTermination: Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>TRUE: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>FALSE: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: FALSE.
         :type DisableApiTermination: bool
-        :param _EnableJumboFrame: Whether jumbo frames are enabled for the instance. Valid values: <br><li/> true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.<br><li/>false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.<br> Supported instance types: [Instance Types](https://cloud.tencent.com/document/product/213/11518)
+        :param _EnableJumboFrame: Whether jumbo frames are enabled for the instance. Valid values:
+- true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.
+- false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.
+
+
+ Supported instance types: [Instance Types](https://www.tencentcloud.com/zh/document/api/213/11518)
         :type EnableJumboFrame: bool
         :param _Metadata: Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.
 Note: this field is in beta test.
@@ -2901,7 +2916,7 @@ Note: this field is in beta test.
     def InstanceType(self):
         r"""Instance model. Different instance models specify different resource specifications.
 
-<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API for the latest specification table or referring to [Instance Specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>For instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. The specific format is: CDH_XCXG. For example, for creating a CDH instance with 1 CPU core and 1 GB memory, this parameter should be CDH_1C1G.</li>
+<br><li>For instances created with the payment modes PREPAID or POSTPAID_BY_HOUR, the specific values can be obtained by calling the DescribeInstanceTypeConfigs API for the latest specification table or referring to [Instance Specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, the system will dynamically assign a default model based on the current resource sales situation in a region.</li><br><li>For instances created with the payment mode CDHPAID, this parameter has the prefix "CDH_" and is generated based on the CPU and memory configuration. The specific format is: CDH_XCXG. For example, for creating a CDH instance with 1 CPU core and 1 GB memory, this parameter should be CDH_1C1G.</li>
         :rtype: str
         """
         return self._InstanceType
@@ -3169,7 +3184,12 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def EnableJumboFrame(self):
-        r"""Whether jumbo frames are enabled for the instance. Valid values: <br><li/> true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.<br><li/>false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.<br> Supported instance types: [Instance Types](https://cloud.tencent.com/document/product/213/11518)
+        r"""Whether jumbo frames are enabled for the instance. Valid values:
+- true: Jumbo frames are enabled. Only instance types that support jumbo frames can be set to true.
+- false: Jumbo frames are disabled. Only instance types that support jumbo frames can be set to false.
+
+
+ Supported instance types: [Instance Types](https://www.tencentcloud.com/zh/document/api/213/11518)
         :rtype: bool
         """
         return self._EnableJumboFrame
@@ -11853,7 +11873,7 @@ class InternetAccessible(AbstractModel):
         :type PublicIpAssigned: bool
         :param _BandwidthPackageId: Bandwidth package ID. it can be obtained through the `BandwidthPackageId` in the return value from the DescribeBandwidthPackages api. this parameter is used as an input parameter only in the RunInstances api.
         :type BandwidthPackageId: str
-        :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://cloud.tencent.com/document/product/1199/41646). default value: BGP.
+        :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://www.tencentcloud.com/zh/document/product/213/5733). default value: BGP.
 <Li>BGP: specifies the general bgp line.</li>.
 For a user with static single-line IP allowlist enabled, valid values include:.
 <Li>CMCC: china mobile.</li>.
@@ -11867,7 +11887,7 @@ Note: The static single-line IP is only supported in some regions.
 
 <Li>WanIP: specifies the public ip address.</li>.
 <Li>HighQualityEIP: specifies a high quality ip. high quality ip is only supported in Singapore and hong kong (china).</li>.
-<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>.
+<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/zh/document/product/213/5733).</li>.
 If needed, assign a public IPv4 address to the resource by specifying the IPv4 address type.
 
 This feature is in beta test in selected regions. submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category) if needed.
@@ -11941,7 +11961,7 @@ This feature is in beta test in selected regions. submit a ticket for consultati
 
     @property
     def InternetServiceProvider(self):
-        r"""Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://cloud.tencent.com/document/product/1199/41646). default value: BGP.
+        r"""Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://www.tencentcloud.com/zh/document/product/213/5733). default value: BGP.
 <Li>BGP: specifies the general bgp line.</li>.
 For a user with static single-line IP allowlist enabled, valid values include:.
 <Li>CMCC: china mobile.</li>.
@@ -11964,7 +11984,7 @@ Note: The static single-line IP is only supported in some regions.
 
 <Li>WanIP: specifies the public ip address.</li>.
 <Li>HighQualityEIP: specifies a high quality ip. high quality ip is only supported in Singapore and hong kong (china).</li>.
-<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/document/product/1199/41646?from_cn_redirect=1).</li>.
+<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/zh/document/product/213/5733).</li>.
 If needed, assign a public IPv4 address to the resource by specifying the IPv4 address type.
 
 This feature is in beta test in selected regions. submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category) if needed.
@@ -17078,7 +17098,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param _StartTime: Date from which the new bandwidth takes effect. Format: `YYYY-MM-DD`, such as `2016-10-30`. The starting date cannot be earlier than the current date. If the starting date is the current date, the new bandwidth takes effect immediately. This parameter is only valid for prepaid bandwidth. If you specify the parameter for bandwidth with other network billing methods, an error code will be returned.
         :type StartTime: str
-        :param _EndTime: Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/9388?from_cn_redirect=1). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
+        :param _EndTime: Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/zh/document/api/213/33258). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
         :type EndTime: str
         """
         self._InstanceIds = None
@@ -17121,7 +17141,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/9388?from_cn_redirect=1). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
+        r"""Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/zh/document/api/213/33258). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
         :rtype: str
         """
         return self._EndTime
@@ -17298,7 +17318,7 @@ class ResetInstancesTypeRequest(AbstractModel):
         r"""
         :param _InstanceIds: Instance ID(s). To obtain the instance IDs, you can call the [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API and find the value `InstanceId` in the response. The maximum number of instances in each request is 1.
         :type InstanceIds: list of str
-        :param _InstanceType: Instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to get the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+        :param _InstanceType: Instance model. Different resource specifications are specified for different models. For specific values, call DescribeInstanceTypeConfigs to get the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :type InstanceType: str
         :param _ForceStop: Forced shutdown of a running instances. We recommend you firstly try to shut down a running instance manually. Valid values: <br><li>TRUE: forced shutdown of an instance after a normal shutdown fails.<br><li>FALSE: no forced shutdown of an instance after a normal shutdown fails.<br><br>Default value: FALSE.<br><br>A forced shutdown is similar to switching off the power of a physical computer. It may cause data loss or file system corruption. Be sure to only force a CVM to shut off if the normal shutdown fails.
         :type ForceStop: bool
@@ -17320,7 +17340,7 @@ class ResetInstancesTypeRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Instance model. Different resource specifications are specified for different models. For specific values, call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to get the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+        r"""Instance model. Different resource specifications are specified for different models. For specific values, call DescribeInstanceTypeConfigs to get the latest specification list or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceType
@@ -17569,7 +17589,7 @@ class RunInstancesRequest(AbstractModel):
  <b>Note: `Placement` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `Placement` prevails.</b>
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param _InstanceType: The instance model. 
-<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
+<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call DescribeInstanceTypeConfigs or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
         :type InstanceType: str
         :param _ImageId: The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
  <b>Note: `ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.</b>
@@ -17717,7 +17737,7 @@ If the dry run succeeds, the RequestId will be returned.
     @property
     def InstanceType(self):
         r"""The instance model. 
-<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
+<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call DescribeInstanceTypeConfigs or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
         :rtype: str
         """
         return self._InstanceType

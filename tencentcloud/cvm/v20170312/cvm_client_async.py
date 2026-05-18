@@ -1560,7 +1560,7 @@ class CvmClient(AbstractClient):
     ) -> models.ResetInstancesTypeResponse:
         """
         This API is used to change the model of an instance.
-        * You can only use this API to change the models of instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
+        * You can only use this API to change the models of instances whose [system disk type](https://www.tencentcloud.com/zh/document/product/213/15753) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
         * Currently, you cannot use this API to change the models of [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.
         """
         

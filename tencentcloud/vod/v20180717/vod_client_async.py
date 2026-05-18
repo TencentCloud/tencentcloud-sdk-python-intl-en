@@ -273,6 +273,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBlindWatermarkTemplate(
+            self,
+            request: models.CreateBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateBlindWatermarkTemplateResponse:
+        """
+        This API is used to create a user-defined digital watermark template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCDNDomain(
             self,
             request: models.CreateCDNDomainRequest,
@@ -872,6 +890,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBlindWatermarkTemplate(
+            self,
+            request: models.DeleteBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBlindWatermarkTemplateResponse:
+        """
+        This API is used to delete a user-defined digital watermark template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBlindWatermarkTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCDNDomain(
             self,
             request: models.DeleteCDNDomainRequest,
@@ -1420,6 +1456,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeAnimatedGraphicsTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAnimatedGraphicsTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBlindWatermarkTemplates(
+            self,
+            request: models.DescribeBlindWatermarkTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBlindWatermarkTemplatesResponse:
+        """
+        Query user-customized digital watermark templates.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBlindWatermarkTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBlindWatermarkTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2327,6 +2381,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExtractBlindWatermark(
+            self,
+            request: models.ExtractBlindWatermarkRequest,
+            opts: Dict = None,
+    ) -> models.ExtractBlindWatermarkResponse:
+        """
+        This API is used to initiate a digital watermark extraction task for a video. The extraction result can be queried through DescribeTaskDetail.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExtractBlindWatermark"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExtractBlindWatermarkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExtractCopyRightWatermark(
             self,
             request: models.ExtractCopyRightWatermarkRequest,
@@ -2584,6 +2656,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "ModifyAnimatedGraphicsTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAnimatedGraphicsTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBlindWatermarkTemplate(
+            self,
+            request: models.ModifyBlindWatermarkTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBlindWatermarkTemplateResponse:
+        """
+        This API is used to modify a user-defined digital watermark template. The digital watermark type cannot be modified.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBlindWatermarkTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBlindWatermarkTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

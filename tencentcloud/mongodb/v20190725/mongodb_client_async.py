@@ -43,6 +43,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseAuditService(
+            self,
+            request: models.CloseAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.CloseAuditServiceResponse:
+        """
+        This API is used to close the audit service.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseAuditServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAccountUser(
             self,
             request: models.CreateAccountUserRequest,
@@ -103,7 +121,7 @@ class MongodbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateDBInstanceResponse:
         """
-        This API is used to create a yearly/monthly subscription TencentDB for MongoDB instance. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/35767?from_cn_redirect=1) API can be called to query and obtain the supported sales specifications.
+        This API is used to create a yearly/monthly subscription TencentDB for MongoDB instance. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/34701) API can be called to query and obtain the supported sales specifications.
         """
         
         kwargs = {}
@@ -200,6 +218,60 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DescribeAsyncRequestInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAsyncRequestInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditConfig(
+            self,
+            request: models.DescribeAuditConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditConfigResponse:
+        """
+        This API is used to query the service configurations for a TencentDB audit policy, including the audit log retention period.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogFiles(
+            self,
+            request: models.DescribeAuditLogFilesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogFilesResponse:
+        """
+        This API is used to query audit log files of a cloud database instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogs(
+            self,
+            request: models.DescribeAuditLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogsResponse:
+        """
+        This API is used to query database audit logs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -457,6 +529,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSRVConnectionDomain(
+            self,
+            request: models.DescribeSRVConnectionDomainRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSRVConnectionDomainResponse:
+        """
+        This API is used to query the current domain information of the MongoDB database.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSRVConnectionDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSRVConnectionDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSecurityGroup(
             self,
             request: models.DescribeSecurityGroupRequest,
@@ -529,6 +619,42 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DisableSRVConnectionUrl(
+            self,
+            request: models.DisableSRVConnectionUrlRequest,
+            opts: Dict = None,
+    ) -> models.DisableSRVConnectionUrlResponse:
+        """
+        This API is used to close the SRV Access Address of the MongoDB database.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisableSRVConnectionUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisableSRVConnectionUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnableSRVConnectionUrl(
+            self,
+            request: models.EnableSRVConnectionUrlRequest,
+            opts: Dict = None,
+    ) -> models.EnableSRVConnectionUrlResponse:
+        """
+        This API is used to enable the SRV Access Address for MongoDB database.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableSRVConnectionUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableSRVConnectionUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableTransparentDataEncryption(
             self,
             request: models.EnableTransparentDataEncryptionRequest,
@@ -542,6 +668,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "EnableTransparentDataEncryption"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.EnableTransparentDataEncryptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnableWanService(
+            self,
+            request: models.EnableWanServiceRequest,
+            opts: Dict = None,
+    ) -> models.EnableWanServiceResponse:
+        """
+        This API is used to enable the public network access address of the current instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableWanService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableWanServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -727,6 +871,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInstanceAz(
+            self,
+            request: models.ModifyInstanceAzRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceAzResponse:
+        """
+        This API is used to adjust the availability zone distribution of MongoDB cloud database nodes. You can specify the primary AZ and total availability zone distribution info to complete node distribution adjustment.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceAz"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceAzResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyInstanceParams(
             self,
             request: models.ModifyInstanceParamsRequest,
@@ -740,6 +902,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "ModifyInstanceParams"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyInstanceParamsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySRVConnectionUrl(
+            self,
+            request: models.ModifySRVConnectionUrlRequest,
+            opts: Dict = None,
+    ) -> models.ModifySRVConnectionUrlResponse:
+        """
+        This API is used to modify the TTL duration of the SRV Access Address for a MongoDB database.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySRVConnectionUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySRVConnectionUrlResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -812,6 +992,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "ResetDBInstancePassword"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ResetDBInstancePasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RestoreDBInstance(
+            self,
+            request: models.RestoreDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.RestoreDBInstanceResponse:
+        """
+        This API is used to rollback the database instance to a specified time point.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RestoreDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RestoreDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -913,7 +1111,8 @@ class MongodbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpgradeDbInstanceVersionResponse:
         """
-        This API is used to upgrade the database kernel across versions. Currently, it is only supported to upgrade from version 3.6 to 4.0, 4.0 to 4.2, 4.2 to 4.4, and 4.4 to 5.0.
+        This API is used to upgrade database version.
+        **Description**: Upgrade to version 3.6 and above is supported. Only upgrading from a lower version to a higher version step by step is allowed. Cross-version upgrade or version downgrade is not supported.
         """
         
         kwargs = {}

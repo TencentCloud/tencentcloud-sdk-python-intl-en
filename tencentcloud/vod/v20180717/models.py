@@ -17409,6 +17409,132 @@ class BlindWatermarkInput(AbstractModel):
         
 
 
+class BlindWatermarkTemplate(AbstractModel):
+    r"""Digital watermark template details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the digital watermark template.
+        :type Definition: int
+        :param _Type: Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>
+        :type Type: str
+        :param _Name: Digital watermark template name.
+        :type Name: str
+        :param _TextContent: Text content of the digital watermark template. The length cannot exceed 64 characters.
+        :type TextContent: str
+        :param _Comment: Description information of the digital watermark template.
+        :type Comment: str
+        :param _CreateTime: Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type CreateTime: str
+        :param _UpdateTime: Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Type = None
+        self._Name = None
+        self._TextContent = None
+        self._Comment = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the digital watermark template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Type(self):
+        r"""Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""Digital watermark template name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TextContent(self):
+        r"""Text content of the digital watermark template. The length cannot exceed 64 characters.
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+    @property
+    def Comment(self):
+        r"""Description information of the digital watermark template.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        r"""Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._TextContent = params.get("TextContent")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlurConfigureInfo(AbstractModel):
     r"""Control parameters for video blur detection.
 
@@ -24251,6 +24377,145 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBlindWatermarkTemplateRequest(AbstractModel):
+    r"""CreateBlindWatermarkTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA watermark.</li>
+        :type Type: str
+        :param _TextContent: Text content of the digital watermark. The length cannot exceed 64 characters. After NAGRA watermark templates are created, the text content cannot be modified.
+        :type TextContent: str
+        :param _SubAppId: VOD application ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (default application or newly created application).
+        :type SubAppId: int
+        :param _Name: Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.
+        :type Name: str
+        :param _Comment: Description information of the digital watermark template. The length cannot exceed 256 characters.
+        :type Comment: str
+        """
+        self._Type = None
+        self._TextContent = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+
+    @property
+    def Type(self):
+        r"""Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA watermark.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TextContent(self):
+        r"""Text content of the digital watermark. The length cannot exceed 64 characters. After NAGRA watermark templates are created, the text content cannot be modified.
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+    @property
+    def SubAppId(self):
+        r"""VOD application ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (default application or newly created application).
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Description information of the digital watermark template. The length cannot exceed 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._TextContent = params.get("TextContent")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBlindWatermarkTemplateResponse(AbstractModel):
+    r"""CreateBlindWatermarkTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the digital watermark template.
+        :type Definition: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the digital watermark template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCDNDomainRequest(AbstractModel):
     r"""CreateCDNDomain request structure.
 
@@ -29949,6 +30214,85 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBlindWatermarkTemplateRequest(AbstractModel):
+    r"""DeleteBlindWatermarkTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the digital watermark template.
+        :type Definition: int
+        :param _SubAppId: VOD application ID. Starting from December 25, 2023, customers who activate on-demand services must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).
+        :type SubAppId: int
+        """
+        self._Definition = None
+        self._SubAppId = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the digital watermark template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""VOD application ID. Starting from December 25, 2023, customers who activate on-demand services must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBlindWatermarkTemplateResponse(AbstractModel):
+    r"""DeleteBlindWatermarkTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCDNDomainRequest(AbstractModel):
     r"""DeleteCDNDomain request structure.
 
@@ -32710,6 +33054,169 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
                 obj = AnimatedGraphicsTemplate()
                 obj._deserialize(item)
                 self._AnimatedGraphicsTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBlindWatermarkTemplatesRequest(AbstractModel):
+    r"""DescribeBlindWatermarkTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: VOD application ID. Starting from December 25, 2023, customers who activate on-demand services must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).
+        :type SubAppId: int
+        :param _Definitions: Filtering condition for the unique identifier of the digital watermark template. The array length cannot exceed 100.
+        :type Definitions: list of int
+        :param _Type: Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>
+        :type Type: str
+        :param _Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned entries
+<li>Default value: 10.</li>
+<li>Maximum value: 100.</li>
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._Definitions = None
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        r"""VOD application ID. Starting from December 25, 2023, customers who activate on-demand services must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Definitions(self):
+        r"""Filtering condition for the unique identifier of the digital watermark template. The array length cannot exceed 100.
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Type(self):
+        r"""Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned entries
+<li>Default value: 10.</li>
+<li>Maximum value: 100.</li>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Definitions = params.get("Definitions")
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlindWatermarkTemplatesResponse(AbstractModel):
+    r"""DescribeBlindWatermarkTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of records that meet the filtering conditions.
+        :type TotalCount: int
+        :param _BlindWatermarkTemplateSet: List of digital watermark template details.
+        :type BlindWatermarkTemplateSet: list of BlindWatermarkTemplate
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BlindWatermarkTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of records that meet the filtering conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BlindWatermarkTemplateSet(self):
+        r"""List of digital watermark template details.
+        :rtype: list of BlindWatermarkTemplate
+        """
+        return self._BlindWatermarkTemplateSet
+
+    @BlindWatermarkTemplateSet.setter
+    def BlindWatermarkTemplateSet(self, BlindWatermarkTemplateSet):
+        self._BlindWatermarkTemplateSet = BlindWatermarkTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BlindWatermarkTemplateSet") is not None:
+            self._BlindWatermarkTemplateSet = []
+            for item in params.get("BlindWatermarkTemplateSet"):
+                obj = BlindWatermarkTemplate()
+                obj._deserialize(item)
+                self._BlindWatermarkTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -43670,6 +44177,179 @@ class ExtractBlindWatermarkInputInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExtractBlindWatermarkRequest(AbstractModel):
+    r"""ExtractBlindWatermark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-trace: trace the source ab sequence watermark.</li>
+        :type Type: str
+        :param _InputInfo: File input information for the Media Processing Service (MPS) task.
+        :type InputInfo: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkInputInfo`
+        :param _SubAppId: VOD application ID for watermarking. Note that the SubAppId must be in line with the one used during watermarking to extract the watermark, whether importing FILEID or URL.
+        :type SubAppId: int
+        :param _ExtractBlindWatermarkConfig: Configuration of the digital watermark extraction task.
+        :type ExtractBlindWatermarkConfig: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTaskConfig`
+        :param _SessionContext: Identify source context, used for passing through user request information. The value of this field will be returned in the ExtractBlindWatermarkComplete callback and task flow status change callback, with a maximum length of 1000 characters.
+        :type SessionContext: str
+        :param _SessionId: An identification code for task deduplication. If there has been a request with the same identification code within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or with an empty string indicates no deduplication.
+        :type SessionId: str
+        :param _TasksPriority: Task priority. The higher the value, the higher the priority. The value ranges from -10 to 10. If left blank, it represents 0.
+        :type TasksPriority: int
+        """
+        self._Type = None
+        self._InputInfo = None
+        self._SubAppId = None
+        self._ExtractBlindWatermarkConfig = None
+        self._SessionContext = None
+        self._SessionId = None
+        self._TasksPriority = None
+
+    @property
+    def Type(self):
+        r"""Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-trace: trace the source ab sequence watermark.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputInfo(self):
+        r"""File input information for the Media Processing Service (MPS) task.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def SubAppId(self):
+        r"""VOD application ID for watermarking. Note that the SubAppId must be in line with the one used during watermarking to extract the watermark, whether importing FILEID or URL.
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ExtractBlindWatermarkConfig(self):
+        r"""Configuration of the digital watermark extraction task.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTaskConfig`
+        """
+        return self._ExtractBlindWatermarkConfig
+
+    @ExtractBlindWatermarkConfig.setter
+    def ExtractBlindWatermarkConfig(self, ExtractBlindWatermarkConfig):
+        self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkConfig
+
+    @property
+    def SessionContext(self):
+        r"""Identify source context, used for passing through user request information. The value of this field will be returned in the ExtractBlindWatermarkComplete callback and task flow status change callback, with a maximum length of 1000 characters.
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""An identification code for task deduplication. If there has been a request with the same identification code within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or with an empty string indicates no deduplication.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def TasksPriority(self):
+        r"""Task priority. The higher the value, the higher the priority. The value ranges from -10 to 10. If left blank, it represents 0.
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = ExtractBlindWatermarkInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._SubAppId = params.get("SubAppId")
+        if params.get("ExtractBlindWatermarkConfig") is not None:
+            self._ExtractBlindWatermarkConfig = ExtractBlindWatermarkTaskConfig()
+            self._ExtractBlindWatermarkConfig._deserialize(params.get("ExtractBlindWatermarkConfig"))
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractBlindWatermarkResponse(AbstractModel):
+    r"""ExtractBlindWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ExtractBlindWatermarkTask(AbstractModel):
@@ -60347,6 +61027,130 @@ Default value: open.
 
 class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
     r"""ModifyAnimatedGraphicsTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBlindWatermarkTemplateRequest(AbstractModel):
+    r"""ModifyBlindWatermarkTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the digital watermark template.
+        :type Definition: int
+        :param _SubAppId: VOD application ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (default application or newly created application).
+        :type SubAppId: int
+        :param _Name: Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.
+        :type Name: str
+        :param _Comment: Description information of the digital watermark template. The length cannot exceed 256 characters.
+        :type Comment: str
+        :param _TextContent: Text content of the digital watermark. The length cannot exceed 64 characters. The text content cannot be modified for NAGRA watermark templates.
+        :type TextContent: str
+        """
+        self._Definition = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._TextContent = None
+
+    @property
+    def Definition(self):
+        r"""Unique identifier of the digital watermark template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        r"""VOD application ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (default application or newly created application).
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""Description information of the digital watermark template. The length cannot exceed 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def TextContent(self):
+        r"""Text content of the digital watermark. The length cannot exceed 64 characters. The text content cannot be modified for NAGRA watermark templates.
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._TextContent = params.get("TextContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBlindWatermarkTemplateResponse(AbstractModel):
+    r"""ModifyBlindWatermarkTemplate response structure.
 
     """
 

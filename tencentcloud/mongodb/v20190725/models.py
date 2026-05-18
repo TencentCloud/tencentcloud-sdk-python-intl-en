@@ -173,8 +173,428 @@ class AssignProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuditLog(AbstractModel):
+    r"""Audit log
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectRows: Number of affected rows
+        :type AffectRows: int
+        :param _Atype: Operation type. For example: grantRolesToRole, dropRole.
+        :type Atype: str
+        :param _ExecTime: Execution time. Unit: ms.
+        :type ExecTime: int
+        :param _Host: Client IP address.
+        :type Host: str
+        :param _Param: Operation parameter. Includes operation parameter information.
+        :type Param: str
+        :param _Result: Execution result. 0 indicates success, non-0 indicates failure.
+        :type Result: int
+        :param _Roles: User role list. Format: role@db,role@db.
+        :type Roles: str
+        :param _Timestamp: Operation timestamp. Format: YYYY-MM-DD HH:mm:ss.
+        :type Timestamp: str
+        :param _User: Username. Format: user@db.
+        :type User: str
+        """
+        self._AffectRows = None
+        self._Atype = None
+        self._ExecTime = None
+        self._Host = None
+        self._Param = None
+        self._Result = None
+        self._Roles = None
+        self._Timestamp = None
+        self._User = None
+
+    @property
+    def AffectRows(self):
+        r"""Number of affected rows
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def Atype(self):
+        r"""Operation type. For example: grantRolesToRole, dropRole.
+        :rtype: str
+        """
+        return self._Atype
+
+    @Atype.setter
+    def Atype(self, Atype):
+        self._Atype = Atype
+
+    @property
+    def ExecTime(self):
+        r"""Execution time. Unit: ms.
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Host(self):
+        r"""Client IP address.
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Param(self):
+        r"""Operation parameter. Includes operation parameter information.
+        :rtype: str
+        """
+        return self._Param
+
+    @Param.setter
+    def Param(self, Param):
+        self._Param = Param
+
+    @property
+    def Result(self):
+        r"""Execution result. 0 indicates success, non-0 indicates failure.
+        :rtype: int
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Roles(self):
+        r"""User role list. Format: role@db,role@db.
+        :rtype: str
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def Timestamp(self):
+        r"""Operation timestamp. Format: YYYY-MM-DD HH:mm:ss.
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def User(self):
+        r"""Username. Format: user@db.
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        self._AffectRows = params.get("AffectRows")
+        self._Atype = params.get("Atype")
+        self._ExecTime = params.get("ExecTime")
+        self._Host = params.get("Host")
+        self._Param = params.get("Param")
+        self._Result = params.get("Result")
+        self._Roles = params.get("Roles")
+        self._Timestamp = params.get("Timestamp")
+        self._User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFile(AbstractModel):
+    r"""Audit log file.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: Audit log file name.
+        :type FileName: str
+        :param _CreateTime: Creation time of the audit log file, in the format: "2019-03-20 17:09:13".
+        :type CreateTime: str
+        :param _Status: File status value. May return the following values:
+"creating" - generating
+"Failed" - Creation failed.
+"success" - generated.
+        :type Status: str
+        :param _FileSize: File size in KB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FileSize: int
+        :param _DownloadUrl: Download URL for the audit log.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DownloadUrl: str
+        :param _ErrMsg: Error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrMsg: str
+        :param _ProgressRate: Download progress
+        :type ProgressRate: int
+        """
+        self._FileName = None
+        self._CreateTime = None
+        self._Status = None
+        self._FileSize = None
+        self._DownloadUrl = None
+        self._ErrMsg = None
+        self._ProgressRate = None
+
+    @property
+    def FileName(self):
+        r"""Audit log file name.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def CreateTime(self):
+        r"""Creation time of the audit log file, in the format: "2019-03-20 17:09:13".
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        r"""File status value. May return the following values:
+"creating" - generating
+"Failed" - Creation failed.
+"success" - generated.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FileSize(self):
+        r"""File size in KB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def DownloadUrl(self):
+        r"""Download URL for the audit log.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def ErrMsg(self):
+        r"""Error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def ProgressRate(self):
+        r"""Download progress
+        :rtype: int
+        """
+        return self._ProgressRate
+
+    @ProgressRate.setter
+    def ProgressRate(self, ProgressRate):
+        self._ProgressRate = ProgressRate
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._FileSize = params.get("FileSize")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._ErrMsg = params.get("ErrMsg")
+        self._ProgressRate = params.get("ProgressRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFilter(AbstractModel):
+    r"""Audit log filter criteria
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: Client IP address.
+        :type Host: list of str
+        :param _User: Username.
+        :type User: list of str
+        :param _ExecTime: Execution time. Unit: ms. Filter audit logs with execution time more than this value.
+        :type ExecTime: int
+        :param _AffectRows: Number of affected rows. Filter audit logs with affected rows more than this value.
+        :type AffectRows: int
+        :param _Atype: Operation type.
+        :type Atype: list of str
+        :param _Result: Execution result.
+        :type Result: list of str
+        :param _Param: Filter logs using this keyword
+        :type Param: list of str
+        """
+        self._Host = None
+        self._User = None
+        self._ExecTime = None
+        self._AffectRows = None
+        self._Atype = None
+        self._Result = None
+        self._Param = None
+
+    @property
+    def Host(self):
+        r"""Client IP address.
+        :rtype: list of str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def User(self):
+        r"""Username.
+        :rtype: list of str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def ExecTime(self):
+        r"""Execution time. Unit: ms. Filter audit logs with execution time more than this value.
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def AffectRows(self):
+        r"""Number of affected rows. Filter audit logs with affected rows more than this value.
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def Atype(self):
+        r"""Operation type.
+        :rtype: list of str
+        """
+        return self._Atype
+
+    @Atype.setter
+    def Atype(self, Atype):
+        self._Atype = Atype
+
+    @property
+    def Result(self):
+        r"""Execution result.
+        :rtype: list of str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Param(self):
+        r"""Filter logs using this keyword
+        :rtype: list of str
+        """
+        return self._Param
+
+    @Param.setter
+    def Param(self, Param):
+        self._Param = Param
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._User = params.get("User")
+        self._ExecTime = params.get("ExecTime")
+        self._AffectRows = params.get("AffectRows")
+        self._Atype = params.get("Atype")
+        self._Result = params.get("Result")
+        self._Param = params.get("Param")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Auth(AbstractModel):
-    r"""User permissions
+    r"""
 
     """
 
@@ -529,41 +949,31 @@ class BackupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _BackupType: Backup method.
-- 0: automatic backup.
-- 1: manual backup.
+        :param _BackupType: <p>Backup method.</p><ul><li>0: Automatic backup.</li><li>1: Manual backup.</li></ul>
         :type BackupType: int
-        :param _BackupName: Backup file name.
+        :param _BackupName: <p>Backup file name.</p>
         :type BackupName: str
-        :param _BackupDesc: Backup task remarks.
+        :param _BackupDesc: <p>Backup task notes.</p>
         :type BackupDesc: str
-        :param _BackupSize: Backup file size, in KB.
+        :param _BackupSize: <p>Backup file size, in KB.</p>
         :type BackupSize: int
-        :param _StartTime: Backup start time.
+        :param _StartTime: <p>Backup start time.</p>
         :type StartTime: str
-        :param _EndTime: Backup end time.
+        :param _EndTime: <p>Backup end time.</p>
         :type EndTime: str
-        :param _Status: Backup status.
-- 1: backing up.
-- 2: backup successful.
+        :param _Status: <p>Backup status.</p><ul><li>1: Backup in progress.</li><li>2: Backup successful.</li></ul>
         :type Status: int
-        :param _BackupMethod: Backup method.
-- 0: logical backup.
-- 1: physical backup.
-- 3: snapshot backup.
-**Note:**
-- The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.
-- Physical backup is not supported when storage encryption is enabled for the instance.
+        :param _BackupMethod: <p>Backup method.</p><ul><li>0: Logical backup.</li><li>1: Physical backup.</li><li>3: Snapshot backup.<br><strong>Description:</strong></li><li>The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.</li><li>If storage encryption is activated for the instance, physical backup is not supported.</li></ul>
         :type BackupMethod: int
-        :param _BackId: Backup record ID.
+        :param _BackId: <p>Backup record ID.</p>
         :type BackId: int
-        :param _DeleteTime: Backup deletion time.
+        :param _DeleteTime: <p>Backup deletion time.</p>
         :type DeleteTime: str
-        :param _BackupRegion: Cross-region backup region.
+        :param _BackupRegion: <p>Backup region in a different location.</p>
         :type BackupRegion: str
-        :param _RestoreTime: Rollback time supported by the backup.
+        :param _RestoreTime: <p>Rollback time supported by the backup.</p>
         :type RestoreTime: str
         """
         self._InstanceId = None
@@ -582,7 +992,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -593,9 +1003,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""Backup method.
-- 0: automatic backup.
-- 1: manual backup.
+        r"""<p>Backup method.</p><ul><li>0: Automatic backup.</li><li>1: Manual backup.</li></ul>
         :rtype: int
         """
         return self._BackupType
@@ -606,7 +1014,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""Backup file name.
+        r"""<p>Backup file name.</p>
         :rtype: str
         """
         return self._BackupName
@@ -617,7 +1025,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupDesc(self):
-        r"""Backup task remarks.
+        r"""<p>Backup task notes.</p>
         :rtype: str
         """
         return self._BackupDesc
@@ -628,7 +1036,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupSize(self):
-        r"""Backup file size, in KB.
+        r"""<p>Backup file size, in KB.</p>
         :rtype: int
         """
         return self._BackupSize
@@ -639,7 +1047,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Backup start time.
+        r"""<p>Backup start time.</p>
         :rtype: str
         """
         return self._StartTime
@@ -650,7 +1058,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Backup end time.
+        r"""<p>Backup end time.</p>
         :rtype: str
         """
         return self._EndTime
@@ -661,9 +1069,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Backup status.
-- 1: backing up.
-- 2: backup successful.
+        r"""<p>Backup status.</p><ul><li>1: Backup in progress.</li><li>2: Backup successful.</li></ul>
         :rtype: int
         """
         return self._Status
@@ -674,13 +1080,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""Backup method.
-- 0: logical backup.
-- 1: physical backup.
-- 3: snapshot backup.
-**Note:**
-- The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.
-- Physical backup is not supported when storage encryption is enabled for the instance.
+        r"""<p>Backup method.</p><ul><li>0: Logical backup.</li><li>1: Physical backup.</li><li>3: Snapshot backup.<br><strong>Description:</strong></li><li>The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.</li><li>If storage encryption is activated for the instance, physical backup is not supported.</li></ul>
         :rtype: int
         """
         return self._BackupMethod
@@ -691,7 +1091,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackId(self):
-        r"""Backup record ID.
+        r"""<p>Backup record ID.</p>
         :rtype: int
         """
         return self._BackId
@@ -702,7 +1102,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def DeleteTime(self):
-        r"""Backup deletion time.
+        r"""<p>Backup deletion time.</p>
         :rtype: str
         """
         return self._DeleteTime
@@ -713,7 +1113,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupRegion(self):
-        r"""Cross-region backup region.
+        r"""<p>Backup region in a different location.</p>
         :rtype: str
         """
         return self._BackupRegion
@@ -724,7 +1124,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def RestoreTime(self):
-        r"""Rollback time supported by the backup.
+        r"""<p>Rollback time supported by the backup.</p>
         :rtype: str
         """
         return self._RestoreTime
@@ -748,6 +1148,72 @@ class BackupInfo(AbstractModel):
         self._DeleteTime = params.get("DeleteTime")
         self._BackupRegion = params.get("BackupRegion")
         self._RestoreTime = params.get("RestoreTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupTotalSize(AbstractModel):
+    r"""Total size of instance backup
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotSize: Total size of full backup, in bytes
+        :type SnapshotSize: int
+        :param _OplogSize: Incremental backup total size
+        :type OplogSize: int
+        :param _FreeQuota: free quota
+        :type FreeQuota: int
+        """
+        self._SnapshotSize = None
+        self._OplogSize = None
+        self._FreeQuota = None
+
+    @property
+    def SnapshotSize(self):
+        r"""Total size of full backup, in bytes
+        :rtype: int
+        """
+        return self._SnapshotSize
+
+    @SnapshotSize.setter
+    def SnapshotSize(self, SnapshotSize):
+        self._SnapshotSize = SnapshotSize
+
+    @property
+    def OplogSize(self):
+        r"""Incremental backup total size
+        :rtype: int
+        """
+        return self._OplogSize
+
+    @OplogSize.setter
+    def OplogSize(self, OplogSize):
+        self._OplogSize = OplogSize
+
+    @property
+    def FreeQuota(self):
+        r"""free quota
+        :rtype: int
+        """
+        return self._FreeQuota
+
+    @FreeQuota.setter
+    def FreeQuota(self, FreeQuota):
+        self._FreeQuota = FreeQuota
+
+
+    def _deserialize(self, params):
+        self._SnapshotSize = params.get("SnapshotSize")
+        self._OplogSize = params.get("OplogSize")
+        self._FreeQuota = params.get("FreeQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -822,6 +1288,70 @@ class ClientConnection(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CloseAuditServiceRequest(AbstractModel):
+    r"""CloseAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format of cmgo-test1234. It is the same as the instance ID displayed on the TencentDB console page.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format of cmgo-test1234. It is the same as the instance ID displayed on the TencentDB console page.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAuditServiceResponse(AbstractModel):
+    r"""CloseAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAccountUserRequest(AbstractModel):
@@ -1242,103 +1772,62 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Memory: Instance memory size. Unit: GB. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain specific saleable memory specifications.
+        :param _Memory: <p>Instance memory size. Unit: GB. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain specific saleable memory specifications.</p>
         :type Memory: int
-        :param _Volume: Instance disk size. Unit: GB. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum disk sizes corresponding to each CPU specification.
+        :param _Volume: <p>Instance disk size. Unit: GB. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum disk sizes corresponding to each CPU specification.</p>
         :type Volume: int
-        :param _ReplicateSetNum:  - Specifies the number of replica sets during replica set instance creation. This parameter can only be set to 1.
- - Specifies the number of shards during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.
+        :param _ReplicateSetNum: <ul><li>Specifies the number of replica sets during replica set instance creation. This parameter can only be 1.</li><li>Specifies the number of shards during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.</li></ul>
         :type ReplicateSetNum: int
-        :param _NodeNum:  - Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each replica set.
- - Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each shard.
+        :param _NodeNum: <ul><li>Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each replica set.</li><li>Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each shard.</li></ul>
         :type NodeNum: int
-        :param _MongoVersion: Refers to version information. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain detailed information about the supported versions.
-- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.
-- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.
-- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.
-- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
-- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
-- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+        :param _MongoVersion: <p>Refers to version information. For supported versions, use the interface <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> to query.</p><ul><li>MONGO_40_WT: MongoDB 4.0 WiredTiger engine version.</li><li>MONGO_42_WT: MongoDB 4.2 WiredTiger engine version.</li><li>MONGO_44_WT: MongoDB 4.4 WiredTiger engine version.</li><li>MONGO_50_WT: MongoDB 5.0 WiredTiger engine version.</li><li>MONGO_60_WT: MongoDB 6.0 WiredTiger engine version.</li><li>MONGO_70_WT: MongoDB 7.0 WiredTiger engine version.</li><li>MONGO_80_WT: MongoDB 8.0 WiredTiger engine version.</li></ul>
         :type MongoVersion: str
-        :param _MachineCode: Product specification type.
- - HIO10G: general high-I/O 10GE type.
- - HCD: cloud disk type.
+        :param _MachineCode: <p>Recommended product specification types:</p><ul><li>GE.LD.T1: Local disk (Common I).</li><li>GE.CD.T1: Cloud disk (Common I).</li></ul><p>Product allowlist specification types:</p><ul><li>HIO10G: Local disk (High IO 10G).</li><li>HCD: Cloud disk (Cloud disk edition).</li></ul><p>Note: Allowlist specification types are under allowlist control. If needed, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a> to apply.</p>
         :type MachineCode: str
-        :param _GoodsNum: Number of instances. The minimum value is 1, and the maximum value is 30.
+        :param _GoodsNum: <p>Number of instances. The minimum value is 1, and the maximum value is 30.</p>
         :type GoodsNum: int
-        :param _Zone: AZ information in the format of ap-guangzhou-2
-- For more information, query through the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API.
-- If multi-AZ deployment is enabled, this parameter refers to the primary AZ and must be one of the values of `AvailabilityZoneList`.
+        :param _Zone: <p>AZ information. The input format must be ap-guangzhou-2.</p><ul><li>For details, use the interface <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> to obtain them.</li><li>This parameter is the primary AZ. If multi-AZ deployment is used, Zone must be one of AvailabilityZoneList.</li></ul>
         :type Zone: str
-        :param _ClusterType: Instance architecture type
-- REPLSET: Replica set
-- SHARD: Sharded cluster
+        :param _ClusterType: <p>Instance architecture type.</p><ul><li>REPLSET (replica set)</li><li>SHARD (sharded cluster)</li></ul>
         :type ClusterType: str
-        :param _VpcId: VPC ID.
-- Only VPC configuration is supported, and a VPC in the same region as the instance should be selected. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available VPC ID.
-- After successful instance creation, VPCs can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1).
+        :param _VpcId: <p>VPC ID.</p><ul><li>Only supports configuration of private networks. A private network in the same region as the instance must be selected. Log in to the <a href="https://console.cloud.tencent.com/vpc">VPC console</a> to obtain a usable VPC ID.</li><li>After successful instance creation, VPC replacement is allowed. For detailed operations, see <a href="https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1">Changing the Network</a>.</li></ul>
         :type VpcId: str
-        :param _SubnetId: Subnet ID of the VPC.
-- A subnet should be specified within the selected VPC. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available subnet ID.
-- After successful instance creation, VPCs and subnets can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1).
+        :param _SubnetId: <p>Subnet ID of the VPC.</p><ul><li>You must specify a subnet within the selected private network. Log in to the <a href="https://console.cloud.tencent.com/vpc">VPC console</a> to obtain the subnet ID.</li><li>After the instance is successfully created, replacement of the private network and subnet is allowed. For detailed operations, please refer to <a href="https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1">Network Change</a>.</li></ul>
         :type SubnetId: str
-        :param _Password: Instance password. The requirements are as follows:
- - The number of characters should be in the range of [8, 32].
- - Characters within the ranges [A,Z], [a,z], and [0,9] are allowed.
- - Special characters that can be entered include exclamation marks (!), at signs (@), number signs (#), percent signs (%), carets (^), asterisks (\*), brackets (()), and underscores (_).
- - It cannot contain only the same letters or digits.
+        :param _Password: <p>Instance password. The requirements are as follows:</p><ul><li>Character count is [8,32].</li><li>Enter characters within [A,Z], [a,z], [0,9].</li><li>Special characters include: exclamation mark "!", at "@", pound sign "#", percent sign "%", caret "^", asterisk "*", brackets "()", underscore "_".</li><li>Cannot set a single letter or number.</li></ul>
         :type Password: str
-        :param _ProjectId: Project ID. - The default project is used if this parameter is not specified.
- - The project ID can be obtained on the [project management page in the TencentDB for MongoDB console](https://console.cloud.tencent.com/project).
+        :param _ProjectId: <p>Project ID.</p><ul><li>If this parameter is not set, the default project is used.</li><li>You can obtain the project ID on the <a href="https://console.cloud.tencent.com/project">MongoDB console project management</a> page.</li></ul>
         :type ProjectId: int
-        :param _Tags: Instance tag information
+        :param _Tags: <p>Instance tag information.</p>
         :type Tags: list of TagInfo
-        :param _Clone: Instance type.
-- 1: formal instance.
-- 3: read-only instance.
-- 4: disaster recovery instance.
-- 5. cloned instance. Note: For a cloned instance, RestoreTime is required.
+        :param _Clone: <p>Instance type.</p><ul><li>1: Formal instance.</li><li>3: Read-only instance.</li><li>4: Disaster recovery instance.</li><li>5: Clone instance. Note: RestoreTime is a required item when you clone an instance.</li></ul>
         :type Clone: int
-        :param _Father: Parent instance ID.
-- This parameter is required when the value of the **Clone** parameter is set to 3 or 4, indicating a read-only or disaster recovery instance.
-- Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the parent instance ID from the instance list.
+        :param _Father: <p>Parent instance ID.</p><ul><li>When the <strong>Clone</strong> parameter is 3 or 4, that is, the instance is read-only or a disaster recovery instance, this parameter must be configured.</li><li>Log in to the <a href="https://console.cloud.tencent.com/mongodb">MongoDB console</a> and copy the parent instance ID in the instance list.</li></ul>
         :type Father: str
-        :param _SecurityGroup: Security group ID. Log in to the [security group console](https://console.cloud.tencent.com/vpc/security-group) to obtain the ID of the security group in the same region as the database instance.
+        :param _SecurityGroup: <p>Security group ID. Log in to the <a href="https://console.cloud.tencent.com/vpc/security-group">security group console</a> to obtain the ID of the security group within the same region as the database instance.</p>
         :type SecurityGroup: list of str
-        :param _RestoreTime: Rollback time of the cloned instance
-- This parameter is required for a cloned instance in the format of 2021-08-13 16:30:00.
-- Time range for rollback: You can roll back data in the last 7 days.
+        :param _RestoreTime: <p>Rollback time of the cloned instance.</p><ul><li>This parameter is required for cloned instances. Format: 2021-08-13 16:30:00.</li><li>Rollback time range: Only data within the last 7 days can be rolled back.</li></ul>
         :type RestoreTime: str
-        :param _InstanceName: Instance name. Only Chinese characters, letters, digits, underscores (_), and delimiters (-) are supported, with a length of 128 characters. When database instances are purchased in batches, the automatic ascending feature is supported through the custom naming pattern string and numeric suffix to set instance names efficiently.
-- Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for **lnstanceName**. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.
-- Custom starting number mode: prefix + {R:x} (x is the custom starting number). Prefix{R:x} is required for **InstanceName**. For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be sequentially named cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.
-- Composite pattern string: prefix 1{R:x} + prefix 2{R:y}+ ⋯ + fixed suffix, where x and y are the starting numbers of each prefix. A composite pattern string is required for **instanceName**. For example, cmgo{R:10}\_node{R:12}\_db. If the batch purchase quantity is set to 5, the instances will be sequentially named cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, and cmgo14\_node16\_db.
+        :param _InstanceName: <p>Instance name. Only Chinese, English, digits, underscores (_), and hyphens (-) are supported, with a maximum length of 128 characters. When purchasing database instances in batches, you can efficiently set instance names by using custom pattern strings and automatically ascending numeric suffixes.</p><ul><li>Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for <strong>lnstanceName</strong>. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.</li><li>Custom starting number mode: prefix + {R:x} (x is the custom starting number). <strong>InstanceName</strong> requires "prefix{R:x}". For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.</li><li>Composite pattern string: prefix1{R:x} + prefix2{R:y} + ⋯ + fixed suffix, where x and y are the starting numbers for each prefix. <strong>InstanceName</strong> requires a composite pattern string. For example, cmgo{R:10}_node{R:12}_db. If the batch purchase quantity is set to 5, the instance names will be cmgo10_node12_db, cmgo11_node13_db, cmgo12_node14_db, cmgo13_node15_db, and cmgo14_node16_db.</li></ul>
         :type InstanceName: str
-        :param _AvailabilityZoneList: Specifies the list of AZs during multi-AZ deployment of TencentDB for MongoDB instances.
-- For instances in multi-AZ deployment mode, the **Zone** parameter specifies the primary AZ, and **AvailabilityZoneList** specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].
-- The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain AZs planned for TencentDB for MongoDB instances in different regions, helping you specify valid AZs.
-- Nodes in multi-AZ deployment mode can only be deployed in 3 different AZs. Deploying most nodes of a cluster in the same AZ is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same AZ.
+        :param _AvailabilityZoneList: <p>For cloud database instances in multi-AZ deployment, specify the availability zone list.</p><ul><li>For instances in multi-AZ deployment mode, the <strong>Zone</strong> parameter specifies the primary AZ, and <strong>AvailabilityZoneList</strong> specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].</li><li>Use the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to access cloud databases and obtain availability zone information planned for different regions, so that you can assign valid AZs.</li><li>Nodes in multi-AZ deployment can only be deployed in 3 different availability zones. Deploying most nodes of a cluster in the same availability zone is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same zone.</li></ul>
         :type AvailabilityZoneList: list of str
-        :param _MongosCpu: Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.
+        :param _MongosCpu: <p>Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.</p>
         :type MongosCpu: int
-        :param _MongosMemory: Mongos node memory size.
-- This parameter is required during sharded cluster instance purchase.
-- Unit: GB. 1-core 2 GB, 2-core 4 GB, 4-core 8 GB, 8-core 16 GB, and 16-core 32 GB are supported.
+        :param _MongosMemory: <p>Mongos node memory size.</p><ul><li>This parameter is required during sharded cluster instance purchase.</li><li>Unit: GB. Valid values: 2 (for 1 core), 4 (for 2 cores), 8 (for 4 cores), 16 (for 8 cores), and 32 (for 16 cores).</li></ul>
         :type MongosMemory: int
-        :param _MongosNodeNum: Number of Mongos nodes. This parameter is required during sharded cluster instance purchase.
- - For instances in single-AZ deployment mode, the value range is [3,32].
- - For instances in multi-AZ deployment mode, the value range is [6,32].
+        :param _MongosNodeNum: <p>Number of Mongos nodes. This parameter is required during sharded cluster instance purchase.</p><ul><li>For single-AZ deployment instances, the quantity range is [3,32].</li><li>For instances deployed across multiple availability zones, the quantity range is [6,32].</li></ul>
         :type MongosNodeNum: int
-        :param _ReadonlyNodeNum: Number of read-only nodes. Value ranges: [0,5].
+        :param _ReadonlyNodeNum: <p>Number of read-only nodes. Value ranges from 0 to 5.</p>
         :type ReadonlyNodeNum: int
-        :param _ReadonlyNodeAvailabilityZoneList: Array of AZs of read-only nodes. This parameter is required for instances in multi-AZ deployment mode when **ReadonlyNodeNum** is not set to **0**.
+        :param _ReadonlyNodeAvailabilityZoneList: <p>Array of AZs of read-only nodes. This parameter is required for instances in multi-AZ deployment mode when <strong>ReadonlyNodeNum</strong> is not set to <strong>0</strong>.</p>
         :type ReadonlyNodeAvailabilityZoneList: list of str
-        :param _HiddenZone: AZ where the hidden node resides, which is required in cross-AZ instance deployment.
+        :param _HiddenZone: <p>Availability zone of the Hidden node. To deploy instances across availability zones, you must configure this parameter.</p>
         :type HiddenZone: str
-        :param _ParamTemplateId: Parameter template ID.
-- A parameter template is a collection of predefined parameter values that can be used to quickly configure new MongoDB instances. Proper use of parameter templates can significantly enhance the deployment efficiency and operational performance of the database.
-- The [DescribeDBInstanceParamTpl](https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1) API can be called to obtain the parameter template ID. Select the parameter template ID corresponding to the instance version and architecture.
+        :param _ParamTemplateId: <p>Parameter template ID.</p><ul><li>A parameter template is a collection of preset specific parameters applicable to quick configuration of new MongoDB instances. Proper use of parameter templates can effectively improve database deployment efficiency and operating performance.</li><li>The parameter template ID can be obtained through the <a href="https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1">DescribeDBInstanceParamTpl</a> API. Please select the parameter template ID corresponding to your instance version and architecture.</li></ul>
         :type ParamTemplateId: str
+        :param _CpuCore: <p>Instance CPU core size. Unit: C. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain specific saleable CPU specifications.<br>Note: CPU size must be set for common I Instance Type.</p>
+        :type CpuCore: int
         """
         self._Memory = None
         self._Volume = None
@@ -1367,10 +1856,11 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._ReadonlyNodeAvailabilityZoneList = None
         self._HiddenZone = None
         self._ParamTemplateId = None
+        self._CpuCore = None
 
     @property
     def Memory(self):
-        r"""Instance memory size. Unit: GB. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain specific saleable memory specifications.
+        r"""<p>Instance memory size. Unit: GB. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain specific saleable memory specifications.</p>
         :rtype: int
         """
         return self._Memory
@@ -1381,7 +1871,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""Instance disk size. Unit: GB. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum disk sizes corresponding to each CPU specification.
+        r"""<p>Instance disk size. Unit: GB. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum disk sizes corresponding to each CPU specification.</p>
         :rtype: int
         """
         return self._Volume
@@ -1392,8 +1882,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ReplicateSetNum(self):
-        r""" - Specifies the number of replica sets during replica set instance creation. This parameter can only be set to 1.
- - Specifies the number of shards during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.
+        r"""<ul><li>Specifies the number of replica sets during replica set instance creation. This parameter can only be 1.</li><li>Specifies the number of shards during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.</li></ul>
         :rtype: int
         """
         return self._ReplicateSetNum
@@ -1404,8 +1893,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def NodeNum(self):
-        r""" - Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each replica set.
- - Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each shard.
+        r"""<ul><li>Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each replica set.</li><li>Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each shard.</li></ul>
         :rtype: int
         """
         return self._NodeNum
@@ -1416,13 +1904,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""Refers to version information. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain detailed information about the supported versions.
-- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.
-- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.
-- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.
-- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
-- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
-- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+        r"""<p>Refers to version information. For supported versions, use the interface <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> to query.</p><ul><li>MONGO_40_WT: MongoDB 4.0 WiredTiger engine version.</li><li>MONGO_42_WT: MongoDB 4.2 WiredTiger engine version.</li><li>MONGO_44_WT: MongoDB 4.4 WiredTiger engine version.</li><li>MONGO_50_WT: MongoDB 5.0 WiredTiger engine version.</li><li>MONGO_60_WT: MongoDB 6.0 WiredTiger engine version.</li><li>MONGO_70_WT: MongoDB 7.0 WiredTiger engine version.</li><li>MONGO_80_WT: MongoDB 8.0 WiredTiger engine version.</li></ul>
         :rtype: str
         """
         return self._MongoVersion
@@ -1433,9 +1915,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def MachineCode(self):
-        r"""Product specification type.
- - HIO10G: general high-I/O 10GE type.
- - HCD: cloud disk type.
+        r"""<p>Recommended product specification types:</p><ul><li>GE.LD.T1: Local disk (Common I).</li><li>GE.CD.T1: Cloud disk (Common I).</li></ul><p>Product allowlist specification types:</p><ul><li>HIO10G: Local disk (High IO 10G).</li><li>HCD: Cloud disk (Cloud disk edition).</li></ul><p>Note: Allowlist specification types are under allowlist control. If needed, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a> to apply.</p>
         :rtype: str
         """
         return self._MachineCode
@@ -1446,7 +1926,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""Number of instances. The minimum value is 1, and the maximum value is 30.
+        r"""<p>Number of instances. The minimum value is 1, and the maximum value is 30.</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -1457,9 +1937,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ information in the format of ap-guangzhou-2
-- For more information, query through the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API.
-- If multi-AZ deployment is enabled, this parameter refers to the primary AZ and must be one of the values of `AvailabilityZoneList`.
+        r"""<p>AZ information. The input format must be ap-guangzhou-2.</p><ul><li>For details, use the interface <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> to obtain them.</li><li>This parameter is the primary AZ. If multi-AZ deployment is used, Zone must be one of AvailabilityZoneList.</li></ul>
         :rtype: str
         """
         return self._Zone
@@ -1470,9 +1948,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""Instance architecture type
-- REPLSET: Replica set
-- SHARD: Sharded cluster
+        r"""<p>Instance architecture type.</p><ul><li>REPLSET (replica set)</li><li>SHARD (sharded cluster)</li></ul>
         :rtype: str
         """
         return self._ClusterType
@@ -1483,9 +1959,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID.
-- Only VPC configuration is supported, and a VPC in the same region as the instance should be selected. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available VPC ID.
-- After successful instance creation, VPCs can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1).
+        r"""<p>VPC ID.</p><ul><li>Only supports configuration of private networks. A private network in the same region as the instance must be selected. Log in to the <a href="https://console.cloud.tencent.com/vpc">VPC console</a> to obtain a usable VPC ID.</li><li>After successful instance creation, VPC replacement is allowed. For detailed operations, see <a href="https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1">Changing the Network</a>.</li></ul>
         :rtype: str
         """
         return self._VpcId
@@ -1496,9 +1970,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet ID of the VPC.
-- A subnet should be specified within the selected VPC. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available subnet ID.
-- After successful instance creation, VPCs and subnets can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1).
+        r"""<p>Subnet ID of the VPC.</p><ul><li>You must specify a subnet within the selected private network. Log in to the <a href="https://console.cloud.tencent.com/vpc">VPC console</a> to obtain the subnet ID.</li><li>After the instance is successfully created, replacement of the private network and subnet is allowed. For detailed operations, please refer to <a href="https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1">Network Change</a>.</li></ul>
         :rtype: str
         """
         return self._SubnetId
@@ -1509,11 +1981,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Instance password. The requirements are as follows:
- - The number of characters should be in the range of [8, 32].
- - Characters within the ranges [A,Z], [a,z], and [0,9] are allowed.
- - Special characters that can be entered include exclamation marks (!), at signs (@), number signs (#), percent signs (%), carets (^), asterisks (\*), brackets (()), and underscores (_).
- - It cannot contain only the same letters or digits.
+        r"""<p>Instance password. The requirements are as follows:</p><ul><li>Character count is [8,32].</li><li>Enter characters within [A,Z], [a,z], [0,9].</li><li>Special characters include: exclamation mark "!", at "@", pound sign "#", percent sign "%", caret "^", asterisk "*", brackets "()", underscore "_".</li><li>Cannot set a single letter or number.</li></ul>
         :rtype: str
         """
         return self._Password
@@ -1524,8 +1992,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""Project ID. - The default project is used if this parameter is not specified.
- - The project ID can be obtained on the [project management page in the TencentDB for MongoDB console](https://console.cloud.tencent.com/project).
+        r"""<p>Project ID.</p><ul><li>If this parameter is not set, the default project is used.</li><li>You can obtain the project ID on the <a href="https://console.cloud.tencent.com/project">MongoDB console project management</a> page.</li></ul>
         :rtype: int
         """
         return self._ProjectId
@@ -1536,7 +2003,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Instance tag information
+        r"""<p>Instance tag information.</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -1547,11 +2014,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Clone(self):
-        r"""Instance type.
-- 1: formal instance.
-- 3: read-only instance.
-- 4: disaster recovery instance.
-- 5. cloned instance. Note: For a cloned instance, RestoreTime is required.
+        r"""<p>Instance type.</p><ul><li>1: Formal instance.</li><li>3: Read-only instance.</li><li>4: Disaster recovery instance.</li><li>5: Clone instance. Note: RestoreTime is a required item when you clone an instance.</li></ul>
         :rtype: int
         """
         return self._Clone
@@ -1562,9 +2025,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Father(self):
-        r"""Parent instance ID.
-- This parameter is required when the value of the **Clone** parameter is set to 3 or 4, indicating a read-only or disaster recovery instance.
-- Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the parent instance ID from the instance list.
+        r"""<p>Parent instance ID.</p><ul><li>When the <strong>Clone</strong> parameter is 3 or 4, that is, the instance is read-only or a disaster recovery instance, this parameter must be configured.</li><li>Log in to the <a href="https://console.cloud.tencent.com/mongodb">MongoDB console</a> and copy the parent instance ID in the instance list.</li></ul>
         :rtype: str
         """
         return self._Father
@@ -1575,7 +2036,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        r"""Security group ID. Log in to the [security group console](https://console.cloud.tencent.com/vpc/security-group) to obtain the ID of the security group in the same region as the database instance.
+        r"""<p>Security group ID. Log in to the <a href="https://console.cloud.tencent.com/vpc/security-group">security group console</a> to obtain the ID of the security group within the same region as the database instance.</p>
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -1586,9 +2047,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def RestoreTime(self):
-        r"""Rollback time of the cloned instance
-- This parameter is required for a cloned instance in the format of 2021-08-13 16:30:00.
-- Time range for rollback: You can roll back data in the last 7 days.
+        r"""<p>Rollback time of the cloned instance.</p><ul><li>This parameter is required for cloned instances. Format: 2021-08-13 16:30:00.</li><li>Rollback time range: Only data within the last 7 days can be rolled back.</li></ul>
         :rtype: str
         """
         return self._RestoreTime
@@ -1599,10 +2058,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name. Only Chinese characters, letters, digits, underscores (_), and delimiters (-) are supported, with a length of 128 characters. When database instances are purchased in batches, the automatic ascending feature is supported through the custom naming pattern string and numeric suffix to set instance names efficiently.
-- Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for **lnstanceName**. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.
-- Custom starting number mode: prefix + {R:x} (x is the custom starting number). Prefix{R:x} is required for **InstanceName**. For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be sequentially named cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.
-- Composite pattern string: prefix 1{R:x} + prefix 2{R:y}+ ⋯ + fixed suffix, where x and y are the starting numbers of each prefix. A composite pattern string is required for **instanceName**. For example, cmgo{R:10}\_node{R:12}\_db. If the batch purchase quantity is set to 5, the instances will be sequentially named cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, and cmgo14\_node16\_db.
+        r"""<p>Instance name. Only Chinese, English, digits, underscores (_), and hyphens (-) are supported, with a maximum length of 128 characters. When purchasing database instances in batches, you can efficiently set instance names by using custom pattern strings and automatically ascending numeric suffixes.</p><ul><li>Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for <strong>lnstanceName</strong>. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.</li><li>Custom starting number mode: prefix + {R:x} (x is the custom starting number). <strong>InstanceName</strong> requires "prefix{R:x}". For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.</li><li>Composite pattern string: prefix1{R:x} + prefix2{R:y} + ⋯ + fixed suffix, where x and y are the starting numbers for each prefix. <strong>InstanceName</strong> requires a composite pattern string. For example, cmgo{R:10}_node{R:12}_db. If the batch purchase quantity is set to 5, the instance names will be cmgo10_node12_db, cmgo11_node13_db, cmgo12_node14_db, cmgo13_node15_db, and cmgo14_node16_db.</li></ul>
         :rtype: str
         """
         return self._InstanceName
@@ -1613,10 +2069,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def AvailabilityZoneList(self):
-        r"""Specifies the list of AZs during multi-AZ deployment of TencentDB for MongoDB instances.
-- For instances in multi-AZ deployment mode, the **Zone** parameter specifies the primary AZ, and **AvailabilityZoneList** specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].
-- The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain AZs planned for TencentDB for MongoDB instances in different regions, helping you specify valid AZs.
-- Nodes in multi-AZ deployment mode can only be deployed in 3 different AZs. Deploying most nodes of a cluster in the same AZ is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same AZ.
+        r"""<p>For cloud database instances in multi-AZ deployment, specify the availability zone list.</p><ul><li>For instances in multi-AZ deployment mode, the <strong>Zone</strong> parameter specifies the primary AZ, and <strong>AvailabilityZoneList</strong> specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].</li><li>Use the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to access cloud databases and obtain availability zone information planned for different regions, so that you can assign valid AZs.</li><li>Nodes in multi-AZ deployment can only be deployed in 3 different availability zones. Deploying most nodes of a cluster in the same availability zone is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same zone.</li></ul>
         :rtype: list of str
         """
         return self._AvailabilityZoneList
@@ -1627,7 +2080,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def MongosCpu(self):
-        r"""Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.
+        r"""<p>Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.</p>
         :rtype: int
         """
         return self._MongosCpu
@@ -1638,9 +2091,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def MongosMemory(self):
-        r"""Mongos node memory size.
-- This parameter is required during sharded cluster instance purchase.
-- Unit: GB. 1-core 2 GB, 2-core 4 GB, 4-core 8 GB, 8-core 16 GB, and 16-core 32 GB are supported.
+        r"""<p>Mongos node memory size.</p><ul><li>This parameter is required during sharded cluster instance purchase.</li><li>Unit: GB. Valid values: 2 (for 1 core), 4 (for 2 cores), 8 (for 4 cores), 16 (for 8 cores), and 32 (for 16 cores).</li></ul>
         :rtype: int
         """
         return self._MongosMemory
@@ -1651,9 +2102,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def MongosNodeNum(self):
-        r"""Number of Mongos nodes. This parameter is required during sharded cluster instance purchase.
- - For instances in single-AZ deployment mode, the value range is [3,32].
- - For instances in multi-AZ deployment mode, the value range is [6,32].
+        r"""<p>Number of Mongos nodes. This parameter is required during sharded cluster instance purchase.</p><ul><li>For single-AZ deployment instances, the quantity range is [3,32].</li><li>For instances deployed across multiple availability zones, the quantity range is [6,32].</li></ul>
         :rtype: int
         """
         return self._MongosNodeNum
@@ -1664,7 +2113,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ReadonlyNodeNum(self):
-        r"""Number of read-only nodes. Value ranges: [0,5].
+        r"""<p>Number of read-only nodes. Value ranges from 0 to 5.</p>
         :rtype: int
         """
         return self._ReadonlyNodeNum
@@ -1675,7 +2124,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ReadonlyNodeAvailabilityZoneList(self):
-        r"""Array of AZs of read-only nodes. This parameter is required for instances in multi-AZ deployment mode when **ReadonlyNodeNum** is not set to **0**.
+        r"""<p>Array of AZs of read-only nodes. This parameter is required for instances in multi-AZ deployment mode when <strong>ReadonlyNodeNum</strong> is not set to <strong>0</strong>.</p>
         :rtype: list of str
         """
         return self._ReadonlyNodeAvailabilityZoneList
@@ -1686,7 +2135,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def HiddenZone(self):
-        r"""AZ where the hidden node resides, which is required in cross-AZ instance deployment.
+        r"""<p>Availability zone of the Hidden node. To deploy instances across availability zones, you must configure this parameter.</p>
         :rtype: str
         """
         return self._HiddenZone
@@ -1697,9 +2146,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""Parameter template ID.
-- A parameter template is a collection of predefined parameter values that can be used to quickly configure new MongoDB instances. Proper use of parameter templates can significantly enhance the deployment efficiency and operational performance of the database.
-- The [DescribeDBInstanceParamTpl](https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1) API can be called to obtain the parameter template ID. Select the parameter template ID corresponding to the instance version and architecture.
+        r"""<p>Parameter template ID.</p><ul><li>A parameter template is a collection of preset specific parameters applicable to quick configuration of new MongoDB instances. Proper use of parameter templates can effectively improve database deployment efficiency and operating performance.</li><li>The parameter template ID can be obtained through the <a href="https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1">DescribeDBInstanceParamTpl</a> API. Please select the parameter template ID corresponding to your instance version and architecture.</li></ul>
         :rtype: str
         """
         return self._ParamTemplateId
@@ -1707,6 +2154,17 @@ class CreateDBInstanceHourRequest(AbstractModel):
     @ParamTemplateId.setter
     def ParamTemplateId(self, ParamTemplateId):
         self._ParamTemplateId = ParamTemplateId
+
+    @property
+    def CpuCore(self):
+        r"""<p>Instance CPU core size. Unit: C. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain specific saleable CPU specifications.<br>Note: CPU size must be set for common I Instance Type.</p>
+        :rtype: int
+        """
+        return self._CpuCore
+
+    @CpuCore.setter
+    def CpuCore(self, CpuCore):
+        self._CpuCore = CpuCore
 
 
     def _deserialize(self, params):
@@ -1742,6 +2200,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._ReadonlyNodeAvailabilityZoneList = params.get("ReadonlyNodeAvailabilityZoneList")
         self._HiddenZone = params.get("HiddenZone")
         self._ParamTemplateId = params.get("ParamTemplateId")
+        self._CpuCore = params.get("CpuCore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1759,9 +2218,9 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealId: Order ID
+        :param _DealId: <p>Order ID.</p>
         :type DealId: str
-        :param _InstanceIds: List of IDs of the created instances
+        :param _InstanceIds: <p>List of instance created IDs.</p>
         :type InstanceIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1772,7 +2231,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     @property
     def DealId(self):
-        r"""Order ID
+        r"""<p>Order ID.</p>
         :rtype: str
         """
         return self._DealId
@@ -1783,7 +2242,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of IDs of the created instances
+        r"""<p>List of instance created IDs.</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1817,111 +2276,68 @@ class CreateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeNum:  - Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each replica set.
- - Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each shard.
+        :param _NodeNum: <ul><li>Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each replica set.</li><li>Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each shard.</li></ul>
         :type NodeNum: int
-        :param _Memory: Instance memory size. Unit: GB. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain specific saleable memory specifications.
+        :param _Memory: <p>Instance memory size. Unit: GB. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain specific saleable memory specifications.</p>
         :type Memory: int
-        :param _Volume: Instance disk size. Unit: GB. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum disk sizes corresponding to each CPU specification.
+        :param _Volume: <p>Instance disk size. Unit: GB. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum disk sizes corresponding to each CPU specification.</p>
         :type Volume: int
-        :param _MongoVersion: Refers to version information. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain detailed information about the supported versions.
-- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.
-- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.
-- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.
-- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
-- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
-- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+        :param _MongoVersion: <p>Refers to version information. For supported versions, use the interface <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> to query.</p><ul><li>MONGO_40_WT: MongoDB 4.0 WiredTiger engine version.</li><li>MONGO_42_WT: MongoDB 4.2 WiredTiger engine version.</li><li>MONGO_44_WT: MongoDB 4.4 WiredTiger engine version.</li><li>MONGO_50_WT: MongoDB 5.0 WiredTiger engine version.</li><li>MONGO_60_WT: MongoDB 6.0 WiredTiger engine version.</li><li>MONGO_70_WT: MongoDB 7.0 WiredTiger engine version.</li><li>MONGO_80_WT: MongoDB 8.0 WiredTiger engine version.</li></ul>
         :type MongoVersion: str
-        :param _GoodsNum: Number of instances. The minimum value is 1, and the maximum value is 30.
+        :param _GoodsNum: <p>Number of instances. The minimum value is 1, and the maximum value is 30.</p>
         :type GoodsNum: int
-        :param _Zone: AZ information. Format: ap-guangzhou-2.
- - Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the specific information.
- - This parameter indicates the primary AZ. If multi-AZ deployment is adopted, the value of Zone should be one of the values of AvailabilityZoneList.
+        :param _Zone: <p>AZ information. The input format must be ap-guangzhou-2.</p><ul><li>For details, use the interface <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> to obtain them.</li><li>This parameter is the primary AZ. If multi-AZ deployment is used, Zone must be one of AvailabilityZoneList.</li></ul>
         :type Zone: str
-        :param _Period: Specifies the purchase duration during the instance purchase, in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36.
+        :param _Period: <p>Specifies the purchase duration during instance purchase. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36. Unit: months.</p>
         :type Period: int
-        :param _MachineCode: Product specification type.
- - HIO10G: general high-I/O 10GE type.
- - HCD: cloud disk type.
+        :param _MachineCode: <p>Recommended product specification types:</p><ul><li>GE.LD.T1: Local disk (Common I).</li><li>GE.CD.T1: Cloud disk (Common I).</li></ul><p>Product allowlist specification types:</p><ul><li>HIO10G: Local disk (High IO 10G).</li><li>HCD: Cloud disk (Cloud disk edition).</li></ul><p>Note: Allowlist specification types are under allowlist control. If needed, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a> to apply.</p>
         :type MachineCode: str
-        :param _ClusterType: Instance architecture type.
- - REPLSET: replica set.
- - SHARD: sharded cluster.
+        :param _ClusterType: <p>Instance architecture type.</p><ul><li>REPLSET (replica set)</li><li>SHARD (sharded cluster)</li></ul>
         :type ClusterType: str
-        :param _ReplicateSetNum:  - Specifies the number of replica sets during replica set instance creation. This parameter can only be set to 1.
- - Specifies the number of shards during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.
+        :param _ReplicateSetNum: <ul><li>Specifies the number of replica sets during replica set instance creation. This parameter can only be 1.</li><li>Specifies the number of shards during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.</li></ul>
         :type ReplicateSetNum: int
-        :param _ProjectId: Project ID.  - The default project is used if this parameter is not specified.
- - The project ID can be obtained on the [project management page in the TencentDB for MongoDB console](https://console.cloud.tencent.com/project).
+        :param _ProjectId: <p>Project ID.</p><ul><li>If this parameter is not set, the default project is used.</li><li>You can obtain the project ID on the <a href="https://console.cloud.tencent.com/project">MongoDB console project management</a> page.</li></ul>
         :type ProjectId: int
-        :param _VpcId: VPC ID.
-- Only VPC configuration is supported, and a VPC in the same region as the instance should be selected. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available VPC ID.
-- After successful instance creation, VPCs can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1).
+        :param _VpcId: <p>VPC ID.</p><ul><li>Only private networks can be configured, and a private network in the same region as the instance must be selected. Log in to the <a href="https://console.cloud.tencent.com/vpc">VPC console</a> to obtain a used private network ID.</li><li>After successful instance creation, VPC replacement is allowed. For detailed operations, see <a href="https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1">Changing the Network</a>.</li></ul>
         :type VpcId: str
-        :param _SubnetId: Subnet ID of the VPC.
-- A subnet should be specified within the selected VPC. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available subnet ID.
-- After successful instance creation, VPCs and subnets can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1).
+        :param _SubnetId: <p>Subnet ID of the VPC.</p><ul><li>You must specify a subnet within the selected private network. Log in to the <a href="https://console.cloud.tencent.com/vpc">VPC console</a> to obtain the subnet ID.</li><li>After the instance is successfully created, replacement of the private network and subnet is allowed. For detailed operations, please refer to <a href="https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1">Network Change</a>.</li></ul>
         :type SubnetId: str
-        :param _Password: Instance password. The requirements are as follows:
- - The number of characters should be in the range of [8, 32].
- - Characters within the ranges [A,Z], [a,z], and [0,9] are allowed.
- - Special characters that can be entered include exclamation marks (!), at signs (@), number signs (#), percent signs (%), carets (^), asterisks (\*), brackets (()), and underscores (_).
- - It cannot contain only the same letters or digits.
+        :param _Password: <p>Instance password. The requirements are as follows:</p><ul><li>Character count is [8,32].</li><li>Enter characters within [A,Z], [a,z], [0,9].</li><li>Special characters include: exclamation mark "!", at "@", pound sign "#", percent sign "%", caret "^", asterisk "*", brackets "()", underscore "_".</li><li>Cannot set a single letter or number.</li></ul>
         :type Password: str
-        :param _Tags: Instance tag information.
+        :param _Tags: <p>Instance tag information.</p>
         :type Tags: list of TagInfo
-        :param _AutoRenewFlag: Automatic renewal flag.
- - 0: no automatic renewal.
- - 1: automatic renewal.
+        :param _AutoRenewFlag: <p>Auto-renewal flag.</p><ul><li>0: no auto-renewal.</li><li>1: auto-renewal.</li></ul>
         :type AutoRenewFlag: int
-        :param _AutoVoucher: Whether to automatically select a voucher.
- - 1: yes.
- - 0: no. Default value: 0.
+        :param _AutoVoucher: <p>Indicates whether to automatically select voucher.</p><ul><li>1: Yes.</li><li>0: No. Default is 0.</li></ul>
         :type AutoVoucher: int
-        :param _Clone: Instance type.
-- 1: formal instance.
-- 3: read-only instance.
-- 4: disaster recovery instance.
-- 5: cloned instance. Note: For a cloned instance, RestoreTime is required.
+        :param _Clone: <p>Instance type.</p><ul><li>1: Formal instance.</li><li>3: Read-only instance.</li><li>4: Disaster recovery instance.</li><li>5: Clone instance. Note: RestoreTime is a required item when you clone an instance.</li></ul>
         :type Clone: int
-        :param _Father: Parent instance ID.
-- This parameter is required when the value of the **Clone** parameter is set to 3 or 4, indicating a read-only or disaster recovery instance.
-- Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the parent instance ID from the instance list.
+        :param _Father: <p>Parent instance ID.</p><ul><li>When the <strong>Clone</strong> parameter is 3 or 4, that is, the instance is read-only or a disaster recovery instance, this parameter must be configured.</li><li>Log in to the <a href="https://console.cloud.tencent.com/mongodb">MongoDB console</a> and copy the parent instance ID in the instance list.</li></ul>
         :type Father: str
-        :param _SecurityGroup: Security group ID. Log in to the [security group console](https://console.cloud.tencent.com/vpc/security-group) to obtain the ID of the security group in the same region as the database instance.
+        :param _SecurityGroup: <p>Security group ID. Log in to the <a href="https://console.cloud.tencent.com/vpc/security-group">security group console</a> to obtain the ID of the security group within the same region as the database instance.</p>
         :type SecurityGroup: list of str
-        :param _RestoreTime: Rollback time of the cloned instance. It is required when the Clone value is 5 or 6. - This parameter is required for cloned instances. Format: 2021-08-13 16:30:00. - Rollback time range: Only data within the last 7 days can be rolled back.
+        :param _RestoreTime: <p>Rollback time of the cloned instance. It is required when the Clone value is 5 or 6. - This parameter is required for cloned instances. Format: 2021-08-13 16:30:00. - Rollback time range: Only data within the last 7 days can be rolled back.</p>
         :type RestoreTime: str
-        :param _InstanceName: Instance name. Only Chinese characters, letters, digits, underscores (_), and delimiters (-) are supported, with a length of 128 characters. When database instances are purchased in batches, the automatic ascending feature is supported through the custom naming pattern string and numeric suffix to set instance names efficiently.
-- Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for **lnstanceName**. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.
-- Custom starting number mode: prefix + {R:x} (x is the custom starting number). Prefix{R:x} is required for **InstanceName**. For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be sequentially named cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.
-- Composite pattern string: prefix 1{R:x} + prefix 2{R:y}+ ⋯ + fixed suffix, where x and y are the starting numbers of each prefix. A composite pattern string is required for **instanceName**. For example, cmgo{R:10}\_node{R:12}\_db. If the batch purchase quantity is set to 5, the instances will be sequentially named cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, and cmgo14\_node16\_db.
+        :param _InstanceName: <p>Instance name. Only Chinese, English, digits, underscores (_), and hyphens (-) are supported, with a maximum length of 128 characters. When purchasing database instances in batches, you can efficiently set instance names by using custom pattern strings and automatically ascending numeric suffixes.</p><ul><li>Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for <strong>lnstanceName</strong>. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.</li><li>Custom starting number mode: prefix + {R:x} (x is the custom starting number). <strong>InstanceName</strong> requires "prefix{R:x}". For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.</li><li>Composite pattern string: prefix1{R:x} + prefix2{R:y} + ⋯ + fixed suffix, where x and y are the starting numbers for each prefix. <strong>InstanceName</strong> requires a composite pattern string. For example, cmgo{R:10}_node{R:12}_db. If the batch purchase quantity is set to 5, the instance names will be cmgo10_node12_db, cmgo11_node13_db, cmgo12_node14_db, cmgo13_node15_db, and cmgo14_node16_db.</li></ul>
         :type InstanceName: str
-        :param _AvailabilityZoneList: Specifies the list of AZs during multi-AZ deployment of TencentDB for MongoDB instances.
- - For instances in multi-AZ deployment mode, the **Zone** parameter specifies the primary AZ, and **AvailabilityZoneList** specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].
- - The [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain AZs planned for TencentDB for MongoDB instances in different regions, helping you specify valid AZs.
- - Nodes in multi-AZ deployment mode can only be deployed in 3 different AZs. Deploying most nodes of a cluster in the same AZ is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same AZ.
+        :param _AvailabilityZoneList: <p>For cloud database instances in multi-AZ deployment, specify the availability zone list.</p><ul><li>For instances in multi-AZ deployment mode, the <strong>Zone</strong> parameter specifies the primary AZ, and <strong>AvailabilityZoneList</strong> specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].</li><li>Use the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to access cloud databases and obtain availability zone information planned for different regions, so that you can assign valid AZs.</li><li>Nodes in multi-AZ deployment can only be deployed in 3 different availability zones. Deploying most nodes of a cluster in the same availability zone is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same zone.</li></ul>
         :type AvailabilityZoneList: list of str
-        :param _MongosCpu: Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.
+        :param _MongosCpu: <p>Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.</p>
         :type MongosCpu: int
-        :param _MongosMemory: Mongos node memory size.
- - This parameter is required during sharded cluster instance purchase.
- - Unit: GB. 1-core 2GB, 2-core 4GB, 4-core 8GB, 8-core 16GB, and 16-core 32GB are supported.
+        :param _MongosMemory: <p>Mongos node memory size.</p><ul><li>This parameter is required during sharded cluster instance purchase.</li><li>Unit: GB. Valid values: 2 (for 1 core), 4 (for 2 cores), 8 (for 4 cores), 16 (for 8 cores), and 32 (for 16 cores).</li></ul>
         :type MongosMemory: int
-        :param _MongosNodeNum: Number of Mongos nodes. This parameter is required during sharded cluster instance purchase.
- - For instances in single-AZ deployment mode, the value range is [3,32].
- - For instances in multi-AZ deployment mode, the value range is [6,32].
+        :param _MongosNodeNum: <p>Number of Mongos nodes. This parameter is required during sharded cluster instance purchase.</p><ul><li>For single-AZ deployment instances, the quantity range is [3,32].</li><li>For instances deployed across multiple availability zones, the quantity range is [6,32].</li></ul>
         :type MongosNodeNum: int
-        :param _ReadonlyNodeNum: Number of read-only nodes. Value ranges: [0,5].
+        :param _ReadonlyNodeNum: <p>Number of read-only nodes. Value ranges from 0 to 5.</p>
         :type ReadonlyNodeNum: int
-        :param _ReadonlyNodeAvailabilityZoneList: Array of AZs of read-only nodes. This parameter is required for instances in multi-AZ deployment mode when **ReadonlyNodeNum** is not set to **0**.
+        :param _ReadonlyNodeAvailabilityZoneList: <p>Array of AZs of read-only nodes. This parameter is required for instances in multi-AZ deployment mode when <strong>ReadonlyNodeNum</strong> is not set to <strong>0</strong>.</p>
         :type ReadonlyNodeAvailabilityZoneList: list of str
-        :param _HiddenZone: AZ of the hidden node. This parameter is required for instances in multi-AZ deployment mode.
+        :param _HiddenZone: <p>Availability zone of the Hidden node. To deploy instances across availability zones, you must configure this parameter.</p>
         :type HiddenZone: str
-        :param _ParamTemplateId: Parameter template ID.
-- A parameter template is a collection of predefined parameter values that can be used to quickly configure new MongoDB instances. Proper use of parameter templates can significantly enhance the deployment efficiency and operational performance of the database.
-- The [DescribeDBInstanceParamTpl](https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1) API can be called to obtain the parameter template ID. Select the parameter template ID corresponding to the instance version and architecture.
+        :param _ParamTemplateId: <p>Parameter template ID.</p><ul><li>A parameter template is a collection of preset specific parameters applicable to quick configuration of new MongoDB instances. Proper use of parameter templates can effectively improve database deployment efficiency and operating performance.</li><li>The parameter template ID can be obtained through the <a href="https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1">DescribeDBInstanceParamTpl</a> API. Please select the parameter template ID corresponding to your instance version and architecture.</li></ul>
         :type ParamTemplateId: str
+        :param _CpuCore: <p>Instance CPU core size. Unit: C. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain specific saleable CPU specifications.<br>Note: CPU size must be set for common I Instance Type.</p>
+        :type CpuCore: int
         """
         self._NodeNum = None
         self._Memory = None
@@ -1953,11 +2369,11 @@ class CreateDBInstanceRequest(AbstractModel):
         self._ReadonlyNodeAvailabilityZoneList = None
         self._HiddenZone = None
         self._ParamTemplateId = None
+        self._CpuCore = None
 
     @property
     def NodeNum(self):
-        r""" - Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each replica set.
- - Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each shard.
+        r"""<ul><li>Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each replica set.</li><li>Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each shard.</li></ul>
         :rtype: int
         """
         return self._NodeNum
@@ -1968,7 +2384,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Instance memory size. Unit: GB. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain specific saleable memory specifications.
+        r"""<p>Instance memory size. Unit: GB. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain specific saleable memory specifications.</p>
         :rtype: int
         """
         return self._Memory
@@ -1979,7 +2395,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""Instance disk size. Unit: GB. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum disk sizes corresponding to each CPU specification.
+        r"""<p>Instance disk size. Unit: GB. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum disk sizes corresponding to each CPU specification.</p>
         :rtype: int
         """
         return self._Volume
@@ -1990,13 +2406,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""Refers to version information. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain detailed information about the supported versions.
-- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.
-- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.
-- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.
-- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
-- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
-- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+        r"""<p>Refers to version information. For supported versions, use the interface <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> to query.</p><ul><li>MONGO_40_WT: MongoDB 4.0 WiredTiger engine version.</li><li>MONGO_42_WT: MongoDB 4.2 WiredTiger engine version.</li><li>MONGO_44_WT: MongoDB 4.4 WiredTiger engine version.</li><li>MONGO_50_WT: MongoDB 5.0 WiredTiger engine version.</li><li>MONGO_60_WT: MongoDB 6.0 WiredTiger engine version.</li><li>MONGO_70_WT: MongoDB 7.0 WiredTiger engine version.</li><li>MONGO_80_WT: MongoDB 8.0 WiredTiger engine version.</li></ul>
         :rtype: str
         """
         return self._MongoVersion
@@ -2007,7 +2417,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""Number of instances. The minimum value is 1, and the maximum value is 30.
+        r"""<p>Number of instances. The minimum value is 1, and the maximum value is 30.</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -2018,9 +2428,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ information. Format: ap-guangzhou-2.
- - Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to obtain the specific information.
- - This parameter indicates the primary AZ. If multi-AZ deployment is adopted, the value of Zone should be one of the values of AvailabilityZoneList.
+        r"""<p>AZ information. The input format must be ap-guangzhou-2.</p><ul><li>For details, use the interface <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> to obtain them.</li><li>This parameter is the primary AZ. If multi-AZ deployment is used, Zone must be one of AvailabilityZoneList.</li></ul>
         :rtype: str
         """
         return self._Zone
@@ -2031,7 +2439,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""Specifies the purchase duration during the instance purchase, in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36.
+        r"""<p>Specifies the purchase duration during instance purchase. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36. Unit: months.</p>
         :rtype: int
         """
         return self._Period
@@ -2042,9 +2450,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MachineCode(self):
-        r"""Product specification type.
- - HIO10G: general high-I/O 10GE type.
- - HCD: cloud disk type.
+        r"""<p>Recommended product specification types:</p><ul><li>GE.LD.T1: Local disk (Common I).</li><li>GE.CD.T1: Cloud disk (Common I).</li></ul><p>Product allowlist specification types:</p><ul><li>HIO10G: Local disk (High IO 10G).</li><li>HCD: Cloud disk (Cloud disk edition).</li></ul><p>Note: Allowlist specification types are under allowlist control. If needed, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a> to apply.</p>
         :rtype: str
         """
         return self._MachineCode
@@ -2055,9 +2461,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""Instance architecture type.
- - REPLSET: replica set.
- - SHARD: sharded cluster.
+        r"""<p>Instance architecture type.</p><ul><li>REPLSET (replica set)</li><li>SHARD (sharded cluster)</li></ul>
         :rtype: str
         """
         return self._ClusterType
@@ -2068,8 +2472,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ReplicateSetNum(self):
-        r""" - Specifies the number of replica sets during replica set instance creation. This parameter can only be set to 1.
- - Specifies the number of shards during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.
+        r"""<ul><li>Specifies the number of replica sets during replica set instance creation. This parameter can only be 1.</li><li>Specifies the number of shards during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.</li></ul>
         :rtype: int
         """
         return self._ReplicateSetNum
@@ -2080,8 +2483,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""Project ID.  - The default project is used if this parameter is not specified.
- - The project ID can be obtained on the [project management page in the TencentDB for MongoDB console](https://console.cloud.tencent.com/project).
+        r"""<p>Project ID.</p><ul><li>If this parameter is not set, the default project is used.</li><li>You can obtain the project ID on the <a href="https://console.cloud.tencent.com/project">MongoDB console project management</a> page.</li></ul>
         :rtype: int
         """
         return self._ProjectId
@@ -2092,9 +2494,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID.
-- Only VPC configuration is supported, and a VPC in the same region as the instance should be selected. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available VPC ID.
-- After successful instance creation, VPCs can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1).
+        r"""<p>VPC ID.</p><ul><li>Only private networks can be configured, and a private network in the same region as the instance must be selected. Log in to the <a href="https://console.cloud.tencent.com/vpc">VPC console</a> to obtain a used private network ID.</li><li>After successful instance creation, VPC replacement is allowed. For detailed operations, see <a href="https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1">Changing the Network</a>.</li></ul>
         :rtype: str
         """
         return self._VpcId
@@ -2105,9 +2505,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet ID of the VPC.
-- A subnet should be specified within the selected VPC. Log in to the [VPC console](https://console.cloud.tencent.com/vpc) to obtain the available subnet ID.
-- After successful instance creation, VPCs and subnets can be changed. For detailed operations, see [Changing the Network](https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1).
+        r"""<p>Subnet ID of the VPC.</p><ul><li>You must specify a subnet within the selected private network. Log in to the <a href="https://console.cloud.tencent.com/vpc">VPC console</a> to obtain the subnet ID.</li><li>After the instance is successfully created, replacement of the private network and subnet is allowed. For detailed operations, please refer to <a href="https://www.tencentcloud.com/document/product/239/30910?from_cn_redirect=1">Network Change</a>.</li></ul>
         :rtype: str
         """
         return self._SubnetId
@@ -2118,11 +2516,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Instance password. The requirements are as follows:
- - The number of characters should be in the range of [8, 32].
- - Characters within the ranges [A,Z], [a,z], and [0,9] are allowed.
- - Special characters that can be entered include exclamation marks (!), at signs (@), number signs (#), percent signs (%), carets (^), asterisks (\*), brackets (()), and underscores (_).
- - It cannot contain only the same letters or digits.
+        r"""<p>Instance password. The requirements are as follows:</p><ul><li>Character count is [8,32].</li><li>Enter characters within [A,Z], [a,z], [0,9].</li><li>Special characters include: exclamation mark "!", at "@", pound sign "#", percent sign "%", caret "^", asterisk "*", brackets "()", underscore "_".</li><li>Cannot set a single letter or number.</li></ul>
         :rtype: str
         """
         return self._Password
@@ -2133,7 +2527,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Instance tag information.
+        r"""<p>Instance tag information.</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -2144,9 +2538,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""Automatic renewal flag.
- - 0: no automatic renewal.
- - 1: automatic renewal.
+        r"""<p>Auto-renewal flag.</p><ul><li>0: no auto-renewal.</li><li>1: auto-renewal.</li></ul>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2157,9 +2549,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""Whether to automatically select a voucher.
- - 1: yes.
- - 0: no. Default value: 0.
+        r"""<p>Indicates whether to automatically select voucher.</p><ul><li>1: Yes.</li><li>0: No. Default is 0.</li></ul>
         :rtype: int
         """
         return self._AutoVoucher
@@ -2170,11 +2560,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Clone(self):
-        r"""Instance type.
-- 1: formal instance.
-- 3: read-only instance.
-- 4: disaster recovery instance.
-- 5: cloned instance. Note: For a cloned instance, RestoreTime is required.
+        r"""<p>Instance type.</p><ul><li>1: Formal instance.</li><li>3: Read-only instance.</li><li>4: Disaster recovery instance.</li><li>5: Clone instance. Note: RestoreTime is a required item when you clone an instance.</li></ul>
         :rtype: int
         """
         return self._Clone
@@ -2185,9 +2571,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Father(self):
-        r"""Parent instance ID.
-- This parameter is required when the value of the **Clone** parameter is set to 3 or 4, indicating a read-only or disaster recovery instance.
-- Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the parent instance ID from the instance list.
+        r"""<p>Parent instance ID.</p><ul><li>When the <strong>Clone</strong> parameter is 3 or 4, that is, the instance is read-only or a disaster recovery instance, this parameter must be configured.</li><li>Log in to the <a href="https://console.cloud.tencent.com/mongodb">MongoDB console</a> and copy the parent instance ID in the instance list.</li></ul>
         :rtype: str
         """
         return self._Father
@@ -2198,7 +2582,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        r"""Security group ID. Log in to the [security group console](https://console.cloud.tencent.com/vpc/security-group) to obtain the ID of the security group in the same region as the database instance.
+        r"""<p>Security group ID. Log in to the <a href="https://console.cloud.tencent.com/vpc/security-group">security group console</a> to obtain the ID of the security group within the same region as the database instance.</p>
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -2209,7 +2593,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def RestoreTime(self):
-        r"""Rollback time of the cloned instance. It is required when the Clone value is 5 or 6. - This parameter is required for cloned instances. Format: 2021-08-13 16:30:00. - Rollback time range: Only data within the last 7 days can be rolled back.
+        r"""<p>Rollback time of the cloned instance. It is required when the Clone value is 5 or 6. - This parameter is required for cloned instances. Format: 2021-08-13 16:30:00. - Rollback time range: Only data within the last 7 days can be rolled back.</p>
         :rtype: str
         """
         return self._RestoreTime
@@ -2220,10 +2604,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name. Only Chinese characters, letters, digits, underscores (_), and delimiters (-) are supported, with a length of 128 characters. When database instances are purchased in batches, the automatic ascending feature is supported through the custom naming pattern string and numeric suffix to set instance names efficiently.
-- Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for **lnstanceName**. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.
-- Custom starting number mode: prefix + {R:x} (x is the custom starting number). Prefix{R:x} is required for **InstanceName**. For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be sequentially named cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.
-- Composite pattern string: prefix 1{R:x} + prefix 2{R:y}+ ⋯ + fixed suffix, where x and y are the starting numbers of each prefix. A composite pattern string is required for **instanceName**. For example, cmgo{R:10}\_node{R:12}\_db. If the batch purchase quantity is set to 5, the instances will be sequentially named cmgo10\_node12\_db, cmgo11\_node13\_db, cmgo12\_node14\_db, cmgo13\_node15\_db, and cmgo14\_node16\_db.
+        r"""<p>Instance name. Only Chinese, English, digits, underscores (_), and hyphens (-) are supported, with a maximum length of 128 characters. When purchasing database instances in batches, you can efficiently set instance names by using custom pattern strings and automatically ascending numeric suffixes.</p><ul><li>Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for <strong>lnstanceName</strong>. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.</li><li>Custom starting number mode: prefix + {R:x} (x is the custom starting number). <strong>InstanceName</strong> requires "prefix{R:x}". For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.</li><li>Composite pattern string: prefix1{R:x} + prefix2{R:y} + ⋯ + fixed suffix, where x and y are the starting numbers for each prefix. <strong>InstanceName</strong> requires a composite pattern string. For example, cmgo{R:10}_node{R:12}_db. If the batch purchase quantity is set to 5, the instance names will be cmgo10_node12_db, cmgo11_node13_db, cmgo12_node14_db, cmgo13_node15_db, and cmgo14_node16_db.</li></ul>
         :rtype: str
         """
         return self._InstanceName
@@ -2234,10 +2615,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def AvailabilityZoneList(self):
-        r"""Specifies the list of AZs during multi-AZ deployment of TencentDB for MongoDB instances.
- - For instances in multi-AZ deployment mode, the **Zone** parameter specifies the primary AZ, and **AvailabilityZoneList** specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].
- - The [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain AZs planned for TencentDB for MongoDB instances in different regions, helping you specify valid AZs.
- - Nodes in multi-AZ deployment mode can only be deployed in 3 different AZs. Deploying most nodes of a cluster in the same AZ is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same AZ.
+        r"""<p>For cloud database instances in multi-AZ deployment, specify the availability zone list.</p><ul><li>For instances in multi-AZ deployment mode, the <strong>Zone</strong> parameter specifies the primary AZ, and <strong>AvailabilityZoneList</strong> specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].</li><li>Use the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to access cloud databases and obtain availability zone information planned for different regions, so that you can assign valid AZs.</li><li>Nodes in multi-AZ deployment can only be deployed in 3 different availability zones. Deploying most nodes of a cluster in the same availability zone is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same zone.</li></ul>
         :rtype: list of str
         """
         return self._AvailabilityZoneList
@@ -2248,7 +2626,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MongosCpu(self):
-        r"""Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.
+        r"""<p>Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase.</p>
         :rtype: int
         """
         return self._MongosCpu
@@ -2259,9 +2637,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MongosMemory(self):
-        r"""Mongos node memory size.
- - This parameter is required during sharded cluster instance purchase.
- - Unit: GB. 1-core 2GB, 2-core 4GB, 4-core 8GB, 8-core 16GB, and 16-core 32GB are supported.
+        r"""<p>Mongos node memory size.</p><ul><li>This parameter is required during sharded cluster instance purchase.</li><li>Unit: GB. Valid values: 2 (for 1 core), 4 (for 2 cores), 8 (for 4 cores), 16 (for 8 cores), and 32 (for 16 cores).</li></ul>
         :rtype: int
         """
         return self._MongosMemory
@@ -2272,9 +2648,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def MongosNodeNum(self):
-        r"""Number of Mongos nodes. This parameter is required during sharded cluster instance purchase.
- - For instances in single-AZ deployment mode, the value range is [3,32].
- - For instances in multi-AZ deployment mode, the value range is [6,32].
+        r"""<p>Number of Mongos nodes. This parameter is required during sharded cluster instance purchase.</p><ul><li>For single-AZ deployment instances, the quantity range is [3,32].</li><li>For instances deployed across multiple availability zones, the quantity range is [6,32].</li></ul>
         :rtype: int
         """
         return self._MongosNodeNum
@@ -2285,7 +2659,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ReadonlyNodeNum(self):
-        r"""Number of read-only nodes. Value ranges: [0,5].
+        r"""<p>Number of read-only nodes. Value ranges from 0 to 5.</p>
         :rtype: int
         """
         return self._ReadonlyNodeNum
@@ -2296,7 +2670,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ReadonlyNodeAvailabilityZoneList(self):
-        r"""Array of AZs of read-only nodes. This parameter is required for instances in multi-AZ deployment mode when **ReadonlyNodeNum** is not set to **0**.
+        r"""<p>Array of AZs of read-only nodes. This parameter is required for instances in multi-AZ deployment mode when <strong>ReadonlyNodeNum</strong> is not set to <strong>0</strong>.</p>
         :rtype: list of str
         """
         return self._ReadonlyNodeAvailabilityZoneList
@@ -2307,7 +2681,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def HiddenZone(self):
-        r"""AZ of the hidden node. This parameter is required for instances in multi-AZ deployment mode.
+        r"""<p>Availability zone of the Hidden node. To deploy instances across availability zones, you must configure this parameter.</p>
         :rtype: str
         """
         return self._HiddenZone
@@ -2318,9 +2692,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""Parameter template ID.
-- A parameter template is a collection of predefined parameter values that can be used to quickly configure new MongoDB instances. Proper use of parameter templates can significantly enhance the deployment efficiency and operational performance of the database.
-- The [DescribeDBInstanceParamTpl](https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1) API can be called to obtain the parameter template ID. Select the parameter template ID corresponding to the instance version and architecture.
+        r"""<p>Parameter template ID.</p><ul><li>A parameter template is a collection of preset specific parameters applicable to quick configuration of new MongoDB instances. Proper use of parameter templates can effectively improve database deployment efficiency and operating performance.</li><li>The parameter template ID can be obtained through the <a href="https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1">DescribeDBInstanceParamTpl</a> API. Please select the parameter template ID corresponding to your instance version and architecture.</li></ul>
         :rtype: str
         """
         return self._ParamTemplateId
@@ -2328,6 +2700,17 @@ class CreateDBInstanceRequest(AbstractModel):
     @ParamTemplateId.setter
     def ParamTemplateId(self, ParamTemplateId):
         self._ParamTemplateId = ParamTemplateId
+
+    @property
+    def CpuCore(self):
+        r"""<p>Instance CPU core size. Unit: C. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain specific saleable CPU specifications.<br>Note: CPU size must be set for common I Instance Type.</p>
+        :rtype: int
+        """
+        return self._CpuCore
+
+    @CpuCore.setter
+    def CpuCore(self, CpuCore):
+        self._CpuCore = CpuCore
 
 
     def _deserialize(self, params):
@@ -2366,6 +2749,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self._ReadonlyNodeAvailabilityZoneList = params.get("ReadonlyNodeAvailabilityZoneList")
         self._HiddenZone = params.get("HiddenZone")
         self._ParamTemplateId = params.get("ParamTemplateId")
+        self._CpuCore = params.get("CpuCore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2383,9 +2767,9 @@ class CreateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealId: Order ID.
+        :param _DealId: <p>Order ID</p>
         :type DealId: str
-        :param _InstanceIds: List of IDs of created instances.
+        :param _InstanceIds: <p>List of instance created IDs</p>
         :type InstanceIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2396,7 +2780,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     @property
     def DealId(self):
-        r"""Order ID.
+        r"""<p>Order ID</p>
         :rtype: str
         """
         return self._DealId
@@ -2407,7 +2791,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of IDs of created instances.
+        r"""<p>List of instance created IDs</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -3255,6 +3639,564 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAuditConfigRequest(AbstractModel):
+    r"""DescribeAuditConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format of cmgo-xftsghuy. It is the same as the instance ID displayed on the TencentDB console page.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format of cmgo-xftsghuy. It is the same as the instance ID displayed on the TencentDB console page.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditConfigResponse(AbstractModel):
+    r"""DescribeAuditConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _InstanceName: Instance name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param _AuditAll: true indicates full audit, false indicates rule audit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuditAll: bool
+        :param _CreateTime: The time when the instance enables database audit.
+        :type CreateTime: str
+        :param _LogExpireDay: Audit log retention period.
+Unit: day. Currently supports retention duration including 0, 30, 180, 365, 1095, 1825.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogExpireDay: int
+        :param _LogType: Audit log storage type. Currently only support "storage": Storage type.
+        :type LogType: str
+        :param _IsClosing: Whether the auditing feature is being disabled.
+<ul><li>true: Yes.</li><li>false: No.</li></ul>
+        :type IsClosing: str
+        :param _IsOpening: Whether the audit feature is being enabled.<ul><li>true: Yes.</li><li>false: No.</li></ul>
+        :type IsOpening: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._AuditAll = None
+        self._CreateTime = None
+        self._LogExpireDay = None
+        self._LogType = None
+        self._IsClosing = None
+        self._IsOpening = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""Instance name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AuditAll(self):
+        r"""true indicates full audit, false indicates rule audit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._AuditAll
+
+    @AuditAll.setter
+    def AuditAll(self, AuditAll):
+        self._AuditAll = AuditAll
+
+    @property
+    def CreateTime(self):
+        r"""The time when the instance enables database audit.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LogExpireDay(self):
+        r"""Audit log retention period.
+Unit: day. Currently supports retention duration including 0, 30, 180, 365, 1095, 1825.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def LogType(self):
+        r"""Audit log storage type. Currently only support "storage": Storage type.
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def IsClosing(self):
+        r"""Whether the auditing feature is being disabled.
+<ul><li>true: Yes.</li><li>false: No.</li></ul>
+        :rtype: str
+        """
+        return self._IsClosing
+
+    @IsClosing.setter
+    def IsClosing(self, IsClosing):
+        self._IsClosing = IsClosing
+
+    @property
+    def IsOpening(self):
+        r"""Whether the audit feature is being enabled.<ul><li>true: Yes.</li><li>false: No.</li></ul>
+        :rtype: str
+        """
+        return self._IsOpening
+
+    @IsOpening.setter
+    def IsOpening(self, IsOpening):
+        self._IsOpening = IsOpening
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._AuditAll = params.get("AuditAll")
+        self._CreateTime = params.get("CreateTime")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._LogType = params.get("LogType")
+        self._IsClosing = params.get("IsClosing")
+        self._IsOpening = params.get("IsOpening")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogFilesRequest(AbstractModel):
+    r"""DescribeAuditLogFiles request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format of cmgo-xfts****. It is the same as the instance ID displayed on the TencentDB console page.
+        :type InstanceId: str
+        :param _Limit: Page size. Default value: 20; value ranges from 1 to 100.
+        :type Limit: int
+        :param _Offset: Pagination offset.
+        :type Offset: int
+        :param _FileName: Audit log file name. This API filters related audit log files based on this parameter.
+        :type FileName: str
+        """
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+        self._FileName = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format of cmgo-xfts****. It is the same as the instance ID displayed on the TencentDB console page.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        r"""Page size. Default value: 20; value ranges from 1 to 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def FileName(self):
+        r"""Audit log file name. This API filters related audit log files based on this parameter.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogFilesResponse(AbstractModel):
+    r"""DescribeAuditLogFiles response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of eligible audit log files.
+        :type TotalCount: int
+        :param _Items: Audit log file details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Items: list of AuditLogFile
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of eligible audit log files.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""Audit log file details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AuditLogFile
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditLogFile()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogsRequest(AbstractModel):
+    r"""DescribeAuditLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format of cmgo-xftsghuy. It is the same as the instance ID displayed on the TencentDB console page.
+        :type InstanceId: str
+        :param _StartTime: Start time, format: "2017-07-12 10:29:20".
+        :type StartTime: str
+        :param _EndTime: End time, format: "2017-07-12 10:29:20".
+        :type EndTime: str
+        :param _Filter: Filter conditions. You can filter logs based on these conditions.
+        :type Filter: :class:`tencentcloud.mongodb.v20190725.models.AuditLogFilter`
+        :param _Limit: Pagination parameter indicates the number of returned data entries. Default value is 100. Maximum value is 100.
+        :type Limit: int
+        :param _Offset: Pagination offset.
+        :type Offset: int
+        :param _Order: Sorting method of the audit log.
+<ul><li>ASC: ascending.</li><li>DESC: descending order.</li></ul>
+        :type Order: str
+        :param _OrderBy: Sorting field of the audit log, including:
+<ul><li>timestamp: Timestamp.</li>
+<li>affectRows: Number of affected rows.</li>
+<li>execTime: Execution time.</li></ul>
+        :type OrderBy: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filter = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._OrderBy = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format of cmgo-xftsghuy. It is the same as the instance ID displayed on the TencentDB console page.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""Start time, format: "2017-07-12 10:29:20".
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time, format: "2017-07-12 10:29:20".
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filter(self):
+        r"""Filter conditions. You can filter logs based on these conditions.
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.AuditLogFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Limit(self):
+        r"""Pagination parameter indicates the number of returned data entries. Default value is 100. Maximum value is 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""Sorting method of the audit log.
+<ul><li>ASC: ascending.</li><li>DESC: descending order.</li></ul>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field of the audit log, including:
+<ul><li>timestamp: Timestamp.</li>
+<li>affectRows: Number of affected rows.</li>
+<li>execTime: Execution time.</li></ul>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filter") is not None:
+            self._Filter = AuditLogFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogsResponse(AbstractModel):
+    r"""DescribeAuditLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of eligible audit log entries.
+        :type TotalCount: int
+        :param _Items: Audit log details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Items: list of AuditLog
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of eligible audit log entries.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""Audit log details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AuditLog
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditLog()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackupDownloadTaskRequest(AbstractModel):
     r"""DescribeBackupDownloadTask request structure.
 
@@ -3537,18 +4479,49 @@ class DescribeBackupRulesResponse(AbstractModel):
         r"""
         :param _BackupSaveTime: Retention period for backup data, in days.
         :type BackupSaveTime: int
+        :param _BackupFrequency: Backup frequency. Backup interval in hours. Value: 12, 24.
+        :type BackupFrequency: int
         :param _BackupTime: Automatic backup start time.
         :type BackupTime: int
-        :param _BackupMethod: Backup method.
+        :param _BackupMethod: Backup mode.
 - 0: logical backup.
 - 1: physical backup.
+-3: Snapshot backup.
+**Description**:
+1. The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.
+2. Physical backup is not supported when storage encryption is enabled for the instance.
         :type BackupMethod: int
+        :param _ActiveWeekdays: Day of week for backup, 0-6, separated by commas
+        :type ActiveWeekdays: str
+        :param _LongTermInterval: Long-term backup period. weekly - by week, monthly - by month, empty means not enabled.
+        :type LongTermInterval: str
+        :param _LongTermActiveDays: Date of long-term backup, week 0-6, month 1-31
+        :type LongTermActiveDays: str
+        :param _LongTermExpiredDays: Long-term backup retention period
+        :type LongTermExpiredDays: int
+        :param _OplogExpiredDays: Incremental backup retention period
+        :type OplogExpiredDays: int
+        :param _BackupVersion: Backup version. 0 - Old backup method, 1 - Advanced backup.
+        :type BackupVersion: int
+        :param _BackupTotalSize: Backup size
+        :type BackupTotalSize: :class:`tencentcloud.mongodb.v20190725.models.BackupTotalSize`
+        :param _AlertThreshold: alarm limit
+        :type AlertThreshold: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._BackupSaveTime = None
+        self._BackupFrequency = None
         self._BackupTime = None
         self._BackupMethod = None
+        self._ActiveWeekdays = None
+        self._LongTermInterval = None
+        self._LongTermActiveDays = None
+        self._LongTermExpiredDays = None
+        self._OplogExpiredDays = None
+        self._BackupVersion = None
+        self._BackupTotalSize = None
+        self._AlertThreshold = None
         self._RequestId = None
 
     @property
@@ -3563,6 +4536,17 @@ class DescribeBackupRulesResponse(AbstractModel):
         self._BackupSaveTime = BackupSaveTime
 
     @property
+    def BackupFrequency(self):
+        r"""Backup frequency. Backup interval in hours. Value: 12, 24.
+        :rtype: int
+        """
+        return self._BackupFrequency
+
+    @BackupFrequency.setter
+    def BackupFrequency(self, BackupFrequency):
+        self._BackupFrequency = BackupFrequency
+
+    @property
     def BackupTime(self):
         r"""Automatic backup start time.
         :rtype: int
@@ -3575,9 +4559,13 @@ class DescribeBackupRulesResponse(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""Backup method.
+        r"""Backup mode.
 - 0: logical backup.
 - 1: physical backup.
+-3: Snapshot backup.
+**Description**:
+1. The General Edition instance supports logical and physical backup. The Cloud Disk Edition instance supports physical and snapshot backup, but does not support logical backup currently.
+2. Physical backup is not supported when storage encryption is enabled for the instance.
         :rtype: int
         """
         return self._BackupMethod
@@ -3585,6 +4573,94 @@ class DescribeBackupRulesResponse(AbstractModel):
     @BackupMethod.setter
     def BackupMethod(self, BackupMethod):
         self._BackupMethod = BackupMethod
+
+    @property
+    def ActiveWeekdays(self):
+        r"""Day of week for backup, 0-6, separated by commas
+        :rtype: str
+        """
+        return self._ActiveWeekdays
+
+    @ActiveWeekdays.setter
+    def ActiveWeekdays(self, ActiveWeekdays):
+        self._ActiveWeekdays = ActiveWeekdays
+
+    @property
+    def LongTermInterval(self):
+        r"""Long-term backup period. weekly - by week, monthly - by month, empty means not enabled.
+        :rtype: str
+        """
+        return self._LongTermInterval
+
+    @LongTermInterval.setter
+    def LongTermInterval(self, LongTermInterval):
+        self._LongTermInterval = LongTermInterval
+
+    @property
+    def LongTermActiveDays(self):
+        r"""Date of long-term backup, week 0-6, month 1-31
+        :rtype: str
+        """
+        return self._LongTermActiveDays
+
+    @LongTermActiveDays.setter
+    def LongTermActiveDays(self, LongTermActiveDays):
+        self._LongTermActiveDays = LongTermActiveDays
+
+    @property
+    def LongTermExpiredDays(self):
+        r"""Long-term backup retention period
+        :rtype: int
+        """
+        return self._LongTermExpiredDays
+
+    @LongTermExpiredDays.setter
+    def LongTermExpiredDays(self, LongTermExpiredDays):
+        self._LongTermExpiredDays = LongTermExpiredDays
+
+    @property
+    def OplogExpiredDays(self):
+        r"""Incremental backup retention period
+        :rtype: int
+        """
+        return self._OplogExpiredDays
+
+    @OplogExpiredDays.setter
+    def OplogExpiredDays(self, OplogExpiredDays):
+        self._OplogExpiredDays = OplogExpiredDays
+
+    @property
+    def BackupVersion(self):
+        r"""Backup version. 0 - Old backup method, 1 - Advanced backup.
+        :rtype: int
+        """
+        return self._BackupVersion
+
+    @BackupVersion.setter
+    def BackupVersion(self, BackupVersion):
+        self._BackupVersion = BackupVersion
+
+    @property
+    def BackupTotalSize(self):
+        r"""Backup size
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.BackupTotalSize`
+        """
+        return self._BackupTotalSize
+
+    @BackupTotalSize.setter
+    def BackupTotalSize(self, BackupTotalSize):
+        self._BackupTotalSize = BackupTotalSize
+
+    @property
+    def AlertThreshold(self):
+        r"""alarm limit
+        :rtype: int
+        """
+        return self._AlertThreshold
+
+    @AlertThreshold.setter
+    def AlertThreshold(self, AlertThreshold):
+        self._AlertThreshold = AlertThreshold
 
     @property
     def RequestId(self):
@@ -3600,8 +4676,19 @@ class DescribeBackupRulesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._BackupSaveTime = params.get("BackupSaveTime")
+        self._BackupFrequency = params.get("BackupFrequency")
         self._BackupTime = params.get("BackupTime")
         self._BackupMethod = params.get("BackupMethod")
+        self._ActiveWeekdays = params.get("ActiveWeekdays")
+        self._LongTermInterval = params.get("LongTermInterval")
+        self._LongTermActiveDays = params.get("LongTermActiveDays")
+        self._LongTermExpiredDays = params.get("LongTermExpiredDays")
+        self._OplogExpiredDays = params.get("OplogExpiredDays")
+        self._BackupVersion = params.get("BackupVersion")
+        if params.get("BackupTotalSize") is not None:
+            self._BackupTotalSize = BackupTotalSize()
+            self._BackupTotalSize._deserialize(params.get("BackupTotalSize"))
+        self._AlertThreshold = params.get("AlertThreshold")
         self._RequestId = params.get("RequestId")
 
 
@@ -5958,6 +7045,85 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSRVConnectionDomainRequest(AbstractModel):
+    r"""DescribeSRVConnectionDomain request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSRVConnectionDomainResponse(AbstractModel):
+    r"""DescribeSRVConnectionDomain response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: srv domain information of the current instance.
+        :type Domain: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Domain = None
+        self._RequestId = None
+
+    @property
+    def Domain(self):
+        r"""srv domain information of the current instance.
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupRequest(AbstractModel):
     r"""DescribeSecurityGroup request structure.
 
@@ -6513,6 +7679,164 @@ class DescribeSpecInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisableSRVConnectionUrlRequest(AbstractModel):
+    r"""DisableSRVConnectionUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableSRVConnectionUrlResponse(AbstractModel):
+    r"""DisableSRVConnectionUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Start the task ID.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Start the task ID.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class EnableSRVConnectionUrlRequest(AbstractModel):
+    r"""EnableSRVConnectionUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. For example, cmgo-p8vn****. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableSRVConnectionUrlResponse(AbstractModel):
+    r"""EnableSRVConnectionUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Start the task ID.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Start the task ID.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class EnableTransparentDataEncryptionRequest(AbstractModel):
     r"""EnableTransparentDataEncryption request structure.
 
@@ -6622,6 +7946,120 @@ class EnableTransparentDataEncryptionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EnableWanServiceRequest(AbstractModel):
+    r"""EnableWanService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _LoadBalancerId: CLB ID.
+        :type LoadBalancerId: str
+        :param _NodeList: Node and listening port information.
+        :type NodeList: list of WanServiceNodeList
+        """
+        self._InstanceId = None
+        self._LoadBalancerId = None
+        self._NodeList = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LoadBalancerId(self):
+        r"""CLB ID.
+        :rtype: str
+        """
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def NodeList(self):
+        r"""Node and listening port information.
+        :rtype: list of WanServiceNodeList
+        """
+        return self._NodeList
+
+    @NodeList.setter
+    def NodeList(self, NodeList):
+        self._NodeList = NodeList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("NodeList") is not None:
+            self._NodeList = []
+            for item in params.get("NodeList"):
+                obj = WanServiceNodeList()
+                obj._deserialize(item)
+                self._NodeList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableWanServiceResponse(AbstractModel):
+    r"""EnableWanService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Asynchronous task ID.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Asynchronous task ID.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class FlushInstanceRouterConfigRequest(AbstractModel):
     r"""FlushInstanceRouterConfig request structure.
 
@@ -6693,61 +8131,44 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: Region and AZ information of the instance. For details, see [Regions and AZs](https://www.tencentcloud.com/document/product/240/3637?from_cn_redirect=1).
+        :param _Zone: <p>Region and AZ information of the instance. For details, please see <a href="https://www.tencentcloud.com/document/product/240/3637?from_cn_redirect=1">Regions and Availability Zones</a>.</p>
         :type Zone: str
-        :param _NodeNum: -Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. call the [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each replica set.
-- Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each shard.
+        :param _NodeNum: <ul><li>Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each replica set.</li><li>Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each shard.</li></ul>
         :type NodeNum: int
-        :param _Memory: Instance memory size.
-
- - Unit: GB.
- - For the value range, call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API. The CPU and Memory parameters in the returned data structure SpecItems correspond to the number of CPU cores and the memory specification, respectively.
+        :param _Memory: <p>Instance memory size.</p><ul><li>Unit: GB.</li><li>For the value range, call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API. The CPU and Memory parameters in the returned data structure SpecItems correspond to the number of CPU cores and the memory specifications, respectively.</li></ul>
         :type Memory: int
-        :param _Volume: Instance disk size.
- - Unit: GB.
- - For the value range, call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API. The MinStorage and MaxStorage parameters in the returned data structure SpecItems correspond to the minimum and maximum disk specifications, respectively.
+        :param _Volume: <p>Instance disk size.</p><ul><li>Unit: GB.</li><li>For the value range, call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API. The MinStorage and MaxStorage parameters in the returned data structure SpecItems correspond to the minimum and maximum disk specifications, respectively.</li></ul>
         :type Volume: int
-        :param _MongoVersion: Instance version information. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain specific supported versions. The MongoVersionCode parameter in the returned data structure SpecItems indicates the information on versions supported by instances. The corresponding relationship between version information and version number is as follows:
-- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.
-- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.
-- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.
-- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
-- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
-- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+        :param _MongoVersion: <p>Instance version information. The <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API can be called to obtain specific supported versions. The MongoVersionCode parameter in the returned data structure SpecItems indicates the information on versions supported by instances. The corresponding relationship between version information and version number is as follows:</p><ul><li>MONGO_40_WT: MongoDB 4.0 WiredTiger storage engine version.</li><li>MONGO_42_WT: MongoDB 4.2 WiredTiger storage engine version.</li><li>MONGO_44_WT: MongoDB 4.4 WiredTiger storage engine version.</li><li>MONGO_50_WT: MongoDB 5.0 WiredTiger storage engine version.</li><li>MONGO_60_WT: MongoDB 6.0 WiredTiger storage engine version.</li><li>MONGO_70_WT: MongoDB 7.0 WiredTiger storage engine version.</li><li>MONGO_80_WT: MongoDB 8.0 WiredTiger storage engine version.</li></ul>
         :type MongoVersion: str
-        :param _MachineCode: Product specification type.
- - HIO10G: general high-I/O 10GE type.
- - HCD: cloud disk.
+        :param _MachineCode: <p>Recommended product specification types:</p><ul><li>GE.LD.T1: Local disk (Common I).</li><li>GE.CD.T1: Cloud disk (Common I).</li></ul><p>Product allowlist specification types:</p><ul><li>HIO10G: Local disk (High IO 10G).</li><li>HCD: Cloud disk (Cloud disk edition).</li></ul><p>Note: Allowlist specification types are under allowlist control. If needed, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a> to apply.</p>
         :type MachineCode: str
-        :param _GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.
+        :param _GoodsNum: <p>Number of instances. Value range: [1,10].</p>
         :type GoodsNum: int
-        :param _ClusterType: Instance type.
-
- - REPLSET: replica set.
- - SHARD: sharded cluster.
+        :param _ClusterType: <p>Instance type.</p><ul><li>REPLSET (replica set)</li><li>SHARD (sharded cluster)</li></ul>
         :type ClusterType: str
-        :param _ReplicateSetNum:  - Specifies the number of replica sets during replica set instance creation. This parameter can only be set to 1.
- - Specifies the number of shards during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.
+        :param _ReplicateSetNum: <ul><li>Specifies the number of replica sets during replica set instance creation. This parameter can only be 1.</li><li>Specifies the number of shards during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.</li></ul>
         :type ReplicateSetNum: int
-        :param _Period:  - When the monthly subscription mode is selected, that is, when <b>InstanceChargeType</b> is set to <b>PREPAID</b>, this parameter is required for specifying the purchase duration of instances. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36. Unit: months.
- - When pay-as-you-go is selected, that is, when <b>InstanceChargeType</b> is set to **POSTPAID_BY_HOUR**, this parameter only can be set to 1.
+        :param _Period: <ul><li>When the monthly subscription mode is selected, that is, when <b>InstanceChargeType</b> is set to <b>PREPAID</b>, this parameter is required for specifying the purchase duration of instances. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36. Unit: months.<br>- When the pay-as-you-go mode is selected, that is, when <b>InstanceChargeType</b> is set to <strong>POSTPAID_BY_HOUR</strong>, this parameter can only be set to 1.</li></ul>
         :type Period: int
-        :param _InstanceChargeType: Instance payment method.
- - PREPAID: monthly subscription.
- - POSTPAID_BY_HOUR: pay-as-you-go.
+        :param _InstanceChargeType: <p>Instance payment method.</p><ul><li>PREPAID: Annual and monthly subscription.</li><li>POSTPAID_BY_HOUR: Pay-As-You-Go.</li></ul>
         :type InstanceChargeType: str
-        :param _MongosCpu: Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase. If this parameter is left blank, the default value 2 is used.
+        :param _MongosCpu: <p>Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase. If this parameter is left blank, the default value 2 is used.</p>
         :type MongosCpu: int
-        :param _MongosMemory: Mongos node memory size. - This parameter is required during sharded cluster instance purchase. - Unit: GB. Valid values: 2 (for 1 core), 4 (for 2 cores), 8 (for 4 cores), 16 (for 8 cores), and 32 (for 16 cores). If this parameter is left blank, the default value 4 is used.
+        :param _MongosMemory: <p>Mongos node memory size. - This parameter is required during sharded cluster instance purchase. - Unit: GB. Valid values: 2 (for 1 core), 4 (for 2 cores), 8 (for 4 cores), 16 (for 8 cores), and 32 (for 16 cores). If this parameter is left blank, the default value 4 is used.</p>
         :type MongosMemory: int
-        :param _MongosNum: Specifies the number of Mongos nodes. Value range: [3,32]. For querying the price of sharded cluster instances, this parameter is required. If it is left blank, the default value 3 is used.
+        :param _MongosNum: <p>Specifies the number of Mongos nodes. Value range: [3,32]. For querying the price of sharded cluster instances, this parameter is required. If it is left blank, the default value 3 is used.</p>
         :type MongosNum: int
-        :param _ConfigServerCpu: Specifies the number of ConfigServer CPU cores. The value is fixed as 1.
+        :param _ConfigServerCpu: <p>Refers to the number of ConfigServer CPU cores, value fixed at 1, unit: GB. This parameter can be left blank.</p>
         :type ConfigServerCpu: int
-        :param _ConfigServerMemory: Specifies the ConfigServer memory size. The value is fixed as 2. Unit: GB. This parameter can be left blank.
+        :param _ConfigServerMemory: <p>Specifies the ConfigServer memory size. The value is fixed as 2. Unit: GB. This parameter can be left blank.</p>
         :type ConfigServerMemory: int
-        :param _ConfigServerVolume: Specifies the ConfigServer disk size. The value is fixed as 20. Unit: GB. This parameter can be left blank.
+        :param _ConfigServerVolume: <p>Specifies the ConfigServer disk size. The value is fixed at 20. Unit: GB. This parameter can be left blank.</p>
         :type ConfigServerVolume: int
+        :param _ReadonlyNodeNum: <ul><li>Create a replica set instance. It refers to the read-only node quantity in each replica set.</li><li>Create a sharded cluster instance. It refers to the read-only node quantity in each shard.<br>Value range: [1,5].</li></ul>
+        :type ReadonlyNodeNum: int
+        :param _Cpu: <p>CPU size of the instance.</p><ul><li>Unit: C.</li><li>Value range: Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API. The CPU and Memory parameters in the returned data structure SpecItems correspond to the number of CPU cores and the memory specifications, respectively.</li><li>Note: You need to pass in the CPU core size corresponding to the memory when querying the price of a Common I Instance Type.</li></ul>
+        :type Cpu: int
         """
         self._Zone = None
         self._NodeNum = None
@@ -6766,10 +8187,12 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         self._ConfigServerCpu = None
         self._ConfigServerMemory = None
         self._ConfigServerVolume = None
+        self._ReadonlyNodeNum = None
+        self._Cpu = None
 
     @property
     def Zone(self):
-        r"""Region and AZ information of the instance. For details, see [Regions and AZs](https://www.tencentcloud.com/document/product/240/3637?from_cn_redirect=1).
+        r"""<p>Region and AZ information of the instance. For details, please see <a href="https://www.tencentcloud.com/document/product/240/3637?from_cn_redirect=1">Regions and Availability Zones</a>.</p>
         :rtype: str
         """
         return self._Zone
@@ -6780,8 +8203,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def NodeNum(self):
-        r"""-Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. call the [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each replica set.
-- Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API to obtain the maximum and minimum number of nodes supported for each shard.
+        r"""<ul><li>Specifies the number of primary and secondary nodes for each replica set during replica set instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each replica set.</li><li>Specifies the number of primary and secondary nodes for each shard during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain the maximum and minimum number of nodes supported for each shard.</li></ul>
         :rtype: int
         """
         return self._NodeNum
@@ -6792,10 +8214,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Instance memory size.
-
- - Unit: GB.
- - For the value range, call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API. The CPU and Memory parameters in the returned data structure SpecItems correspond to the number of CPU cores and the memory specification, respectively.
+        r"""<p>Instance memory size.</p><ul><li>Unit: GB.</li><li>For the value range, call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API. The CPU and Memory parameters in the returned data structure SpecItems correspond to the number of CPU cores and the memory specifications, respectively.</li></ul>
         :rtype: int
         """
         return self._Memory
@@ -6806,9 +8225,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""Instance disk size.
- - Unit: GB.
- - For the value range, call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API. The MinStorage and MaxStorage parameters in the returned data structure SpecItems correspond to the minimum and maximum disk specifications, respectively.
+        r"""<p>Instance disk size.</p><ul><li>Unit: GB.</li><li>For the value range, call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API. The MinStorage and MaxStorage parameters in the returned data structure SpecItems correspond to the minimum and maximum disk specifications, respectively.</li></ul>
         :rtype: int
         """
         return self._Volume
@@ -6819,13 +8236,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""Instance version information. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain specific supported versions. The MongoVersionCode parameter in the returned data structure SpecItems indicates the information on versions supported by instances. The corresponding relationship between version information and version number is as follows:
-- MONGO_40_WT: version of the MongoDB 4.0 WiredTiger storage engine.
-- MONGO_42_WT: version of the MongoDB 4.2 WiredTiger storage engine.
-- MONGO_44_WT: version of the MongoDB 4.4 WiredTiger storage engine.
-- MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
-- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
-- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+        r"""<p>Instance version information. The <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API can be called to obtain specific supported versions. The MongoVersionCode parameter in the returned data structure SpecItems indicates the information on versions supported by instances. The corresponding relationship between version information and version number is as follows:</p><ul><li>MONGO_40_WT: MongoDB 4.0 WiredTiger storage engine version.</li><li>MONGO_42_WT: MongoDB 4.2 WiredTiger storage engine version.</li><li>MONGO_44_WT: MongoDB 4.4 WiredTiger storage engine version.</li><li>MONGO_50_WT: MongoDB 5.0 WiredTiger storage engine version.</li><li>MONGO_60_WT: MongoDB 6.0 WiredTiger storage engine version.</li><li>MONGO_70_WT: MongoDB 7.0 WiredTiger storage engine version.</li><li>MONGO_80_WT: MongoDB 8.0 WiredTiger storage engine version.</li></ul>
         :rtype: str
         """
         return self._MongoVersion
@@ -6836,9 +8247,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def MachineCode(self):
-        r"""Product specification type.
- - HIO10G: general high-I/O 10GE type.
- - HCD: cloud disk.
+        r"""<p>Recommended product specification types:</p><ul><li>GE.LD.T1: Local disk (Common I).</li><li>GE.CD.T1: Cloud disk (Common I).</li></ul><p>Product allowlist specification types:</p><ul><li>HIO10G: Local disk (High IO 10G).</li><li>HCD: Cloud disk (Cloud disk edition).</li></ul><p>Note: Allowlist specification types are under allowlist control. If needed, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a> to apply.</p>
         :rtype: str
         """
         return self._MachineCode
@@ -6849,7 +8258,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""Number of instances. Minimum value: 1. Maximum value: 10.
+        r"""<p>Number of instances. Value range: [1,10].</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -6860,10 +8269,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""Instance type.
-
- - REPLSET: replica set.
- - SHARD: sharded cluster.
+        r"""<p>Instance type.</p><ul><li>REPLSET (replica set)</li><li>SHARD (sharded cluster)</li></ul>
         :rtype: str
         """
         return self._ClusterType
@@ -6874,8 +8280,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def ReplicateSetNum(self):
-        r""" - Specifies the number of replica sets during replica set instance creation. This parameter can only be set to 1.
- - Specifies the number of shards during sharded cluster instance creation. Call the [DescribeSpecInfo](https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1) API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.
+        r"""<ul><li>Specifies the number of replica sets during replica set instance creation. This parameter can only be 1.</li><li>Specifies the number of shards during sharded cluster instance creation. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to query the range of shard quantity. The parameters MinReplicateSetNum and MaxReplicateSetNum in the returned data structure SpecItems correspond to the minimum value and maximum value, respectively.</li></ul>
         :rtype: int
         """
         return self._ReplicateSetNum
@@ -6886,8 +8291,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        r""" - When the monthly subscription mode is selected, that is, when <b>InstanceChargeType</b> is set to <b>PREPAID</b>, this parameter is required for specifying the purchase duration of instances. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36. Unit: months.
- - When pay-as-you-go is selected, that is, when <b>InstanceChargeType</b> is set to **POSTPAID_BY_HOUR**, this parameter only can be set to 1.
+        r"""<ul><li>When the monthly subscription mode is selected, that is, when <b>InstanceChargeType</b> is set to <b>PREPAID</b>, this parameter is required for specifying the purchase duration of instances. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36. Unit: months.<br>- When the pay-as-you-go mode is selected, that is, when <b>InstanceChargeType</b> is set to <strong>POSTPAID_BY_HOUR</strong>, this parameter can only be set to 1.</li></ul>
         :rtype: int
         """
         return self._Period
@@ -6898,9 +8302,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""Instance payment method.
- - PREPAID: monthly subscription.
- - POSTPAID_BY_HOUR: pay-as-you-go.
+        r"""<p>Instance payment method.</p><ul><li>PREPAID: Annual and monthly subscription.</li><li>POSTPAID_BY_HOUR: Pay-As-You-Go.</li></ul>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -6911,7 +8313,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def MongosCpu(self):
-        r"""Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase. If this parameter is left blank, the default value 2 is used.
+        r"""<p>Number of Mongos node CPU cores. Valid values: 1, 2, 4, 8, and 16. This parameter is required during sharded cluster instance purchase. If this parameter is left blank, the default value 2 is used.</p>
         :rtype: int
         """
         return self._MongosCpu
@@ -6922,7 +8324,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def MongosMemory(self):
-        r"""Mongos node memory size. - This parameter is required during sharded cluster instance purchase. - Unit: GB. Valid values: 2 (for 1 core), 4 (for 2 cores), 8 (for 4 cores), 16 (for 8 cores), and 32 (for 16 cores). If this parameter is left blank, the default value 4 is used.
+        r"""<p>Mongos node memory size. - This parameter is required during sharded cluster instance purchase. - Unit: GB. Valid values: 2 (for 1 core), 4 (for 2 cores), 8 (for 4 cores), 16 (for 8 cores), and 32 (for 16 cores). If this parameter is left blank, the default value 4 is used.</p>
         :rtype: int
         """
         return self._MongosMemory
@@ -6933,7 +8335,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def MongosNum(self):
-        r"""Specifies the number of Mongos nodes. Value range: [3,32]. For querying the price of sharded cluster instances, this parameter is required. If it is left blank, the default value 3 is used.
+        r"""<p>Specifies the number of Mongos nodes. Value range: [3,32]. For querying the price of sharded cluster instances, this parameter is required. If it is left blank, the default value 3 is used.</p>
         :rtype: int
         """
         return self._MongosNum
@@ -6944,7 +8346,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def ConfigServerCpu(self):
-        r"""Specifies the number of ConfigServer CPU cores. The value is fixed as 1.
+        r"""<p>Refers to the number of ConfigServer CPU cores, value fixed at 1, unit: GB. This parameter can be left blank.</p>
         :rtype: int
         """
         return self._ConfigServerCpu
@@ -6955,7 +8357,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def ConfigServerMemory(self):
-        r"""Specifies the ConfigServer memory size. The value is fixed as 2. Unit: GB. This parameter can be left blank.
+        r"""<p>Specifies the ConfigServer memory size. The value is fixed as 2. Unit: GB. This parameter can be left blank.</p>
         :rtype: int
         """
         return self._ConfigServerMemory
@@ -6966,7 +8368,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 
     @property
     def ConfigServerVolume(self):
-        r"""Specifies the ConfigServer disk size. The value is fixed as 20. Unit: GB. This parameter can be left blank.
+        r"""<p>Specifies the ConfigServer disk size. The value is fixed at 20. Unit: GB. This parameter can be left blank.</p>
         :rtype: int
         """
         return self._ConfigServerVolume
@@ -6974,6 +8376,28 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
     @ConfigServerVolume.setter
     def ConfigServerVolume(self, ConfigServerVolume):
         self._ConfigServerVolume = ConfigServerVolume
+
+    @property
+    def ReadonlyNodeNum(self):
+        r"""<ul><li>Create a replica set instance. It refers to the read-only node quantity in each replica set.</li><li>Create a sharded cluster instance. It refers to the read-only node quantity in each shard.<br>Value range: [1,5].</li></ul>
+        :rtype: int
+        """
+        return self._ReadonlyNodeNum
+
+    @ReadonlyNodeNum.setter
+    def ReadonlyNodeNum(self, ReadonlyNodeNum):
+        self._ReadonlyNodeNum = ReadonlyNodeNum
+
+    @property
+    def Cpu(self):
+        r"""<p>CPU size of the instance.</p><ul><li>Unit: C.</li><li>Value range: Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API. The CPU and Memory parameters in the returned data structure SpecItems correspond to the number of CPU cores and the memory specifications, respectively.</li><li>Note: You need to pass in the CPU core size corresponding to the memory when querying the price of a Common I Instance Type.</li></ul>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
 
 
     def _deserialize(self, params):
@@ -6994,6 +8418,8 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         self._ConfigServerCpu = params.get("ConfigServerCpu")
         self._ConfigServerMemory = params.get("ConfigServerMemory")
         self._ConfigServerVolume = params.get("ConfigServerVolume")
+        self._ReadonlyNodeNum = params.get("ReadonlyNodeNum")
+        self._Cpu = params.get("Cpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7011,7 +8437,7 @@ class InquirePriceCreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Price: Price.
+        :param _Price: <p>Price</p>
         :type Price: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7021,7 +8447,7 @@ class InquirePriceCreateDBInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
-        r"""Price.
+        r"""<p>Price</p>
         :rtype: :class:`tencentcloud.mongodb.v20190725.models.DBInstancePrice`
         """
         return self._Price
@@ -7070,12 +8496,16 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
         :param _ReplicateSetNum: Sharded cluster instance, which refers to the number of shards for the instance after configuration changes. Value range: [2, 36].
 **Note**: The number of shards after changes cannot be less than the current number. Do not initiate tasks of adjusting the number of nodes and shards and the node specifications simultaneously.
         :type ReplicateSetNum: int
+        :param _Cpu: CPU size after configuration changes, in C. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain the specific sales specifications for CPU.
+Note: For Common I Instance Type pricing, you need to pass in the CPU core size corresponding to the memory.
+        :type Cpu: int
         """
         self._InstanceId = None
         self._Memory = None
         self._Volume = None
         self._NodeNum = None
         self._ReplicateSetNum = None
+        self._Cpu = None
 
     @property
     def InstanceId(self):
@@ -7136,6 +8566,18 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
     def ReplicateSetNum(self, ReplicateSetNum):
         self._ReplicateSetNum = ReplicateSetNum
 
+    @property
+    def Cpu(self):
+        r"""CPU size after configuration changes, in C. The [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API can be called to obtain the specific sales specifications for CPU.
+Note: For Common I Instance Type pricing, you need to pass in the CPU core size corresponding to the memory.
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7143,6 +8585,7 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
         self._Volume = params.get("Volume")
         self._NodeNum = params.get("NodeNum")
         self._ReplicateSetNum = params.get("ReplicateSetNum")
+        self._Cpu = params.get("Cpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7407,6 +8850,7 @@ class InstanceDetail(AbstractModel):
 - MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
 - MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
 - MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
         :type MongoVersion: str
         :param _Memory: Instance memory specification, in MB.
         :type Memory: int
@@ -7710,6 +9154,7 @@ class InstanceDetail(AbstractModel):
 - MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
 - MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
 - MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
         :rtype: str
         """
         return self._MongoVersion
@@ -9444,42 +10889,30 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :param _InstanceId: <p>Instance ID. Log in to the <a href="https://console.cloud.tencent.com/mongodb">MongoDB console</a> and copy the instance ID from the instance list.</p>
         :type InstanceId: str
-        :param _Memory: Memory size after instance configuration changes, in GB. If this parameter is left blank, the default value is the current memory size of the instance. For the currently supported memory specifications, see [Product Specifications](https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1).
-**Note**: Memory and disk configurations should be upgraded or downgraded simultaneously, meaning that Memory and Volume should be modified at the same time.
+        :param _Memory: <p>Memory size after instance configuration modification. Unit: GB. The current instance memory size is used by default if this parameter is left blank. For supported memory specifications, please refer to <a href="https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1">product specifications</a>.<br><strong>Note</strong>: Memory and disk configurations should be upgraded or downgraded at the same time, meaning that Memory and Volume should be modified at the same time.</p>
         :type Memory: int
-        :param _Volume: Hard disk size after instance configuration changes, in GB. If this parameter is left blank, the default value is the current disk size of the instance. For the currently supported disk capacity, see [Product Specifications](https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1).
-- Memory and disk configurations should be upgraded or downgraded at the same time, meaning that Memory and Volume should be modified at the same time.
-- During configuration downgrade, the disk capacity after changes should be greater than 1.2 times the used disk capacity.
+        :param _Volume: <p>Hard disk size after instance configuration modification. Unit: GB. The current instance disk size is used by default if this parameter is left blank. For supported disk capacity, please refer to <a href="https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1">product specification</a>.</p><ul><li>Memory and disk configurations should be upgraded or downgraded at the same time, meaning that Memory and Volume should be modified simultaneously.</li><li>When downgrading, the disk capacity after modification must be greater than 1.2 times the used disk capacity.</li></ul>
         :type Volume: int
-        :param _OplogSize: (Deprecated) Use the independent API ResizeOplog.
-
-Oplog size after instance configuration modification.
- - Unit: GB.
- - By default, the capacity occupied by Oplog is 10% of the disk capacity. The range of capacity occupied by Oplog supported by the system is [10%,90%] of the disk capacity.
+        :param _OplogSize: <p>(Abandoned) Please use the standalone ResizeOplog API to complete.</p><p>Oplog size after instance configuration change.</p><ul><li>Unit: GB.</li><li>Default oplog capacity used is 10% of disk space. The system allows oplog capacity settings ranging from 10% to 90% of disk space.</li></ul>
         :type OplogSize: int
-        :param _NodeNum: Number of Mongod nodes after instance changes (excluding read-only nodes).
-- Number of replica set nodes. The value range of the number of nodes can be obtained through the response parameters MinNodeNum and MaxNodeNum of the [DescribeSpecInfo ](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API.
-- Number of nodes per shard in a sharded cluster. The value range of the number of nodes can be obtained through the response parameters MinReplicateSetNodeNum and MaxReplicateSetNodeNum of the [DescribeSpecInfo ](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API.
-**Note**: When the CPU and memory specifications of Mongod or Mongos nodes are changed, this parameter is not required, or enter the current number of Mongod or Mongos nodes (excluding read-only nodes).
+        :param _NodeNum: <p>Number of mongod nodes after instance change (excluding read-only nodes).</p><ul><li>Replica set node count: Use the MinNodeNum and MaxNodeNum parameters in the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API response to obtain the node count range.</li><li>Number of shard nodes in a sharded cluster: Use the MinReplicateSetNodeNum and MaxReplicateSetNodeNum parameters in the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API response to obtain the node count range.<br><strong>Note</strong>: When modifying the CPU or memory specifications of mongod or mongos, you may not configure this parameter or enter the current number of mongod or mongos nodes (excluding read-only nodes).</li></ul>
         :type NodeNum: int
-        :param _ReplicateSetNum: Number of shards after instance changes.
-- The value range for the number of instance shards can be obtained through the response parameters **MinReplicateSetNum** and **MaxReplicateSetNum** of the [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API.
-- The number of instance shards can only be increased and cannot be decreased.
+        :param _ReplicateSetNum: <p>Number of shards after instance change.</p><ul><li>The value range for the number of instance shards can be obtained through the response parameters <strong>MinReplicateSetNum</strong> and <strong>MaxReplicateSetNum</strong> of the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API.</li><li>Only allow adding shards, not reducing them.</li></ul>
         :type ReplicateSetNum: int
-        :param _InMaintenance: Switch time for instance configuration modification.
- - 0: Execute the configuration modification task immediately after the adjustment is completed. Default value: 0.
- - 1: Execute the configuration modification task within the maintenance window.
-**Note**: Adjusting the number of nodes and shards is unsupported <b>within the maintenance window</b>.
+        :param _InMaintenance: <p>Switch time for instance configuration change.</p><ul><li>0: Immediately execute the configuration modification task upon completion of adjustment. Default is 0.</li><li>1: Execute the configuration modification task within the maintenance window.<br><strong>Note</strong>: Adjusting the number of nodes and shard quantity is unsupported within the <b>maintenance window</b>.</li></ul>
         :type InMaintenance: int
-        :param _MongosMemory: Memory size of the Mongos node after sharded cluster instance configuration changes, in GB. For the specifications supported by the instance, see [Product Specifications](https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1).
+        :param _MongosMemory: <p>Memory size of mongos after sharding instance configuration change. Unit: GB. For instance support specifications, see <a href="https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1">product specification</a>.</p>
         :type MongosMemory: str
-        :param _AddNodeList: List of nodes to be added, containing the node type and AZ information.
+        :param _AddNodeList: <p>List of nodes to be added, containing the node type and AZ information.</p>
         :type AddNodeList: list of AddNodeList
-        :param _RemoveNodeList: Deletes the node list.
-**Note**: According to the consistency principle for nodes of each shard on a sharded cluster instance, specify the nodes on shard 0 for node deletion from the sharded cluster instance. For example, cmgo-9nl1czif_0-node-readonly0 will delete the first read-only node of each shard.
+        :param _RemoveNodeList: <p>Delete node list.<br><strong>Note</strong>: Based on the consistency principle of sharded instance nodes, when deleting shard instance nodes, only need to specify the node corresponding to shard 0, for example: cmgo-9nl1czif_0-node-readonly0 will delete the first read-only node of each shard.</p>
         :type RemoveNodeList: list of RemoveNodeList
+        :param _Cpu: <p>CPU size after instance configuration changes. Unit: C. If empty, the default value is the current CPU size of the instance. For currently supported CPU specifications, see <a href="https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1">Product Specifications</a>.</p>
+        :type Cpu: int
+        :param _MachineCode: <p>The product specification type after instance configuration change. If empty, the default value is the current instance product specification type.<br>Currently supported product specification types are as follows:<br>Recommended product specification types:</p><ul><li>GE.LD.T1: Local disk (Common I).</li><li>GE.CD.T1: Cloud disk (Common I).</li></ul><p>Product allowlist specification types:</p><ul><li>HIO10G: Local disk (High IO 10G).</li><li>HCD: Cloud disk (Cloud Disk Edition).</li></ul><p>Note:</p><ol><li>Allowlist specification types are controlled by allowlist. If needed, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a> to apply.</li><li>Common I cannot be changed to allowlist specification types.</li></ol>
+        :type MachineCode: str
         """
         self._InstanceId = None
         self._Memory = None
@@ -9491,10 +10924,12 @@ Oplog size after instance configuration modification.
         self._MongosMemory = None
         self._AddNodeList = None
         self._RemoveNodeList = None
+        self._Cpu = None
+        self._MachineCode = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        r"""<p>Instance ID. Log in to the <a href="https://console.cloud.tencent.com/mongodb">MongoDB console</a> and copy the instance ID from the instance list.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -9505,8 +10940,7 @@ Oplog size after instance configuration modification.
 
     @property
     def Memory(self):
-        r"""Memory size after instance configuration changes, in GB. If this parameter is left blank, the default value is the current memory size of the instance. For the currently supported memory specifications, see [Product Specifications](https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1).
-**Note**: Memory and disk configurations should be upgraded or downgraded simultaneously, meaning that Memory and Volume should be modified at the same time.
+        r"""<p>Memory size after instance configuration modification. Unit: GB. The current instance memory size is used by default if this parameter is left blank. For supported memory specifications, please refer to <a href="https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1">product specifications</a>.<br><strong>Note</strong>: Memory and disk configurations should be upgraded or downgraded at the same time, meaning that Memory and Volume should be modified at the same time.</p>
         :rtype: int
         """
         return self._Memory
@@ -9517,9 +10951,7 @@ Oplog size after instance configuration modification.
 
     @property
     def Volume(self):
-        r"""Hard disk size after instance configuration changes, in GB. If this parameter is left blank, the default value is the current disk size of the instance. For the currently supported disk capacity, see [Product Specifications](https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1).
-- Memory and disk configurations should be upgraded or downgraded at the same time, meaning that Memory and Volume should be modified at the same time.
-- During configuration downgrade, the disk capacity after changes should be greater than 1.2 times the used disk capacity.
+        r"""<p>Hard disk size after instance configuration modification. Unit: GB. The current instance disk size is used by default if this parameter is left blank. For supported disk capacity, please refer to <a href="https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1">product specification</a>.</p><ul><li>Memory and disk configurations should be upgraded or downgraded at the same time, meaning that Memory and Volume should be modified simultaneously.</li><li>When downgrading, the disk capacity after modification must be greater than 1.2 times the used disk capacity.</li></ul>
         :rtype: int
         """
         return self._Volume
@@ -9532,11 +10964,7 @@ Oplog size after instance configuration modification.
     def OplogSize(self):
         warnings.warn("parameter `OplogSize` is deprecated", DeprecationWarning) 
 
-        r"""(Deprecated) Use the independent API ResizeOplog.
-
-Oplog size after instance configuration modification.
- - Unit: GB.
- - By default, the capacity occupied by Oplog is 10% of the disk capacity. The range of capacity occupied by Oplog supported by the system is [10%,90%] of the disk capacity.
+        r"""<p>(Abandoned) Please use the standalone ResizeOplog API to complete.</p><p>Oplog size after instance configuration change.</p><ul><li>Unit: GB.</li><li>Default oplog capacity used is 10% of disk space. The system allows oplog capacity settings ranging from 10% to 90% of disk space.</li></ul>
         :rtype: int
         """
         return self._OplogSize
@@ -9549,10 +10977,7 @@ Oplog size after instance configuration modification.
 
     @property
     def NodeNum(self):
-        r"""Number of Mongod nodes after instance changes (excluding read-only nodes).
-- Number of replica set nodes. The value range of the number of nodes can be obtained through the response parameters MinNodeNum and MaxNodeNum of the [DescribeSpecInfo ](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API.
-- Number of nodes per shard in a sharded cluster. The value range of the number of nodes can be obtained through the response parameters MinReplicateSetNodeNum and MaxReplicateSetNodeNum of the [DescribeSpecInfo ](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API.
-**Note**: When the CPU and memory specifications of Mongod or Mongos nodes are changed, this parameter is not required, or enter the current number of Mongod or Mongos nodes (excluding read-only nodes).
+        r"""<p>Number of mongod nodes after instance change (excluding read-only nodes).</p><ul><li>Replica set node count: Use the MinNodeNum and MaxNodeNum parameters in the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API response to obtain the node count range.</li><li>Number of shard nodes in a sharded cluster: Use the MinReplicateSetNodeNum and MaxReplicateSetNodeNum parameters in the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API response to obtain the node count range.<br><strong>Note</strong>: When modifying the CPU or memory specifications of mongod or mongos, you may not configure this parameter or enter the current number of mongod or mongos nodes (excluding read-only nodes).</li></ul>
         :rtype: int
         """
         return self._NodeNum
@@ -9563,9 +10988,7 @@ Oplog size after instance configuration modification.
 
     @property
     def ReplicateSetNum(self):
-        r"""Number of shards after instance changes.
-- The value range for the number of instance shards can be obtained through the response parameters **MinReplicateSetNum** and **MaxReplicateSetNum** of the [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API.
-- The number of instance shards can only be increased and cannot be decreased.
+        r"""<p>Number of shards after instance change.</p><ul><li>The value range for the number of instance shards can be obtained through the response parameters <strong>MinReplicateSetNum</strong> and <strong>MaxReplicateSetNum</strong> of the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API.</li><li>Only allow adding shards, not reducing them.</li></ul>
         :rtype: int
         """
         return self._ReplicateSetNum
@@ -9576,10 +10999,7 @@ Oplog size after instance configuration modification.
 
     @property
     def InMaintenance(self):
-        r"""Switch time for instance configuration modification.
- - 0: Execute the configuration modification task immediately after the adjustment is completed. Default value: 0.
- - 1: Execute the configuration modification task within the maintenance window.
-**Note**: Adjusting the number of nodes and shards is unsupported <b>within the maintenance window</b>.
+        r"""<p>Switch time for instance configuration change.</p><ul><li>0: Immediately execute the configuration modification task upon completion of adjustment. Default is 0.</li><li>1: Execute the configuration modification task within the maintenance window.<br><strong>Note</strong>: Adjusting the number of nodes and shard quantity is unsupported within the <b>maintenance window</b>.</li></ul>
         :rtype: int
         """
         return self._InMaintenance
@@ -9590,7 +11010,7 @@ Oplog size after instance configuration modification.
 
     @property
     def MongosMemory(self):
-        r"""Memory size of the Mongos node after sharded cluster instance configuration changes, in GB. For the specifications supported by the instance, see [Product Specifications](https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1).
+        r"""<p>Memory size of mongos after sharding instance configuration change. Unit: GB. For instance support specifications, see <a href="https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1">product specification</a>.</p>
         :rtype: str
         """
         return self._MongosMemory
@@ -9601,7 +11021,7 @@ Oplog size after instance configuration modification.
 
     @property
     def AddNodeList(self):
-        r"""List of nodes to be added, containing the node type and AZ information.
+        r"""<p>List of nodes to be added, containing the node type and AZ information.</p>
         :rtype: list of AddNodeList
         """
         return self._AddNodeList
@@ -9612,8 +11032,7 @@ Oplog size after instance configuration modification.
 
     @property
     def RemoveNodeList(self):
-        r"""Deletes the node list.
-**Note**: According to the consistency principle for nodes of each shard on a sharded cluster instance, specify the nodes on shard 0 for node deletion from the sharded cluster instance. For example, cmgo-9nl1czif_0-node-readonly0 will delete the first read-only node of each shard.
+        r"""<p>Delete node list.<br><strong>Note</strong>: Based on the consistency principle of sharded instance nodes, when deleting shard instance nodes, only need to specify the node corresponding to shard 0, for example: cmgo-9nl1czif_0-node-readonly0 will delete the first read-only node of each shard.</p>
         :rtype: list of RemoveNodeList
         """
         return self._RemoveNodeList
@@ -9621,6 +11040,28 @@ Oplog size after instance configuration modification.
     @RemoveNodeList.setter
     def RemoveNodeList(self, RemoveNodeList):
         self._RemoveNodeList = RemoveNodeList
+
+    @property
+    def Cpu(self):
+        r"""<p>CPU size after instance configuration changes. Unit: C. If empty, the default value is the current CPU size of the instance. For currently supported CPU specifications, see <a href="https://www.tencentcloud.com/document/product/240/64125?from_cn_redirect=1">Product Specifications</a>.</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def MachineCode(self):
+        r"""<p>The product specification type after instance configuration change. If empty, the default value is the current instance product specification type.<br>Currently supported product specification types are as follows:<br>Recommended product specification types:</p><ul><li>GE.LD.T1: Local disk (Common I).</li><li>GE.CD.T1: Cloud disk (Common I).</li></ul><p>Product allowlist specification types:</p><ul><li>HIO10G: Local disk (High IO 10G).</li><li>HCD: Cloud disk (Cloud Disk Edition).</li></ul><p>Note:</p><ol><li>Allowlist specification types are controlled by allowlist. If needed, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a> to apply.</li><li>Common I cannot be changed to allowlist specification types.</li></ol>
+        :rtype: str
+        """
+        return self._MachineCode
+
+    @MachineCode.setter
+    def MachineCode(self, MachineCode):
+        self._MachineCode = MachineCode
 
 
     def _deserialize(self, params):
@@ -9644,6 +11085,8 @@ Oplog size after instance configuration modification.
                 obj = RemoveNodeList()
                 obj._deserialize(item)
                 self._RemoveNodeList.append(obj)
+        self._Cpu = params.get("Cpu")
+        self._MachineCode = params.get("MachineCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9661,7 +11104,7 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealId: Order ID.
+        :param _DealId: <p>Order ID.</p>
         :type DealId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9671,7 +11114,161 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
     @property
     def DealId(self):
-        r"""Order ID.
+        r"""<p>Order ID.</p>
+        :rtype: str
+        """
+        return self._DealId
+
+    @DealId.setter
+    def DealId(self, DealId):
+        self._DealId = DealId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealId = params.get("DealId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceAzRequest(AbstractModel):
+    r"""ModifyInstanceAz request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID, such as cmgo-p8vn****. Log in to the <a href="https://console.cloud.tencent.com/mongodb">MongoDB console</a> and copy the instance ID from the instance list.</p>
+        :type InstanceId: str
+        :param _PrimaryNodeZone: <p>Availability zone ID where the primary node is located. For the method for obtaining, please see <a href="https://www.tencentcloud.com/document/product/240/3637?from_cn_redirect=1">Regions and Availability Zones</a>.</p>
+        :type PrimaryNodeZone: str
+        :param _SecondaryNodeZone: <p>ID list of the availability zone where the secondary node resides.<br><strong>Note</strong>: It cannot contain the availability zones where the primary node and Hidden nodes reside.</p>
+        :type SecondaryNodeZone: list of str
+        :param _HiddenNodeZone: <p>If the current instance has no configuration for Hidden nodes, this parameter is not required.</p>
+        :type HiddenNodeZone: str
+        :param _ReadonlyNodeZone: <p>List of AZ IDs where read-only nodes reside.<br><strong>Note</strong>: If the current instance contains read-only nodes, this parameter is required.</p>
+        :type ReadonlyNodeZone: list of str
+        :param _InMaintenance: <p>Specify the time policy for executing the availability zone switch.</p><ul><li>0: Execute the switch immediately.</li><li>1: Execute the switch within the set maintenance window. For details, please refer to <a href="https://www.tencentcloud.com/document/product/240/19910?from_cn_redirect=1">setting instance maintenance time</a>.</li></ul>
+        :type InMaintenance: int
+        """
+        self._InstanceId = None
+        self._PrimaryNodeZone = None
+        self._SecondaryNodeZone = None
+        self._HiddenNodeZone = None
+        self._ReadonlyNodeZone = None
+        self._InMaintenance = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID, such as cmgo-p8vn****. Log in to the <a href="https://console.cloud.tencent.com/mongodb">MongoDB console</a> and copy the instance ID from the instance list.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PrimaryNodeZone(self):
+        r"""<p>Availability zone ID where the primary node is located. For the method for obtaining, please see <a href="https://www.tencentcloud.com/document/product/240/3637?from_cn_redirect=1">Regions and Availability Zones</a>.</p>
+        :rtype: str
+        """
+        return self._PrimaryNodeZone
+
+    @PrimaryNodeZone.setter
+    def PrimaryNodeZone(self, PrimaryNodeZone):
+        self._PrimaryNodeZone = PrimaryNodeZone
+
+    @property
+    def SecondaryNodeZone(self):
+        r"""<p>ID list of the availability zone where the secondary node resides.<br><strong>Note</strong>: It cannot contain the availability zones where the primary node and Hidden nodes reside.</p>
+        :rtype: list of str
+        """
+        return self._SecondaryNodeZone
+
+    @SecondaryNodeZone.setter
+    def SecondaryNodeZone(self, SecondaryNodeZone):
+        self._SecondaryNodeZone = SecondaryNodeZone
+
+    @property
+    def HiddenNodeZone(self):
+        r"""<p>If the current instance has no configuration for Hidden nodes, this parameter is not required.</p>
+        :rtype: str
+        """
+        return self._HiddenNodeZone
+
+    @HiddenNodeZone.setter
+    def HiddenNodeZone(self, HiddenNodeZone):
+        self._HiddenNodeZone = HiddenNodeZone
+
+    @property
+    def ReadonlyNodeZone(self):
+        r"""<p>List of AZ IDs where read-only nodes reside.<br><strong>Note</strong>: If the current instance contains read-only nodes, this parameter is required.</p>
+        :rtype: list of str
+        """
+        return self._ReadonlyNodeZone
+
+    @ReadonlyNodeZone.setter
+    def ReadonlyNodeZone(self, ReadonlyNodeZone):
+        self._ReadonlyNodeZone = ReadonlyNodeZone
+
+    @property
+    def InMaintenance(self):
+        r"""<p>Specify the time policy for executing the availability zone switch.</p><ul><li>0: Execute the switch immediately.</li><li>1: Execute the switch within the set maintenance window. For details, please refer to <a href="https://www.tencentcloud.com/document/product/240/19910?from_cn_redirect=1">setting instance maintenance time</a>.</li></ul>
+        :rtype: int
+        """
+        return self._InMaintenance
+
+    @InMaintenance.setter
+    def InMaintenance(self, InMaintenance):
+        self._InMaintenance = InMaintenance
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PrimaryNodeZone = params.get("PrimaryNodeZone")
+        self._SecondaryNodeZone = params.get("SecondaryNodeZone")
+        self._HiddenNodeZone = params.get("HiddenNodeZone")
+        self._ReadonlyNodeZone = params.get("ReadonlyNodeZone")
+        self._InMaintenance = params.get("InMaintenance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceAzResponse(AbstractModel):
+    r"""ModifyInstanceAz response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealId: <p>Order ID for availability zone adjustment.</p>
+        :type DealId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DealId = None
+        self._RequestId = None
+
+    @property
+    def DealId(self):
+        r"""<p>Order ID for availability zone adjustment.</p>
         :rtype: str
         """
         return self._DealId
@@ -9938,6 +11535,100 @@ class ModifyNetworkAddress(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifySRVConnectionUrlRequest(AbstractModel):
+    r"""ModifySRVConnectionUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :type InstanceId: str
+        :param _CustomDomain: Custom instance access domain name.
+        :type CustomDomain: str
+        """
+        self._InstanceId = None
+        self._CustomDomain = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CustomDomain(self):
+        r"""Custom instance access domain name.
+        :rtype: str
+        """
+        return self._CustomDomain
+
+    @CustomDomain.setter
+    def CustomDomain(self, CustomDomain):
+        self._CustomDomain = CustomDomain
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CustomDomain = params.get("CustomDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySRVConnectionUrlResponse(AbstractModel):
+    r"""ModifySRVConnectionUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Start the task ID.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Start the task ID.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class NodeProperty(AbstractModel):
@@ -10706,10 +12397,10 @@ class ResetDBInstancePasswordRequest(AbstractModel):
         r"""
         :param _InstanceId: Specifies the instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
         :type InstanceId: str
-        :param _UserName: Specifies the account name for which the password needs to be changed. The [DescribeAccountUsers](https://www.tencentcloud.com/document/product/240/80800?from_cn_redirect=1) API can be called to obtain the account list and copy the account name for which the password needs to be changed.
+        :param _UserName: Specifies the account name for which the password needs to be changed. The [DescribeAccountUsers](https://www.tencentcloud.com/document/product/240/74804) API can be called to obtain the account list and copy the account name for which the password needs to be changed.
         :type UserName: str
         :param _Password: Specifies a new password for the account. Password complexity requirements:
-- It should contain 8–32 characters.
+- It should contain 8-32 characters.
 - It should contain at least two types of the following: letters, digits, and special characters (!@#%^\*()\_).
         :type Password: str
         """
@@ -10730,7 +12421,7 @@ class ResetDBInstancePasswordRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""Specifies the account name for which the password needs to be changed. The [DescribeAccountUsers](https://www.tencentcloud.com/document/product/240/80800?from_cn_redirect=1) API can be called to obtain the account list and copy the account name for which the password needs to be changed.
+        r"""Specifies the account name for which the password needs to be changed. The [DescribeAccountUsers](https://www.tencentcloud.com/document/product/240/74804) API can be called to obtain the account list and copy the account name for which the password needs to be changed.
         :rtype: str
         """
         return self._UserName
@@ -10742,7 +12433,7 @@ class ResetDBInstancePasswordRequest(AbstractModel):
     @property
     def Password(self):
         r"""Specifies a new password for the account. Password complexity requirements:
-- It should contain 8–32 characters.
+- It should contain 8-32 characters.
 - It should contain at least two types of the following: letters, digits, and special characters (!@#%^\*()\_).
         :rtype: str
         """
@@ -10808,6 +12499,227 @@ class ResetDBInstancePasswordResponse(AbstractModel):
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
         self._RequestId = params.get("RequestId")
+
+
+class RestoreCollection(AbstractModel):
+    r"""collection to be rolled back
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OldCollection: Original collection to be rolled back
+        :type OldCollection: str
+        :param _NewCollection: Rolled-back collection
+        :type NewCollection: str
+        """
+        self._OldCollection = None
+        self._NewCollection = None
+
+    @property
+    def OldCollection(self):
+        r"""Original collection to be rolled back
+        :rtype: str
+        """
+        return self._OldCollection
+
+    @OldCollection.setter
+    def OldCollection(self, OldCollection):
+        self._OldCollection = OldCollection
+
+    @property
+    def NewCollection(self):
+        r"""Rolled-back collection
+        :rtype: str
+        """
+        return self._NewCollection
+
+    @NewCollection.setter
+    def NewCollection(self, NewCollection):
+        self._NewCollection = NewCollection
+
+
+    def _deserialize(self, params):
+        self._OldCollection = params.get("OldCollection")
+        self._NewCollection = params.get("NewCollection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreDBInstanceRequest(AbstractModel):
+    r"""RestoreDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID. Log in to the <a href="https://console.cloud.tencent.com/mongodb/instance">MongoDB console</a> and copy the instance ID from the instance list.</p>
+        :type InstanceId: str
+        :param _RestoreTime: <p>Specify the target time point to roll back. The time must be in the backup retention period of the instance.</p><p>Parameter format: YYYY-MM-DD hh:mm:ss</p>
+        :type RestoreTime: str
+        :param _Databases: <p>Database table information to be rolled back.</p>
+        :type Databases: list of RestoreDatabases
+        """
+        self._InstanceId = None
+        self._RestoreTime = None
+        self._Databases = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID. Log in to the <a href="https://console.cloud.tencent.com/mongodb/instance">MongoDB console</a> and copy the instance ID from the instance list.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RestoreTime(self):
+        r"""<p>Specify the target time point to roll back. The time must be in the backup retention period of the instance.</p><p>Parameter format: YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._RestoreTime
+
+    @RestoreTime.setter
+    def RestoreTime(self, RestoreTime):
+        self._RestoreTime = RestoreTime
+
+    @property
+    def Databases(self):
+        r"""<p>Database table information to be rolled back.</p>
+        :rtype: list of RestoreDatabases
+        """
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RestoreTime = params.get("RestoreTime")
+        if params.get("Databases") is not None:
+            self._Databases = []
+            for item in params.get("Databases"):
+                obj = RestoreDatabases()
+                obj._deserialize(item)
+                self._Databases.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreDBInstanceResponse(AbstractModel):
+    r"""RestoreDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>Rollback task process ID.</p>
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>Rollback task process ID.</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class RestoreDatabases(AbstractModel):
+    r"""Rollback database and table to new instance, database table information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Db: DB name.
+        :type Db: str
+        :param _Collections: Collection information to be rolled back.
+        :type Collections: list of RestoreCollection
+        """
+        self._Db = None
+        self._Collections = None
+
+    @property
+    def Db(self):
+        r"""DB name.
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Collections(self):
+        r"""Collection information to be rolled back.
+        :rtype: list of RestoreCollection
+        """
+        return self._Collections
+
+    @Collections.setter
+    def Collections(self, Collections):
+        self._Collections = Collections
+
+
+    def _deserialize(self, params):
+        self._Db = params.get("Db")
+        if params.get("Collections") is not None:
+            self._Collections = []
+            for item in params.get("Collections"):
+                obj = RestoreCollection()
+                obj._deserialize(item)
+                self._Collections.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SecurityGroup(AbstractModel):
@@ -11700,8 +13612,8 @@ class SpecItem(AbstractModel):
 - Memory specification, in GB. Valid values: 4, 8, 16, 32, 64, 128, 240, and 512. 128g indicates 128 GB.
         :type SpecCode: str
         :param _Status: Saleable specification status flag. Valid values are as follows:
- - 0: selling stopped.
- - 1: available for sale.
+- 0: selling stopped.
+- 1: available for sale.
         :type Status: int
         :param _Cpu: Computing resource specification, indicating the number of CPU cores.
         :type Cpu: int
@@ -11724,12 +13636,22 @@ class SpecItem(AbstractModel):
 - MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
 - MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
 - MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
         :type MongoVersionCode: str
         :param _MongoVersionValue: Digital version corresponding to the instance version.
+- MongoDB version 3.2: 2.
+- MongoDB version 3.6: 4.
+- MongoDB version 4.0: 5.
+- MongoDB version 4.2: 9.
+- MongoDB version 4.4: 10.
+- MongoDB version 5.0: 11.
+- MongoDB version 6.0: 12.
+- MongoDB version 7.0: 13.
+- MongoDB version 8.0: 14.
         :type MongoVersionValue: int
-        :param _Version: Instance version information. Valid values: 4.2, 4.4, 5.0, 6.0, and 7.0.
+        :param _Version: Instance version information. Valid values: 4.2, 4.4, 5.0, 6.0, 7.0, and 8.0.
         :type Version: str
-        :param _EngineName: Storage engine.
+        :param _EngineName: Storage engine. Only WiredTiger is supported.
         :type EngineName: str
         :param _ClusterType: Cluster type. Valid values are as follows:
  - 1: sharded cluster.
@@ -11791,8 +13713,8 @@ class SpecItem(AbstractModel):
     @property
     def Status(self):
         r"""Saleable specification status flag. Valid values are as follows:
- - 0: selling stopped.
- - 1: available for sale.
+- 0: selling stopped.
+- 1: available for sale.
         :rtype: int
         """
         return self._Status
@@ -11887,6 +13809,7 @@ class SpecItem(AbstractModel):
 - MONGO_50_WT: version of the MongoDB 5.0 WiredTiger storage engine.
 - MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
 - MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
         :rtype: str
         """
         return self._MongoVersionCode
@@ -11898,6 +13821,15 @@ class SpecItem(AbstractModel):
     @property
     def MongoVersionValue(self):
         r"""Digital version corresponding to the instance version.
+- MongoDB version 3.2: 2.
+- MongoDB version 3.6: 4.
+- MongoDB version 4.0: 5.
+- MongoDB version 4.2: 9.
+- MongoDB version 4.4: 10.
+- MongoDB version 5.0: 11.
+- MongoDB version 6.0: 12.
+- MongoDB version 7.0: 13.
+- MongoDB version 8.0: 14.
         :rtype: int
         """
         return self._MongoVersionValue
@@ -11908,7 +13840,7 @@ class SpecItem(AbstractModel):
 
     @property
     def Version(self):
-        r"""Instance version information. Valid values: 4.2, 4.4, 5.0, 6.0, and 7.0.
+        r"""Instance version information. Valid values: 4.2, 4.4, 5.0, 6.0, 7.0, and 8.0.
         :rtype: str
         """
         return self._Version
@@ -11919,7 +13851,7 @@ class SpecItem(AbstractModel):
 
     @property
     def EngineName(self):
-        r"""Storage engine.
+        r"""Storage engine. Only WiredTiger is supported.
         :rtype: str
         """
         return self._EngineName
@@ -12514,9 +14446,18 @@ class UpgradeDbInstanceVersionRequest(AbstractModel):
         r"""
         :param _InstanceId: List of instance IDs, which are in the format of cmgo-p8vnipr5. It is the same as the format of the instance ID displayed on the TencentDB for MongoDB console page.
         :type InstanceId: str
-        :param _MongoVersion: Newly upgraded database version. Currently, it only supports MONGO_40_WT (version of the MongoDB 4.0 WiredTiger storage engine) and MONGO_42_WT (version of the MongoDB 4.2 WiredTiger storage engine).
+        :param _MongoVersion: The newly upgraded database version. Currently supported versions are as follows. Upgrade from an earlier version to a high version is supported. Cross-version upgrade is not supported.
+- MONGO_40_WT: Version 4.0.
+- MONGO_42_WT: Version 4.2.
+- MONGO_44_WT: Version 4.4.
+- MONGO_50_WT: Version 5.0.
+- MONGO_60_WT: Version 6.0.
+-MONGO_70_WT: Version 7.0.
+- MONGO_80_WT: Version 8.0.
         :type MongoVersion: str
-        :param _InMaintenance: Whether to perform the upgrade during the maintenance period. 0 - upgrade now; 1 - upgrade during the maintenance period.
+        :param _InMaintenance: Specify whether to perform the upgrade during the maintenance period.
+-0: Upgrade now.
+- 1: Upgrade during the maintenance window.
         :type InMaintenance: int
         """
         self._InstanceId = None
@@ -12536,7 +14477,14 @@ class UpgradeDbInstanceVersionRequest(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""Newly upgraded database version. Currently, it only supports MONGO_40_WT (version of the MongoDB 4.0 WiredTiger storage engine) and MONGO_42_WT (version of the MongoDB 4.2 WiredTiger storage engine).
+        r"""The newly upgraded database version. Currently supported versions are as follows. Upgrade from an earlier version to a high version is supported. Cross-version upgrade is not supported.
+- MONGO_40_WT: Version 4.0.
+- MONGO_42_WT: Version 4.2.
+- MONGO_44_WT: Version 4.4.
+- MONGO_50_WT: Version 5.0.
+- MONGO_60_WT: Version 6.0.
+-MONGO_70_WT: Version 7.0.
+- MONGO_80_WT: Version 8.0.
         :rtype: str
         """
         return self._MongoVersion
@@ -12547,7 +14495,9 @@ class UpgradeDbInstanceVersionRequest(AbstractModel):
 
     @property
     def InMaintenance(self):
-        r"""Whether to perform the upgrade during the maintenance period. 0 - upgrade now; 1 - upgrade during the maintenance period.
+        r"""Specify whether to perform the upgrade during the maintenance period.
+-0: Upgrade now.
+- 1: Upgrade during the maintenance window.
         :rtype: int
         """
         return self._InMaintenance
@@ -12612,3 +14562,54 @@ class UpgradeDbInstanceVersionResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class WanServiceNodeList(AbstractModel):
+    r"""mongodb public network service node information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VipVport: vip and port information of the instance node.
+        :type VipVport: str
+        :param _ListenerPort: The listening port of a CLB listener ranges from 1 to 65535.
+        :type ListenerPort: str
+        """
+        self._VipVport = None
+        self._ListenerPort = None
+
+    @property
+    def VipVport(self):
+        r"""vip and port information of the instance node.
+        :rtype: str
+        """
+        return self._VipVport
+
+    @VipVport.setter
+    def VipVport(self, VipVport):
+        self._VipVport = VipVport
+
+    @property
+    def ListenerPort(self):
+        r"""The listening port of a CLB listener ranges from 1 to 65535.
+        :rtype: str
+        """
+        return self._ListenerPort
+
+    @ListenerPort.setter
+    def ListenerPort(self, ListenerPort):
+        self._ListenerPort = ListenerPort
+
+
+    def _deserialize(self, params):
+        self._VipVport = params.get("VipVport")
+        self._ListenerPort = params.get("ListenerPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

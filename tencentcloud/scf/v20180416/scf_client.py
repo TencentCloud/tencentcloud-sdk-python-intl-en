@@ -930,6 +930,29 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateFunctionConfiguration(self, request):
+        r"""This API is used to update the function configuration based on the input parameters.
+
+        :param request: Request instance for UpdateFunctionConfiguration.
+        :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionConfigurationRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateFunctionConfiguration", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateFunctionConfigurationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateFunctionEventInvokeConfig(self, request):
         r"""This API is used to update the async retry configuration of a function, including the number of retry attempts and message retention period.
 

@@ -339,6 +339,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBlindWatermarkTemplate(self, request):
+        r"""This API is used to create a user-defined digital watermark template.
+
+        :param request: Request instance for CreateBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCDNDomain(self, request):
         r"""This API is used for adding domain names to VOD. A user can add up to 20 domain names. 1. After the domain name is added successfully, VOD will carry out the deployment of the domain name. It takes approximately 2 minutes for the domain name to change from the deployment status to the online status.
 
@@ -1098,6 +1121,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteBlindWatermarkTemplate(self, request):
+        r"""This API is used to delete a user-defined digital watermark template.
+
+        :param request: Request instance for DeleteBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBlindWatermarkTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCDNDomain(self, request):
         r"""Delete CDN Domain
 
@@ -1792,6 +1838,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeAnimatedGraphicsTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAnimatedGraphicsTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBlindWatermarkTemplates(self, request):
+        r"""Query user-customized digital watermark templates.
+
+        :param request: Request instance for DescribeBlindWatermarkTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeBlindWatermarkTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeBlindWatermarkTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBlindWatermarkTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBlindWatermarkTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2933,6 +3002,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExtractBlindWatermark(self, request):
+        r"""This API is used to initiate a digital watermark extraction task for a video. The extraction result can be queried through DescribeTaskDetail.
+
+        :param request: Request instance for ExtractBlindWatermark.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExtractBlindWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExtractBlindWatermarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExtractCopyRightWatermark(self, request):
         r"""Extract CopyRight Watermark.
 
@@ -3251,6 +3343,29 @@ class VodClient(AbstractClient):
             body = self.call("ModifyAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAnimatedGraphicsTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBlindWatermarkTemplate(self, request):
+        r"""This API is used to modify a user-defined digital watermark template. The digital watermark type cannot be modified.
+
+        :param request: Request instance for ModifyBlindWatermarkTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyBlindWatermarkTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyBlindWatermarkTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBlindWatermarkTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBlindWatermarkTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

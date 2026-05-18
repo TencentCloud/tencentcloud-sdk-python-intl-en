@@ -734,6 +734,24 @@ class ScfClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateFunctionConfiguration(
+            self,
+            request: models.UpdateFunctionConfigurationRequest,
+            opts: Dict = None,
+    ) -> models.UpdateFunctionConfigurationResponse:
+        """
+        This API is used to update the function configuration based on the input parameters.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateFunctionConfiguration"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateFunctionConfigurationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateFunctionEventInvokeConfig(
             self,
             request: models.UpdateFunctionEventInvokeConfigRequest,

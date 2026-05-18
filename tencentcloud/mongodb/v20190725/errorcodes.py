@@ -38,23 +38,74 @@ FAILEDOPERATION_TRANSPARENTDATAENCRYPTIONALREADYOPEN = 'FailedOperation.Transpar
 # Internal error
 INTERNALERROR = 'InternalError'
 
+# Error creating an audit log file.
+INTERNALERROR_AUDITCREATELOGFILEERROR = 'InternalError.AuditCreateLogFileError'
+
+# Error deleting the audit log.
+INTERNALERROR_AUDITDELETELOGFILEERROR = 'InternalError.AuditDeleteLogFileError'
+
+# Error querying the audit log.
+INTERNALERROR_AUDITDESCRIBELOGERROR = 'InternalError.AuditDescribeLogError'
+
+# Internal audit service error.
+INTERNALERROR_AUDITERROR = 'InternalError.AuditError'
+
+# Failed to modify audit status.
+INTERNALERROR_AUDITMODIFYSTATUSERROR = 'InternalError.AuditModifyStatusError'
+
 # `appId` verification failed.
 INTERNALERROR_CHECKAPPIDFAILED = 'InternalError.CheckAppIdFailed'
+
+# Get file information failed.
+INTERNALERROR_COSERROR = 'InternalError.CosError'
+
+# Database exception.
+INTERNALERROR_DBERROR = 'InternalError.DBError'
 
 # An internal data storage exception occurs.
 INTERNALERROR_DBOPERATEERROR = 'InternalError.DBOperateError'
 
+# Database operation failed.
+INTERNALERROR_DBOPERATIONERROR = 'InternalError.DBOperationError'
+
+# Database internal error.
+INTERNALERROR_DATABASEACCESSERROR = 'InternalError.DatabaseAccessError'
+
 # Failed to query the instance.
 INTERNALERROR_FINDINSTANCEFAILED = 'InternalError.FindInstanceFailed'
+
+# Internal service error.
+INTERNALERROR_INNERCOMMONERROR = 'InternalError.InnerCommonError'
+
+# json parsing failure.
+INTERNALERROR_JSONERROR = 'InternalError.JSONError'
+
+# Json deserialization error.
+INTERNALERROR_JSONUNMARSHALERROR = 'InternalError.JsonUnmarshalError'
 
 # The password is different from the previously recorded one.
 INTERNALERROR_PASSWORDERROR = 'InternalError.PasswordError'
 
+# Transaction system error.
+INTERNALERROR_TRADEERROR = 'InternalError.TradeError'
+
+# Unknown error.
+INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
+
 # Parameter error
 INVALIDPARAMETER = 'InvalidParameter'
 
+# API does not exist. Please confirm whether the API name in the request is correct.
+INVALIDPARAMETER_ACTIONNOTFOUND = 'InvalidParameter.ActionNotFound'
+
 # The instance does not support parameter setting.
 INVALIDPARAMETER_CURRENTINSTANCENOTSUPPORTMODIFYPARAMS = 'InvalidParameter.CurrentInstanceNotSupportModifyParams'
+
+# Invalid parameter value.
+INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
+
+# Parameter is invalid.
+INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
 
 # Invalid Vip information
 INVALIDPARAMETER_INVALIDVIP = 'InvalidParameter.InvalidVip'
@@ -79,6 +130,9 @@ INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = 'InvalidParameterValue.CheckAppIdFailed
 
 # Invalid instance type.
 INVALIDPARAMETERVALUE_CLUSTERTYPEERROR = 'InvalidParameterValue.ClusterTypeError'
+
+# Data conversion failed
+INVALIDPARAMETERVALUE_DATACONVERTERROR = 'InvalidParameterValue.DataConvertError'
 
 # Invalid instance name
 INVALIDPARAMETERVALUE_ILLEGALINSTANCENAME = 'InvalidParameterValue.IllegalInstanceName'
@@ -176,6 +230,9 @@ INVALIDPARAMETERVALUE_SECONDARYNUMERROR = 'InvalidParameterValue.SecondaryNumErr
 # Invalid security group ID
 INVALIDPARAMETERVALUE_SECURITYGROUPID = 'InvalidParameterValue.SecurityGroupId'
 
+# The current instance has enabled Password-free Access or is not bound to a security group, with a low security level that does not allow public network access service.
+INVALIDPARAMETERVALUE_SECURITYLEVELNOTALLOWOPENWANSERVICE = 'InvalidParameterValue.SecurityLevelNotAllowOpenWanService'
+
 # The disk size to be set cannot be less than 1.2 times the used disk capacity.
 INVALIDPARAMETERVALUE_SETDISKLESSTHANUSED = 'InvalidParameterValue.SetDiskLessThanUsed'
 
@@ -211,6 +268,33 @@ INVALIDPARAMETERVALUE_ZONEERROR = 'InvalidParameterValue.ZoneError'
 
 # The API frequency limit is triggered due to frequent requests.
 LIMITEXCEEDED_TOOMANYREQUESTS = 'LimitExceeded.TooManyRequests'
+
+# Audit policy conflict.
+OPERATIONDENIED_AUDITPOLICYCONFLICTERROR = 'OperationDenied.AuditPolicyConflictError'
+
+# Audit policy already exists.
+OPERATIONDENIED_AUDITPOLICYEXISTERROR = 'OperationDenied.AuditPolicyExistError'
+
+# Audit policy not found.
+OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = 'OperationDenied.AuditPolicyNotExistError'
+
+# Number of audit policies exceeds the limit.
+OPERATIONDENIED_AUDITPOLICYOVERQUOTAERROR = 'OperationDenied.AuditPolicyOverQuotaError'
+
+# The audit status is abnormal.
+OPERATIONDENIED_AUDITSTATUSERROR = 'OperationDenied.AuditStatusError'
+
+# Audit task conflict.
+OPERATIONDENIED_AUDITTASKCONFLICTERROR = 'OperationDenied.AuditTaskConflictError'
+
+# Resource is not found.
+OPERATIONDENIED_RESOURCENOTFUNDERROR = 'OperationDenied.ResourceNotFundError'
+
+# Audit activation is not supported.
+OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = 'OperationDenied.UnsupportOpenAuditError'
+
+# Insufficient resources.
+RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
