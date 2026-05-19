@@ -395,6 +395,9 @@ INVALIDPARAMETERVALUE_DNSINFO = 'InvalidParameterValue.DnsInfo'
 # 
 INVALIDPARAMETERVALUE_DYNAMICENABLED = 'InvalidParameterValue.DynamicEnabled'
 
+# 
+INVALIDPARAMETERVALUE_EASCONFIG = 'InvalidParameterValue.EASConfig'
+
 # EipConfig parameter error.
 INVALIDPARAMETERVALUE_EIPCONFIG = 'InvalidParameterValue.EipConfig'
 
@@ -677,7 +680,7 @@ LIMITEXCEEDED_EIP = 'LimitExceeded.Eip'
 # 
 LIMITEXCEEDED_FS = 'LimitExceeded.Fs'
 
-# If the number of functions exceeds the upper limit, you can apply for an increase by [submitting a ticket](https://intl.cloud.tencent.com/act/event/Online_service?from=scf%7Cindex?from_cn_redirect=1).
+# If the number of functions exceeds the upper limit, you can apply for an increase by [submitting a ticket](https://console.intl.cloud.tencent.com/workorder/category).
 LIMITEXCEEDED_FUNCTION = 'LimitExceeded.Function'
 
 # The number of functions under the same topic exceeds the upper limit.
@@ -716,7 +719,7 @@ LIMITEXCEEDED_MEMORY = 'LimitExceeded.Memory'
 # The message retention period in the async retry configuration of the function exceeds the limit.
 LIMITEXCEEDED_MSGTTL = 'LimitExceeded.MsgTTL'
 
-# If the number of namespaces exceeds the upper limit, you can apply for an increase by [submitting a ticket](https://intl.cloud.tencent.com/act/event/Online_service?from=scf%7Cindex?from_cn_redirect=1).
+# If the number of namespaces exceeds the upper limit, you can apply for an increase by [submitting a ticket]( https://console.intl.cloud.tencent.com/workorder/category).
 LIMITEXCEEDED_NAMESPACE = 'LimitExceeded.Namespace'
 
 # Offset exceeds the upper limit.
@@ -743,7 +746,7 @@ LIMITEXCEEDED_TIMEOUT = 'LimitExceeded.Timeout'
 # The account concurrency memory has exceeded the limit.
 LIMITEXCEEDED_TOTALCONCURRENCYMEMORY = 'LimitExceeded.TotalConcurrencyMemory'
 
-# If the number of triggers exceeds the upper limit, you can apply for an increase by [submitting a ticket](https://intl.cloud.tencent.com/act/event/Online_service?from=scf%7Cindex?from_cn_redirect=1).
+# If the number of triggers exceeds the upper limit, you can apply for an increase by [submitting a ticket](https://console.intl.cloud.tencent.com/workorder/category).
 LIMITEXCEEDED_TRIGGER = 'LimitExceeded.Trigger'
 
 # The value of `UserTotalConcurrencyMemory` has reached the upper limit. You can submit a ticket to increase it at https://tencentcs.com/7Fixwt63.

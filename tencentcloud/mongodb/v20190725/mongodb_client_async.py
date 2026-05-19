@@ -205,6 +205,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAccountUsers(
+            self,
+            request: models.DescribeAccountUsersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccountUsersResponse:
+        """
+        This API is used to obtain all accounts of the current instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccountUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccountUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAsyncRequestInfo(
             self,
             request: models.DescribeAsyncRequestInfoRequest,

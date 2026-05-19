@@ -1063,7 +1063,7 @@ class CvmClient(AbstractClient):
         """
         This API is used to query the price for adjusting the instance model.
 
-        * Currently, you can only use this API to query the prices of instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
+        * Currently, you can only use this API to query the prices of instances whose [system disk type](https://www.tencentcloud.com/document/product/213/15753) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
         * Currently, you cannot use this API to query the prices of [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.
         """
         
@@ -1224,7 +1224,7 @@ class CvmClient(AbstractClient):
         The instance name is only for user convenience in management. Tencent Cloud does not use this name as the basis for online support or to perform instance management operations.
         This API is used to support batch operations. The maximum of 100 batch instances per request is supported.
         This API is used to modify the security group association. The originally associated security group of the instance will be unbound.
-        * You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
+        * You can query the result of the instance operation by calling the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
         This API is used to modify the hostname. The instance restarts immediately after hostname modification, and the new hostname takes effect after restart.
         """
         
@@ -1246,7 +1246,7 @@ class CvmClient(AbstractClient):
         This API is used to switch the billing mode of an instance.
 
         This API is used to perform operations that do not support instances with no charge when shut down, instances of the model families Batch Compute BC1 and Batch Compute BS1, or instances of scheduled termination.
-        * You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
+        * You can query the result of the instance operation by calling the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
         """
         
         kwargs = {}
@@ -1288,7 +1288,7 @@ class CvmClient(AbstractClient):
         * Project is a virtual concept. You can create multiple projects under one account, manage different resources in each project, and assign different instances to different projects. You may use the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API to query instances and use the project ID to filter the results.
         * You cannot modify the project of an instance that is bound to a load balancer. You need to unbind the load balancer from the instance by using the [DeregisterInstancesFromLoadBalancer](https://intl.cloud.tencent.com/document/api/214/1258?from_cn_redirect=1) API before using this API.
         * Batch operations are supported. Up to 100 instances per request is allowed.
-        * You can use the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) to query the operation result. If the `LatestOperationState` in the response is `SUCCESS`, the operation is successful.
+        * You can use the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258) to query the operation result. If the `LatestOperationState` in the response is `SUCCESS`, the operation is successful.
         """
         
         kwargs = {}
@@ -1309,7 +1309,7 @@ class CvmClient(AbstractClient):
         This API is used to modify the renewal flag of monthly subscription instances.
 
         * After an instance is marked as auto-renewal, it will be automatically renewed for one month each time it expires.
-        * Batch operations are supported. The maximum number of instances for each request is 100.* You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
+        * Batch operations are supported. The maximum number of instances for each request is 100.* You can query the result of the instance operation by calling the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
         """
         
         kwargs = {}
@@ -1330,7 +1330,7 @@ class CvmClient(AbstractClient):
         This API is used to modify the VPC attributes of an instance, such as the VPC IP address.
         * This action will shut down the instance, and restart it after the modification is completed.
         * To migrate an instance to another VPC/subnet, specify the new VPC and subnet directly. Make sure that the instance to migrate is not bound to an [ENI](https://intl.cloud.tencent.com/document/product/576?from_cn_redirect=1) or [CLB](https://intl.cloud.tencent.com/document/product/214?from_cn_redirect=1) instances.
-        * You can use the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) to query the operation result. If the `LatestOperationState` in the response is `SUCCESS`, the operation is successful.
+        * You can use the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258) to query the operation result. If the `LatestOperationState` in the response is `SUCCESS`, the operation is successful.
         """
         
         kwargs = {}
@@ -1471,7 +1471,7 @@ class CvmClient(AbstractClient):
 
         This API is used to operate on monthly subscription instances only.
         This API is used to ensure your account balance is sufficient for renewal. You can check the balance via the DescribeAccountBalance API (https://www.tencentcloud.com/document/product/555/20253?from_cn_redirect=1).
-        * You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
+        * You can query the result of the instance operation by calling the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
         """
         
         kwargs = {}
@@ -1497,7 +1497,7 @@ class CvmClient(AbstractClient):
         * The system disk will be formatted and reset. Ensure that there are no important files in the system disk.
         * If you do not specify a password, a random password will be sent via Message Center.
         * Currently, only instances with a [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#SystemDisk) of `CLOUD_BASIC`, `CLOUD_PREMIUM`, `CLOUD_SSD`, or `CLOUD_BSSD` are supported for implementing operating system switching through this API.
-        * You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
+        * You can query the result of the instance operation by calling the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
         """
         
         kwargs = {}
@@ -1541,7 +1541,7 @@ class CvmClient(AbstractClient):
         * To modify the password of the administrator account: the name of the administrator account varies with the operating system. In Windows, it is `Administrator`; in Ubuntu, it is `ubuntu`; in Linux, it is `root`.
         * To reset the password of a running instance, you need to set the parameter `ForceStop` to `True` for a forced shutdown. If not, only passwords of stopped instances can be reset.
         * Batch operations are supported. You can reset the passwords of up to 100 instances to the same value once.
-        * You can call the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful.
+        * You can call the [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258) API and find the result of the operation in the response parameter `LatestOperationState`. If the value is `SUCCESS`, the operation is successful.
         """
         
         kwargs = {}
@@ -1581,7 +1581,7 @@ class CvmClient(AbstractClient):
         """
         This API (ResizeInstanceDisks) is used to expand the data disks of an instance.
 
-        * Currently, you can only use the API to expand non-elastic data disks whose [disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#block_device) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is non-elastic.
+        * Currently, you can only use the API to expand non-elastic data disks whose [disk type](https://www.tencentcloud.com/document/product/213/15753) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`. You can use [`DescribeDisks`](https://intl.cloud.tencent.com/document/api/362/16315?from_cn_redirect=1) to check whether a disk is elastic. If the `Portable` field in the response is `false`, it means that the disk is non-elastic.
         * Currently, this API does not support [CDH](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) instances.
         * Currently, only one data disk can be expanded at a time.
         """

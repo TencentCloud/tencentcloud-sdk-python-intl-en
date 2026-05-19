@@ -4938,9 +4938,9 @@ class DescribeImagesRequest(AbstractModel):
 <li><strong>tag:tag-key</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>tag key-value pair</strong>. Replace "tag-key" with the actual value. </p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
         :type Filters: list of Filter
-        :param _Offset: Offset; default value: 0. For more information on `Offset`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
+        :param _Offset: Offset; default value: 0. For more information on `Offset`, see [API Introduction](https://www.tencentcloud.com/document/product/213/15689).
         :type Offset: int
-        :param _Limit: Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
+        :param _Limit: Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see [API Introduction](https://www.tencentcloud.com/document/product/213/15689).
         :type Limit: int
         :param _InstanceType: Instance type, e.g. `SA5.MEDIUM2`
         :type InstanceType: str
@@ -4990,7 +4990,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset; default value: 0. For more information on `Offset`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
+        r"""Offset; default value: 0. For more information on `Offset`, see [API Introduction](https://www.tencentcloud.com/document/product/213/15689).
         :rtype: int
         """
         return self._Offset
@@ -5001,7 +5001,7 @@ class DescribeImagesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89).
+        r"""Number of results returned; default value: 20; maximum: 100. For more information on `Limit`, see [API Introduction](https://www.tencentcloud.com/document/product/213/15689).
         :rtype: int
         """
         return self._Limit
@@ -11873,7 +11873,7 @@ class InternetAccessible(AbstractModel):
         :type PublicIpAssigned: bool
         :param _BandwidthPackageId: Bandwidth package ID. it can be obtained through the `BandwidthPackageId` in the return value from the DescribeBandwidthPackages api. this parameter is used as an input parameter only in the RunInstances api.
         :type BandwidthPackageId: str
-        :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://www.tencentcloud.com/zh/document/product/213/5733). default value: BGP.
+        :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://www.tencentcloud.com/document/product/213/5733). default value: BGP.
 <Li>BGP: specifies the general bgp line.</li>.
 For a user with static single-line IP allowlist enabled, valid values include:.
 <Li>CMCC: china mobile.</li>.
@@ -11887,7 +11887,7 @@ Note: The static single-line IP is only supported in some regions.
 
 <Li>WanIP: specifies the public ip address.</li>.
 <Li>HighQualityEIP: specifies a high quality ip. high quality ip is only supported in Singapore and hong kong (china).</li>.
-<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/zh/document/product/213/5733).</li>.
+<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/document/product/213/5733).</li>.
 If needed, assign a public IPv4 address to the resource by specifying the IPv4 address type.
 
 This feature is in beta test in selected regions. submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category) if needed.
@@ -11961,7 +11961,7 @@ This feature is in beta test in selected regions. submit a ticket for consultati
 
     @property
     def InternetServiceProvider(self):
-        r"""Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://www.tencentcloud.com/zh/document/product/213/5733). default value: BGP.
+        r"""Line type. for details on various types of lines and supported regions, refer to [EIP IP address types](https://www.tencentcloud.com/document/product/213/5733). default value: BGP.
 <Li>BGP: specifies the general bgp line.</li>.
 For a user with static single-line IP allowlist enabled, valid values include:.
 <Li>CMCC: china mobile.</li>.
@@ -11984,7 +11984,7 @@ Note: The static single-line IP is only supported in some regions.
 
 <Li>WanIP: specifies the public ip address.</li>.
 <Li>HighQualityEIP: specifies a high quality ip. high quality ip is only supported in Singapore and hong kong (china).</li>.
-<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/zh/document/product/213/5733).</li>.
+<li> AntiDDoSEIP: specifies the anti-ddos eip. only partial regions support anti-ddos eip. details visible in the [elastic IP product overview](https://www.tencentcloud.com/document/product/213/5733).</li>.
 If needed, assign a public IPv4 address to the resource by specifying the IPv4 address type.
 
 This feature is in beta test in selected regions. submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category) if needed.
@@ -15739,8 +15739,7 @@ class RenewInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). The maximum number of instances per request is 100.
         :type InstanceIds: list of str
-        :param _InstanceChargePrepaid: Prepaid mode, that is, parameter settings related to monthly/annual subscription. specifies attributes of a monthly subscription instance, such as renewal duration and whether to enable auto-renewal, by specifying this parameter. <dx-alert infotype="explain" title="">.
-Annual and monthly subscription instances. this parameter is a required parameter.</dx-alert>.
+        :param _InstanceChargePrepaid: Settings for prepaid (monthly/yearly subscription) instances, including renewal duration and auto-renewal options. This parameter is required for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param _RenewPortableDataDisk: Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.
         :type RenewPortableDataDisk: bool
@@ -15762,8 +15761,7 @@ Annual and monthly subscription instances. this parameter is a required paramete
 
     @property
     def InstanceChargePrepaid(self):
-        r"""Prepaid mode, that is, parameter settings related to monthly/annual subscription. specifies attributes of a monthly subscription instance, such as renewal duration and whether to enable auto-renewal, by specifying this parameter. <dx-alert infotype="explain" title="">.
-Annual and monthly subscription instances. this parameter is a required parameter.</dx-alert>.
+        r"""Settings for prepaid (monthly/yearly subscription) instances, including renewal duration and auto-renewal options. This parameter is required for prepaid instances.
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -17098,7 +17096,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         :param _StartTime: Date from which the new bandwidth takes effect. Format: `YYYY-MM-DD`, such as `2016-10-30`. The starting date cannot be earlier than the current date. If the starting date is the current date, the new bandwidth takes effect immediately. This parameter is only valid for prepaid bandwidth. If you specify the parameter for bandwidth with other network billing methods, an error code will be returned.
         :type StartTime: str
-        :param _EndTime: Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/zh/document/api/213/33258). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
+        :param _EndTime: Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
         :type EndTime: str
         """
         self._InstanceIds = None
@@ -17141,7 +17139,7 @@ class ResetInstancesInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/zh/document/api/213/33258). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
+        r"""Date until which the bandwidth takes effect, in the format of `YYYY-MM-DD`, such as `2016-10-30`. The validity period of the new bandwidth covers the end date. The end date should not be later than the expiration date of a monthly subscription instance. You can obtain the expiration date of an instance through the `ExpiredTime` in the return value from the API [DescribeInstances](https://www.tencentcloud.com/document/api/213/33258). This parameter is only valid for monthly subscription bandwidth, and is not supported for bandwidth billed by other modes. Otherwise, the API will return a corresponding error code.
         :rtype: str
         """
         return self._EndTime
@@ -18745,7 +18743,7 @@ class SyncImagesRequest(AbstractModel):
         r"""
         :param _ImageIds: Image ID list. You can obtain the image IDs in the following ways:<br><li>Call the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) API and find the value of `ImageId` in the response.</li><li>Obtain the image IDs in the [Image console](https://console.cloud.tencent.com/cvm/image).<br>The image IDs should meet the following requirement:</li><li>The image ID should correspond to an image in the `NORMAL` state.</li>For more information on image status, see [Image Data Table](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#Image).
         :type ImageIds: list of str
-        :param _DestinationRegions: List of target synchronization regions, which should meet the following requirements:<br><li>It should be a valid region.</li><li>If it is a custom image, the target synchronization region cannot be the source region.</li><li>If it is a shared image, the target synchronization region only supports the source region, meaning the shared image will be copied as a custom image in the source region.</li><li>Partial region synchronization is not supported currently. For details, see [Copying Images](https://intl.cloud.tencent.com/document/product/213/4943?from_cn_redirect=1#.E5.A4.8D.E5.88.B6.E8.AF.B4.E6.98.8E).</li>For specific regional parameters, refer to [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).
+        :param _DestinationRegions: List of target synchronization regions, which should meet the following requirements:<br><li>It should be a valid region.</li><li>If it is a custom image, the target synchronization region cannot be the source region.</li><li>If it is a shared image, the target synchronization region only supports the source region, meaning the shared image will be copied as a custom image in the source region.</li><li>Partial region synchronization is not supported currently. For details, see [Copying Images](https://www.tencentcloud.com/document/product/213/4943).</li>For specific regional parameters, refer to [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).
         :type DestinationRegions: list of str
         :param _DryRun: Checks whether image synchronization can be initiated.
 
@@ -18787,7 +18785,7 @@ If KmsKeyId is not specified, the default CBS cloud product KMS key is used.
 
     @property
     def DestinationRegions(self):
-        r"""List of target synchronization regions, which should meet the following requirements:<br><li>It should be a valid region.</li><li>If it is a custom image, the target synchronization region cannot be the source region.</li><li>If it is a shared image, the target synchronization region only supports the source region, meaning the shared image will be copied as a custom image in the source region.</li><li>Partial region synchronization is not supported currently. For details, see [Copying Images](https://intl.cloud.tencent.com/document/product/213/4943?from_cn_redirect=1#.E5.A4.8D.E5.88.B6.E8.AF.B4.E6.98.8E).</li>For specific regional parameters, refer to [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).
+        r"""List of target synchronization regions, which should meet the following requirements:<br><li>It should be a valid region.</li><li>If it is a custom image, the target synchronization region cannot be the source region.</li><li>If it is a shared image, the target synchronization region only supports the source region, meaning the shared image will be copied as a custom image in the source region.</li><li>Partial region synchronization is not supported currently. For details, see [Copying Images](https://www.tencentcloud.com/document/product/213/4943).</li>For specific regional parameters, refer to [Region](https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._DestinationRegions

@@ -256,6 +256,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccountUsers(self, request):
+        r"""This API is used to obtain all accounts of the current instance.
+
+        :param request: Request instance for DescribeAccountUsers.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAccountUsersRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeAccountUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAsyncRequestInfo(self, request):
         r"""This API is used to query the asynchronous task status.
 
