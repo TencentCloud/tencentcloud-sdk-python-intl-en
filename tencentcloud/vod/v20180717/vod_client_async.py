@@ -435,6 +435,42 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCLSLogset(
+            self,
+            request: models.CreateCLSLogsetRequest,
+            opts: Dict = None,
+    ) -> models.CreateCLSLogsetResponse:
+        """
+        Create a new logset with VOD.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCLSLogset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCLSLogsetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCLSTopic(
+            self,
+            request: models.CreateCLSTopicRequest,
+            opts: Dict = None,
+    ) -> models.CreateCLSTopicResponse:
+        """
+        Create a new CLS log topic under VOD
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCLSTopic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCLSTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateClass(
             self,
             request: models.CreateClassRequest,
@@ -1924,6 +1960,26 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeDailyPlayStatFileList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDailyPlayStatFileListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDefaultDistributionConfig(
+            self,
+            request: models.DescribeDefaultDistributionConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDefaultDistributionConfigResponse:
+        """
+        This API is used to query the default distribution configuration.
+        * Domain name and distribution protocol, which are the domain name and protocol in the media file distribution URL. Media files are distributed according to the default distribution configuration.
+        Playback key, used to calculate player signature.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDefaultDistributionConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDefaultDistributionConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

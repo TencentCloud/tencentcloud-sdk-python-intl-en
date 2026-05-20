@@ -546,6 +546,52 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCLSLogset(self, request):
+        r"""Create a new logset with VOD.
+
+        :param request: Request instance for CreateCLSLogset.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateCLSLogsetRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateCLSLogsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSLogset", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSLogsetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCLSTopic(self, request):
+        r"""Create a new CLS log topic under VOD
+
+        :param request: Request instance for CreateCLSTopic.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateCLSTopicRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateCLSTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateClass(self, request):
         r"""* This API is used to categorize media assets for management;
         * It does not affect the categories of existing media assets. If you want to modify the category of a media asset, call the [ModifyMediaInfo](https://intl.cloud.tencent.com/document/product/266/31762?from_cn_redirect=1) API.
@@ -2426,6 +2472,31 @@ class VodClient(AbstractClient):
             body = self.call("DescribeDailyPlayStatFileList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDailyPlayStatFileListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDefaultDistributionConfig(self, request):
+        r"""This API is used to query the default distribution configuration.
+        * Domain name and distribution protocol, which are the domain name and protocol in the media file distribution URL. Media files are distributed according to the default distribution configuration.
+        Playback key, used to calculate player signature.
+
+        :param request: Request instance for DescribeDefaultDistributionConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeDefaultDistributionConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeDefaultDistributionConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDefaultDistributionConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDefaultDistributionConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

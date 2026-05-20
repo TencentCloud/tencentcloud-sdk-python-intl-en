@@ -164,6 +164,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckCertificateDomainVerification(self, request):
+        r"""Check the domain validation result of the cert
+
+        :param request: Request instance for CheckCertificateDomainVerification.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateDomainVerificationRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateDomainVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckCertificateDomainVerification", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckCertificateDomainVerificationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CommitCertificateInformation(self, request):
         r"""Submit payment certificate orders; This API does not maintain new features, and you can use the new API to submit orders. [CertificateOrderSubmit](https://intl.cloud.tencent.com/document/product/400/116032?from_cn_redirect=1).
 
@@ -349,7 +372,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeCertificateBindResourceTaskDetail(self, request):
-        r"""This API is used to query the task result of CreateCertificateBindResourceSyncTask, returning the asynchronous task result of the certificate associated with cloud resources, supporting the following cloud resources: clb, cdn, waf, live, vod, ddos, tke, apigateway, tcb, teo (edgeOne), cos.
+        r"""Query the task result of CreateCertificateBindResourceSyncTask, return the asynchronous task result of binding cloud resources with the certificate, support the following cloud resources: clb, cdn, waf, live, vod, ddos, tke, apigateway, tcb, teo (edgeOne), cos, gaap, mqtt, scf, tdmq.
 
         :param request: Request instance for DescribeCertificateBindResourceTaskDetail.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskDetailRequest`
@@ -776,6 +799,29 @@ class SslClient(AbstractClient):
             body = self.call("ReplaceCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.ReplaceCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RevokeCertificate(self, request):
+        r"""This API is used to revoke certificate.
+
+        :param request: Request instance for RevokeCertificate.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.RevokeCertificateRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.RevokeCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RevokeCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.RevokeCertificateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

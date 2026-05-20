@@ -1052,7 +1052,9 @@ class TrtcClient(AbstractClient):
 
 
     def StartAIConversation(self, request):
-        r"""Initiate AI conversation task, where the AI bot enters the TRTC room to engage in AI conversation with specified members in the room. This is suitable for scenarios such as intelligent customer service and AI language teachers. The TRTC AI conversation feature has built-in speech-to-text capabilities , allowing customers to flexibly specify third-party AI model (LLM) services and text-to-speech (TTS) services. For more [feature details](https://cloud.tencent.com/document/product/647/108901).
+        r"""Start an AI conversation task. The AI Channel Robot joins the TRTC room and performs AI dialogue with specified members inside the room. Suitable for smart customer service, AI spoken language teacher, and other scenarios.
+
+        The TRTC AI dialogue function has built-in speech-to-text capability and provides both Channel Service, allowing customers to flexibly designate third-party AI model (LLM) services and Text-to-Audio (TTS) services.
 
         :param request: Request instance for StartAIConversation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartAIConversationRequest`
@@ -1103,13 +1105,13 @@ class TrtcClient(AbstractClient):
 
     def StartPublishCdnStream(self, request):
         r"""API description:.
-        Start a mixed stream forwarding task to mix multiple audio and video streams in a TRTC room into one media stream, transcode it, and push it to live stream CDN or back to the TRTC room. It also supports directly forwarding a single stream from the TRTC room without transcoding. After startup successful, it will return a task ID (TaskId) unique to the SdkAppid dimension. You need to save this TaskId, as it will be relied on to update and end the task subsequently. See document: [Feature Description](https://www.tencentcloud.com/document/product/647/84721?from_cn_redirect=1#b9a855f4-e38c-4616-9b07-fc44e0e8282a) and [Common Issues](https://www.tencentcloud.com/document/product/647/62620?from_cn_redirect=1).
+        Start a mixed stream forwarding task to mix multiple audio and video streams in a TRTC room into one media stream, transcode it, and push it to live stream CDN or back to the TRTC room. It also supports directly forwarding a single stream from the TRTC room without transcoding. After startup successful, it will return a task ID (TaskId) unique to the SdkAppid dimension. You need to save this TaskId, as it will be relied on to update and end the task subsequently.
 
         Note:.
-        You can enable bypass relay callback through console activation for monitoring events of CDN state. Refer to the documentation for callback: [Bypass Relay Callback Description](https://www.tencentcloud.com/document/product/647/88552?from_cn_redirect=1).
+        You can enable bypass relay callback through console activation for monitoring events of CDN state.
         Initiating a mixed stream push task may incur the following fees:.
-        For MCU mix transcoding fees, refer to the documentation: On-Cloud MixTranscoding billing (https://www.tencentcloud.com/document/product/647/49446?from_cn_redirect=1).
-        For forwarding expenses of non-Tencent Cloud CDN, refer to the documentation: [Cloud-based forwarding billing explanation](https://www.tencentcloud.com/document/product/647/82155?from_cn_redirect=1).
+        MCU mix transcoding fees.
+        Forwarding expenses of non-Tencent Cloud CDN.
 
         :param request: Request instance for StartPublishCdnStream.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartPublishCdnStreamRequest`

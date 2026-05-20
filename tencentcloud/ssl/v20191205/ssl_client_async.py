@@ -133,6 +133,24 @@ class SslClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckCertificateDomainVerification(
+            self,
+            request: models.CheckCertificateDomainVerificationRequest,
+            opts: Dict = None,
+    ) -> models.CheckCertificateDomainVerificationResponse:
+        """
+        Check the domain validation result of the cert
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckCertificateDomainVerification"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckCertificateDomainVerificationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CommitCertificateInformation(
             self,
             request: models.CommitCertificateInformationRequest,
@@ -283,7 +301,7 @@ class SslClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCertificateBindResourceTaskDetailResponse:
         """
-        This API is used to query the task result of CreateCertificateBindResourceSyncTask, returning the asynchronous task result of the certificate associated with cloud resources, supporting the following cloud resources: clb, cdn, waf, live, vod, ddos, tke, apigateway, tcb, teo (edgeOne), cos.
+        Query the task result of CreateCertificateBindResourceSyncTask, return the asynchronous task result of binding cloud resources with the certificate, support the following cloud resources: clb, cdn, waf, live, vod, ddos, tke, apigateway, tcb, teo (edgeOne), cos, gaap, mqtt, scf, tdmq.
         """
         
         kwargs = {}
@@ -614,6 +632,24 @@ class SslClient(AbstractClient):
         kwargs["action"] = "ReplaceCertificate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ReplaceCertificateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RevokeCertificate(
+            self,
+            request: models.RevokeCertificateRequest,
+            opts: Dict = None,
+    ) -> models.RevokeCertificateResponse:
+        """
+        This API is used to revoke certificate.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RevokeCertificate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RevokeCertificateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
