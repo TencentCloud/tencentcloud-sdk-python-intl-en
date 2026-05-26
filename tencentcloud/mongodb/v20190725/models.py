@@ -1808,7 +1808,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type SecurityGroup: list of str
         :param _RestoreTime: <p>Rollback time of the cloned instance.</p><ul><li>This parameter is required for cloned instances. Format: 2021-08-13 16:30:00.</li><li>Rollback time range: Only data within the last 7 days can be rolled back.</li></ul>
         :type RestoreTime: str
-        :param _InstanceName: <p>Instance name. Only Chinese, English, digits, underscores (_), and hyphens (-) are supported, with a maximum length of 128 characters. When purchasing database instances in batches, you can efficiently set instance names by using custom pattern strings and automatically ascending numeric suffixes.</p><ul><li>Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for <strong>lnstanceName</strong>. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.</li><li>Custom starting number mode: prefix + {R:x} (x is the custom starting number). <strong>InstanceName</strong> requires "prefix{R:x}". For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.</li><li>Composite pattern string: prefix1{R:x} + prefix2{R:y} + ⋯ + fixed suffix, where x and y are the starting numbers for each prefix. <strong>InstanceName</strong> requires a composite pattern string. For example, cmgo{R:10}_node{R:12}_db. If the batch purchase quantity is set to 5, the instance names will be cmgo10_node12_db, cmgo11_node13_db, cmgo12_node14_db, cmgo13_node15_db, and cmgo14_node16_db.</li></ul>
+        :param _InstanceName: <p>Instance name. Only Chinese, English, digits, underscores (_), and hyphens (-) are supported, with a maximum length of 128 characters. When purchasing database instances in batches, you can efficiently set instance names by using custom pattern strings and automatically ascending numeric suffixes.</p><ul><li>Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for <strong>lnstanceName</strong>. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.</li><li>Custom starting number mode: prefix + {R:x} (x is the custom starting number). <strong>InstanceName</strong> requires "prefix{R:x}". For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.</li><li>Composite pattern string: prefix1{R:x} + prefix2{R:y} + ... + fixed suffix, where x and y are the starting numbers for each prefix. <strong>InstanceName</strong> requires a composite pattern string. For example, cmgo{R:10}_node{R:12}_db. If the batch purchase quantity is set to 5, the instance names will be cmgo10_node12_db, cmgo11_node13_db, cmgo12_node14_db, cmgo13_node15_db, and cmgo14_node16_db.</li></ul>
         :type InstanceName: str
         :param _AvailabilityZoneList: <p>For cloud database instances in multi-AZ deployment, specify the availability zone list.</p><ul><li>For instances in multi-AZ deployment mode, the <strong>Zone</strong> parameter specifies the primary AZ, and <strong>AvailabilityZoneList</strong> specifies all AZs, including the primary AZ. Format: [ap-guangzhou-2,ap-guangzhou-3,ap-guangzhou-4].</li><li>Use the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to access cloud databases and obtain availability zone information planned for different regions, so that you can assign valid AZs.</li><li>Nodes in multi-AZ deployment can only be deployed in 3 different availability zones. Deploying most nodes of a cluster in the same availability zone is not supported. For example, a 3-node cluster does not support deploying 2 nodes in the same zone.</li></ul>
         :type AvailabilityZoneList: list of str
@@ -1824,7 +1824,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ReadonlyNodeAvailabilityZoneList: list of str
         :param _HiddenZone: <p>Availability zone of the Hidden node. To deploy instances across availability zones, you must configure this parameter.</p>
         :type HiddenZone: str
-        :param _ParamTemplateId: <p>Parameter template ID.</p><ul><li>A parameter template is a collection of preset specific parameters applicable to quick configuration of new MongoDB instances. Proper use of parameter templates can effectively improve database deployment efficiency and operating performance.</li><li>The parameter template ID can be obtained through the <a href="https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1">DescribeDBInstanceParamTpl</a> API. Please select the parameter template ID corresponding to your instance version and architecture.</li></ul>
+        :param _ParamTemplateId: <p>Parameter template ID.</p><ul><li>A parameter template is a collection of preset specific parameters applicable to quick configuration of new MongoDB instances. Proper use of parameter templates can effectively improve database deployment efficiency and operating performance.</li><li>The parameter template ID can be obtained through the <a href="https://www.tencentcloud.com/document/product/240/80022">DescribeDBInstanceParamTpl</a> API. Please select the parameter template ID corresponding to your instance version and architecture.</li></ul>
         :type ParamTemplateId: str
         :param _CpuCore: <p>Instance CPU core size. Unit: C. Call the <a href="https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API to obtain specific saleable CPU specifications.<br>Note: CPU size must be set for common I Instance Type.</p>
         :type CpuCore: int
@@ -2058,7 +2058,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""<p>Instance name. Only Chinese, English, digits, underscores (_), and hyphens (-) are supported, with a maximum length of 128 characters. When purchasing database instances in batches, you can efficiently set instance names by using custom pattern strings and automatically ascending numeric suffixes.</p><ul><li>Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for <strong>lnstanceName</strong>. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.</li><li>Custom starting number mode: prefix + {R:x} (x is the custom starting number). <strong>InstanceName</strong> requires "prefix{R:x}". For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.</li><li>Composite pattern string: prefix1{R:x} + prefix2{R:y} + ⋯ + fixed suffix, where x and y are the starting numbers for each prefix. <strong>InstanceName</strong> requires a composite pattern string. For example, cmgo{R:10}_node{R:12}_db. If the batch purchase quantity is set to 5, the instance names will be cmgo10_node12_db, cmgo11_node13_db, cmgo12_node14_db, cmgo13_node15_db, and cmgo14_node16_db.</li></ul>
+        r"""<p>Instance name. Only Chinese, English, digits, underscores (_), and hyphens (-) are supported, with a maximum length of 128 characters. When purchasing database instances in batches, you can efficiently set instance names by using custom pattern strings and automatically ascending numeric suffixes.</p><ul><li>Basic mode: prefix + automatic ascending number (starting from 1 by default). Only a custom instance name prefix is required for <strong>lnstanceName</strong>. For example, it can be set to cmgo. If the purchase quantity is set to 5, after purchase, the instances will be sequentially named cmgo1, cmgo2, cmgo3, cmgo4, and cmgo5, respectively.</li><li>Custom starting number mode: prefix + {R:x} (x is the custom starting number). <strong>InstanceName</strong> requires "prefix{R:x}". For example, cmgo{R:3}. If the purchase quantity is set to 5, the instance names will be cmgo3, cmgo4, cmgo5, cmgo6, and cmgo7.</li><li>Composite pattern string: prefix1{R:x} + prefix2{R:y} + ... + fixed suffix, where x and y are the starting numbers for each prefix. <strong>InstanceName</strong> requires a composite pattern string. For example, cmgo{R:10}_node{R:12}_db. If the batch purchase quantity is set to 5, the instance names will be cmgo10_node12_db, cmgo11_node13_db, cmgo12_node14_db, cmgo13_node15_db, and cmgo14_node16_db.</li></ul>
         :rtype: str
         """
         return self._InstanceName
@@ -2146,7 +2146,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""<p>Parameter template ID.</p><ul><li>A parameter template is a collection of preset specific parameters applicable to quick configuration of new MongoDB instances. Proper use of parameter templates can effectively improve database deployment efficiency and operating performance.</li><li>The parameter template ID can be obtained through the <a href="https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1">DescribeDBInstanceParamTpl</a> API. Please select the parameter template ID corresponding to your instance version and architecture.</li></ul>
+        r"""<p>Parameter template ID.</p><ul><li>A parameter template is a collection of preset specific parameters applicable to quick configuration of new MongoDB instances. Proper use of parameter templates can effectively improve database deployment efficiency and operating performance.</li><li>The parameter template ID can be obtained through the <a href="https://www.tencentcloud.com/document/product/240/80022">DescribeDBInstanceParamTpl</a> API. Please select the parameter template ID corresponding to your instance version and architecture.</li></ul>
         :rtype: str
         """
         return self._ParamTemplateId
@@ -2266,6 +2266,189 @@ class CreateDBInstanceHourResponse(AbstractModel):
     def _deserialize(self, params):
         self._DealId = params.get("DealId")
         self._InstanceIds = params.get("InstanceIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDBInstanceParamTplRequest(AbstractModel):
+    r"""CreateDBInstanceParamTpl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplName: Parameter template name.
+        :type TplName: str
+        :param _MongoVersion: Template version number. This field is required when **MirrorTplId** is empty. For the purchasable versions supported by the parameter template, use the interface [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/35767?from_cn_redirect=1).
+- MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
+- MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
+- MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
+- MONGO_44_WT: Version of the MongoDB 4.4 WiredTiger storage engine.
+- MONGO_50_WT: Version of the MongoDB 5.0 WiredTiger storage engine.
+- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
+- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
+        :type MongoVersion: str
+        :param _ClusterType: Instance type. This parameter is required when MirrorTplId is empty.
+- REPLSET: replica set instance.
+- SHARD: shard instance.
+-STANDALONE: Single-node instance.
+        :type ClusterType: str
+        :param _TplDesc: Template description information.
+        :type TplDesc: str
+        :param _Params: Template parameter. If this parameter is not configured, the system default template is used as the version parameter.
+        :type Params: list of ParamType
+        :param _MirrorTplId: Image template ID. If an image template is specified, a new template is cloned from this template.
+**Note**: When MirrorTplId is not empty, MongoVersion and ClusterType will follow the template version and instance type of MirrorTpl.
+        :type MirrorTplId: str
+        """
+        self._TplName = None
+        self._MongoVersion = None
+        self._ClusterType = None
+        self._TplDesc = None
+        self._Params = None
+        self._MirrorTplId = None
+
+    @property
+    def TplName(self):
+        r"""Parameter template name.
+        :rtype: str
+        """
+        return self._TplName
+
+    @TplName.setter
+    def TplName(self, TplName):
+        self._TplName = TplName
+
+    @property
+    def MongoVersion(self):
+        r"""Template version number. This field is required when **MirrorTplId** is empty. For the purchasable versions supported by the parameter template, use the interface [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/35767?from_cn_redirect=1).
+- MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
+- MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
+- MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
+- MONGO_44_WT: Version of the MongoDB 4.4 WiredTiger storage engine.
+- MONGO_50_WT: Version of the MongoDB 5.0 WiredTiger storage engine.
+- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
+- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
+        :rtype: str
+        """
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def ClusterType(self):
+        r"""Instance type. This parameter is required when MirrorTplId is empty.
+- REPLSET: replica set instance.
+- SHARD: shard instance.
+-STANDALONE: Single-node instance.
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def TplDesc(self):
+        r"""Template description information.
+        :rtype: str
+        """
+        return self._TplDesc
+
+    @TplDesc.setter
+    def TplDesc(self, TplDesc):
+        self._TplDesc = TplDesc
+
+    @property
+    def Params(self):
+        r"""Template parameter. If this parameter is not configured, the system default template is used as the version parameter.
+        :rtype: list of ParamType
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def MirrorTplId(self):
+        r"""Image template ID. If an image template is specified, a new template is cloned from this template.
+**Note**: When MirrorTplId is not empty, MongoVersion and ClusterType will follow the template version and instance type of MirrorTpl.
+        :rtype: str
+        """
+        return self._MirrorTplId
+
+    @MirrorTplId.setter
+    def MirrorTplId(self, MirrorTplId):
+        self._MirrorTplId = MirrorTplId
+
+
+    def _deserialize(self, params):
+        self._TplName = params.get("TplName")
+        self._MongoVersion = params.get("MongoVersion")
+        self._ClusterType = params.get("ClusterType")
+        self._TplDesc = params.get("TplDesc")
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = ParamType()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        self._MirrorTplId = params.get("MirrorTplId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBInstanceParamTplResponse(AbstractModel):
+    r"""CreateDBInstanceParamTpl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplId: Template ID.
+        :type TplId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TplId = None
+        self._RequestId = None
+
+    @property
+    def TplId(self):
+        r"""Template ID.
+        :rtype: str
+        """
+        return self._TplId
+
+    @TplId.setter
+    def TplId(self, TplId):
+        self._TplId = TplId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TplId = params.get("TplId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3433,6 +3616,85 @@ class DeleteAccountUserResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDBBackupsRequest(AbstractModel):
+    r"""DeleteDBBackups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance id, cmgo-xxxx
+        :type InstanceId: str
+        :param _BackupIds: File id list
+        :type BackupIds: list of int
+        """
+        self._InstanceId = None
+        self._BackupIds = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance id, cmgo-xxxx
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupIds(self):
+        r"""File id list
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupIds = params.get("BackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDBBackupsResponse(AbstractModel):
+    r"""DeleteDBBackups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -5812,6 +6074,411 @@ class DescribeDBInstanceNodePropertyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceParamTplDetailRequest(AbstractModel):
+    r"""DescribeDBInstanceParamTplDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplId: Parameter template ID. Use the [DescribeDBInstanceParamTpl](https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1) interface to obtain template ID.
+        :type TplId: str
+        :param _ParamName: Parameter name. Pass in this value to retrieve parameter details of this field. Leave it empty to return all parameters.
+        :type ParamName: str
+        """
+        self._TplId = None
+        self._ParamName = None
+
+    @property
+    def TplId(self):
+        r"""Parameter template ID. Use the [DescribeDBInstanceParamTpl](https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1) interface to obtain template ID.
+        :rtype: str
+        """
+        return self._TplId
+
+    @TplId.setter
+    def TplId(self, TplId):
+        self._TplId = TplId
+
+    @property
+    def ParamName(self):
+        r"""Parameter name. Pass in this value to retrieve parameter details of this field. Leave it empty to return all parameters.
+        :rtype: str
+        """
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+
+    def _deserialize(self, params):
+        self._TplId = params.get("TplId")
+        self._ParamName = params.get("ParamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceParamTplDetailResponse(AbstractModel):
+    r"""DescribeDBInstanceParamTplDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceEnumParams: Enumeration class parameter details list.
+        :type InstanceEnumParams: list of InstanceEnumParam
+        :param _InstanceIntegerParams: Integer parameter detail list.
+        :type InstanceIntegerParams: list of InstanceIntegerParam
+        :param _InstanceTextParams: Text parameter details list.
+        :type InstanceTextParams: list of InstanceTextParam
+        :param _InstanceMultiParams: Multi-value parameter details list.
+        :type InstanceMultiParams: list of InstanceMultiParam
+        :param _TotalCount: Total number of parameters.
+        :type TotalCount: int
+        :param _MongoVersion: Instance version supported by the template.
+- MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
+- MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
+- MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
+- MONGO_44_WT: Version of the MongoDB 4.4 WiredTiger storage engine.
+- MONGO_50_WT: Version of the MongoDB 5.0 WiredTiger storage engine.
+- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
+- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
+        :type MongoVersion: str
+        :param _ClusterType: Template adapts to cluster type.
+- REPLSET: replica set instance.
+- SHARD: shard instance.
+-STANDALONE: Single-node instance.
+        :type ClusterType: str
+        :param _TplName: Parameter template name.
+        :type TplName: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceEnumParams = None
+        self._InstanceIntegerParams = None
+        self._InstanceTextParams = None
+        self._InstanceMultiParams = None
+        self._TotalCount = None
+        self._MongoVersion = None
+        self._ClusterType = None
+        self._TplName = None
+        self._RequestId = None
+
+    @property
+    def InstanceEnumParams(self):
+        r"""Enumeration class parameter details list.
+        :rtype: list of InstanceEnumParam
+        """
+        return self._InstanceEnumParams
+
+    @InstanceEnumParams.setter
+    def InstanceEnumParams(self, InstanceEnumParams):
+        self._InstanceEnumParams = InstanceEnumParams
+
+    @property
+    def InstanceIntegerParams(self):
+        r"""Integer parameter detail list.
+        :rtype: list of InstanceIntegerParam
+        """
+        return self._InstanceIntegerParams
+
+    @InstanceIntegerParams.setter
+    def InstanceIntegerParams(self, InstanceIntegerParams):
+        self._InstanceIntegerParams = InstanceIntegerParams
+
+    @property
+    def InstanceTextParams(self):
+        r"""Text parameter details list.
+        :rtype: list of InstanceTextParam
+        """
+        return self._InstanceTextParams
+
+    @InstanceTextParams.setter
+    def InstanceTextParams(self, InstanceTextParams):
+        self._InstanceTextParams = InstanceTextParams
+
+    @property
+    def InstanceMultiParams(self):
+        r"""Multi-value parameter details list.
+        :rtype: list of InstanceMultiParam
+        """
+        return self._InstanceMultiParams
+
+    @InstanceMultiParams.setter
+    def InstanceMultiParams(self, InstanceMultiParams):
+        self._InstanceMultiParams = InstanceMultiParams
+
+    @property
+    def TotalCount(self):
+        r"""Total number of parameters.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MongoVersion(self):
+        r"""Instance version supported by the template.
+- MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
+- MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
+- MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
+- MONGO_44_WT: Version of the MongoDB 4.4 WiredTiger storage engine.
+- MONGO_50_WT: Version of the MongoDB 5.0 WiredTiger storage engine.
+- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
+- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
+        :rtype: str
+        """
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def ClusterType(self):
+        r"""Template adapts to cluster type.
+- REPLSET: replica set instance.
+- SHARD: shard instance.
+-STANDALONE: Single-node instance.
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def TplName(self):
+        r"""Parameter template name.
+        :rtype: str
+        """
+        return self._TplName
+
+    @TplName.setter
+    def TplName(self, TplName):
+        self._TplName = TplName
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceEnumParams") is not None:
+            self._InstanceEnumParams = []
+            for item in params.get("InstanceEnumParams"):
+                obj = InstanceEnumParam()
+                obj._deserialize(item)
+                self._InstanceEnumParams.append(obj)
+        if params.get("InstanceIntegerParams") is not None:
+            self._InstanceIntegerParams = []
+            for item in params.get("InstanceIntegerParams"):
+                obj = InstanceIntegerParam()
+                obj._deserialize(item)
+                self._InstanceIntegerParams.append(obj)
+        if params.get("InstanceTextParams") is not None:
+            self._InstanceTextParams = []
+            for item in params.get("InstanceTextParams"):
+                obj = InstanceTextParam()
+                obj._deserialize(item)
+                self._InstanceTextParams.append(obj)
+        if params.get("InstanceMultiParams") is not None:
+            self._InstanceMultiParams = []
+            for item in params.get("InstanceMultiParams"):
+                obj = InstanceMultiParam()
+                obj._deserialize(item)
+                self._InstanceMultiParams.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._MongoVersion = params.get("MongoVersion")
+        self._ClusterType = params.get("ClusterType")
+        self._TplName = params.get("TplName")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceParamTplRequest(AbstractModel):
+    r"""DescribeDBInstanceParamTpl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplIds: Parameter template ID. Use the [DescribeDBInstanceParamTpl](https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1) interface to obtain template ID.
+        :type TplIds: list of str
+        :param _TplNames: Specifies the template name for query.
+        :type TplNames: list of str
+        :param _MongoVersion: Specifies the database version number of the parameter template to query. For supported versions, use the [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API.
+- MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
+- MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
+- MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
+- MONGO_44_WT: Version of the MongoDB 4.4 WiredTiger storage engine.
+- MONGO_50_WT: Version of the MongoDB 5.0 WiredTiger storage engine.
+- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
+- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
+        :type MongoVersion: list of str
+        :param _TplType: Specifies the template type for query.
+-DEFAULT: System default template.
+-CUSTOMIZE: custom template.
+        :type TplType: str
+        """
+        self._TplIds = None
+        self._TplNames = None
+        self._MongoVersion = None
+        self._TplType = None
+
+    @property
+    def TplIds(self):
+        r"""Parameter template ID. Use the [DescribeDBInstanceParamTpl](https://www.tencentcloud.com/document/product/240/109155?from_cn_redirect=1) interface to obtain template ID.
+        :rtype: list of str
+        """
+        return self._TplIds
+
+    @TplIds.setter
+    def TplIds(self, TplIds):
+        self._TplIds = TplIds
+
+    @property
+    def TplNames(self):
+        r"""Specifies the template name for query.
+        :rtype: list of str
+        """
+        return self._TplNames
+
+    @TplNames.setter
+    def TplNames(self, TplNames):
+        self._TplNames = TplNames
+
+    @property
+    def MongoVersion(self):
+        r"""Specifies the database version number of the parameter template to query. For supported versions, use the [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/38567?from_cn_redirect=1) API.
+- MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
+- MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
+- MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
+- MONGO_44_WT: Version of the MongoDB 4.4 WiredTiger storage engine.
+- MONGO_50_WT: Version of the MongoDB 5.0 WiredTiger storage engine.
+- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
+- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
+        :rtype: list of str
+        """
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def TplType(self):
+        r"""Specifies the template type for query.
+-DEFAULT: System default template.
+-CUSTOMIZE: custom template.
+        :rtype: str
+        """
+        return self._TplType
+
+    @TplType.setter
+    def TplType(self, TplType):
+        self._TplType = TplType
+
+
+    def _deserialize(self, params):
+        self._TplIds = params.get("TplIds")
+        self._TplNames = params.get("TplNames")
+        self._MongoVersion = params.get("MongoVersion")
+        self._TplType = params.get("TplType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceParamTplResponse(AbstractModel):
+    r"""DescribeDBInstanceParamTpl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamTpls: Parameter template list info.
+        :type ParamTpls: list of ParamTpl
+        :param _TotalCount: Total number of parameter templates.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ParamTpls = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ParamTpls(self):
+        r"""Parameter template list info.
+        :rtype: list of ParamTpl
+        """
+        return self._ParamTpls
+
+    @ParamTpls.setter
+    def ParamTpls(self, ParamTpls):
+        self._ParamTpls = ParamTpls
+
+    @property
+    def TotalCount(self):
+        r"""Total number of parameter templates.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ParamTpls") is not None:
+            self._ParamTpls = []
+            for item in params.get("ParamTpls"):
+                obj = ParamTpl()
+                obj._deserialize(item)
+                self._ParamTpls.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     r"""DescribeDBInstances request structure.
 
@@ -7129,6 +7796,40 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribePasswordRotationRequest(AbstractModel):
+    r"""DescribePasswordRotation request structure.
+
+    """
+
+
+class DescribePasswordRotationResponse(AbstractModel):
+    r"""DescribePasswordRotation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSRVConnectionDomainRequest(AbstractModel):
     r"""DescribeSRVConnectionDomain request structure.
 
@@ -7839,6 +8540,40 @@ class DisableSRVConnectionUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class EnablePasswordRotationRequest(AbstractModel):
+    r"""EnablePasswordRotation request structure.
+
+    """
+
+
+class EnablePasswordRotationResponse(AbstractModel):
+    r"""EnablePasswordRotation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -10733,6 +11468,115 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ModifyBackupExpireTimeRequest(AbstractModel):
+    r"""ModifyBackupExpireTime request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        :param _ExpireTime: <p>Expiration time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss</p>
+        :type ExpireTime: str
+        :param _BackupIds: <p>Backup ID.</p>
+        :type BackupIds: list of int
+        """
+        self._InstanceId = None
+        self._ExpireTime = None
+        self._BackupIds = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ExpireTime(self):
+        r"""<p>Expiration time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def BackupIds(self):
+        r"""<p>Backup ID.</p>
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._BackupIds = params.get("BackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupExpireTimeResponse(AbstractModel):
+    r"""ModifyBackupExpireTime response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedBackups: <p>Failed backup ID.</p>
+        :type FailedBackups: list of int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FailedBackups = None
+        self._RequestId = None
+
+    @property
+    def FailedBackups(self):
+        r"""<p>Failed backup ID.</p>
+        :rtype: list of int
+        """
+        return self._FailedBackups
+
+    @FailedBackups.setter
+    def FailedBackups(self, FailedBackups):
+        self._FailedBackups = FailedBackups
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FailedBackups = params.get("FailedBackups")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
     r"""ModifyDBInstanceNetworkAddress request structure.
 
@@ -12151,6 +12995,194 @@ class Operation(AbstractModel):
         
 
 
+class ParamTpl(AbstractModel):
+    r"""Database parameter template
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TplName: Parameter template name.
+        :type TplName: str
+        :param _TplId: Parameter template ID.
+        :type TplId: str
+        :param _MongoVersion: Database versions applicable to the parameter template.
+- MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
+- MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
+- MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
+- MONGO_44_WT: Version of the MongoDB 4.4 WiredTiger storage engine.
+- MONGO_50_WT: Version of the MongoDB 5.0 WiredTiger storage engine.
+- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
+- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
+        :type MongoVersion: str
+        :param _ClusterType: Database type that the parameter template applies to.
+- REPLSET: replica set instance.
+- SHARD: shard instance.
+-STANDALONE: Single-node instance.
+        :type ClusterType: str
+        :param _TplDesc: Parameter template description.
+        :type TplDesc: str
+        :param _TplType: Template type.
+-DEFAULT: System default template.
+-CUSTOMIZE: custom template.
+        :type TplType: str
+        """
+        self._TplName = None
+        self._TplId = None
+        self._MongoVersion = None
+        self._ClusterType = None
+        self._TplDesc = None
+        self._TplType = None
+
+    @property
+    def TplName(self):
+        r"""Parameter template name.
+        :rtype: str
+        """
+        return self._TplName
+
+    @TplName.setter
+    def TplName(self, TplName):
+        self._TplName = TplName
+
+    @property
+    def TplId(self):
+        r"""Parameter template ID.
+        :rtype: str
+        """
+        return self._TplId
+
+    @TplId.setter
+    def TplId(self, TplId):
+        self._TplId = TplId
+
+    @property
+    def MongoVersion(self):
+        r"""Database versions applicable to the parameter template.
+- MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
+- MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
+- MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
+- MONGO_44_WT: Version of the MongoDB 4.4 WiredTiger storage engine.
+- MONGO_50_WT: Version of the MongoDB 5.0 WiredTiger storage engine.
+- MONGO_60_WT: version of the MongoDB 6.0 WiredTiger storage engine.
+- MONGO_70_WT: version of the MongoDB 7.0 WiredTiger storage engine.
+- MONGO_80_WT: version of the MongoDB 8.0 WiredTiger storage engine.
+        :rtype: str
+        """
+        return self._MongoVersion
+
+    @MongoVersion.setter
+    def MongoVersion(self, MongoVersion):
+        self._MongoVersion = MongoVersion
+
+    @property
+    def ClusterType(self):
+        r"""Database type that the parameter template applies to.
+- REPLSET: replica set instance.
+- SHARD: shard instance.
+-STANDALONE: Single-node instance.
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def TplDesc(self):
+        r"""Parameter template description.
+        :rtype: str
+        """
+        return self._TplDesc
+
+    @TplDesc.setter
+    def TplDesc(self, TplDesc):
+        self._TplDesc = TplDesc
+
+    @property
+    def TplType(self):
+        r"""Template type.
+-DEFAULT: System default template.
+-CUSTOMIZE: custom template.
+        :rtype: str
+        """
+        return self._TplType
+
+    @TplType.setter
+    def TplType(self, TplType):
+        self._TplType = TplType
+
+
+    def _deserialize(self, params):
+        self._TplName = params.get("TplName")
+        self._TplId = params.get("TplId")
+        self._MongoVersion = params.get("MongoVersion")
+        self._ClusterType = params.get("ClusterType")
+        self._TplDesc = params.get("TplDesc")
+        self._TplType = params.get("TplType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamType(AbstractModel):
+    r"""Database parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Parameter.
+        :type Key: str
+        :param _Value: Parameter value.
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""Parameter.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""Parameter value.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RemoveNodeList(AbstractModel):
     r"""Node details of the instance to be modified.
 
@@ -12481,7 +13513,7 @@ class ResetDBInstancePasswordRequest(AbstractModel):
         r"""
         :param _InstanceId: Specifies the instance ID. Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and copy the instance ID from the instance list.
         :type InstanceId: str
-        :param _UserName: Specifies the account name for which the password needs to be changed. The [DescribeAccountUsers](https://www.tencentcloud.com/document/product/240/74804) API can be called to obtain the account list and copy the account name for which the password needs to be changed.
+        :param _UserName: Specifies the account name for which the password needs to be changed. The [DescribeAccountUsers](https://www.tencentcloud.com/document/product/240/79919) API can be called to obtain the account list and copy the account name for which the password needs to be changed.
         :type UserName: str
         :param _Password: Specifies a new password for the account. Password complexity requirements:
 - It should contain 8-32 characters.
@@ -12505,7 +13537,7 @@ class ResetDBInstancePasswordRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""Specifies the account name for which the password needs to be changed. The [DescribeAccountUsers](https://www.tencentcloud.com/document/product/240/74804) API can be called to obtain the account list and copy the account name for which the password needs to be changed.
+        r"""Specifies the account name for which the password needs to be changed. The [DescribeAccountUsers](https://www.tencentcloud.com/document/product/240/79919) API can be called to obtain the account list and copy the account name for which the password needs to be changed.
         :rtype: str
         """
         return self._UserName

@@ -27,7 +27,7 @@ class TcsasClient(AbstractClient):
 
 
     def AddTeamMember(self, request):
-        r"""This API is used to add a team member
+        r"""This API is used to add a team member.
 
         :param request: Request instance for AddTeamMember.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.AddTeamMemberRequest`
@@ -96,7 +96,7 @@ class TcsasClient(AbstractClient):
 
 
     def CreateApplication(self, request):
-        r"""This API is used to create an application.
+        r"""This API is used to create a superapp.
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateApplicationRequest`
@@ -142,7 +142,7 @@ class TcsasClient(AbstractClient):
 
 
     def CreateApplicationSensitiveAPI(self, request):
-        r"""This API is used to create a sensitive API of an application.
+        r"""This API is used to create a superapp sensitive API.
 
         :param request: Request instance for CreateApplicationSensitiveAPI.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateApplicationSensitiveAPIRequest`
@@ -349,7 +349,7 @@ class TcsasClient(AbstractClient):
 
 
     def CreateMNPDomainACL(self, request):
-        r"""This API is used to add a domain name to the allowlist / blocklist of a mini program.
+        r"""This API is used to create a domain allowlist/blocklist for a mini program.
 
         :param request: Request instance for CreateMNPDomainACL.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPDomainACLRequest`
@@ -372,7 +372,7 @@ class TcsasClient(AbstractClient):
 
 
     def CreateMNPSecretKey(self, request):
-        r"""This API is used to create a secret key for a mini program or mini game.
+        r"""This API is used to create a package secret key for a mini program or mini game.
 
         :param request: Request instance for CreateMNPSecretKey.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPSecretKeyRequest`
@@ -510,7 +510,7 @@ class TcsasClient(AbstractClient):
 
 
     def DeleteApplication(self, request):
-        r"""This API is used to delete the applications.
+        r"""This API is used to delete a superapp.
 
         :param request: Request instance for DeleteApplication.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DeleteApplicationRequest`
@@ -533,7 +533,7 @@ class TcsasClient(AbstractClient):
 
 
     def DeleteApplicationSensitiveAPI(self, request):
-        r"""This API is used to delete a sensitive API.
+        r"""This API is used to delete a superapp sensitive API.
 
         :param request: Request instance for DeleteApplicationSensitiveAPI.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DeleteApplicationSensitiveAPIRequest`
@@ -694,7 +694,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeAPPDataDetailLineChart(self, request):
-        r"""This API is used to retrieve the line chart data for selected superapp metrics.
+        r"""This API is used to query the line chart data for selected superapp metrics.
 
         :param request: Request instance for DescribeAPPDataDetailLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAPPDataDetailLineChartRequest`
@@ -717,7 +717,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeAPPDataOverview(self, request):
-        r"""This API is used to retrieve an overview of the superapp data.
+        r"""This API is used to query the data overview for the selected superapp metrics.
 
         :param request: Request instance for DescribeAPPDataOverview.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAPPDataOverviewRequest`
@@ -740,7 +740,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeAdvertisingLineChart(self, request):
-        r"""This API is used to retrieve the advertising line chart data for a mini program within a specified date range.
+        r"""This API is used to query the advertising line chart data for a mini program within a specified date range.
 
         :param request: Request instance for DescribeAdvertisingLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAdvertisingLineChartRequest`
@@ -763,7 +763,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeAdvertisingOverview(self, request):
-        r"""This API is used to retrieve an overview of mini program ad metrics within a specified date range.
+        r"""This API is used to query the mini program advertising overview.
 
         :param request: Request instance for DescribeAdvertisingOverview.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAdvertisingOverviewRequest`
@@ -786,7 +786,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeApplication(self, request):
-        r"""This API is used to query the application details.
+        r"""This API is used to query the superapp details.
 
         :param request: Request instance for DescribeApplication.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationRequest`
@@ -809,7 +809,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeApplicationConfigFile(self, request):
-        r"""This API is used to query the configuration files of an application.
+        r"""This API is used to query the configuration files of a superapp.
 
         :param request: Request instance for DescribeApplicationConfigFile.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationConfigFileRequest`
@@ -832,7 +832,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeApplicationConfigInfos(self, request):
-        r"""This API is used to retrieve the configuration details for an superapp.
+        r"""This API is used to query the superapp configuration information.
 
         :param request: Request instance for DescribeApplicationConfigInfos.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationConfigInfosRequest`
@@ -855,7 +855,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeApplicationList(self, request):
-        r"""This API is used to query the applications.
+        r"""This API is used to query a list of superapps.
 
         :param request: Request instance for DescribeApplicationList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationListRequest`
@@ -878,7 +878,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeApplicationMNPList(self, request):
-        r"""This API is used to retrieve a list of the mini programs or mini games associated with a superapp.
+        r"""This API is used to query the mini program or mini game list associated with a superapp.
 
         :param request: Request instance for DescribeApplicationMNPList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationMNPListRequest`
@@ -901,7 +901,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeApplicationSensitiveAPIList(self, request):
-        r"""This API is used to list sensitive APIs of an application.
+        r"""This API is used to query a list of superapp sensitive APIs.
 
         :param request: Request instance for DescribeApplicationSensitiveAPIList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationSensitiveAPIListRequest`
@@ -947,7 +947,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeGlobalOverviewDataSummary(self, request):
-        r"""This API is used to retrieve a global overview summary of usage statistics.
+        r"""This API is used to query the data summary for the global overview.
 
         :param request: Request instance for DescribeGlobalOverviewDataSummary.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeGlobalOverviewDataSummaryRequest`
@@ -970,7 +970,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeGlobalOverviewReportDetail(self, request):
-        r"""This API is used to retrieve the detailed report data for global overview within a specified date range.
+        r"""This API is used to query the detailed report data for global overview within a specified date range.
 
         :param request: Request instance for DescribeGlobalOverviewReportDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeGlobalOverviewReportDetailRequest`
@@ -1016,7 +1016,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGAccessAnalysisDetail(self, request):
-        r"""This API is used to retrieve the detailed visit analysis data for a mini game within a specified date range.
+        r"""This API is used to query the detailed visit analysis data for a mini game within a specified date range.
 
         :param request: Request instance for DescribeMNGAccessAnalysisDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisDetailRequest`
@@ -1039,7 +1039,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGAccessAnalysisLineChart(self, request):
-        r"""This API is used to retrieve line chart analysis data for mini game visits.
+        r"""This API is used to query the mini game visit analysis line chart.
 
         :param request: Request instance for DescribeMNGAccessAnalysisLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisLineChartRequest`
@@ -1062,7 +1062,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGAccessAnalysisOverview(self, request):
-        r"""This API is used to retrieve an overview of visit analysis data for a mini game within a specified date range.
+        r"""This API is used to query an overview of visit analysis data for a mini game within a specified date range.
 
         :param request: Request instance for DescribeMNGAccessAnalysisOverview.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisOverviewRequest`
@@ -1085,7 +1085,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGActiveUserRealTimeStatistics(self, request):
-        r"""This API is used to retrieve the real-time active user statistics for a mini game.
+        r"""This API is used to query the mini game real-time active user statistics.
 
         :param request: Request instance for DescribeMNGActiveUserRealTimeStatistics.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGActiveUserRealTimeStatisticsRequest`
@@ -1108,7 +1108,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGAdvertisingDetail(self, request):
-        r"""This API is used to retrieve the advertising detailed data for a mini game over a specified period.
+        r"""This API is used to query the detailed mini game advertising data over a specified period.
 
         :param request: Request instance for DescribeMNGAdvertisingDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingDetailRequest`
@@ -1131,7 +1131,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGAdvertisingLineChart(self, request):
-        r"""This API is used to retrieve mini game advertising data in a line chart format.
+        r"""This API is used to query the mini game advertising data in a line chart format.
 
         :param request: Request instance for DescribeMNGAdvertisingLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingLineChartRequest`
@@ -1154,7 +1154,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGAdvertisingOverview(self, request):
-        r"""This API is used to retrieve an overview of mini game ad metrics within a specified date range.
+        r"""This API is used to query an overview of mini game ad metrics within a specified date range.
 
         :param request: Request instance for DescribeMNGAdvertisingOverview.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingOverviewRequest`
@@ -1200,7 +1200,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGCategory(self, request):
-        r"""This API is used to query the list of mini game types.
+        r"""This API is used to query the mini game categories.
 
         :param request: Request instance for DescribeMNGCategory.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGCategoryRequest`
@@ -1269,7 +1269,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGMAUDataDetail(self, request):
-        r"""This API is used to retrieve the detailed mini game monthly active user data.
+        r"""This API is used to query the detailed mini game monthly active user data.
 
         :param request: Request instance for DescribeMNGMAUDataDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAUDataDetailRequest`
@@ -1292,7 +1292,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGMAULineChart(self, request):
-        r"""This API is used to retrieve mini game monthly active user data in a line chart format.
+        r"""This API is used to query the mini game MAU line chart.
 
         :param request: Request instance for DescribeMNGMAULineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAULineChartRequest`
@@ -1315,7 +1315,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGMAUMonthlyComparisonMetricCard(self, request):
-        r"""This API is used to retrieve MAU comparison data for a mini game between two months.
+        r"""This API is used to query the MAU comparison data for a mini game between two months.
 
         :param request: Request instance for DescribeMNGMAUMonthlyComparisonMetricCard.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAUMonthlyComparisonMetricCardRequest`
@@ -1361,7 +1361,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGPaymentLineChart(self, request):
-        r"""This API is used to retrieve the line chart data for mini game payment.
+        r"""This API is used to query the mini game payment line chart.
 
         :param request: Request instance for DescribeMNGPaymentLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentLineChartRequest`
@@ -1384,7 +1384,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGPaymentOverview(self, request):
-        r"""This API is used to retrieve an overview of mini game payment data within a specified period.
+        r"""This API is used to query an overview of mini game payment data within a specified period.
 
         :param request: Request instance for DescribeMNGPaymentOverview.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentOverviewRequest`
@@ -1407,7 +1407,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGPaymentReportDetail(self, request):
-        r"""This API is used to retrieve a detailed payment report data for a mini game.
+        r"""This API is used to query a detailed payment report data for a mini game.
 
         :param request: Request instance for DescribeMNGPaymentReportDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentReportDetailRequest`
@@ -1430,7 +1430,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGPaymentRetentionAnalysis(self, request):
-        r"""This API is used to retrieve the mini game payment retention data.
+        r"""This API is used to query the mini game payment retention data.
 
         :param request: Request instance for DescribeMNGPaymentRetentionAnalysis.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentRetentionAnalysisRequest`
@@ -1476,7 +1476,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGReleasedVersionHistory(self, request):
-        r"""This API is used to query the released mini game versions.
+        r"""This API is used to query the release version history of a mini game.
 
         :param request: Request instance for DescribeMNGReleasedVersionHistory.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGReleasedVersionHistoryRequest`
@@ -1499,7 +1499,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGRetentionData(self, request):
-        r"""This API is used to retrieve user retention data for a mini game within a specified date range.
+        r"""This API is used to query the user retention data for a mini game within a specified date range.
 
         :param request: Request instance for DescribeMNGRetentionData.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGRetentionDataRequest`
@@ -1522,7 +1522,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGSensitiveAPIPermissionApproval(self, request):
-        r"""This API is used to query the details of a sensitive API permission request for a mini game.
+        r"""This API is used to query the details of permission requests to allow a mini game to call sensitive APIs.
 
         :param request: Request instance for DescribeMNGSensitiveAPIPermissionApproval.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSensitiveAPIPermissionApprovalRequest`
@@ -1545,7 +1545,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGSensitiveAPIPermissionList(self, request):
-        r"""This API is used to query the list of sensitive APIs that available to the mini game.
+        r"""This API is used to query a list of sensitive APIs that are available to the mini game.
 
         :param request: Request instance for DescribeMNGSensitiveAPIPermissionList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSensitiveAPIPermissionListRequest`
@@ -1568,7 +1568,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGVersion(self, request):
-        r"""This API is used to query the creation result of a mini game version.
+        r"""This API is used to query the mini game version creation results.
 
         :param request: Request instance for DescribeMNGVersion.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGVersionRequest`
@@ -1614,7 +1614,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPAccessAnalysisOverview(self, request):
-        r"""This API is used to retrieve an overview of visit analysis data for a mini program within a specified date range.
+        r"""This API is used to query the overview of mini program visit analysis data within a specified date range.
 
         :param request: Request instance for DescribeMNPAccessAnalysisOverview.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAccessAnalysisOverviewRequest`
@@ -1637,7 +1637,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPActiveUserRealTimeStatistics(self, request):
-        r"""This API is used to retrieve the real-time active user statistics for a mini program.
+        r"""This API is used to query the mini program real-time active user statistics.
 
         :param request: Request instance for DescribeMNPActiveUserRealTimeStatistics.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPActiveUserRealTimeStatisticsRequest`
@@ -1660,7 +1660,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPAdvertisingDetail(self, request):
-        r"""This API is used to retrieve the detailed advertising data for a mini program within a specified date range.
+        r"""This API is used to query the detailed advertising data for a mini program within a specified date range.
 
         :param request: Request instance for DescribeMNPAdvertisingDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAdvertisingDetailRequest`
@@ -1683,7 +1683,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPAllStageVersions(self, request):
-        r"""This API is used to query the mini program version information.
+        r"""This API is used to query versions of a mini program across all stages.
 
         :param request: Request instance for DescribeMNPAllStageVersions.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAllStageVersionsRequest`
@@ -1706,7 +1706,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPApprovalList(self, request):
-        r"""This API is used to list the approval requests related with a mini program version.
+        r"""This API is used to query a list of approval requests related with a mini program.
 
         :param request: Request instance for DescribeMNPApprovalList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPApprovalListRequest`
@@ -1729,7 +1729,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPCategory(self, request):
-        r"""This API is used to query the mini program types.
+        r"""This API is used to query the mini program category list.
 
         :param request: Request instance for DescribeMNPCategory.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPCategoryRequest`
@@ -1752,7 +1752,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPDomainACL(self, request):
-        r"""This API is used to query the domain allowlist / blocklist of a mini program.
+        r"""This API is used to query the domain allowlist/blocklist of a mini program.
 
         :param request: Request instance for DescribeMNPDomainACL.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPDomainACLRequest`
@@ -1775,7 +1775,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPList(self, request):
-        r"""This API is used to query the mini programs.
+        r"""This API is used to query the mini program list.
 
         :param request: Request instance for DescribeMNPList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPListRequest`
@@ -1798,7 +1798,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPMAUDataDetail(self, request):
-        r"""This API is used to retrieve the detailed mini program monthly active user data.
+        r"""This API is used to query the detailed mini program monthly active user data.
 
         :param request: Request instance for DescribeMNPMAUDataDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAUDataDetailRequest`
@@ -1821,7 +1821,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPMAULineChart(self, request):
-        r"""This API is used to retrieve the mini program monthly active user data in a line chart format.
+        r"""This API is used to query the mini program monthly active user data in a line chart format.
 
         :param request: Request instance for DescribeMNPMAULineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAULineChartRequest`
@@ -1844,7 +1844,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPMAUMetricCard(self, request):
-        r"""This API is used to retrieve MAU comparison data for a mini program between two months.
+        r"""This API is used to query the MAU comparison data for a mini program between two months.
 
         :param request: Request instance for DescribeMNPMAUMetricCard.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAUMetricCardRequest`
@@ -1890,7 +1890,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPPageAnalysisDetail(self, request):
-        r"""This API is used to retrieve the detailed page visit data for a mini program over a specified period.
+        r"""This API is used to query the detailed mini program page visit data.
 
         :param request: Request instance for DescribeMNPPageAnalysisDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPPageAnalysisDetailRequest`
@@ -1936,7 +1936,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPReleasedVersionHistory(self, request):
-        r"""This API is used to list all released versions of a mini program.
+        r"""This API is used to query the release version history of a mini program.
 
         :param request: Request instance for DescribeMNPReleasedVersionHistory.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPReleasedVersionHistoryRequest`
@@ -1959,7 +1959,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPReportDataLineChart(self, request):
-        r"""This API is used to retrieve the line chart data for mini program visit analysis within a given date range.
+        r"""This API is used to query the mini program visit analysis line chart within a given date range.
 
         :param request: Request instance for DescribeMNPReportDataLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPReportDataLineChartRequest`
@@ -1982,7 +1982,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPReportDetail(self, request):
-        r"""This API is used to retrieve the detailed mini program visit analysis data.
+        r"""This API is used to query the detailed mini program visit analysis data.
 
         :param request: Request instance for DescribeMNPReportDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPReportDetailRequest`
@@ -2005,7 +2005,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPRetentionData(self, request):
-        r"""This API is used to retrieve user retention data for a mini program within a specified date range.
+        r"""This API is used to query the mini program user retention data within a specified date range.
 
         :param request: Request instance for DescribeMNPRetentionData.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPRetentionDataRequest`
@@ -2028,7 +2028,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPSensitiveAPIPermissionApproval(self, request):
-        r"""This API is used to query details of a specific permission request to call sensitive APIs.
+        r"""This API is used to query the details of a sensitive API permission request for a mini program.
 
         :param request: Request instance for DescribeMNPSensitiveAPIPermissionApproval.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionApprovalRequest`
@@ -2051,7 +2051,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPSensitiveAPIPermissionApprovalList(self, request):
-        r"""This API is used to query permission requests to allow a mini program calling sensitive APIs.
+        r"""This API is used to query a list of permission requests to allow a mini program to call sensitive APIs.
 
         :param request: Request instance for DescribeMNPSensitiveAPIPermissionApprovalList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionApprovalListRequest`
@@ -2120,7 +2120,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribePaymentDataDetail(self, request):
-        r"""This API is used to retrieve the detailed standard payment data for specified  mini programs within a specified date range.
+        r"""This API is used to query the mini program payment data details within a specified date range.
 
         :param request: Request instance for DescribePaymentDataDetail.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataDetailRequest`
@@ -2143,7 +2143,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribePaymentDataLineChart(self, request):
-        r"""This API is used to retrieve the line chart data related to standard payment for a mini program within a specified date range.
+        r"""This API is used to query the mini program payment line chart within a specified date range.
 
         :param request: Request instance for DescribePaymentDataLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataLineChartRequest`
@@ -2166,7 +2166,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribePaymentDataOverview(self, request):
-        r"""This API is used to retrieve an overview of mini program payment data within a specified date range.
+        r"""This API is used to query an overview of mini program payment data within a specified date range.
 
         :param request: Request instance for DescribePaymentDataOverview.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataOverviewRequest`
@@ -2189,7 +2189,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeRoleList(self, request):
-        r"""This API is used to query the roles.
+        r"""This API is used to query a list of roles.
 
         :param request: Request instance for DescribeRoleList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeRoleListRequest`
@@ -2235,7 +2235,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeTeamList(self, request):
-        r"""This API is used to query the teams.
+        r"""This API is used to query a list of teams.
 
         :param request: Request instance for DescribeTeamList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeTeamListRequest`
@@ -2258,7 +2258,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeTeamMemberList(self, request):
-        r"""This API is used to query the team members.
+        r"""This API is used to query a list of team members.
 
         :param request: Request instance for DescribeTeamMemberList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeTeamMemberListRequest`
@@ -2327,7 +2327,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeUserList(self, request):
-        r"""This API is used to query the users.
+        r"""This API is used to query a list of users.
 
         :param request: Request instance for DescribeUserList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeUserListRequest`
@@ -2350,7 +2350,7 @@ class TcsasClient(AbstractClient):
 
 
     def DisableApplicationSensitiveAPI(self, request):
-        r"""This API is used to set a sensitive API to restricted.
+        r"""This API is used to disable a superapp sensitive API.
 
         :param request: Request instance for DisableApplicationSensitiveAPI.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DisableApplicationSensitiveAPIRequest`
@@ -2373,7 +2373,7 @@ class TcsasClient(AbstractClient):
 
 
     def EnableApplicationSensitiveAPI(self, request):
-        r"""This API is used to set an application sensitive API to public.
+        r"""This API is used to enable a superapp sensitive API.
 
         :param request: Request instance for EnableApplicationSensitiveAPI.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.EnableApplicationSensitiveAPIRequest`
@@ -2396,7 +2396,7 @@ class TcsasClient(AbstractClient):
 
 
     def ModifyApplication(self, request):
-        r"""This API is used to change the application information.
+        r"""This API is used to change the superapp information.
 
         :param request: Request instance for ModifyApplication.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.ModifyApplicationRequest`
@@ -2511,7 +2511,7 @@ class TcsasClient(AbstractClient):
 
 
     def ModifyMNP(self, request):
-        r"""This API is used to modify the mini program information.
+        r"""This API is used to edit the mini program information.
 
         :param request: Request instance for ModifyMNP.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.ModifyMNPRequest`
@@ -2626,7 +2626,7 @@ class TcsasClient(AbstractClient):
 
 
     def ProcessMNPApproval(self, request):
-        r"""This API is used to approve or reject the release of a mini program version.
+        r"""This API is used to process mini program approval requests.
 
         :param request: Request instance for ProcessMNPApproval.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.ProcessMNPApprovalRequest`
@@ -2649,7 +2649,7 @@ class TcsasClient(AbstractClient):
 
 
     def ProcessMNPSensitiveAPIPermissionApproval(self, request):
-        r"""This API is used to approve or reject the sensitive API permission requests.
+        r"""This API is used to process a sensitive API permission request for a mini program.
 
         :param request: Request instance for ProcessMNPSensitiveAPIPermissionApproval.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.ProcessMNPSensitiveAPIPermissionApprovalRequest`
@@ -2787,7 +2787,7 @@ class TcsasClient(AbstractClient):
 
 
     def RollbackMNPVersion(self, request):
-        r"""This API is used to rollback a mini program online version.
+        r"""This API is used to roll back the released version of a mini program to a specified version.
 
         :param request: Request instance for RollbackMNPVersion.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.RollbackMNPVersionRequest`

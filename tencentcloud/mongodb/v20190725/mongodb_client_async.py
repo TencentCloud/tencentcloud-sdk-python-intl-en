@@ -151,6 +151,25 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDBInstanceParamTpl(
+            self,
+            request: models.CreateDBInstanceParamTplRequest,
+            opts: Dict = None,
+    ) -> models.CreateDBInstanceParamTplResponse:
+        """
+        This API is used to create a parameter template for TencentDB for MongoDB.
+        **Description:** The CreateDBInstanceParamTpl API is in public beta. During this period, this API is only applicable to beta test participants.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDBInstanceParamTpl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDBInstanceParamTplResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLogDownloadTask(
             self,
             request: models.CreateLogDownloadTaskRequest,
@@ -182,6 +201,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DeleteAccountUser"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAccountUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDBBackups(
+            self,
+            request: models.DeleteDBBackupsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDBBackupsResponse:
+        """
+        This API is used to delete full backups.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDBBackups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDBBackupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -439,6 +476,44 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBInstanceParamTpl(
+            self,
+            request: models.DescribeDBInstanceParamTplRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBInstanceParamTplResponse:
+        """
+        This API is used to query ALL MongoDB database parameter templates under the current account.
+        **Description:** The DescribeDBInstanceParamTpl API is in public beta. During this period, this API is only applicable to beta test participants.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBInstanceParamTpl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBInstanceParamTplResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBInstanceParamTplDetail(
+            self,
+            request: models.DescribeDBInstanceParamTplDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBInstanceParamTplDetailResponse:
+        """
+        This API is used to query parameter template details of a cloud database instance for MongoDB.
+        **Description:** The DescribeDBInstanceParamTplDetail API is in public beta. During this period, this interface is only applicable to beta test participants.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBInstanceParamTplDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBInstanceParamTplDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBInstances(
             self,
             request: models.DescribeDBInstancesRequest,
@@ -547,6 +622,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePasswordRotation(
+            self,
+            request: models.DescribePasswordRotationRequest,
+            opts: Dict = None,
+    ) -> models.DescribePasswordRotationResponse:
+        """
+        Retrieve the rotation status info
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePasswordRotation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePasswordRotationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSRVConnectionDomain(
             self,
             request: models.DescribeSRVConnectionDomainRequest,
@@ -650,6 +743,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DisableSRVConnectionUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DisableSRVConnectionUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnablePasswordRotation(
+            self,
+            request: models.EnablePasswordRotationRequest,
+            opts: Dict = None,
+    ) -> models.EnablePasswordRotationResponse:
+        """
+        Enable password rotation
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnablePasswordRotation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnablePasswordRotationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -830,6 +941,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "KillOps"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.KillOpsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBackupExpireTime(
+            self,
+            request: models.ModifyBackupExpireTimeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBackupExpireTimeResponse:
+        """
+        Modify backup expiration time
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBackupExpireTime"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBackupExpireTimeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

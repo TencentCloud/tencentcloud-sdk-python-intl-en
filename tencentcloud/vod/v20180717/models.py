@@ -10824,7 +10824,7 @@ class AigcAudioCloneInputFileInfo(AbstractModel):
         :param _Type: <p>Input video file type. Valid values: <li>File: On-demand media file;</li> <li>Url: Accessible URL;</li></p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
-        :param _FileId: <p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can get this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when Type value is File. Description: 1. Image less than 10M is recommended. 2. Image format values: jpeg, jpg, png.</p>
+        :param _FileId: <p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can get this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when Type value is File. Description: 1. Image less than 10M is recommended. 2. Image format values: jpeg, jpg, png.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FileId: str
         :param _Url: <p>Accessible file URL. This parameter is valid when Type value is Url. Description: 1. Recommended for use with images less than 10M; 2. Image format value: jpeg, jpg, png.</p>
@@ -10849,7 +10849,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileId(self):
-        r"""<p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can get this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when Type value is File. Description: 1. Image less than 10M is recommended. 2. Image format values: jpeg, jpg, png.</p>
+        r"""<p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can get this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when Type value is File. Description: 1. Image less than 10M is recommended. 2. Image format values: jpeg, jpg, png.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11006,7 +11006,7 @@ class AigcAudioReferenceAudioInfo(AbstractModel):
         r"""
         :param _Type: <p>Accessible file URL. This parameter is valid when Type value is Url. Description: 1. Recommended image less than 7M; 2. Image format value: jpeg, jpg, png, webp.</p>
         :type Type: str
-        :param _FileId: <p>The media file ID of the audio file, which is the globally unique identifier of this file on VOD, is assigned by the VOD backend after a successful upload. You can retrieve this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.</p>
+        :param _FileId: <p>The media file ID of the audio file, which is the globally unique identifier of this file on VOD, is assigned by the VOD backend after a successful upload. You can retrieve this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.</p>
         :type FileId: str
         :param _Url: <p>Audio file URL, which must be external network accessible. This parameter is valid when the Type value is Url.</p>
         :type Url: str
@@ -11028,7 +11028,7 @@ class AigcAudioReferenceAudioInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""<p>The media file ID of the audio file, which is the globally unique identifier of this file on VOD, is assigned by the VOD backend after a successful upload. You can retrieve this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.</p>
+        r"""<p>The media file ID of the audio file, which is the globally unique identifier of this file on VOD, is assigned by the VOD backend after a successful upload. You can retrieve this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.</p>
         :rtype: str
         """
         return self._FileId
@@ -11072,7 +11072,7 @@ class AigcAudioReferenceVideoInfo(AbstractModel):
         r"""
         :param _Type: <p>Input video file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible Url;</li></p>
         :type Type: str
-        :param _FileId: <p>The media file ID of the video file, which is the globally unique identifier of the file in VOD, is assigned by the VOD backend after a successful upload. You can get this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.</p>
+        :param _FileId: <p>The media file ID of the video file, which is the globally unique identifier of the file in VOD, is assigned by the VOD backend after a successful upload. You can get this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.</p>
         :type FileId: str
         :param _Url: <p>Reference video URL must be external network accessible. This parameter is valid when Type value is Url.</p>
         :type Url: str
@@ -11094,7 +11094,7 @@ class AigcAudioReferenceVideoInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""<p>The media file ID of the video file, which is the globally unique identifier of the file in VOD, is assigned by the VOD backend after a successful upload. You can get this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.</p>
+        r"""<p>The media file ID of the video file, which is the globally unique identifier of the file in VOD, is assigned by the VOD backend after a successful upload. You can get this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.</p>
         :rtype: str
         """
         return self._FileId
@@ -13520,7 +13520,7 @@ class AigcVideoRedrawTaskInputFileInfo(AbstractModel):
         r"""
         :param _Type: <p>Input video file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible Url;</li></p>
         :type Type: str
-        :param _FileId: <p>Media file ID, the globally unique identifier of this file in VOD, is assigned by the VOD backend after a successful upload. You can obtain this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File. Description: 1. Recommended image size is less than 10M. 2. Image format values: jpeg, jpg, png.</p>
+        :param _FileId: <p>Media file ID, the globally unique identifier of this file in VOD, is assigned by the VOD backend after a successful upload. You can obtain this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File. Description: 1. Recommended image size is less than 10M. 2. Image format values: jpeg, jpg, png.</p>
         :type FileId: str
         :param _Url: <p>Accessible file URL. This parameter is valid when Type value is Url. Description: 1. Recommended image less than 10M; 2. Image format value is jpeg, jpg, png.</p>
         :type Url: str
@@ -13542,7 +13542,7 @@ class AigcVideoRedrawTaskInputFileInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""<p>Media file ID, the globally unique identifier of this file in VOD, is assigned by the VOD backend after a successful upload. You can obtain this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File. Description: 1. Recommended image size is less than 10M. 2. Image format values: jpeg, jpg, png.</p>
+        r"""<p>Media file ID, the globally unique identifier of this file in VOD, is assigned by the VOD backend after a successful upload. You can obtain this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File. Description: 1. Recommended image size is less than 10M. 2. Image format values: jpeg, jpg, png.</p>
         :rtype: str
         """
         return self._FileId
@@ -13860,7 +13860,7 @@ class AigcVideoTaskInput(AbstractModel):
         :type FileInfos: list of AigcVideoTaskInputFileInfo
         :param _SubjectInfos: <p>Fixed entity input information for AIGC tasks.</p>
         :type SubjectInfos: list of AigcVideoTaskInputSubjectInfo
-        :param _LastFrameFileId: <p>Media file ID used as the end frame to generate video. This file has a globally unique ID on VOD, assigned by the VOD backend after successful upload. You can get this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>.</p>
+        :param _LastFrameFileId: <p>Media file ID used as the end frame to generate video. This file has a globally unique ID on VOD, assigned by the VOD backend after successful upload. You can get this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>.</p>
         :type LastFrameFileId: str
         :param _LastFrameUrl: <p>Media file URL used as the tail frame to generate video. Description:</p><ol><li>Only support models GV, Kling, and Vidu. Other models are not currently supported. When ModelName is GV, if you specify this parameter, you must simultaneously specify FileInfos as the head frame for video generation. When ModelName is Kling, ModelVersion is 2.1, and output resolution Resolution is specified as 1080P, you can specify this parameter. When ModelName is Vidu and ModelVersion is q2-pro or q2-turbo, you can specify this parameter.</li><li>Image size must be less than 5M.</li><li><ol start="3"><li>Image format value: jpeg, jpg, png, webp.</li></ol></li></ol>
         :type LastFrameUrl: str
@@ -13942,7 +13942,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def LastFrameFileId(self):
-        r"""<p>Media file ID used as the end frame to generate video. This file has a globally unique ID on VOD, assigned by the VOD backend after successful upload. You can get this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>.</p>
+        r"""<p>Media file ID used as the end frame to generate video. This file has a globally unique ID on VOD, assigned by the VOD backend after successful upload. You can get this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>.</p>
         :rtype: str
         """
         return self._LastFrameFileId
@@ -14099,10 +14099,12 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         :type Type: str
         :param _Category: <p>File category. Value is:</p><ul><li>Image: image. <strong>Note that the Usage field defines the image type.</strong></li><li>Video: video.</li></ul>
         :type Category: str
-        :param _FileId: <p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can obtain this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File. Description:</p><ol><li>Images less than 10M are recommended;</li><li>Image format values: jpeg, jpg, png.</li></ol>
+        :param _FileId: <p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can obtain this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File. Description:</p><ol><li>Images less than 10M are recommended;</li><li>Image format values: jpeg, jpg, png.</li></ol>
         :type FileId: str
         :param _Url: <p>Accessible file URL. This parameter is valid when the Type value is URL.<br>Description:</p><ol><li>Images less than 10M are recommended.</li><li>Image format values: jpeg, jpg, png.</li></ol>
         :type Url: str
+        :param _Base64: 
+        :type Base64: str
         :param _ReferenceType: <p>Reference Type, applicable to GV, Kling, and PixVerse models.<br>Note:<br>When using the GV model, it can be used as a reference method, available values: asset means material, style means style;<br>When using the Kling model and Category is Video, distinct reference video types can be identified, feature means feature reference video, base means video to be edited;<br>When using the PixVerse model, applicable to multi-image (subject) reference generation mode, available values: subject means subject, background means background;</p>
         :type ReferenceType: str
         :param _ObjectId: <p>Usage: Vidu subject Id.<br>Vidu subject Id: prompt can be used via @subject Id. Valid at that time when Category is Image.</p>
@@ -14120,6 +14122,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         self._Category = None
         self._FileId = None
         self._Url = None
+        self._Base64 = None
         self._ReferenceType = None
         self._ObjectId = None
         self._VoiceId = None
@@ -14151,7 +14154,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""<p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can obtain this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File. Description:</p><ol><li>Images less than 10M are recommended;</li><li>Image format values: jpeg, jpg, png.</li></ol>
+        r"""<p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can obtain this field in the <a href="/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File. Description:</p><ol><li>Images less than 10M are recommended;</li><li>Image format values: jpeg, jpg, png.</li></ol>
         :rtype: str
         """
         return self._FileId
@@ -14170,6 +14173,17 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
     @Url.setter
     def Url(self, Url):
         self._Url = Url
+
+    @property
+    def Base64(self):
+        r"""
+        :rtype: str
+        """
+        return self._Base64
+
+    @Base64.setter
+    def Base64(self, Base64):
+        self._Base64 = Base64
 
     @property
     def ReferenceType(self):
@@ -14243,6 +14257,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         self._Category = params.get("Category")
         self._FileId = params.get("FileId")
         self._Url = params.get("Url")
+        self._Base64 = params.get("Base64")
         self._ReferenceType = params.get("ReferenceType")
         self._ObjectId = params.get("ObjectId")
         self._VoiceId = params.get("VoiceId")
@@ -19063,6 +19078,123 @@ class CDNDomainInfo(AbstractModel):
         if params.get("Config") is not None:
             self._Config = CDNDomainConfig()
             self._Config._deserialize(params.get("Config"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CLSLogsetInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogsetId: 
+        :type LogsetId: str
+        :param _LogsetName: 
+        :type LogsetName: str
+        """
+        self._LogsetId = None
+        self._LogsetName = None
+
+    @property
+    def LogsetId(self):
+        r"""
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def LogsetName(self):
+        r"""
+        :rtype: str
+        """
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+
+    def _deserialize(self, params):
+        self._LogsetId = params.get("LogsetId")
+        self._LogsetName = params.get("LogsetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CLSTopicInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: Log topic ID.
+        :type TopicId: str
+        :param _TopicName: Log topic name.
+        :type TopicName: str
+        :param _LogsetId: Log Set ID.
+        :type LogsetId: str
+        """
+        self._TopicId = None
+        self._TopicName = None
+        self._LogsetId = None
+
+    @property
+    def TopicId(self):
+        r"""Log topic ID.
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""Log topic name.
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def LogsetId(self):
+        r"""Log Set ID.
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._LogsetId = params.get("LogsetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33432,6 +33564,85 @@ class DeleteCDNDomainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCLSTopicRequest(AbstractModel):
+    r"""DeleteCLSTopic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: The region to which the log set belongs, the values are: <li>ap-guangzhou: Guangzhou;</li> <li>ap-beijing: Beijing;</li> <li>ap-chengdu: Chengdu;</li> < li>ap-chongqing: Chongqing; </li> <li>ap-nanjing: Nanjing; </li> <li>ap-shanghai: Shanghai; </li> <li>ap-singapore: Singapore. </li>
+        :type CLSRegion: str
+        :param _TopicId: Log topic ID.
+        :type TopicId: str
+        """
+        self._CLSRegion = None
+        self._TopicId = None
+
+    @property
+    def CLSRegion(self):
+        r"""The region to which the log set belongs, the values are: <li>ap-guangzhou: Guangzhou;</li> <li>ap-beijing: Beijing;</li> <li>ap-chengdu: Chengdu;</li> < li>ap-chongqing: Chongqing; </li> <li>ap-nanjing: Nanjing; </li> <li>ap-shanghai: Shanghai; </li> <li>ap-singapore: Singapore. </li>
+        :rtype: str
+        """
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+    @property
+    def TopicId(self):
+        r"""Log topic ID.
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCLSTopicResponse(AbstractModel):
+    r"""DeleteCLSTopic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteClassRequest(AbstractModel):
     r"""DeleteClass request structure.
 
@@ -37354,6 +37565,249 @@ class DescribeCDNUsageDataResponse(AbstractModel):
                 obj = StatDataItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCLSLogsetsRequest(AbstractModel):
+    r"""DescribeCLSLogsets request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: Region of the logset belonging to. Valid values: <li>ap-guangzhou: Guangzhou;</li> <li>ap-beijing: Beijing;</li> <li>ap-chengdu: Chengdu;</li> <li>ap-chongqing: Chongqing;</li> <li>ap-nanjing: Nanjing;</li> <li>ap-shanghai: Shanghai;</li> <li>ap-singapore: Singapore.</li>
+        :type CLSRegion: str
+        """
+        self._CLSRegion = None
+
+    @property
+    def CLSRegion(self):
+        r"""Region of the logset belonging to. Valid values: <li>ap-guangzhou: Guangzhou;</li> <li>ap-beijing: Beijing;</li> <li>ap-chengdu: Chengdu;</li> <li>ap-chongqing: Chongqing;</li> <li>ap-nanjing: Nanjing;</li> <li>ap-shanghai: Shanghai;</li> <li>ap-singapore: Singapore.</li>
+        :rtype: str
+        """
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCLSLogsetsResponse(AbstractModel):
+    r"""DescribeCLSLogsets response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Logsets: Queried logset list.
+        :type Logsets: list of CLSLogsetInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Logsets = None
+        self._RequestId = None
+
+    @property
+    def Logsets(self):
+        r"""Queried logset list.
+        :rtype: list of CLSLogsetInfo
+        """
+        return self._Logsets
+
+    @Logsets.setter
+    def Logsets(self, Logsets):
+        self._Logsets = Logsets
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Logsets") is not None:
+            self._Logsets = []
+            for item in params.get("Logsets"):
+                obj = CLSLogsetInfo()
+                obj._deserialize(item)
+                self._Logsets.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCLSTopicsRequest(AbstractModel):
+    r"""DescribeCLSTopics request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: Region of the logset belonging to. Valid values: <li>ap-guangzhou: Guangzhou;</li> <li>ap-beijing: Beijing;</li> <li>ap-chengdu: Chengdu;</li> <li>ap-chongqing: Chongqing;</li> <li>ap-nanjing: Nanjing;</li> <li>ap-shanghai: Shanghai;</li> <li>ap-singapore: Singapore.</li>
+        :type CLSRegion: str
+        :param _LogsetId: Log Set ID of Log Topic.
+        :type LogsetId: str
+        :param _TopicIds: Log topic ID list. If left empty, means query all log topics.
+        :type TopicIds: list of str
+        :param _Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned entries. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        """
+        self._CLSRegion = None
+        self._LogsetId = None
+        self._TopicIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def CLSRegion(self):
+        r"""Region of the logset belonging to. Valid values: <li>ap-guangzhou: Guangzhou;</li> <li>ap-beijing: Beijing;</li> <li>ap-chengdu: Chengdu;</li> <li>ap-chongqing: Chongqing;</li> <li>ap-nanjing: Nanjing;</li> <li>ap-shanghai: Shanghai;</li> <li>ap-singapore: Singapore.</li>
+        :rtype: str
+        """
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+    @property
+    def LogsetId(self):
+        r"""Log Set ID of Log Topic.
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicIds(self):
+        r"""Log topic ID list. If left empty, means query all log topics.
+        :rtype: list of str
+        """
+        return self._TopicIds
+
+    @TopicIds.setter
+    def TopicIds(self, TopicIds):
+        self._TopicIds = TopicIds
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of returned entries. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicIds = params.get("TopicIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCLSTopicsResponse(AbstractModel):
+    r"""DescribeCLSTopics response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of log topics.
+        :type TotalCount: int
+        :param _Topics: Log topic list.
+        :type Topics: list of CLSTopicInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Topics = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of log topics.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Topics(self):
+        r"""Log topic list.
+        :rtype: list of CLSTopicInfo
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = CLSTopicInfo()
+                obj._deserialize(item)
+                self._Topics.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -78284,8 +78738,8 @@ If MediaType is not filled in or takes an empty string, the file type will be au
         :param _ExpireTime: The media file expiry time, format according to ISO 8601. For details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         :param _StorageRegion: Designate the upload park, applicable only to the user with special requirement for upload target region.
-<li>If left blank, files will be uploaded to your [default region](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) by default.</li>
-<li>If a designated upload park is specified, please confirm the [upload storage settings](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) have already enabled corresponding storage regions.</li>
+<li>If left blank, files will be uploaded to your [default region](https://www.tencentcloud.com/zh/document/product/266/18874?has_map=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) by default.</li>
+<li>If a designated upload park is specified, please confirm the [upload storage settings](https://www.tencentcloud.com/zh/document/product/266/18874) have already enabled corresponding storage regions.</li>
         :type StorageRegion: str
         :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.
         :type ClassId: int
@@ -78401,8 +78855,8 @@ If MediaType is not filled in or takes an empty string, the file type will be au
     @property
     def StorageRegion(self):
         r"""Designate the upload park, applicable only to the user with special requirement for upload target region.
-<li>If left blank, files will be uploaded to your [default region](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) by default.</li>
-<li>If a designated upload park is specified, please confirm the [upload storage settings](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) have already enabled corresponding storage regions.</li>
+<li>If left blank, files will be uploaded to your [default region](https://www.tencentcloud.com/zh/document/product/266/18874?has_map=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) by default.</li>
+<li>If a designated upload park is specified, please confirm the [upload storage settings](https://www.tencentcloud.com/zh/document/product/266/18874) have already enabled corresponding storage regions.</li>
         :rtype: str
         """
         return self._StorageRegion

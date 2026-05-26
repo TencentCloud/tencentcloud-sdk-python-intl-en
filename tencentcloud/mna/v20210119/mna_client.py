@@ -279,6 +279,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccessRegions(self, request):
+        r"""Query the access region list.
+
+        :param request: Request instance for DescribeAccessRegions.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DescribeAccessRegionsRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DescribeAccessRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DownloadActiveDeviceCount(self, request):
         r"""Download the number of active devices statistics
 
@@ -914,6 +937,29 @@ class MnaClient(AbstractClient):
             body = self.call("GroupDeleteDevice", params, headers=headers)
             response = json.loads(body)
             model = models.GroupDeleteDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDeviceAccessRegions(self, request):
+        r"""This API is used to modify device connectivity regions.
+
+        :param request: Request instance for ModifyDeviceAccessRegions.
+        :type request: :class:`tencentcloud.mna.v20210119.models.ModifyDeviceAccessRegionsRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.ModifyDeviceAccessRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeviceAccessRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeviceAccessRegionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

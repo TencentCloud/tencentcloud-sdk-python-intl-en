@@ -9956,10 +9956,16 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
         :type DataDisks: list of DataDisk
         :param _ForceStop: Whether to forcibly shut down a running instance. It is recommended to manually shut down a running instance first and then reset the user password. Valid values:<br><li>true: Forcibly shut down an instance after a normal shutdown fails.</li><br><li>false: Do not forcibly shut down an instance after a normal shutdown fails.</li><br><br>Default value: false.<br><br>Forced shutdown is equivalent to turning off a physical computer's power switch. Forced shutdown may cause data loss or file system corruption and should only be used when a server cannot be shut down normally.
         :type ForceStop: bool
+        :param _SystemDisk: Configuration information of the system disk to be expanded. Only cloud disks are supported for expansion. You must specify either DataDisks or SystemDisk, but not both.
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param _ResizeOnline: Whether to perform online resizing.
+        :type ResizeOnline: bool
         """
         self._InstanceId = None
         self._DataDisks = None
         self._ForceStop = None
+        self._SystemDisk = None
+        self._ResizeOnline = None
 
     @property
     def InstanceId(self):
@@ -9995,6 +10001,28 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
     def ForceStop(self, ForceStop):
         self._ForceStop = ForceStop
 
+    @property
+    def SystemDisk(self):
+        r"""Configuration information of the system disk to be expanded. Only cloud disks are supported for expansion. You must specify either DataDisks or SystemDisk, but not both.
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        """
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def ResizeOnline(self):
+        r"""Whether to perform online resizing.
+        :rtype: bool
+        """
+        return self._ResizeOnline
+
+    @ResizeOnline.setter
+    def ResizeOnline(self, ResizeOnline):
+        self._ResizeOnline = ResizeOnline
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10005,6 +10033,10 @@ class InquiryPriceResizeInstanceDisksRequest(AbstractModel):
                 obj._deserialize(item)
                 self._DataDisks.append(obj)
         self._ForceStop = params.get("ForceStop")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = SystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        self._ResizeOnline = params.get("ResizeOnline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

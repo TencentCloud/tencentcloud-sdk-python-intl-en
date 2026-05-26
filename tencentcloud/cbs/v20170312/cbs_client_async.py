@@ -412,6 +412,27 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDiskStoragePool(
+            self,
+            request: models.DescribeDiskStoragePoolRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDiskStoragePoolResponse:
+        """
+        This API is used to query the list of dedicated cloud disk clusters under the current user account.
+
+        * You can query by the dedicated cloud disk cluster ID (`CdcId`) and availability zone (`zone`). Multiple filters are combined with AND. For details about filtering, please see `Filter`.
+        * If the parameter is empty, a number (as specified by `Limit`; the default is 20) of dedicated cloud disk clusters are returned.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDiskStoragePool"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDiskStoragePoolResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDisks(
             self,
             request: models.DescribeDisksRequest,

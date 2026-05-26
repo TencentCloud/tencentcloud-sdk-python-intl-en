@@ -61,6 +61,42 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseAccountCAM(
+            self,
+            request: models.CloseAccountCAMRequest,
+            opts: Dict = None,
+    ) -> models.CloseAccountCAMResponse:
+        """
+        This API is used to disable CAM verification service for a database account.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseAccountCAM"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseAccountCAMResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CloseAuditService(
+            self,
+            request: models.CloseAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.CloseAuditServiceResponse:
+        """
+        This API is used to disable the audit feature for a database instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseAuditServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CloseDBExtranetAccess(
             self,
             request: models.CloseDBExtranetAccessRequest,
@@ -79,24 +115,6 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CloseServerlessDBExtranetAccess(
-            self,
-            request: models.CloseServerlessDBExtranetAccessRequest,
-            opts: Dict = None,
-    ) -> models.CloseServerlessDBExtranetAccessResponse:
-        """
-        This API is used to disable the public network address of a PostgreSQL for Serverless instance.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CloseServerlessDBExtranetAccess"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CloseServerlessDBExtranetAccessResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateAccount(
             self,
             request: models.CreateAccountRequest,
@@ -110,6 +128,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "CreateAccount"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAuditLogFile(
+            self,
+            request: models.CreateAuditLogFileRequest,
+            opts: Dict = None,
+    ) -> models.CreateAuditLogFileResponse:
+        """
+        Creating an Audit Log File
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAuditLogFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAuditLogFileResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -164,24 +200,6 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "CreateDBInstanceNetworkAccess"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateDBInstanceNetworkAccessResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateDBInstances(
-            self,
-            request: models.CreateDBInstancesRequest,
-            opts: Dict = None,
-    ) -> models.CreateDBInstancesResponse:
-        """
-        This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateDBInstances"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateDBInstancesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -297,24 +315,6 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateServerlessDBInstance(
-            self,
-            request: models.CreateServerlessDBInstanceRequest,
-            opts: Dict = None,
-    ) -> models.CreateServerlessDBInstanceResponse:
-        """
-        This API is used to create a PostgreSQL for Serverless instance. If the creation succeeds, the instance ID will be returned.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateServerlessDBInstance"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateServerlessDBInstanceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteAccount(
             self,
             request: models.DeleteAccountRequest,
@@ -328,6 +328,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "DeleteAccount"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAuditLogFile(
+            self,
+            request: models.DeleteAuditLogFileRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuditLogFileResponse:
+        """
+        Deletes an audit log file
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuditLogFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuditLogFileResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -375,7 +393,7 @@ class PostgresClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteDBInstanceNetworkAccessResponse:
         """
-        This API is used to delete a network of an instance.
+        This API is used to delete a network from an instance while keeping at least one network.
         """
         
         kwargs = {}
@@ -447,31 +465,13 @@ class PostgresClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteReadOnlyGroupNetworkAccessResponse:
         """
-        This API is used to delete a network of an RO group.
+        This API is used to delete a network from an RO group (at least 1 network must remain).
         """
         
         kwargs = {}
         kwargs["action"] = "DeleteReadOnlyGroupNetworkAccess"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteReadOnlyGroupNetworkAccessResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteServerlessDBInstance(
-            self,
-            request: models.DeleteServerlessDBInstanceRequest,
-            opts: Dict = None,
-    ) -> models.DeleteServerlessDBInstanceResponse:
-        """
-        This API is used to delete a PostgreSQL for Serverless instance.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteServerlessDBInstance"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteServerlessDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -508,6 +508,60 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "DescribeAccounts"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditInstanceList(
+            self,
+            request: models.DescribeAuditInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditInstanceListResponse:
+        """
+        Query the audit instance list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditInstanceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogFiles(
+            self,
+            request: models.DescribeAuditLogFilesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogFilesResponse:
+        """
+        Queries audit log files
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogs(
+            self,
+            request: models.DescribeAuditLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogsResponse:
+        """
+        This API is used to query a Database Audit log.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -735,9 +789,9 @@ class PostgresClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDBInstanceHAConfigResponse:
         """
-        This API is used to query the HA configuration of an instance, which includes:
-        <li>Allow a standby node to promote to a primary node.
-        <li>Allow a semi-sync instance to adopt sync or async replication.
+        This API (DescribeDBInstanceHConfig) is used to query instance HA configuration information. The HA configuration information includes:
+        <li>This API is used to configure conditions for allowing a secondary node to switch over to a primary node.</li>.
+        <li>This API is used to configure conditions for using synchronous or asynchronous replication in semi-sync instances.</li>.
         """
         
         kwargs = {}
@@ -821,24 +875,6 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeDBSlowlogs(
-            self,
-            request: models.DescribeDBSlowlogsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeDBSlowlogsResponse:
-        """
-        This API is used to get a slow query log. Since it was deprecated on September 1, 2021, it has no longer returned data. You need to use the [DescribeSlowQueryList](https://intl.cloud.tencent.com/document/product/409/60540?from_cn_redirect=1) API instead to get slow query logs.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeDBSlowlogs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeDBSlowlogsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeDBVersions(
             self,
             request: models.DescribeDBVersionsRequest,
@@ -863,7 +899,7 @@ class PostgresClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDBXlogsResponse:
         """
-        This API is used to get the instance Xlog list. This API is disused and replaced by the [DescribeBaseBackups](https://www.tencentcloud.com/zh/document/product/409/54343) API.
+        This api is used to get instance Xlog list. This interface belongs to early api and has stopped feature iteration. We recommend using api [DescribeLogBackups](https://www.tencentcloud.com/document/api/409/89021?from_cn_redirect=1) as substitution.
         """
         
         kwargs = {}
@@ -1079,7 +1115,7 @@ class PostgresClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeProductConfigResponse:
         """
-        This API is used to query the purchasable specification configuration. u200cThis API is disused and replaced by the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
+        This api is used to query sales specification configuration. This interface belongs to the early stage and has stopped feature iteration. It is recommended to use the new api [DescribeClasses](https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1) as an alternative.
         """
         
         kwargs = {}
@@ -1122,24 +1158,6 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "DescribeRegions"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRegionsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeServerlessDBInstances(
-            self,
-            request: models.DescribeServerlessDBInstancesRequest,
-            opts: Dict = None,
-    ) -> models.DescribeServerlessDBInstancesResponse:
-        """
-        This API is used to query the details of one or more PostgreSQL for Serverless instances.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeServerlessDBInstances"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeServerlessDBInstancesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1249,24 +1267,6 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "DisIsolateDBInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DisIsolateDBInstancesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def InitDBInstances(
-            self,
-            request: models.InitDBInstancesRequest,
-            opts: Dict = None,
-    ) -> models.InitDBInstancesResponse:
-        """
-        This API is used to initialize a TencentDB for PostgreSQL instance. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "InitDBInstances"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.InitDBInstancesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1398,6 +1398,24 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyAuditService(
+            self,
+            request: models.ModifyAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAuditServiceResponse:
+        """
+        Modify the audit feature of the database instance
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAuditServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyBackupDownloadRestriction(
             self,
             request: models.ModifyBackupDownloadRestrictionRequest,
@@ -1512,9 +1530,9 @@ class PostgresClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyDBInstanceHAConfigResponse:
         """
-        This API is used to modify the HA configuration of an instance. which includes:
-        <li>Allow the standby node to promote to the primary node.
-        <li>Allow a semi-sync instance to adopt sync or async replication.
+        This API is used to modify instance HA configuration info. Among them, HA configuration info includes:.
+        <li>This API is used to configure conditions for allowing a secondary node to switch over to a primary node.</li>.
+        <li>This API is used to configure conditions for using synchronous replication or async replication in semi-sync instances.</li>.
         """
         
         kwargs = {}
@@ -1622,7 +1640,7 @@ class PostgresClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyDBInstanceSpecResponse:
         """
-        This API is used to modify instance specifications, including memory and disk size.
+        This API is used to modify instance specifications, including memory, Disk and Cpu.
         """
         
         kwargs = {}
@@ -1760,6 +1778,42 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def OpenAccountCAM(
+            self,
+            request: models.OpenAccountCAMRequest,
+            opts: Dict = None,
+    ) -> models.OpenAccountCAMResponse:
+        """
+        This API is used to enable CAM verification service for a database account.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenAccountCAM"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenAccountCAMResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenAuditService(
+            self,
+            request: models.OpenAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.OpenAuditServiceResponse:
+        """
+        Enable the audit feature of the database instance
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenAuditServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def OpenDBExtranetAccess(
             self,
             request: models.OpenDBExtranetAccessRequest,
@@ -1778,24 +1832,6 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def OpenServerlessDBExtranetAccess(
-            self,
-            request: models.OpenServerlessDBExtranetAccessRequest,
-            opts: Dict = None,
-    ) -> models.OpenServerlessDBExtranetAccessResponse:
-        """
-        This API is used to enable the public network address of a PostgreSQL for Serverless instance.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "OpenServerlessDBExtranetAccess"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.OpenServerlessDBExtranetAccessResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def RebalanceReadOnlyGroup(
             self,
             request: models.RebalanceReadOnlyGroupRequest,
@@ -1809,6 +1845,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "RebalanceReadOnlyGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RebalanceReadOnlyGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RefreshAccountPassword(
+            self,
+            request: models.RefreshAccountPasswordRequest,
+            opts: Dict = None,
+    ) -> models.RefreshAccountPasswordResponse:
+        """
+        This API is used to manually reset the password for an account with CAM Verification enabled.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RefreshAccountPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RefreshAccountPasswordResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1928,10 +1982,10 @@ class PostgresClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SwitchDBInstancePrimaryResponse:
         """
-        This API is used to enable the primary-standby switch of an instance.
-        <li>By initiating a switch, you can verify whether the primary-standby switch is performed correctly.
-        <li>By using forced switch, you can forcibly initiate the primary-standby switch when the delay of replica node failed to meet the switch requirement.
-        <li>This operation can only be performed for the primary instance.
+        This API is used to switch over primary and replica nodes.
+        <li>This API is used to verify whether the business can correctly handle instance primary/backup switch scenarios by initiating switch proactively.</li>.
+        <li>This API is used to force a primary-secondary switch when the backup node latency fails to satisfy the switch condition by using forced switching.</li>.
+        <li>This API is used to perform this operation on the primary instance only.</li>.
         """
         
         kwargs = {}
@@ -1956,24 +2010,6 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "UnlockAccount"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnlockAccountResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def UpgradeDBInstance(
-            self,
-            request: models.UpgradeDBInstanceRequest,
-            opts: Dict = None,
-    ) -> models.UpgradeDBInstanceResponse:
-        """
-        This API is used to upgrade instance configurations. u200cThis API is disused and replaced by the [ModifyDBInstanceSpec](https://intl.cloud.tencent.com/document/api/409/63689?from_cn_redirect=1) API.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UpgradeDBInstance"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UpgradeDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

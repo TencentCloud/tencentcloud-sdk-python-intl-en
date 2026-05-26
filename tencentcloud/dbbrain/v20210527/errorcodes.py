@@ -23,11 +23,17 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# 
+FAILEDOPERATION_PAASAUDITNOTOPENED = 'FailedOperation.PaasAuditNotOpened'
+
 # Loading data
 FAILEDOPERATION_SEGMENTLOADING = 'FailedOperation.SegmentLoading'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
+
+# 
+INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 
 # Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'

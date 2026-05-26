@@ -59,7 +59,7 @@ FAILEDOPERATION_GETNETSERVICEINFOERROR = 'FailedOperation.GetNetServiceInfoError
 # Failed to query the details of a read-write instance
 FAILEDOPERATION_GETOSSINFOERROR = 'FailedOperation.GetOssInfoError'
 
-# The request to query the instance information failed.
+# Request to query instance information failed
 FAILEDOPERATION_INSTANCEQUERYERROR = 'FailedOperation.InstanceQueryError'
 
 # Insufficient account balance
@@ -122,7 +122,7 @@ INTERNALERROR_INTERNALHTTPSERVERERROR = 'InternalError.InternalHttpServerError'
 # Failed to query instances by security group.
 INTERNALERROR_LISTINSTANCEFAILED = 'InternalError.ListInstanceFailed'
 
-# Instance query error.
+# Query instance error
 INTERNALERROR_LISTINSTANCESERROR = 'InternalError.ListInstancesError'
 
 # Public network operation failed.
@@ -224,6 +224,9 @@ INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = 'InvalidParameterValue.ParamBothSetErr
 # Incorrect parameter.
 INVALIDPARAMETERVALUE_PARAMERROR = 'InvalidParameterValue.ParamError'
 
+# The input parameter {{1}} is invalid. Check parameters and try again.
+INVALIDPARAMETERVALUE_PARAMETERMISMATCHERROR = 'InvalidParameterValue.ParameterMismatchError'
+
 # Invalid parameter value
 INVALIDPARAMETERVALUE_PARAMETEROUTRANGEERROR = 'InvalidParameterValue.ParameterOutRangeError'
 
@@ -269,6 +272,9 @@ OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = 'OperationDenied.ClusterOpNotAllowedE
 # For the cluster in this status, the operation is not allowed.
 OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = 'OperationDenied.ClusterStatusDeniedError'
 
+# Task creation failed. {{1}}
+OPERATIONDENIED_CREATETASKANDFLOWERROR = 'OperationDenied.CreateTaskAndFlowError'
+
 # 
 OPERATIONDENIED_DISABLENEWSTORAGEMULTIZONEDEPLOYMENTERROR = 'OperationDenied.DisableNewStorageMultiZoneDeploymentError'
 
@@ -290,6 +296,9 @@ OPERATIONDENIED_INSTANCESTATUSLIMITERROR = 'OperationDenied.InstanceStatusLimitE
 # Insufficient account balance.
 OPERATIONDENIED_INSUFFICIENTBALANCEERROR = 'OperationDenied.InsufficientBalanceError'
 
+# Invalid region input
+OPERATIONDENIED_INVALIDREGIONFORROLLBACKNEWCLUSTER = 'OperationDenied.InvalidRegionForRollbackNewCluster'
+
 # Not a roll back cluster of {{1}}.
 OPERATIONDENIED_ISNOTROLLBACKCLUSTERERROR = 'OperationDenied.IsNotRollbackClusterError'
 
@@ -299,8 +308,14 @@ OPERATIONDENIED_LENGTHOVERLIMIT = 'OperationDenied.LengthOverLimit'
 # The cloned cluster is not within {{1}} days of {{2}}.
 OPERATIONDENIED_LIMITDAYFORAUDITREPLAYERROR = 'OperationDenied.LimitDayForAuditReplayError'
 
+# Parameter missing, {{1}}
+OPERATIONDENIED_MISSINGPARAMETERERROR = 'OperationDenied.MissingParameterError'
+
 # 
 OPERATIONDENIED_NEWSTORAGEONLYSUPPORT80ERROR = 'OperationDenied.NewStorageOnlySupport80Error'
+
+# No available resources.
+OPERATIONDENIED_NOAVALIABLERESOUCEERROR = 'OperationDenied.NoAvaliableResouceError'
 
 # 
 OPERATIONDENIED_ONLYNEWSTORAGESUPPORTSTORAGECOMPRESSIONERROR = 'OperationDenied.OnlyNewStorageSupportStorageCompressionError'
@@ -332,6 +347,9 @@ OPERATIONDENIED_PROXYVERSIONCHECKERROR = 'OperationDenied.ProxyVersionCheckError
 # Verification failure of proxy availability zone.
 OPERATIONDENIED_PROXYZONECHECKERROR = 'OperationDenied.ProxyZoneCheckError'
 
+# Unknown exception. Contact our customer service to handle.
+OPERATIONDENIED_SECONDARYCACHEUNKNOWNERROR = 'OperationDenied.SecondaryCacheUnknownError'
+
 # For the serverless cluster in this status, the operation is not allowed.
 OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = 'OperationDenied.ServerlessClusterStatusDenied'
 
@@ -358,6 +376,9 @@ RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = 'ResourceNotFound.InstanceNotFoundError
 
 # The resource corresponding to the parameter does not exist.
 RESOURCENOTFOUND_RESOURCEERROR = 'ResourceNotFound.ResourceError'
+
+# User resource is not found
+RESOURCENOTFOUND_RESOURCENOTFOUNDERR = 'ResourceNotFound.ResourceNotFoundErr'
 
 # Failed to lock the instance, so the operation cannot be performed temporarily.
 RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = 'ResourceUnavailable.InstanceLockFail'

@@ -294,7 +294,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAigcAudioClone(self, request):
-        r"""This API is used to create AIGC voice replication. Note that calling this API will incur fees. See the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#96b3b59a-f9e1-49e9-966a-bedb70a4bf12).
+        r"""This API is used to create AIGC voice replication. Note that calling this API will incur fees. See the [billing documentation](https://intl.cloud.tencent.com/document/product/266/14666#87e472ca-9c95-4658-ab7b-8f2130608419).
 
         :param request: Request instance for CreateAigcAudioClone.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcAudioCloneRequest`
@@ -1476,6 +1476,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCLSTopic(self, request):
+        r"""Delete the log topic enabled by VOD.
+
+        :param request: Request instance for DeleteCLSTopic.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteCLSTopicRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteCLSTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCLSTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCLSTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteClass(self, request):
         r"""* A category can be deleted only if it has no subcategories and associated media files;
         * Otherwise, [delete the media files](https://intl.cloud.tencent.com/document/product/266/31764?from_cn_redirect=1) and subcategories first before deleting the category.
@@ -2342,6 +2365,52 @@ class VodClient(AbstractClient):
             body = self.call("DescribeCDNUsageData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCDNUsageDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCLSLogsets(self, request):
+        r"""Query the CLS log set created by VOD.
+
+        :param request: Request instance for DescribeCLSLogsets.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCLSLogsetsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCLSLogsetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCLSLogsets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCLSLogsetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCLSTopics(self, request):
+        r"""Query the log topic list created by VOD.
+
+        :param request: Request instance for DescribeCLSTopics.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCLSTopicsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCLSTopicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCLSTopics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCLSTopicsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

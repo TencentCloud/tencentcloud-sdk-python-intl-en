@@ -31,7 +31,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddTeamMemberResponse:
         """
-        This API is used to add a team member
+        This API is used to add a team member.
         """
         
         kwargs = {}
@@ -85,7 +85,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateApplicationResponse:
         """
-        This API is used to create an application.
+        This API is used to create a superapp.
         """
         
         kwargs = {}
@@ -121,7 +121,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateApplicationSensitiveAPIResponse:
         """
-        This API is used to create a sensitive API of an application.
+        This API is used to create a superapp sensitive API.
         """
         
         kwargs = {}
@@ -283,7 +283,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateMNPDomainACLResponse:
         """
-        This API is used to add a domain name to the allowlist / blocklist of a mini program.
+        This API is used to create a domain allowlist/blocklist for a mini program.
         """
         
         kwargs = {}
@@ -301,7 +301,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateMNPSecretKeyResponse:
         """
-        This API is used to create a secret key for a mini program or mini game.
+        This API is used to create a package secret key for a mini program or mini game.
         """
         
         kwargs = {}
@@ -409,7 +409,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteApplicationResponse:
         """
-        This API is used to delete the applications.
+        This API is used to delete a superapp.
         """
         
         kwargs = {}
@@ -427,7 +427,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteApplicationSensitiveAPIResponse:
         """
-        This API is used to delete a sensitive API.
+        This API is used to delete a superapp sensitive API.
         """
         
         kwargs = {}
@@ -553,7 +553,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAPPDataDetailLineChartResponse:
         """
-        This API is used to retrieve the line chart data for selected superapp metrics.
+        This API is used to query the line chart data for selected superapp metrics.
         """
         
         kwargs = {}
@@ -571,7 +571,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAPPDataOverviewResponse:
         """
-        This API is used to retrieve an overview of the superapp data.
+        This API is used to query the data overview for the selected superapp metrics.
         """
         
         kwargs = {}
@@ -589,7 +589,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAdvertisingLineChartResponse:
         """
-        This API is used to retrieve the advertising line chart data for a mini program within a specified date range.
+        This API is used to query the advertising line chart data for a mini program within a specified date range.
         """
         
         kwargs = {}
@@ -607,7 +607,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAdvertisingOverviewResponse:
         """
-        This API is used to retrieve an overview of mini program ad metrics within a specified date range.
+        This API is used to query the mini program advertising overview.
         """
         
         kwargs = {}
@@ -625,7 +625,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeApplicationResponse:
         """
-        This API is used to query the application details.
+        This API is used to query the superapp details.
         """
         
         kwargs = {}
@@ -643,7 +643,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeApplicationConfigFileResponse:
         """
-        This API is used to query the configuration files of an application.
+        This API is used to query the configuration files of a superapp.
         """
         
         kwargs = {}
@@ -661,7 +661,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeApplicationConfigInfosResponse:
         """
-        This API is used to retrieve the configuration details for an superapp.
+        This API is used to query the superapp configuration information.
         """
         
         kwargs = {}
@@ -679,7 +679,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeApplicationListResponse:
         """
-        This API is used to query the applications.
+        This API is used to query a list of superapps.
         """
         
         kwargs = {}
@@ -697,7 +697,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeApplicationMNPListResponse:
         """
-        This API is used to retrieve a list of the mini programs or mini games associated with a superapp.
+        This API is used to query the mini program or mini game list associated with a superapp.
         """
         
         kwargs = {}
@@ -715,7 +715,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeApplicationSensitiveAPIListResponse:
         """
-        This API is used to list sensitive APIs of an application.
+        This API is used to query a list of superapp sensitive APIs.
         """
         
         kwargs = {}
@@ -751,7 +751,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeGlobalOverviewDataSummaryResponse:
         """
-        This API is used to retrieve a global overview summary of usage statistics.
+        This API is used to query the data summary for the global overview.
         """
         
         kwargs = {}
@@ -769,7 +769,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeGlobalOverviewReportDetailResponse:
         """
-        This API is used to retrieve the detailed report data for global overview within a specified date range.
+        This API is used to query the detailed report data for global overview within a specified date range.
         """
         
         kwargs = {}
@@ -805,7 +805,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGAccessAnalysisDetailResponse:
         """
-        This API is used to retrieve the detailed visit analysis data for a mini game within a specified date range.
+        This API is used to query the detailed visit analysis data for a mini game within a specified date range.
         """
         
         kwargs = {}
@@ -823,7 +823,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGAccessAnalysisLineChartResponse:
         """
-        This API is used to retrieve line chart analysis data for mini game visits.
+        This API is used to query the mini game visit analysis line chart.
         """
         
         kwargs = {}
@@ -841,7 +841,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGAccessAnalysisOverviewResponse:
         """
-        This API is used to retrieve an overview of visit analysis data for a mini game within a specified date range.
+        This API is used to query an overview of visit analysis data for a mini game within a specified date range.
         """
         
         kwargs = {}
@@ -859,7 +859,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGActiveUserRealTimeStatisticsResponse:
         """
-        This API is used to retrieve the real-time active user statistics for a mini game.
+        This API is used to query the mini game real-time active user statistics.
         """
         
         kwargs = {}
@@ -877,7 +877,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGAdvertisingDetailResponse:
         """
-        This API is used to retrieve the advertising detailed data for a mini game over a specified period.
+        This API is used to query the detailed mini game advertising data over a specified period.
         """
         
         kwargs = {}
@@ -895,7 +895,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGAdvertisingLineChartResponse:
         """
-        This API is used to retrieve mini game advertising data in a line chart format.
+        This API is used to query the mini game advertising data in a line chart format.
         """
         
         kwargs = {}
@@ -913,7 +913,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGAdvertisingOverviewResponse:
         """
-        This API is used to retrieve an overview of mini game ad metrics within a specified date range.
+        This API is used to query an overview of mini game ad metrics within a specified date range.
         """
         
         kwargs = {}
@@ -949,7 +949,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGCategoryResponse:
         """
-        This API is used to query the list of mini game types.
+        This API is used to query the mini game categories.
         """
         
         kwargs = {}
@@ -1003,7 +1003,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGMAUDataDetailResponse:
         """
-        This API is used to retrieve the detailed mini game monthly active user data.
+        This API is used to query the detailed mini game monthly active user data.
         """
         
         kwargs = {}
@@ -1021,7 +1021,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGMAULineChartResponse:
         """
-        This API is used to retrieve mini game monthly active user data in a line chart format.
+        This API is used to query the mini game MAU line chart.
         """
         
         kwargs = {}
@@ -1039,7 +1039,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGMAUMonthlyComparisonMetricCardResponse:
         """
-        This API is used to retrieve MAU comparison data for a mini game between two months.
+        This API is used to query the MAU comparison data for a mini game between two months.
         """
         
         kwargs = {}
@@ -1075,7 +1075,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGPaymentLineChartResponse:
         """
-        This API is used to retrieve the line chart data for mini game payment.
+        This API is used to query the mini game payment line chart.
         """
         
         kwargs = {}
@@ -1093,7 +1093,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGPaymentOverviewResponse:
         """
-        This API is used to retrieve an overview of mini game payment data within a specified period.
+        This API is used to query an overview of mini game payment data within a specified period.
         """
         
         kwargs = {}
@@ -1111,7 +1111,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGPaymentReportDetailResponse:
         """
-        This API is used to retrieve a detailed payment report data for a mini game.
+        This API is used to query a detailed payment report data for a mini game.
         """
         
         kwargs = {}
@@ -1129,7 +1129,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGPaymentRetentionAnalysisResponse:
         """
-        This API is used to retrieve the mini game payment retention data.
+        This API is used to query the mini game payment retention data.
         """
         
         kwargs = {}
@@ -1165,7 +1165,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGReleasedVersionHistoryResponse:
         """
-        This API is used to query the released mini game versions.
+        This API is used to query the release version history of a mini game.
         """
         
         kwargs = {}
@@ -1183,7 +1183,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGRetentionDataResponse:
         """
-        This API is used to retrieve user retention data for a mini game within a specified date range.
+        This API is used to query the user retention data for a mini game within a specified date range.
         """
         
         kwargs = {}
@@ -1201,7 +1201,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGSensitiveAPIPermissionApprovalResponse:
         """
-        This API is used to query the details of a sensitive API permission request for a mini game.
+        This API is used to query the details of permission requests to allow a mini game to call sensitive APIs.
         """
         
         kwargs = {}
@@ -1219,7 +1219,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGSensitiveAPIPermissionListResponse:
         """
-        This API is used to query the list of sensitive APIs that available to the mini game.
+        This API is used to query a list of sensitive APIs that are available to the mini game.
         """
         
         kwargs = {}
@@ -1237,7 +1237,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGVersionResponse:
         """
-        This API is used to query the creation result of a mini game version.
+        This API is used to query the mini game version creation results.
         """
         
         kwargs = {}
@@ -1273,7 +1273,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPAccessAnalysisOverviewResponse:
         """
-        This API is used to retrieve an overview of visit analysis data for a mini program within a specified date range.
+        This API is used to query the overview of mini program visit analysis data within a specified date range.
         """
         
         kwargs = {}
@@ -1291,7 +1291,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPActiveUserRealTimeStatisticsResponse:
         """
-        This API is used to retrieve the real-time active user statistics for a mini program.
+        This API is used to query the mini program real-time active user statistics.
         """
         
         kwargs = {}
@@ -1309,7 +1309,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPAdvertisingDetailResponse:
         """
-        This API is used to retrieve the detailed advertising data for a mini program within a specified date range.
+        This API is used to query the detailed advertising data for a mini program within a specified date range.
         """
         
         kwargs = {}
@@ -1327,7 +1327,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPAllStageVersionsResponse:
         """
-        This API is used to query the mini program version information.
+        This API is used to query versions of a mini program across all stages.
         """
         
         kwargs = {}
@@ -1345,7 +1345,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPApprovalListResponse:
         """
-        This API is used to list the approval requests related with a mini program version.
+        This API is used to query a list of approval requests related with a mini program.
         """
         
         kwargs = {}
@@ -1363,7 +1363,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPCategoryResponse:
         """
-        This API is used to query the mini program types.
+        This API is used to query the mini program category list.
         """
         
         kwargs = {}
@@ -1381,7 +1381,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPDomainACLResponse:
         """
-        This API is used to query the domain allowlist / blocklist of a mini program.
+        This API is used to query the domain allowlist/blocklist of a mini program.
         """
         
         kwargs = {}
@@ -1399,7 +1399,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPListResponse:
         """
-        This API is used to query the mini programs.
+        This API is used to query the mini program list.
         """
         
         kwargs = {}
@@ -1417,7 +1417,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPMAUDataDetailResponse:
         """
-        This API is used to retrieve the detailed mini program monthly active user data.
+        This API is used to query the detailed mini program monthly active user data.
         """
         
         kwargs = {}
@@ -1435,7 +1435,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPMAULineChartResponse:
         """
-        This API is used to retrieve the mini program monthly active user data in a line chart format.
+        This API is used to query the mini program monthly active user data in a line chart format.
         """
         
         kwargs = {}
@@ -1453,7 +1453,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPMAUMetricCardResponse:
         """
-        This API is used to retrieve MAU comparison data for a mini program between two months.
+        This API is used to query the MAU comparison data for a mini program between two months.
         """
         
         kwargs = {}
@@ -1489,7 +1489,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPPageAnalysisDetailResponse:
         """
-        This API is used to retrieve the detailed page visit data for a mini program over a specified period.
+        This API is used to query the detailed mini program page visit data.
         """
         
         kwargs = {}
@@ -1525,7 +1525,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPReleasedVersionHistoryResponse:
         """
-        This API is used to list all released versions of a mini program.
+        This API is used to query the release version history of a mini program.
         """
         
         kwargs = {}
@@ -1543,7 +1543,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPReportDataLineChartResponse:
         """
-        This API is used to retrieve the line chart data for mini program visit analysis within a given date range.
+        This API is used to query the mini program visit analysis line chart within a given date range.
         """
         
         kwargs = {}
@@ -1561,7 +1561,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPReportDetailResponse:
         """
-        This API is used to retrieve the detailed mini program visit analysis data.
+        This API is used to query the detailed mini program visit analysis data.
         """
         
         kwargs = {}
@@ -1579,7 +1579,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPRetentionDataResponse:
         """
-        This API is used to retrieve user retention data for a mini program within a specified date range.
+        This API is used to query the mini program user retention data within a specified date range.
         """
         
         kwargs = {}
@@ -1597,7 +1597,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPSensitiveAPIPermissionApprovalResponse:
         """
-        This API is used to query details of a specific permission request to call sensitive APIs.
+        This API is used to query the details of a sensitive API permission request for a mini program.
         """
         
         kwargs = {}
@@ -1615,7 +1615,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPSensitiveAPIPermissionApprovalListResponse:
         """
-        This API is used to query permission requests to allow a mini program calling sensitive APIs.
+        This API is used to query a list of permission requests to allow a mini program to call sensitive APIs.
         """
         
         kwargs = {}
@@ -1669,7 +1669,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePaymentDataDetailResponse:
         """
-        This API is used to retrieve the detailed standard payment data for specified  mini programs within a specified date range.
+        This API is used to query the mini program payment data details within a specified date range.
         """
         
         kwargs = {}
@@ -1687,7 +1687,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePaymentDataLineChartResponse:
         """
-        This API is used to retrieve the line chart data related to standard payment for a mini program within a specified date range.
+        This API is used to query the mini program payment line chart within a specified date range.
         """
         
         kwargs = {}
@@ -1705,7 +1705,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePaymentDataOverviewResponse:
         """
-        This API is used to retrieve an overview of mini program payment data within a specified date range.
+        This API is used to query an overview of mini program payment data within a specified date range.
         """
         
         kwargs = {}
@@ -1723,7 +1723,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRoleListResponse:
         """
-        This API is used to query the roles.
+        This API is used to query a list of roles.
         """
         
         kwargs = {}
@@ -1759,7 +1759,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTeamListResponse:
         """
-        This API is used to query the teams.
+        This API is used to query a list of teams.
         """
         
         kwargs = {}
@@ -1777,7 +1777,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTeamMemberListResponse:
         """
-        This API is used to query the team members.
+        This API is used to query a list of team members.
         """
         
         kwargs = {}
@@ -1831,7 +1831,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeUserListResponse:
         """
-        This API is used to query the users.
+        This API is used to query a list of users.
         """
         
         kwargs = {}
@@ -1849,7 +1849,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DisableApplicationSensitiveAPIResponse:
         """
-        This API is used to set a sensitive API to restricted.
+        This API is used to disable a superapp sensitive API.
         """
         
         kwargs = {}
@@ -1867,7 +1867,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EnableApplicationSensitiveAPIResponse:
         """
-        This API is used to set an application sensitive API to public.
+        This API is used to enable a superapp sensitive API.
         """
         
         kwargs = {}
@@ -1885,7 +1885,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyApplicationResponse:
         """
-        This API is used to change the application information.
+        This API is used to change the superapp information.
         """
         
         kwargs = {}
@@ -1975,7 +1975,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyMNPResponse:
         """
-        This API is used to modify the mini program information.
+        This API is used to edit the mini program information.
         """
         
         kwargs = {}
@@ -2065,7 +2065,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ProcessMNPApprovalResponse:
         """
-        This API is used to approve or reject the release of a mini program version.
+        This API is used to process mini program approval requests.
         """
         
         kwargs = {}
@@ -2083,7 +2083,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ProcessMNPSensitiveAPIPermissionApprovalResponse:
         """
-        This API is used to approve or reject the sensitive API permission requests.
+        This API is used to process a sensitive API permission request for a mini program.
         """
         
         kwargs = {}
@@ -2191,7 +2191,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RollbackMNPVersionResponse:
         """
-        This API is used to rollback a mini program online version.
+        This API is used to roll back the released version of a mini program to a specified version.
         """
         
         kwargs = {}

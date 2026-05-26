@@ -25,10 +25,9 @@ class AbnormalEvent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AbnormalEventId: The error event ID. For details, see https://www.tencentcloud.com/document/product/647/37906?has_map=1
+        :param _AbnormalEventId: Exception event ID. view the specific value in the appendix: abnormal experience ID [mapping table](https://trtc.io/document/37906)
         :type AbnormalEventId: int
-        :param _PeerId: The remote user ID. If this parameter is empty, it indicates that the error event is not associated with a remote user.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PeerId: Remote user ID,"": indicates the exception event is not user-generated.
         :type PeerId: str
         """
         self._AbnormalEventId = None
@@ -36,7 +35,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AbnormalEventId(self):
-        r"""The error event ID. For details, see https://www.tencentcloud.com/document/product/647/37906?has_map=1
+        r"""Exception event ID. view the specific value in the appendix: abnormal experience ID [mapping table](https://trtc.io/document/37906)
         :rtype: int
         """
         return self._AbnormalEventId
@@ -47,8 +46,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PeerId(self):
-        r"""The remote user ID. If this parameter is empty, it indicates that the error event is not associated with a remote user.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Remote user ID,"": indicates the exception event is not user-generated.
         :rtype: str
         """
         return self._PeerId
@@ -181,7 +179,7 @@ class AgentConfig(AbstractModel):
         r"""
         :param _UserId: The robot's UserId is used to enter a room and initiate a task. note that this UserId cannot be duplicated with the host or audience [UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#UserId) in the current room. if multiple tasks are initiated in a room, the robot's UserId cannot be mutually duplicated. otherwise, the previous task will be interrupted. ensure the robot's UserId is unique in the room.
         :type UserId: str
-        :param _UserSig: Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. for specific calculation methods, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).
+        :param _UserSig: Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. for specific calculation methods, see TRTC solution for calculating.
         :type UserSig: str
         :param _TargetUserId: UserId for robot stream pulling. after fill, the robot performs stream pulling and processes in real time.
         :type TargetUserId: str
@@ -253,7 +251,7 @@ Note: interrupt words avoid triggering AI reply.
 
     @property
     def UserSig(self):
-        r"""Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. for specific calculation methods, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).
+        r"""Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. for specific calculation methods, see TRTC solution for calculating.
         :rtype: str
         """
         return self._UserSig
@@ -517,6 +515,87 @@ class AgentParams(AbstractModel):
         self._UserId = params.get("UserId")
         self._UserSig = params.get("UserSig")
         self._MaxIdleTime = params.get("MaxIdleTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlignmentItem(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeBeginMs: 
+        :type TimeBeginMs: int
+        :param _TimeEndMs: 
+        :type TimeEndMs: int
+        :param _TextBegin: 
+        :type TextBegin: int
+        :param _TextEnd: 
+        :type TextEnd: int
+        """
+        self._TimeBeginMs = None
+        self._TimeEndMs = None
+        self._TextBegin = None
+        self._TextEnd = None
+
+    @property
+    def TimeBeginMs(self):
+        r"""
+        :rtype: int
+        """
+        return self._TimeBeginMs
+
+    @TimeBeginMs.setter
+    def TimeBeginMs(self, TimeBeginMs):
+        self._TimeBeginMs = TimeBeginMs
+
+    @property
+    def TimeEndMs(self):
+        r"""
+        :rtype: int
+        """
+        return self._TimeEndMs
+
+    @TimeEndMs.setter
+    def TimeEndMs(self, TimeEndMs):
+        self._TimeEndMs = TimeEndMs
+
+    @property
+    def TextBegin(self):
+        r"""
+        :rtype: int
+        """
+        return self._TextBegin
+
+    @TextBegin.setter
+    def TextBegin(self, TextBegin):
+        self._TextBegin = TextBegin
+
+    @property
+    def TextEnd(self):
+        r"""
+        :rtype: int
+        """
+        return self._TextEnd
+
+    @TextEnd.setter
+    def TextEnd(self, TextEnd):
+        self._TextEnd = TextEnd
+
+
+    def _deserialize(self, params):
+        self._TimeBeginMs = params.get("TimeBeginMs")
+        self._TimeEndMs = params.get("TimeEndMs")
+        self._TextBegin = params.get("TextBegin")
+        self._TextEnd = params.get("TextEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -893,6 +972,94 @@ class AudioEncodeParams(AbstractModel):
         self._SampleRate = params.get("SampleRate")
         self._Channel = params.get("Channel")
         self._BitRate = params.get("BitRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioFormat(AbstractModel):
+    r"""Format of TTS audio output.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: Generated audio format.
+
+-TextToSpeechSSE streaming API.
+
+Supports pcm. default: pcm.
+
+-TextToSpeech non-streaming API.
+
+Supports pcm, wav, mp3. default: pcm.
+        :type Format: str
+        :param _SampleRate: Generated audio sample rate. default 24000.
+Selectable.
+- 16000
+- 24000 
+        :type SampleRate: int
+        :param _Bitrate: MP3 bitrate (kbps), only applicable to mp3 format. can choose: `64`, `128`, `192`, `256`. default: `128`.
+        :type Bitrate: int
+        """
+        self._Format = None
+        self._SampleRate = None
+        self._Bitrate = None
+
+    @property
+    def Format(self):
+        r"""Generated audio format.
+
+-TextToSpeechSSE streaming API.
+
+Supports pcm. default: pcm.
+
+-TextToSpeech non-streaming API.
+
+Supports pcm, wav, mp3. default: pcm.
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def SampleRate(self):
+        r"""Generated audio sample rate. default 24000.
+Selectable.
+- 16000
+- 24000 
+        :rtype: int
+        """
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def Bitrate(self):
+        r"""MP3 bitrate (kbps), only applicable to mp3 format. can choose: `64`, `128`, `192`, `256`. default: `128`.
+        :rtype: int
+        """
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._SampleRate = params.get("SampleRate")
+        self._Bitrate = params.get("Bitrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5366,14 +5533,14 @@ class DescribeUnusualEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: The application ID, such as `1400xxxxxx`.
+        :param _SdkAppId: User SdkAppId (for example: 1400xxxxxx).
         :type SdkAppId: int
-        :param _StartTime: The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
-Note: Only data in the last 14 days can be queried.
+        :param _StartTime: Query start time, local unix timestamp, in seconds (for example: 1590065777).
+Note: support querying data within the last 14 days.
         :type StartTime: int
-        :param _EndTime: The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time cannot be more than one hour apart.
+        :param _EndTime: Query end time, local unix timestamp, in seconds (for example, 1590065877). note: the time interval from StartTime should be no more than 1 hour.
         :type EndTime: int
-        :param _RoomId: The room ID. Up to 20 random abnormal user experiences of the specified room will be returned.
+        :param _RoomId: Room number. query up to 20 abnormal experience events in the room.
         :type RoomId: str
         """
         self._SdkAppId = None
@@ -5383,7 +5550,7 @@ Note: Only data in the last 14 days can be queried.
 
     @property
     def SdkAppId(self):
-        r"""The application ID, such as `1400xxxxxx`.
+        r"""User SdkAppId (for example: 1400xxxxxx).
         :rtype: int
         """
         return self._SdkAppId
@@ -5394,8 +5561,8 @@ Note: Only data in the last 14 days can be queried.
 
     @property
     def StartTime(self):
-        r"""The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
-Note: Only data in the last 14 days can be queried.
+        r"""Query start time, local unix timestamp, in seconds (for example: 1590065777).
+Note: support querying data within the last 14 days.
         :rtype: int
         """
         return self._StartTime
@@ -5406,7 +5573,7 @@ Note: Only data in the last 14 days can be queried.
 
     @property
     def EndTime(self):
-        r"""The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time cannot be more than one hour apart.
+        r"""Query end time, local unix timestamp, in seconds (for example, 1590065877). note: the time interval from StartTime should be no more than 1 hour.
         :rtype: int
         """
         return self._EndTime
@@ -5417,7 +5584,7 @@ Note: Only data in the last 14 days can be queried.
 
     @property
     def RoomId(self):
-        r"""The room ID. Up to 20 random abnormal user experiences of the specified room will be returned.
+        r"""Room number. query up to 20 abnormal experience events in the room.
         :rtype: str
         """
         return self._RoomId
@@ -5449,10 +5616,10 @@ class DescribeUnusualEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: The number of records returned.
-Value range: 0-20.
+        :param _Total: Total number of returned data entries.
+Value range: [0, 20].
         :type Total: int
-        :param _AbnormalExperienceList: The information of the abnormal user experiences.
+        :param _AbnormalExperienceList: Abnormal experience list.
         :type AbnormalExperienceList: list of AbnormalExperience
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5463,8 +5630,8 @@ Value range: 0-20.
 
     @property
     def Total(self):
-        r"""The number of records returned.
-Value range: 0-20.
+        r"""Total number of returned data entries.
+Value range: [0, 20].
         :rtype: int
         """
         return self._Total
@@ -5475,7 +5642,7 @@ Value range: 0-20.
 
     @property
     def AbnormalExperienceList(self):
-        r"""The information of the abnormal user experiences.
+        r"""Abnormal experience list.
         :rtype: list of AbnormalExperience
         """
         return self._AbnormalExperienceList
@@ -7449,7 +7616,7 @@ class McuRecordParams(AbstractModel):
         :param _UniRecord: Retweet recording mode. 
 0/Leave blank: not currently supported; behavior is undefined.
 1: disable recording.
-2: enable recording (via console automatic recording template parameters, see: [redirection document](https://www.tencentcloud.com/document/product/647/111748?from_cn_redirect=1#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88));.
+2: enable recording (via console automatic recording template parameters.
 3: enable recording (use API to specify parameter).
         :type UniRecord: int
         :param _RecordKey: Recording task key, identifies a recording task. you can record multiple relay tasks into a file by specifying this parameter. if this parameter is not specified, only the current relay task is recorded.
@@ -7489,7 +7656,7 @@ Recording files storage parameters, corresponding console "storage location" and
         r"""Retweet recording mode. 
 0/Leave blank: not currently supported; behavior is undefined.
 1: disable recording.
-2: enable recording (via console automatic recording template parameters, see: [redirection document](https://www.tencentcloud.com/document/product/647/111748?from_cn_redirect=1#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88));.
+2: enable recording (via console automatic recording template parameters.
 3: enable recording (use API to specify parameter).
         :rtype: int
         """
@@ -9643,6 +9810,57 @@ class ModifyCloudSliceTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class PronunciationDict(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Word: 
+        :type Word: str
+        :param _Pronunciation: 
+        :type Pronunciation: str
+        """
+        self._Word = None
+        self._Pronunciation = None
+
+    @property
+    def Word(self):
+        r"""
+        :rtype: str
+        """
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def Pronunciation(self):
+        r"""
+        :rtype: str
+        """
+        return self._Pronunciation
+
+    @Pronunciation.setter
+    def Pronunciation(self, Pronunciation):
+        self._Pronunciation = Pronunciation
+
+
+    def _deserialize(self, params):
+        self._Word = params.get("Word")
+        self._Pronunciation = params.get("Pronunciation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityData(AbstractModel):
     r"""The quality data returned by ES.
 
@@ -9732,69 +9950,109 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RecognizeConfig(AbstractModel):
-    r"""Configuration used by speech recognition
+    r"""Configuration for speech recognition usage.
 
     """
 
     def __init__(self):
         r"""
-        :param _Language: The supported languages for speech recognition are as follows, with the default being "zh" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:
+        :param _Language: Convert speech to text supported languages, "zh" chinese is selected by default.
 
-1. Chinese = "zh"
-2. Chinese_TW = "zh-TW"
-3. Chinese_DIALECT = "zh-dialect"
-4. English = "en"
-5. Vietnamese = "vi"
-6. Japanese = "ja"
-7. Korean = "ko"
-8. Indonesian = "id"
-9. Thai = "th"
-10. Portuguese = "pt"
-11. Turkish = "tr"
-12. Arabic = "ar"
-13. Spanish = "es"
-14. Hindi = "hi"
-15. French = "fr"
-16. Malay = "ms"
-17. Filipino = "fil"
-18. German = "de"
-19. Italian = "it"
-20. Russian = "ru"
+You can unlock different languages by purchasing the "AI intelligent recognition duration package" or claiming the trial version of the monthly subscription package. 
 
-**Note:** If the language you need is not listed, please contact our technical support team.
+Supported languages for different speech to text package versions are as follows:.
+
+Basic language engine:.
+-"zh": chinese (simplified).
+
+**Standard language engine:**.
+-"8k_zh_large": engine (large model version) for telecommunication. the current model supports chinese and other language recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for telephone audio in various scenarios and chinese dialects.
+-"16k_zh_large": large model engine for mandarin, chinese dialects, and english. the current model supports language recognition for chinese, english, and multiple chinese dialects. it has a large number of parameters and enhanced language model performance, targeting low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away with greatly improved recognition accuracy.
+-"16k_zh_en": chinese-english large model engine. the current model simultaneously supports chinese and english recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away.
+
+**Advanced language engine:**.
+-"zh-dialect": chinese dialect.
+-"zh-yue": cantonese in china.
+-"Vi": "vietnamese.".
+-"Ja": "japanese.".
+-"Ko": "korean.".
+-"id": "indonesian".
+-"Th": thai.
+-"pt": portuguese.
+-"tr": "turkish.".
+-"Ar": "arabic".
+-"es": "spanish".
+-"Hi": "hindi".
+-"Fr": "french.".
+-"ms": malay.
+-"Fil": filipino.
+-"de": german.
+-`It`: italian.
+-"Ru": russian.
+-"sv": "swedish.".
+-"Da": "danish.".
+-"No": norwegian.
+
+**Note**:.
+If the language you need is not available, contact our technical staff.
         :type Language: str
-        :param _AlternativeLanguage: Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as "zh-dialect", fuzzy recognition is not supported and this field is invalid.
+        :param _AlternativeLanguage: **Fuzzy recognition is an advanced edition capacity, charged as advanced edition by default, and only supports filling in basic version and advanced edition language.**.
+Note: does not support entering "zh-dialect".
         :type AlternativeLanguage: list of str
+        :param _HotWordList: Hot word list: this parameter is used for improving recognition accuracy. each hot word is limited to "term|weight", with no more than 30 characters (a maximum of 10 chinese characters) per term. weight ranges from 1 to 11 or 100, for example: "tencent cloud|5" or "ASR|11". hot word list limitation: multiple terms separated by commas, supports up to 300 hot words, for example: "tencent cloud|10, speech recognition|5, ASR|11".
+        :type HotWordList: str
+        :param _VadSilenceTime: Specifies the time when automatic speech recognition (asr) vad is active. value range: 240-2000. default: 1000. unit: ms. a smaller value enables faster speech recognition sentence segmentation.
+        :type VadSilenceTime: int
+        :param _VadLevel: The vad far-field voice suppression capacity (does not impact asr recognition performance) ranges from 0 to 3, with a default value of 0. recommended setting is 2 for better far-field voice suppression.
+        :type VadLevel: int
         """
         self._Language = None
         self._AlternativeLanguage = None
+        self._HotWordList = None
+        self._VadSilenceTime = None
+        self._VadLevel = None
 
     @property
     def Language(self):
-        r"""The supported languages for speech recognition are as follows, with the default being "zh" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:
+        r"""Convert speech to text supported languages, "zh" chinese is selected by default.
 
-1. Chinese = "zh"
-2. Chinese_TW = "zh-TW"
-3. Chinese_DIALECT = "zh-dialect"
-4. English = "en"
-5. Vietnamese = "vi"
-6. Japanese = "ja"
-7. Korean = "ko"
-8. Indonesian = "id"
-9. Thai = "th"
-10. Portuguese = "pt"
-11. Turkish = "tr"
-12. Arabic = "ar"
-13. Spanish = "es"
-14. Hindi = "hi"
-15. French = "fr"
-16. Malay = "ms"
-17. Filipino = "fil"
-18. German = "de"
-19. Italian = "it"
-20. Russian = "ru"
+You can unlock different languages by purchasing the "AI intelligent recognition duration package" or claiming the trial version of the monthly subscription package. 
 
-**Note:** If the language you need is not listed, please contact our technical support team.
+Supported languages for different speech to text package versions are as follows:.
+
+Basic language engine:.
+-"zh": chinese (simplified).
+
+**Standard language engine:**.
+-"8k_zh_large": engine (large model version) for telecommunication. the current model supports chinese and other language recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for telephone audio in various scenarios and chinese dialects.
+-"16k_zh_large": large model engine for mandarin, chinese dialects, and english. the current model supports language recognition for chinese, english, and multiple chinese dialects. it has a large number of parameters and enhanced language model performance, targeting low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away with greatly improved recognition accuracy.
+-"16k_zh_en": chinese-english large model engine. the current model simultaneously supports chinese and english recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away.
+
+**Advanced language engine:**.
+-"zh-dialect": chinese dialect.
+-"zh-yue": cantonese in china.
+-"Vi": "vietnamese.".
+-"Ja": "japanese.".
+-"Ko": "korean.".
+-"id": "indonesian".
+-"Th": thai.
+-"pt": portuguese.
+-"tr": "turkish.".
+-"Ar": "arabic".
+-"es": "spanish".
+-"Hi": "hindi".
+-"Fr": "french.".
+-"ms": malay.
+-"Fil": filipino.
+-"de": german.
+-`It`: italian.
+-"Ru": russian.
+-"sv": "swedish.".
+-"Da": "danish.".
+-"No": norwegian.
+
+**Note**:.
+If the language you need is not available, contact our technical staff.
         :rtype: str
         """
         return self._Language
@@ -9805,7 +10063,8 @@ class RecognizeConfig(AbstractModel):
 
     @property
     def AlternativeLanguage(self):
-        r"""Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as "zh-dialect", fuzzy recognition is not supported and this field is invalid.
+        r"""**Fuzzy recognition is an advanced edition capacity, charged as advanced edition by default, and only supports filling in basic version and advanced edition language.**.
+Note: does not support entering "zh-dialect".
         :rtype: list of str
         """
         return self._AlternativeLanguage
@@ -9814,10 +10073,46 @@ class RecognizeConfig(AbstractModel):
     def AlternativeLanguage(self, AlternativeLanguage):
         self._AlternativeLanguage = AlternativeLanguage
 
+    @property
+    def HotWordList(self):
+        r"""Hot word list: this parameter is used for improving recognition accuracy. each hot word is limited to "term|weight", with no more than 30 characters (a maximum of 10 chinese characters) per term. weight ranges from 1 to 11 or 100, for example: "tencent cloud|5" or "ASR|11". hot word list limitation: multiple terms separated by commas, supports up to 300 hot words, for example: "tencent cloud|10, speech recognition|5, ASR|11".
+        :rtype: str
+        """
+        return self._HotWordList
+
+    @HotWordList.setter
+    def HotWordList(self, HotWordList):
+        self._HotWordList = HotWordList
+
+    @property
+    def VadSilenceTime(self):
+        r"""Specifies the time when automatic speech recognition (asr) vad is active. value range: 240-2000. default: 1000. unit: ms. a smaller value enables faster speech recognition sentence segmentation.
+        :rtype: int
+        """
+        return self._VadSilenceTime
+
+    @VadSilenceTime.setter
+    def VadSilenceTime(self, VadSilenceTime):
+        self._VadSilenceTime = VadSilenceTime
+
+    @property
+    def VadLevel(self):
+        r"""The vad far-field voice suppression capacity (does not impact asr recognition performance) ranges from 0 to 3, with a default value of 0. recommended setting is 2 for better far-field voice suppression.
+        :rtype: int
+        """
+        return self._VadLevel
+
+    @VadLevel.setter
+    def VadLevel(self, VadLevel):
+        self._VadLevel = VadLevel
+
 
     def _deserialize(self, params):
         self._Language = params.get("Language")
         self._AlternativeLanguage = params.get("AlternativeLanguage")
+        self._HotWordList = params.get("HotWordList")
+        self._VadSilenceTime = params.get("VadSilenceTime")
+        self._VadLevel = params.get("VadLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10375,7 +10670,7 @@ class STTConfig(AbstractModel):
         r"""
         :param _Language: Convert speech to text supported languages, "zh" chinese is selected by default.
 
-You can unlock different languages by purchasing the "AI intelligent recognition duration package" or claiming the trial version of the monthly subscription package. for detailed instructions, see: [AI intelligent recognition billing description](https://www.tencentcloud.com/document/product/647/111976?from_cn_redirect=1).
+You can unlock different languages by purchasing the "AI intelligent recognition duration package" or claiming the trial version of the monthly subscription package. 
 
 Supported languages for different speech to text package versions are as follows:.
 
@@ -10441,7 +10736,7 @@ Note: does not support entering "zh-dialect", "16k_zh_edu", "16k_zh_medical", "1
     def Language(self):
         r"""Convert speech to text supported languages, "zh" chinese is selected by default.
 
-You can unlock different languages by purchasing the "AI intelligent recognition duration package" or claiming the trial version of the monthly subscription package. for detailed instructions, see: [AI intelligent recognition billing description](https://www.tencentcloud.com/document/product/647/111976?from_cn_redirect=1).
+You can unlock different languages by purchasing the "AI intelligent recognition duration package" or claiming the trial version of the monthly subscription package. 
 
 Supported languages for different speech to text package versions are as follows:.
 
@@ -11507,21 +11802,21 @@ class StartAITranscriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.
+        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId used by the room with transcription task enabled.
         :type SdkAppId: int
-        :param _RoomId: TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the transcription task is started.
+        :param _RoomId: [RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC refers to the room number that enables the transcription task.
         :type RoomId: str
-        :param _TranscriptionParams: Parameters of the transcription robot.
+        :param _TranscriptionParams: Transcription robot parameters.
         :type TranscriptionParams: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParams`
-        :param _SessionId: The unique ID passed by the caller is used by the server to deduplicate. Note: If this parameter is passed, the server will use it first to deduplicate. If this parameter is not passed, the server's deduplication strategy is as follows: 
-- If the TranscriptionMode field is 0, only one task can be opened in a room
-- If the TranscriptionMode field is 1, only one task can be opened in a TargetUserId
+        :param _SessionId: Unique Id passed by the caller, used by the server for task deduplication. duplicate tasks will fail to initiate. the server uses SdkAppId+RoomId+RoomIdType+RobotUserId for deduplication by default. if SessionId is provided, it will also be used for deduplication.
+Note:.
+When TranscriptionMode is 0, ensure only one task is initiated in a room. if multiple tasks are initiated, robots will subscribe to each other. unless the task is stopped proactively, it will timeout exit after 10 hours. in such cases, it is advisable to fill in SessionId to ensure subsequent repeated tasks fail.
         :type SessionId: str
-        :param _RoomIdType: The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.
+        :param _RoomIdType: Type of the TRTC room number. 0 indicates digit room number, 1 indicates string room number. by default if left blank, it is digit room number.
         :type RoomIdType: int
         :param _RecognizeConfig: Speech recognition configuration.
         :type RecognizeConfig: :class:`tencentcloud.trtc.v20190722.models.RecognizeConfig`
-        :param _TranslationConfig: Translation config.
+        :param _TranslationConfig: Translate configuration details.
         :type TranslationConfig: :class:`tencentcloud.trtc.v20190722.models.TranslationConfig`
         """
         self._SdkAppId = None
@@ -11534,7 +11829,7 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.
+        r"""[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId used by the room with transcription task enabled.
         :rtype: int
         """
         return self._SdkAppId
@@ -11545,7 +11840,7 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the transcription task is started.
+        r"""[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC refers to the room number that enables the transcription task.
         :rtype: str
         """
         return self._RoomId
@@ -11556,7 +11851,7 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def TranscriptionParams(self):
-        r"""Parameters of the transcription robot.
+        r"""Transcription robot parameters.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParams`
         """
         return self._TranscriptionParams
@@ -11567,9 +11862,9 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""The unique ID passed by the caller is used by the server to deduplicate. Note: If this parameter is passed, the server will use it first to deduplicate. If this parameter is not passed, the server's deduplication strategy is as follows: 
-- If the TranscriptionMode field is 0, only one task can be opened in a room
-- If the TranscriptionMode field is 1, only one task can be opened in a TargetUserId
+        r"""Unique Id passed by the caller, used by the server for task deduplication. duplicate tasks will fail to initiate. the server uses SdkAppId+RoomId+RoomIdType+RobotUserId for deduplication by default. if SessionId is provided, it will also be used for deduplication.
+Note:.
+When TranscriptionMode is 0, ensure only one task is initiated in a room. if multiple tasks are initiated, robots will subscribe to each other. unless the task is stopped proactively, it will timeout exit after 10 hours. in such cases, it is advisable to fill in SessionId to ensure subsequent repeated tasks fail.
         :rtype: str
         """
         return self._SessionId
@@ -11580,7 +11875,7 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
-        r"""The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.
+        r"""Type of the TRTC room number. 0 indicates digit room number, 1 indicates string room number. by default if left blank, it is digit room number.
         :rtype: int
         """
         return self._RoomIdType
@@ -11602,7 +11897,7 @@ class StartAITranscriptionRequest(AbstractModel):
 
     @property
     def TranslationConfig(self):
-        r"""Translation config.
+        r"""Translate configuration details.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.TranslationConfig`
         """
         return self._TranslationConfig
@@ -11643,7 +11938,7 @@ class StartAITranscriptionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Used to uniquely identify a transcription task.
+        :param _TaskId: For unique identification of transcription task.
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11653,7 +11948,7 @@ class StartAITranscriptionResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Used to uniquely identify a transcription task.
+        r"""For unique identification of transcription task.
         :rtype: str
         """
         return self._TaskId
@@ -13219,20 +13514,29 @@ class TRTCDataResult(AbstractModel):
 
 
 class TTSConfig(AbstractModel):
-    r"""TTS-related configurations
+    r"""TTS configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _VoiceId: Voice ID
+        :param _VoiceId: Voice type ID.
         :type VoiceId: str
+        :param _Model: TTS model: flow_01_turbo is selected by default. options: [flow_01_turbo, flow_01_ex].
+        :type Model: str
+        :param _Speed: Speaking rate. value range: 0.5-2.0. default: 1.0.
+        :type Speed: float
+        :param _Volume: Value range: (0, 10]. default value: 1.0.
+        :type Volume: float
         """
         self._VoiceId = None
+        self._Model = None
+        self._Speed = None
+        self._Volume = None
 
     @property
     def VoiceId(self):
-        r"""Voice ID
+        r"""Voice type ID.
         :rtype: str
         """
         return self._VoiceId
@@ -13241,9 +13545,45 @@ class TTSConfig(AbstractModel):
     def VoiceId(self, VoiceId):
         self._VoiceId = VoiceId
 
+    @property
+    def Model(self):
+        r"""TTS model: flow_01_turbo is selected by default. options: [flow_01_turbo, flow_01_ex].
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Speed(self):
+        r"""Speaking rate. value range: 0.5-2.0. default: 1.0.
+        :rtype: float
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+    @property
+    def Volume(self):
+        r"""Value range: (0, 10]. default value: 1.0.
+        :rtype: float
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
 
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
+        self._Model = params.get("Model")
+        self._Speed = params.get("Speed")
+        self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13415,15 +13755,15 @@ The default value is 0, indicating other categories.
 
 
 class Terminology(AbstractModel):
-    r"""Translation terminology
+    r"""Translate terminology.
 
     """
 
     def __init__(self):
         r"""
-        :param _Source: Source terminology
+        :param _Source: Source terminology.
         :type Source: str
-        :param _Target: Target terminology
+        :param _Target: Terminology translation result.
         :type Target: str
         """
         self._Source = None
@@ -13431,7 +13771,7 @@ class Terminology(AbstractModel):
 
     @property
     def Source(self):
-        r"""Source terminology
+        r"""Source terminology.
         :rtype: str
         """
         return self._Source
@@ -13442,7 +13782,7 @@ class Terminology(AbstractModel):
 
     @property
     def Target(self):
-        r"""Target terminology
+        r"""Terminology translation result.
         :rtype: str
         """
         return self._Target
@@ -13463,6 +13803,450 @@ class Terminology(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TextToSpeechRequest(AbstractModel):
+    r"""TextToSpeech request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: Text to be converted to speech. length range: [1, 255].
+        :type Text: str
+        :param _Voice: Audio configuration for text-to-speech.
+        :type Voice: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        :param _SdkAppId: Specifies the SdkAppId of TRTC.
+        :type SdkAppId: int
+        :param _AudioFormat: Specifies the output audio format for text-to-speech.
+        :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        :param _APIKey: API key for TTS.
+        :type APIKey: str
+        :param _Model: TTS model, current fixed value: flow_01_turbo.
+        :type Model: str
+        :param _Language: Language to be synthesised (ISO 639-1). supports zh (chinese), en (english), yue (cantonese), ja (japanese), and ko (korean). defaults to auto-identification.
+        :type Language: str
+        :param _PronunciationDict: 
+        :type PronunciationDict: list of PronunciationDict
+        :param _AlignmentMode: 
+        :type AlignmentMode: int
+        """
+        self._Text = None
+        self._Voice = None
+        self._SdkAppId = None
+        self._AudioFormat = None
+        self._APIKey = None
+        self._Model = None
+        self._Language = None
+        self._PronunciationDict = None
+        self._AlignmentMode = None
+
+    @property
+    def Text(self):
+        r"""Text to be converted to speech. length range: [1, 255].
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Voice(self):
+        r"""Audio configuration for text-to-speech.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def SdkAppId(self):
+        r"""Specifies the SdkAppId of TRTC.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AudioFormat(self):
+        r"""Specifies the output audio format for text-to-speech.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def APIKey(self):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
+        r"""API key for TTS.
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
+        self._APIKey = APIKey
+
+    @property
+    def Model(self):
+        r"""TTS model, current fixed value: flow_01_turbo.
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Language(self):
+        r"""Language to be synthesised (ISO 639-1). supports zh (chinese), en (english), yue (cantonese), ja (japanese), and ko (korean). defaults to auto-identification.
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def PronunciationDict(self):
+        r"""
+        :rtype: list of PronunciationDict
+        """
+        return self._PronunciationDict
+
+    @PronunciationDict.setter
+    def PronunciationDict(self, PronunciationDict):
+        self._PronunciationDict = PronunciationDict
+
+    @property
+    def AlignmentMode(self):
+        r"""
+        :rtype: int
+        """
+        return self._AlignmentMode
+
+    @AlignmentMode.setter
+    def AlignmentMode(self, AlignmentMode):
+        self._AlignmentMode = AlignmentMode
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        if params.get("Voice") is not None:
+            self._Voice = Voice()
+            self._Voice._deserialize(params.get("Voice"))
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("AudioFormat") is not None:
+            self._AudioFormat = AudioFormat()
+            self._AudioFormat._deserialize(params.get("AudioFormat"))
+        self._APIKey = params.get("APIKey")
+        self._Model = params.get("Model")
+        self._Language = params.get("Language")
+        if params.get("PronunciationDict") is not None:
+            self._PronunciationDict = []
+            for item in params.get("PronunciationDict"):
+                obj = PronunciationDict()
+                obj._deserialize(item)
+                self._PronunciationDict.append(obj)
+        self._AlignmentMode = params.get("AlignmentMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechResponse(AbstractModel):
+    r"""TextToSpeech response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Audio: Base64-Encoded audio data.
+        :type Audio: str
+        :param _Alignments: 
+        :type Alignments: list of AlignmentItem
+        :param _TotalDurationMs: 
+        :type TotalDurationMs: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Audio = None
+        self._Alignments = None
+        self._TotalDurationMs = None
+        self._RequestId = None
+
+    @property
+    def Audio(self):
+        r"""Base64-Encoded audio data.
+        :rtype: str
+        """
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def Alignments(self):
+        r"""
+        :rtype: list of AlignmentItem
+        """
+        return self._Alignments
+
+    @Alignments.setter
+    def Alignments(self, Alignments):
+        self._Alignments = Alignments
+
+    @property
+    def TotalDurationMs(self):
+        r"""
+        :rtype: int
+        """
+        return self._TotalDurationMs
+
+    @TotalDurationMs.setter
+    def TotalDurationMs(self, TotalDurationMs):
+        self._TotalDurationMs = TotalDurationMs
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Audio = params.get("Audio")
+        if params.get("Alignments") is not None:
+            self._Alignments = []
+            for item in params.get("Alignments"):
+                obj = AlignmentItem()
+                obj._deserialize(item)
+                self._Alignments.append(obj)
+        self._TotalDurationMs = params.get("TotalDurationMs")
+        self._RequestId = params.get("RequestId")
+
+
+class TextToSpeechSSERequest(AbstractModel):
+    r"""TextToSpeechSSE request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: Text to be converted to speech. length range: [1, 255].
+        :type Text: str
+        :param _Voice: Audio configuration for text-to-speech.
+        :type Voice: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        :param _SdkAppId: Specifies the SdkAppId of TRTC.
+        :type SdkAppId: int
+        :param _AudioFormat: Specifies the output audio format for text-to-speech.
+        :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        :param _APIKey: API key for TTS.
+        :type APIKey: str
+        :param _Model: TTS model, current fixed value: flow_01_turbo.
+        :type Model: str
+        :param _Language: Language to be synthesised (ISO 639-1). supports zh (chinese), en (english), yue (cantonese), ja (japanese), and ko (korean). defaults to auto-identification.
+        :type Language: str
+        :param _PronunciationDict: 
+        :type PronunciationDict: list of PronunciationDict
+        :param _AlignmentMode: 
+        :type AlignmentMode: int
+        """
+        self._Text = None
+        self._Voice = None
+        self._SdkAppId = None
+        self._AudioFormat = None
+        self._APIKey = None
+        self._Model = None
+        self._Language = None
+        self._PronunciationDict = None
+        self._AlignmentMode = None
+
+    @property
+    def Text(self):
+        r"""Text to be converted to speech. length range: [1, 255].
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Voice(self):
+        r"""Audio configuration for text-to-speech.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def SdkAppId(self):
+        r"""Specifies the SdkAppId of TRTC.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AudioFormat(self):
+        r"""Specifies the output audio format for text-to-speech.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def APIKey(self):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
+        r"""API key for TTS.
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
+        self._APIKey = APIKey
+
+    @property
+    def Model(self):
+        r"""TTS model, current fixed value: flow_01_turbo.
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Language(self):
+        r"""Language to be synthesised (ISO 639-1). supports zh (chinese), en (english), yue (cantonese), ja (japanese), and ko (korean). defaults to auto-identification.
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def PronunciationDict(self):
+        r"""
+        :rtype: list of PronunciationDict
+        """
+        return self._PronunciationDict
+
+    @PronunciationDict.setter
+    def PronunciationDict(self, PronunciationDict):
+        self._PronunciationDict = PronunciationDict
+
+    @property
+    def AlignmentMode(self):
+        r"""
+        :rtype: int
+        """
+        return self._AlignmentMode
+
+    @AlignmentMode.setter
+    def AlignmentMode(self, AlignmentMode):
+        self._AlignmentMode = AlignmentMode
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        if params.get("Voice") is not None:
+            self._Voice = Voice()
+            self._Voice._deserialize(params.get("Voice"))
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("AudioFormat") is not None:
+            self._AudioFormat = AudioFormat()
+            self._AudioFormat._deserialize(params.get("AudioFormat"))
+        self._APIKey = params.get("APIKey")
+        self._Model = params.get("Model")
+        self._Language = params.get("Language")
+        if params.get("PronunciationDict") is not None:
+            self._PronunciationDict = []
+            for item in params.get("PronunciationDict"):
+                obj = PronunciationDict()
+                obj._deserialize(item)
+                self._PronunciationDict.append(obj)
+        self._AlignmentMode = params.get("AlignmentMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechSSEResponse(AbstractModel):
+    r"""TextToSpeechSSE response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header "X-TC-RequestId" of the HTTP response.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header "X-TC-RequestId" of the HTTP response.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class TimeValue(AbstractModel):
@@ -13525,7 +14309,7 @@ class TranscriptionParam(AbstractModel):
         r"""
         :param _UserId: [UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#userid) used by the transcription service in the TRTC room. Note that this userId cannot duplicate those already used by other TRTC or transcription services etc. You may use the room ID as part of the user identification.
         :type UserId: str
-        :param _UserSig: User signature for the transcription service to join a TRTC room. The signature verification corresponding to the current UserId serves as the login password. For specific details, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).
+        :param _UserSig: User signature for the transcription service to join a TRTC room. The signature verification corresponding to the current UserId serves as the login password. For specific details, see TRTC solution for calculating [UserSig](https://intl.cloud.tencent.com/zh/document/product/647/38104).
         :type UserSig: str
         :param _SubscribeList: Allowlist of user IDs whose audio will be transcribed.
 Specifies which anchor audio streams to transcribe when the service starts. If left empty or omitted, audio from all anchors will be transcribed. If one or more values are provided, only audio from the specified anchors will be transcribed.
@@ -13564,7 +14348,7 @@ If all anchors being transcribed continuously leave the TRTC room or switch to t
 
     @property
     def UserSig(self):
-        r"""User signature for the transcription service to join a TRTC room. The signature verification corresponding to the current UserId serves as the login password. For specific details, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).
+        r"""User signature for the transcription service to join a TRTC room. The signature verification corresponding to the current UserId serves as the login password. For specific details, see TRTC solution for calculating [UserSig](https://intl.cloud.tencent.com/zh/document/product/647/38104).
         :rtype: str
         """
         return self._UserSig
@@ -13654,32 +14438,38 @@ If all anchors being transcribed continuously leave the TRTC room or switch to t
 
 
 class TranscriptionParams(AbstractModel):
-    r"""AI Transcription Params
+    r"""AI transcribe parameters.
 
     """
 
     def __init__(self):
         r"""
-        :param _UserId: The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.
+        :param _UserId: The transcription robot's UserId is used to enter the room and trigger a transcription task. note that this UserId cannot be the same as the host or audience [UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#UserId) in the current room. if multiple transcription tasks are initiated in a room, the robot's UserId must also be unique to avoid interrupting the previous task. ensure the transcription robot's UserId is unique in the room.
         :type UserId: str
-        :param _UserSig: The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.
+        :param _UserSig: Verification signature corresponding to the transcription bot's UserId, namely, the UserId and UserSig serve as the login password for the transcription bot to enter the room. for specific calculation methods, see TRTC solution for calculating.
         :type UserSig: str
-        :param _MaxIdleTime: If there is no streaming in the room for more than MaxIdleTime, the background will automatically close the task. The default value is 60s.
+        :param _MaxIdleTime: After all push users exit the room and exceed MaxIdleTime seconds, the backend automation shuts down the transcription task. default value is 60s.
         :type MaxIdleTime: int
-        :param _TranscriptionMode: 1 means the robot subscribes to the stream of only one person, 0 means the robot subscribes to the stream of the entire room. If it is not filled in, the robot subscribes to the stream of the entire room by default.
+        :param _TranscriptionMode: 1 means the robot subscribes to the stream of an individual, and 0 means the robot subscribes to the stream of the entire room. if left empty, it defaults to subscribing to the stream of the entire room.
         :type TranscriptionMode: int
-        :param _TargetUserId: Required when TranscriptionMode is 1. The robot will only pull the stream of the userid and ignore other users in the room.
+        :param _TargetUserId: Required when TranscriptionMode is 1, the robot only pulls streams from this userid and ignores other users in the room.
         :type TargetUserId: str
+        :param _VoicePrint: Voiceprint configuration.
+        :type VoicePrint: :class:`tencentcloud.trtc.v20190722.models.VoicePrint`
+        :param _TurnDetection: Semantic sentence segmentation detection.
+        :type TurnDetection: :class:`tencentcloud.trtc.v20190722.models.TurnDetection`
         """
         self._UserId = None
         self._UserSig = None
         self._MaxIdleTime = None
         self._TranscriptionMode = None
         self._TargetUserId = None
+        self._VoicePrint = None
+        self._TurnDetection = None
 
     @property
     def UserId(self):
-        r"""The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.
+        r"""The transcription robot's UserId is used to enter the room and trigger a transcription task. note that this UserId cannot be the same as the host or audience [UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#UserId) in the current room. if multiple transcription tasks are initiated in a room, the robot's UserId must also be unique to avoid interrupting the previous task. ensure the transcription robot's UserId is unique in the room.
         :rtype: str
         """
         return self._UserId
@@ -13690,7 +14480,7 @@ class TranscriptionParams(AbstractModel):
 
     @property
     def UserSig(self):
-        r"""The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.
+        r"""Verification signature corresponding to the transcription bot's UserId, namely, the UserId and UserSig serve as the login password for the transcription bot to enter the room. for specific calculation methods, see TRTC solution for calculating.
         :rtype: str
         """
         return self._UserSig
@@ -13701,7 +14491,7 @@ class TranscriptionParams(AbstractModel):
 
     @property
     def MaxIdleTime(self):
-        r"""If there is no streaming in the room for more than MaxIdleTime, the background will automatically close the task. The default value is 60s.
+        r"""After all push users exit the room and exceed MaxIdleTime seconds, the backend automation shuts down the transcription task. default value is 60s.
         :rtype: int
         """
         return self._MaxIdleTime
@@ -13712,7 +14502,7 @@ class TranscriptionParams(AbstractModel):
 
     @property
     def TranscriptionMode(self):
-        r"""1 means the robot subscribes to the stream of only one person, 0 means the robot subscribes to the stream of the entire room. If it is not filled in, the robot subscribes to the stream of the entire room by default.
+        r"""1 means the robot subscribes to the stream of an individual, and 0 means the robot subscribes to the stream of the entire room. if left empty, it defaults to subscribing to the stream of the entire room.
         :rtype: int
         """
         return self._TranscriptionMode
@@ -13723,7 +14513,7 @@ class TranscriptionParams(AbstractModel):
 
     @property
     def TargetUserId(self):
-        r"""Required when TranscriptionMode is 1. The robot will only pull the stream of the userid and ignore other users in the room.
+        r"""Required when TranscriptionMode is 1, the robot only pulls streams from this userid and ignores other users in the room.
         :rtype: str
         """
         return self._TargetUserId
@@ -13732,6 +14522,28 @@ class TranscriptionParams(AbstractModel):
     def TargetUserId(self, TargetUserId):
         self._TargetUserId = TargetUserId
 
+    @property
+    def VoicePrint(self):
+        r"""Voiceprint configuration.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoicePrint`
+        """
+        return self._VoicePrint
+
+    @VoicePrint.setter
+    def VoicePrint(self, VoicePrint):
+        self._VoicePrint = VoicePrint
+
+    @property
+    def TurnDetection(self):
+        r"""Semantic sentence segmentation detection.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TurnDetection`
+        """
+        return self._TurnDetection
+
+    @TurnDetection.setter
+    def TurnDetection(self, TurnDetection):
+        self._TurnDetection = TurnDetection
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -13739,6 +14551,12 @@ class TranscriptionParams(AbstractModel):
         self._MaxIdleTime = params.get("MaxIdleTime")
         self._TranscriptionMode = params.get("TranscriptionMode")
         self._TargetUserId = params.get("TargetUserId")
+        if params.get("VoicePrint") is not None:
+            self._VoicePrint = VoicePrint()
+            self._VoicePrint._deserialize(params.get("VoicePrint"))
+        if params.get("TurnDetection") is not None:
+            self._TurnDetection = TurnDetection()
+            self._TurnDetection._deserialize(params.get("TurnDetection"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13786,19 +14604,21 @@ class TranscriptionUserInfoParams(AbstractModel):
 
 
 class TranslationConfig(AbstractModel):
-    r"""Translation config
+    r"""Translate configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _TargetLanguages: Target language, target language list (ISO 639-1).
+        :param _TargetLanguages: Target language for translation, target language list (ISO 639-1).
+
         :type TargetLanguages: list of str
-        :param _Mode: 1: Only text translation, 2: Voice simultaneous interpretation.
+        :param _Mode: 1: text translation only 2: speech simultaneous interpretation.
+
         :type Mode: int
-        :param _TTSConfig: Voice simultaneous interpretation configuration: When enabling simultaneous interpretation, this parameter needs to be passed.
+        :param _TTSConfig: Speech simultaneous interpretation configuration. when enabling simultaneous interpretation, transmission is required.
         :type TTSConfig: :class:`tencentcloud.trtc.v20190722.models.TTSConfig`
-        :param _Terminology: Translation terminology.
+        :param _Terminology: Translation terminology collection.
         :type Terminology: list of Terminology
         """
         self._TargetLanguages = None
@@ -13808,7 +14628,8 @@ class TranslationConfig(AbstractModel):
 
     @property
     def TargetLanguages(self):
-        r"""Target language, target language list (ISO 639-1).
+        r"""Target language for translation, target language list (ISO 639-1).
+
         :rtype: list of str
         """
         return self._TargetLanguages
@@ -13819,7 +14640,8 @@ class TranslationConfig(AbstractModel):
 
     @property
     def Mode(self):
-        r"""1: Only text translation, 2: Voice simultaneous interpretation.
+        r"""1: text translation only 2: speech simultaneous interpretation.
+
         :rtype: int
         """
         return self._Mode
@@ -13830,7 +14652,7 @@ class TranslationConfig(AbstractModel):
 
     @property
     def TTSConfig(self):
-        r"""Voice simultaneous interpretation configuration: When enabling simultaneous interpretation, this parameter needs to be passed.
+        r"""Speech simultaneous interpretation configuration. when enabling simultaneous interpretation, transmission is required.
         :rtype: :class:`tencentcloud.trtc.v20190722.models.TTSConfig`
         """
         return self._TTSConfig
@@ -13841,7 +14663,7 @@ class TranslationConfig(AbstractModel):
 
     @property
     def Terminology(self):
-        r"""Translation terminology.
+        r"""Translation terminology collection.
         :rtype: list of Terminology
         """
         return self._Terminology
@@ -15056,6 +15878,260 @@ class VideoParams(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class Voice(AbstractModel):
+    r"""TTS sound parameter configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: Voice ID, can be obtained from the timbre list or use a custom voice ID generated by sound clone.
+        :type VoiceId: str
+        :param _Speed: Speech speed adjustment. 0.5 for half speed, 2.0 for 2x speed, and 1.0 for normal speed. value range: [0.5, 2.0]. default: 1.0.
+        :type Speed: float
+        :param _Volume: Audio volume adjustment, where 0 indicates mute and 10 indicates maximum volume. recommended to keep the default value of 1.0. value range: [0,10]. default: 1.0.
+        :type Volume: float
+        :param _Pitch: Pitch adjustment. negative value makes the sound deeper, positive value makes the sound sharper. 0 indicates the original pitch. value range: [-12, 12]. default: 0.
+        :type Pitch: int
+        """
+        self._VoiceId = None
+        self._Speed = None
+        self._Volume = None
+        self._Pitch = None
+
+    @property
+    def VoiceId(self):
+        r"""Voice ID, can be obtained from the timbre list or use a custom voice ID generated by sound clone.
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Speed(self):
+        r"""Speech speed adjustment. 0.5 for half speed, 2.0 for 2x speed, and 1.0 for normal speed. value range: [0.5, 2.0]. default: 1.0.
+        :rtype: float
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+    @property
+    def Volume(self):
+        r"""Audio volume adjustment, where 0 indicates mute and 10 indicates maximum volume. recommended to keep the default value of 1.0. value range: [0,10]. default: 1.0.
+        :rtype: float
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def Pitch(self):
+        r"""Pitch adjustment. negative value makes the sound deeper, positive value makes the sound sharper. 0 indicates the original pitch. value range: [-12, 12]. default: 0.
+        :rtype: int
+        """
+        return self._Pitch
+
+    @Pitch.setter
+    def Pitch(self, Pitch):
+        self._Pitch = Pitch
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._Speed = params.get("Speed")
+        self._Volume = params.get("Volume")
+        self._Pitch = params.get("Pitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceCloneRequest(AbstractModel):
+    r"""VoiceClone request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: Specifies the SdkAppId of TRTC.
+        :type SdkAppId: int
+        :param _VoiceName: Sound clone name. only digits, letters, and underscores are allowed with a maximum of 36 characters.
+        :type VoiceName: str
+        :param _PromptAudio: The reference audio for voice cloning must be a base64 string of a 16k mono wav file with length between 10–180 seconds.
+        :type PromptAudio: str
+        :param _APIKey: API key for TTS.
+        :type APIKey: str
+        :param _PromptText: Reference text for voice cloning. specifies the text corresponding to the reference audio.
+        :type PromptText: str
+        :param _Model: TTS model: flow_01_turbo, flow_01_ex.
+        :type Model: str
+        :param _Language: Language parameter, empty by default. see: (ISO 639-1).
+        :type Language: str
+        """
+        self._SdkAppId = None
+        self._VoiceName = None
+        self._PromptAudio = None
+        self._APIKey = None
+        self._PromptText = None
+        self._Model = None
+        self._Language = None
+
+    @property
+    def SdkAppId(self):
+        r"""Specifies the SdkAppId of TRTC.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def VoiceName(self):
+        r"""Sound clone name. only digits, letters, and underscores are allowed with a maximum of 36 characters.
+        :rtype: str
+        """
+        return self._VoiceName
+
+    @VoiceName.setter
+    def VoiceName(self, VoiceName):
+        self._VoiceName = VoiceName
+
+    @property
+    def PromptAudio(self):
+        r"""The reference audio for voice cloning must be a base64 string of a 16k mono wav file with length between 10–180 seconds.
+        :rtype: str
+        """
+        return self._PromptAudio
+
+    @PromptAudio.setter
+    def PromptAudio(self, PromptAudio):
+        self._PromptAudio = PromptAudio
+
+    @property
+    def APIKey(self):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
+        r"""API key for TTS.
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
+        self._APIKey = APIKey
+
+    @property
+    def PromptText(self):
+        r"""Reference text for voice cloning. specifies the text corresponding to the reference audio.
+        :rtype: str
+        """
+        return self._PromptText
+
+    @PromptText.setter
+    def PromptText(self, PromptText):
+        self._PromptText = PromptText
+
+    @property
+    def Model(self):
+        r"""TTS model: flow_01_turbo, flow_01_ex.
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Language(self):
+        r"""Language parameter, empty by default. see: (ISO 639-1).
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._VoiceName = params.get("VoiceName")
+        self._PromptAudio = params.get("PromptAudio")
+        self._APIKey = params.get("APIKey")
+        self._PromptText = params.get("PromptText")
+        self._Model = params.get("Model")
+        self._Language = params.get("Language")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceCloneResponse(AbstractModel):
+    r"""VoiceClone response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: Cloned voice type ID. specifies the ID for performing text to speech.
+        :type VoiceId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VoiceId = None
+        self._RequestId = None
+
+    @property
+    def VoiceId(self):
+        r"""Cloned voice type ID. specifies the ID for performing text to speech.
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._RequestId = params.get("RequestId")
 
 
 class VoicePrint(AbstractModel):

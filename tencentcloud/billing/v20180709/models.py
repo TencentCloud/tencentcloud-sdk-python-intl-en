@@ -6281,11 +6281,11 @@ class AnalyseConditions(AbstractModel):
         :type RegionIds: str
         :param _ProjectIds: Project ID: Project ID of the resource
         :type ProjectIds: str
-        :param _PayModes: Billing mode prePay (monthly subscription)/postPay (pay-as-you-go billing)
+        :param _PayModes: Billing mode prePay (yearly/monthly subscription)/postPay (pay-as-you-go billing)
         :type PayModes: str
         :param _ActionTypes: Transaction type. Query transaction type (please use transaction type code as input parameter).
         :type ActionTypes: str
-        :param _Tags: Cost allocation tag key
+        :param _Tags: Cost allocation tag key and value
         :type Tags: str
         :param _FeeType: Fee type. Query fee type (please use fee type code input parameter). The input parameter enumeration is as follows:
 cashPayAmount: Cash 
@@ -6383,7 +6383,7 @@ costBeforeTax: pre-tax price
 
     @property
     def PayModes(self):
-        r"""Billing mode prePay (monthly subscription)/postPay (pay-as-you-go billing)
+        r"""Billing mode prePay (yearly/monthly subscription)/postPay (pay-as-you-go billing)
         :rtype: str
         """
         return self._PayModes
@@ -6405,7 +6405,7 @@ costBeforeTax: pre-tax price
 
     @property
     def Tags(self):
-        r"""Cost allocation tag key
+        r"""Cost allocation tag key and value
         :rtype: str
         """
         return self._Tags
@@ -22132,7 +22132,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
         :type PageSize: int
         :param _PageNo: Starting page, where PageNo=1 indicates the first page, PageNo=2 indicates the second page, and so on.
         :type PageNo: int
-        :param _TagKeyStr: Cost allocation tag value
+        :param _TagKeyStr: Cost allocation tag key
         :type TagKeyStr: str
         :param _NeedConditionValue: Whether the filter box is needed: 1- indicates it is needed, 0- indicates it is not needed. If it is not specified, it is not required by default.
         :type NeedConditionValue: str
@@ -22244,7 +22244,7 @@ zone = Availability zoneactionType = Transaction typepayMode = Billing modetags 
 
     @property
     def TagKeyStr(self):
-        r"""Cost allocation tag value
+        r"""Cost allocation tag key
         :rtype: str
         """
         return self._TagKeyStr

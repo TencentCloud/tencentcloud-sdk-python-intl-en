@@ -27,11 +27,11 @@ class AsrClient(AbstractClient):
 
 
     def CreateRecTask(self, request):
-        r"""This API can be used to recognize audio content with a long duration in recording files. If you want to use ASR with UI, visit [the trial console](https://console.cloud.tencent.com/asr/demonstrate). For product pricing, see [Billing Overview (Online Version)](https://intl.cloud.tencent.com/document/product/1093/35686?from_cn_redirect=1)
+        r"""This API can be used to recognize audio content with a long duration in recording files. For product pricing, see [Billing Overview (Online Version)](https://www.tencentcloud.com/zh/document/product/1118/43352)
         - Default frequency limit: 20 requests/second. This limit only applies to submitted requests but not the response time.
         Response time: The API adopts asynchronous callback and does not return results in real time. Recognition results will be returned within 3 hours at most. **In most cases, audio with a duration of 1 hour can be recognized in 1 to 3 minutes.** Note: The response time does not include the audio download time and will not apply to scenarios where recordings with a total audio duration of over 1,000 hours or over 20,000 requests are submitted within 30 minutes.
         - Audio formats: WAV, MP3, M4A, FLV, MP4, WMA, 3GP, AMR, AAC, OGG (Opus), and FLAC.
-        - Supported languages: See the description of **EngineModelType** in this document or go to [Product Features](https://intl.cloud.tencent.com/document/product/1093/35682?from_cn_redirect=1) for details.
+        - Supported languages: See the description of **EngineModelType** in this document.
         - Audio submission method: This API supports **audio URLs and local audio files.** It is recommended to use [Tencent Cloud COS](https://intl.cloud.tencent.com/document/product/436/38484?from_cn_redirect=1) to store audio files, generate URLs, and submit requests. This method does not incur public network or downstream traffic fees but can speed up task processing. (Set the public read and private write permissions for COS buckets or URLs to be externally accessible.)
         - Audio restrictions: For a single URL, the audio duration cannot exceed 5 hours, and the file size cannot exceed 1 GB. For a local audio file, the file size cannot exceed 5 MB.
         - Obtain recognition results: Results can be obtained through **callback or polling**. See [Result Query](https://intl.cloud.tencent.com/document/product/1093/37822?from_cn_redirect=1) for details.

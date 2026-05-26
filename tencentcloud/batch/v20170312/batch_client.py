@@ -379,6 +379,29 @@ class BatchClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeJobMonitorData(self, request):
+        r"""Query the resource usage monitoring information of Job task instances. This API only supports querying elastic node tasks and undeleted jobs. Computing environment tasks are not currently supported. This interface only supports querying the resource utilization of Job instances within a time range.
+
+        :param request: Request instance for DescribeJobMonitorData.
+        :type request: :class:`tencentcloud.batch.v20170312.models.DescribeJobMonitorDataRequest`
+        :rtype: :class:`tencentcloud.batch.v20170312.models.DescribeJobMonitorDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobMonitorData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobMonitorDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeJobSubmitInfo(self, request):
         r"""This API is used to query the submission information of the specified job, with the return including the job submission information used as input parameters in the JobId and SubmitJob APIs.
 

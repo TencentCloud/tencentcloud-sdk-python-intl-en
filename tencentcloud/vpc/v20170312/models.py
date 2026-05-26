@@ -11127,17 +11127,17 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC instance ID. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/1108/43663?from_cn_redirect=1).
+        :param _VpcId: VPC instance ID. obtain through the API [DescribeVpcs](https://www.tencentcloud.com/document/product/1108/43663?from_cn_redirect=1).
         :type VpcId: str
-        :param _SubnetId: Subnet instance ID. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.
+        :param _SubnetId: Subnet instance ID. can be obtained through the [DescribeSubnets](https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1) api.
         :type SubnetId: str
         :param _EndPointName: Endpoint name. limited to 60 characters.
         :type EndPointName: str
-        :param _EndPointServiceId: Endpoint service ID, which can be obtained through the [DescribeVpcEndPointService](https://www.tencentcloud.comom/document/product/215/54678?from_cn_redirect=1) api.
+        :param _EndPointServiceId: Endpoint service ID, which can be obtained through the [DescribeVpcEndPointService](https://www.tencentcloud.com/document/product/215/54678?from_cn_redirect=1) api.
         :type EndPointServiceId: str
         :param _EndPointVip: Endpoint VIP. You can apply for a specified IP.
         :type EndPointVip: str
-        :param _SecurityGroupId: Security group ID. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).
+        :param _SecurityGroupId: Security group ID. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1).
         :type SecurityGroupId: str
         :param _Tags: List of tags to be bound, for example, [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
@@ -11155,7 +11155,7 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC instance ID. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/1108/43663?from_cn_redirect=1).
+        r"""VPC instance ID. obtain through the API [DescribeVpcs](https://www.tencentcloud.com/document/product/1108/43663?from_cn_redirect=1).
         :rtype: str
         """
         return self._VpcId
@@ -11166,7 +11166,7 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet instance ID. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.
+        r"""Subnet instance ID. can be obtained through the [DescribeSubnets](https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._SubnetId
@@ -11188,7 +11188,7 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
-        r"""Endpoint service ID, which can be obtained through the [DescribeVpcEndPointService](https://www.tencentcloud.comom/document/product/215/54678?from_cn_redirect=1) api.
+        r"""Endpoint service ID, which can be obtained through the [DescribeVpcEndPointService](https://www.tencentcloud.com/document/product/215/54678?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._EndPointServiceId
@@ -11210,7 +11210,7 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        r"""Security group ID. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).
+        r"""Security group ID. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1).
         :rtype: str
         """
         return self._SecurityGroupId
@@ -29401,7 +29401,7 @@ class EndPoint(AbstractModel):
         r"""
         :param _EndPointId: Endpoint ID
         :type EndPointId: str
-        :param _VpcId: The unique ID of the VPC. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
+        :param _VpcId: The unique ID of the VPC. obtain through the API [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1).
         :type VpcId: str
         :param _SubnetId: Subnet ID
         :type SubnetId: str
@@ -29459,7 +29459,7 @@ class EndPoint(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""The unique ID of the VPC. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).
+        r"""The unique ID of the VPC. obtain through the API [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1).
         :rtype: str
         """
         return self._VpcId

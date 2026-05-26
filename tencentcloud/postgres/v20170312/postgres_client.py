@@ -72,6 +72,52 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseAccountCAM(self, request):
+        r"""This API is used to disable CAM verification service for a database account.
+
+        :param request: Request instance for CloseAccountCAM.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CloseAccountCAMRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloseAccountCAMResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAccountCAM", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseAccountCAMResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CloseAuditService(self, request):
+        r"""This API is used to disable the audit feature for a database instance.
+
+        :param request: Request instance for CloseAuditService.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CloseAuditServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloseAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseDBExtranetAccess(self, request):
         r"""This API is used to disable the public network address of an instance.
 
@@ -95,29 +141,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CloseServerlessDBExtranetAccess(self, request):
-        r"""This API is used to disable the public network address of a PostgreSQL for Serverless instance.
-
-        :param request: Request instance for CloseServerlessDBExtranetAccess.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloseServerlessDBExtranetAccessResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CloseServerlessDBExtranetAccess", params, headers=headers)
-            response = json.loads(body)
-            model = models.CloseServerlessDBExtranetAccessResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateAccount(self, request):
         r"""This API is used to create a data account. The returned Oid is the unique identifier of the account, which matches the oid recorded in the database system table pg_roles.
 
@@ -132,6 +155,29 @@ class PostgresClient(AbstractClient):
             body = self.call("CreateAccount", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAuditLogFile(self, request):
+        r"""Creating an Audit Log File
+
+        :param request: Request instance for CreateAuditLogFile.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditLogFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -201,29 +247,6 @@ class PostgresClient(AbstractClient):
             body = self.call("CreateDBInstanceNetworkAccess", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDBInstanceNetworkAccessResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateDBInstances(self, request):
-        r"""This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.
-
-        :param request: Request instance for CreateDBInstances.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateDBInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -373,29 +396,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateServerlessDBInstance(self, request):
-        r"""This API is used to create a PostgreSQL for Serverless instance. If the creation succeeds, the instance ID will be returned.
-
-        :param request: Request instance for CreateServerlessDBInstance.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateServerlessDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateServerlessDBInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateServerlessDBInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteAccount(self, request):
         r"""This API is used to delete a database account. Oid and UserName must be input simultaneously to avoid accidental deletion. Note: This API is reentrant. If the account no longer exists, calling this API to delete it will not trigger an error.
 
@@ -410,6 +410,29 @@ class PostgresClient(AbstractClient):
             body = self.call("DeleteAccount", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAuditLogFile(self, request):
+        r"""Deletes an audit log file
+
+        :param request: Request instance for DeleteAuditLogFile.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditLogFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -466,7 +489,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteDBInstanceNetworkAccess(self, request):
-        r"""This API is used to delete a network of an instance.
+        r"""This API is used to delete a network from an instance while keeping at least one network.
 
         :param request: Request instance for DeleteDBInstanceNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteDBInstanceNetworkAccessRequest`
@@ -558,7 +581,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteReadOnlyGroupNetworkAccess(self, request):
-        r"""This API is used to delete a network of an RO group.
+        r"""This API is used to delete a network from an RO group (at least 1 network must remain).
 
         :param request: Request instance for DeleteReadOnlyGroupNetworkAccess.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteReadOnlyGroupNetworkAccessRequest`
@@ -571,29 +594,6 @@ class PostgresClient(AbstractClient):
             body = self.call("DeleteReadOnlyGroupNetworkAccess", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteReadOnlyGroupNetworkAccessResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteServerlessDBInstance(self, request):
-        r"""This API is used to delete a PostgreSQL for Serverless instance.
-
-        :param request: Request instance for DeleteServerlessDBInstance.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteServerlessDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteServerlessDBInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteServerlessDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -640,6 +640,75 @@ class PostgresClient(AbstractClient):
             body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditInstanceList(self, request):
+        r"""Query the audit instance list
+
+        :param request: Request instance for DescribeAuditInstanceList.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditInstanceListRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditLogFiles(self, request):
+        r"""Queries audit log files
+
+        :param request: Request instance for DescribeAuditLogFiles.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditLogFilesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditLogFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditLogs(self, request):
+        r"""This API is used to query a Database Audit log.
+
+        :param request: Request instance for DescribeAuditLogs.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditLogsRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -926,9 +995,9 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceHAConfig(self, request):
-        r"""This API is used to query the HA configuration of an instance, which includes:
-        <li>Allow a standby node to promote to a primary node.
-        <li>Allow a semi-sync instance to adopt sync or async replication.
+        r"""This API (DescribeDBInstanceHConfig) is used to query instance HA configuration information. The HA configuration information includes:
+        <li>This API is used to configure conditions for allowing a secondary node to switch over to a primary node.</li>.
+        <li>This API is used to configure conditions for using synchronous or asynchronous replication in semi-sync instances.</li>.
 
         :param request: Request instance for DescribeDBInstanceHAConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceHAConfigRequest`
@@ -1042,29 +1111,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDBSlowlogs(self, request):
-        r"""This API is used to get a slow query log. Since it was deprecated on September 1, 2021, it has no longer returned data. You need to use the [DescribeSlowQueryList](https://intl.cloud.tencent.com/document/product/409/60540?from_cn_redirect=1) API instead to get slow query logs.
-
-        :param request: Request instance for DescribeDBSlowlogs.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBSlowlogsRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBSlowlogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDBSlowlogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDBSlowlogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDBVersions(self, request):
         r"""This API is used to query the list of supported database versions.
 
@@ -1089,7 +1135,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBXlogs(self, request):
-        r"""This API is used to get the instance Xlog list. This API is disused and replaced by the [DescribeBaseBackups](https://www.tencentcloud.com/zh/document/product/409/54343) API.
+        r"""This api is used to get instance Xlog list. This interface belongs to early api and has stopped feature iteration. We recommend using api [DescribeLogBackups](https://www.tencentcloud.com/document/api/409/89021?from_cn_redirect=1) as substitution.
 
         :param request: Request instance for DescribeDBXlogs.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBXlogsRequest`
@@ -1365,7 +1411,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeProductConfig(self, request):
-        r"""This API is used to query the purchasable specification configuration. u200cThis API is disused and replaced by the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
+        r"""This api is used to query sales specification configuration. This interface belongs to the early stage and has stopped feature iteration. It is recommended to use the new api [DescribeClasses](https://www.tencentcloud.com/document/api/409/89019?from_cn_redirect=1) as an alternative.
 
         :param request: Request instance for DescribeProductConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeProductConfigRequest`
@@ -1424,29 +1470,6 @@ class PostgresClient(AbstractClient):
             body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRegionsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeServerlessDBInstances(self, request):
-        r"""This API is used to query the details of one or more PostgreSQL for Serverless instances.
-
-        :param request: Request instance for DescribeServerlessDBInstances.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeServerlessDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeServerlessDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeServerlessDBInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1586,29 +1609,6 @@ class PostgresClient(AbstractClient):
             body = self.call("DisIsolateDBInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DisIsolateDBInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def InitDBInstances(self, request):
-        r"""This API is used to initialize a TencentDB for PostgreSQL instance. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.
-
-        :param request: Request instance for InitDBInstances.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.InitDBInstancesRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.InitDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InitDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.InitDBInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1779,6 +1779,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAuditService(self, request):
+        r"""Modify the audit feature of the database instance
+
+        :param request: Request instance for ModifyAuditService.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyAuditServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyBackupDownloadRestriction(self, request):
         r"""This API is used to modify the backup download restrictions.
 
@@ -1918,9 +1941,9 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceHAConfig(self, request):
-        r"""This API is used to modify the HA configuration of an instance. which includes:
-        <li>Allow the standby node to promote to the primary node.
-        <li>Allow a semi-sync instance to adopt sync or async replication.
+        r"""This API is used to modify instance HA configuration info. Among them, HA configuration info includes:.
+        <li>This API is used to configure conditions for allowing a secondary node to switch over to a primary node.</li>.
+        <li>This API is used to configure conditions for using synchronous replication or async replication in semi-sync instances.</li>.
 
         :param request: Request instance for ModifyDBInstanceHAConfig.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceHAConfigRequest`
@@ -2058,7 +2081,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceSpec(self, request):
-        r"""This API is used to modify instance specifications, including memory and disk size.
+        r"""This API is used to modify instance specifications, including memory, Disk and Cpu.
 
         :param request: Request instance for ModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSpecRequest`
@@ -2241,6 +2264,52 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenAccountCAM(self, request):
+        r"""This API is used to enable CAM verification service for a database account.
+
+        :param request: Request instance for OpenAccountCAM.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.OpenAccountCAMRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.OpenAccountCAMResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAccountCAM", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenAccountCAMResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenAuditService(self, request):
+        r"""Enable the audit feature of the database instance
+
+        :param request: Request instance for OpenAuditService.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.OpenAuditServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.OpenAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OpenDBExtranetAccess(self, request):
         r"""This API is used to enable the public network access of an instance.
 
@@ -2264,29 +2333,6 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def OpenServerlessDBExtranetAccess(self, request):
-        r"""This API is used to enable the public network address of a PostgreSQL for Serverless instance.
-
-        :param request: Request instance for OpenServerlessDBExtranetAccess.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.OpenServerlessDBExtranetAccessRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.OpenServerlessDBExtranetAccessResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("OpenServerlessDBExtranetAccess", params, headers=headers)
-            response = json.loads(body)
-            model = models.OpenServerlessDBExtranetAccessResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RebalanceReadOnlyGroup(self, request):
         r"""This API is used to rebalance the loads of read-only replicas in an RO group. Please note that connections to those read-only replicas will be interrupted transiently; therefore, you should ensure that your application can reconnect to the databases. This operation should be performed with caution.
 
@@ -2301,6 +2347,29 @@ class PostgresClient(AbstractClient):
             body = self.call("RebalanceReadOnlyGroup", params, headers=headers)
             response = json.loads(body)
             model = models.RebalanceReadOnlyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RefreshAccountPassword(self, request):
+        r"""This API is used to manually reset the password for an account with CAM Verification enabled.
+
+        :param request: Request instance for RefreshAccountPassword.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.RefreshAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.RefreshAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefreshAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.RefreshAccountPasswordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2449,10 +2518,10 @@ class PostgresClient(AbstractClient):
 
 
     def SwitchDBInstancePrimary(self, request):
-        r"""This API is used to enable the primary-standby switch of an instance.
-        <li>By initiating a switch, you can verify whether the primary-standby switch is performed correctly.
-        <li>By using forced switch, you can forcibly initiate the primary-standby switch when the delay of replica node failed to meet the switch requirement.
-        <li>This operation can only be performed for the primary instance.
+        r"""This API is used to switch over primary and replica nodes.
+        <li>This API is used to verify whether the business can correctly handle instance primary/backup switch scenarios by initiating switch proactively.</li>.
+        <li>This API is used to force a primary-secondary switch when the backup node latency fails to satisfy the switch condition by using forced switching.</li>.
+        <li>This API is used to perform this operation on the primary instance only.</li>.
 
         :param request: Request instance for SwitchDBInstancePrimary.
         :type request: :class:`tencentcloud.postgres.v20170312.models.SwitchDBInstancePrimaryRequest`
@@ -2488,29 +2557,6 @@ class PostgresClient(AbstractClient):
             body = self.call("UnlockAccount", params, headers=headers)
             response = json.loads(body)
             model = models.UnlockAccountResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpgradeDBInstance(self, request):
-        r"""This API is used to upgrade instance configurations. u200cThis API is disused and replaced by the [ModifyDBInstanceSpec](https://intl.cloud.tencent.com/document/api/409/63689?from_cn_redirect=1) API.
-
-        :param request: Request instance for UpgradeDBInstance.
-        :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceRequest`
-        :rtype: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpgradeDBInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpgradeDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

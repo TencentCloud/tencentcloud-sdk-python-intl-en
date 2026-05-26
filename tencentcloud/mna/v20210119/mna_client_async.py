@@ -223,6 +223,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAccessRegions(
+            self,
+            request: models.DescribeAccessRegionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccessRegionsResponse:
+        """
+        Query the access region list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccessRegions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccessRegionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DownloadActiveDeviceCount(
             self,
             request: models.DownloadActiveDeviceCountRequest,
@@ -722,6 +740,24 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "GroupDeleteDevice"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GroupDeleteDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDeviceAccessRegions(
+            self,
+            request: models.ModifyDeviceAccessRegionsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDeviceAccessRegionsResponse:
+        """
+        This API is used to modify device connectivity regions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDeviceAccessRegions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDeviceAccessRegionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

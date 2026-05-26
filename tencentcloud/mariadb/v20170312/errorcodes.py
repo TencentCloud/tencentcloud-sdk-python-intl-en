@@ -80,6 +80,9 @@ FAILEDOPERATION_RESETPASSWORDFAILED = 'FailedOperation.ResetPasswordFailed'
 # Failed to update the security group
 FAILEDOPERATION_SGCHANGEVIP = 'FailedOperation.SGChangeVip'
 
+# 
+FAILEDOPERATION_SGOPERATIONFAILED = 'FailedOperation.SGOperationFailed'
+
 # Failed to set a rule.
 FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 

@@ -243,7 +243,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcAudioCloneResponse:
         """
-        This API is used to create AIGC voice replication. Note that calling this API will incur fees. See the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#96b3b59a-f9e1-49e9-966a-bedb70a4bf12).
+        This API is used to create AIGC voice replication. Note that calling this API will incur fees. See the [billing documentation](https://intl.cloud.tencent.com/document/product/266/14666#87e472ca-9c95-4658-ab7b-8f2130608419).
         """
         
         kwargs = {}
@@ -1170,6 +1170,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCLSTopic(
+            self,
+            request: models.DeleteCLSTopicRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCLSTopicResponse:
+        """
+        Delete the log topic enabled by VOD.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCLSTopic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCLSTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteClass(
             self,
             request: models.DeleteClassRequest,
@@ -1855,6 +1873,42 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeCDNUsageData"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCDNUsageDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCLSLogsets(
+            self,
+            request: models.DescribeCLSLogsetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCLSLogsetsResponse:
+        """
+        Query the CLS log set created by VOD.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCLSLogsets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCLSLogsetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCLSTopics(
+            self,
+            request: models.DescribeCLSTopicsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCLSTopicsResponse:
+        """
+        Query the log topic list created by VOD.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCLSTopics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCLSTopicsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

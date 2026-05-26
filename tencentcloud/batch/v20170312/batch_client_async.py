@@ -303,6 +303,24 @@ class BatchClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeJobMonitorData(
+            self,
+            request: models.DescribeJobMonitorDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeJobMonitorDataResponse:
+        """
+        Query the resource usage monitoring information of Job task instances. This API only supports querying elastic node tasks and undeleted jobs. Computing environment tasks are not currently supported. This interface only supports querying the resource utilization of Job instances within a time range.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeJobMonitorData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeJobMonitorDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeJobSubmitInfo(
             self,
             request: models.DescribeJobSubmitInfoRequest,

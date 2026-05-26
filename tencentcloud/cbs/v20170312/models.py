@@ -1125,6 +1125,230 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Cdc(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CageId: 
+        :type CageId: str
+        :param _CdcState: Exclusive cluster status. value ranges from:<br><li>NORMAL: NORMAL;</li><br><li>CLOSED: CLOSED. at this time, the exclusive cluster will be unavailable to create new cloud disks;</li><br><li>FAULT: abnormal exclusive cluster status. at this point, the exclusive cluster will be inoperable, and the tencent cloud ops team will promptly fix the cluster;</li><br><li>ISOLATED: the exclusive cluster is ISOLATED due to not renewed timely. at this moment, the exclusive cluster will be unavailable to create new cloud disks, and the corresponding cloud disks will also be inoperable.</li>.
+        :type CdcState: str
+        :param _Zone: Specifies the AZ ID of the exclusive cluster.
+        :type Zone: str
+        :param _CdcName: 
+        :type CdcName: str
+        :param _CdcResource: Specifies the capacity size of the dedicated cluster.
+        :type CdcResource: :class:`tencentcloud.cbs.v20170312.models.CdcSize`
+        :param _CdcId: 
+        :type CdcId: str
+        :param _DiskType: Exclusive cluster type. valid values: <br><li>CLOUD_BASIC: BASIC CLOUD disk cluster</li><br><li>CLOUD_PREMIUM: high-performance CLOUD block storage cluster</li><br><li>CLOUD_SSD: SSD CLOUD disk cluster.</li>.
+        :type DiskType: str
+        :param _ExpiredTime: Expiry time of the dedicated cloud disk cluster.
+        :type ExpiredTime: str
+        :param _CreatedTime: Creation time of the resource pool.
+        :type CreatedTime: str
+        :param _DiskNumber: Number of cloud disks created in the current cluster.
+        :type DiskNumber: int
+        """
+        self._CageId = None
+        self._CdcState = None
+        self._Zone = None
+        self._CdcName = None
+        self._CdcResource = None
+        self._CdcId = None
+        self._DiskType = None
+        self._ExpiredTime = None
+        self._CreatedTime = None
+        self._DiskNumber = None
+
+    @property
+    def CageId(self):
+        r"""
+        :rtype: str
+        """
+        return self._CageId
+
+    @CageId.setter
+    def CageId(self, CageId):
+        self._CageId = CageId
+
+    @property
+    def CdcState(self):
+        r"""Exclusive cluster status. value ranges from:<br><li>NORMAL: NORMAL;</li><br><li>CLOSED: CLOSED. at this time, the exclusive cluster will be unavailable to create new cloud disks;</li><br><li>FAULT: abnormal exclusive cluster status. at this point, the exclusive cluster will be inoperable, and the tencent cloud ops team will promptly fix the cluster;</li><br><li>ISOLATED: the exclusive cluster is ISOLATED due to not renewed timely. at this moment, the exclusive cluster will be unavailable to create new cloud disks, and the corresponding cloud disks will also be inoperable.</li>.
+        :rtype: str
+        """
+        return self._CdcState
+
+    @CdcState.setter
+    def CdcState(self, CdcState):
+        self._CdcState = CdcState
+
+    @property
+    def Zone(self):
+        r"""Specifies the AZ ID of the exclusive cluster.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def CdcName(self):
+        r"""
+        :rtype: str
+        """
+        return self._CdcName
+
+    @CdcName.setter
+    def CdcName(self, CdcName):
+        self._CdcName = CdcName
+
+    @property
+    def CdcResource(self):
+        r"""Specifies the capacity size of the dedicated cluster.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CdcSize`
+        """
+        return self._CdcResource
+
+    @CdcResource.setter
+    def CdcResource(self, CdcResource):
+        self._CdcResource = CdcResource
+
+    @property
+    def CdcId(self):
+        r"""
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
+    def DiskType(self):
+        r"""Exclusive cluster type. valid values: <br><li>CLOUD_BASIC: BASIC CLOUD disk cluster</li><br><li>CLOUD_PREMIUM: high-performance CLOUD block storage cluster</li><br><li>CLOUD_SSD: SSD CLOUD disk cluster.</li>.
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def ExpiredTime(self):
+        r"""Expiry time of the dedicated cloud disk cluster.
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def CreatedTime(self):
+        r"""Creation time of the resource pool.
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def DiskNumber(self):
+        r"""Number of cloud disks created in the current cluster.
+        :rtype: int
+        """
+        return self._DiskNumber
+
+    @DiskNumber.setter
+    def DiskNumber(self, DiskNumber):
+        self._DiskNumber = DiskNumber
+
+
+    def _deserialize(self, params):
+        self._CageId = params.get("CageId")
+        self._CdcState = params.get("CdcState")
+        self._Zone = params.get("Zone")
+        self._CdcName = params.get("CdcName")
+        if params.get("CdcResource") is not None:
+            self._CdcResource = CdcSize()
+            self._CdcResource._deserialize(params.get("CdcResource"))
+        self._CdcId = params.get("CdcId")
+        self._DiskType = params.get("DiskType")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._CreatedTime = params.get("CreatedTime")
+        self._DiskNumber = params.get("DiskNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CdcSize(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskTotal: 
+        :type DiskTotal: int
+        :param _DiskAvailable: Specifies the available capacity size of the dedicated cluster in GiB.
+        :type DiskAvailable: int
+        """
+        self._DiskTotal = None
+        self._DiskAvailable = None
+
+    @property
+    def DiskTotal(self):
+        r"""
+        :rtype: int
+        """
+        return self._DiskTotal
+
+    @DiskTotal.setter
+    def DiskTotal(self, DiskTotal):
+        self._DiskTotal = DiskTotal
+
+    @property
+    def DiskAvailable(self):
+        r"""Specifies the available capacity size of the dedicated cluster in GiB.
+        :rtype: int
+        """
+        return self._DiskAvailable
+
+    @DiskAvailable.setter
+    def DiskAvailable(self, DiskAvailable):
+        self._DiskAvailable = DiskAvailable
+
+
+    def _deserialize(self, params):
+        self._DiskTotal = params.get("DiskTotal")
+        self._DiskAvailable = params.get("DiskAvailable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CopySnapshotCrossRegionsRequest(AbstractModel):
     r"""CopySnapshotCrossRegions request structure.
 
@@ -3105,6 +3329,177 @@ class DescribeDiskConfigQuotaResponse(AbstractModel):
                 obj = DiskConfig()
                 obj._deserialize(item)
                 self._DiskConfigSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDiskStoragePoolRequest(AbstractModel):
+    r"""DescribeDiskStoragePool request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Number of returned results, defaults to 20 with a maximum value of 100. For further introduction about `Limit`, see relevant sections in the API [overview](/document/product/362/15633).
+        :type Limit: int
+        :param _CdcIds: Specify the exclusive cluster ID list you want to query. This parameter cannot be used with Filters.
+
+        :type CdcIds: list of str
+        :param _Filters: Filter conditions. `CdcIds` and `Filters` cannot be specified at the same time. <br><li>cdc-id - Array of String - Optional - Filter by the cluster ID. <br><li>zone - Array of String - Optional - Filter by the [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) where the cluster resides. <br><li>cage-id - Array of String - Optional - Filter by the ID of the cage where the cluster resides. <br><li>disk-type - Array of string - Optional - Filter by the media type of cloud disks (`CLOUD_BASIC`: HDD cloud disk | `CLOUD_PREMIUM`: Premium cloud disk. | `CLOUD_SSD`: SSD cloud disk.)
+        :type Filters: list of Filter
+        :param _Offset: Offset, defaults to 0. For further introduction about `Offset`, see the relevant sections in the API [overview](/document/product/362/15633).
+        :type Offset: int
+        """
+        self._Limit = None
+        self._CdcIds = None
+        self._Filters = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        r"""Number of returned results, defaults to 20 with a maximum value of 100. For further introduction about `Limit`, see relevant sections in the API [overview](/document/product/362/15633).
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def CdcIds(self):
+        r"""Specify the exclusive cluster ID list you want to query. This parameter cannot be used with Filters.
+
+        :rtype: list of str
+        """
+        return self._CdcIds
+
+    @CdcIds.setter
+    def CdcIds(self, CdcIds):
+        self._CdcIds = CdcIds
+
+    @property
+    def Filters(self):
+        r"""Filter conditions. `CdcIds` and `Filters` cannot be specified at the same time. <br><li>cdc-id - Array of String - Optional - Filter by the cluster ID. <br><li>zone - Array of String - Optional - Filter by the [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) where the cluster resides. <br><li>cage-id - Array of String - Optional - Filter by the ID of the cage where the cluster resides. <br><li>disk-type - Array of string - Optional - Filter by the media type of cloud disks (`CLOUD_BASIC`: HDD cloud disk | `CLOUD_PREMIUM`: Premium cloud disk. | `CLOUD_SSD`: SSD cloud disk.)
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""Offset, defaults to 0. For further introduction about `Offset`, see the relevant sections in the API [overview](/document/product/362/15633).
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._CdcIds = params.get("CdcIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDiskStoragePoolResponse(AbstractModel):
+    r"""DescribeDiskStoragePool response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: the number of eligible dedicated clusters.
+        :type TotalCount: int
+        :param _CdcSet: Details of the dedicated cluster.
+        :type CdcSet: list of Cdc
+        :param _DiskStoragePoolSet: Exclusive cluster details list.
+        :type DiskStoragePoolSet: list of Cdc
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._CdcSet = None
+        self._DiskStoragePoolSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""the number of eligible dedicated clusters.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CdcSet(self):
+        r"""Details of the dedicated cluster.
+        :rtype: list of Cdc
+        """
+        return self._CdcSet
+
+    @CdcSet.setter
+    def CdcSet(self, CdcSet):
+        self._CdcSet = CdcSet
+
+    @property
+    def DiskStoragePoolSet(self):
+        r"""Exclusive cluster details list.
+        :rtype: list of Cdc
+        """
+        return self._DiskStoragePoolSet
+
+    @DiskStoragePoolSet.setter
+    def DiskStoragePoolSet(self, DiskStoragePoolSet):
+        self._DiskStoragePoolSet = DiskStoragePoolSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("CdcSet") is not None:
+            self._CdcSet = []
+            for item in params.get("CdcSet"):
+                obj = Cdc()
+                obj._deserialize(item)
+                self._CdcSet.append(obj)
+        if params.get("DiskStoragePoolSet") is not None:
+            self._DiskStoragePoolSet = []
+            for item in params.get("DiskStoragePoolSet"):
+                obj = Cdc()
+                obj._deserialize(item)
+                self._DiskStoragePoolSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

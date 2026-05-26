@@ -124,8 +124,7 @@ class TrtcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCloudTranscriptionResponse:
         """
-        API description:
-        Enable the cloud transcription feature.
+        API description: Enable the cloud transcription feature.
         """
         
         kwargs = {}
@@ -871,11 +870,16 @@ class TrtcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StartAITranscriptionResponse:
         """
-        Initiate the transcription bot. The backend will pull the stream through the bot to perform real-time speech recognition and deliver subtitles and transcription messages. The transcription bot supports two stream pulling modes, controlled by the `TranscriptionMode` field:
-        - Pull the stream of the entire room.
-        - Pull the stream of a specific user.
+        Start up the transcription bot. The backend will pass the robot stream pulling to perform real-time speech recognition and deliver subtitles and transcription messages.
+        The transcription bot supports two stream pulling methods, controlled by the TranscriptionMode field.
+        - Pull the stream of all players in the room.
+        - Pull the stream for a specific user.
 
-        The server delivers subtitles and transcription messages in real-time through TRTC's custom messages, with `CmdId` fixed at 1. The client only needs to listen for the callback of custom messages. For example, see the [C++ callback](https://cloud.tencent.com/document/product/647/79637#4cd82f4edb24992a15a25187089e1565). Other clients, such as Android, Web, etc., can also be found at the same link.
+        The server delivers subtitles and transcription messages in real time through TRTC custom messages, with CmdId fixed to 1. Clients just need to listen to the custom message callback, such as the C++ callback (https://www.tencentcloud.com/document/product/647/79637?from_cn_redirect=1#4cd82f4edb24992a15a25187089e1565). Other clients such as Android and Web can likewise find it at the same link.
+
+
+        **Note:**
+        When TranscriptionMode is 0, ensure only one task is initiated in a room. If multiple tasks are initiated, robots will subscribe with each other. Unless the task is stopped proactively, it will timeout exit after 10 hours. In such cases, it is advisable to fill in SessionId to ensure subsequent repeated task failures.
         """
         
         kwargs = {}
@@ -1040,6 +1044,42 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def TextToSpeech(
+            self,
+            request: models.TextToSpeechRequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechResponse:
+        """
+        This API is used to perform text to speech.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeech"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TextToSpeechSSE(
+            self,
+            request: models.TextToSpeechSSERequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechSSEResponse:
+        """
+        This API is used to stream text-to-speech.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeechSSE"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechSSEResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateAIConversation(
             self,
             request: models.UpdateAIConversationRequest,
@@ -1090,6 +1130,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "UpdateStreamIngest"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateStreamIngestResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def VoiceClone(
+            self,
+            request: models.VoiceCloneRequest,
+            opts: Dict = None,
+    ) -> models.VoiceCloneResponse:
+        """
+        This API is used to clone sound.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "VoiceClone"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.VoiceCloneResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

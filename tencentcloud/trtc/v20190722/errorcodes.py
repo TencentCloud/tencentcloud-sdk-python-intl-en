@@ -119,6 +119,9 @@ INTERNALERROR_USERNOTEXIST = 'InternalError.UserNotExist'
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# Invalid reference audio.
+INVALIDPARAMETER_AUDIOPROMPT = 'InvalidParameter.AudioPrompt'
+
 # Failed to parse body parameters.
 INVALIDPARAMETER_BODYPARAMSERROR = 'InvalidParameter.BodyParamsError'
 
@@ -140,14 +143,26 @@ INVALIDPARAMETER_PAGESIZE = 'InvalidParameter.PageSize'
 # The value of `PageSize` exceeds 100.
 INVALIDPARAMETER_PAGESIZEOVERSIZE = 'InvalidParameter.PageSizeOversize'
 
+# Invalid tone.
+INVALIDPARAMETER_PITCH = 'InvalidParameter.Pitch'
+
+# 
+INVALIDPARAMETER_PRONUNCIATIONDICT = 'InvalidParameter.PronunciationDict'
+
 # The query period exceeds the limit.
 INVALIDPARAMETER_QUERYSCALEOVERSIZE = 'InvalidParameter.QueryScaleOversize'
 
 # `RoomId` is incorrect.
 INVALIDPARAMETER_ROOMID = 'InvalidParameter.RoomId'
 
+# Invalid sampling rate.
+INVALIDPARAMETER_SAMPLERATE = 'InvalidParameter.SampleRate'
+
 # `SdkAppId` is incorrect.
 INVALIDPARAMETER_SDKAPPID = 'InvalidParameter.SdkAppId'
+
+# Invalid speed of sound.
+INVALIDPARAMETER_SPEED = 'InvalidParameter.Speed'
 
 # The start time for query exceeded the limit.
 INVALIDPARAMETER_STARTTIMEEXPIRE = 'InvalidParameter.StartTimeExpire'
@@ -170,6 +185,9 @@ INVALIDPARAMETER_STREAMURL = 'InvalidParameter.StreamUrl'
 # TaskId parameter error.
 INVALIDPARAMETER_TASKID = 'InvalidParameter.TaskId'
 
+# Invalid text length.
+INVALIDPARAMETER_TEXTLENGTH = 'InvalidParameter.TextLength'
+
 # Failed to parse URL parameters.
 INVALIDPARAMETER_URLPARAMSERROR = 'InvalidParameter.UrlParamsError'
 
@@ -188,11 +206,23 @@ INVALIDPARAMETER_USERSIG = 'InvalidParameter.UserSig'
 # UserSig is not a super administrator.
 INVALIDPARAMETER_USERSIGNOTADMIN = 'InvalidParameter.UserSigNotAdmin'
 
+# Invalid VoiceId.
+INVALIDPARAMETER_VOICEID = 'InvalidParameter.VoiceId'
+
+# Invalid sound name.
+INVALIDPARAMETER_VOICENAME = 'InvalidParameter.VoiceName'
+
+# Invalid volume.
+INVALIDPARAMETER_VOLUME = 'InvalidParameter.Volume'
+
 # Invalid RoomId.
 INVALIDPARAMETERVALUE_ROOMID = 'InvalidParameterValue.RoomId'
 
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
+
+# Invalid api key.
+MISSINGPARAMETER_APIKEY = 'MissingParameter.APIKey'
 
 # Missing required parameter: Lang (ASR model).
 MISSINGPARAMETER_ASRLANG = 'MissingParameter.ASRLang'
@@ -289,3 +319,12 @@ UNAUTHORIZEDOPERATION_SDKAPPID = 'UnauthorizedOperation.SdkAppId'
 
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# Unsupported operation.
+UNSUPPORTEDOPERATION_INTERNALERROR = 'UnsupportedOperation.InternalError'
+
+# Not allowed to use. contact technical personnel.
+UNSUPPORTEDOPERATION_NOTALLOWED = 'UnsupportedOperation.NotAllowed'
+
+# Sound clone error.
+UNSUPPORTEDOPERATION_VOICECLONEERROR = 'UnsupportedOperation.VoiceCloneError'

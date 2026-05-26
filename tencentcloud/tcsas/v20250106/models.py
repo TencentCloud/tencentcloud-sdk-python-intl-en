@@ -19,22 +19,22 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class APPOverview(AbstractModel):
-    r"""Superapp data overview
+    r"""Superapp data overview.
 
     """
 
     def __init__(self):
         r"""
-        :param _BaseData: No data available
+        :param _BaseData: No description available.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BaseData: :class:`tencentcloud.tcsas.v20250106.models.APPOverviewData`
-        :param _Overview: Superapp overview summary data
+        :param _Overview: Superapp overview summary data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Overview: :class:`tencentcloud.tcsas.v20250106.models.APPOverviewData`
-        :param _PageData: No data available
+        :param _PageData: No description available.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PageData: :class:`tencentcloud.tcsas.v20250106.models.APPOverviewData`
-        :param _Payment: No data available
+        :param _Payment: No description available.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Payment: :class:`tencentcloud.tcsas.v20250106.models.APPOverviewData`
         """
@@ -45,7 +45,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BaseData(self):
-        r"""No data available
+        r"""No description available.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.APPOverviewData`
         """
@@ -57,7 +57,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Overview(self):
-        r"""Superapp overview summary data
+        r"""Superapp overview summary data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.APPOverviewData`
         """
@@ -69,7 +69,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageData(self):
-        r"""No data available
+        r"""No description available.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.APPOverviewData`
         """
@@ -81,7 +81,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Payment(self):
-        r"""No data available
+        r"""No description available.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.APPOverviewData`
         """
@@ -116,39 +116,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class APPOverviewData(AbstractModel):
-    r"""Superapp overview data details
+    r"""Superapp overview data details.
 
     """
 
     def __init__(self):
         r"""
-        :param _AllActiveDeviceNum: Superapp active device count
+        :param _AllActiveDeviceNum: Superapp active device count.
         :type AllActiveDeviceNum: int
-        :param _AllNewDeviceNum: Superapp new device count
+        :param _AllNewDeviceNum: Superapp new device count.
         :type AllNewDeviceNum: int
-        :param _CorpNum: Mini program team count
+        :param _CorpNum: Mini program team count.
         :type CorpNum: int
-        :param _GameActiveDeviceNum: Mini game active device count
+        :param _GameActiveDeviceNum: Mini game active device count.
         :type GameActiveDeviceNum: int
-        :param _GameNewDeviceNum: Mini game new device count
+        :param _GameNewDeviceNum: Mini game new device count.
         :type GameNewDeviceNum: int
-        :param _MiniAppNum: Created mini program count
+        :param _MiniAppNum: Created mini program count.
 
         :type MiniAppNum: int
-        :param _MngNum: Created mini game count
+        :param _MngNum: Created mini game count.
 
         :type MngNum: int
-        :param _NewDeviceNum: Mini program new device count
+        :param _NewDeviceNum: Mini program new device count.
         :type NewDeviceNum: int
-        :param _OnlineMiniAppNum: Released mini program count
+        :param _OnlineMiniAppNum: Released mini program count.
 
         :type OnlineMiniAppNum: int
-        :param _OnlineMngNum: Released mini game count
+        :param _OnlineMngNum: Released mini game count.
 
         :type OnlineMngNum: int
-        :param _VisitNum: Mini program active device count
+        :param _VisitNum: Mini program active device count.
         :type VisitNum: int
-        :param _FlushTime: Data refresh timestamp
+        :param _FlushTime: Data refresh timestamp.
         :type FlushTime: str
         """
         self._AllActiveDeviceNum = None
@@ -166,7 +166,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def AllActiveDeviceNum(self):
-        r"""Superapp active device count
+        r"""Superapp active device count.
         :rtype: int
         """
         return self._AllActiveDeviceNum
@@ -177,7 +177,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def AllNewDeviceNum(self):
-        r"""Superapp new device count
+        r"""Superapp new device count.
         :rtype: int
         """
         return self._AllNewDeviceNum
@@ -188,7 +188,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def CorpNum(self):
-        r"""Mini program team count
+        r"""Mini program team count.
         :rtype: int
         """
         return self._CorpNum
@@ -199,7 +199,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def GameActiveDeviceNum(self):
-        r"""Mini game active device count
+        r"""Mini game active device count.
         :rtype: int
         """
         return self._GameActiveDeviceNum
@@ -210,7 +210,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def GameNewDeviceNum(self):
-        r"""Mini game new device count
+        r"""Mini game new device count.
         :rtype: int
         """
         return self._GameNewDeviceNum
@@ -221,7 +221,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def MiniAppNum(self):
-        r"""Created mini program count
+        r"""Created mini program count.
 
         :rtype: int
         """
@@ -233,7 +233,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def MngNum(self):
-        r"""Created mini game count
+        r"""Created mini game count.
 
         :rtype: int
         """
@@ -245,7 +245,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def NewDeviceNum(self):
-        r"""Mini program new device count
+        r"""Mini program new device count.
         :rtype: int
         """
         return self._NewDeviceNum
@@ -256,7 +256,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def OnlineMiniAppNum(self):
-        r"""Released mini program count
+        r"""Released mini program count.
 
         :rtype: int
         """
@@ -268,7 +268,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def OnlineMngNum(self):
-        r"""Released mini game count
+        r"""Released mini game count.
 
         :rtype: int
         """
@@ -280,7 +280,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def VisitNum(self):
-        r"""Mini program active device count
+        r"""Mini program active device count.
         :rtype: int
         """
         return self._VisitNum
@@ -291,7 +291,7 @@ class APPOverviewData(AbstractModel):
 
     @property
     def FlushTime(self):
-        r"""Data refresh timestamp
+        r"""Data refresh timestamp.
         :rtype: str
         """
         return self._FlushTime
@@ -325,31 +325,31 @@ class APPOverviewData(AbstractModel):
 
 
 class AccessAnalysisDetail(AbstractModel):
-    r"""Detailed visit analysis data
+    r"""Access analysis detail data.
 
     """
 
     def __init__(self):
         r"""
-        :param _ActiveCount: Number of new devices
+        :param _ActiveCount: Number of new devices.
         :type ActiveCount: int
-        :param _AvgDevice: Average visit duration per user
+        :param _AvgDevice: Average visit duration per user.
         :type AvgDevice: str
-        :param _AvgOnce: Average visit duration per session
+        :param _AvgOnce: Average visit duration per session.
         :type AvgOnce: str
-        :param _AvgOpenCount: Average opens per user
+        :param _AvgOpenCount: Average opens per user.
         :type AvgOpenCount: str
-        :param _DataTime: Date
+        :param _DataTime: Date.
         :type DataTime: str
-        :param _FlushTime: Data time
+        :param _FlushTime: Data refresh time.
         :type FlushTime: str
-        :param _NewCount: Number of active devices
+        :param _NewCount: Number of active devices.
         :type NewCount: int
-        :param _OpenCount: Number of opens
+        :param _OpenCount: Number of opens.
         :type OpenCount: int
-        :param _TotalShareNum: Number of shares
+        :param _TotalShareNum: Number of shares.
         :type TotalShareNum: int
-        :param _TotalUserNum: Cumulative users
+        :param _TotalUserNum: Cumulative users.
         :type TotalUserNum: int
         """
         self._ActiveCount = None
@@ -365,7 +365,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def ActiveCount(self):
-        r"""Number of new devices
+        r"""Number of new devices.
         :rtype: int
         """
         return self._ActiveCount
@@ -376,7 +376,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def AvgDevice(self):
-        r"""Average visit duration per user
+        r"""Average visit duration per user.
         :rtype: str
         """
         return self._AvgDevice
@@ -387,7 +387,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def AvgOnce(self):
-        r"""Average visit duration per session
+        r"""Average visit duration per session.
         :rtype: str
         """
         return self._AvgOnce
@@ -398,7 +398,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def AvgOpenCount(self):
-        r"""Average opens per user
+        r"""Average opens per user.
         :rtype: str
         """
         return self._AvgOpenCount
@@ -409,7 +409,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Date
+        r"""Date.
         :rtype: str
         """
         return self._DataTime
@@ -420,7 +420,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def FlushTime(self):
-        r"""Data time
+        r"""Data refresh time.
         :rtype: str
         """
         return self._FlushTime
@@ -431,7 +431,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def NewCount(self):
-        r"""Number of active devices
+        r"""Number of active devices.
         :rtype: int
         """
         return self._NewCount
@@ -442,7 +442,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def OpenCount(self):
-        r"""Number of opens
+        r"""Number of opens.
         :rtype: int
         """
         return self._OpenCount
@@ -453,7 +453,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def TotalShareNum(self):
-        r"""Number of shares
+        r"""Number of shares.
         :rtype: int
         """
         return self._TotalShareNum
@@ -464,7 +464,7 @@ class AccessAnalysisDetail(AbstractModel):
 
     @property
     def TotalUserNum(self):
-        r"""Cumulative users
+        r"""Cumulative users.
         :rtype: int
         """
         return self._TotalUserNum
@@ -496,22 +496,22 @@ class AccessAnalysisDetail(AbstractModel):
 
 
 class AccessAnalysisOverview(AbstractModel):
-    r"""Overview of mini game visit analysis data
+    r"""Access analysis overview.
 
     """
 
     def __init__(self):
         r"""
-        :param _BaseData: Overview of visit analysis data
+        :param _BaseData: Access analysis overview data. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BaseData: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisDetail`
-        :param _Overview: This API does not respond.
+        :param _Overview: Not returned by this API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Overview: :class:`tencentcloud.tcsas.v20250106.models.Overview`
-        :param _PageData: This API does not respond.
+        :param _PageData: Not returned by this API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PageData: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisDetail`
-        :param _Payment: This API does not respond.
+        :param _Payment: Not returned by this API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Payment: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisDetail`
         """
@@ -522,7 +522,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BaseData(self):
-        r"""Overview of visit analysis data
+        r"""Access analysis overview data. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisDetail`
         """
@@ -534,7 +534,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Overview(self):
-        r"""This API does not respond.
+        r"""Not returned by this API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.Overview`
         """
@@ -546,7 +546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageData(self):
-        r"""This API does not respond.
+        r"""Not returned by this API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisDetail`
         """
@@ -558,7 +558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Payment(self):
-        r"""This API does not respond.
+        r"""Not returned by this API.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisDetail`
         """
@@ -593,25 +593,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AdTrendChart(AbstractModel):
-    r"""Advertising line chart data
+    r"""Ad trend data.
 
     """
 
     def __init__(self):
         r"""
-        :param _EstimatedEarnings: Estimated revenue
+        :param _EstimatedEarnings: Estimated revenue.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EstimatedEarnings: list of AnalysisData
-        :param _RequestsNumber: Requests
+        :param _RequestsNumber: Number of requests.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RequestsNumber: list of AnalysisData
-        :param _Impressions: Impressions
+        :param _Impressions: Number of impressions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Impressions: list of AnalysisData
-        :param _ECPM: Effective Cost Per Mille
+        :param _ECPM: eCPM (effective cost per mille).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ECPM: list of AnalysisData
-        :param _ClicksNumber: Taps
+        :param _ClicksNumber: Number of taps.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClicksNumber: list of AnalysisData
         """
@@ -623,7 +623,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EstimatedEarnings(self):
-        r"""Estimated revenue
+        r"""Estimated revenue.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalysisData
         """
@@ -635,7 +635,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestsNumber(self):
-        r"""Requests
+        r"""Number of requests.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalysisData
         """
@@ -647,7 +647,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Impressions(self):
-        r"""Impressions
+        r"""Number of impressions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalysisData
         """
@@ -659,7 +659,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ECPM(self):
-        r"""Effective Cost Per Mille
+        r"""eCPM (effective cost per mille).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalysisData
         """
@@ -671,7 +671,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClicksNumber(self):
-        r"""Taps
+        r"""Number of taps.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AnalysisData
         """
@@ -730,11 +730,11 @@ class AddTeamMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _MemberList: Members to be added
+        :param _MemberList: List of new team members.
         :type MemberList: list of CreateTeamMemberInfoReq
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._TeamId = None
@@ -743,7 +743,7 @@ class AddTeamMemberRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -754,7 +754,7 @@ class AddTeamMemberRequest(AbstractModel):
 
     @property
     def MemberList(self):
-        r"""Members to be added
+        r"""List of new team members.
         :rtype: list of CreateTeamMemberInfoReq
         """
         return self._MemberList
@@ -765,7 +765,7 @@ class AddTeamMemberRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -801,7 +801,7 @@ class AddTeamMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -811,7 +811,7 @@ class AddTeamMemberResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -840,25 +840,25 @@ class AddTeamMemberResponse(AbstractModel):
 
 
 class AdvertDataOverview(AbstractModel):
-    r"""Advertising data overview
+    r"""Ad data overview.
 
     """
 
     def __init__(self):
         r"""
-        :param _EstimatedEarnings: Estimated revenue
+        :param _EstimatedEarnings: Estimated revenue.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EstimatedEarnings: str
-        :param _RequestsNumber: Requests
+        :param _RequestsNumber: Number of requests.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RequestsNumber: int
-        :param _Impressions: Impressions
+        :param _Impressions: Number of impressions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Impressions: int
-        :param _ClicksNumber: Taps
+        :param _ClicksNumber: Number of taps.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClicksNumber: int
-        :param _ECPM: Impressions
+        :param _ECPM: eCPM (effective cost per mille).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ECPM: str
         """
@@ -870,7 +870,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EstimatedEarnings(self):
-        r"""Estimated revenue
+        r"""Estimated revenue.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -882,7 +882,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestsNumber(self):
-        r"""Requests
+        r"""Number of requests.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -894,7 +894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Impressions(self):
-        r"""Impressions
+        r"""Number of impressions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -906,7 +906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClicksNumber(self):
-        r"""Taps
+        r"""Number of taps.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -918,7 +918,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ECPM(self):
-        r"""Impressions
+        r"""eCPM (effective cost per mille).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -946,13 +946,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AnalysisAdvertOverview(AbstractModel):
-    r"""Advertising analysis data overview
+    r"""Ad analysis data overview.
 
     """
 
     def __init__(self):
         r"""
-        :param _OverviewData: Advertising overview
+        :param _OverviewData: Ad overview. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OverviewData: :class:`tencentcloud.tcsas.v20250106.models.AdvertDataOverview`
         """
@@ -960,7 +960,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OverviewData(self):
-        r"""Advertising overview
+        r"""Ad overview. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AdvertDataOverview`
         """
@@ -986,15 +986,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AnalysisData(AbstractModel):
-    r"""Line chart data values
+    r"""Trend data value.
 
     """
 
     def __init__(self):
         r"""
-        :param _DataTime: Time
+        :param _DataTime: Data time.
         :type DataTime: str
-        :param _Number: Value
+        :param _Number: Data value.
         :type Number: str
         """
         self._DataTime = None
@@ -1002,7 +1002,7 @@ class AnalysisData(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Time
+        r"""Data time.
         :rtype: str
         """
         return self._DataTime
@@ -1013,7 +1013,7 @@ class AnalysisData(AbstractModel):
 
     @property
     def Number(self):
-        r"""Value
+        r"""Data value.
         :rtype: str
         """
         return self._Number
@@ -1037,19 +1037,19 @@ class AnalysisData(AbstractModel):
 
 
 class ApplicationConfigInfo(AbstractModel):
-    r"""Application configuration info
+    r"""Superapp configuration infomation.
 
     """
 
     def __init__(self):
         r"""
-        :param _ApplicationType: Superapp configuration type: 1 Non-production, 2 Production
+        :param _ApplicationType: Superapp configuration type. Valid values: 1 Non-production; 2 Production.
         :type ApplicationType: int
-        :param _AppKey: Superapp package name
+        :param _AppKey: Superapp package name.
         :type AppKey: str
-        :param _AppURL: Superapp URL
+        :param _AppURL: Superapp URL.
         :type AppURL: str
-        :param _Id: Superapp configuration ID
+        :param _Id: Superapp configuration ID.
         :type Id: int
         """
         self._ApplicationType = None
@@ -1059,7 +1059,7 @@ class ApplicationConfigInfo(AbstractModel):
 
     @property
     def ApplicationType(self):
-        r"""Superapp configuration type: 1 Non-production, 2 Production
+        r"""Superapp configuration type. Valid values: 1 Non-production; 2 Production.
         :rtype: int
         """
         return self._ApplicationType
@@ -1070,7 +1070,7 @@ class ApplicationConfigInfo(AbstractModel):
 
     @property
     def AppKey(self):
-        r"""Superapp package name
+        r"""Superapp package name.
         :rtype: str
         """
         return self._AppKey
@@ -1081,7 +1081,7 @@ class ApplicationConfigInfo(AbstractModel):
 
     @property
     def AppURL(self):
-        r"""Superapp URL
+        r"""Superapp URL.
         :rtype: str
         """
         return self._AppURL
@@ -1092,7 +1092,7 @@ class ApplicationConfigInfo(AbstractModel):
 
     @property
     def Id(self):
-        r"""Superapp configuration ID
+        r"""Superapp configuration ID.
         :rtype: int
         """
         return self._Id
@@ -1118,18 +1118,17 @@ class ApplicationConfigInfo(AbstractModel):
 
 
 class ApprovalItem(AbstractModel):
-    r"""Result of the mini program approval requests
+    r"""Mini program approval processing details.
 
     """
 
     def __init__(self):
         r"""
-        :param _AppId: Application ID
+        :param _AppId: Superapp ID.
         :type AppId: str
-        :param _ApprovalResult: Approval result. 2: Rejected;
-3: Approved
+        :param _ApprovalResult: Approval result. Valid value: 2: Rejected; 3: Approved.
         :type ApprovalResult: int
-        :param _ApprovalNote: Approval notes. It’s required when the request is rejected.
+        :param _ApprovalNote: Approval notes. It is required when the request is rejected.
         :type ApprovalNote: str
         """
         self._AppId = None
@@ -1138,7 +1137,7 @@ class ApprovalItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._AppId
@@ -1149,8 +1148,7 @@ class ApprovalItem(AbstractModel):
 
     @property
     def ApprovalResult(self):
-        r"""Approval result. 2: Rejected;
-3: Approved
+        r"""Approval result. Valid value: 2: Rejected; 3: Approved.
         :rtype: int
         """
         return self._ApprovalResult
@@ -1161,7 +1159,7 @@ class ApprovalItem(AbstractModel):
 
     @property
     def ApprovalNote(self):
-        r"""Approval notes. It’s required when the request is rejected.
+        r"""Approval notes. It is required when the request is rejected.
         :rtype: str
         """
         return self._ApprovalNote
@@ -1186,13 +1184,13 @@ class ApprovalItem(AbstractModel):
 
 
 class BooleanInfo(AbstractModel):
-    r"""Used for Data object when no data is returned after the a successful action.
+    r"""Used for Data object when no data is returned after a successful action.
 
     """
 
     def __init__(self):
         r"""
-        :param _Result: Bool type response object
+        :param _Result: The Boolean response object. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Result: bool
         """
@@ -1200,7 +1198,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        r"""Bool type response object
+        r"""The Boolean response object. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -1224,17 +1222,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CategoryInfo(AbstractModel):
-    r"""Category information
+    r"""Category information.
 
     """
 
     def __init__(self):
         r"""
-        :param _ID: Category ID
+        :param _ID: Category ID.
         :type ID: str
-        :param _Name: Category name
+        :param _Name: Category name.
         :type Name: str
-        :param _SubItems: Subcategory information
+        :param _SubItems: Subcategory information.
         :type SubItems: list of CategoryItem
         """
         self._ID = None
@@ -1243,7 +1241,7 @@ class CategoryInfo(AbstractModel):
 
     @property
     def ID(self):
-        r"""Category ID
+        r"""Category ID.
         :rtype: str
         """
         return self._ID
@@ -1254,7 +1252,7 @@ class CategoryInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""Category name
+        r"""Category name.
         :rtype: str
         """
         return self._Name
@@ -1265,7 +1263,7 @@ class CategoryInfo(AbstractModel):
 
     @property
     def SubItems(self):
-        r"""Subcategory information
+        r"""Subcategory information.
         :rtype: list of CategoryItem
         """
         return self._SubItems
@@ -1295,15 +1293,15 @@ class CategoryInfo(AbstractModel):
 
 
 class CategoryItem(AbstractModel):
-    r"""Category information
+    r"""Subcategory item information.
 
     """
 
     def __init__(self):
         r"""
-        :param _ID: Category ID
+        :param _ID: Category ID.
         :type ID: str
-        :param _Name: Category name
+        :param _Name: Category name.
         :type Name: str
         """
         self._ID = None
@@ -1311,7 +1309,7 @@ class CategoryItem(AbstractModel):
 
     @property
     def ID(self):
-        r"""Category ID
+        r"""Category ID.
         :rtype: str
         """
         return self._ID
@@ -1322,7 +1320,7 @@ class CategoryItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""Category name
+        r"""Category name.
         :rtype: str
         """
         return self._Name
@@ -1352,15 +1350,15 @@ class ConfigureMNGPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _ActionType: <p>1 Set 2 Cancel</p>
+        :param _ActionType: <p>Action type. Valid values: 1: Set; 2: Cancel.</p>
         :type ActionType: int
-        :param _MNPVersionId: <p>Mini game version ID</p>
+        :param _MNPVersionId: <p>Mini game version ID.</p>
         :type MNPVersionId: int
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _PreviewEntrancePath: <p>Preview path</p>
+        :param _PreviewEntrancePath: <p>Preview path.</p>
         :type PreviewEntrancePath: str
         """
         self._MNPId = None
@@ -1371,7 +1369,7 @@ class ConfigureMNGPreviewRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -1382,7 +1380,7 @@ class ConfigureMNGPreviewRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""<p>1 Set 2 Cancel</p>
+        r"""<p>Action type. Valid values: 1: Set; 2: Cancel.</p>
         :rtype: int
         """
         return self._ActionType
@@ -1393,7 +1391,7 @@ class ConfigureMNGPreviewRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""<p>Mini game version ID</p>
+        r"""<p>Mini game version ID.</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -1404,7 +1402,7 @@ class ConfigureMNGPreviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -1415,7 +1413,7 @@ class ConfigureMNGPreviewRequest(AbstractModel):
 
     @property
     def PreviewEntrancePath(self):
-        r"""<p>Preview path</p>
+        r"""<p>Preview path.</p>
         :rtype: str
         """
         return self._PreviewEntrancePath
@@ -1448,7 +1446,7 @@ class ConfigureMNGPreviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1458,7 +1456,7 @@ class ConfigureMNGPreviewResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -1493,15 +1491,15 @@ class ConfigureMNPPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _ActionType: 1: Set; 2: Cancel
+        :param _ActionType: Action type. Valid values: 1: Set; 2: Cancel.
         :type ActionType: int
-        :param _MNPVersionId: Mini program version ID
+        :param _MNPVersionId: Mini program version ID.
         :type MNPVersionId: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _PreivewEntrancePath: Path to the preview page
+        :param _PreivewEntrancePath: Preview path.
         :type PreivewEntrancePath: str
         """
         self._MNPId = None
@@ -1512,7 +1510,7 @@ class ConfigureMNPPreviewRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -1523,7 +1521,7 @@ class ConfigureMNPPreviewRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""1: Set; 2: Cancel
+        r"""Action type. Valid values: 1: Set; 2: Cancel.
         :rtype: int
         """
         return self._ActionType
@@ -1534,7 +1532,7 @@ class ConfigureMNPPreviewRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""Mini program version ID
+        r"""Mini program version ID.
         :rtype: int
         """
         return self._MNPVersionId
@@ -1545,7 +1543,7 @@ class ConfigureMNPPreviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -1556,7 +1554,7 @@ class ConfigureMNPPreviewRequest(AbstractModel):
 
     @property
     def PreivewEntrancePath(self):
-        r"""Path to the preview page
+        r"""Preview path.
         :rtype: str
         """
         return self._PreivewEntrancePath
@@ -1589,7 +1587,7 @@ class ConfigureMNPPreviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1599,7 +1597,7 @@ class ConfigureMNPPreviewResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -1634,17 +1632,17 @@ class CreateApplicationConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Superapp ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _ApplicationType: Superapp type. 1: Test; 2: Formal
+        :param _ApplicationType: Superapp type. Valid values: 1: Test; 2: Production.
         :type ApplicationType: int
-        :param _ApplicationPlatformType: Superapp operating system. 2 Android 3 iOS
+        :param _ApplicationPlatformType: Superapp operating system type. Valid values: 2: Android; 3: iOS.
         :type ApplicationPlatformType: int
-        :param _AppKey: Package name: corresponds to packageName on Android and bundleId on iOS
+        :param _AppKey: Package name. Corresponds to the package name on Android and the bundle ID on iOS.
         :type AppKey: str
-        :param _AppURL: Superapp URL
+        :param _AppURL: Superapp URL.
         :type AppURL: str
         """
         self._ApplicationId = None
@@ -1656,7 +1654,7 @@ class CreateApplicationConfigRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -1667,7 +1665,7 @@ class CreateApplicationConfigRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -1678,7 +1676,7 @@ class CreateApplicationConfigRequest(AbstractModel):
 
     @property
     def ApplicationType(self):
-        r"""Superapp type. 1: Test; 2: Formal
+        r"""Superapp type. Valid values: 1: Test; 2: Production.
         :rtype: int
         """
         return self._ApplicationType
@@ -1689,7 +1687,7 @@ class CreateApplicationConfigRequest(AbstractModel):
 
     @property
     def ApplicationPlatformType(self):
-        r"""Superapp operating system. 2 Android 3 iOS
+        r"""Superapp operating system type. Valid values: 2: Android; 3: iOS.
         :rtype: int
         """
         return self._ApplicationPlatformType
@@ -1700,7 +1698,7 @@ class CreateApplicationConfigRequest(AbstractModel):
 
     @property
     def AppKey(self):
-        r"""Package name: corresponds to packageName on Android and bundleId on iOS
+        r"""Package name. Corresponds to the package name on Android and the bundle ID on iOS.
         :rtype: str
         """
         return self._AppKey
@@ -1711,7 +1709,7 @@ class CreateApplicationConfigRequest(AbstractModel):
 
     @property
     def AppURL(self):
-        r"""Superapp URL
+        r"""Superapp URL.
         :rtype: str
         """
         return self._AppURL
@@ -1745,7 +1743,7 @@ class CreateApplicationConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1755,7 +1753,7 @@ class CreateApplicationConfigResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -1790,25 +1788,25 @@ class CreateApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationName: Application name
+        :param _ApplicationName: Superapp name.
         :type ApplicationName: str
-        :param _Logo: Logo address
+        :param _Logo: Superapp logo URL.
         :type Logo: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _Intro: Introduction
+        :param _Intro: Superapp introduction.
         :type Intro: str
-        :param _ApplicationType: Application type. 1: Test; 2: Formal
+        :param _ApplicationType: Superapp type. Valid values: 1: Test; 2: Production.
         :type ApplicationType: int
-        :param _AndroidAppKey: Android app package name
+        :param _AndroidAppKey: Android app package name.
         :type AndroidAppKey: str
-        :param _IosAppKey: iOS App bundleId
+        :param _IosAppKey: iOS app bundle ID.
         :type IosAppKey: str
-        :param _Remark: Remarks
+        :param _Remark: Remarks.
         :type Remark: str
-        :param _Scheme: Scheme
+        :param _Scheme: Scheme.
         :type Scheme: str
         """
         self._ApplicationName = None
@@ -1824,7 +1822,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name
+        r"""Superapp name.
         :rtype: str
         """
         return self._ApplicationName
@@ -1835,7 +1833,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def Logo(self):
-        r"""Logo address
+        r"""Superapp logo URL.
         :rtype: str
         """
         return self._Logo
@@ -1846,7 +1844,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -1857,7 +1855,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -1868,7 +1866,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def Intro(self):
-        r"""Introduction
+        r"""Superapp introduction.
         :rtype: str
         """
         return self._Intro
@@ -1881,7 +1879,7 @@ class CreateApplicationRequest(AbstractModel):
     def ApplicationType(self):
         warnings.warn("parameter `ApplicationType` is deprecated", DeprecationWarning) 
 
-        r"""Application type. 1: Test; 2: Formal
+        r"""Superapp type. Valid values: 1: Test; 2: Production.
         :rtype: int
         """
         return self._ApplicationType
@@ -1896,7 +1894,7 @@ class CreateApplicationRequest(AbstractModel):
     def AndroidAppKey(self):
         warnings.warn("parameter `AndroidAppKey` is deprecated", DeprecationWarning) 
 
-        r"""Android app package name
+        r"""Android app package name.
         :rtype: str
         """
         return self._AndroidAppKey
@@ -1911,7 +1909,7 @@ class CreateApplicationRequest(AbstractModel):
     def IosAppKey(self):
         warnings.warn("parameter `IosAppKey` is deprecated", DeprecationWarning) 
 
-        r"""iOS App bundleId
+        r"""iOS app bundle ID.
         :rtype: str
         """
         return self._IosAppKey
@@ -1926,7 +1924,7 @@ class CreateApplicationRequest(AbstractModel):
     def Remark(self):
         warnings.warn("parameter `Remark` is deprecated", DeprecationWarning) 
 
-        r"""Remarks
+        r"""Remarks.
         :rtype: str
         """
         return self._Remark
@@ -1939,7 +1937,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def Scheme(self):
-        r"""Scheme
+        r"""Scheme.
         :rtype: str
         """
         return self._Scheme
@@ -1977,7 +1975,7 @@ class CreateApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1987,7 +1985,7 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         """
         return self._Data
@@ -2016,19 +2014,19 @@ class CreateApplicationResponse(AbstractModel):
 
 
 class CreateApplicationSensitiveAPIReq(AbstractModel):
-    r"""The request to add a sensitive API
+    r"""Request object for creating a sensitive API.
 
     """
 
     def __init__(self):
         r"""
-        :param _APIName: <p>API name</p>
+        :param _APIName: <p>API name.</p>
         :type APIName: str
-        :param _APIDesc: <p>API description</p>
+        :param _APIDesc: <p>API description.</p>
         :type APIDesc: str
-        :param _APIType: <p>API type. Valid values: 1: System; 2: Custom</p>
+        :param _APIType: <p>API type. Valid values: 1: System; 2: Custom.</p>
         :type APIType: int
-        :param _UseScope: <p>Applicable scope: Valid values: 0: Mini program; 1: Mini game; 100: Universal</p>
+        :param _UseScope: <p>Applicable scope: Valid values: 0: Mini program; 1: Mini game; 100: Both.</p>
         :type UseScope: int
         """
         self._APIName = None
@@ -2038,7 +2036,7 @@ class CreateApplicationSensitiveAPIReq(AbstractModel):
 
     @property
     def APIName(self):
-        r"""<p>API name</p>
+        r"""<p>API name.</p>
         :rtype: str
         """
         return self._APIName
@@ -2049,7 +2047,7 @@ class CreateApplicationSensitiveAPIReq(AbstractModel):
 
     @property
     def APIDesc(self):
-        r"""<p>API description</p>
+        r"""<p>API description.</p>
         :rtype: str
         """
         return self._APIDesc
@@ -2060,7 +2058,7 @@ class CreateApplicationSensitiveAPIReq(AbstractModel):
 
     @property
     def APIType(self):
-        r"""<p>API type. Valid values: 1: System; 2: Custom</p>
+        r"""<p>API type. Valid values: 1: System; 2: Custom.</p>
         :rtype: int
         """
         return self._APIType
@@ -2071,7 +2069,7 @@ class CreateApplicationSensitiveAPIReq(AbstractModel):
 
     @property
     def UseScope(self):
-        r"""<p>Applicable scope: Valid values: 0: Mini program; 1: Mini game; 100: Universal</p>
+        r"""<p>Applicable scope: Valid values: 0: Mini program; 1: Mini game; 100: Both.</p>
         :rtype: int
         """
         return self._UseScope
@@ -2103,11 +2101,11 @@ class CreateApplicationSensitiveAPIRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
         :param _APIList: List of newly-added APIs.
         :type APIList: list of CreateApplicationSensitiveAPIReq
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._ApplicationId = None
@@ -2116,7 +2114,7 @@ class CreateApplicationSensitiveAPIRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -2138,7 +2136,7 @@ class CreateApplicationSensitiveAPIRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -2174,7 +2172,7 @@ class CreateApplicationSensitiveAPIResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2184,7 +2182,7 @@ class CreateApplicationSensitiveAPIResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -2213,15 +2211,15 @@ class CreateApplicationSensitiveAPIResponse(AbstractModel):
 
 
 class CreateDomainParam(AbstractModel):
-    r"""Parameters to create a domain name
+    r"""Request parameters for creating a domain.
 
     """
 
     def __init__(self):
         r"""
-        :param _DomainUrlList: Array of domain name URLs
+        :param _DomainUrlList: Array of domain URLs.
         :type DomainUrlList: list of str
-        :param _DomainType: Domain type. 1: requests domain; 2: WebView load domain, 3: sockets domain; 4: File upload; 5: File download
+        :param _DomainType: Domain type. Valid values: 1: Request domain; 2: Business domain; 3: Socket domain; 4: File upload; 5: File download. 
         :type DomainType: int
         """
         self._DomainUrlList = None
@@ -2229,7 +2227,7 @@ class CreateDomainParam(AbstractModel):
 
     @property
     def DomainUrlList(self):
-        r"""Array of domain name URLs
+        r"""Array of domain URLs.
         :rtype: list of str
         """
         return self._DomainUrlList
@@ -2240,7 +2238,7 @@ class CreateDomainParam(AbstractModel):
 
     @property
     def DomainType(self):
-        r"""Domain type. 1: requests domain; 2: WebView load domain, 3: sockets domain; 4: File upload; 5: File download
+        r"""Domain type. Valid values: 1: Request domain; 2: Business domain; 3: Socket domain; 4: File upload; 5: File download. 
         :rtype: int
         """
         return self._DomainType
@@ -2270,11 +2268,11 @@ class CreateGlobalDomainACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainUrlList: Domain name list
+        :param _DomainUrlList: Domain list.
         :type DomainUrlList: list of str
-        :param _DomainType: Domain type. 1: Allowed; 2: Blocked
+        :param _DomainType: Domain type. Valid value: 1: Allowed; 2: Blocked.
         :type DomainType: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._DomainUrlList = None
@@ -2283,7 +2281,7 @@ class CreateGlobalDomainACLRequest(AbstractModel):
 
     @property
     def DomainUrlList(self):
-        r"""Domain name list
+        r"""Domain list.
         :rtype: list of str
         """
         return self._DomainUrlList
@@ -2294,7 +2292,7 @@ class CreateGlobalDomainACLRequest(AbstractModel):
 
     @property
     def DomainType(self):
-        r"""Domain type. 1: Allowed; 2: Blocked
+        r"""Domain type. Valid value: 1: Allowed; 2: Blocked.
         :rtype: int
         """
         return self._DomainType
@@ -2305,7 +2303,7 @@ class CreateGlobalDomainACLRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -2336,7 +2334,7 @@ class CreateGlobalDomainACLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.CreateGlobalDomainResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2346,7 +2344,7 @@ class CreateGlobalDomainACLResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateGlobalDomainResp`
         """
         return self._Data
@@ -2375,19 +2373,19 @@ class CreateGlobalDomainACLResponse(AbstractModel):
 
 
 class CreateGlobalDomainResp(AbstractModel):
-    r"""Response of creating a global domain name
+    r"""Response for creating a global domain.
 
     """
 
     def __init__(self):
         r"""
-        :param _Result: Result
+        :param _Result: Operation result. 
         :type Result: bool
-        :param _RepeatUrls: Indicates the duplicate domain name.
+        :param _RepeatUrls: Duplicate domains.
         :type RepeatUrls: list of str
-        :param _ExistsWhiteUrls: Lists allowed domain names.
+        :param _ExistsWhiteUrls: Domains that already exist in the allowlist.
         :type ExistsWhiteUrls: list of str
-        :param _ExistsBlackUrls: Indicates the domain name already exists in the blocklist.
+        :param _ExistsBlackUrls: Domains that already exist in the blocklist. 
         :type ExistsBlackUrls: list of str
         """
         self._Result = None
@@ -2397,7 +2395,7 @@ class CreateGlobalDomainResp(AbstractModel):
 
     @property
     def Result(self):
-        r"""Result
+        r"""Operation result. 
         :rtype: bool
         """
         return self._Result
@@ -2408,7 +2406,7 @@ class CreateGlobalDomainResp(AbstractModel):
 
     @property
     def RepeatUrls(self):
-        r"""Indicates the duplicate domain name.
+        r"""Duplicate domains.
         :rtype: list of str
         """
         return self._RepeatUrls
@@ -2419,7 +2417,7 @@ class CreateGlobalDomainResp(AbstractModel):
 
     @property
     def ExistsWhiteUrls(self):
-        r"""Lists allowed domain names.
+        r"""Domains that already exist in the allowlist.
         :rtype: list of str
         """
         return self._ExistsWhiteUrls
@@ -2430,7 +2428,7 @@ class CreateGlobalDomainResp(AbstractModel):
 
     @property
     def ExistsBlackUrls(self):
-        r"""Indicates the domain name already exists in the blocklist.
+        r"""Domains that already exist in the blocklist. 
         :rtype: list of str
         """
         return self._ExistsBlackUrls
@@ -2462,11 +2460,11 @@ class CreateMNGApprovalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPVersionId: <p>Mini game version ID</p>
+        :param _MNPVersionId: <p>Mini game version ID.</p>
         :type MNPVersionId: int
-        :param _ApplyAction: <p>submit: Submit for approval; cancel: Cancel approval</p>
+        :param _ApplyAction: <p>submit: Submit an approval request; cancel: Cancel the approval request.</p>
         :type ApplyAction: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPVersionId = None
@@ -2475,7 +2473,7 @@ class CreateMNGApprovalRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""<p>Mini game version ID</p>
+        r"""<p>Mini game version ID.</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -2486,7 +2484,7 @@ class CreateMNGApprovalRequest(AbstractModel):
 
     @property
     def ApplyAction(self):
-        r"""<p>submit: Submit for approval; cancel: Cancel approval</p>
+        r"""<p>submit: Submit an approval request; cancel: Cancel the approval request.</p>
         :rtype: str
         """
         return self._ApplyAction
@@ -2497,7 +2495,7 @@ class CreateMNGApprovalRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -2522,16 +2520,16 @@ class CreateMNGApprovalRequest(AbstractModel):
 
 
 class CreateMNGApprovalResp(AbstractModel):
-    r"""Response for submitting a mini game version for approval
+    r"""Response for submitting a mini game version for approval.
 
     """
 
     def __init__(self):
         r"""
-        :param _Result: <p>Boolean response object</p>
+        :param _Result: <p>Boolean response object.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param _ApprovalNo: <p>Approval number</p>
+        :param _ApprovalNo: <p>Approval number.</p>
         :type ApprovalNo: str
         """
         self._Result = None
@@ -2539,7 +2537,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
-        r"""<p>Boolean response object</p>
+        r"""<p>Boolean response object.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -2551,7 +2549,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApprovalNo(self):
-        r"""<p>Approval number</p>
+        r"""<p>Approval number.</p>
         :rtype: str
         """
         return self._ApprovalNo
@@ -2581,7 +2579,7 @@ class CreateMNGApprovalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.CreateMNGApprovalResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2591,7 +2589,7 @@ class CreateMNGApprovalResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNGApprovalResp`
         """
         return self._Data
@@ -2626,11 +2624,11 @@ class CreateMNGDomainACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _Domain: <p>Domain list</p>
+        :param _Domain: <p>Domain list.</p>
         :type Domain: list of CreateDomainParam
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPId = None
@@ -2639,7 +2637,7 @@ class CreateMNGDomainACLRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -2650,7 +2648,7 @@ class CreateMNGDomainACLRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""<p>Domain list</p>
+        r"""<p>Domain list.</p>
         :rtype: list of CreateDomainParam
         """
         return self._Domain
@@ -2661,7 +2659,7 @@ class CreateMNGDomainACLRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -2697,7 +2695,7 @@ class CreateMNGDomainACLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2707,7 +2705,7 @@ class CreateMNGDomainACLResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -2742,20 +2740,22 @@ class CreateMNGRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPType: <p>Mini game type</p>
+        :param _MNPType: <p>Mini game category.</p>
         :type MNPType: str
-        :param _MNPName: <p>Mini game name</p>
+        :param _MNPName: <p>Mini game name.</p>
         :type MNPName: str
-        :param _MNPIcon: <p>Mini game icon</p>
+        :param _MNPIcon: <p>Mini game icon.</p>
         :type MNPIcon: str
-        :param _MNPIntro: <p>Mini game introduction</p>
+        :param _MNPIntro: <p>Mini game introduction.</p>
         :type MNPIntro: str
-        :param _MNPDesc: <p>Mini game description</p>
+        :param _MNPDesc: <p>Mini game description.</p>
         :type MNPDesc: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _TeamId: <p>Team ID</p>
+        :param _TeamId: <p>Team ID.</p>
         :type TeamId: str
+        :param _I18nList: <p>The mini game name and description in multiple languages.</p>
+        :type I18nList: list of MNPI18NSyncDto
         """
         self._MNPType = None
         self._MNPName = None
@@ -2764,10 +2764,11 @@ class CreateMNGRequest(AbstractModel):
         self._MNPDesc = None
         self._PlatformId = None
         self._TeamId = None
+        self._I18nList = None
 
     @property
     def MNPType(self):
-        r"""<p>Mini game type</p>
+        r"""<p>Mini game category.</p>
         :rtype: str
         """
         return self._MNPType
@@ -2778,7 +2779,7 @@ class CreateMNGRequest(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""<p>Mini game name</p>
+        r"""<p>Mini game name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -2789,7 +2790,7 @@ class CreateMNGRequest(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""<p>Mini game icon</p>
+        r"""<p>Mini game icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -2800,7 +2801,7 @@ class CreateMNGRequest(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""<p>Mini game introduction</p>
+        r"""<p>Mini game introduction.</p>
         :rtype: str
         """
         return self._MNPIntro
@@ -2811,7 +2812,7 @@ class CreateMNGRequest(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""<p>Mini game description</p>
+        r"""<p>Mini game description.</p>
         :rtype: str
         """
         return self._MNPDesc
@@ -2822,7 +2823,7 @@ class CreateMNGRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -2833,7 +2834,7 @@ class CreateMNGRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""<p>Team ID</p>
+        r"""<p>Team ID.</p>
         :rtype: str
         """
         return self._TeamId
@@ -2841,6 +2842,17 @@ class CreateMNGRequest(AbstractModel):
     @TeamId.setter
     def TeamId(self, TeamId):
         self._TeamId = TeamId
+
+    @property
+    def I18nList(self):
+        r"""<p>The mini game name and description in multiple languages.</p>
+        :rtype: list of MNPI18NSyncDto
+        """
+        return self._I18nList
+
+    @I18nList.setter
+    def I18nList(self, I18nList):
+        self._I18nList = I18nList
 
 
     def _deserialize(self, params):
@@ -2851,6 +2863,12 @@ class CreateMNGRequest(AbstractModel):
         self._MNPDesc = params.get("MNPDesc")
         self._PlatformId = params.get("PlatformId")
         self._TeamId = params.get("TeamId")
+        if params.get("I18nList") is not None:
+            self._I18nList = []
+            for item in params.get("I18nList"):
+                obj = MNPI18NSyncDto()
+                obj._deserialize(item)
+                self._I18nList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2868,7 +2886,7 @@ class CreateMNGResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>The mini game appid returned in the response.</p>
+        :param _Data: <p>The returned mini game appid.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2878,7 +2896,7 @@ class CreateMNGResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>The mini game appid returned in the response.</p>
+        r"""<p>The returned mini game appid.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         """
         return self._Data
@@ -2913,13 +2931,13 @@ class CreateMNGSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _APIId: <p>API ID</p>
+        :param _APIId: <p>API ID.</p>
         :type APIId: str
-        :param _ApplyReason: <p>Reason for request</p>
+        :param _ApplyReason: <p>Reason for request.</p>
         :type ApplyReason: str
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._APIId = None
@@ -2929,7 +2947,7 @@ class CreateMNGSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def APIId(self):
-        r"""<p>API ID</p>
+        r"""<p>API ID.</p>
         :rtype: str
         """
         return self._APIId
@@ -2940,7 +2958,7 @@ class CreateMNGSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def ApplyReason(self):
-        r"""<p>Reason for request</p>
+        r"""<p>Reason for request.</p>
         :rtype: str
         """
         return self._ApplyReason
@@ -2951,7 +2969,7 @@ class CreateMNGSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -2962,7 +2980,7 @@ class CreateMNGSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -2994,7 +3012,7 @@ class CreateMNGSensitiveAPIPermissionApprovalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3004,7 +3022,7 @@ class CreateMNGSensitiveAPIPermissionApprovalResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         """
         return self._Data
@@ -3039,15 +3057,15 @@ class CreateMNGVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _MNPVersion: <p>Version number</p>
+        :param _MNPVersion: <p>Version number.</p>
         :type MNPVersion: str
         :param _FileUrl: <p>URL of the mini game file exported from the IDE and uploaded to the file server.<p>
         :type FileUrl: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _MNPVersionIntro: <p>Version description</p>
+        :param _MNPVersionIntro: <p>Version description.</p>
         :type MNPVersionIntro: str
         """
         self._MNPId = None
@@ -3058,7 +3076,7 @@ class CreateMNGVersionRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -3069,7 +3087,7 @@ class CreateMNGVersionRequest(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""<p>Version number</p>
+        r"""<p>Version number.</p>
         :rtype: str
         """
         return self._MNPVersion
@@ -3091,7 +3109,7 @@ class CreateMNGVersionRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -3102,7 +3120,7 @@ class CreateMNGVersionRequest(AbstractModel):
 
     @property
     def MNPVersionIntro(self):
-        r"""<p>Version description</p>
+        r"""<p>Version description.</p>
         :rtype: str
         """
         return self._MNPVersionIntro
@@ -3129,20 +3147,20 @@ class CreateMNGVersionRequest(AbstractModel):
 
 
 class CreateMNGVersionResp(AbstractModel):
-    r"""Response data for creating a mini game version
+    r"""Response for creating a mini game version.
 
     """
 
     def __init__(self):
         r"""
-        :param _TaskId: <p>Mini game version compilation task ID</p>
+        :param _TaskId: <p>Mini game version compilation task ID.</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""<p>Mini game version compilation task ID</p>
+        r"""<p>Mini game version compilation task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -3171,7 +3189,7 @@ class CreateMNGVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.CreateMNGVersionResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3181,7 +3199,7 @@ class CreateMNGVersionResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNGVersionResp`
         """
         return self._Data
@@ -3216,11 +3234,11 @@ class CreateMNPApprovalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPVersionId: Mini program version ID
+        :param _MNPVersionId: Mini program version ID.
         :type MNPVersionId: int
-        :param _ApplyAction: submit: Submit an approval request; cancel: Cancel the approval request
+        :param _ApplyAction: submit: Submit an approval request; cancel: Cancel the approval request.
         :type ApplyAction: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPVersionId = None
@@ -3229,7 +3247,7 @@ class CreateMNPApprovalRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""Mini program version ID
+        r"""Mini program version ID.
         :rtype: int
         """
         return self._MNPVersionId
@@ -3240,7 +3258,7 @@ class CreateMNPApprovalRequest(AbstractModel):
 
     @property
     def ApplyAction(self):
-        r"""submit: Submit an approval request; cancel: Cancel the approval request
+        r"""submit: Submit an approval request; cancel: Cancel the approval request.
         :rtype: str
         """
         return self._ApplyAction
@@ -3251,7 +3269,7 @@ class CreateMNPApprovalRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -3276,15 +3294,15 @@ class CreateMNPApprovalRequest(AbstractModel):
 
 
 class CreateMNPApprovalResp(AbstractModel):
-    r"""Response for platform review of mini program version submission.
+    r"""Response for submitting a mini program version for approval.
 
     """
 
     def __init__(self):
         r"""
-        :param _Result: Bool type response object
+        :param _Result: The Boolean response object.
         :type Result: bool
-        :param _ApprovalNo: Approval No.
+        :param _ApprovalNo: Approval nunmber.
         :type ApprovalNo: str
         """
         self._Result = None
@@ -3292,7 +3310,7 @@ class CreateMNPApprovalResp(AbstractModel):
 
     @property
     def Result(self):
-        r"""Bool type response object
+        r"""The Boolean response object.
         :rtype: bool
         """
         return self._Result
@@ -3303,7 +3321,7 @@ class CreateMNPApprovalResp(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""Approval No.
+        r"""Approval nunmber.
         :rtype: str
         """
         return self._ApprovalNo
@@ -3333,7 +3351,7 @@ class CreateMNPApprovalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPApprovalResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3343,7 +3361,7 @@ class CreateMNPApprovalResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPApprovalResp`
         """
         return self._Data
@@ -3378,11 +3396,11 @@ class CreateMNPDomainACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _Domain: Domain name list
+        :param _Domain: List of domains.
         :type Domain: list of CreateDomainParam
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPId = None
@@ -3391,7 +3409,7 @@ class CreateMNPDomainACLRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -3402,7 +3420,7 @@ class CreateMNPDomainACLRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""Domain name list
+        r"""List of domains.
         :rtype: list of CreateDomainParam
         """
         return self._Domain
@@ -3413,7 +3431,7 @@ class CreateMNPDomainACLRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -3449,7 +3467,7 @@ class CreateMNPDomainACLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3459,7 +3477,7 @@ class CreateMNPDomainACLResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -3494,20 +3512,22 @@ class CreateMNPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPType: Mini program type
+        :param _MNPType: <p>Mini program category.</p>
         :type MNPType: str
-        :param _MNPName: Mini program name
+        :param _MNPName: <p>Mini program name.</p>
         :type MNPName: str
-        :param _MNPIcon: Mini app icon
+        :param _MNPIcon: <p>Mini program icon.</p>
         :type MNPIcon: str
-        :param _MNPIntro: Mini program introduction
+        :param _MNPIntro: <p>Mini program introduction.</p>
         :type MNPIntro: str
-        :param _MNPDesc: Mini program description
+        :param _MNPDesc: <p>Mini program description.</p>
         :type MNPDesc: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _TeamId: Team ID
+        :param _TeamId: <p>Team ID.</p>
         :type TeamId: str
+        :param _I18nList: <p>The mini program name and description in multiple languages.</p>
+        :type I18nList: list of MNPI18NSyncDto
         """
         self._MNPType = None
         self._MNPName = None
@@ -3516,10 +3536,11 @@ class CreateMNPRequest(AbstractModel):
         self._MNPDesc = None
         self._PlatformId = None
         self._TeamId = None
+        self._I18nList = None
 
     @property
     def MNPType(self):
-        r"""Mini program type
+        r"""<p>Mini program category.</p>
         :rtype: str
         """
         return self._MNPType
@@ -3530,7 +3551,7 @@ class CreateMNPRequest(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""<p>Mini program name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -3541,7 +3562,7 @@ class CreateMNPRequest(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini app icon
+        r"""<p>Mini program icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -3552,7 +3573,7 @@ class CreateMNPRequest(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""Mini program introduction
+        r"""<p>Mini program introduction.</p>
         :rtype: str
         """
         return self._MNPIntro
@@ -3563,7 +3584,7 @@ class CreateMNPRequest(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""Mini program description
+        r"""<p>Mini program description.</p>
         :rtype: str
         """
         return self._MNPDesc
@@ -3574,7 +3595,7 @@ class CreateMNPRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -3585,7 +3606,7 @@ class CreateMNPRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""<p>Team ID.</p>
         :rtype: str
         """
         return self._TeamId
@@ -3593,6 +3614,17 @@ class CreateMNPRequest(AbstractModel):
     @TeamId.setter
     def TeamId(self, TeamId):
         self._TeamId = TeamId
+
+    @property
+    def I18nList(self):
+        r"""<p>The mini program name and description in multiple languages.</p>
+        :rtype: list of MNPI18NSyncDto
+        """
+        return self._I18nList
+
+    @I18nList.setter
+    def I18nList(self, I18nList):
+        self._I18nList = I18nList
 
 
     def _deserialize(self, params):
@@ -3603,6 +3635,12 @@ class CreateMNPRequest(AbstractModel):
         self._MNPDesc = params.get("MNPDesc")
         self._PlatformId = params.get("PlatformId")
         self._TeamId = params.get("TeamId")
+        if params.get("I18nList") is not None:
+            self._I18nList = []
+            for item in params.get("I18nList"):
+                obj = MNPI18NSyncDto()
+                obj._deserialize(item)
+                self._I18nList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3620,7 +3658,7 @@ class CreateMNPResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response mini program ID
+        :param _Data: <p>The returned mini game appid returned.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3630,7 +3668,7 @@ class CreateMNPResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response mini program ID
+        r"""<p>The returned mini game appid returned.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         """
         return self._Data
@@ -3665,9 +3703,9 @@ class CreateMNPSecretKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _MNPId: <p>Mini program or mini game appid</p>
+        :param _MNPId: <p>Mini program or mini game appid.</p>
         :type MNPId: str
         """
         self._PlatformId = None
@@ -3675,7 +3713,7 @@ class CreateMNPSecretKeyRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -3686,7 +3724,7 @@ class CreateMNPSecretKeyRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini program or mini game appid</p>
+        r"""<p>Mini program or mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -3710,15 +3748,15 @@ class CreateMNPSecretKeyRequest(AbstractModel):
 
 
 class CreateMNPSecretKeyResp(AbstractModel):
-    r"""Creates secret key response.
+    r"""Response for creating a mini program secret key.
 
     """
 
     def __init__(self):
         r"""
-        :param _KeyId: <p>Secret ID</p>
+        :param _KeyId: <p>Key ID.</p>
         :type KeyId: str
-        :param _SecretKey: <p>Secret key</p>
+        :param _SecretKey: <p>Secret key.</p>
         :type SecretKey: str
         """
         self._KeyId = None
@@ -3726,7 +3764,7 @@ class CreateMNPSecretKeyResp(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""<p>Secret ID</p>
+        r"""<p>Key ID.</p>
         :rtype: str
         """
         return self._KeyId
@@ -3737,7 +3775,7 @@ class CreateMNPSecretKeyResp(AbstractModel):
 
     @property
     def SecretKey(self):
-        r"""<p>Secret key</p>
+        r"""<p>Secret key.</p>
         :rtype: str
         """
         return self._SecretKey
@@ -3767,7 +3805,7 @@ class CreateMNPSecretKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPSecretKeyResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3777,7 +3815,7 @@ class CreateMNPSecretKeyResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPSecretKeyResp`
         """
         return self._Data
@@ -3812,13 +3850,13 @@ class CreateMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _APIId: API Id
+        :param _APIId: API ID.
         :type APIId: str
-        :param _ApplyReason: Reason for application
+        :param _ApplyReason: Reason for request.
         :type ApplyReason: str
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._APIId = None
@@ -3828,7 +3866,7 @@ class CreateMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def APIId(self):
-        r"""API Id
+        r"""API ID.
         :rtype: str
         """
         return self._APIId
@@ -3839,7 +3877,7 @@ class CreateMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def ApplyReason(self):
-        r"""Reason for application
+        r"""Reason for request.
         :rtype: str
         """
         return self._ApplyReason
@@ -3850,7 +3888,7 @@ class CreateMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -3861,7 +3899,7 @@ class CreateMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -3893,7 +3931,7 @@ class CreateMNPSensitiveAPIPermissionApprovalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3903,7 +3941,7 @@ class CreateMNPSensitiveAPIPermissionApprovalResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         """
         return self._Data
@@ -3938,15 +3976,15 @@ class CreateMNPVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini-program appid</p>
+        :param _MNPId: <p>Mini-program appid.</p>
         :type MNPId: str
-        :param _MNPVersion: <p>Version number</p>
+        :param _MNPVersion: <p>Version number.</p>
         :type MNPVersion: str
         :param _FileUrl: <p>URL of the mini program file exported from the IDE and uploaded to the file server.<p>
         :type FileUrl: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _MNPVersionIntro: <p>Version description</p>
+        :param _MNPVersionIntro: <p>Version description.</p>
         :type MNPVersionIntro: str
         """
         self._MNPId = None
@@ -3957,7 +3995,7 @@ class CreateMNPVersionRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini-program appid</p>
+        r"""<p>Mini-program appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -3968,7 +4006,7 @@ class CreateMNPVersionRequest(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""<p>Version number</p>
+        r"""<p>Version number.</p>
         :rtype: str
         """
         return self._MNPVersion
@@ -3990,7 +4028,7 @@ class CreateMNPVersionRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -4001,7 +4039,7 @@ class CreateMNPVersionRequest(AbstractModel):
 
     @property
     def MNPVersionIntro(self):
-        r"""<p>Version description</p>
+        r"""<p>Version description.</p>
         :rtype: str
         """
         return self._MNPVersionIntro
@@ -4028,20 +4066,20 @@ class CreateMNPVersionRequest(AbstractModel):
 
 
 class CreateMNPVersionResp(AbstractModel):
-    r"""Response of creating a mini program version
+    r"""Response for creating a mini program version.
 
     """
 
     def __init__(self):
         r"""
-        :param _TaskId: Specifies the ID of the task to create a mini program version.
+        :param _TaskId: Mini program version compilation task ID.
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""Specifies the ID of the task to create a mini program version.
+        r"""Mini program version compilation task ID.
         :rtype: str
         """
         return self._TaskId
@@ -4070,7 +4108,7 @@ class CreateMNPVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPVersionResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4080,7 +4118,7 @@ class CreateMNPVersionResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPVersionResp`
         """
         return self._Data
@@ -4115,14 +4153,14 @@ class CreatePresetKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._PlatformId = None
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -4151,7 +4189,7 @@ class CreatePresetKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.PresetResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4161,7 +4199,7 @@ class CreatePresetKeyResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.PresetResp`
         """
         return self._Data
@@ -4190,15 +4228,15 @@ class CreatePresetKeyResponse(AbstractModel):
 
 
 class CreateTeamMemberInfoReq(AbstractModel):
-    r"""New team member - Member information
+    r"""Member information for adding a team member.
 
     """
 
     def __init__(self):
         r"""
-        :param _UserId: User ID
+        :param _UserId: User ID.
         :type UserId: str
-        :param _UserRoleId: User role ID
+        :param _UserRoleId: User role ID.
         :type UserRoleId: int
         """
         self._UserId = None
@@ -4206,7 +4244,7 @@ class CreateTeamMemberInfoReq(AbstractModel):
 
     @property
     def UserId(self):
-        r"""User ID
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -4217,7 +4255,7 @@ class CreateTeamMemberInfoReq(AbstractModel):
 
     @property
     def UserRoleId(self):
-        r"""User role ID
+        r"""User role ID.
         :rtype: int
         """
         return self._UserRoleId
@@ -4247,17 +4285,17 @@ class CreateTeamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _AdminUserId: Admin name
+        :param _AdminUserId: Admin name.
         :type AdminUserId: str
-        :param _TeamRoleTypeList: Permission assigned to the team. 1: Mini program; 2: Application (only one of these types is supported)
+        :param _TeamRoleTypeList: Team role type. Valid values: 1: Mini program; 2: Superapp (only one type is currently supported).
         :type TeamRoleTypeList: list of int
-        :param _Remark: Remarks
+        :param _Remark: Remark.
         :type Remark: str
-        :param _PlatformId: Platform ID, required for API call
+        :param _PlatformId: Platform ID, required for API call.
         :type PlatformId: str
-        :param _RelatedTeamId: Associated team ID
+        :param _RelatedTeamId: Associated team ID.
         :type RelatedTeamId: str
         """
         self._TeamName = None
@@ -4269,7 +4307,7 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -4280,7 +4318,7 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def AdminUserId(self):
-        r"""Admin name
+        r"""Admin name.
         :rtype: str
         """
         return self._AdminUserId
@@ -4291,7 +4329,7 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def TeamRoleTypeList(self):
-        r"""Permission assigned to the team. 1: Mini program; 2: Application (only one of these types is supported)
+        r"""Team role type. Valid values: 1: Mini program; 2: Superapp (only one type is currently supported).
         :rtype: list of int
         """
         return self._TeamRoleTypeList
@@ -4302,7 +4340,7 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""Remarks
+        r"""Remark.
         :rtype: str
         """
         return self._Remark
@@ -4313,7 +4351,7 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID, required for API call
+        r"""Platform ID, required for API call.
         :rtype: str
         """
         return self._PlatformId
@@ -4324,7 +4362,7 @@ class CreateTeamRequest(AbstractModel):
 
     @property
     def RelatedTeamId(self):
-        r"""Associated team ID
+        r"""Associated team ID.
         :rtype: str
         """
         return self._RelatedTeamId
@@ -4386,17 +4424,17 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserAccount: User account
+        :param _UserAccount: User account.
         :type UserAccount: str
-        :param _UserName: User name
+        :param _UserName: User name.
         :type UserName: str
-        :param _AccountType: User account type. 2: Platform admin; 3: Member.
+        :param _AccountType: User account type. Valid values: 2: Platform admin; 3: Regular member. If left empty, all types are returned. 
         :type AccountType: int
         :param _Password: Account password. Use CreatePresetKey to get the public key to encrypt the password.
         :type Password: str
-        :param _KeyId: Call CreatePresetKey to get the keyID from RequestId
+        :param _KeyId: Call CreatePresetKey to get the keyID from RequestId.
         :type KeyId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._UserAccount = None
@@ -4408,7 +4446,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserAccount(self):
-        r"""User account
+        r"""User account.
         :rtype: str
         """
         return self._UserAccount
@@ -4419,7 +4457,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""User name
+        r"""User name.
         :rtype: str
         """
         return self._UserName
@@ -4430,7 +4468,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def AccountType(self):
-        r"""User account type. 2: Platform admin; 3: Member.
+        r"""User account type. Valid values: 2: Platform admin; 3: Regular member. If left empty, all types are returned. 
         :rtype: int
         """
         return self._AccountType
@@ -4452,7 +4490,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""Call CreatePresetKey to get the keyID from RequestId
+        r"""Call CreatePresetKey to get the keyID from RequestId.
         :rtype: str
         """
         return self._KeyId
@@ -4463,7 +4501,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -4497,7 +4535,7 @@ class CreateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data, user ID
+        :param _Data: Response data, containing the user ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -4508,7 +4546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Response data, user ID
+        r"""Response data, containing the user ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdStringInfo`
         """
@@ -4544,9 +4582,9 @@ class DeleteApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._ApplicationId = None
@@ -4554,7 +4592,7 @@ class DeleteApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -4565,7 +4603,7 @@ class DeleteApplicationRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -4595,7 +4633,7 @@ class DeleteApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4605,7 +4643,7 @@ class DeleteApplicationResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -4640,9 +4678,9 @@ class DeleteApplicationSensitiveAPIRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _APIId: API ID
+        :param _APIId: API ID.
         :type APIId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._APIId = None
@@ -4650,7 +4688,7 @@ class DeleteApplicationSensitiveAPIRequest(AbstractModel):
 
     @property
     def APIId(self):
-        r"""API ID
+        r"""API ID.
         :rtype: str
         """
         return self._APIId
@@ -4661,7 +4699,7 @@ class DeleteApplicationSensitiveAPIRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -4691,7 +4729,7 @@ class DeleteApplicationSensitiveAPIResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4701,7 +4739,7 @@ class DeleteApplicationSensitiveAPIResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -4736,9 +4774,9 @@ class DeleteGlobalDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: Domain ID
+        :param _DomainId: Domain ID.
         :type DomainId: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._DomainId = None
@@ -4746,7 +4784,7 @@ class DeleteGlobalDomainRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""Domain ID
+        r"""Domain ID.
         :rtype: int
         """
         return self._DomainId
@@ -4757,7 +4795,7 @@ class DeleteGlobalDomainRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -4787,7 +4825,7 @@ class DeleteGlobalDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.GlobalDomainDeleteResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4797,7 +4835,7 @@ class DeleteGlobalDomainResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.GlobalDomainDeleteResp`
         """
         return self._Data
@@ -4832,9 +4870,9 @@ class DeleteMNGRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPId = None
@@ -4842,7 +4880,7 @@ class DeleteMNGRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -4853,7 +4891,7 @@ class DeleteMNGRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -4883,7 +4921,7 @@ class DeleteMNGResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4893,7 +4931,7 @@ class DeleteMNGResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -4928,9 +4966,9 @@ class DeleteMNPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPId = None
@@ -4938,7 +4976,7 @@ class DeleteMNPRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -4949,7 +4987,7 @@ class DeleteMNPRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -4979,7 +5017,7 @@ class DeleteMNPResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4989,7 +5027,7 @@ class DeleteMNPResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -5024,11 +5062,11 @@ class DeleteTeamMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _UserId: User ID
+        :param _UserId: User ID.
         :type UserId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._TeamId = None
@@ -5037,7 +5075,7 @@ class DeleteTeamMemberRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -5048,7 +5086,7 @@ class DeleteTeamMemberRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""User ID
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -5059,7 +5097,7 @@ class DeleteTeamMemberRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -5090,7 +5128,7 @@ class DeleteTeamMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5100,7 +5138,7 @@ class DeleteTeamMemberResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -5135,9 +5173,9 @@ class DeleteTeamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._TeamId = None
@@ -5145,7 +5183,7 @@ class DeleteTeamRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -5156,7 +5194,7 @@ class DeleteTeamRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -5186,7 +5224,7 @@ class DeleteTeamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5196,7 +5234,7 @@ class DeleteTeamResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -5231,9 +5269,9 @@ class DeleteUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: User ID
+        :param _UserId: User ID.
         :type UserId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._UserId = None
@@ -5241,7 +5279,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""User ID
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -5252,7 +5290,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -5282,7 +5320,7 @@ class DeleteUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5292,7 +5330,7 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -5327,22 +5365,22 @@ class DescribeAPPDataDetailLineChartRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ReportId: Fixed value: mnp_data_analysis
+        :param _ReportId: Fixed value: mnp_data_analysis.
         :type ReportId: str
-        :param _IndexIds: IndexId (optional):
+        :param _IndexIds: Index ID (optional):
 app_minigame_num: Number of created mini games
 app_online_miniapp_num: Number of available mini programs
 app_miniapp_num: Number of created mini programs
 app_related_corp_num: Mini program team data
 app_online_minigame_num: Number of available mini games
 app_active_device_num: Number of active devices
-app_new_device_num: Number of new devices
+app_new_device_num: Number of new devices.
         :type IndexIds: list of str
-        :param _QueryData: Input parameter base64 string: {"BeginDate":"20251122","EndDate":"20251128"}
+        :param _QueryData: Input parameter base64 string: {"BeginDate":"20251122","EndDate":"20251128"}.
         :type QueryData: str
-        :param _ApplicationIds: Superapp ID
+        :param _ApplicationIds: Superapp ID.
         :type ApplicationIds: list of str
         """
         self._PlatformId = None
@@ -5353,7 +5391,7 @@ app_new_device_num: Number of new devices
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -5364,7 +5402,7 @@ app_new_device_num: Number of new devices
 
     @property
     def ReportId(self):
-        r"""Fixed value: mnp_data_analysis
+        r"""Fixed value: mnp_data_analysis.
         :rtype: str
         """
         return self._ReportId
@@ -5375,14 +5413,14 @@ app_new_device_num: Number of new devices
 
     @property
     def IndexIds(self):
-        r"""IndexId (optional):
+        r"""Index ID (optional):
 app_minigame_num: Number of created mini games
 app_online_miniapp_num: Number of available mini programs
 app_miniapp_num: Number of created mini programs
 app_related_corp_num: Mini program team data
 app_online_minigame_num: Number of available mini games
 app_active_device_num: Number of active devices
-app_new_device_num: Number of new devices
+app_new_device_num: Number of new devices.
         :rtype: list of str
         """
         return self._IndexIds
@@ -5393,7 +5431,7 @@ app_new_device_num: Number of new devices
 
     @property
     def QueryData(self):
-        r"""Input parameter base64 string: {"BeginDate":"20251122","EndDate":"20251128"}
+        r"""Input parameter base64 string: {"BeginDate":"20251122","EndDate":"20251128"}.
         :rtype: str
         """
         return self._QueryData
@@ -5404,7 +5442,7 @@ app_new_device_num: Number of new devices
 
     @property
     def ApplicationIds(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: list of str
         """
         return self._ApplicationIds
@@ -5437,7 +5475,7 @@ class DescribeAPPDataDetailLineChartResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of ReportDataResult
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -5448,7 +5486,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ReportDataResult
         """
@@ -5487,11 +5525,11 @@ class DescribeAPPDataOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _DataTime: Start time in YYYYMMDD format
+        :param _DataTime: Start time in YYYYMMDD format.
         :type DataTime: int
-        :param _ApplicationIds: Superapp ID
+        :param _ApplicationIds: Superapp ID.
         :type ApplicationIds: list of str
         """
         self._PlatformId = None
@@ -5500,7 +5538,7 @@ class DescribeAPPDataOverviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -5511,7 +5549,7 @@ class DescribeAPPDataOverviewRequest(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: int
         """
         return self._DataTime
@@ -5522,7 +5560,7 @@ class DescribeAPPDataOverviewRequest(AbstractModel):
 
     @property
     def ApplicationIds(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: list of str
         """
         return self._ApplicationIds
@@ -5553,7 +5591,7 @@ class DescribeAPPDataOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.APPOverview`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -5564,7 +5602,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.APPOverview`
         """
@@ -5600,17 +5638,17 @@ class DescribeAdvertisingLineChartRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: str
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: str
-        :param _Platform: // 0 All, 2-Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
-        :param _AdUnitType:   1-BANNER  2-REWARDED
+        :param _AdUnitType: Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :type AdUnitType: str
         """
         self._TimeBegin = None
@@ -5622,7 +5660,7 @@ class DescribeAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeBegin
@@ -5633,7 +5671,7 @@ class DescribeAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -5644,7 +5682,7 @@ class DescribeAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -5655,7 +5693,7 @@ class DescribeAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeEnd
@@ -5666,7 +5704,7 @@ class DescribeAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""// 0 All, 2-Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -5677,7 +5715,7 @@ class DescribeAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def AdUnitType(self):
-        r"""  1-BANNER  2-REWARDED
+        r"""Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :rtype: str
         """
         return self._AdUnitType
@@ -5711,7 +5749,7 @@ class DescribeAdvertisingLineChartResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.AdTrendChart`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -5722,7 +5760,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AdTrendChart`
         """
@@ -5758,17 +5796,17 @@ class DescribeAdvertisingOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: str
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: str
-        :param _Platform: // 0 All, 2-Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
-        :param _AdUnitType: //1-BANNER  2-REWARDED
+        :param _AdUnitType: Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :type AdUnitType: str
         """
         self._TimeBegin = None
@@ -5780,7 +5818,7 @@ class DescribeAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeBegin
@@ -5791,7 +5829,7 @@ class DescribeAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -5802,7 +5840,7 @@ class DescribeAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -5813,7 +5851,7 @@ class DescribeAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeEnd
@@ -5824,7 +5862,7 @@ class DescribeAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""// 0 All, 2-Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -5835,7 +5873,7 @@ class DescribeAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def AdUnitType(self):
-        r"""//1-BANNER  2-REWARDED
+        r"""Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :rtype: str
         """
         return self._AdUnitType
@@ -5869,7 +5907,7 @@ class DescribeAdvertisingOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.MNPAdvertisingOverview`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -5880,7 +5918,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.MNPAdvertisingOverview`
         """
@@ -5916,11 +5954,11 @@ class DescribeApplicationConfigFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _AppType: Application platform. 2: Android; 3: iOS
+        :param _AppType: Superapp type. Valid values: 1: Test; 2: Production.
         :type AppType: int
         """
         self._ApplicationId = None
@@ -5929,7 +5967,7 @@ class DescribeApplicationConfigFileRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -5940,7 +5978,7 @@ class DescribeApplicationConfigFileRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -5953,7 +5991,7 @@ class DescribeApplicationConfigFileRequest(AbstractModel):
     def AppType(self):
         warnings.warn("parameter `AppType` is deprecated", DeprecationWarning) 
 
-        r"""Application platform. 2: Android; 3: iOS
+        r"""Superapp type. Valid values: 1: Test; 2: Production.
         :rtype: int
         """
         return self._AppType
@@ -5986,7 +6024,7 @@ class DescribeApplicationConfigFileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DownloadApplicationConfigResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5996,7 +6034,7 @@ class DescribeApplicationConfigFileResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DownloadApplicationConfigResp`
         """
         return self._Data
@@ -6025,15 +6063,15 @@ class DescribeApplicationConfigFileResponse(AbstractModel):
 
 
 class DescribeApplicationConfigInfo(AbstractModel):
-    r"""Response data for retrieving superapp configuration information
+    r"""Response for querying superapp configuration information.
 
     """
 
     def __init__(self):
         r"""
-        :param _AndroidConfig: Android configuration list
+        :param _AndroidConfig: Android configuration list.
         :type AndroidConfig: list of ApplicationConfigInfo
-        :param _IosConfig: iOS configuration list
+        :param _IosConfig: iOS configuration list.
         :type IosConfig: list of ApplicationConfigInfo
         """
         self._AndroidConfig = None
@@ -6041,7 +6079,7 @@ class DescribeApplicationConfigInfo(AbstractModel):
 
     @property
     def AndroidConfig(self):
-        r"""Android configuration list
+        r"""Android configuration list.
         :rtype: list of ApplicationConfigInfo
         """
         return self._AndroidConfig
@@ -6052,7 +6090,7 @@ class DescribeApplicationConfigInfo(AbstractModel):
 
     @property
     def IosConfig(self):
-        r"""iOS configuration list
+        r"""iOS configuration list.
         :rtype: list of ApplicationConfigInfo
         """
         return self._IosConfig
@@ -6092,9 +6130,9 @@ class DescribeApplicationConfigInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _ApplicationId: Superapp ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
         """
         self._PlatformId = None
@@ -6102,7 +6140,7 @@ class DescribeApplicationConfigInfosRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -6113,7 +6151,7 @@ class DescribeApplicationConfigInfosRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -6143,7 +6181,7 @@ class DescribeApplicationConfigInfosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationConfigInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6153,7 +6191,7 @@ class DescribeApplicationConfigInfosResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationConfigInfo`
         """
         return self._Data
@@ -6182,43 +6220,43 @@ class DescribeApplicationConfigInfosResponse(AbstractModel):
 
 
 class DescribeApplicationListData(AbstractModel):
-    r"""Application information
+    r"""Superapp information.
 
     """
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _AppIdentityId: App Id.
+        :param _AppIdentityId: Superapp identity ID.
         :type AppIdentityId: int
-        :param _ApplicationName: Name
+        :param _ApplicationName: Superapp name.
         :type ApplicationName: str
-        :param _Logo: Icon
+        :param _Logo: Superapp icon.
         :type Logo: str
-        :param _Remark: Remarks
+        :param _Remark: Remarks.
         :type Remark: str
-        :param _AndroidAppKey: Android app package name
+        :param _AndroidAppKey: Android superapp package name. 
         :type AndroidAppKey: str
-        :param _IosAppKey: iOS App bundleId
+        :param _IosAppKey: iOS superapp bundle ID. 
         :type IosAppKey: str
-        :param _CreateUser: Creator
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _UpdateUser: Specifies the updater.
+        :param _UpdateUser: Last modifier.
         :type UpdateUser: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: Last modified time. 
         :type UpdateTime: str
-        :param _Intro: Introduction
+        :param _Intro: Superapp introduction.
         :type Intro: str
-        :param _TeamId: Team Id.
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _SensitiveApiCount: Number of sensitive apis.
+        :param _SensitiveApiCount: Number of sensitive APIs.
         :type SensitiveApiCount: int
-        :param _ApplicationType: Application type. 1: Test; 2: Formal
+        :param _ApplicationType: Superapp type. Valid values: 1: Test; 2: Production.
         :type ApplicationType: int
         """
         self._ApplicationId = None
@@ -6240,7 +6278,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -6251,7 +6289,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def AppIdentityId(self):
-        r"""App Id.
+        r"""Superapp identity ID.
         :rtype: int
         """
         return self._AppIdentityId
@@ -6262,7 +6300,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Name
+        r"""Superapp name.
         :rtype: str
         """
         return self._ApplicationName
@@ -6273,7 +6311,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def Logo(self):
-        r"""Icon
+        r"""Superapp icon.
         :rtype: str
         """
         return self._Logo
@@ -6284,7 +6322,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def Remark(self):
-        r"""Remarks
+        r"""Remarks.
         :rtype: str
         """
         return self._Remark
@@ -6295,7 +6333,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def AndroidAppKey(self):
-        r"""Android app package name
+        r"""Android superapp package name. 
         :rtype: str
         """
         return self._AndroidAppKey
@@ -6306,7 +6344,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def IosAppKey(self):
-        r"""iOS App bundleId
+        r"""iOS superapp bundle ID. 
         :rtype: str
         """
         return self._IosAppKey
@@ -6317,7 +6355,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -6328,7 +6366,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -6339,7 +6377,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""Specifies the updater.
+        r"""Last modifier.
         :rtype: str
         """
         return self._UpdateUser
@@ -6350,7 +6388,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""Last modified time. 
         :rtype: str
         """
         return self._UpdateTime
@@ -6361,7 +6399,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def Intro(self):
-        r"""Introduction
+        r"""Superapp introduction.
         :rtype: str
         """
         return self._Intro
@@ -6372,7 +6410,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team Id.
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -6383,7 +6421,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -6394,7 +6432,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def SensitiveApiCount(self):
-        r"""Number of sensitive apis.
+        r"""Number of sensitive APIs.
         :rtype: int
         """
         return self._SensitiveApiCount
@@ -6405,7 +6443,7 @@ class DescribeApplicationListData(AbstractModel):
 
     @property
     def ApplicationType(self):
-        r"""Application type. 1: Test; 2: Formal
+        r"""Superapp type. Valid values: 1: Test; 2: Production.
         :rtype: int
         """
         return self._ApplicationType
@@ -6449,15 +6487,15 @@ class DescribeApplicationListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _Keyword: Keywords for search (app name)
+        :param _Keyword: Search keyword (superapp name).
         :type Keyword: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
         """
         self._Offset = None
@@ -6468,7 +6506,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset.
         :rtype: int
         """
         return self._Offset
@@ -6479,7 +6517,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -6490,7 +6528,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -6501,7 +6539,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords for search (app name)
+        r"""Search keyword (superapp name).
         :rtype: str
         """
         return self._Keyword
@@ -6512,7 +6550,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -6539,15 +6577,15 @@ class DescribeApplicationListRequest(AbstractModel):
 
 
 class DescribeApplicationListResp(AbstractModel):
-    r"""List of applications
+    r"""Response for querying the superapp list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List information
+        :param _DataList: Superapp list data.
         :type DataList: list of DescribeApplicationListData
         """
         self._TotalCount = None
@@ -6555,7 +6593,7 @@ class DescribeApplicationListResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -6566,7 +6604,7 @@ class DescribeApplicationListResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List information
+        r"""Superapp list data.
         :rtype: list of DescribeApplicationListData
         """
         return self._DataList
@@ -6601,7 +6639,7 @@ class DescribeApplicationListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6611,7 +6649,7 @@ class DescribeApplicationListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationListResp`
         """
         return self._Data
@@ -6640,33 +6678,33 @@ class DescribeApplicationListResponse(AbstractModel):
 
 
 class DescribeApplicationMNPInfoResp(AbstractModel):
-    r"""The mini program or mini game data associated with a superapp
+    r"""The mini program or mini game data associated with a superapp.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program or mini game appid
+        :param _MNPId: Mini program or mini game appid.
         :type MNPId: str
-        :param _MNPIcon: Mini program or mini game icon
+        :param _MNPIcon: Mini program or mini game icon.
         :type MNPIcon: str
-        :param _MNPName: Mini program or mini game name
+        :param _MNPName: Mini program or mini game name.
         :type MNPName: str
-        :param _MNPIntro: Mini program or mini game information
+        :param _MNPIntro: Mini program or mini game information.
         :type MNPIntro: str
-        :param _CreateUser: Creator
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _UpdateUser: Modifier
+        :param _UpdateUser: Last modifier.
         :type UpdateUser: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: Last modified time.
         :type UpdateTime: str
-        :param _OnlineStatus: Online status. 0 Not available; 1 Available
+        :param _OnlineStatus: Available status. Valid value: 0: Not available; 1 Available; 2: In canary release.
         :type OnlineStatus: int
-        :param _EngineType: Engine type. 0 Mini program; 1 Mini game
+        :param _EngineType: Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.
         :type EngineType: int
-        :param _CategoryList: Category information
+        :param _CategoryList: Category information.
         :type CategoryList: list of CategoryInfo
         """
         self._MNPId = None
@@ -6683,7 +6721,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program or mini game appid
+        r"""Mini program or mini game appid.
         :rtype: str
         """
         return self._MNPId
@@ -6694,7 +6732,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini program or mini game icon
+        r"""Mini program or mini game icon.
         :rtype: str
         """
         return self._MNPIcon
@@ -6705,7 +6743,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program or mini game name
+        r"""Mini program or mini game name.
         :rtype: str
         """
         return self._MNPName
@@ -6716,7 +6754,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""Mini program or mini game information
+        r"""Mini program or mini game information.
         :rtype: str
         """
         return self._MNPIntro
@@ -6727,7 +6765,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -6738,7 +6776,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -6749,7 +6787,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""Modifier
+        r"""Last modifier.
         :rtype: str
         """
         return self._UpdateUser
@@ -6760,7 +6798,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""Last modified time.
         :rtype: str
         """
         return self._UpdateTime
@@ -6771,7 +6809,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        r"""Online status. 0 Not available; 1 Available
+        r"""Available status. Valid value: 0: Not available; 1 Available; 2: In canary release.
         :rtype: int
         """
         return self._OnlineStatus
@@ -6782,7 +6820,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""Engine type. 0 Mini program; 1 Mini game
+        r"""Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.
         :rtype: int
         """
         return self._EngineType
@@ -6793,7 +6831,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def CategoryList(self):
-        r"""Category information
+        r"""Category information.
         :rtype: list of CategoryInfo
         """
         return self._CategoryList
@@ -6837,23 +6875,23 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _ApplicationId: Superapp ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _OnlineStatus: Online status. 0 All (default); 1 Available; 2 In canary release
+        :param _OnlineStatus: Available status. Valid value: 0: All; 1 Available; 2: In canary release.
         :type OnlineStatus: int
-        :param _EngineTypeList: Engine type. 0 Mini program; 1 Mini game
+        :param _EngineTypeList: Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.
         :type EngineTypeList: list of int
-        :param _SubCategory: Secondary category name
+        :param _SubCategory: Secondary category name.
         :type SubCategory: str
-        :param _PrimaryCategory: Primary category name
+        :param _PrimaryCategory: Primary category name.
         :type PrimaryCategory: str
-        :param _Keyword: Keywords
+        :param _Keyword: Keyword.
         :type Keyword: str
         """
         self._Offset = None
@@ -6868,7 +6906,7 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset.
         :rtype: int
         """
         return self._Offset
@@ -6879,7 +6917,7 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -6890,7 +6928,7 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -6901,7 +6939,7 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -6912,7 +6950,7 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        r"""Online status. 0 All (default); 1 Available; 2 In canary release
+        r"""Available status. Valid value: 0: All; 1 Available; 2: In canary release.
         :rtype: int
         """
         return self._OnlineStatus
@@ -6923,7 +6961,7 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     @property
     def EngineTypeList(self):
-        r"""Engine type. 0 Mini program; 1 Mini game
+        r"""Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.
         :rtype: list of int
         """
         return self._EngineTypeList
@@ -6934,7 +6972,7 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     @property
     def SubCategory(self):
-        r"""Secondary category name
+        r"""Secondary category name.
         :rtype: str
         """
         return self._SubCategory
@@ -6945,7 +6983,7 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     @property
     def PrimaryCategory(self):
-        r"""Primary category name
+        r"""Primary category name.
         :rtype: str
         """
         return self._PrimaryCategory
@@ -6956,7 +6994,7 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords
+        r"""Keyword.
         :rtype: str
         """
         return self._Keyword
@@ -6987,15 +7025,15 @@ class DescribeApplicationMNPListRequest(AbstractModel):
 
 
 class DescribeApplicationMNPListResp(AbstractModel):
-    r"""Returned list of mini programs or mini games
+    r"""Returned mini program or mini game list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List information
+        :param _DataList: List data.
         :type DataList: list of DescribeApplicationMNPInfoResp
         """
         self._TotalCount = None
@@ -7003,7 +7041,7 @@ class DescribeApplicationMNPListResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -7014,7 +7052,7 @@ class DescribeApplicationMNPListResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List information
+        r"""List data.
         :rtype: list of DescribeApplicationMNPInfoResp
         """
         return self._DataList
@@ -7049,7 +7087,7 @@ class DescribeApplicationMNPListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationMNPListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7059,7 +7097,7 @@ class DescribeApplicationMNPListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationMNPListResp`
         """
         return self._Data
@@ -7094,9 +7132,9 @@ class DescribeApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._ApplicationId = None
@@ -7104,7 +7142,7 @@ class DescribeApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -7115,7 +7153,7 @@ class DescribeApplicationRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -7139,45 +7177,45 @@ class DescribeApplicationRequest(AbstractModel):
 
 
 class DescribeApplicationResp(AbstractModel):
-    r"""Application details
+    r"""Superapp details.
 
     """
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
         :param _AppIdentityId: Product ID.
         :type AppIdentityId: int
-        :param _ApplicationName: Application name
+        :param _ApplicationName: Superapp name.
         :type ApplicationName: str
-        :param _Logo: Specifies the application icon.
+        :param _Logo: Superapp icon.
         :type Logo: str
-        :param _Remark: Remarks
+        :param _Remark: Remarks.
         :type Remark: str
-        :param _AndroidAppKey: Android package name
+        :param _AndroidAppKey: Android superapp package name.
         :type AndroidAppKey: str
-        :param _IosAppKey: iOS bundleId
+        :param _IosAppKey: iOS superapp bundle ID.
         :type IosAppKey: str
-        :param _CreateUser: Creator
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _UpdateUser: Specifies the updater.
+        :param _UpdateUser: Last modifier.
         :type UpdateUser: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: Last modified time.
         :type UpdateTime: str
-        :param _Intro: Describes the application description.
+        :param _Intro: Superapp introduction.
         :type Intro: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _SensitiveApiCount: Number of sensitive apis.
+        :param _SensitiveApiCount: Number of sensitive APIs.
         :type SensitiveApiCount: int
-        :param _ApplicationType: Application type. 1: Test; 2: Formal
+        :param _ApplicationType: Superapp type. Valid values: 1: Test; 2: Production.
         :type ApplicationType: int
-        :param _Scheme: Specifies the application Scheme.
+        :param _Scheme: Superapp scheme.
         :type Scheme: str
         """
         self._ApplicationId = None
@@ -7200,7 +7238,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -7222,7 +7260,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name
+        r"""Superapp name.
         :rtype: str
         """
         return self._ApplicationName
@@ -7233,7 +7271,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def Logo(self):
-        r"""Specifies the application icon.
+        r"""Superapp icon.
         :rtype: str
         """
         return self._Logo
@@ -7244,7 +7282,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def Remark(self):
-        r"""Remarks
+        r"""Remarks.
         :rtype: str
         """
         return self._Remark
@@ -7255,7 +7293,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def AndroidAppKey(self):
-        r"""Android package name
+        r"""Android superapp package name.
         :rtype: str
         """
         return self._AndroidAppKey
@@ -7266,7 +7304,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def IosAppKey(self):
-        r"""iOS bundleId
+        r"""iOS superapp bundle ID.
         :rtype: str
         """
         return self._IosAppKey
@@ -7277,7 +7315,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -7288,7 +7326,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -7299,7 +7337,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""Specifies the updater.
+        r"""Last modifier.
         :rtype: str
         """
         return self._UpdateUser
@@ -7310,7 +7348,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""Last modified time.
         :rtype: str
         """
         return self._UpdateTime
@@ -7321,7 +7359,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def Intro(self):
-        r"""Describes the application description.
+        r"""Superapp introduction.
         :rtype: str
         """
         return self._Intro
@@ -7332,7 +7370,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -7343,7 +7381,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -7354,7 +7392,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def SensitiveApiCount(self):
-        r"""Number of sensitive apis.
+        r"""Number of sensitive APIs.
         :rtype: int
         """
         return self._SensitiveApiCount
@@ -7365,7 +7403,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def ApplicationType(self):
-        r"""Application type. 1: Test; 2: Formal
+        r"""Superapp type. Valid values: 1: Test; 2: Production.
         :rtype: int
         """
         return self._ApplicationType
@@ -7376,7 +7414,7 @@ class DescribeApplicationResp(AbstractModel):
 
     @property
     def Scheme(self):
-        r"""Specifies the application Scheme.
+        r"""Superapp scheme.
         :rtype: str
         """
         return self._Scheme
@@ -7421,7 +7459,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7431,7 +7469,7 @@ class DescribeApplicationResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationResp`
         """
         return self._Data
@@ -7460,42 +7498,44 @@ class DescribeApplicationResponse(AbstractModel):
 
 
 class DescribeApplicationSensitiveAPIListData(AbstractModel):
-    r"""List of sensitive APIs of an application
+    r"""Superapp sensitive API list data.
 
     """
 
     def __init__(self):
         r"""
-        :param _APIId: APIID
+        :param _APIId: API ID.
         :type APIId: str
-        :param _APIName: API name
+        :param _APIName: API name.
         :type APIName: str
-        :param _APIMethod: API request method
+        :param _APIMethod: API request method.
         :type APIMethod: str
-        :param _APIDesc: API description
+        :param _APIDesc: API description.
         :type APIDesc: str
-        :param _CreateUser: Creator
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _UpdateUser: Updater
+        :param _UpdateUser: Last modifier.
         :type UpdateUser: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: Last modified time.
         :type UpdateTime: str
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _ApplicationName: Application name
+        :param _ApplicationName: Superapp name.
         :type ApplicationName: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _ApplicationLogo: Specifies the application icon.
+        :param _ApplicationLogo: Superapp icon.
         :type ApplicationLogo: str
-        :param _APIType: API type. 1: system; 2: custom.
+        :param _APIType: API type. Valid values: 1: System; 2: Custom.
         :type APIType: int
-        :param _Status: API status. 0: public; 1: restricted.
+        :param _Status: API status. Valid values: 0: Public; 1: Restricted.
         :type Status: int
+        :param _UseScope: Applicable scope: Valid values: 0: Mini program; 1: Mini game; 100: Both.
+        :type UseScope: int
         """
         self._APIId = None
         self._APIName = None
@@ -7512,10 +7552,11 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
         self._ApplicationLogo = None
         self._APIType = None
         self._Status = None
+        self._UseScope = None
 
     @property
     def APIId(self):
-        r"""APIID
+        r"""API ID.
         :rtype: str
         """
         return self._APIId
@@ -7526,7 +7567,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def APIName(self):
-        r"""API name
+        r"""API name.
         :rtype: str
         """
         return self._APIName
@@ -7537,7 +7578,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def APIMethod(self):
-        r"""API request method
+        r"""API request method.
         :rtype: str
         """
         return self._APIMethod
@@ -7548,7 +7589,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def APIDesc(self):
-        r"""API description
+        r"""API description.
         :rtype: str
         """
         return self._APIDesc
@@ -7559,7 +7600,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -7570,7 +7611,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -7581,7 +7622,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""Updater
+        r"""Last modifier.
         :rtype: str
         """
         return self._UpdateUser
@@ -7592,7 +7633,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""Last modified time.
         :rtype: str
         """
         return self._UpdateTime
@@ -7603,7 +7644,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -7614,7 +7655,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name
+        r"""Superapp name.
         :rtype: str
         """
         return self._ApplicationName
@@ -7625,7 +7666,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -7636,7 +7677,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -7647,7 +7688,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def ApplicationLogo(self):
-        r"""Specifies the application icon.
+        r"""Superapp icon.
         :rtype: str
         """
         return self._ApplicationLogo
@@ -7658,7 +7699,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def APIType(self):
-        r"""API type. 1: system; 2: custom.
+        r"""API type. Valid values: 1: System; 2: Custom.
         :rtype: int
         """
         return self._APIType
@@ -7669,7 +7710,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
 
     @property
     def Status(self):
-        r"""API status. 0: public; 1: restricted.
+        r"""API status. Valid values: 0: Public; 1: Restricted.
         :rtype: int
         """
         return self._Status
@@ -7677,6 +7718,17 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def UseScope(self):
+        r"""Applicable scope: Valid values: 0: Mini program; 1: Mini game; 100: Both.
+        :rtype: int
+        """
+        return self._UseScope
+
+    @UseScope.setter
+    def UseScope(self, UseScope):
+        self._UseScope = UseScope
 
 
     def _deserialize(self, params):
@@ -7695,6 +7747,7 @@ class DescribeApplicationSensitiveAPIListData(AbstractModel):
         self._ApplicationLogo = params.get("ApplicationLogo")
         self._APIType = params.get("APIType")
         self._Status = params.get("Status")
+        self._UseScope = params.get("UseScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7712,17 +7765,17 @@ class DescribeApplicationSensitiveAPIListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset. 
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page. 
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _Keyword: Keywords for search (API name or method)
+        :param _Keyword: Search keyword (API name or method).
         :type Keyword: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
         """
         self._Offset = None
@@ -7734,7 +7787,7 @@ class DescribeApplicationSensitiveAPIListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset. 
         :rtype: int
         """
         return self._Offset
@@ -7745,7 +7798,7 @@ class DescribeApplicationSensitiveAPIListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page. 
         :rtype: int
         """
         return self._Limit
@@ -7756,7 +7809,7 @@ class DescribeApplicationSensitiveAPIListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -7767,7 +7820,7 @@ class DescribeApplicationSensitiveAPIListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -7778,7 +7831,7 @@ class DescribeApplicationSensitiveAPIListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords for search (API name or method)
+        r"""Search keyword (API name or method).
         :rtype: str
         """
         return self._Keyword
@@ -7789,7 +7842,7 @@ class DescribeApplicationSensitiveAPIListRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -7817,15 +7870,15 @@ class DescribeApplicationSensitiveAPIListRequest(AbstractModel):
 
 
 class DescribeApplicationSensitiveAPIListResp(AbstractModel):
-    r"""List of sensitive APIs of the application
+    r"""Response for querying the superapp sensitive API list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List information
+        :param _DataList: List data.
         :type DataList: list of DescribeApplicationSensitiveAPIListData
         """
         self._TotalCount = None
@@ -7833,7 +7886,7 @@ class DescribeApplicationSensitiveAPIListResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -7844,7 +7897,7 @@ class DescribeApplicationSensitiveAPIListResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List information
+        r"""List data.
         :rtype: list of DescribeApplicationSensitiveAPIListData
         """
         return self._DataList
@@ -7879,7 +7932,7 @@ class DescribeApplicationSensitiveAPIListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationSensitiveAPIListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7889,7 +7942,7 @@ class DescribeApplicationSensitiveAPIListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeApplicationSensitiveAPIListResp`
         """
         return self._Data
@@ -7918,15 +7971,15 @@ class DescribeApplicationSensitiveAPIListResponse(AbstractModel):
 
 
 class DescribeDomainInfoParam(AbstractModel):
-    r"""Domain information
+    r"""Response parameters for querying domain information.
 
     """
 
     def __init__(self):
         r"""
-        :param _DomainUrl: Multiple domain separators ';'.
+        :param _DomainUrl: Multiple domains concatenated with semicolons (;). 
         :type DomainUrl: str
-        :param _DomainType: Domain type 1-requests domain 2-business domain.
+        :param _DomainType: Domain type. Valid values: 1 Requests domain; 2 web-view domain.
         :type DomainType: int
         """
         self._DomainUrl = None
@@ -7934,7 +7987,7 @@ class DescribeDomainInfoParam(AbstractModel):
 
     @property
     def DomainUrl(self):
-        r"""Multiple domain separators ';'.
+        r"""Multiple domains concatenated with semicolons (;). 
         :rtype: str
         """
         return self._DomainUrl
@@ -7945,7 +7998,7 @@ class DescribeDomainInfoParam(AbstractModel):
 
     @property
     def DomainType(self):
-        r"""Domain type 1-requests domain 2-business domain.
+        r"""Domain type. Valid values: 1 Requests domain; 2 web-view domain.
         :rtype: int
         """
         return self._DomainType
@@ -7975,15 +8028,15 @@ class DescribeGlobalDomainACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset. 
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _DomainTypes: Domain type. 1: Allowed; 2: Blocked
+        :param _DomainTypes: Domain type. Valid value: 1: Allowed; 2: Blocked.
         :type DomainTypes: list of int
-        :param _Keyword: Domain names to be queried
+        :param _Keyword: Search keyword (domain).
         :type Keyword: str
         """
         self._Offset = None
@@ -7994,7 +8047,7 @@ class DescribeGlobalDomainACLRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset. 
         :rtype: int
         """
         return self._Offset
@@ -8005,7 +8058,7 @@ class DescribeGlobalDomainACLRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -8016,7 +8069,7 @@ class DescribeGlobalDomainACLRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -8027,7 +8080,7 @@ class DescribeGlobalDomainACLRequest(AbstractModel):
 
     @property
     def DomainTypes(self):
-        r"""Domain type. 1: Allowed; 2: Blocked
+        r"""Domain type. Valid value: 1: Allowed; 2: Blocked.
         :rtype: list of int
         """
         return self._DomainTypes
@@ -8038,7 +8091,7 @@ class DescribeGlobalDomainACLRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Domain names to be queried
+        r"""Search keyword (domain).
         :rtype: str
         """
         return self._Keyword
@@ -8071,7 +8124,7 @@ class DescribeGlobalDomainACLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeGlobalDomainsResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8081,7 +8134,7 @@ class DescribeGlobalDomainACLResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeGlobalDomainsResp`
         """
         return self._Data
@@ -8110,25 +8163,25 @@ class DescribeGlobalDomainACLResponse(AbstractModel):
 
 
 class DescribeGlobalDomainsListData(AbstractModel):
-    r"""List of global domain names
+    r"""Global domain list information.
 
     """
 
     def __init__(self):
         r"""
-        :param _DomainId: Domain ID
+        :param _DomainId: Domain ID.
         :type DomainId: int
-        :param _DomainUrl: Domain name
+        :param _DomainUrl: Domain name.
         :type DomainUrl: str
-        :param _DomainType: Type. 1: allowlist; 2: blocklist.
+        :param _DomainType: Domain type. Valid value: 1: Allowed; 2: Blocked.
         :type DomainType: int
-        :param _CreateUser: Creator
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _UpdateUser: Specifies the updater.
+        :param _UpdateUser: Last modifier.
         :type UpdateUser: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: Last modified time.
         :type UpdateTime: str
         """
         self._DomainId = None
@@ -8141,7 +8194,7 @@ class DescribeGlobalDomainsListData(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""Domain ID
+        r"""Domain ID.
         :rtype: int
         """
         return self._DomainId
@@ -8152,7 +8205,7 @@ class DescribeGlobalDomainsListData(AbstractModel):
 
     @property
     def DomainUrl(self):
-        r"""Domain name
+        r"""Domain name.
         :rtype: str
         """
         return self._DomainUrl
@@ -8163,7 +8216,7 @@ class DescribeGlobalDomainsListData(AbstractModel):
 
     @property
     def DomainType(self):
-        r"""Type. 1: allowlist; 2: blocklist.
+        r"""Domain type. Valid value: 1: Allowed; 2: Blocked.
         :rtype: int
         """
         return self._DomainType
@@ -8174,7 +8227,7 @@ class DescribeGlobalDomainsListData(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -8185,7 +8238,7 @@ class DescribeGlobalDomainsListData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -8196,7 +8249,7 @@ class DescribeGlobalDomainsListData(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""Specifies the updater.
+        r"""Last modifier.
         :rtype: str
         """
         return self._UpdateUser
@@ -8207,7 +8260,7 @@ class DescribeGlobalDomainsListData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""Last modified time.
         :rtype: str
         """
         return self._UpdateTime
@@ -8236,15 +8289,15 @@ class DescribeGlobalDomainsListData(AbstractModel):
 
 
 class DescribeGlobalDomainsResp(AbstractModel):
-    r"""Global domain name page list
+    r"""Paginated global domain list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: Describes the domain information.
+        :param _DataList: Domain information.
         :type DataList: list of DescribeGlobalDomainsListData
         """
         self._TotalCount = None
@@ -8252,7 +8305,7 @@ class DescribeGlobalDomainsResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -8263,7 +8316,7 @@ class DescribeGlobalDomainsResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""Describes the domain information.
+        r"""Domain information.
         :rtype: list of DescribeGlobalDomainsListData
         """
         return self._DataList
@@ -8298,11 +8351,11 @@ class DescribeGlobalOverviewDataSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataType: string: Overview
+        :param _DataType: string: Overview.
         :type DataType: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _DataTime: Date in YYYYMMDD format
+        :param _DataTime: Date in YYYYMMDD format.
         :type DataTime: int
         """
         self._DataType = None
@@ -8311,7 +8364,7 @@ class DescribeGlobalOverviewDataSummaryRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""string: Overview
+        r"""string: Overview.
         :rtype: str
         """
         return self._DataType
@@ -8322,7 +8375,7 @@ class DescribeGlobalOverviewDataSummaryRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -8333,7 +8386,7 @@ class DescribeGlobalOverviewDataSummaryRequest(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Date in YYYYMMDD format
+        r"""Date in YYYYMMDD format.
         :rtype: int
         """
         return self._DataTime
@@ -8364,7 +8417,7 @@ class DescribeGlobalOverviewDataSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display at the top of the page
+        :param _Data: Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisOverview`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -8375,7 +8428,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display at the top of the page
+        r"""Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisOverview`
         """
@@ -8411,13 +8464,13 @@ class DescribeGlobalOverviewReportDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
         :param _ReportId: Parameter value: mnp_data_analysis
         :type ReportId: str
-        :param _IndexId: Parameter value: app_num|corp_num|miniapp_num|miniapp_visit_pv|minigame_num|minigame_visit_pv
+        :param _IndexId: Parameter value: app_num|corp_num|miniapp_num|miniapp_visit_pv|minigame_num|minigame_visit_pv.
         :type IndexId: str
-        :param _QueryData: Base64 string containing start and end time: {"BeginDate":20251111,"EndDate":20251125}
+        :param _QueryData: Base64 string containing start and end time: {"BeginDate":20251111,"EndDate":20251125}.
         :type QueryData: str
         """
         self._PlatformId = None
@@ -8427,7 +8480,7 @@ class DescribeGlobalOverviewReportDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -8449,7 +8502,7 @@ class DescribeGlobalOverviewReportDetailRequest(AbstractModel):
 
     @property
     def IndexId(self):
-        r"""Parameter value: app_num|corp_num|miniapp_num|miniapp_visit_pv|minigame_num|minigame_visit_pv
+        r"""Parameter value: app_num|corp_num|miniapp_num|miniapp_visit_pv|minigame_num|minigame_visit_pv.
         :rtype: str
         """
         return self._IndexId
@@ -8460,7 +8513,7 @@ class DescribeGlobalOverviewReportDetailRequest(AbstractModel):
 
     @property
     def QueryData(self):
-        r"""Base64 string containing start and end time: {"BeginDate":20251111,"EndDate":20251125}
+        r"""Base64 string containing start and end time: {"BeginDate":20251111,"EndDate":20251125}.
         :rtype: str
         """
         return self._QueryData
@@ -8492,7 +8545,7 @@ class DescribeGlobalOverviewReportDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of ReportDataResult
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -8503,7 +8556,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ReportDataResult
         """
@@ -8542,17 +8595,17 @@ class DescribeMNGAccessAnalysisDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: int
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _Platform: 0 All, 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: int
         """
         self._TimeBegin = None
@@ -8564,7 +8617,7 @@ class DescribeMNGAccessAnalysisDetailRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: int
         """
         return self._TimeBegin
@@ -8575,7 +8628,7 @@ class DescribeMNGAccessAnalysisDetailRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -8586,7 +8639,7 @@ class DescribeMNGAccessAnalysisDetailRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -8597,7 +8650,7 @@ class DescribeMNGAccessAnalysisDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -8608,7 +8661,7 @@ class DescribeMNGAccessAnalysisDetailRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""0 All, 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -8619,7 +8672,7 @@ class DescribeMNGAccessAnalysisDetailRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: int
         """
         return self._TimeEnd
@@ -8653,7 +8706,7 @@ class DescribeMNGAccessAnalysisDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display at the top of the page
+        :param _Data: Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of AccessAnalysisDetail
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -8664,7 +8717,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display at the top of the page
+        r"""Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AccessAnalysisDetail
         """
@@ -8703,13 +8756,13 @@ class DescribeMNGAccessAnalysisLineChartRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ReportId: Fixed value: mnp_data_analysis
+        :param _ReportId: Fixed value: mnp_data_analysis.
         :type ReportId: str
-        :param _IndexId: IndexId (optional):
+        :param _IndexId: Index ID (optional):
 active_device_num: Number of active users
 new_device_num: Number of new users
 total_user_num: Total number of users
@@ -8717,9 +8770,9 @@ share_num: Number of shares
 miniapp_open_num: Number of mini game opens
 avg_device_open_num: Average opens per user
 avg_device_open_duration: Average visit duration per user
-avg_count_open_duration: Average visit duration per session
+avg_count_open_duration: Average visit duration per session.
         :type IndexId: str
-        :param _QueryData: Input parameter base64 string: {"DataType":"1","Platform":0,"BeginDate":20251118,"EndDate":20251124}
+        :param _QueryData: Input parameter base64 string: {"DataType":"1","Platform":0,"BeginDate":20251118,"EndDate":20251124}.
         :type QueryData: str
         """
         self._MNPId = None
@@ -8730,7 +8783,7 @@ avg_count_open_duration: Average visit duration per session
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -8741,7 +8794,7 @@ avg_count_open_duration: Average visit duration per session
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -8752,7 +8805,7 @@ avg_count_open_duration: Average visit duration per session
 
     @property
     def ReportId(self):
-        r"""Fixed value: mnp_data_analysis
+        r"""Fixed value: mnp_data_analysis.
         :rtype: str
         """
         return self._ReportId
@@ -8763,7 +8816,7 @@ avg_count_open_duration: Average visit duration per session
 
     @property
     def IndexId(self):
-        r"""IndexId (optional):
+        r"""Index ID (optional):
 active_device_num: Number of active users
 new_device_num: Number of new users
 total_user_num: Total number of users
@@ -8771,7 +8824,7 @@ share_num: Number of shares
 miniapp_open_num: Number of mini game opens
 avg_device_open_num: Average opens per user
 avg_device_open_duration: Average visit duration per user
-avg_count_open_duration: Average visit duration per session
+avg_count_open_duration: Average visit duration per session.
         :rtype: str
         """
         return self._IndexId
@@ -8782,7 +8835,7 @@ avg_count_open_duration: Average visit duration per session
 
     @property
     def QueryData(self):
-        r"""Input parameter base64 string: {"DataType":"1","Platform":0,"BeginDate":20251118,"EndDate":20251124}
+        r"""Input parameter base64 string: {"DataType":"1","Platform":0,"BeginDate":20251118,"EndDate":20251124}.
         :rtype: str
         """
         return self._QueryData
@@ -8815,7 +8868,7 @@ class DescribeMNGAccessAnalysisLineChartResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of ReportDataResult
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -8826,7 +8879,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ReportDataResult
         """
@@ -8865,17 +8918,17 @@ class DescribeMNGAccessAnalysisOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time
+        :param _TimeBegin: Start time.
         :type TimeBegin: int
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TimeEnd: End time
+        :param _TimeEnd: End time.
         :type TimeEnd: int
-        :param _ProdData: 1 Production data, 0 Non-production data
+        :param _ProdData: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type ProdData: int
-        :param _Platform: Operating system: 0 All, 2-Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -8887,7 +8940,7 @@ class DescribeMNGAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time
+        r"""Start time.
         :rtype: int
         """
         return self._TimeBegin
@@ -8898,7 +8951,7 @@ class DescribeMNGAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -8909,7 +8962,7 @@ class DescribeMNGAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -8920,7 +8973,7 @@ class DescribeMNGAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time
+        r"""End time.
         :rtype: int
         """
         return self._TimeEnd
@@ -8931,7 +8984,7 @@ class DescribeMNGAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def ProdData(self):
-        r"""1 Production data, 0 Non-production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._ProdData
@@ -8942,7 +8995,7 @@ class DescribeMNGAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""Operating system: 0 All, 2-Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -8976,7 +9029,7 @@ class DescribeMNGAccessAnalysisOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display at the top of the page
+        :param _Data: Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisOverview`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -8987,7 +9040,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display at the top of the page
+        r"""Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisOverview`
         """
@@ -9023,15 +9076,15 @@ class DescribeMNGActiveUserRealTimeStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ReportId: Fixed value: mnp_data_analysis
+        :param _ReportId: Fixed value: mnp_data_analysis.
         :type ReportId: str
-        :param _IndexId: IndexId
+        :param _IndexId: IndexId.
         :type IndexId: str
-        :param _QueryData: Input parameter base64 string: {"Platform":0,"DataType":"1","BeginDate":"20251125","EndDate":"20251125"}
+        :param _QueryData: Input parameter base64 string: {"Platform":0,"DataType":"1","BeginDate":"20251125","EndDate":"20251125"}.
         :type QueryData: str
         """
         self._MNPId = None
@@ -9042,7 +9095,7 @@ class DescribeMNGActiveUserRealTimeStatisticsRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -9053,7 +9106,7 @@ class DescribeMNGActiveUserRealTimeStatisticsRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -9064,7 +9117,7 @@ class DescribeMNGActiveUserRealTimeStatisticsRequest(AbstractModel):
 
     @property
     def ReportId(self):
-        r"""Fixed value: mnp_data_analysis
+        r"""Fixed value: mnp_data_analysis.
         :rtype: str
         """
         return self._ReportId
@@ -9075,7 +9128,7 @@ class DescribeMNGActiveUserRealTimeStatisticsRequest(AbstractModel):
 
     @property
     def IndexId(self):
-        r"""IndexId
+        r"""IndexId.
         :rtype: str
         """
         return self._IndexId
@@ -9086,7 +9139,7 @@ class DescribeMNGActiveUserRealTimeStatisticsRequest(AbstractModel):
 
     @property
     def QueryData(self):
-        r"""Input parameter base64 string: {"Platform":0,"DataType":"1","BeginDate":"20251125","EndDate":"20251125"}
+        r"""Input parameter base64 string: {"Platform":0,"DataType":"1","BeginDate":"20251125","EndDate":"20251125"}.
         :rtype: str
         """
         return self._QueryData
@@ -9119,7 +9172,7 @@ class DescribeMNGActiveUserRealTimeStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of ReportDataResult
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -9130,7 +9183,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ReportDataResult
         """
@@ -9169,17 +9222,17 @@ class DescribeMNGAdvertisingDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: str
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: str
-        :param _AdUnitType: //1-BANNER  2-REWARDED
+        :param _AdUnitType: Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :type AdUnitType: str
-        :param _Platform: // 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -9191,7 +9244,7 @@ class DescribeMNGAdvertisingDetailRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeBegin
@@ -9202,7 +9255,7 @@ class DescribeMNGAdvertisingDetailRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -9213,7 +9266,7 @@ class DescribeMNGAdvertisingDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -9224,7 +9277,7 @@ class DescribeMNGAdvertisingDetailRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeEnd
@@ -9235,7 +9288,7 @@ class DescribeMNGAdvertisingDetailRequest(AbstractModel):
 
     @property
     def AdUnitType(self):
-        r"""//1-BANNER  2-REWARDED
+        r"""Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :rtype: str
         """
         return self._AdUnitType
@@ -9246,7 +9299,7 @@ class DescribeMNGAdvertisingDetailRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""// 2 Android, 3 iOS
+        r"""Operating system. Valid values: 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -9280,7 +9333,7 @@ class DescribeMNGAdvertisingDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of OverviewDetail
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -9291,7 +9344,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of OverviewDetail
         """
@@ -9330,17 +9383,17 @@ class DescribeMNGAdvertisingLineChartRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: str
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: str
-        :param _AdUnitType: //1-BANNER  2-REWARDED
+        :param _AdUnitType: Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :type AdUnitType: str
-        :param _Platform: // 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -9352,7 +9405,7 @@ class DescribeMNGAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeBegin
@@ -9363,7 +9416,7 @@ class DescribeMNGAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -9374,7 +9427,7 @@ class DescribeMNGAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -9385,7 +9438,7 @@ class DescribeMNGAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeEnd
@@ -9396,7 +9449,7 @@ class DescribeMNGAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def AdUnitType(self):
-        r"""//1-BANNER  2-REWARDED
+        r"""Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :rtype: str
         """
         return self._AdUnitType
@@ -9407,7 +9460,7 @@ class DescribeMNGAdvertisingLineChartRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""// 2 Android, 3 iOS
+        r"""Operating system. Valid values: 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -9441,7 +9494,7 @@ class DescribeMNGAdvertisingLineChartResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.AdTrendChart`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -9452,7 +9505,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AdTrendChart`
         """
@@ -9488,17 +9541,17 @@ class DescribeMNGAdvertisingOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: str
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: str
-        :param _AdUnitType: //1-BANNER  2-REWARDED
+        :param _AdUnitType: Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :type AdUnitType: str
-        :param _Platform: // 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -9510,7 +9563,7 @@ class DescribeMNGAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeBegin
@@ -9521,7 +9574,7 @@ class DescribeMNGAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -9532,7 +9585,7 @@ class DescribeMNGAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -9543,7 +9596,7 @@ class DescribeMNGAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeEnd
@@ -9554,7 +9607,7 @@ class DescribeMNGAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def AdUnitType(self):
-        r"""//1-BANNER  2-REWARDED
+        r"""Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :rtype: str
         """
         return self._AdUnitType
@@ -9565,7 +9618,7 @@ class DescribeMNGAdvertisingOverviewRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""// 2 Android, 3 iOS
+        r"""Operating system. Valid values: 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -9599,7 +9652,7 @@ class DescribeMNGAdvertisingOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.AnalysisAdvertOverview`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -9610,7 +9663,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AnalysisAdvertOverview`
         """
@@ -9646,9 +9699,9 @@ class DescribeMNGAllStageVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPId = None
@@ -9656,7 +9709,7 @@ class DescribeMNGAllStageVersionsRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -9667,7 +9720,7 @@ class DescribeMNGAllStageVersionsRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -9691,47 +9744,47 @@ class DescribeMNGAllStageVersionsRequest(AbstractModel):
 
 
 class DescribeMNGAllStageVersionsResp(AbstractModel):
-    r"""Response object for querying the mini game version information
+    r"""Response for querying all-stage versions of a mini game.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _MNPVersionId: <p>Mini game version ID</p>
+        :param _MNPVersionId: <p>Mini game version ID.</p>
         :type MNPVersionId: int
-        :param _MNPName: <p>Mini game name</p>
+        :param _MNPName: <p>Mini game name.</p>
         :type MNPName: str
-        :param _MNPIcon: <p>Mini game icon</p>
+        :param _MNPIcon: <p>Mini game icon.</p>
         :type MNPIcon: str
-        :param _MNPType: <p>Mini game category</p>
+        :param _MNPType: <p>Mini game category.</p>
         :type MNPType: str
-        :param _MNPIntro: <p>Mini game introduction</p>
+        :param _MNPIntro: <p>Mini game introduction.</p>
         :type MNPIntro: str
-        :param _MNPDesc: <p>Mini game description</p>
+        :param _MNPDesc: <p>Mini game description.</p>
         :type MNPDesc: str
-        :param _CreateUser: <p>Developer</p>
+        :param _CreateUser: <p>Creator.</p>
         :type CreateUser: str
-        :param _CreateTime: <p>Developer creation time</p>
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _MNPVersion: <p>Mini game version</p>
+        :param _MNPVersion: <p>Mini game version.</p>
         :type MNPVersion: str
-        :param _MNPVersionIntro: <p>Version feature description</p>
+        :param _MNPVersionIntro: <p>Version feature introduction.</p>
         :type MNPVersionIntro: str
-        :param _Phase: <p>Version:</p> Develop, preview, released</p>
+        :param _Phase: <p>Stage: Develop, preview, available.</p>
         :type Phase: str
-        :param _ApprovalStatus: <p>Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled</p>
+        :param _ApprovalStatus: <p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :type ApprovalStatus: int
-        :param _ApprovalNo: <p>Approval number</p>
+        :param _ApprovalNo: <p>Approval number.</p>
         :type ApprovalNo: str
-        :param _ShowCase: <p>Whether this is a preview. Valid values: 0: No; 1: Yes</p>
+        :param _ShowCase: <p>Whether this is a preview. Valid values: 0: No; 1: Yes.</p>
         :type ShowCase: int
-        :param _RollbackVersion: <p>Rollback version number</p>
+        :param _RollbackVersion: <p>Rollback version number.</p>
         :type RollbackVersion: int
-        :param _Status: <p>Available status</p>
+        :param _Status: <p>Available status.</p>
         :type Status: int
-        :param _VersionCurrentStatus: <p>Primary status of the current version. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled</p>
+        :param _VersionCurrentStatus: <p>Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :type VersionCurrentStatus: int
         """
         self._MNPId = None
@@ -9755,7 +9808,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -9766,7 +9819,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""<p>Mini game version ID</p>
+        r"""<p>Mini game version ID.</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -9777,7 +9830,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""<p>Mini game name</p>
+        r"""<p>Mini game name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -9788,7 +9841,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""<p>Mini game icon</p>
+        r"""<p>Mini game icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -9799,7 +9852,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPType(self):
-        r"""<p>Mini game category</p>
+        r"""<p>Mini game category.</p>
         :rtype: str
         """
         return self._MNPType
@@ -9810,7 +9863,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""<p>Mini game introduction</p>
+        r"""<p>Mini game introduction.</p>
         :rtype: str
         """
         return self._MNPIntro
@@ -9821,7 +9874,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""<p>Mini game description</p>
+        r"""<p>Mini game description.</p>
         :rtype: str
         """
         return self._MNPDesc
@@ -9832,7 +9885,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""<p>Developer</p>
+        r"""<p>Creator.</p>
         :rtype: str
         """
         return self._CreateUser
@@ -9843,7 +9896,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""<p>Developer creation time</p>
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -9854,7 +9907,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""<p>Mini game version</p>
+        r"""<p>Mini game version.</p>
         :rtype: str
         """
         return self._MNPVersion
@@ -9865,7 +9918,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPVersionIntro(self):
-        r"""<p>Version feature description</p>
+        r"""<p>Version feature introduction.</p>
         :rtype: str
         """
         return self._MNPVersionIntro
@@ -9876,7 +9929,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def Phase(self):
-        r"""<p>Version:</p> Develop, preview, released</p>
+        r"""<p>Stage: Develop, preview, available.</p>
         :rtype: str
         """
         return self._Phase
@@ -9887,7 +9940,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def ApprovalStatus(self):
-        r"""<p>Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled</p>
+        r"""<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :rtype: int
         """
         return self._ApprovalStatus
@@ -9898,7 +9951,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""<p>Approval number</p>
+        r"""<p>Approval number.</p>
         :rtype: str
         """
         return self._ApprovalNo
@@ -9909,7 +9962,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def ShowCase(self):
-        r"""<p>Whether this is a preview. Valid values: 0: No; 1: Yes</p>
+        r"""<p>Whether this is a preview. Valid values: 0: No; 1: Yes.</p>
         :rtype: int
         """
         return self._ShowCase
@@ -9920,7 +9973,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def RollbackVersion(self):
-        r"""<p>Rollback version number</p>
+        r"""<p>Rollback version number.</p>
         :rtype: int
         """
         return self._RollbackVersion
@@ -9931,7 +9984,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>Available status</p>
+        r"""<p>Available status.</p>
         :rtype: int
         """
         return self._Status
@@ -9942,7 +9995,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
 
     @property
     def VersionCurrentStatus(self):
-        r"""<p>Primary status of the current version. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled</p>
+        r"""<p>Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :rtype: int
         """
         return self._VersionCurrentStatus
@@ -9988,8 +10041,7 @@ class DescribeMNGAllStageVersionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: <p>Response data.</p>
         :type Data: list of DescribeMNGAllStageVersionsResp
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9999,8 +10051,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Response data.</p>
         :rtype: list of DescribeMNGAllStageVersionsResp
         """
         return self._Data
@@ -10038,14 +10089,14 @@ class DescribeMNGCategoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._PlatformId = None
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -10074,8 +10125,7 @@ class DescribeMNGCategoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: <p>Response data.</p>
         :type Data: list of MNGTypeDefine
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10085,8 +10135,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Response data.</p>
         :rtype: list of MNGTypeDefine
         """
         return self._Data
@@ -10124,9 +10173,9 @@ class DescribeMNGDomainACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPId = None
@@ -10134,7 +10183,7 @@ class DescribeMNGDomainACLRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -10145,7 +10194,7 @@ class DescribeMNGDomainACLRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -10175,8 +10224,7 @@ class DescribeMNGDomainACLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: <p>Response data.</p>
         :type Data: list of DescribeMNGDomainInfoResp
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10186,8 +10234,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Response data.</p>
         :rtype: list of DescribeMNGDomainInfoResp
         """
         return self._Data
@@ -10219,15 +10266,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMNGDomainInfoResp(AbstractModel):
-    r"""Response parameters for querying domain information
+    r"""Response parameters for querying domain information.
 
     """
 
     def __init__(self):
         r"""
-        :param _DomainUrl: <p>Multiple domain names are concatenated with the separator ;</p>
+        :param _DomainUrl: <p>Multiple domains concatenated with semicolons (;).</p>
         :type DomainUrl: str
-        :param _DomainType: <p>Domain type. Valid values: 1: Requests domain; 2: web-view domain</p>
+        :param _DomainType: <p>Domain type. Valid values: 1: Requests domain; 2: web-view domain.</p>
         :type DomainType: int
         """
         self._DomainUrl = None
@@ -10235,7 +10282,7 @@ class DescribeMNGDomainInfoResp(AbstractModel):
 
     @property
     def DomainUrl(self):
-        r"""<p>Multiple domain names are concatenated with the separator ;</p>
+        r"""<p>Multiple domains concatenated with semicolons (;).</p>
         :rtype: str
         """
         return self._DomainUrl
@@ -10246,7 +10293,7 @@ class DescribeMNGDomainInfoResp(AbstractModel):
 
     @property
     def DomainType(self):
-        r"""<p>Domain type. Valid values: 1: Requests domain; 2: web-view domain</p>
+        r"""<p>Domain type. Valid values: 1: Requests domain; 2: web-view domain.</p>
         :rtype: int
         """
         return self._DomainType
@@ -10270,41 +10317,41 @@ class DescribeMNGDomainInfoResp(AbstractModel):
 
 
 class DescribeMNGListData(AbstractModel):
-    r"""Mini program list data
+    r"""Mini game list data.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _MNPIcon: <p>Mini game icon</p>
+        :param _MNPIcon: <p>Mini game icon.</p>
         :type MNPIcon: str
-        :param _MNPName: <p>Mini game name</p>
+        :param _MNPName: <p>Mini game name.</p>
         :type MNPName: str
-        :param _TeamName: <p>Team name</p>
+        :param _TeamName: <p>Team name.</p>
         :type TeamName: str
-        :param _MNPType: <p>Mini game category</p>
+        :param _MNPType: <p>Mini game category.</p>
         :type MNPType: str
-        :param _Status: <p>Mini game available status. Valid values: 1: Available; 2: Not available</p>
+        :param _Status: <p>Mini game available status. Valid values: 1: Available; 2: Not available.</p>
         :type Status: int
-        :param _MNPIntro: <p>Mini game introduction</p>
+        :param _MNPIntro: <p>Mini game introduction.</p>
         :type MNPIntro: str
-        :param _CreateUser: <p>Creator</p>
+        :param _CreateUser: <p>Creator.</p>
         :type CreateUser: str
-        :param _CreateTime: <p>Creation time</p>
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _UpdateUser: <p>Updater</p>
+        :param _UpdateUser: <p>Last modifier.</p>
         :type UpdateUser: str
-        :param _UpdateTime: <p>Update time</p>
+        :param _UpdateTime: <p>Last modified time.</p>
         :type UpdateTime: str
-        :param _ApplicationName: <p>Superapp name</p>
+        :param _ApplicationName: <p>Superapp name.</p>
         :type ApplicationName: str
-        :param _EffectStatus: <p>Effective status of the bound superapp. 1: Not effective; 2: Effective</p>
+        :param _EffectStatus: <p>Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.</p>
         :type EffectStatus: int
-        :param _EffectMNPVersionId: <p>Effective version ID of the superapp bound to the mini game</p>
+        :param _EffectMNPVersionId: <p>Effective mini game version ID bound to the superapp.</p>
         :type EffectMNPVersionId: int
-        :param _EffectMNPVersion: <p>Effective version number of the superapp bound to the mini game</p>
+        :param _EffectMNPVersion: <p>Effective mini game version number bound to the superapp. </p>
         :type EffectMNPVersion: str
         """
         self._MNPId = None
@@ -10325,7 +10372,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -10336,7 +10383,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""<p>Mini game icon</p>
+        r"""<p>Mini game icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -10347,7 +10394,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""<p>Mini game name</p>
+        r"""<p>Mini game name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -10358,7 +10405,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""<p>Team name</p>
+        r"""<p>Team name.</p>
         :rtype: str
         """
         return self._TeamName
@@ -10369,7 +10416,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def MNPType(self):
-        r"""<p>Mini game category</p>
+        r"""<p>Mini game category.</p>
         :rtype: str
         """
         return self._MNPType
@@ -10380,7 +10427,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>Mini game available status. Valid values: 1: Available; 2: Not available</p>
+        r"""<p>Mini game available status. Valid values: 1: Available; 2: Not available.</p>
         :rtype: int
         """
         return self._Status
@@ -10391,7 +10438,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""<p>Mini game introduction</p>
+        r"""<p>Mini game introduction.</p>
         :rtype: str
         """
         return self._MNPIntro
@@ -10402,7 +10449,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""<p>Creator</p>
+        r"""<p>Creator.</p>
         :rtype: str
         """
         return self._CreateUser
@@ -10413,7 +10460,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""<p>Creation time</p>
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10424,7 +10471,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""<p>Updater</p>
+        r"""<p>Last modifier.</p>
         :rtype: str
         """
         return self._UpdateUser
@@ -10435,7 +10482,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""<p>Update time</p>
+        r"""<p>Last modified time.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -10446,7 +10493,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""<p>Superapp name</p>
+        r"""<p>Superapp name.</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -10457,7 +10504,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def EffectStatus(self):
-        r"""<p>Effective status of the bound superapp. 1: Not effective; 2: Effective</p>
+        r"""<p>Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.</p>
         :rtype: int
         """
         return self._EffectStatus
@@ -10468,7 +10515,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def EffectMNPVersionId(self):
-        r"""<p>Effective version ID of the superapp bound to the mini game</p>
+        r"""<p>Effective mini game version ID bound to the superapp.</p>
         :rtype: int
         """
         return self._EffectMNPVersionId
@@ -10479,7 +10526,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def EffectMNPVersion(self):
-        r"""<p>Effective version number of the superapp bound to the mini game</p>
+        r"""<p>Effective mini game version number bound to the superapp. </p>
         :rtype: str
         """
         return self._EffectMNPVersion
@@ -10522,17 +10569,17 @@ class DescribeMNGListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: <p>Pagination offset</p>
+        :param _Offset: <p>Pagination offset.</p>
         :type Offset: int
-        :param _Limit: <p>Pagination count</p>
+        :param _Limit: <p>Number of entries per page.</p>
         :type Limit: int
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _Keyword: <p>Keywords for search (mini game name)</p>
+        :param _Keyword: <p>The search keyword (mini game name).</p>
         :type Keyword: str
-        :param _TeamId: <p>Team ID</p>
+        :param _TeamId: <p>Team ID.</p>
         :type TeamId: str
-        :param _ApplicationId: <p>Superapp ID</p>
+        :param _ApplicationId: <p>Superapp ID.</p>
         :type ApplicationId: str
         """
         self._Offset = None
@@ -10544,7 +10591,7 @@ class DescribeMNGListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""<p>Pagination offset</p>
+        r"""<p>Pagination offset.</p>
         :rtype: int
         """
         return self._Offset
@@ -10555,7 +10602,7 @@ class DescribeMNGListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>Pagination count</p>
+        r"""<p>Number of entries per page.</p>
         :rtype: int
         """
         return self._Limit
@@ -10566,7 +10613,7 @@ class DescribeMNGListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -10577,7 +10624,7 @@ class DescribeMNGListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""<p>Keywords for search (mini game name)</p>
+        r"""<p>The search keyword (mini game name).</p>
         :rtype: str
         """
         return self._Keyword
@@ -10588,7 +10635,7 @@ class DescribeMNGListRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""<p>Team ID</p>
+        r"""<p>Team ID.</p>
         :rtype: str
         """
         return self._TeamId
@@ -10599,7 +10646,7 @@ class DescribeMNGListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""<p>Superapp ID</p>
+        r"""<p>Superapp ID.</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -10627,15 +10674,15 @@ class DescribeMNGListRequest(AbstractModel):
 
 
 class DescribeMNGListResp(AbstractModel):
-    r"""Response object for the mini game list
+    r"""Response for querying the mini game list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: <p>Total number of entries</p>
+        :param _TotalCount: <p>Total number of entries.</p>
         :type TotalCount: int
-        :param _DataList: <p>List information</p>
+        :param _DataList: <p>List data.</p>
         :type DataList: list of DescribeMNGListData
         """
         self._TotalCount = None
@@ -10643,7 +10690,7 @@ class DescribeMNGListResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""<p>Total number of entries</p>
+        r"""<p>Total number of entries.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10654,7 +10701,7 @@ class DescribeMNGListResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""<p>List information</p>
+        r"""<p>List data.</p>
         :rtype: list of DescribeMNGListData
         """
         return self._DataList
@@ -10689,7 +10736,7 @@ class DescribeMNGListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10699,7 +10746,7 @@ class DescribeMNGListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGListResp`
         """
         return self._Data
@@ -10734,15 +10781,15 @@ class DescribeMNGMAUDataDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataType: Type
+        :param _DataType: Type.
         :type DataType: int
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ApplicationId: Superapp ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _MNPId: Mini program appid, required. When provided, the query is performed based on the mini program.
+        :param _MNPId: Mini program appid. If not empty, results are filtered by mini program appid.
         :type MNPId: str
-        :param _MNPTeamId: Mini program team ID
+        :param _MNPTeamId: Mini program team ID.
         :type MNPTeamId: int
         """
         self._DataType = None
@@ -10753,7 +10800,7 @@ class DescribeMNGMAUDataDetailRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type
+        r"""Type.
         :rtype: int
         """
         return self._DataType
@@ -10764,7 +10811,7 @@ class DescribeMNGMAUDataDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -10775,7 +10822,7 @@ class DescribeMNGMAUDataDetailRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -10786,7 +10833,7 @@ class DescribeMNGMAUDataDetailRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid, required. When provided, the query is performed based on the mini program.
+        r"""Mini program appid. If not empty, results are filtered by mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -10797,7 +10844,7 @@ class DescribeMNGMAUDataDetailRequest(AbstractModel):
 
     @property
     def MNPTeamId(self):
-        r"""Mini program team ID
+        r"""Mini program team ID.
         :rtype: int
         """
         return self._MNPTeamId
@@ -10830,7 +10877,7 @@ class DescribeMNGMAUDataDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of MAUDetail
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -10841,7 +10888,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of MAUDetail
         """
@@ -10880,15 +10927,15 @@ class DescribeMNGMAULineChartRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataType: Type: 0 Non-production data, 1 Production data 
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ApplicationId: Superapp ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _MNPId: Mini program appid, required. When provided, the query is performed based on the mini program.
+        :param _MNPId: Mini program appid. If not empty, results are filtered by mini program appid.
         :type MNPId: str
-        :param _MNPTeamId: Mini program team ID
+        :param _MNPTeamId: Mini program team ID.
         :type MNPTeamId: int
         """
         self._DataType = None
@@ -10899,7 +10946,7 @@ class DescribeMNGMAULineChartRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data 
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -10910,7 +10957,7 @@ class DescribeMNGMAULineChartRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -10921,7 +10968,7 @@ class DescribeMNGMAULineChartRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -10932,7 +10979,7 @@ class DescribeMNGMAULineChartRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid, required. When provided, the query is performed based on the mini program.
+        r"""Mini program appid. If not empty, results are filtered by mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -10943,7 +10990,7 @@ class DescribeMNGMAULineChartRequest(AbstractModel):
 
     @property
     def MNPTeamId(self):
-        r"""Mini program team ID
+        r"""Mini program team ID.
         :rtype: int
         """
         return self._MNPTeamId
@@ -10976,7 +11023,7 @@ class DescribeMNGMAULineChartResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display at the top of the page
+        :param _Data: Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of MNGMAULineChartData
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -10987,7 +11034,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display at the top of the page
+        r"""Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of MNGMAULineChartData
         """
@@ -11026,19 +11073,19 @@ class DescribeMNGMAUMonthlyComparisonMetricCardRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceMonth: Start time in YYYYMMDD format
+        :param _SourceMonth: Start time in YYYYMMDD format.
         :type SourceMonth: int
-        :param _DataType: Type: 0 Non-production data, 1 Production data 
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TargetMonth: End time in YYYYMMDD format
+        :param _TargetMonth: End time in YYYYMMDD format.
         :type TargetMonth: int
-        :param _ApplicationId: Superapp ID starting with App
+        :param _ApplicationId: Superapp ID prefixed with "app".
         :type ApplicationId: str
-        :param _MNPId: Mini program appid. If this parameter is specified, the query is filtered by mini program appid.
+        :param _MNPId: Mini program appid. If not empty, results are filtered by mini program appid.
         :type MNPId: str
-        :param _MNPTeamId: Mini program team ID, required. When provided, the query is performed based on the mini program team.
+        :param _MNPTeamId: Mini program team ID. If not empty, results are filtered by mini program team ID.
         :type MNPTeamId: int
         """
         self._SourceMonth = None
@@ -11051,7 +11098,7 @@ class DescribeMNGMAUMonthlyComparisonMetricCardRequest(AbstractModel):
 
     @property
     def SourceMonth(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: int
         """
         return self._SourceMonth
@@ -11062,7 +11109,7 @@ class DescribeMNGMAUMonthlyComparisonMetricCardRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data 
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -11073,7 +11120,7 @@ class DescribeMNGMAUMonthlyComparisonMetricCardRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -11084,7 +11131,7 @@ class DescribeMNGMAUMonthlyComparisonMetricCardRequest(AbstractModel):
 
     @property
     def TargetMonth(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: int
         """
         return self._TargetMonth
@@ -11095,7 +11142,7 @@ class DescribeMNGMAUMonthlyComparisonMetricCardRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID starting with App
+        r"""Superapp ID prefixed with "app".
         :rtype: str
         """
         return self._ApplicationId
@@ -11106,7 +11153,7 @@ class DescribeMNGMAUMonthlyComparisonMetricCardRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid. If this parameter is specified, the query is filtered by mini program appid.
+        r"""Mini program appid. If not empty, results are filtered by mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -11117,7 +11164,7 @@ class DescribeMNGMAUMonthlyComparisonMetricCardRequest(AbstractModel):
 
     @property
     def MNPTeamId(self):
-        r"""Mini program team ID, required. When provided, the query is performed based on the mini program team.
+        r"""Mini program team ID. If not empty, results are filtered by mini program team ID.
         :rtype: int
         """
         return self._MNPTeamId
@@ -11152,7 +11199,7 @@ class DescribeMNGMAUMonthlyComparisonMetricCardResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display at the top of the page
+        :param _Data: Data display at the top of the page.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.MAUIndicatorCard`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11162,7 +11209,7 @@ class DescribeMNGMAUMonthlyComparisonMetricCardResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Data display at the top of the page
+        r"""Data display at the top of the page.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.MAUIndicatorCard`
         """
         return self._Data
@@ -11191,36 +11238,38 @@ class DescribeMNGMAUMonthlyComparisonMetricCardResponse(AbstractModel):
 
 
 class DescribeMNGManagerDetailData(AbstractModel):
-    r"""Mini game details
+    r"""Mini game detail information.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPType: <p>Mini game type</p>
+        :param _MNPType: <p>Mini game category.</p>
         :type MNPType: str
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _MNPName: <p>Mini game name</p>
+        :param _MNPName: <p>Mini game name.</p>
         :type MNPName: str
-        :param _MNPIcon: <p>Mini game icon</p>
+        :param _MNPIcon: <p>Mini game icon.</p>
         :type MNPIcon: str
-        :param _MNPIntro: <p>Mini game introduction</p>
+        :param _MNPIntro: <p>Mini game introduction.</p>
         :type MNPIntro: str
-        :param _MNPDesc: <p>Mini game description</p>
+        :param _MNPDesc: <p>Mini game description.</p>
         :type MNPDesc: str
-        :param _CreateTime: <p>Creation time (Unix timestamp)</p>
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _CreateUser: <p>Creator</p>
+        :param _CreateUser: <p>Creator.</p>
         :type CreateUser: str
-        :param _AccessStatus: Connection status. Valid values: 1: Not connected; 2: Connected
+        :param _AccessStatus: Access status. Valid values: 1: Not connected; 2: Connected. 
         :type AccessStatus: int
-        :param _TeamName: <p>Team name</p>
+        :param _TeamName: <p>Team name.</p>
         :type TeamName: str
-        :param _TeamId: <p>Team ID</p>
+        :param _TeamId: <p>Team ID.</p>
         :type TeamId: str
-        :param _Status: <p>Mini game available status. Valid values: 1: Available; 2: Not available</p>
+        :param _Status: <p>Mini game available status. Valid values: 1: Available; 2: Not available.</p>
         :type Status: int
+        :param _I18nList: The mini game name and description in multiple languages.
+        :type I18nList: list of MNPDetailI18nVO
         """
         self._MNPType = None
         self._MNPId = None
@@ -11234,10 +11283,11 @@ class DescribeMNGManagerDetailData(AbstractModel):
         self._TeamName = None
         self._TeamId = None
         self._Status = None
+        self._I18nList = None
 
     @property
     def MNPType(self):
-        r"""<p>Mini game type</p>
+        r"""<p>Mini game category.</p>
         :rtype: str
         """
         return self._MNPType
@@ -11248,7 +11298,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -11259,7 +11309,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""<p>Mini game name</p>
+        r"""<p>Mini game name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -11270,7 +11320,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""<p>Mini game icon</p>
+        r"""<p>Mini game icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -11281,7 +11331,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""<p>Mini game introduction</p>
+        r"""<p>Mini game introduction.</p>
         :rtype: str
         """
         return self._MNPIntro
@@ -11292,7 +11342,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""<p>Mini game description</p>
+        r"""<p>Mini game description.</p>
         :rtype: str
         """
         return self._MNPDesc
@@ -11303,7 +11353,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""<p>Creation time (Unix timestamp)</p>
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -11314,7 +11364,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""<p>Creator</p>
+        r"""<p>Creator.</p>
         :rtype: str
         """
         return self._CreateUser
@@ -11325,7 +11375,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def AccessStatus(self):
-        r"""Connection status. Valid values: 1: Not connected; 2: Connected
+        r"""Access status. Valid values: 1: Not connected; 2: Connected. 
         :rtype: int
         """
         return self._AccessStatus
@@ -11336,7 +11386,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""<p>Team name</p>
+        r"""<p>Team name.</p>
         :rtype: str
         """
         return self._TeamName
@@ -11347,7 +11397,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""<p>Team ID</p>
+        r"""<p>Team ID.</p>
         :rtype: str
         """
         return self._TeamId
@@ -11358,7 +11408,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>Mini game available status. Valid values: 1: Available; 2: Not available</p>
+        r"""<p>Mini game available status. Valid values: 1: Available; 2: Not available.</p>
         :rtype: int
         """
         return self._Status
@@ -11366,6 +11416,17 @@ class DescribeMNGManagerDetailData(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def I18nList(self):
+        r"""The mini game name and description in multiple languages.
+        :rtype: list of MNPDetailI18nVO
+        """
+        return self._I18nList
+
+    @I18nList.setter
+    def I18nList(self, I18nList):
+        self._I18nList = I18nList
 
 
     def _deserialize(self, params):
@@ -11381,6 +11442,12 @@ class DescribeMNGManagerDetailData(AbstractModel):
         self._TeamName = params.get("TeamName")
         self._TeamId = params.get("TeamId")
         self._Status = params.get("Status")
+        if params.get("I18nList") is not None:
+            self._I18nList = []
+            for item in params.get("I18nList"):
+                obj = MNPDetailI18nVO()
+                obj._deserialize(item)
+                self._I18nList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11398,9 +11465,9 @@ class DescribeMNGOfflinePackageURLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPId = None
@@ -11408,7 +11475,7 @@ class DescribeMNGOfflinePackageURLRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -11419,7 +11486,7 @@ class DescribeMNGOfflinePackageURLRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -11449,7 +11516,7 @@ class DescribeMNGOfflinePackageURLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.StringData`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11459,7 +11526,7 @@ class DescribeMNGOfflinePackageURLResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.StringData`
         """
         return self._Data
@@ -11494,9 +11561,9 @@ class DescribeMNGPaymentLineChartRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ReportId: Fixed value: payment_data_analysis
+        :param _ReportId: Fixed value: payment_data_analysis.
         :type ReportId: str
         :param _IndexId: Valid values:
 mng_paid_amount: Virtual payment amount,
@@ -11506,9 +11573,9 @@ new_paid_user_amount: Revenue from new paying users,
 new_paid_user_ratio: Percentage of new users who made payments,
 arppu: Average revenue per paying user (ARPPU),
 mng_refund_num: Number of refund orders
-mng_refund_amount: Refund amount
+mng_refund_amount: Refund amount.
         :type IndexId: str
-        :param _QueryData: Input parameter base64 string: {"Platform":0,"MnpId":"mgcp5xc2yzw8aixv","BeginDate":20251028,"EndDate":20251126,"DataType":"1","PaymentType":2}
+        :param _QueryData: Input parameter base64 string: {"Platform":0,"MnpId":"mgcp5xc2yzw8aixv","BeginDate":20251028,"EndDate":20251126,"DataType":"1","PaymentType":2}.
         :type QueryData: str
         """
         self._PlatformId = None
@@ -11518,7 +11585,7 @@ mng_refund_amount: Refund amount
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -11529,7 +11596,7 @@ mng_refund_amount: Refund amount
 
     @property
     def ReportId(self):
-        r"""Fixed value: payment_data_analysis
+        r"""Fixed value: payment_data_analysis.
         :rtype: str
         """
         return self._ReportId
@@ -11548,7 +11615,7 @@ new_paid_user_amount: Revenue from new paying users,
 new_paid_user_ratio: Percentage of new users who made payments,
 arppu: Average revenue per paying user (ARPPU),
 mng_refund_num: Number of refund orders
-mng_refund_amount: Refund amount
+mng_refund_amount: Refund amount.
         :rtype: str
         """
         return self._IndexId
@@ -11559,7 +11626,7 @@ mng_refund_amount: Refund amount
 
     @property
     def QueryData(self):
-        r"""Input parameter base64 string: {"Platform":0,"MnpId":"mgcp5xc2yzw8aixv","BeginDate":20251028,"EndDate":20251126,"DataType":"1","PaymentType":2}
+        r"""Input parameter base64 string: {"Platform":0,"MnpId":"mgcp5xc2yzw8aixv","BeginDate":20251028,"EndDate":20251126,"DataType":"1","PaymentType":2}.
         :rtype: str
         """
         return self._QueryData
@@ -11591,7 +11658,7 @@ class DescribeMNGPaymentLineChartResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of ReportDataResult
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -11602,7 +11669,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ReportDataResult
         """
@@ -11641,17 +11708,17 @@ class DescribeMNGPaymentOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time
+        :param _TimeBegin: Start time.
         :type TimeBegin: int
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _TimeEnd: End time
+        :param _TimeEnd: End time.
         :type TimeEnd: int
-        :param _Platform: Operating system: 0 All, 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -11663,7 +11730,7 @@ class DescribeMNGPaymentOverviewRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time
+        r"""Start time.
         :rtype: int
         """
         return self._TimeBegin
@@ -11674,7 +11741,7 @@ class DescribeMNGPaymentOverviewRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -11685,7 +11752,7 @@ class DescribeMNGPaymentOverviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -11696,7 +11763,7 @@ class DescribeMNGPaymentOverviewRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -11707,7 +11774,7 @@ class DescribeMNGPaymentOverviewRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time
+        r"""End time.
         :rtype: int
         """
         return self._TimeEnd
@@ -11718,7 +11785,7 @@ class DescribeMNGPaymentOverviewRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""Operating system: 0 All, 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -11752,7 +11819,7 @@ class DescribeMNGPaymentOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.MNGPaymentOverview`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -11763,7 +11830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.MNGPaymentOverview`
         """
@@ -11799,17 +11866,17 @@ class DescribeMNGPaymentReportDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time
+        :param _TimeBegin: Start time.
         :type TimeBegin: int
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _TimeEnd: End time
+        :param _TimeEnd: End time.
         :type TimeEnd: int
-        :param _Platform: Operating system: 0 All, 2-Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -11821,7 +11888,7 @@ class DescribeMNGPaymentReportDetailRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time
+        r"""Start time.
         :rtype: int
         """
         return self._TimeBegin
@@ -11832,7 +11899,7 @@ class DescribeMNGPaymentReportDetailRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -11843,7 +11910,7 @@ class DescribeMNGPaymentReportDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -11854,7 +11921,7 @@ class DescribeMNGPaymentReportDetailRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -11865,7 +11932,7 @@ class DescribeMNGPaymentReportDetailRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time
+        r"""End time.
         :rtype: int
         """
         return self._TimeEnd
@@ -11876,7 +11943,7 @@ class DescribeMNGPaymentReportDetailRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""Operating system: 0 All, 2-Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -11910,7 +11977,7 @@ class DescribeMNGPaymentReportDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of MNGPaymentOverview
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -11921,7 +11988,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of MNGPaymentOverview
         """
@@ -11960,17 +12027,17 @@ class DescribeMNGPaymentRetentionAnalysisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: int
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: int
-        :param _Platform: 0 All, 2-Android, 3 iOS
+        :param _Platform: Platform type. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -11982,7 +12049,7 @@ class DescribeMNGPaymentRetentionAnalysisRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: int
         """
         return self._TimeBegin
@@ -11993,7 +12060,7 @@ class DescribeMNGPaymentRetentionAnalysisRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -12004,7 +12071,7 @@ class DescribeMNGPaymentRetentionAnalysisRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -12015,7 +12082,7 @@ class DescribeMNGPaymentRetentionAnalysisRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -12026,7 +12093,7 @@ class DescribeMNGPaymentRetentionAnalysisRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: int
         """
         return self._TimeEnd
@@ -12037,7 +12104,7 @@ class DescribeMNGPaymentRetentionAnalysisRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""0 All, 2-Android, 3 iOS
+        r"""Platform type. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -12071,7 +12138,7 @@ class DescribeMNGPaymentRetentionAnalysisResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of PaymentActiveRetention
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -12082,7 +12149,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PaymentActiveRetention
         """
@@ -12121,11 +12188,11 @@ class DescribeMNGPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _MNPVersionId: <p>Mini game version ID</p>
+        :param _MNPVersionId: <p>Mini game version ID.</p>
         :type MNPVersionId: int
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPId = None
@@ -12134,7 +12201,7 @@ class DescribeMNGPreviewRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -12145,7 +12212,7 @@ class DescribeMNGPreviewRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""<p>Mini game version ID</p>
+        r"""<p>Mini game version ID.</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -12156,7 +12223,7 @@ class DescribeMNGPreviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -12181,27 +12248,27 @@ class DescribeMNGPreviewRequest(AbstractModel):
 
 
 class DescribeMNGPreviewResp(AbstractModel):
-    r"""Response object for querying the preview
+    r"""Response for querying the preview.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _MNPName: <p>Mini game name</p>
+        :param _MNPName: <p>Mini game name.</p>
         :type MNPName: str
-        :param _MNPDesc: <p>Mini game description</p>
+        :param _MNPDesc: <p>Mini game description.</p>
         :type MNPDesc: str
-        :param _MNPVersion: <p>Mini game version</p>
+        :param _MNPVersion: <p>Mini game version.</p>
         :type MNPVersion: str
-        :param _MNPVersionIntro: <p>Mini game version description</p>
+        :param _MNPVersionIntro: <p>Mini game version description.</p>
         :type MNPVersionIntro: str
-        :param _QRCodeUrl: <p>Mini game version QR code</p>
+        :param _QRCodeUrl: <p>Mini game version QR code URL.</p>
         :type QRCodeUrl: str
-        :param _PreviewEntrancePath: <p>Preview path</p>
+        :param _PreviewEntrancePath: <p>Preview path.</p>
         :type PreviewEntrancePath: str
-        :param _QRCodeContent: <p>Information encoded in the QR code</p>
+        :param _QRCodeContent: <p>Information encoded in the QR code.</p>
         :type QRCodeContent: str
         """
         self._MNPId = None
@@ -12215,7 +12282,7 @@ class DescribeMNGPreviewResp(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -12226,7 +12293,7 @@ class DescribeMNGPreviewResp(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""<p>Mini game name</p>
+        r"""<p>Mini game name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -12237,7 +12304,7 @@ class DescribeMNGPreviewResp(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""<p>Mini game description</p>
+        r"""<p>Mini game description.</p>
         :rtype: str
         """
         return self._MNPDesc
@@ -12248,7 +12315,7 @@ class DescribeMNGPreviewResp(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""<p>Mini game version</p>
+        r"""<p>Mini game version.</p>
         :rtype: str
         """
         return self._MNPVersion
@@ -12259,7 +12326,7 @@ class DescribeMNGPreviewResp(AbstractModel):
 
     @property
     def MNPVersionIntro(self):
-        r"""<p>Mini game version description</p>
+        r"""<p>Mini game version description.</p>
         :rtype: str
         """
         return self._MNPVersionIntro
@@ -12270,7 +12337,7 @@ class DescribeMNGPreviewResp(AbstractModel):
 
     @property
     def QRCodeUrl(self):
-        r"""<p>Mini game version QR code</p>
+        r"""<p>Mini game version QR code URL.</p>
         :rtype: str
         """
         return self._QRCodeUrl
@@ -12281,7 +12348,7 @@ class DescribeMNGPreviewResp(AbstractModel):
 
     @property
     def PreviewEntrancePath(self):
-        r"""<p>Preview path</p>
+        r"""<p>Preview path.</p>
         :rtype: str
         """
         return self._PreviewEntrancePath
@@ -12292,7 +12359,7 @@ class DescribeMNGPreviewResp(AbstractModel):
 
     @property
     def QRCodeContent(self):
-        r"""<p>Information encoded in the QR code</p>
+        r"""<p>Information encoded in the QR code.</p>
         :rtype: str
         """
         return self._QRCodeContent
@@ -12328,7 +12395,7 @@ class DescribeMNGPreviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPreviewResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12338,7 +12405,7 @@ class DescribeMNGPreviewResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPreviewResp`
         """
         return self._Data
@@ -12373,9 +12440,9 @@ class DescribeMNGReleasedVersionHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPId = None
@@ -12383,7 +12450,7 @@ class DescribeMNGReleasedVersionHistoryRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -12394,7 +12461,7 @@ class DescribeMNGReleasedVersionHistoryRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -12424,7 +12491,7 @@ class DescribeMNGReleasedVersionHistoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGRevertOnlineVersionPageResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12434,7 +12501,7 @@ class DescribeMNGReleasedVersionHistoryResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGRevertOnlineVersionPageResp`
         """
         return self._Data
@@ -12469,9 +12536,9 @@ class DescribeMNGRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPId = None
@@ -12479,7 +12546,7 @@ class DescribeMNGRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -12490,7 +12557,7 @@ class DescribeMNGRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -12520,8 +12587,7 @@ class DescribeMNGResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGManagerDetailData`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12531,8 +12597,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGManagerDetailData`
         """
         return self._Data
@@ -12567,17 +12632,17 @@ class DescribeMNGRetentionDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time
+        :param _TimeBegin: Start time.
         :type TimeBegin: int
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _DataType: Type: 1 Production data, 0 Non-production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _TimeEnd: End time
+        :param _TimeEnd: End time.
         :type TimeEnd: int
-        :param _Platform: 0 All, 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -12589,7 +12654,7 @@ class DescribeMNGRetentionDataRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time
+        r"""Start time.
         :rtype: int
         """
         return self._TimeBegin
@@ -12600,7 +12665,7 @@ class DescribeMNGRetentionDataRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -12611,7 +12676,7 @@ class DescribeMNGRetentionDataRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -12622,7 +12687,7 @@ class DescribeMNGRetentionDataRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 1 Production data, 0 Non-production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -12633,7 +12698,7 @@ class DescribeMNGRetentionDataRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time
+        r"""End time.
         :rtype: int
         """
         return self._TimeEnd
@@ -12644,7 +12709,7 @@ class DescribeMNGRetentionDataRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""0 All, 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -12678,7 +12743,7 @@ class DescribeMNGRetentionDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of RetentionData
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -12689,7 +12754,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of RetentionData
         """
@@ -12722,15 +12787,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMNGRevertOnlineVersionPageResp(AbstractModel):
-    r"""Response object of querying the rollback version list
+    r"""Response of querying the rollback version list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: <p>Total number of entries</p>
+        :param _TotalCount: <p>Total number of entries.</p>
         :type TotalCount: int
-        :param _DataList: <p>List information</p>
+        :param _DataList: <p>List data.</p>
         :type DataList: list of QueryMNGOnlineVersionResp
         """
         self._TotalCount = None
@@ -12738,7 +12803,7 @@ class DescribeMNGRevertOnlineVersionPageResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""<p>Total number of entries</p>
+        r"""<p>Total number of entries.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -12749,7 +12814,7 @@ class DescribeMNGRevertOnlineVersionPageResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""<p>List information</p>
+        r"""<p>List data.</p>
         :rtype: list of QueryMNGOnlineVersionResp
         """
         return self._DataList
@@ -12778,25 +12843,25 @@ class DescribeMNGRevertOnlineVersionPageResp(AbstractModel):
 
 
 class DescribeMNGSensitiveAPIPermissionApprovalData(AbstractModel):
-    r"""Queries the details of a sensitive API permission request for a mini game
+    r"""Detail data for querying mini game sensitive API permission approval.
 
     """
 
     def __init__(self):
         r"""
-        :param _APIId: <p>API ID</p>
+        :param _APIId: <p>API ID.</p>
         :type APIId: str
-        :param _APIMethod: <p>API method</p>
+        :param _APIMethod: <p>API method.</p>
         :type APIMethod: str
-        :param _ApplyReason: <p>Reason for request</p>
+        :param _ApplyReason: <p>Reason for request.</p>
         :type ApplyReason: str
-        :param _RejectReason: <p>Reason for rejection</p>
+        :param _RejectReason: <p>Reason for rejection.</p>
         :type RejectReason: str
-        :param _ApprovalStatus: <p>Approval status. 20: Rejected; 30: Approved</p>
+        :param _ApprovalStatus: <p>Approval status. Valid values: 20: Rejected; 30: Approved.</p>
         :type ApprovalStatus: int
-        :param _APIDesc: <p>API feature description</p>
+        :param _APIDesc: <p>API feature description.</p>
         :type APIDesc: str
-        :param _APIType: <p>API type. Valid values: 1: System; 2: Custom</p>
+        :param _APIType: <p>API type. Valid values: 1: System; 2: Custom.</p>
         :type APIType: int
         """
         self._APIId = None
@@ -12809,7 +12874,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def APIId(self):
-        r"""<p>API ID</p>
+        r"""<p>API ID.</p>
         :rtype: str
         """
         return self._APIId
@@ -12820,7 +12885,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def APIMethod(self):
-        r"""<p>API method</p>
+        r"""<p>API method.</p>
         :rtype: str
         """
         return self._APIMethod
@@ -12831,7 +12896,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def ApplyReason(self):
-        r"""<p>Reason for request</p>
+        r"""<p>Reason for request.</p>
         :rtype: str
         """
         return self._ApplyReason
@@ -12842,7 +12907,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def RejectReason(self):
-        r"""<p>Reason for rejection</p>
+        r"""<p>Reason for rejection.</p>
         :rtype: str
         """
         return self._RejectReason
@@ -12853,7 +12918,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def ApprovalStatus(self):
-        r"""<p>Approval status. 20: Rejected; 30: Approved</p>
+        r"""<p>Approval status. Valid values: 20: Rejected; 30: Approved.</p>
         :rtype: int
         """
         return self._ApprovalStatus
@@ -12864,7 +12929,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def APIDesc(self):
-        r"""<p>API feature description</p>
+        r"""<p>API feature description.</p>
         :rtype: str
         """
         return self._APIDesc
@@ -12875,7 +12940,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def APIType(self):
-        r"""<p>API type. Valid values: 1: System; 2: Custom</p>
+        r"""<p>API type. Valid values: 1: System; 2: Custom.</p>
         :rtype: int
         """
         return self._APIType
@@ -12910,9 +12975,9 @@ class DescribeMNGSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApprovalNo: <p>Approval number</p>
+        :param _ApprovalNo: <p>Approval number.</p>
         :type ApprovalNo: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._ApprovalNo = None
@@ -12920,7 +12985,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""<p>Approval number</p>
+        r"""<p>Approval number.</p>
         :rtype: str
         """
         return self._ApprovalNo
@@ -12931,7 +12996,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -12961,7 +13026,7 @@ class DescribeMNGSensitiveAPIPermissionApprovalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSensitiveAPIPermissionApprovalData`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -12972,7 +13037,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSensitiveAPIPermissionApprovalData`
         """
@@ -13002,35 +13067,35 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
-    r"""Queries the list data of sensitive APIs that available to the mini game
+    r"""List data for querying callable sensitive APIs of a mini game.
 
     """
 
     def __init__(self):
         r"""
-        :param _APIId: <p>API ID</p>
+        :param _APIId: <p>API ID.</p>
         :type APIId: str
-        :param _APIName: <p>API name</p>
+        :param _APIName: <p>API name.</p>
         :type APIName: str
-        :param _APIMethod: <p>API method</p>
+        :param _APIMethod: <p>API method.</p>
         :type APIMethod: str
-        :param _APIStatus: <p>API status</p>
+        :param _APIStatus: <p>API status.</p>
         :type APIStatus: int
-        :param _APIApplyStatus: <p>API request status</p>
+        :param _APIApplyStatus: <p>API request status.</p>
         :type APIApplyStatus: int
-        :param _RejectReason: <p>Reason for rejection</p>
+        :param _RejectReason: <p>Reason for rejection.</p>
         :type RejectReason: str
-        :param _ApprovalNo: <p>Approval number</p>
+        :param _ApprovalNo: <p>Approval number.</p>
         :type ApprovalNo: str
-        :param _ApplicationId: <p>Superapp ID</p>
+        :param _ApplicationId: <p>Superapp ID.</p>
         :type ApplicationId: str
-        :param _ApplicationIcon: <p>Superapp icon</p>
+        :param _ApplicationIcon: <p>Superapp icon.</p>
         :type ApplicationIcon: str
-        :param _ApplicationName: <p>Superapp name</p>
+        :param _ApplicationName: <p>Superapp name.</p>
         :type ApplicationName: str
-        :param _APIType: <p>API type. Valid values: 1: System; 2: Custom
+        :param _APIType: <p>API type. Valid values: 1: System; 2: Custom.</p>
         :type APIType: int
-        :param _APIDesc: <p>API feature description</p>
+        :param _APIDesc: <p>API feature description.</p>
         :type APIDesc: str
         """
         self._APIId = None
@@ -13048,7 +13113,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIId(self):
-        r"""<p>API ID</p>
+        r"""<p>API ID.</p>
         :rtype: str
         """
         return self._APIId
@@ -13059,7 +13124,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIName(self):
-        r"""<p>API name</p>
+        r"""<p>API name.</p>
         :rtype: str
         """
         return self._APIName
@@ -13070,7 +13135,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIMethod(self):
-        r"""<p>API method</p>
+        r"""<p>API method.</p>
         :rtype: str
         """
         return self._APIMethod
@@ -13081,7 +13146,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIStatus(self):
-        r"""<p>API status</p>
+        r"""<p>API status.</p>
         :rtype: int
         """
         return self._APIStatus
@@ -13092,7 +13157,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIApplyStatus(self):
-        r"""<p>API request status</p>
+        r"""<p>API request status.</p>
         :rtype: int
         """
         return self._APIApplyStatus
@@ -13103,7 +13168,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def RejectReason(self):
-        r"""<p>Reason for rejection</p>
+        r"""<p>Reason for rejection.</p>
         :rtype: str
         """
         return self._RejectReason
@@ -13114,7 +13179,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""<p>Approval number</p>
+        r"""<p>Approval number.</p>
         :rtype: str
         """
         return self._ApprovalNo
@@ -13125,7 +13190,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""<p>Superapp ID</p>
+        r"""<p>Superapp ID.</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -13136,7 +13201,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def ApplicationIcon(self):
-        r"""<p>Superapp icon</p>
+        r"""<p>Superapp icon.</p>
         :rtype: str
         """
         return self._ApplicationIcon
@@ -13147,7 +13212,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""<p>Superapp name</p>
+        r"""<p>Superapp name.</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -13158,7 +13223,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIType(self):
-        r"""<p>API type. Valid values: 1: System; 2: Custom
+        r"""<p>API type. Valid values: 1: System; 2: Custom.</p>
         :rtype: int
         """
         return self._APIType
@@ -13169,7 +13234,7 @@ class DescribeMNGSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIDesc(self):
-        r"""<p>API feature description</p>
+        r"""<p>API feature description.</p>
         :rtype: str
         """
         return self._APIDesc
@@ -13209,17 +13274,17 @@ class DescribeMNGSensitiveAPIPermissionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: <p>Pagination offset</p>
+        :param _Offset: <p>Pagination offset.</p>
         :type Offset: int
-        :param _Limit: <p>Pagination count</p>
+        :param _Limit: <p>Number of entries per page.</p>
         :type Limit: int
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _ApplicationId: <p>Superapp ID</p>
+        :param _ApplicationId: <p>Superapp ID.</p>
         :type ApplicationId: str
-        :param _Keyword: <p>Keywords for search (API name)</p>
+        :param _Keyword: <p>Search keyword (API name).</p>
         :type Keyword: str
         """
         self._Offset = None
@@ -13231,7 +13296,7 @@ class DescribeMNGSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""<p>Pagination offset</p>
+        r"""<p>Pagination offset.</p>
         :rtype: int
         """
         return self._Offset
@@ -13242,7 +13307,7 @@ class DescribeMNGSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>Pagination count</p>
+        r"""<p>Number of entries per page.</p>
         :rtype: int
         """
         return self._Limit
@@ -13253,7 +13318,7 @@ class DescribeMNGSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -13264,7 +13329,7 @@ class DescribeMNGSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -13275,7 +13340,7 @@ class DescribeMNGSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""<p>Superapp ID</p>
+        r"""<p>Superapp ID.</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -13286,7 +13351,7 @@ class DescribeMNGSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""<p>Keywords for search (API name)</p>
+        r"""<p>Search keyword (API name).</p>
         :rtype: str
         """
         return self._Keyword
@@ -13314,15 +13379,15 @@ class DescribeMNGSensitiveAPIPermissionListRequest(AbstractModel):
 
 
 class DescribeMNGSensitiveAPIPermissionListResp(AbstractModel):
-    r"""Response object for querying the list of sensitive APIs available to the mini game
+    r"""Response for querying the list of callable sensitive APIs of a mini game.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: <p>Total number of entries</p>
+        :param _TotalCount: <p>Total number of entries.</p>
         :type TotalCount: int
-        :param _DataList: <p>List data</p>
+        :param _DataList: <p>List data.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeMNGSensitiveAPIPermissionListData
         """
@@ -13331,7 +13396,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""<p>Total number of entries</p>
+        r"""<p>Total number of entries.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -13342,7 +13407,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataList(self):
-        r"""<p>List data</p>
+        r"""<p>List data.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeMNGSensitiveAPIPermissionListData
         """
@@ -13378,7 +13443,7 @@ class DescribeMNGSensitiveAPIPermissionListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response parameters</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSensitiveAPIPermissionListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -13388,7 +13453,7 @@ class DescribeMNGSensitiveAPIPermissionListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response parameters</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSensitiveAPIPermissionListResp`
         """
         return self._Data
@@ -13425,7 +13490,7 @@ class DescribeMNGVersionRequest(AbstractModel):
         r"""
         :param _BusinessId: <p>Task ID returned by the CreateMNPVersion API.</p>
         :type BusinessId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._BusinessId = None
@@ -13444,7 +13509,7 @@ class DescribeMNGVersionRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -13468,21 +13533,21 @@ class DescribeMNGVersionRequest(AbstractModel):
 
 
 class DescribeMNGVersionResp(AbstractModel):
-    r"""Queries the mini program version creation results
+    r"""Response for querying the mini game version creation result.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _TaskId: <p>Task ID</p>
+        :param _TaskId: <p>Task ID.</p>
         :type TaskId: str
-        :param _TaskStatus: <p>Valid values: 1: Pending; 20: Running; 30: Failed; 60: Succeeded</p>
+        :param _TaskStatus: <p>Task status. Valid values: 1: Pending; 20: Running; 30: Failed; 60: Succeeded.</p>
         :type TaskStatus: int
-        :param _TaskMsg: <p>Task status information</p>
+        :param _TaskMsg: <p>Task status information.</p>
         :type TaskMsg: str
-        :param _MNPVersionId: <p>Mini game version ID (returned upon successful compilation)</p>
+        :param _MNPVersionId: <p>Mini game version ID (returned upon successful compilation).</p>
         :type MNPVersionId: int
         """
         self._MNPId = None
@@ -13493,7 +13558,7 @@ class DescribeMNGVersionResp(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -13504,7 +13569,7 @@ class DescribeMNGVersionResp(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""<p>Task ID</p>
+        r"""<p>Task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -13515,7 +13580,7 @@ class DescribeMNGVersionResp(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""<p>Valid values: 1: Pending; 20: Running; 30: Failed; 60: Succeeded</p>
+        r"""<p>Task status. Valid values: 1: Pending; 20: Running; 30: Failed; 60: Succeeded.</p>
         :rtype: int
         """
         return self._TaskStatus
@@ -13526,7 +13591,7 @@ class DescribeMNGVersionResp(AbstractModel):
 
     @property
     def TaskMsg(self):
-        r"""<p>Task status information</p>
+        r"""<p>Task status information.</p>
         :rtype: str
         """
         return self._TaskMsg
@@ -13537,7 +13602,7 @@ class DescribeMNGVersionResp(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""<p>Mini game version ID (returned upon successful compilation)</p>
+        r"""<p>Mini game version ID (returned upon successful compilation).</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -13570,7 +13635,7 @@ class DescribeMNGVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGVersionResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -13580,7 +13645,7 @@ class DescribeMNGVersionResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGVersionResp`
         """
         return self._Data
@@ -13615,17 +13680,17 @@ class DescribeMNPAccessAnalysisOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time: 20251123 (example)
+        :param _TimeBegin: Start time: 20251123.
         :type TimeBegin: int
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TimeEnd: End time: 20251123 (example)
+        :param _TimeEnd: End time: 20251123.
         :type TimeEnd: int
-        :param _ProdData: 1 Production data, 0 Non-production data
+        :param _ProdData: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type ProdData: int
-        :param _Platform: Operating system: 0 All, 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -13637,7 +13702,7 @@ class DescribeMNPAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time: 20251123 (example)
+        r"""Start time: 20251123.
         :rtype: int
         """
         return self._TimeBegin
@@ -13648,7 +13713,7 @@ class DescribeMNPAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -13659,7 +13724,7 @@ class DescribeMNPAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -13670,7 +13735,7 @@ class DescribeMNPAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time: 20251123 (example)
+        r"""End time: 20251123.
         :rtype: int
         """
         return self._TimeEnd
@@ -13681,7 +13746,7 @@ class DescribeMNPAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def ProdData(self):
-        r"""1 Production data, 0 Non-production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._ProdData
@@ -13692,7 +13757,7 @@ class DescribeMNPAccessAnalysisOverviewRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""Operating system: 0 All, 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -13726,7 +13791,7 @@ class DescribeMNPAccessAnalysisOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display at the top of the page
+        :param _Data: Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisOverview`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -13737,7 +13802,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display at the top of the page
+        r"""Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.AccessAnalysisOverview`
         """
@@ -13773,16 +13838,16 @@ class DescribeMNPActiveUserRealTimeStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ReportId: Fixed value: mnp_data_analysis
+        :param _ReportId: Fixed value: mnp_data_analysis.
         :type ReportId: str
         :param _IndexId: IndexId 
-realtime_pv_num or realtime_uv_num
+realtime_pv_num or realtime_uv_num.
         :type IndexId: str
-        :param _QueryData: Input parameter base64 string: {"Platform":0,"DataType":"1","BeginDate":"20251125","EndDate":"20251125"}
+        :param _QueryData: Input parameter base64 string: {"Platform":0,"DataType":"1","BeginDate":"20251125","EndDate":"20251125"}.
         :type QueryData: str
         """
         self._MNPId = None
@@ -13793,7 +13858,7 @@ realtime_pv_num or realtime_uv_num
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -13804,7 +13869,7 @@ realtime_pv_num or realtime_uv_num
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -13815,7 +13880,7 @@ realtime_pv_num or realtime_uv_num
 
     @property
     def ReportId(self):
-        r"""Fixed value: mnp_data_analysis
+        r"""Fixed value: mnp_data_analysis.
         :rtype: str
         """
         return self._ReportId
@@ -13827,7 +13892,7 @@ realtime_pv_num or realtime_uv_num
     @property
     def IndexId(self):
         r"""IndexId 
-realtime_pv_num or realtime_uv_num
+realtime_pv_num or realtime_uv_num.
         :rtype: str
         """
         return self._IndexId
@@ -13838,7 +13903,7 @@ realtime_pv_num or realtime_uv_num
 
     @property
     def QueryData(self):
-        r"""Input parameter base64 string: {"Platform":0,"DataType":"1","BeginDate":"20251125","EndDate":"20251125"}
+        r"""Input parameter base64 string: {"Platform":0,"DataType":"1","BeginDate":"20251125","EndDate":"20251125"}.
         :rtype: str
         """
         return self._QueryData
@@ -13871,7 +13936,7 @@ class DescribeMNPActiveUserRealTimeStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of ReportDataResult
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -13882,7 +13947,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ReportDataResult
         """
@@ -13921,17 +13986,17 @@ class DescribeMNPAdvertisingDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: str
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: str
-        :param _Platform: // 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
-        :param _AdUnitType: //1-BANNER  2-REWARDED
+        :param _AdUnitType: Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :type AdUnitType: str
         """
         self._TimeBegin = None
@@ -13943,7 +14008,7 @@ class DescribeMNPAdvertisingDetailRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeBegin
@@ -13954,7 +14019,7 @@ class DescribeMNPAdvertisingDetailRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -13965,7 +14030,7 @@ class DescribeMNPAdvertisingDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -13976,7 +14041,7 @@ class DescribeMNPAdvertisingDetailRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: str
         """
         return self._TimeEnd
@@ -13987,7 +14052,7 @@ class DescribeMNPAdvertisingDetailRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""// 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -13998,7 +14063,7 @@ class DescribeMNPAdvertisingDetailRequest(AbstractModel):
 
     @property
     def AdUnitType(self):
-        r"""//1-BANNER  2-REWARDED
+        r"""Ad unit type. Valid values: 1: Banner; 2: Rewarded.
         :rtype: str
         """
         return self._AdUnitType
@@ -14032,7 +14097,7 @@ class DescribeMNPAdvertisingDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of MAUDetailData
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -14043,7 +14108,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of MAUDetailData
         """
@@ -14082,9 +14147,9 @@ class DescribeMNPAllStageVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPId = None
@@ -14092,7 +14157,7 @@ class DescribeMNPAllStageVersionsRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -14103,7 +14168,7 @@ class DescribeMNPAllStageVersionsRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -14133,8 +14198,7 @@ class DescribeMNPAllStageVersionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: Response data.
         :type Data: list of DescribeMPAllStageVersionsResp
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -14144,8 +14208,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Response data.
         :rtype: list of DescribeMPAllStageVersionsResp
         """
         return self._Data
@@ -14177,49 +14240,49 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMNPApprovalListData(AbstractModel):
-    r"""List of mini program approval requests of the application
+    r"""Mini program approval list information.
 
     """
 
     def __init__(self):
         r"""
-        :param _ApprovalNo: Approval ticket ID
+        :param _ApprovalNo: Approval number.
         :type ApprovalNo: str
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _ApprovalStatus: Approval status. valid values: 1 (processing), 2 (rejected), 3 (approved), 4 (cancelled).
+        :param _ApprovalStatus: Approval status. Valid values: 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
         :type ApprovalStatus: int
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
         :param _MNPVersion: Mini program version.
         :type MNPVersion: str
-        :param _MNPVersionId: Mini program version ID
+        :param _MNPVersionId: Mini program version ID.
         :type MNPVersionId: int
-        :param _ApplyUser: Applicant
+        :param _ApplyUser: Applicant.
         :type ApplyUser: str
-        :param _ApplyTime: Application time
+        :param _ApplyTime: Application time.
         :type ApplyTime: str
-        :param _MNPName: Mini program name
+        :param _MNPName: Mini program name.
         :type MNPName: str
-        :param _MNPIcon: Mini program icon
+        :param _MNPIcon: Mini program icon.
         :type MNPIcon: str
-        :param _ApplicationName: Application name
+        :param _ApplicationName: Superapp name.
         :type ApplicationName: str
-        :param _ApplicationLogo: Specifies the application icon.
+        :param _ApplicationLogo: Superapp icon.
         :type ApplicationLogo: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _MNPQrCodeUrl: Mini program review qr code.
+        :param _MNPQrCodeUrl: Mini program approval QR code URL.
         :type MNPQrCodeUrl: str
-        :param _MNPType: Mini program type
+        :param _MNPType: Mini program category.
         :type MNPType: str
-        :param _ApprovalUser: Specifies the reviewer.
+        :param _ApprovalUser: Approver.
         :type ApprovalUser: str
         :param _ApprovalTime: Approval time.
         :type ApprovalTime: str
-        :param _ApprovalNote: Approval notes
+        :param _ApprovalNote: Approval note.
         :type ApprovalNote: str
         """
         self._ApprovalNo = None
@@ -14244,7 +14307,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""Approval ticket ID
+        r"""Approval number.
         :rtype: str
         """
         return self._ApprovalNo
@@ -14255,7 +14318,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -14266,7 +14329,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApprovalStatus(self):
-        r"""Approval status. valid values: 1 (processing), 2 (rejected), 3 (approved), 4 (cancelled).
+        r"""Approval status. Valid values: 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
         :rtype: int
         """
         return self._ApprovalStatus
@@ -14277,7 +14340,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -14299,7 +14362,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""Mini program version ID
+        r"""Mini program version ID.
         :rtype: int
         """
         return self._MNPVersionId
@@ -14310,7 +14373,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplyUser(self):
-        r"""Applicant
+        r"""Applicant.
         :rtype: str
         """
         return self._ApplyUser
@@ -14321,7 +14384,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplyTime(self):
-        r"""Application time
+        r"""Application time.
         :rtype: str
         """
         return self._ApplyTime
@@ -14332,7 +14395,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""Mini program name.
         :rtype: str
         """
         return self._MNPName
@@ -14343,7 +14406,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini program icon
+        r"""Mini program icon.
         :rtype: str
         """
         return self._MNPIcon
@@ -14354,7 +14417,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name
+        r"""Superapp name.
         :rtype: str
         """
         return self._ApplicationName
@@ -14365,7 +14428,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplicationLogo(self):
-        r"""Specifies the application icon.
+        r"""Superapp icon.
         :rtype: str
         """
         return self._ApplicationLogo
@@ -14376,7 +14439,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -14387,7 +14450,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -14398,7 +14461,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPQrCodeUrl(self):
-        r"""Mini program review qr code.
+        r"""Mini program approval QR code URL.
         :rtype: str
         """
         return self._MNPQrCodeUrl
@@ -14409,7 +14472,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPType(self):
-        r"""Mini program type
+        r"""Mini program category.
         :rtype: str
         """
         return self._MNPType
@@ -14420,7 +14483,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApprovalUser(self):
-        r"""Specifies the reviewer.
+        r"""Approver.
         :rtype: str
         """
         return self._ApprovalUser
@@ -14442,7 +14505,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApprovalNote(self):
-        r"""Approval notes
+        r"""Approval note.
         :rtype: str
         """
         return self._ApprovalNote
@@ -14489,19 +14552,19 @@ class DescribeMNPApprovalListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _ApprovalStatusList: Approval status. 1: Processing; 2: Rejected; 3: Approved; 4 Cancelled
+        :param _ApprovalStatusList: Approval status. Valid values: 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
         :type ApprovalStatusList: list of int
-        :param _Keyword: Keywords of the mini program name to search
+        :param _Keyword: Search keyword (mini program name).
         :type Keyword: str
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
         """
         self._Offset = None
@@ -14514,7 +14577,7 @@ class DescribeMNPApprovalListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset.
         :rtype: int
         """
         return self._Offset
@@ -14525,7 +14588,7 @@ class DescribeMNPApprovalListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -14536,7 +14599,7 @@ class DescribeMNPApprovalListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -14547,7 +14610,7 @@ class DescribeMNPApprovalListRequest(AbstractModel):
 
     @property
     def ApprovalStatusList(self):
-        r"""Approval status. 1: Processing; 2: Rejected; 3: Approved; 4 Cancelled
+        r"""Approval status. Valid values: 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
         :rtype: list of int
         """
         return self._ApprovalStatusList
@@ -14558,7 +14621,7 @@ class DescribeMNPApprovalListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords of the mini program name to search
+        r"""Search keyword (mini program name).
         :rtype: str
         """
         return self._Keyword
@@ -14569,7 +14632,7 @@ class DescribeMNPApprovalListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -14580,7 +14643,7 @@ class DescribeMNPApprovalListRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -14609,15 +14672,15 @@ class DescribeMNPApprovalListRequest(AbstractModel):
 
 
 class DescribeMNPApprovalListResp(AbstractModel):
-    r"""List of mini program approval requests of an application
+    r"""Paginated mini program approval list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List information
+        :param _DataList: List data.
         :type DataList: list of DescribeMNPApprovalListData
         """
         self._TotalCount = None
@@ -14625,7 +14688,7 @@ class DescribeMNPApprovalListResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -14636,7 +14699,7 @@ class DescribeMNPApprovalListResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List information
+        r"""List data.
         :rtype: list of DescribeMNPApprovalListData
         """
         return self._DataList
@@ -14671,7 +14734,7 @@ class DescribeMNPApprovalListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPApprovalListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -14681,7 +14744,7 @@ class DescribeMNPApprovalListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPApprovalListResp`
         """
         return self._Data
@@ -14716,14 +14779,14 @@ class DescribeMNPCategoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._PlatformId = None
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -14752,8 +14815,7 @@ class DescribeMNPCategoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: Response data.
         :type Data: list of MNPTypeDefine
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -14763,8 +14825,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Response data.
         :rtype: list of MNPTypeDefine
         """
         return self._Data
@@ -14802,9 +14863,9 @@ class DescribeMNPDomainACLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPId = None
@@ -14812,7 +14873,7 @@ class DescribeMNPDomainACLRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -14823,7 +14884,7 @@ class DescribeMNPDomainACLRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -14853,7 +14914,7 @@ class DescribeMNPDomainACLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of DescribeDomainInfoParam
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -14864,7 +14925,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeDomainInfoParam
         """
@@ -14897,41 +14958,41 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMNPListData(AbstractModel):
-    r"""Mini program list
+    r"""Mini program list data.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _MNPIcon: Mini program icon
+        :param _MNPIcon: Mini program icon.
         :type MNPIcon: str
-        :param _MNPName: Mini program name
+        :param _MNPName: Mini program name.
         :type MNPName: str
-        :param _TeamName: Name of the associated team
+        :param _TeamName: Team name. 
         :type TeamName: str
-        :param _MNPType: Mini program type
+        :param _MNPType: Mini program category.
         :type MNPType: str
-        :param _Status: Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).
+        :param _Status: Mini program available status. Valid values: 1: Available; 2: Removed.
         :type Status: int
-        :param _MNPIntro: Mini program introduction
+        :param _MNPIntro: Mini program introduction.
         :type MNPIntro: str
-        :param _CreateUser: Creator
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _UpdateUser: Specifies the updater.
+        :param _UpdateUser: Last modifier.
         :type UpdateUser: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: Last modified time.
         :type UpdateTime: str
-        :param _ApplicationName: Application name
+        :param _ApplicationName: Superapp name.
         :type ApplicationName: str
-        :param _EffectStatus: Effective status of the bound application. valid values: 1 (not effective), 2 (effective).
+        :param _EffectStatus: Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.
         :type EffectStatus: int
-        :param _EffectMNPVersionId: Specifies the ID of the application bound with the mini program.
+        :param _EffectMNPVersionId: Effective mini program version ID bound to the superapp. 
         :type EffectMNPVersionId: int
-        :param _EffectMNPVersion: Specifies the effective version number of the application bound to the mini program.
+        :param _EffectMNPVersion: Effective mini program version number bound to the superapp. 
         :type EffectMNPVersion: str
         """
         self._MNPId = None
@@ -14952,7 +15013,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -14963,7 +15024,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini program icon
+        r"""Mini program icon.
         :rtype: str
         """
         return self._MNPIcon
@@ -14974,7 +15035,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""Mini program name.
         :rtype: str
         """
         return self._MNPName
@@ -14985,7 +15046,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Name of the associated team
+        r"""Team name. 
         :rtype: str
         """
         return self._TeamName
@@ -14996,7 +15057,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def MNPType(self):
-        r"""Mini program type
+        r"""Mini program category.
         :rtype: str
         """
         return self._MNPType
@@ -15007,7 +15068,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def Status(self):
-        r"""Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).
+        r"""Mini program available status. Valid values: 1: Available; 2: Removed.
         :rtype: int
         """
         return self._Status
@@ -15018,7 +15079,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""Mini program introduction
+        r"""Mini program introduction.
         :rtype: str
         """
         return self._MNPIntro
@@ -15029,7 +15090,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -15040,7 +15101,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -15051,7 +15112,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""Specifies the updater.
+        r"""Last modifier.
         :rtype: str
         """
         return self._UpdateUser
@@ -15062,7 +15123,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""Last modified time.
         :rtype: str
         """
         return self._UpdateTime
@@ -15073,7 +15134,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name
+        r"""Superapp name.
         :rtype: str
         """
         return self._ApplicationName
@@ -15084,7 +15145,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def EffectStatus(self):
-        r"""Effective status of the bound application. valid values: 1 (not effective), 2 (effective).
+        r"""Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.
         :rtype: int
         """
         return self._EffectStatus
@@ -15095,7 +15156,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def EffectMNPVersionId(self):
-        r"""Specifies the ID of the application bound with the mini program.
+        r"""Effective mini program version ID bound to the superapp. 
         :rtype: int
         """
         return self._EffectMNPVersionId
@@ -15106,7 +15167,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def EffectMNPVersion(self):
-        r"""Specifies the effective version number of the application bound to the mini program.
+        r"""Effective mini program version number bound to the superapp. 
         :rtype: str
         """
         return self._EffectMNPVersion
@@ -15149,17 +15210,17 @@ class DescribeMNPListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _Keyword: Keywords for search (mini program name)
+        :param _Keyword: Search keyword (mini program name).
         :type Keyword: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
         """
         self._Offset = None
@@ -15171,7 +15232,7 @@ class DescribeMNPListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset.
         :rtype: int
         """
         return self._Offset
@@ -15182,7 +15243,7 @@ class DescribeMNPListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -15193,7 +15254,7 @@ class DescribeMNPListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -15204,7 +15265,7 @@ class DescribeMNPListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords for search (mini program name)
+        r"""Search keyword (mini program name).
         :rtype: str
         """
         return self._Keyword
@@ -15215,7 +15276,7 @@ class DescribeMNPListRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -15226,7 +15287,7 @@ class DescribeMNPListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -15254,15 +15315,15 @@ class DescribeMNPListRequest(AbstractModel):
 
 
 class DescribeMNPListResp(AbstractModel):
-    r"""Mini program list
+    r"""Response for querying the mini program list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List information
+        :param _DataList: List data.
         :type DataList: list of DescribeMNPListData
         """
         self._TotalCount = None
@@ -15270,7 +15331,7 @@ class DescribeMNPListResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -15281,7 +15342,7 @@ class DescribeMNPListResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List information
+        r"""List data.
         :rtype: list of DescribeMNPListData
         """
         return self._DataList
@@ -15316,7 +15377,7 @@ class DescribeMNPListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -15326,7 +15387,7 @@ class DescribeMNPListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPListResp`
         """
         return self._Data
@@ -15361,15 +15422,15 @@ class DescribeMNPMAUDataDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ApplicationId: Superapp ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _MNPId: Mini program appid, required. When provided, the query is performed based on the mini program.
+        :param _MNPId: Mini program appid. If not empty, results are filtered by mini program appid.
         :type MNPId: str
-        :param _MNPTeamId: Program team ID, -1 means not provided
+        :param _MNPTeamId: Mini program team ID. Pass -1 to leave unspecified.
         :type MNPTeamId: int
         """
         self._DataType = None
@@ -15380,7 +15441,7 @@ class DescribeMNPMAUDataDetailRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -15391,7 +15452,7 @@ class DescribeMNPMAUDataDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -15402,7 +15463,7 @@ class DescribeMNPMAUDataDetailRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -15413,7 +15474,7 @@ class DescribeMNPMAUDataDetailRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid, required. When provided, the query is performed based on the mini program.
+        r"""Mini program appid. If not empty, results are filtered by mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -15424,7 +15485,7 @@ class DescribeMNPMAUDataDetailRequest(AbstractModel):
 
     @property
     def MNPTeamId(self):
-        r"""Program team ID, -1 means not provided
+        r"""Mini program team ID. Pass -1 to leave unspecified.
         :rtype: int
         """
         return self._MNPTeamId
@@ -15457,7 +15518,7 @@ class DescribeMNPMAUDataDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of MAUDetail
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -15468,7 +15529,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of MAUDetail
         """
@@ -15507,15 +15568,15 @@ class DescribeMNPMAULineChartRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ApplicationId: Superapp ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _MNPId: Mini program appid, required. When provided, the query is performed based on the mini program.
+        :param _MNPId: Mini program appid. If not empty, results are filtered by mini program appid.
         :type MNPId: str
-        :param _MNPTeamId: Mini program team ID
+        :param _MNPTeamId: Mini program team ID.
         :type MNPTeamId: int
         """
         self._DataType = None
@@ -15526,7 +15587,7 @@ class DescribeMNPMAULineChartRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -15537,7 +15598,7 @@ class DescribeMNPMAULineChartRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -15548,7 +15609,7 @@ class DescribeMNPMAULineChartRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -15559,7 +15620,7 @@ class DescribeMNPMAULineChartRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid, required. When provided, the query is performed based on the mini program.
+        r"""Mini program appid. If not empty, results are filtered by mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -15570,7 +15631,7 @@ class DescribeMNPMAULineChartRequest(AbstractModel):
 
     @property
     def MNPTeamId(self):
-        r"""Mini program team ID
+        r"""Mini program team ID.
         :rtype: int
         """
         return self._MNPTeamId
@@ -15603,7 +15664,7 @@ class DescribeMNPMAULineChartResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of MAUChartData
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -15614,7 +15675,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of MAUChartData
         """
@@ -15653,19 +15714,19 @@ class DescribeMNPMAUMetricCardRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceMonth: Start time in YYYYMMDD format
+        :param _SourceMonth: Start time in YYYYMMDD format.
         :type SourceMonth: int
-        :param _DataType: Type: 0 Non-production data, 1 Production data 
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _TargetMonth: End time in YYYYMMDD format
+        :param _TargetMonth: End time in YYYYMMDD format.
         :type TargetMonth: int
-        :param _ApplicationId: Superapp ID starting with App
+        :param _ApplicationId: Superapp ID prefixed with "app".
         :type ApplicationId: str
-        :param _MNPId: Mini program appid, required. When provided, the query is performed based on the mini program.
+        :param _MNPId: Mini program appid. If not empty, results are filtered by mini program appid.
         :type MNPId: str
-        :param _MNPTeamId: Mini program team ID, required. When provided, the query is performed based on the mini program team.
+        :param _MNPTeamId: Mini program team ID. If not empty, results are filtered by mini program team ID.
         :type MNPTeamId: int
         """
         self._SourceMonth = None
@@ -15678,7 +15739,7 @@ class DescribeMNPMAUMetricCardRequest(AbstractModel):
 
     @property
     def SourceMonth(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: int
         """
         return self._SourceMonth
@@ -15689,7 +15750,7 @@ class DescribeMNPMAUMetricCardRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data 
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -15700,7 +15761,7 @@ class DescribeMNPMAUMetricCardRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -15711,7 +15772,7 @@ class DescribeMNPMAUMetricCardRequest(AbstractModel):
 
     @property
     def TargetMonth(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: int
         """
         return self._TargetMonth
@@ -15722,7 +15783,7 @@ class DescribeMNPMAUMetricCardRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID starting with App
+        r"""Superapp ID prefixed with "app".
         :rtype: str
         """
         return self._ApplicationId
@@ -15733,7 +15794,7 @@ class DescribeMNPMAUMetricCardRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid, required. When provided, the query is performed based on the mini program.
+        r"""Mini program appid. If not empty, results are filtered by mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -15744,7 +15805,7 @@ class DescribeMNPMAUMetricCardRequest(AbstractModel):
 
     @property
     def MNPTeamId(self):
-        r"""Mini program team ID, required. When provided, the query is performed based on the mini program team.
+        r"""Mini program team ID. If not empty, results are filtered by mini program team ID.
         :rtype: int
         """
         return self._MNPTeamId
@@ -15779,7 +15840,7 @@ class DescribeMNPMAUMetricCardResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display at the top of the page
+        :param _Data: Data display at the top of the page.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.MAUIndicatorCard`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -15789,7 +15850,7 @@ class DescribeMNPMAUMetricCardResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Data display at the top of the page
+        r"""Data display at the top of the page.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.MAUIndicatorCard`
         """
         return self._Data
@@ -15818,36 +15879,38 @@ class DescribeMNPMAUMetricCardResponse(AbstractModel):
 
 
 class DescribeMNPManagerDetailData(AbstractModel):
-    r"""Mini program details
+    r"""Mini program details.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPType: Mini program type 
+        :param _MNPType: Mini program category.
         :type MNPType: str
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _MNPName: Mini program name
+        :param _MNPName: Mini program name.
         :type MNPName: str
-        :param _MNPIcon: Mini program icon
+        :param _MNPIcon: Mini program icon.
         :type MNPIcon: str
-        :param _MNPIntro: Mini program introduction
+        :param _MNPIntro: Mini program introduction.
         :type MNPIntro: str
-        :param _MNPDesc: Mini program description
+        :param _MNPDesc: Mini program description.
         :type MNPDesc: str
-        :param _CreateTime: Creation time, timestamp.
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _CreateUser: Creator
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _AccessStatus: Access status. 1: not connected; 2: connected.
+        :param _AccessStatus: Access status. Valid values: 1: not connected; 2: connected.
         :type AccessStatus: int
-        :param _TeamName: Name of the associated team
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _Status: Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).
+        :param _Status: Mini program available status. Valid values: 1: Available; 2: Removed.
         :type Status: int
+        :param _I18nList: The mini program name and description in multiple languages.
+        :type I18nList: list of MNPDetailI18nVO
         """
         self._MNPType = None
         self._MNPId = None
@@ -15861,10 +15924,11 @@ class DescribeMNPManagerDetailData(AbstractModel):
         self._TeamName = None
         self._TeamId = None
         self._Status = None
+        self._I18nList = None
 
     @property
     def MNPType(self):
-        r"""Mini program type 
+        r"""Mini program category.
         :rtype: str
         """
         return self._MNPType
@@ -15875,7 +15939,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -15886,7 +15950,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""Mini program name.
         :rtype: str
         """
         return self._MNPName
@@ -15897,7 +15961,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini program icon
+        r"""Mini program icon.
         :rtype: str
         """
         return self._MNPIcon
@@ -15908,7 +15972,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""Mini program introduction
+        r"""Mini program introduction.
         :rtype: str
         """
         return self._MNPIntro
@@ -15919,7 +15983,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""Mini program description
+        r"""Mini program description.
         :rtype: str
         """
         return self._MNPDesc
@@ -15930,7 +15994,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time, timestamp.
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -15941,7 +16005,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -15952,7 +16016,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def AccessStatus(self):
-        r"""Access status. 1: not connected; 2: connected.
+        r"""Access status. Valid values: 1: not connected; 2: connected.
         :rtype: int
         """
         return self._AccessStatus
@@ -15963,7 +16027,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Name of the associated team
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -15974,7 +16038,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -15985,7 +16049,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def Status(self):
-        r"""Specifies the mini program listing status. valid values: 1 (submitted), 2 (removed).
+        r"""Mini program available status. Valid values: 1: Available; 2: Removed.
         :rtype: int
         """
         return self._Status
@@ -15993,6 +16057,17 @@ class DescribeMNPManagerDetailData(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def I18nList(self):
+        r"""The mini program name and description in multiple languages.
+        :rtype: list of MNPDetailI18nVO
+        """
+        return self._I18nList
+
+    @I18nList.setter
+    def I18nList(self, I18nList):
+        self._I18nList = I18nList
 
 
     def _deserialize(self, params):
@@ -16008,6 +16083,12 @@ class DescribeMNPManagerDetailData(AbstractModel):
         self._TeamName = params.get("TeamName")
         self._TeamId = params.get("TeamId")
         self._Status = params.get("Status")
+        if params.get("I18nList") is not None:
+            self._I18nList = []
+            for item in params.get("I18nList"):
+                obj = MNPDetailI18nVO()
+                obj._deserialize(item)
+                self._I18nList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16025,9 +16106,9 @@ class DescribeMNPOfflinePackageURLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPId = None
@@ -16035,7 +16116,7 @@ class DescribeMNPOfflinePackageURLRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -16046,7 +16127,7 @@ class DescribeMNPOfflinePackageURLRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -16076,7 +16157,7 @@ class DescribeMNPOfflinePackageURLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.StringData`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -16086,7 +16167,7 @@ class DescribeMNPOfflinePackageURLResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.StringData`
         """
         return self._Data
@@ -16121,17 +16202,17 @@ class DescribeMNPPageAnalysisDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: int
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: int
-        :param _Platform: 0 All, 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._DataType = None
@@ -16143,7 +16224,7 @@ class DescribeMNPPageAnalysisDetailRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -16154,7 +16235,7 @@ class DescribeMNPPageAnalysisDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -16165,7 +16246,7 @@ class DescribeMNPPageAnalysisDetailRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -16176,7 +16257,7 @@ class DescribeMNPPageAnalysisDetailRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: int
         """
         return self._TimeBegin
@@ -16187,7 +16268,7 @@ class DescribeMNPPageAnalysisDetailRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: int
         """
         return self._TimeEnd
@@ -16198,7 +16279,7 @@ class DescribeMNPPageAnalysisDetailRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""0 All, 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -16232,7 +16313,7 @@ class DescribeMNPPageAnalysisDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of VisitData
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -16243,7 +16324,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of VisitData
         """
@@ -16282,11 +16363,11 @@ class DescribeMNPPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _MNPVersionId: Mini program version ID
+        :param _MNPVersionId: Mini program version ID.
         :type MNPVersionId: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPId = None
@@ -16295,7 +16376,7 @@ class DescribeMNPPreviewRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -16306,7 +16387,7 @@ class DescribeMNPPreviewRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""Mini program version ID
+        r"""Mini program version ID.
         :rtype: int
         """
         return self._MNPVersionId
@@ -16317,7 +16398,7 @@ class DescribeMNPPreviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -16342,27 +16423,27 @@ class DescribeMNPPreviewRequest(AbstractModel):
 
 
 class DescribeMNPPreviewResp(AbstractModel):
-    r"""Response of querying the preview
+    r"""Response for querying the preview.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid. 
         :type MNPId: str
-        :param _MNPName: Mini program name
+        :param _MNPName: Mini program name.
         :type MNPName: str
-        :param _MNPDesc: Mini program description
+        :param _MNPDesc: Mini program description.
         :type MNPDesc: str
         :param _MNPVersion: Mini program version.
         :type MNPVersion: str
-        :param _MNPVersionIntro: Describes the mini program version.
+        :param _MNPVersionIntro: Mini program version introduction.
         :type MNPVersionIntro: str
-        :param _QRCodeUrl: Specifies the mini program qr code.
+        :param _QRCodeUrl: Mini program QR code URL.
         :type QRCodeUrl: str
-        :param _PreviewEntrancePath: Specifies the path to the preview version.
+        :param _PreviewEntrancePath: Preview path.
         :type PreviewEntrancePath: str
-        :param _QRCodeContent: Specifies the qr code content.
+        :param _QRCodeContent: Information encoded in the QR code.
         :type QRCodeContent: str
         """
         self._MNPId = None
@@ -16376,7 +16457,7 @@ class DescribeMNPPreviewResp(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid. 
         :rtype: str
         """
         return self._MNPId
@@ -16387,7 +16468,7 @@ class DescribeMNPPreviewResp(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""Mini program name.
         :rtype: str
         """
         return self._MNPName
@@ -16398,7 +16479,7 @@ class DescribeMNPPreviewResp(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""Mini program description
+        r"""Mini program description.
         :rtype: str
         """
         return self._MNPDesc
@@ -16420,7 +16501,7 @@ class DescribeMNPPreviewResp(AbstractModel):
 
     @property
     def MNPVersionIntro(self):
-        r"""Describes the mini program version.
+        r"""Mini program version introduction.
         :rtype: str
         """
         return self._MNPVersionIntro
@@ -16431,7 +16512,7 @@ class DescribeMNPPreviewResp(AbstractModel):
 
     @property
     def QRCodeUrl(self):
-        r"""Specifies the mini program qr code.
+        r"""Mini program QR code URL.
         :rtype: str
         """
         return self._QRCodeUrl
@@ -16442,7 +16523,7 @@ class DescribeMNPPreviewResp(AbstractModel):
 
     @property
     def PreviewEntrancePath(self):
-        r"""Specifies the path to the preview version.
+        r"""Preview path.
         :rtype: str
         """
         return self._PreviewEntrancePath
@@ -16453,7 +16534,7 @@ class DescribeMNPPreviewResp(AbstractModel):
 
     @property
     def QRCodeContent(self):
-        r"""Specifies the qr code content.
+        r"""Information encoded in the QR code.
         :rtype: str
         """
         return self._QRCodeContent
@@ -16489,7 +16570,7 @@ class DescribeMNPPreviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPPreviewResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -16499,7 +16580,7 @@ class DescribeMNPPreviewResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPPreviewResp`
         """
         return self._Data
@@ -16534,9 +16615,9 @@ class DescribeMNPReleasedVersionHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPId = None
@@ -16544,7 +16625,7 @@ class DescribeMNPReleasedVersionHistoryRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -16555,7 +16636,7 @@ class DescribeMNPReleasedVersionHistoryRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -16585,7 +16666,7 @@ class DescribeMNPReleasedVersionHistoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeRevertOnlineVersionPageResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -16595,7 +16676,7 @@ class DescribeMNPReleasedVersionHistoryResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeRevertOnlineVersionPageResp`
         """
         return self._Data
@@ -16630,13 +16711,13 @@ class DescribeMNPReportDataLineChartRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ReportId: Fixed value: mnp_data_analysis
+        :param _ReportId: Fixed value: mnp_data_analysis.
         :type ReportId: str
-        :param _IndexId: IndexId (optional):
+        :param _IndexId: Index ID (optional):
 active_device_num: Active users
 new_device_num: New users
 total_user_num: Total users
@@ -16644,9 +16725,9 @@ share_num: Number of shares
 miniapp_open_num: Number of opens
 avg_device_open_num: Average opens per user
 avg_device_open_duration: Average duration per user
-avg_count_open_duration: Average duration per session
+avg_count_open_duration: Average duration per session.
         :type IndexId: str
-        :param _QueryData: Input parameter base64 string: {"DataType":"1","Platform":0,"BeginDate":20251118,"EndDate":20251124}
+        :param _QueryData: Input parameter base64 string: {"DataType":"1","Platform":0,"BeginDate":20251118,"EndDate":20251124}.
         :type QueryData: str
         """
         self._MNPId = None
@@ -16657,7 +16738,7 @@ avg_count_open_duration: Average duration per session
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -16668,7 +16749,7 @@ avg_count_open_duration: Average duration per session
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -16679,7 +16760,7 @@ avg_count_open_duration: Average duration per session
 
     @property
     def ReportId(self):
-        r"""Fixed value: mnp_data_analysis
+        r"""Fixed value: mnp_data_analysis.
         :rtype: str
         """
         return self._ReportId
@@ -16690,7 +16771,7 @@ avg_count_open_duration: Average duration per session
 
     @property
     def IndexId(self):
-        r"""IndexId (optional):
+        r"""Index ID (optional):
 active_device_num: Active users
 new_device_num: New users
 total_user_num: Total users
@@ -16698,7 +16779,7 @@ share_num: Number of shares
 miniapp_open_num: Number of opens
 avg_device_open_num: Average opens per user
 avg_device_open_duration: Average duration per user
-avg_count_open_duration: Average duration per session
+avg_count_open_duration: Average duration per session.
         :rtype: str
         """
         return self._IndexId
@@ -16709,7 +16790,7 @@ avg_count_open_duration: Average duration per session
 
     @property
     def QueryData(self):
-        r"""Input parameter base64 string: {"DataType":"1","Platform":0,"BeginDate":20251118,"EndDate":20251124}
+        r"""Input parameter base64 string: {"DataType":"1","Platform":0,"BeginDate":20251118,"EndDate":20251124}.
         :rtype: str
         """
         return self._QueryData
@@ -16742,7 +16823,7 @@ class DescribeMNPReportDataLineChartResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of ReportDataResult
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -16753,7 +16834,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ReportDataResult
         """
@@ -16792,17 +16873,17 @@ class DescribeMNPReportDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time in YYYYMMDD format
+        :param _TimeBegin: Start time in YYYYMMDD format.
         :type TimeBegin: int
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _Platform: 0 All, 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
-        :param _TimeEnd: End time in YYYYMMDD format
+        :param _TimeEnd: End time in YYYYMMDD format.
         :type TimeEnd: int
         """
         self._TimeBegin = None
@@ -16814,7 +16895,7 @@ class DescribeMNPReportDetailRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time in YYYYMMDD format
+        r"""Start time in YYYYMMDD format.
         :rtype: int
         """
         return self._TimeBegin
@@ -16825,7 +16906,7 @@ class DescribeMNPReportDetailRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -16836,7 +16917,7 @@ class DescribeMNPReportDetailRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -16847,7 +16928,7 @@ class DescribeMNPReportDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -16858,7 +16939,7 @@ class DescribeMNPReportDetailRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""0 All, 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -16869,7 +16950,7 @@ class DescribeMNPReportDetailRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time in YYYYMMDD format
+        r"""End time in YYYYMMDD format.
         :rtype: int
         """
         return self._TimeEnd
@@ -16903,7 +16984,7 @@ class DescribeMNPReportDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display at the top of the page
+        :param _Data: Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of AccessAnalysisDetail
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -16914,7 +16995,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display at the top of the page
+        r"""Data display at the top of the page.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AccessAnalysisDetail
         """
@@ -16953,9 +17034,9 @@ class DescribeMNPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPId = None
@@ -16963,7 +17044,7 @@ class DescribeMNPRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -16974,7 +17055,7 @@ class DescribeMNPRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -17004,8 +17085,7 @@ class DescribeMNPResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPManagerDetailData`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -17015,8 +17095,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Response data
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPManagerDetailData`
         """
         return self._Data
@@ -17051,17 +17130,17 @@ class DescribeMNPRetentionDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time
+        :param _TimeBegin: Start time.
         :type TimeBegin: int
-        :param _MNPId: Mini program appid
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _DataType: Type: 1 Production data, 0 Non-production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _TimeEnd: End time
+        :param _TimeEnd: End time.
         :type TimeEnd: int
-        :param _Platform: 0 All, 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -17073,7 +17152,7 @@ class DescribeMNPRetentionDataRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time
+        r"""Start time.
         :rtype: int
         """
         return self._TimeBegin
@@ -17084,7 +17163,7 @@ class DescribeMNPRetentionDataRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -17095,7 +17174,7 @@ class DescribeMNPRetentionDataRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -17106,7 +17185,7 @@ class DescribeMNPRetentionDataRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 1 Production data, 0 Non-production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -17117,7 +17196,7 @@ class DescribeMNPRetentionDataRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time
+        r"""End time.
         :rtype: int
         """
         return self._TimeEnd
@@ -17128,7 +17207,7 @@ class DescribeMNPRetentionDataRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""0 All, 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -17162,7 +17241,7 @@ class DescribeMNPRetentionDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of RetentionData
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -17173,7 +17252,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of RetentionData
         """
@@ -17206,25 +17285,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMNPSensitiveAPIPermissionApprovalData(AbstractModel):
-    r"""Details of a permission request to allow a mini program to call sensitive APIs
+    r"""Detail data for querying mini program sensitive API permission approval.
 
     """
 
     def __init__(self):
         r"""
-        :param _APIId: API ID
+        :param _APIId: API ID.
         :type APIId: str
         :param _APIMethod: API method.
         :type APIMethod: str
-        :param _ApplyReason: Reason for application
+        :param _ApplyReason: Reason for request.
         :type ApplyReason: str
         :param _RejectReason: Reason for rejection.
         :type RejectReason: str
-        :param _ApprovalStatus: Approval status. valid values: 20 (rejected), 30 (approved).
+        :param _ApprovalStatus: Approval status. Valid values: 20: Rejected; 30: Approved.
         :type ApprovalStatus: int
         :param _APIDesc: API feature description.
         :type APIDesc: str
-        :param _APIType: API type. 1: system; 2: custom.
+        :param _APIType: API type. Valid values: 1: System; 2: Custom.
         :type APIType: int
         """
         self._APIId = None
@@ -17237,7 +17316,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def APIId(self):
-        r"""API ID
+        r"""API ID.
         :rtype: str
         """
         return self._APIId
@@ -17259,7 +17338,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def ApplyReason(self):
-        r"""Reason for application
+        r"""Reason for request.
         :rtype: str
         """
         return self._ApplyReason
@@ -17281,7 +17360,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def ApprovalStatus(self):
-        r"""Approval status. valid values: 20 (rejected), 30 (approved).
+        r"""Approval status. Valid values: 20: Rejected; 30: Approved.
         :rtype: int
         """
         return self._ApprovalStatus
@@ -17303,7 +17382,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalData(AbstractModel):
 
     @property
     def APIType(self):
-        r"""API type. 1: system; 2: custom.
+        r"""API type. Valid values: 1: System; 2: Custom.
         :rtype: int
         """
         return self._APIType
@@ -17332,45 +17411,45 @@ class DescribeMNPSensitiveAPIPermissionApprovalData(AbstractModel):
 
 
 class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
-    r"""List of permission requests to allow a mini program to call sensitive APIs
+    r"""List data for querying mini program sensitive API permission approvals.
 
     """
 
     def __init__(self):
         r"""
-        :param _ApprovalNo: Approval ID
+        :param _ApprovalNo: Approval number.
         :type ApprovalNo: str
-        :param _APIId: Sensitive API ID
+        :param _APIId: Sensitive API ID.
         :type APIId: str
-        :param _APIName: API name
+        :param _APIName: API name.
         :type APIName: str
-        :param _APIMethod: API request method
+        :param _APIMethod: API method.
         :type APIMethod: str
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _MNPName: Mini program name
+        :param _MNPName: Mini program name.
         :type MNPName: str
-        :param _ApplyUser: Applicant
+        :param _ApplyUser: Applicant.
         :type ApplyUser: str
-        :param _ApplyTime: Application time
+        :param _ApplyTime: Application time.
         :type ApplyTime: str
-        :param _ApplyNote: Application notes
+        :param _ApplyNote: Application note.
         :type ApplyNote: str
-        :param _ApprovalStatus: Approval status. 1: Processing; 20: Rejected; 30: Approved
+        :param _ApprovalStatus: Approval status. Valid values: 1: Processing; 20: Rejected; 30: Approved.
         :type ApprovalStatus: int
-        :param _ApprovalUser: Specifies the review user.
+        :param _ApprovalUser: Approver.
         :type ApprovalUser: str
         :param _ApprovalTime: Approval time.
         :type ApprovalTime: str
-        :param _ApprovalNote: Approval notes
+        :param _ApprovalNote: Approval note.
         :type ApprovalNote: str
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _ApplicationName: Application name
+        :param _ApplicationName: Superapp name.
         :type ApplicationName: str
-        :param _ApplicationLogo: Specifies the application icon.
+        :param _ApplicationLogo: Superapp icon.
         :type ApplicationLogo: str
-        :param _APIType: API type. 1: system; 2: custom.
+        :param _APIType: API type. Valid values: 1: System; 2: Custom.
         :type APIType: int
         :param _APIDesc: API feature description.
         :type APIDesc: str
@@ -17396,7 +17475,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""Approval ID
+        r"""Approval number.
         :rtype: str
         """
         return self._ApprovalNo
@@ -17407,7 +17486,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def APIId(self):
-        r"""Sensitive API ID
+        r"""Sensitive API ID.
         :rtype: str
         """
         return self._APIId
@@ -17418,7 +17497,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def APIName(self):
-        r"""API name
+        r"""API name.
         :rtype: str
         """
         return self._APIName
@@ -17429,7 +17508,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def APIMethod(self):
-        r"""API request method
+        r"""API method.
         :rtype: str
         """
         return self._APIMethod
@@ -17440,7 +17519,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -17451,7 +17530,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""Mini program name.
         :rtype: str
         """
         return self._MNPName
@@ -17462,7 +17541,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApplyUser(self):
-        r"""Applicant
+        r"""Applicant.
         :rtype: str
         """
         return self._ApplyUser
@@ -17473,7 +17552,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApplyTime(self):
-        r"""Application time
+        r"""Application time.
         :rtype: str
         """
         return self._ApplyTime
@@ -17484,7 +17563,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApplyNote(self):
-        r"""Application notes
+        r"""Application note.
         :rtype: str
         """
         return self._ApplyNote
@@ -17495,7 +17574,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApprovalStatus(self):
-        r"""Approval status. 1: Processing; 20: Rejected; 30: Approved
+        r"""Approval status. Valid values: 1: Processing; 20: Rejected; 30: Approved.
         :rtype: int
         """
         return self._ApprovalStatus
@@ -17506,7 +17585,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApprovalUser(self):
-        r"""Specifies the review user.
+        r"""Approver.
         :rtype: str
         """
         return self._ApprovalUser
@@ -17528,7 +17607,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApprovalNote(self):
-        r"""Approval notes
+        r"""Approval note.
         :rtype: str
         """
         return self._ApprovalNote
@@ -17539,7 +17618,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -17550,7 +17629,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name
+        r"""Superapp name.
         :rtype: str
         """
         return self._ApplicationName
@@ -17561,7 +17640,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def ApplicationLogo(self):
-        r"""Specifies the application icon.
+        r"""Superapp icon.
         :rtype: str
         """
         return self._ApplicationLogo
@@ -17572,7 +17651,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListData(AbstractModel):
 
     @property
     def APIType(self):
-        r"""API type. 1: system; 2: custom.
+        r"""API type. Valid values: 1: System; 2: Custom.
         :rtype: int
         """
         return self._APIType
@@ -17629,15 +17708,15 @@ class DescribeMNPSensitiveAPIPermissionApprovalListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _ApprovalStatusList: Approval status. 1: Processing; 20: Rejected; 30: Approved
+        :param _ApprovalStatusList: Approval status. Valid values: 1: Processing; 20: Rejected; 30: Approved.
         :type ApprovalStatusList: list of int
-        :param _Keyword: Keywords for search (API name, API method or application name)
+        :param _Keyword: Search keyword (API name, API method or superapp name).
         :type Keyword: str
         """
         self._Offset = None
@@ -17648,7 +17727,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset.
         :rtype: int
         """
         return self._Offset
@@ -17659,7 +17738,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -17670,7 +17749,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -17681,7 +17760,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListRequest(AbstractModel):
 
     @property
     def ApprovalStatusList(self):
-        r"""Approval status. 1: Processing; 20: Rejected; 30: Approved
+        r"""Approval status. Valid values: 1: Processing; 20: Rejected; 30: Approved.
         :rtype: list of int
         """
         return self._ApprovalStatusList
@@ -17692,7 +17771,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords for search (API name, API method or application name)
+        r"""Search keyword (API name, API method or superapp name).
         :rtype: str
         """
         return self._Keyword
@@ -17719,15 +17798,15 @@ class DescribeMNPSensitiveAPIPermissionApprovalListRequest(AbstractModel):
 
 
 class DescribeMNPSensitiveAPIPermissionApprovalListResp(AbstractModel):
-    r"""List of permission requests to allow a mini program to call sensitive APIs
+    r"""Response for querying the mini program sensitive API permission approval list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List information
+        :param _DataList: List data.
         :type DataList: list of DescribeMNPSensitiveAPIPermissionApprovalListData
         """
         self._TotalCount = None
@@ -17735,7 +17814,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -17746,7 +17825,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List information
+        r"""List data.
         :rtype: list of DescribeMNPSensitiveAPIPermissionApprovalListData
         """
         return self._DataList
@@ -17781,7 +17860,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionApprovalListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -17791,7 +17870,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionApprovalListResp`
         """
         return self._Data
@@ -17826,9 +17905,9 @@ class DescribeMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApprovalNo: Approval request number
+        :param _ApprovalNo: Approval number.
         :type ApprovalNo: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._ApprovalNo = None
@@ -17836,7 +17915,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""Approval request number
+        r"""Approval number.
         :rtype: str
         """
         return self._ApprovalNo
@@ -17847,7 +17926,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -17877,7 +17956,7 @@ class DescribeMNPSensitiveAPIPermissionApprovalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionApprovalData`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -17888,7 +17967,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionApprovalData`
         """
@@ -17918,17 +17997,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
-    r"""List of sensitive APIs that can be called by a mini program
+    r"""List data for querying callable sensitive APIs of a mini program.
 
     """
 
     def __init__(self):
         r"""
-        :param _APIId: API ID
+        :param _APIId: API ID.
         :type APIId: str
         :param _APIName: API name.
         :type APIName: str
-        :param _APIMethod: API request method
+        :param _APIMethod: API method.
         :type APIMethod: str
         :param _APIStatus: API status.
         :type APIStatus: int
@@ -17936,15 +18015,15 @@ class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
         :type APIApplyStatus: int
         :param _RejectReason: Reason for rejection.
         :type RejectReason: str
-        :param _ApprovalNo: Approval ID
+        :param _ApprovalNo: Approval number.
         :type ApprovalNo: str
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _ApplicationIcon: Specifies the application icon.
+        :param _ApplicationIcon: Superapp icon.
         :type ApplicationIcon: str
-        :param _ApplicationName: Application name
+        :param _ApplicationName: Superapp name.
         :type ApplicationName: str
-        :param _APIType: API type. 1: system; 2: custom.
+        :param _APIType: API type. Valid values: 1: System; 2: Custom.
         :type APIType: int
         :param _APIDesc: API feature description.
         :type APIDesc: str
@@ -17964,7 +18043,7 @@ class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIId(self):
-        r"""API ID
+        r"""API ID.
         :rtype: str
         """
         return self._APIId
@@ -17986,7 +18065,7 @@ class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIMethod(self):
-        r"""API request method
+        r"""API method.
         :rtype: str
         """
         return self._APIMethod
@@ -18030,7 +18109,7 @@ class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""Approval ID
+        r"""Approval number.
         :rtype: str
         """
         return self._ApprovalNo
@@ -18041,7 +18120,7 @@ class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -18052,7 +18131,7 @@ class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def ApplicationIcon(self):
-        r"""Specifies the application icon.
+        r"""Superapp icon.
         :rtype: str
         """
         return self._ApplicationIcon
@@ -18063,7 +18142,7 @@ class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name
+        r"""Superapp name.
         :rtype: str
         """
         return self._ApplicationName
@@ -18074,7 +18153,7 @@ class DescribeMNPSensitiveAPIPermissionListData(AbstractModel):
 
     @property
     def APIType(self):
-        r"""API type. 1: system; 2: custom.
+        r"""API type. Valid values: 1: System; 2: Custom.
         :rtype: int
         """
         return self._APIType
@@ -18125,17 +18204,17 @@ class DescribeMNPSensitiveAPIPermissionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         :param _ApplicationId: Application ID
         :type ApplicationId: str
-        :param _Keyword: Keywords for search (API name)
+        :param _Keyword: Search keyword (API name).
         :type Keyword: str
         """
         self._Offset = None
@@ -18147,7 +18226,7 @@ class DescribeMNPSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset.
         :rtype: int
         """
         return self._Offset
@@ -18158,7 +18237,7 @@ class DescribeMNPSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -18169,7 +18248,7 @@ class DescribeMNPSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -18180,7 +18259,7 @@ class DescribeMNPSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -18202,7 +18281,7 @@ class DescribeMNPSensitiveAPIPermissionListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords for search (API name)
+        r"""Search keyword (API name).
         :rtype: str
         """
         return self._Keyword
@@ -18230,15 +18309,15 @@ class DescribeMNPSensitiveAPIPermissionListRequest(AbstractModel):
 
 
 class DescribeMNPSensitiveAPIPermissionListResp(AbstractModel):
-    r"""List of sensitive APIs that can be called by a mini program
+    r"""Response for querying the list of callable sensitive APIs of a mini program.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List data
+        :param _DataList: List data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeMNPSensitiveAPIPermissionListData
         """
@@ -18247,7 +18326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -18258,7 +18337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataList(self):
-        r"""List data
+        r"""List data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeMNPSensitiveAPIPermissionListData
         """
@@ -18294,7 +18373,7 @@ class DescribeMNPSensitiveAPIPermissionListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response parameters.
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18304,7 +18383,7 @@ class DescribeMNPSensitiveAPIPermissionListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response parameters.
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSensitiveAPIPermissionListResp`
         """
         return self._Data
@@ -18341,7 +18420,7 @@ class DescribeMNPVersionRequest(AbstractModel):
         r"""
         :param _BusinessId: <p>Task ID returned by the CreateMNPVersion API.</p>
         :type BusinessId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._BusinessId = None
@@ -18360,7 +18439,7 @@ class DescribeMNPVersionRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -18384,21 +18463,21 @@ class DescribeMNPVersionRequest(AbstractModel):
 
 
 class DescribeMNPVersionResp(AbstractModel):
-    r"""Result of the task to create a mini program version
+    r"""Response for querying the mini program version creation result.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini program appid</p>
+        :param _MNPId: <p>Mini program appid.</p>
         :type MNPId: str
-        :param _TaskId: <p>Task ID</p>
+        :param _TaskId: <p>Task ID.</p>
         :type TaskId: str
-        :param _TaskStatus: <p>Valid values: 1: Pending; 20: Running; 30: Failed; 60: Succeeded</p>
+        :param _TaskStatus: Task status. Valid values: 1: Pending; 20: Running; 30: Failed; 60: Succeeded.
         :type TaskStatus: int
-        :param _TaskMsg: <p>Task status information</p>
+        :param _TaskMsg: <p>Task status information.</p>
         :type TaskMsg: str
-        :param _MNPVersionId: <p>Mini program version ID (returned upon successful compilation)</p>
+        :param _MNPVersionId: <p>Mini program version ID (returned upon successful compilation).</p>
         :type MNPVersionId: int
         """
         self._MNPId = None
@@ -18409,7 +18488,7 @@ class DescribeMNPVersionResp(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini program appid</p>
+        r"""<p>Mini program appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -18420,7 +18499,7 @@ class DescribeMNPVersionResp(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""<p>Task ID</p>
+        r"""<p>Task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -18431,7 +18510,7 @@ class DescribeMNPVersionResp(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""<p>Valid values: 1: Pending; 20: Running; 30: Failed; 60: Succeeded</p>
+        r"""Task status. Valid values: 1: Pending; 20: Running; 30: Failed; 60: Succeeded.
         :rtype: int
         """
         return self._TaskStatus
@@ -18442,7 +18521,7 @@ class DescribeMNPVersionResp(AbstractModel):
 
     @property
     def TaskMsg(self):
-        r"""<p>Task status information</p>
+        r"""<p>Task status information.</p>
         :rtype: str
         """
         return self._TaskMsg
@@ -18453,7 +18532,7 @@ class DescribeMNPVersionResp(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""<p>Mini program version ID (returned upon successful compilation)</p>
+        r"""<p>Mini program version ID (returned upon successful compilation).</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -18486,7 +18565,7 @@ class DescribeMNPVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPVersionResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18496,7 +18575,7 @@ class DescribeMNPVersionResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPVersionResp`
         """
         return self._Data
@@ -18525,48 +18604,47 @@ class DescribeMNPVersionResponse(AbstractModel):
 
 
 class DescribeMPAllStageVersionsResp(AbstractModel):
-    r"""List of all developer versions of a mini program
+    r"""Response for querying all-stage versions of a mini program.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID.
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _MNPVersionId: Specifies the mini program version primary key id.
+        :param _MNPVersionId: Mini program version primary key ID.
         :type MNPVersionId: int
-        :param _MNPName: Mini program name
+        :param _MNPName: Mini program name.
         :type MNPName: str
-        :param _MNPIcon: Specifies the mini program avatar.
+        :param _MNPIcon: Mini program icon.
         :type MNPIcon: str
-        :param _MNPType: Mini program type
+        :param _MNPType: Mini program category.
         :type MNPType: str
-        :param _MNPIntro: Mini program introduction
+        :param _MNPIntro: Mini program introduction.
         :type MNPIntro: str
-        :param _MNPDesc: Mini program description
+        :param _MNPDesc: Mini program description.
         :type MNPDesc: str
-        :param _CreateUser: Specifies the developer.
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _CreateTime: Developer creation time.
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _MNPVersion: Mini program version.
+        :param _MNPVersion: Mini program version number.
         :type MNPVersion: str
-        :param _MNPVersionIntro: Describes version features.
+        :param _MNPVersionIntro: Version introduction.
         :type MNPVersionIntro: str
-        :param _Phase: Development Platform Online.
+        :param _Phase: Stage: Develop, preview, released.
         :type Phase: str
-        :param _ApprovalStatus: 0 pending review; 1 under review; 2 review rejection; 3 pass review; 4 review cancellation.
+        :param _ApprovalStatus: Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
         :type ApprovalStatus: int
-        :param _ApprovalNo: Approval ticket ID
+        :param _ApprovalNo: Approval number.
         :type ApprovalNo: str
-        :param _ShowCase: Specifies whether it is a trial version.
-Specifies the version type. valid values: 0 (non-preview version); 1 (trial version).
+        :param _ShowCase: Whether this is a preview. Valid values: 0: No; 1: Yes.
         :type ShowCase: int
-        :param _RollbackVersion: Version number to roll back to.
+        :param _RollbackVersion: Rollback version number.
         :type RollbackVersion: int
-        :param _Status: Indicates the release status.
+        :param _Status: Available status. Valid value: 0: All; 1 Available; 2: In canary release.
         :type Status: int
-        :param _VersionCurrentStatus: Specifies the current main status of the version. valid values: "0" (pending review), "1" (under review), "2" (review rejection), "3" (pass review), "4" (review cancellation).
+        :param _VersionCurrentStatus: Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
         :type VersionCurrentStatus: int
         """
         self._MNPId = None
@@ -18590,7 +18668,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def MNPId(self):
-        r"""Mini program ID.
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -18601,7 +18679,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def MNPVersionId(self):
-        r"""Specifies the mini program version primary key id.
+        r"""Mini program version primary key ID.
         :rtype: int
         """
         return self._MNPVersionId
@@ -18612,7 +18690,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""Mini program name.
         :rtype: str
         """
         return self._MNPName
@@ -18623,7 +18701,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def MNPIcon(self):
-        r"""Specifies the mini program avatar.
+        r"""Mini program icon.
         :rtype: str
         """
         return self._MNPIcon
@@ -18634,7 +18712,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def MNPType(self):
-        r"""Mini program type
+        r"""Mini program category.
         :rtype: str
         """
         return self._MNPType
@@ -18645,7 +18723,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def MNPIntro(self):
-        r"""Mini program introduction
+        r"""Mini program introduction.
         :rtype: str
         """
         return self._MNPIntro
@@ -18656,7 +18734,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def MNPDesc(self):
-        r"""Mini program description
+        r"""Mini program description.
         :rtype: str
         """
         return self._MNPDesc
@@ -18667,7 +18745,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def CreateUser(self):
-        r"""Specifies the developer.
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -18678,7 +18756,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def CreateTime(self):
-        r"""Developer creation time.
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -18689,7 +18767,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def MNPVersion(self):
-        r"""Mini program version.
+        r"""Mini program version number.
         :rtype: str
         """
         return self._MNPVersion
@@ -18700,7 +18778,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def MNPVersionIntro(self):
-        r"""Describes version features.
+        r"""Version introduction.
         :rtype: str
         """
         return self._MNPVersionIntro
@@ -18711,7 +18789,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def Phase(self):
-        r"""Development Platform Online.
+        r"""Stage: Develop, preview, released.
         :rtype: str
         """
         return self._Phase
@@ -18722,7 +18800,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def ApprovalStatus(self):
-        r"""0 pending review; 1 under review; 2 review rejection; 3 pass review; 4 review cancellation.
+        r"""Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
         :rtype: int
         """
         return self._ApprovalStatus
@@ -18733,7 +18811,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def ApprovalNo(self):
-        r"""Approval ticket ID
+        r"""Approval number.
         :rtype: str
         """
         return self._ApprovalNo
@@ -18744,8 +18822,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def ShowCase(self):
-        r"""Specifies whether it is a trial version.
-Specifies the version type. valid values: 0 (non-preview version); 1 (trial version).
+        r"""Whether this is a preview. Valid values: 0: No; 1: Yes.
         :rtype: int
         """
         return self._ShowCase
@@ -18756,7 +18833,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def RollbackVersion(self):
-        r"""Version number to roll back to.
+        r"""Rollback version number.
         :rtype: int
         """
         return self._RollbackVersion
@@ -18767,7 +18844,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def Status(self):
-        r"""Indicates the release status.
+        r"""Available status. Valid value: 0: All; 1 Available; 2: In canary release.
         :rtype: int
         """
         return self._Status
@@ -18778,7 +18855,7 @@ Specifies the version type. valid values: 0 (non-preview version); 1 (trial vers
 
     @property
     def VersionCurrentStatus(self):
-        r"""Specifies the current main status of the version. valid values: "0" (pending review), "1" (under review), "2" (review rejection), "3" (pass review), "4" (review cancellation).
+        r"""Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
         :rtype: int
         """
         return self._VersionCurrentStatus
@@ -18824,17 +18901,17 @@ class DescribePaymentDataDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time
+        :param _TimeBegin: Start time.
         :type TimeBegin: int
-        :param _MNPIds: Mini program appid
+        :param _MNPIds: Mini program appid.
         :type MNPIds: list of str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _TimeEnd: End time
+        :param _TimeEnd: End time.
         :type TimeEnd: int
-        :param _Platform: Operating system: 0 All, 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -18846,7 +18923,7 @@ class DescribePaymentDataDetailRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time
+        r"""Start time.
         :rtype: int
         """
         return self._TimeBegin
@@ -18857,7 +18934,7 @@ class DescribePaymentDataDetailRequest(AbstractModel):
 
     @property
     def MNPIds(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: list of str
         """
         return self._MNPIds
@@ -18868,7 +18945,7 @@ class DescribePaymentDataDetailRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -18879,7 +18956,7 @@ class DescribePaymentDataDetailRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -18890,7 +18967,7 @@ class DescribePaymentDataDetailRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time
+        r"""End time.
         :rtype: int
         """
         return self._TimeEnd
@@ -18901,7 +18978,7 @@ class DescribePaymentDataDetailRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""Operating system: 0 All, 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -18935,7 +19012,7 @@ class DescribePaymentDataDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of PaymentDetail
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -18946,7 +19023,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of PaymentDetail
         """
@@ -18985,11 +19062,11 @@ class DescribePaymentDataLineChartRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _ReportId: Fixed value: payment_data_analysis
+        :param _ReportId: Fixed value: payment_data_analysis.
         :type ReportId: str
-        :param _IndexId: IndexId (optional):
+        :param _IndexId: Index ID (optional):
 order_user_num: Number of users placing orders
 order_num: Total orders
 total_amount: Total amount
@@ -18998,9 +19075,9 @@ unpaid_amount: Unpaid amount
 order_paid_num: Total paid orders
 paid_amount: Amount paid
 order_refund_num: Total refunded orders
-refund_amount: Total amount refunded
+refund_amount: Total amount refunded.
         :type IndexId: str
-        :param _QueryData: Input parameter base64 string: {"Platform":0,"MnpIds":["mp9e7qluz4i3z3km"],"BeginDate":20251031,"EndDate":20251129,"DataType":"1","PaymentType":1}
+        :param _QueryData: Input parameter base64 string: {"Platform":0,"MnpIds":["mp9e7qluz4i3z3km"],"BeginDate":20251031,"EndDate":20251129,"DataType":"1","PaymentType":1}.
         :type QueryData: str
         """
         self._PlatformId = None
@@ -19010,7 +19087,7 @@ refund_amount: Total amount refunded
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -19021,7 +19098,7 @@ refund_amount: Total amount refunded
 
     @property
     def ReportId(self):
-        r"""Fixed value: payment_data_analysis
+        r"""Fixed value: payment_data_analysis.
         :rtype: str
         """
         return self._ReportId
@@ -19032,7 +19109,7 @@ refund_amount: Total amount refunded
 
     @property
     def IndexId(self):
-        r"""IndexId (optional):
+        r"""Index ID (optional):
 order_user_num: Number of users placing orders
 order_num: Total orders
 total_amount: Total amount
@@ -19041,7 +19118,7 @@ unpaid_amount: Unpaid amount
 order_paid_num: Total paid orders
 paid_amount: Amount paid
 order_refund_num: Total refunded orders
-refund_amount: Total amount refunded
+refund_amount: Total amount refunded.
         :rtype: str
         """
         return self._IndexId
@@ -19052,7 +19129,7 @@ refund_amount: Total amount refunded
 
     @property
     def QueryData(self):
-        r"""Input parameter base64 string: {"Platform":0,"MnpIds":["mp9e7qluz4i3z3km"],"BeginDate":20251031,"EndDate":20251129,"DataType":"1","PaymentType":1}
+        r"""Input parameter base64 string: {"Platform":0,"MnpIds":["mp9e7qluz4i3z3km"],"BeginDate":20251031,"EndDate":20251129,"DataType":"1","PaymentType":1}.
         :rtype: str
         """
         return self._QueryData
@@ -19084,7 +19161,7 @@ class DescribePaymentDataLineChartResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of ReportDataResult
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -19095,7 +19172,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ReportDataResult
         """
@@ -19134,17 +19211,17 @@ class DescribePaymentDataOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBegin: Start time
+        :param _TimeBegin: Start time.
         :type TimeBegin: int
-        :param _MNPIds: Mini program appid
+        :param _MNPIds: Mini program appid.
         :type MNPIds: list of str
-        :param _PlatformId: Tenant ID
+        :param _PlatformId: Tenant ID.
         :type PlatformId: str
-        :param _DataType: Type: 0 Non-production data, 1 Production data
+        :param _DataType: Data type. Valid values: 0: Non-production data; 1: Production data.
         :type DataType: int
-        :param _TimeEnd: End time
+        :param _TimeEnd: End time.
         :type TimeEnd: int
-        :param _Platform: Operating system: 0 All, 2 Android, 3 iOS
+        :param _Platform: Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :type Platform: int
         """
         self._TimeBegin = None
@@ -19156,7 +19233,7 @@ class DescribePaymentDataOverviewRequest(AbstractModel):
 
     @property
     def TimeBegin(self):
-        r"""Start time
+        r"""Start time.
         :rtype: int
         """
         return self._TimeBegin
@@ -19167,7 +19244,7 @@ class DescribePaymentDataOverviewRequest(AbstractModel):
 
     @property
     def MNPIds(self):
-        r"""Mini program appid
+        r"""Mini program appid.
         :rtype: list of str
         """
         return self._MNPIds
@@ -19178,7 +19255,7 @@ class DescribePaymentDataOverviewRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Tenant ID
+        r"""Tenant ID.
         :rtype: str
         """
         return self._PlatformId
@@ -19189,7 +19266,7 @@ class DescribePaymentDataOverviewRequest(AbstractModel):
 
     @property
     def DataType(self):
-        r"""Type: 0 Non-production data, 1 Production data
+        r"""Data type. Valid values: 0: Non-production data; 1: Production data.
         :rtype: int
         """
         return self._DataType
@@ -19200,7 +19277,7 @@ class DescribePaymentDataOverviewRequest(AbstractModel):
 
     @property
     def TimeEnd(self):
-        r"""End time
+        r"""End time.
         :rtype: int
         """
         return self._TimeEnd
@@ -19211,7 +19288,7 @@ class DescribePaymentDataOverviewRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""Operating system: 0 All, 2 Android, 3 iOS
+        r"""Operating system. Valid values: 0: All; 2: Android; 3: iOS.
         :rtype: int
         """
         return self._Platform
@@ -19245,7 +19322,7 @@ class DescribePaymentDataOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Data display
+        :param _Data: Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.MNPPaymentOverview`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -19256,7 +19333,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Data display
+        r"""Data display.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.MNPPaymentOverview`
         """
@@ -19286,15 +19363,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeRevertOnlineVersionPageResp(AbstractModel):
-    r"""Response of querying the rollback version list
+    r"""Response of querying the rollback version list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List information
+        :param _DataList: List data.
         :type DataList: list of QueryOnlineVersionResp
         """
         self._TotalCount = None
@@ -19302,7 +19379,7 @@ class DescribeRevertOnlineVersionPageResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -19313,7 +19390,7 @@ class DescribeRevertOnlineVersionPageResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List information
+        r"""List data.
         :rtype: list of QueryOnlineVersionResp
         """
         return self._DataList
@@ -19342,21 +19419,21 @@ class DescribeRevertOnlineVersionPageResp(AbstractModel):
 
 
 class DescribeRoleListData(AbstractModel):
-    r"""Role management list
+    r"""Role list data.
 
     """
 
     def __init__(self):
         r"""
-        :param _RoleId: Role ID
+        :param _RoleId: Role ID.
         :type RoleId: int
         :param _RoleName: Role name.
         :type RoleName: str
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _RoleType: Role type 1-preset role 2-custom role.
+        :param _RoleType: Role type. Valid values: 1: Preset role; 2: Custom role. 
         :type RoleType: int
         """
         self._RoleId = None
@@ -19367,7 +19444,7 @@ class DescribeRoleListData(AbstractModel):
 
     @property
     def RoleId(self):
-        r"""Role ID
+        r"""Role ID.
         :rtype: int
         """
         return self._RoleId
@@ -19389,7 +19466,7 @@ class DescribeRoleListData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -19400,7 +19477,7 @@ class DescribeRoleListData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -19411,7 +19488,7 @@ class DescribeRoleListData(AbstractModel):
 
     @property
     def RoleType(self):
-        r"""Role type 1-preset role 2-custom role.
+        r"""Role type. Valid values: 1: Preset role; 2: Custom role. 
         :rtype: int
         """
         return self._RoleType
@@ -19444,15 +19521,15 @@ class DescribeRoleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset. 
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _Keyword: Keywords for search (role name)
+        :param _Keyword: Search keyword (role name).
         :type Keyword: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
         """
         self._Offset = None
@@ -19463,7 +19540,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset. 
         :rtype: int
         """
         return self._Offset
@@ -19474,7 +19551,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -19485,7 +19562,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -19496,7 +19573,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords for search (role name)
+        r"""Search keyword (role name).
         :rtype: str
         """
         return self._Keyword
@@ -19507,7 +19584,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -19534,15 +19611,15 @@ class DescribeRoleListRequest(AbstractModel):
 
 
 class DescribeRoleListResp(AbstractModel):
-    r"""Role management list
+    r"""Response for querying the role list data.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List data
+        :param _DataList: List data.
         :type DataList: list of DescribeRoleListData
         """
         self._TotalCount = None
@@ -19550,7 +19627,7 @@ class DescribeRoleListResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -19561,7 +19638,7 @@ class DescribeRoleListResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List data
+        r"""List data.
         :rtype: list of DescribeRoleListData
         """
         return self._DataList
@@ -19596,7 +19673,7 @@ class DescribeRoleListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeRoleListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -19607,7 +19684,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeRoleListResp`
         """
@@ -19637,35 +19714,35 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeTeamDetailResp(AbstractModel):
-    r"""Team details
+    r"""Team details.
 
     """
 
     def __init__(self):
         r"""
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _TeamRoleType: Team role type 1-mini program team 2-application team
+        :param _TeamRoleType: Team role type. Valid values: 1: Mini program team; 2: Superapp team.
         :type TeamRoleType: int
-        :param _AdminUserAccount: Administrator account
+        :param _AdminUserAccount: Admin account.
         :type AdminUserAccount: str
-        :param _CreateUser: Creator
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _MemberCount: Number of team members
+        :param _MemberCount: Number of team members.
         :type MemberCount: int
-        :param _BindMiniTeamCount: Number of bound mini program teams
+        :param _BindMiniTeamCount: Number of bound mini program teams.
         :type BindMiniTeamCount: int
-        :param _BindTeamName: Name of the bound team
+        :param _BindTeamName: Name of the bound team.
         :type BindTeamName: str
-        :param _RegisterLink: Team registration link
+        :param _RegisterLink: Team registration link.
         :type RegisterLink: str
-        :param _ApplicationName: Application name. It Is required when querying details of a mini program team.
+        :param _ApplicationName: Superapp name. Only returned for mini program teams.
         :type ApplicationName: str
-        :param _ExpireTime: Team expiration time. 0 means never expire.
+        :param _ExpireTime: Team expiration time. 0 indicates no expiration. 
         :type ExpireTime: int
-        :param _Status: Team status. valid values: 1: normal; 2: disabled; 3: expired.
+        :param _Status: Team status. Valid values: 1: Active; 2: Disabled; 3: Expired. 
         :type Status: int
         """
         self._TeamName = None
@@ -19683,7 +19760,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -19694,7 +19771,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def TeamRoleType(self):
-        r"""Team role type 1-mini program team 2-application team
+        r"""Team role type. Valid values: 1: Mini program team; 2: Superapp team.
         :rtype: int
         """
         return self._TeamRoleType
@@ -19705,7 +19782,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def AdminUserAccount(self):
-        r"""Administrator account
+        r"""Admin account.
         :rtype: str
         """
         return self._AdminUserAccount
@@ -19716,7 +19793,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -19727,7 +19804,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -19738,7 +19815,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def MemberCount(self):
-        r"""Number of team members
+        r"""Number of team members.
         :rtype: int
         """
         return self._MemberCount
@@ -19749,7 +19826,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def BindMiniTeamCount(self):
-        r"""Number of bound mini program teams
+        r"""Number of bound mini program teams.
         :rtype: int
         """
         return self._BindMiniTeamCount
@@ -19760,7 +19837,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def BindTeamName(self):
-        r"""Name of the bound team
+        r"""Name of the bound team.
         :rtype: str
         """
         return self._BindTeamName
@@ -19771,7 +19848,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def RegisterLink(self):
-        r"""Team registration link
+        r"""Team registration link.
         :rtype: str
         """
         return self._RegisterLink
@@ -19782,7 +19859,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name. It Is required when querying details of a mini program team.
+        r"""Superapp name. Only returned for mini program teams.
         :rtype: str
         """
         return self._ApplicationName
@@ -19793,7 +19870,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""Team expiration time. 0 means never expire.
+        r"""Team expiration time. 0 indicates no expiration. 
         :rtype: int
         """
         return self._ExpireTime
@@ -19804,7 +19881,7 @@ class DescribeTeamDetailResp(AbstractModel):
 
     @property
     def Status(self):
-        r"""Team status. valid values: 1: normal; 2: disabled; 3: expired.
+        r"""Team status. Valid values: 1: Active; 2: Disabled; 3: Expired. 
         :rtype: int
         """
         return self._Status
@@ -19838,33 +19915,33 @@ class DescribeTeamDetailResp(AbstractModel):
 
 
 class DescribeTeamListInfoResp(AbstractModel):
-    r"""Team list information
+    r"""Team list information.
 
     """
 
     def __init__(self):
         r"""
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _AdminUserId: Administrator user ID
+        :param _AdminUserId: Admin user ID.
         :type AdminUserId: str
-        :param _AdminUserAccount: Administrator account
+        :param _AdminUserAccount: Admin account.
         :type AdminUserAccount: str
-        :param _AdminUserName: Administrator username
+        :param _AdminUserName: Admin username.
         :type AdminUserName: str
-        :param _MemberCount: Number of team members
+        :param _MemberCount: Number of team members.
         :type MemberCount: int
-        :param _RegisterLink: Team registration link
+        :param _RegisterLink: Team registration link.
         :type RegisterLink: str
-        :param _TeamRoleTypeList: Team permission type
+        :param _TeamRoleTypeList: Team role types. 
         :type TeamRoleTypeList: list of int
-        :param _RelatedTeamId: Associated team ID
+        :param _RelatedTeamId: Associated team ID.
         :type RelatedTeamId: int
-        :param _ExpireTime: Team expiration time. 0 means never expire.
+        :param _ExpireTime: Team expiration time. 0 indicates no expiration.
         :type ExpireTime: int
-        :param _Status: Team status. valid values: 1: normal; 2: disabled; 3: expired.
+        :param _Status: Team status. Valid values: 1: Active; 2: Disabled; 3: Expired. 
         :type Status: int
         """
         self._TeamId = None
@@ -19881,7 +19958,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -19892,7 +19969,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -19903,7 +19980,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def AdminUserId(self):
-        r"""Administrator user ID
+        r"""Admin user ID.
         :rtype: str
         """
         return self._AdminUserId
@@ -19914,7 +19991,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def AdminUserAccount(self):
-        r"""Administrator account
+        r"""Admin account.
         :rtype: str
         """
         return self._AdminUserAccount
@@ -19925,7 +20002,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def AdminUserName(self):
-        r"""Administrator username
+        r"""Admin username.
         :rtype: str
         """
         return self._AdminUserName
@@ -19936,7 +20013,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def MemberCount(self):
-        r"""Number of team members
+        r"""Number of team members.
         :rtype: int
         """
         return self._MemberCount
@@ -19947,7 +20024,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def RegisterLink(self):
-        r"""Team registration link
+        r"""Team registration link.
         :rtype: str
         """
         return self._RegisterLink
@@ -19958,7 +20035,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def TeamRoleTypeList(self):
-        r"""Team permission type
+        r"""Team role types. 
         :rtype: list of int
         """
         return self._TeamRoleTypeList
@@ -19969,7 +20046,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def RelatedTeamId(self):
-        r"""Associated team ID
+        r"""Associated team ID.
         :rtype: int
         """
         return self._RelatedTeamId
@@ -19980,7 +20057,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""Team expiration time. 0 means never expire.
+        r"""Team expiration time. 0 indicates no expiration.
         :rtype: int
         """
         return self._ExpireTime
@@ -19991,7 +20068,7 @@ class DescribeTeamListInfoResp(AbstractModel):
 
     @property
     def Status(self):
-        r"""Team status. valid values: 1: normal; 2: disabled; 3: expired.
+        r"""Team status. Valid values: 1: Active; 2: Disabled; 3: Expired. 
         :rtype: int
         """
         return self._Status
@@ -20030,13 +20107,13 @@ class DescribeTeamListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Pagination offset
+        :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Page size
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _Keyword: Team name to be queried
+        :param _Keyword: Search keyword (team name).
         :type Keyword: str
         """
         self._Offset = None
@@ -20046,7 +20123,7 @@ class DescribeTeamListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Pagination offset
+        r"""Pagination offset.
         :rtype: int
         """
         return self._Offset
@@ -20057,7 +20134,7 @@ class DescribeTeamListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Page size
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -20068,7 +20145,7 @@ class DescribeTeamListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -20079,7 +20156,7 @@ class DescribeTeamListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Team name to be queried
+        r"""Search keyword (team name).
         :rtype: str
         """
         return self._Keyword
@@ -20111,7 +20188,7 @@ class DescribeTeamListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeTeamPageResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -20121,7 +20198,7 @@ class DescribeTeamListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeTeamPageResp`
         """
         return self._Data
@@ -20150,27 +20227,27 @@ class DescribeTeamListResponse(AbstractModel):
 
 
 class DescribeTeamMemberInfoResp(AbstractModel):
-    r"""Team member information
+    r"""Team member information.
 
     """
 
     def __init__(self):
         r"""
-        :param _UserId: User ID
+        :param _UserId: User ID.
         :type UserId: str
-        :param _UserAccount: User account
+        :param _UserAccount: User account.
         :type UserAccount: str
-        :param _UserName: User name
+        :param _UserName: User name.
         :type UserName: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _TeamRoleName: Specifies the team role name.
+        :param _TeamRoleName: Team role name.
         :type TeamRoleName: str
-        :param _TeamRoleId: Specifies the team role ID.
+        :param _TeamRoleId: Team role ID.
         :type TeamRoleId: int
-        :param _CanEdit: Whether it is editable
+        :param _CanEdit: Whether it can be edited.
         :type CanEdit: bool
         """
         self._UserId = None
@@ -20184,7 +20261,7 @@ class DescribeTeamMemberInfoResp(AbstractModel):
 
     @property
     def UserId(self):
-        r"""User ID
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -20195,7 +20272,7 @@ class DescribeTeamMemberInfoResp(AbstractModel):
 
     @property
     def UserAccount(self):
-        r"""User account
+        r"""User account.
         :rtype: str
         """
         return self._UserAccount
@@ -20206,7 +20283,7 @@ class DescribeTeamMemberInfoResp(AbstractModel):
 
     @property
     def UserName(self):
-        r"""User name
+        r"""User name.
         :rtype: str
         """
         return self._UserName
@@ -20217,7 +20294,7 @@ class DescribeTeamMemberInfoResp(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -20228,7 +20305,7 @@ class DescribeTeamMemberInfoResp(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -20239,7 +20316,7 @@ class DescribeTeamMemberInfoResp(AbstractModel):
 
     @property
     def TeamRoleName(self):
-        r"""Specifies the team role name.
+        r"""Team role name.
         :rtype: str
         """
         return self._TeamRoleName
@@ -20250,7 +20327,7 @@ class DescribeTeamMemberInfoResp(AbstractModel):
 
     @property
     def TeamRoleId(self):
-        r"""Specifies the team role ID.
+        r"""Team role ID.
         :rtype: int
         """
         return self._TeamRoleId
@@ -20261,7 +20338,7 @@ class DescribeTeamMemberInfoResp(AbstractModel):
 
     @property
     def CanEdit(self):
-        r"""Whether it is editable
+        r"""Whether it can be edited.
         :rtype: bool
         """
         return self._CanEdit
@@ -20291,15 +20368,15 @@ class DescribeTeamMemberInfoResp(AbstractModel):
 
 
 class DescribeTeamMemberListPageResp(AbstractModel):
-    r"""List of members
+    r"""Paginated team member list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List information
+        :param _DataList: List data.
         :type DataList: list of DescribeTeamMemberInfoResp
         """
         self._TotalCount = None
@@ -20307,7 +20384,7 @@ class DescribeTeamMemberListPageResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -20318,7 +20395,7 @@ class DescribeTeamMemberListPageResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List information
+        r"""List data.
         :rtype: list of DescribeTeamMemberInfoResp
         """
         return self._DataList
@@ -20353,17 +20430,17 @@ class DescribeTeamMemberListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _Keyword: Keywords for search (user name)
+        :param _Keyword: Search keyword (user name).
         :type Keyword: str
-        :param _RoleIds: Role ID
+        :param _RoleIds: Role ID.
         :type RoleIds: list of int
         """
         self._Offset = None
@@ -20375,7 +20452,7 @@ class DescribeTeamMemberListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset.
         :rtype: int
         """
         return self._Offset
@@ -20386,7 +20463,7 @@ class DescribeTeamMemberListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -20397,7 +20474,7 @@ class DescribeTeamMemberListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -20408,7 +20485,7 @@ class DescribeTeamMemberListRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -20419,7 +20496,7 @@ class DescribeTeamMemberListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords for search (user name)
+        r"""Search keyword (user name).
         :rtype: str
         """
         return self._Keyword
@@ -20430,7 +20507,7 @@ class DescribeTeamMemberListRequest(AbstractModel):
 
     @property
     def RoleIds(self):
-        r"""Role ID
+        r"""Role ID.
         :rtype: list of int
         """
         return self._RoleIds
@@ -20464,7 +20541,7 @@ class DescribeTeamMemberListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeTeamMemberListPageResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -20474,7 +20551,7 @@ class DescribeTeamMemberListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeTeamMemberListPageResp`
         """
         return self._Data
@@ -20503,15 +20580,15 @@ class DescribeTeamMemberListResponse(AbstractModel):
 
 
 class DescribeTeamPageResp(AbstractModel):
-    r"""Team list
+    r"""Paginated team list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total count
+        :param _TotalCount: Total number of entries.
         :type TotalCount: int
-        :param _DataList: List information
+        :param _DataList: List data.
         :type DataList: list of DescribeTeamListInfoResp
         """
         self._TotalCount = None
@@ -20519,7 +20596,7 @@ class DescribeTeamPageResp(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total count
+        r"""Total number of entries.
         :rtype: int
         """
         return self._TotalCount
@@ -20530,7 +20607,7 @@ class DescribeTeamPageResp(AbstractModel):
 
     @property
     def DataList(self):
-        r"""List information
+        r"""List data.
         :rtype: list of DescribeTeamListInfoResp
         """
         return self._DataList
@@ -20565,9 +20642,9 @@ class DescribeTeamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._TeamId = None
@@ -20575,7 +20652,7 @@ class DescribeTeamRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -20586,7 +20663,7 @@ class DescribeTeamRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -20616,7 +20693,7 @@ class DescribeTeamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeTeamDetailResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -20626,7 +20703,7 @@ class DescribeTeamResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeTeamDetailResp`
         """
         return self._Data
@@ -20766,20 +20843,19 @@ class DescribeTempSecret4UploadFile2CosResponse(AbstractModel):
 
 
 class DescribeUserDetailResp(AbstractModel):
-    r"""User details
+    r"""Response for querying user details.
 
     """
 
     def __init__(self):
         r"""
-        :param _UserId: User iD.
+        :param _UserId: User ID.
         :type UserId: str
-        :param _UserAccount: User account
+        :param _UserAccount: User account.
         :type UserAccount: str
-        :param _AccountType: User account
-1 - super admin 2 - platform admin 3 - ordinary member. not passing indicates all.
+        :param _AccountType: User account type. Valid values: 1: Super admin; 2: Platform admin; 3: Regular member. If left empty, all types are returned.
         :type AccountType: int
-        :param _UserName: User name
+        :param _UserName: User name.
         :type UserName: str
         """
         self._UserId = None
@@ -20789,7 +20865,7 @@ class DescribeUserDetailResp(AbstractModel):
 
     @property
     def UserId(self):
-        r"""User iD.
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -20800,7 +20876,7 @@ class DescribeUserDetailResp(AbstractModel):
 
     @property
     def UserAccount(self):
-        r"""User account
+        r"""User account.
         :rtype: str
         """
         return self._UserAccount
@@ -20811,8 +20887,7 @@ class DescribeUserDetailResp(AbstractModel):
 
     @property
     def AccountType(self):
-        r"""User account
-1 - super admin 2 - platform admin 3 - ordinary member. not passing indicates all.
+        r"""User account type. Valid values: 1: Super admin; 2: Platform admin; 3: Regular member. If left empty, all types are returned.
         :rtype: int
         """
         return self._AccountType
@@ -20823,7 +20898,7 @@ class DescribeUserDetailResp(AbstractModel):
 
     @property
     def UserName(self):
-        r"""User name
+        r"""User name.
         :rtype: str
         """
         return self._UserName
@@ -20849,25 +20924,25 @@ class DescribeUserDetailResp(AbstractModel):
 
 
 class DescribeUserListData(AbstractModel):
-    r"""User list data
+    r"""User list data.
 
     """
 
     def __init__(self):
         r"""
-        :param _UserId: User ID
+        :param _UserId: User ID.
         :type UserId: str
-        :param _UserAccount: User account
+        :param _UserAccount: User account.
         :type UserAccount: str
-        :param _AccountType: Account type. 1: super administrator; 2: platform administrator; 3: ordinary member.
+        :param _AccountType: User account type. Valid values: 1: Super admin; 2: Platform admin; 3: Regular member.
         :type AccountType: int
-        :param _UserName: User name
+        :param _UserName: User name.
         :type UserName: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _Status: Status. 1: normal; 2: disabled.
+        :param _Status: Status. Valid values: 1: Active; 2: Disabled.
         :type Status: int
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
         """
         self._UserId = None
@@ -20880,7 +20955,7 @@ class DescribeUserListData(AbstractModel):
 
     @property
     def UserId(self):
-        r"""User ID
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -20891,7 +20966,7 @@ class DescribeUserListData(AbstractModel):
 
     @property
     def UserAccount(self):
-        r"""User account
+        r"""User account.
         :rtype: str
         """
         return self._UserAccount
@@ -20902,7 +20977,7 @@ class DescribeUserListData(AbstractModel):
 
     @property
     def AccountType(self):
-        r"""Account type. 1: super administrator; 2: platform administrator; 3: ordinary member.
+        r"""User account type. Valid values: 1: Super admin; 2: Platform admin; 3: Regular member.
         :rtype: int
         """
         return self._AccountType
@@ -20913,7 +20988,7 @@ class DescribeUserListData(AbstractModel):
 
     @property
     def UserName(self):
-        r"""User name
+        r"""User name.
         :rtype: str
         """
         return self._UserName
@@ -20924,7 +20999,7 @@ class DescribeUserListData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreateTime
@@ -20935,7 +21010,7 @@ class DescribeUserListData(AbstractModel):
 
     @property
     def Status(self):
-        r"""Status. 1: normal; 2: disabled.
+        r"""Status. Valid values: 1: Active; 2: Disabled.
         :rtype: int
         """
         return self._Status
@@ -20946,7 +21021,7 @@ class DescribeUserListData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -20981,17 +21056,17 @@ class DescribeUserListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset. 
         :type Offset: int
-        :param _Limit: Number of results per page
+        :param _Limit: Number of entries per page.
         :type Limit: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _Keyword: Keywords for search (username or account)
+        :param _Keyword: Search keyword (username or account).
         :type Keyword: str
-        :param _AccountType: User account 1 - Super admin 2 - Platform admin 3 - Member
+        :param _AccountType: User account type. Valid values: 1: Super admin; 2: Platform admin; 3: Regular member. If left empty, all types are returned. 
         :type AccountType: int
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID. If left empty, all teams are returned.
         :type TeamId: str
         """
         self._Offset = None
@@ -21003,7 +21078,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Page offset
+        r"""Pagination offset. 
         :rtype: int
         """
         return self._Offset
@@ -21014,7 +21089,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page
+        r"""Number of entries per page.
         :rtype: int
         """
         return self._Limit
@@ -21025,7 +21100,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -21036,7 +21111,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""Keywords for search (username or account)
+        r"""Search keyword (username or account).
         :rtype: str
         """
         return self._Keyword
@@ -21047,7 +21122,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def AccountType(self):
-        r"""User account 1 - Super admin 2 - Platform admin 3 - Member
+        r"""User account type. Valid values: 1: Super admin; 2: Platform admin; 3: Regular member. If left empty, all types are returned. 
         :rtype: int
         """
         return self._AccountType
@@ -21058,7 +21133,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID. If left empty, all teams are returned.
         :rtype: str
         """
         return self._TeamId
@@ -21086,16 +21161,16 @@ class DescribeUserListRequest(AbstractModel):
 
 
 class DescribeUserListResp(AbstractModel):
-    r"""User management list
+    r"""Response for querying the user list.
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of entries
+        :param _TotalCount: Total number of entries.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param _DataList: List data
+        :param _DataList: List data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DataList: list of DescribeUserListData
         """
@@ -21104,7 +21179,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Total number of entries
+        r"""Total number of entries.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -21116,7 +21191,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataList(self):
-        r"""List data
+        r"""List data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DescribeUserListData
         """
@@ -21152,7 +21227,7 @@ class DescribeUserListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeUserListResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -21162,7 +21237,7 @@ class DescribeUserListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeUserListResp`
         """
         return self._Data
@@ -21197,9 +21272,9 @@ class DescribeUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: User ID
+        :param _UserId: User ID.
         :type UserId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._UserId = None
@@ -21207,7 +21282,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""User ID
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -21218,7 +21293,7 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -21248,7 +21323,7 @@ class DescribeUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeUserDetailResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -21258,7 +21333,7 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeUserDetailResp`
         """
         return self._Data
@@ -21293,9 +21368,9 @@ class DisableApplicationSensitiveAPIRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _APIId: API ID
+        :param _APIId: API ID.
         :type APIId: str
         """
         self._PlatformId = None
@@ -21303,7 +21378,7 @@ class DisableApplicationSensitiveAPIRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -21314,7 +21389,7 @@ class DisableApplicationSensitiveAPIRequest(AbstractModel):
 
     @property
     def APIId(self):
-        r"""API ID
+        r"""API ID.
         :rtype: str
         """
         return self._APIId
@@ -21344,7 +21419,7 @@ class DisableApplicationSensitiveAPIResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -21354,7 +21429,7 @@ class DisableApplicationSensitiveAPIResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -21383,13 +21458,13 @@ class DisableApplicationSensitiveAPIResponse(AbstractModel):
 
 
 class DownloadApplicationConfigResp(AbstractModel):
-    r"""Application configuration info
+    r"""Superapp configuration information.
 
     """
 
     def __init__(self):
         r"""
-        :param _File: Configuration information in Base64 format
+        :param _File: Configuration information in Base64 encoding.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type File: str
         """
@@ -21397,7 +21472,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def File(self):
-        r"""Configuration information in Base64 format
+        r"""Configuration information in Base64 encoding.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -21427,9 +21502,9 @@ class EnableApplicationSensitiveAPIRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _APIId: API ID
+        :param _APIId: API ID.
         :type APIId: str
         """
         self._PlatformId = None
@@ -21437,7 +21512,7 @@ class EnableApplicationSensitiveAPIRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -21448,7 +21523,7 @@ class EnableApplicationSensitiveAPIRequest(AbstractModel):
 
     @property
     def APIId(self):
-        r"""API ID
+        r"""API ID.
         :rtype: str
         """
         return self._APIId
@@ -21478,7 +21553,7 @@ class EnableApplicationSensitiveAPIResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -21488,7 +21563,7 @@ class EnableApplicationSensitiveAPIResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -21517,20 +21592,20 @@ class EnableApplicationSensitiveAPIResponse(AbstractModel):
 
 
 class GlobalDomainDeleteResp(AbstractModel):
-    r"""Response of deleting a global domain name
+    r"""Response for deleting a global domain.
 
     """
 
     def __init__(self):
         r"""
-        :param _Result: Result.
+        :param _Result: Operation result.
         :type Result: bool
         """
         self._Result = None
 
     @property
     def Result(self):
-        r"""Result.
+        r"""Operation result.
         :rtype: bool
         """
         return self._Result
@@ -21553,20 +21628,20 @@ class GlobalDomainDeleteResp(AbstractModel):
 
 
 class GlobalDomainModifyRespResp(AbstractModel):
-    r"""Response of global domain name modification
+    r"""Response for modifying a global domain.
 
     """
 
     def __init__(self):
         r"""
-        :param _Result: 0: success; 1: allowed domains exist; 2: blocked domains exist.
+        :param _Result: Operation result. Valid values: 0: Succeeded; 1: Exists in the allowlist; 2: Exists in the blocklist. 
         :type Result: int
         """
         self._Result = None
 
     @property
     def Result(self):
-        r"""0: success; 1: allowed domains exist; 2: blocked domains exist.
+        r"""Operation result. Valid values: 0: Succeeded; 1: Exists in the allowlist; 2: Exists in the blocklist. 
         :rtype: int
         """
         return self._Result
@@ -21589,17 +21664,17 @@ class GlobalDomainModifyRespResp(AbstractModel):
 
 
 class MAUChartData(AbstractModel):
-    r"""MAU line chart data
+    r"""MAU line chart data.
 
     """
 
     def __init__(self):
         r"""
-        :param _DataTime: Year and month: 2024-12
+        :param _DataTime: Date in YYYYMM format.
         :type DataTime: int
-        :param _MAUCount: Value
+        :param _MAUCount: MAU count.
         :type MAUCount: int
-        :param _UpdateTime: Data update time, only available when MAUCount is greater than 0.
+        :param _UpdateTime: Data update time. Only has a value when MAUCount is greater than 0.
         :type UpdateTime: int
         """
         self._DataTime = None
@@ -21608,7 +21683,7 @@ class MAUChartData(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Year and month: 2024-12
+        r"""Date in YYYYMM format.
         :rtype: int
         """
         return self._DataTime
@@ -21619,7 +21694,7 @@ class MAUChartData(AbstractModel):
 
     @property
     def MAUCount(self):
-        r"""Value
+        r"""MAU count.
         :rtype: int
         """
         return self._MAUCount
@@ -21630,7 +21705,7 @@ class MAUChartData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Data update time, only available when MAUCount is greater than 0.
+        r"""Data update time. Only has a value when MAUCount is greater than 0.
         :rtype: int
         """
         return self._UpdateTime
@@ -21655,15 +21730,15 @@ class MAUChartData(AbstractModel):
 
 
 class MAUDetail(AbstractModel):
-    r"""Mini program MAU details
+    r"""Mini program MAU details.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPName: Mini program name
+        :param _MNPName: Mini program name.
         :type MNPName: str
-        :param _DataList: MAU details
+        :param _DataList: MAU details.
         :type DataList: list of MAULineChartData
         """
         self._MNPName = None
@@ -21671,7 +21746,7 @@ class MAUDetail(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""Mini program name.
         :rtype: str
         """
         return self._MNPName
@@ -21682,7 +21757,7 @@ class MAUDetail(AbstractModel):
 
     @property
     def DataList(self):
-        r"""MAU details
+        r"""MAU details.
         :rtype: list of MAULineChartData
         """
         return self._DataList
@@ -21711,27 +21786,27 @@ class MAUDetail(AbstractModel):
 
 
 class MAUDetailData(AbstractModel):
-    r"""MAU detailed data
+    r"""MAU detailed data.
 
     """
 
     def __init__(self):
         r"""
-        :param _DataTime: Date
+        :param _DataTime: Date.
         :type DataTime: str
-        :param _MNPName: Mini program name
+        :param _MNPName: Mini program name.
         :type MNPName: str
-        :param _MNPType: Mini program type
+        :param _MNPType: Mini program category.
         :type MNPType: str
-        :param _EstimatedEarnings: Estimated revenue
+        :param _EstimatedEarnings: Estimated revenue.
         :type EstimatedEarnings: str
-        :param _RequestsNumber: Requests
+        :param _RequestsNumber: Number of requests.
         :type RequestsNumber: int
-        :param _Impressions: Impressions
+        :param _Impressions: Number of impressions.
         :type Impressions: int
-        :param _ECPM: Effective Cost Per Mille
+        :param _ECPM: eCPM (effective cost per mille).
         :type ECPM: str
-        :param _ClicksNumber: Taps
+        :param _ClicksNumber: Number of taps.
         :type ClicksNumber: int
         """
         self._DataTime = None
@@ -21745,7 +21820,7 @@ class MAUDetailData(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Date
+        r"""Date.
         :rtype: str
         """
         return self._DataTime
@@ -21756,7 +21831,7 @@ class MAUDetailData(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""Mini program name.
         :rtype: str
         """
         return self._MNPName
@@ -21767,7 +21842,7 @@ class MAUDetailData(AbstractModel):
 
     @property
     def MNPType(self):
-        r"""Mini program type
+        r"""Mini program category.
         :rtype: str
         """
         return self._MNPType
@@ -21778,7 +21853,7 @@ class MAUDetailData(AbstractModel):
 
     @property
     def EstimatedEarnings(self):
-        r"""Estimated revenue
+        r"""Estimated revenue.
         :rtype: str
         """
         return self._EstimatedEarnings
@@ -21789,7 +21864,7 @@ class MAUDetailData(AbstractModel):
 
     @property
     def RequestsNumber(self):
-        r"""Requests
+        r"""Number of requests.
         :rtype: int
         """
         return self._RequestsNumber
@@ -21800,7 +21875,7 @@ class MAUDetailData(AbstractModel):
 
     @property
     def Impressions(self):
-        r"""Impressions
+        r"""Number of impressions.
         :rtype: int
         """
         return self._Impressions
@@ -21811,7 +21886,7 @@ class MAUDetailData(AbstractModel):
 
     @property
     def ECPM(self):
-        r"""Effective Cost Per Mille
+        r"""eCPM (effective cost per mille).
         :rtype: str
         """
         return self._ECPM
@@ -21822,7 +21897,7 @@ class MAUDetailData(AbstractModel):
 
     @property
     def ClicksNumber(self):
-        r"""Taps
+        r"""Number of taps.
         :rtype: int
         """
         return self._ClicksNumber
@@ -21852,23 +21927,21 @@ class MAUDetailData(AbstractModel):
 
 
 class MAUIndicatorCard(AbstractModel):
-    r"""MAU metric comparison response data
+    r"""MAU metric comparison response data.
 
     """
 
     def __init__(self):
         r"""
-        :param _ComparisonRatio: Growth rate (targetData - sourceData) / sourceData, returns 0 when SourceMAUNum is 0
+        :param _ComparisonRatio: Growth rate, calculated as (targetData - sourceData) / sourceData. Returns 0 when SourceMAUNum is 0.
         :type ComparisonRatio: str
-        :param _ComparisonResult: 1 Increase
-2 Decrease
-Returns 0 when SourceMAUNum is 0
+        :param _ComparisonResult: Comparison result. Valid values: 1: Increase; 2: Decrease. Returns 0 when SourceMAUNum is 0.
         :type ComparisonResult: int
-        :param _SourceMAUNum: Last month's MAU data
+        :param _SourceMAUNum: Previous month MAU. 
         :type SourceMAUNum: int
-        :param _TargetMAUNum: This month's MAU data
+        :param _TargetMAUNum: Current month MAU.
         :type TargetMAUNum: int
-        :param _FlushTime: Data timestamp
+        :param _FlushTime: Data timestamp.
         :type FlushTime: int
         """
         self._ComparisonRatio = None
@@ -21879,7 +21952,7 @@ Returns 0 when SourceMAUNum is 0
 
     @property
     def ComparisonRatio(self):
-        r"""Growth rate (targetData - sourceData) / sourceData, returns 0 when SourceMAUNum is 0
+        r"""Growth rate, calculated as (targetData - sourceData) / sourceData. Returns 0 when SourceMAUNum is 0.
         :rtype: str
         """
         return self._ComparisonRatio
@@ -21890,9 +21963,7 @@ Returns 0 when SourceMAUNum is 0
 
     @property
     def ComparisonResult(self):
-        r"""1 Increase
-2 Decrease
-Returns 0 when SourceMAUNum is 0
+        r"""Comparison result. Valid values: 1: Increase; 2: Decrease. Returns 0 when SourceMAUNum is 0.
         :rtype: int
         """
         return self._ComparisonResult
@@ -21903,7 +21974,7 @@ Returns 0 when SourceMAUNum is 0
 
     @property
     def SourceMAUNum(self):
-        r"""Last month's MAU data
+        r"""Previous month MAU. 
         :rtype: int
         """
         return self._SourceMAUNum
@@ -21914,7 +21985,7 @@ Returns 0 when SourceMAUNum is 0
 
     @property
     def TargetMAUNum(self):
-        r"""This month's MAU data
+        r"""Current month MAU.
         :rtype: int
         """
         return self._TargetMAUNum
@@ -21925,7 +21996,7 @@ Returns 0 when SourceMAUNum is 0
 
     @property
     def FlushTime(self):
-        r"""Data timestamp
+        r"""Data timestamp.
         :rtype: int
         """
         return self._FlushTime
@@ -21952,16 +22023,16 @@ Returns 0 when SourceMAUNum is 0
 
 
 class MAULineChartData(AbstractModel):
-    r"""Line chart data
+    r"""Line chart data.
 
     """
 
     def __init__(self):
         r"""
-        :param _DataTime: Year-month date data
+        :param _DataTime: Date in YYYYMM format.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DataTime: int
-        :param _MAUCount: MAU data
+        :param _MAUCount: MAU count. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MAUCount: str
         """
@@ -21970,7 +22041,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataTime(self):
-        r"""Year-month date data
+        r"""Date in YYYYMM format.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -21982,7 +22053,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MAUCount(self):
-        r"""MAU data
+        r"""MAU count. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22007,19 +22078,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MNGMAULineChartData(AbstractModel):
-    r"""Mini game MAU line chart data
+    r"""Mini game MAU line chart data.
 
     """
 
     def __init__(self):
         r"""
-        :param _DataTime: Year-month-date data
+        :param _DataTime: Date in YYYYMM format. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DataTime: int
-        :param _MAUCount: MAU data
+        :param _MAUCount: MAU count.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MAUCount: int
-        :param _UpdateTime: Update time
+        :param _UpdateTime: Last modified time.
         :type UpdateTime: int
         """
         self._DataTime = None
@@ -22028,7 +22099,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataTime(self):
-        r"""Year-month-date data
+        r"""Date in YYYYMM format. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22040,7 +22111,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MAUCount(self):
-        r"""MAU data
+        r"""MAU count.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22052,7 +22123,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""Last modified time.
         :rtype: int
         """
         return self._UpdateTime
@@ -22077,31 +22148,31 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MNGPaymentOverview(AbstractModel):
-    r"""Payment overview data
+    r"""Payment overview data.
 
     """
 
     def __init__(self):
         r"""
-        :param _ARPPu: Paid revenue / Number of paying users * 100%
+        :param _ARPPu: ARPPU. Calculated as: paying revenue / paying users * 100%.
         :type ARPPu: str
-        :param _DataTime: Data time in YYYYMMDD format
+        :param _DataTime: Data time in YYYYMMDD format.
         :type DataTime: str
-        :param _NewPaidUseRatio: New paying user ratio = NewUserNum / OrderUserNum * 100%
+        :param _NewPaidUseRatio: New paying user ratio. Calculated as: NewUserNum / OrderUserNum * 100%.
         :type NewPaidUseRatio: str
-        :param _NewPaidUserNum: Number of new paying users
+        :param _NewPaidUserNum: Number of new paying users.
         :type NewPaidUserNum: int
-        :param _NewUserPaidAmount: Total payment amount from new users
+        :param _NewUserPaidAmount: Total payment amount from new users.
         :type NewUserPaidAmount: str
-        :param _PaidAmount: Total payment amount
+        :param _PaidAmount: Total payment amount.
         :type PaidAmount: str
-        :param _PaidUserNum: Number of paying users
+        :param _PaidUserNum: Number of paying users.
         :type PaidUserNum: int
-        :param _RefundAmount: Refund amount
+        :param _RefundAmount: Refund amount.
         :type RefundAmount: str
-        :param _RefundNum: Number of refund orders
+        :param _RefundNum: Number of refund orders.
         :type RefundNum: int
-        :param _UpdateTime: Update time (timestamp in seconds)
+        :param _UpdateTime: Last modified time (timestamp in seconds).
         :type UpdateTime: int
         """
         self._ARPPu = None
@@ -22117,7 +22188,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def ARPPu(self):
-        r"""Paid revenue / Number of paying users * 100%
+        r"""ARPPU. Calculated as: paying revenue / paying users * 100%.
         :rtype: str
         """
         return self._ARPPu
@@ -22128,7 +22199,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Data time in YYYYMMDD format
+        r"""Data time in YYYYMMDD format.
         :rtype: str
         """
         return self._DataTime
@@ -22139,7 +22210,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def NewPaidUseRatio(self):
-        r"""New paying user ratio = NewUserNum / OrderUserNum * 100%
+        r"""New paying user ratio. Calculated as: NewUserNum / OrderUserNum * 100%.
         :rtype: str
         """
         return self._NewPaidUseRatio
@@ -22150,7 +22221,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def NewPaidUserNum(self):
-        r"""Number of new paying users
+        r"""Number of new paying users.
         :rtype: int
         """
         return self._NewPaidUserNum
@@ -22161,7 +22232,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def NewUserPaidAmount(self):
-        r"""Total payment amount from new users
+        r"""Total payment amount from new users.
         :rtype: str
         """
         return self._NewUserPaidAmount
@@ -22172,7 +22243,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def PaidAmount(self):
-        r"""Total payment amount
+        r"""Total payment amount.
         :rtype: str
         """
         return self._PaidAmount
@@ -22183,7 +22254,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def PaidUserNum(self):
-        r"""Number of paying users
+        r"""Number of paying users.
         :rtype: int
         """
         return self._PaidUserNum
@@ -22194,7 +22265,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def RefundAmount(self):
-        r"""Refund amount
+        r"""Refund amount.
         :rtype: str
         """
         return self._RefundAmount
@@ -22205,7 +22276,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def RefundNum(self):
-        r"""Number of refund orders
+        r"""Number of refund orders.
         :rtype: int
         """
         return self._RefundNum
@@ -22216,7 +22287,7 @@ class MNGPaymentOverview(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time (timestamp in seconds)
+        r"""Last modified time (timestamp in seconds).
         :rtype: int
         """
         return self._UpdateTime
@@ -22248,23 +22319,23 @@ class MNGPaymentOverview(AbstractModel):
 
 
 class MNGTypeDefine(AbstractModel):
-    r"""Mini game type definition
+    r"""Mini game category definition.
 
     """
 
     def __init__(self):
         r"""
-        :param _TypeName: <p>Mini game category name</p>
+        :param _TypeName: <p>Mini game category name.</p>
         :type TypeName: str
-        :param _TypeValue: <p>Mini game category</p>
+        :param _TypeValue: <p>Mini game category.</p>
         :type TypeValue: list of str
-        :param _TypeId: <p>Category ID</p>
+        :param _TypeId: <p>Category ID.</p>
         :type TypeId: int
-        :param _CreateTime: <p>Creation time</p>
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: int
-        :param _CreateUser: <p>Creator</p>
+        :param _CreateUser: <p>Creator.</p>
         :type CreateUser: str
-        :param _IsSystem: <p>Whether this is a system category</p>
+        :param _IsSystem: <p>Whether it is a system category.</p>
         :type IsSystem: bool
         """
         self._TypeName = None
@@ -22276,7 +22347,7 @@ class MNGTypeDefine(AbstractModel):
 
     @property
     def TypeName(self):
-        r"""<p>Mini game category name</p>
+        r"""<p>Mini game category name.</p>
         :rtype: str
         """
         return self._TypeName
@@ -22287,7 +22358,7 @@ class MNGTypeDefine(AbstractModel):
 
     @property
     def TypeValue(self):
-        r"""<p>Mini game category</p>
+        r"""<p>Mini game category.</p>
         :rtype: list of str
         """
         return self._TypeValue
@@ -22298,7 +22369,7 @@ class MNGTypeDefine(AbstractModel):
 
     @property
     def TypeId(self):
-        r"""<p>Category ID</p>
+        r"""<p>Category ID.</p>
         :rtype: int
         """
         return self._TypeId
@@ -22309,7 +22380,7 @@ class MNGTypeDefine(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""<p>Creation time</p>
+        r"""<p>Creation time.</p>
         :rtype: int
         """
         return self._CreateTime
@@ -22320,7 +22391,7 @@ class MNGTypeDefine(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""<p>Creator</p>
+        r"""<p>Creator.</p>
         :rtype: str
         """
         return self._CreateUser
@@ -22331,7 +22402,7 @@ class MNGTypeDefine(AbstractModel):
 
     @property
     def IsSystem(self):
-        r"""<p>Whether this is a system category</p>
+        r"""<p>Whether it is a system category.</p>
         :rtype: bool
         """
         return self._IsSystem
@@ -22359,25 +22430,25 @@ class MNGTypeDefine(AbstractModel):
 
 
 class MNPAdOverview(AbstractModel):
-    r"""Mini program advertisement overview
+    r"""Mini program ad overview.
 
     """
 
     def __init__(self):
         r"""
-        :param _EstimatedEarnings: Estimated revenue
+        :param _EstimatedEarnings: Estimated revenue.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EstimatedEarnings: str
-        :param _ECPM: Effective Cost Per Mille
+        :param _ECPM: eCPM (effective cost per mille).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ECPM: str
-        :param _RequestsNumber: Requests
+        :param _RequestsNumber: Number of requests.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RequestsNumber: int
-        :param _Impressions: Impressions
+        :param _Impressions: Number of impressions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Impressions: int
-        :param _ClicksNumber: Taps
+        :param _ClicksNumber: Number of taps.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClicksNumber: int
         """
@@ -22389,7 +22460,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EstimatedEarnings(self):
-        r"""Estimated revenue
+        r"""Estimated revenue.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22401,7 +22472,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ECPM(self):
-        r"""Effective Cost Per Mille
+        r"""eCPM (effective cost per mille).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22413,7 +22484,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestsNumber(self):
-        r"""Requests
+        r"""Number of requests.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22425,7 +22496,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Impressions(self):
-        r"""Impressions
+        r"""Number of impressions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22437,7 +22508,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClicksNumber(self):
-        r"""Taps
+        r"""Number of taps.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22465,13 +22536,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MNPAdvertisingOverview(AbstractModel):
-    r"""Mini program advertising revenue
+    r"""Mini program advertising revenue.
 
     """
 
     def __init__(self):
         r"""
-        :param _OverviewData: Data
+        :param _OverviewData: Data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OverviewData: :class:`tencentcloud.tcsas.v20250106.models.MNPAdOverview`
         """
@@ -22479,7 +22550,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OverviewData(self):
-        r"""Data
+        r"""Data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.MNPAdOverview`
         """
@@ -22504,53 +22575,230 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
-class MNPPaymentOverview(AbstractModel):
-    r"""Payment overview data
+class MNPDetailI18nVO(AbstractModel):
+    r"""The mini program name and description in multiple languages.
 
     """
 
     def __init__(self):
         r"""
-        :param _OrderMNPNum: Number of mini programs involved in the order
+        :param _ID: Language ID.
+        :type ID: int
+        :param _Lang: Language type. Valid values: en-US: English; zh-CN: Simplified Chinese; zh-Hant: Traditional Chinese; fr-FR: French; ar-SA: Arabic; id-ID: Indonesian; vi-VN: Vietnamese. Default value: en-US.
+        :type Lang: str
+        :param _IsDefault: Whether this is the default language. Valid values: 0: No; 1: Yes. Default value: 0.
+        :type IsDefault: int
+        :param _MNPName: Mini program name.
+        :type MNPName: str
+        :param _MNPIntro: Mini program introduction.
+        :type MNPIntro: str
+        """
+        self._ID = None
+        self._Lang = None
+        self._IsDefault = None
+        self._MNPName = None
+        self._MNPIntro = None
+
+    @property
+    def ID(self):
+        r"""Language ID.
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Lang(self):
+        r"""Language type. Valid values: en-US: English; zh-CN: Simplified Chinese; zh-Hant: Traditional Chinese; fr-FR: French; ar-SA: Arabic; id-ID: Indonesian; vi-VN: Vietnamese. Default value: en-US.
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def IsDefault(self):
+        r"""Whether this is the default language. Valid values: 0: No; 1: Yes. Default value: 0.
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def MNPName(self):
+        r"""Mini program name.
+        :rtype: str
+        """
+        return self._MNPName
+
+    @MNPName.setter
+    def MNPName(self, MNPName):
+        self._MNPName = MNPName
+
+    @property
+    def MNPIntro(self):
+        r"""Mini program introduction.
+        :rtype: str
+        """
+        return self._MNPIntro
+
+    @MNPIntro.setter
+    def MNPIntro(self, MNPIntro):
+        self._MNPIntro = MNPIntro
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Lang = params.get("Lang")
+        self._IsDefault = params.get("IsDefault")
+        self._MNPName = params.get("MNPName")
+        self._MNPIntro = params.get("MNPIntro")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MNPI18NSyncDto(AbstractModel):
+    r"""The mini program name and description in multiple languages.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Lang: Language type. Valid values: en-US: English; zh-CN: Simplified Chinese; zh-Hant: Traditional Chinese; fr-FR: French; ar-SA: Arabic; id-ID: Indonesian; vi-VN: Vietnamese. Default value: en-US.
+        :type Lang: str
+        :param _IsDefault: Whether this is the default language. Valid values: 0: No; 1: Yes. Default value: 0.
+        :type IsDefault: int
+        :param _MNPName: Mini program name.
+        :type MNPName: str
+        :param _MNPIntro: Mini program introduction.
+        :type MNPIntro: str
+        """
+        self._Lang = None
+        self._IsDefault = None
+        self._MNPName = None
+        self._MNPIntro = None
+
+    @property
+    def Lang(self):
+        r"""Language type. Valid values: en-US: English; zh-CN: Simplified Chinese; zh-Hant: Traditional Chinese; fr-FR: French; ar-SA: Arabic; id-ID: Indonesian; vi-VN: Vietnamese. Default value: en-US.
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def IsDefault(self):
+        r"""Whether this is the default language. Valid values: 0: No; 1: Yes. Default value: 0.
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def MNPName(self):
+        r"""Mini program name.
+        :rtype: str
+        """
+        return self._MNPName
+
+    @MNPName.setter
+    def MNPName(self, MNPName):
+        self._MNPName = MNPName
+
+    @property
+    def MNPIntro(self):
+        r"""Mini program introduction.
+        :rtype: str
+        """
+        return self._MNPIntro
+
+    @MNPIntro.setter
+    def MNPIntro(self, MNPIntro):
+        self._MNPIntro = MNPIntro
+
+
+    def _deserialize(self, params):
+        self._Lang = params.get("Lang")
+        self._IsDefault = params.get("IsDefault")
+        self._MNPName = params.get("MNPName")
+        self._MNPIntro = params.get("MNPIntro")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MNPPaymentOverview(AbstractModel):
+    r"""Payment overview data.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderMNPNum: Mini program count with orders.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrderMNPNum: int
-        :param _OrderNum: Total orders
+        :param _OrderNum: Total orders.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrderNum: int
-        :param _OrderPaidNum: Total paid orders
+        :param _OrderPaidNum: Total paid orders.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrderPaidNum: int
-        :param _OrderRefundNum: Total refunded orders
+        :param _OrderRefundNum: Number of refund orders.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrderRefundNum: int
-        :param _OrderUnpaidNum: Total unpaid orders
+        :param _OrderUnpaidNum: Total unpaid orders.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrderUnpaidNum: int
-        :param _OrderUserNum: Total order users
+        :param _OrderUserNum: Total order users.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrderUserNum: int
-        :param _PaidUserNum: Total paying users
+        :param _PaidUserNum: Total paying users.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PaidUserNum: int
-        :param _PaidAmount: Amount paid
+        :param _PaidAmount: Amount paid.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PaidAmount: str
-        :param _RefundAmount: Total amount refunded
+        :param _RefundAmount: Total amount refunded.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RefundAmount: str
-        :param _TotalAmount: Total order amount
+        :param _TotalAmount: Total order amount.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalAmount: str
-        :param _UnpaidAmount: Unpaid amount
+        :param _UnpaidAmount: Unpaid amount.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UnpaidAmount: str
-        :param _UpdateTime: Timestamp
+        :param _UpdateTime: Timestamp.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: int
-        :param _DataTime: Data date
+        :param _DataTime: Data time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DataTime: str
         """
@@ -22570,7 +22818,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderMNPNum(self):
-        r"""Number of mini programs involved in the order
+        r"""Mini program count with orders.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22582,7 +22830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderNum(self):
-        r"""Total orders
+        r"""Total orders.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -22595,7 +22843,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderPaidNum(self):
-        r"""Total paid orders
+        r"""Total paid orders.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -22608,7 +22856,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderRefundNum(self):
-        r"""Total refunded orders
+        r"""Number of refund orders.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
@@ -22621,7 +22869,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderUnpaidNum(self):
-        r"""Total unpaid orders
+        r"""Total unpaid orders.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22633,7 +22881,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderUserNum(self):
-        r"""Total order users
+        r"""Total order users.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22645,7 +22893,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PaidUserNum(self):
-        r"""Total paying users
+        r"""Total paying users.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22657,7 +22905,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PaidAmount(self):
-        r"""Amount paid
+        r"""Amount paid.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22669,7 +22917,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RefundAmount(self):
-        r"""Total amount refunded
+        r"""Total amount refunded.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22681,7 +22929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalAmount(self):
-        r"""Total order amount
+        r"""Total order amount.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22693,7 +22941,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnpaidAmount(self):
-        r"""Unpaid amount
+        r"""Unpaid amount.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22705,7 +22953,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
-        r"""Timestamp
+        r"""Timestamp.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -22717,7 +22965,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataTime(self):
-        r"""Data date
+        r"""Data time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -22753,23 +23001,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MNPTypeDefine(AbstractModel):
-    r"""Mini program category information
+    r"""Mini program category information.
 
     """
 
     def __init__(self):
         r"""
-        :param _TypeName: Specifies the mini program category name.
+        :param _TypeName: Mini program category name.
         :type TypeName: str
-        :param _TypeValue: Mini program category value.
+        :param _TypeValue: Mini program category values.
         :type TypeValue: list of str
         :param _TypeId: Category ID.
         :type TypeId: int
-        :param _CreateTime: Creation time
+        :param _CreateTime: Creation time.
         :type CreateTime: int
-        :param _CreateUser: Creator
+        :param _CreateUser: Creator.
         :type CreateUser: str
-        :param _IsSystem: Indicates whether it is a system category.
+        :param _IsSystem: Whether it is a system category.
         :type IsSystem: bool
         """
         self._TypeName = None
@@ -22781,7 +23029,7 @@ class MNPTypeDefine(AbstractModel):
 
     @property
     def TypeName(self):
-        r"""Specifies the mini program category name.
+        r"""Mini program category name.
         :rtype: str
         """
         return self._TypeName
@@ -22792,7 +23040,7 @@ class MNPTypeDefine(AbstractModel):
 
     @property
     def TypeValue(self):
-        r"""Mini program category value.
+        r"""Mini program category values.
         :rtype: list of str
         """
         return self._TypeValue
@@ -22814,7 +23062,7 @@ class MNPTypeDefine(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: int
         """
         return self._CreateTime
@@ -22825,7 +23073,7 @@ class MNPTypeDefine(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator
+        r"""Creator.
         :rtype: str
         """
         return self._CreateUser
@@ -22836,7 +23084,7 @@ class MNPTypeDefine(AbstractModel):
 
     @property
     def IsSystem(self):
-        r"""Indicates whether it is a system category.
+        r"""Whether it is a system category.
         :rtype: bool
         """
         return self._IsSystem
@@ -22870,15 +23118,15 @@ class ModifyApplicationConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Superapp ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _Id: Superapp configuration ID
+        :param _Id: Superapp configuration ID.
         :type Id: int
-        :param _AppKey: Package name: corresponds to packageName on Android and bundleId on iOS
+        :param _AppKey: Package name. Corresponds to the package name on Android and the bundle ID on iOS.
         :type AppKey: str
-        :param _AppURL: Superapp URL
+        :param _AppURL: Superapp URL.
         :type AppURL: str
         """
         self._ApplicationId = None
@@ -22889,7 +23137,7 @@ class ModifyApplicationConfigRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -22900,7 +23148,7 @@ class ModifyApplicationConfigRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -22911,7 +23159,7 @@ class ModifyApplicationConfigRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""Superapp configuration ID
+        r"""Superapp configuration ID.
         :rtype: int
         """
         return self._Id
@@ -22922,7 +23170,7 @@ class ModifyApplicationConfigRequest(AbstractModel):
 
     @property
     def AppKey(self):
-        r"""Package name: corresponds to packageName on Android and bundleId on iOS
+        r"""Package name. Corresponds to the package name on Android and the bundle ID on iOS.
         :rtype: str
         """
         return self._AppKey
@@ -22933,7 +23181,7 @@ class ModifyApplicationConfigRequest(AbstractModel):
 
     @property
     def AppURL(self):
-        r"""Superapp URL
+        r"""Superapp URL.
         :rtype: str
         """
         return self._AppURL
@@ -22966,7 +23214,7 @@ class ModifyApplicationConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -22976,7 +23224,7 @@ class ModifyApplicationConfigResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -23011,23 +23259,23 @@ class ModifyApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: Application ID
+        :param _ApplicationId: Superapp ID.
         :type ApplicationId: str
-        :param _ApplicationName: Application name
+        :param _ApplicationName: Superapp name.
         :type ApplicationName: str
-        :param _Intro: Application introduction
+        :param _Intro: Superapp introduction.
         :type Intro: str
-        :param _Logo: Icon
+        :param _Logo: Superapp icon.
         :type Logo: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _AndroidAppKey: Android app package name
+        :param _AndroidAppKey: Android app package name.
         :type AndroidAppKey: str
-        :param _IosAppKey: iOS App bundleId
+        :param _IosAppKey: iOS app bundle ID.
         :type IosAppKey: str
-        :param _Remark: Remarks
+        :param _Remark: Remarks.
         :type Remark: str
-        :param _Scheme: Scheme
+        :param _Scheme: Scheme.
         :type Scheme: str
         """
         self._ApplicationId = None
@@ -23042,7 +23290,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Application ID
+        r"""Superapp ID.
         :rtype: str
         """
         return self._ApplicationId
@@ -23053,7 +23301,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Application name
+        r"""Superapp name.
         :rtype: str
         """
         return self._ApplicationName
@@ -23064,7 +23312,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def Intro(self):
-        r"""Application introduction
+        r"""Superapp introduction.
         :rtype: str
         """
         return self._Intro
@@ -23075,7 +23323,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def Logo(self):
-        r"""Icon
+        r"""Superapp icon.
         :rtype: str
         """
         return self._Logo
@@ -23086,7 +23334,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -23099,7 +23347,7 @@ class ModifyApplicationRequest(AbstractModel):
     def AndroidAppKey(self):
         warnings.warn("parameter `AndroidAppKey` is deprecated", DeprecationWarning) 
 
-        r"""Android app package name
+        r"""Android app package name.
         :rtype: str
         """
         return self._AndroidAppKey
@@ -23114,7 +23362,7 @@ class ModifyApplicationRequest(AbstractModel):
     def IosAppKey(self):
         warnings.warn("parameter `IosAppKey` is deprecated", DeprecationWarning) 
 
-        r"""iOS App bundleId
+        r"""iOS app bundle ID.
         :rtype: str
         """
         return self._IosAppKey
@@ -23129,7 +23377,7 @@ class ModifyApplicationRequest(AbstractModel):
     def Remark(self):
         warnings.warn("parameter `Remark` is deprecated", DeprecationWarning) 
 
-        r"""Remarks
+        r"""Remarks.
         :rtype: str
         """
         return self._Remark
@@ -23142,7 +23390,7 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def Scheme(self):
-        r"""Scheme
+        r"""Scheme.
         :rtype: str
         """
         return self._Scheme
@@ -23179,7 +23427,7 @@ class ModifyApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -23189,7 +23437,7 @@ class ModifyApplicationResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -23224,11 +23472,11 @@ class ModifyGlobalDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: Domain ID
+        :param _DomainId: Domain ID.
         :type DomainId: int
-        :param _DomainUrl: Domain name
+        :param _DomainUrl: Domain URL.
         :type DomainUrl: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._DomainId = None
@@ -23237,7 +23485,7 @@ class ModifyGlobalDomainRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""Domain ID
+        r"""Domain ID.
         :rtype: int
         """
         return self._DomainId
@@ -23248,7 +23496,7 @@ class ModifyGlobalDomainRequest(AbstractModel):
 
     @property
     def DomainUrl(self):
-        r"""Domain name
+        r"""Domain URL.
         :rtype: str
         """
         return self._DomainUrl
@@ -23259,7 +23507,7 @@ class ModifyGlobalDomainRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -23290,7 +23538,7 @@ class ModifyGlobalDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.GlobalDomainModifyRespResp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -23300,7 +23548,7 @@ class ModifyGlobalDomainResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.GlobalDomainModifyRespResp`
         """
         return self._Data
@@ -23335,11 +23583,11 @@ class ModifyMNGDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _Domain: <p>Domain list</p>
+        :param _Domain: <p>List of domains.</p>
         :type Domain: list of CreateDomainParam
         """
         self._MNPId = None
@@ -23348,7 +23596,7 @@ class ModifyMNGDomainRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -23359,7 +23607,7 @@ class ModifyMNGDomainRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -23370,7 +23618,7 @@ class ModifyMNGDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""<p>Domain list</p>
+        r"""<p>List of domains.</p>
         :rtype: list of CreateDomainParam
         """
         return self._Domain
@@ -23406,7 +23654,7 @@ class ModifyMNGDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -23416,7 +23664,7 @@ class ModifyMNGDomainResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -23451,20 +23699,22 @@ class ModifyMNGRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPType: <p>Mini game type</p>
+        :param _MNPType: <p>Mini game category.</p>
         :type MNPType: str
-        :param _MNPName: <p>Mini game name</p>
+        :param _MNPName: <p>Mini game name.</p>
         :type MNPName: str
-        :param _MNPIntro: <p>Mini game introduction</p>
+        :param _MNPIntro: <p>Mini game introduction.</p>
         :type MNPIntro: str
-        :param _MNPDesc: <p>Mini game description</p>
+        :param _MNPDesc: <p>Mini game description.</p>
         :type MNPDesc: str
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _MNPIcon: <p>Mini game icon</p>
+        :param _MNPIcon: <p>Mini game icon.</p>
         :type MNPIcon: str
+        :param _I18nList: <p>The mini game name and description in multiple languages.	</p>
+        :type I18nList: list of MNPI18NSyncDto
         """
         self._MNPType = None
         self._MNPName = None
@@ -23473,10 +23723,11 @@ class ModifyMNGRequest(AbstractModel):
         self._MNPId = None
         self._PlatformId = None
         self._MNPIcon = None
+        self._I18nList = None
 
     @property
     def MNPType(self):
-        r"""<p>Mini game type</p>
+        r"""<p>Mini game category.</p>
         :rtype: str
         """
         return self._MNPType
@@ -23487,7 +23738,7 @@ class ModifyMNGRequest(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""<p>Mini game name</p>
+        r"""<p>Mini game name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -23498,7 +23749,7 @@ class ModifyMNGRequest(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""<p>Mini game introduction</p>
+        r"""<p>Mini game introduction.</p>
         :rtype: str
         """
         return self._MNPIntro
@@ -23509,7 +23760,7 @@ class ModifyMNGRequest(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""<p>Mini game description</p>
+        r"""<p>Mini game description.</p>
         :rtype: str
         """
         return self._MNPDesc
@@ -23520,7 +23771,7 @@ class ModifyMNGRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -23531,7 +23782,7 @@ class ModifyMNGRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -23542,7 +23793,7 @@ class ModifyMNGRequest(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""<p>Mini game icon</p>
+        r"""<p>Mini game icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -23550,6 +23801,17 @@ class ModifyMNGRequest(AbstractModel):
     @MNPIcon.setter
     def MNPIcon(self, MNPIcon):
         self._MNPIcon = MNPIcon
+
+    @property
+    def I18nList(self):
+        r"""<p>The mini game name and description in multiple languages.	</p>
+        :rtype: list of MNPI18NSyncDto
+        """
+        return self._I18nList
+
+    @I18nList.setter
+    def I18nList(self, I18nList):
+        self._I18nList = I18nList
 
 
     def _deserialize(self, params):
@@ -23560,6 +23822,12 @@ class ModifyMNGRequest(AbstractModel):
         self._MNPId = params.get("MNPId")
         self._PlatformId = params.get("PlatformId")
         self._MNPIcon = params.get("MNPIcon")
+        if params.get("I18nList") is not None:
+            self._I18nList = []
+            for item in params.get("I18nList"):
+                obj = MNPI18NSyncDto()
+                obj._deserialize(item)
+                self._I18nList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23577,7 +23845,7 @@ class ModifyMNGResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -23587,7 +23855,7 @@ class ModifyMNGResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdInfo`
         """
         return self._Data
@@ -23622,11 +23890,11 @@ class ModifyMNPDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _Domain: Domain list
+        :param _Domain: Domain list.
         :type Domain: list of CreateDomainParam
         """
         self._MNPId = None
@@ -23635,7 +23903,7 @@ class ModifyMNPDomainRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -23646,7 +23914,7 @@ class ModifyMNPDomainRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -23657,7 +23925,7 @@ class ModifyMNPDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""Domain list
+        r"""Domain list.
         :rtype: list of CreateDomainParam
         """
         return self._Domain
@@ -23693,7 +23961,7 @@ class ModifyMNPDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -23703,7 +23971,7 @@ class ModifyMNPDomainResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -23738,20 +24006,22 @@ class ModifyMNPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPType: Mini program type
+        :param _MNPType: Mini program category.
         :type MNPType: str
-        :param _MNPName: Mini program name
+        :param _MNPName: Mini program name.
         :type MNPName: str
-        :param _MNPIntro: Mini program introduction
+        :param _MNPIntro: Mini program introduction.
         :type MNPIntro: str
-        :param _MNPDesc: Mini program description
+        :param _MNPDesc: Mini program description.
         :type MNPDesc: str
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _MNPIcon: Mini program icon
+        :param _MNPIcon: Mini program icon.
         :type MNPIcon: str
+        :param _I18nList: <p>The mini program name and description in multiple languages.</p>
+        :type I18nList: list of MNPI18NSyncDto
         """
         self._MNPType = None
         self._MNPName = None
@@ -23760,10 +24030,11 @@ class ModifyMNPRequest(AbstractModel):
         self._MNPId = None
         self._PlatformId = None
         self._MNPIcon = None
+        self._I18nList = None
 
     @property
     def MNPType(self):
-        r"""Mini program type
+        r"""Mini program category.
         :rtype: str
         """
         return self._MNPType
@@ -23774,7 +24045,7 @@ class ModifyMNPRequest(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name
+        r"""Mini program name.
         :rtype: str
         """
         return self._MNPName
@@ -23785,7 +24056,7 @@ class ModifyMNPRequest(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""Mini program introduction
+        r"""Mini program introduction.
         :rtype: str
         """
         return self._MNPIntro
@@ -23796,7 +24067,7 @@ class ModifyMNPRequest(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""Mini program description
+        r"""Mini program description.
         :rtype: str
         """
         return self._MNPDesc
@@ -23807,7 +24078,7 @@ class ModifyMNPRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -23818,7 +24089,7 @@ class ModifyMNPRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -23829,7 +24100,7 @@ class ModifyMNPRequest(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini program icon
+        r"""Mini program icon.
         :rtype: str
         """
         return self._MNPIcon
@@ -23837,6 +24108,17 @@ class ModifyMNPRequest(AbstractModel):
     @MNPIcon.setter
     def MNPIcon(self, MNPIcon):
         self._MNPIcon = MNPIcon
+
+    @property
+    def I18nList(self):
+        r"""<p>The mini program name and description in multiple languages.</p>
+        :rtype: list of MNPI18NSyncDto
+        """
+        return self._I18nList
+
+    @I18nList.setter
+    def I18nList(self, I18nList):
+        self._I18nList = I18nList
 
 
     def _deserialize(self, params):
@@ -23847,6 +24129,12 @@ class ModifyMNPRequest(AbstractModel):
         self._MNPId = params.get("MNPId")
         self._PlatformId = params.get("PlatformId")
         self._MNPIcon = params.get("MNPIcon")
+        if params.get("I18nList") is not None:
+            self._I18nList = []
+            for item in params.get("I18nList"):
+                obj = MNPI18NSyncDto()
+                obj._deserialize(item)
+                self._I18nList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23864,7 +24152,7 @@ class ModifyMNPResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -23874,7 +24162,7 @@ class ModifyMNPResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResourceIdInfo`
         """
         return self._Data
@@ -23909,13 +24197,13 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _UserId: User ID
+        :param _UserId: User ID.
         :type UserId: str
-        :param _RoleId: Role ID
+        :param _RoleId: Role ID.
         :type RoleId: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._TeamId = None
@@ -23925,7 +24213,7 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -23936,7 +24224,7 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""User ID
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -23947,7 +24235,7 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        r"""Role ID
+        r"""Role ID.
         :rtype: int
         """
         return self._RoleId
@@ -23958,7 +24246,7 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -23990,7 +24278,7 @@ class ModifyTeamMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -24000,7 +24288,7 @@ class ModifyTeamMemberResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -24035,13 +24323,13 @@ class ModifyTeamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TeamId: Team ID
+        :param _TeamId: Team ID.
         :type TeamId: str
-        :param _TeamName: Team name
+        :param _TeamName: Team name.
         :type TeamName: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _AdminUserId: Team administrator
+        :param _AdminUserId: Team administrator.
         :type AdminUserId: str
         """
         self._TeamId = None
@@ -24051,7 +24339,7 @@ class ModifyTeamRequest(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID
+        r"""Team ID.
         :rtype: str
         """
         return self._TeamId
@@ -24062,7 +24350,7 @@ class ModifyTeamRequest(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name
+        r"""Team name.
         :rtype: str
         """
         return self._TeamName
@@ -24073,7 +24361,7 @@ class ModifyTeamRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -24084,7 +24372,7 @@ class ModifyTeamRequest(AbstractModel):
 
     @property
     def AdminUserId(self):
-        r"""Team administrator
+        r"""Team administrator.
         :rtype: str
         """
         return self._AdminUserId
@@ -24116,7 +24404,7 @@ class ModifyTeamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -24126,7 +24414,7 @@ class ModifyTeamResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -24161,13 +24449,13 @@ class ModifyUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: User ID
+        :param _UserId: User ID.
         :type UserId: str
-        :param _UserName: User name
+        :param _UserName: User name.
         :type UserName: str
-        :param _AccountType: Account type 2 - Platform admin 3 - Member
+        :param _AccountType: User account type. Valid values: 2: Platform administrator; 3: Regular member.
         :type AccountType: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._UserId = None
@@ -24177,7 +24465,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""User ID
+        r"""User ID.
         :rtype: str
         """
         return self._UserId
@@ -24188,7 +24476,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""User name
+        r"""User name.
         :rtype: str
         """
         return self._UserName
@@ -24199,7 +24487,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def AccountType(self):
-        r"""Account type 2 - Platform admin 3 - Member
+        r"""User account type. Valid values: 2: Platform administrator; 3: Regular member.
         :rtype: int
         """
         return self._AccountType
@@ -24210,7 +24498,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -24242,7 +24530,7 @@ class ModifyUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -24252,7 +24540,7 @@ class ModifyUserResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -24281,27 +24569,27 @@ class ModifyUserResponse(AbstractModel):
 
 
 class Overview(AbstractModel):
-    r"""Global overview data
+    r"""Global overview data.
 
     """
 
     def __init__(self):
         r"""
-        :param _AppNum: Superapps
+        :param _AppNum: Number of superapps.
         :type AppNum: int
-        :param _CorpNum: Teams
+        :param _CorpNum: Number of teams.
         :type CorpNum: int
-        :param _FlushTime: Refresh time
+        :param _FlushTime: Refresh timestamp.
         :type FlushTime: str
-        :param _MiniAppNum: Mini programs
+        :param _MiniAppNum: Number of mini programs.
         :type MiniAppNum: int
-        :param _MiniGameNum: Mini games
+        :param _MiniGameNum: Number of mini games.
         :type MiniGameNum: int
-        :param _MiniGameVisitNum: Mini game visits
+        :param _MiniGameVisitNum: Number of mini game visits.
         :type MiniGameVisitNum: int
-        :param _UpdateNum: Mini program updates
+        :param _UpdateNum: Number of mini program updates.
         :type UpdateNum: int
-        :param _VisitNum: Mini program visits
+        :param _VisitNum: Number of mini program visits.
         :type VisitNum: int
         """
         self._AppNum = None
@@ -24315,7 +24603,7 @@ class Overview(AbstractModel):
 
     @property
     def AppNum(self):
-        r"""Superapps
+        r"""Number of superapps.
         :rtype: int
         """
         return self._AppNum
@@ -24326,7 +24614,7 @@ class Overview(AbstractModel):
 
     @property
     def CorpNum(self):
-        r"""Teams
+        r"""Number of teams.
         :rtype: int
         """
         return self._CorpNum
@@ -24337,7 +24625,7 @@ class Overview(AbstractModel):
 
     @property
     def FlushTime(self):
-        r"""Refresh time
+        r"""Refresh timestamp.
         :rtype: str
         """
         return self._FlushTime
@@ -24348,7 +24636,7 @@ class Overview(AbstractModel):
 
     @property
     def MiniAppNum(self):
-        r"""Mini programs
+        r"""Number of mini programs.
         :rtype: int
         """
         return self._MiniAppNum
@@ -24359,7 +24647,7 @@ class Overview(AbstractModel):
 
     @property
     def MiniGameNum(self):
-        r"""Mini games
+        r"""Number of mini games.
         :rtype: int
         """
         return self._MiniGameNum
@@ -24370,7 +24658,7 @@ class Overview(AbstractModel):
 
     @property
     def MiniGameVisitNum(self):
-        r"""Mini game visits
+        r"""Number of mini game visits.
         :rtype: int
         """
         return self._MiniGameVisitNum
@@ -24381,7 +24669,7 @@ class Overview(AbstractModel):
 
     @property
     def UpdateNum(self):
-        r"""Mini program updates
+        r"""Number of mini program updates.
         :rtype: int
         """
         return self._UpdateNum
@@ -24392,7 +24680,7 @@ class Overview(AbstractModel):
 
     @property
     def VisitNum(self):
-        r"""Mini program visits
+        r"""Number of mini program visits.
         :rtype: int
         """
         return self._VisitNum
@@ -24422,27 +24710,27 @@ class Overview(AbstractModel):
 
 
 class OverviewDetail(AbstractModel):
-    r"""Advertising data list fields
+    r"""Ad data list fields.
 
     """
 
     def __init__(self):
         r"""
-        :param _DataTime: Time
+        :param _DataTime: Time.
         :type DataTime: str
-        :param _MNPName: Name
+        :param _MNPName: Name.
         :type MNPName: str
-        :param _MNPType: Category
+        :param _MNPType: Category.
         :type MNPType: str
-        :param _EstimatedEarnings: Estimated revenue
+        :param _EstimatedEarnings: Estimated revenue.
         :type EstimatedEarnings: str
-        :param _RequestsNumber: Requests
+        :param _RequestsNumber: Number of requests.
         :type RequestsNumber: int
-        :param _Impressions: Impressions
+        :param _Impressions: Number of impressions.
         :type Impressions: int
-        :param _ECPM: Effective Cost Per Mille
+        :param _ECPM: eCPM (effective cost per mille).
         :type ECPM: str
-        :param _ClicksNumber: Taps
+        :param _ClicksNumber: Number of taps.
         :type ClicksNumber: int
         """
         self._DataTime = None
@@ -24456,7 +24744,7 @@ class OverviewDetail(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Time
+        r"""Time.
         :rtype: str
         """
         return self._DataTime
@@ -24467,7 +24755,7 @@ class OverviewDetail(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Name
+        r"""Name.
         :rtype: str
         """
         return self._MNPName
@@ -24478,7 +24766,7 @@ class OverviewDetail(AbstractModel):
 
     @property
     def MNPType(self):
-        r"""Category
+        r"""Category.
         :rtype: str
         """
         return self._MNPType
@@ -24489,7 +24777,7 @@ class OverviewDetail(AbstractModel):
 
     @property
     def EstimatedEarnings(self):
-        r"""Estimated revenue
+        r"""Estimated revenue.
         :rtype: str
         """
         return self._EstimatedEarnings
@@ -24500,7 +24788,7 @@ class OverviewDetail(AbstractModel):
 
     @property
     def RequestsNumber(self):
-        r"""Requests
+        r"""Number of requests.
         :rtype: int
         """
         return self._RequestsNumber
@@ -24511,7 +24799,7 @@ class OverviewDetail(AbstractModel):
 
     @property
     def Impressions(self):
-        r"""Impressions
+        r"""Number of impressions.
         :rtype: int
         """
         return self._Impressions
@@ -24522,7 +24810,7 @@ class OverviewDetail(AbstractModel):
 
     @property
     def ECPM(self):
-        r"""Effective Cost Per Mille
+        r"""eCPM (effective cost per mille).
         :rtype: str
         """
         return self._ECPM
@@ -24533,7 +24821,7 @@ class OverviewDetail(AbstractModel):
 
     @property
     def ClicksNumber(self):
-        r"""Taps
+        r"""Number of taps.
         :rtype: int
         """
         return self._ClicksNumber
@@ -24563,35 +24851,35 @@ class OverviewDetail(AbstractModel):
 
 
 class PaymentActiveRetention(AbstractModel):
-    r"""Payment active retention data
+    r"""Payment user active retention data.
 
     """
 
     def __init__(self):
         r"""
-        :param _OneDayRetentionUsers: Day 1 active retention of paying users
+        :param _OneDayRetentionUsers: Day 1 active retention of paying users.
         :type OneDayRetentionUsers: int
-        :param _TwoDayRetentionUsers: Day 2 active retention of paying users
+        :param _TwoDayRetentionUsers: Day 2 active retention of paying users.
         :type TwoDayRetentionUsers: int
-        :param _ThreeDayRetentionUsers: Day 3 active retention of paying users
+        :param _ThreeDayRetentionUsers: Day 3 active retention of paying users.
         :type ThreeDayRetentionUsers: int
-        :param _FourDayRetentionUsers: Day 4 active retention of paying users
+        :param _FourDayRetentionUsers: Day 4 active retention of paying users.
         :type FourDayRetentionUsers: int
-        :param _FiveDayRetentionUsers: Day 5 active retention of paying users
+        :param _FiveDayRetentionUsers: Day 5 active retention of paying users.
         :type FiveDayRetentionUsers: int
-        :param _SixDayRetentionUsers: Day 6 active retention of paying users
+        :param _SixDayRetentionUsers: Day 6 active retention of paying users.
         :type SixDayRetentionUsers: int
-        :param _SevenDayRetentionUsers: Day 7 active retention of paying users
+        :param _SevenDayRetentionUsers: Day 7 active retention of paying users.
         :type SevenDayRetentionUsers: int
-        :param _FourteenDayRetentionUsers: Day 14 active retention of paying users
+        :param _FourteenDayRetentionUsers: Day 14 active retention of paying users.
         :type FourteenDayRetentionUsers: int
-        :param _FifteenDayRetentionUsers: Day 15 active retention of paying users
+        :param _FifteenDayRetentionUsers: Day 15 active retention of paying users.
         :type FifteenDayRetentionUsers: int
-        :param _ThirtyDayRetentionUsers: Day 30 active retention of paying users
+        :param _ThirtyDayRetentionUsers: Day 30 active retention of paying users.
         :type ThirtyDayRetentionUsers: int
-        :param _PaymentUserNum: Number of paying users
+        :param _PaymentUserNum: Number of paying users.
         :type PaymentUserNum: int
-        :param _DataTime: Data time in YYYYMMDD format
+        :param _DataTime: Data time in YYYYMMDD format.
         :type DataTime: str
         """
         self._OneDayRetentionUsers = None
@@ -24609,7 +24897,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def OneDayRetentionUsers(self):
-        r"""Day 1 active retention of paying users
+        r"""Day 1 active retention of paying users.
         :rtype: int
         """
         return self._OneDayRetentionUsers
@@ -24620,7 +24908,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def TwoDayRetentionUsers(self):
-        r"""Day 2 active retention of paying users
+        r"""Day 2 active retention of paying users.
         :rtype: int
         """
         return self._TwoDayRetentionUsers
@@ -24631,7 +24919,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def ThreeDayRetentionUsers(self):
-        r"""Day 3 active retention of paying users
+        r"""Day 3 active retention of paying users.
         :rtype: int
         """
         return self._ThreeDayRetentionUsers
@@ -24642,7 +24930,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def FourDayRetentionUsers(self):
-        r"""Day 4 active retention of paying users
+        r"""Day 4 active retention of paying users.
         :rtype: int
         """
         return self._FourDayRetentionUsers
@@ -24653,7 +24941,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def FiveDayRetentionUsers(self):
-        r"""Day 5 active retention of paying users
+        r"""Day 5 active retention of paying users.
         :rtype: int
         """
         return self._FiveDayRetentionUsers
@@ -24664,7 +24952,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def SixDayRetentionUsers(self):
-        r"""Day 6 active retention of paying users
+        r"""Day 6 active retention of paying users.
         :rtype: int
         """
         return self._SixDayRetentionUsers
@@ -24675,7 +24963,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def SevenDayRetentionUsers(self):
-        r"""Day 7 active retention of paying users
+        r"""Day 7 active retention of paying users.
         :rtype: int
         """
         return self._SevenDayRetentionUsers
@@ -24686,7 +24974,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def FourteenDayRetentionUsers(self):
-        r"""Day 14 active retention of paying users
+        r"""Day 14 active retention of paying users.
         :rtype: int
         """
         return self._FourteenDayRetentionUsers
@@ -24697,7 +24985,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def FifteenDayRetentionUsers(self):
-        r"""Day 15 active retention of paying users
+        r"""Day 15 active retention of paying users.
         :rtype: int
         """
         return self._FifteenDayRetentionUsers
@@ -24708,7 +24996,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def ThirtyDayRetentionUsers(self):
-        r"""Day 30 active retention of paying users
+        r"""Day 30 active retention of paying users.
         :rtype: int
         """
         return self._ThirtyDayRetentionUsers
@@ -24719,7 +25007,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def PaymentUserNum(self):
-        r"""Number of paying users
+        r"""Number of paying users.
         :rtype: int
         """
         return self._PaymentUserNum
@@ -24730,7 +25018,7 @@ class PaymentActiveRetention(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Data time in YYYYMMDD format
+        r"""Data time in YYYYMMDD format.
         :rtype: str
         """
         return self._DataTime
@@ -24764,35 +25052,35 @@ class PaymentActiveRetention(AbstractModel):
 
 
 class PaymentDetail(AbstractModel):
-    r"""Mini program payment detailed data
+    r"""Mini program payment detailed data.
 
     """
 
     def __init__(self):
         r"""
-        :param _DataTime: Date in YYYYMMDD format
+        :param _DataTime: Date in YYYYMMDD format.
         :type DataTime: str
-        :param _OrderMNPNum: Number of mini programs involved in the order
+        :param _OrderMNPNum: Mini program count with orders.
         :type OrderMNPNum: int
-        :param _OrderNum: Total orders
+        :param _OrderNum: Total orders.
         :type OrderNum: int
-        :param _OrderPaidNum: Paid orders
+        :param _OrderPaidNum: Paid orders.
         :type OrderPaidNum: int
-        :param _OrderRefundNum: Total refunded orders
+        :param _OrderRefundNum: Number of refund orders.
         :type OrderRefundNum: int
-        :param _OrderUnpaidNum: Unpaid orders
+        :param _OrderUnpaidNum: Total unpaid orders.
         :type OrderUnpaidNum: int
-        :param _OrderUserNum: Number of users placing orders (openid)
+        :param _OrderUserNum: Number of ordering users (by OpenID).
         :type OrderUserNum: int
-        :param _PaidAmount: Amount paid
+        :param _PaidAmount: Amount paid.
         :type PaidAmount: str
-        :param _RefundAmount: Amount refunded
+        :param _RefundAmount: Amount refunded.
         :type RefundAmount: str
-        :param _TotalAmount: Total order amount
+        :param _TotalAmount: Total amount.
         :type TotalAmount: str
-        :param _UnpaidAmount: Unpaid amount
+        :param _UnpaidAmount: Unpaid amount.
         :type UnpaidAmount: str
-        :param _UpdateTime: Data update timestamp
+        :param _UpdateTime: Data update timestamp.
         :type UpdateTime: int
         """
         self._DataTime = None
@@ -24810,7 +25098,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Date in YYYYMMDD format
+        r"""Date in YYYYMMDD format.
         :rtype: str
         """
         return self._DataTime
@@ -24821,7 +25109,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def OrderMNPNum(self):
-        r"""Number of mini programs involved in the order
+        r"""Mini program count with orders.
         :rtype: int
         """
         return self._OrderMNPNum
@@ -24832,7 +25120,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def OrderNum(self):
-        r"""Total orders
+        r"""Total orders.
         :rtype: int
         """
         return self._OrderNum
@@ -24843,7 +25131,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def OrderPaidNum(self):
-        r"""Paid orders
+        r"""Paid orders.
         :rtype: int
         """
         return self._OrderPaidNum
@@ -24854,7 +25142,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def OrderRefundNum(self):
-        r"""Total refunded orders
+        r"""Number of refund orders.
         :rtype: int
         """
         return self._OrderRefundNum
@@ -24865,7 +25153,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def OrderUnpaidNum(self):
-        r"""Unpaid orders
+        r"""Total unpaid orders.
         :rtype: int
         """
         return self._OrderUnpaidNum
@@ -24876,7 +25164,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def OrderUserNum(self):
-        r"""Number of users placing orders (openid)
+        r"""Number of ordering users (by OpenID).
         :rtype: int
         """
         return self._OrderUserNum
@@ -24887,7 +25175,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def PaidAmount(self):
-        r"""Amount paid
+        r"""Amount paid.
         :rtype: str
         """
         return self._PaidAmount
@@ -24898,7 +25186,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def RefundAmount(self):
-        r"""Amount refunded
+        r"""Amount refunded.
         :rtype: str
         """
         return self._RefundAmount
@@ -24909,7 +25197,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def TotalAmount(self):
-        r"""Total order amount
+        r"""Total amount.
         :rtype: str
         """
         return self._TotalAmount
@@ -24920,7 +25208,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def UnpaidAmount(self):
-        r"""Unpaid amount
+        r"""Unpaid amount.
         :rtype: str
         """
         return self._UnpaidAmount
@@ -24931,7 +25219,7 @@ class PaymentDetail(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Data update timestamp
+        r"""Data update timestamp.
         :rtype: int
         """
         return self._UpdateTime
@@ -24965,20 +25253,20 @@ class PaymentDetail(AbstractModel):
 
 
 class PresetResp(AbstractModel):
-    r"""Encryption key returned
+    r"""Response for obtaining the encryption key.
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: RSA encryption public key.
+        :param _Key: RSA public key.
         :type Key: str
         """
         self._Key = None
 
     @property
     def Key(self):
-        r"""RSA encryption public key.
+        r"""RSA public key.
         :rtype: str
         """
         return self._Key
@@ -25007,11 +25295,11 @@ class ProcessMNPApprovalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApprovalNo: Approval ID
+        :param _ApprovalNo: Approval number.
         :type ApprovalNo: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _ApprovalItems: Approval details
+        :param _ApprovalItems: Approval details.
         :type ApprovalItems: list of ApprovalItem
         """
         self._ApprovalNo = None
@@ -25020,7 +25308,7 @@ class ProcessMNPApprovalRequest(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""Approval ID
+        r"""Approval number.
         :rtype: str
         """
         return self._ApprovalNo
@@ -25031,7 +25319,7 @@ class ProcessMNPApprovalRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -25042,7 +25330,7 @@ class ProcessMNPApprovalRequest(AbstractModel):
 
     @property
     def ApprovalItems(self):
-        r"""Approval details
+        r"""Approval details.
         :rtype: list of ApprovalItem
         """
         return self._ApprovalItems
@@ -25078,7 +25366,7 @@ class ProcessMNPApprovalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -25088,7 +25376,7 @@ class ProcessMNPApprovalResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -25123,13 +25411,13 @@ class ProcessMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApprovalNo: Approval ID
+        :param _ApprovalNo: Approval number.
         :type ApprovalNo: str
-        :param _ApprovalStatus: Approval status. 20: Rejected; 30: Approved
+        :param _ApprovalStatus: Approval status. Valid values: 1: Processing; 20: Rejected; 30: Approved.
         :type ApprovalStatus: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _ApprovalNote: Approval notes
+        :param _ApprovalNote: Approval note.
         :type ApprovalNote: str
         """
         self._ApprovalNo = None
@@ -25139,7 +25427,7 @@ class ProcessMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""Approval ID
+        r"""Approval number.
         :rtype: str
         """
         return self._ApprovalNo
@@ -25150,7 +25438,7 @@ class ProcessMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def ApprovalStatus(self):
-        r"""Approval status. 20: Rejected; 30: Approved
+        r"""Approval status. Valid values: 1: Processing; 20: Rejected; 30: Approved.
         :rtype: int
         """
         return self._ApprovalStatus
@@ -25161,7 +25449,7 @@ class ProcessMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -25172,7 +25460,7 @@ class ProcessMNPSensitiveAPIPermissionApprovalRequest(AbstractModel):
 
     @property
     def ApprovalNote(self):
-        r"""Approval notes
+        r"""Approval note.
         :rtype: str
         """
         return self._ApprovalNote
@@ -25204,7 +25492,7 @@ class ProcessMNPSensitiveAPIPermissionApprovalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -25214,7 +25502,7 @@ class ProcessMNPSensitiveAPIPermissionApprovalResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -25243,21 +25531,21 @@ class ProcessMNPSensitiveAPIPermissionApprovalResponse(AbstractModel):
 
 
 class QueryMNGOnlineVersionResp(AbstractModel):
-    r"""Queries the released mini game version ID
+    r"""Response for querying mini game released version IDs.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _MNPVersion: <p>Version number</p>
+        :param _MNPVersion: <p>Version number.</p>
         :type MNPVersion: str
-        :param _MNPVersionId: <p>Version ID</p>
+        :param _MNPVersionId: <p>Version ID.</p>
         :type MNPVersionId: int
-        :param _MNPVersionNote: <p>Version remarks</p>
+        :param _MNPVersionNote: <p>Version note.</p>
         :type MNPVersionNote: str
-        :param _UpdateTime: <p>Update time</p>
+        :param _UpdateTime: <p>Last modified time.</p>
         :type UpdateTime: str
         """
         self._MNPId = None
@@ -25268,7 +25556,7 @@ class QueryMNGOnlineVersionResp(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -25279,7 +25567,7 @@ class QueryMNGOnlineVersionResp(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""<p>Version number</p>
+        r"""<p>Version number.</p>
         :rtype: str
         """
         return self._MNPVersion
@@ -25290,7 +25578,7 @@ class QueryMNGOnlineVersionResp(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""<p>Version ID</p>
+        r"""<p>Version ID.</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -25301,7 +25589,7 @@ class QueryMNGOnlineVersionResp(AbstractModel):
 
     @property
     def MNPVersionNote(self):
-        r"""<p>Version remarks</p>
+        r"""<p>Version note.</p>
         :rtype: str
         """
         return self._MNPVersionNote
@@ -25312,7 +25600,7 @@ class QueryMNGOnlineVersionResp(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""<p>Update time</p>
+        r"""<p>Last modified time.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -25339,21 +25627,21 @@ class QueryMNGOnlineVersionResp(AbstractModel):
 
 
 class QueryOnlineVersionResp(AbstractModel):
-    r"""Mini program online version ID
+    r"""Response for querying mini program released version IDs.
 
     """
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _MNPVersion: Version number
+        :param _MNPVersion: Version number.
         :type MNPVersion: str
         :param _MNPVersionId: Version ID.
         :type MNPVersionId: int
-        :param _MNPVersionNote: Version remarks.
+        :param _MNPVersionNote: Version note.
         :type MNPVersionNote: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: Last modified time.
         :type UpdateTime: str
         """
         self._MNPId = None
@@ -25364,7 +25652,7 @@ class QueryOnlineVersionResp(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -25375,7 +25663,7 @@ class QueryOnlineVersionResp(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""Version number
+        r"""Version number.
         :rtype: str
         """
         return self._MNPVersion
@@ -25397,7 +25685,7 @@ class QueryOnlineVersionResp(AbstractModel):
 
     @property
     def MNPVersionNote(self):
-        r"""Version remarks.
+        r"""Version note.
         :rtype: str
         """
         return self._MNPVersionNote
@@ -25408,7 +25696,7 @@ class QueryOnlineVersionResp(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""Last modified time.
         :rtype: str
         """
         return self._UpdateTime
@@ -25441,9 +25729,9 @@ class ReleaseMNGVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPVersionId: <p>Mini game version ID</p>
+        :param _MNPVersionId: <p>Mini game version ID.</p>
         :type MNPVersionId: int
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPVersionId = None
@@ -25451,7 +25739,7 @@ class ReleaseMNGVersionRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""<p>Mini game version ID</p>
+        r"""<p>Mini game version ID.</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -25462,7 +25750,7 @@ class ReleaseMNGVersionRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -25492,7 +25780,7 @@ class ReleaseMNGVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -25502,7 +25790,7 @@ class ReleaseMNGVersionResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -25537,9 +25825,9 @@ class ReleaseMNPVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPVersionId: Mini program version ID
+        :param _MNPVersionId: Mini program version ID.
         :type MNPVersionId: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPVersionId = None
@@ -25547,7 +25835,7 @@ class ReleaseMNPVersionRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""Mini program version ID
+        r"""Mini program version ID.
         :rtype: int
         """
         return self._MNPVersionId
@@ -25558,7 +25846,7 @@ class ReleaseMNPVersionRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -25588,7 +25876,7 @@ class ReleaseMNPVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -25598,7 +25886,7 @@ class ReleaseMNPVersionResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -25633,9 +25921,9 @@ class RemoveMNGRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
         """
         self._MNPId = None
@@ -25643,7 +25931,7 @@ class RemoveMNGRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -25654,7 +25942,7 @@ class RemoveMNGRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -25684,7 +25972,7 @@ class RemoveMNGResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -25694,7 +25982,7 @@ class RemoveMNGResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -25729,9 +26017,9 @@ class RemoveMNPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
         """
         self._MNPId = None
@@ -25739,7 +26027,7 @@ class RemoveMNPRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -25750,7 +26038,7 @@ class RemoveMNPRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -25780,7 +26068,7 @@ class RemoveMNPResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -25790,7 +26078,7 @@ class RemoveMNPResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -25819,21 +26107,21 @@ class RemoveMNPResponse(AbstractModel):
 
 
 class ReportDataResult(AbstractModel):
-    r"""General response for data query reports
+    r"""General response for data query reports.
 
     """
 
     def __init__(self):
         r"""
-        :param _DataResult: Base64-encoded result data
+        :param _DataResult: Result data in Base64 encoding.
         :type DataResult: str
-        :param _ExecSql: Executed SQL
+        :param _ExecSql: Executed SQL.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExecSql: str
-        :param _ExecTime: Execution time
+        :param _ExecTime: Execution time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExecTime: int
-        :param _IndexId: Query index ID
+        :param _IndexId: Query index ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IndexId: str
         """
@@ -25844,7 +26132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataResult(self):
-        r"""Base64-encoded result data
+        r"""Result data in Base64 encoding.
         :rtype: str
         """
         return self._DataResult
@@ -25855,7 +26143,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExecSql(self):
-        r"""Executed SQL
+        r"""Executed SQL.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -25867,7 +26155,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExecTime(self):
-        r"""Execution time
+        r"""Execution time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -25879,7 +26167,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndexId(self):
-        r"""Query index ID
+        r"""Query index ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -25906,26 +26194,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ResourceIdInfo(AbstractModel):
-    r"""Unified operation success ID - integer
+    r"""Unified ID data returned on successful operation (Integer type).
 
     """
 
     def __init__(self):
         r"""
-        :param _ResourceId: Specifies the resource ID returned by the business.
-0: no trial version available.
-A trial version is currently available and uploaded by the current user.
-2: a trial version is currently available and uploaded by another user.
+        :param _ResourceId: Resource ID returned by the operation. Valid values: 0: No preview exists; 1: Preview exists and was uploaded by the current user; 2: Preview exists and was uploaded by another user. Example value: 2940.
         :type ResourceId: int
         """
         self._ResourceId = None
 
     @property
     def ResourceId(self):
-        r"""Specifies the resource ID returned by the business.
-0: no trial version available.
-A trial version is currently available and uploaded by the current user.
-2: a trial version is currently available and uploaded by another user.
+        r"""Resource ID returned by the operation. Valid values: 0: No preview exists; 1: Preview exists and was uploaded by the current user; 2: Preview exists and was uploaded by another user. Example value: 2940.
         :rtype: int
         """
         return self._ResourceId
@@ -25948,13 +26230,13 @@ A trial version is currently available and uploaded by the current user.
 
 
 class ResourceIdStringInfo(AbstractModel):
-    r"""The general parameter for resource ID returned for successful operations
+    r"""Unified ID data returned on successful operation.
 
     """
 
     def __init__(self):
         r"""
-        :param _ResourceId: The ID of the resource returned
+        :param _ResourceId: Resource ID returned by the operation.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ResourceId: str
         """
@@ -25962,7 +26244,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
-        r"""The ID of the resource returned
+        r"""Resource ID returned by the operation.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -25986,53 +26268,53 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class RetentionData(AbstractModel):
-    r"""Retention data
+    r"""Retention data.
 
     """
 
     def __init__(self):
         r"""
-        :param _ActiveUserCount: Number of active users
+        :param _ActiveUserCount: Number of active users.
         :type ActiveUserCount: int
-        :param _OneDayRetentionUsers: Day 1 retention of active users
+        :param _OneDayRetentionUsers: Day 1 retention of active users.
         :type OneDayRetentionUsers: int
-        :param _TwoDayRetentionUsers: Day 2 retention of active users
+        :param _TwoDayRetentionUsers: Day 2 retention of active users.
         :type TwoDayRetentionUsers: int
-        :param _ThreeDayRetentionUsers: Day 3 retention of active users
+        :param _ThreeDayRetentionUsers: Day 3 retention of active users.
         :type ThreeDayRetentionUsers: int
-        :param _FourDayRetentionUsers: Day 4 retention of active users
+        :param _FourDayRetentionUsers: Day 4 retention of active users.
         :type FourDayRetentionUsers: int
-        :param _FiveDayRetentionUsers: Day 5 retention of active users
+        :param _FiveDayRetentionUsers: Day 5 retention of active users.
         :type FiveDayRetentionUsers: int
-        :param _SixDayRetentionUsers: Day 6 retention of active users
+        :param _SixDayRetentionUsers: Day 6 retention of active users.
         :type SixDayRetentionUsers: int
-        :param _SevenDayRetentionUsers: Day 7 retention of active users
+        :param _SevenDayRetentionUsers: Day 7 retention of active users.
         :type SevenDayRetentionUsers: int
-        :param _FourteenDayRetentionUsers: Day 14 retention of active users
+        :param _FourteenDayRetentionUsers: Day 14 retention of active users.
         :type FourteenDayRetentionUsers: int
-        :param _ThirtyDayRetentionUsers: Day 30 retention of active users
+        :param _ThirtyDayRetentionUsers: Day 30 retention of active users.
         :type ThirtyDayRetentionUsers: int
-        :param _NewUserCount: Number of new users
+        :param _NewUserCount: Number of new users.
         :type NewUserCount: int
-        :param _OneDayRetentionNewUsers: Day 1 retention of new users
+        :param _OneDayRetentionNewUsers: Day 1 retention of new users.
         :type OneDayRetentionNewUsers: int
-        :param _TwoDayRetentionNewUsers: Day 2 retention of new users
+        :param _TwoDayRetentionNewUsers: Day 2 retention of new users.
         :type TwoDayRetentionNewUsers: int
-        :param _ThreeDayRetentionNewUsers: Day 3 retention of new users
+        :param _ThreeDayRetentionNewUsers: Day 3 retention of new users.
         :type ThreeDayRetentionNewUsers: int
-        :param _FourDayRetentionNewUsers: Day 4 retention of new users
+        :param _FourDayRetentionNewUsers: Day 4 retention of new users.
         :type FourDayRetentionNewUsers: int
-        :param _FiveDayRetentionNewUsers: Day 5 retention of new users
+        :param _FiveDayRetentionNewUsers: Day 5 retention of new users.
         :type FiveDayRetentionNewUsers: int
-        :param _SixDayRetentionNewUsers: Day 6 retention of new users
+        :param _SixDayRetentionNewUsers: Day 6 retention of new users.
         :type SixDayRetentionNewUsers: int
-        :param _SevenDayRetentionNewUsers: Day 7 retention of new users
+        :param _SevenDayRetentionNewUsers: Day 7 retention of new users.
         :type SevenDayRetentionNewUsers: int
-        :param _FourteenDayRetentionNewUsers: Day 14 retention of new users
+        :param _FourteenDayRetentionNewUsers: Day 14 retention of new users.
         :type FourteenDayRetentionNewUsers: int
-        :param _ThirtyDayRetentionNewUsers: Day 30 retention of new users
+        :param _ThirtyDayRetentionNewUsers: Day 30 retention of new users.
         :type ThirtyDayRetentionNewUsers: int
-        :param _DataTime: Data time in YYYYMMDD format
+        :param _DataTime: Data time in YYYYMMDD format.
         :type DataTime: str
         """
         self._ActiveUserCount = None
@@ -26059,7 +26341,7 @@ class RetentionData(AbstractModel):
 
     @property
     def ActiveUserCount(self):
-        r"""Number of active users
+        r"""Number of active users.
         :rtype: int
         """
         return self._ActiveUserCount
@@ -26070,7 +26352,7 @@ class RetentionData(AbstractModel):
 
     @property
     def OneDayRetentionUsers(self):
-        r"""Day 1 retention of active users
+        r"""Day 1 retention of active users.
         :rtype: int
         """
         return self._OneDayRetentionUsers
@@ -26081,7 +26363,7 @@ class RetentionData(AbstractModel):
 
     @property
     def TwoDayRetentionUsers(self):
-        r"""Day 2 retention of active users
+        r"""Day 2 retention of active users.
         :rtype: int
         """
         return self._TwoDayRetentionUsers
@@ -26092,7 +26374,7 @@ class RetentionData(AbstractModel):
 
     @property
     def ThreeDayRetentionUsers(self):
-        r"""Day 3 retention of active users
+        r"""Day 3 retention of active users.
         :rtype: int
         """
         return self._ThreeDayRetentionUsers
@@ -26103,7 +26385,7 @@ class RetentionData(AbstractModel):
 
     @property
     def FourDayRetentionUsers(self):
-        r"""Day 4 retention of active users
+        r"""Day 4 retention of active users.
         :rtype: int
         """
         return self._FourDayRetentionUsers
@@ -26114,7 +26396,7 @@ class RetentionData(AbstractModel):
 
     @property
     def FiveDayRetentionUsers(self):
-        r"""Day 5 retention of active users
+        r"""Day 5 retention of active users.
         :rtype: int
         """
         return self._FiveDayRetentionUsers
@@ -26125,7 +26407,7 @@ class RetentionData(AbstractModel):
 
     @property
     def SixDayRetentionUsers(self):
-        r"""Day 6 retention of active users
+        r"""Day 6 retention of active users.
         :rtype: int
         """
         return self._SixDayRetentionUsers
@@ -26136,7 +26418,7 @@ class RetentionData(AbstractModel):
 
     @property
     def SevenDayRetentionUsers(self):
-        r"""Day 7 retention of active users
+        r"""Day 7 retention of active users.
         :rtype: int
         """
         return self._SevenDayRetentionUsers
@@ -26147,7 +26429,7 @@ class RetentionData(AbstractModel):
 
     @property
     def FourteenDayRetentionUsers(self):
-        r"""Day 14 retention of active users
+        r"""Day 14 retention of active users.
         :rtype: int
         """
         return self._FourteenDayRetentionUsers
@@ -26158,7 +26440,7 @@ class RetentionData(AbstractModel):
 
     @property
     def ThirtyDayRetentionUsers(self):
-        r"""Day 30 retention of active users
+        r"""Day 30 retention of active users.
         :rtype: int
         """
         return self._ThirtyDayRetentionUsers
@@ -26169,7 +26451,7 @@ class RetentionData(AbstractModel):
 
     @property
     def NewUserCount(self):
-        r"""Number of new users
+        r"""Number of new users.
         :rtype: int
         """
         return self._NewUserCount
@@ -26180,7 +26462,7 @@ class RetentionData(AbstractModel):
 
     @property
     def OneDayRetentionNewUsers(self):
-        r"""Day 1 retention of new users
+        r"""Day 1 retention of new users.
         :rtype: int
         """
         return self._OneDayRetentionNewUsers
@@ -26191,7 +26473,7 @@ class RetentionData(AbstractModel):
 
     @property
     def TwoDayRetentionNewUsers(self):
-        r"""Day 2 retention of new users
+        r"""Day 2 retention of new users.
         :rtype: int
         """
         return self._TwoDayRetentionNewUsers
@@ -26202,7 +26484,7 @@ class RetentionData(AbstractModel):
 
     @property
     def ThreeDayRetentionNewUsers(self):
-        r"""Day 3 retention of new users
+        r"""Day 3 retention of new users.
         :rtype: int
         """
         return self._ThreeDayRetentionNewUsers
@@ -26213,7 +26495,7 @@ class RetentionData(AbstractModel):
 
     @property
     def FourDayRetentionNewUsers(self):
-        r"""Day 4 retention of new users
+        r"""Day 4 retention of new users.
         :rtype: int
         """
         return self._FourDayRetentionNewUsers
@@ -26224,7 +26506,7 @@ class RetentionData(AbstractModel):
 
     @property
     def FiveDayRetentionNewUsers(self):
-        r"""Day 5 retention of new users
+        r"""Day 5 retention of new users.
         :rtype: int
         """
         return self._FiveDayRetentionNewUsers
@@ -26235,7 +26517,7 @@ class RetentionData(AbstractModel):
 
     @property
     def SixDayRetentionNewUsers(self):
-        r"""Day 6 retention of new users
+        r"""Day 6 retention of new users.
         :rtype: int
         """
         return self._SixDayRetentionNewUsers
@@ -26246,7 +26528,7 @@ class RetentionData(AbstractModel):
 
     @property
     def SevenDayRetentionNewUsers(self):
-        r"""Day 7 retention of new users
+        r"""Day 7 retention of new users.
         :rtype: int
         """
         return self._SevenDayRetentionNewUsers
@@ -26257,7 +26539,7 @@ class RetentionData(AbstractModel):
 
     @property
     def FourteenDayRetentionNewUsers(self):
-        r"""Day 14 retention of new users
+        r"""Day 14 retention of new users.
         :rtype: int
         """
         return self._FourteenDayRetentionNewUsers
@@ -26268,7 +26550,7 @@ class RetentionData(AbstractModel):
 
     @property
     def ThirtyDayRetentionNewUsers(self):
-        r"""Day 30 retention of new users
+        r"""Day 30 retention of new users.
         :rtype: int
         """
         return self._ThirtyDayRetentionNewUsers
@@ -26279,7 +26561,7 @@ class RetentionData(AbstractModel):
 
     @property
     def DataTime(self):
-        r"""Data time in YYYYMMDD format
+        r"""Data time in YYYYMMDD format.
         :rtype: str
         """
         return self._DataTime
@@ -26328,13 +26610,13 @@ class RollbackMNGVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: <p>Mini game appid</p>
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _MNPVersionId: <p>Mini game version ID</p>
+        :param _MNPVersionId: <p>Mini game version ID.</p>
         :type MNPVersionId: int
-        :param _PlatformId: <p>Platform ID</p>
+        :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _MNPVersion: <p>Mini game version number</p>
+        :param _MNPVersion: <p>Mini game version number.</p>
         :type MNPVersion: str
         """
         self._MNPId = None
@@ -26344,7 +26626,7 @@ class RollbackMNGVersionRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini game appid</p>
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -26355,7 +26637,7 @@ class RollbackMNGVersionRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""<p>Mini game version ID</p>
+        r"""<p>Mini game version ID.</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -26366,7 +26648,7 @@ class RollbackMNGVersionRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""<p>Platform ID</p>
+        r"""<p>Platform ID.</p>
         :rtype: str
         """
         return self._PlatformId
@@ -26377,7 +26659,7 @@ class RollbackMNGVersionRequest(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""<p>Mini game version number</p>
+        r"""<p>Mini game version number.</p>
         :rtype: str
         """
         return self._MNPVersion
@@ -26409,7 +26691,7 @@ class RollbackMNGVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>Response data</p>
+        :param _Data: <p>Response data.</p>
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -26419,7 +26701,7 @@ class RollbackMNGVersionResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>Response data</p>
+        r"""<p>Response data.</p>
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -26454,13 +26736,13 @@ class RollbackMNPVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program ID
+        :param _MNPId: Mini program appid.
         :type MNPId: str
-        :param _MNPVersionId: Mini program version ID
+        :param _MNPVersionId: Mini program version ID.
         :type MNPVersionId: int
-        :param _PlatformId: Platform ID
+        :param _PlatformId: Platform ID.
         :type PlatformId: str
-        :param _MNPVersion: Mini program version number
+        :param _MNPVersion: Mini program version number.
         :type MNPVersion: str
         """
         self._MNPId = None
@@ -26470,7 +26752,7 @@ class RollbackMNPVersionRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program ID
+        r"""Mini program appid.
         :rtype: str
         """
         return self._MNPId
@@ -26481,7 +26763,7 @@ class RollbackMNPVersionRequest(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""Mini program version ID
+        r"""Mini program version ID.
         :rtype: int
         """
         return self._MNPVersionId
@@ -26492,7 +26774,7 @@ class RollbackMNPVersionRequest(AbstractModel):
 
     @property
     def PlatformId(self):
-        r"""Platform ID
+        r"""Platform ID.
         :rtype: str
         """
         return self._PlatformId
@@ -26503,7 +26785,7 @@ class RollbackMNPVersionRequest(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""Mini program version number
+        r"""Mini program version number.
         :rtype: str
         """
         return self._MNPVersion
@@ -26535,7 +26817,7 @@ class RollbackMNPVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Response data
+        :param _Data: Response data.
         :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -26545,7 +26827,7 @@ class RollbackMNPVersionResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Response data
+        r"""Response data.
         :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
         """
         return self._Data
@@ -26574,20 +26856,20 @@ class RollbackMNPVersionResponse(AbstractModel):
 
 
 class StringData(AbstractModel):
-    r"""String object
+    r"""String data object.
 
     """
 
     def __init__(self):
         r"""
-        :param _Data: string type response data.
+        :param _Data: String response data. 
         :type Data: str
         """
         self._Data = None
 
     @property
     def Data(self):
-        r"""string type response data.
+        r"""String response data. 
         :rtype: str
         """
         return self._Data
@@ -26610,31 +26892,31 @@ class StringData(AbstractModel):
 
 
 class UploadFileTempSecret(AbstractModel):
-    r"""Temporary key for file upload
+    r"""Temporary credentials for file upload.
 
     """
 
     def __init__(self):
         r"""
-        :param _Bucket: Bucket
+        :param _Bucket: Storage bucket.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Bucket: str
-        :param _Region: Region
+        :param _Region: Region.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Region: str
-        :param _Path: Destination of upload
+        :param _Path: Upload path.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Path: str
-        :param _TempSecretId: Temporary secret ID
+        :param _TempSecretId: Temporary secret ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TempSecretId: str
-        :param _TempSecretKey: Temporary secret key
+        :param _TempSecretKey: Temporary secret key.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TempSecretKey: str
-        :param _Token: Token 
+        :param _Token: Token credential. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Token: str
-        :param _AccelerateEnable: Whether to enable global acceleration. Valid values: 0 (no), 1 (yes)
+        :param _AccelerateEnable: Whether global acceleration is enabled. Valid values: 0: No; 1: Yes.
         :type AccelerateEnable: int
         """
         self._Bucket = None
@@ -26647,7 +26929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bucket(self):
-        r"""Bucket
+        r"""Storage bucket.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26659,7 +26941,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        r"""Region
+        r"""Region.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26671,7 +26953,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
-        r"""Destination of upload
+        r"""Upload path.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26683,7 +26965,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TempSecretId(self):
-        r"""Temporary secret ID
+        r"""Temporary secret ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26695,7 +26977,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TempSecretKey(self):
-        r"""Temporary secret key
+        r"""Temporary secret key.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26707,7 +26989,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Token(self):
-        r"""Token 
+        r"""Token credential. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -26719,7 +27001,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccelerateEnable(self):
-        r"""Whether to enable global acceleration. Valid values: 0 (no), 1 (yes)
+        r"""Whether global acceleration is enabled. Valid values: 0: No; 1: Yes.
         :rtype: int
         """
         return self._AccelerateEnable
@@ -26748,24 +27030,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class VisitData(AbstractModel):
-    r"""Page visit data
+    r"""Page visit data.
 
     """
 
     def __init__(self):
         r"""
-        :param _VisitCount: Number of visits
+        :param _VisitCount: Number of visits.
         :type VisitCount: int
-        :param _AvgDeviceVisitDeep: Average pages per device - visit_page_count / active_device_num
+        :param _AvgDeviceVisitDeep: Average pages viewed per device. Calculated as: visit_page_count / active_device_num.
         :type AvgDeviceVisitDeep: str
-        :param _AvgCountVisitDeep: Pages per visit - visit_page_count / miniapp_open_num
+        :param _AvgCountVisitDeep: Average pages viewed per session. Calculated as: visit_page_count / miniapp_open_num.
         :type AvgCountVisitDeep: str
-        :param _AvgPageVisitDuration: Average visit duration - miniapp_total_duration / visit_page_count
+        :param _AvgPageVisitDuration: Average page visit duration. Calculated as: miniapp_total_duration / visit_page_count.
         :type AvgPageVisitDuration: str
-        :param _AvgCountVisitDuration: Average visit duration per session
-miniapp_total_duration/miniapp_open_num
+        :param _AvgCountVisitDuration: Average visit duration per session. Calculated as: miniapp_total_duration / miniapp_open_num.
         :type AvgCountVisitDuration: str
-        :param _DataTime: Refresh time in YYYYMMDD format
+        :param _DataTime: Refresh time in YYYYMMDD format.
         :type DataTime: int
         """
         self._VisitCount = None
@@ -26777,7 +27058,7 @@ miniapp_total_duration/miniapp_open_num
 
     @property
     def VisitCount(self):
-        r"""Number of visits
+        r"""Number of visits.
         :rtype: int
         """
         return self._VisitCount
@@ -26788,7 +27069,7 @@ miniapp_total_duration/miniapp_open_num
 
     @property
     def AvgDeviceVisitDeep(self):
-        r"""Average pages per device - visit_page_count / active_device_num
+        r"""Average pages viewed per device. Calculated as: visit_page_count / active_device_num.
         :rtype: str
         """
         return self._AvgDeviceVisitDeep
@@ -26799,7 +27080,7 @@ miniapp_total_duration/miniapp_open_num
 
     @property
     def AvgCountVisitDeep(self):
-        r"""Pages per visit - visit_page_count / miniapp_open_num
+        r"""Average pages viewed per session. Calculated as: visit_page_count / miniapp_open_num.
         :rtype: str
         """
         return self._AvgCountVisitDeep
@@ -26810,7 +27091,7 @@ miniapp_total_duration/miniapp_open_num
 
     @property
     def AvgPageVisitDuration(self):
-        r"""Average visit duration - miniapp_total_duration / visit_page_count
+        r"""Average page visit duration. Calculated as: miniapp_total_duration / visit_page_count.
         :rtype: str
         """
         return self._AvgPageVisitDuration
@@ -26821,8 +27102,7 @@ miniapp_total_duration/miniapp_open_num
 
     @property
     def AvgCountVisitDuration(self):
-        r"""Average visit duration per session
-miniapp_total_duration/miniapp_open_num
+        r"""Average visit duration per session. Calculated as: miniapp_total_duration / miniapp_open_num.
         :rtype: str
         """
         return self._AvgCountVisitDuration
@@ -26833,7 +27113,7 @@ miniapp_total_duration/miniapp_open_num
 
     @property
     def DataTime(self):
-        r"""Refresh time in YYYYMMDD format
+        r"""Refresh time in YYYYMMDD format.
         :rtype: int
         """
         return self._DataTime

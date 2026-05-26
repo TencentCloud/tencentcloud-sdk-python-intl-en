@@ -508,6 +508,32 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDiskStoragePool(self, request):
+        r"""This API is used to query the list of dedicated cloud disk clusters under the current user account.
+
+        * You can query by the dedicated cloud disk cluster ID (`CdcId`) and availability zone (`zone`). Multiple filters are combined with AND. For details about filtering, please see `Filter`.
+        * If the parameter is empty, a number (as specified by `Limit`; the default is 20) of dedicated cloud disk clusters are returned.
+
+        :param request: Request instance for DescribeDiskStoragePool.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskStoragePoolRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskStoragePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDiskStoragePool", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDiskStoragePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDisks(self, request):
         r"""This API (DescribeDisks) is used to query the list of cloud disks.
 
