@@ -41071,7 +41071,7 @@ class GetOfflineDIInstanceListRequest(AbstractModel):
         r"""
         :param _PageIndex: Which Page
         :type PageIndex: int
-        :param _PageSize: Number of Items per Page
+        :param _PageSize: Number of Items per Page.
         :type PageSize: int
         :param _ProjectId: Project ID
         :type ProjectId: str
@@ -41096,7 +41096,7 @@ class GetOfflineDIInstanceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""Number of Items per Page
+        r"""Number of Items per Page.
         :rtype: int
         """
         return self._PageSize
@@ -67775,7 +67775,7 @@ class SearchConditionNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Instance: Query Framework, required
+        :param _Instance: Query Framework, required.
         :type Instance: :class:`tencentcloud.wedata.v20210820.models.SearchConditionInstanceNew`
         :param _Keyword: Query keyword (Task ID exact match, Task Name fuzzy match), optional
         :type Keyword: str
@@ -67791,7 +67791,7 @@ class SearchConditionNew(AbstractModel):
 
     @property
     def Instance(self):
-        r"""Query Framework, required
+        r"""Query Framework, required.
         :rtype: :class:`tencentcloud.wedata.v20210820.models.SearchConditionInstanceNew`
         """
         return self._Instance

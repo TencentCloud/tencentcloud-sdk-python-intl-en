@@ -14,7 +14,7 @@
 # limitations under the License.
 
 
-# CAM Signature/Authentication Error.
+# CAM signature/authentication error.
 AUTHFAILURE = 'AuthFailure'
 
 # Not logged in or login has expired.
@@ -26,13 +26,13 @@ AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 # Dry Run Operation, indicating that the request would be successful, but the DryRun parameter was additionally passed.
 DRYRUNOPERATION = 'DryRunOperation'
 
-# Operation Failure.
+# Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
 # Query data development resource lock status - Current user does not hold the lock
 FAILEDOPERATION_NOLOCK = 'FailedOperation.NoLock'
 
-# An internal error occurs.
+# Internal error.
 INTERNALERROR = 'InternalError'
 
 # External System Call Exception.
@@ -71,13 +71,13 @@ INVALIDPARAMETER_WORKSPACENOTEXIST = 'InvalidParameter.WorkspaceNotExist'
 # Parameter value error.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# Quota limit exceeded.
+# The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# Missing Parameter Error.
+# Parameter missing.
 MISSINGPARAMETER = 'MissingParameter'
 
-# Operation Rejected.
+# Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
 # The user is not in the allowlist.
@@ -86,7 +86,7 @@ OPERATIONDENIED_USERNOTINWHITELISTERROR = 'OperationDenied.UserNotInWhitelistErr
 # The number of requests exceeded the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
-# Resource Occupied.
+# The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
 
 # Insufficient resources.
@@ -101,7 +101,7 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 # Resources sold out.
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
-# Unauthorized Operation.
+# Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # User is not a member of the current project.
@@ -110,7 +110,7 @@ UNAUTHORIZEDOPERATION_USERNOTINPROJECT = 'UnauthorizedOperation.UserNotInProject
 # Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
 
-# Operation not supported.
+# The operation is not supported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # Please configure at least one rule first.

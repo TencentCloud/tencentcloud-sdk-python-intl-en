@@ -1316,6 +1316,328 @@ class BusinessSummaryOverviewItem(AbstractModel):
         
 
 
+class CostAnalyzeDimensionData(AbstractModel):
+    r"""Cost analysis dimension data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of entries by dimension statistics</p>
+        :type TotalCount: int
+        :param _SumCost: <p>Sum value</p>
+        :type SumCost: str
+        :param _PeriodItemDetail: <p>Total amount by date dimension</p>
+        :type PeriodItemDetail: list of PeriodItemDetail
+        """
+        self._TotalCount = None
+        self._SumCost = None
+        self._PeriodItemDetail = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of entries by dimension statistics</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SumCost(self):
+        r"""<p>Sum value</p>
+        :rtype: str
+        """
+        return self._SumCost
+
+    @SumCost.setter
+    def SumCost(self, SumCost):
+        self._SumCost = SumCost
+
+    @property
+    def PeriodItemDetail(self):
+        r"""<p>Total amount by date dimension</p>
+        :rtype: list of PeriodItemDetail
+        """
+        return self._PeriodItemDetail
+
+    @PeriodItemDetail.setter
+    def PeriodItemDetail(self, PeriodItemDetail):
+        self._PeriodItemDetail = PeriodItemDetail
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._SumCost = params.get("SumCost")
+        if params.get("PeriodItemDetail") is not None:
+            self._PeriodItemDetail = []
+            for item in params.get("PeriodItemDetail"):
+                obj = PeriodItemDetail()
+                obj._deserialize(item)
+                self._PeriodItemDetail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CostAnalyzeFilter(AbstractModel):
+    r"""Cost analysis filter input
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessIn: <p>Contains product code</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessIn: list of str
+        :param _ProductIn: <p>Contains sub-product code</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductIn: list of str
+        :param _RegionIn: <p>Contains region id</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionIn: list of str
+        :param _ActionTypeIn: <p>Contains transaction type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ActionTypeIn: list of str
+        :param _PayModeIn: <p>Includes payment mode</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayModeIn: list of str
+        :param _ProjectIn: <p>Include project name</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectIn: list of str
+        :param _PayerUinIn: <p>Contains payer uin</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayerUinIn: list of str
+        :param _TagKey: <p>Tag key.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagKey: str
+        :param _TagIn: <p>Tag value list</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagIn: list of str
+        :param _ZoneIn: <p>Contains availability zones</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneIn: list of str
+        :param _OwnerUinIn: <p>Owner uin</p>
+        :type OwnerUinIn: list of str
+        :param _ComponentIn: <p>Component type info</p>
+        :type ComponentIn: list of str
+        :param _ItemIn: <p>Component name</p>
+        :type ItemIn: list of str
+        :param _ResourceIn: <p>Resource id information</p>
+        :type ResourceIn: list of str
+        """
+        self._BusinessIn = None
+        self._ProductIn = None
+        self._RegionIn = None
+        self._ActionTypeIn = None
+        self._PayModeIn = None
+        self._ProjectIn = None
+        self._PayerUinIn = None
+        self._TagKey = None
+        self._TagIn = None
+        self._ZoneIn = None
+        self._OwnerUinIn = None
+        self._ComponentIn = None
+        self._ItemIn = None
+        self._ResourceIn = None
+
+    @property
+    def BusinessIn(self):
+        r"""<p>Contains product code</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._BusinessIn
+
+    @BusinessIn.setter
+    def BusinessIn(self, BusinessIn):
+        self._BusinessIn = BusinessIn
+
+    @property
+    def ProductIn(self):
+        r"""<p>Contains sub-product code</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ProductIn
+
+    @ProductIn.setter
+    def ProductIn(self, ProductIn):
+        self._ProductIn = ProductIn
+
+    @property
+    def RegionIn(self):
+        r"""<p>Contains region id</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._RegionIn
+
+    @RegionIn.setter
+    def RegionIn(self, RegionIn):
+        self._RegionIn = RegionIn
+
+    @property
+    def ActionTypeIn(self):
+        r"""<p>Contains transaction type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ActionTypeIn
+
+    @ActionTypeIn.setter
+    def ActionTypeIn(self, ActionTypeIn):
+        self._ActionTypeIn = ActionTypeIn
+
+    @property
+    def PayModeIn(self):
+        r"""<p>Includes payment mode</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._PayModeIn
+
+    @PayModeIn.setter
+    def PayModeIn(self, PayModeIn):
+        self._PayModeIn = PayModeIn
+
+    @property
+    def ProjectIn(self):
+        r"""<p>Include project name</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ProjectIn
+
+    @ProjectIn.setter
+    def ProjectIn(self, ProjectIn):
+        self._ProjectIn = ProjectIn
+
+    @property
+    def PayerUinIn(self):
+        r"""<p>Contains payer uin</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._PayerUinIn
+
+    @PayerUinIn.setter
+    def PayerUinIn(self, PayerUinIn):
+        self._PayerUinIn = PayerUinIn
+
+    @property
+    def TagKey(self):
+        r"""<p>Tag key.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagIn(self):
+        r"""<p>Tag value list</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._TagIn
+
+    @TagIn.setter
+    def TagIn(self, TagIn):
+        self._TagIn = TagIn
+
+    @property
+    def ZoneIn(self):
+        r"""<p>Contains availability zones</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ZoneIn
+
+    @ZoneIn.setter
+    def ZoneIn(self, ZoneIn):
+        self._ZoneIn = ZoneIn
+
+    @property
+    def OwnerUinIn(self):
+        r"""<p>Owner uin</p>
+        :rtype: list of str
+        """
+        return self._OwnerUinIn
+
+    @OwnerUinIn.setter
+    def OwnerUinIn(self, OwnerUinIn):
+        self._OwnerUinIn = OwnerUinIn
+
+    @property
+    def ComponentIn(self):
+        r"""<p>Component type info</p>
+        :rtype: list of str
+        """
+        return self._ComponentIn
+
+    @ComponentIn.setter
+    def ComponentIn(self, ComponentIn):
+        self._ComponentIn = ComponentIn
+
+    @property
+    def ItemIn(self):
+        r"""<p>Component name</p>
+        :rtype: list of str
+        """
+        return self._ItemIn
+
+    @ItemIn.setter
+    def ItemIn(self, ItemIn):
+        self._ItemIn = ItemIn
+
+    @property
+    def ResourceIn(self):
+        r"""<p>Resource id information</p>
+        :rtype: list of str
+        """
+        return self._ResourceIn
+
+    @ResourceIn.setter
+    def ResourceIn(self, ResourceIn):
+        self._ResourceIn = ResourceIn
+
+
+    def _deserialize(self, params):
+        self._BusinessIn = params.get("BusinessIn")
+        self._ProductIn = params.get("ProductIn")
+        self._RegionIn = params.get("RegionIn")
+        self._ActionTypeIn = params.get("ActionTypeIn")
+        self._PayModeIn = params.get("PayModeIn")
+        self._ProjectIn = params.get("ProjectIn")
+        self._PayerUinIn = params.get("PayerUinIn")
+        self._TagKey = params.get("TagKey")
+        self._TagIn = params.get("TagIn")
+        self._ZoneIn = params.get("ZoneIn")
+        self._OwnerUinIn = params.get("OwnerUinIn")
+        self._ComponentIn = params.get("ComponentIn")
+        self._ItemIn = params.get("ItemIn")
+        self._ResourceIn = params.get("ResourceIn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CostAnalyzeFilterDetail(AbstractModel):
     r"""Advanced filtering for cost analysis
 
@@ -4306,6 +4628,263 @@ class DescribeCustomerOwnCostExplorerFilterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCustomerOwnCostExplorerSummaryRequest(AbstractModel):
+    r"""DescribeCustomerOwnCostExplorerSummary request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dimension: <p>Classification dimension</p><p>Enumeration value:</p><ul><li>Default: Default dimension</li><li>Business: Product</li><li>Product: Subproduct</li><li>Region: Region</li><li>Zone: Availability zone</li><li>ActionType: Transaction type</li><li>PayMode: Payment mode</li><li>Project: Project</li><li>PayerUin: Payer uin</li><li>OwnerUin: Owner uin</li><li>Tag: Tag</li></ul>
+        :type Dimension: str
+        :param _FeeType: <p>Fee type</p><p>Enumeration value:</p><ul><li>originalCost: Original Cost</li><li>totalCost: Total Cost</li></ul>
+        :type FeeType: str
+        :param _BillType: <p>Billing mode</p><p>Enumeration value:</p><ul><li>1: Billing statement</li></ul>
+        :type BillType: int
+        :param _StartTime: <p>Start time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months; when PeriodType is day, the time range is 2 calendar months;</p>
+        :type StartTime: str
+        :param _EndTime: <p>End time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months. When PeriodType is day, the time range is 2 calendar months.</p>
+        :type EndTime: str
+        :param _PeriodType: <p>Time type</p><p>Enumeration value:</p><ul><li>day: By day</li><li>month: By month</li></ul>
+        :type PeriodType: str
+        :param _Page: <p>Page number</p><p>Value range: [1, 10000]</p>
+        :type Page: int
+        :param _PageSize: <p>Page size</p><p>Value range: [1, 200]</p>
+        :type PageSize: int
+        :param _TagKey: <p>Tag key of the statistical dimension. When Dimension is Tag, TagKey is required.</p>
+        :type TagKey: str
+        :param _Filter: Filter
+
+You can pass the data returned by [DescribeCustomerOwnCostExplorerFilter](https://www.tencentcloud.com/document/product/1085/80125) as a parameter to filter the data.
+        :type Filter: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CostAnalyzeFilter`
+        """
+        self._Dimension = None
+        self._FeeType = None
+        self._BillType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PeriodType = None
+        self._Page = None
+        self._PageSize = None
+        self._TagKey = None
+        self._Filter = None
+
+    @property
+    def Dimension(self):
+        r"""<p>Classification dimension</p><p>Enumeration value:</p><ul><li>Default: Default dimension</li><li>Business: Product</li><li>Product: Subproduct</li><li>Region: Region</li><li>Zone: Availability zone</li><li>ActionType: Transaction type</li><li>PayMode: Payment mode</li><li>Project: Project</li><li>PayerUin: Payer uin</li><li>OwnerUin: Owner uin</li><li>Tag: Tag</li></ul>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def FeeType(self):
+        r"""<p>Fee type</p><p>Enumeration value:</p><ul><li>originalCost: Original Cost</li><li>totalCost: Total Cost</li></ul>
+        :rtype: str
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def BillType(self):
+        r"""<p>Billing mode</p><p>Enumeration value:</p><ul><li>1: Billing statement</li></ul>
+        :rtype: int
+        """
+        return self._BillType
+
+    @BillType.setter
+    def BillType(self, BillType):
+        self._BillType = BillType
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months; when PeriodType is day, the time range is 2 calendar months;</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>End time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months. When PeriodType is day, the time range is 2 calendar months.</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PeriodType(self):
+        r"""<p>Time type</p><p>Enumeration value:</p><ul><li>day: By day</li><li>month: By month</li></ul>
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def Page(self):
+        r"""<p>Page number</p><p>Value range: [1, 10000]</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>Page size</p><p>Value range: [1, 200]</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TagKey(self):
+        r"""<p>Tag key of the statistical dimension. When Dimension is Tag, TagKey is required.</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def Filter(self):
+        r"""Filter
+
+You can pass the data returned by [DescribeCustomerOwnCostExplorerFilter](https://www.tencentcloud.com/document/product/1085/80125) as a parameter to filter the data.
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CostAnalyzeFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._Dimension = params.get("Dimension")
+        self._FeeType = params.get("FeeType")
+        self._BillType = params.get("BillType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PeriodType = params.get("PeriodType")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TagKey = params.get("TagKey")
+        if params.get("Filter") is not None:
+            self._Filter = CostAnalyzeFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerOwnCostExplorerSummaryResponse(AbstractModel):
+    r"""DescribeCustomerOwnCostExplorerSummary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DimensionName: <p>Classification dimension</p>
+        :type DimensionName: str
+        :param _Detail: <p>Details</p>
+        :type Detail: list of DimensionPeriodData
+        :param _TotalDetail: <p>Classification dimension statistics</p>
+        :type TotalDetail: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CostAnalyzeDimensionData`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DimensionName = None
+        self._Detail = None
+        self._TotalDetail = None
+        self._RequestId = None
+
+    @property
+    def DimensionName(self):
+        r"""<p>Classification dimension</p>
+        :rtype: str
+        """
+        return self._DimensionName
+
+    @DimensionName.setter
+    def DimensionName(self, DimensionName):
+        self._DimensionName = DimensionName
+
+    @property
+    def Detail(self):
+        r"""<p>Details</p>
+        :rtype: list of DimensionPeriodData
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def TotalDetail(self):
+        r"""<p>Classification dimension statistics</p>
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CostAnalyzeDimensionData`
+        """
+        return self._TotalDetail
+
+    @TotalDetail.setter
+    def TotalDetail(self, TotalDetail):
+        self._TotalDetail = TotalDetail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DimensionName = params.get("DimensionName")
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = DimensionPeriodData()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        if params.get("TotalDetail") is not None:
+            self._TotalDetail = CostAnalyzeDimensionData()
+            self._TotalDetail._deserialize(params.get("TotalDetail"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCustomerOwnVoucherItem(AbstractModel):
     r"""Voucher data.
 
@@ -5753,6 +6332,92 @@ class DescribeRebateDownloadUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DimensionPeriodData(AbstractModel):
+    r"""Cost dimension periodic data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Function name by dimensional classification</p>
+        :type Name: str
+        :param _Code: <p>code corresponding to the function name after dimensional classification</p>
+        :type Code: str
+        :param _SumCost: <p>Sum value of the current group</p>
+        :type SumCost: str
+        :param _ItemDetail: <p>Amount statistics by date grouping</p>
+        :type ItemDetail: list of PeriodItemDetail
+        """
+        self._Name = None
+        self._Code = None
+        self._SumCost = None
+        self._ItemDetail = None
+
+    @property
+    def Name(self):
+        r"""<p>Function name by dimensional classification</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Code(self):
+        r"""<p>code corresponding to the function name after dimensional classification</p>
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def SumCost(self):
+        r"""<p>Sum value of the current group</p>
+        :rtype: str
+        """
+        return self._SumCost
+
+    @SumCost.setter
+    def SumCost(self, SumCost):
+        self._SumCost = SumCost
+
+    @property
+    def ItemDetail(self):
+        r"""<p>Amount statistics by date grouping</p>
+        :rtype: list of PeriodItemDetail
+        """
+        return self._ItemDetail
+
+    @ItemDetail.setter
+    def ItemDetail(self, ItemDetail):
+        self._ItemDetail = ItemDetail
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Code = params.get("Code")
+        self._SumCost = params.get("SumCost")
+        if params.get("ItemDetail") is not None:
+            self._ItemDetail = []
+            for item in params.get("ItemDetail"):
+                obj = PeriodItemDetail()
+                obj._deserialize(item)
+                self._ItemDetail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ForceQNRequest(AbstractModel):
     r"""ForceQN request structure.
 
@@ -6178,6 +6843,57 @@ class PayModeSummaryOverviewItem(AbstractModel):
                 self._Detail.append(obj)
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PeriodItemDetail(AbstractModel):
+    r"""Cost cycle entry info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: <p>Date</p>
+        :type Period: str
+        :param _Cost: <p>Fee</p>
+        :type Cost: str
+        """
+        self._Period = None
+        self._Cost = None
+
+    @property
+    def Period(self):
+        r"""<p>Date</p>
+        :rtype: str
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Cost(self):
+        r"""<p>Fee</p>
+        :rtype: str
+        """
+        return self._Cost
+
+    @Cost.setter
+    def Cost(self, Cost):
+        self._Cost = Cost
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._Cost = params.get("Cost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
