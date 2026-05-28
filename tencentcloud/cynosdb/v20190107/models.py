@@ -5700,121 +5700,99 @@ class CreateClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: AZ
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _VpcId: VPC ID
+        :param _VpcId: <p>VPC network ID</p>
         :type VpcId: str
-        :param _SubnetId: Subnet ID
+        :param _SubnetId: <p>Subnet ID</p>
         :type SubnetId: str
-        :param _DbType: Database type. Valid values: 
-<li> MYSQL </li>
+        :param _DbType: <p>Database type</p><p>Enumeration value:</p><ul><li>MYSQL: MYSQL</li></ul>
         :type DbType: str
-        :param _DbVersion: Database version. Valid values: 
-<li> Valid values for `MYSQL`: 5.7 and 8.0 </li>
+        :param _DbVersion: <p>Database version</p><p>Enumeration value:</p><ul><li>5.7: MySQL 5.7 edition</li><li>8.0: MySQL 8.0 edition</li></ul>
         :type DbVersion: str
-        :param _ProjectId: Project ID.
+        :param _ProjectId: <p>project-ID</p>
         :type ProjectId: int
-        :param _Cpu: It is required when `DbMode` is set to `NORMAL` or left empty.
-Number of CPU cores of normal instance
+        :param _Cpu: <p>Required when DbMode is NORMAL or left blank<br>Cpu cores of the regular instance</p>
         :type Cpu: int
-        :param _Memory: It is required when `DbMode` is set to `NORMAL` or left empty.
-Memory of a non-serverless instance in GB
+        :param _Memory: <p>Required when DbMode is NORMAL or left blank<br>Ordinary instance memory in GB</p>
         :type Memory: int
-        :param _InstanceCount: Instance count. valid values: a quantity range from 0 to 16. the default value is 2 (that is, one rw instance + one ro instance). the transmitted n represents 1 rw instance + (n - 1) ro instances (with identical specifications). if a more precise cluster composition collocation is required, please use InstanceInitInfos.
+        :param _InstanceCount: <p>Instance count</p><p>Value ranges from [1, 16]</p><p>Default value: 2</p><ul><li>A value of 2 means one rw instance + one ro instance.</li><li>The transmitted n refers to one rw instance + n-1 ro instances (identical specifications).</li><li>For a more precise cluster composition collocation, please use InstanceInitInfos.</li><li>The value set by this parameter is suitable for provisioned resource cluster. If needed to set the specifications and quantity of Serverless cluster, please use the InstanceInitInfo structure in InstanceInitInfos.n.</li></ul>
         :type InstanceCount: int
-        :param _Storage: This parameter has been deprecated.
-Storage capacity in GB
+        :param _Storage: <p>This parameter is meaningless and abandoned.<br>Storage size, in GB.</p>
         :type Storage: int
-        :param _ClusterName: Cluster name, which can contain less than 64 letters, digits, or symbols (-_.).
+        :param _ClusterName: <p>Cluster name, length less than 64 characters, each character value ranges from uppercase/lowercase letters, digits, special symbols ('-', '_', '.')</p>
         :type ClusterName: str
-        :param _AdminPassword: Account password, which must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/).
+        :param _AdminPassword: <p>Account (8-64 characters, a combination of uppercase and lowercase letters, digits and symbols ~!@#$%^&amp;*_-+=`|(){}[]:;&#39;&lt;&gt;,.?/ with any three types required)</p>
         :type AdminPassword: str
-        :param _Port: Port. Valid range: [0, 65535). Default value: 3306
+        :param _Port: <p>Port, default 3306, in the range of [0, 65535)</p>
         :type Port: int
-        :param _PayMode: Billing mode. supported values: 0 and 1. default value: 0.
-Value is 0, indicating pay-as-you-go billing.
-Value is 1, which means yearly/monthly subscription.
+        :param _PayMode: <p>Billing mode</p><p>Enumeration value:</p><ul><li>0: Pay-as-you-go billing</li><li>1: Monthly Subscription</li></ul><p>Default value: 0</p>
         :type PayMode: int
-        :param _Count: Number of purchased clusters. Valid range: [1,50]. Default value: 1
+        :param _Count: <p>Number of clusters to purchase. Optional value range: [1,50]. Default is 1.</p>
         :type Count: int
-        :param _RollbackStrategy: Rollback type:
-noneRollback: no rollback;
-snapRollback: rollback by snapshot;
-timeRollback: rollback by time point
+        :param _RollbackStrategy: <p>Rollback type</p><p>Enumeration value:</p><ul><li>noneRollback: No rollback</li><li>snapRollback: Snapshot rollback</li><li>timeRollback: Point-in-time rollback</li></ul>
         :type RollbackStrategy: str
-        :param _RollbackId: `snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid
+        :param _RollbackId: <p>Snapshot rollback means snapshotId; point-in-time rollback means queryId. A value of 0 indicates requirement to judge whether the time point is valid.</p>
         :type RollbackId: int
-        :param _OriginalClusterId: The source cluster ID passed in during rollback to find the source `poolId`
+        :param _OriginalClusterId: <p>During rollback, input the source cluster ID to search for the source poolId</p>
         :type OriginalClusterId: str
-        :param _ExpectTime: Specified time for time point rollback or snapshot time for snapshot rollback
+        :param _ExpectTime: <p>Point-in-time rollback, specified time; snapshot rollback, snapshot time</p>
         :type ExpectTime: str
-        :param _ExpectTimeThresh: This parameter has been deprecated.
-Specified allowed time range for time point rollback
+        :param _ExpectTimeThresh: <p>This parameter is meaningless and abandoned.<br>Point-in-time rollback, allowed range of specified time.</p>
         :type ExpectTimeThresh: int
-        :param _StorageLimit: Storage upper limit of normal instance in GB
-If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscription, the parameter value can't exceed the maximum storage corresponding to the CPU and memory specifications.
+        :param _StorageLimit: <p>Ordinary instance storage cap, in GB<br>When DbType is MYSQL and the storage billing mode is prepaid, this parameter should not exceed the maximum storage specification corresponding to cpu and memory.</p>
         :type StorageLimit: int
-        :param _TimeSpan: Purchase duration of yearly/monthly subscription plan
+        :param _TimeSpan: <p>Annual and monthly subscription duration</p>
         :type TimeSpan: int
-        :param _TimeUnit: Duration unit of yearly/monthly subscription. Valid values: `s`, `d`, `m`, `y`
+        :param _TimeUnit: <p>Annual and monthly subscription duration unit, ['s', 'd', 'm', 'y']</p>
         :type TimeUnit: str
-        :param _AutoRenewFlag: Specifies whether the annual/yearly/monthly subscription is auto-renewed. the default value is 0.
-0 indicates the default renewal method. 1 means auto-renewal. 2 means no auto-renewal.
+        :param _AutoRenewFlag: <p>Whether Annual/Monthly Subscription is auto-renewed</p><p>Enumeration value:</p><ul><li>0: Default renewal method</li><li>1: Auto-renewal</li><li>2: No auto-renewal</li></ul><p>Default value: 0</p>
         :type AutoRenewFlag: int
-        :param _AutoVoucher: Whether to automatically select a voucher. `1`: yes; `0`: no. Default value: `0`
+        :param _AutoVoucher: <p>Whether to automatically select voucher 1 Yes 0 No Default value: 0</p><p>Enumeration value:</p><ul><li>1: Yes</li><li>0: No</li></ul><p>Default value: 0</p>
         :type AutoVoucher: int
-        :param _HaCount: Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)
+        :param _HaCount: <p>Instance count (this parameter is deprecated and only for existing accommodative)</p>
         :type HaCount: int
-        :param _OrderSource: Order source
+        :param _OrderSource: <p>Order source</p>
         :type OrderSource: str
-        :param _ResourceTags: Array of tags to be bound to the created cluster
+        :param _ResourceTags: <p>tag Array info that should be bound for cluster creation</p>
         :type ResourceTags: list of Tag
-        :param _DbMode: Database type
-Valid values when `DbType` is `MYSQL` (default value: `NORMAL`):
-<li>NORMAL</li>
-<li>SERVERLESS</li>
+        :param _DbMode: <p>Db type</p><p>Enumeration value:</p><ul><li>NORMAL: NORMAL instance</li><li>SERVERLESS: SERVERLESS instance</li></ul><p>Default value: NORMAL</p><p>Selectable when DbType is MYSQL (default NORMAL)</p>
         :type DbMode: str
-        :param _MinCpu: This parameter is required if `DbMode` is `SERVERLESS`.
-Minimum number of CPU cores. For the value range, see the returned result of `DescribeServerlessInstanceSpecs`.
+        :param _MinCpu: <p>Required when DbMode is SERVERLESS<br>Minimum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs</p>
         :type MinCpu: float
-        :param _MaxCpu: This parameter is required if `DbMode` is `SERVERLESS`.
-Maximum number of CPU cores. For the value range, see the returned result of `DescribeServerlessInstanceSpecs`.
+        :param _MaxCpu: <p>Required when DbMode is SERVERLESS:<br>Maximum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs.</p>
         :type MaxCpu: float
-        :param _AutoPause: This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:
-<li>yes</li>
-<li>no</li>
-Default value: yes
+        :param _AutoPause: <p>No auto pause</p><p>Enumeration value:</p><ul><li>yes: Yes</li><li>no: No</li></ul><p>Default value: yes</p><p>Take effect when DbMode is SERVERLESS</p>
         :type AutoPause: str
-        :param _AutoPauseDelay: This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]
-Default value: `600`
+        :param _AutoPauseDelay: <p>When DbMode is SERVERLESS, specify the delay for Cluster Auto-Pause in seconds. Optional range: [600,691200]<br>Default value: 600</p>
         :type AutoPauseDelay: int
-        :param _StoragePayMode: The billing mode of cluster storage. Valid values: `0` (pay-as-you-go), `1` (yearly/monthly subscription). Default value: `0`.
-If `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be pay-as-you-go.
-Clusters with storage billed in yearly/monthly subscription can't be cloned or rolled back.
+        :param _StoragePayMode: <p>The storage billing mode of the cluster. Pay-As-You-Go: 0, Monthly Subscription: 1. Default is Pay-As-You-Go.<br>When DbType is MYSQL and the compute billing mode of the cluster is postpaid (including DbMode as SERVERLESS), the storage billing mode can only be Pay-As-You-Go.<br>Rollback and clone do not support Monthly Subscription storage.</p>
         :type StoragePayMode: int
-        :param _SecurityGroupIds: Array of security group IDs
+        :param _SecurityGroupIds: <p>Security group id array</p>
         :type SecurityGroupIds: list of str
-        :param _AlarmPolicyIds: Array of alarm policy IDs
+        :param _AlarmPolicyIds: <p>Alarm policy Id array</p>
         :type AlarmPolicyIds: list of str
-        :param _ClusterParams: Array of parameters. Valid values: `character_set_server` (utf8/latin1/gbk/utf8mb4), `lower_case_table_names`. 0: case-sensitive; 1: case-insensitive).
+        :param _ClusterParams: <p>Parameter array, temporarily supports character_set_server (utf8|latin1|gbk|utf8mb4), lower_case_table_names, 1-case-insensitive, 0-case-sensitive</p>
         :type ClusterParams: list of ParamItem
-        :param _DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
+        :param _DealMode: <p>Transaction mode</p><p>Enumeration value:</p><ul><li>0: Place order and pay</li><li>1: Place order</li></ul><p>Default value: 0</p>
         :type DealMode: int
-        :param _ParamTemplateId: Parameter template ID, which can be obtained by querying parameter template information "DescribeParamTemplates"
+        :param _ParamTemplateId: <p>Parameter template ID. The parameter template ID can be obtained through querying parameter template information DescribeParamTemplates.</p>
         :type ParamTemplateId: int
-        :param _SlaveZone: Multi-AZ address
+        :param _SlaveZone: <p>Multi-AZ address</p>
         :type SlaveZone: str
-        :param _InstanceInitInfos: Instance initialization configuration information, which is used to select instances with different specifications when purchasing a cluster.
+        :param _InstanceInitInfos: <p>Instance initialization configuration information is mainly used to select different specification instances during cluster purchase.</p>
         :type InstanceInitInfos: list of InstanceInitInfo
-        :param _GdnId: Global database unique identifier.
+        :param _GdnId: <p>Global database unique ID</p>
         :type GdnId: str
-        :param _ProxyConfig: Database proxy configuration.
+        :param _ProxyConfig: <p>Database proxy configuration</p>
         :type ProxyConfig: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConfig`
-        :param _AutoArchive: Automatically archive.
+        :param _AutoArchive: <p>Auto archive or not</p><p>Enumeration value:</p><ul><li>yes: Yes</li><li>no: No</li></ul><p>Default value: no</p><p>This parameter takes effect only when the primary instance of the current cluster is SERVERLESS</p>
         :type AutoArchive: str
-        :param _AutoArchiveDelayHours: Archiving processing time after pausing.
+        :param _AutoArchiveDelayHours: <p>Archiving processing time after pausing</p><p>Measurement unit: hour</p><p>Default value: 12</p><p>This parameter takes effect only when the primary instance of the current cluster is SERVERLESS.</p>
         :type AutoArchiveDelayHours: int
-        :param _CynosVersion: Kernel minor version number.
+        :param _ClusterLevel: <p>Cluster level, optional. Example: P0, P1. (This field can be ignored)</p>
+        :type ClusterLevel: str
+        :param _CynosVersion: <p>Kernel minor version</p>
         :type CynosVersion: str
         """
         self._Zone = None
@@ -5862,11 +5840,12 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
         self._ProxyConfig = None
         self._AutoArchive = None
         self._AutoArchiveDelayHours = None
+        self._ClusterLevel = None
         self._CynosVersion = None
 
     @property
     def Zone(self):
-        r"""AZ
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -5877,7 +5856,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""<p>VPC network ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -5888,7 +5867,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
+        r"""<p>Subnet ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -5899,8 +5878,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def DbType(self):
-        r"""Database type. Valid values: 
-<li> MYSQL </li>
+        r"""<p>Database type</p><p>Enumeration value:</p><ul><li>MYSQL: MYSQL</li></ul>
         :rtype: str
         """
         return self._DbType
@@ -5911,8 +5889,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def DbVersion(self):
-        r"""Database version. Valid values: 
-<li> Valid values for `MYSQL`: 5.7 and 8.0 </li>
+        r"""<p>Database version</p><p>Enumeration value:</p><ul><li>5.7: MySQL 5.7 edition</li><li>8.0: MySQL 8.0 edition</li></ul>
         :rtype: str
         """
         return self._DbVersion
@@ -5923,7 +5900,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def ProjectId(self):
-        r"""Project ID.
+        r"""<p>project-ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -5934,8 +5911,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def Cpu(self):
-        r"""It is required when `DbMode` is set to `NORMAL` or left empty.
-Number of CPU cores of normal instance
+        r"""<p>Required when DbMode is NORMAL or left blank<br>Cpu cores of the regular instance</p>
         :rtype: int
         """
         return self._Cpu
@@ -5946,8 +5922,7 @@ Number of CPU cores of normal instance
 
     @property
     def Memory(self):
-        r"""It is required when `DbMode` is set to `NORMAL` or left empty.
-Memory of a non-serverless instance in GB
+        r"""<p>Required when DbMode is NORMAL or left blank<br>Ordinary instance memory in GB</p>
         :rtype: int
         """
         return self._Memory
@@ -5958,7 +5933,7 @@ Memory of a non-serverless instance in GB
 
     @property
     def InstanceCount(self):
-        r"""Instance count. valid values: a quantity range from 0 to 16. the default value is 2 (that is, one rw instance + one ro instance). the transmitted n represents 1 rw instance + (n - 1) ro instances (with identical specifications). if a more precise cluster composition collocation is required, please use InstanceInitInfos.
+        r"""<p>Instance count</p><p>Value ranges from [1, 16]</p><p>Default value: 2</p><ul><li>A value of 2 means one rw instance + one ro instance.</li><li>The transmitted n refers to one rw instance + n-1 ro instances (identical specifications).</li><li>For a more precise cluster composition collocation, please use InstanceInitInfos.</li><li>The value set by this parameter is suitable for provisioned resource cluster. If needed to set the specifications and quantity of Serverless cluster, please use the InstanceInitInfo structure in InstanceInitInfos.n.</li></ul>
         :rtype: int
         """
         return self._InstanceCount
@@ -5969,8 +5944,7 @@ Memory of a non-serverless instance in GB
 
     @property
     def Storage(self):
-        r"""This parameter has been deprecated.
-Storage capacity in GB
+        r"""<p>This parameter is meaningless and abandoned.<br>Storage size, in GB.</p>
         :rtype: int
         """
         return self._Storage
@@ -5981,7 +5955,7 @@ Storage capacity in GB
 
     @property
     def ClusterName(self):
-        r"""Cluster name, which can contain less than 64 letters, digits, or symbols (-_.).
+        r"""<p>Cluster name, length less than 64 characters, each character value ranges from uppercase/lowercase letters, digits, special symbols ('-', '_', '.')</p>
         :rtype: str
         """
         return self._ClusterName
@@ -5992,7 +5966,7 @@ Storage capacity in GB
 
     @property
     def AdminPassword(self):
-        r"""Account password, which must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/).
+        r"""<p>Account (8-64 characters, a combination of uppercase and lowercase letters, digits and symbols ~!@#$%^&amp;*_-+=`|(){}[]:;&#39;&lt;&gt;,.?/ with any three types required)</p>
         :rtype: str
         """
         return self._AdminPassword
@@ -6003,7 +5977,7 @@ Storage capacity in GB
 
     @property
     def Port(self):
-        r"""Port. Valid range: [0, 65535). Default value: 3306
+        r"""<p>Port, default 3306, in the range of [0, 65535)</p>
         :rtype: int
         """
         return self._Port
@@ -6014,9 +5988,7 @@ Storage capacity in GB
 
     @property
     def PayMode(self):
-        r"""Billing mode. supported values: 0 and 1. default value: 0.
-Value is 0, indicating pay-as-you-go billing.
-Value is 1, which means yearly/monthly subscription.
+        r"""<p>Billing mode</p><p>Enumeration value:</p><ul><li>0: Pay-as-you-go billing</li><li>1: Monthly Subscription</li></ul><p>Default value: 0</p>
         :rtype: int
         """
         return self._PayMode
@@ -6027,7 +5999,7 @@ Value is 1, which means yearly/monthly subscription.
 
     @property
     def Count(self):
-        r"""Number of purchased clusters. Valid range: [1,50]. Default value: 1
+        r"""<p>Number of clusters to purchase. Optional value range: [1,50]. Default is 1.</p>
         :rtype: int
         """
         return self._Count
@@ -6038,10 +6010,7 @@ Value is 1, which means yearly/monthly subscription.
 
     @property
     def RollbackStrategy(self):
-        r"""Rollback type:
-noneRollback: no rollback;
-snapRollback: rollback by snapshot;
-timeRollback: rollback by time point
+        r"""<p>Rollback type</p><p>Enumeration value:</p><ul><li>noneRollback: No rollback</li><li>snapRollback: Snapshot rollback</li><li>timeRollback: Point-in-time rollback</li></ul>
         :rtype: str
         """
         return self._RollbackStrategy
@@ -6052,7 +6021,7 @@ timeRollback: rollback by time point
 
     @property
     def RollbackId(self):
-        r"""`snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid
+        r"""<p>Snapshot rollback means snapshotId; point-in-time rollback means queryId. A value of 0 indicates requirement to judge whether the time point is valid.</p>
         :rtype: int
         """
         return self._RollbackId
@@ -6063,7 +6032,7 @@ timeRollback: rollback by time point
 
     @property
     def OriginalClusterId(self):
-        r"""The source cluster ID passed in during rollback to find the source `poolId`
+        r"""<p>During rollback, input the source cluster ID to search for the source poolId</p>
         :rtype: str
         """
         return self._OriginalClusterId
@@ -6074,7 +6043,7 @@ timeRollback: rollback by time point
 
     @property
     def ExpectTime(self):
-        r"""Specified time for time point rollback or snapshot time for snapshot rollback
+        r"""<p>Point-in-time rollback, specified time; snapshot rollback, snapshot time</p>
         :rtype: str
         """
         return self._ExpectTime
@@ -6085,8 +6054,7 @@ timeRollback: rollback by time point
 
     @property
     def ExpectTimeThresh(self):
-        r"""This parameter has been deprecated.
-Specified allowed time range for time point rollback
+        r"""<p>This parameter is meaningless and abandoned.<br>Point-in-time rollback, allowed range of specified time.</p>
         :rtype: int
         """
         return self._ExpectTimeThresh
@@ -6097,8 +6065,7 @@ Specified allowed time range for time point rollback
 
     @property
     def StorageLimit(self):
-        r"""Storage upper limit of normal instance in GB
-If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscription, the parameter value can't exceed the maximum storage corresponding to the CPU and memory specifications.
+        r"""<p>Ordinary instance storage cap, in GB<br>When DbType is MYSQL and the storage billing mode is prepaid, this parameter should not exceed the maximum storage specification corresponding to cpu and memory.</p>
         :rtype: int
         """
         return self._StorageLimit
@@ -6109,7 +6076,7 @@ If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscripti
 
     @property
     def TimeSpan(self):
-        r"""Purchase duration of yearly/monthly subscription plan
+        r"""<p>Annual and monthly subscription duration</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -6120,7 +6087,7 @@ If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscripti
 
     @property
     def TimeUnit(self):
-        r"""Duration unit of yearly/monthly subscription. Valid values: `s`, `d`, `m`, `y`
+        r"""<p>Annual and monthly subscription duration unit, ['s', 'd', 'm', 'y']</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -6131,8 +6098,7 @@ If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscripti
 
     @property
     def AutoRenewFlag(self):
-        r"""Specifies whether the annual/yearly/monthly subscription is auto-renewed. the default value is 0.
-0 indicates the default renewal method. 1 means auto-renewal. 2 means no auto-renewal.
+        r"""<p>Whether Annual/Monthly Subscription is auto-renewed</p><p>Enumeration value:</p><ul><li>0: Default renewal method</li><li>1: Auto-renewal</li><li>2: No auto-renewal</li></ul><p>Default value: 0</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -6143,7 +6109,7 @@ If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscripti
 
     @property
     def AutoVoucher(self):
-        r"""Whether to automatically select a voucher. `1`: yes; `0`: no. Default value: `0`
+        r"""<p>Whether to automatically select voucher 1 Yes 0 No Default value: 0</p><p>Enumeration value:</p><ul><li>1: Yes</li><li>0: No</li></ul><p>Default value: 0</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -6154,7 +6120,7 @@ If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscripti
 
     @property
     def HaCount(self):
-        r"""Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)
+        r"""<p>Instance count (this parameter is deprecated and only for existing accommodative)</p>
         :rtype: int
         """
         return self._HaCount
@@ -6165,7 +6131,7 @@ If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscripti
 
     @property
     def OrderSource(self):
-        r"""Order source
+        r"""<p>Order source</p>
         :rtype: str
         """
         return self._OrderSource
@@ -6176,7 +6142,7 @@ If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscripti
 
     @property
     def ResourceTags(self):
-        r"""Array of tags to be bound to the created cluster
+        r"""<p>tag Array info that should be bound for cluster creation</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -6187,10 +6153,7 @@ If `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscripti
 
     @property
     def DbMode(self):
-        r"""Database type
-Valid values when `DbType` is `MYSQL` (default value: `NORMAL`):
-<li>NORMAL</li>
-<li>SERVERLESS</li>
+        r"""<p>Db type</p><p>Enumeration value:</p><ul><li>NORMAL: NORMAL instance</li><li>SERVERLESS: SERVERLESS instance</li></ul><p>Default value: NORMAL</p><p>Selectable when DbType is MYSQL (default NORMAL)</p>
         :rtype: str
         """
         return self._DbMode
@@ -6201,8 +6164,7 @@ Valid values when `DbType` is `MYSQL` (default value: `NORMAL`):
 
     @property
     def MinCpu(self):
-        r"""This parameter is required if `DbMode` is `SERVERLESS`.
-Minimum number of CPU cores. For the value range, see the returned result of `DescribeServerlessInstanceSpecs`.
+        r"""<p>Required when DbMode is SERVERLESS<br>Minimum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs</p>
         :rtype: float
         """
         return self._MinCpu
@@ -6213,8 +6175,7 @@ Minimum number of CPU cores. For the value range, see the returned result of `De
 
     @property
     def MaxCpu(self):
-        r"""This parameter is required if `DbMode` is `SERVERLESS`.
-Maximum number of CPU cores. For the value range, see the returned result of `DescribeServerlessInstanceSpecs`.
+        r"""<p>Required when DbMode is SERVERLESS:<br>Maximum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs.</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -6225,10 +6186,7 @@ Maximum number of CPU cores. For the value range, see the returned result of `De
 
     @property
     def AutoPause(self):
-        r"""This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:
-<li>yes</li>
-<li>no</li>
-Default value: yes
+        r"""<p>No auto pause</p><p>Enumeration value:</p><ul><li>yes: Yes</li><li>no: No</li></ul><p>Default value: yes</p><p>Take effect when DbMode is SERVERLESS</p>
         :rtype: str
         """
         return self._AutoPause
@@ -6239,8 +6197,7 @@ Default value: yes
 
     @property
     def AutoPauseDelay(self):
-        r"""This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]
-Default value: `600`
+        r"""<p>When DbMode is SERVERLESS, specify the delay for Cluster Auto-Pause in seconds. Optional range: [600,691200]<br>Default value: 600</p>
         :rtype: int
         """
         return self._AutoPauseDelay
@@ -6251,9 +6208,7 @@ Default value: `600`
 
     @property
     def StoragePayMode(self):
-        r"""The billing mode of cluster storage. Valid values: `0` (pay-as-you-go), `1` (yearly/monthly subscription). Default value: `0`.
-If `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be pay-as-you-go.
-Clusters with storage billed in yearly/monthly subscription can't be cloned or rolled back.
+        r"""<p>The storage billing mode of the cluster. Pay-As-You-Go: 0, Monthly Subscription: 1. Default is Pay-As-You-Go.<br>When DbType is MYSQL and the compute billing mode of the cluster is postpaid (including DbMode as SERVERLESS), the storage billing mode can only be Pay-As-You-Go.<br>Rollback and clone do not support Monthly Subscription storage.</p>
         :rtype: int
         """
         return self._StoragePayMode
@@ -6264,7 +6219,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def SecurityGroupIds(self):
-        r"""Array of security group IDs
+        r"""<p>Security group id array</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -6275,7 +6230,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def AlarmPolicyIds(self):
-        r"""Array of alarm policy IDs
+        r"""<p>Alarm policy Id array</p>
         :rtype: list of str
         """
         return self._AlarmPolicyIds
@@ -6286,7 +6241,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def ClusterParams(self):
-        r"""Array of parameters. Valid values: `character_set_server` (utf8/latin1/gbk/utf8mb4), `lower_case_table_names`. 0: case-sensitive; 1: case-insensitive).
+        r"""<p>Parameter array, temporarily supports character_set_server (utf8|latin1|gbk|utf8mb4), lower_case_table_names, 1-case-insensitive, 0-case-sensitive</p>
         :rtype: list of ParamItem
         """
         return self._ClusterParams
@@ -6297,7 +6252,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def DealMode(self):
-        r"""Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
+        r"""<p>Transaction mode</p><p>Enumeration value:</p><ul><li>0: Place order and pay</li><li>1: Place order</li></ul><p>Default value: 0</p>
         :rtype: int
         """
         return self._DealMode
@@ -6308,7 +6263,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def ParamTemplateId(self):
-        r"""Parameter template ID, which can be obtained by querying parameter template information "DescribeParamTemplates"
+        r"""<p>Parameter template ID. The parameter template ID can be obtained through querying parameter template information DescribeParamTemplates.</p>
         :rtype: int
         """
         return self._ParamTemplateId
@@ -6319,7 +6274,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def SlaveZone(self):
-        r"""Multi-AZ address
+        r"""<p>Multi-AZ address</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -6330,7 +6285,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def InstanceInitInfos(self):
-        r"""Instance initialization configuration information, which is used to select instances with different specifications when purchasing a cluster.
+        r"""<p>Instance initialization configuration information is mainly used to select different specification instances during cluster purchase.</p>
         :rtype: list of InstanceInitInfo
         """
         return self._InstanceInitInfos
@@ -6341,7 +6296,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def GdnId(self):
-        r"""Global database unique identifier.
+        r"""<p>Global database unique ID</p>
         :rtype: str
         """
         return self._GdnId
@@ -6352,7 +6307,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def ProxyConfig(self):
-        r"""Database proxy configuration.
+        r"""<p>Database proxy configuration</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConfig`
         """
         return self._ProxyConfig
@@ -6363,7 +6318,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def AutoArchive(self):
-        r"""Automatically archive.
+        r"""<p>Auto archive or not</p><p>Enumeration value:</p><ul><li>yes: Yes</li><li>no: No</li></ul><p>Default value: no</p><p>This parameter takes effect only when the primary instance of the current cluster is SERVERLESS</p>
         :rtype: str
         """
         return self._AutoArchive
@@ -6374,7 +6329,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
 
     @property
     def AutoArchiveDelayHours(self):
-        r"""Archiving processing time after pausing.
+        r"""<p>Archiving processing time after pausing</p><p>Measurement unit: hour</p><p>Default value: 12</p><p>This parameter takes effect only when the primary instance of the current cluster is SERVERLESS.</p>
         :rtype: int
         """
         return self._AutoArchiveDelayHours
@@ -6384,8 +6339,19 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
         self._AutoArchiveDelayHours = AutoArchiveDelayHours
 
     @property
+    def ClusterLevel(self):
+        r"""<p>Cluster level, optional. Example: P0, P1. (This field can be ignored)</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
+    @property
     def CynosVersion(self):
-        r"""Kernel minor version number.
+        r"""<p>Kernel minor version</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -6458,6 +6424,7 @@ Clusters with storage billed in yearly/monthly subscription can't be cloned or r
             self._ProxyConfig._deserialize(params.get("ProxyConfig"))
         self._AutoArchive = params.get("AutoArchive")
         self._AutoArchiveDelayHours = params.get("AutoArchiveDelayHours")
+        self._ClusterLevel = params.get("ClusterLevel")
         self._CynosVersion = params.get("CynosVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6476,15 +6443,15 @@ class CreateClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranId: Frozen transaction ID.
+        :param _TranId: <p>Frozen transaction ID</p>
         :type TranId: str
-        :param _DealNames: Order ID
+        :param _DealNames: <p>Order ID</p>
         :type DealNames: list of str
-        :param _ResourceIds: Resource ID list (this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to obtain resource ids.).
+        :param _ResourceIds: <p>Resource ID list (This field is no longer maintained. Please use the dealNames field to query the API DescribeResourcesByDealName to obtain resource IDs)</p>
         :type ResourceIds: list of str
-        :param _ClusterIds: Cluster ID list. this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to get the cluster ID.
+        :param _ClusterIds: <p>Cluster ID list (This field is no longer maintained. Please use the dealNames field and the query API DescribeResourcesByDealName to get the cluster ID)</p>
         :type ClusterIds: list of str
-        :param _BigDealIds: Big order ID
+        :param _BigDealIds: <p>Large Order ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BigDealIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -6499,7 +6466,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TranId(self):
-        r"""Frozen transaction ID.
+        r"""<p>Frozen transaction ID</p>
         :rtype: str
         """
         return self._TranId
@@ -6510,7 +6477,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealNames(self):
-        r"""Order ID
+        r"""<p>Order ID</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -6521,7 +6488,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceIds(self):
-        r"""Resource ID list (this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to obtain resource ids.).
+        r"""<p>Resource ID list (This field is no longer maintained. Please use the dealNames field to query the API DescribeResourcesByDealName to obtain resource IDs)</p>
         :rtype: list of str
         """
         return self._ResourceIds
@@ -6532,7 +6499,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterIds(self):
-        r"""Cluster ID list. this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to get the cluster ID.
+        r"""<p>Cluster ID list (This field is no longer maintained. Please use the dealNames field and the query API DescribeResourcesByDealName to get the cluster ID)</p>
         :rtype: list of str
         """
         return self._ClusterIds
@@ -6543,7 +6510,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BigDealIds(self):
-        r"""Big order ID
+        r"""<p>Large Order ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -24191,25 +24158,23 @@ class InstanceInitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cpu: Instance CPU
+        :param _Cpu: <p>Instance cpu</p>
         :type Cpu: int
-        :param _Memory: Instance memory
+        :param _Memory: <p>Instance memory</p>
         :type Memory: int
-        :param _InstanceType: Instance type. Valid values:`rw`, `ro`.
+        :param _InstanceType: <p>Instance type rw/ro</p>
         :type InstanceType: str
-        :param _InstanceCount: Number of the instances. Value range: 1-15.
+        :param _InstanceCount: <p>Number of instances, range [1,15]</p>
         :type InstanceCount: int
-        :param _MinRoCount: Minimum number of serverless instances. Value range: 1-15.
+        :param _MinRoCount: <p>Minimum count of Serverless instance, range [1,15]</p>
         :type MinRoCount: int
-        :param _MaxRoCount: Maximum number of serverless instances. Value range: 1-15.
+        :param _MaxRoCount: <p>Maximum count of Serverless instances, range [1,15]</p>
         :type MaxRoCount: int
-        :param _MinRoCpu: Minimum specifications for serverless instance
+        :param _MinRoCpu: <p>Minimum specification of Serverless instance</p>
         :type MinRoCpu: float
-        :param _MaxRoCpu: Maximum specifications for serverless instance
+        :param _MaxRoCpu: <p>Maximum specification of Serverless instance</p>
         :type MaxRoCpu: float
-        :param _DeviceType: Instance machine type.
-1. common: general.
-2. exclusive: exclusive.
+        :param _DeviceType: <p>Instance Machine Type</p><ol><li>common, universal type.</li><li>exclusive, dedicated.</li></ol>
         :type DeviceType: str
         """
         self._Cpu = None
@@ -24224,7 +24189,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Instance CPU
+        r"""<p>Instance cpu</p>
         :rtype: int
         """
         return self._Cpu
@@ -24235,7 +24200,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Instance memory
+        r"""<p>Instance memory</p>
         :rtype: int
         """
         return self._Memory
@@ -24246,7 +24211,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Instance type. Valid values:`rw`, `ro`.
+        r"""<p>Instance type rw/ro</p>
         :rtype: str
         """
         return self._InstanceType
@@ -24257,7 +24222,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def InstanceCount(self):
-        r"""Number of the instances. Value range: 1-15.
+        r"""<p>Number of instances, range [1,15]</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -24268,7 +24233,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def MinRoCount(self):
-        r"""Minimum number of serverless instances. Value range: 1-15.
+        r"""<p>Minimum count of Serverless instance, range [1,15]</p>
         :rtype: int
         """
         return self._MinRoCount
@@ -24279,7 +24244,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def MaxRoCount(self):
-        r"""Maximum number of serverless instances. Value range: 1-15.
+        r"""<p>Maximum count of Serverless instances, range [1,15]</p>
         :rtype: int
         """
         return self._MaxRoCount
@@ -24290,7 +24255,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def MinRoCpu(self):
-        r"""Minimum specifications for serverless instance
+        r"""<p>Minimum specification of Serverless instance</p>
         :rtype: float
         """
         return self._MinRoCpu
@@ -24301,7 +24266,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def MaxRoCpu(self):
-        r"""Maximum specifications for serverless instance
+        r"""<p>Maximum specification of Serverless instance</p>
         :rtype: float
         """
         return self._MaxRoCpu
@@ -24312,9 +24277,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""Instance machine type.
-1. common: general.
-2. exclusive: exclusive.
+        r"""<p>Instance Machine Type</p><ol><li>common, universal type.</li><li>exclusive, dedicated.</li></ol>
         :rtype: str
         """
         return self._DeviceType
@@ -33191,21 +33154,21 @@ class ProxyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyCount: Number of database proxy group nodes. this parameter is no longer recommended. recommend using ProxyZones.
+        :param _ProxyCount: <p>Number of database proxy group nodes. This parameter is no longer recommended. Recommend using ProxyZones.</p>
         :type ProxyCount: int
-        :param _Cpu: Number of CPU cores
+        :param _Cpu: <p>cpu cores</p>
         :type Cpu: int
-        :param _Mem: Memory.
+        :param _Mem: <p>Memory</p>
         :type Mem: int
-        :param _ConnectionPoolType: Connection pool type: SessionConnectionPool (session-level connection pool).
+        :param _ConnectionPoolType: <p>Connection pool type: SessionConnectionPool (session-level connection pool)</p>
         :type ConnectionPoolType: str
-        :param _OpenConnectionPool: Whether to enable the connection pool. valid values: yes (enable), no (not enabled).
+        :param _OpenConnectionPool: <p>Whether the connection pool is enabled, yes-enable, no-disable</p>
         :type OpenConnectionPool: str
-        :param _ConnectionPoolTimeOut: Connection pool threshold. measurement unit (seconds).
+        :param _ConnectionPoolTimeOut: <p>Connection pool threshold: Measurement unit (seconds)</p>
         :type ConnectionPoolTimeOut: int
-        :param _Description: Description.
+        :param _Description: <p>description</p>
         :type Description: str
-        :param _ProxyZones: Database node information (this parameter is used in combination with ProxyCount, either one must be manually input).
+        :param _ProxyZones: <p>Database node information (this parameter is used in combination with ProxyCount and either one must be input)</p>
         :type ProxyZones: list of ProxyZone
         """
         self._ProxyCount = None
@@ -33219,18 +33182,22 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ProxyCount(self):
-        r"""Number of database proxy group nodes. this parameter is no longer recommended. recommend using ProxyZones.
+        warnings.warn("parameter `ProxyCount` is deprecated", DeprecationWarning) 
+
+        r"""<p>Number of database proxy group nodes. This parameter is no longer recommended. Recommend using ProxyZones.</p>
         :rtype: int
         """
         return self._ProxyCount
 
     @ProxyCount.setter
     def ProxyCount(self, ProxyCount):
+        warnings.warn("parameter `ProxyCount` is deprecated", DeprecationWarning) 
+
         self._ProxyCount = ProxyCount
 
     @property
     def Cpu(self):
-        r"""Number of CPU cores
+        r"""<p>cpu cores</p>
         :rtype: int
         """
         return self._Cpu
@@ -33241,7 +33208,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def Mem(self):
-        r"""Memory.
+        r"""<p>Memory</p>
         :rtype: int
         """
         return self._Mem
@@ -33252,7 +33219,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ConnectionPoolType(self):
-        r"""Connection pool type: SessionConnectionPool (session-level connection pool).
+        r"""<p>Connection pool type: SessionConnectionPool (session-level connection pool)</p>
         :rtype: str
         """
         return self._ConnectionPoolType
@@ -33263,7 +33230,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def OpenConnectionPool(self):
-        r"""Whether to enable the connection pool. valid values: yes (enable), no (not enabled).
+        r"""<p>Whether the connection pool is enabled, yes-enable, no-disable</p>
         :rtype: str
         """
         return self._OpenConnectionPool
@@ -33274,7 +33241,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ConnectionPoolTimeOut(self):
-        r"""Connection pool threshold. measurement unit (seconds).
+        r"""<p>Connection pool threshold: Measurement unit (seconds)</p>
         :rtype: int
         """
         return self._ConnectionPoolTimeOut
@@ -33285,7 +33252,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def Description(self):
-        r"""Description.
+        r"""<p>description</p>
         :rtype: str
         """
         return self._Description
@@ -33296,7 +33263,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ProxyZones(self):
-        r"""Database node information (this parameter is used in combination with ProxyCount, either one must be manually input).
+        r"""<p>Database node information (this parameter is used in combination with ProxyCount and either one must be input)</p>
         :rtype: list of ProxyZone
         """
         return self._ProxyZones

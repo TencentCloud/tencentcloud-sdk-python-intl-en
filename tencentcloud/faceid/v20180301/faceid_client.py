@@ -420,6 +420,29 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetNFCToken(self, request):
+        r"""NFC verification service, obtain Token information for the NFC identify request.
+
+        :param request: Request instance for GetNFCToken.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetNFCTokenRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetNFCTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetNFCToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetNFCTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetSdkVerificationResult(self, request):
         r"""This API is used to get the verification result with the corresponding token after the SDK-based verification is completed. The token is valid for three days after issuance and can be called multiple times.
 
@@ -457,6 +480,29 @@ class FaceidClient(AbstractClient):
             body = self.call("GetWebVerificationResultIntl", params, headers=headers)
             response = json.loads(body)
             model = models.GetWebVerificationResultIntlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetWxNFCResult(self, request):
+        r"""Obtain document NFC data, input the Token returned by the NFC SDK (valid for 10 minutes), and return the corresponding document information retrieved via NFC. This API supports NFC recognition and verification of ID cards (second-generation resident identity card, Residence Permit for Hong Kong (China) and Macao (China), Residence Permit for Taiwan (China), Permanent Residence Permit for Foreigners) as well as travel documents (exit-entry permit for travelling to and from Hong Kong (China) and Macao (China), Taiwan travel permit, Mainland Travel Permit for Taiwan Residents, Return Home Permit).
+
+        :param request: Request instance for GetWxNFCResult.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetWxNFCResultRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetWxNFCResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetWxNFCResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetWxNFCResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -511,6 +511,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateUserRole(
+            self,
+            request: models.CreateUserRoleRequest,
+            opts: Dict = None,
+    ) -> models.CreateUserRoleResponse:
+        """
+        This API is used to create a user role.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateUserRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateUserRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateWorkGroup(
             self,
             request: models.CreateWorkGroupRequest,

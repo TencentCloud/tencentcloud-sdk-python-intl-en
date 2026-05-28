@@ -1070,9 +1070,9 @@ class OcrClient(AbstractClient):
 
 
     def RecognizeIndonesiaIDCardOCR(self, request):
-        r"""This API is used to recognize an Indonesian identity card.
+        r"""Indonesian identity card recognition
 
-        The API request rate is limited to 20 requests/sec by default.
+        Default API request rate limit: 5 requests/second.
 
         :param request: Request instance for RecognizeIndonesiaIDCardOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeIndonesiaIDCardOCRRequest`

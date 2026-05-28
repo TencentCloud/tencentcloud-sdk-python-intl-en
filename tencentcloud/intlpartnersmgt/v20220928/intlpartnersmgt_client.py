@@ -450,6 +450,29 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCustomerOwnCostExplorerFilter(self, request):
+        r"""Cost analysis API advanced filtering
+
+        :param request: Request instance for DescribeCustomerOwnCostExplorerFilter.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerOwnCostExplorerFilterRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerOwnCostExplorerFilterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerOwnCostExplorerFilter", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerOwnCostExplorerFilterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCustomerOwnVoucherList(self, request):
         r"""This API is used to query the voucher list by Customer.
         Callable roles: Customer.

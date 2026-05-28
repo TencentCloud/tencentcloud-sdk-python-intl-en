@@ -23,8 +23,14 @@ AUTHFAILURE_CAMAUTHERROR = 'AuthFailure.CamAuthError'
 # CAM authentication request parameter check failed.
 AUTHFAILURE_CHECKCAMAUTHERROR = 'AuthFailure.CheckCamAuthError'
 
+# Whitelist authentication error occurred.
+AUTHFAILURE_UINWHITELISTCHECKERROR = 'AuthFailure.UinWhiteListCheckError'
+
 # CAM authentication failure.
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
+# Failed to bind the tag.
+DRYRUNOPERATION_ADDTAGDRYRUNERROR = 'DryRunOperation.AddTagDryrunError'
 
 # FailedOperation.AddInstanceInfoFailed
 FAILEDOPERATION_ADDINSTANCEINFOFAILED = 'FailedOperation.AddInstanceInfoFailed'
@@ -32,20 +38,47 @@ FAILEDOPERATION_ADDINSTANCEINFOFAILED = 'FailedOperation.AddInstanceInfoFailed'
 # FailedOperation.AuthNoStrategy
 FAILEDOPERATION_AUTHNOSTRATEGY = 'FailedOperation.AuthNoStrategy'
 
+# The current instance version does not support this API.
+FAILEDOPERATION_CHECKSUPPORTACTIONERROR = 'FailedOperation.CheckSupportActionError'
+
 # FailedOperation.ClearInstanceInfoFailed
 FAILEDOPERATION_CLEARINSTANCEINFOFAILED = 'FailedOperation.ClearInstanceInfoFailed'
 
 # Failed to create the task.
 FAILEDOPERATION_CREATEFLOWERROR = 'FailedOperation.CreateFlowError'
 
+# Failed to add instance data.
+FAILEDOPERATION_DBCREATEINSTANCEERROR = 'FailedOperation.DBCreateInstanceError'
+
 # Query instance data failed.
 FAILEDOPERATION_DBQUERYINSTANCEERROR = 'FailedOperation.DBQueryInstanceError'
+
+# Query user permission error.
+FAILEDOPERATION_DBQUERYPRIVILEGESERROR = 'FailedOperation.DBQueryPrivilegesError'
+
+# Failed to query instance data bound to tags.
+FAILEDOPERATION_DBQUERYTAGERROR = 'FailedOperation.DBQueryTagError'
+
+# Query user data failed.
+FAILEDOPERATION_DBQUERYUSERERROR = 'FailedOperation.DBQueryUserError'
+
+# Query Available Sale Zones failed.
+FAILEDOPERATION_DBQUERYZONEERROR = 'FailedOperation.DBQueryZoneError'
 
 # Failed to update the new instance name.
 FAILEDOPERATION_DBUPDATEINSTANCEERROR = 'FailedOperation.DBUpdateInstanceError'
 
+# The number of DBs has exceeded the limit.
+FAILEDOPERATION_DBCOUNTLIMITERROR = 'FailedOperation.DbCountLimitError'
+
+# Querying full backup list error.
+FAILEDOPERATION_DESCRIBEFULLBACKUPLISTERROR = 'FailedOperation.DescribeFullBackupListError'
+
 # FailedOperation.DisassociateSecurityGroupsFailed
 FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = 'FailedOperation.DisassociateSecurityGroupsFailed'
+
+# Instance scale-out failed.
+FAILEDOPERATION_EXPANDINSTANCEERROR = 'FailedOperation.ExpandInstanceError'
 
 # FailedOperation.GetSecurityGroupDetailFailed
 FAILEDOPERATION_GETSECURITYGROUPDETAILFAILED = 'FailedOperation.GetSecurityGroupDetailFailed'
@@ -71,11 +104,20 @@ FAILEDOPERATION_OSSMODIFYVARIABLESERROR = 'FailedOperation.OssModifyVariablesErr
 # Database query error.
 FAILEDOPERATION_QUERYDBERROR = 'FailedOperation.QueryDBError'
 
+# Query user failed.
+FAILEDOPERATION_QUERYUSERERROR = 'FailedOperation.QueryUserError'
+
 # FailedOperation.SetRuleLocationFailed
 FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 
+# The number of tables has exceeded the limit.
+FAILEDOPERATION_TABLECOUNTLIMITERROR = 'FailedOperation.TableCountLimitError'
+
 # FailedOperation.UpdateInstanceInfoFailed
 FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = 'FailedOperation.UpdateInstanceInfoFailed'
+
+# Update permission error.
+FAILEDOPERATION_UPDATEPRIVILEGESERROR = 'FailedOperation.UpdatePrivilegesError'
 
 # Database access error.
 INTERNALERROR_DATABASEACCESSERROR = 'InternalError.DatabaseAccessError'
@@ -116,6 +158,9 @@ INTERNALERROR_SETSVCLOCATIONFAILED = 'InternalError.SetSvcLocationFailed'
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# Parameter error in creating an instance.
+INVALIDPARAMETER_CREATEINSTANCEPARAMERROR = 'InvalidParameter.CreateInstanceParamError'
+
 # Invalid backup policy parameters.
 INVALIDPARAMETER_ILLEGALBACKUPPOLICYPARAMSERR = 'InvalidParameter.IllegalBackupPolicyParamsErr'
 
@@ -140,20 +185,62 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # Parameter value is invalid or out of range.
 INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.BizInvalidParameterValueError'
 
+# Query disk size error.
+INVALIDPARAMETERVALUE_CHECKCLONEINSTANCEDISKERROR = 'InvalidParameterValue.CheckCloneInstanceDiskError'
+
+# Disk size validation error.
+INVALIDPARAMETERVALUE_CHECKDISKERROR = 'InvalidParameterValue.CheckDiskError'
+
+# host verification failed.
+INVALIDPARAMETERVALUE_CHECKHOSTERROR = 'InvalidParameterValue.CheckHostError'
+
 # Instance version validation error.
 INVALIDPARAMETERVALUE_CHECKINSTANCEVERSIONERROR = 'InvalidParameterValue.CheckInstanceVersionError'
 
 # Name verification failed.
 INVALIDPARAMETERVALUE_CHECKNAMEERROR = 'InvalidParameterValue.CheckNameError'
 
+# Instance specification validation error.
+INVALIDPARAMETERVALUE_CHECKSPECERROR = 'InvalidParameterValue.CheckSpecError'
+
+# VPC validation error.
+INVALIDPARAMETERVALUE_CHECKVPCERROR = 'InvalidParameterValue.CheckVpcError'
+
+# Filter parameter error in the instance.
+INVALIDPARAMETERVALUE_INSTANCEFILTERKEYERROR = 'InvalidParameterValue.InstanceFilterKeyError'
+
 # Parameter error
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
+
+# The number of instance replicas created does not meet specifications.
+INVALIDPARAMETERVALUE_NODEREPLICASINVALIDERROR = 'InvalidParameterValue.NodeReplicasInvalidError'
+
+# The number of bound tags exceeds the limit.
+LIMITEXCEEDED_ADDTAGCOUNTERROR = 'LimitExceeded.AddTagCountError'
+
+# The number of batch create instances exceeds the limit.
+LIMITEXCEEDED_OUTOFINSTANCECNTLIMITERROR = 'LimitExceeded.OutOfInstanceCntLimitError'
+
+# The count of pull instances exceeds the limit.
+LIMITEXCEEDED_OUTOFINSTANCECOUNTLIMITERROR = 'LimitExceeded.OutOfInstanceCountLimitError'
+
+# The specification exceeds the limit.
+LIMITEXCEEDED_OUTOFLIMITERROR = 'LimitExceeded.OutOfLimitError'
+
+# The number of replicas exceeds the limit.
+LIMITEXCEEDED_OUTOFNODEREPLICASLIMITERROR = 'LimitExceeded.OutOfNodeReplicasLimitError'
+
+# The specification exceeds the limit.
+LIMITEXCEEDED_OUTOFSPECLIMITERROR = 'LimitExceeded.OutOfSpecLimitError'
 
 # Missing parameter error.
 MISSINGPARAMETER_MISSINGPARAMETERERROR = 'MissingParameter.MissingParameterError'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
+
+# Instance specification scale-in is not currently supported.
+OPERATIONDENIED_CHECKDECREASESPECERROR = 'OperationDenied.CheckDecreaseSpecError'
 
 # The count of backup tasks created exceeds the threshold.
 OPERATIONDENIED_CREATEBACKUPTASKTHRESHOLDERR = 'OperationDenied.CreateBackupTaskThresholdErr'
@@ -187,3 +274,6 @@ RESOURCEUNAVAILABLE_SGCHECKFAIL = 'ResourceUnavailable.SGCheckFail'
 
 # UnauthorizedOperation.PermissionDenied
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
+
+# Error retrieving maximum node count.
+UNSUPPORTEDOPERATION_GETMAXNODENUMERROR = 'UnsupportedOperation.GetMaxNodeNumError'

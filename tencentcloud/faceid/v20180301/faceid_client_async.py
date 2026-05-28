@@ -334,6 +334,24 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetNFCToken(
+            self,
+            request: models.GetNFCTokenRequest,
+            opts: Dict = None,
+    ) -> models.GetNFCTokenResponse:
+        """
+        NFC verification service, obtain Token information for the NFC identify request.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetNFCToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetNFCTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetSdkVerificationResult(
             self,
             request: models.GetSdkVerificationResultRequest,
@@ -365,6 +383,24 @@ class FaceidClient(AbstractClient):
         kwargs["action"] = "GetWebVerificationResultIntl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetWebVerificationResultIntlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetWxNFCResult(
+            self,
+            request: models.GetWxNFCResultRequest,
+            opts: Dict = None,
+    ) -> models.GetWxNFCResultResponse:
+        """
+        Obtain document NFC data, input the Token returned by the NFC SDK (valid for 10 minutes), and return the corresponding document information retrieved via NFC. This API supports NFC recognition and verification of ID cards (second-generation resident identity card, Residence Permit for Hong Kong (China) and Macao (China), Residence Permit for Taiwan (China), Permanent Residence Permit for Foreigners) as well as travel documents (exit-entry permit for travelling to and from Hong Kong (China) and Macao (China), Taiwan travel permit, Mainland Travel Permit for Taiwan Residents, Return Home Permit).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetWxNFCResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetWxNFCResultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

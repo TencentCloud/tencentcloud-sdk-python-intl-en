@@ -969,9 +969,9 @@ class OcrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RecognizeIndonesiaIDCardOCRResponse:
         """
-        This API is used to recognize an Indonesian identity card.
+        Indonesian identity card recognition
 
-        The API request rate is limited to 20 requests/sec by default.
+        Default API request rate limit: 5 requests/second.
         """
         
         kwargs = {}

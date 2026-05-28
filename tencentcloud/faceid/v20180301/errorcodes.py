@@ -122,6 +122,9 @@ FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
 # No complete face was detected. Please enter a complete face image.
 FAILEDOPERATION_INCOMPLETEFACE = 'FailedOperation.IncompleteFace'
 
+# Token not found
+FAILEDOPERATION_INVALIDTOKENPARAMETER = 'FailedOperation.InvalidTokenParameter'
+
 # Multiple faces are detected.
 FAILEDOPERATION_LIFEPHOTODETECTFACES = 'FailedOperation.LifePhotoDetectFaces'
 

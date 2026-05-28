@@ -364,6 +364,24 @@ class IntlpartnersmgtClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCustomerOwnCostExplorerFilter(
+            self,
+            request: models.DescribeCustomerOwnCostExplorerFilterRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomerOwnCostExplorerFilterResponse:
+        """
+        Cost analysis API advanced filtering
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomerOwnCostExplorerFilter"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomerOwnCostExplorerFilterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCustomerOwnVoucherList(
             self,
             request: models.DescribeCustomerOwnVoucherListRequest,

@@ -9669,18 +9669,12 @@ class PermitOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: The Base64-encoded value of the image.
-Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
-Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
+        :param _ImageBase64: The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.
         :type ImageBase64: str
-        :param _ImageUrl: The URL of the image.
-Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
-We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+        :param _ImageUrl: The URL of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: no more than 7M after Base64 encoding. Image download time: no more than 3 seconds. We recommend that you store the image in Tencent Cloud for higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
-        :param _CropPortrait: Whether to return the profile photo, default is false.
+        :param _CropPortrait: Whether to return the avatar image. Default is false.
         :type CropPortrait: bool
         """
         self._ImageBase64 = None
@@ -9689,10 +9683,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        r"""The Base64-encoded value of the image.
-Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
-Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
+        r"""The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.
         :rtype: str
         """
         return self._ImageBase64
@@ -9703,10 +9694,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
 
     @property
     def ImageUrl(self):
-        r"""The URL of the image.
-Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
-We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+        r"""The URL of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: no more than 7M after Base64 encoding. Image download time: no more than 3 seconds. We recommend that you store the image in Tencent Cloud for higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :rtype: str
         """
@@ -9718,7 +9706,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def CropPortrait(self):
-        r"""Whether to return the profile photo, default is false.
+        r"""Whether to return the avatar image. Default is false.
         :rtype: bool
         """
         return self._CropPortrait
@@ -9751,7 +9739,7 @@ class PermitOCRResponse(AbstractModel):
         r"""
         :param _Name: Name
         :type Name: str
-        :param _EnglishName: Name in English
+        :param _EnglishName: English name
         :type EnglishName: str
         :param _Number: ID number
         :type Number: str
@@ -9761,14 +9749,24 @@ class PermitOCRResponse(AbstractModel):
         :type ValidDate: str
         :param _IssueAuthority: Issuing authority
         :type IssueAuthority: str
-        :param _IssueAddress: Place of issue
+        :param _IssueAddress: Issuing place
         :type IssueAddress: str
         :param _Birthday: Date of birth
         :type Birthday: str
-        :param _PortraitImage: Base64 of profile picture
+        :param _PortraitImage: base64 of the avatar image
         :type PortraitImage: str
-        :param _Type: return type
+        :param _Type: Return type
         :type Type: str
+        :param _WarnCardInfos: Card Warning Information
+
+-9101 Alarm for covered certificate,
+-9102 Alarm for photocopied certificate,
+-9103 Alarm for photographed certificate,
+-9104 Alarm for PS certificate,
+-9107 Alarm for reflective certificate,
+-9108 Alarm for blurry image,
+-9109 This capability is not enabled.
+        :type WarnCardInfos: list of int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -9782,6 +9780,7 @@ class PermitOCRResponse(AbstractModel):
         self._Birthday = None
         self._PortraitImage = None
         self._Type = None
+        self._WarnCardInfos = None
         self._RequestId = None
 
     @property
@@ -9797,7 +9796,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def EnglishName(self):
-        r"""Name in English
+        r"""English name
         :rtype: str
         """
         return self._EnglishName
@@ -9852,7 +9851,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def IssueAddress(self):
-        r"""Place of issue
+        r"""Issuing place
         :rtype: str
         """
         return self._IssueAddress
@@ -9874,7 +9873,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        r"""Base64 of profile picture
+        r"""base64 of the avatar image
         :rtype: str
         """
         return self._PortraitImage
@@ -9885,7 +9884,7 @@ class PermitOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""return type
+        r"""Return type
         :rtype: str
         """
         return self._Type
@@ -9893,6 +9892,25 @@ class PermitOCRResponse(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def WarnCardInfos(self):
+        r"""Card Warning Information
+
+-9101 Alarm for covered certificate,
+-9102 Alarm for photocopied certificate,
+-9103 Alarm for photographed certificate,
+-9104 Alarm for PS certificate,
+-9107 Alarm for reflective certificate,
+-9108 Alarm for blurry image,
+-9109 This capability is not enabled.
+        :rtype: list of int
+        """
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
 
     @property
     def RequestId(self):
@@ -9917,6 +9935,7 @@ class PermitOCRResponse(AbstractModel):
         self._Birthday = params.get("Birthday")
         self._PortraitImage = params.get("PortraitImage")
         self._Type = params.get("Type")
+        self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 
 
@@ -12112,21 +12131,21 @@ class RecognizeIndonesiaIDCardOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: The Base64-encoded value of an image.
-Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
-Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
+        :param _ImageBase64: The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.
         :type ImageBase64: str
-        :param _ImageUrl: The URL of the image.
-Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+        :param _ImageUrl: The Url address of the image. 
+Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. 
+Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is no more than 3 seconds. 
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
 For a non-Tencent Cloud URL, the download speed and stability may be affected.
         :type ImageUrl: str
-        :param _ReturnHeadImage: Whether to return the identity photo.
+        :param _ReturnHeadImage: Whether to return the portrait photo.
+If selected true, image restrictions are: Image size after encoding must not exceed 5M, jpg format long side pixel cannot exceed 4000, other formats image long edge pixel maximum of 2000. Short side pixel of all format images not less than 64.
+Support PNG, jpg, JPEG, BMP, no support for GIF images.
+If portrait matting fails, return an empty string.
         :type ReturnHeadImage: bool
-        :param _Scene: The scene, which defaults to `V1`.
-Valid values:
+        :param _Scene: Scene parameter, default value is V1
+Available values:
 V1
 V2
         :type Scene: str
@@ -12138,10 +12157,7 @@ V2
 
     @property
     def ImageBase64(self):
-        r"""The Base64-encoded value of an image.
-Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
-Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
+        r"""The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.
         :rtype: str
         """
         return self._ImageBase64
@@ -12152,9 +12168,9 @@ Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both ar
 
     @property
     def ImageUrl(self):
-        r"""The URL of the image.
-Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+        r"""The Url address of the image. 
+Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. 
+Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is no more than 3 seconds. 
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
 For a non-Tencent Cloud URL, the download speed and stability may be affected.
         :rtype: str
@@ -12167,7 +12183,10 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def ReturnHeadImage(self):
-        r"""Whether to return the identity photo.
+        r"""Whether to return the portrait photo.
+If selected true, image restrictions are: Image size after encoding must not exceed 5M, jpg format long side pixel cannot exceed 4000, other formats image long edge pixel maximum of 2000. Short side pixel of all format images not less than 64.
+Support PNG, jpg, JPEG, BMP, no support for GIF images.
+If portrait matting fails, return an empty string.
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -12178,8 +12197,10 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
 
     @property
     def Scene(self):
-        r"""The scene, which defaults to `V1`.
-Valid values:
+        warnings.warn("parameter `Scene` is deprecated", DeprecationWarning) 
+
+        r"""Scene parameter, default value is V1
+Available values:
 V1
 V2
         :rtype: str
@@ -12188,6 +12209,8 @@ V2
 
     @Scene.setter
     def Scene(self, Scene):
+        warnings.warn("parameter `Scene` is deprecated", DeprecationWarning) 
+
         self._Scene = Scene
 
 
@@ -12243,19 +12266,22 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         :type BerlakuHingga: str
         :param _IssuedDate: The issue date.
         :type IssuedDate: str
-        :param _Photo: The photo.
+        :param _Photo: The portraitImage.
         :type Photo: str
-        :param _Provinsi: The province, which is supported when the value of `Scene` is `V2`.
+        :param _Provinsi: The province.
         :type Provinsi: str
-        :param _Kota: The city, which is supported when the value of `Scene` is `V2`.
+        :param _Kota: The city.
         :type Kota: str
         :param _WarnCardInfos: Card Warning Information
 
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
 -9103 Alarm for photographed certificate,
+-9104 Alarm for PS certificate,
 -9107 Alarm for reflective certificate,
 -9108 Alarm for blurry image,
+-8101 Alarm for document information format verification,
+-8102 Alarm for document information consistency verification,
 -9109 This capability is not enabled.
         :type WarnCardInfos: list of int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
@@ -12449,7 +12475,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Photo(self):
-        r"""The photo.
+        r"""The portraitImage.
         :rtype: str
         """
         return self._Photo
@@ -12460,7 +12486,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Provinsi(self):
-        r"""The province, which is supported when the value of `Scene` is `V2`.
+        r"""The province.
         :rtype: str
         """
         return self._Provinsi
@@ -12471,7 +12497,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 
     @property
     def Kota(self):
-        r"""The city, which is supported when the value of `Scene` is `V2`.
+        r"""The city.
         :rtype: str
         """
         return self._Kota
@@ -12487,8 +12513,11 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
 -9101 Alarm for covered certificate,
 -9102 Alarm for photocopied certificate,
 -9103 Alarm for photographed certificate,
+-9104 Alarm for PS certificate,
 -9107 Alarm for reflective certificate,
 -9108 Alarm for blurry image,
+-8101 Alarm for document information format verification,
+-8102 Alarm for document information consistency verification,
 -9109 This capability is not enabled.
         :rtype: list of int
         """

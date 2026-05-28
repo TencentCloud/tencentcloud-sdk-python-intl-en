@@ -86,7 +86,7 @@ FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnKnowError'
 # The service is not activated.
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
 
-# Warning service error.
+# General Alarm Service exception
 FAILEDOPERATION_WARNINGSERVICEFAILED = 'FailedOperation.WarningServiceFailed'
 
 # Config is not in valid JSON format.

@@ -43,13 +43,49 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCloneInstance(
+            self,
+            request: models.CreateCloneInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloneInstanceResponse:
+        """
+        This API is used to create clone instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloneInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloneInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDBInstances(
+            self,
+            request: models.CreateDBInstancesRequest,
+            opts: Dict = None,
+    ) -> models.CreateDBInstancesResponse:
+        """
+        This API is used to batch create instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDBInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDBSBackup(
             self,
             request: models.CreateDBSBackupRequest,
             opts: Dict = None,
     ) -> models.CreateDBSBackupResponse:
         """
-        Create an instance backup set.
+        This API is used to create a manual backup of an instance.
         """
         
         kwargs = {}
@@ -67,13 +103,49 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteDBSBackupSetsResponse:
         """
-        Delete instance backup sets.
+        This API is used to delete manual backups of instances.
         """
         
         kwargs = {}
         kwargs["action"] = "DeleteDBSBackupSets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDBSBackupSetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBInstanceDetail(
+            self,
+            request: models.DescribeDBInstanceDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBInstanceDetailResponse:
+        """
+        This API is used to query instance details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBInstanceDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBInstanceDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBInstances(
+            self,
+            request: models.DescribeDBInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBInstancesResponse:
+        """
+        This API is used to query instance list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBInstancesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -97,13 +169,31 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBSArchiveLogs(
+            self,
+            request: models.DescribeDBSArchiveLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSArchiveLogsResponse:
+        """
+        This API is used to query instance archived WAL log list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSArchiveLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSArchiveLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBSAvailableRecoveryTime(
             self,
             request: models.DescribeDBSAvailableRecoveryTimeRequest,
             opts: Dict = None,
     ) -> models.DescribeDBSAvailableRecoveryTimeResponse:
         """
-        Query recoverable time.
+        This API is used to obtain the recoverable time.
         """
         
         kwargs = {}
@@ -115,13 +205,85 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBSBackupPolicy(
+            self,
+            request: models.DescribeDBSBackupPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSBackupPolicyResponse:
+        """
+        Query an instance backup strategy
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSBackupPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSBackupPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBSBackupSets(
+            self,
+            request: models.DescribeDBSBackupSetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSBackupSetsResponse:
+        """
+        This API is used to query instance backup set information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSBackupSets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSBackupSetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBSBackupStatistics(
+            self,
+            request: models.DescribeDBSBackupStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSBackupStatisticsResponse:
+        """
+        This API is used to query instance backup space overview.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSBackupStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSBackupStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBSBackupStatisticsDetail(
+            self,
+            request: models.DescribeDBSBackupStatisticsDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSBackupStatisticsDetailResponse:
+        """
+        This API is used to query backup set statistical detail.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSBackupStatisticsDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSBackupStatisticsDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBSCloneInstances(
             self,
             request: models.DescribeDBSCloneInstancesRequest,
             opts: Dict = None,
     ) -> models.DescribeDBSCloneInstancesResponse:
         """
-        Query clone list of instances.
+        Query clone list
         """
         
         kwargs = {}
@@ -169,6 +331,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDatabases(
+            self,
+            request: models.DescribeDatabasesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDatabasesResponse:
+        """
+        This API is used to query the database list of a cloud database instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDatabases"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDatabasesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeFlow(
             self,
             request: models.DescribeFlowRequest,
@@ -187,6 +367,78 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSaleInfo(
+            self,
+            request: models.DescribeSaleInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSaleInfoResponse:
+        """
+        This API is used to query available regions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSaleInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSaleInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSpecs(
+            self,
+            request: models.DescribeSpecsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSpecsResponse:
+        """
+        This API is used to list available component specifications.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSpecs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserPrivileges(
+            self,
+            request: models.DescribeUserPrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserPrivilegesResponse:
+        """
+        This API is used to query user permissions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserPrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserPrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUsers(
+            self,
+            request: models.DescribeUsersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUsersResponse:
+        """
+        This API is used to query user list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DestroyInstances(
             self,
             request: models.DestroyInstancesRequest,
@@ -200,6 +452,24 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "DestroyInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DestroyInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExpandInstance(
+            self,
+            request: models.ExpandInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ExpandInstanceResponse:
+        """
+        This API is used to horizontally scale out instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExpandInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExpandInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -283,7 +553,7 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyDBSBackupPolicyResponse:
         """
-        Modify the instance backup strategy.
+        This API is used to modify the instance backup strategy.
         """
         
         kwargs = {}
@@ -301,7 +571,7 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyDBSBackupSetCommentResponse:
         """
-        Modify the backup set remark.
+        This API is used to modify backup notes of an instance.
         """
         
         kwargs = {}
@@ -326,6 +596,60 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "ModifyInstanceName"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyInstanceNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyUserPrivileges(
+            self,
+            request: models.ModifyUserPrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserPrivilegesResponse:
+        """
+        This API is used to modify user permissions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUserPrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserPrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RestartDBInstances(
+            self,
+            request: models.RestartDBInstancesRequest,
+            opts: Dict = None,
+    ) -> models.RestartDBInstancesResponse:
+        """
+        This API is used to restart database instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RestartDBInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RestartDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpgradeInstance(
+            self,
+            request: models.UpgradeInstanceRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeInstanceResponse:
+        """
+        This API is used to scale up a TDSQL Boundless instance, which can be a primary instance or a disaster recovery instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

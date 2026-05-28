@@ -1054,6 +1054,61 @@ Original cost = component list price * component usage * usage duration.
         
 
 
+class BillQueryFilterMsg(AbstractModel):
+    r"""Query condition content kv format for bills
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>Query condition key: various codes</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Key: str
+        :param _Value: <p>Query condition value: Display name</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>Query condition key: various codes</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>Query condition value: Display name</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BusinessInfo(AbstractModel):
     r"""Product information
 
@@ -1251,6 +1306,201 @@ class BusinessSummaryOverviewItem(AbstractModel):
         self._OriginalCost = params.get("OriginalCost")
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CostAnalyzeFilterDetail(AbstractModel):
+    r"""Advanced filtering for cost analysis
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: <p>Product key-value pair.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Business: list of BillQueryFilterMsg
+        :param _Region: <p>Region key-value pair</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: list of BillQueryFilterMsg
+        :param _Zone: <p>Availability zone key-value pair</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Zone: list of BillQueryFilterMsg
+        :param _ActionType: <p>Transaction type key-value pair</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ActionType: list of BillQueryFilterMsg
+        :param _PayMode: <p>Key-value pair of payment mode</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayMode: list of BillQueryFilterMsg
+        :param _Project: <p>Project key-value pair</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Project: list of BillQueryFilterMsg
+        :param _PayerUin: <p>Payer uin information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayerUin: list of BillQueryFilterMsg
+        :param _OwnerUin: <p>Sub-account uin information</p>
+        :type OwnerUin: list of BillQueryFilterMsg
+        """
+        self._Business = None
+        self._Region = None
+        self._Zone = None
+        self._ActionType = None
+        self._PayMode = None
+        self._Project = None
+        self._PayerUin = None
+        self._OwnerUin = None
+
+    @property
+    def Business(self):
+        r"""<p>Product key-value pair.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BillQueryFilterMsg
+        """
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def Region(self):
+        r"""<p>Region key-value pair</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BillQueryFilterMsg
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""<p>Availability zone key-value pair</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BillQueryFilterMsg
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ActionType(self):
+        r"""<p>Transaction type key-value pair</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BillQueryFilterMsg
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def PayMode(self):
+        r"""<p>Key-value pair of payment mode</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BillQueryFilterMsg
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Project(self):
+        r"""<p>Project key-value pair</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BillQueryFilterMsg
+        """
+        return self._Project
+
+    @Project.setter
+    def Project(self, Project):
+        self._Project = Project
+
+    @property
+    def PayerUin(self):
+        r"""<p>Payer uin information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BillQueryFilterMsg
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        r"""<p>Sub-account uin information</p>
+        :rtype: list of BillQueryFilterMsg
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = BillQueryFilterMsg()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        if params.get("Region") is not None:
+            self._Region = []
+            for item in params.get("Region"):
+                obj = BillQueryFilterMsg()
+                obj._deserialize(item)
+                self._Region.append(obj)
+        if params.get("Zone") is not None:
+            self._Zone = []
+            for item in params.get("Zone"):
+                obj = BillQueryFilterMsg()
+                obj._deserialize(item)
+                self._Zone.append(obj)
+        if params.get("ActionType") is not None:
+            self._ActionType = []
+            for item in params.get("ActionType"):
+                obj = BillQueryFilterMsg()
+                obj._deserialize(item)
+                self._ActionType.append(obj)
+        if params.get("PayMode") is not None:
+            self._PayMode = []
+            for item in params.get("PayMode"):
+                obj = BillQueryFilterMsg()
+                obj._deserialize(item)
+                self._PayMode.append(obj)
+        if params.get("Project") is not None:
+            self._Project = []
+            for item in params.get("Project"):
+                obj = BillQueryFilterMsg()
+                obj._deserialize(item)
+                self._Project.append(obj)
+        if params.get("PayerUin") is not None:
+            self._PayerUin = []
+            for item in params.get("PayerUin"):
+                obj = BillQueryFilterMsg()
+                obj._deserialize(item)
+                self._PayerUin.append(obj)
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = []
+            for item in params.get("OwnerUin"):
+                obj = BillQueryFilterMsg()
+                obj._deserialize(item)
+                self._OwnerUin.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3942,6 +4192,117 @@ class DescribeCustomerInfoResponse(AbstractModel):
                 obj = DescribeCustomerInfoData()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomerOwnCostExplorerFilterRequest(AbstractModel):
+    r"""DescribeCustomerOwnCostExplorerFilter request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>Start time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months. When PeriodType is day, the time range is 2 calendar months;</p>
+        :type StartTime: str
+        :param _EndTime: <p>End time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months. When PeriodType is day, the time range is 2 calendar months.</p>
+        :type EndTime: str
+        :param _PeriodType: <p>Date type</p><p>Enumeration value:</p><ul><li>day: By day</li><li>month: Monthly</li></ul>
+        :type PeriodType: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._PeriodType = None
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months. When PeriodType is day, the time range is 2 calendar months;</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>End time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months. When PeriodType is day, the time range is 2 calendar months.</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PeriodType(self):
+        r"""<p>Date type</p><p>Enumeration value:</p><ul><li>day: By day</li><li>month: Monthly</li></ul>
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PeriodType = params.get("PeriodType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerOwnCostExplorerFilterResponse(AbstractModel):
+    r"""DescribeCustomerOwnCostExplorerFilter response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Filter information</p>
+        :type Data: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CostAnalyzeFilterDetail`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Filter information</p>
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CostAnalyzeFilterDetail`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CostAnalyzeFilterDetail()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 

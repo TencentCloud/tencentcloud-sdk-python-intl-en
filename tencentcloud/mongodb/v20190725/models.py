@@ -2278,7 +2278,7 @@ class CreateDBInstanceParamTplRequest(AbstractModel):
         r"""
         :param _TplName: Parameter template name.
         :type TplName: str
-        :param _MongoVersion: Template version number. This field is required when **MirrorTplId** is empty. For the purchasable versions supported by the parameter template, use the interface [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/35767?from_cn_redirect=1).
+        :param _MongoVersion: Template version number. This field is required when **MirrorTplId** is empty. For the purchasable versions supported by the parameter template, use the interface [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/34701).
 - MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
 - MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
 - MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
@@ -2321,7 +2321,7 @@ class CreateDBInstanceParamTplRequest(AbstractModel):
 
     @property
     def MongoVersion(self):
-        r"""Template version number. This field is required when **MirrorTplId** is empty. For the purchasable versions supported by the parameter template, use the interface [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/35767?from_cn_redirect=1).
+        r"""Template version number. This field is required when **MirrorTplId** is empty. For the purchasable versions supported by the parameter template, use the interface [DescribeSpecInfo](https://www.tencentcloud.com/document/product/240/34701).
 - MONGO_36_WT: Version of the MongoDB 3.6 WiredTiger storage engine.
 - MONGO_40_WT: Version of the MongoDB 4.0 WiredTiger storage engine.
 - MONGO_42_WT: Version of the MongoDB 4.2 WiredTiger storage engine.
