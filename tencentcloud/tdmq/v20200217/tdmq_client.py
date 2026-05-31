@@ -421,6 +421,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRocketMQMigrationTask(self, request):
+        r"""Create a RocketMQ metadata migration task to batch create topics and consumer group data.
+
+        :param request: Request instance for CreateRocketMQMigrationTask.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQMigrationTaskRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQMigrationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRocketMQMigrationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRocketMQMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRocketMQNamespace(self, request):
         r"""This API is used to create a RocketMQ namespace.
         This API is applicable to clusters: 4.x virtual cluster and 4.x dedicated cluster. Other cluster types do not support this feature.

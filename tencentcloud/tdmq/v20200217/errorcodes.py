@@ -95,6 +95,9 @@ FAILEDOPERATION_GENERATEDEALSANDPAYERROR = 'FailedOperation.GenerateDealsAndPayE
 # Failed to get the environment attributes.
 FAILEDOPERATION_GETENVIRONMENTATTRIBUTESFAILED = 'FailedOperation.GetEnvironmentAttributesFailed'
 
+# Failed to get Tag
+FAILEDOPERATION_GETTAGS = 'FailedOperation.GetTags'
+
 # Failed to get the number of topic partitions.
 FAILEDOPERATION_GETTOPICPARTITIONSFAILED = 'FailedOperation.GetTopicPartitionsFailed'
 
@@ -218,7 +221,7 @@ INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 # Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 
+# Cluster version information is incorrect
 INVALIDPARAMETER_INSTANCEVERSION = 'InvalidParameter.InstanceVersion'
 
 # Invalid management API address

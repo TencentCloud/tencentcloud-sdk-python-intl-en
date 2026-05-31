@@ -689,6 +689,24 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def PODAuditAI(
+            self,
+            request: models.PODAuditAIRequest,
+            opts: Dict = None,
+    ) -> models.PODAuditAIResponse:
+        """
+        The POD intelligent review deeply integrates multimodal large model image understanding technology, targeting the logistics last-mile delivery scenario to provide high-precision POD compliance audit service. The system auto-recognizes ticket imperfections and risks of non-compliance, helping businesses achieve standardized control in the delivery process and effectively avoid customer complaints and disputes caused by non-compliant credentials.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PODAuditAI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PODAuditAIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def PermitOCR(
             self,
             request: models.PermitOCRRequest,

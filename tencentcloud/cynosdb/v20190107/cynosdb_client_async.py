@@ -133,6 +133,42 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddServerlessRoInstances(
+            self,
+            request: models.AddServerlessRoInstancesRequest,
+            opts: Dict = None,
+    ) -> models.AddServerlessRoInstancesResponse:
+        """
+        Add a read-only instance to the serverless cluster
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddServerlessRoInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddServerlessRoInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AssociateSecurityGroups(
+            self,
+            request: models.AssociateSecurityGroupsRequest,
+            opts: Dict = None,
+    ) -> models.AssociateSecurityGroupsResponse:
+        """
+        This API is used to bulk bind security groups to cloud resources.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssociateSecurityGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssociateSecurityGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindClusterResourcePackages(
             self,
             request: models.BindClusterResourcePackagesRequest,
@@ -151,6 +187,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CalculateBackupSaveSecExpires(
+            self,
+            request: models.CalculateBackupSaveSecExpiresRequest,
+            opts: Dict = None,
+    ) -> models.CalculateBackupSaveSecExpiresResponse:
+        """
+        Calculate the backup file list that will expire and be deleted after modifying the backup retention period
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CalculateBackupSaveSecExpires"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CalculateBackupSaveSecExpiresResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckCreateLibraDBInstance(
             self,
             request: models.CheckCreateLibraDBInstanceRequest,
@@ -164,6 +218,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "CheckCreateLibraDBInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CheckCreateLibraDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckTransferClusterZone(
+            self,
+            request: models.CheckTransferClusterZoneRequest,
+            opts: Dict = None,
+    ) -> models.CheckTransferClusterZoneResponse:
+        """
+        This API is used to check if it is possible to trigger cross-AZ migration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckTransferClusterZone"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckTransferClusterZoneResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -272,6 +344,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "CloseWan"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CloseWanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CopyBackupToVault(
+            self,
+            request: models.CopyBackupToVaultRequest,
+            opts: Dict = None,
+    ) -> models.CopyBackupToVaultResponse:
+        """
+        Copy backup files to the designated safe
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CopyBackupToVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CopyBackupToVaultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -529,6 +619,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateVault(
+            self,
+            request: models.CreateVaultRequest,
+            opts: Dict = None,
+    ) -> models.CreateVaultResponse:
+        """
+        Create a backup safe
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVaultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAccounts(
             self,
             request: models.DeleteAccountsRequest,
@@ -583,6 +691,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBackupVault(
+            self,
+            request: models.DeleteBackupVaultRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBackupVaultResponse:
+        """
+        Delete specified backup files from the safe
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBackupVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBackupVaultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCLSDelivery(
             self,
             request: models.DeleteCLSDeliveryRequest,
@@ -614,6 +740,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DeleteClusterDatabase"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteClusterDatabaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteClusterSaveBackup(
+            self,
+            request: models.DeleteClusterSaveBackupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteClusterSaveBackupResponse:
+        """
+        This API is used to delete residual backups for cluster deletion.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteClusterSaveBackup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteClusterSaveBackupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -668,6 +812,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DeleteParamTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteParamTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVaults(
+            self,
+            request: models.DeleteVaultsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVaultsResponse:
+        """
+        Bulk deletion of backup safes
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVaults"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVaultsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -853,6 +1015,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBackupListByVault(
+            self,
+            request: models.DescribeBackupListByVaultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackupListByVaultResponse:
+        """
+        Query backup file list based on safe ID
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackupListByVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackupListByVaultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBinlogConfig(
             self,
             request: models.DescribeBinlogConfigRequest,
@@ -884,6 +1064,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeBinlogDownloadUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBinlogDownloadUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBinlogListByVault(
+            self,
+            request: models.DescribeBinlogListByVaultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBinlogListByVaultResponse:
+        """
+        Query binlog backups in the insurance box
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBinlogListByVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBinlogListByVaultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1237,7 +1435,7 @@ class CynosdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeInstanceSlowQueriesResponse:
         """
-        This API is used to query the slow query logs of an instance.
+        This API is used to query the slow log details of an instance. Subject to platform return size limits, return results may be truncated if they are too large.
         """
         
         kwargs = {}
@@ -1262,6 +1460,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeInstanceSpecs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInstanceSpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInstanceSpecsByOperationType(
+            self,
+            request: models.DescribeInstanceSpecsByOperationTypeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceSpecsByOperationTypeResponse:
+        """
+        Query instance specifications based on operation type
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceSpecsByOperationType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceSpecsByOperationTypeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1393,6 +1609,186 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLibraDBClusterAutoMapRule(
+            self,
+            request: models.DescribeLibraDBClusterAutoMapRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClusterAutoMapRuleResponse:
+        """
+        This API is used to view the advanced mapping rule of the analysis cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusterAutoMapRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClusterAutoMapRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBClusterDetail(
+            self,
+            request: models.DescribeLibraDBClusterDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClusterDetailResponse:
+        """
+        Query TDSQL-C analysis cluster information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusterDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClusterDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBClusterTableMapping(
+            self,
+            request: models.DescribeLibraDBClusterTableMappingRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClusterTableMappingResponse:
+        """
+        This API is used to view the database/table mapping relationship of an analysis cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusterTableMapping"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClusterTableMappingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBClusters(
+            self,
+            request: models.DescribeLibraDBClustersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBClustersResponse:
+        """
+        Query the analysis cluster list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBClustersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBDataSource(
+            self,
+            request: models.DescribeLibraDBDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBDataSourceResponse:
+        """
+        This API is used to query the source instance information of an analysis cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBForwardConfig(
+            self,
+            request: models.DescribeLibraDBForwardConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBForwardConfigResponse:
+        """
+        This API is used to query the analysis engine forwarding parameters.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBForwardConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBForwardConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBInstanceDetail(
+            self,
+            request: models.DescribeLibraDBInstanceDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBInstanceDetailResponse:
+        """
+        This API is used to query read-only analysis engine details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBInstanceDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBInstanceDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBInstanceSpecs(
+            self,
+            request: models.DescribeLibraDBInstanceSpecsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBInstanceSpecsResponse:
+        """
+        This API is used to query the specification list of the read-only analysis engine supported in the region.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBInstanceSpecs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBInstanceSpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBSlowLogs(
+            self,
+            request: models.DescribeLibraDBSlowLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBSlowLogsResponse:
+        """
+        This API is used to query slow SQL details in the read-only analysis engine.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBSlowLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBSlowLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLibraDBVersion(
+            self,
+            request: models.DescribeLibraDBVersionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLibraDBVersionResponse:
+        """
+        Query the list of supported versions for the read-only analysis engine
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLibraDBVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLibraDBVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMaintainPeriod(
             self,
             request: models.DescribeMaintainPeriodRequest,
@@ -1519,6 +1915,42 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRedoLogListByVault(
+            self,
+            request: models.DescribeRedoLogListByVaultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRedoLogListByVaultResponse:
+        """
+        Query RedoLog backups
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRedoLogListByVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRedoLogListByVaultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRedoLogs(
+            self,
+            request: models.DescribeRedoLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRedoLogsResponse:
+        """
+        This API is used to query the redo log list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRedoLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRedoLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeResourcePackageDetail(
             self,
             request: models.DescribeResourcePackageDetailRequest,
@@ -1604,6 +2036,42 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeRollbackTimeRange"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRollbackTimeRangeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSQLExecutionPlan(
+            self,
+            request: models.DescribeSQLExecutionPlanRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSQLExecutionPlanResponse:
+        """
+        This API is used to query the execution plan details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSQLExecutionPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSQLExecutionPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSaveBackupClusters(
+            self,
+            request: models.DescribeSaveBackupClustersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSaveBackupClustersResponse:
+        """
+        This API is used to query legacy backup cluster information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSaveBackupClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSaveBackupClustersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1699,6 +2167,42 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVaultBackupClusterInfo(
+            self,
+            request: models.DescribeVaultBackupClusterInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVaultBackupClusterInfoResponse:
+        """
+        Query the cluster information list associated with the backup safe
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVaultBackupClusterInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVaultBackupClusterInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVaults(
+            self,
+            request: models.DescribeVaultsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVaultsResponse:
+        """
+        Query backup safe list, support page, filter and sort.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVaults"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVaultsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeZones(
             self,
             request: models.DescribeZonesRequest,
@@ -1712,6 +2216,42 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeZones"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeZonesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DisassociateSecurityGroups(
+            self,
+            request: models.DisassociateSecurityGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DisassociateSecurityGroupsResponse:
+        """
+        This API is used to unbind cloud resources from security groups in batches.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisassociateSecurityGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisassociateSecurityGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DownloadLibraDBClusterList(
+            self,
+            request: models.DownloadLibraDBClusterListRequest,
+            opts: Dict = None,
+    ) -> models.DownloadLibraDBClusterListResponse:
+        """
+        Download the analysis cluster list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DownloadLibraDBClusterList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DownloadLibraDBClusterListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1766,6 +2306,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "ExportResourcePackageDeductDetails"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExportResourcePackageDeductDetailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GrantAccountPrivileges(
+            self,
+            request: models.GrantAccountPrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.GrantAccountPrivilegesResponse:
+        """
+        This API is used to grant permissions to authorized accounts in batch.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GrantAccountPrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GrantAccountPrivilegesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1874,6 +2432,42 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "IsolateInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.IsolateInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def IsolateLibraDBCluster(
+            self,
+            request: models.IsolateLibraDBClusterRequest,
+            opts: Dict = None,
+    ) -> models.IsolateLibraDBClusterResponse:
+        """
+        Isolating a TDSQL-C Analysis Cluster
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IsolateLibraDBCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IsolateLibraDBClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def IsolateLibraDBInstance(
+            self,
+            request: models.IsolateLibraDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.IsolateLibraDBInstanceResponse:
+        """
+        This API is used to isolate read-only analysis engine instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IsolateLibraDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IsolateLibraDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2077,6 +2671,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyClusterBinlogRedoLogAutoCopyVault(
+            self,
+            request: models.ModifyClusterBinlogRedoLogAutoCopyVaultRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterBinlogRedoLogAutoCopyVaultResponse:
+        """
+        This API is used to modify cluster configuration to automatically copy Binlog and RedoLog to safe.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterBinlogRedoLogAutoCopyVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterBinlogRedoLogAutoCopyVaultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyClusterDatabase(
             self,
             request: models.ModifyClusterDatabaseRequest,
@@ -2090,6 +2702,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "ModifyClusterDatabase"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyClusterDatabaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyClusterGlobalEncryption(
+            self,
+            request: models.ModifyClusterGlobalEncryptionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterGlobalEncryptionResponse:
+        """
+        Enable global encryption
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterGlobalEncryption"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterGlobalEncryptionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2257,6 +2887,150 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyLibraDBClusterAccountDescription(
+            self,
+            request: models.ModifyLibraDBClusterAccountDescriptionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterAccountDescriptionResponse:
+        """
+        This API is used to modify the description of a cluster account.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterAccountDescription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterAccountDescriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterAccountHost(
+            self,
+            request: models.ModifyLibraDBClusterAccountHostRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterAccountHostResponse:
+        """
+        This API is used to modify the log in to the host information of a cluster account.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterAccountHost"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterAccountHostResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterAccountPrivilege(
+            self,
+            request: models.ModifyLibraDBClusterAccountPrivilegeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterAccountPrivilegeResponse:
+        """
+        This API is used to modify the permission of a cluster account for analytics.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterAccountPrivilege"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterAccountPrivilegeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterDataSource(
+            self,
+            request: models.ModifyLibraDBClusterDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterDataSourceResponse:
+        """
+        This API is used to modify the TDSQL-C analytical cluster data source.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterName(
+            self,
+            request: models.ModifyLibraDBClusterNameRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterNameResponse:
+        """
+        This API is used to modify the name of an analysis cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterProject(
+            self,
+            request: models.ModifyLibraDBClusterProjectRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterProjectResponse:
+        """
+        This API is used to modify the project ID of an analysis cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBClusterReplicationObject(
+            self,
+            request: models.ModifyLibraDBClusterReplicationObjectRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBClusterReplicationObjectResponse:
+        """
+        This API is used to modify the sync object of an analysis cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBClusterReplicationObject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBClusterReplicationObjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLibraDBForwardConfig(
+            self,
+            request: models.ModifyLibraDBForwardConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLibraDBForwardConfigResponse:
+        """
+        This API is used to modify the automatic forwarding parameter of a read-only analysis instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLibraDBForwardConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLibraDBForwardConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyMaintainPeriodConfig(
             self,
             request: models.ModifyMaintainPeriodConfigRequest,
@@ -2401,6 +3175,42 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifySnapBackupCrossRegionConfig(
+            self,
+            request: models.ModifySnapBackupCrossRegionConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifySnapBackupCrossRegionConfigResponse:
+        """
+        This API is used to modify the snapshot backup cross-region configuration of a specified cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySnapBackupCrossRegionConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySnapBackupCrossRegionConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVault(
+            self,
+            request: models.ModifyVaultRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVaultResponse:
+        """
+        Modify backup safe configuration, including the name, description, retention duration, encryption key, lock time.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVaultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyVipVport(
             self,
             request: models.ModifyVipVportRequest,
@@ -2450,6 +3260,42 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "OfflineInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.OfflineInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OfflineLibraDBCluster(
+            self,
+            request: models.OfflineLibraDBClusterRequest,
+            opts: Dict = None,
+    ) -> models.OfflineLibraDBClusterResponse:
+        """
+        Decommission an analysis cluster
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OfflineLibraDBCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OfflineLibraDBClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OfflineLibraDBInstance(
+            self,
+            request: models.OfflineLibraDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.OfflineLibraDBInstanceResponse:
+        """
+        This API is used to decommission a read-only analysis engine instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OfflineLibraDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OfflineLibraDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2653,6 +3499,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RenewLibraDBClusters(
+            self,
+            request: models.RenewLibraDBClustersRequest,
+            opts: Dict = None,
+    ) -> models.RenewLibraDBClustersResponse:
+        """
+        Renew an analysis cluster
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewLibraDBClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewLibraDBClustersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReplayInstanceAuditLog(
             self,
             request: models.ReplayInstanceAuditLogRequest,
@@ -2689,6 +3553,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ResetLibraDBClusterAccountPassword(
+            self,
+            request: models.ResetLibraDBClusterAccountPasswordRequest,
+            opts: Dict = None,
+    ) -> models.ResetLibraDBClusterAccountPasswordResponse:
+        """
+        Modify the cluster account password for analytics
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetLibraDBClusterAccountPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetLibraDBClusterAccountPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RestartInstance(
             self,
             request: models.RestartInstanceRequest,
@@ -2702,6 +3584,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "RestartInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RestartInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RestartLibraDBInstance(
+            self,
+            request: models.RestartLibraDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.RestartLibraDBInstanceResponse:
+        """
+        Restart the read-only analysis engine
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RestartLibraDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RestartLibraDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2792,6 +3692,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "SearchClusterTables"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchClusterTablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetLibraDBClusterRenewFlag(
+            self,
+            request: models.SetLibraDBClusterRenewFlagRequest,
+            opts: Dict = None,
+    ) -> models.SetLibraDBClusterRenewFlagResponse:
+        """
+        Set whether to renew the TDSQL-C analysis cluster
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetLibraDBClusterRenewFlag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetLibraDBClusterRenewFlagResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2900,6 +3818,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "SwitchProxyVpc"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SwitchProxyVpcResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TransferClusterZone(
+            self,
+            request: models.TransferClusterZoneRequest,
+            opts: Dict = None,
+    ) -> models.TransferClusterZoneResponse:
+        """
+        This API is used to trigger cross-AZ migration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TransferClusterZone"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TransferClusterZoneResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

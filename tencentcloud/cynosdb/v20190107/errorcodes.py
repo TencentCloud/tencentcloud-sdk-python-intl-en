@@ -44,6 +44,9 @@ FAILEDOPERATION_CYNOSDBMYSQLSETBACKUPSTRATEGY = 'FailedOperation.CynosdbMysqlSet
 # Failed to access the database. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_DATABASEACCESSERROR = 'FailedOperation.DatabaseAccessError'
 
+# Failed to modify account permissions.
+FAILEDOPERATION_DESCRIBEACCOUNTPRIVILEGESERROR = 'FailedOperation.DescribeAccountPrivilegesError'
+
 # Failed to create a task. Try again later. If the problem persists, contact customer service.
 FAILEDOPERATION_FLOWCREATEERROR = 'FailedOperation.FlowCreateError'
 
@@ -98,6 +101,9 @@ FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = 'FailedOperation.UnBindSourcePackageE
 # Internal error.
 INTERNALERROR = 'InternalError'
 
+# Access DB exception
+INTERNALERROR_DBERROR = 'InternalError.DBError'
+
 # Failed to query the database.
 INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 
@@ -118,6 +124,9 @@ INTERNALERROR_HTTPERROR = 'InternalError.HttpError'
 
 # An exception occurred while executing the HTTP request.
 INTERNALERROR_INTERNALHTTPSERVERERROR = 'InternalError.InternalHttpServerError'
+
+# Internal service error
+INTERNALERROR_INTERNALINNERSERVICEERROR = 'InternalError.InternalInnerServiceError'
 
 # Failed to query instances by security group.
 INTERNALERROR_LISTINSTANCEFAILED = 'InternalError.ListInstanceFailed'
@@ -260,8 +269,11 @@ LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
 # Audit log is disabled for instance {{1}}. operations cannot be performed.
 OPERATIONDENIED_AUDITLOGCLOSEDERROR = 'OperationDenied.AuditLogClosedError'
 
-# The audit status is abnormal.
+# Audit status exception
 OPERATIONDENIED_AUDITSTATUSERROR = 'OperationDenied.AuditStatusError'
+
+# Backup safe resource {{1}} is in {{2}} and unable to perform {{3}} operation
+OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = 'OperationDenied.BackupVaultTaskConflictError'
 
 # Failed to verify permissions
 OPERATIONDENIED_CAMDENIEDERROR = 'OperationDenied.CamDeniedError'
@@ -271,6 +283,9 @@ OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = 'OperationDenied.ClusterOpNotAllowedE
 
 # For the cluster in this status, the operation is not allowed.
 OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = 'OperationDenied.ClusterStatusDeniedError'
+
+# Cluster {{1}} is currently performing {{2}} operation and cannot perform {{3}} operation.
+OPERATIONDENIED_CLUSTERTASKCONFLICTERROR = 'OperationDenied.ClusterTaskConflictError'
 
 # Task creation failed. {{1}}
 OPERATIONDENIED_CREATETASKANDFLOWERROR = 'OperationDenied.CreateTaskAndFlowError'
@@ -290,11 +305,17 @@ OPERATIONDENIED_GETPROXYGROUPFAILEDERROR = 'OperationDenied.GetProxyGroupFailedE
 # You do not have the permission to operate this resource.
 OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = 'OperationDenied.InstanceAccessDeniedError'
 
+# Instance group {{1}} is currently performing {{2}} operation and cannot perform {{3}} operation
+OPERATIONDENIED_INSTANCEGRPTASKCONFLICTERROR = 'OperationDenied.InstanceGrpTaskConflictError'
+
 # For the instance in this status, the operation is not allowed.
 OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = 'OperationDenied.InstanceStatusDeniedError'
 
 # The instance is not running.
 OPERATIONDENIED_INSTANCESTATUSLIMITERROR = 'OperationDenied.InstanceStatusLimitError'
+
+# Instance {{1}} is currently performing {{2}} operation and cannot perform {{3}} operation
+OPERATIONDENIED_INSTANCETASKCONFLICTERROR = 'OperationDenied.InstanceTaskConflictError'
 
 # Insufficient account balance.
 OPERATIONDENIED_INSUFFICIENTBALANCEERROR = 'OperationDenied.InsufficientBalanceError'
@@ -341,7 +362,7 @@ OPERATIONDENIED_PROXYNOTRUNNINGERROR = 'OperationDenied.ProxyNotRunningError'
 # Availability zone does not exist.
 OPERATIONDENIED_PROXYSALEZONECHECKERROR = 'OperationDenied.ProxySaleZoneCheckError'
 
-# 
+# Insufficient proxy stock
 OPERATIONDENIED_PROXYSTOCKCHECKERROR = 'OperationDenied.ProxyStockCheckError'
 
 # Proxy version check_failed.
@@ -362,11 +383,17 @@ OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = 'OperationDenied.ServerlessInst
 # The task conflict check failed.
 OPERATIONDENIED_TASKCONFLICTERROR = 'OperationDenied.TaskConflictError'
 
+# Business check failed: {{1}}
+OPERATIONDENIED_TRADEBUSINESSCHECKERROR = 'OperationDenied.TradeBusinessCheckError'
+
 # This type of specification is unavailable.
 OPERATIONDENIED_UNSUPPORTSALESPECERROR = 'OperationDenied.UnSupportSaleSpecError'
 
 # You need to verify your identity to make a purchase.
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'
+
+# User resource {{1}} is currently performing {{2}} operation and cannot perform {{3}} operation
+OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = 'OperationDenied.UserResourceTaskConflictError'
 
 # Serverless is not supported on this version.
 OPERATIONDENIED_VERSIONNOTSUPPORTERROR = 'OperationDenied.VersionNotSupportError'

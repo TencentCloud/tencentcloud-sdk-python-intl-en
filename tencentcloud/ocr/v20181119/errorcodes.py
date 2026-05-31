@@ -59,6 +59,9 @@ FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
 # The information in the visual zone does not match that in the machine-readable zone.
 FAILEDOPERATION_INCONSISTENCYBETWEENMRZANDVRZ = 'FailedOperation.InconsistencyBetweenMRZAndVRZ'
 
+# Large model service invocation failed. Try again later.
+FAILEDOPERATION_LLMSERVICEFAILED = 'FailedOperation.LLMServiceFailed'
+
 # The input language is not supported.
 FAILEDOPERATION_LANGUAGENOTSUPPORT = 'FailedOperation.LanguageNotSupport'
 
@@ -82,6 +85,9 @@ FAILEDOPERATION_OCRFAILED = 'FailedOperation.OcrFailed'
 
 # Unknown error.
 FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnKnowError'
+
+# Unknown file type.
+FAILEDOPERATION_UNKNOWFILETYPEERROR = 'FailedOperation.UnKnowFileTypeError'
 
 # The service is not activated.
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
@@ -116,5 +122,5 @@ RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = 'ResourceUnavailable.ResourcePackage
 # Exceptional billing status.
 RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = 'ResourcesSoldOut.ChargeStatusException'
 
-# Unrecognized argument.
+# Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'

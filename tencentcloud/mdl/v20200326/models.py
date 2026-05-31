@@ -31,11 +31,11 @@ class AVTemplate(AbstractModel):
         :type NeedVideo: int
         :param _Vcodec: Video codec. Valid values: `H264`, `H265`. If this parameter is left empty, the original video codec will be used.
         :type Vcodec: str
-        :param _Width: Video width. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video width will be used.
+        :param _Width: Video width. The input range is (0, 4096] and must be a multiple of 2. If left blank, it represents passthrough.
         :type Width: int
-        :param _Height: Video height. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video height will be used.
+        :param _Height: Video height. Input range is (0, 4096] and must be a multiple of 2. Leave empty to represent passthrough.
         :type Height: int
-        :param _Fps: Video frame rate. Value range: [1, 240]. If this parameter is left empty, the original frame rate will be used.
+        :param _Fps: Video frame rate. Valid when you select SPECIFIED_HZ for FrameRateType. Input range is [1, 240]. Leave blank to represent passthrough.
         :type Fps: int
         :param _TopSpeed: Whether to enable top speed codec transcoding. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
         :type TopSpeed: str
@@ -43,14 +43,14 @@ class AVTemplate(AbstractModel):
         :type BitrateCompressionRatio: int
         :param _NeedAudio: Whether audio is needed. `0`: not needed; `1`: needed
         :type NeedAudio: int
-        :param _Acodec: Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
+        :param _Acodec: Audio encoding format, can only be `AAC` or `PASSTHROUGH`. Default is AAC.
         :type Acodec: str
         :param _AudioBitrate: Audio bitrate. If this parameter is left empty, the original bitrate will be used.
 Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000`, `24000`, `28000`, `32000`, `40000`, `48000`, `56000`, `64000`, `80000`, `96000`, `112000`, `128000`, `160000`, `192000`, `224000`, `256000`, `288000`, `320000`, `384000`, `448000`, `512000`, `576000`, `640000`, `768000`, `896000`, `1024000`
         :type AudioBitrate: int
         :param _VideoBitrate: Video bitrate. Value range: [50000, 40000000]. The value must be an integer multiple of 1000. If this parameter is left empty, the original bitrate will be used.
         :type VideoBitrate: int
-        :param _RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
+        :param _RateControlMode: Bitrate control mode. Optional values: [CBR|ABR|VBR]. Default: ABR.
         :type RateControlMode: str
         :param _WatermarkId: Watermark ID
         :type WatermarkId: str
@@ -72,15 +72,15 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type AudioNormalization: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
         :param _AudioSampleRate: Audio sampling rate, unit HZ.
         :type AudioSampleRate: int
-        :param _FrameRateType: This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
+        :param _FrameRateType: This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate is set to equal the frame rate of the first input video. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is confirmed by the HZ you input.	
         :type FrameRateType: str
-        :param _FrameRateNumerator: Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
+        :param _FrameRateNumerator: Valid when you select SPECIFIED_FRACTION as the FrameRateType. Set the output frame rate molecular.	
         :type FrameRateNumerator: int
-        :param _FrameRateDenominator: Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
+        :param _FrameRateDenominator: Valid when you select SPECIFIED_FRACTION for FrameRateType. Output frame rate denominator set.	
         :type FrameRateDenominator: int
-        :param _BFramesNum: The number of B frames can be selected from 1 to 3.
+        :param _BFramesNum: Number of B-frames 1-3.
         :type BFramesNum: int
-        :param _RefFramesNum: The number of reference frames can be selected from 1 to 16.
+        :param _RefFramesNum: Refer to the number of frames 1-16.
         :type RefFramesNum: int
         :param _AdditionalRateSettings: Additional video bitrate configuration.
         :type AdditionalRateSettings: :class:`tencentcloud.mdl.v20200326.models.AdditionalRateSetting`
@@ -88,21 +88,21 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type VideoCodecDetails: :class:`tencentcloud.mdl.v20200326.models.VideoCodecDetail`
         :param _AudioCodecDetails: Audio encoding configuration.
         :type AudioCodecDetails: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
-        :param _MultiAudioTrackEnabled: Whether to enable multiple audio tracks 0: Not required 1: Required Default value 0.
+        :param _MultiAudioTrackEnabled: Whether to enable multiple audio tracks. 0: not required 1: required. Default value: 0.
         :type MultiAudioTrackEnabled: int
-        :param _AudioTracks: Quantity limit 0-20 Valid when MultiAudioTrackEnabled is turned on.
+        :param _AudioTracks: Limit on the number 0-20. Valid when MultiAudioTrackEnabled is enabled.
         :type AudioTracks: list of AudioTrackInfo
-        :param _VideoEnhanceEnabled: Do you want to enable video enhancement? 1: Enable 0: Do not enable.
+        :param _VideoEnhanceEnabled: Whether to enable video enhancement, 1: enable 0: disable.
         :type VideoEnhanceEnabled: int
         :param _VideoEnhanceSettings: Video enhancement configuration array.
         :type VideoEnhanceSettings: list of VideoEnhanceSetting
-        :param _GopSize: Key frame interval, 300-10000, optional.
+        :param _GopSize: Keyframe interval, 300-10000, optional.
         :type GopSize: int
-        :param _GopSizeUnits: Keyframe units, only support MILLISECONDS (milliseconds).
+        :param _GopSizeUnits: Key frame measurement unit currently only supports MILLISECONDS (ms).
         :type GopSizeUnits: str
-        :param _ColorSpaceSettings: Color space setting.
+        :param _ColorSpaceSettings: Colorspace configuration.
         :type ColorSpaceSettings: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
-        :param _ForensicWatermarkIds: Traceability watermark.
+        :param _ForensicWatermarkIds: Traceable watermark.
         :type ForensicWatermarkIds: list of str
         """
         self._Name = None
@@ -177,7 +177,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Width(self):
-        r"""Video width. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video width will be used.
+        r"""Video width. The input range is (0, 4096] and must be a multiple of 2. If left blank, it represents passthrough.
         :rtype: int
         """
         return self._Width
@@ -188,7 +188,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Height(self):
-        r"""Video height. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video height will be used.
+        r"""Video height. Input range is (0, 4096] and must be a multiple of 2. Leave empty to represent passthrough.
         :rtype: int
         """
         return self._Height
@@ -199,7 +199,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Fps(self):
-        r"""Video frame rate. Value range: [1, 240]. If this parameter is left empty, the original frame rate will be used.
+        r"""Video frame rate. Valid when you select SPECIFIED_HZ for FrameRateType. Input range is [1, 240]. Leave blank to represent passthrough.
         :rtype: int
         """
         return self._Fps
@@ -243,7 +243,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Acodec(self):
-        r"""Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
+        r"""Audio encoding format, can only be `AAC` or `PASSTHROUGH`. Default is AAC.
         :rtype: str
         """
         return self._Acodec
@@ -277,7 +277,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def RateControlMode(self):
-        r"""Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
+        r"""Bitrate control mode. Optional values: [CBR|ABR|VBR]. Default: ABR.
         :rtype: str
         """
         return self._RateControlMode
@@ -371,7 +371,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def FrameRateType(self):
-        r"""This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
+        r"""This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate is set to equal the frame rate of the first input video. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is confirmed by the HZ you input.	
         :rtype: str
         """
         return self._FrameRateType
@@ -382,7 +382,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def FrameRateNumerator(self):
-        r"""Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
+        r"""Valid when you select SPECIFIED_FRACTION as the FrameRateType. Set the output frame rate molecular.	
         :rtype: int
         """
         return self._FrameRateNumerator
@@ -393,7 +393,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def FrameRateDenominator(self):
-        r"""Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
+        r"""Valid when you select SPECIFIED_FRACTION for FrameRateType. Output frame rate denominator set.	
         :rtype: int
         """
         return self._FrameRateDenominator
@@ -404,7 +404,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def BFramesNum(self):
-        r"""The number of B frames can be selected from 1 to 3.
+        r"""Number of B-frames 1-3.
         :rtype: int
         """
         return self._BFramesNum
@@ -415,7 +415,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def RefFramesNum(self):
-        r"""The number of reference frames can be selected from 1 to 16.
+        r"""Refer to the number of frames 1-16.
         :rtype: int
         """
         return self._RefFramesNum
@@ -459,7 +459,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def MultiAudioTrackEnabled(self):
-        r"""Whether to enable multiple audio tracks 0: Not required 1: Required Default value 0.
+        r"""Whether to enable multiple audio tracks. 0: not required 1: required. Default value: 0.
         :rtype: int
         """
         return self._MultiAudioTrackEnabled
@@ -470,7 +470,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def AudioTracks(self):
-        r"""Quantity limit 0-20 Valid when MultiAudioTrackEnabled is turned on.
+        r"""Limit on the number 0-20. Valid when MultiAudioTrackEnabled is enabled.
         :rtype: list of AudioTrackInfo
         """
         return self._AudioTracks
@@ -481,7 +481,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def VideoEnhanceEnabled(self):
-        r"""Do you want to enable video enhancement? 1: Enable 0: Do not enable.
+        r"""Whether to enable video enhancement, 1: enable 0: disable.
         :rtype: int
         """
         return self._VideoEnhanceEnabled
@@ -503,7 +503,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def GopSize(self):
-        r"""Key frame interval, 300-10000, optional.
+        r"""Keyframe interval, 300-10000, optional.
         :rtype: int
         """
         return self._GopSize
@@ -514,7 +514,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def GopSizeUnits(self):
-        r"""Keyframe units, only support MILLISECONDS (milliseconds).
+        r"""Key frame measurement unit currently only supports MILLISECONDS (ms).
         :rtype: str
         """
         return self._GopSizeUnits
@@ -525,7 +525,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def ColorSpaceSettings(self):
-        r"""Color space setting.
+        r"""Colorspace configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
         """
         return self._ColorSpaceSettings
@@ -536,7 +536,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def ForensicWatermarkIds(self):
-        r"""Traceability watermark.
+        r"""Traceable watermark.
         :rtype: list of str
         """
         return self._ForensicWatermarkIds
@@ -956,17 +956,23 @@ class AdBreakSetting(AbstractModel):
         r"""
         :param _Format: Advertising type, currently supports L-SQUEEZE
         :type Format: str
-        :param _Duration: Duration, in milliseconds, requires 1000<duration<=600000. The current accuracy is seconds, which is a multiple of 1000
+        :param _Duration: Duration, in milliseconds, requires 1000&lt;duration&lt;=600000 The current accuracy is seconds, which is a multiple of 1000
         :type Duration: int
-        :param _LSqueezeSetting: L-type compression recovery configuration
-        :type LSqueezeSetting: :class:`tencentcloud.mdl.v20200326.models.LSqueezeSetting`
         :param _AdSource: AdSource type, supports UPLOAD_CREATIVES
         :type AdSource: str
+        :param _LSqueezeSetting: L-type compression recovery configuration
+        :type LSqueezeSetting: :class:`tencentcloud.mdl.v20200326.models.LSqueezeSetting`
+        :param _PipSetting: 
+        :type PipSetting: :class:`tencentcloud.mdl.v20200326.models.PipSetting`
+        :param _BorderFrameSetting: 
+        :type BorderFrameSetting: :class:`tencentcloud.mdl.v20200326.models.BorderFrameSetting`
         """
         self._Format = None
         self._Duration = None
-        self._LSqueezeSetting = None
         self._AdSource = None
+        self._LSqueezeSetting = None
+        self._PipSetting = None
+        self._BorderFrameSetting = None
 
     @property
     def Format(self):
@@ -981,7 +987,7 @@ class AdBreakSetting(AbstractModel):
 
     @property
     def Duration(self):
-        r"""Duration, in milliseconds, requires 1000<duration<=600000. The current accuracy is seconds, which is a multiple of 1000
+        r"""Duration, in milliseconds, requires 1000&lt;duration&lt;=600000 The current accuracy is seconds, which is a multiple of 1000
         :rtype: int
         """
         return self._Duration
@@ -989,6 +995,17 @@ class AdBreakSetting(AbstractModel):
     @Duration.setter
     def Duration(self, Duration):
         self._Duration = Duration
+
+    @property
+    def AdSource(self):
+        r"""AdSource type, supports UPLOAD_CREATIVES
+        :rtype: str
+        """
+        return self._AdSource
+
+    @AdSource.setter
+    def AdSource(self, AdSource):
+        self._AdSource = AdSource
 
     @property
     def LSqueezeSetting(self):
@@ -1002,24 +1019,41 @@ class AdBreakSetting(AbstractModel):
         self._LSqueezeSetting = LSqueezeSetting
 
     @property
-    def AdSource(self):
-        r"""AdSource type, supports UPLOAD_CREATIVES
-        :rtype: str
+    def PipSetting(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.PipSetting`
         """
-        return self._AdSource
+        return self._PipSetting
 
-    @AdSource.setter
-    def AdSource(self, AdSource):
-        self._AdSource = AdSource
+    @PipSetting.setter
+    def PipSetting(self, PipSetting):
+        self._PipSetting = PipSetting
+
+    @property
+    def BorderFrameSetting(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.BorderFrameSetting`
+        """
+        return self._BorderFrameSetting
+
+    @BorderFrameSetting.setter
+    def BorderFrameSetting(self, BorderFrameSetting):
+        self._BorderFrameSetting = BorderFrameSetting
 
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
         self._Duration = params.get("Duration")
+        self._AdSource = params.get("AdSource")
         if params.get("LSqueezeSetting") is not None:
             self._LSqueezeSetting = LSqueezeSetting()
             self._LSqueezeSetting._deserialize(params.get("LSqueezeSetting"))
-        self._AdSource = params.get("AdSource")
+        if params.get("PipSetting") is not None:
+            self._PipSetting = PipSetting()
+            self._PipSetting._deserialize(params.get("PipSetting"))
+        if params.get("BorderFrameSetting") is not None:
+            self._BorderFrameSetting = BorderFrameSetting()
+            self._BorderFrameSetting._deserialize(params.get("BorderFrameSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1031,17 +1065,17 @@ class AdBreakSetting(AbstractModel):
 
 
 class AdditionalRateSetting(AbstractModel):
-    r"""additional bit rate configuration.
+    r"""Additional bitrate configuration for video template.
 
     """
 
     def __init__(self):
         r"""
-        :param _VideoMaxBitrate: The maximum bit rate in a VBR scenario must be a multiple of 1000 and between 50000 - 40000000.
+        :param _VideoMaxBitrate: The maximum bitrate in the VBR scenario must be a multiple of 1000 and between 50000 and 40000000.
         :type VideoMaxBitrate: int
-        :param _BufferSize: Cache configuration supports configuring a Max Bitrate value of 1-4 times.
+        :param _BufferSize: Cache configuration supports configuration as 1-4x the Max Bitrate value.
         :type BufferSize: int
-        :param _QualityLevel: VBR scene is valid, video quality level, only supports user input numbers between 1-51.
+        :param _QualityLevel: Valid in VBR scenarios. Video quality level. Only supports user input of numbers between 1 and 51.
         :type QualityLevel: int
         """
         self._VideoMaxBitrate = None
@@ -1050,7 +1084,7 @@ class AdditionalRateSetting(AbstractModel):
 
     @property
     def VideoMaxBitrate(self):
-        r"""The maximum bit rate in a VBR scenario must be a multiple of 1000 and between 50000 - 40000000.
+        r"""The maximum bitrate in the VBR scenario must be a multiple of 1000 and between 50000 and 40000000.
         :rtype: int
         """
         return self._VideoMaxBitrate
@@ -1061,7 +1095,7 @@ class AdditionalRateSetting(AbstractModel):
 
     @property
     def BufferSize(self):
-        r"""Cache configuration supports configuring a Max Bitrate value of 1-4 times.
+        r"""Cache configuration supports configuration as 1-4x the Max Bitrate value.
         :rtype: int
         """
         return self._BufferSize
@@ -1072,7 +1106,7 @@ class AdditionalRateSetting(AbstractModel):
 
     @property
     def QualityLevel(self):
-        r"""VBR scene is valid, video quality level, only supports user input numbers between 1-51.
+        r"""Valid in VBR scenarios. Video quality level. Only supports user input of numbers between 1 and 51.
         :rtype: int
         """
         return self._QualityLevel
@@ -1097,27 +1131,27 @@ class AdditionalRateSetting(AbstractModel):
 
 
 class AmazonS3Settings(AbstractModel):
-    r"""Amazon S3 destination setting.
+    r"""Amazon S3 address configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _AccessKeyID: Access key ID of the S3 sub-account.
+        :param _AccessKeyID: Access key ID of the S3 sub-user.
         :type AccessKeyID: str
-        :param _SecretAccessKey: Secret access key of the S3 sub-account.
+        :param _SecretAccessKey: Secret access key of the S3 sub-user.
         :type SecretAccessKey: str
-        :param _Region: Region of S3.
+        :param _Region: S3 region.
         :type Region: str
         :param _Bucket: Bucket name of S3.
         :type Bucket: str
-        :param _FilePath: File output path, which can be empty. If it is not empty, it starts with / and ends with /.
+        :param _FilePath: File output path, can be empty, starts and ends with / if not empty.
         :type FilePath: str
-        :param _FileName: User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
+        :param _FileName: User-defined name supports 1 to 32 characters consisting of digits, letters, underscores (_), and hyphens (-).
         :type FileName: str
-        :param _FileExt: File suffix, only supports `jpg`.
+        :param _FileExt: File suffix only supports jpg.
         :type FileExt: str
-        :param _TimeFormat: Support `unix` or `utc0`, default unix.
+        :param _TimeFormat: Support [unix|utc0]. Default is unix.
         :type TimeFormat: str
         """
         self._AccessKeyID = None
@@ -1131,7 +1165,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def AccessKeyID(self):
-        r"""Access key ID of the S3 sub-account.
+        r"""Access key ID of the S3 sub-user.
         :rtype: str
         """
         return self._AccessKeyID
@@ -1142,7 +1176,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def SecretAccessKey(self):
-        r"""Secret access key of the S3 sub-account.
+        r"""Secret access key of the S3 sub-user.
         :rtype: str
         """
         return self._SecretAccessKey
@@ -1153,7 +1187,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def Region(self):
-        r"""Region of S3.
+        r"""S3 region.
         :rtype: str
         """
         return self._Region
@@ -1175,7 +1209,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def FilePath(self):
-        r"""File output path, which can be empty. If it is not empty, it starts with / and ends with /.
+        r"""File output path, can be empty, starts and ends with / if not empty.
         :rtype: str
         """
         return self._FilePath
@@ -1186,7 +1220,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def FileName(self):
-        r"""User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
+        r"""User-defined name supports 1 to 32 characters consisting of digits, letters, underscores (_), and hyphens (-).
         :rtype: str
         """
         return self._FileName
@@ -1197,7 +1231,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def FileExt(self):
-        r"""File suffix, only supports `jpg`.
+        r"""File suffix only supports jpg.
         :rtype: str
         """
         return self._FileExt
@@ -1208,7 +1242,7 @@ class AmazonS3Settings(AbstractModel):
 
     @property
     def TimeFormat(self):
-        r"""Support `unix` or `utc0`, default unix.
+        r"""Support [unix|utc0]. Default is unix.
         :rtype: str
         """
         return self._TimeFormat
@@ -1255,7 +1289,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param _FailOverSettings: Input failover configuration
 Note: this field may return `null`, indicating that no valid value was found.
         :type FailOverSettings: :class:`tencentcloud.mdl.v20200326.models.FailOverSettings`
-        :param _CaptionSelectors: Caption selector for the input. There can be 0 to 1 audio selectors.
+        :param _CaptionSelectors: Subtitle selector.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CaptionSelectors: list of CaptionSelector
         """
         self._Id = None
@@ -1313,7 +1348,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CaptionSelectors(self):
-        r"""Caption selector for the input. There can be 0 to 1 audio selectors.
+        r"""Subtitle selector.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CaptionSelector
         """
         return self._CaptionSelectors
@@ -1358,9 +1394,9 @@ class AudioCodecDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelMode: Channel configuration, optional values: MONO (mono), STEREO (two-channel), 5.1 (surround).
+        :param _ChannelMode: Sound track configuration. Available values: MONO, STEREO, 5.1.
         :type ChannelMode: str
-        :param _Profile: Level in aac case, optional values: "LC" "HE-AAC" "HE-AACV2".
+        :param _Profile: Level in aac, available values: "LC", "HE-aac", "HE-AACV2".
         :type Profile: str
         """
         self._ChannelMode = None
@@ -1368,7 +1404,7 @@ class AudioCodecDetail(AbstractModel):
 
     @property
     def ChannelMode(self):
-        r"""Channel configuration, optional values: MONO (mono), STEREO (two-channel), 5.1 (surround).
+        r"""Sound track configuration. Available values: MONO, STEREO, 5.1.
         :rtype: str
         """
         return self._ChannelMode
@@ -1379,7 +1415,7 @@ class AudioCodecDetail(AbstractModel):
 
     @property
     def Profile(self):
-        r"""Level in aac case, optional values: "LC" "HE-AAC" "HE-AACV2".
+        r"""Level in aac, available values: "LC", "HE-aac", "HE-AACV2".
         :rtype: str
         """
         return self._Profile
@@ -1566,7 +1602,7 @@ class AudioSelectorInfo(AbstractModel):
         :type Name: str
         :param _AudioPidSelection: Audio `Pid` selection.
         :type AudioPidSelection: :class:`tencentcloud.mdl.v20200326.models.AudioPidSelectionInfo`
-        :param _AudioSelectorType: Audio input type, optional values: 'PID_SELECTOR' 'TRACK_SELECTOR', default value PID_SELECTOR.
+        :param _AudioSelectorType: Audio input type. Value range: 'PID_SELECTOR' | 'TRACK_SELECTOR'. Default value: PID_SELECTOR.
         :type AudioSelectorType: str
         :param _AudioTrackSelection: AudioTrack configuration.
         :type AudioTrackSelection: :class:`tencentcloud.mdl.v20200326.models.InputTracks`
@@ -1600,7 +1636,7 @@ class AudioSelectorInfo(AbstractModel):
 
     @property
     def AudioSelectorType(self):
-        r"""Audio input type, optional values: 'PID_SELECTOR' 'TRACK_SELECTOR', default value PID_SELECTOR.
+        r"""Audio input type. Value range: 'PID_SELECTOR' | 'TRACK_SELECTOR'. Default value: PID_SELECTOR.
         :rtype: str
         """
         return self._AudioSelectorType
@@ -1651,12 +1687,12 @@ class AudioTemplateInfo(AbstractModel):
         :type AudioSelectorName: str
         :param _Name: Audio transcoding template name, which can contain 1-20 letters and digits.
         :type Name: str
-        :param _Acodec: Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
+        :param _Acodec: Audio encoding format, can only be `AAC` or `PASSTHROUGH`. Default is AAC.
         :type Acodec: str
         :param _AudioBitrate: Audio bitrate. If this parameter is left empty, the original value will be used.
 Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000, 576000, 640000, 768000, 896000, 1024000
         :type AudioBitrate: int
-        :param _LanguageCode: Audio language code, which length is between 2 and 20.
+        :param _LanguageCode: Audio language Code, length 2-20.
         :type LanguageCode: str
         :param _AudioNormalization: Audio transcoding special configuration information.
         :type AudioNormalization: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
@@ -1664,7 +1700,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
         :type AudioSampleRate: int
         :param _AudioCodecDetails: Audio encoding parameters.
         :type AudioCodecDetails: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
-        :param _LanguageDescription: Audio language description, which maximum length is 100.
+        :param _LanguageDescription: Audio language description, maximum length 100
         :type LanguageDescription: str
         """
         self._AudioSelectorName = None
@@ -1701,7 +1737,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def Acodec(self):
-        r"""Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
+        r"""Audio encoding format, can only be `AAC` or `PASSTHROUGH`. Default is AAC.
         :rtype: str
         """
         return self._Acodec
@@ -1724,7 +1760,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def LanguageCode(self):
-        r"""Audio language code, which length is between 2 and 20.
+        r"""Audio language Code, length 2-20.
         :rtype: str
         """
         return self._LanguageCode
@@ -1768,7 +1804,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def LanguageDescription(self):
-        r"""Audio language description, which maximum length is 100.
+        r"""Audio language description, maximum length 100
         :rtype: str
         """
         return self._LanguageDescription
@@ -1809,19 +1845,19 @@ class AudioTrackInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrackName: User input is limited to letters and numbers, the length should not exceed 20, and should not be repeated in the same channel.
+        :param _TrackName: User input, limited to letters and digits, length not exceeding 20, non-repeating in the same channel.
         :type TrackName: str
-        :param _AudioCodec: Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
+        :param _AudioCodec: Audio encoding format, can only be `AAC` or `PASSTHROUGH`. Default is AAC.
         :type AudioCodec: str
         :param _AudioBitrate: Audio bitrate.
         :type AudioBitrate: int
         :param _AudioSampleRate: Audio sample rate.
         :type AudioSampleRate: int
-        :param _AudioSelectorName: Only values defined by AttachedInputs.$.AudioSelectors.$.audioPidSelection.pid can be entered.
+        :param _AudioSelectorName: Input Only the value defined in AttachedInputs.$.AudioSelectors.$.audioPidSelection.pid.
         :type AudioSelectorName: str
         :param _AudioNormalization: Audio loudness configuration.
         :type AudioNormalization: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
-        :param _AudioCodecDetails: Audio encoding configuration.
+        :param _AudioCodecDetails: Additional audio mode and sound channel configuration.
         :type AudioCodecDetails: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
         """
         self._TrackName = None
@@ -1834,7 +1870,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def TrackName(self):
-        r"""User input is limited to letters and numbers, the length should not exceed 20, and should not be repeated in the same channel.
+        r"""User input, limited to letters and digits, length not exceeding 20, non-repeating in the same channel.
         :rtype: str
         """
         return self._TrackName
@@ -1845,7 +1881,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def AudioCodec(self):
-        r"""Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
+        r"""Audio encoding format, can only be `AAC` or `PASSTHROUGH`. Default is AAC.
         :rtype: str
         """
         return self._AudioCodec
@@ -1878,7 +1914,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def AudioSelectorName(self):
-        r"""Only values defined by AttachedInputs.$.AudioSelectors.$.audioPidSelection.pid can be entered.
+        r"""Input Only the value defined in AttachedInputs.$.AudioSelectors.$.audioPidSelection.pid.
         :rtype: str
         """
         return self._AudioSelectorName
@@ -1900,7 +1936,7 @@ class AudioTrackInfo(AbstractModel):
 
     @property
     def AudioCodecDetails(self):
-        r"""Audio encoding configuration.
+        r"""Additional audio mode and sound channel configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
         """
         return self._AudioCodecDetails
@@ -1932,16 +1968,69 @@ class AudioTrackInfo(AbstractModel):
         
 
 
-class CaptionSelector(AbstractModel):
-    r"""Caption selector.
+class BorderFrameSetting(AbstractModel):
+    r"""BorderFrameSetting
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: Caption selector name, which can contain 1-32 letters, digits, and underscores.
+        :param _LiveSourceLayout: 
+        :type LiveSourceLayout: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
+        :param _BackgroundImgUrl: 
+        :type BackgroundImgUrl: str
+        """
+        self._LiveSourceLayout = None
+        self._BackgroundImgUrl = None
+
+    @property
+    def LiveSourceLayout(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
+        """
+        return self._LiveSourceLayout
+
+    @LiveSourceLayout.setter
+    def LiveSourceLayout(self, LiveSourceLayout):
+        self._LiveSourceLayout = LiveSourceLayout
+
+    @property
+    def BackgroundImgUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._BackgroundImgUrl
+
+    @BackgroundImgUrl.setter
+    def BackgroundImgUrl(self, BackgroundImgUrl):
+        self._BackgroundImgUrl = BackgroundImgUrl
+
+
+    def _deserialize(self, params):
+        if params.get("LiveSourceLayout") is not None:
+            self._LiveSourceLayout = SourceLayout()
+            self._LiveSourceLayout._deserialize(params.get("LiveSourceLayout"))
+        self._BackgroundImgUrl = params.get("BackgroundImgUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CaptionSelector(AbstractModel):
+    r"""Subtitle selector.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Digits, uppercase and lowercase letters, underscore, length 1-32.
         :type Name: str
-        :param _CaptionSourceType: Caption source type, only support `SCTE-128`.
+        :param _CaptionSourceType: Supports only `SCTE-128`.
         :type CaptionSourceType: str
         """
         self._Name = None
@@ -1949,7 +2038,7 @@ class CaptionSelector(AbstractModel):
 
     @property
     def Name(self):
-        r"""Caption selector name, which can contain 1-32 letters, digits, and underscores.
+        r"""Digits, uppercase and lowercase letters, underscore, length 1-32.
         :rtype: str
         """
         return self._Name
@@ -1960,7 +2049,7 @@ class CaptionSelector(AbstractModel):
 
     @property
     def CaptionSourceType(self):
-        r"""Caption source type, only support `SCTE-128`.
+        r"""Supports only `SCTE-128`.
         :rtype: str
         """
         return self._CaptionSourceType
@@ -2264,20 +2353,20 @@ This time is available only after the alarm ends.
 
 
 class ColorSpaceSetting(AbstractModel):
-    r"""Color space setting.
+    r"""Colorspace configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _ColorSpace: Color space, supports `PASSTHROUGH` (transparent transmission, only supports H265); optional.
+        :param _ColorSpace: Colorspace, supports PASSTHROUGH (passthrough, only supports H265). Can be empty.
         :type ColorSpace: str
         """
         self._ColorSpace = None
 
     @property
     def ColorSpace(self):
-        r"""Color space, supports `PASSTHROUGH` (transparent transmission, only supports H265); optional.
+        r"""Colorspace, supports PASSTHROUGH (passthrough, only supports H265). Can be empty.
         :rtype: str
         """
         return self._ColorSpace
@@ -2300,7 +2389,7 @@ class ColorSpaceSetting(AbstractModel):
 
 
 class CosSettings(AbstractModel):
-    r"""Cos destination setting.
+    r"""Cos address configuration
 
     """
 
@@ -2310,13 +2399,13 @@ class CosSettings(AbstractModel):
         :type Region: str
         :param _Bucket: Bucket name of COS.
         :type Bucket: str
-        :param _FilePath: File output path, which can be empty. If it is not empty, it  ends with /.
+        :param _FilePath: COS file output path, can be empty, ends with / if not empty.
         :type FilePath: str
-        :param _FileName: User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
+        :param _FileName: User-defined name supports 1 to 32 characters consisting of digits, letters, underscores (_), and hyphens (-).
         :type FileName: str
-        :param _FileExt: File suffix, only supports `jpg`.
+        :param _FileExt: COS file suffix is only supported for jpg.
         :type FileExt: str
-        :param _TimeFormat: Support `unix` or `utc0`, default unix.
+        :param _TimeFormat: Support [unix|utc0]. Default is unix.
         :type TimeFormat: str
         """
         self._Region = None
@@ -2350,7 +2439,7 @@ class CosSettings(AbstractModel):
 
     @property
     def FilePath(self):
-        r"""File output path, which can be empty. If it is not empty, it  ends with /.
+        r"""COS file output path, can be empty, ends with / if not empty.
         :rtype: str
         """
         return self._FilePath
@@ -2361,7 +2450,7 @@ class CosSettings(AbstractModel):
 
     @property
     def FileName(self):
-        r"""User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
+        r"""User-defined name supports 1 to 32 characters consisting of digits, letters, underscores (_), and hyphens (-).
         :rtype: str
         """
         return self._FileName
@@ -2372,7 +2461,7 @@ class CosSettings(AbstractModel):
 
     @property
     def FileExt(self):
-        r"""File suffix, only supports `jpg`.
+        r"""COS file suffix is only supported for jpg.
         :rtype: str
         """
         return self._FileExt
@@ -2383,7 +2472,7 @@ class CosSettings(AbstractModel):
 
     @property
     def TimeFormat(self):
-        r"""Support `unix` or `utc0`, default unix.
+        r"""Support [unix|utc0]. Default is unix.
         :rtype: str
         """
         return self._TimeFormat
@@ -2551,35 +2640,35 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
+        :param _Name: Channel name, limited to lowercase letters, digits, and underscores, length [1, 32], unique in each Region.
         :type Name: str
-        :param _AttachedInputs: Inputs to attach. You can attach 1 to 5 inputs.
+        :param _AttachedInputs: Associated media input, limit on the number [1, 5].
         :type AttachedInputs: list of AttachedInput
-        :param _OutputGroups: Configuration information of the channel's output groups. Quantity: [1, 10]
+        :param _OutputGroups: Configuration message of the output group for the channel. Limit on the number [1, 10].
         :type OutputGroups: list of StreamLiveOutputGroupsInfo
-        :param _AudioTemplates: Audio transcoding templates. Quantity: [1, 20]
+        :param _AudioTemplates: Audio transcoding template array, with the maximum number of [1, 20].
         :type AudioTemplates: list of AudioTemplateInfo
-        :param _VideoTemplates: Video transcoding templates. Quantity: [1, 10]
+        :param _VideoTemplates: Video transcoding template array, with the maximum number of [1, 10].
         :type VideoTemplates: list of VideoTemplateInfo
-        :param _AVTemplates: Audio/Video transcoding templates. Quantity: [1, 10]
+        :param _AVTemplates: Audio and video transcoding template array, with a limit on the number between 1 and 10.
         :type AVTemplates: list of AVTemplate
-        :param _CaptionTemplates: Subtitle template configuration.
+        :param _CaptionTemplates: Subtitle template configuration is only valid for joint transcoding template.
         :type CaptionTemplates: list of SubtitleConf
-        :param _PlanSettings: Event settings
+        :param _PlanSettings: Configuration message of the scheduled task.
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
-        :param _EventNotifySettings: The callback settings.
+        :param _EventNotifySettings: Callback configuration information.
         :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         :param _InputLossBehavior: Complement the last video frame settings.
         :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         :param _PipelineInputSettings: Pipeline configuration.
         :type PipelineInputSettings: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
-        :param _InputAnalysisSettings: Recognition configuration for input content.
+        :param _InputAnalysisSettings: Input content identification configuration.
         :type InputAnalysisSettings: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
-        :param _Tags: Console tag list.
+        :param _Tags: Console tag list
         :type Tags: list of Tag
-        :param _FrameCaptureTemplates: Frame capture templates.
+        :param _FrameCaptureTemplates: chart template
         :type FrameCaptureTemplates: list of FrameCaptureTemplate
-        :param _GeneralSettings: General settings.
+        :param _GeneralSettings: Common configuration.
         :type GeneralSettings: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
         """
         self._Name = None
@@ -2600,7 +2689,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
+        r"""Channel name, limited to lowercase letters, digits, and underscores, length [1, 32], unique in each Region.
         :rtype: str
         """
         return self._Name
@@ -2611,7 +2700,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def AttachedInputs(self):
-        r"""Inputs to attach. You can attach 1 to 5 inputs.
+        r"""Associated media input, limit on the number [1, 5].
         :rtype: list of AttachedInput
         """
         return self._AttachedInputs
@@ -2622,7 +2711,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def OutputGroups(self):
-        r"""Configuration information of the channel's output groups. Quantity: [1, 10]
+        r"""Configuration message of the output group for the channel. Limit on the number [1, 10].
         :rtype: list of StreamLiveOutputGroupsInfo
         """
         return self._OutputGroups
@@ -2633,7 +2722,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def AudioTemplates(self):
-        r"""Audio transcoding templates. Quantity: [1, 20]
+        r"""Audio transcoding template array, with the maximum number of [1, 20].
         :rtype: list of AudioTemplateInfo
         """
         return self._AudioTemplates
@@ -2644,7 +2733,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def VideoTemplates(self):
-        r"""Video transcoding templates. Quantity: [1, 10]
+        r"""Video transcoding template array, with the maximum number of [1, 10].
         :rtype: list of VideoTemplateInfo
         """
         return self._VideoTemplates
@@ -2655,7 +2744,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def AVTemplates(self):
-        r"""Audio/Video transcoding templates. Quantity: [1, 10]
+        r"""Audio and video transcoding template array, with a limit on the number between 1 and 10.
         :rtype: list of AVTemplate
         """
         return self._AVTemplates
@@ -2666,7 +2755,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def CaptionTemplates(self):
-        r"""Subtitle template configuration.
+        r"""Subtitle template configuration is only valid for joint transcoding template.
         :rtype: list of SubtitleConf
         """
         return self._CaptionTemplates
@@ -2677,7 +2766,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def PlanSettings(self):
-        r"""Event settings
+        r"""Configuration message of the scheduled task.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         """
         return self._PlanSettings
@@ -2688,7 +2777,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def EventNotifySettings(self):
-        r"""The callback settings.
+        r"""Callback configuration information.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         """
         return self._EventNotifySettings
@@ -2721,7 +2810,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def InputAnalysisSettings(self):
-        r"""Recognition configuration for input content.
+        r"""Input content identification configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
         """
         return self._InputAnalysisSettings
@@ -2732,7 +2821,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Console tag list.
+        r"""Console tag list
         :rtype: list of Tag
         """
         return self._Tags
@@ -2743,7 +2832,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def FrameCaptureTemplates(self):
-        r"""Frame capture templates.
+        r"""chart template
         :rtype: list of FrameCaptureTemplate
         """
         return self._FrameCaptureTemplates
@@ -2754,7 +2843,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
 
     @property
     def GeneralSettings(self):
-        r"""General settings.
+        r"""Common configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
         """
         return self._GeneralSettings
@@ -2849,9 +2938,9 @@ class CreateStreamLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Channel ID
+        :param _Id: Channel ID.
         :type Id: str
-        :param _TagMsg: Tag prompt information, this information will be attached when the tag operation fails.
+        :param _TagMsg: Tag prompt message. When the operation fails, the information comes with it.
         :type TagMsg: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2862,7 +2951,7 @@ class CreateStreamLiveChannelResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""Channel ID
+        r"""Channel ID.
         :rtype: str
         """
         return self._Id
@@ -2873,7 +2962,7 @@ class CreateStreamLiveChannelResponse(AbstractModel):
 
     @property
     def TagMsg(self):
-        r"""Tag prompt information, this information will be attached when the tag operation fails.
+        r"""Tag prompt message. When the operation fails, the information comes with it.
         :rtype: str
         """
         return self._TagMsg
@@ -6216,20 +6305,17 @@ class DestinationInfo(AbstractModel):
         r"""
         :param _OutputUrl: Relay destination address. Length limit: [1,512].
         :type OutputUrl: str
-        :param _AuthKey: Authentication key. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _AuthKey: Authentication key, length limited to [1, 128].
         :type AuthKey: str
-        :param _Username: Authentication username. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Username: Authentication username, length limited to [1, 128].
         :type Username: str
-        :param _Password: Authentication password. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Password: Authentication password, length limited to [1, 128].
         :type Password: str
-        :param _DestinationType: The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard. When the output group type is FRAME_CAPTURE, valid values are: AWS_AmazonS3, COS.
+        :param _DestinationType: The destination type for relay. Available values: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. Default: Standard. AWS_AmazonS3 or COS is supported when FrameCapture group is selected.
         :type DestinationType: str
-        :param _AmazonS3Settings: Aws S3 destination setting.
+        :param _AmazonS3Settings: Forward the Aws S3 address information.
         :type AmazonS3Settings: :class:`tencentcloud.mdl.v20200326.models.AmazonS3Settings`
-        :param _CosSettings: Cos destination setting.
+        :param _CosSettings: Forward COS address information.
         :type CosSettings: :class:`tencentcloud.mdl.v20200326.models.CosSettings`
         """
         self._OutputUrl = None
@@ -6253,8 +6339,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuthKey(self):
-        r"""Authentication key. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Authentication key, length limited to [1, 128].
         :rtype: str
         """
         return self._AuthKey
@@ -6265,8 +6350,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Username(self):
-        r"""Authentication username. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Authentication username, length limited to [1, 128].
         :rtype: str
         """
         return self._Username
@@ -6277,8 +6361,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Password(self):
-        r"""Authentication password. Length limit: [1,128].
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Authentication password, length limited to [1, 128].
         :rtype: str
         """
         return self._Password
@@ -6289,7 +6372,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DestinationType(self):
-        r"""The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard. When the output group type is FRAME_CAPTURE, valid values are: AWS_AmazonS3, COS.
+        r"""The destination type for relay. Available values: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. Default: Standard. AWS_AmazonS3 or COS is supported when FrameCapture group is selected.
         :rtype: str
         """
         return self._DestinationType
@@ -6300,7 +6383,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AmazonS3Settings(self):
-        r"""Aws S3 destination setting.
+        r"""Forward the Aws S3 address information.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AmazonS3Settings`
         """
         return self._AmazonS3Settings
@@ -6311,7 +6394,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosSettings(self):
-        r"""Cos destination setting.
+        r"""Forward COS address information.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.CosSettings`
         """
         return self._CosSettings
@@ -6353,22 +6436,18 @@ class DrmKey(AbstractModel):
         :param _Key: DRM key, which is a 32-bit hexadecimal string.
 Note: uppercase letters in the string will be automatically converted to lowercase ones.
         :type Key: str
-        :param _Track: Required for Widevine encryption. Valid values: SD, HD, UHD1, UHD2, AUDIO, ALL.
-ALL refers to all tracks. If this parameter is set to ALL, no other tracks can be added.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Track: Widevine encryption is required. Selectable options: SD/HD/UHD1/UHD2/AUDIO/ALL.
+Among them, ALL represents select ALL. If ALL is specified, you cannot add other tracks.
         :type Track: str
-        :param _KeyId: Required for Widevine encryption. It is a 32-bit hexadecimal string.
-Note: uppercase letters in the string will be automatically converted to lowercase ones.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _KeyId: KeyId for Widevine encryption, a 32-bit length hexadecimal string.
+Note: The string will be modified to lowercase.
         :type KeyId: str
-        :param _Iv: Required when FairPlay uses the AES encryption method. It is a 32-bit hexadecimal string.
-For more information about this parameter, please see: 
+        :param _Iv: Iv for AES encryption in Fairplay, a 32-bit length hexadecimal string.
+Iv parsing reference
 https://tools.ietf.org/html/rfc3826
-Note: uppercase letters in the string will be automatically converted to lowercase ones.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: The string will be modified to lowercase.
         :type Iv: str
-        :param _KeyUri: The URI of the license server when AES-128 is used. This parameter may be empty.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _KeyUri: uri of the license server. AES128 is used. Can be empty.
         :type KeyUri: str
         """
         self._Key = None
@@ -6391,9 +6470,8 @@ Note: uppercase letters in the string will be automatically converted to lowerca
 
     @property
     def Track(self):
-        r"""Required for Widevine encryption. Valid values: SD, HD, UHD1, UHD2, AUDIO, ALL.
-ALL refers to all tracks. If this parameter is set to ALL, no other tracks can be added.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Widevine encryption is required. Selectable options: SD/HD/UHD1/UHD2/AUDIO/ALL.
+Among them, ALL represents select ALL. If ALL is specified, you cannot add other tracks.
         :rtype: str
         """
         return self._Track
@@ -6404,9 +6482,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyId(self):
-        r"""Required for Widevine encryption. It is a 32-bit hexadecimal string.
-Note: uppercase letters in the string will be automatically converted to lowercase ones.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""KeyId for Widevine encryption, a 32-bit length hexadecimal string.
+Note: The string will be modified to lowercase.
         :rtype: str
         """
         return self._KeyId
@@ -6417,11 +6494,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Iv(self):
-        r"""Required when FairPlay uses the AES encryption method. It is a 32-bit hexadecimal string.
-For more information about this parameter, please see: 
+        r"""Iv for AES encryption in Fairplay, a 32-bit length hexadecimal string.
+Iv parsing reference
 https://tools.ietf.org/html/rfc3826
-Note: uppercase letters in the string will be automatically converted to lowercase ones.
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: The string will be modified to lowercase.
         :rtype: str
         """
         return self._Iv
@@ -6432,8 +6508,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyUri(self):
-        r"""The URI of the license server when AES-128 is used. This parameter may be empty.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""uri of the license server. AES128 is used. Can be empty.
         :rtype: str
         """
         return self._KeyUri
@@ -6466,30 +6541,25 @@ class DrmSettingsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _State: Whether to enable DRM encryption. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
-DRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_MEDIAPACKAGE, and DASH_MEDIAPACKAGE outputs.
+        :param _State: Whether DRM encryption is enabled. Option: CLOSE/OPEN. Default: CLOSE.
+Currently only support HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE/HLS_MEDIAPACKAGE/DASH_MEDIAPACKAGE.
         :type State: str
-        :param _Scheme: Valid values: `CustomDRMKeys` (default value), `SDMCDRM`
-`CustomDRMKeys` means encryption keys customized by users.
-`SDMCDRM` means the DRM key management system of SDMC.
+        :param _Scheme: Optional [CustomDRMKeys|SDMCDRM], defaults to CustomDRMKeys.
+CustomDRMKeys refers to the custom encryption key.
+SDMCDRM refers to the DRM key management system using SMDC.
         :type Scheme: str
-        :param _ContentId: If `Scheme` is set to `CustomDRMKeys`, this parameter is required.
-If `Scheme` is set to `SDMCDRM`, this parameter is optional. It supports digits, letters, hyphens, and underscores and must contain 1 to 36 characters. If it is not specified, the value of `ChannelId` will be used.
+        :param _ContentId: Scheme is CustomDRMKeys, required, filled in by the user.
+Scheme is SDMCDRM, optional, defaults to ChannelId. The format supports digits, upper- and lower-case letters, hyphens, and underscores, with a length of [1, 36].
         :type ContentId: str
-        :param _Keys: The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Keys: Required when Scheme is CustomDRMKeys. The content is the key customized by users.
         :type Keys: list of DrmKey
-        :param _SDMCSettings: SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _SDMCSettings: SDMC key configuration information, used when Scheme is SDMCDRM.
         :type SDMCSettings: :class:`tencentcloud.mdl.v20200326.models.SDMCSettingsInfo`
-        :param _DrmType: Optional Types:
-`FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`
-
+        :param _DrmType: Optional type:
+`FAIRPLAY` `WIDEVINE` `PLAYREADY` `AES128`
 HLS-TS supports `FAIRPLAY` and `AES128`.
-
-HLS-FMP4 supports `FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`, and combinations of two or three from `FAIRPLAY`, `WIDEVINE`, and `PLAYREADY` (concatenated with commas, e.g., "FAIRPLAY,WIDEVINE,PLAYREADY").
-
-DASH supports `WIDEVINE`, `PLAYREADY`, and combinations of `PLAYREADY` and `WIDEVINE` (concatenated with commas, e.g., "PLAYREADY,WIDEVINE").
+HLS-FMP4 supports `FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`, and permutation and combination of two or three from `FAIRPLAY`, `WIDEVINE`, `PLAYREADY` (use commas to concatenate, such as "FAIRPLAY,WIDEVINE,PLAYREADY").
+DASH supports `WIDEVINE`, `PLAYREADY`, and the permutation and combination of `PLAYREADY` and `WIDEVINE` (use commas to concatenate, such as "PLAYREADY,WIDEVINE").
         :type DrmType: str
         """
         self._State = None
@@ -6501,8 +6571,8 @@ DASH supports `WIDEVINE`, `PLAYREADY`, and combinations of `PLAYREADY` and `WIDE
 
     @property
     def State(self):
-        r"""Whether to enable DRM encryption. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`
-DRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_MEDIAPACKAGE, and DASH_MEDIAPACKAGE outputs.
+        r"""Whether DRM encryption is enabled. Option: CLOSE/OPEN. Default: CLOSE.
+Currently only support HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE/HLS_MEDIAPACKAGE/DASH_MEDIAPACKAGE.
         :rtype: str
         """
         return self._State
@@ -6513,9 +6583,9 @@ DRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_M
 
     @property
     def Scheme(self):
-        r"""Valid values: `CustomDRMKeys` (default value), `SDMCDRM`
-`CustomDRMKeys` means encryption keys customized by users.
-`SDMCDRM` means the DRM key management system of SDMC.
+        r"""Optional [CustomDRMKeys|SDMCDRM], defaults to CustomDRMKeys.
+CustomDRMKeys refers to the custom encryption key.
+SDMCDRM refers to the DRM key management system using SMDC.
         :rtype: str
         """
         return self._Scheme
@@ -6526,8 +6596,8 @@ DRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_M
 
     @property
     def ContentId(self):
-        r"""If `Scheme` is set to `CustomDRMKeys`, this parameter is required.
-If `Scheme` is set to `SDMCDRM`, this parameter is optional. It supports digits, letters, hyphens, and underscores and must contain 1 to 36 characters. If it is not specified, the value of `ChannelId` will be used.
+        r"""Scheme is CustomDRMKeys, required, filled in by the user.
+Scheme is SDMCDRM, optional, defaults to ChannelId. The format supports digits, upper- and lower-case letters, hyphens, and underscores, with a length of [1, 36].
         :rtype: str
         """
         return self._ContentId
@@ -6538,8 +6608,7 @@ If `Scheme` is set to `SDMCDRM`, this parameter is optional. It supports digits,
 
     @property
     def Keys(self):
-        r"""The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Required when Scheme is CustomDRMKeys. The content is the key customized by users.
         :rtype: list of DrmKey
         """
         return self._Keys
@@ -6550,8 +6619,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SDMCSettings(self):
-        r"""SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""SDMC key configuration information, used when Scheme is SDMCDRM.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.SDMCSettingsInfo`
         """
         return self._SDMCSettings
@@ -6562,14 +6630,11 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DrmType(self):
-        r"""Optional Types:
-`FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`
-
+        r"""Optional type:
+`FAIRPLAY` `WIDEVINE` `PLAYREADY` `AES128`
 HLS-TS supports `FAIRPLAY` and `AES128`.
-
-HLS-FMP4 supports `FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`, and combinations of two or three from `FAIRPLAY`, `WIDEVINE`, and `PLAYREADY` (concatenated with commas, e.g., "FAIRPLAY,WIDEVINE,PLAYREADY").
-
-DASH supports `WIDEVINE`, `PLAYREADY`, and combinations of `PLAYREADY` and `WIDEVINE` (concatenated with commas, e.g., "PLAYREADY,WIDEVINE").
+HLS-FMP4 supports `FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`, and permutation and combination of two or three from `FAIRPLAY`, `WIDEVINE`, `PLAYREADY` (use commas to concatenate, such as "FAIRPLAY,WIDEVINE,PLAYREADY").
+DASH supports `WIDEVINE`, `PLAYREADY`, and the permutation and combination of `PLAYREADY` and `WIDEVINE` (use commas to concatenate, such as "PLAYREADY,WIDEVINE").
         :rtype: str
         """
         return self._DrmType
@@ -6610,14 +6675,14 @@ class EventNotifySetting(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PushEventSettings: The callback configuration for push events.
+        :param _PushEventSettings: Inference stream callback configuration. Currently supports rtmp_push, rtmps_push, and rtmp_pull input types.
         :type PushEventSettings: :class:`tencentcloud.mdl.v20200326.models.PushEventSetting`
         """
         self._PushEventSettings = None
 
     @property
     def PushEventSettings(self):
-        r"""The callback configuration for push events.
+        r"""Inference stream callback configuration. Currently supports rtmp_push, rtmps_push, and rtmp_pull input types.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PushEventSetting`
         """
         return self._PushEventSettings
@@ -7222,8 +7287,7 @@ class FailOverSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecondaryInputId: ID of the backup input
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _SecondaryInputId: Input Id of the backup stream.
         :type SecondaryInputId: str
         :param _LossThreshold: The wait time (ms) for triggering failover after the primary input becomes unavailable. Value range: [1000, 86400000]. Default value: `3000`
         :type LossThreshold: int
@@ -7236,8 +7300,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def SecondaryInputId(self):
-        r"""ID of the backup input
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Input Id of the backup stream.
         :rtype: str
         """
         return self._SecondaryInputId
@@ -7284,25 +7347,25 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class FrameCaptureTemplate(AbstractModel):
-    r"""Frame capture template.
+    r"""Chart template.
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: Name of frame capture template, limited to uppercase and lowercase letters and numbers, with a length between 1 and 20 characters.
+        :param _Name: Screenshot template name. Limited to uppercase and lowercase letters and digits. Length [1, 20].
         :type Name: str
-        :param _Width: Width of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
+        :param _Width: Screenshot width. Optional. The input range is [0, 3000] and must be a multiple of 2.
         :type Width: int
-        :param _Height: Height of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
+        :param _Height: Screenshot height, optional, input range [0, 3000], must be a multiple of 2
         :type Height: int
-        :param _CaptureInterval: Interval of frame capture, an integer between 1 and 3600.
+        :param _CaptureInterval: Screenshot interval, an integer between 1 and 3600.
         :type CaptureInterval: int
-        :param _CaptureIntervalUnits: Interval units of frame capture, only supports SECONDS.
+        :param _CaptureIntervalUnits: Screenshot measurement unit, supports only SECONDS.
         :type CaptureIntervalUnits: str
-        :param _ScalingBehavior: Scaling behavior of frame capture, supports DEFAULT or STRETCH_TO_OUTPUT, with DEFAULT being the default option.
+        :param _ScalingBehavior: Stretch behavior, supports [DEFAULT|STRETCH_TO_OUTPUT], default is DEFAULT.
         :type ScalingBehavior: str
-        :param _Sharpness: Sharpness, an integer between 0 and 100.
+        :param _Sharpness: Sharpening degree, an integer between 0 and 100.
         :type Sharpness: int
         """
         self._Name = None
@@ -7315,7 +7378,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def Name(self):
-        r"""Name of frame capture template, limited to uppercase and lowercase letters and numbers, with a length between 1 and 20 characters.
+        r"""Screenshot template name. Limited to uppercase and lowercase letters and digits. Length [1, 20].
         :rtype: str
         """
         return self._Name
@@ -7326,7 +7389,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def Width(self):
-        r"""Width of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
+        r"""Screenshot width. Optional. The input range is [0, 3000] and must be a multiple of 2.
         :rtype: int
         """
         return self._Width
@@ -7337,7 +7400,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def Height(self):
-        r"""Height of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
+        r"""Screenshot height, optional, input range [0, 3000], must be a multiple of 2
         :rtype: int
         """
         return self._Height
@@ -7348,7 +7411,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def CaptureInterval(self):
-        r"""Interval of frame capture, an integer between 1 and 3600.
+        r"""Screenshot interval, an integer between 1 and 3600.
         :rtype: int
         """
         return self._CaptureInterval
@@ -7359,7 +7422,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def CaptureIntervalUnits(self):
-        r"""Interval units of frame capture, only supports SECONDS.
+        r"""Screenshot measurement unit, supports only SECONDS.
         :rtype: str
         """
         return self._CaptureIntervalUnits
@@ -7370,7 +7433,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def ScalingBehavior(self):
-        r"""Scaling behavior of frame capture, supports DEFAULT or STRETCH_TO_OUTPUT, with DEFAULT being the default option.
+        r"""Stretch behavior, supports [DEFAULT|STRETCH_TO_OUTPUT], default is DEFAULT.
         :rtype: str
         """
         return self._ScalingBehavior
@@ -7381,7 +7444,7 @@ class FrameCaptureTemplate(AbstractModel):
 
     @property
     def Sharpness(self):
-        r"""Sharpness, an integer between 0 and 100.
+        r"""Sharpening degree, an integer between 0 and 100.
         :rtype: int
         """
         return self._Sharpness
@@ -7410,17 +7473,17 @@ class FrameCaptureTemplate(AbstractModel):
 
 
 class GeneralSetting(AbstractModel):
-    r"""General setting.
+    r"""Common configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _StaticImageSettings: Static graphic overlay configuration.
+        :param _StaticImageSettings: Static image overlay configuration.
         :type StaticImageSettings: :class:`tencentcloud.mdl.v20200326.models.StaticImageSettings`
-        :param _MotionGraphicsSettings: Dynamic graphic overlay configuration.
+        :param _MotionGraphicsSettings: Real-time graphic overlay configuration.
         :type MotionGraphicsSettings: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsSetting`
-        :param _ThumbnailSettings: Thumbnail Configuration.
+        :param _ThumbnailSettings: Thumbnail configuration
         :type ThumbnailSettings: :class:`tencentcloud.mdl.v20200326.models.ThumbnailSettings`
         """
         self._StaticImageSettings = None
@@ -7429,7 +7492,7 @@ class GeneralSetting(AbstractModel):
 
     @property
     def StaticImageSettings(self):
-        r"""Static graphic overlay configuration.
+        r"""Static image overlay configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageSettings`
         """
         return self._StaticImageSettings
@@ -7440,7 +7503,7 @@ class GeneralSetting(AbstractModel):
 
     @property
     def MotionGraphicsSettings(self):
-        r"""Dynamic graphic overlay configuration.
+        r"""Real-time graphic overlay configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.MotionGraphicsSetting`
         """
         return self._MotionGraphicsSettings
@@ -7451,7 +7514,7 @@ class GeneralSetting(AbstractModel):
 
     @property
     def ThumbnailSettings(self):
-        r"""Thumbnail Configuration.
+        r"""Thumbnail configuration
         :rtype: :class:`tencentcloud.mdl.v20200326.models.ThumbnailSettings`
         """
         return self._ThumbnailSettings
@@ -7591,27 +7654,29 @@ class GetAbWatermarkPlayUrlResponse(AbstractModel):
 
 
 class HighlightInfo(AbstractModel):
-    r"""Collection configuration.
+    r"""Highlight configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _HighlightEnabled: Whether to enable input recognition 0: Disable 1 Enable Default value 0 Disable.
+        :param _HighlightEnabled: Whether to enable input recognition  0: disabled  1: enabled  Default value: 0.
         :type HighlightEnabled: int
-        :param _Type: The product where the results are saved, optional: COS. Currently, only Tencent Cloud COS is supported. In the future, it will be connected to AWS S3 and COS will be used by default.
+        :param _Type: Products to save results. Option: COS.
+Currently supports Tencent Cloud COS only. AWS S3 integration will be supported later. Default is COS.
         :type Type: str
-        :param _Region: Valid when Type is COS, the region where COS is stored.
+        :param _Region: Valid when Type is COS. Region of COS storage.
         :type Region: str
-        :param _Bucket: Valid when Type is COS, the bucket name stored in COS.
+        :param _Bucket: Valid when Type is COS. Bucket name of COS storage.
         :type Bucket: str
-        :param _Path: Valid when Type is COS, the path where cos is stored.
+        :param _Path: Valid when Type is COS. Path of COS storage.
         :type Path: str
-        :param _Filename: Valid when Type is COS, the file name stored in cos.
+        :param _Filename: Valid when Type is COS. Name of the stored file in COS.
         :type Filename: str
-        :param _TimestampFormat: Valid when Type is COS, the file name suffix stored in COS is automatically generated in the time format, optional values: unix, utc. Unix is the second-level timestamp and UTC is the year, month and day represented by the zero time zone.
+        :param _TimestampFormat: Valid when Type is COS. The file extension of COS storage is automatically generated in time format. Available values: unix, utc.
+unix is a second-level timestamp. utc 0 represents the year, month, day.
         :type TimestampFormat: str
-        :param _AudioSelectorNames: Audio selector list is optional and can be empty. If not filled in, an audio will be used as the output of the recognition result by default.
+        :param _AudioSelectorNames: Audio selector list, selectable, can be left blank. By default, an audio is used as the output of the recognition result.
         :type AudioSelectorNames: list of str
         """
         self._HighlightEnabled = None
@@ -7625,7 +7690,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def HighlightEnabled(self):
-        r"""Whether to enable input recognition 0: Disable 1 Enable Default value 0 Disable.
+        r"""Whether to enable input recognition  0: disabled  1: enabled  Default value: 0.
         :rtype: int
         """
         return self._HighlightEnabled
@@ -7636,7 +7701,8 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""The product where the results are saved, optional: COS. Currently, only Tencent Cloud COS is supported. In the future, it will be connected to AWS S3 and COS will be used by default.
+        r"""Products to save results. Option: COS.
+Currently supports Tencent Cloud COS only. AWS S3 integration will be supported later. Default is COS.
         :rtype: str
         """
         return self._Type
@@ -7647,7 +7713,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""Valid when Type is COS, the region where COS is stored.
+        r"""Valid when Type is COS. Region of COS storage.
         :rtype: str
         """
         return self._Region
@@ -7658,7 +7724,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""Valid when Type is COS, the bucket name stored in COS.
+        r"""Valid when Type is COS. Bucket name of COS storage.
         :rtype: str
         """
         return self._Bucket
@@ -7669,7 +7735,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Path(self):
-        r"""Valid when Type is COS, the path where cos is stored.
+        r"""Valid when Type is COS. Path of COS storage.
         :rtype: str
         """
         return self._Path
@@ -7680,7 +7746,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def Filename(self):
-        r"""Valid when Type is COS, the file name stored in cos.
+        r"""Valid when Type is COS. Name of the stored file in COS.
         :rtype: str
         """
         return self._Filename
@@ -7691,7 +7757,8 @@ class HighlightInfo(AbstractModel):
 
     @property
     def TimestampFormat(self):
-        r"""Valid when Type is COS, the file name suffix stored in COS is automatically generated in the time format, optional values: unix, utc. Unix is the second-level timestamp and UTC is the year, month and day represented by the zero time zone.
+        r"""Valid when Type is COS. The file extension of COS storage is automatically generated in time format. Available values: unix, utc.
+unix is a second-level timestamp. utc 0 represents the year, month, day.
         :rtype: str
         """
         return self._TimestampFormat
@@ -7702,7 +7769,7 @@ class HighlightInfo(AbstractModel):
 
     @property
     def AudioSelectorNames(self):
-        r"""Audio selector list is optional and can be empty. If not filled in, an audio will be used as the output of the recognition result by default.
+        r"""Audio selector list, selectable, can be left blank. By default, an audio is used as the output of the recognition result.
         :rtype: list of str
         """
         return self._AudioSelectorNames
@@ -7738,34 +7805,38 @@ class HlsRemuxSettingsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
+        :param _SegmentDuration: Segment duration in milliseconds. Input range is [1000, 30000], default 4000, can only be a multiple of 1000.
         :type SegmentDuration: int
-        :param _SegmentNumber: Number of segments. Value range: [3,30]. Default value: 5.
+        :param _SegmentNumber: Number of shards. Input range [3, 30]. Default is 5.
         :type SegmentNumber: int
-        :param _PdtInsertion: Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.
+        :param _PdtInsertion: Whether to enable Pdt insertion. CLOSE/OPEN. Default is CLOSE.
         :type PdtInsertion: str
-        :param _PdtDuration: PDT duration in seconds. Value range: (0,3000]. Default value: 600.
+        :param _PdtDuration: Pdt duration in seconds. Input range (0, 3000]. Default 600.
         :type PdtDuration: int
-        :param _Scheme: Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`. Default value is: SEPARATE.
+        :param _Scheme: Video packaging type, selectable SEPARATE|MERGE.
         :type Scheme: str
-        :param _SegmentType: The segment type. Valid values: `ts` (default), `fmp4`.
-Currently, fMP4 segments do not support DRM or time shifting.
+        :param _SegmentType: Segment type, supports [ts|fmp4], default ts.
+fmp4 does not currently support DRM and time shifting.
         :type SegmentType: str
-        :param _H265PackageType: The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
+        :param _H265PackageType: When the transcoding type is H265, the HLS H265 encapsulation type is selectable [hvc1|hev1], default is hev1.
         :type H265PackageType: str
-        :param _LowLatency: Whether to enable low latency 0:CLOSE, 1:OPEN, default value: 0.
+        :param _LowLatency: Whether to enable low delay. 0:CLOSE. Default is 0. 1:OPEN.
         :type LowLatency: int
-        :param _PartialSegmentDuration: Low latency slice size, unit ms. Value range: integer [200-HlsRemuxSettings.SegmentDuration] Default value: 500ms.
+        :param _PartialSegmentDuration: Small slice size in milliseconds. Value ranges from 200 to SegmentDuration (integer). Default value: 500 ms.
         :type PartialSegmentDuration: int
-        :param _PartialSegmentPlaySite: Low latency slice playback position, unit ms. Value range: integer [3*HlsRemuxSettings.PartiSegmentDuration - 3*HlsRemuxSettings.SegmentDuration], Default value: 3*HlsRemuxSettings.PartiSegmentDuration.
+        :param _PartialSegmentPlaySite: Small slice playback position in milliseconds. Value ranges from 3*PartiSegmentDuration to 3*SegmentDuration (integer). Default value: 3*PartiSegmentDuration.
         :type PartialSegmentPlaySite: int
-        :param _StreamOrder: Hls main m3u8 file sorting rules by bitrate, optional values: 1: video bitrate ascending order; 2: video bitrate descending order. Default value: 1.
+        :param _StreamOrder: Hls master m3u8 file sorting rule by bitrate. Available values:
+1: Video bitrate ascending 2: Video bitrate descending
+Default value: 1
         :type StreamOrder: int
-        :param _VideoResolution: Whether the Hls main m3u8 file contains resolution information, optional values: 1: INCLUDE includes video resolution; 2: EXCLUDE does not include video resolution. Default value: 1.
+        :param _VideoResolution: Whether the Hls master m3u8 file contains resolution information. Available values:
+1: INCLUDE includes video resolution 2: EXCLUDE excludes video resolution.
+Default value: 1.
         :type VideoResolution: int
-        :param _EndListTag: Whether to include the `EXT-X-ENDLIST` tag, 1 includes  `EXT-X-ENDLIST` tag, 2 does not include  `EXT-X-ENDLIST` tag; the default value is 1.
+        :param _EndListTag: Whether the content contains the `EXT-X-ENDLIST` tag. 1: contains; 2: does not contain. Default: 1.
         :type EndListTag: int
-        :param _AdMarkupType: Optional: `ENHANCED_SCTE35`, `DATERANGE`; default value: `ENHANCED_SCTE35`.
+        :param _AdMarkupType: Option: `ENHANCED_SCTE35`, `DATERANGE`; default `ENHANCED_SCTE35`.
         :type AdMarkupType: str
         """
         self._SegmentDuration = None
@@ -7785,7 +7856,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def SegmentDuration(self):
-        r"""Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
+        r"""Segment duration in milliseconds. Input range is [1000, 30000], default 4000, can only be a multiple of 1000.
         :rtype: int
         """
         return self._SegmentDuration
@@ -7796,7 +7867,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def SegmentNumber(self):
-        r"""Number of segments. Value range: [3,30]. Default value: 5.
+        r"""Number of shards. Input range [3, 30]. Default is 5.
         :rtype: int
         """
         return self._SegmentNumber
@@ -7807,7 +7878,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def PdtInsertion(self):
-        r"""Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.
+        r"""Whether to enable Pdt insertion. CLOSE/OPEN. Default is CLOSE.
         :rtype: str
         """
         return self._PdtInsertion
@@ -7818,7 +7889,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def PdtDuration(self):
-        r"""PDT duration in seconds. Value range: (0,3000]. Default value: 600.
+        r"""Pdt duration in seconds. Input range (0, 3000]. Default 600.
         :rtype: int
         """
         return self._PdtDuration
@@ -7829,7 +7900,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def Scheme(self):
-        r"""Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`. Default value is: SEPARATE.
+        r"""Video packaging type, selectable SEPARATE|MERGE.
         :rtype: str
         """
         return self._Scheme
@@ -7840,8 +7911,8 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def SegmentType(self):
-        r"""The segment type. Valid values: `ts` (default), `fmp4`.
-Currently, fMP4 segments do not support DRM or time shifting.
+        r"""Segment type, supports [ts|fmp4], default ts.
+fmp4 does not currently support DRM and time shifting.
         :rtype: str
         """
         return self._SegmentType
@@ -7852,7 +7923,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def H265PackageType(self):
-        r"""The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
+        r"""When the transcoding type is H265, the HLS H265 encapsulation type is selectable [hvc1|hev1], default is hev1.
         :rtype: str
         """
         return self._H265PackageType
@@ -7863,7 +7934,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def LowLatency(self):
-        r"""Whether to enable low latency 0:CLOSE, 1:OPEN, default value: 0.
+        r"""Whether to enable low delay. 0:CLOSE. Default is 0. 1:OPEN.
         :rtype: int
         """
         return self._LowLatency
@@ -7874,7 +7945,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def PartialSegmentDuration(self):
-        r"""Low latency slice size, unit ms. Value range: integer [200-HlsRemuxSettings.SegmentDuration] Default value: 500ms.
+        r"""Small slice size in milliseconds. Value ranges from 200 to SegmentDuration (integer). Default value: 500 ms.
         :rtype: int
         """
         return self._PartialSegmentDuration
@@ -7885,7 +7956,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def PartialSegmentPlaySite(self):
-        r"""Low latency slice playback position, unit ms. Value range: integer [3*HlsRemuxSettings.PartiSegmentDuration - 3*HlsRemuxSettings.SegmentDuration], Default value: 3*HlsRemuxSettings.PartiSegmentDuration.
+        r"""Small slice playback position in milliseconds. Value ranges from 3*PartiSegmentDuration to 3*SegmentDuration (integer). Default value: 3*PartiSegmentDuration.
         :rtype: int
         """
         return self._PartialSegmentPlaySite
@@ -7896,7 +7967,9 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def StreamOrder(self):
-        r"""Hls main m3u8 file sorting rules by bitrate, optional values: 1: video bitrate ascending order; 2: video bitrate descending order. Default value: 1.
+        r"""Hls master m3u8 file sorting rule by bitrate. Available values:
+1: Video bitrate ascending 2: Video bitrate descending
+Default value: 1
         :rtype: int
         """
         return self._StreamOrder
@@ -7907,7 +7980,9 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def VideoResolution(self):
-        r"""Whether the Hls main m3u8 file contains resolution information, optional values: 1: INCLUDE includes video resolution; 2: EXCLUDE does not include video resolution. Default value: 1.
+        r"""Whether the Hls master m3u8 file contains resolution information. Available values:
+1: INCLUDE includes video resolution 2: EXCLUDE excludes video resolution.
+Default value: 1.
         :rtype: int
         """
         return self._VideoResolution
@@ -7918,7 +7993,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def EndListTag(self):
-        r"""Whether to include the `EXT-X-ENDLIST` tag, 1 includes  `EXT-X-ENDLIST` tag, 2 does not include  `EXT-X-ENDLIST` tag; the default value is 1.
+        r"""Whether the content contains the `EXT-X-ENDLIST` tag. 1: contains; 2: does not contain. Default: 1.
         :rtype: int
         """
         return self._EndListTag
@@ -7929,7 +8004,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
     @property
     def AdMarkupType(self):
-        r"""Optional: `ENHANCED_SCTE35`, `DATERANGE`; default value: `ENHANCED_SCTE35`.
+        r"""Option: `ENHANCED_SCTE35`, `DATERANGE`; default `ENHANCED_SCTE35`.
         :rtype: str
         """
         return self._AdMarkupType
@@ -7965,20 +8040,20 @@ Currently, fMP4 segments do not support DRM or time shifting.
 
 
 class InputAnalysisInfo(AbstractModel):
-    r"""Recognition configuration for input content.
+    r"""Input content identification configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _HighlightSetting: Highlight configuration.
+        :param _HighlightSetting: Highlights configuration.
         :type HighlightSetting: :class:`tencentcloud.mdl.v20200326.models.HighlightInfo`
         """
         self._HighlightSetting = None
 
     @property
     def HighlightSetting(self):
-        r"""Highlight configuration.
+        r"""Highlights configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.HighlightInfo`
         """
         return self._HighlightSetting
@@ -8692,14 +8767,14 @@ class InputTrack(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrackIndex: Audio track index 1-based index mapping to the specified audio track integer starting from 1.
+        :param _TrackIndex: Audio track index  1-based index mapping to the specified audio track  Integer starting from 1.
         :type TrackIndex: int
         """
         self._TrackIndex = None
 
     @property
     def TrackIndex(self):
-        r"""Audio track index 1-based index mapping to the specified audio track integer starting from 1.
+        r"""Audio track index  1-based index mapping to the specified audio track  Integer starting from 1.
         :rtype: int
         """
         return self._TrackIndex
@@ -8722,20 +8797,20 @@ class InputTrack(AbstractModel):
 
 
 class InputTracks(AbstractModel):
-    r"""
+    r"""Audio track configuration list.
 
     """
 
     def __init__(self):
         r"""
-        :param _Tracks: Audio track configuration information.
+        :param _Tracks: Audio track configuration message.
         :type Tracks: list of InputTrack
         """
         self._Tracks = None
 
     @property
     def Tracks(self):
-        r"""Audio track configuration information.
+        r"""Audio track configuration message.
         :rtype: list of InputTrack
         """
         return self._Tracks
@@ -9743,20 +9818,22 @@ class MotionGraphicsActivateSetting(AbstractModel):
 
 
 class MotionGraphicsSetting(AbstractModel):
-    r"""
+    r"""Dynamic graphic configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _MotionGraphicsOverlayEnabled: Whether to enable dynamic graphic overlay, '0' not enabled, '1' enabled; Default 0.
+        :param _MotionGraphicsOverlayEnabled: Whether to enable dynamic graphic overlay. `0`: not enabled, `1`: enabled. Default: 0.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MotionGraphicsOverlayEnabled: int
         """
         self._MotionGraphicsOverlayEnabled = None
 
     @property
     def MotionGraphicsOverlayEnabled(self):
-        r"""Whether to enable dynamic graphic overlay, '0' not enabled, '1' enabled; Default 0.
+        r"""Whether to enable dynamic graphic overlay. `0`: not enabled, `1`: enabled. Default: 0.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._MotionGraphicsOverlayEnabled
@@ -9788,24 +9865,21 @@ class OutputInfo(AbstractModel):
         :param _Name: Output name.
         :type Name: str
         :param _AudioTemplateNames: Audio transcoding template name array.
-Quantity limit: [0,1] for RTMP; [0,20] for others.
-Note: this field may return null, indicating that no valid values can be obtained.
+RTMP limit [0, 1], other limits [0, 20].
         :type AudioTemplateNames: list of str
-        :param _VideoTemplateNames: Video transcoding template name array. Quantity limit: [0,1].
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _VideoTemplateNames: Video transcoding template name array, with the maximum number of [0, 1].
         :type VideoTemplateNames: list of str
-        :param _Scte35Settings: SCTE-35 information configuration.
+        :param _Scte35Settings: Scte-35 information configuration.
         :type Scte35Settings: :class:`tencentcloud.mdl.v20200326.models.Scte35SettingsInfo`
-        :param _AVTemplateNames: Audio/Video transcoding template name. If `HlsRemuxSettings.Scheme` is `MERGE`, there is 1 audio/video transcoding template. Otherwise, this parameter is empty.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _AVTemplateNames: Audio/video transcoding template name array, with the maximum number of 1.
         :type AVTemplateNames: list of str
-        :param _CaptionTemplateNames: For the subtitle template used, only the AVTemplateNames is valid.
+        :param _CaptionTemplateNames: The used subtitle template is only valid for merge template.
         :type CaptionTemplateNames: list of str
-        :param _TimedMetadataSettings: Meta information controls configuration.
+        :param _TimedMetadataSettings: Meta-information control configuration.
         :type TimedMetadataSettings: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataSettingInfo`
-        :param _FrameCaptureTemplateNames: Frame capture template name array. Quantity limit: [0,1].
+        :param _FrameCaptureTemplateNames: Screenshot transcode template name array. Limit: 1.
         :type FrameCaptureTemplateNames: list of str
-        :param _NameModifier: Name modification for sub m3u8.
+        :param _NameModifier: Modify the name of the sub-m3u8.
         :type NameModifier: str
         """
         self._Name = None
@@ -9832,8 +9906,7 @@ Note: this field may return `null`, indicating that no valid value was found.
     @property
     def AudioTemplateNames(self):
         r"""Audio transcoding template name array.
-Quantity limit: [0,1] for RTMP; [0,20] for others.
-Note: this field may return null, indicating that no valid values can be obtained.
+RTMP limit [0, 1], other limits [0, 20].
         :rtype: list of str
         """
         return self._AudioTemplateNames
@@ -9844,8 +9917,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoTemplateNames(self):
-        r"""Video transcoding template name array. Quantity limit: [0,1].
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Video transcoding template name array, with the maximum number of [0, 1].
         :rtype: list of str
         """
         return self._VideoTemplateNames
@@ -9856,7 +9928,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scte35Settings(self):
-        r"""SCTE-35 information configuration.
+        r"""Scte-35 information configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.Scte35SettingsInfo`
         """
         return self._Scte35Settings
@@ -9867,8 +9939,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AVTemplateNames(self):
-        r"""Audio/Video transcoding template name. If `HlsRemuxSettings.Scheme` is `MERGE`, there is 1 audio/video transcoding template. Otherwise, this parameter is empty.
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Audio/video transcoding template name array, with the maximum number of 1.
         :rtype: list of str
         """
         return self._AVTemplateNames
@@ -9879,7 +9950,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CaptionTemplateNames(self):
-        r"""For the subtitle template used, only the AVTemplateNames is valid.
+        r"""The used subtitle template is only valid for merge template.
         :rtype: list of str
         """
         return self._CaptionTemplateNames
@@ -9890,7 +9961,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def TimedMetadataSettings(self):
-        r"""Meta information controls configuration.
+        r"""Meta-information control configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataSettingInfo`
         """
         return self._TimedMetadataSettings
@@ -9901,7 +9972,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def FrameCaptureTemplateNames(self):
-        r"""Frame capture template name array. Quantity limit: [0,1].
+        r"""Screenshot transcode template name array. Limit: 1.
         :rtype: list of str
         """
         return self._FrameCaptureTemplateNames
@@ -9912,7 +9983,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def NameModifier(self):
-        r"""Name modification for sub m3u8.
+        r"""Modify the name of the sub-m3u8.
         :rtype: str
         """
         return self._NameModifier
@@ -10007,6 +10078,106 @@ class OutputsStatistics(AbstractModel):
         
 
 
+class PipSetting(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioSelection: 
+        :type AudioSelection: str
+        :param _LiveSourceLayout: 
+        :type LiveSourceLayout: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
+        :param _AdSourceLayout: 
+        :type AdSourceLayout: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
+        :param _BackgroundImgUrl: 
+        :type BackgroundImgUrl: str
+        :param _AdSourceUrl: 
+        :type AdSourceUrl: str
+        """
+        self._AudioSelection = None
+        self._LiveSourceLayout = None
+        self._AdSourceLayout = None
+        self._BackgroundImgUrl = None
+        self._AdSourceUrl = None
+
+    @property
+    def AudioSelection(self):
+        r"""
+        :rtype: str
+        """
+        return self._AudioSelection
+
+    @AudioSelection.setter
+    def AudioSelection(self, AudioSelection):
+        self._AudioSelection = AudioSelection
+
+    @property
+    def LiveSourceLayout(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
+        """
+        return self._LiveSourceLayout
+
+    @LiveSourceLayout.setter
+    def LiveSourceLayout(self, LiveSourceLayout):
+        self._LiveSourceLayout = LiveSourceLayout
+
+    @property
+    def AdSourceLayout(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
+        """
+        return self._AdSourceLayout
+
+    @AdSourceLayout.setter
+    def AdSourceLayout(self, AdSourceLayout):
+        self._AdSourceLayout = AdSourceLayout
+
+    @property
+    def BackgroundImgUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._BackgroundImgUrl
+
+    @BackgroundImgUrl.setter
+    def BackgroundImgUrl(self, BackgroundImgUrl):
+        self._BackgroundImgUrl = BackgroundImgUrl
+
+    @property
+    def AdSourceUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._AdSourceUrl
+
+    @AdSourceUrl.setter
+    def AdSourceUrl(self, AdSourceUrl):
+        self._AdSourceUrl = AdSourceUrl
+
+
+    def _deserialize(self, params):
+        self._AudioSelection = params.get("AudioSelection")
+        if params.get("LiveSourceLayout") is not None:
+            self._LiveSourceLayout = SourceLayout()
+            self._LiveSourceLayout._deserialize(params.get("LiveSourceLayout"))
+        if params.get("AdSourceLayout") is not None:
+            self._AdSourceLayout = SourceLayout()
+            self._AdSourceLayout._deserialize(params.get("AdSourceLayout"))
+        self._BackgroundImgUrl = params.get("BackgroundImgUrl")
+        self._AdSourceUrl = params.get("AdSourceUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PipelineInputSettingsInfo(AbstractModel):
     r"""Pipeline failover information.
 
@@ -10014,14 +10185,16 @@ class PipelineInputSettingsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaultBehavior: Pipeline failover configuration, the valid value is: 1.PIPELINE_FAILOVER (channels are mutually failover); 2.PIPELINE_FILLING (channels fill in themselves). Default value: PIPELINE_FILLING. The specific content is specified by FaultBehavior.
+        :param _FaultBehavior: Pipeline disaster recovery configuration. Value: PIPELINE_FAILOVER (mutual disaster recovery for channels if unable), PIPELINE_FILLING (channel fill automatically).
+Default value: PIPELINE_FAILOVER. If failover between channels fails, auto-execute PIPELINE_FILLING. Specific content is specified by InputLossBehavior.
         :type FaultBehavior: str
         """
         self._FaultBehavior = None
 
     @property
     def FaultBehavior(self):
-        r"""Pipeline failover configuration, the valid value is: 1.PIPELINE_FAILOVER (channels are mutually failover); 2.PIPELINE_FILLING (channels fill in themselves). Default value: PIPELINE_FILLING. The specific content is specified by FaultBehavior.
+        r"""Pipeline disaster recovery configuration. Value: PIPELINE_FAILOVER (mutual disaster recovery for channels if unable), PIPELINE_FILLING (channel fill automatically).
+Default value: PIPELINE_FAILOVER. If failover between channels fails, auto-execute PIPELINE_FILLING. Specific content is specified by InputLossBehavior.
         :rtype: str
         """
         return self._FaultBehavior
@@ -10467,16 +10640,14 @@ class PlanSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimedRecordSettings: Timed recording settings
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _TimedRecordSettings: Configuration message of the scheduled recording task.
         :type TimedRecordSettings: :class:`tencentcloud.mdl.v20200326.models.TimedRecordSettings`
         """
         self._TimedRecordSettings = None
 
     @property
     def TimedRecordSettings(self):
-        r"""Timed recording settings
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Configuration message of the scheduled recording task.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimedRecordSettings`
         """
         return self._TimedRecordSettings
@@ -11291,6 +11462,72 @@ class SegmentationDescriptorRespInfo(AbstractModel):
         
 
 
+class SourceLayout(AbstractModel):
+    r"""SourceLayout
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LeftOffset: 
+        :type LeftOffset: int
+        :param _RightOffset: 
+        :type RightOffset: int
+        :param _BottomOffset: 
+        :type BottomOffset: int
+        """
+        self._LeftOffset = None
+        self._RightOffset = None
+        self._BottomOffset = None
+
+    @property
+    def LeftOffset(self):
+        r"""
+        :rtype: int
+        """
+        return self._LeftOffset
+
+    @LeftOffset.setter
+    def LeftOffset(self, LeftOffset):
+        self._LeftOffset = LeftOffset
+
+    @property
+    def RightOffset(self):
+        r"""
+        :rtype: int
+        """
+        return self._RightOffset
+
+    @RightOffset.setter
+    def RightOffset(self, RightOffset):
+        self._RightOffset = RightOffset
+
+    @property
+    def BottomOffset(self):
+        r"""
+        :rtype: int
+        """
+        return self._BottomOffset
+
+    @BottomOffset.setter
+    def BottomOffset(self, BottomOffset):
+        self._BottomOffset = BottomOffset
+
+
+    def _deserialize(self, params):
+        self._LeftOffset = params.get("LeftOffset")
+        self._RightOffset = params.get("RightOffset")
+        self._BottomOffset = params.get("BottomOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartStreamLiveChannelRequest(AbstractModel):
     r"""StartStreamLiveChannel request structure.
 
@@ -11578,20 +11815,20 @@ class StaticImageDeactivateSetting(AbstractModel):
 
 
 class StaticImageSettings(AbstractModel):
-    r"""Static graphic overlay configuration.
+    r"""Static image overlay configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _GlobalImageOverlayEnabled: Whether to enable global static image overlay, 0: Disable, 1: Enable; Default value: 0.
+        :param _GlobalImageOverlayEnabled: Whether global static image overlay is enabled. 0: not enabled, 1: enabled. Default value: 0.
         :type GlobalImageOverlayEnabled: int
         """
         self._GlobalImageOverlayEnabled = None
 
     @property
     def GlobalImageOverlayEnabled(self):
-        r"""Whether to enable global static image overlay, 0: Disable, 1: Enable; Default value: 0.
+        r"""Whether global static image overlay is enabled. 0: not enabled, 1: enabled. Default value: 0.
         :rtype: int
         """
         return self._GlobalImageOverlayEnabled
@@ -12226,31 +12463,23 @@ class StreamLiveOutputGroupsInfo(AbstractModel):
         r"""
         :param _Name: Output group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the channel level
         :type Name: str
-        :param _Type: Output protocol
-Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, 
- `DASH_ARCHIVE`, `HLS_STREAM_PACKAGE`, 
- `DASH_STREAM_PACKAGE`, 
- `FRAME_CAPTURE`, `RTP`, `RTMP`, `M2TS`.
+        :param _Type: Output protocol type.
+Selectable HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE/HLS_STREAM_PACKAGE/DASH_STREAM_PACKAGE/FRAME_CAPTURE/RTP/RTMP/M2TS.
         :type Type: str
-        :param _Outputs: Output information
-If the type is RTMP, RTP or FRAME_CAPTURE, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.
+        :param _Outputs: Output information.
+RTMP/RTP/FRAME_CAPTURE limit [1,1], HLS/DASH limit [1,10].
         :type Outputs: list of OutputInfo
         :param _Destinations: Relay destinations. Quantity: [1, 2]
         :type Destinations: list of DestinationInfo
-        :param _HlsRemuxSettings: HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE/HLS_STREAM_PACKAGE outputs.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _HlsRemuxSettings: HLS protocol configuration info, valid only for HLS/HLS_ARCHIVE.
         :type HlsRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
-        :param _DrmSettings: DRM configuration information
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _DrmSettings: DRM configuration message.
         :type DrmSettings: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`
-        :param _DashRemuxSettings: DASH protocol configuration information, which takes effect only for DASH/DASH_ARCHIVE outputs
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _DashRemuxSettings: DASH protocol configuration info, valid only for DASH/DSAH_ARCHIVE.
         :type DashRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`
-        :param _StreamPackageSettings: StreamPackage configuration information, which is required if the output type is StreamPackage
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _StreamPackageSettings: Configuration message for media encapsulation. Requires filling in when Type is related to StreamPackage.
         :type StreamPackageSettings: :class:`tencentcloud.mdl.v20200326.models.StreamPackageSettingsInfo`
-        :param _TimeShiftSettings: Time-shift configuration information
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _TimeShiftSettings: Time shift configuration information.
         :type TimeShiftSettings: :class:`tencentcloud.mdl.v20200326.models.TimeShiftSettingsInfo`
         """
         self._Name = None
@@ -12276,11 +12505,8 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Type(self):
-        r"""Output protocol
-Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, 
- `DASH_ARCHIVE`, `HLS_STREAM_PACKAGE`, 
- `DASH_STREAM_PACKAGE`, 
- `FRAME_CAPTURE`, `RTP`, `RTMP`, `M2TS`.
+        r"""Output protocol type.
+Selectable HLS/DASH/HLS_ARCHIVE/DASH_ARCHIVE/HLS_STREAM_PACKAGE/DASH_STREAM_PACKAGE/FRAME_CAPTURE/RTP/RTMP/M2TS.
         :rtype: str
         """
         return self._Type
@@ -12291,8 +12517,8 @@ Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`,
 
     @property
     def Outputs(self):
-        r"""Output information
-If the type is RTMP, RTP or FRAME_CAPTURE, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.
+        r"""Output information.
+RTMP/RTP/FRAME_CAPTURE limit [1,1], HLS/DASH limit [1,10].
         :rtype: list of OutputInfo
         """
         return self._Outputs
@@ -12314,8 +12540,7 @@ If the type is RTMP, RTP or FRAME_CAPTURE, only one output is allowed; if it is 
 
     @property
     def HlsRemuxSettings(self):
-        r"""HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE/HLS_STREAM_PACKAGE outputs.
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""HLS protocol configuration info, valid only for HLS/HLS_ARCHIVE.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
         """
         return self._HlsRemuxSettings
@@ -12326,8 +12551,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DrmSettings(self):
-        r"""DRM configuration information
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""DRM configuration message.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.DrmSettingsInfo`
         """
         return self._DrmSettings
@@ -12338,8 +12562,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DashRemuxSettings(self):
-        r"""DASH protocol configuration information, which takes effect only for DASH/DASH_ARCHIVE outputs
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""DASH protocol configuration info, valid only for DASH/DSAH_ARCHIVE.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.DashRemuxSettingsInfo`
         """
         return self._DashRemuxSettings
@@ -12350,8 +12573,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def StreamPackageSettings(self):
-        r"""StreamPackage configuration information, which is required if the output type is StreamPackage
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Configuration message for media encapsulation. Requires filling in when Type is related to StreamPackage.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.StreamPackageSettingsInfo`
         """
         return self._StreamPackageSettings
@@ -12362,8 +12584,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def TimeShiftSettings(self):
-        r"""Time-shift configuration information
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Time shift configuration information.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.TimeShiftSettingsInfo`
         """
         return self._TimeShiftSettings
@@ -12658,35 +12879,33 @@ class SubtitleConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Template name.
+        :param _Name: Template Name
         :type Name: str
-        :param _CaptionSelectorName: Name of caption selector. Required when CaptionSource selects `INPUT`.
+        :param _CaptionSelectorName: Name of the subtitle selector. Required when CaptionSource is set to INPUT.
         :type CaptionSelectorName: str
-        :param _CaptionSource: Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles).
+        :param _CaptionSource: Available values: INPUT (source subtitle information), ANALYSIS (intelligent voice recognition to subtitle).
         :type CaptionSource: str
-        :param _ContentType: Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `. When outputting as WebVTT, a single template can only output one language.
+        :param _ContentType: Available values: 1 Source, 2 Source+Target, 3 Target (source language only, source language + target language, target language). When the output is WebVTT, it can only output one language.
         :type ContentType: int
-        :param _TargetType: Output mode: 1 Burn in, 2 Embedded, 3 WebVTT. Support `2` when CaptionSource selects `INPUT`. Support `1` and `3` when CaptionSource selects `ANALYSIS `.
+        :param _TargetType: Output mode: 1 Burn in, 2 Embedded, 3 WebVTT. When CaptionSource is INPUT, it supports only 2. When CaptionSource is ANALYSIS, it supports 1, 3.
         :type TargetType: int
-        :param _SourceLanguage: Original phonetic language.
-Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.
+        :param _SourceLanguage: Original speech languages: Chinese, English, Japanese, Korean.
         :type SourceLanguage: str
-        :param _TargetLanguage: Target language.
-Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.
+        :param _TargetLanguage: Target languages: Chinese, English, Japanese, Korean.
         :type TargetLanguage: str
-        :param _FontStyle: Font style configuration. Required when CaptionSource selects `ANALYSIS `.
+        :param _FontStyle: Font style configuration. Required for BurnIn.
         :type FontStyle: :class:`tencentcloud.mdl.v20200326.models.SubtitleFontConf`
-        :param _StateEffectMode: There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `. When the output is WebVTT, only STEADY can be selected.
+        :param _StateEffectMode: STEADY and DYNAMIC modes correspond to steady state and non-steady state respectively. Default is STEADY. Only select STEADY when the output is WebVTT.
         :type StateEffectMode: str
-        :param _SteadyStateDelayedTime: Steady-state delay time, unit seconds; optional values: 10, 20, default 10. Required when CaptionSource selects `ANALYSIS `.
+        :param _SteadyStateDelayedTime: Steady-state delay time in seconds. Value range: 10, 20. Default: 10.
         :type SteadyStateDelayedTime: int
-        :param _AudioSelectorName: Audio selector name, required for generating WebVTT subtitles using speech recognition, can be empty.
+        :param _AudioSelectorName: Audio selector name, required for speech recognition to generate WebVTT subtitles, can be empty
         :type AudioSelectorName: str
-        :param _WebVTTFontStyle: Format configuration for speech recognition output on WebVTT.
+        :param _WebVTTFontStyle: Format configuration for WebVTT output in speech recognition.
         :type WebVTTFontStyle: :class:`tencentcloud.mdl.v20200326.models.WebVTTFontStyle`
-        :param _LanguageCode: Language code, length 2-20. ISO 639-2 three-digit code is recommend.
+        :param _LanguageCode: Language code, length 2-20.
         :type LanguageCode: str
-        :param _LanguageDescription: Language description, less than 100 characters in length.
+        :param _LanguageDescription: Language description, length less than 100.
         :type LanguageDescription: str
         """
         self._Name = None
@@ -12706,7 +12925,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def Name(self):
-        r"""Template name.
+        r"""Template Name
         :rtype: str
         """
         return self._Name
@@ -12717,7 +12936,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def CaptionSelectorName(self):
-        r"""Name of caption selector. Required when CaptionSource selects `INPUT`.
+        r"""Name of the subtitle selector. Required when CaptionSource is set to INPUT.
         :rtype: str
         """
         return self._CaptionSelectorName
@@ -12728,7 +12947,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def CaptionSource(self):
-        r"""Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles).
+        r"""Available values: INPUT (source subtitle information), ANALYSIS (intelligent voice recognition to subtitle).
         :rtype: str
         """
         return self._CaptionSource
@@ -12739,7 +12958,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def ContentType(self):
-        r"""Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `. When outputting as WebVTT, a single template can only output one language.
+        r"""Available values: 1 Source, 2 Source+Target, 3 Target (source language only, source language + target language, target language). When the output is WebVTT, it can only output one language.
         :rtype: int
         """
         return self._ContentType
@@ -12750,7 +12969,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def TargetType(self):
-        r"""Output mode: 1 Burn in, 2 Embedded, 3 WebVTT. Support `2` when CaptionSource selects `INPUT`. Support `1` and `3` when CaptionSource selects `ANALYSIS `.
+        r"""Output mode: 1 Burn in, 2 Embedded, 3 WebVTT. When CaptionSource is INPUT, it supports only 2. When CaptionSource is ANALYSIS, it supports 1, 3.
         :rtype: int
         """
         return self._TargetType
@@ -12761,8 +12980,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def SourceLanguage(self):
-        r"""Original phonetic language.
-Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.
+        r"""Original speech languages: Chinese, English, Japanese, Korean.
         :rtype: str
         """
         return self._SourceLanguage
@@ -12773,8 +12991,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def TargetLanguage(self):
-        r"""Target language.
-Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.
+        r"""Target languages: Chinese, English, Japanese, Korean.
         :rtype: str
         """
         return self._TargetLanguage
@@ -12785,7 +13002,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def FontStyle(self):
-        r"""Font style configuration. Required when CaptionSource selects `ANALYSIS `.
+        r"""Font style configuration. Required for BurnIn.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.SubtitleFontConf`
         """
         return self._FontStyle
@@ -12796,7 +13013,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def StateEffectMode(self):
-        r"""There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `. When the output is WebVTT, only STEADY can be selected.
+        r"""STEADY and DYNAMIC modes correspond to steady state and non-steady state respectively. Default is STEADY. Only select STEADY when the output is WebVTT.
         :rtype: str
         """
         return self._StateEffectMode
@@ -12807,7 +13024,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def SteadyStateDelayedTime(self):
-        r"""Steady-state delay time, unit seconds; optional values: 10, 20, default 10. Required when CaptionSource selects `ANALYSIS `.
+        r"""Steady-state delay time in seconds. Value range: 10, 20. Default: 10.
         :rtype: int
         """
         return self._SteadyStateDelayedTime
@@ -12818,7 +13035,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def AudioSelectorName(self):
-        r"""Audio selector name, required for generating WebVTT subtitles using speech recognition, can be empty.
+        r"""Audio selector name, required for speech recognition to generate WebVTT subtitles, can be empty
         :rtype: str
         """
         return self._AudioSelectorName
@@ -12829,7 +13046,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def WebVTTFontStyle(self):
-        r"""Format configuration for speech recognition output on WebVTT.
+        r"""Format configuration for WebVTT output in speech recognition.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.WebVTTFontStyle`
         """
         return self._WebVTTFontStyle
@@ -12840,7 +13057,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def LanguageCode(self):
-        r"""Language code, length 2-20. ISO 639-2 three-digit code is recommend.
+        r"""Language code, length 2-20.
         :rtype: str
         """
         return self._LanguageCode
@@ -12851,7 +13068,7 @@ Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource
 
     @property
     def LanguageDescription(self):
-        r"""Language description, less than 100 characters in length.
+        r"""Language description, length less than 100.
         :rtype: str
         """
         return self._LanguageDescription
@@ -12899,27 +13116,27 @@ class SubtitleFontConf(AbstractModel):
         r"""
         :param _LineSpacing: Line spacing.
         :type LineSpacing: int
-        :param _Margins: Margins.
+        :param _Margins: Margin.
         :type Margins: int
-        :param _Lines: Rows.
+        :param _Lines: Number of rows.
         :type Lines: int
         :param _CharactersPerLine: Number of characters per line.
         :type CharactersPerLine: int
-        :param _SourceTextFont: Original font Helvetica: simhei.ttf Song Dynasty: simsun.ttc Dynacw Diamond Black: hkjgh.ttf Helvetica font: helvetica.ttf; Need to be set in Source or Source+Target mode
+        :param _SourceTextFont: Original font    Heiti: simhei.ttf    Song Typeface: simsun.ttc    Huakang Diamond Black (Dynacw Diamond Black): hkjgh.ttf    Helvetica: helvetica.ttf; Needs to be set in Source or Source+Target mode.
         :type SourceTextFont: str
-        :param _TextColor: Font color is represented by 6 RGB hexadecimal characters.
+        :param _TextColor: Font color, represented by 6 characters in hexadecimal RGB.
         :type TextColor: str
-        :param _BackgroundColor: The background color is represented by 6 RGB hexadecimal characters.
+        :param _BackgroundColor: Background color, represented by 6 characters in hexadecimal RGB.
         :type BackgroundColor: str
-        :param _BackgroundAlpha: Background transparency, a number from 0-100.
+        :param _BackgroundAlpha: Background opacity. A number from 0 to 100.
         :type BackgroundAlpha: int
-        :param _PreviewContent: Preview copy.
+        :param _PreviewContent: Preview the copywriting.
         :type PreviewContent: str
         :param _PreviewWindowHeight: Preview window height.
         :type PreviewWindowHeight: int
         :param _PreviewWindowWidth: Preview window width.
         :type PreviewWindowWidth: int
-        :param _TranslatedTextFont: Translation language font, the enumeration value is the same as Font, the fonts supported by the language need to be distinguished; TextColor needs to be set in Target or Source+Target mode
+        :param _TranslatedTextFont: Font for the target language. The enumeration value is the same as SourceTextFont. Case-sensitive language support for fonts. TextColor needs to be set in Target or Source+Target mode.
         :type TranslatedTextFont: str
         """
         self._LineSpacing = None
@@ -12948,7 +13165,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def Margins(self):
-        r"""Margins.
+        r"""Margin.
         :rtype: int
         """
         return self._Margins
@@ -12959,7 +13176,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def Lines(self):
-        r"""Rows.
+        r"""Number of rows.
         :rtype: int
         """
         return self._Lines
@@ -12981,7 +13198,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def SourceTextFont(self):
-        r"""Original font Helvetica: simhei.ttf Song Dynasty: simsun.ttc Dynacw Diamond Black: hkjgh.ttf Helvetica font: helvetica.ttf; Need to be set in Source or Source+Target mode
+        r"""Original font    Heiti: simhei.ttf    Song Typeface: simsun.ttc    Huakang Diamond Black (Dynacw Diamond Black): hkjgh.ttf    Helvetica: helvetica.ttf; Needs to be set in Source or Source+Target mode.
         :rtype: str
         """
         return self._SourceTextFont
@@ -12992,7 +13209,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def TextColor(self):
-        r"""Font color is represented by 6 RGB hexadecimal characters.
+        r"""Font color, represented by 6 characters in hexadecimal RGB.
         :rtype: str
         """
         return self._TextColor
@@ -13003,7 +13220,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def BackgroundColor(self):
-        r"""The background color is represented by 6 RGB hexadecimal characters.
+        r"""Background color, represented by 6 characters in hexadecimal RGB.
         :rtype: str
         """
         return self._BackgroundColor
@@ -13014,7 +13231,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def BackgroundAlpha(self):
-        r"""Background transparency, a number from 0-100.
+        r"""Background opacity. A number from 0 to 100.
         :rtype: int
         """
         return self._BackgroundAlpha
@@ -13025,7 +13242,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def PreviewContent(self):
-        r"""Preview copy.
+        r"""Preview the copywriting.
         :rtype: str
         """
         return self._PreviewContent
@@ -13058,7 +13275,7 @@ class SubtitleFontConf(AbstractModel):
 
     @property
     def TranslatedTextFont(self):
-        r"""Translation language font, the enumeration value is the same as Font, the fonts supported by the language need to be distinguished; TextColor needs to be set in Target or Source+Target mode
+        r"""Font for the target language. The enumeration value is the same as SourceTextFont. Case-sensitive language support for fonts. TextColor needs to be set in Target or Source+Target mode.
         :rtype: str
         """
         return self._TranslatedTextFont
@@ -13092,17 +13309,17 @@ class SubtitleFontConf(AbstractModel):
 
 
 class Tag(AbstractModel):
-    r"""Console Tag, for documentation please refer to: https://www.tencentcloud.com/document/product/651.
+    r"""Console tag, documentation link: https://www.tencentcloud.com/document/product/651.?from_cn_redirect=1
 
     """
 
     def __init__(self):
         r"""
-        :param _TagKey: Tag key, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
+        :param _TagKey: Tag key. Refer to the tag document (https://www.tencentcloud.com/document/product/651/13354?from_cn_redirect=1) for limits.
         :type TagKey: str
-        :param _TagValue: Tag value, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
+        :param _TagValue: Tag value. For reference, see the tag document at https://www.tencentcloud.com/document/product/651/13354.?from_cn_redirect=1
         :type TagValue: str
-        :param _Category: Tag type, optional; for documentation please refer to: https://www.tencentcloud.com/document/product/651/33023#tag.
+        :param _Category: Tag type, optional. See the tag document for reference (https://www.tencentcloud.com/document/product/651/35327?from_cn_redirect=1#Tag).
         :type Category: str
         """
         self._TagKey = None
@@ -13111,7 +13328,7 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""Tag key, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
+        r"""Tag key. Refer to the tag document (https://www.tencentcloud.com/document/product/651/13354?from_cn_redirect=1) for limits.
         :rtype: str
         """
         return self._TagKey
@@ -13122,7 +13339,7 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""Tag value, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
+        r"""Tag value. For reference, see the tag document at https://www.tencentcloud.com/document/product/651/13354.?from_cn_redirect=1
         :rtype: str
         """
         return self._TagValue
@@ -13133,7 +13350,7 @@ class Tag(AbstractModel):
 
     @property
     def Category(self):
-        r"""Tag type, optional; for documentation please refer to: https://www.tencentcloud.com/document/product/651/33023#tag.
+        r"""Tag type, optional. See the tag document for reference (https://www.tencentcloud.com/document/product/651/35327?from_cn_redirect=1#Tag).
         :rtype: str
         """
         return self._Category
@@ -13209,20 +13426,20 @@ class TaskNotifyConfig(AbstractModel):
 
 
 class ThumbnailSettings(AbstractModel):
-    r"""
+    r"""Thumbnail configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _ThumbnailEnabled: Generate thumbnail ,0: Disabled ,1: Enabled , Default: 0
+        :param _ThumbnailEnabled: Whether to generate thumbnails  0: disabled  1: enabled  Default value: 0
         :type ThumbnailEnabled: int
         """
         self._ThumbnailEnabled = None
 
     @property
     def ThumbnailEnabled(self):
-        r"""Generate thumbnail ,0: Disabled ,1: Enabled , Default: 0
+        r"""Whether to generate thumbnails  0: disabled  1: enabled  Default value: 0
         :rtype: int
         """
         return self._ThumbnailEnabled
@@ -13251,13 +13468,11 @@ class TimeShiftSettingsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _State: Whether to enable time shifting. Valid values: `OPEN`; `CLOSE`
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _State: Whether to enable time shifting. Option [OPEN|CLOSE].
         :type State: str
-        :param _PlayDomain: Domain name bound for time shifting
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _PlayDomain: Enable time-shift bound domain name.
         :type PlayDomain: str
-        :param _StartoverWindow: Allowable time-shift period (s). Value range: [300, 2592000]. Default value: 300Note: This field may return `null`, indicating that no valid value was found.
+        :param _StartoverWindow: The time when time-shift replay starts, in seconds, range [300, 1209600], default value 300.
         :type StartoverWindow: int
         """
         self._State = None
@@ -13266,8 +13481,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def State(self):
-        r"""Whether to enable time shifting. Valid values: `OPEN`; `CLOSE`
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Whether to enable time shifting. Option [OPEN|CLOSE].
         :rtype: str
         """
         return self._State
@@ -13278,8 +13492,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def PlayDomain(self):
-        r"""Domain name bound for time shifting
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Enable time-shift bound domain name.
         :rtype: str
         """
         return self._PlayDomain
@@ -13290,7 +13503,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StartoverWindow(self):
-        r"""Allowable time-shift period (s). Value range: [300, 2592000]. Default value: 300Note: This field may return `null`, indicating that no valid value was found.
+        r"""The time when time-shift replay starts, in seconds, range [300, 1209600], default value 300.
         :rtype: int
         """
         return self._StartoverWindow
@@ -13372,14 +13585,16 @@ class TimedMetadataSettingInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Behavior: Whether to transparently transmit ID3 information, optional values: 0:NO_PASSTHROUGH, 1:PASSTHROUGH, default 0.
+        :param _Behavior: Whether to pass through ID3 info. Available values:
+0:NO_PASSTHROUGH, 1:PASSTHROUGH, default 0.
         :type Behavior: int
         """
         self._Behavior = None
 
     @property
     def Behavior(self):
-        r"""Whether to transparently transmit ID3 information, optional values: 0:NO_PASSTHROUGH, 1:PASSTHROUGH, default 0.
+        r"""Whether to pass through ID3 info. Available values:
+0:NO_PASSTHROUGH, 1:PASSTHROUGH, default 0.
         :rtype: int
         """
         return self._Behavior
@@ -13408,18 +13623,16 @@ class TimedRecordSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoClear: Whether to automatically delete finished recording events. Valid values: `CLOSE`, `OPEN`. If this parameter is left empty, `CLOSE` will be used.
-If it is set to `OPEN`, a recording event will be deleted 7 days after it is finished.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _AutoClear: Whether to automatically clear ended recording tasks. Options: [CLOSE|OPEN]. Default is CLOSE.
+If enabled, the task will be cleared 7 days after completion.
         :type AutoClear: str
         """
         self._AutoClear = None
 
     @property
     def AutoClear(self):
-        r"""Whether to automatically delete finished recording events. Valid values: `CLOSE`, `OPEN`. If this parameter is left empty, `CLOSE` will be used.
-If it is set to `OPEN`, a recording event will be deleted 7 days after it is finished.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Whether to automatically clear ended recording tasks. Options: [CLOSE|OPEN]. Default is CLOSE.
+If enabled, the task will be cleared 7 days after completion.
         :rtype: str
         """
         return self._AutoClear
@@ -13682,21 +13895,21 @@ class UrlInputInfo(AbstractModel):
 
 
 class VideoCodecDetail(AbstractModel):
-    r"""Video codec additional configuration.
+    r"""Additional configuration for video codec.
 
     """
 
     def __init__(self):
         r"""
-        :param _Profile: The three image quality levels of h264 include: BASELINE, HIGH, and MAIN. The default option is MAIN.
+        :param _Profile: Three image quality levels for H264, options include: BASELINE, HIGH, MAIN. The default option is MAIN.
         :type Profile: str
-        :param _Level: Profile corresponding codec performance, options include: 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 2.3, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, 5.1, AUTO. The default option is AUTO.
+        :param _Level: Decoding performance of the profile. Options include 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 2.3, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, 5.1, AUTO. The default option is AUTO.
         :type Level: str
-        :param _EntropyEncoding: Codecs include entropy coding and lossless coding, and options include: CABAC and CAVLC. The default option is CABAC. .
+        :param _EntropyEncoding: Encoding/decoding includes entropy encoding and lossless encoding. Options include CABAC and CAVLC. The default option is CABAC.
         :type EntropyEncoding: str
-        :param _AdaptiveQuantization: Mode, options include: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF. The default option is: AUTO. .
+        :param _AdaptiveQuantization: Mode, options include: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF. Default option: AUTO.
         :type AdaptiveQuantization: str
-        :param _LookAheadRateControl: Analyze subsequent encoded frames in advance, options include: HIGH, LOW, MEDIUM. The default option is: MEDIUM. .
+        :param _LookAheadRateControl: Analyze subsequent coding frames in advance. Options include HIGH, LOW, and MEDIUM. Default option is MEDIUM.
         :type LookAheadRateControl: str
         """
         self._Profile = None
@@ -13707,7 +13920,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def Profile(self):
-        r"""The three image quality levels of h264 include: BASELINE, HIGH, and MAIN. The default option is MAIN.
+        r"""Three image quality levels for H264, options include: BASELINE, HIGH, MAIN. The default option is MAIN.
         :rtype: str
         """
         return self._Profile
@@ -13718,7 +13931,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def Level(self):
-        r"""Profile corresponding codec performance, options include: 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 2.3, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, 5.1, AUTO. The default option is AUTO.
+        r"""Decoding performance of the profile. Options include 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 2.3, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, 5.1, AUTO. The default option is AUTO.
         :rtype: str
         """
         return self._Level
@@ -13729,7 +13942,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def EntropyEncoding(self):
-        r"""Codecs include entropy coding and lossless coding, and options include: CABAC and CAVLC. The default option is CABAC. .
+        r"""Encoding/decoding includes entropy encoding and lossless encoding. Options include CABAC and CAVLC. The default option is CABAC.
         :rtype: str
         """
         return self._EntropyEncoding
@@ -13740,7 +13953,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def AdaptiveQuantization(self):
-        r"""Mode, options include: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF. The default option is: AUTO. .
+        r"""Mode, options include: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF. Default option: AUTO.
         :rtype: str
         """
         return self._AdaptiveQuantization
@@ -13751,7 +13964,7 @@ class VideoCodecDetail(AbstractModel):
 
     @property
     def LookAheadRateControl(self):
-        r"""Analyze subsequent encoded frames in advance, options include: HIGH, LOW, MEDIUM. The default option is: MEDIUM. .
+        r"""Analyze subsequent coding frames in advance. Options include HIGH, LOW, and MEDIUM. Default option is MEDIUM.
         :rtype: str
         """
         return self._LookAheadRateControl
@@ -13778,13 +13991,13 @@ class VideoCodecDetail(AbstractModel):
 
 
 class VideoEnhanceSetting(AbstractModel):
-    r"""VideoEnhanceSetting
+    r"""Video enhancement configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: Video enhancement types, optional: "GameEnhance", "ColorEnhance", "Debur", "Comprehensive", "Denoising", "SR", "OutdoorSportsCompetitions", "IndoorSportsCompetitions", "ShowEnhance"
+        :param _Type: Video enhancement type. Option: "GameEnhance", "ColorEnhance", "Debur", "Comprehensive", "Denoising", "SR", "OutdoorSportsCompetitions", "IndoorSportsCompetitions", "ShowEnhance".
         :type Type: str
         :param _Strength: Video enhancement intensity, 0-1.0, granularity 0.1
         :type Strength: float
@@ -13794,7 +14007,7 @@ class VideoEnhanceSetting(AbstractModel):
 
     @property
     def Type(self):
-        r"""Video enhancement types, optional: "GameEnhance", "ColorEnhance", "Debur", "Comprehensive", "Denoising", "SR", "OutdoorSportsCompetitions", "IndoorSportsCompetitions", "ShowEnhance"
+        r"""Video enhancement type. Option: "GameEnhance", "ColorEnhance", "Debur", "Comprehensive", "Denoising", "SR", "OutdoorSportsCompetitions", "IndoorSportsCompetitions", "ShowEnhance".
         :rtype: str
         """
         return self._Type
@@ -13907,44 +14120,43 @@ class VideoTemplateInfo(AbstractModel):
         :type Vcodec: str
         :param _VideoBitrate: Video bitrate. Value range: [50000,40000000]. The value can only be a multiple of 1,000. If this parameter is left empty, the original value will be used.
         :type VideoBitrate: int
-        :param _Width: Video width. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
+        :param _Width: Video width. The input range is (0, 4096] and must be a multiple of 2. If left blank, it represents passthrough.
         :type Width: int
-        :param _Height: Video height. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
+        :param _Height: Video height. Input range is (0, 4096] and must be a multiple of 2. Leave empty to represent passthrough.
         :type Height: int
-        :param _Fps: Video frame rate. Value range: [1,240]. If this parameter is left empty, the original value will be used.
+        :param _Fps: Video frame rate. Valid when you select SPECIFIED_HZ for FrameRateType. Input range is [1, 240]. Leave blank to represent passthrough.
         :type Fps: int
         :param _TopSpeed: Whether to enable top speed codec. Valid value: CLOSE/OPEN. Default value: CLOSE.
         :type TopSpeed: str
         :param _BitrateCompressionRatio: Top speed codec compression ratio. Value range: [0,50]. The lower the compression ratio, the higher the image quality.
         :type BitrateCompressionRatio: int
-        :param _RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
+        :param _RateControlMode: Bitrate control mode. Optional values: [CBR|ABR|VBR]. Default: ABR.
         :type RateControlMode: str
-        :param _WatermarkId: Watermark ID
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _WatermarkId: Watermark Id.
         :type WatermarkId: str
         :param _FaceBlurringEnabled: Whether to enable the face blur function, 1 is on, 0 is off, and the default is 0.
         :type FaceBlurringEnabled: int
-        :param _FrameRateType: This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
+        :param _FrameRateType: This field indicates how to specify the output video frame rate. If selected FOLLOW_SOURCE, the output video frame rate is set to equal the frame rate of the first input video. If selected SPECIFIED_FRACTION, the output video frame rate is determined by the fraction (frame rate molecular and frame rate denominator). If selected SPECIFIED_HZ, the frame rate of the output video is determined by the HZ you input.
         :type FrameRateType: str
-        :param _FrameRateNumerator: Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
+        :param _FrameRateNumerator: Valid when you select SPECIFIED_FRACTION as the FrameRateType. Set the output frame rate molecular.
         :type FrameRateNumerator: int
-        :param _FrameRateDenominator: Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
+        :param _FrameRateDenominator: Valid when you select SPECIFIED_FRACTION for FrameRateType. Output frame rate denominator set.
         :type FrameRateDenominator: int
-        :param _BFramesNum: The number of B frames can be selected from 1 to 3.
+        :param _BFramesNum: Number of B-frames 1-3.	
         :type BFramesNum: int
-        :param _RefFramesNum: The number of reference frames can be selected from 1 to 16.
+        :param _RefFramesNum: Refer to the number of frames 1-16.	
         :type RefFramesNum: int
-        :param _AdditionalRateSettings: Additional video bitrate configuration.
+        :param _AdditionalRateSettings: Additional video bitrate configuration.	
         :type AdditionalRateSettings: :class:`tencentcloud.mdl.v20200326.models.AdditionalRateSetting`
-        :param _VideoCodecDetails: Video encoding configuration.
+        :param _VideoCodecDetails: Video encoding configuration.	
         :type VideoCodecDetails: :class:`tencentcloud.mdl.v20200326.models.VideoCodecDetail`
-        :param _VideoEnhanceEnabled: Video enhancement switch, 1: on 0: off.
+        :param _VideoEnhanceEnabled: Video enhancement switch, 1: enable 0: disable.
         :type VideoEnhanceEnabled: int
-        :param _VideoEnhanceSettings: Video enhancement parameter array.
+        :param _VideoEnhanceSettings: Video enhancement parameters array.
         :type VideoEnhanceSettings: list of VideoEnhanceSetting
-        :param _ColorSpaceSettings: Color space setting.
+        :param _ColorSpaceSettings: Colorspace configuration.
         :type ColorSpaceSettings: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
-        :param _ForensicWatermarkIds: Traceability watermark.
+        :param _ForensicWatermarkIds: Traceable watermark.
         :type ForensicWatermarkIds: list of str
         """
         self._Name = None
@@ -14005,7 +14217,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Width(self):
-        r"""Video width. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
+        r"""Video width. The input range is (0, 4096] and must be a multiple of 2. If left blank, it represents passthrough.
         :rtype: int
         """
         return self._Width
@@ -14016,7 +14228,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Height(self):
-        r"""Video height. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
+        r"""Video height. Input range is (0, 4096] and must be a multiple of 2. Leave empty to represent passthrough.
         :rtype: int
         """
         return self._Height
@@ -14027,7 +14239,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Fps(self):
-        r"""Video frame rate. Value range: [1,240]. If this parameter is left empty, the original value will be used.
+        r"""Video frame rate. Valid when you select SPECIFIED_HZ for FrameRateType. Input range is [1, 240]. Leave blank to represent passthrough.
         :rtype: int
         """
         return self._Fps
@@ -14060,7 +14272,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RateControlMode(self):
-        r"""Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
+        r"""Bitrate control mode. Optional values: [CBR|ABR|VBR]. Default: ABR.
         :rtype: str
         """
         return self._RateControlMode
@@ -14071,8 +14283,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def WatermarkId(self):
-        r"""Watermark ID
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Watermark Id.
         :rtype: str
         """
         return self._WatermarkId
@@ -14094,7 +14305,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrameRateType(self):
-        r"""This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
+        r"""This field indicates how to specify the output video frame rate. If selected FOLLOW_SOURCE, the output video frame rate is set to equal the frame rate of the first input video. If selected SPECIFIED_FRACTION, the output video frame rate is determined by the fraction (frame rate molecular and frame rate denominator). If selected SPECIFIED_HZ, the frame rate of the output video is determined by the HZ you input.
         :rtype: str
         """
         return self._FrameRateType
@@ -14105,7 +14316,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrameRateNumerator(self):
-        r"""Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
+        r"""Valid when you select SPECIFIED_FRACTION as the FrameRateType. Set the output frame rate molecular.
         :rtype: int
         """
         return self._FrameRateNumerator
@@ -14116,7 +14327,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FrameRateDenominator(self):
-        r"""Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
+        r"""Valid when you select SPECIFIED_FRACTION for FrameRateType. Output frame rate denominator set.
         :rtype: int
         """
         return self._FrameRateDenominator
@@ -14127,7 +14338,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def BFramesNum(self):
-        r"""The number of B frames can be selected from 1 to 3.
+        r"""Number of B-frames 1-3.	
         :rtype: int
         """
         return self._BFramesNum
@@ -14138,7 +14349,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RefFramesNum(self):
-        r"""The number of reference frames can be selected from 1 to 16.
+        r"""Refer to the number of frames 1-16.	
         :rtype: int
         """
         return self._RefFramesNum
@@ -14149,7 +14360,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AdditionalRateSettings(self):
-        r"""Additional video bitrate configuration.
+        r"""Additional video bitrate configuration.	
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AdditionalRateSetting`
         """
         return self._AdditionalRateSettings
@@ -14160,7 +14371,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoCodecDetails(self):
-        r"""Video encoding configuration.
+        r"""Video encoding configuration.	
         :rtype: :class:`tencentcloud.mdl.v20200326.models.VideoCodecDetail`
         """
         return self._VideoCodecDetails
@@ -14171,7 +14382,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoEnhanceEnabled(self):
-        r"""Video enhancement switch, 1: on 0: off.
+        r"""Video enhancement switch, 1: enable 0: disable.
         :rtype: int
         """
         return self._VideoEnhanceEnabled
@@ -14182,7 +14393,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VideoEnhanceSettings(self):
-        r"""Video enhancement parameter array.
+        r"""Video enhancement parameters array.
         :rtype: list of VideoEnhanceSetting
         """
         return self._VideoEnhanceSettings
@@ -14193,7 +14404,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ColorSpaceSettings(self):
-        r"""Color space setting.
+        r"""Colorspace configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
         """
         return self._ColorSpaceSettings
@@ -14204,7 +14415,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ForensicWatermarkIds(self):
-        r"""Traceability watermark.
+        r"""Traceable watermark.
         :rtype: list of str
         """
         return self._ForensicWatermarkIds
@@ -14265,25 +14476,25 @@ class WebVTTFontStyle(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TextColor: Text color, RGB hexadecimal representation, 6 hexadecimal characters (no # needed).
+        :param _TextColor: Text color, 6 hexadecimal characters in RGB (not required #).
         :type TextColor: str
-        :param _BackgroundColor: Background color, RGB hexadecimal representation, 6 hexadecimal characters (no # needed).
+        :param _BackgroundColor: Background color, 6 hexadecimal characters in RGB (not required #)
         :type BackgroundColor: str
-        :param _BackgroundAlpha: Background opacity parameter, a number from 0 to 100, with 0 being the default for full transparency.
+        :param _BackgroundAlpha: Background opacity parameter. A number from 0 to 100. The default value is 0 (fully transparent).
         :type BackgroundAlpha: int
-        :param _FontSize: Font size, in units of vh (1% of height), default value 0 means automatic.
+        :param _FontSize: Font size, in vh (1% of height), default value 0 means auto.
         :type FontSize: int
-        :param _Line: The position of the text box, default value AUTO, can be empty; represents the percentage of video height, supports integers from 0 to 100.
+        :param _Line: The position of the text box, default value AUTO, can be empty; it represents the percentage of video height and supports integers from 0 to 100.
         :type Line: str
-        :param _LineAlignment: The alignment of the text box on the Line. Optional values: START, CENTER, END. Which can be empty.
+        :param _LineAlignment: The alignment mode of the text box on the Line. Available values: START, CENTER, END. Default: START. Can be blank.
         :type LineAlignment: str
-        :param _Position: The text box is positioned in another direction as a percentage of the video's width. It defaults to AUTO and can be empty.
+        :param _Position: The position of the text box in another direction is a percentage of the video width or height, defaults to AUTO, and can be empty.
         :type Position: str
-        :param _PositionAlignment: The alignment of the text box on the Position. Optional values are LINE_LEFT, LINE_RIGHT, CENTER, and AUTO. The default value is AUTO, and it can be empty.
+        :param _PositionAlignment: The alignment mode of the text box on Position. Available values: LINE_LEFT, LINE_RIGHT, CENTER, AUTO. Default value: AUTO. Can be empty.
         :type PositionAlignment: str
-        :param _CueSize: Text box size, a percentage of video width/height, with values (0, 100), default AUTO, can be empty.
+        :param _CueSize: The size of the text box, a percentage of video width/height, value (0, 100], default AUTO, can be empty.
         :type CueSize: str
-        :param _TextAlignment: Text alignment, with possible values  START, CENTER, END, LEFT, and RIGHT; the default value is CENTER, which can be empty.
+        :param _TextAlignment: Text alignment mode, available values START, CENTER, END, LEFT, RIGHT; default value CENTER, can be empty.
         :type TextAlignment: str
         """
         self._TextColor = None
@@ -14299,7 +14510,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def TextColor(self):
-        r"""Text color, RGB hexadecimal representation, 6 hexadecimal characters (no # needed).
+        r"""Text color, 6 hexadecimal characters in RGB (not required #).
         :rtype: str
         """
         return self._TextColor
@@ -14310,7 +14521,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def BackgroundColor(self):
-        r"""Background color, RGB hexadecimal representation, 6 hexadecimal characters (no # needed).
+        r"""Background color, 6 hexadecimal characters in RGB (not required #)
         :rtype: str
         """
         return self._BackgroundColor
@@ -14321,7 +14532,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def BackgroundAlpha(self):
-        r"""Background opacity parameter, a number from 0 to 100, with 0 being the default for full transparency.
+        r"""Background opacity parameter. A number from 0 to 100. The default value is 0 (fully transparent).
         :rtype: int
         """
         return self._BackgroundAlpha
@@ -14332,7 +14543,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def FontSize(self):
-        r"""Font size, in units of vh (1% of height), default value 0 means automatic.
+        r"""Font size, in vh (1% of height), default value 0 means auto.
         :rtype: int
         """
         return self._FontSize
@@ -14343,7 +14554,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def Line(self):
-        r"""The position of the text box, default value AUTO, can be empty; represents the percentage of video height, supports integers from 0 to 100.
+        r"""The position of the text box, default value AUTO, can be empty; it represents the percentage of video height and supports integers from 0 to 100.
         :rtype: str
         """
         return self._Line
@@ -14354,7 +14565,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def LineAlignment(self):
-        r"""The alignment of the text box on the Line. Optional values: START, CENTER, END. Which can be empty.
+        r"""The alignment mode of the text box on the Line. Available values: START, CENTER, END. Default: START. Can be blank.
         :rtype: str
         """
         return self._LineAlignment
@@ -14365,7 +14576,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def Position(self):
-        r"""The text box is positioned in another direction as a percentage of the video's width. It defaults to AUTO and can be empty.
+        r"""The position of the text box in another direction is a percentage of the video width or height, defaults to AUTO, and can be empty.
         :rtype: str
         """
         return self._Position
@@ -14376,7 +14587,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def PositionAlignment(self):
-        r"""The alignment of the text box on the Position. Optional values are LINE_LEFT, LINE_RIGHT, CENTER, and AUTO. The default value is AUTO, and it can be empty.
+        r"""The alignment mode of the text box on Position. Available values: LINE_LEFT, LINE_RIGHT, CENTER, AUTO. Default value: AUTO. Can be empty.
         :rtype: str
         """
         return self._PositionAlignment
@@ -14387,7 +14598,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def CueSize(self):
-        r"""Text box size, a percentage of video width/height, with values (0, 100), default AUTO, can be empty.
+        r"""The size of the text box, a percentage of video width/height, value (0, 100], default AUTO, can be empty.
         :rtype: str
         """
         return self._CueSize
@@ -14398,7 +14609,7 @@ class WebVTTFontStyle(AbstractModel):
 
     @property
     def TextAlignment(self):
-        r"""Text alignment, with possible values  START, CENTER, END, LEFT, and RIGHT; the default value is CENTER, which can be empty.
+        r"""Text alignment mode, available values START, CENTER, END, LEFT, RIGHT; default value CENTER, can be empty.
         :rtype: str
         """
         return self._TextAlignment

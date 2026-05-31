@@ -18,6 +18,72 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIOptimizerStatus(AbstractModel):
+    r"""AI optimizer status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Status. closing-Closing, closed-Closed, opening-Opening, training-Training, trained-Trained, train_failed-Training failed.</p>
+        :type Status: str
+        :param _OpenTime: <p>Start time.</p>
+        :type OpenTime: str
+        :param _TrainingProgress: <p>Training progress</p>
+        :type TrainingProgress: int
+        """
+        self._Status = None
+        self._OpenTime = None
+        self._TrainingProgress = None
+
+    @property
+    def Status(self):
+        r"""<p>Status. closing-Closing, closed-Closed, opening-Opening, training-Training, trained-Trained, train_failed-Training failed.</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def OpenTime(self):
+        r"""<p>Start time.</p>
+        :rtype: str
+        """
+        return self._OpenTime
+
+    @OpenTime.setter
+    def OpenTime(self, OpenTime):
+        self._OpenTime = OpenTime
+
+    @property
+    def TrainingProgress(self):
+        r"""<p>Training progress</p>
+        :rtype: int
+        """
+        return self._TrainingProgress
+
+    @TrainingProgress.setter
+    def TrainingProgress(self, TrainingProgress):
+        self._TrainingProgress = TrainingProgress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._OpenTime = params.get("OpenTime")
+        self._TrainingProgress = params.get("TrainingProgress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Ability(AbstractModel):
     r"""Features supported by the cluster
 
@@ -625,9 +691,15 @@ class AddClusterSlaveZoneRequest(AbstractModel):
         :type ClusterId: str
         :param _SlaveZone: Replica AZ
         :type SlaveZone: str
+        :param _BinlogSyncWay: 
+        :type BinlogSyncWay: str
+        :param _SemiSyncTimeout: Semi-sync timeout period in milliseconds. To ensure business stability, semi-sync replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction and exceeds the timeout period, the replication method will degrade to asynchronous replication. The minimum value is set to 1000 ms, support up to 4294967295 ms, and defaults to 10000 ms.
+        :type SemiSyncTimeout: int
         """
         self._ClusterId = None
         self._SlaveZone = None
+        self._BinlogSyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def ClusterId(self):
@@ -651,10 +723,34 @@ class AddClusterSlaveZoneRequest(AbstractModel):
     def SlaveZone(self, SlaveZone):
         self._SlaveZone = SlaveZone
 
+    @property
+    def BinlogSyncWay(self):
+        r"""
+        :rtype: str
+        """
+        return self._BinlogSyncWay
+
+    @BinlogSyncWay.setter
+    def BinlogSyncWay(self, BinlogSyncWay):
+        self._BinlogSyncWay = BinlogSyncWay
+
+    @property
+    def SemiSyncTimeout(self):
+        r"""Semi-sync timeout period in milliseconds. To ensure business stability, semi-sync replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction and exceeds the timeout period, the replication method will degrade to asynchronous replication. The minimum value is set to 1000 ms, support up to 4294967295 ms, and defaults to 10000 ms.
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._SlaveZone = params.get("SlaveZone")
+        self._BinlogSyncWay = params.get("BinlogSyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -715,44 +811,48 @@ class AddInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _Cpu: Number of CPU cores
+        :param _Cpu: <p>Cpu cores</p>
         :type Cpu: int
         :param _Memory: Memory in GB
         :type Memory: int
         :param _ReadOnlyCount: Number of added read-only instances. Value range: (0,16].
         :type ReadOnlyCount: int
-        :param _InstanceGrpId: Instance group ID, which will be used when you add an instance in an existing RO group. If this parameter is left empty, an RO group will be created. But it is not recommended to pass in this parameter for the current version, as this version has been disused.
+        :param _DeviceType: <p>Instance Machine Type. Supported values are as follows:</p><ul><li>common: indicates universal type</li><li>exclusive: indicates exclusive</li></ul>
+        :type DeviceType: str
+        :param _InstanceGrpId: <p>Instance group ID, used when adding new instances to an existing RO group. If not passed, a new RO group will be created. The current version does not recommend transmitting this value.</p>
         :type InstanceGrpId: str
-        :param _VpcId: VPC ID
+        :param _VpcId: <p>ID of the associated VPC network.</p>
         :type VpcId: str
-        :param _SubnetId: Subnet ID. If `VpcId` is set, `SubnetId` is required.
+        :param _SubnetId: <p>Subnet ID. If VpcId is set up, SubnetId is required.</p>
         :type SubnetId: str
         :param _Port: The port used when adding an RO group. Value range: [0,65535).
         :type Port: int
         :param _InstanceName: Instance name. String length range: [0,64).
         :type InstanceName: str
-        :param _AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
+        :param _AutoVoucher: <p>Whether to automatically select a voucher. 1: Yes; 0: No. Default is 0.</p>
         :type AutoVoucher: int
-        :param _DbType: Database type. Valid values: 
-<li> MYSQL </li>
+        :param _DbType: <p>Database type, value ranges from...to...: </p><li> MYSQL </li>
         :type DbType: str
-        :param _OrderSource: Order source. String length range: [0,64).
+        :param _OrderSource: <p>Order source, string length range [0,64)</p>
         :type OrderSource: str
-        :param _DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
+        :param _DealMode: <p>Transaction mode. 0: place order and pay; 1: place order</p>
         :type DealMode: int
-        :param _ParamTemplateId: Parameter template ID
+        :param _ParamTemplateId: <p>Parameter template ID</p>
         :type ParamTemplateId: int
-        :param _InstanceParams: Parameter list, which is valid only if `InstanceParams` is passed in to `ParamTemplateId`.
+        :param _InstanceParams: <p>Parameter list. InstanceParams is valid only when ParamTemplateId is passed in.</p>
         :type InstanceParams: list of ModifyParamItem
-        :param _SecurityGroupIds: Security group ID. You can specify an security group when creating a read-only instance.
+        :param _SecurityGroupIds: <p>Security group ID. You can specify security groups when creating a read-only instance.</p>
         :type SecurityGroupIds: list of str
+        :param _UpgradeProxy: <p>proxy sync upgrade</p>
+        :type UpgradeProxy: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxy`
         """
         self._ClusterId = None
         self._Cpu = None
         self._Memory = None
         self._ReadOnlyCount = None
+        self._DeviceType = None
         self._InstanceGrpId = None
         self._VpcId = None
         self._SubnetId = None
@@ -765,10 +865,11 @@ class AddInstancesRequest(AbstractModel):
         self._ParamTemplateId = None
         self._InstanceParams = None
         self._SecurityGroupIds = None
+        self._UpgradeProxy = None
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -779,7 +880,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Number of CPU cores
+        r"""<p>Cpu cores</p>
         :rtype: int
         """
         return self._Cpu
@@ -811,10 +912,21 @@ class AddInstancesRequest(AbstractModel):
         self._ReadOnlyCount = ReadOnlyCount
 
     @property
+    def DeviceType(self):
+        r"""<p>Instance Machine Type. Supported values are as follows:</p><ul><li>common: indicates universal type</li><li>exclusive: indicates exclusive</li></ul>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
     def InstanceGrpId(self):
         warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
 
-        r"""Instance group ID, which will be used when you add an instance in an existing RO group. If this parameter is left empty, an RO group will be created. But it is not recommended to pass in this parameter for the current version, as this version has been disused.
+        r"""<p>Instance group ID, used when adding new instances to an existing RO group. If not passed, a new RO group will be created. The current version does not recommend transmitting this value.</p>
         :rtype: str
         """
         return self._InstanceGrpId
@@ -827,7 +939,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""<p>ID of the associated VPC network.</p>
         :rtype: str
         """
         return self._VpcId
@@ -838,7 +950,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet ID. If `VpcId` is set, `SubnetId` is required.
+        r"""<p>Subnet ID. If VpcId is set up, SubnetId is required.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -871,7 +983,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
+        r"""<p>Whether to automatically select a voucher. 1: Yes; 0: No. Default is 0.</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -882,8 +994,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def DbType(self):
-        r"""Database type. Valid values: 
-<li> MYSQL </li>
+        r"""<p>Database type, value ranges from...to...: </p><li> MYSQL </li>
         :rtype: str
         """
         return self._DbType
@@ -894,7 +1005,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def OrderSource(self):
-        r"""Order source. String length range: [0,64).
+        r"""<p>Order source, string length range [0,64)</p>
         :rtype: str
         """
         return self._OrderSource
@@ -905,7 +1016,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def DealMode(self):
-        r"""Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
+        r"""<p>Transaction mode. 0: place order and pay; 1: place order</p>
         :rtype: int
         """
         return self._DealMode
@@ -916,7 +1027,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""Parameter template ID
+        r"""<p>Parameter template ID</p>
         :rtype: int
         """
         return self._ParamTemplateId
@@ -927,7 +1038,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def InstanceParams(self):
-        r"""Parameter list, which is valid only if `InstanceParams` is passed in to `ParamTemplateId`.
+        r"""<p>Parameter list. InstanceParams is valid only when ParamTemplateId is passed in.</p>
         :rtype: list of ModifyParamItem
         """
         return self._InstanceParams
@@ -938,7 +1049,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""Security group ID. You can specify an security group when creating a read-only instance.
+        r"""<p>Security group ID. You can specify security groups when creating a read-only instance.</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -947,12 +1058,24 @@ class AddInstancesRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def UpgradeProxy(self):
+        r"""<p>proxy sync upgrade</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxy`
+        """
+        return self._UpgradeProxy
+
+    @UpgradeProxy.setter
+    def UpgradeProxy(self, UpgradeProxy):
+        self._UpgradeProxy = UpgradeProxy
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._ReadOnlyCount = params.get("ReadOnlyCount")
+        self._DeviceType = params.get("DeviceType")
         self._InstanceGrpId = params.get("InstanceGrpId")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
@@ -970,6 +1093,9 @@ class AddInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceParams.append(obj)
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("UpgradeProxy") is not None:
+            self._UpgradeProxy = UpgradeProxy()
+            self._UpgradeProxy._deserialize(params.get("UpgradeProxy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -987,13 +1113,13 @@ class AddInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranId: Freeze transaction. one frozen transaction is activated at a time.
+        :param _TranId: <p>Freeze transaction. One frozen flow is activated at a time.</p>
         :type TranId: str
-        :param _DealNames: Specifies the post-paid order number.
+        :param _DealNames: <p>Order ID for payment. Description: Recommend you use the <a href="https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1">DescribeResourcesByDealName</a> api to query order associated instance.</p>
         :type DealNames: list of str
-        :param _ResourceIds: Delivery resource id list.
+        :param _ResourceIds: <p>Delivery resource id list.</p>
         :type ResourceIds: list of str
-        :param _BigDealIds: Large order number.
+        :param _BigDealIds: <p>Large order number</p>
         :type BigDealIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1006,7 +1132,7 @@ class AddInstancesResponse(AbstractModel):
 
     @property
     def TranId(self):
-        r"""Freeze transaction. one frozen transaction is activated at a time.
+        r"""<p>Freeze transaction. One frozen flow is activated at a time.</p>
         :rtype: str
         """
         return self._TranId
@@ -1017,7 +1143,7 @@ class AddInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""Specifies the post-paid order number.
+        r"""<p>Order ID for payment. Description: Recommend you use the <a href="https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1">DescribeResourcesByDealName</a> api to query order associated instance.</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -1028,18 +1154,22 @@ class AddInstancesResponse(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""Delivery resource id list.
+        warnings.warn("parameter `ResourceIds` is deprecated", DeprecationWarning) 
+
+        r"""<p>Delivery resource id list.</p>
         :rtype: list of str
         """
         return self._ResourceIds
 
     @ResourceIds.setter
     def ResourceIds(self, ResourceIds):
+        warnings.warn("parameter `ResourceIds` is deprecated", DeprecationWarning) 
+
         self._ResourceIds = ResourceIds
 
     @property
     def BigDealIds(self):
-        r"""Large order number.
+        r"""<p>Large order number</p>
         :rtype: list of str
         """
         return self._BigDealIds
@@ -1532,6 +1662,323 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class AddServerlessRoInstancesRequest(AbstractModel):
+    r"""AddServerlessRoInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster Id</p>
+        :type ClusterId: str
+        :param _MinCpu: <p>Minimum specification of the ro instance</p>
+        :type MinCpu: float
+        :param _MaxCpu: <p>Maximum specification of ro instance</p>
+        :type MaxCpu: float
+        :param _InstanceName: <p>ro instance name</p>
+        :type InstanceName: str
+        :param _VpcId: <p>VPC network ID</p>
+        :type VpcId: str
+        :param _SubnetId: <p>Subnet ID. If VpcId is set up, SubnetId is required.</p>
+        :type SubnetId: str
+        :param _Port: <p>Port used when adding new RO groups, value range [0,65535)</p>
+        :type Port: int
+        :param _SecurityGroupIds: <p>Security group ID. You can specify security groups when creating a read-only instance.</p>
+        :type SecurityGroupIds: list of str
+        :param _AutoPause: <p>Whether to automatically pause</p><p>Enumeration value:</p><ul><li>yes: Yes</li><li>no: No</li></ul>
+        :type AutoPause: str
+        :param _AutoPauseDelay: <p>Auto-pause time</p><p>Unit: s</p>
+        :type AutoPauseDelay: int
+        :param _InstanceParams: <p>Instance parameter</p>
+        :type InstanceParams: list of ModifyParamItem
+        :param _ParamTemplateId: <p>Parameter template</p>
+        :type ParamTemplateId: int
+        :param _RoCount: <p>Number of newly-added read-only instances</p>
+        :type RoCount: int
+        """
+        self._ClusterId = None
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._InstanceName = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Port = None
+        self._SecurityGroupIds = None
+        self._AutoPause = None
+        self._AutoPauseDelay = None
+        self._InstanceParams = None
+        self._ParamTemplateId = None
+        self._RoCount = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster Id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MinCpu(self):
+        r"""<p>Minimum specification of the ro instance</p>
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        r"""<p>Maximum specification of ro instance</p>
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def InstanceName(self):
+        r"""<p>ro instance name</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC network ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>Subnet ID. If VpcId is set up, SubnetId is required.</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Port(self):
+        r"""<p>Port used when adding new RO groups, value range [0,65535)</p>
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>Security group ID. You can specify security groups when creating a read-only instance.</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def AutoPause(self):
+        r"""<p>Whether to automatically pause</p><p>Enumeration value:</p><ul><li>yes: Yes</li><li>no: No</li></ul>
+        :rtype: str
+        """
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def AutoPauseDelay(self):
+        r"""<p>Auto-pause time</p><p>Unit: s</p>
+        :rtype: int
+        """
+        return self._AutoPauseDelay
+
+    @AutoPauseDelay.setter
+    def AutoPauseDelay(self, AutoPauseDelay):
+        self._AutoPauseDelay = AutoPauseDelay
+
+    @property
+    def InstanceParams(self):
+        r"""<p>Instance parameter</p>
+        :rtype: list of ModifyParamItem
+        """
+        return self._InstanceParams
+
+    @InstanceParams.setter
+    def InstanceParams(self, InstanceParams):
+        self._InstanceParams = InstanceParams
+
+    @property
+    def ParamTemplateId(self):
+        r"""<p>Parameter template</p>
+        :rtype: int
+        """
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
+    @property
+    def RoCount(self):
+        r"""<p>Number of newly-added read-only instances</p>
+        :rtype: int
+        """
+        return self._RoCount
+
+    @RoCount.setter
+    def RoCount(self, RoCount):
+        self._RoCount = RoCount
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._InstanceName = params.get("InstanceName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Port = params.get("Port")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._AutoPause = params.get("AutoPause")
+        self._AutoPauseDelay = params.get("AutoPauseDelay")
+        if params.get("InstanceParams") is not None:
+            self._InstanceParams = []
+            for item in params.get("InstanceParams"):
+                obj = ModifyParamItem()
+                obj._deserialize(item)
+                self._InstanceParams.append(obj)
+        self._ParamTemplateId = params.get("ParamTemplateId")
+        self._RoCount = params.get("RoCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddServerlessRoInstancesResponse(AbstractModel):
+    r"""AddServerlessRoInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranId: <p>Freeze transaction. One frozen flow is activated at a time.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranId: str
+        :param _DealNames: <p>Post-paid order number</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param _ResourceIds: <p>Delivery resource id list.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceIds: list of str
+        :param _BigDealIds: <p>Large order number</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BigDealIds: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TranId = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._BigDealIds = None
+        self._RequestId = None
+
+    @property
+    def TranId(self):
+        r"""<p>Freeze transaction. One frozen flow is activated at a time.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def DealNames(self):
+        r"""<p>Post-paid order number</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        r"""<p>Delivery resource id list.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def BigDealIds(self):
+        r"""<p>Large order number</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TranId = params.get("TranId")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._BigDealIds = params.get("BigDealIds")
+        self._RequestId = params.get("RequestId")
+
+
 class Addr(AbstractModel):
     r"""Database address
 
@@ -1583,18 +2030,114 @@ class Addr(AbstractModel):
         
 
 
-class AuditInstanceFilters(AbstractModel):
-    r"""Query filter conditions for audit instances
+class AssociateSecurityGroupsRequest(AbstractModel):
+    r"""AssociateSecurityGroups request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: Filter condition values. Supports InstanceId-Instance ID, InstanceName-Instance Name, ProjectId-Project ID, TagKey-Tag Key, Tag-Tag (separated by a vertical bar, e.g.: Tagkey|Tagvalue).
+        :param _InstanceIds: Array of instance group IDs, starting with the prefix cynosdbmysql-grp- or a cluster ID.
+Description: To get the instance group ID of a cluster, perform [query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
+        :type InstanceIds: list of str
+        :param _SecurityGroupIds: Security group ID list to be modified. An array of one or more security group IDs.
+        :type SecurityGroupIds: list of str
+        :param _Zone: Availability zone
+        :type Zone: str
+        """
+        self._InstanceIds = None
+        self._SecurityGroupIds = None
+        self._Zone = None
+
+    @property
+    def InstanceIds(self):
+        r"""Array of instance group IDs, starting with the prefix cynosdbmysql-grp- or a cluster ID.
+Description: To get the instance group ID of a cluster, perform [query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def SecurityGroupIds(self):
+        r"""Security group ID list to be modified. An array of one or more security group IDs.
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def Zone(self):
+        r"""Availability zone
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateSecurityGroupsResponse(AbstractModel):
+    r"""AssociateSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AuditInstanceFilters(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 
         :type Name: str
-        :param _ExactMatch: true indicates exact match; false indicates fuzzy match.
+        :param _ExactMatch: 
         :type ExactMatch: bool
-        :param _Values: Filter value
+        :param _Values: 
         :type Values: list of str
         """
         self._Name = None
@@ -1603,7 +2146,7 @@ class AuditInstanceFilters(AbstractModel):
 
     @property
     def Name(self):
-        r"""Filter condition values. Supports InstanceId-Instance ID, InstanceName-Instance Name, ProjectId-Project ID, TagKey-Tag Key, Tag-Tag (separated by a vertical bar, e.g.: Tagkey|Tagvalue).
+        r"""
         :rtype: str
         """
         return self._Name
@@ -1614,7 +2157,7 @@ class AuditInstanceFilters(AbstractModel):
 
     @property
     def ExactMatch(self):
-        r"""true indicates exact match; false indicates fuzzy match.
+        r"""
         :rtype: bool
         """
         return self._ExactMatch
@@ -1625,7 +2168,7 @@ class AuditInstanceFilters(AbstractModel):
 
     @property
     def Values(self):
-        r"""Filter value
+        r"""
         :rtype: list of str
         """
         return self._Values
@@ -1650,7 +2193,7 @@ class AuditInstanceFilters(AbstractModel):
 
 
 class AuditInstanceInfo(AbstractModel):
-    r"""Audit instance details
+    r"""
 
     """
 
@@ -1922,6 +2465,367 @@ class AuditRuleTemplateInfo(AbstractModel):
         
 
 
+class AutoCopyConfig(AbstractModel):
+    r"""Safe automatically deliver relationship
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID.
+        :type ClusterId: str
+        :param _VaultId: Safe ID
+        :type VaultId: str
+        :param _VaultRegion: Safe region
+        :type VaultRegion: str
+        :param _CopyType: Delivery Type: binlog, redolog, snapshot, logic
+        :type CopyType: str
+        """
+        self._ClusterId = None
+        self._VaultId = None
+        self._VaultRegion = None
+        self._CopyType = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def VaultId(self):
+        r"""Safe ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultRegion(self):
+        r"""Safe region
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
+    @property
+    def CopyType(self):
+        r"""Delivery Type: binlog, redolog, snapshot, logic
+        :rtype: str
+        """
+        return self._CopyType
+
+    @CopyType.setter
+    def CopyType(self, CopyType):
+        self._CopyType = CopyType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._VaultId = params.get("VaultId")
+        self._VaultRegion = params.get("VaultRegion")
+        self._CopyType = params.get("CopyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutoMapRule(AbstractModel):
+    r"""Advanced mapping, automated mapping rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcInstanceId: Source instance Id
+        :type SrcInstanceId: str
+        :param _SrcDatabaseRegex: Source database regular
+        :type SrcDatabaseRegex: str
+        :param _SrcTableRegex: Source table regular
+        :type SrcTableRegex: str
+        :param _DstDatabaseRegex: Target database regular
+        :type DstDatabaseRegex: str
+        :param _DstTableRegex: Target table regular
+        :type DstTableRegex: str
+        """
+        self._SrcInstanceId = None
+        self._SrcDatabaseRegex = None
+        self._SrcTableRegex = None
+        self._DstDatabaseRegex = None
+        self._DstTableRegex = None
+
+    @property
+    def SrcInstanceId(self):
+        r"""Source instance Id
+        :rtype: str
+        """
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def SrcDatabaseRegex(self):
+        r"""Source database regular
+        :rtype: str
+        """
+        return self._SrcDatabaseRegex
+
+    @SrcDatabaseRegex.setter
+    def SrcDatabaseRegex(self, SrcDatabaseRegex):
+        self._SrcDatabaseRegex = SrcDatabaseRegex
+
+    @property
+    def SrcTableRegex(self):
+        r"""Source table regular
+        :rtype: str
+        """
+        return self._SrcTableRegex
+
+    @SrcTableRegex.setter
+    def SrcTableRegex(self, SrcTableRegex):
+        self._SrcTableRegex = SrcTableRegex
+
+    @property
+    def DstDatabaseRegex(self):
+        r"""Target database regular
+        :rtype: str
+        """
+        return self._DstDatabaseRegex
+
+    @DstDatabaseRegex.setter
+    def DstDatabaseRegex(self, DstDatabaseRegex):
+        self._DstDatabaseRegex = DstDatabaseRegex
+
+    @property
+    def DstTableRegex(self):
+        r"""Target table regular
+        :rtype: str
+        """
+        return self._DstTableRegex
+
+    @DstTableRegex.setter
+    def DstTableRegex(self, DstTableRegex):
+        self._DstTableRegex = DstTableRegex
+
+
+    def _deserialize(self, params):
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._SrcDatabaseRegex = params.get("SrcDatabaseRegex")
+        self._SrcTableRegex = params.get("SrcTableRegex")
+        self._DstDatabaseRegex = params.get("DstDatabaseRegex")
+        self._DstTableRegex = params.get("DstTableRegex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupConfigInfo(AbstractModel):
+    r"""Backup setting.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupCustomAutoTime: System automation time.
+        :type BackupCustomAutoTime: bool
+        :param _BackupTimeBeg: Indicates the full backup start time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :type BackupTimeBeg: int
+        :param _BackupTimeEnd: Indicates the full backup end time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :type BackupTimeEnd: int
+        :param _BackupWeekDays: Currently this parameter cannot be modified. no need to specify. backup frequency is an array of length 7, corresponding to the backup method from sunday to saturday, full for full backup and increment for incremental backup.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupWeekDays: list of str
+        :param _BackupIntervalTime: Interval.
+        :type BackupIntervalTime: int
+        :param _ReserveDuration: Indicates the backup retention period in seconds. data will be cleaned up longer than this time. 7 days means 3600247=604800. the maximum is 158112000.
+        :type ReserveDuration: int
+        :param _CrossRegionsEnable: Enable cross-region backup.
+Enable.
+0: disabled.
+        :type CrossRegionsEnable: str
+        :param _CrossRegions: Cross-Regional backup region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CrossRegions: list of str
+        :param _BackupTriggerStrategy: Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high-frequency backup
+        :type BackupTriggerStrategy: str
+        :param _AutoCopyVaults: Backup delivery relationship
+        :type AutoCopyVaults: list of CreateBackupVaultItem
+        """
+        self._BackupCustomAutoTime = None
+        self._BackupTimeBeg = None
+        self._BackupTimeEnd = None
+        self._BackupWeekDays = None
+        self._BackupIntervalTime = None
+        self._ReserveDuration = None
+        self._CrossRegionsEnable = None
+        self._CrossRegions = None
+        self._BackupTriggerStrategy = None
+        self._AutoCopyVaults = None
+
+    @property
+    def BackupCustomAutoTime(self):
+        r"""System automation time.
+        :rtype: bool
+        """
+        return self._BackupCustomAutoTime
+
+    @BackupCustomAutoTime.setter
+    def BackupCustomAutoTime(self, BackupCustomAutoTime):
+        self._BackupCustomAutoTime = BackupCustomAutoTime
+
+    @property
+    def BackupTimeBeg(self):
+        r"""Indicates the full backup start time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :rtype: int
+        """
+        return self._BackupTimeBeg
+
+    @BackupTimeBeg.setter
+    def BackupTimeBeg(self, BackupTimeBeg):
+        self._BackupTimeBeg = BackupTimeBeg
+
+    @property
+    def BackupTimeEnd(self):
+        r"""Indicates the full backup end time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :rtype: int
+        """
+        return self._BackupTimeEnd
+
+    @BackupTimeEnd.setter
+    def BackupTimeEnd(self, BackupTimeEnd):
+        self._BackupTimeEnd = BackupTimeEnd
+
+    @property
+    def BackupWeekDays(self):
+        r"""Currently this parameter cannot be modified. no need to specify. backup frequency is an array of length 7, corresponding to the backup method from sunday to saturday, full for full backup and increment for incremental backup.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._BackupWeekDays
+
+    @BackupWeekDays.setter
+    def BackupWeekDays(self, BackupWeekDays):
+        self._BackupWeekDays = BackupWeekDays
+
+    @property
+    def BackupIntervalTime(self):
+        r"""Interval.
+        :rtype: int
+        """
+        return self._BackupIntervalTime
+
+    @BackupIntervalTime.setter
+    def BackupIntervalTime(self, BackupIntervalTime):
+        self._BackupIntervalTime = BackupIntervalTime
+
+    @property
+    def ReserveDuration(self):
+        r"""Indicates the backup retention period in seconds. data will be cleaned up longer than this time. 7 days means 3600247=604800. the maximum is 158112000.
+        :rtype: int
+        """
+        return self._ReserveDuration
+
+    @ReserveDuration.setter
+    def ReserveDuration(self, ReserveDuration):
+        self._ReserveDuration = ReserveDuration
+
+    @property
+    def CrossRegionsEnable(self):
+        r"""Enable cross-region backup.
+Enable.
+0: disabled.
+        :rtype: str
+        """
+        return self._CrossRegionsEnable
+
+    @CrossRegionsEnable.setter
+    def CrossRegionsEnable(self, CrossRegionsEnable):
+        self._CrossRegionsEnable = CrossRegionsEnable
+
+    @property
+    def CrossRegions(self):
+        r"""Cross-Regional backup region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._CrossRegions
+
+    @CrossRegions.setter
+    def CrossRegions(self, CrossRegions):
+        self._CrossRegions = CrossRegions
+
+    @property
+    def BackupTriggerStrategy(self):
+        r"""Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high-frequency backup
+        :rtype: str
+        """
+        return self._BackupTriggerStrategy
+
+    @BackupTriggerStrategy.setter
+    def BackupTriggerStrategy(self, BackupTriggerStrategy):
+        self._BackupTriggerStrategy = BackupTriggerStrategy
+
+    @property
+    def AutoCopyVaults(self):
+        r"""Backup delivery relationship
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
+
+
+    def _deserialize(self, params):
+        self._BackupCustomAutoTime = params.get("BackupCustomAutoTime")
+        self._BackupTimeBeg = params.get("BackupTimeBeg")
+        self._BackupTimeEnd = params.get("BackupTimeEnd")
+        self._BackupWeekDays = params.get("BackupWeekDays")
+        self._BackupIntervalTime = params.get("BackupIntervalTime")
+        self._ReserveDuration = params.get("ReserveDuration")
+        self._CrossRegionsEnable = params.get("CrossRegionsEnable")
+        self._CrossRegions = params.get("CrossRegions")
+        self._BackupTriggerStrategy = params.get("BackupTriggerStrategy")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupFileInfo(AbstractModel):
     r"""Backup file information
 
@@ -1929,30 +2833,40 @@ class BackupFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotId: Snapshot file ID, which is deprecated. You need to use `BackupId`.
+        :param _SnapshotId: <p>Snapshot file ID, abandoned, please use BackupId</p>
         :type SnapshotId: int
-        :param _FileName: Backup file name
+        :param _FileName: <p>Backup file name</p>
         :type FileName: str
-        :param _FileSize: Backup file size
+        :param _FileSize: <p>Backup file size</p>
         :type FileSize: int
-        :param _StartTime: Backup start time
+        :param _StartTime: <p>Backup start time.</p>
         :type StartTime: str
-        :param _FinishTime: Backup end time
+        :param _FinishTime: <p>Backup completion time.</p>
         :type FinishTime: str
-        :param _BackupType: Backup type. Valid values: `snapshot` (snapshot backup), `logic` (logic backup).
+        :param _BackupType: <p>Backup type: snapshot, snapshot backup; logic, logical backup</p>
         :type BackupType: str
-        :param _BackupMethod: Back mode. auto: auto backup; manual: manual backup
+        :param _BackupMethod: <p>Backup method: auto, automatic backup; manual, manual backup</p>
         :type BackupMethod: str
-        :param _BackupStatus: Backup file status. success: backup succeeded; fail: backup failed; creating: creating backup file; deleting: deleting backup file
+        :param _BackupStatus: <p>Backup file status: success: backup successful; fail: backup failed; creating: backup file being created; deleting: backup file deleting</p>
         :type BackupStatus: str
-        :param _SnapshotTime: Backup file time
+        :param _SnapshotTime: <p>Backup file time</p>
         :type SnapshotTime: str
-        :param _BackupId: Backup ID.
+        :param _BackupId: <p>Backup ID</p>
         :type BackupId: int
-        :param _SnapShotType: Specifies the snapshot type. valid values: full (full snapshot); increment (incremental snapshot).
+        :param _SnapShotType: <p>Snapshot type. Value range: full, full; increment, incremental</p>
         :type SnapShotType: str
-        :param _BackupName: Specifies the remark of the backup file.
+        :param _BackupName: <p>Backup file remark</p>
         :type BackupName: str
+        :param _CopyStatus: <p>Delivery status</p>
+        :type CopyStatus: str
+        :param _EncryptKeyId: <p>Key id</p>
+        :type EncryptKeyId: str
+        :param _EncryptRegion: <p>Key region</p>
+        :type EncryptRegion: str
+        :param _VaultInfos: <p>Safe info</p>
+        :type VaultInfos: list of VaultInfo
+        :param _BackupPeriodStrategy: <p>Backup cycle policy</p>
+        :type BackupPeriodStrategy: str
         """
         self._SnapshotId = None
         self._FileName = None
@@ -1966,10 +2880,15 @@ class BackupFileInfo(AbstractModel):
         self._BackupId = None
         self._SnapShotType = None
         self._BackupName = None
+        self._CopyStatus = None
+        self._EncryptKeyId = None
+        self._EncryptRegion = None
+        self._VaultInfos = None
+        self._BackupPeriodStrategy = None
 
     @property
     def SnapshotId(self):
-        r"""Snapshot file ID, which is deprecated. You need to use `BackupId`.
+        r"""<p>Snapshot file ID, abandoned, please use BackupId</p>
         :rtype: int
         """
         return self._SnapshotId
@@ -1980,7 +2899,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def FileName(self):
-        r"""Backup file name
+        r"""<p>Backup file name</p>
         :rtype: str
         """
         return self._FileName
@@ -1991,7 +2910,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""Backup file size
+        r"""<p>Backup file size</p>
         :rtype: int
         """
         return self._FileSize
@@ -2002,7 +2921,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Backup start time
+        r"""<p>Backup start time.</p>
         :rtype: str
         """
         return self._StartTime
@@ -2013,7 +2932,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""Backup end time
+        r"""<p>Backup completion time.</p>
         :rtype: str
         """
         return self._FinishTime
@@ -2024,7 +2943,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""Backup type. Valid values: `snapshot` (snapshot backup), `logic` (logic backup).
+        r"""<p>Backup type: snapshot, snapshot backup; logic, logical backup</p>
         :rtype: str
         """
         return self._BackupType
@@ -2035,7 +2954,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""Back mode. auto: auto backup; manual: manual backup
+        r"""<p>Backup method: auto, automatic backup; manual, manual backup</p>
         :rtype: str
         """
         return self._BackupMethod
@@ -2046,7 +2965,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupStatus(self):
-        r"""Backup file status. success: backup succeeded; fail: backup failed; creating: creating backup file; deleting: deleting backup file
+        r"""<p>Backup file status: success: backup successful; fail: backup failed; creating: backup file being created; deleting: backup file deleting</p>
         :rtype: str
         """
         return self._BackupStatus
@@ -2057,7 +2976,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def SnapshotTime(self):
-        r"""Backup file time
+        r"""<p>Backup file time</p>
         :rtype: str
         """
         return self._SnapshotTime
@@ -2068,7 +2987,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""Backup ID.
+        r"""<p>Backup ID</p>
         :rtype: int
         """
         return self._BackupId
@@ -2079,7 +2998,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def SnapShotType(self):
-        r"""Specifies the snapshot type. valid values: full (full snapshot); increment (incremental snapshot).
+        r"""<p>Snapshot type. Value range: full, full; increment, incremental</p>
         :rtype: str
         """
         return self._SnapShotType
@@ -2090,7 +3009,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""Specifies the remark of the backup file.
+        r"""<p>Backup file remark</p>
         :rtype: str
         """
         return self._BackupName
@@ -2098,6 +3017,61 @@ class BackupFileInfo(AbstractModel):
     @BackupName.setter
     def BackupName(self, BackupName):
         self._BackupName = BackupName
+
+    @property
+    def CopyStatus(self):
+        r"""<p>Delivery status</p>
+        :rtype: str
+        """
+        return self._CopyStatus
+
+    @CopyStatus.setter
+    def CopyStatus(self, CopyStatus):
+        self._CopyStatus = CopyStatus
+
+    @property
+    def EncryptKeyId(self):
+        r"""<p>Key id</p>
+        :rtype: str
+        """
+        return self._EncryptKeyId
+
+    @EncryptKeyId.setter
+    def EncryptKeyId(self, EncryptKeyId):
+        self._EncryptKeyId = EncryptKeyId
+
+    @property
+    def EncryptRegion(self):
+        r"""<p>Key region</p>
+        :rtype: str
+        """
+        return self._EncryptRegion
+
+    @EncryptRegion.setter
+    def EncryptRegion(self, EncryptRegion):
+        self._EncryptRegion = EncryptRegion
+
+    @property
+    def VaultInfos(self):
+        r"""<p>Safe info</p>
+        :rtype: list of VaultInfo
+        """
+        return self._VaultInfos
+
+    @VaultInfos.setter
+    def VaultInfos(self, VaultInfos):
+        self._VaultInfos = VaultInfos
+
+    @property
+    def BackupPeriodStrategy(self):
+        r"""<p>Backup cycle policy</p>
+        :rtype: str
+        """
+        return self._BackupPeriodStrategy
+
+    @BackupPeriodStrategy.setter
+    def BackupPeriodStrategy(self, BackupPeriodStrategy):
+        self._BackupPeriodStrategy = BackupPeriodStrategy
 
 
     def _deserialize(self, params):
@@ -2113,6 +3087,16 @@ class BackupFileInfo(AbstractModel):
         self._BackupId = params.get("BackupId")
         self._SnapShotType = params.get("SnapShotType")
         self._BackupName = params.get("BackupName")
+        self._CopyStatus = params.get("CopyStatus")
+        self._EncryptKeyId = params.get("EncryptKeyId")
+        self._EncryptRegion = params.get("EncryptRegion")
+        if params.get("VaultInfos") is not None:
+            self._VaultInfos = []
+            for item in params.get("VaultInfos"):
+                obj = VaultInfo()
+                obj._deserialize(item)
+                self._VaultInfos.append(obj)
+        self._BackupPeriodStrategy = params.get("BackupPeriodStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2322,6 +3306,57 @@ class BackupLimitVpcItem(AbstractModel):
     def _deserialize(self, params):
         self._Region = params.get("Region")
         self._VpcList = params.get("VpcList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupRegionAndIds(AbstractModel):
+    r"""Region where backup files are located and ID.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupRegion: Backup region.
+        :type BackupRegion: str
+        :param _BackupId: Backup ID.
+        :type BackupId: int
+        """
+        self._BackupRegion = None
+        self._BackupId = None
+
+    @property
+    def BackupRegion(self):
+        r"""Backup region.
+        :rtype: str
+        """
+        return self._BackupRegion
+
+    @BackupRegion.setter
+    def BackupRegion(self, BackupRegion):
+        self._BackupRegion = BackupRegion
+
+    @property
+    def BackupId(self):
+        r"""Backup ID.
+        :rtype: int
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+
+    def _deserialize(self, params):
+        self._BackupRegion = params.get("BackupRegion")
+        self._BackupId = params.get("BackupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2572,10 +3607,13 @@ class BinlogConfigInfo(AbstractModel):
         :param _BinlogCrossRegions: binlog in a different region.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BinlogCrossRegions: list of str
+        :param _AutoCopyVaults: Safe info
+        :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._BinlogSaveDays = None
         self._BinlogCrossRegionsEnable = None
         self._BinlogCrossRegions = None
+        self._AutoCopyVaults = None
 
     @property
     def BinlogSaveDays(self):
@@ -2611,11 +3649,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def BinlogCrossRegions(self, BinlogCrossRegions):
         self._BinlogCrossRegions = BinlogCrossRegions
 
+    @property
+    def AutoCopyVaults(self):
+        r"""Safe info
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
+
 
     def _deserialize(self, params):
         self._BinlogSaveDays = params.get("BinlogSaveDays")
         self._BinlogCrossRegionsEnable = params.get("BinlogCrossRegionsEnable")
         self._BinlogCrossRegions = params.get("BinlogCrossRegions")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2643,12 +3698,27 @@ class BinlogItem(AbstractModel):
         :type FinishTime: str
         :param _BinlogId: Binlog file ID
         :type BinlogId: int
+        :param _CrossRegions: binlog cross-region coverage
+        :type CrossRegions: list of str
+        :param _CopyStatus: Backup delivery status
+        :type CopyStatus: str
+        :param _VaultInfos: Safe info
+        :type VaultInfos: list of VaultInfo
+        :param _EncryptKeyId: Encryption key
+        :type EncryptKeyId: str
+        :param _EncryptRegion: Encrypt key region
+        :type EncryptRegion: str
         """
         self._FileName = None
         self._FileSize = None
         self._StartTime = None
         self._FinishTime = None
         self._BinlogId = None
+        self._CrossRegions = None
+        self._CopyStatus = None
+        self._VaultInfos = None
+        self._EncryptKeyId = None
+        self._EncryptRegion = None
 
     @property
     def FileName(self):
@@ -2705,6 +3775,61 @@ class BinlogItem(AbstractModel):
     def BinlogId(self, BinlogId):
         self._BinlogId = BinlogId
 
+    @property
+    def CrossRegions(self):
+        r"""binlog cross-region coverage
+        :rtype: list of str
+        """
+        return self._CrossRegions
+
+    @CrossRegions.setter
+    def CrossRegions(self, CrossRegions):
+        self._CrossRegions = CrossRegions
+
+    @property
+    def CopyStatus(self):
+        r"""Backup delivery status
+        :rtype: str
+        """
+        return self._CopyStatus
+
+    @CopyStatus.setter
+    def CopyStatus(self, CopyStatus):
+        self._CopyStatus = CopyStatus
+
+    @property
+    def VaultInfos(self):
+        r"""Safe info
+        :rtype: list of VaultInfo
+        """
+        return self._VaultInfos
+
+    @VaultInfos.setter
+    def VaultInfos(self, VaultInfos):
+        self._VaultInfos = VaultInfos
+
+    @property
+    def EncryptKeyId(self):
+        r"""Encryption key
+        :rtype: str
+        """
+        return self._EncryptKeyId
+
+    @EncryptKeyId.setter
+    def EncryptKeyId(self, EncryptKeyId):
+        self._EncryptKeyId = EncryptKeyId
+
+    @property
+    def EncryptRegion(self):
+        r"""Encrypt key region
+        :rtype: str
+        """
+        return self._EncryptRegion
+
+    @EncryptRegion.setter
+    def EncryptRegion(self, EncryptRegion):
+        self._EncryptRegion = EncryptRegion
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -2712,6 +3837,16 @@ class BinlogItem(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._FinishTime = params.get("FinishTime")
         self._BinlogId = params.get("BinlogId")
+        self._CrossRegions = params.get("CrossRegions")
+        self._CopyStatus = params.get("CopyStatus")
+        if params.get("VaultInfos") is not None:
+            self._VaultInfos = []
+            for item in params.get("VaultInfos"):
+                obj = VaultInfo()
+                obj._deserialize(item)
+                self._VaultInfos.append(obj)
+        self._EncryptKeyId = params.get("EncryptKeyId")
+        self._EncryptRegion = params.get("EncryptRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2723,63 +3858,63 @@ class BinlogItem(AbstractModel):
 
 
 class BizTaskInfo(AbstractModel):
-    r"""Task information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _ID: Task id
+        :param _ID: 
         :type ID: int
-        :param _AppId: User appid
+        :param _AppId: 
         :type AppId: int
-        :param _ClusterId: cluster id
+        :param _ClusterId: 
         :type ClusterId: str
         :param _Region: Region
         :type Region: str
-        :param _CreateTime: Task Creation Time
+        :param _CreateTime: 
         :type CreateTime: str
         :param _DelayTime: Specifies the delayed execution time.
         :type DelayTime: str
         :param _ErrMsg: Task failure information.
         :type ErrMsg: str
-        :param _FlowId: asynchronous task flow id
+        :param _FlowId: 
         :type FlowId: int
-        :param _Input: task input information
+        :param _Input: 
         :type Input: str
-        :param _InstanceGrpId: instance group id
+        :param _InstanceGrpId: 
         :type InstanceGrpId: str
-        :param _InstanceGroupId: instance group id
+        :param _InstanceGroupId: 
         :type InstanceGroupId: str
-        :param _InstanceId: Instance id
+        :param _InstanceId: 
         :type InstanceId: str
-        :param _ObjectId: Task Operation Target id
+        :param _ObjectId: 
         :type ObjectId: str
-        :param _ObjectType: Task Operation Target Type
+        :param _ObjectType: 
         :type ObjectType: str
-        :param _Operator: Operator uin
+        :param _Operator: 
         :type Operator: str
-        :param _Output: task output information
+        :param _Output: 
         :type Output: str
-        :param _Status: Task Status
+        :param _Status: 
         :type Status: str
-        :param _TaskType: task type
+        :param _TaskType: 
         :type TaskType: str
-        :param _TriggerTaskId: Parent Task ID that Triggered This Task
+        :param _TriggerTaskId: 
         :type TriggerTaskId: int
-        :param _UpdateTime: Update Time
+        :param _UpdateTime: 
         :type UpdateTime: str
-        :param _StartTime: Task Start Time
+        :param _StartTime: 
         :type StartTime: str
-        :param _EndTime: Task End Time
+        :param _EndTime: 
         :type EndTime: str
-        :param _ClusterName: Cluster Name
+        :param _ClusterName: 
         :type ClusterName: str
-        :param _InstanceName: Instance Name
+        :param _InstanceName: 
         :type InstanceName: str
-        :param _Process: Task Progress
+        :param _Process: 
         :type Process: int
-        :param _ModifyParamsData: Parameter Modification Task Information
+        :param _ModifyParamsData: 
         :type ModifyParamsData: list of ModifyParamsData
         :param _CreateClustersData: Create cluster task information.
         :type CreateClustersData: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersData`
@@ -2787,15 +3922,15 @@ class BizTaskInfo(AbstractModel):
         :type RollbackData: :class:`tencentcloud.cynosdb.v20190107.models.RollbackData`
         :param _ModifyInstanceData: Instance configuration change task information.
         :type ModifyInstanceData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceData`
-        :param _ManualBackupData: Manual Backup Task Information
+        :param _ManualBackupData: 
         :type ManualBackupData: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
         :param _ModifyDbVersionData: Modify kernel version task information.
         :type ModifyDbVersionData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDbVersionData`
         :param _ClusterSlaveData: Cluster availability zone information.
         :type ClusterSlaveData: :class:`tencentcloud.cynosdb.v20190107.models.ClusterSlaveData`
-        :param _SwitchClusterLogBin: Cluster Log Conversion
+        :param _SwitchClusterLogBin: 
         :type SwitchClusterLogBin: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterLogBin`
-        :param _ModifyInstanceParamsData: Instance Parameter Modification
+        :param _ModifyInstanceParamsData: 
         :type ModifyInstanceParamsData: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
         :param _TaskMaintainInfo: Maintenance time.
         :type TaskMaintainInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
@@ -2804,6 +3939,12 @@ class BizTaskInfo(AbstractModel):
         :type InstanceCLSDeliveryInfos: list of InstanceCLSDeliveryInfo
         :param _TaskProgressInfo: Task progress information.
         :type TaskProgressInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
+        :param _GdnTaskInfo: Global Database Network Task
+        :type GdnTaskInfo: :class:`tencentcloud.cynosdb.v20190107.models.GdnTaskInfo`
+        :param _VaultId: Safe id
+        :type VaultId: str
+        :param _VaultName: Safe name
+        :type VaultName: str
         """
         self._ID = None
         self._AppId = None
@@ -2842,10 +3983,13 @@ class BizTaskInfo(AbstractModel):
         self._TaskMaintainInfo = None
         self._InstanceCLSDeliveryInfos = None
         self._TaskProgressInfo = None
+        self._GdnTaskInfo = None
+        self._VaultId = None
+        self._VaultName = None
 
     @property
     def ID(self):
-        r"""Task id
+        r"""
         :rtype: int
         """
         return self._ID
@@ -2856,7 +4000,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""User appid
+        r"""
         :rtype: int
         """
         return self._AppId
@@ -2867,7 +4011,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""cluster id
+        r"""
         :rtype: str
         """
         return self._ClusterId
@@ -2889,7 +4033,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Task Creation Time
+        r"""
         :rtype: str
         """
         return self._CreateTime
@@ -2922,7 +4066,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""asynchronous task flow id
+        r"""
         :rtype: int
         """
         return self._FlowId
@@ -2933,7 +4077,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Input(self):
-        r"""task input information
+        r"""
         :rtype: str
         """
         return self._Input
@@ -2946,7 +4090,7 @@ class BizTaskInfo(AbstractModel):
     def InstanceGrpId(self):
         warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
 
-        r"""instance group id
+        r"""
         :rtype: str
         """
         return self._InstanceGrpId
@@ -2959,7 +4103,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        r"""instance group id
+        r"""
         :rtype: str
         """
         return self._InstanceGroupId
@@ -2970,7 +4114,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance id
+        r"""
         :rtype: str
         """
         return self._InstanceId
@@ -2981,7 +4125,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ObjectId(self):
-        r"""Task Operation Target id
+        r"""
         :rtype: str
         """
         return self._ObjectId
@@ -2992,7 +4136,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ObjectType(self):
-        r"""Task Operation Target Type
+        r"""
         :rtype: str
         """
         return self._ObjectType
@@ -3003,7 +4147,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Operator(self):
-        r"""Operator uin
+        r"""
         :rtype: str
         """
         return self._Operator
@@ -3014,7 +4158,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Output(self):
-        r"""task output information
+        r"""
         :rtype: str
         """
         return self._Output
@@ -3025,7 +4169,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task Status
+        r"""
         :rtype: str
         """
         return self._Status
@@ -3036,7 +4180,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""task type
+        r"""
         :rtype: str
         """
         return self._TaskType
@@ -3047,7 +4191,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TriggerTaskId(self):
-        r"""Parent Task ID that Triggered This Task
+        r"""
         :rtype: int
         """
         return self._TriggerTaskId
@@ -3058,7 +4202,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update Time
+        r"""
         :rtype: str
         """
         return self._UpdateTime
@@ -3069,7 +4213,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Task Start Time
+        r"""
         :rtype: str
         """
         return self._StartTime
@@ -3080,7 +4224,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Task End Time
+        r"""
         :rtype: str
         """
         return self._EndTime
@@ -3091,7 +4235,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""Cluster Name
+        r"""
         :rtype: str
         """
         return self._ClusterName
@@ -3102,7 +4246,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance Name
+        r"""
         :rtype: str
         """
         return self._InstanceName
@@ -3113,7 +4257,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Process(self):
-        r"""Task Progress
+        r"""
         :rtype: int
         """
         return self._Process
@@ -3126,7 +4270,7 @@ class BizTaskInfo(AbstractModel):
     def ModifyParamsData(self):
         warnings.warn("parameter `ModifyParamsData` is deprecated", DeprecationWarning) 
 
-        r"""Parameter Modification Task Information
+        r"""
         :rtype: list of ModifyParamsData
         """
         return self._ModifyParamsData
@@ -3172,7 +4316,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ManualBackupData(self):
-        r"""Manual Backup Task Information
+        r"""
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
         """
         return self._ManualBackupData
@@ -3205,7 +4349,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def SwitchClusterLogBin(self):
-        r"""Cluster Log Conversion
+        r"""
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterLogBin`
         """
         return self._SwitchClusterLogBin
@@ -3216,7 +4360,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ModifyInstanceParamsData(self):
-        r"""Instance Parameter Modification
+        r"""
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
         """
         return self._ModifyInstanceParamsData
@@ -3258,6 +4402,39 @@ class BizTaskInfo(AbstractModel):
     @TaskProgressInfo.setter
     def TaskProgressInfo(self, TaskProgressInfo):
         self._TaskProgressInfo = TaskProgressInfo
+
+    @property
+    def GdnTaskInfo(self):
+        r"""Global Database Network Task
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.GdnTaskInfo`
+        """
+        return self._GdnTaskInfo
+
+    @GdnTaskInfo.setter
+    def GdnTaskInfo(self, GdnTaskInfo):
+        self._GdnTaskInfo = GdnTaskInfo
+
+    @property
+    def VaultId(self):
+        r"""Safe id
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultName(self):
+        r"""Safe name
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
 
 
     def _deserialize(self, params):
@@ -3328,6 +4505,11 @@ class BizTaskInfo(AbstractModel):
         if params.get("TaskProgressInfo") is not None:
             self._TaskProgressInfo = TaskProgressInfo()
             self._TaskProgressInfo._deserialize(params.get("TaskProgressInfo"))
+        if params.get("GdnTaskInfo") is not None:
+            self._GdnTaskInfo = GdnTaskInfo()
+            self._GdnTaskInfo._deserialize(params.get("GdnTaskInfo"))
+        self._VaultId = params.get("VaultId")
+        self._VaultName = params.get("VaultName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3339,13 +4521,13 @@ class BizTaskInfo(AbstractModel):
 
 
 class BizTaskModifyInstanceParam(AbstractModel):
-    r"""Instance Parameter Modification Task Details
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: 
         :type InstanceId: str
         :param _ModifyInstanceParamList: Details of instance parameter modification task.
         :type ModifyInstanceParamList: list of ModifyParamItem
@@ -3355,7 +4537,7 @@ class BizTaskModifyInstanceParam(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""
         :rtype: str
         """
         return self._InstanceId
@@ -3395,13 +4577,13 @@ class BizTaskModifyInstanceParam(AbstractModel):
 
 
 class BizTaskModifyParamsData(AbstractModel):
-    r"""Parameter Modification Task Data
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: 
         :type ClusterId: str
         :param _ClusterParamList: Cluster parameter modification data.
         :type ClusterParamList: list of ModifyParamItem
@@ -3414,7 +4596,7 @@ class BizTaskModifyParamsData(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""
         :rtype: str
         """
         return self._ClusterId
@@ -3471,31 +4653,25 @@ class BizTaskModifyParamsData(AbstractModel):
 
 
 class CLSInfo(AbstractModel):
-    r"""CLS Log Delivery Configuration
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _TopicOperation: Log topic operation: optional create, reuse.
-create: create a new log topic using TopicName.
-reuse: use an existing log topic by specifying TopicId.
-Combining the use of an existing log topic and creating a new log set is not allowed.
+        :param _TopicOperation: 
         :type TopicOperation: str
-        :param _GroupOperation: Log set operation: optional create, reuse.
-create: create a new log set using GroupName.
-reuse: use an existing log set by specifying GroupId.
-Combining the use of an existing log topic and creating a new log set is not allowed.
+        :param _GroupOperation: 
         :type GroupOperation: str
-        :param _Region: Log Delivery Region
+        :param _Region: 
         :type Region: str
-        :param _TopicId: log topic id
+        :param _TopicId: 
         :type TopicId: str
-        :param _TopicName: log topic name
+        :param _TopicName: 
         :type TopicName: str
-        :param _GroupId: log set id
+        :param _GroupId: 
         :type GroupId: str
-        :param _GroupName: log set name
+        :param _GroupName: 
         :type GroupName: str
         """
         self._TopicOperation = None
@@ -3508,10 +4684,7 @@ Combining the use of an existing log topic and creating a new log set is not all
 
     @property
     def TopicOperation(self):
-        r"""Log topic operation: optional create, reuse.
-create: create a new log topic using TopicName.
-reuse: use an existing log topic by specifying TopicId.
-Combining the use of an existing log topic and creating a new log set is not allowed.
+        r"""
         :rtype: str
         """
         return self._TopicOperation
@@ -3522,10 +4695,7 @@ Combining the use of an existing log topic and creating a new log set is not all
 
     @property
     def GroupOperation(self):
-        r"""Log set operation: optional create, reuse.
-create: create a new log set using GroupName.
-reuse: use an existing log set by specifying GroupId.
-Combining the use of an existing log topic and creating a new log set is not allowed.
+        r"""
         :rtype: str
         """
         return self._GroupOperation
@@ -3536,7 +4706,7 @@ Combining the use of an existing log topic and creating a new log set is not all
 
     @property
     def Region(self):
-        r"""Log Delivery Region
+        r"""
         :rtype: str
         """
         return self._Region
@@ -3547,7 +4717,7 @@ Combining the use of an existing log topic and creating a new log set is not all
 
     @property
     def TopicId(self):
-        r"""log topic id
+        r"""
         :rtype: str
         """
         return self._TopicId
@@ -3558,7 +4728,7 @@ Combining the use of an existing log topic and creating a new log set is not all
 
     @property
     def TopicName(self):
-        r"""log topic name
+        r"""
         :rtype: str
         """
         return self._TopicName
@@ -3569,7 +4739,7 @@ Combining the use of an existing log topic and creating a new log set is not all
 
     @property
     def GroupId(self):
-        r"""log set id
+        r"""
         :rtype: str
         """
         return self._GroupId
@@ -3580,7 +4750,7 @@ Combining the use of an existing log topic and creating a new log set is not all
 
     @property
     def GroupName(self):
-        r"""log set name
+        r"""
         :rtype: str
         """
         return self._GroupName
@@ -3606,6 +4776,250 @@ Combining the use of an existing log topic and creating a new log set is not all
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CalculateBackupSaveSecExpiresRequest(AbstractModel):
+    r"""CalculateBackupSaveSecExpires request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Backup safe ID
+        :type VaultId: str
+        :param _BackupSaveSeconds: Backup retention period (seconds). Must be greater than 0.
+        :type BackupSaveSeconds: int
+        :param _Limit: Number of items per page, range (0,100], default 10
+        :type Limit: int
+        :param _Offset: Offset. Range: [0,INF). Default is 0
+        :type Offset: int
+        :param _OrderBy: Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime. Default: endTime.
+        :type OrderBy: str
+        :param _OrderByType: Sorting method, available values: desc, asc, DESC, ASC, default desc
+        :type OrderByType: str
+        """
+        self._VaultId = None
+        self._BackupSaveSeconds = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def VaultId(self):
+        r"""Backup safe ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""Backup retention period (seconds). Must be greater than 0.
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+    @property
+    def Limit(self):
+        r"""Number of items per page, range (0,100], default 10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset. Range: [0,INF). Default is 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime. Default: endTime.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""Sorting method, available values: desc, asc, DESC, ASC, default desc
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CalculateBackupSaveSecExpiresResponse(AbstractModel):
+    r"""CalculateBackupSaveSecExpires response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WillDeleteBackupFileCount: Total number of backup files that will be deleted
+        :type WillDeleteBackupFileCount: int
+        :param _WillDeleteBackupFiles: Backup file list to be deleted
+        :type WillDeleteBackupFiles: list of WillDeleteItem
+        :param _WillDeleteBinlogFileCount: Total files of binlogs that will be deleted
+        :type WillDeleteBinlogFileCount: int
+        :param _WillDeleteBinlogFiles: Binlog file list to be deleted
+        :type WillDeleteBinlogFiles: list of WillDeleteItem
+        :param _WillDeleteRedoLogFileCount: Total Redolog files to be deleted
+        :type WillDeleteRedoLogFileCount: int
+        :param _WillDeleteRedoLogFiles: List of Redolog files that will be deleted
+        :type WillDeleteRedoLogFiles: list of WillDeleteItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._WillDeleteBackupFileCount = None
+        self._WillDeleteBackupFiles = None
+        self._WillDeleteBinlogFileCount = None
+        self._WillDeleteBinlogFiles = None
+        self._WillDeleteRedoLogFileCount = None
+        self._WillDeleteRedoLogFiles = None
+        self._RequestId = None
+
+    @property
+    def WillDeleteBackupFileCount(self):
+        r"""Total number of backup files that will be deleted
+        :rtype: int
+        """
+        return self._WillDeleteBackupFileCount
+
+    @WillDeleteBackupFileCount.setter
+    def WillDeleteBackupFileCount(self, WillDeleteBackupFileCount):
+        self._WillDeleteBackupFileCount = WillDeleteBackupFileCount
+
+    @property
+    def WillDeleteBackupFiles(self):
+        r"""Backup file list to be deleted
+        :rtype: list of WillDeleteItem
+        """
+        return self._WillDeleteBackupFiles
+
+    @WillDeleteBackupFiles.setter
+    def WillDeleteBackupFiles(self, WillDeleteBackupFiles):
+        self._WillDeleteBackupFiles = WillDeleteBackupFiles
+
+    @property
+    def WillDeleteBinlogFileCount(self):
+        r"""Total files of binlogs that will be deleted
+        :rtype: int
+        """
+        return self._WillDeleteBinlogFileCount
+
+    @WillDeleteBinlogFileCount.setter
+    def WillDeleteBinlogFileCount(self, WillDeleteBinlogFileCount):
+        self._WillDeleteBinlogFileCount = WillDeleteBinlogFileCount
+
+    @property
+    def WillDeleteBinlogFiles(self):
+        r"""Binlog file list to be deleted
+        :rtype: list of WillDeleteItem
+        """
+        return self._WillDeleteBinlogFiles
+
+    @WillDeleteBinlogFiles.setter
+    def WillDeleteBinlogFiles(self, WillDeleteBinlogFiles):
+        self._WillDeleteBinlogFiles = WillDeleteBinlogFiles
+
+    @property
+    def WillDeleteRedoLogFileCount(self):
+        r"""Total Redolog files to be deleted
+        :rtype: int
+        """
+        return self._WillDeleteRedoLogFileCount
+
+    @WillDeleteRedoLogFileCount.setter
+    def WillDeleteRedoLogFileCount(self, WillDeleteRedoLogFileCount):
+        self._WillDeleteRedoLogFileCount = WillDeleteRedoLogFileCount
+
+    @property
+    def WillDeleteRedoLogFiles(self):
+        r"""List of Redolog files that will be deleted
+        :rtype: list of WillDeleteItem
+        """
+        return self._WillDeleteRedoLogFiles
+
+    @WillDeleteRedoLogFiles.setter
+    def WillDeleteRedoLogFiles(self, WillDeleteRedoLogFiles):
+        self._WillDeleteRedoLogFiles = WillDeleteRedoLogFiles
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WillDeleteBackupFileCount = params.get("WillDeleteBackupFileCount")
+        if params.get("WillDeleteBackupFiles") is not None:
+            self._WillDeleteBackupFiles = []
+            for item in params.get("WillDeleteBackupFiles"):
+                obj = WillDeleteItem()
+                obj._deserialize(item)
+                self._WillDeleteBackupFiles.append(obj)
+        self._WillDeleteBinlogFileCount = params.get("WillDeleteBinlogFileCount")
+        if params.get("WillDeleteBinlogFiles") is not None:
+            self._WillDeleteBinlogFiles = []
+            for item in params.get("WillDeleteBinlogFiles"):
+                obj = WillDeleteItem()
+                obj._deserialize(item)
+                self._WillDeleteBinlogFiles.append(obj)
+        self._WillDeleteRedoLogFileCount = params.get("WillDeleteRedoLogFileCount")
+        if params.get("WillDeleteRedoLogFiles") is not None:
+            self._WillDeleteRedoLogFiles = []
+            for item in params.get("WillDeleteRedoLogFiles"):
+                obj = WillDeleteItem()
+                obj._deserialize(item)
+                self._WillDeleteRedoLogFiles.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class CheckCreateLibraDBInstanceRequest(AbstractModel):
@@ -3813,6 +5227,135 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CheckTransferClusterZoneRequest(AbstractModel):
+    r"""CheckTransferClusterZone request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Source Cluster Id
+        :type ClusterId: str
+        :param _DstZone: Target availability zone
+        :type DstZone: str
+        :param _ProxyZones: Target zone info for proxy migration
+        :type ProxyZones: list of ProxyZone
+        """
+        self._ClusterId = None
+        self._DstZone = None
+        self._ProxyZones = None
+
+    @property
+    def ClusterId(self):
+        r"""Source Cluster Id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DstZone(self):
+        r"""Target availability zone
+        :rtype: str
+        """
+        return self._DstZone
+
+    @DstZone.setter
+    def DstZone(self, DstZone):
+        self._DstZone = DstZone
+
+    @property
+    def ProxyZones(self):
+        r"""Target zone info for proxy migration
+        :rtype: list of ProxyZone
+        """
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._DstZone = params.get("DstZone")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckTransferClusterZoneResponse(AbstractModel):
+    r"""CheckTransferClusterZone response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckStatus: Whether the check is successful
+        :type CheckStatus: bool
+        :param _CheckMsg: Reason for check failure
+        :type CheckMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CheckStatus = None
+        self._CheckMsg = None
+        self._RequestId = None
+
+    @property
+    def CheckStatus(self):
+        r"""Whether the check is successful
+        :rtype: bool
+        """
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
+    @property
+    def CheckMsg(self):
+        r"""Reason for check failure
+        :rtype: str
+        """
+        return self._CheckMsg
+
+    @CheckMsg.setter
+    def CheckMsg(self, CheckMsg):
+        self._CheckMsg = CheckMsg
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CheckStatus = params.get("CheckStatus")
+        self._CheckMsg = params.get("CheckMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class CloseAuditServiceRequest(AbstractModel):
@@ -4250,12 +5793,8 @@ class CloseSSLResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: Process ID
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FlowId: int
         :param _TaskId: Task ID.
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4267,8 +5806,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def FlowId(self):
         r"""Process ID
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._FlowId
@@ -4280,8 +5817,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TaskId(self):
         r"""Task ID.
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TaskId
@@ -4398,46 +5933,44 @@ class ClusterInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _InstanceName: Instance name
+        :param _InstanceName: <p>Instance name</p>
         :type InstanceName: str
-        :param _InstanceType: Engine type
+        :param _InstanceType: <p>Engine type</p>
         :type InstanceType: str
-        :param _InstanceStatus: Instance status
+        :param _InstanceStatus: <p>Instance status</p>
         :type InstanceStatus: str
-        :param _InstanceStatusDesc: Instance status description
+        :param _InstanceStatusDesc: <p>Instance status description</p>
         :type InstanceStatusDesc: str
-        :param _InstanceCpu: Number of CPU cores
+        :param _InstanceCpu: <p>cpu cores</p>
         :type InstanceCpu: int
-        :param _InstanceMemory: Memory
+        :param _InstanceMemory: <p>Memory</p>
         :type InstanceMemory: int
-        :param _InstanceStorage: Disk
+        :param _InstanceStorage: <p>hard disk</p>
         :type InstanceStorage: int
-        :param _InstanceRole: Instance role
+        :param _InstanceRole: <p>Instance role</p>
         :type InstanceRole: str
-        :param _MaintainStartTime: Execution start time (seconds from 0 o'clock).	
+        :param _MaintainStartTime: <p>Execution start time (seconds from 00:00).</p>
         :type MaintainStartTime: int
-        :param _MaintainDuration: Specifies the continuous time. the unit is second.	
+        :param _MaintainDuration: <p>Duration (unit: s)</p>
         :type MaintainDuration: int
-        :param _MaintainWeekDays: Specifies the time when it can be executed. valid values: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].
+        :param _MaintainWeekDays: <p>The time when it can be executed, enumeration value: ["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]</p>
         :type MaintainWeekDays: list of str
-        :param _ServerlessStatus: serverless instance substatus.
+        :param _ServerlessStatus: <p>serverless instance substatus</p>
         :type ServerlessStatus: str
-        :param _InstanceTasks: Instance task information.
+        :param _InstanceTasks: <p>Instance task information</p>
         :type InstanceTasks: list of ObjectTask
-        :param _InstanceDeviceType: Instance machine type.
-1. common: general.
-2. exclusive, dedicated.
+        :param _InstanceDeviceType: <p>Instance Machine Type</p><ol><li>common, universal type.</li><li>exclusive, dedicated.</li></ol>
         :type InstanceDeviceType: str
-        :param _InstanceStorageType: Instance storage type.
-Description: this parameter returns a value only when querying resources belonging to LibraDB.
+        :param _InstanceStorageType: <p>Instance storage type<br>Description: This parameter returns a value only when the resource belonging to the query is LibraDB.</p>
         :type InstanceStorageType: str
-        :param _DbMode: Database type.
+        :param _DbMode: <p>Database type</p>
         :type DbMode: str
-        :param _NodeList: Node list
-Description: this parameter returns a value only when querying LibraDB resources.
+        :param _NodeList: <p>Node list<br>Description: This parameter returns a value only when querying resources belonging to LibraDB.</p>
         :type NodeList: list of str
+        :param _AIOptimizerStatus: <p>AI optimizer status</p>
+        :type AIOptimizerStatus: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerStatus`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -4457,10 +5990,11 @@ Description: this parameter returns a value only when querying LibraDB resources
         self._InstanceStorageType = None
         self._DbMode = None
         self._NodeList = None
+        self._AIOptimizerStatus = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4471,7 +6005,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""<p>Instance name</p>
         :rtype: str
         """
         return self._InstanceName
@@ -4482,7 +6016,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceType(self):
-        r"""Engine type
+        r"""<p>Engine type</p>
         :rtype: str
         """
         return self._InstanceType
@@ -4493,7 +6027,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceStatus(self):
-        r"""Instance status
+        r"""<p>Instance status</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -4504,7 +6038,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceStatusDesc(self):
-        r"""Instance status description
+        r"""<p>Instance status description</p>
         :rtype: str
         """
         return self._InstanceStatusDesc
@@ -4515,7 +6049,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceCpu(self):
-        r"""Number of CPU cores
+        r"""<p>cpu cores</p>
         :rtype: int
         """
         return self._InstanceCpu
@@ -4526,7 +6060,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceMemory(self):
-        r"""Memory
+        r"""<p>Memory</p>
         :rtype: int
         """
         return self._InstanceMemory
@@ -4537,7 +6071,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceStorage(self):
-        r"""Disk
+        r"""<p>hard disk</p>
         :rtype: int
         """
         return self._InstanceStorage
@@ -4548,7 +6082,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceRole(self):
-        r"""Instance role
+        r"""<p>Instance role</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -4559,7 +6093,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def MaintainStartTime(self):
-        r"""Execution start time (seconds from 0 o'clock).	
+        r"""<p>Execution start time (seconds from 00:00).</p>
         :rtype: int
         """
         return self._MaintainStartTime
@@ -4570,7 +6104,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def MaintainDuration(self):
-        r"""Specifies the continuous time. the unit is second.	
+        r"""<p>Duration (unit: s)</p>
         :rtype: int
         """
         return self._MaintainDuration
@@ -4581,7 +6115,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def MaintainWeekDays(self):
-        r"""Specifies the time when it can be executed. valid values: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].
+        r"""<p>The time when it can be executed, enumeration value: ["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]</p>
         :rtype: list of str
         """
         return self._MaintainWeekDays
@@ -4592,7 +6126,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def ServerlessStatus(self):
-        r"""serverless instance substatus.
+        r"""<p>serverless instance substatus</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -4603,7 +6137,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceTasks(self):
-        r"""Instance task information.
+        r"""<p>Instance task information</p>
         :rtype: list of ObjectTask
         """
         return self._InstanceTasks
@@ -4614,9 +6148,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceDeviceType(self):
-        r"""Instance machine type.
-1. common: general.
-2. exclusive, dedicated.
+        r"""<p>Instance Machine Type</p><ol><li>common, universal type.</li><li>exclusive, dedicated.</li></ol>
         :rtype: str
         """
         return self._InstanceDeviceType
@@ -4627,8 +6159,7 @@ Description: this parameter returns a value only when querying LibraDB resources
 
     @property
     def InstanceStorageType(self):
-        r"""Instance storage type.
-Description: this parameter returns a value only when querying resources belonging to LibraDB.
+        r"""<p>Instance storage type<br>Description: This parameter returns a value only when the resource belonging to the query is LibraDB.</p>
         :rtype: str
         """
         return self._InstanceStorageType
@@ -4639,7 +6170,7 @@ Description: this parameter returns a value only when querying resources belongi
 
     @property
     def DbMode(self):
-        r"""Database type.
+        r"""<p>Database type</p>
         :rtype: str
         """
         return self._DbMode
@@ -4650,8 +6181,7 @@ Description: this parameter returns a value only when querying resources belongi
 
     @property
     def NodeList(self):
-        r"""Node list
-Description: this parameter returns a value only when querying LibraDB resources.
+        r"""<p>Node list<br>Description: This parameter returns a value only when querying resources belonging to LibraDB.</p>
         :rtype: list of str
         """
         return self._NodeList
@@ -4659,6 +6189,17 @@ Description: this parameter returns a value only when querying LibraDB resources
     @NodeList.setter
     def NodeList(self, NodeList):
         self._NodeList = NodeList
+
+    @property
+    def AIOptimizerStatus(self):
+        r"""<p>AI optimizer status</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerStatus`
+        """
+        return self._AIOptimizerStatus
+
+    @AIOptimizerStatus.setter
+    def AIOptimizerStatus(self, AIOptimizerStatus):
+        self._AIOptimizerStatus = AIOptimizerStatus
 
 
     def _deserialize(self, params):
@@ -4685,6 +6226,9 @@ Description: this parameter returns a value only when querying LibraDB resources
         self._InstanceStorageType = params.get("InstanceStorageType")
         self._DbMode = params.get("DbMode")
         self._NodeList = params.get("NodeList")
+        if params.get("AIOptimizerStatus") is not None:
+            self._AIOptimizerStatus = AIOptimizerStatus()
+            self._AIOptimizerStatus._deserialize(params.get("AIOptimizerStatus"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4747,7 +6291,7 @@ class ClusterReadOnlyValue(AbstractModel):
 
 
 class ClusterSlaveData(AbstractModel):
-    r"""Cluster AZ Information
+    r"""
 
     """
 
@@ -4755,11 +6299,11 @@ class ClusterSlaveData(AbstractModel):
         r"""
         :param _OldMasterZone: Old primary availability zone.
         :type OldMasterZone: str
-        :param _OldSlaveZone: Standby AZ
+        :param _OldSlaveZone: 
         :type OldSlaveZone: list of str
         :param _NewMasterZone: New primary availability zone.
         :type NewMasterZone: str
-        :param _NewSlaveZone: New Standby AZ
+        :param _NewSlaveZone: 
         :type NewSlaveZone: list of str
         :param _NewSlaveZoneAttr: New from availability zone attribute.
         :type NewSlaveZoneAttr: list of SlaveZoneAttrItem
@@ -4786,7 +6330,7 @@ class ClusterSlaveData(AbstractModel):
 
     @property
     def OldSlaveZone(self):
-        r"""Standby AZ
+        r"""
         :rtype: list of str
         """
         return self._OldSlaveZone
@@ -4808,7 +6352,7 @@ class ClusterSlaveData(AbstractModel):
 
     @property
     def NewSlaveZone(self):
-        r"""New Standby AZ
+        r"""
         :rtype: list of str
         """
         return self._NewSlaveZone
@@ -4916,6 +6460,100 @@ class ClusterTaskId(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CopyBackupToVaultRequest(AbstractModel):
+    r"""CopyBackupToVault request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: <p>Target safe ID. The backup file will be copied to this safe.</p>
+        :type VaultId: str
+        :param _BackupIds: <p>List of backup file IDs. Supports batch operations to copy multiple backup files.</p>
+        :type BackupIds: list of int
+        """
+        self._VaultId = None
+        self._BackupIds = None
+
+    @property
+    def VaultId(self):
+        r"""<p>Target safe ID. The backup file will be copied to this safe.</p>
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupIds(self):
+        r"""<p>List of backup file IDs. Supports batch operations to copy multiple backup files.</p>
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupIds = params.get("BackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyBackupToVaultResponse(AbstractModel):
+    r"""CopyBackupToVault response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CopyClusterPasswordComplexityRequest(AbstractModel):
@@ -5227,12 +6865,15 @@ class CreateBackupRequest(AbstractModel):
         :type BackupTables: list of DatabaseTables
         :param _BackupName: Backup name
         :type BackupName: str
+        :param _Vaults: 	Message sent to safe
+        :type Vaults: list of CreateBackupVaultItem
         """
         self._ClusterId = None
         self._BackupType = None
         self._BackupDatabases = None
         self._BackupTables = None
         self._BackupName = None
+        self._Vaults = None
 
     @property
     def ClusterId(self):
@@ -5289,6 +6930,17 @@ class CreateBackupRequest(AbstractModel):
     def BackupName(self, BackupName):
         self._BackupName = BackupName
 
+    @property
+    def Vaults(self):
+        r"""	Message sent to safe
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._Vaults
+
+    @Vaults.setter
+    def Vaults(self, Vaults):
+        self._Vaults = Vaults
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5301,6 +6953,12 @@ class CreateBackupRequest(AbstractModel):
                 obj._deserialize(item)
                 self._BackupTables.append(obj)
         self._BackupName = params.get("BackupName")
+        if params.get("Vaults") is not None:
+            self._Vaults = []
+            for item in params.get("Vaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._Vaults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5352,6 +7010,61 @@ class CreateBackupResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class CreateBackupVaultItem(AbstractModel):
+    r"""Safe info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Safe id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VaultId: str
+        :param _VaultRegion: Safe region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VaultRegion: str
+        """
+        self._VaultId = None
+        self._VaultRegion = None
+
+    @property
+    def VaultId(self):
+        r"""Safe id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultRegion(self):
+        r"""Safe region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._VaultRegion = params.get("VaultRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateCLSDeliveryRequest(AbstractModel):
@@ -5628,17 +7341,17 @@ class CreateClusterDatabaseResponse(AbstractModel):
 
 
 class CreateClustersData(AbstractModel):
-    r"""Cluster Creation Task Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Cpu: Instance CPU
+        :param _Cpu: 
         :type Cpu: int
-        :param _Memory: Instance Memory
+        :param _Memory: 
         :type Memory: int
-        :param _StorageLimit: Cluster storage limit
+        :param _StorageLimit: 
         :type StorageLimit: int
         """
         self._Cpu = None
@@ -5647,7 +7360,7 @@ class CreateClustersData(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Instance CPU
+        r"""
         :rtype: int
         """
         return self._Cpu
@@ -5658,7 +7371,7 @@ class CreateClustersData(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Instance Memory
+        r"""
         :rtype: int
         """
         return self._Memory
@@ -5669,7 +7382,7 @@ class CreateClustersData(AbstractModel):
 
     @property
     def StorageLimit(self):
-        r"""Cluster storage limit
+        r"""
         :rtype: int
         """
         return self._StorageLimit
@@ -7862,45 +9575,60 @@ class CreateProxyEndPointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: Cluster ID.
         :type ClusterId: str
-        :param _UniqueVpcId: VPC ID, which is the same as that of the cluster by default.
+        :param _UniqueVpcId: VPC ID. By default, it remains consistent with the VPC ID of the cluster.
         :type UniqueVpcId: str
-        :param _UniqueSubnetId: VPCe subnet ID, which is the same as that of the cluster by default.
+        :param _UniqueSubnetId: Subnet ID of the VPC. By default, it remains consistent with the subnet ID of the cluster.
         :type UniqueSubnetId: str
-        :param _ConnectionPoolType: Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)
+        :param _ConnectionPoolType: Type of connection pool: SessionConnectionPool (session-level connection pool).
         :type ConnectionPoolType: str
-        :param _OpenConnectionPool: Whether to enable connection pool. Valid value: `yes` (enable), `no` (disable).
+        :param _OpenConnectionPool: Whether to enable the connection pool.
+yes: indicates enabled.
+no: indicates not enabled.
         :type OpenConnectionPool: str
-        :param _ConnectionPoolTimeOut: Connection pool threshold in seconds
+        :param _ConnectionPoolTimeOut: Threshold of the connection pool: unit (seconds). Valid values: 0 - 300 seconds.
         :type ConnectionPoolTimeOut: int
-        :param _SecurityGroupIds: Array of security group IDs
+        :param _SecurityGroupIds: Array of bound security group IDs.
         :type SecurityGroupIds: list of str
-        :param _Description: Description
+        :param _Description: Description.
         :type Description: str
-        :param _Vip: VIP information
+        :param _Vip: The vip information to be bound must correspond to the UniqueVpcId.
         :type Vip: str
-        :param _WeightMode: Weight mode. 
-Valid values: `system` (system-assigned), `custom` (custom).
+        :param _WeightMode: Weight mode:
+system: system-assigned.
+custom: custom.
         :type WeightMode: str
-        :param _AutoAddRo: Whether to automatically add read-only instance. Valid value: `yes`, `no`.
+        :param _AutoAddRo: Whether to automatically add a read-only instance.
+yes: indicates automatically adding a read-only instance.
+no: indicates not to automatically add a read-only instance.
         :type AutoAddRo: str
-        :param _FailOver: Whether to enable failover
+        :param _FailOver: Whether to enable failover.
+yes: indicates enabled. After it is enabled, when the database proxy encounters faults, the connection address will be routed to the primary instance.
+no: indicates not enabled.
+Description:
+Only when the value of the RwType parameter is READWRITE can this option be configured.
         :type FailOver: str
-        :param _ConsistencyType: Consistency type. Valid values: 
-`eventual`, `global`, `session`.
+        :param _ConsistencyType: Consistency Type:
+eventual: eventual consistency.
+global: global consistency.
+session: session consistency.
+Description:
+Only when the RwType parameter value is READWRITE can this option be configured.
         :type ConsistencyType: str
-        :param _RwType: Read-write attribute. Valid values: 
-`READWRITE`, `READONLY`.
+        :param _RwType: Read-Write Attribute:
+READWRITE: indicates read/write splitting. Only when this parameter value is READWRITE can the FailOver and ConsistencyType parameters be configured.
+READONLY: indicates read-only.
         :type RwType: str
-        :param _ConsistencyTimeOut: Consistency timeout period
+        :param _ConsistencyTimeOut: The consistency timeout period. Value range: 0 - 1000000 (microseconds). When set to 0, if a read-only instance experiences latency causing the consistency policy to be unsatisfied, the request will wait indefinitely.
         :type ConsistencyTimeOut: int
-        :param _TransSplit: Transaction split
+        :param _TransSplit: Whether to enable transaction split. After it is enabled, read and write operations in a transaction are split to different instances for execution.
         :type TransSplit: bool
-        :param _AccessMode: Connection mode. Valid values:
-`nearby`, `balance`.
+        :param _AccessMode: Access mode:
+nearby: nearby access.
+balance: balanced allocation.
         :type AccessMode: str
-        :param _InstanceWeights: Instance weight
+        :param _InstanceWeights: Instance weight.
         :type InstanceWeights: list of ProxyInstanceWeight
         """
         self._ClusterId = None
@@ -7924,7 +9652,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""Cluster ID.
         :rtype: str
         """
         return self._ClusterId
@@ -7935,7 +9663,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def UniqueVpcId(self):
-        r"""VPC ID, which is the same as that of the cluster by default.
+        r"""VPC ID. By default, it remains consistent with the VPC ID of the cluster.
         :rtype: str
         """
         return self._UniqueVpcId
@@ -7946,7 +9674,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def UniqueSubnetId(self):
-        r"""VPCe subnet ID, which is the same as that of the cluster by default.
+        r"""Subnet ID of the VPC. By default, it remains consistent with the subnet ID of the cluster.
         :rtype: str
         """
         return self._UniqueSubnetId
@@ -7957,7 +9685,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def ConnectionPoolType(self):
-        r"""Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)
+        r"""Type of connection pool: SessionConnectionPool (session-level connection pool).
         :rtype: str
         """
         return self._ConnectionPoolType
@@ -7968,7 +9696,9 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def OpenConnectionPool(self):
-        r"""Whether to enable connection pool. Valid value: `yes` (enable), `no` (disable).
+        r"""Whether to enable the connection pool.
+yes: indicates enabled.
+no: indicates not enabled.
         :rtype: str
         """
         return self._OpenConnectionPool
@@ -7979,7 +9709,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def ConnectionPoolTimeOut(self):
-        r"""Connection pool threshold in seconds
+        r"""Threshold of the connection pool: unit (seconds). Valid values: 0 - 300 seconds.
         :rtype: int
         """
         return self._ConnectionPoolTimeOut
@@ -7990,7 +9720,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def SecurityGroupIds(self):
-        r"""Array of security group IDs
+        r"""Array of bound security group IDs.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -8001,7 +9731,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def Description(self):
-        r"""Description
+        r"""Description.
         :rtype: str
         """
         return self._Description
@@ -8012,7 +9742,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def Vip(self):
-        r"""VIP information
+        r"""The vip information to be bound must correspond to the UniqueVpcId.
         :rtype: str
         """
         return self._Vip
@@ -8023,8 +9753,9 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def WeightMode(self):
-        r"""Weight mode. 
-Valid values: `system` (system-assigned), `custom` (custom).
+        r"""Weight mode:
+system: system-assigned.
+custom: custom.
         :rtype: str
         """
         return self._WeightMode
@@ -8035,7 +9766,9 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def AutoAddRo(self):
-        r"""Whether to automatically add read-only instance. Valid value: `yes`, `no`.
+        r"""Whether to automatically add a read-only instance.
+yes: indicates automatically adding a read-only instance.
+no: indicates not to automatically add a read-only instance.
         :rtype: str
         """
         return self._AutoAddRo
@@ -8046,7 +9779,11 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def FailOver(self):
-        r"""Whether to enable failover
+        r"""Whether to enable failover.
+yes: indicates enabled. After it is enabled, when the database proxy encounters faults, the connection address will be routed to the primary instance.
+no: indicates not enabled.
+Description:
+Only when the value of the RwType parameter is READWRITE can this option be configured.
         :rtype: str
         """
         return self._FailOver
@@ -8057,8 +9794,12 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def ConsistencyType(self):
-        r"""Consistency type. Valid values: 
-`eventual`, `global`, `session`.
+        r"""Consistency Type:
+eventual: eventual consistency.
+global: global consistency.
+session: session consistency.
+Description:
+Only when the RwType parameter value is READWRITE can this option be configured.
         :rtype: str
         """
         return self._ConsistencyType
@@ -8069,8 +9810,9 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def RwType(self):
-        r"""Read-write attribute. Valid values: 
-`READWRITE`, `READONLY`.
+        r"""Read-Write Attribute:
+READWRITE: indicates read/write splitting. Only when this parameter value is READWRITE can the FailOver and ConsistencyType parameters be configured.
+READONLY: indicates read-only.
         :rtype: str
         """
         return self._RwType
@@ -8081,7 +9823,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def ConsistencyTimeOut(self):
-        r"""Consistency timeout period
+        r"""The consistency timeout period. Value range: 0 - 1000000 (microseconds). When set to 0, if a read-only instance experiences latency causing the consistency policy to be unsatisfied, the request will wait indefinitely.
         :rtype: int
         """
         return self._ConsistencyTimeOut
@@ -8092,7 +9834,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def TransSplit(self):
-        r"""Transaction split
+        r"""Whether to enable transaction split. After it is enabled, read and write operations in a transaction are split to different instances for execution.
         :rtype: bool
         """
         return self._TransSplit
@@ -8103,8 +9845,9 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def AccessMode(self):
-        r"""Connection mode. Valid values:
-`nearby`, `balance`.
+        r"""Access mode:
+nearby: nearby access.
+balance: balanced allocation.
         :rtype: str
         """
         return self._AccessMode
@@ -8115,7 +9858,7 @@ Valid values: `system` (system-assigned), `custom` (custom).
 
     @property
     def InstanceWeights(self):
-        r"""Instance weight
+        r"""Instance weight.
         :rtype: list of ProxyInstanceWeight
         """
         return self._InstanceWeights
@@ -8166,11 +9909,11 @@ class CreateProxyEndPointResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Async flow ID
+        :param _FlowId: asynchronous process ID.
         :type FlowId: int
-        :param _TaskId: Async task ID
+        :param _TaskId: Asynchronous task ID.
         :type TaskId: int
-        :param _ProxyGroupId: Database proxy group ID
+        :param _ProxyGroupId: ID of the Database proxy group.
         :type ProxyGroupId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8182,7 +9925,7 @@ class CreateProxyEndPointResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""Async flow ID
+        r"""asynchronous process ID.
         :rtype: int
         """
         return self._FlowId
@@ -8193,7 +9936,7 @@ class CreateProxyEndPointResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Async task ID
+        r"""Asynchronous task ID.
         :rtype: int
         """
         return self._TaskId
@@ -8204,7 +9947,7 @@ class CreateProxyEndPointResponse(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Database proxy group ID
+        r"""ID of the Database proxy group.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -8526,7 +10269,7 @@ class CreateResourcePackageRequest(AbstractModel):
         :type PackageType: str
         :param _PackageVersion: Resource pack edition. Valid values: `base` (basic edition), `common` (general edition), `enterprise` (enterprise edition).
         :type PackageVersion: str
-        :param _PackageSpec: Resource pack size. Unit of the compute resource pack: Ten thousand.  Unit of the storage resource pack:  GB
+        :param _PackageSpec: Resource package size. Compute resource unit: unit; storage resource: GB.
         :type PackageSpec: float
         :param _ExpireDay: Validity period of a resource pack in days
         :type ExpireDay: int
@@ -8590,7 +10333,7 @@ class CreateResourcePackageRequest(AbstractModel):
 
     @property
     def PackageSpec(self):
-        r"""Resource pack size. Unit of the compute resource pack: Ten thousand.  Unit of the storage resource pack:  GB
+        r"""Resource package size. Compute resource unit: unit; storage resource: GB.
         :rtype: float
         """
         return self._PackageSpec
@@ -8710,6 +10453,175 @@ class CreateResourcePackageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVaultRequest(AbstractModel):
+    r"""CreateVault request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultName: Safe name, length must be greater than 0
+        :type VaultName: str
+        :param _BackupSaveSeconds: Backup retention period (seconds). Must be greater than 0.
+        :type BackupSaveSeconds: int
+        :param _VaultDescribe: Safe description
+        :type VaultDescribe: str
+        :param _KeyId: KMS key ID, length 0-36 characters
+        :type KeyId: str
+        :param _KeyType: Key type, available values: cloud (KMS managed keys), custom (custom key)
+        :type KeyType: str
+        :param _KeyRegion: Key region, length 0-32 characters
+        :type KeyRegion: str
+        :param _LockedTime: Lock time, format: YYYY-MM-DD HH:mm:ss
+        :type LockedTime: str
+        """
+        self._VaultName = None
+        self._BackupSaveSeconds = None
+        self._VaultDescribe = None
+        self._KeyId = None
+        self._KeyType = None
+        self._KeyRegion = None
+        self._LockedTime = None
+
+    @property
+    def VaultName(self):
+        r"""Safe name, length must be greater than 0
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""Backup retention period (seconds). Must be greater than 0.
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+    @property
+    def VaultDescribe(self):
+        r"""Safe description
+        :rtype: str
+        """
+        return self._VaultDescribe
+
+    @VaultDescribe.setter
+    def VaultDescribe(self, VaultDescribe):
+        self._VaultDescribe = VaultDescribe
+
+    @property
+    def KeyId(self):
+        r"""KMS key ID, length 0-36 characters
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyType(self):
+        r"""Key type, available values: cloud (KMS managed keys), custom (custom key)
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def KeyRegion(self):
+        r"""Key region, length 0-32 characters
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
+    @property
+    def LockedTime(self):
+        r"""Lock time, format: YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
+        return self._LockedTime
+
+    @LockedTime.setter
+    def LockedTime(self, LockedTime):
+        self._LockedTime = LockedTime
+
+
+    def _deserialize(self, params):
+        self._VaultName = params.get("VaultName")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        self._VaultDescribe = params.get("VaultDescribe")
+        self._KeyId = params.get("KeyId")
+        self._KeyType = params.get("KeyType")
+        self._KeyRegion = params.get("KeyRegion")
+        self._LockedTime = params.get("LockedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVaultResponse(AbstractModel):
+    r"""CreateVault response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID, used for query task execution status
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID, used for query task execution status
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CrossRegionBackupItem(AbstractModel):
     r"""Cross-Region backup describes the backup information in each region.
 
@@ -8783,108 +10695,97 @@ class CynosdbCluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Cluster status. Valid values are as follows:
-creating
-running
-isolating
-isolated
-activating (removing isolation)
-offlining (deactivating)
-offlined (deactivated)
-deleting
-deleted
+        :param _Status: <p>Cluster status. Valid values include:<br>creating: Creating<br>running: Running<br>isolating: Isolation<br>isolated: Isolated<br>activating: De-isolating<br>offlining: Offline<br>offlined: Offline<br>deleting: Deleting<br>deleted: Deleted</p>
         :type Status: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: <p>Update time.</p>
         :type UpdateTime: str
-        :param _Zone: AZ
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _ClusterName: Cluster name
+        :param _ClusterName: <p>Cluster name.</p>
         :type ClusterName: str
-        :param _Region: Region
+        :param _Region: <p>Region</p>
         :type Region: str
-        :param _DbVersion: Database version
+        :param _DbVersion: <p>Database version</p>
         :type DbVersion: str
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _InstanceNum: Number of instances
+        :param _InstanceNum: <p>Number of instances</p>
         :type InstanceNum: int
-        :param _Uin: User UIN
+        :param _Uin: <p>User uin</p>
         :type Uin: str
-        :param _DbType: Engine type.
+        :param _DbType: <p>Engine type</p>
         :type DbType: str
-        :param _AppId: User appid.
+        :param _AppId: <p>User appid</p>
         :type AppId: int
-        :param _StatusDesc: Cluster status description
+        :param _StatusDesc: <p>Cluster status description</p>
         :type StatusDesc: str
-        :param _CreateTime: Cluster Creation Time
+        :param _CreateTime: <p>Cluster creation time</p>
         :type CreateTime: str
-        :param _PayMode: Payment mode. 0: pay-as-you-go; 1: yearly/monthly subscription.
+        :param _PayMode: <p>Payment mode. 0: pay-as-you-go; 1: monthly subscription</p>
         :type PayMode: int
-        :param _PeriodEndTime: Expiration time.
+        :param _PeriodEndTime: <p>End time</p>
         :type PeriodEndTime: str
-        :param _Vip: Cluster read/write vip.
+        :param _Vip: <p>Cluster read/write vip</p>
         :type Vip: str
-        :param _Vport: Cluster read/write vport.
+        :param _Vport: <p>Cluster read/write vport</p>
         :type Vport: int
-        :param _ProjectID: Project ID
+        :param _ProjectID: <p>Project ID.</p>
         :type ProjectID: int
-        :param _VpcId: Specifies the virtual private cloud ID.
+        :param _VpcId: <p>VPC ID</p>
         :type VpcId: str
-        :param _SubnetId: Specifies the subnet ID.
+        :param _SubnetId: <p>Subnet ID.</p>
         :type SubnetId: str
-        :param _CynosVersion: Specifies the cynos kernel version.
+        :param _CynosVersion: <p>cynos kernel version</p>
         :type CynosVersion: str
-        :param _CynosVersionTag: cynos version tag.
+        :param _CynosVersionTag: <p>cynos version tag</p>
         :type CynosVersionTag: str
-        :param _StorageLimit: Specifies the storage capacity.
+        :param _StorageLimit: <p>Storage capacity</p>
         :type StorageLimit: int
-        :param _RenewFlag: Renewal Flag
+        :param _RenewFlag: <p>Renewal flag</p>
         :type RenewFlag: int
-        :param _ProcessingTask: Task being processed.
+        :param _ProcessingTask: <p>Currently processing task</p>
         :type ProcessingTask: str
-        :param _Tasks: Task array of the cluster.
+        :param _Tasks: <p>Task array of the cluster</p>
         :type Tasks: list of ObjectTask
-        :param _ResourceTags: Array of tags bound to the cluster.
+        :param _ResourceTags: <p>tag Array of cluster binding</p>
         :type ResourceTags: list of Tag
-        :param _DbMode: Db type (NORMAL, SERVERLESS).
+        :param _DbMode: <p>Db type (NORMAL, SERVERLESS)</p>
         :type DbMode: str
-        :param _ServerlessStatus: Specifies the status of the SERVERLESS cluster when the Db type is SERVERLESS. valid values:.
-resume
-pause
+        :param _ServerlessStatus: <p>When the Db type is SERVERLESS, the SERVERLESS cluster status. Available values:<br>resume<br>pause</p>
         :type ServerlessStatus: str
-        :param _Storage: Cluster prepaid storage size.
+        :param _Storage: <p>Cluster Prepaid storage size</p>
         :type Storage: int
-        :param _StorageId: Cluster storage ID for prepaid storage, specifies the storage ID used for prepaid storage modification.
+        :param _StorageId: <p>Storage ID of cluster storage in prepayment, used for prepaid storage configuration change</p>
         :type StorageId: str
-        :param _StoragePayMode: Cluster storage payment mode. 0: pay-as-you-go; 1: yearly/monthly subscription.
+        :param _StoragePayMode: <p>Cluster storage payment mode. 0: pay-as-you-go; 1: monthly subscription</p>
         :type StoragePayMode: int
-        :param _MinStorageSize: Minimum storage value corresponding to cluster computing specifications.
+        :param _MinStorageSize: <p>Minimum storage of the cluster compute specification</p>
         :type MinStorageSize: int
-        :param _MaxStorageSize: The maximum storage value corresponding to the cluster computing specification.
+        :param _MaxStorageSize: <p>Maximum storage value of the cluster compute specification</p>
         :type MaxStorageSize: int
-        :param _NetAddrs: Specifies the cluster network information.
+        :param _NetAddrs: <p>Cluster network information</p>
         :type NetAddrs: list of NetAddr
-        :param _PhysicalZone: Physical availability zone.
+        :param _PhysicalZone: <p>Physical AZ</p>
         :type PhysicalZone: str
-        :param _MasterZone: Primary AZ.
+        :param _MasterZone: <p>Primary AZ</p>
         :type MasterZone: str
-        :param _HasSlaveZone: Whether there is an availability zone.
+        :param _HasSlaveZone: <p>Whether there is a secondary AZ</p>
         :type HasSlaveZone: str
-        :param _SlaveZones: Secondary AZ.
+        :param _SlaveZones: <p>Secondary AZ</p>
         :type SlaveZones: list of str
-        :param _BusinessType: Business type.
+        :param _BusinessType: <p>Business type</p>
         :type BusinessType: str
-        :param _IsFreeze: Whether to freeze.
+        :param _IsFreeze: <p>Freeze or not</p>
         :type IsFreeze: str
-        :param _OrderSource: Order Source
+        :param _OrderSource: <p>Order source</p>
         :type OrderSource: str
-        :param _Ability: Capacity.
+        :param _Ability: <p>Capacity</p>
         :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
-        :param _ResourcePackages: Specifies the information of the resource package bound to the instance (only the storage resource package is returned here, that is, packageType=DISK).	
+        :param _ResourcePackages: <p>Instance bind resource package info (here only return storage resource package, for example packageType=DISK)</p>
         :type ResourcePackages: list of ResourcePackage
-        :param _GdnId: Global database unique Id.
+        :param _GdnId: <p>Global database unique ID</p>
         :type GdnId: str
-        :param _GdnRole: Cluster role. primary cluster - primary, slave cluster - standby. if GdnId is empty, the field is invalid.
+        :param _GdnRole: <p>Cluster role. Primary cluster - primary, slave cluster - standby. If GdnId is empty, the field is invalid.</p>
         :type GdnRole: str
         """
         self._Status = None
@@ -8936,16 +10837,7 @@ pause
 
     @property
     def Status(self):
-        r"""Cluster status. Valid values are as follows:
-creating
-running
-isolating
-isolated
-activating (removing isolation)
-offlining (deactivating)
-offlined (deactivated)
-deleting
-deleted
+        r"""<p>Cluster status. Valid values include:<br>creating: Creating<br>running: Running<br>isolating: Isolation<br>isolated: Isolated<br>activating: De-isolating<br>offlining: Offline<br>offlined: Offline<br>deleting: Deleting<br>deleted: Deleted</p>
         :rtype: str
         """
         return self._Status
@@ -8956,7 +10848,7 @@ deleted
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""<p>Update time.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -8967,7 +10859,7 @@ deleted
 
     @property
     def Zone(self):
-        r"""AZ
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -8978,7 +10870,7 @@ deleted
 
     @property
     def ClusterName(self):
-        r"""Cluster name
+        r"""<p>Cluster name.</p>
         :rtype: str
         """
         return self._ClusterName
@@ -8989,7 +10881,7 @@ deleted
 
     @property
     def Region(self):
-        r"""Region
+        r"""<p>Region</p>
         :rtype: str
         """
         return self._Region
@@ -9000,7 +10892,7 @@ deleted
 
     @property
     def DbVersion(self):
-        r"""Database version
+        r"""<p>Database version</p>
         :rtype: str
         """
         return self._DbVersion
@@ -9011,7 +10903,7 @@ deleted
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -9022,7 +10914,7 @@ deleted
 
     @property
     def InstanceNum(self):
-        r"""Number of instances
+        r"""<p>Number of instances</p>
         :rtype: int
         """
         return self._InstanceNum
@@ -9033,7 +10925,7 @@ deleted
 
     @property
     def Uin(self):
-        r"""User UIN
+        r"""<p>User uin</p>
         :rtype: str
         """
         return self._Uin
@@ -9044,7 +10936,7 @@ deleted
 
     @property
     def DbType(self):
-        r"""Engine type.
+        r"""<p>Engine type</p>
         :rtype: str
         """
         return self._DbType
@@ -9055,7 +10947,7 @@ deleted
 
     @property
     def AppId(self):
-        r"""User appid.
+        r"""<p>User appid</p>
         :rtype: int
         """
         return self._AppId
@@ -9066,7 +10958,7 @@ deleted
 
     @property
     def StatusDesc(self):
-        r"""Cluster status description
+        r"""<p>Cluster status description</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -9077,7 +10969,7 @@ deleted
 
     @property
     def CreateTime(self):
-        r"""Cluster Creation Time
+        r"""<p>Cluster creation time</p>
         :rtype: str
         """
         return self._CreateTime
@@ -9088,7 +10980,7 @@ deleted
 
     @property
     def PayMode(self):
-        r"""Payment mode. 0: pay-as-you-go; 1: yearly/monthly subscription.
+        r"""<p>Payment mode. 0: pay-as-you-go; 1: monthly subscription</p>
         :rtype: int
         """
         return self._PayMode
@@ -9099,7 +10991,7 @@ deleted
 
     @property
     def PeriodEndTime(self):
-        r"""Expiration time.
+        r"""<p>End time</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -9110,7 +11002,7 @@ deleted
 
     @property
     def Vip(self):
-        r"""Cluster read/write vip.
+        r"""<p>Cluster read/write vip</p>
         :rtype: str
         """
         return self._Vip
@@ -9121,7 +11013,7 @@ deleted
 
     @property
     def Vport(self):
-        r"""Cluster read/write vport.
+        r"""<p>Cluster read/write vport</p>
         :rtype: int
         """
         return self._Vport
@@ -9132,7 +11024,7 @@ deleted
 
     @property
     def ProjectID(self):
-        r"""Project ID
+        r"""<p>Project ID.</p>
         :rtype: int
         """
         return self._ProjectID
@@ -9143,7 +11035,7 @@ deleted
 
     @property
     def VpcId(self):
-        r"""Specifies the virtual private cloud ID.
+        r"""<p>VPC ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -9154,7 +11046,7 @@ deleted
 
     @property
     def SubnetId(self):
-        r"""Specifies the subnet ID.
+        r"""<p>Subnet ID.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -9165,7 +11057,7 @@ deleted
 
     @property
     def CynosVersion(self):
-        r"""Specifies the cynos kernel version.
+        r"""<p>cynos kernel version</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -9176,7 +11068,7 @@ deleted
 
     @property
     def CynosVersionTag(self):
-        r"""cynos version tag.
+        r"""<p>cynos version tag</p>
         :rtype: str
         """
         return self._CynosVersionTag
@@ -9187,7 +11079,7 @@ deleted
 
     @property
     def StorageLimit(self):
-        r"""Specifies the storage capacity.
+        r"""<p>Storage capacity</p>
         :rtype: int
         """
         return self._StorageLimit
@@ -9198,7 +11090,7 @@ deleted
 
     @property
     def RenewFlag(self):
-        r"""Renewal Flag
+        r"""<p>Renewal flag</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -9209,7 +11101,7 @@ deleted
 
     @property
     def ProcessingTask(self):
-        r"""Task being processed.
+        r"""<p>Currently processing task</p>
         :rtype: str
         """
         return self._ProcessingTask
@@ -9220,7 +11112,7 @@ deleted
 
     @property
     def Tasks(self):
-        r"""Task array of the cluster.
+        r"""<p>Task array of the cluster</p>
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -9231,7 +11123,7 @@ deleted
 
     @property
     def ResourceTags(self):
-        r"""Array of tags bound to the cluster.
+        r"""<p>tag Array of cluster binding</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -9242,7 +11134,7 @@ deleted
 
     @property
     def DbMode(self):
-        r"""Db type (NORMAL, SERVERLESS).
+        r"""<p>Db type (NORMAL, SERVERLESS)</p>
         :rtype: str
         """
         return self._DbMode
@@ -9253,9 +11145,7 @@ deleted
 
     @property
     def ServerlessStatus(self):
-        r"""Specifies the status of the SERVERLESS cluster when the Db type is SERVERLESS. valid values:.
-resume
-pause
+        r"""<p>When the Db type is SERVERLESS, the SERVERLESS cluster status. Available values:<br>resume<br>pause</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -9266,7 +11156,7 @@ pause
 
     @property
     def Storage(self):
-        r"""Cluster prepaid storage size.
+        r"""<p>Cluster Prepaid storage size</p>
         :rtype: int
         """
         return self._Storage
@@ -9277,7 +11167,7 @@ pause
 
     @property
     def StorageId(self):
-        r"""Cluster storage ID for prepaid storage, specifies the storage ID used for prepaid storage modification.
+        r"""<p>Storage ID of cluster storage in prepayment, used for prepaid storage configuration change</p>
         :rtype: str
         """
         return self._StorageId
@@ -9288,7 +11178,7 @@ pause
 
     @property
     def StoragePayMode(self):
-        r"""Cluster storage payment mode. 0: pay-as-you-go; 1: yearly/monthly subscription.
+        r"""<p>Cluster storage payment mode. 0: pay-as-you-go; 1: monthly subscription</p>
         :rtype: int
         """
         return self._StoragePayMode
@@ -9299,7 +11189,7 @@ pause
 
     @property
     def MinStorageSize(self):
-        r"""Minimum storage value corresponding to cluster computing specifications.
+        r"""<p>Minimum storage of the cluster compute specification</p>
         :rtype: int
         """
         return self._MinStorageSize
@@ -9310,7 +11200,7 @@ pause
 
     @property
     def MaxStorageSize(self):
-        r"""The maximum storage value corresponding to the cluster computing specification.
+        r"""<p>Maximum storage value of the cluster compute specification</p>
         :rtype: int
         """
         return self._MaxStorageSize
@@ -9321,7 +11211,7 @@ pause
 
     @property
     def NetAddrs(self):
-        r"""Specifies the cluster network information.
+        r"""<p>Cluster network information</p>
         :rtype: list of NetAddr
         """
         return self._NetAddrs
@@ -9332,7 +11222,7 @@ pause
 
     @property
     def PhysicalZone(self):
-        r"""Physical availability zone.
+        r"""<p>Physical AZ</p>
         :rtype: str
         """
         return self._PhysicalZone
@@ -9343,7 +11233,7 @@ pause
 
     @property
     def MasterZone(self):
-        r"""Primary AZ.
+        r"""<p>Primary AZ</p>
         :rtype: str
         """
         return self._MasterZone
@@ -9354,7 +11244,7 @@ pause
 
     @property
     def HasSlaveZone(self):
-        r"""Whether there is an availability zone.
+        r"""<p>Whether there is a secondary AZ</p>
         :rtype: str
         """
         return self._HasSlaveZone
@@ -9365,7 +11255,7 @@ pause
 
     @property
     def SlaveZones(self):
-        r"""Secondary AZ.
+        r"""<p>Secondary AZ</p>
         :rtype: list of str
         """
         return self._SlaveZones
@@ -9376,7 +11266,7 @@ pause
 
     @property
     def BusinessType(self):
-        r"""Business type.
+        r"""<p>Business type</p>
         :rtype: str
         """
         return self._BusinessType
@@ -9387,7 +11277,7 @@ pause
 
     @property
     def IsFreeze(self):
-        r"""Whether to freeze.
+        r"""<p>Freeze or not</p>
         :rtype: str
         """
         return self._IsFreeze
@@ -9398,7 +11288,7 @@ pause
 
     @property
     def OrderSource(self):
-        r"""Order Source
+        r"""<p>Order source</p>
         :rtype: str
         """
         return self._OrderSource
@@ -9409,7 +11299,7 @@ pause
 
     @property
     def Ability(self):
-        r"""Capacity.
+        r"""<p>Capacity</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         """
         return self._Ability
@@ -9420,7 +11310,7 @@ pause
 
     @property
     def ResourcePackages(self):
-        r"""Specifies the information of the resource package bound to the instance (only the storage resource package is returned here, that is, packageType=DISK).	
+        r"""<p>Instance bind resource package info (here only return storage resource package, for example packageType=DISK)</p>
         :rtype: list of ResourcePackage
         """
         return self._ResourcePackages
@@ -9431,7 +11321,7 @@ pause
 
     @property
     def GdnId(self):
-        r"""Global database unique Id.
+        r"""<p>Global database unique ID</p>
         :rtype: str
         """
         return self._GdnId
@@ -9442,7 +11332,7 @@ pause
 
     @property
     def GdnRole(self):
-        r"""Cluster role. primary cluster - primary, slave cluster - standby. if GdnId is empty, the field is invalid.
+        r"""<p>Cluster role. Primary cluster - primary, slave cluster - standby. If GdnId is empty, the field is invalid.</p>
         :rtype: str
         """
         return self._GdnRole
@@ -10544,126 +12434,127 @@ class CynosdbInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: User `Uin`
+        :param _Uin: <p>User Uin</p>
         :type Uin: str
-        :param _AppId: User `AppId`
+        :param _AppId: <p>User AppId</p>
         :type AppId: int
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _ClusterName: Cluster name
+        :param _ClusterName: <p>Cluster name.</p>
         :type ClusterName: str
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _InstanceName: Instance name
+        :param _InstanceName: <p>Instance name</p>
         :type InstanceName: str
-        :param _ProjectId: Project ID
+        :param _ProjectId: <p>Project ID</p>
         :type ProjectId: int
-        :param _Region: Region
+        :param _Region: <p>Region</p>
         :type Region: str
-        :param _Zone: AZ
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _Status: Instance status
+        :param _Status: <p>Instance status</p>
         :type Status: str
-        :param _StatusDesc: Instance status description
+        :param _StatusDesc: <p>Instance status description in Chinese</p>
         :type StatusDesc: str
-        :param _DbMode: Instance type, which is used to indicate whether it is a serverless instance.
+        :param _DbMode: <p>Instance form, whether it is a serverless instance</p>
         :type DbMode: str
-        :param _DbType: Database type
+        :param _DbType: <p>Database type</p>
         :type DbType: str
-        :param _DbVersion: Database version
+        :param _DbVersion: <p>Database version.</p>
         :type DbVersion: str
-        :param _Cpu: Number of CPU cores
+        :param _Cpu: <p>Cpu, unit: core</p>
         :type Cpu: int
-        :param _Memory: Memory in GB
+        :param _Memory: <p>Memory, unit: GB</p>
         :type Memory: int
-        :param _Storage: Storage capacity in GB
+        :param _Storage: <p>Stored amount, unit: GB</p>
         :type Storage: int
-        :param _InstanceType: Instance type
+        :param _InstanceType: <p>Instance type</p><p>Enumeration value:</p><ul><li>rw: Read-write instance</li><li>ro: Read-only instance</li></ul>
         :type InstanceType: str
-        :param _InstanceRole: Current instance role
+        :param _InstanceRole: <p>Current instance role</p>
         :type InstanceRole: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: <p>Update time.</p>
         :type UpdateTime: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _VpcId: VPC ID
+        :param _VpcId: <p>VPC network ID</p>
         :type VpcId: str
-        :param _SubnetId: Subnet ID
+        :param _SubnetId: <p>Subnet ID.</p>
         :type SubnetId: str
-        :param _Vip: Private IP of instance
+        :param _Vip: <p>Instance private IP address</p>
         :type Vip: str
-        :param _Vport: Private port of instance
+        :param _Vport: <p>Instance Intranet Port</p>
         :type Vport: int
-        :param _PayMode: Billing mode
+        :param _PayMode: <p>Payment mode</p>
         :type PayMode: int
-        :param _PeriodEndTime: Instance expiration time
+        :param _PeriodEndTime: <p>Instance expiration time</p>
         :type PeriodEndTime: str
-        :param _DestroyDeadlineText: Termination deadline
+        :param _DestroyDeadlineText: <p>Termination phase</p>
         :type DestroyDeadlineText: str
-        :param _IsolateTime: Isolation time
+        :param _IsolateTime: <p>Isolation time</p>
         :type IsolateTime: str
-        :param _NetType: Network type
+        :param _NetType: <p>Network type</p>
         :type NetType: int
-        :param _WanDomain: Public domain name
+        :param _WanDomain: <p>Public network domain name</p>
         :type WanDomain: str
-        :param _WanIP: Public IP
+        :param _WanIP: <p>Public network IP</p>
         :type WanIP: str
-        :param _WanPort: Public port
+        :param _WanPort: <p>Public network port</p>
         :type WanPort: int
-        :param _WanStatus: Public network status
+        :param _WanStatus: <p>Public network status</p>
         :type WanStatus: str
-        :param _DestroyTime: Instance termination time
+        :param _DestroyTime: <p>Instance destruction time</p>
         :type DestroyTime: str
-        :param _CynosVersion: TDSQL-C kernel version
+        :param _CynosVersion: <p>Cynos kernel version</p>
         :type CynosVersion: str
-        :param _ProcessingTask: Task in progress
+        :param _ProcessingTask: <p>Currently processing task</p>
         :type ProcessingTask: str
-        :param _RenewFlag: Renewal flag
+        :param _RenewFlag: <p>Renewal flag</p>
         :type RenewFlag: int
-        :param _MinCpu: Minimum number of CPU cores for serverless instance
+        :param _MinCpu: <p>serverless instance cpu minimum</p>
         :type MinCpu: float
-        :param _MaxCpu: Maximum number of CPU cores for serverless instance
+        :param _MaxCpu: <p>cpu cap of the serverless instance</p>
         :type MaxCpu: float
-        :param _ServerlessStatus: Serverless instance status. Valid values:
-resume
-pause
+        :param _ServerlessStatus: <p>serverless instance status, available values:<br>resume<br>pause</p>
         :type ServerlessStatus: str
-        :param _StorageId: Prepayment storage Id.
+        :param _StorageId: <p>Prepayment storage Id</p>
         :type StorageId: str
-        :param _StoragePayMode: Storage billing mode
+        :param _StoragePayMode: <p>Storage billing type</p>
         :type StoragePayMode: int
-        :param _PhysicalZone: Physical zone
+        :param _PhysicalZone: <p>Physical zone</p>
         :type PhysicalZone: str
-        :param _BusinessType: Business type.
+        :param _BusinessType: <p>Business type</p>
         :type BusinessType: str
-        :param _Tasks: Task
+        :param _Tasks: <p>Task</p>
         :type Tasks: list of ObjectTask
-        :param _IsFreeze: Whether to freeze.
+        :param _IsFreeze: <p>Whether to freeze</p>
         :type IsFreeze: str
-        :param _ResourceTags: The resource tag
+        :param _ResourceTags: <p>Resource tag</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ResourceTags: list of Tag
-        :param _MasterZone: Primary AZ.
+        :param _MasterZone: <p>Primary AZ</p>
         :type MasterZone: str
-        :param _SlaveZones: Replica AZ
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SlaveZones: <p>Standby availability zone</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SlaveZones: list of str
-        :param _InstanceNetInfo: Network information of the instance.
+        :param _InstanceNetInfo: <p>Instance network info</p>
         :type InstanceNetInfo: list of InstanceNetInfo
-        :param _ResourcePackages: Information of the resource pack bound to an instance when `packageType` is `CCU`. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ResourcePackages: <p>Instance bind resource package info (only return compute resource package, packageType=CCU)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ResourcePackages: list of ResourcePackage
-        :param _InstanceIndexMode: Specifies the instance index form. valid values include mixedRowColumn (row and column hybrid storage) and onlyRowIndex (row-only storage).
+        :param _InstanceIndexMode: <p>Instance index form, available values [mixedRowColumn (hybrid row-column storage), onlyRowIndex (row storage only)]</p>
         :type InstanceIndexMode: str
-        :param _InstanceAbility: Supported capabilities of the existing instance.
+        :param _InstanceAbility: <p>Supported capabilities of the current instance</p>
         :type InstanceAbility: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
-        :param _DeviceType: Instance machine type.
+        :param _DeviceType: <p>Instance Machine Type</p><ol><li>common, universal type.</li><li>exclusive, dedicated.</li></ol>
         :type DeviceType: str
-        :param _InstanceStorageType: Specifies the instance storage type.
+        :param _InstanceStorageType: <p>Instance storage type</p>
         :type InstanceStorageType: str
-        :param _CynosVersionTag: Unknown field.
+        :param _CynosVersionTag: <p>Unknown field</p>
         :type CynosVersionTag: str
-        :param _NodeList: Specifies the node information of libradb.
+        :param _NodeList: <p>libradb node information</p>
         :type NodeList: list of str
+        :param _GdnId: <p>Unique ID of the global database</p>
+        :type GdnId: str
         """
         self._Uin = None
         self._AppId = None
@@ -10723,10 +12614,11 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._InstanceStorageType = None
         self._CynosVersionTag = None
         self._NodeList = None
+        self._GdnId = None
 
     @property
     def Uin(self):
-        r"""User `Uin`
+        r"""<p>User Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -10737,7 +12629,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AppId(self):
-        r"""User `AppId`
+        r"""<p>User AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -10748,7 +12640,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -10759,7 +12651,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ClusterName(self):
-        r"""Cluster name
+        r"""<p>Cluster name.</p>
         :rtype: str
         """
         return self._ClusterName
@@ -10770,7 +12662,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -10781,7 +12673,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""<p>Instance name</p>
         :rtype: str
         """
         return self._InstanceName
@@ -10792,7 +12684,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProjectId(self):
-        r"""Project ID
+        r"""<p>Project ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -10803,7 +12695,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Region(self):
-        r"""Region
+        r"""<p>Region</p>
         :rtype: str
         """
         return self._Region
@@ -10814,7 +12706,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Zone(self):
-        r"""AZ
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -10825,7 +12717,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Status(self):
-        r"""Instance status
+        r"""<p>Instance status</p>
         :rtype: str
         """
         return self._Status
@@ -10836,7 +12728,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StatusDesc(self):
-        r"""Instance status description
+        r"""<p>Instance status description in Chinese</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -10847,7 +12739,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DbMode(self):
-        r"""Instance type, which is used to indicate whether it is a serverless instance.
+        r"""<p>Instance form, whether it is a serverless instance</p>
         :rtype: str
         """
         return self._DbMode
@@ -10858,7 +12750,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DbType(self):
-        r"""Database type
+        r"""<p>Database type</p>
         :rtype: str
         """
         return self._DbType
@@ -10869,7 +12761,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DbVersion(self):
-        r"""Database version
+        r"""<p>Database version.</p>
         :rtype: str
         """
         return self._DbVersion
@@ -10880,7 +12772,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Cpu(self):
-        r"""Number of CPU cores
+        r"""<p>Cpu, unit: core</p>
         :rtype: int
         """
         return self._Cpu
@@ -10891,7 +12783,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Memory(self):
-        r"""Memory in GB
+        r"""<p>Memory, unit: GB</p>
         :rtype: int
         """
         return self._Memory
@@ -10902,7 +12794,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Storage(self):
-        r"""Storage capacity in GB
+        r"""<p>Stored amount, unit: GB</p>
         :rtype: int
         """
         return self._Storage
@@ -10913,7 +12805,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceType(self):
-        r"""Instance type
+        r"""<p>Instance type</p><p>Enumeration value:</p><ul><li>rw: Read-write instance</li><li>ro: Read-only instance</li></ul>
         :rtype: str
         """
         return self._InstanceType
@@ -10924,7 +12816,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceRole(self):
-        r"""Current instance role
+        r"""<p>Current instance role</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -10935,7 +12827,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""<p>Update time.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -10946,7 +12838,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10957,7 +12849,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""<p>VPC network ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -10968,7 +12860,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
+        r"""<p>Subnet ID.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -10979,7 +12871,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Vip(self):
-        r"""Private IP of instance
+        r"""<p>Instance private IP address</p>
         :rtype: str
         """
         return self._Vip
@@ -10990,7 +12882,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Vport(self):
-        r"""Private port of instance
+        r"""<p>Instance Intranet Port</p>
         :rtype: int
         """
         return self._Vport
@@ -11001,7 +12893,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PayMode(self):
-        r"""Billing mode
+        r"""<p>Payment mode</p>
         :rtype: int
         """
         return self._PayMode
@@ -11012,7 +12904,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PeriodEndTime(self):
-        r"""Instance expiration time
+        r"""<p>Instance expiration time</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -11023,7 +12915,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DestroyDeadlineText(self):
-        r"""Termination deadline
+        r"""<p>Termination phase</p>
         :rtype: str
         """
         return self._DestroyDeadlineText
@@ -11034,7 +12926,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsolateTime(self):
-        r"""Isolation time
+        r"""<p>Isolation time</p>
         :rtype: str
         """
         return self._IsolateTime
@@ -11045,7 +12937,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def NetType(self):
-        r"""Network type
+        r"""<p>Network type</p>
         :rtype: int
         """
         return self._NetType
@@ -11056,7 +12948,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def WanDomain(self):
-        r"""Public domain name
+        r"""<p>Public network domain name</p>
         :rtype: str
         """
         return self._WanDomain
@@ -11067,7 +12959,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def WanIP(self):
-        r"""Public IP
+        r"""<p>Public network IP</p>
         :rtype: str
         """
         return self._WanIP
@@ -11078,7 +12970,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def WanPort(self):
-        r"""Public port
+        r"""<p>Public network port</p>
         :rtype: int
         """
         return self._WanPort
@@ -11089,7 +12981,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def WanStatus(self):
-        r"""Public network status
+        r"""<p>Public network status</p>
         :rtype: str
         """
         return self._WanStatus
@@ -11100,7 +12992,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DestroyTime(self):
-        r"""Instance termination time
+        r"""<p>Instance destruction time</p>
         :rtype: str
         """
         return self._DestroyTime
@@ -11111,7 +13003,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CynosVersion(self):
-        r"""TDSQL-C kernel version
+        r"""<p>Cynos kernel version</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -11122,7 +13014,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProcessingTask(self):
-        r"""Task in progress
+        r"""<p>Currently processing task</p>
         :rtype: str
         """
         return self._ProcessingTask
@@ -11133,7 +13025,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RenewFlag(self):
-        r"""Renewal flag
+        r"""<p>Renewal flag</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -11144,7 +13036,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def MinCpu(self):
-        r"""Minimum number of CPU cores for serverless instance
+        r"""<p>serverless instance cpu minimum</p>
         :rtype: float
         """
         return self._MinCpu
@@ -11155,7 +13047,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def MaxCpu(self):
-        r"""Maximum number of CPU cores for serverless instance
+        r"""<p>cpu cap of the serverless instance</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -11166,9 +13058,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ServerlessStatus(self):
-        r"""Serverless instance status. Valid values:
-resume
-pause
+        r"""<p>serverless instance status, available values:<br>resume<br>pause</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -11179,7 +13069,7 @@ pause
 
     @property
     def StorageId(self):
-        r"""Prepayment storage Id.
+        r"""<p>Prepayment storage Id</p>
         :rtype: str
         """
         return self._StorageId
@@ -11190,7 +13080,7 @@ pause
 
     @property
     def StoragePayMode(self):
-        r"""Storage billing mode
+        r"""<p>Storage billing type</p>
         :rtype: int
         """
         return self._StoragePayMode
@@ -11201,7 +13091,7 @@ pause
 
     @property
     def PhysicalZone(self):
-        r"""Physical zone
+        r"""<p>Physical zone</p>
         :rtype: str
         """
         return self._PhysicalZone
@@ -11212,7 +13102,7 @@ pause
 
     @property
     def BusinessType(self):
-        r"""Business type.
+        r"""<p>Business type</p>
         :rtype: str
         """
         return self._BusinessType
@@ -11223,7 +13113,7 @@ pause
 
     @property
     def Tasks(self):
-        r"""Task
+        r"""<p>Task</p>
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -11234,7 +13124,7 @@ pause
 
     @property
     def IsFreeze(self):
-        r"""Whether to freeze.
+        r"""<p>Whether to freeze</p>
         :rtype: str
         """
         return self._IsFreeze
@@ -11245,7 +13135,7 @@ pause
 
     @property
     def ResourceTags(self):
-        r"""The resource tag
+        r"""<p>Resource tag</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
@@ -11257,7 +13147,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterZone(self):
-        r"""Primary AZ.
+        r"""<p>Primary AZ</p>
         :rtype: str
         """
         return self._MasterZone
@@ -11268,8 +13158,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SlaveZones(self):
-        r"""Replica AZ
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Standby availability zone</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._SlaveZones
@@ -11280,7 +13170,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceNetInfo(self):
-        r"""Network information of the instance.
+        r"""<p>Instance network info</p>
         :rtype: list of InstanceNetInfo
         """
         return self._InstanceNetInfo
@@ -11291,7 +13181,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ResourcePackages(self):
-        r"""Information of the resource pack bound to an instance when `packageType` is `CCU`. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Instance bind resource package info (only return compute resource package, packageType=CCU)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ResourcePackage
         """
         return self._ResourcePackages
@@ -11302,7 +13193,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceIndexMode(self):
-        r"""Specifies the instance index form. valid values include mixedRowColumn (row and column hybrid storage) and onlyRowIndex (row-only storage).
+        r"""<p>Instance index form, available values [mixedRowColumn (hybrid row-column storage), onlyRowIndex (row storage only)]</p>
         :rtype: str
         """
         return self._InstanceIndexMode
@@ -11313,7 +13204,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceAbility(self):
-        r"""Supported capabilities of the existing instance.
+        r"""<p>Supported capabilities of the current instance</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
         """
         return self._InstanceAbility
@@ -11324,7 +13215,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DeviceType(self):
-        r"""Instance machine type.
+        r"""<p>Instance Machine Type</p><ol><li>common, universal type.</li><li>exclusive, dedicated.</li></ol>
         :rtype: str
         """
         return self._DeviceType
@@ -11335,7 +13226,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceStorageType(self):
-        r"""Specifies the instance storage type.
+        r"""<p>Instance storage type</p>
         :rtype: str
         """
         return self._InstanceStorageType
@@ -11346,7 +13237,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CynosVersionTag(self):
-        r"""Unknown field.
+        r"""<p>Unknown field</p>
         :rtype: str
         """
         return self._CynosVersionTag
@@ -11357,7 +13248,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def NodeList(self):
-        r"""Specifies the node information of libradb.
+        r"""<p>libradb node information</p>
         :rtype: list of str
         """
         return self._NodeList
@@ -11365,6 +13256,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @NodeList.setter
     def NodeList(self, NodeList):
         self._NodeList = NodeList
+
+    @property
+    def GdnId(self):
+        r"""<p>Unique ID of the global database</p>
+        :rtype: str
+        """
+        return self._GdnId
+
+    @GdnId.setter
+    def GdnId(self, GdnId):
+        self._GdnId = GdnId
 
 
     def _deserialize(self, params):
@@ -11448,6 +13350,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._InstanceStorageType = params.get("InstanceStorageType")
         self._CynosVersionTag = params.get("CynosVersionTag")
         self._NodeList = params.get("NodeList")
+        self._GdnId = params.get("GdnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11465,78 +13368,78 @@ class CynosdbInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: User `Uin`
+        :param _Uin: <p>User Uin</p>
         :type Uin: str
-        :param _AppId: User `AppId`
+        :param _AppId: <p>User AppId</p>
         :type AppId: int
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _ClusterName: Cluster name
+        :param _ClusterName: <p>Cluster name.</p>
         :type ClusterName: str
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _InstanceName: Instance name
+        :param _InstanceName: <p>Instance name</p>
         :type InstanceName: str
-        :param _ProjectId: Project ID
+        :param _ProjectId: <p>Project ID</p>
         :type ProjectId: int
-        :param _Region: Region
+        :param _Region: <p>Region</p>
         :type Region: str
-        :param _Zone: AZ
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _Status: Instance status
+        :param _Status: <p>Instance status<br>creating: Creating<br>running: Running<br>isolating: Isolation<br>isolated: Isolated<br>activating: Recovering<br>offlining: Offline<br>offlined: Offline</p>
         :type Status: str
-        :param _StatusDesc: Instance status description
+        :param _StatusDesc: <p>Status description in Chinese of the instance</p>
         :type StatusDesc: str
-        :param _ServerlessStatus: Serverless instance status. Valid values:
-resume
-pause
+        :param _ServerlessStatus: <p>Status of the serverless instance. Possible value:<br>resume<br>pause</p>
         :type ServerlessStatus: str
-        :param _DbType: Database type
+        :param _DbType: <p>Database type.</p>
         :type DbType: str
-        :param _DbVersion: Database version
+        :param _DbVersion: <p>Database version</p>
         :type DbVersion: str
-        :param _Cpu: Number of CPU cores
+        :param _Cpu: <p>Cpu, unit: cores</p>
         :type Cpu: int
-        :param _Memory: Memory in GB
+        :param _Memory: <p>Memory, unit: GB</p>
         :type Memory: int
-        :param _Storage: Storage capacity in GB
+        :param _Storage: <p>Stored amount, unit: GB</p>
         :type Storage: int
-        :param _InstanceType: Instance type
+        :param _InstanceType: <p>Instance type</p>
         :type InstanceType: str
-        :param _InstanceRole: Current instance role
+        :param _InstanceRole: <p>Current instance role</p>
         :type InstanceRole: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: <p>Update time.</p>
         :type UpdateTime: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _PayMode: Billing mode
+        :param _PayMode: <p>Payment mode</p>
         :type PayMode: int
-        :param _PeriodEndTime: Instance expiration time
+        :param _PeriodEndTime: <p>Instance expiration time</p>
         :type PeriodEndTime: str
-        :param _NetType: Network type
+        :param _NetType: <p>Network type.</p>
         :type NetType: int
-        :param _VpcId: VPC ID
+        :param _VpcId: <p>VPC network ID</p>
         :type VpcId: str
-        :param _SubnetId: Subnet ID
+        :param _SubnetId: <p>Subnet ID.</p>
         :type SubnetId: str
-        :param _Vip: Private IP of instance
+        :param _Vip: <p>Instance private IP address</p>
         :type Vip: str
-        :param _Vport: Private port of instance
+        :param _Vport: <p>Instance Intranet Port</p>
         :type Vport: int
-        :param _WanDomain: Public domain name of instance
+        :param _WanDomain: <p>Instance public network domain name</p>
         :type WanDomain: str
-        :param _Charset: Character set
+        :param _Charset: <p>Character set</p>
         :type Charset: str
-        :param _CynosVersion: TDSQL-C kernel version
+        :param _CynosVersion: <p>Cynos kernel version</p>
         :type CynosVersion: str
-        :param _RenewFlag: Renewal flag
+        :param _RenewFlag: <p>Renewal flag</p>
         :type RenewFlag: int
-        :param _MinCpu: The minimum number of CPU cores for a serverless instance
+        :param _MinCpu: <p>serverless instance cpu minimum</p>
         :type MinCpu: float
-        :param _MaxCpu: The maximum number of CPU cores for a serverless instance
+        :param _MaxCpu: <p>cpu cap of the serverless instance</p>
         :type MaxCpu: float
-        :param _DbMode: Db type: <li>NORMAL</li> <li>SERVERLESS</li>.
+        :param _DbMode: <p>Db type:<li>NORMAL</li><li>SERVERLESS</li></p>
         :type DbMode: str
+        :param _MasterZone: <p>Cluster read/write instance Availability Zone</p>
+        :type MasterZone: str
         """
         self._Uin = None
         self._AppId = None
@@ -11573,10 +13476,11 @@ pause
         self._MinCpu = None
         self._MaxCpu = None
         self._DbMode = None
+        self._MasterZone = None
 
     @property
     def Uin(self):
-        r"""User `Uin`
+        r"""<p>User Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -11587,7 +13491,7 @@ pause
 
     @property
     def AppId(self):
-        r"""User `AppId`
+        r"""<p>User AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -11598,7 +13502,7 @@ pause
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -11609,7 +13513,7 @@ pause
 
     @property
     def ClusterName(self):
-        r"""Cluster name
+        r"""<p>Cluster name.</p>
         :rtype: str
         """
         return self._ClusterName
@@ -11620,7 +13524,7 @@ pause
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -11631,7 +13535,7 @@ pause
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""<p>Instance name</p>
         :rtype: str
         """
         return self._InstanceName
@@ -11642,7 +13546,7 @@ pause
 
     @property
     def ProjectId(self):
-        r"""Project ID
+        r"""<p>Project ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -11653,7 +13557,7 @@ pause
 
     @property
     def Region(self):
-        r"""Region
+        r"""<p>Region</p>
         :rtype: str
         """
         return self._Region
@@ -11664,7 +13568,7 @@ pause
 
     @property
     def Zone(self):
-        r"""AZ
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -11675,7 +13579,7 @@ pause
 
     @property
     def Status(self):
-        r"""Instance status
+        r"""<p>Instance status<br>creating: Creating<br>running: Running<br>isolating: Isolation<br>isolated: Isolated<br>activating: Recovering<br>offlining: Offline<br>offlined: Offline</p>
         :rtype: str
         """
         return self._Status
@@ -11686,7 +13590,7 @@ pause
 
     @property
     def StatusDesc(self):
-        r"""Instance status description
+        r"""<p>Status description in Chinese of the instance</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -11697,9 +13601,7 @@ pause
 
     @property
     def ServerlessStatus(self):
-        r"""Serverless instance status. Valid values:
-resume
-pause
+        r"""<p>Status of the serverless instance. Possible value:<br>resume<br>pause</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -11710,7 +13612,7 @@ pause
 
     @property
     def DbType(self):
-        r"""Database type
+        r"""<p>Database type.</p>
         :rtype: str
         """
         return self._DbType
@@ -11721,7 +13623,7 @@ pause
 
     @property
     def DbVersion(self):
-        r"""Database version
+        r"""<p>Database version</p>
         :rtype: str
         """
         return self._DbVersion
@@ -11732,7 +13634,7 @@ pause
 
     @property
     def Cpu(self):
-        r"""Number of CPU cores
+        r"""<p>Cpu, unit: cores</p>
         :rtype: int
         """
         return self._Cpu
@@ -11743,7 +13645,7 @@ pause
 
     @property
     def Memory(self):
-        r"""Memory in GB
+        r"""<p>Memory, unit: GB</p>
         :rtype: int
         """
         return self._Memory
@@ -11754,7 +13656,7 @@ pause
 
     @property
     def Storage(self):
-        r"""Storage capacity in GB
+        r"""<p>Stored amount, unit: GB</p>
         :rtype: int
         """
         return self._Storage
@@ -11765,7 +13667,7 @@ pause
 
     @property
     def InstanceType(self):
-        r"""Instance type
+        r"""<p>Instance type</p>
         :rtype: str
         """
         return self._InstanceType
@@ -11776,7 +13678,7 @@ pause
 
     @property
     def InstanceRole(self):
-        r"""Current instance role
+        r"""<p>Current instance role</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -11787,7 +13689,7 @@ pause
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""<p>Update time.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -11798,7 +13700,7 @@ pause
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -11809,7 +13711,7 @@ pause
 
     @property
     def PayMode(self):
-        r"""Billing mode
+        r"""<p>Payment mode</p>
         :rtype: int
         """
         return self._PayMode
@@ -11820,7 +13722,7 @@ pause
 
     @property
     def PeriodEndTime(self):
-        r"""Instance expiration time
+        r"""<p>Instance expiration time</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -11831,7 +13733,7 @@ pause
 
     @property
     def NetType(self):
-        r"""Network type
+        r"""<p>Network type.</p>
         :rtype: int
         """
         return self._NetType
@@ -11842,7 +13744,7 @@ pause
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""<p>VPC network ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -11853,7 +13755,7 @@ pause
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
+        r"""<p>Subnet ID.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -11864,7 +13766,7 @@ pause
 
     @property
     def Vip(self):
-        r"""Private IP of instance
+        r"""<p>Instance private IP address</p>
         :rtype: str
         """
         return self._Vip
@@ -11875,7 +13777,7 @@ pause
 
     @property
     def Vport(self):
-        r"""Private port of instance
+        r"""<p>Instance Intranet Port</p>
         :rtype: int
         """
         return self._Vport
@@ -11886,7 +13788,7 @@ pause
 
     @property
     def WanDomain(self):
-        r"""Public domain name of instance
+        r"""<p>Instance public network domain name</p>
         :rtype: str
         """
         return self._WanDomain
@@ -11897,7 +13799,7 @@ pause
 
     @property
     def Charset(self):
-        r"""Character set
+        r"""<p>Character set</p>
         :rtype: str
         """
         return self._Charset
@@ -11908,7 +13810,7 @@ pause
 
     @property
     def CynosVersion(self):
-        r"""TDSQL-C kernel version
+        r"""<p>Cynos kernel version</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -11919,7 +13821,7 @@ pause
 
     @property
     def RenewFlag(self):
-        r"""Renewal flag
+        r"""<p>Renewal flag</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -11930,7 +13832,7 @@ pause
 
     @property
     def MinCpu(self):
-        r"""The minimum number of CPU cores for a serverless instance
+        r"""<p>serverless instance cpu minimum</p>
         :rtype: float
         """
         return self._MinCpu
@@ -11941,7 +13843,7 @@ pause
 
     @property
     def MaxCpu(self):
-        r"""The maximum number of CPU cores for a serverless instance
+        r"""<p>cpu cap of the serverless instance</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -11952,7 +13854,7 @@ pause
 
     @property
     def DbMode(self):
-        r"""Db type: <li>NORMAL</li> <li>SERVERLESS</li>.
+        r"""<p>Db type:<li>NORMAL</li><li>SERVERLESS</li></p>
         :rtype: str
         """
         return self._DbMode
@@ -11960,6 +13862,17 @@ pause
     @DbMode.setter
     def DbMode(self, DbMode):
         self._DbMode = DbMode
+
+    @property
+    def MasterZone(self):
+        r"""<p>Cluster read/write instance Availability Zone</p>
+        :rtype: str
+        """
+        return self._MasterZone
+
+    @MasterZone.setter
+    def MasterZone(self, MasterZone):
+        self._MasterZone = MasterZone
 
 
     def _deserialize(self, params):
@@ -11998,6 +13911,7 @@ pause
         self._MinCpu = params.get("MinCpu")
         self._MaxCpu = params.get("MaxCpu")
         self._DbMode = params.get("DbMode")
+        self._MasterZone = params.get("MasterZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12362,6 +14276,177 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DataSourceItem(AbstractModel):
+    r"""Data source item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Source instance ID
+        :type InstanceId: str
+        :param _ClusterId: Source cluster ID
+        :type ClusterId: str
+        :param _DBType: Source database type
+        :type DBType: str
+        :param _IP: Source database IP
+        :type IP: str
+        :param _Port: Source database port
+        :type Port: int
+        :param _Region: Source instance region
+        :type Region: str
+        :param _Zone: Source instance availability zone
+        :type Zone: str
+        :param _SrcUin: Source main account uin
+        :type SrcUin: str
+        :param _AccountMode: Account type
+        :type AccountMode: str
+        :param _ReplicationJobStatus: sync task status
+        :type ReplicationJobStatus: str
+        """
+        self._InstanceId = None
+        self._ClusterId = None
+        self._DBType = None
+        self._IP = None
+        self._Port = None
+        self._Region = None
+        self._Zone = None
+        self._SrcUin = None
+        self._AccountMode = None
+        self._ReplicationJobStatus = None
+
+    @property
+    def InstanceId(self):
+        r"""Source instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterId(self):
+        r"""Source cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DBType(self):
+        r"""Source database type
+        :rtype: str
+        """
+        return self._DBType
+
+    @DBType.setter
+    def DBType(self, DBType):
+        self._DBType = DBType
+
+    @property
+    def IP(self):
+        r"""Source database IP
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Port(self):
+        r"""Source database port
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Region(self):
+        r"""Source instance region
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""Source instance availability zone
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SrcUin(self):
+        r"""Source main account uin
+        :rtype: str
+        """
+        return self._SrcUin
+
+    @SrcUin.setter
+    def SrcUin(self, SrcUin):
+        self._SrcUin = SrcUin
+
+    @property
+    def AccountMode(self):
+        r"""Account type
+        :rtype: str
+        """
+        return self._AccountMode
+
+    @AccountMode.setter
+    def AccountMode(self, AccountMode):
+        self._AccountMode = AccountMode
+
+    @property
+    def ReplicationJobStatus(self):
+        r"""sync task status
+        :rtype: str
+        """
+        return self._ReplicationJobStatus
+
+    @ReplicationJobStatus.setter
+    def ReplicationJobStatus(self, ReplicationJobStatus):
+        self._ReplicationJobStatus = ReplicationJobStatus
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterId = params.get("ClusterId")
+        self._DBType = params.get("DBType")
+        self._IP = params.get("IP")
+        self._Port = params.get("Port")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._SrcUin = params.get("SrcUin")
+        self._AccountMode = params.get("AccountMode")
+        self._ReplicationJobStatus = params.get("ReplicationJobStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabasePrivileges(AbstractModel):
     r"""Database permission list
 
@@ -12670,6 +14755,57 @@ class DbInfo(AbstractModel):
         
 
 
+class DbTable(AbstractModel):
+    r"""Database table
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Db: Database name.
+        :type Db: str
+        :param _TableName: Database table name
+        :type TableName: str
+        """
+        self._Db = None
+        self._TableName = None
+
+    @property
+    def Db(self):
+        r"""Database name.
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def TableName(self):
+        r"""Database table name
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._Db = params.get("Db")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAccountsRequest(AbstractModel):
     r"""DeleteAccounts request structure.
 
@@ -12912,6 +15048,100 @@ class DeleteBackupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBackupVaultRequest(AbstractModel):
+    r"""DeleteBackupVault request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Backup safe ID. The length must be greater than 0.
+        :type VaultId: str
+        :param _BackupIds: Backup file ID list to be deleted, cannot be empty
+        :type BackupIds: list of int
+        """
+        self._VaultId = None
+        self._BackupIds = None
+
+    @property
+    def VaultId(self):
+        r"""Backup safe ID. The length must be greater than 0.
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupIds(self):
+        r"""Backup file ID list to be deleted, cannot be empty
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupIds = params.get("BackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupVaultResponse(AbstractModel):
+    r"""DeleteBackupVault response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: task ID, for querying task execution status
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""task ID, for querying task execution status
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCLSDeliveryRequest(AbstractModel):
     r"""DeleteCLSDelivery request structure.
 
@@ -13045,7 +15275,7 @@ class DeleteClusterDatabaseRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param _DbNames: Database Name
+        :param _DbNames: 
         :type DbNames: list of str
         """
         self._ClusterId = None
@@ -13064,7 +15294,7 @@ class DeleteClusterDatabaseRequest(AbstractModel):
 
     @property
     def DbNames(self):
-        r"""Database Name
+        r"""
         :rtype: list of str
         """
         return self._DbNames
@@ -13112,6 +15342,100 @@ class DeleteClusterDatabaseResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteClusterSaveBackupRequest(AbstractModel):
+    r"""DeleteClusterSaveBackup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _SaveBackupId: Reserved backup file ID. recommended.
+        :type SaveBackupId: int
+        """
+        self._ClusterId = None
+        self._SaveBackupId = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SaveBackupId(self):
+        r"""Reserved backup file ID. recommended.
+        :rtype: int
+        """
+        return self._SaveBackupId
+
+    @SaveBackupId.setter
+    def SaveBackupId(self, SaveBackupId):
+        self._SaveBackupId = SaveBackupId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._SaveBackupId = params.get("SaveBackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterSaveBackupResponse(AbstractModel):
+    r"""DeleteClusterSaveBackup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -13342,6 +15666,141 @@ class DeleteParamTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteVaultTask(AbstractModel):
+    r"""Delete safe task info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Safe ID
+        :type VaultId: str
+        :param _TaskId: Task ID.
+        :type TaskId: int
+        """
+        self._VaultId = None
+        self._TaskId = None
+
+    @property
+    def VaultId(self):
+        r"""Safe ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVaultsRequest(AbstractModel):
+    r"""DeleteVaults request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultIds: List of backup safe IDs to be deleted, cannot be empty. The safe must have all files cleared.
+        :type VaultIds: list of str
+        """
+        self._VaultIds = None
+
+    @property
+    def VaultIds(self):
+        r"""List of backup safe IDs to be deleted, cannot be empty. The safe must have all files cleared.
+        :rtype: list of str
+        """
+        return self._VaultIds
+
+    @VaultIds.setter
+    def VaultIds(self, VaultIds):
+        self._VaultIds = VaultIds
+
+
+    def _deserialize(self, params):
+        self._VaultIds = params.get("VaultIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVaultsResponse(AbstractModel):
+    r"""DeleteVaults response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultTask: Delete task list. Each safe corresponds to a task.
+        :type VaultTask: list of DeleteVaultTask
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VaultTask = None
+        self._RequestId = None
+
+    @property
+    def VaultTask(self):
+        r"""Delete task list. Each safe corresponds to a task.
+        :rtype: list of DeleteVaultTask
+        """
+        return self._VaultTask
+
+    @VaultTask.setter
+    def VaultTask(self, VaultTask):
+        self._VaultTask = VaultTask
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VaultTask") is not None:
+            self._VaultTask = []
+            for item in params.get("VaultTask"):
+                obj = DeleteVaultTask()
+                obj._deserialize(item)
+                self._VaultTask.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DeliverSummary(AbstractModel):
     r"""Log shipping information.
 
@@ -13357,11 +15816,14 @@ class DeliverSummary(AbstractModel):
         :type DeliverConsumer: str
         :param _DeliverConsumerName: Specifies the name of the sender.
         :type DeliverConsumerName: str
+        :param _DeliverError: Exception error in delivery
+        :type DeliverError: str
         """
         self._DeliverType = None
         self._DeliverSubType = None
         self._DeliverConsumer = None
         self._DeliverConsumerName = None
+        self._DeliverError = None
 
     @property
     def DeliverType(self):
@@ -13407,12 +15869,24 @@ class DeliverSummary(AbstractModel):
     def DeliverConsumerName(self, DeliverConsumerName):
         self._DeliverConsumerName = DeliverConsumerName
 
+    @property
+    def DeliverError(self):
+        r"""Exception error in delivery
+        :rtype: str
+        """
+        return self._DeliverError
+
+    @DeliverError.setter
+    def DeliverError(self, DeliverError):
+        self._DeliverError = DeliverError
+
 
     def _deserialize(self, params):
         self._DeliverType = params.get("DeliverType")
         self._DeliverSubType = params.get("DeliverSubType")
         self._DeliverConsumer = params.get("DeliverConsumer")
         self._DeliverConsumerName = params.get("DeliverConsumerName")
+        self._DeliverError = params.get("DeliverError")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14186,14 +16660,14 @@ class DescribeBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -14222,20 +16696,25 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupTimeBeg: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        :param _BackupTimeBeg: <p>Indicates the full backup start time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :type BackupTimeBeg: int
-        :param _BackupTimeEnd: Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        :param _BackupTimeEnd: <p>Indicates the full backup start time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :type BackupTimeEnd: int
-        :param _ReserveDuration: Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800
+        :param _ReserveDuration: <p>Indicates the backup retention period in seconds. Backups longer than this time will be cleaned up. 7 days is represented as 3600<em>24</em>7=604800.</p>
         :type ReserveDuration: int
-        :param _BackupFreq: Backup frequency. an array with a length of 7, indicating the backup methods corresponding to monday to sunday respectively. full represents full backup, and increment represents incremental backup.
+        :param _BackupFreq: <p>Backup frequency, an array of length 7, corresponding to Monday to Sunday backup method, full-full backup, increment-incremental backup</p>
         :type BackupFreq: list of str
-        :param _BackupType: Backup method. specifies the method of backup. valid values: logic (indicates logical backup), snapshot (indicates snapshot backup).
+        :param _BackupType: <p>Backup method, logic-logical backup, snapshot-snapshot backup</p>
         :type BackupType: str
-        :param _LogicCrossRegionsConfigUpdateTime: Cross-Regional logical backup configuration modification time.
+        :param _LogicCrossRegionsConfigUpdateTime: <p>Cross-regional logical backup configuration modification time</p>
         :type LogicCrossRegionsConfigUpdateTime: str
-        :param _LogicBackupConfig: Automatic logical backup configuration.
+        :param _LogicBackupConfig: <p>Automatic logical backup configuration</p>
         :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
+        :param _SnapshotSecondaryBackupConfig: <p>Second-level snapshot backup configuration information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SnapshotSecondaryBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.BackupConfigInfo`
+        :param _SparseBackupConfig: <p>Sparse backup configuration</p>
+        :type SparseBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.SparseBackupConfigRsp`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -14246,11 +16725,13 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._BackupType = None
         self._LogicCrossRegionsConfigUpdateTime = None
         self._LogicBackupConfig = None
+        self._SnapshotSecondaryBackupConfig = None
+        self._SparseBackupConfig = None
         self._RequestId = None
 
     @property
     def BackupTimeBeg(self):
-        r"""Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        r"""<p>Indicates the full backup start time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :rtype: int
         """
         return self._BackupTimeBeg
@@ -14261,7 +16742,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupTimeEnd(self):
-        r"""Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        r"""<p>Indicates the full backup start time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :rtype: int
         """
         return self._BackupTimeEnd
@@ -14272,7 +16753,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def ReserveDuration(self):
-        r"""Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800
+        r"""<p>Indicates the backup retention period in seconds. Backups longer than this time will be cleaned up. 7 days is represented as 3600<em>24</em>7=604800.</p>
         :rtype: int
         """
         return self._ReserveDuration
@@ -14283,7 +16764,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupFreq(self):
-        r"""Backup frequency. an array with a length of 7, indicating the backup methods corresponding to monday to sunday respectively. full represents full backup, and increment represents incremental backup.
+        r"""<p>Backup frequency, an array of length 7, corresponding to Monday to Sunday backup method, full-full backup, increment-incremental backup</p>
         :rtype: list of str
         """
         return self._BackupFreq
@@ -14294,7 +16775,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""Backup method. specifies the method of backup. valid values: logic (indicates logical backup), snapshot (indicates snapshot backup).
+        r"""<p>Backup method, logic-logical backup, snapshot-snapshot backup</p>
         :rtype: str
         """
         return self._BackupType
@@ -14305,7 +16786,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def LogicCrossRegionsConfigUpdateTime(self):
-        r"""Cross-Regional logical backup configuration modification time.
+        r"""<p>Cross-regional logical backup configuration modification time</p>
         :rtype: str
         """
         return self._LogicCrossRegionsConfigUpdateTime
@@ -14316,7 +16797,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def LogicBackupConfig(self):
-        r"""Automatic logical backup configuration.
+        r"""<p>Automatic logical backup configuration</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
         """
         return self._LogicBackupConfig
@@ -14324,6 +16805,29 @@ class DescribeBackupConfigResponse(AbstractModel):
     @LogicBackupConfig.setter
     def LogicBackupConfig(self, LogicBackupConfig):
         self._LogicBackupConfig = LogicBackupConfig
+
+    @property
+    def SnapshotSecondaryBackupConfig(self):
+        r"""<p>Second-level snapshot backup configuration information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupConfigInfo`
+        """
+        return self._SnapshotSecondaryBackupConfig
+
+    @SnapshotSecondaryBackupConfig.setter
+    def SnapshotSecondaryBackupConfig(self, SnapshotSecondaryBackupConfig):
+        self._SnapshotSecondaryBackupConfig = SnapshotSecondaryBackupConfig
+
+    @property
+    def SparseBackupConfig(self):
+        r"""<p>Sparse backup configuration</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SparseBackupConfigRsp`
+        """
+        return self._SparseBackupConfig
+
+    @SparseBackupConfig.setter
+    def SparseBackupConfig(self, SparseBackupConfig):
+        self._SparseBackupConfig = SparseBackupConfig
 
     @property
     def RequestId(self):
@@ -14347,6 +16851,12 @@ class DescribeBackupConfigResponse(AbstractModel):
         if params.get("LogicBackupConfig") is not None:
             self._LogicBackupConfig = LogicBackupConfigInfo()
             self._LogicBackupConfig._deserialize(params.get("LogicBackupConfig"))
+        if params.get("SnapshotSecondaryBackupConfig") is not None:
+            self._SnapshotSecondaryBackupConfig = BackupConfigInfo()
+            self._SnapshotSecondaryBackupConfig._deserialize(params.get("SnapshotSecondaryBackupConfig"))
+        if params.get("SparseBackupConfig") is not None:
+            self._SparseBackupConfig = SparseBackupConfigRsp()
+            self._SparseBackupConfig._deserialize(params.get("SparseBackupConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -14678,6 +17188,308 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupListByVaultItem(AbstractModel):
+    r"""DescribeBackupListByVaultItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>Cluster name</p>
+        :type ClusterName: str
+        :param _BackupFileInfo: <p>Backup information</p>
+        :type BackupFileInfo: :class:`tencentcloud.cynosdb.v20190107.models.BackupFileInfo`
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._BackupFileInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>Cluster name</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def BackupFileInfo(self):
+        r"""<p>Backup information</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupFileInfo`
+        """
+        return self._BackupFileInfo
+
+    @BackupFileInfo.setter
+    def BackupFileInfo(self, BackupFileInfo):
+        self._BackupFileInfo = BackupFileInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("BackupFileInfo") is not None:
+            self._BackupFileInfo = BackupFileInfo()
+            self._BackupFileInfo._deserialize(params.get("BackupFileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupListByVaultRequest(AbstractModel):
+    r"""DescribeBackupListByVault request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Safe ID, length must be greater than 0
+        :type VaultId: str
+        :param _BackupIds: Backup file ID list for filtering specific backups
+        :type BackupIds: list of int
+        :param _ClusterId: Cluster ID for filtering backups of a specific cluster
+        :type ClusterId: str
+        :param _BackupNames: Backup name list for exact matching filter criteria
+        :type BackupNames: list of str
+        :param _FileNames: Filename list for exact matching filter
+        :type FileNames: list of str
+        :param _Limit: Number of pages, range (0,100], default 100
+        :type Limit: int
+        :param _Offset: Pagination offset. Range: [0, INF). Default is 0.
+        :type Offset: int
+        :param _OrderBy: Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime. Default: createTime.
+        :type OrderBy: str
+        :param _OrderByType: Sorting method, available values: desc, asc, DESC, ASC, default desc
+        :type OrderByType: str
+        :param _Status: Status.
+        :type Status: str
+        """
+        self._VaultId = None
+        self._BackupIds = None
+        self._ClusterId = None
+        self._BackupNames = None
+        self._FileNames = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Status = None
+
+    @property
+    def VaultId(self):
+        r"""Safe ID, length must be greater than 0
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupIds(self):
+        r"""Backup file ID list for filtering specific backups
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID for filtering backups of a specific cluster
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupNames(self):
+        r"""Backup name list for exact matching filter criteria
+        :rtype: list of str
+        """
+        return self._BackupNames
+
+    @BackupNames.setter
+    def BackupNames(self, BackupNames):
+        self._BackupNames = BackupNames
+
+    @property
+    def FileNames(self):
+        r"""Filename list for exact matching filter
+        :rtype: list of str
+        """
+        return self._FileNames
+
+    @FileNames.setter
+    def FileNames(self, FileNames):
+        self._FileNames = FileNames
+
+    @property
+    def Limit(self):
+        r"""Number of pages, range (0,100], default 100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Pagination offset. Range: [0, INF). Default is 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime. Default: createTime.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""Sorting method, available values: desc, asc, DESC, ASC, default desc
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Status(self):
+        r"""Status.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupIds = params.get("BackupIds")
+        self._ClusterId = params.get("ClusterId")
+        self._BackupNames = params.get("BackupNames")
+        self._FileNames = params.get("FileNames")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupListByVaultResponse(AbstractModel):
+    r"""DescribeBackupListByVault response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total files of backup that meets the conditions
+        :type TotalCount: int
+        :param _BackupList: Backup file list
+        :type BackupList: list of DescribeBackupListByVaultItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BackupList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total files of backup that meets the conditions
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BackupList(self):
+        r"""Backup file list
+        :rtype: list of DescribeBackupListByVaultItem
+        """
+        return self._BackupList
+
+    @BackupList.setter
+    def BackupList(self, BackupList):
+        self._BackupList = BackupList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BackupList") is not None:
+            self._BackupList = []
+            for item in params.get("BackupList"):
+                obj = DescribeBackupListByVaultItem()
+                obj._deserialize(item)
+                self._BackupList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackupListRequest(AbstractModel):
     r"""DescribeBackupList request structure.
 
@@ -14700,18 +17512,24 @@ class DescribeBackupListRequest(AbstractModel):
         :type BackupType: str
         :param _BackupMethod: Back mode. Valid values: `auto` (automatic backup), `manual` (manual backup)
         :type BackupMethod: str
-        :param _SnapShotType: Snapshot type. Optional values: full, full backup; increment, incremental backup
+        :param _SnapShotType: 
         :type SnapShotType: str
         :param _StartTime: Backup start time
         :type StartTime: str
         :param _EndTime: Backup end time
         :type EndTime: str
-        :param _FileNames: Backup file name, fuzzy search
+        :param _FileNames: 
         :type FileNames: list of str
         :param _BackupNames: Backup alias, which supports fuzzy query.
         :type BackupNames: list of str
         :param _SnapshotIdList: ID list of the snapshot backup
         :type SnapshotIdList: list of int
+        :param _BackupRegion: 
+        :type BackupRegion: str
+        :param _IsCrossRegionsBackup: 
+        :type IsCrossRegionsBackup: str
+        :param _BackupStatus: Status you want to query
+        :type BackupStatus: list of str
         """
         self._ClusterId = None
         self._Limit = None
@@ -14726,6 +17544,9 @@ class DescribeBackupListRequest(AbstractModel):
         self._FileNames = None
         self._BackupNames = None
         self._SnapshotIdList = None
+        self._BackupRegion = None
+        self._IsCrossRegionsBackup = None
+        self._BackupStatus = None
 
     @property
     def ClusterId(self):
@@ -14807,7 +17628,7 @@ class DescribeBackupListRequest(AbstractModel):
 
     @property
     def SnapShotType(self):
-        r"""Snapshot type. Optional values: full, full backup; increment, incremental backup
+        r"""
         :rtype: str
         """
         return self._SnapShotType
@@ -14840,7 +17661,7 @@ class DescribeBackupListRequest(AbstractModel):
 
     @property
     def FileNames(self):
-        r"""Backup file name, fuzzy search
+        r"""
         :rtype: list of str
         """
         return self._FileNames
@@ -14871,6 +17692,39 @@ class DescribeBackupListRequest(AbstractModel):
     def SnapshotIdList(self, SnapshotIdList):
         self._SnapshotIdList = SnapshotIdList
 
+    @property
+    def BackupRegion(self):
+        r"""
+        :rtype: str
+        """
+        return self._BackupRegion
+
+    @BackupRegion.setter
+    def BackupRegion(self, BackupRegion):
+        self._BackupRegion = BackupRegion
+
+    @property
+    def IsCrossRegionsBackup(self):
+        r"""
+        :rtype: str
+        """
+        return self._IsCrossRegionsBackup
+
+    @IsCrossRegionsBackup.setter
+    def IsCrossRegionsBackup(self, IsCrossRegionsBackup):
+        self._IsCrossRegionsBackup = IsCrossRegionsBackup
+
+    @property
+    def BackupStatus(self):
+        r"""Status you want to query
+        :rtype: list of str
+        """
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -14886,6 +17740,9 @@ class DescribeBackupListRequest(AbstractModel):
         self._FileNames = params.get("FileNames")
         self._BackupNames = params.get("BackupNames")
         self._SnapshotIdList = params.get("SnapshotIdList")
+        self._BackupRegion = params.get("BackupRegion")
+        self._IsCrossRegionsBackup = params.get("IsCrossRegionsBackup")
+        self._BackupStatus = params.get("BackupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15166,6 +18023,308 @@ class DescribeBinlogDownloadUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBinlogListByVaultItem(AbstractModel):
+    r"""binlog backup info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>Cluster name.</p>
+        :type ClusterName: str
+        :param _BinlogFileInfo: <p>Binlog file information</p>
+        :type BinlogFileInfo: :class:`tencentcloud.cynosdb.v20190107.models.BinlogItem`
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._BinlogFileInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>Cluster name.</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def BinlogFileInfo(self):
+        r"""<p>Binlog file information</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BinlogItem`
+        """
+        return self._BinlogFileInfo
+
+    @BinlogFileInfo.setter
+    def BinlogFileInfo(self, BinlogFileInfo):
+        self._BinlogFileInfo = BinlogFileInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("BinlogFileInfo") is not None:
+            self._BinlogFileInfo = BinlogItem()
+            self._BinlogFileInfo._deserialize(params.get("BinlogFileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBinlogListByVaultRequest(AbstractModel):
+    r"""DescribeBinlogListByVault request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Safe ID
+        :type VaultId: str
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _BackupIds: List of the backup IDs.
+        :type BackupIds: list of int
+        :param _BackupNames: Backup name list
+        :type BackupNames: list of str
+        :param _FileNames: Filename list
+        :type FileNames: list of str
+        :param _Limit: Number of returned results, range (0,100], default 100
+        :type Limit: int
+        :param _Offset: Offset. Range: [0, INF). Default is 0
+        :type Offset: int
+        :param _OrderBy: Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime. Default: createTime.
+        :type OrderBy: str
+        :param _OrderByType: Sorting method, available values: desc, asc, DESC, ASC, default desc
+        :type OrderByType: str
+        :param _Status: Status.
+        :type Status: str
+        """
+        self._VaultId = None
+        self._ClusterId = None
+        self._BackupIds = None
+        self._BackupNames = None
+        self._FileNames = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Status = None
+
+    @property
+    def VaultId(self):
+        r"""Safe ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupIds(self):
+        r"""List of the backup IDs.
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+    @property
+    def BackupNames(self):
+        r"""Backup name list
+        :rtype: list of str
+        """
+        return self._BackupNames
+
+    @BackupNames.setter
+    def BackupNames(self, BackupNames):
+        self._BackupNames = BackupNames
+
+    @property
+    def FileNames(self):
+        r"""Filename list
+        :rtype: list of str
+        """
+        return self._FileNames
+
+    @FileNames.setter
+    def FileNames(self, FileNames):
+        self._FileNames = FileNames
+
+    @property
+    def Limit(self):
+        r"""Number of returned results, range (0,100], default 100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset. Range: [0, INF). Default is 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime. Default: createTime.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""Sorting method, available values: desc, asc, DESC, ASC, default desc
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Status(self):
+        r"""Status.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._ClusterId = params.get("ClusterId")
+        self._BackupIds = params.get("BackupIds")
+        self._BackupNames = params.get("BackupNames")
+        self._FileNames = params.get("FileNames")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBinlogListByVaultResponse(AbstractModel):
+    r"""DescribeBinlogListByVault response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number.
+        :type TotalCount: int
+        :param _BinlogList: Binlog file list
+        :type BinlogList: list of DescribeBinlogListByVaultItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BinlogList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BinlogList(self):
+        r"""Binlog file list
+        :rtype: list of DescribeBinlogListByVaultItem
+        """
+        return self._BinlogList
+
+    @BinlogList.setter
+    def BinlogList(self, BinlogList):
+        self._BinlogList = BinlogList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BinlogList") is not None:
+            self._BinlogList = []
+            for item in params.get("BinlogList"):
+                obj = DescribeBinlogListByVaultItem()
+                obj._deserialize(item)
+                self._BinlogList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBinlogSaveDaysRequest(AbstractModel):
     r"""DescribeBinlogSaveDays request structure.
 
@@ -15260,7 +18419,7 @@ class DescribeBinlogsRequest(AbstractModel):
         :type EndTime: str
         :param _Offset: Offset
         :type Offset: int
-        :param _Limit: Maximum number
+        :param _Limit: Limit on the number of records. The default value is 20.
         :type Limit: int
         """
         self._ClusterId = None
@@ -15315,7 +18474,7 @@ class DescribeBinlogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Maximum number
+        r"""Limit on the number of records. The default value is 20.
         :rtype: int
         """
         return self._Limit
@@ -16613,11 +19772,17 @@ class DescribeClusterTransparentEncryptInfoResponse(AbstractModel):
         :param _KeyRegion: Encryption key region.
 
         :type KeyRegion: str
+        :param _KeyType: Key type
+        :type KeyType: str
+        :param _IsOpenGlobalEncryption: To be enabled global encryption
+        :type IsOpenGlobalEncryption: bool
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._KeyId = None
         self._KeyRegion = None
+        self._KeyType = None
+        self._IsOpenGlobalEncryption = None
         self._RequestId = None
 
     @property
@@ -16644,6 +19809,28 @@ class DescribeClusterTransparentEncryptInfoResponse(AbstractModel):
         self._KeyRegion = KeyRegion
 
     @property
+    def KeyType(self):
+        r"""Key type
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def IsOpenGlobalEncryption(self):
+        r"""To be enabled global encryption
+        :rtype: bool
+        """
+        return self._IsOpenGlobalEncryption
+
+    @IsOpenGlobalEncryption.setter
+    def IsOpenGlobalEncryption(self, IsOpenGlobalEncryption):
+        self._IsOpenGlobalEncryption = IsOpenGlobalEncryption
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -16658,6 +19845,8 @@ class DescribeClusterTransparentEncryptInfoResponse(AbstractModel):
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
         self._KeyRegion = params.get("KeyRegion")
+        self._KeyType = params.get("KeyType")
+        self._IsOpenGlobalEncryption = params.get("IsOpenGlobalEncryption")
         self._RequestId = params.get("RequestId")
 
 
@@ -16857,7 +20046,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
         r"""
         :param _InstanceId: Specifies that the instance ID must be provided by selecting either InstanceId or InstanceGroupId.
         :type InstanceId: str
-        :param _InstanceGroupId: Specifies that the instance group ID must be provided by selecting either InstanceId or InstanceGroupId.
+        :param _InstanceGroupId: Instance group ID, which can be obtained through the [DescribeClusterInstanceGroups](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1) API.
         :type InstanceGroupId: str
         """
         self._InstanceId = None
@@ -16880,7 +20069,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        r"""Specifies that the instance group ID must be provided by selecting either InstanceId or InstanceGroupId.
+        r"""Instance group ID, which can be obtained through the [DescribeClusterInstanceGroups](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceGroupId
@@ -17248,7 +20437,7 @@ class DescribeInstanceErrorLogsRequest(AbstractModel):
         :type OrderByType: str
         :param _LogLevels: Log level, which supports combo search by multiple levels. Valid values: `error`, `warning`, `note`.
         :type LogLevels: list of str
-        :param _KeyWords: Keywords, supports fuzzy search
+        :param _KeyWords: 
         :type KeyWords: list of str
         """
         self._InstanceId = None
@@ -17351,7 +20540,7 @@ class DescribeInstanceErrorLogsRequest(AbstractModel):
 
     @property
     def KeyWords(self):
-        r"""Keywords, supports fuzzy search
+        r"""
         :rtype: list of str
         """
         return self._KeyWords
@@ -17565,27 +20754,27 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _StartTime: Transaction start time
+        :param _StartTime: <p>Earliest transaction start time.</p>
         :type StartTime: str
-        :param _EndTime: Transaction end time
+        :param _EndTime: <p>Latest transaction start time.</p>
         :type EndTime: str
-        :param _Limit: Maximum number
+        :param _Limit: <p>Limit.</p><p>It is recommended to control the limit size. Large limits may cause truncation due to the platform's size limit for return results.</p>
         :type Limit: int
-        :param _Offset: Offset
+        :param _Offset: <p>Offset.</p>
         :type Offset: int
-        :param _Username: Username
+        :param _Username: <p>Username.</p>
         :type Username: str
-        :param _Host: Client host
+        :param _Host: <p>Client host.</p>
         :type Host: str
-        :param _Database: Database name
+        :param _Database: <p>Database name.</p>
         :type Database: str
-        :param _OrderBy: Sorting field. Valid values: QueryTime, LockTime, RowsExamined, RowsSent.
+        :param _OrderBy: <p>Sorting field.</p><p>Enumeration values:</p><ul><li>QueryTime: sorts by the total execution time of the SQL statements.</li><li>LockTime: sorts by the time consumed by the SQL statements waiting for locks (such as table locks or row locks).</li><li>RowsExamined: sorts by the number of rows scanned during SQL statement execution.</li><li>RowsSent: sorts by the number of result rows returned to the client for the SQL statements.</li><li>Timestamp: sorts by the timestamp when the slow query statement occurs.</li></ul>
         :type OrderBy: str
-        :param _OrderByType: Sorting order. Valid values: asc, desc.
+        :param _OrderByType: <p>Sorting type. Valid values: asc and desc.</p>
         :type OrderByType: str
-        :param _SqlText: sql statement.
+        :param _SqlText: <p>SQL statement.</p>
         :type SqlText: str
         """
         self._InstanceId = None
@@ -17602,7 +20791,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -17613,7 +20802,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Transaction start time
+        r"""<p>Earliest transaction start time.</p>
         :rtype: str
         """
         return self._StartTime
@@ -17624,7 +20813,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Transaction end time
+        r"""<p>Latest transaction start time.</p>
         :rtype: str
         """
         return self._EndTime
@@ -17635,7 +20824,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Maximum number
+        r"""<p>Limit.</p><p>It is recommended to control the limit size. Large limits may cause truncation due to the platform's size limit for return results.</p>
         :rtype: int
         """
         return self._Limit
@@ -17646,7 +20835,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset
+        r"""<p>Offset.</p>
         :rtype: int
         """
         return self._Offset
@@ -17657,7 +20846,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""Username
+        r"""<p>Username.</p>
         :rtype: str
         """
         return self._Username
@@ -17668,7 +20857,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""Client host
+        r"""<p>Client host.</p>
         :rtype: str
         """
         return self._Host
@@ -17679,7 +20868,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Database(self):
-        r"""Database name
+        r"""<p>Database name.</p>
         :rtype: str
         """
         return self._Database
@@ -17690,7 +20879,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""Sorting field. Valid values: QueryTime, LockTime, RowsExamined, RowsSent.
+        r"""<p>Sorting field.</p><p>Enumeration values:</p><ul><li>QueryTime: sorts by the total execution time of the SQL statements.</li><li>LockTime: sorts by the time consumed by the SQL statements waiting for locks (such as table locks or row locks).</li><li>RowsExamined: sorts by the number of rows scanned during SQL statement execution.</li><li>RowsSent: sorts by the number of result rows returned to the client for the SQL statements.</li><li>Timestamp: sorts by the timestamp when the slow query statement occurs.</li></ul>
         :rtype: str
         """
         return self._OrderBy
@@ -17701,7 +20890,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""Sorting order. Valid values: asc, desc.
+        r"""<p>Sorting type. Valid values: asc and desc.</p>
         :rtype: str
         """
         return self._OrderByType
@@ -17712,7 +20901,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def SqlText(self):
-        r"""sql statement.
+        r"""<p>SQL statement.</p>
         :rtype: str
         """
         return self._SqlText
@@ -17751,9 +20940,9 @@ class DescribeInstanceSlowQueriesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number
+        :param _TotalCount: <p>Total quantity.</p>
         :type TotalCount: int
-        :param _SlowQueries: Slow query record
+        :param _SlowQueries: <p>Slow query records.</p>
         :type SlowQueries: list of SlowQueriesItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -17764,7 +20953,7 @@ class DescribeInstanceSlowQueriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number
+        r"""<p>Total quantity.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -17775,7 +20964,7 @@ class DescribeInstanceSlowQueriesResponse(AbstractModel):
 
     @property
     def SlowQueries(self):
-        r"""Slow query record
+        r"""<p>Slow query records.</p>
         :rtype: list of SlowQueriesItem
         """
         return self._SlowQueries
@@ -17804,6 +20993,139 @@ class DescribeInstanceSlowQueriesResponse(AbstractModel):
                 obj = SlowQueriesItem()
                 obj._deserialize(item)
                 self._SlowQueries.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceSpecsByOperationTypeRequest(AbstractModel):
+    r"""DescribeInstanceSpecsByOperationType request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _OperationType: Operation type.
+Add new RO instance
+modifyInstance: Modify configuration
+        :type OperationType: str
+        :param _InstanceId: Instance ID, required when querying configuration modification specifications
+        :type InstanceId: str
+        :param _DeviceType: Instance Machine Type
+        :type DeviceType: str
+        """
+        self._ClusterId = None
+        self._OperationType = None
+        self._InstanceId = None
+        self._DeviceType = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def OperationType(self):
+        r"""Operation type.
+Add new RO instance
+modifyInstance: Modify configuration
+        :rtype: str
+        """
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, required when querying configuration modification specifications
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceType(self):
+        r"""Instance Machine Type
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._OperationType = params.get("OperationType")
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceType = params.get("DeviceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceSpecsByOperationTypeResponse(AbstractModel):
+    r"""DescribeInstanceSpecsByOperationType response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceSpecSet: instance specifications
+        :type InstanceSpecSet: list of InstanceSpec
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceSpecSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceSpecSet(self):
+        r"""instance specifications
+        :rtype: list of InstanceSpec
+        """
+        return self._InstanceSpecSet
+
+    @InstanceSpecSet.setter
+    def InstanceSpecSet(self, InstanceSpecSet):
+        self._InstanceSpecSet = InstanceSpecSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSpecSet") is not None:
+            self._InstanceSpecSet = []
+            for item in params.get("InstanceSpecSet"):
+                obj = InstanceSpec()
+                obj._deserialize(item)
+                self._InstanceSpecSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17942,6 +21264,8 @@ offlined: Instance eliminated
         :type Status: str
         :param _InstanceIds: Instance ID list
         :type InstanceIds: list of str
+        :param _ClusterType: Cluster type, value ranges from <li>CYNOSDB: transactional cluster</li><li>LIBRADB: analysis cluster</li><li>ALL: all</li>, default to ALL.
+        :type ClusterType: str
         """
         self._Limit = None
         self._Offset = None
@@ -17951,6 +21275,7 @@ offlined: Instance eliminated
         self._DbType = None
         self._Status = None
         self._InstanceIds = None
+        self._ClusterType = None
 
     @property
     def Limit(self):
@@ -18051,6 +21376,17 @@ offlined: Instance eliminated
     def InstanceIds(self, InstanceIds):
         self._InstanceIds = InstanceIds
 
+    @property
+    def ClusterType(self):
+        r"""Cluster type, value ranges from <li>CYNOSDB: transactional cluster</li><li>LIBRADB: analysis cluster</li><li>ALL: all</li>, default to ALL.
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -18066,6 +21402,7 @@ offlined: Instance eliminated
         self._DbType = params.get("DbType")
         self._Status = params.get("Status")
         self._InstanceIds = params.get("InstanceIds")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19048,6 +22385,1782 @@ class DescribeLibraDBClusterAccountsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLibraDBClusterAutoMapRuleRequest(AbstractModel):
+    r"""DescribeLibraDBClusterAutoMapRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _InstanceId: Analyze instance ID
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""Analyze instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClusterAutoMapRuleResponse(AbstractModel):
+    r"""DescribeLibraDBClusterAutoMapRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoMapRules: Advanced mapping rule
+        :type AutoMapRules: list of AutoMapRule
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AutoMapRules = None
+        self._RequestId = None
+
+    @property
+    def AutoMapRules(self):
+        r"""Advanced mapping rule
+        :rtype: list of AutoMapRule
+        """
+        return self._AutoMapRules
+
+    @AutoMapRules.setter
+    def AutoMapRules(self, AutoMapRules):
+        self._AutoMapRules = AutoMapRules
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AutoMapRules") is not None:
+            self._AutoMapRules = []
+            for item in params.get("AutoMapRules"):
+                obj = AutoMapRule()
+                obj._deserialize(item)
+                self._AutoMapRules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBClusterDetailRequest(AbstractModel):
+    r"""DescribeLibraDBClusterDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _GetServerInfo: Whether to get more server information, available values yes no
+        :type GetServerInfo: str
+        """
+        self._ClusterId = None
+        self._GetServerInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GetServerInfo(self):
+        r"""Whether to get more server information, available values yes no
+        :rtype: str
+        """
+        return self._GetServerInfo
+
+    @GetServerInfo.setter
+    def GetServerInfo(self, GetServerInfo):
+        self._GetServerInfo = GetServerInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._GetServerInfo = params.get("GetServerInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClusterDetailResponse(AbstractModel):
+    r"""DescribeLibraDBClusterDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Detail: Cluster information.
+        :type Detail: :class:`tencentcloud.cynosdb.v20190107.models.LibraDBClusterDetail`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def Detail(self):
+        r"""Cluster information.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.LibraDBClusterDetail`
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Detail") is not None:
+            self._Detail = LibraDBClusterDetail()
+            self._Detail._deserialize(params.get("Detail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBClusterTableMappingRequest(AbstractModel):
+    r"""DescribeLibraDBClusterTableMapping request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _InstanceId: Analysis engine instance ID
+        :type InstanceId: str
+        :param _NodeId: Node ID
+        :type NodeId: str
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _Limit: Page history limit
+        :type Limit: int
+        :param _SrcSchemas: Source schema list
+        :type SrcSchemas: list of str
+        :param _SrcTableName: Source table list
+        :type SrcTableName: list of str
+        :param _StatusList: Status list
+        :type StatusList: list of str
+        :param _MapSchemas: Map database name
+        :type MapSchemas: list of str
+        :param _MapTableName: Mapping table name
+        :type MapTableName: list of str
+        :param _MapSchemaNotEmpty: Query records where the database name is not null
+        :type MapSchemaNotEmpty: bool
+        :param _MapTableNameNotEmpty: Query records where the mapping table name is not null
+        :type MapTableNameNotEmpty: bool
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+        self._NodeId = None
+        self._Offset = None
+        self._Limit = None
+        self._SrcSchemas = None
+        self._SrcTableName = None
+        self._StatusList = None
+        self._MapSchemas = None
+        self._MapTableName = None
+        self._MapSchemaNotEmpty = None
+        self._MapTableNameNotEmpty = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""Analysis engine instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeId(self):
+        r"""Node ID
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Page history limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SrcSchemas(self):
+        r"""Source schema list
+        :rtype: list of str
+        """
+        return self._SrcSchemas
+
+    @SrcSchemas.setter
+    def SrcSchemas(self, SrcSchemas):
+        self._SrcSchemas = SrcSchemas
+
+    @property
+    def SrcTableName(self):
+        r"""Source table list
+        :rtype: list of str
+        """
+        return self._SrcTableName
+
+    @SrcTableName.setter
+    def SrcTableName(self, SrcTableName):
+        self._SrcTableName = SrcTableName
+
+    @property
+    def StatusList(self):
+        r"""Status list
+        :rtype: list of str
+        """
+        return self._StatusList
+
+    @StatusList.setter
+    def StatusList(self, StatusList):
+        self._StatusList = StatusList
+
+    @property
+    def MapSchemas(self):
+        r"""Map database name
+        :rtype: list of str
+        """
+        return self._MapSchemas
+
+    @MapSchemas.setter
+    def MapSchemas(self, MapSchemas):
+        self._MapSchemas = MapSchemas
+
+    @property
+    def MapTableName(self):
+        r"""Mapping table name
+        :rtype: list of str
+        """
+        return self._MapTableName
+
+    @MapTableName.setter
+    def MapTableName(self, MapTableName):
+        self._MapTableName = MapTableName
+
+    @property
+    def MapSchemaNotEmpty(self):
+        r"""Query records where the database name is not null
+        :rtype: bool
+        """
+        return self._MapSchemaNotEmpty
+
+    @MapSchemaNotEmpty.setter
+    def MapSchemaNotEmpty(self, MapSchemaNotEmpty):
+        self._MapSchemaNotEmpty = MapSchemaNotEmpty
+
+    @property
+    def MapTableNameNotEmpty(self):
+        r"""Query records where the mapping table name is not null
+        :rtype: bool
+        """
+        return self._MapTableNameNotEmpty
+
+    @MapTableNameNotEmpty.setter
+    def MapTableNameNotEmpty(self, MapTableNameNotEmpty):
+        self._MapTableNameNotEmpty = MapTableNameNotEmpty
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        self._NodeId = params.get("NodeId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SrcSchemas = params.get("SrcSchemas")
+        self._SrcTableName = params.get("SrcTableName")
+        self._StatusList = params.get("StatusList")
+        self._MapSchemas = params.get("MapSchemas")
+        self._MapTableName = params.get("MapTableName")
+        self._MapSchemaNotEmpty = params.get("MapSchemaNotEmpty")
+        self._MapTableNameNotEmpty = params.get("MapTableNameNotEmpty")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClusterTableMappingResponse(AbstractModel):
+    r"""DescribeLibraDBClusterTableMapping response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCnt: Total number of records
+        :type TotalCnt: int
+        :param _TableMappings: Database mapping info
+        :type TableMappings: list of TableMappingObject
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCnt = None
+        self._TableMappings = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        r"""Total number of records
+        :rtype: int
+        """
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def TableMappings(self):
+        r"""Database mapping info
+        :rtype: list of TableMappingObject
+        """
+        return self._TableMappings
+
+    @TableMappings.setter
+    def TableMappings(self, TableMappings):
+        self._TableMappings = TableMappings
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCnt = params.get("TotalCnt")
+        if params.get("TableMappings") is not None:
+            self._TableMappings = []
+            for item in params.get("TableMappings"):
+                obj = TableMappingObject()
+                obj._deserialize(item)
+                self._TableMappings.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBClustersRequest(AbstractModel):
+    r"""DescribeLibraDBClusters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Limit
+        :type Limit: int
+        :param _Offset: Offset
+        :type Offset: int
+        :param _OrderBy: Sorting field.
+        :type OrderBy: str
+        :param _OrderByType: Sort method
+        :type OrderByType: str
+        :param _Filters: Filter criteria.
+        :type Filters: list of QueryFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""Limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""Sort method
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Filters(self):
+        r"""Filter criteria.
+        :rtype: list of QueryFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBClustersResponse(AbstractModel):
+    r"""DescribeLibraDBClusters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterSet: Cluster information.
+        :type ClusterSet: list of LibraDBClusterSet
+        :param _TotalCount: Number of clusters
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ClusterSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ClusterSet(self):
+        r"""Cluster information.
+        :rtype: list of LibraDBClusterSet
+        """
+        return self._ClusterSet
+
+    @ClusterSet.setter
+    def ClusterSet(self, ClusterSet):
+        self._ClusterSet = ClusterSet
+
+    @property
+    def TotalCount(self):
+        r"""Number of clusters
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterSet") is not None:
+            self._ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = LibraDBClusterSet()
+                obj._deserialize(item)
+                self._ClusterSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBDataSourceRequest(AbstractModel):
+    r"""DescribeLibraDBDataSource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _InstanceId: Read-only analysis engine instance ID
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""Read-only analysis engine instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBDataSourceResponse(AbstractModel):
+    r"""DescribeLibraDBDataSource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSourceList: Source information list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataSourceList: list of DataSourceItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DataSourceList = None
+        self._RequestId = None
+
+    @property
+    def DataSourceList(self):
+        r"""Source information list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DataSourceItem
+        """
+        return self._DataSourceList
+
+    @DataSourceList.setter
+    def DataSourceList(self, DataSourceList):
+        self._DataSourceList = DataSourceList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSourceList") is not None:
+            self._DataSourceList = []
+            for item in params.get("DataSourceList"):
+                obj = DataSourceItem()
+                obj._deserialize(item)
+                self._DataSourceList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBForwardConfigRequest(AbstractModel):
+    r"""DescribeLibraDBForwardConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Read-only analysis engine instance id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Read-only analysis engine instance id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBForwardConfigResponse(AbstractModel):
+    r"""DescribeLibraDBForwardConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ForwardMode: Whether to enable forwarding
+        :type ForwardMode: str
+        :param _ForwardList: Forwarding list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ForwardList: list of ForwardInstanceInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ForwardMode = None
+        self._ForwardList = None
+        self._RequestId = None
+
+    @property
+    def ForwardMode(self):
+        r"""Whether to enable forwarding
+        :rtype: str
+        """
+        return self._ForwardMode
+
+    @ForwardMode.setter
+    def ForwardMode(self, ForwardMode):
+        self._ForwardMode = ForwardMode
+
+    @property
+    def ForwardList(self):
+        r"""Forwarding list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ForwardInstanceInfo
+        """
+        return self._ForwardList
+
+    @ForwardList.setter
+    def ForwardList(self, ForwardList):
+        self._ForwardList = ForwardList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ForwardMode = params.get("ForwardMode")
+        if params.get("ForwardList") is not None:
+            self._ForwardList = []
+            for item in params.get("ForwardList"):
+                obj = ForwardInstanceInfo()
+                obj._deserialize(item)
+                self._ForwardList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBInstanceDetailRequest(AbstractModel):
+    r"""DescribeLibraDBInstanceDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        :param _InstanceId: <p>Read-only analysis engine instance ID</p>
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""<p>Read-only analysis engine instance ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBInstanceDetailResponse(AbstractModel):
+    r"""DescribeLibraDBInstanceDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: <p>root account</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Uin: str
+        :param _AppId: <p>Account unique ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppId: int
+        :param _ClusterId: <p>Cluster ID.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param _ClusterName: <p>Cluster name.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterName: str
+        :param _InstanceId: <p>Instance ID.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _InstanceName: <p>Instance name.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param _ProjectId: <p>Project ID.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param _Region: <p>Region</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param _Zone: <p>AZ.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Zone: str
+        :param _Status: <p>Instance status.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param _StatusDesc: <p>Status description</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StatusDesc: str
+        :param _LibraDBVersion: <p>Libra analysis engine version</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LibraDBVersion: str
+        :param _Cpu: <p>cpu cores</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Cpu: int
+        :param _Memory: <p>Memory size</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Memory: int
+        :param _Storage: <p>Storage size</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Storage: int
+        :param _StorageType: <p>Storage type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StorageType: str
+        :param _InstanceType: <p>Instance type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param _InstanceRole: <p>Instance role</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceRole: str
+        :param _UpdateTime: <p>Update time.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param _CreateTime: <p>Creation time.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _PayMode: <p>Selling mode</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayMode: int
+        :param _PeriodStartTime: <p>Start time</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PeriodStartTime: str
+        :param _PeriodEndTime: <p>End time of sale</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PeriodEndTime: str
+        :param _RenewFlag: <p>Renewal flag</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RenewFlag: int
+        :param _NetType: <p>Network type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NetType: int
+        :param _VpcId: <p>VPC ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param _SubnetId: <p>Subnet ID.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param _Vip: <p>Virtual IP</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Vip: str
+        :param _Vport: <p>Port</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Vport: int
+        :param _InstanceNetInfo: <p>Instance network information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceNetInfo: :class:`tencentcloud.cynosdb.v20190107.models.InstanceNetInfo`
+        :param _ResourceTags: <p>Instance tag information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceTags: list of Tag
+        :param _NodeInfo: <p>Instance node information</p>
+        :type NodeInfo: list of LibraDBNodeInfo
+        :param _NodeCount: <p>Number of instance nodes</p>
+        :type NodeCount: int
+        :param _AnalysisUpgradeVersionInfo: <p>Analyze the information after instance upgrade version</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnalysisUpgradeVersionInfo: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeAnalysisInstanceVersionInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Uin = None
+        self._AppId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._ProjectId = None
+        self._Region = None
+        self._Zone = None
+        self._Status = None
+        self._StatusDesc = None
+        self._LibraDBVersion = None
+        self._Cpu = None
+        self._Memory = None
+        self._Storage = None
+        self._StorageType = None
+        self._InstanceType = None
+        self._InstanceRole = None
+        self._UpdateTime = None
+        self._CreateTime = None
+        self._PayMode = None
+        self._PeriodStartTime = None
+        self._PeriodEndTime = None
+        self._RenewFlag = None
+        self._NetType = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Vip = None
+        self._Vport = None
+        self._InstanceNetInfo = None
+        self._ResourceTags = None
+        self._NodeInfo = None
+        self._NodeCount = None
+        self._AnalysisUpgradeVersionInfo = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        r"""<p>root account</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        r"""<p>Account unique ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>Cluster name.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>Instance name.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ProjectId(self):
+        r"""<p>Project ID.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Region(self):
+        r"""<p>Region</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""<p>AZ.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Status(self):
+        r"""<p>Instance status.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""<p>Status description</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def LibraDBVersion(self):
+        r"""<p>Libra analysis engine version</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LibraDBVersion
+
+    @LibraDBVersion.setter
+    def LibraDBVersion(self, LibraDBVersion):
+        self._LibraDBVersion = LibraDBVersion
+
+    @property
+    def Cpu(self):
+        r"""<p>cpu cores</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""<p>Memory size</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        r"""<p>Storage size</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def StorageType(self):
+        r"""<p>Storage type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def InstanceType(self):
+        r"""<p>Instance type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceRole(self):
+        r"""<p>Instance role</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def UpdateTime(self):
+        r"""<p>Update time.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def PayMode(self):
+        r"""<p>Selling mode</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PeriodStartTime(self):
+        r"""<p>Start time</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PeriodStartTime
+
+    @PeriodStartTime.setter
+    def PeriodStartTime(self, PeriodStartTime):
+        self._PeriodStartTime = PeriodStartTime
+
+    @property
+    def PeriodEndTime(self):
+        r"""<p>End time of sale</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def RenewFlag(self):
+        r"""<p>Renewal flag</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def NetType(self):
+        r"""<p>Network type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>Subnet ID.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Vip(self):
+        r"""<p>Virtual IP</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>Port</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def InstanceNetInfo(self):
+        r"""<p>Instance network information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceNetInfo`
+        """
+        return self._InstanceNetInfo
+
+    @InstanceNetInfo.setter
+    def InstanceNetInfo(self, InstanceNetInfo):
+        self._InstanceNetInfo = InstanceNetInfo
+
+    @property
+    def ResourceTags(self):
+        r"""<p>Instance tag information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def NodeInfo(self):
+        r"""<p>Instance node information</p>
+        :rtype: list of LibraDBNodeInfo
+        """
+        return self._NodeInfo
+
+    @NodeInfo.setter
+    def NodeInfo(self, NodeInfo):
+        self._NodeInfo = NodeInfo
+
+    @property
+    def NodeCount(self):
+        r"""<p>Number of instance nodes</p>
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def AnalysisUpgradeVersionInfo(self):
+        r"""<p>Analyze the information after instance upgrade version</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeAnalysisInstanceVersionInfo`
+        """
+        return self._AnalysisUpgradeVersionInfo
+
+    @AnalysisUpgradeVersionInfo.setter
+    def AnalysisUpgradeVersionInfo(self, AnalysisUpgradeVersionInfo):
+        self._AnalysisUpgradeVersionInfo = AnalysisUpgradeVersionInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._ProjectId = params.get("ProjectId")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._LibraDBVersion = params.get("LibraDBVersion")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
+        self._StorageType = params.get("StorageType")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceRole = params.get("InstanceRole")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreateTime = params.get("CreateTime")
+        self._PayMode = params.get("PayMode")
+        self._PeriodStartTime = params.get("PeriodStartTime")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._RenewFlag = params.get("RenewFlag")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        if params.get("InstanceNetInfo") is not None:
+            self._InstanceNetInfo = InstanceNetInfo()
+            self._InstanceNetInfo._deserialize(params.get("InstanceNetInfo"))
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        if params.get("NodeInfo") is not None:
+            self._NodeInfo = []
+            for item in params.get("NodeInfo"):
+                obj = LibraDBNodeInfo()
+                obj._deserialize(item)
+                self._NodeInfo.append(obj)
+        self._NodeCount = params.get("NodeCount")
+        if params.get("AnalysisUpgradeVersionInfo") is not None:
+            self._AnalysisUpgradeVersionInfo = UpgradeAnalysisInstanceVersionInfo()
+            self._AnalysisUpgradeVersionInfo._deserialize(params.get("AnalysisUpgradeVersionInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBInstanceSpecsRequest(AbstractModel):
+    r"""DescribeLibraDBInstanceSpecs request structure.
+
+    """
+
+
+class DescribeLibraDBInstanceSpecsResponse(AbstractModel):
+    r"""DescribeLibraDBInstanceSpecs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceSpecSet: Instance specifications list in this region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceSpecSet: list of RegionInstanceSpecInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceSpecSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceSpecSet(self):
+        r"""Instance specifications list in this region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of RegionInstanceSpecInfo
+        """
+        return self._InstanceSpecSet
+
+    @InstanceSpecSet.setter
+    def InstanceSpecSet(self, InstanceSpecSet):
+        self._InstanceSpecSet = InstanceSpecSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSpecSet") is not None:
+            self._InstanceSpecSet = []
+            for item in params.get("InstanceSpecSet"):
+                obj = RegionInstanceSpecInfo()
+                obj._deserialize(item)
+                self._InstanceSpecSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBSlowLogsRequest(AbstractModel):
+    r"""DescribeLibraDBSlowLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Read-only analysis engine instance ID
+        :type InstanceId: str
+        :param _StartTime: Start time, 1753171200.
+        :type StartTime: int
+        :param _EndTime: End time, 1753171200.
+        :type EndTime: int
+        :param _Limit: Log items per page limit: 0-200.
+        :type Limit: str
+        :param _Offset: Log paginate, more than 0.
+        :type Offset: str
+        :param _Order: Log sorting method, DESC - descending order, ASC - ascending order.
+        :type Order: str
+        :param _OrderBy: Log sorting condition.
+        :type OrderBy: str
+        :param _LogFilter: Filter criteria
+        :type LogFilter: list of LogFilter
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._OrderBy = None
+        self._LogFilter = None
+
+    @property
+    def InstanceId(self):
+        r"""Read-only analysis engine instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""Start time, 1753171200.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time, 1753171200.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        r"""Log items per page limit: 0-200.
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Log paginate, more than 0.
+        :rtype: str
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""Log sorting method, DESC - descending order, ASC - ascending order.
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        r"""Log sorting condition.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def LogFilter(self):
+        r"""Filter criteria
+        :rtype: list of LogFilter
+        """
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = LogFilter()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLibraDBSlowLogsResponse(AbstractModel):
+    r"""DescribeLibraDBSlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLibraDBVersionRequest(AbstractModel):
+    r"""DescribeLibraDBVersion request structure.
+
+    """
+
+
+class DescribeLibraDBVersionResponse(AbstractModel):
+    r"""DescribeLibraDBVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionList: Version list
+        :type VersionList: list of LibraDBVersion
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VersionList = None
+        self._RequestId = None
+
+    @property
+    def VersionList(self):
+        r"""Version list
+        :rtype: list of LibraDBVersion
+        """
+        return self._VersionList
+
+    @VersionList.setter
+    def VersionList(self, VersionList):
+        self._VersionList = VersionList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VersionList") is not None:
+            self._VersionList = []
+            for item in params.get("VersionList"):
+                obj = LibraDBVersion()
+                obj._deserialize(item)
+                self._VersionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMaintainPeriodRequest(AbstractModel):
     r"""DescribeMaintainPeriod request structure.
 
@@ -19731,21 +24844,17 @@ class DescribeProxiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID (this parameter is required. for example, cynosdbmysql-2u2mh111).
+        :param _ClusterId: <p>Cluster ID (this parameter is required, such as cynosdbmysql-2u2mh111).</p>
         :type ClusterId: str
-        :param _Limit: Number of returned results. Default value: `20`. Maximum value: `100`,
+        :param _Limit: <p>Number of returned results, defaults to 20 with a maximum value of 100</p>
         :type Limit: int
-        :param _Offset: Record offset. Default value: `0`.
+        :param _Offset: <p>Record offset. Default value is 0</p>
         :type Offset: int
-        :param _OrderBy: Sorting field. Valid values:
-<li> CREATETIME: Creation time</li>
-<li> PERIODENDTIME: Expiration time</li>
+        :param _OrderBy: <p>Sorting field. Value ranges from...to...:</p><li>CREATETIME: Creation time</li><li>PERIODENDTIME: Expiration time</li>
         :type OrderBy: str
-        :param _OrderByType: Sorting order. Valid values:
-<li> `ASC`: Ascending.</li>
-<li> `DESC`: Descending</li>
+        :param _OrderByType: <p>Sorting type. Value ranges from:</p><li> ASC: ascending order </li><li> DESC: sort in descending order </li>
         :type OrderByType: str
-        :param _Filters: Filter. If there are more than one filter, the logical relationship between these filters is `AND`.
+        :param _Filters: <p>Search criteria. If there are multiple Filters, the relationship between Filters is logical AND. <br>Description: This parameter currently only supports two filter conditions: Status and ProxyGroupId.</p>
         :type Filters: list of QueryParamFilter
         """
         self._ClusterId = None
@@ -19757,7 +24866,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Cluster ID (this parameter is required. for example, cynosdbmysql-2u2mh111).
+        r"""<p>Cluster ID (this parameter is required, such as cynosdbmysql-2u2mh111).</p>
         :rtype: str
         """
         return self._ClusterId
@@ -19768,7 +24877,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of returned results. Default value: `20`. Maximum value: `100`,
+        r"""<p>Number of returned results, defaults to 20 with a maximum value of 100</p>
         :rtype: int
         """
         return self._Limit
@@ -19779,7 +24888,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Record offset. Default value: `0`.
+        r"""<p>Record offset. Default value is 0</p>
         :rtype: int
         """
         return self._Offset
@@ -19790,9 +24899,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""Sorting field. Valid values:
-<li> CREATETIME: Creation time</li>
-<li> PERIODENDTIME: Expiration time</li>
+        r"""<p>Sorting field. Value ranges from...to...:</p><li>CREATETIME: Creation time</li><li>PERIODENDTIME: Expiration time</li>
         :rtype: str
         """
         return self._OrderBy
@@ -19803,9 +24910,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""Sorting order. Valid values:
-<li> `ASC`: Ascending.</li>
-<li> `DESC`: Descending</li>
+        r"""<p>Sorting type. Value ranges from:</p><li> ASC: ascending order </li><li> DESC: sort in descending order </li>
         :rtype: str
         """
         return self._OrderByType
@@ -19816,7 +24921,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter. If there are more than one filter, the logical relationship between these filters is `AND`.
+        r"""<p>Search criteria. If there are multiple Filters, the relationship between Filters is logical AND. <br>Description: This parameter currently only supports two filter conditions: Status and ProxyGroupId.</p>
         :rtype: list of QueryParamFilter
         """
         return self._Filters
@@ -19855,24 +24960,27 @@ class DescribeProxiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of database proxy groups
+        :param _TotalCount: <p>Number of Database Proxy Groups</p>
         :type TotalCount: int
-        :param _ProxyGroupInfos: List of database proxy groups.
+        :param _ProxyGroupInfos: <p>Database Proxy Group list</p>
         :type ProxyGroupInfos: list of ProxyGroupInfo
-        :param _ProxyNodeInfos: Database proxy node
+        :param _ProxyNodeInfos: <p>database proxy node</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ProxyNodeInfos: list of ProxyNodeInfo
+        :param _ColumnStoreProxyForward: <p>sql automatic forwarding</p>
+        :type ColumnStoreProxyForward: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
         self._ProxyGroupInfos = None
         self._ProxyNodeInfos = None
+        self._ColumnStoreProxyForward = None
         self._RequestId = None
 
     @property
     def TotalCount(self):
-        r"""Number of database proxy groups
+        r"""<p>Number of Database Proxy Groups</p>
         :rtype: int
         """
         return self._TotalCount
@@ -19883,7 +24991,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyGroupInfos(self):
-        r"""List of database proxy groups.
+        r"""<p>Database Proxy Group list</p>
         :rtype: list of ProxyGroupInfo
         """
         return self._ProxyGroupInfos
@@ -19894,7 +25002,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProxyNodeInfos(self):
-        r"""Database proxy node
+        r"""<p>database proxy node</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ProxyNodeInfo
         """
@@ -19903,6 +25011,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ProxyNodeInfos.setter
     def ProxyNodeInfos(self, ProxyNodeInfos):
         self._ProxyNodeInfos = ProxyNodeInfos
+
+    @property
+    def ColumnStoreProxyForward(self):
+        r"""<p>sql automatic forwarding</p>
+        :rtype: str
+        """
+        return self._ColumnStoreProxyForward
+
+    @ColumnStoreProxyForward.setter
+    def ColumnStoreProxyForward(self, ColumnStoreProxyForward):
+        self._ColumnStoreProxyForward = ColumnStoreProxyForward
 
     @property
     def RequestId(self):
@@ -19930,6 +25049,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = ProxyNodeInfo()
                 obj._deserialize(item)
                 self._ProxyNodeInfos.append(obj)
+        self._ColumnStoreProxyForward = params.get("ColumnStoreProxyForward")
         self._RequestId = params.get("RequestId")
 
 
@@ -19952,7 +25072,7 @@ class DescribeProxyNodesRequest(AbstractModel):
 <li> `ASC`: Ascending.</li>
 <li> `DESC`: Descending</li>
         :type OrderByType: str
-        :param _Filters: Filter. If there are more than one filter, the logical relationship between these filters is `AND`.
+        :param _Filters: Search criteria. When multiple filters exist, the relationship between filters is logical AND. Currently supported search fields: Status, ProxyNodeId, ClusterId, OssProxyNodeName.
         :type Filters: list of QueryFilter
         """
         self._Limit = None
@@ -20011,7 +25131,7 @@ class DescribeProxyNodesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter. If there are more than one filter, the logical relationship between these filters is `AND`.
+        r"""Search criteria. When multiple filters exist, the relationship between filters is logical AND. Currently supported search fields: Status, ProxyNodeId, ClusterId, OssProxyNodeName.
         :rtype: list of QueryFilter
         """
         return self._Filters
@@ -20186,6 +25306,482 @@ class DescribeProxySpecsResponse(AbstractModel):
                 obj = ProxySpec()
                 obj._deserialize(item)
                 self._ProxySpecs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedoLogListByVaultItem(AbstractModel):
+    r"""log message
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>Cluster name.</p>
+        :type ClusterName: str
+        :param _RedoFileInfo: <p>RedoLog file information</p>
+        :type RedoFileInfo: :class:`tencentcloud.cynosdb.v20190107.models.RedoLogItem`
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._RedoFileInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>Cluster name.</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RedoFileInfo(self):
+        r"""<p>RedoLog file information</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RedoLogItem`
+        """
+        return self._RedoFileInfo
+
+    @RedoFileInfo.setter
+    def RedoFileInfo(self, RedoFileInfo):
+        self._RedoFileInfo = RedoFileInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("RedoFileInfo") is not None:
+            self._RedoFileInfo = RedoLogItem()
+            self._RedoFileInfo._deserialize(params.get("RedoFileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedoLogListByVaultRequest(AbstractModel):
+    r"""DescribeRedoLogListByVault request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Safe ID
+        :type VaultId: str
+        :param _BackupIds: List of the backup IDs.
+        :type BackupIds: list of int
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _BackupNames: Backup name list
+        :type BackupNames: list of str
+        :param _FileNames: Filename list
+        :type FileNames: list of str
+        :param _Limit: Number of items per page, range (0,100], default 100
+        :type Limit: int
+        :param _Offset: Offset. Range: [0,INF). Default is 0
+        :type Offset: int
+        :param _OrderBy: Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime. Default: createTime.
+        :type OrderBy: str
+        :param _OrderByType: Sorting method, available values: desc, asc, DESC, ASC, default desc
+        :type OrderByType: str
+        :param _Status: Status.
+        :type Status: str
+        """
+        self._VaultId = None
+        self._BackupIds = None
+        self._ClusterId = None
+        self._BackupNames = None
+        self._FileNames = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Status = None
+
+    @property
+    def VaultId(self):
+        r"""Safe ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupIds(self):
+        r"""List of the backup IDs.
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupNames(self):
+        r"""Backup name list
+        :rtype: list of str
+        """
+        return self._BackupNames
+
+    @BackupNames.setter
+    def BackupNames(self, BackupNames):
+        self._BackupNames = BackupNames
+
+    @property
+    def FileNames(self):
+        r"""Filename list
+        :rtype: list of str
+        """
+        return self._FileNames
+
+    @FileNames.setter
+    def FileNames(self, FileNames):
+        self._FileNames = FileNames
+
+    @property
+    def Limit(self):
+        r"""Number of items per page, range (0,100], default 100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset. Range: [0,INF). Default is 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime. Default: createTime.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""Sorting method, available values: desc, asc, DESC, ASC, default desc
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Status(self):
+        r"""Status.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupIds = params.get("BackupIds")
+        self._ClusterId = params.get("ClusterId")
+        self._BackupNames = params.get("BackupNames")
+        self._FileNames = params.get("FileNames")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedoLogListByVaultResponse(AbstractModel):
+    r"""DescribeRedoLogListByVault response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total eligible redo log files
+        :type TotalCount: int
+        :param _RedoLogList: Redo log file list
+        :type RedoLogList: list of DescribeRedoLogListByVaultItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RedoLogList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total eligible redo log files
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RedoLogList(self):
+        r"""Redo log file list
+        :rtype: list of DescribeRedoLogListByVaultItem
+        """
+        return self._RedoLogList
+
+    @RedoLogList.setter
+    def RedoLogList(self, RedoLogList):
+        self._RedoLogList = RedoLogList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RedoLogList") is not None:
+            self._RedoLogList = []
+            for item in params.get("RedoLogList"):
+                obj = DescribeRedoLogListByVaultItem()
+                obj._deserialize(item)
+                self._RedoLogList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedoLogsRequest(AbstractModel):
+    r"""DescribeRedoLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID.
+        :type ClusterId: str
+        :param _Limit: Entries Per Page
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        :param _FileNames: Log file name.
+        :type FileNames: list of str
+        """
+        self._ClusterId = None
+        self._Limit = None
+        self._Offset = None
+        self._StartTime = None
+        self._EndTime = None
+        self._FileNames = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Limit(self):
+        r"""Entries Per Page
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FileNames(self):
+        r"""Log file name.
+        :rtype: list of str
+        """
+        return self._FileNames
+
+    @FileNames.setter
+    def FileNames(self, FileNames):
+        self._FileNames = FileNames
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._FileNames = params.get("FileNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedoLogsResponse(AbstractModel):
+    r"""DescribeRedoLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of entries
+        :type TotalCount: int
+        :param _RedoLogs: redo log information.
+        :type RedoLogs: list of RedoLogItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RedoLogs = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of entries
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RedoLogs(self):
+        r"""redo log information.
+        :rtype: list of RedoLogItem
+        """
+        return self._RedoLogs
+
+    @RedoLogs.setter
+    def RedoLogs(self, RedoLogs):
+        self._RedoLogs = RedoLogs
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RedoLogs") is not None:
+            self._RedoLogs = []
+            for item in params.get("RedoLogs"):
+                obj = RedoLogItem()
+                obj._deserialize(item)
+                self._RedoLogs.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -20866,8 +26462,14 @@ class DescribeRollbackTimeRangeRequest(AbstractModel):
         r"""
         :param _ClusterId: Cluster ID
         :type ClusterId: str
+        :param _VaultId: Safe id
+        :type VaultId: str
+        :param _VaultRegion: Safe region
+        :type VaultRegion: str
         """
         self._ClusterId = None
+        self._VaultId = None
+        self._VaultRegion = None
 
     @property
     def ClusterId(self):
@@ -20880,9 +26482,33 @@ class DescribeRollbackTimeRangeRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def VaultId(self):
+        r"""Safe id
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultRegion(self):
+        r"""Safe region
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
+        self._VaultId = params.get("VaultId")
+        self._VaultRegion = params.get("VaultRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20968,6 +26594,268 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
                 obj = RollbackTimeRange()
                 obj._deserialize(item)
                 self._RollbackTimeRanges.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSQLExecutionPlanRequest(AbstractModel):
+    r"""DescribeSQLExecutionPlan request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        :param _TemplateID: <p>SQL Template ID</p>
+        :type TemplateID: str
+        :param _PlanDetailId: <p>Plan details serial number</p>
+        :type PlanDetailId: int
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+        self._TemplateID = None
+        self._PlanDetailId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TemplateID(self):
+        r"""<p>SQL Template ID</p>
+        :rtype: str
+        """
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+    @property
+    def PlanDetailId(self):
+        r"""<p>Plan details serial number</p>
+        :rtype: int
+        """
+        return self._PlanDetailId
+
+    @PlanDetailId.setter
+    def PlanDetailId(self, PlanDetailId):
+        self._PlanDetailId = PlanDetailId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        self._TemplateID = params.get("TemplateID")
+        self._PlanDetailId = params.get("PlanDetailId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSQLExecutionPlanResponse(AbstractModel):
+    r"""DescribeSQLExecutionPlan response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanDetail: <p>Execution plan details</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PlanDetail: :class:`tencentcloud.cynosdb.v20190107.models.ExecutionPlanDetail`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PlanDetail = None
+        self._RequestId = None
+
+    @property
+    def PlanDetail(self):
+        r"""<p>Execution plan details</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ExecutionPlanDetail`
+        """
+        return self._PlanDetail
+
+    @PlanDetail.setter
+    def PlanDetail(self, PlanDetail):
+        self._PlanDetail = PlanDetail
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PlanDetail") is not None:
+            self._PlanDetail = ExecutionPlanDetail()
+            self._PlanDetail._deserialize(params.get("PlanDetail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSaveBackupClustersRequest(AbstractModel):
+    r"""DescribeSaveBackupClusters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Entries Per Page
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _Filters: Retrieval criteria.
+        :type Filters: list of QuerySimpleFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""Entries Per Page
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""Retrieval criteria.
+        :rtype: list of QuerySimpleFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QuerySimpleFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSaveBackupClustersResponse(AbstractModel):
+    r"""DescribeSaveBackupClusters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of entries
+        :type TotalCount: int
+        :param _SaveBackupClusterInfos: Legacy backup information.
+        :type SaveBackupClusterInfos: list of SaveBackupClusterInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SaveBackupClusterInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of entries
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SaveBackupClusterInfos(self):
+        r"""Legacy backup information.
+        :rtype: list of SaveBackupClusterInfo
+        """
+        return self._SaveBackupClusterInfos
+
+    @SaveBackupClusterInfos.setter
+    def SaveBackupClusterInfos(self, SaveBackupClusterInfos):
+        self._SaveBackupClusterInfos = SaveBackupClusterInfos
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SaveBackupClusterInfos") is not None:
+            self._SaveBackupClusterInfos = []
+            for item in params.get("SaveBackupClusterInfos"):
+                obj = SaveBackupClusterInfo()
+                obj._deserialize(item)
+                self._SaveBackupClusterInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -21112,6 +27000,8 @@ no
         :type AutoScaleUp: str
         :param _AutoScaleDown: Whether the cluster is allowed to scale down. valid values: <li>yes</li><li>no</li>.
         :type AutoScaleDown: str
+        :param _AutoArchive: Whether archiving is enabled. Optional range</p><li>yes</li><li>no</li>Default value: yes</p>
+        :type AutoArchive: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -21121,6 +27011,7 @@ no
         self._AutoPause = None
         self._AutoScaleUp = None
         self._AutoScaleDown = None
+        self._AutoArchive = None
         self._RequestId = None
 
     @property
@@ -21192,6 +27083,17 @@ no
         self._AutoScaleDown = AutoScaleDown
 
     @property
+    def AutoArchive(self):
+        r"""Whether archiving is enabled. Optional range</p><li>yes</li><li>no</li>Default value: yes</p>
+        :rtype: str
+        """
+        return self._AutoArchive
+
+    @AutoArchive.setter
+    def AutoArchive(self, AutoArchive):
+        self._AutoArchive = AutoArchive
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -21210,6 +27112,7 @@ no
         self._AutoPause = params.get("AutoPause")
         self._AutoScaleUp = params.get("AutoScaleUp")
         self._AutoScaleDown = params.get("AutoScaleDown")
+        self._AutoArchive = params.get("AutoArchive")
         self._RequestId = params.get("RequestId")
 
 
@@ -21224,9 +27127,12 @@ class DescribeSlaveZonesRequest(AbstractModel):
         :type Zone: str
         :param _OssClusterId: Cloud frame cluster ID.
         :type OssClusterId: int
+        :param _StorageVersion: Storage architecture type. Enumeration value: 1.0/2.0. Default value: 1.0.
+        :type StorageVersion: str
         """
         self._Zone = None
         self._OssClusterId = None
+        self._StorageVersion = None
 
     @property
     def Zone(self):
@@ -21250,10 +27156,22 @@ class DescribeSlaveZonesRequest(AbstractModel):
     def OssClusterId(self, OssClusterId):
         self._OssClusterId = OssClusterId
 
+    @property
+    def StorageVersion(self):
+        r"""Storage architecture type. Enumeration value: 1.0/2.0. Default value: 1.0.
+        :rtype: str
+        """
+        return self._StorageVersion
+
+    @StorageVersion.setter
+    def StorageVersion(self, StorageVersion):
+        self._StorageVersion = StorageVersion
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._OssClusterId = params.get("OssClusterId")
+        self._StorageVersion = params.get("StorageVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21447,7 +27365,7 @@ class DescribeTasksRequest(AbstractModel):
         :type StartTimeBegin: str
         :param _StartTimeEnd: End value of the task start time.
         :type StartTimeEnd: str
-        :param _Filters: Filtering conditions. Supported fields for searching: "ClusterId", "ClusterName", "InstanceId", "InstanceName", "Status", "TaskId", and "TaskType".
+        :param _Filters: Filtering Conditions. Supported search fields: "ClusterId", "ClusterName", "InstanceId", "InstanceName", "Status", "TaskId", "TaskType".
         :type Filters: list of QueryFilter
         :param _Limit: Length of the list to be queried.
         :type Limit: int
@@ -21484,7 +27402,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filtering conditions. Supported fields for searching: "ClusterId", "ClusterName", "InstanceId", "InstanceName", "Status", "TaskId", and "TaskType".
+        r"""Filtering Conditions. Supported search fields: "ClusterId", "ClusterName", "InstanceId", "InstanceName", "Status", "TaskId", "TaskType".
         :rtype: list of QueryFilter
         """
         return self._Filters
@@ -21600,6 +27518,676 @@ class DescribeTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVaultBackupClusterInfo(AbstractModel):
+    r"""Cluster information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _ClusterName: Cluster name.
+        :type ClusterName: str
+        :param _ClusterStatus: Cluster status
+        :type ClusterStatus: str
+        :param _ClusterRegion: cluster region
+        :type ClusterRegion: str
+        :param _ClusterZone: AZ of the cluster
+        :type ClusterZone: str
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._ClusterStatus = None
+        self._ClusterRegion = None
+        self._ClusterZone = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""Cluster name.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterStatus(self):
+        r"""Cluster status
+        :rtype: str
+        """
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def ClusterRegion(self):
+        r"""cluster region
+        :rtype: str
+        """
+        return self._ClusterRegion
+
+    @ClusterRegion.setter
+    def ClusterRegion(self, ClusterRegion):
+        self._ClusterRegion = ClusterRegion
+
+    @property
+    def ClusterZone(self):
+        r"""AZ of the cluster
+        :rtype: str
+        """
+        return self._ClusterZone
+
+    @ClusterZone.setter
+    def ClusterZone(self, ClusterZone):
+        self._ClusterZone = ClusterZone
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterStatus = params.get("ClusterStatus")
+        self._ClusterRegion = params.get("ClusterRegion")
+        self._ClusterZone = params.get("ClusterZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVaultBackupClusterInfoRequest(AbstractModel):
+    r"""DescribeVaultBackupClusterInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Backup safe ID
+        :type VaultId: str
+        """
+        self._VaultId = None
+
+    @property
+    def VaultId(self):
+        r"""Backup safe ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVaultBackupClusterInfoResponse(AbstractModel):
+    r"""DescribeVaultBackupClusterInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterInfos: Safe info
+        :type ClusterInfos: list of DescribeVaultBackupClusterInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ClusterInfos = None
+        self._RequestId = None
+
+    @property
+    def ClusterInfos(self):
+        r"""Safe info
+        :rtype: list of DescribeVaultBackupClusterInfo
+        """
+        return self._ClusterInfos
+
+    @ClusterInfos.setter
+    def ClusterInfos(self, ClusterInfos):
+        self._ClusterInfos = ClusterInfos
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterInfos") is not None:
+            self._ClusterInfos = []
+            for item in params.get("ClusterInfos"):
+                obj = DescribeVaultBackupClusterInfo()
+                obj._deserialize(item)
+                self._ClusterInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVaultsItem(AbstractModel):
+    r"""Safe info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Safe ID
+        :type VaultId: str
+        :param _VaultName: Safe name
+        :type VaultName: str
+        :param _VaultDescribe: Safe description
+        :type VaultDescribe: str
+        :param _KeyId: Encryption key ID.
+        :type KeyId: str
+        :param _KeyRegion: Key region
+        :type KeyRegion: str
+        :param _KeyType: Key type
+        :type KeyType: str
+        :param _BackupFileCount: Number of backup files
+        :type BackupFileCount: int
+        :param _BackupFileSize: Total size of backup files (byte)
+        :type BackupFileSize: int
+        :param _BinlogFileCount: Binlog file count
+        :type BinlogFileCount: int
+        :param _BinlogFileSize: Total size of the Binlog file (byte)
+        :type BinlogFileSize: int
+        :param _RedoLogFileCount: Number of RedoLog files
+        :type RedoLogFileCount: int
+        :param _RedoLogFileSize: Total size of RedoLog files (byte)
+        :type RedoLogFileSize: int
+        :param _Status: Safe status
+        :type Status: str
+        :param _BackupSaveSeconds: Backup retention period (seconds)
+        :type BackupSaveSeconds: int
+        :param _LockedTime: lock time
+        :type LockedTime: str
+        :param _Tasks: Associated task list
+        :type Tasks: list of ObjectTask
+        :param _VaultRegion: Safe region
+        :type VaultRegion: str
+        :param _AutoCopyConfigs: Automatically deliver relationship
+        :type AutoCopyConfigs: list of AutoCopyConfig
+        """
+        self._VaultId = None
+        self._VaultName = None
+        self._VaultDescribe = None
+        self._KeyId = None
+        self._KeyRegion = None
+        self._KeyType = None
+        self._BackupFileCount = None
+        self._BackupFileSize = None
+        self._BinlogFileCount = None
+        self._BinlogFileSize = None
+        self._RedoLogFileCount = None
+        self._RedoLogFileSize = None
+        self._Status = None
+        self._BackupSaveSeconds = None
+        self._LockedTime = None
+        self._Tasks = None
+        self._VaultRegion = None
+        self._AutoCopyConfigs = None
+
+    @property
+    def VaultId(self):
+        r"""Safe ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultName(self):
+        r"""Safe name
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def VaultDescribe(self):
+        r"""Safe description
+        :rtype: str
+        """
+        return self._VaultDescribe
+
+    @VaultDescribe.setter
+    def VaultDescribe(self, VaultDescribe):
+        self._VaultDescribe = VaultDescribe
+
+    @property
+    def KeyId(self):
+        r"""Encryption key ID.
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyRegion(self):
+        r"""Key region
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
+    @property
+    def KeyType(self):
+        r"""Key type
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def BackupFileCount(self):
+        r"""Number of backup files
+        :rtype: int
+        """
+        return self._BackupFileCount
+
+    @BackupFileCount.setter
+    def BackupFileCount(self, BackupFileCount):
+        self._BackupFileCount = BackupFileCount
+
+    @property
+    def BackupFileSize(self):
+        r"""Total size of backup files (byte)
+        :rtype: int
+        """
+        return self._BackupFileSize
+
+    @BackupFileSize.setter
+    def BackupFileSize(self, BackupFileSize):
+        self._BackupFileSize = BackupFileSize
+
+    @property
+    def BinlogFileCount(self):
+        r"""Binlog file count
+        :rtype: int
+        """
+        return self._BinlogFileCount
+
+    @BinlogFileCount.setter
+    def BinlogFileCount(self, BinlogFileCount):
+        self._BinlogFileCount = BinlogFileCount
+
+    @property
+    def BinlogFileSize(self):
+        r"""Total size of the Binlog file (byte)
+        :rtype: int
+        """
+        return self._BinlogFileSize
+
+    @BinlogFileSize.setter
+    def BinlogFileSize(self, BinlogFileSize):
+        self._BinlogFileSize = BinlogFileSize
+
+    @property
+    def RedoLogFileCount(self):
+        r"""Number of RedoLog files
+        :rtype: int
+        """
+        return self._RedoLogFileCount
+
+    @RedoLogFileCount.setter
+    def RedoLogFileCount(self, RedoLogFileCount):
+        self._RedoLogFileCount = RedoLogFileCount
+
+    @property
+    def RedoLogFileSize(self):
+        r"""Total size of RedoLog files (byte)
+        :rtype: int
+        """
+        return self._RedoLogFileSize
+
+    @RedoLogFileSize.setter
+    def RedoLogFileSize(self, RedoLogFileSize):
+        self._RedoLogFileSize = RedoLogFileSize
+
+    @property
+    def Status(self):
+        r"""Safe status
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""Backup retention period (seconds)
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+    @property
+    def LockedTime(self):
+        r"""lock time
+        :rtype: str
+        """
+        return self._LockedTime
+
+    @LockedTime.setter
+    def LockedTime(self, LockedTime):
+        self._LockedTime = LockedTime
+
+    @property
+    def Tasks(self):
+        r"""Associated task list
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def VaultRegion(self):
+        r"""Safe region
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
+    @property
+    def AutoCopyConfigs(self):
+        r"""Automatically deliver relationship
+        :rtype: list of AutoCopyConfig
+        """
+        return self._AutoCopyConfigs
+
+    @AutoCopyConfigs.setter
+    def AutoCopyConfigs(self, AutoCopyConfigs):
+        self._AutoCopyConfigs = AutoCopyConfigs
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._VaultName = params.get("VaultName")
+        self._VaultDescribe = params.get("VaultDescribe")
+        self._KeyId = params.get("KeyId")
+        self._KeyRegion = params.get("KeyRegion")
+        self._KeyType = params.get("KeyType")
+        self._BackupFileCount = params.get("BackupFileCount")
+        self._BackupFileSize = params.get("BackupFileSize")
+        self._BinlogFileCount = params.get("BinlogFileCount")
+        self._BinlogFileSize = params.get("BinlogFileSize")
+        self._RedoLogFileCount = params.get("RedoLogFileCount")
+        self._RedoLogFileSize = params.get("RedoLogFileSize")
+        self._Status = params.get("Status")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        self._LockedTime = params.get("LockedTime")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._VaultRegion = params.get("VaultRegion")
+        if params.get("AutoCopyConfigs") is not None:
+            self._AutoCopyConfigs = []
+            for item in params.get("AutoCopyConfigs"):
+                obj = AutoCopyConfig()
+                obj._deserialize(item)
+                self._AutoCopyConfigs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVaultsRequest(AbstractModel):
+    r"""DescribeVaults request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultIds: Safe ID list for precise filtering
+        :type VaultIds: list of str
+        :param _VaultName: Safe name, used for fuzzy filtering
+        :type VaultName: str
+        :param _Status: Status list of safe for filtering
+        :type Status: list of str
+        :param _Limit: Number of items per page, range (0,100], default 100
+        :type Limit: int
+        :param _Offset: Offset. Range: [0,+∞). Default is 0
+        :type Offset: int
+        :param _OrderBy: Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime
+        :type OrderBy: str
+        :param _OrderByType: Sorting method, available values: desc, asc, DESC, ASC
+        :type OrderByType: str
+        """
+        self._VaultIds = None
+        self._VaultName = None
+        self._Status = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def VaultIds(self):
+        r"""Safe ID list for precise filtering
+        :rtype: list of str
+        """
+        return self._VaultIds
+
+    @VaultIds.setter
+    def VaultIds(self, VaultIds):
+        self._VaultIds = VaultIds
+
+    @property
+    def VaultName(self):
+        r"""Safe name, used for fuzzy filtering
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def Status(self):
+        r"""Status list of safe for filtering
+        :rtype: list of str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Limit(self):
+        r"""Number of items per page, range (0,100], default 100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset. Range: [0,+∞). Default is 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field. Available values: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""Sorting method, available values: desc, asc, DESC, ASC
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._VaultIds = params.get("VaultIds")
+        self._VaultName = params.get("VaultName")
+        self._Status = params.get("Status")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVaultsResponse(AbstractModel):
+    r"""DescribeVaults response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vaults: Safe list
+        :type Vaults: list of DescribeVaultsItem
+        :param _TotalCount: Total number.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Vaults = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Vaults(self):
+        r"""Safe list
+        :rtype: list of DescribeVaultsItem
+        """
+        return self._Vaults
+
+    @Vaults.setter
+    def Vaults(self, Vaults):
+        self._Vaults = Vaults
+
+    @property
+    def TotalCount(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Vaults") is not None:
+            self._Vaults = []
+            for item in params.get("Vaults"):
+                obj = DescribeVaultsItem()
+                obj._deserialize(item)
+                self._Vaults.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     r"""DescribeZones request structure.
 
@@ -21699,6 +28287,268 @@ class DescribeZonesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisassociateSecurityGroupsRequest(AbstractModel):
+    r"""DisassociateSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: Array of instance group IDs, starting with the prefix cynosdbmysql-grp- or cluster ID.
+Description: To get the instance group ID of a cluster, perform [query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
+        :type InstanceIds: list of str
+        :param _SecurityGroupIds: Security group ID list to modify. An array of one or more security group IDs.
+        :type SecurityGroupIds: list of str
+        :param _Zone: Availability zone.
+Description: Please enter the primary AZ of the cluster location correctly. If you enter a non-primary AZ of the cluster location, the call may display success but the actual execution will fail.
+        :type Zone: str
+        """
+        self._InstanceIds = None
+        self._SecurityGroupIds = None
+        self._Zone = None
+
+    @property
+    def InstanceIds(self):
+        r"""Array of instance group IDs, starting with the prefix cynosdbmysql-grp- or cluster ID.
+Description: To get the instance group ID of a cluster, perform [query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def SecurityGroupIds(self):
+        r"""Security group ID list to modify. An array of one or more security group IDs.
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def Zone(self):
+        r"""Availability zone.
+Description: Please enter the primary AZ of the cluster location correctly. If you enter a non-primary AZ of the cluster location, the call may display success but the actual execution will fail.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateSecurityGroupsResponse(AbstractModel):
+    r"""DisassociateSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DownloadLibraDBClusterListRequest(AbstractModel):
+    r"""DownloadLibraDBClusterList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Limit Quantity
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _OrderBy: Sorting field.
+        :type OrderBy: str
+        :param _OrderByType: Sorting method, desc, asc, DESC, ASC
+        :type OrderByType: str
+        :param _Filters: Filter criteria.
+        :type Filters: list of QueryFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""Limit Quantity
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""Sorting field.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""Sorting method, desc, asc, DESC, ASC
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Filters(self):
+        r"""Filter criteria.
+        :rtype: list of QueryFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadLibraDBClusterListResponse(AbstractModel):
+    r"""DownloadLibraDBClusterList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterSet: Analyze cluster information
+        :type ClusterSet: list of LibraClusterSet
+        :param _TotalCount: Total number.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ClusterSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ClusterSet(self):
+        r"""Analyze cluster information
+        :rtype: list of LibraClusterSet
+        """
+        return self._ClusterSet
+
+    @ClusterSet.setter
+    def ClusterSet(self, ClusterSet):
+        self._ClusterSet = ClusterSet
+
+    @property
+    def TotalCount(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterSet") is not None:
+            self._ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = LibraClusterSet()
+                obj._deserialize(item)
+                self._ClusterSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class ErrorLogItemExport(AbstractModel):
     r"""The export format for an error log
 
@@ -21766,7 +28616,7 @@ class ErrorLogItemExport(AbstractModel):
 
 
 class ExchangeInstanceInfo(AbstractModel):
-    r"""Exchange Instance Information
+    r"""
 
     """
 
@@ -21821,7 +28671,7 @@ class ExchangeInstanceInfo(AbstractModel):
 
 
 class ExchangeRoGroupInfo(AbstractModel):
-    r"""Swap RO group information
+    r"""
 
     """
 
@@ -21875,6 +28725,418 @@ class ExchangeRoGroupInfo(AbstractModel):
         
 
 
+class ExecutionPlanDetail(AbstractModel):
+    r"""Execution plan details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateID: <p>Template ID</p>
+        :type TemplateID: str
+        :param _Db: <p>Database name.</p>
+        :type Db: str
+        :param _SQLSample: <p>Original SQL sample</p>
+        :type SQLSample: str
+        :param _SQLSampleRewritten: <p>Sample SQL after rewrite</p>
+        :type SQLSampleRewritten: str
+        :param _TablePlanBefore: <p>Execution plan before optimization - List</p>
+        :type TablePlanBefore: list of ExplainRow
+        :param _TablePlanAfter: <p>Execution plan after optimization - List</p>
+        :type TablePlanAfter: list of ExplainRow
+        :param _TreePlanBefore: <p>Tree execution plan before optimization</p>
+        :type TreePlanBefore: str
+        :param _TreePlanAfter: <p>Tree execution plan after optimization</p>
+        :type TreePlanAfter: str
+        :param _QueryTimeBefore: <p>Query time before optimization</p>
+        :type QueryTimeBefore: float
+        :param _QueryTimeAfter: <p>Query time after optimization</p>
+        :type QueryTimeAfter: float
+        :param _SQLScanRowsBefore: <p>Number of scanned rows before optimization</p>
+        :type SQLScanRowsBefore: int
+        :param _SQLScanRowsAfter: <p>Number of scanned rows after optimization</p>
+        :type SQLScanRowsAfter: int
+        """
+        self._TemplateID = None
+        self._Db = None
+        self._SQLSample = None
+        self._SQLSampleRewritten = None
+        self._TablePlanBefore = None
+        self._TablePlanAfter = None
+        self._TreePlanBefore = None
+        self._TreePlanAfter = None
+        self._QueryTimeBefore = None
+        self._QueryTimeAfter = None
+        self._SQLScanRowsBefore = None
+        self._SQLScanRowsAfter = None
+
+    @property
+    def TemplateID(self):
+        r"""<p>Template ID</p>
+        :rtype: str
+        """
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+    @property
+    def Db(self):
+        r"""<p>Database name.</p>
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def SQLSample(self):
+        r"""<p>Original SQL sample</p>
+        :rtype: str
+        """
+        return self._SQLSample
+
+    @SQLSample.setter
+    def SQLSample(self, SQLSample):
+        self._SQLSample = SQLSample
+
+    @property
+    def SQLSampleRewritten(self):
+        r"""<p>Sample SQL after rewrite</p>
+        :rtype: str
+        """
+        return self._SQLSampleRewritten
+
+    @SQLSampleRewritten.setter
+    def SQLSampleRewritten(self, SQLSampleRewritten):
+        self._SQLSampleRewritten = SQLSampleRewritten
+
+    @property
+    def TablePlanBefore(self):
+        r"""<p>Execution plan before optimization - List</p>
+        :rtype: list of ExplainRow
+        """
+        return self._TablePlanBefore
+
+    @TablePlanBefore.setter
+    def TablePlanBefore(self, TablePlanBefore):
+        self._TablePlanBefore = TablePlanBefore
+
+    @property
+    def TablePlanAfter(self):
+        r"""<p>Execution plan after optimization - List</p>
+        :rtype: list of ExplainRow
+        """
+        return self._TablePlanAfter
+
+    @TablePlanAfter.setter
+    def TablePlanAfter(self, TablePlanAfter):
+        self._TablePlanAfter = TablePlanAfter
+
+    @property
+    def TreePlanBefore(self):
+        r"""<p>Tree execution plan before optimization</p>
+        :rtype: str
+        """
+        return self._TreePlanBefore
+
+    @TreePlanBefore.setter
+    def TreePlanBefore(self, TreePlanBefore):
+        self._TreePlanBefore = TreePlanBefore
+
+    @property
+    def TreePlanAfter(self):
+        r"""<p>Tree execution plan after optimization</p>
+        :rtype: str
+        """
+        return self._TreePlanAfter
+
+    @TreePlanAfter.setter
+    def TreePlanAfter(self, TreePlanAfter):
+        self._TreePlanAfter = TreePlanAfter
+
+    @property
+    def QueryTimeBefore(self):
+        r"""<p>Query time before optimization</p>
+        :rtype: float
+        """
+        return self._QueryTimeBefore
+
+    @QueryTimeBefore.setter
+    def QueryTimeBefore(self, QueryTimeBefore):
+        self._QueryTimeBefore = QueryTimeBefore
+
+    @property
+    def QueryTimeAfter(self):
+        r"""<p>Query time after optimization</p>
+        :rtype: float
+        """
+        return self._QueryTimeAfter
+
+    @QueryTimeAfter.setter
+    def QueryTimeAfter(self, QueryTimeAfter):
+        self._QueryTimeAfter = QueryTimeAfter
+
+    @property
+    def SQLScanRowsBefore(self):
+        r"""<p>Number of scanned rows before optimization</p>
+        :rtype: int
+        """
+        return self._SQLScanRowsBefore
+
+    @SQLScanRowsBefore.setter
+    def SQLScanRowsBefore(self, SQLScanRowsBefore):
+        self._SQLScanRowsBefore = SQLScanRowsBefore
+
+    @property
+    def SQLScanRowsAfter(self):
+        r"""<p>Number of scanned rows after optimization</p>
+        :rtype: int
+        """
+        return self._SQLScanRowsAfter
+
+    @SQLScanRowsAfter.setter
+    def SQLScanRowsAfter(self, SQLScanRowsAfter):
+        self._SQLScanRowsAfter = SQLScanRowsAfter
+
+
+    def _deserialize(self, params):
+        self._TemplateID = params.get("TemplateID")
+        self._Db = params.get("Db")
+        self._SQLSample = params.get("SQLSample")
+        self._SQLSampleRewritten = params.get("SQLSampleRewritten")
+        if params.get("TablePlanBefore") is not None:
+            self._TablePlanBefore = []
+            for item in params.get("TablePlanBefore"):
+                obj = ExplainRow()
+                obj._deserialize(item)
+                self._TablePlanBefore.append(obj)
+        if params.get("TablePlanAfter") is not None:
+            self._TablePlanAfter = []
+            for item in params.get("TablePlanAfter"):
+                obj = ExplainRow()
+                obj._deserialize(item)
+                self._TablePlanAfter.append(obj)
+        self._TreePlanBefore = params.get("TreePlanBefore")
+        self._TreePlanAfter = params.get("TreePlanAfter")
+        self._QueryTimeBefore = params.get("QueryTimeBefore")
+        self._QueryTimeAfter = params.get("QueryTimeAfter")
+        self._SQLScanRowsBefore = params.get("SQLScanRowsBefore")
+        self._SQLScanRowsAfter = params.get("SQLScanRowsAfter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExplainRow(AbstractModel):
+    r"""Execution plan list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>Serial number of the query</p>
+        :type Id: int
+        :param _SelectType: <p>Query type. Common values: SIMPLE (simple query, excluding subqueries or UNION), PRIMARY (outermost query), SUBQUERY (first SELECT in a subquery), DERIVED (derivative table/subquery in FROM clause), UNION (second and subsequent SELECTs in UNION), UNION RESULT (result set of UNION).</p>
+        :type SelectType: str
+        :param _Table: <p>Data table name</p>
+        :type Table: str
+        :param _Partitions: <p>Query matching partition</p>
+        :type Partitions: str
+        :param _Type: <p>Access type (very important, a key metric for measuring query efficiency), ranked from best to worst: system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL. Common value descriptions: • system: The table has only one row (system table). • const: Matches one row through primary key or unique index, commonly seen in WHERE pk = 1. • eq_ref: Uses primary key or unique index when connecting, each index value matches only one row. • ref: Uses non-unique index to search, may match multiple rows. • range: Index range scan, such as BETWEEN, &gt;, &lt;, IN. • index: Full index scan (traversal of the entire index tree). • ALL: Full-table scan (worst, requires optimization).</p>
+        :type Type: str
+        :param _PossibleKeys: <p>Indexes that may be used in querying. NULL means no available index.</p>
+        :type PossibleKeys: str
+        :param _Key: <p>Indexes actually used. NULL means no index is used.</p>
+        :type Key: str
+        :param _KeyLen: <p>The length of the actual used index (number of bytes). It can be used to determine which columns are actually used in the composite index. A shorter value indicates fewer index columns are used.</p>
+        :type KeyLen: str
+        :param _Ref: <p>Display which columns or constants are compared with indexes in the key column. Common values: const (constant), certain column name, func (function result).</p>
+        :type Ref: str
+        :param _Rows: <p>Estimate the number of rows to scan</p>
+        :type Rows: int
+        :param _Filtered: <p>Indicates the estimation of the percentage of rows remaining after table conditional filtering. 100% means no additional filtering. The higher the value, the better.</p>
+        :type Filtered: float
+        :param _Extra: <p>Additional information (very important), common values: • Using index: covering index, no need to return to the table (good) • Using where: filter with WHERE after the storage engine returns rows • Using temporary: used a temporary table (commonly used in GROUP BY/ORDER BY, needs optimization) • Using filesort: used file sort instead of index sorting (needs optimization) • Using index condition: used pushdown of index (ICP)</p>
+        :type Extra: str
+        """
+        self._Id = None
+        self._SelectType = None
+        self._Table = None
+        self._Partitions = None
+        self._Type = None
+        self._PossibleKeys = None
+        self._Key = None
+        self._KeyLen = None
+        self._Ref = None
+        self._Rows = None
+        self._Filtered = None
+        self._Extra = None
+
+    @property
+    def Id(self):
+        r"""<p>Serial number of the query</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SelectType(self):
+        r"""<p>Query type. Common values: SIMPLE (simple query, excluding subqueries or UNION), PRIMARY (outermost query), SUBQUERY (first SELECT in a subquery), DERIVED (derivative table/subquery in FROM clause), UNION (second and subsequent SELECTs in UNION), UNION RESULT (result set of UNION).</p>
+        :rtype: str
+        """
+        return self._SelectType
+
+    @SelectType.setter
+    def SelectType(self, SelectType):
+        self._SelectType = SelectType
+
+    @property
+    def Table(self):
+        r"""<p>Data table name</p>
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Partitions(self):
+        r"""<p>Query matching partition</p>
+        :rtype: str
+        """
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Type(self):
+        r"""<p>Access type (very important, a key metric for measuring query efficiency), ranked from best to worst: system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL. Common value descriptions: • system: The table has only one row (system table). • const: Matches one row through primary key or unique index, commonly seen in WHERE pk = 1. • eq_ref: Uses primary key or unique index when connecting, each index value matches only one row. • ref: Uses non-unique index to search, may match multiple rows. • range: Index range scan, such as BETWEEN, &gt;, &lt;, IN. • index: Full index scan (traversal of the entire index tree). • ALL: Full-table scan (worst, requires optimization).</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PossibleKeys(self):
+        r"""<p>Indexes that may be used in querying. NULL means no available index.</p>
+        :rtype: str
+        """
+        return self._PossibleKeys
+
+    @PossibleKeys.setter
+    def PossibleKeys(self, PossibleKeys):
+        self._PossibleKeys = PossibleKeys
+
+    @property
+    def Key(self):
+        r"""<p>Indexes actually used. NULL means no index is used.</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def KeyLen(self):
+        r"""<p>The length of the actual used index (number of bytes). It can be used to determine which columns are actually used in the composite index. A shorter value indicates fewer index columns are used.</p>
+        :rtype: str
+        """
+        return self._KeyLen
+
+    @KeyLen.setter
+    def KeyLen(self, KeyLen):
+        self._KeyLen = KeyLen
+
+    @property
+    def Ref(self):
+        r"""<p>Display which columns or constants are compared with indexes in the key column. Common values: const (constant), certain column name, func (function result).</p>
+        :rtype: str
+        """
+        return self._Ref
+
+    @Ref.setter
+    def Ref(self, Ref):
+        self._Ref = Ref
+
+    @property
+    def Rows(self):
+        r"""<p>Estimate the number of rows to scan</p>
+        :rtype: int
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def Filtered(self):
+        r"""<p>Indicates the estimation of the percentage of rows remaining after table conditional filtering. 100% means no additional filtering. The higher the value, the better.</p>
+        :rtype: float
+        """
+        return self._Filtered
+
+    @Filtered.setter
+    def Filtered(self, Filtered):
+        self._Filtered = Filtered
+
+    @property
+    def Extra(self):
+        r"""<p>Additional information (very important), common values: • Using index: covering index, no need to return to the table (good) • Using where: filter with WHERE after the storage engine returns rows • Using temporary: used a temporary table (commonly used in GROUP BY/ORDER BY, needs optimization) • Using filesort: used file sort instead of index sorting (needs optimization) • Using index condition: used pushdown of index (ICP)</p>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._SelectType = params.get("SelectType")
+        self._Table = params.get("Table")
+        self._Partitions = params.get("Partitions")
+        self._Type = params.get("Type")
+        self._PossibleKeys = params.get("PossibleKeys")
+        self._Key = params.get("Key")
+        self._KeyLen = params.get("KeyLen")
+        self._Ref = params.get("Ref")
+        self._Rows = params.get("Rows")
+        self._Filtered = params.get("Filtered")
+        self._Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExportInstanceErrorLogsRequest(AbstractModel):
     r"""ExportInstanceErrorLogs request structure.
 
@@ -21894,7 +29156,7 @@ class ExportInstanceErrorLogsRequest(AbstractModel):
         :type Offset: int
         :param _LogLevels: Log level
         :type LogLevels: list of str
-        :param _KeyWords: Keywords
+        :param _KeyWords: 
         :type KeyWords: list of str
         :param _FileType: The template type. Valid values: `csv`, `original`.
         :type FileType: str
@@ -21982,7 +29244,7 @@ class ExportInstanceErrorLogsRequest(AbstractModel):
 
     @property
     def KeyWords(self):
-        r"""Keywords
+        r"""
         :rtype: list of str
         """
         return self._KeyWords
@@ -22537,6 +29799,247 @@ class ExportResourcePackageDeductDetailsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ForwardInstanceInfo(AbstractModel):
+    r"""Forward instance information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Forward the instance id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _Region: Forward instance region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        """
+        self._InstanceId = None
+        self._Region = None
+
+    @property
+    def InstanceId(self):
+        r"""Forward the instance id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Region(self):
+        r"""Forward instance region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GdnTaskInfo(AbstractModel):
+    r"""Global database task info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GdnId: Unique ID of the global database
+        :type GdnId: str
+        :param _GdnName: unique alias of the global database
+        :type GdnName: str
+        :param _PrimaryClusterId: Primary Cluster ID
+        :type PrimaryClusterId: str
+        :param _PrimaryClusterRegion: Master cluster region
+        :type PrimaryClusterRegion: str
+        :param _StandbyClusterRegion: from the cluster region
+        :type StandbyClusterRegion: str
+        :param _StandbyClusterId: Slave cluster ID
+        :type StandbyClusterId: str
+        :param _StandbyClusterName: From the cluster name
+        :type StandbyClusterName: str
+        :param _ForceSwitchGdn: Whether forced switchover is performed
+        :type ForceSwitchGdn: str
+        :param _Code: Return code
+        :type Code: int
+        :param _Message: prompt message
+        :type Message: str
+        :param _IsSupportForce: Whether forced switchover is supported
+        :type IsSupportForce: str
+        """
+        self._GdnId = None
+        self._GdnName = None
+        self._PrimaryClusterId = None
+        self._PrimaryClusterRegion = None
+        self._StandbyClusterRegion = None
+        self._StandbyClusterId = None
+        self._StandbyClusterName = None
+        self._ForceSwitchGdn = None
+        self._Code = None
+        self._Message = None
+        self._IsSupportForce = None
+
+    @property
+    def GdnId(self):
+        r"""Unique ID of the global database
+        :rtype: str
+        """
+        return self._GdnId
+
+    @GdnId.setter
+    def GdnId(self, GdnId):
+        self._GdnId = GdnId
+
+    @property
+    def GdnName(self):
+        r"""unique alias of the global database
+        :rtype: str
+        """
+        return self._GdnName
+
+    @GdnName.setter
+    def GdnName(self, GdnName):
+        self._GdnName = GdnName
+
+    @property
+    def PrimaryClusterId(self):
+        r"""Primary Cluster ID
+        :rtype: str
+        """
+        return self._PrimaryClusterId
+
+    @PrimaryClusterId.setter
+    def PrimaryClusterId(self, PrimaryClusterId):
+        self._PrimaryClusterId = PrimaryClusterId
+
+    @property
+    def PrimaryClusterRegion(self):
+        r"""Master cluster region
+        :rtype: str
+        """
+        return self._PrimaryClusterRegion
+
+    @PrimaryClusterRegion.setter
+    def PrimaryClusterRegion(self, PrimaryClusterRegion):
+        self._PrimaryClusterRegion = PrimaryClusterRegion
+
+    @property
+    def StandbyClusterRegion(self):
+        r"""from the cluster region
+        :rtype: str
+        """
+        return self._StandbyClusterRegion
+
+    @StandbyClusterRegion.setter
+    def StandbyClusterRegion(self, StandbyClusterRegion):
+        self._StandbyClusterRegion = StandbyClusterRegion
+
+    @property
+    def StandbyClusterId(self):
+        r"""Slave cluster ID
+        :rtype: str
+        """
+        return self._StandbyClusterId
+
+    @StandbyClusterId.setter
+    def StandbyClusterId(self, StandbyClusterId):
+        self._StandbyClusterId = StandbyClusterId
+
+    @property
+    def StandbyClusterName(self):
+        r"""From the cluster name
+        :rtype: str
+        """
+        return self._StandbyClusterName
+
+    @StandbyClusterName.setter
+    def StandbyClusterName(self, StandbyClusterName):
+        self._StandbyClusterName = StandbyClusterName
+
+    @property
+    def ForceSwitchGdn(self):
+        r"""Whether forced switchover is performed
+        :rtype: str
+        """
+        return self._ForceSwitchGdn
+
+    @ForceSwitchGdn.setter
+    def ForceSwitchGdn(self, ForceSwitchGdn):
+        self._ForceSwitchGdn = ForceSwitchGdn
+
+    @property
+    def Code(self):
+        r"""Return code
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""prompt message
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def IsSupportForce(self):
+        r"""Whether forced switchover is supported
+        :rtype: str
+        """
+        return self._IsSupportForce
+
+    @IsSupportForce.setter
+    def IsSupportForce(self, IsSupportForce):
+        self._IsSupportForce = IsSupportForce
+
+
+    def _deserialize(self, params):
+        self._GdnId = params.get("GdnId")
+        self._GdnName = params.get("GdnName")
+        self._PrimaryClusterId = params.get("PrimaryClusterId")
+        self._PrimaryClusterRegion = params.get("PrimaryClusterRegion")
+        self._StandbyClusterRegion = params.get("StandbyClusterRegion")
+        self._StandbyClusterId = params.get("StandbyClusterId")
+        self._StandbyClusterName = params.get("StandbyClusterName")
+        self._ForceSwitchGdn = params.get("ForceSwitchGdn")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._IsSupportForce = params.get("IsSupportForce")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GoodsPrice(AbstractModel):
     r"""Item price.
 
@@ -22643,7 +30146,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TimeUnit: Duration unit.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TimeUnit: str
-        :param _DeviceType: Machine type.
+        :param _DeviceType: Instance machine type
+1. common, universal type.
+2. exclusive, dedicated.
         :type DeviceType: str
         """
         self._GoodsNum = None
@@ -22741,7 +30246,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeviceType(self):
-        r"""Machine type.
+        r"""Instance machine type
+1. common, universal type.
+2. exclusive, dedicated.
         :rtype: str
         """
         return self._DeviceType
@@ -22768,6 +30275,122 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GrantAccountPrivilegesRequest(AbstractModel):
+    r"""GrantAccountPrivileges request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID.
+        :type ClusterId: str
+        :param _Account: Account information
+        :type Account: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        :param _DbTablePrivileges: Array of table permission codes
+        :type DbTablePrivileges: list of str
+        :param _DbTables: Database table information
+        :type DbTables: list of DbTable
+        """
+        self._ClusterId = None
+        self._Account = None
+        self._DbTablePrivileges = None
+        self._DbTables = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Account(self):
+        r"""Account information
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def DbTablePrivileges(self):
+        r"""Array of table permission codes
+        :rtype: list of str
+        """
+        return self._DbTablePrivileges
+
+    @DbTablePrivileges.setter
+    def DbTablePrivileges(self, DbTablePrivileges):
+        self._DbTablePrivileges = DbTablePrivileges
+
+    @property
+    def DbTables(self):
+        r"""Database table information
+        :rtype: list of DbTable
+        """
+        return self._DbTables
+
+    @DbTables.setter
+    def DbTables(self, DbTables):
+        self._DbTables = DbTables
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Account") is not None:
+            self._Account = InputAccount()
+            self._Account._deserialize(params.get("Account"))
+        self._DbTablePrivileges = params.get("DbTablePrivileges")
+        if params.get("DbTables") is not None:
+            self._DbTables = []
+            for item in params.get("DbTables"):
+                obj = DbTable()
+                obj._deserialize(item)
+                self._DbTables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantAccountPrivilegesResponse(AbstractModel):
+    r"""GrantAccountPrivileges response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class InputAccount(AbstractModel):
@@ -23570,7 +31193,7 @@ class InquirePriceRenewResponse(AbstractModel):
 
 
 class InstanceAbility(AbstractModel):
-    r"""Allowed Operations List for Instances
+    r"""
 
     """
 
@@ -23727,15 +31350,15 @@ class InstanceAuditRule(AbstractModel):
 
 
 class InstanceAuditStatus(AbstractModel):
-    r"""Audit instance details
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: 
         :type InstanceId: str
-        :param _AuditStatus: Audit status. ON- Audit is enabled; OFF- Audit is disabled.
+        :param _AuditStatus: 
         :type AuditStatus: str
         :param _LogExpireDay: Specifies the log retention period.
         :type LogExpireDay: int
@@ -23782,7 +31405,7 @@ class InstanceAuditStatus(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""
         :rtype: str
         """
         return self._InstanceId
@@ -23793,7 +31416,7 @@ class InstanceAuditStatus(AbstractModel):
 
     @property
     def AuditStatus(self):
-        r"""Audit status. ON- Audit is enabled; OFF- Audit is disabled.
+        r"""
         :rtype: str
         """
         return self._AuditStatus
@@ -23980,7 +31603,7 @@ class InstanceAuditStatus(AbstractModel):
 
 
 class InstanceCLSDeliveryInfo(AbstractModel):
-    r"""Instance Log Delivery Information
+    r"""
 
     """
 
@@ -24600,6 +32223,287 @@ class InstanceParamItem(AbstractModel):
         
 
 
+class InstanceSet(AbstractModel):
+    r"""Instance information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbMode: Database schema
+        :type DbMode: str
+        :param _InstanceCpu: Number of CPU cores
+        :type InstanceCpu: int
+        :param _InstanceDeviceType: Instance type
+        :type InstanceDeviceType: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _InstanceMemory: memory
+        :type InstanceMemory: int
+        :param _InstanceName: Instance name.
+        :type InstanceName: str
+        :param _InstanceRole: Instance role
+        :type InstanceRole: str
+        :param _InstanceStatus: Instance status
+        :type InstanceStatus: str
+        :param _InstanceStatusDesc: Status description.
+        :type InstanceStatusDesc: str
+        :param _InstanceStorage: hard disk
+        :type InstanceStorage: int
+        :param _InstanceStorageType: Hard disk type.
+        :type InstanceStorageType: str
+        :param _InstanceType: Engine type.
+        :type InstanceType: str
+        :param _MaintainDuration: Duration.
+        :type MaintainDuration: int
+        :param _MaintainStartTime: Execution start time (seconds from 00:00)
+        :type MaintainStartTime: int
+        :param _MaintainWeekDays: The time when it can be executed. Enumeration value: ["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"].
+        :type MaintainWeekDays: list of str
+        :param _NodeList: Node list
+        :type NodeList: list of str
+        :param _InstanceTasks: Instance task
+        :type InstanceTasks: list of ObjectTask
+        """
+        self._DbMode = None
+        self._InstanceCpu = None
+        self._InstanceDeviceType = None
+        self._InstanceId = None
+        self._InstanceMemory = None
+        self._InstanceName = None
+        self._InstanceRole = None
+        self._InstanceStatus = None
+        self._InstanceStatusDesc = None
+        self._InstanceStorage = None
+        self._InstanceStorageType = None
+        self._InstanceType = None
+        self._MaintainDuration = None
+        self._MaintainStartTime = None
+        self._MaintainWeekDays = None
+        self._NodeList = None
+        self._InstanceTasks = None
+
+    @property
+    def DbMode(self):
+        r"""Database schema
+        :rtype: str
+        """
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
+    @property
+    def InstanceCpu(self):
+        r"""Number of CPU cores
+        :rtype: int
+        """
+        return self._InstanceCpu
+
+    @InstanceCpu.setter
+    def InstanceCpu(self, InstanceCpu):
+        self._InstanceCpu = InstanceCpu
+
+    @property
+    def InstanceDeviceType(self):
+        r"""Instance type
+        :rtype: str
+        """
+        return self._InstanceDeviceType
+
+    @InstanceDeviceType.setter
+    def InstanceDeviceType(self, InstanceDeviceType):
+        self._InstanceDeviceType = InstanceDeviceType
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceMemory(self):
+        r"""memory
+        :rtype: int
+        """
+        return self._InstanceMemory
+
+    @InstanceMemory.setter
+    def InstanceMemory(self, InstanceMemory):
+        self._InstanceMemory = InstanceMemory
+
+    @property
+    def InstanceName(self):
+        r"""Instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceRole(self):
+        r"""Instance role
+        :rtype: str
+        """
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def InstanceStatus(self):
+        r"""Instance status
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceStatusDesc(self):
+        r"""Status description.
+        :rtype: str
+        """
+        return self._InstanceStatusDesc
+
+    @InstanceStatusDesc.setter
+    def InstanceStatusDesc(self, InstanceStatusDesc):
+        self._InstanceStatusDesc = InstanceStatusDesc
+
+    @property
+    def InstanceStorage(self):
+        r"""hard disk
+        :rtype: int
+        """
+        return self._InstanceStorage
+
+    @InstanceStorage.setter
+    def InstanceStorage(self, InstanceStorage):
+        self._InstanceStorage = InstanceStorage
+
+    @property
+    def InstanceStorageType(self):
+        r"""Hard disk type.
+        :rtype: str
+        """
+        return self._InstanceStorageType
+
+    @InstanceStorageType.setter
+    def InstanceStorageType(self, InstanceStorageType):
+        self._InstanceStorageType = InstanceStorageType
+
+    @property
+    def InstanceType(self):
+        r"""Engine type.
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MaintainDuration(self):
+        r"""Duration.
+        :rtype: int
+        """
+        return self._MaintainDuration
+
+    @MaintainDuration.setter
+    def MaintainDuration(self, MaintainDuration):
+        self._MaintainDuration = MaintainDuration
+
+    @property
+    def MaintainStartTime(self):
+        r"""Execution start time (seconds from 00:00)
+        :rtype: int
+        """
+        return self._MaintainStartTime
+
+    @MaintainStartTime.setter
+    def MaintainStartTime(self, MaintainStartTime):
+        self._MaintainStartTime = MaintainStartTime
+
+    @property
+    def MaintainWeekDays(self):
+        r"""The time when it can be executed. Enumeration value: ["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"].
+        :rtype: list of str
+        """
+        return self._MaintainWeekDays
+
+    @MaintainWeekDays.setter
+    def MaintainWeekDays(self, MaintainWeekDays):
+        self._MaintainWeekDays = MaintainWeekDays
+
+    @property
+    def NodeList(self):
+        r"""Node list
+        :rtype: list of str
+        """
+        return self._NodeList
+
+    @NodeList.setter
+    def NodeList(self, NodeList):
+        self._NodeList = NodeList
+
+    @property
+    def InstanceTasks(self):
+        r"""Instance task
+        :rtype: list of ObjectTask
+        """
+        return self._InstanceTasks
+
+    @InstanceTasks.setter
+    def InstanceTasks(self, InstanceTasks):
+        self._InstanceTasks = InstanceTasks
+
+
+    def _deserialize(self, params):
+        self._DbMode = params.get("DbMode")
+        self._InstanceCpu = params.get("InstanceCpu")
+        self._InstanceDeviceType = params.get("InstanceDeviceType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceMemory = params.get("InstanceMemory")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceRole = params.get("InstanceRole")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceStatusDesc = params.get("InstanceStatusDesc")
+        self._InstanceStorage = params.get("InstanceStorage")
+        self._InstanceStorageType = params.get("InstanceStorageType")
+        self._InstanceType = params.get("InstanceType")
+        self._MaintainDuration = params.get("MaintainDuration")
+        self._MaintainStartTime = params.get("MaintainStartTime")
+        self._MaintainWeekDays = params.get("MaintainWeekDays")
+        self._NodeList = params.get("NodeList")
+        if params.get("InstanceTasks") is not None:
+            self._InstanceTasks = []
+            for item in params.get("InstanceTasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._InstanceTasks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceSpec(AbstractModel):
     r"""Details of purchasable instance specifications. `Cpu` and `Memory` determine the instance specification during instance creation. The value range of the storage capacity is [MinStorageSize,MaxStorageSize]
 
@@ -24627,6 +32531,10 @@ class InstanceSpec(AbstractModel):
         :type ZoneStockInfos: list of ZoneStockInfo
         :param _StockCount: Inventory quantity.
         :type StockCount: int
+        :param _MaxCpu: Maximum cpu
+        :type MaxCpu: float
+        :param _MinCpu: Minimum cpu
+        :type MinCpu: float
         """
         self._Cpu = None
         self._Memory = None
@@ -24638,6 +32546,8 @@ class InstanceSpec(AbstractModel):
         self._MaxIoBandWidth = None
         self._ZoneStockInfos = None
         self._StockCount = None
+        self._MaxCpu = None
+        self._MinCpu = None
 
     @property
     def Cpu(self):
@@ -24749,6 +32659,28 @@ class InstanceSpec(AbstractModel):
     def StockCount(self, StockCount):
         self._StockCount = StockCount
 
+    @property
+    def MaxCpu(self):
+        r"""Maximum cpu
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def MinCpu(self):
+        r"""Minimum cpu
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
 
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
@@ -24766,6 +32698,8 @@ class InstanceSpec(AbstractModel):
                 obj._deserialize(item)
                 self._ZoneStockInfos.append(obj)
         self._StockCount = params.get("StockCount")
+        self._MaxCpu = params.get("MaxCpu")
+        self._MinCpu = params.get("MinCpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24969,9 +32903,18 @@ class IsolateClusterRequest(AbstractModel):
         :type ClusterId: str
         :param _DbType: This parameter has been disused.
         :type DbType: str
+        :param _IsolateReasonTypes: 
+        :type IsolateReasonTypes: list of int
+        :param _IsolateReason: 
+        :type IsolateReason: str
+        :param _SaveBackup: Retain backup, true - Retained (incur fees)
+        :type SaveBackup: bool
         """
         self._ClusterId = None
         self._DbType = None
+        self._IsolateReasonTypes = None
+        self._IsolateReason = None
+        self._SaveBackup = None
 
     @property
     def ClusterId(self):
@@ -24995,10 +32938,46 @@ class IsolateClusterRequest(AbstractModel):
     def DbType(self, DbType):
         self._DbType = DbType
 
+    @property
+    def IsolateReasonTypes(self):
+        r"""
+        :rtype: list of int
+        """
+        return self._IsolateReasonTypes
+
+    @IsolateReasonTypes.setter
+    def IsolateReasonTypes(self, IsolateReasonTypes):
+        self._IsolateReasonTypes = IsolateReasonTypes
+
+    @property
+    def IsolateReason(self):
+        r"""
+        :rtype: str
+        """
+        return self._IsolateReason
+
+    @IsolateReason.setter
+    def IsolateReason(self, IsolateReason):
+        self._IsolateReason = IsolateReason
+
+    @property
+    def SaveBackup(self):
+        r"""Retain backup, true - Retained (incur fees)
+        :rtype: bool
+        """
+        return self._SaveBackup
+
+    @SaveBackup.setter
+    def SaveBackup(self, SaveBackup):
+        self._SaveBackup = SaveBackup
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._DbType = params.get("DbType")
+        self._IsolateReasonTypes = params.get("IsolateReasonTypes")
+        self._IsolateReason = params.get("IsolateReason")
+        self._SaveBackup = params.get("SaveBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25082,10 +33061,19 @@ class IsolateInstanceRequest(AbstractModel):
         :type InstanceIdList: list of str
         :param _DbType: This parameter has been disused.
         :type DbType: str
+        :param _IsolateReasonTypes: Instance Refund Reason Types
+        :type IsolateReasonTypes: list of int
+        :param _IsolateReason: Instance Refund Reason Supplement
+        :type IsolateReason: str
+        :param _SaveBackup: Backup retention
+        :type SaveBackup: bool
         """
         self._ClusterId = None
         self._InstanceIdList = None
         self._DbType = None
+        self._IsolateReasonTypes = None
+        self._IsolateReason = None
+        self._SaveBackup = None
 
     @property
     def ClusterId(self):
@@ -25120,11 +33108,47 @@ class IsolateInstanceRequest(AbstractModel):
     def DbType(self, DbType):
         self._DbType = DbType
 
+    @property
+    def IsolateReasonTypes(self):
+        r"""Instance Refund Reason Types
+        :rtype: list of int
+        """
+        return self._IsolateReasonTypes
+
+    @IsolateReasonTypes.setter
+    def IsolateReasonTypes(self, IsolateReasonTypes):
+        self._IsolateReasonTypes = IsolateReasonTypes
+
+    @property
+    def IsolateReason(self):
+        r"""Instance Refund Reason Supplement
+        :rtype: str
+        """
+        return self._IsolateReason
+
+    @IsolateReason.setter
+    def IsolateReason(self, IsolateReason):
+        self._IsolateReason = IsolateReason
+
+    @property
+    def SaveBackup(self):
+        r"""Backup retention
+        :rtype: bool
+        """
+        return self._SaveBackup
+
+    @SaveBackup.setter
+    def SaveBackup(self, SaveBackup):
+        self._SaveBackup = SaveBackup
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._InstanceIdList = params.get("InstanceIdList")
         self._DbType = params.get("DbType")
+        self._IsolateReasonTypes = params.get("IsolateReasonTypes")
+        self._IsolateReason = params.get("IsolateReason")
+        self._SaveBackup = params.get("SaveBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25193,6 +33217,1758 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._FlowId = params.get("FlowId")
         self._DealNames = params.get("DealNames")
         self._RequestId = params.get("RequestId")
+
+
+class IsolateLibraDBClusterRequest(AbstractModel):
+    r"""IsolateLibraDBCluster request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _IsolateReasonTypes: Isolation reason type
+        :type IsolateReasonTypes: list of int
+        :param _IsolateReason: Cause of isolation
+        :type IsolateReason: str
+        """
+        self._ClusterId = None
+        self._IsolateReasonTypes = None
+        self._IsolateReason = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def IsolateReasonTypes(self):
+        r"""Isolation reason type
+        :rtype: list of int
+        """
+        return self._IsolateReasonTypes
+
+    @IsolateReasonTypes.setter
+    def IsolateReasonTypes(self, IsolateReasonTypes):
+        self._IsolateReasonTypes = IsolateReasonTypes
+
+    @property
+    def IsolateReason(self):
+        r"""Cause of isolation
+        :rtype: str
+        """
+        return self._IsolateReason
+
+    @IsolateReason.setter
+    def IsolateReason(self, IsolateReason):
+        self._IsolateReason = IsolateReason
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._IsolateReasonTypes = params.get("IsolateReasonTypes")
+        self._IsolateReason = params.get("IsolateReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateLibraDBClusterResponse(AbstractModel):
+    r"""IsolateLibraDBCluster response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: flow id
+        :type FlowId: int
+        :param _DealNames: Return order ID
+        :type DealNames: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._DealNames = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""flow id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def DealNames(self):
+        r"""Return order ID
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._DealNames = params.get("DealNames")
+        self._RequestId = params.get("RequestId")
+
+
+class IsolateLibraDBInstanceRequest(AbstractModel):
+    r"""IsolateLibraDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _InstanceIdList: Read-only analysis engine instance ID list
+        :type InstanceIdList: list of str
+        :param _ForceIsolate: Whether to force isolation
+        :type ForceIsolate: bool
+        :param _IsolateReasonTypes: Isolation reason type
+        :type IsolateReasonTypes: list of int
+        :param _IsolateReason: Cause of isolation
+        :type IsolateReason: str
+        """
+        self._ClusterId = None
+        self._InstanceIdList = None
+        self._ForceIsolate = None
+        self._IsolateReasonTypes = None
+        self._IsolateReason = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceIdList(self):
+        r"""Read-only analysis engine instance ID list
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+    @property
+    def ForceIsolate(self):
+        r"""Whether to force isolation
+        :rtype: bool
+        """
+        return self._ForceIsolate
+
+    @ForceIsolate.setter
+    def ForceIsolate(self, ForceIsolate):
+        self._ForceIsolate = ForceIsolate
+
+    @property
+    def IsolateReasonTypes(self):
+        r"""Isolation reason type
+        :rtype: list of int
+        """
+        return self._IsolateReasonTypes
+
+    @IsolateReasonTypes.setter
+    def IsolateReasonTypes(self, IsolateReasonTypes):
+        self._IsolateReasonTypes = IsolateReasonTypes
+
+    @property
+    def IsolateReason(self):
+        r"""Cause of isolation
+        :rtype: str
+        """
+        return self._IsolateReason
+
+    @IsolateReason.setter
+    def IsolateReason(self, IsolateReason):
+        self._IsolateReason = IsolateReason
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceIdList = params.get("InstanceIdList")
+        self._ForceIsolate = params.get("ForceIsolate")
+        self._IsolateReasonTypes = params.get("IsolateReasonTypes")
+        self._IsolateReason = params.get("IsolateReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateLibraDBInstanceResponse(AbstractModel):
+    r"""IsolateLibraDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: task flow id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param _DealNames: Order ID list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._DealNames = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""task flow id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def DealNames(self):
+        r"""Order ID list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._DealNames = params.get("DealNames")
+        self._RequestId = params.get("RequestId")
+
+
+class LibraClusterSet(AbstractModel):
+    r"""libra cluster information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: User ID
+        :type AppId: int
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _ClusterName: Cluster name.
+        :type ClusterName: str
+        :param _CreateTime: Creation time.
+        :type CreateTime: str
+        :param _DbVersion: Database version.
+        :type DbVersion: str
+        :param _InstanceSet: instance information
+        :type InstanceSet: list of LibraInstanceSet
+        :param _PayMode: Payment mode
+        :type PayMode: int
+        :param _PeriodEndTime: Expiration time.
+        :type PeriodEndTime: str
+        :param _ProjectID: Project ID
+        :type ProjectID: int
+        :param _Region: Region.
+        :type Region: str
+        :param _RenewFlag: Auto-renewal flag. 1: Automatic renewal. 0: Non-renewal upon expiration.
+        :type RenewFlag: int
+        :param _Status: Status.
+        :type Status: str
+        :param _StatusDesc: Status description.
+        :type StatusDesc: str
+        :param _Storage: Storage size
+        :type Storage: int
+        :param _UsedStorage: Used Capacity
+        :type UsedStorage: int
+        :param _Vip: VIP address
+        :type Vip: str
+        :param _Vport: vport port
+        :type Vport: int
+        """
+        self._AppId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._CreateTime = None
+        self._DbVersion = None
+        self._InstanceSet = None
+        self._PayMode = None
+        self._PeriodEndTime = None
+        self._ProjectID = None
+        self._Region = None
+        self._RenewFlag = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Storage = None
+        self._UsedStorage = None
+        self._Vip = None
+        self._Vport = None
+
+    @property
+    def AppId(self):
+        r"""User ID
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""Cluster name.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DbVersion(self):
+        r"""Database version.
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def InstanceSet(self):
+        r"""instance information
+        :rtype: list of LibraInstanceSet
+        """
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def PayMode(self):
+        r"""Payment mode
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PeriodEndTime(self):
+        r"""Expiration time.
+        :rtype: str
+        """
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def ProjectID(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def Region(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RenewFlag(self):
+        r"""Auto-renewal flag. 1: Automatic renewal. 0: Non-renewal upon expiration.
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Status(self):
+        r"""Status.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""Status description.
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Storage(self):
+        r"""Storage size
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def UsedStorage(self):
+        r"""Used Capacity
+        :rtype: int
+        """
+        return self._UsedStorage
+
+    @UsedStorage.setter
+    def UsedStorage(self, UsedStorage):
+        self._UsedStorage = UsedStorage
+
+    @property
+    def Vip(self):
+        r"""VIP address
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""vport port
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._CreateTime = params.get("CreateTime")
+        self._DbVersion = params.get("DbVersion")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = LibraInstanceSet()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._ProjectID = params.get("ProjectID")
+        self._Region = params.get("Region")
+        self._RenewFlag = params.get("RenewFlag")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Storage = params.get("Storage")
+        self._UsedStorage = params.get("UsedStorage")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBClusterDetail(AbstractModel):
+    r"""libra cluster detail
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>Cluster name.</p>
+        :type ClusterName: str
+        :param _Region: <p>Region</p>
+        :type Region: str
+        :param _Status: <p>Status</p>
+        :type Status: str
+        :param _StatusDesc: <p>Status description</p>
+        :type StatusDesc: str
+        :param _Storage: <p>Storage size</p>
+        :type Storage: int
+        :param _VpcName: <p>VPC name</p>
+        :type VpcName: str
+        :param _VpcId: <p>vpc Unique id</p>
+        :type VpcId: str
+        :param _SubnetName: <p>Subnet name.</p>
+        :type SubnetName: str
+        :param _SubnetId: <p>Subnet ID.</p>
+        :type SubnetId: str
+        :param _CreateTime: <p>Creation time.</p>
+        :type CreateTime: str
+        :param _DbVersion: <p>Database version</p>
+        :type DbVersion: str
+        :param _UsedStorage: <p>Used capacity</p>
+        :type UsedStorage: int
+        :param _Vip: <p>vip address</p>
+        :type Vip: str
+        :param _Vport: <p>vport</p>
+        :type Vport: int
+        :param _RoAddr: <p>vip address and vport of the cluster read-only instance</p>
+        :type RoAddr: list of RoAddr
+        :param _CynosVersion: <p>cynos version</p>
+        :type CynosVersion: str
+        :param _IsFreeze: <p>Freeze or not</p>
+        :type IsFreeze: str
+        :param _Tasks: <p>Task List</p>
+        :type Tasks: list of ObjectTask
+        :param _MasterZone: <p>Primary AZ</p>
+        :type MasterZone: str
+        :param _InstanceSet: <p>Instance collection</p>
+        :type InstanceSet: list of InstanceSet
+        :param _PayMode: <p>Payment mode</p>
+        :type PayMode: int
+        :param _PeriodEndTime: <p>Expiry time</p>
+        :type PeriodEndTime: str
+        :param _ProjectID: <p>Project ID.</p>
+        :type ProjectID: int
+        :param _RenewFlag: <p>Auto-renewal flag</p>
+        :type RenewFlag: int
+        :param _CynosVersionTag: <p>Version tag</p>
+        :type CynosVersionTag: str
+        :param _NoSupportAddRo: <p>Additions are not supported when ro is yes. Additions are supported when ro is no/null/&quot;&quot;.</p>
+        :type NoSupportAddRo: str
+        :param _Zone: <p>AZ.</p>
+        :type Zone: str
+        :param _PhysicalZone: <p>Physical AZ</p>
+        :type PhysicalZone: str
+        :param _AnalysisUpgradeVersionInfo: <p>Grayscale information for version upgrade</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnalysisUpgradeVersionInfo: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeAnalysisInstanceVersionInfo`
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._Region = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Storage = None
+        self._VpcName = None
+        self._VpcId = None
+        self._SubnetName = None
+        self._SubnetId = None
+        self._CreateTime = None
+        self._DbVersion = None
+        self._UsedStorage = None
+        self._Vip = None
+        self._Vport = None
+        self._RoAddr = None
+        self._CynosVersion = None
+        self._IsFreeze = None
+        self._Tasks = None
+        self._MasterZone = None
+        self._InstanceSet = None
+        self._PayMode = None
+        self._PeriodEndTime = None
+        self._ProjectID = None
+        self._RenewFlag = None
+        self._CynosVersionTag = None
+        self._NoSupportAddRo = None
+        self._Zone = None
+        self._PhysicalZone = None
+        self._AnalysisUpgradeVersionInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>Cluster name.</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Region(self):
+        r"""<p>Region</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        r"""<p>Status</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""<p>Status description</p>
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Storage(self):
+        r"""<p>Storage size</p>
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def VpcName(self):
+        r"""<p>VPC name</p>
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def VpcId(self):
+        r"""<p>vpc Unique id</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetName(self):
+        r"""<p>Subnet name.</p>
+        :rtype: str
+        """
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def SubnetId(self):
+        r"""<p>Subnet ID.</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time.</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DbVersion(self):
+        r"""<p>Database version</p>
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def UsedStorage(self):
+        r"""<p>Used capacity</p>
+        :rtype: int
+        """
+        return self._UsedStorage
+
+    @UsedStorage.setter
+    def UsedStorage(self, UsedStorage):
+        self._UsedStorage = UsedStorage
+
+    @property
+    def Vip(self):
+        r"""<p>vip address</p>
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>vport</p>
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def RoAddr(self):
+        r"""<p>vip address and vport of the cluster read-only instance</p>
+        :rtype: list of RoAddr
+        """
+        return self._RoAddr
+
+    @RoAddr.setter
+    def RoAddr(self, RoAddr):
+        self._RoAddr = RoAddr
+
+    @property
+    def CynosVersion(self):
+        r"""<p>cynos version</p>
+        :rtype: str
+        """
+        return self._CynosVersion
+
+    @CynosVersion.setter
+    def CynosVersion(self, CynosVersion):
+        self._CynosVersion = CynosVersion
+
+    @property
+    def IsFreeze(self):
+        r"""<p>Freeze or not</p>
+        :rtype: str
+        """
+        return self._IsFreeze
+
+    @IsFreeze.setter
+    def IsFreeze(self, IsFreeze):
+        self._IsFreeze = IsFreeze
+
+    @property
+    def Tasks(self):
+        r"""<p>Task List</p>
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def MasterZone(self):
+        r"""<p>Primary AZ</p>
+        :rtype: str
+        """
+        return self._MasterZone
+
+    @MasterZone.setter
+    def MasterZone(self, MasterZone):
+        self._MasterZone = MasterZone
+
+    @property
+    def InstanceSet(self):
+        r"""<p>Instance collection</p>
+        :rtype: list of InstanceSet
+        """
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def PayMode(self):
+        r"""<p>Payment mode</p>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PeriodEndTime(self):
+        r"""<p>Expiry time</p>
+        :rtype: str
+        """
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def ProjectID(self):
+        r"""<p>Project ID.</p>
+        :rtype: int
+        """
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def RenewFlag(self):
+        r"""<p>Auto-renewal flag</p>
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def CynosVersionTag(self):
+        r"""<p>Version tag</p>
+        :rtype: str
+        """
+        return self._CynosVersionTag
+
+    @CynosVersionTag.setter
+    def CynosVersionTag(self, CynosVersionTag):
+        self._CynosVersionTag = CynosVersionTag
+
+    @property
+    def NoSupportAddRo(self):
+        r"""<p>Additions are not supported when ro is yes. Additions are supported when ro is no/null/&quot;&quot;.</p>
+        :rtype: str
+        """
+        return self._NoSupportAddRo
+
+    @NoSupportAddRo.setter
+    def NoSupportAddRo(self, NoSupportAddRo):
+        self._NoSupportAddRo = NoSupportAddRo
+
+    @property
+    def Zone(self):
+        r"""<p>AZ.</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def PhysicalZone(self):
+        r"""<p>Physical AZ</p>
+        :rtype: str
+        """
+        return self._PhysicalZone
+
+    @PhysicalZone.setter
+    def PhysicalZone(self, PhysicalZone):
+        self._PhysicalZone = PhysicalZone
+
+    @property
+    def AnalysisUpgradeVersionInfo(self):
+        r"""<p>Grayscale information for version upgrade</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeAnalysisInstanceVersionInfo`
+        """
+        return self._AnalysisUpgradeVersionInfo
+
+    @AnalysisUpgradeVersionInfo.setter
+    def AnalysisUpgradeVersionInfo(self, AnalysisUpgradeVersionInfo):
+        self._AnalysisUpgradeVersionInfo = AnalysisUpgradeVersionInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Storage = params.get("Storage")
+        self._VpcName = params.get("VpcName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetName = params.get("SubnetName")
+        self._SubnetId = params.get("SubnetId")
+        self._CreateTime = params.get("CreateTime")
+        self._DbVersion = params.get("DbVersion")
+        self._UsedStorage = params.get("UsedStorage")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        if params.get("RoAddr") is not None:
+            self._RoAddr = []
+            for item in params.get("RoAddr"):
+                obj = RoAddr()
+                obj._deserialize(item)
+                self._RoAddr.append(obj)
+        self._CynosVersion = params.get("CynosVersion")
+        self._IsFreeze = params.get("IsFreeze")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._MasterZone = params.get("MasterZone")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = InstanceSet()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._ProjectID = params.get("ProjectID")
+        self._RenewFlag = params.get("RenewFlag")
+        self._CynosVersionTag = params.get("CynosVersionTag")
+        self._NoSupportAddRo = params.get("NoSupportAddRo")
+        self._Zone = params.get("Zone")
+        self._PhysicalZone = params.get("PhysicalZone")
+        if params.get("AnalysisUpgradeVersionInfo") is not None:
+            self._AnalysisUpgradeVersionInfo = UpgradeAnalysisInstanceVersionInfo()
+            self._AnalysisUpgradeVersionInfo._deserialize(params.get("AnalysisUpgradeVersionInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBClusterSet(AbstractModel):
+    r"""Cluster list information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: User ID
+        :type AppId: int
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _ClusterName: Cluster name.
+        :type ClusterName: str
+        :param _CreateTime: Creation time.
+        :type CreateTime: str
+        :param _CynosVersion: cynos version
+        :type CynosVersion: str
+        :param _CynosVersionTag: Version tag
+        :type CynosVersionTag: str
+        :param _DbVersion: Database version.
+        :type DbVersion: str
+        :param _InstanceNum: Instance count
+        :type InstanceNum: int
+        :param _IsFreeze: Whether to freeze
+        :type IsFreeze: str
+        :param _NetAddrs: Network address.
+        :type NetAddrs: list of NetAddr
+        :param _PayMode: Payment mode
+        :type PayMode: int
+        :param _PeriodEndTime: Expiration time.
+
+        :type PeriodEndTime: str
+        :param _ProjectID: Project ID
+        :type ProjectID: int
+        :param _Region: Region.
+        :type Region: str
+        :param _RenewFlag: Auto-renewal flag. 1: Automatic renewal. 0: Non-renewal upon expiration.
+        :type RenewFlag: int
+        :param _Status: Status.
+        :type Status: str
+        :param _StatusDesc: Status description.
+        :type StatusDesc: str
+        :param _Storage: Storage size in GB
+        :type Storage: int
+        :param _SubnetId: Subnet ID.
+        :type SubnetId: str
+        :param _Tasks: Task list
+        :type Tasks: list of ObjectTask
+        :param _Uin: Account ID.
+        :type Uin: str
+        :param _Vip: VIP address
+        :type Vip: str
+        :param _VpcId: Unique ID of VPC
+        :type VpcId: str
+        :param _Vport: vport port
+        :type Vport: int
+        :param _UpdateTime: Update time
+        :type UpdateTime: str
+        :param _MasterZone: Primary AZ.
+        :type MasterZone: str
+        :param _PhysicalZone: physical AZ
+        :type PhysicalZone: str
+        :param _Zone: Availability zone
+        :type Zone: str
+        """
+        self._AppId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._CreateTime = None
+        self._CynosVersion = None
+        self._CynosVersionTag = None
+        self._DbVersion = None
+        self._InstanceNum = None
+        self._IsFreeze = None
+        self._NetAddrs = None
+        self._PayMode = None
+        self._PeriodEndTime = None
+        self._ProjectID = None
+        self._Region = None
+        self._RenewFlag = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Storage = None
+        self._SubnetId = None
+        self._Tasks = None
+        self._Uin = None
+        self._Vip = None
+        self._VpcId = None
+        self._Vport = None
+        self._UpdateTime = None
+        self._MasterZone = None
+        self._PhysicalZone = None
+        self._Zone = None
+
+    @property
+    def AppId(self):
+        r"""User ID
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""Cluster name.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CynosVersion(self):
+        r"""cynos version
+        :rtype: str
+        """
+        return self._CynosVersion
+
+    @CynosVersion.setter
+    def CynosVersion(self, CynosVersion):
+        self._CynosVersion = CynosVersion
+
+    @property
+    def CynosVersionTag(self):
+        r"""Version tag
+        :rtype: str
+        """
+        return self._CynosVersionTag
+
+    @CynosVersionTag.setter
+    def CynosVersionTag(self, CynosVersionTag):
+        self._CynosVersionTag = CynosVersionTag
+
+    @property
+    def DbVersion(self):
+        r"""Database version.
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def InstanceNum(self):
+        r"""Instance count
+        :rtype: int
+        """
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
+
+    @property
+    def IsFreeze(self):
+        r"""Whether to freeze
+        :rtype: str
+        """
+        return self._IsFreeze
+
+    @IsFreeze.setter
+    def IsFreeze(self, IsFreeze):
+        self._IsFreeze = IsFreeze
+
+    @property
+    def NetAddrs(self):
+        r"""Network address.
+        :rtype: list of NetAddr
+        """
+        return self._NetAddrs
+
+    @NetAddrs.setter
+    def NetAddrs(self, NetAddrs):
+        self._NetAddrs = NetAddrs
+
+    @property
+    def PayMode(self):
+        r"""Payment mode
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PeriodEndTime(self):
+        r"""Expiration time.
+
+        :rtype: str
+        """
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def ProjectID(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def Region(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RenewFlag(self):
+        r"""Auto-renewal flag. 1: Automatic renewal. 0: Non-renewal upon expiration.
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Status(self):
+        r"""Status.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""Status description.
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Storage(self):
+        r"""Storage size in GB
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def SubnetId(self):
+        r"""Subnet ID.
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Tasks(self):
+        r"""Task list
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Uin(self):
+        r"""Account ID.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Vip(self):
+        r"""VIP address
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VpcId(self):
+        r"""Unique ID of VPC
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Vport(self):
+        r"""vport port
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def UpdateTime(self):
+        r"""Update time
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def MasterZone(self):
+        r"""Primary AZ.
+        :rtype: str
+        """
+        return self._MasterZone
+
+    @MasterZone.setter
+    def MasterZone(self, MasterZone):
+        self._MasterZone = MasterZone
+
+    @property
+    def PhysicalZone(self):
+        r"""physical AZ
+        :rtype: str
+        """
+        return self._PhysicalZone
+
+    @PhysicalZone.setter
+    def PhysicalZone(self, PhysicalZone):
+        self._PhysicalZone = PhysicalZone
+
+    @property
+    def Zone(self):
+        r"""Availability zone
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._CreateTime = params.get("CreateTime")
+        self._CynosVersion = params.get("CynosVersion")
+        self._CynosVersionTag = params.get("CynosVersionTag")
+        self._DbVersion = params.get("DbVersion")
+        self._InstanceNum = params.get("InstanceNum")
+        self._IsFreeze = params.get("IsFreeze")
+        if params.get("NetAddrs") is not None:
+            self._NetAddrs = []
+            for item in params.get("NetAddrs"):
+                obj = NetAddr()
+                obj._deserialize(item)
+                self._NetAddrs.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._ProjectID = params.get("ProjectID")
+        self._Region = params.get("Region")
+        self._RenewFlag = params.get("RenewFlag")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Storage = params.get("Storage")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._Uin = params.get("Uin")
+        self._Vip = params.get("Vip")
+        self._VpcId = params.get("VpcId")
+        self._Vport = params.get("Vport")
+        self._UpdateTime = params.get("UpdateTime")
+        self._MasterZone = params.get("MasterZone")
+        self._PhysicalZone = params.get("PhysicalZone")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBClusterSrcInfo(AbstractModel):
+    r"""Source database information of the libra analysis cluster
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcInstanceType: Source endpoint type
+        :type SrcInstanceType: str
+        :param _AccessType: Network type.
+        :type AccessType: str
+        :param _SrcInstanceId: Source instance ID
+        :type SrcInstanceId: str
+        :param _SrcClusterId: Source cluster ID
+        :type SrcClusterId: str
+        :param _IP: Address.
+        :type IP: str
+        :param _Port: Port.
+        :type Port: str
+        :param _User: Username.
+        :type User: str
+        :param _Password: Password.
+        :type Password: str
+        :param _SqlMode: Source sql mode
+        :type SqlMode: str
+        :param _SrcAppId: Source application id
+        :type SrcAppId: int
+        :param _SrcUin: source account
+        :type SrcUin: str
+        :param _SrcSubAccountUin: sub-account
+        :type SrcSubAccountUin: str
+        :param _AccountMode: Account
+        :type AccountMode: str
+        :param _Region: Source instance region
+        :type Region: str
+        :param _Operation: Operation of the source instance
+        :type Operation: str
+        """
+        self._SrcInstanceType = None
+        self._AccessType = None
+        self._SrcInstanceId = None
+        self._SrcClusterId = None
+        self._IP = None
+        self._Port = None
+        self._User = None
+        self._Password = None
+        self._SqlMode = None
+        self._SrcAppId = None
+        self._SrcUin = None
+        self._SrcSubAccountUin = None
+        self._AccountMode = None
+        self._Region = None
+        self._Operation = None
+
+    @property
+    def SrcInstanceType(self):
+        r"""Source endpoint type
+        :rtype: str
+        """
+        return self._SrcInstanceType
+
+    @SrcInstanceType.setter
+    def SrcInstanceType(self, SrcInstanceType):
+        self._SrcInstanceType = SrcInstanceType
+
+    @property
+    def AccessType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def SrcInstanceId(self):
+        r"""Source instance ID
+        :rtype: str
+        """
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def SrcClusterId(self):
+        r"""Source cluster ID
+        :rtype: str
+        """
+        return self._SrcClusterId
+
+    @SrcClusterId.setter
+    def SrcClusterId(self, SrcClusterId):
+        self._SrcClusterId = SrcClusterId
+
+    @property
+    def IP(self):
+        r"""Address.
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Port(self):
+        r"""Port.
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def User(self):
+        r"""Username.
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        r"""Password.
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def SqlMode(self):
+        r"""Source sql mode
+        :rtype: str
+        """
+        return self._SqlMode
+
+    @SqlMode.setter
+    def SqlMode(self, SqlMode):
+        self._SqlMode = SqlMode
+
+    @property
+    def SrcAppId(self):
+        r"""Source application id
+        :rtype: int
+        """
+        return self._SrcAppId
+
+    @SrcAppId.setter
+    def SrcAppId(self, SrcAppId):
+        self._SrcAppId = SrcAppId
+
+    @property
+    def SrcUin(self):
+        r"""source account
+        :rtype: str
+        """
+        return self._SrcUin
+
+    @SrcUin.setter
+    def SrcUin(self, SrcUin):
+        self._SrcUin = SrcUin
+
+    @property
+    def SrcSubAccountUin(self):
+        r"""sub-account
+        :rtype: str
+        """
+        return self._SrcSubAccountUin
+
+    @SrcSubAccountUin.setter
+    def SrcSubAccountUin(self, SrcSubAccountUin):
+        self._SrcSubAccountUin = SrcSubAccountUin
+
+    @property
+    def AccountMode(self):
+        r"""Account
+        :rtype: str
+        """
+        return self._AccountMode
+
+    @AccountMode.setter
+    def AccountMode(self, AccountMode):
+        self._AccountMode = AccountMode
+
+    @property
+    def Region(self):
+        r"""Source instance region
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Operation(self):
+        r"""Operation of the source instance
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+
+    def _deserialize(self, params):
+        self._SrcInstanceType = params.get("SrcInstanceType")
+        self._AccessType = params.get("AccessType")
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._SrcClusterId = params.get("SrcClusterId")
+        self._IP = params.get("IP")
+        self._Port = params.get("Port")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._SqlMode = params.get("SqlMode")
+        self._SrcAppId = params.get("SrcAppId")
+        self._SrcUin = params.get("SrcUin")
+        self._SrcSubAccountUin = params.get("SrcSubAccountUin")
+        self._AccountMode = params.get("AccountMode")
+        self._Region = params.get("Region")
+        self._Operation = params.get("Operation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LibraDBInstanceInitInfo(AbstractModel):
@@ -25381,8 +35157,632 @@ class LibraDBInstanceInitInfo(AbstractModel):
         
 
 
+class LibraDBNodeInfo(AbstractModel):
+    r"""LibraDB node information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: LibraDB Node ID
+        :type NodeId: str
+        :param _Status: Node status
+        :type Status: str
+        :param _DataStatus: syncing data
+        :type DataStatus: str
+        :param _Cpu: Number of CPU cores.
+        :type Cpu: int
+        :param _Memory: Memory size. Unit: GB.
+        :type Memory: int
+        :param _Storage: Disk size, in GB
+        :type Storage: int
+        :param _Message: Error message
+        :type Message: str
+        """
+        self._NodeId = None
+        self._Status = None
+        self._DataStatus = None
+        self._Cpu = None
+        self._Memory = None
+        self._Storage = None
+        self._Message = None
+
+    @property
+    def NodeId(self):
+        r"""LibraDB Node ID
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Status(self):
+        r"""Node status
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DataStatus(self):
+        r"""syncing data
+        :rtype: str
+        """
+        return self._DataStatus
+
+    @DataStatus.setter
+    def DataStatus(self, DataStatus):
+        self._DataStatus = DataStatus
+
+    @property
+    def Cpu(self):
+        r"""Number of CPU cores.
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""Memory size. Unit: GB.
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        r"""Disk size, in GB
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def Message(self):
+        r"""Error message
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Status = params.get("Status")
+        self._DataStatus = params.get("DataStatus")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraDBVersion(AbstractModel):
+    r"""LibraDB version information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: Version
+        :type Version: str
+        :param _Tag: Version tag
+        :type Tag: str
+        :param _HasPermission: Can be used this version
+        :type HasPermission: bool
+        """
+        self._Version = None
+        self._Tag = None
+        self._HasPermission = None
+
+    @property
+    def Version(self):
+        r"""Version
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Tag(self):
+        r"""Version tag
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def HasPermission(self):
+        r"""Can be used this version
+        :rtype: bool
+        """
+        return self._HasPermission
+
+    @HasPermission.setter
+    def HasPermission(self, HasPermission):
+        self._HasPermission = HasPermission
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Tag = params.get("Tag")
+        self._HasPermission = params.get("HasPermission")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibraInstanceSet(AbstractModel):
+    r"""libra instance information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbMode: Database schema
+        :type DbMode: str
+        :param _InstanceCpu: Number of CPU cores
+        :type InstanceCpu: int
+        :param _InstanceDeviceType: Instance type
+        :type InstanceDeviceType: str
+        :param _InstanceGroupId: Group ID
+        :type InstanceGroupId: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _InstanceMemory: memory
+        :type InstanceMemory: int
+        :param _InstanceName: Instance name.
+        :type InstanceName: str
+        :param _InstancePayMode: Payment mode
+        :type InstancePayMode: int
+        :param _InstancePeriodEndTime: Payment end time
+        :type InstancePeriodEndTime: str
+        :param _InstanceRole: Instance role
+        :type InstanceRole: str
+        :param _InstanceStatus: Instance status
+        :type InstanceStatus: str
+        :param _InstanceStatusDesc: Instance status description
+        :type InstanceStatusDesc: str
+        :param _NetType: Network type.
+        :type NetType: str
+        :param _UniqSubnetId: Subnet ID
+        :type UniqSubnetId: str
+        :param _UniqVpcId: vpcid
+        :type UniqVpcId: str
+        :param _Vip: Virtual IP
+        :type Vip: str
+        :param _Vport: Virtual port
+        :type Vport: int
+        :param _WanDomain: Public network region
+        :type WanDomain: str
+        :param _WanIP: Public IP address
+        :type WanIP: str
+        :param _WanPort: Public network port
+        :type WanPort: int
+        :param _WanStatus: Public network status
+        :type WanStatus: str
+        :param _InstanceStorage: hard disk
+        :type InstanceStorage: int
+        :param _InstanceStorageType: Hard disk type.
+        :type InstanceStorageType: str
+        """
+        self._DbMode = None
+        self._InstanceCpu = None
+        self._InstanceDeviceType = None
+        self._InstanceGroupId = None
+        self._InstanceId = None
+        self._InstanceMemory = None
+        self._InstanceName = None
+        self._InstancePayMode = None
+        self._InstancePeriodEndTime = None
+        self._InstanceRole = None
+        self._InstanceStatus = None
+        self._InstanceStatusDesc = None
+        self._NetType = None
+        self._UniqSubnetId = None
+        self._UniqVpcId = None
+        self._Vip = None
+        self._Vport = None
+        self._WanDomain = None
+        self._WanIP = None
+        self._WanPort = None
+        self._WanStatus = None
+        self._InstanceStorage = None
+        self._InstanceStorageType = None
+
+    @property
+    def DbMode(self):
+        r"""Database schema
+        :rtype: str
+        """
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
+    @property
+    def InstanceCpu(self):
+        r"""Number of CPU cores
+        :rtype: int
+        """
+        return self._InstanceCpu
+
+    @InstanceCpu.setter
+    def InstanceCpu(self, InstanceCpu):
+        self._InstanceCpu = InstanceCpu
+
+    @property
+    def InstanceDeviceType(self):
+        r"""Instance type
+        :rtype: str
+        """
+        return self._InstanceDeviceType
+
+    @InstanceDeviceType.setter
+    def InstanceDeviceType(self, InstanceDeviceType):
+        self._InstanceDeviceType = InstanceDeviceType
+
+    @property
+    def InstanceGroupId(self):
+        r"""Group ID
+        :rtype: str
+        """
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceMemory(self):
+        r"""memory
+        :rtype: int
+        """
+        return self._InstanceMemory
+
+    @InstanceMemory.setter
+    def InstanceMemory(self, InstanceMemory):
+        self._InstanceMemory = InstanceMemory
+
+    @property
+    def InstanceName(self):
+        r"""Instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstancePayMode(self):
+        r"""Payment mode
+        :rtype: int
+        """
+        return self._InstancePayMode
+
+    @InstancePayMode.setter
+    def InstancePayMode(self, InstancePayMode):
+        self._InstancePayMode = InstancePayMode
+
+    @property
+    def InstancePeriodEndTime(self):
+        r"""Payment end time
+        :rtype: str
+        """
+        return self._InstancePeriodEndTime
+
+    @InstancePeriodEndTime.setter
+    def InstancePeriodEndTime(self, InstancePeriodEndTime):
+        self._InstancePeriodEndTime = InstancePeriodEndTime
+
+    @property
+    def InstanceRole(self):
+        r"""Instance role
+        :rtype: str
+        """
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def InstanceStatus(self):
+        r"""Instance status
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceStatusDesc(self):
+        r"""Instance status description
+        :rtype: str
+        """
+        return self._InstanceStatusDesc
+
+    @InstanceStatusDesc.setter
+    def InstanceStatusDesc(self, InstanceStatusDesc):
+        self._InstanceStatusDesc = InstanceStatusDesc
+
+    @property
+    def NetType(self):
+        r"""Network type.
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def UniqSubnetId(self):
+        r"""Subnet ID
+        :rtype: str
+        """
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def UniqVpcId(self):
+        r"""vpcid
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Vip(self):
+        r"""Virtual IP
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""Virtual port
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def WanDomain(self):
+        r"""Public network region
+        :rtype: str
+        """
+        return self._WanDomain
+
+    @WanDomain.setter
+    def WanDomain(self, WanDomain):
+        self._WanDomain = WanDomain
+
+    @property
+    def WanIP(self):
+        r"""Public IP address
+        :rtype: str
+        """
+        return self._WanIP
+
+    @WanIP.setter
+    def WanIP(self, WanIP):
+        self._WanIP = WanIP
+
+    @property
+    def WanPort(self):
+        r"""Public network port
+        :rtype: int
+        """
+        return self._WanPort
+
+    @WanPort.setter
+    def WanPort(self, WanPort):
+        self._WanPort = WanPort
+
+    @property
+    def WanStatus(self):
+        r"""Public network status
+        :rtype: str
+        """
+        return self._WanStatus
+
+    @WanStatus.setter
+    def WanStatus(self, WanStatus):
+        self._WanStatus = WanStatus
+
+    @property
+    def InstanceStorage(self):
+        r"""hard disk
+        :rtype: int
+        """
+        return self._InstanceStorage
+
+    @InstanceStorage.setter
+    def InstanceStorage(self, InstanceStorage):
+        self._InstanceStorage = InstanceStorage
+
+    @property
+    def InstanceStorageType(self):
+        r"""Hard disk type.
+        :rtype: str
+        """
+        return self._InstanceStorageType
+
+    @InstanceStorageType.setter
+    def InstanceStorageType(self, InstanceStorageType):
+        self._InstanceStorageType = InstanceStorageType
+
+
+    def _deserialize(self, params):
+        self._DbMode = params.get("DbMode")
+        self._InstanceCpu = params.get("InstanceCpu")
+        self._InstanceDeviceType = params.get("InstanceDeviceType")
+        self._InstanceGroupId = params.get("InstanceGroupId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceMemory = params.get("InstanceMemory")
+        self._InstanceName = params.get("InstanceName")
+        self._InstancePayMode = params.get("InstancePayMode")
+        self._InstancePeriodEndTime = params.get("InstancePeriodEndTime")
+        self._InstanceRole = params.get("InstanceRole")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceStatusDesc = params.get("InstanceStatusDesc")
+        self._NetType = params.get("NetType")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._WanDomain = params.get("WanDomain")
+        self._WanIP = params.get("WanIP")
+        self._WanPort = params.get("WanPort")
+        self._WanStatus = params.get("WanStatus")
+        self._InstanceStorage = params.get("InstanceStorage")
+        self._InstanceStorageType = params.get("InstanceStorageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogFilter(AbstractModel):
+    r"""Log filter criteria
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Filter items.
+        :type Type: str
+        :param _Compare: Filter criteria. Support the following conditions: WINC-include (segment dimension), WEXC-exclude (segment dimension), INC-include, EXC-exclude, EQS-equal, NEQ-not equal to, RA-range.
+        :type Compare: str
+        :param _Value: Filtered value. For reverse query, multiple values have an AND relationship. For forward query, multiple values have an OR relationship.
+        :type Value: list of str
+        """
+        self._Type = None
+        self._Compare = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""Filter items.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Compare(self):
+        r"""Filter criteria. Support the following conditions: WINC-include (segment dimension), WEXC-exclude (segment dimension), INC-include, EXC-exclude, EQS-equal, NEQ-not equal to, RA-range.
+        :rtype: str
+        """
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def Value(self):
+        r"""Filtered value. For reverse query, multiple values have an AND relationship. For forward query, multiple values have an OR relationship.
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Compare = params.get("Compare")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogicBackupConfigInfo(AbstractModel):
-    r"""Logical Backup Configuration Information
+    r"""
 
     """
 
@@ -25394,12 +35794,16 @@ class LogicBackupConfigInfo(AbstractModel):
         :type LogicBackupTimeBeg: int
         :param _LogicBackupTimeEnd: Specifies the termination time of automatic logical backup.
         :type LogicBackupTimeEnd: int
-        :param _LogicReserveDuration: Specifies the retention time for automatic logical backup.
+        :param _LogicReserveDuration: Automatic logical backup retention time.
+Unit: seconds.
         :type LogicReserveDuration: int
-        :param _LogicCrossRegionsEnable: Whether cross-regional logical backup is enabled.
+        :param _LogicCrossRegionsEnable: Is cross-regional logical backup enabled?.
+Valid values: ON/OFF.
         :type LogicCrossRegionsEnable: str
-        :param _LogicCrossRegions: Logical Backup Cross-Region
+        :param _LogicCrossRegions: 
         :type LogicCrossRegions: list of str
+        :param _AutoCopyVaults: Backup delivery relationship
+        :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._LogicBackupEnable = None
         self._LogicBackupTimeBeg = None
@@ -25407,6 +35811,7 @@ class LogicBackupConfigInfo(AbstractModel):
         self._LogicReserveDuration = None
         self._LogicCrossRegionsEnable = None
         self._LogicCrossRegions = None
+        self._AutoCopyVaults = None
 
     @property
     def LogicBackupEnable(self):
@@ -25443,7 +35848,8 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def LogicReserveDuration(self):
-        r"""Specifies the retention time for automatic logical backup.
+        r"""Automatic logical backup retention time.
+Unit: seconds.
         :rtype: int
         """
         return self._LogicReserveDuration
@@ -25454,7 +35860,8 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def LogicCrossRegionsEnable(self):
-        r"""Whether cross-regional logical backup is enabled.
+        r"""Is cross-regional logical backup enabled?.
+Valid values: ON/OFF.
         :rtype: str
         """
         return self._LogicCrossRegionsEnable
@@ -25465,7 +35872,7 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def LogicCrossRegions(self):
-        r"""Logical Backup Cross-Region
+        r"""
         :rtype: list of str
         """
         return self._LogicCrossRegions
@@ -25473,6 +35880,17 @@ class LogicBackupConfigInfo(AbstractModel):
     @LogicCrossRegions.setter
     def LogicCrossRegions(self, LogicCrossRegions):
         self._LogicCrossRegions = LogicCrossRegions
+
+    @property
+    def AutoCopyVaults(self):
+        r"""Backup delivery relationship
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
 
 
     def _deserialize(self, params):
@@ -25482,6 +35900,12 @@ class LogicBackupConfigInfo(AbstractModel):
         self._LogicReserveDuration = params.get("LogicReserveDuration")
         self._LogicCrossRegionsEnable = params.get("LogicCrossRegionsEnable")
         self._LogicCrossRegions = params.get("LogicCrossRegions")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25493,17 +35917,17 @@ class LogicBackupConfigInfo(AbstractModel):
 
 
 class ManualBackupData(AbstractModel):
-    r"""Manual Backup Task Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _BackupType: Backup type. snapshot-snapshot backup
+        :param _BackupType: 
         :type BackupType: str
-        :param _BackupMethod: Backup method. auto-automatic backup, manual-manual
+        :param _BackupMethod: 
         :type BackupMethod: str
-        :param _SnapshotTime: Backup Time
+        :param _SnapshotTime: 
         :type SnapshotTime: str
         :param _CrossRegionBackupInfos: Detailed information of cross-region backup items.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -25516,7 +35940,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupType(self):
-        r"""Backup type. snapshot-snapshot backup
+        r"""
         :rtype: str
         """
         return self._BackupType
@@ -25527,7 +35951,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupMethod(self):
-        r"""Backup method. auto-automatic backup, manual-manual
+        r"""
         :rtype: str
         """
         return self._BackupMethod
@@ -25538,7 +35962,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotTime(self):
-        r"""Backup Time
+        r"""
         :rtype: str
         """
         return self._SnapshotTime
@@ -25717,6 +36141,44 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class MigrateOpt(AbstractModel):
+    r"""Sync object details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseTables: Database table information
+        :type DatabaseTables: :class:`tencentcloud.cynosdb.v20190107.models.MigrateObject`
+        """
+        self._DatabaseTables = None
+
+    @property
+    def DatabaseTables(self):
+        r"""Database table information
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.MigrateObject`
+        """
+        return self._DatabaseTables
+
+    @DatabaseTables.setter
+    def DatabaseTables(self, DatabaseTables):
+        self._DatabaseTables = DatabaseTables
+
+
+    def _deserialize(self, params):
+        if params.get("DatabaseTables") is not None:
+            self._DatabaseTables = MigrateObject()
+            self._DatabaseTables._deserialize(params.get("DatabaseTables"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MigrateTableItem(AbstractModel):
     r"""Synchronize data table name
 
@@ -25762,14 +36224,14 @@ class ModifiableInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsModifiable: Whether the parameter is modifiable. 1: Yes 0: No
+        :param _IsModifiable: 
         :type IsModifiable: int
         """
         self._IsModifiable = None
 
     @property
     def IsModifiable(self):
-        r"""Whether the parameter is modifiable. 1: Yes 0: No
+        r"""
         :rtype: int
         """
         return self._IsModifiable
@@ -26147,11 +36609,17 @@ class ModifyAuditRuleTemplatesRequest(AbstractModel):
         :type RuleTemplateName: str
         :param _Description: New description of the rule template
         :type Description: str
+        :param _AlarmLevel: Alert Levels. 1 - Low Risk, 2 - Medium Risk, 3 - High Risk.
+        :type AlarmLevel: int
+        :param _AlarmPolicy: Alert policy. 0 - No alert, 1 - Alert.
+        :type AlarmPolicy: int
         """
         self._RuleTemplateIds = None
         self._RuleFilters = None
         self._RuleTemplateName = None
         self._Description = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
 
     @property
     def RuleTemplateIds(self):
@@ -26197,6 +36665,28 @@ class ModifyAuditRuleTemplatesRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def AlarmLevel(self):
+        r"""Alert Levels. 1 - Low Risk, 2 - Medium Risk, 3 - High Risk.
+        :rtype: int
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        r"""Alert policy. 0 - No alert, 1 - Alert.
+        :rtype: int
+        """
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
 
     def _deserialize(self, params):
         self._RuleTemplateIds = params.get("RuleTemplateIds")
@@ -26208,6 +36698,8 @@ class ModifyAuditRuleTemplatesRequest(AbstractModel):
                 self._RuleFilters.append(obj)
         self._RuleTemplateName = params.get("RuleTemplateName")
         self._Description = params.get("Description")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26397,22 +36889,26 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _BackupTimeBeg: Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        :param _BackupTimeBeg: <p>Indicates the full backup start time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :type BackupTimeBeg: int
-        :param _BackupTimeEnd: Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively.
+        :param _BackupTimeEnd: <p>Indicates the full backup end time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :type BackupTimeEnd: int
-        :param _ReserveDuration: Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800. Maximum value: 158112000.
+        :param _ReserveDuration: <p>Indicates the backup retention period in seconds. Backups will be cleaned up longer than this time. Seven days is represented as 3600<em>24</em>7=604800. The maximum value is 158112000.</p>
         :type ReserveDuration: int
-        :param _BackupFreq: Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup. This parameter cannot be modified currently and doesn't need to be entered.
+        :param _BackupFreq: <p>This parameter currently does not support modification and is not required. Backup frequency is an array of length 7, corresponding to Monday to Sunday backup method, full-full backup, increment-incremental backup.</p>
         :type BackupFreq: list of str
-        :param _BackupType: Currently, this parameter does not support modification and is not required.
+        :param _BackupType: <p>This parameter currently does not support modification. No need to specify.</p>
         :type BackupType: str
-        :param _LogicBackupConfig: Logical Backup Configuration
+        :param _LogicBackupConfig: <p>Logical backup configuration</p>
         :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
-        :param _DeleteAutoLogicBackup: Whether to delete the automatic logical backup
+        :param _DeleteAutoLogicBackup: <p>Whether to delete automatic logical backup</p>
         :type DeleteAutoLogicBackup: bool
+        :param _SnapshotSecondaryBackupConfig: <p>Second-level snapshot backup parameter</p>
+        :type SnapshotSecondaryBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.SnapshotBackupConfig`
+        :param _SparseBackupConfig: <p>Sparse backup configuration</p>
+        :type SparseBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.SparseBackupConfig`
         """
         self._ClusterId = None
         self._BackupTimeBeg = None
@@ -26422,10 +36918,12 @@ class ModifyBackupConfigRequest(AbstractModel):
         self._BackupType = None
         self._LogicBackupConfig = None
         self._DeleteAutoLogicBackup = None
+        self._SnapshotSecondaryBackupConfig = None
+        self._SparseBackupConfig = None
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -26436,7 +36934,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupTimeBeg(self):
-        r"""Full backup start time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively
+        r"""<p>Indicates the full backup start time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :rtype: int
         """
         return self._BackupTimeBeg
@@ -26447,7 +36945,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupTimeEnd(self):
-        r"""Full backup end time. Value range: [0-24*3600]. For example, 0:00 AM, 1:00 AM, and 2:00 AM are represented by 0, 3600, and 7200, respectively.
+        r"""<p>Indicates the full backup end time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :rtype: int
         """
         return self._BackupTimeEnd
@@ -26458,7 +36956,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def ReserveDuration(self):
-        r"""Backup retention period in seconds. Backups will be cleared after this period elapses. 7 days is represented by 3600*24*7 = 604800. Maximum value: 158112000.
+        r"""<p>Indicates the backup retention period in seconds. Backups will be cleaned up longer than this time. Seven days is represented as 3600<em>24</em>7=604800. The maximum value is 158112000.</p>
         :rtype: int
         """
         return self._ReserveDuration
@@ -26469,7 +36967,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupFreq(self):
-        r"""Backup frequency. It is an array of 7 elements corresponding to Monday through Sunday. full: full backup; increment: incremental backup. This parameter cannot be modified currently and doesn't need to be entered.
+        r"""<p>This parameter currently does not support modification and is not required. Backup frequency is an array of length 7, corresponding to Monday to Sunday backup method, full-full backup, increment-incremental backup.</p>
         :rtype: list of str
         """
         return self._BackupFreq
@@ -26480,7 +36978,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""Currently, this parameter does not support modification and is not required.
+        r"""<p>This parameter currently does not support modification. No need to specify.</p>
         :rtype: str
         """
         return self._BackupType
@@ -26491,7 +36989,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def LogicBackupConfig(self):
-        r"""Logical Backup Configuration
+        r"""<p>Logical backup configuration</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
         """
         return self._LogicBackupConfig
@@ -26502,7 +37000,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def DeleteAutoLogicBackup(self):
-        r"""Whether to delete the automatic logical backup
+        r"""<p>Whether to delete automatic logical backup</p>
         :rtype: bool
         """
         return self._DeleteAutoLogicBackup
@@ -26510,6 +37008,28 @@ class ModifyBackupConfigRequest(AbstractModel):
     @DeleteAutoLogicBackup.setter
     def DeleteAutoLogicBackup(self, DeleteAutoLogicBackup):
         self._DeleteAutoLogicBackup = DeleteAutoLogicBackup
+
+    @property
+    def SnapshotSecondaryBackupConfig(self):
+        r"""<p>Second-level snapshot backup parameter</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SnapshotBackupConfig`
+        """
+        return self._SnapshotSecondaryBackupConfig
+
+    @SnapshotSecondaryBackupConfig.setter
+    def SnapshotSecondaryBackupConfig(self, SnapshotSecondaryBackupConfig):
+        self._SnapshotSecondaryBackupConfig = SnapshotSecondaryBackupConfig
+
+    @property
+    def SparseBackupConfig(self):
+        r"""<p>Sparse backup configuration</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SparseBackupConfig`
+        """
+        return self._SparseBackupConfig
+
+    @SparseBackupConfig.setter
+    def SparseBackupConfig(self, SparseBackupConfig):
+        self._SparseBackupConfig = SparseBackupConfig
 
 
     def _deserialize(self, params):
@@ -26523,6 +37043,12 @@ class ModifyBackupConfigRequest(AbstractModel):
             self._LogicBackupConfig = LogicBackupConfigInfo()
             self._LogicBackupConfig._deserialize(params.get("LogicBackupConfig"))
         self._DeleteAutoLogicBackup = params.get("DeleteAutoLogicBackup")
+        if params.get("SnapshotSecondaryBackupConfig") is not None:
+            self._SnapshotSecondaryBackupConfig = SnapshotBackupConfig()
+            self._SnapshotSecondaryBackupConfig._deserialize(params.get("SnapshotSecondaryBackupConfig"))
+        if params.get("SparseBackupConfig") is not None:
+            self._SparseBackupConfig = SparseBackupConfig()
+            self._SparseBackupConfig._deserialize(params.get("SparseBackupConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27088,6 +37614,105 @@ class ModifyBinlogSaveDaysResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterBinlogRedoLogAutoCopyVaultRequest(AbstractModel):
+    r"""ModifyClusterBinlogRedoLogAutoCopyVault request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _AutoCopyVaults: Automatically copy the safe configuration list
+        :type AutoCopyVaults: list of CreateBackupVaultItem
+        """
+        self._ClusterId = None
+        self._AutoCopyVaults = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AutoCopyVaults(self):
+        r"""Automatically copy the safe configuration list
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterBinlogRedoLogAutoCopyVaultResponse(AbstractModel):
+    r"""ModifyClusterBinlogRedoLogAutoCopyVault response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyClusterDatabaseRequest(AbstractModel):
     r"""ModifyClusterDatabase request structure.
 
@@ -27219,6 +37844,100 @@ class ModifyClusterDatabaseResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyClusterGlobalEncryptionRequest(AbstractModel):
+    r"""ModifyClusterGlobalEncryption request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID.
+        :type ClusterId: str
+        :param _IsOpenGlobalEncryption: Turn on or off global encryption
+        :type IsOpenGlobalEncryption: bool
+        """
+        self._ClusterId = None
+        self._IsOpenGlobalEncryption = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def IsOpenGlobalEncryption(self):
+        r"""Turn on or off global encryption
+        :rtype: bool
+        """
+        return self._IsOpenGlobalEncryption
+
+    @IsOpenGlobalEncryption.setter
+    def IsOpenGlobalEncryption(self, IsOpenGlobalEncryption):
+        self._IsOpenGlobalEncryption = IsOpenGlobalEncryption
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._IsOpenGlobalEncryption = params.get("IsOpenGlobalEncryption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterGlobalEncryptionResponse(AbstractModel):
+    r"""ModifyClusterGlobalEncryption response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Asynchronous task ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Asynchronous task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -27713,7 +38432,7 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
         :type NewSlaveZone: str
         :param _BinlogSyncWay: Specifies the binlog synchronization mode. the default value is async. valid values are sync, semisync, and async.
         :type BinlogSyncWay: str
-        :param _SemiSyncTimeout: Semi-sync timeout period in ms. To ensure business stability, the semi-synchronous replication includes a degradation mechanism. If the primary AZ cluster exceeds this timeout while waiting for transaction confirmation from the secondary AZ cluster, the replication mode will fall back to asynchronous replication. Minimum setting: 1000 ms; maximum support: 4294967295 ms; default: 10000 ms.
+        :param _SemiSyncTimeout: Semi-sync timeout in ms. To ensure business stability, semi-synchronous replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction, if the timeout period is exceeded, the replication method will degrade to asynchronous replication. The minimum is set to 1000 ms, supporting up to 4294967295 ms, with a default of 10000 ms.
         :type SemiSyncTimeout: int
         """
         self._ClusterId = None
@@ -27768,7 +38487,7 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def SemiSyncTimeout(self):
-        r"""Semi-sync timeout period in ms. To ensure business stability, the semi-synchronous replication includes a degradation mechanism. If the primary AZ cluster exceeds this timeout while waiting for transaction confirmation from the secondary AZ cluster, the replication mode will fall back to asynchronous replication. Minimum setting: 1000 ms; maximum support: 4294967295 ms; default: 10000 ms.
+        r"""Semi-sync timeout in ms. To ensure business stability, semi-synchronous replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction, if the timeout period is exceeded, the replication method will degrade to asynchronous replication. The minimum is set to 1000 ms, supporting up to 4294967295 ms, with a default of 10000 ms.
         :rtype: int
         """
         return self._SemiSyncTimeout
@@ -27844,20 +38563,29 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Network group id (starting with the cynosdbmysql-grp- prefix) or cluster id.
+        :param _InstanceId: <p>Network Group id (cynosdbmysql-grp- prefix at the beginning) or Cluster id (such as cynosdbmysql-xxxxxxxx prefix). When configuring security group with instance IP address triplet (UniqVpcId, Vip, Vport), this field must be set to Cluster id (such as cynosdbmysql-xxxxxxxx prefix).</p>
         :type InstanceId: str
-        :param _SecurityGroupIds: List of IDs of security groups to be modified, which is an array of one or more security group IDs.
+        :param _SecurityGroupIds: <p>List of security group IDs to modify, an array of one or more security group IDs.<br>Note: This input will perform a full replacement of the existing collection, not an incremental update. The modification requires the expected full collection.</p>
         :type SecurityGroupIds: list of str
-        :param _Zone: AZ
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
+        :param _UniqVpcId: <p>ID of the VPC network for instance ownership. (UniqVpcId, Vip, and Vport must be specified simultaneously to uniquely identify the network instance)</p>
+        :type UniqVpcId: str
+        :param _Vip: <p>Instance IP address, instance IP address triplet (UniqVpcId, Vip, and Vport). These three parameters must be specified simultaneously for unique identification of network instances.</p>
+        :type Vip: str
+        :param _Vport: <p>Instance port, instance IP address triplet (UniqVpcId, Vip, and Vport). These three parameters must be specified simultaneously for unique identification of network instances.</p>
+        :type Vport: int
         """
         self._InstanceId = None
         self._SecurityGroupIds = None
         self._Zone = None
+        self._UniqVpcId = None
+        self._Vip = None
+        self._Vport = None
 
     @property
     def InstanceId(self):
-        r"""Network group id (starting with the cynosdbmysql-grp- prefix) or cluster id.
+        r"""<p>Network Group id (cynosdbmysql-grp- prefix at the beginning) or Cluster id (such as cynosdbmysql-xxxxxxxx prefix). When configuring security group with instance IP address triplet (UniqVpcId, Vip, Vport), this field must be set to Cluster id (such as cynosdbmysql-xxxxxxxx prefix).</p>
         :rtype: str
         """
         return self._InstanceId
@@ -27868,7 +38596,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""List of IDs of security groups to be modified, which is an array of one or more security group IDs.
+        r"""<p>List of security group IDs to modify, an array of one or more security group IDs.<br>Note: This input will perform a full replacement of the existing collection, not an incremental update. The modification requires the expected full collection.</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -27879,7 +38607,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -27888,11 +38616,47 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def UniqVpcId(self):
+        r"""<p>ID of the VPC network for instance ownership. (UniqVpcId, Vip, and Vport must be specified simultaneously to uniquely identify the network instance)</p>
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Vip(self):
+        r"""<p>Instance IP address, instance IP address triplet (UniqVpcId, Vip, and Vport). These three parameters must be specified simultaneously for unique identification of network instances.</p>
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>Instance port, instance IP address triplet (UniqVpcId, Vip, and Vport). These three parameters must be specified simultaneously for unique identification of network instances.</p>
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._Zone = params.get("Zone")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27932,17 +38696,17 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
 
 class ModifyDbVersionData(AbstractModel):
-    r"""Database Kernel Version Modification Task Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _OldVersion: pre-modification version
+        :param _OldVersion: 
         :type OldVersion: str
-        :param _NewVersion: Post-modification Version
+        :param _NewVersion: 
         :type NewVersion: str
-        :param _UpgradeType: Upgrade Method
+        :param _UpgradeType: 
         :type UpgradeType: str
         """
         self._OldVersion = None
@@ -27951,7 +38715,7 @@ class ModifyDbVersionData(AbstractModel):
 
     @property
     def OldVersion(self):
-        r"""pre-modification version
+        r"""
         :rtype: str
         """
         return self._OldVersion
@@ -27962,7 +38726,7 @@ class ModifyDbVersionData(AbstractModel):
 
     @property
     def NewVersion(self):
-        r"""Post-modification Version
+        r"""
         :rtype: str
         """
         return self._NewVersion
@@ -27973,7 +38737,7 @@ class ModifyDbVersionData(AbstractModel):
 
     @property
     def UpgradeType(self):
-        r"""Upgrade Method
+        r"""
         :rtype: str
         """
         return self._UpgradeType
@@ -27998,29 +38762,33 @@ class ModifyDbVersionData(AbstractModel):
 
 
 class ModifyInstanceData(AbstractModel):
-    r"""Instance Resizing Task Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Cpu: CPU After Resizing
+        :param _Cpu: 
         :type Cpu: int
-        :param _Memory: Memory After Resizing
+        :param _Memory: 
         :type Memory: int
-        :param _StorageLimit: Storage Limit After Resizing
+        :param _StorageLimit: 
         :type StorageLimit: int
-        :param _OldCpu: CPU Before Resizing
+        :param _OldCpu: 
         :type OldCpu: int
-        :param _OldMemory: Memory Before Resizing
+        :param _OldMemory: 
         :type OldMemory: int
-        :param _OldStorageLimit: Storage Limit Before Resizing
+        :param _OldStorageLimit: 
         :type OldStorageLimit: int
-        :param _OldDeviceType: Instance machine type before scaling.
+        :param _OldDeviceType: Instance Machine Type Before Scaling
+1. common, universal type.
+2. exclusive, dedicated.
         :type OldDeviceType: str
-        :param _DeviceType: Instance machine type after scaling.
+        :param _DeviceType: Instance Machine Type After Scaling
+1. common, universal type.
+2. exclusive, dedicated.
         :type DeviceType: str
-        :param _UpgradeType: Upgrade Method. Switchover is performed after upgrade completion or during maintenance windows
+        :param _UpgradeType: 
         :type UpgradeType: str
         :param _LibraNodeCount: Specifies the quantity of libra nodes.
         :type LibraNodeCount: int
@@ -28041,7 +38809,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""CPU After Resizing
+        r"""
         :rtype: int
         """
         return self._Cpu
@@ -28052,7 +38820,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Memory After Resizing
+        r"""
         :rtype: int
         """
         return self._Memory
@@ -28063,7 +38831,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def StorageLimit(self):
-        r"""Storage Limit After Resizing
+        r"""
         :rtype: int
         """
         return self._StorageLimit
@@ -28074,7 +38842,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def OldCpu(self):
-        r"""CPU Before Resizing
+        r"""
         :rtype: int
         """
         return self._OldCpu
@@ -28085,7 +38853,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def OldMemory(self):
-        r"""Memory Before Resizing
+        r"""
         :rtype: int
         """
         return self._OldMemory
@@ -28096,7 +38864,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def OldStorageLimit(self):
-        r"""Storage Limit Before Resizing
+        r"""
         :rtype: int
         """
         return self._OldStorageLimit
@@ -28107,7 +38875,9 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def OldDeviceType(self):
-        r"""Instance machine type before scaling.
+        r"""Instance Machine Type Before Scaling
+1. common, universal type.
+2. exclusive, dedicated.
         :rtype: str
         """
         return self._OldDeviceType
@@ -28118,7 +38888,9 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""Instance machine type after scaling.
+        r"""Instance Machine Type After Scaling
+1. common, universal type.
+2. exclusive, dedicated.
         :rtype: str
         """
         return self._DeviceType
@@ -28129,7 +38901,7 @@ class ModifyInstanceData(AbstractModel):
 
     @property
     def UpgradeType(self):
-        r"""Upgrade Method. Switchover is performed after upgrade completion or during maintenance windows
+        r"""
         :rtype: str
         """
         return self._UpgradeType
@@ -28505,6 +39277,897 @@ class ModifyInstanceUpgradeLimitDaysResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLibraDBClusterAccountDescriptionRequest(AbstractModel):
+    r"""ModifyLibraDBClusterAccountDescription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster id
+        :type ClusterId: str
+        :param _AccountName: Account name.
+        :type AccountName: str
+        :param _Description: Description
+        :type Description: str
+        :param _Host: host name
+        :type Host: str
+        """
+        self._ClusterId = None
+        self._AccountName = None
+        self._Description = None
+        self._Host = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AccountName(self):
+        r"""Account name.
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Description(self):
+        r"""Description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Host(self):
+        r"""host name
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AccountName = params.get("AccountName")
+        self._Description = params.get("Description")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterAccountDescriptionResponse(AbstractModel):
+    r"""ModifyLibraDBClusterAccountDescription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterAccountHostRequest(AbstractModel):
+    r"""ModifyLibraDBClusterAccountHost request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster id
+        :type ClusterId: str
+        :param _Account: Account information
+        :type Account: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        :param _NewHost: host name
+        :type NewHost: str
+        """
+        self._ClusterId = None
+        self._Account = None
+        self._NewHost = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Account(self):
+        r"""Account information
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def NewHost(self):
+        r"""host name
+        :rtype: str
+        """
+        return self._NewHost
+
+    @NewHost.setter
+    def NewHost(self, NewHost):
+        self._NewHost = NewHost
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Account") is not None:
+            self._Account = InputAccount()
+            self._Account._deserialize(params.get("Account"))
+        self._NewHost = params.get("NewHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterAccountHostResponse(AbstractModel):
+    r"""ModifyLibraDBClusterAccountHost response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterAccountPrivilegeRequest(AbstractModel):
+    r"""ModifyLibraDBClusterAccountPrivilege request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID.
+        :type ClusterId: str
+        :param _Account: Account
+        :type Account: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        :param _GlobalPrivileges: Global permission
+        :type GlobalPrivileges: list of str
+        :param _DatabasePrivileges: Database permission
+        :type DatabasePrivileges: list of DatabasePrivileges
+        :param _TablePrivileges: Table permission
+        :type TablePrivileges: list of TablePrivileges
+        """
+        self._ClusterId = None
+        self._Account = None
+        self._GlobalPrivileges = None
+        self._DatabasePrivileges = None
+        self._TablePrivileges = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Account(self):
+        r"""Account
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def GlobalPrivileges(self):
+        r"""Global permission
+        :rtype: list of str
+        """
+        return self._GlobalPrivileges
+
+    @GlobalPrivileges.setter
+    def GlobalPrivileges(self, GlobalPrivileges):
+        self._GlobalPrivileges = GlobalPrivileges
+
+    @property
+    def DatabasePrivileges(self):
+        r"""Database permission
+        :rtype: list of DatabasePrivileges
+        """
+        return self._DatabasePrivileges
+
+    @DatabasePrivileges.setter
+    def DatabasePrivileges(self, DatabasePrivileges):
+        self._DatabasePrivileges = DatabasePrivileges
+
+    @property
+    def TablePrivileges(self):
+        r"""Table permission
+        :rtype: list of TablePrivileges
+        """
+        return self._TablePrivileges
+
+    @TablePrivileges.setter
+    def TablePrivileges(self, TablePrivileges):
+        self._TablePrivileges = TablePrivileges
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Account") is not None:
+            self._Account = InputAccount()
+            self._Account._deserialize(params.get("Account"))
+        self._GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self._DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivileges()
+                obj._deserialize(item)
+                self._DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self._TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivileges()
+                obj._deserialize(item)
+                self._TablePrivileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterAccountPrivilegeResponse(AbstractModel):
+    r"""ModifyLibraDBClusterAccountPrivilege response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterDataSourceRequest(AbstractModel):
+    r"""ModifyLibraDBClusterDataSource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _InstanceId: Read-only analysis engine instance ID
+        :type InstanceId: str
+        :param _SrcInfo: Source information
+        :type SrcInfo: list of LibraDBClusterSrcInfo
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+        self._SrcInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""Read-only analysis engine instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SrcInfo(self):
+        r"""Source information
+        :rtype: list of LibraDBClusterSrcInfo
+        """
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("SrcInfo") is not None:
+            self._SrcInfo = []
+            for item in params.get("SrcInfo"):
+                obj = LibraDBClusterSrcInfo()
+                obj._deserialize(item)
+                self._SrcInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterDataSourceResponse(AbstractModel):
+    r"""ModifyLibraDBClusterDataSource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Asynchronous Task ID
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Asynchronous Task ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterNameRequest(AbstractModel):
+    r"""ModifyLibraDBClusterName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _ClusterName: Cluster name.
+        :type ClusterName: str
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""Cluster name.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterNameResponse(AbstractModel):
+    r"""ModifyLibraDBClusterName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterProjectRequest(AbstractModel):
+    r"""ModifyLibraDBClusterProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIdSet: Analysis Cluster ID List
+        :type ClusterIdSet: list of str
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        """
+        self._ClusterIdSet = None
+        self._ProjectId = None
+
+    @property
+    def ClusterIdSet(self):
+        r"""Analysis Cluster ID List
+        :rtype: list of str
+        """
+        return self._ClusterIdSet
+
+    @ClusterIdSet.setter
+    def ClusterIdSet(self, ClusterIdSet):
+        self._ClusterIdSet = ClusterIdSet
+
+    @property
+    def ProjectId(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._ClusterIdSet = params.get("ClusterIdSet")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterProjectResponse(AbstractModel):
+    r"""ModifyLibraDBClusterProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectedClusterIdSet: This example shows you how to obtain the cluster list.
+        :type AffectedClusterIdSet: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AffectedClusterIdSet = None
+        self._RequestId = None
+
+    @property
+    def AffectedClusterIdSet(self):
+        r"""This example shows you how to obtain the cluster list.
+        :rtype: list of str
+        """
+        return self._AffectedClusterIdSet
+
+    @AffectedClusterIdSet.setter
+    def AffectedClusterIdSet(self, AffectedClusterIdSet):
+        self._AffectedClusterIdSet = AffectedClusterIdSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AffectedClusterIdSet = params.get("AffectedClusterIdSet")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBClusterReplicationObjectRequest(AbstractModel):
+    r"""ModifyLibraDBClusterReplicationObject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _InstanceId: Read-only analysis engine instance ID
+        :type InstanceId: str
+        :param _ForceDefaultMapRule: Map mode
+        :type ForceDefaultMapRule: str
+        :param _Objects: sync object
+        :type Objects: list of ReplicationObject
+        :param _AutoMapRules: Automated mapping rule
+        :type AutoMapRules: list of AutoMapRule
+        :param _RefreshMapping: Whether to refresh existing mapping relationships according to the latest mapping rule
+        :type RefreshMapping: bool
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+        self._ForceDefaultMapRule = None
+        self._Objects = None
+        self._AutoMapRules = None
+        self._RefreshMapping = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""Read-only analysis engine instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ForceDefaultMapRule(self):
+        r"""Map mode
+        :rtype: str
+        """
+        return self._ForceDefaultMapRule
+
+    @ForceDefaultMapRule.setter
+    def ForceDefaultMapRule(self, ForceDefaultMapRule):
+        self._ForceDefaultMapRule = ForceDefaultMapRule
+
+    @property
+    def Objects(self):
+        r"""sync object
+        :rtype: list of ReplicationObject
+        """
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def AutoMapRules(self):
+        r"""Automated mapping rule
+        :rtype: list of AutoMapRule
+        """
+        return self._AutoMapRules
+
+    @AutoMapRules.setter
+    def AutoMapRules(self, AutoMapRules):
+        self._AutoMapRules = AutoMapRules
+
+    @property
+    def RefreshMapping(self):
+        r"""Whether to refresh existing mapping relationships according to the latest mapping rule
+        :rtype: bool
+        """
+        return self._RefreshMapping
+
+    @RefreshMapping.setter
+    def RefreshMapping(self, RefreshMapping):
+        self._RefreshMapping = RefreshMapping
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        self._ForceDefaultMapRule = params.get("ForceDefaultMapRule")
+        if params.get("Objects") is not None:
+            self._Objects = []
+            for item in params.get("Objects"):
+                obj = ReplicationObject()
+                obj._deserialize(item)
+                self._Objects.append(obj)
+        if params.get("AutoMapRules") is not None:
+            self._AutoMapRules = []
+            for item in params.get("AutoMapRules"):
+                obj = AutoMapRule()
+                obj._deserialize(item)
+                self._AutoMapRules.append(obj)
+        self._RefreshMapping = params.get("RefreshMapping")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBClusterReplicationObjectResponse(AbstractModel):
+    r"""ModifyLibraDBClusterReplicationObject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Asynchronous Task ID
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Asynchronous Task ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLibraDBForwardConfigRequest(AbstractModel):
+    r"""ModifyLibraDBForwardConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Read-only analysis engine instance Id
+        :type InstanceId: str
+        :param _ForwardMode: Forwarding Mode
+        :type ForwardMode: str
+        :param _ForwardList: Forward instance list
+        :type ForwardList: list of ForwardInstanceInfo
+        """
+        self._InstanceId = None
+        self._ForwardMode = None
+        self._ForwardList = None
+
+    @property
+    def InstanceId(self):
+        r"""Read-only analysis engine instance Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ForwardMode(self):
+        r"""Forwarding Mode
+        :rtype: str
+        """
+        return self._ForwardMode
+
+    @ForwardMode.setter
+    def ForwardMode(self, ForwardMode):
+        self._ForwardMode = ForwardMode
+
+    @property
+    def ForwardList(self):
+        r"""Forward instance list
+        :rtype: list of ForwardInstanceInfo
+        """
+        return self._ForwardList
+
+    @ForwardList.setter
+    def ForwardList(self, ForwardList):
+        self._ForwardList = ForwardList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ForwardMode = params.get("ForwardMode")
+        if params.get("ForwardList") is not None:
+            self._ForwardList = []
+            for item in params.get("ForwardList"):
+                obj = ForwardInstanceInfo()
+                obj._deserialize(item)
+                self._ForwardList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLibraDBForwardConfigResponse(AbstractModel):
+    r"""ModifyLibraDBForwardConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyMaintainPeriodConfigRequest(AbstractModel):
     r"""ModifyMaintainPeriodConfig request structure.
 
@@ -28810,17 +40473,17 @@ class ModifyParamTemplateResponse(AbstractModel):
 
 
 class ModifyParamsData(AbstractModel):
-    r"""Parameter Modification Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: Parameter Name
+        :param _Name: 
         :type Name: str
-        :param _OldValue: Parameter Value Before Modification
+        :param _OldValue: 
         :type OldValue: str
-        :param _CurValue: Parameter Value After Modification
+        :param _CurValue: 
         :type CurValue: str
         """
         self._Name = None
@@ -28829,7 +40492,7 @@ class ModifyParamsData(AbstractModel):
 
     @property
     def Name(self):
-        r"""Parameter Name
+        r"""
         :rtype: str
         """
         return self._Name
@@ -28840,7 +40503,7 @@ class ModifyParamsData(AbstractModel):
 
     @property
     def OldValue(self):
-        r"""Parameter Value Before Modification
+        r"""
         :rtype: str
         """
         return self._OldValue
@@ -28851,7 +40514,7 @@ class ModifyParamsData(AbstractModel):
 
     @property
     def CurValue(self):
-        r"""Parameter Value After Modification
+        r"""
         :rtype: str
         """
         return self._CurValue
@@ -28986,7 +40649,8 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         :type ConsistencyTimeOut: str
         :param _WeightMode: Assignment mode of read/write weights. Valid values: `system` (auto-assigned), `custom`
         :type WeightMode: str
-        :param _InstanceWeights: Read-Only weight of an instance
+        :param _InstanceWeights: Instance Read-Only Weight.
+
         :type InstanceWeights: list of ProxyInstanceWeight
         :param _FailOver: Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`.
         :type FailOver: str
@@ -29010,6 +40674,10 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         :type ConnectionPoolType: str
         :param _ConnectionPoolTimeOut: Connection persistence timeout
         :type ConnectionPoolTimeOut: int
+        :param _ApNodeAsRoNode: Whether to treat the libra node as an ordinary RO node
+        :type ApNodeAsRoNode: bool
+        :param _ApQueryToOtherNode: libra node fault, whether to forward to other nodes
+        :type ApQueryToOtherNode: bool
         """
         self._ClusterId = None
         self._ProxyGroupId = None
@@ -29026,6 +40694,8 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         self._OpenConnectionPool = None
         self._ConnectionPoolType = None
         self._ConnectionPoolTimeOut = None
+        self._ApNodeAsRoNode = None
+        self._ApQueryToOtherNode = None
 
     @property
     def ClusterId(self):
@@ -29084,7 +40754,8 @@ class ModifyProxyRwSplitRequest(AbstractModel):
 
     @property
     def InstanceWeights(self):
-        r"""Read-Only weight of an instance
+        r"""Instance Read-Only Weight.
+
         :rtype: list of ProxyInstanceWeight
         """
         return self._InstanceWeights
@@ -29196,6 +40867,28 @@ class ModifyProxyRwSplitRequest(AbstractModel):
     def ConnectionPoolTimeOut(self, ConnectionPoolTimeOut):
         self._ConnectionPoolTimeOut = ConnectionPoolTimeOut
 
+    @property
+    def ApNodeAsRoNode(self):
+        r"""Whether to treat the libra node as an ordinary RO node
+        :rtype: bool
+        """
+        return self._ApNodeAsRoNode
+
+    @ApNodeAsRoNode.setter
+    def ApNodeAsRoNode(self, ApNodeAsRoNode):
+        self._ApNodeAsRoNode = ApNodeAsRoNode
+
+    @property
+    def ApQueryToOtherNode(self):
+        r"""libra node fault, whether to forward to other nodes
+        :rtype: bool
+        """
+        return self._ApQueryToOtherNode
+
+    @ApQueryToOtherNode.setter
+    def ApQueryToOtherNode(self, ApQueryToOtherNode):
+        self._ApQueryToOtherNode = ApQueryToOtherNode
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -29218,6 +40911,8 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         self._OpenConnectionPool = params.get("OpenConnectionPool")
         self._ConnectionPoolType = params.get("ConnectionPoolType")
         self._ConnectionPoolTimeOut = params.get("ConnectionPoolTimeOut")
+        self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
+        self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29565,30 +41260,34 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Specifies the serverless cluster id.
+        :param _ClusterId: <p>serverless cluster id</p>
         :type ClusterId: str
-        :param _AutoPause: Specifies whether the cluster automatically pauses. valid values for the optional range.
-<li>yes</li>
-<li>no</li>
+        :param _AutoPause: <p>Whether the cluster auto-pause feature is enabled. Optional range</p><li>yes</li><li>no</li>
         :type AutoPause: str
-        :param _AutoPauseDelay: Specifies the delay for cluster auto-pause in seconds. the value range is [600,691200]. the default value is 600.
+        :param _AutoPauseDelay: <p>Delay of Cluster Auto-Pause in seconds, optional range [600,691200], default 600</p>
         :type AutoPauseDelay: int
-        :param _AutoScaleUpDelay: The parameter is temporarily unavailable.
+        :param _AutoScaleUpDelay: <p>This parameter is temporarily unavailable</p>
         :type AutoScaleUpDelay: int
-        :param _AutoScaleDownDelay: The parameter is temporarily unavailable.
+        :param _AutoScaleDownDelay: <p>This parameter is temporarily invalid</p>
         :type AutoScaleDownDelay: int
-        :param _MinCpu: Minimum value of cpu. for the optional range, refer to the API response of DescribeServerlessInstanceSpecs.
+        :param _MinCpu: <p>cpu minimum value. For optional range, see API response of DescribeServerlessInstanceSpecs.</p>
         :type MinCpu: float
-        :param _MaxCpu: Maximum value of cpu, optional range refers to the API response of DescribeServerlessInstanceSpecs.
+        :param _MaxCpu: <p>Maximum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs.</p>
         :type MaxCpu: float
-        :param _MinRoCpu: Minimum cpu value of a read-only instance. for valid values, refer to the API response of DescribeServerlessInstanceSpecs.
+        :param _MinRoCpu: <p>Minimum value of read-only instance cpu. For the optional range, refer to the API response of DescribeServerlessInstanceSpecs.</p>
         :type MinRoCpu: float
-        :param _MaxRoCpu: Maximum value of read-only cpu, optional range refer to the API response of DescribeServerlessInstanceSpecs.
+        :param _MaxRoCpu: <p>Read-only cpu maximum value of the optional range. For reference, see API response of DescribeServerlessInstanceSpecs.</p>
         :type MaxRoCpu: float
-        :param _MinRoCount: Specifies the minimum count of read-only nodes.
+        :param _MinRoCount: <p>Minimum count of read-only nodes</p>
         :type MinRoCount: int
-        :param _MaxRoCount: Maximum number of read-only nodes.
+        :param _MaxRoCount: <p>Maximum number of read-only nodes</p>
         :type MaxRoCount: int
+        :param _AutoArchive: <p>Whether archiving is enabled. Optional range</p><li>yes</li><li>no</li>Default value: yes</p>
+        :type AutoArchive: str
+        :param _UpgradeType: <p>Upgrade type. Default value: upgradeImmediate. Available values: upgradeImmediate - immediately complete the modification; upgradeInMaintain - complete the modification during maintenance window.</p>
+        :type UpgradeType: str
+        :param _SecurityGroupIdsForNewRo: <p>List of security groups to which newly-added read-only instances need to be bound. This only applies to binding security groups to read-only instances generated during the process of this adjustment of policies. Existing instances are not bound.</p>
+        :type SecurityGroupIdsForNewRo: list of str
         """
         self._ClusterId = None
         self._AutoPause = None
@@ -29601,10 +41300,13 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MaxRoCpu = None
         self._MinRoCount = None
         self._MaxRoCount = None
+        self._AutoArchive = None
+        self._UpgradeType = None
+        self._SecurityGroupIdsForNewRo = None
 
     @property
     def ClusterId(self):
-        r"""Specifies the serverless cluster id.
+        r"""<p>serverless cluster id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -29615,9 +41317,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def AutoPause(self):
-        r"""Specifies whether the cluster automatically pauses. valid values for the optional range.
-<li>yes</li>
-<li>no</li>
+        r"""<p>Whether the cluster auto-pause feature is enabled. Optional range</p><li>yes</li><li>no</li>
         :rtype: str
         """
         return self._AutoPause
@@ -29628,7 +41328,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def AutoPauseDelay(self):
-        r"""Specifies the delay for cluster auto-pause in seconds. the value range is [600,691200]. the default value is 600.
+        r"""<p>Delay of Cluster Auto-Pause in seconds, optional range [600,691200], default 600</p>
         :rtype: int
         """
         return self._AutoPauseDelay
@@ -29639,7 +41339,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def AutoScaleUpDelay(self):
-        r"""The parameter is temporarily unavailable.
+        r"""<p>This parameter is temporarily unavailable</p>
         :rtype: int
         """
         return self._AutoScaleUpDelay
@@ -29650,7 +41350,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def AutoScaleDownDelay(self):
-        r"""The parameter is temporarily unavailable.
+        r"""<p>This parameter is temporarily invalid</p>
         :rtype: int
         """
         return self._AutoScaleDownDelay
@@ -29661,7 +41361,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MinCpu(self):
-        r"""Minimum value of cpu. for the optional range, refer to the API response of DescribeServerlessInstanceSpecs.
+        r"""<p>cpu minimum value. For optional range, see API response of DescribeServerlessInstanceSpecs.</p>
         :rtype: float
         """
         return self._MinCpu
@@ -29672,7 +41372,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MaxCpu(self):
-        r"""Maximum value of cpu, optional range refers to the API response of DescribeServerlessInstanceSpecs.
+        r"""<p>Maximum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs.</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -29683,7 +41383,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MinRoCpu(self):
-        r"""Minimum cpu value of a read-only instance. for valid values, refer to the API response of DescribeServerlessInstanceSpecs.
+        r"""<p>Minimum value of read-only instance cpu. For the optional range, refer to the API response of DescribeServerlessInstanceSpecs.</p>
         :rtype: float
         """
         return self._MinRoCpu
@@ -29694,7 +41394,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MaxRoCpu(self):
-        r"""Maximum value of read-only cpu, optional range refer to the API response of DescribeServerlessInstanceSpecs.
+        r"""<p>Read-only cpu maximum value of the optional range. For reference, see API response of DescribeServerlessInstanceSpecs.</p>
         :rtype: float
         """
         return self._MaxRoCpu
@@ -29705,7 +41405,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MinRoCount(self):
-        r"""Specifies the minimum count of read-only nodes.
+        r"""<p>Minimum count of read-only nodes</p>
         :rtype: int
         """
         return self._MinRoCount
@@ -29716,7 +41416,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MaxRoCount(self):
-        r"""Maximum number of read-only nodes.
+        r"""<p>Maximum number of read-only nodes</p>
         :rtype: int
         """
         return self._MaxRoCount
@@ -29724,6 +41424,39 @@ class ModifyServerlessStrategyRequest(AbstractModel):
     @MaxRoCount.setter
     def MaxRoCount(self, MaxRoCount):
         self._MaxRoCount = MaxRoCount
+
+    @property
+    def AutoArchive(self):
+        r"""<p>Whether archiving is enabled. Optional range</p><li>yes</li><li>no</li>Default value: yes</p>
+        :rtype: str
+        """
+        return self._AutoArchive
+
+    @AutoArchive.setter
+    def AutoArchive(self, AutoArchive):
+        self._AutoArchive = AutoArchive
+
+    @property
+    def UpgradeType(self):
+        r"""<p>Upgrade type. Default value: upgradeImmediate. Available values: upgradeImmediate - immediately complete the modification; upgradeInMaintain - complete the modification during maintenance window.</p>
+        :rtype: str
+        """
+        return self._UpgradeType
+
+    @UpgradeType.setter
+    def UpgradeType(self, UpgradeType):
+        self._UpgradeType = UpgradeType
+
+    @property
+    def SecurityGroupIdsForNewRo(self):
+        r"""<p>List of security groups to which newly-added read-only instances need to be bound. This only applies to binding security groups to read-only instances generated during the process of this adjustment of policies. Existing instances are not bound.</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIdsForNewRo
+
+    @SecurityGroupIdsForNewRo.setter
+    def SecurityGroupIdsForNewRo(self, SecurityGroupIdsForNewRo):
+        self._SecurityGroupIdsForNewRo = SecurityGroupIdsForNewRo
 
 
     def _deserialize(self, params):
@@ -29738,6 +41471,9 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MaxRoCpu = params.get("MaxRoCpu")
         self._MinRoCount = params.get("MinRoCount")
         self._MaxRoCount = params.get("MaxRoCount")
+        self._AutoArchive = params.get("AutoArchive")
+        self._UpgradeType = params.get("UpgradeType")
+        self._SecurityGroupIdsForNewRo = params.get("SecurityGroupIdsForNewRo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29755,24 +41491,42 @@ class ModifyServerlessStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: Async process id.
+        :param _FlowId: <p>Async process id</p>
         :type FlowId: int
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""Async process id.
+        warnings.warn("parameter `FlowId` is deprecated", DeprecationWarning) 
+
+        r"""<p>Async process id</p>
         :rtype: int
         """
         return self._FlowId
 
     @FlowId.setter
     def FlowId(self, FlowId):
+        warnings.warn("parameter `FlowId` is deprecated", DeprecationWarning) 
+
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -29788,6 +41542,330 @@ class ModifyServerlessStrategyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
+    r"""ModifySnapBackupCrossRegionConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _CrossRegionsEnable: Whether cross-region snapshot backup is enabled.
+        :type CrossRegionsEnable: str
+        :param _CrossRegions: Cross-Regional snapshot backup.
+        :type CrossRegions: list of str
+        """
+        self._ClusterId = None
+        self._CrossRegionsEnable = None
+        self._CrossRegions = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def CrossRegionsEnable(self):
+        r"""Whether cross-region snapshot backup is enabled.
+        :rtype: str
+        """
+        return self._CrossRegionsEnable
+
+    @CrossRegionsEnable.setter
+    def CrossRegionsEnable(self, CrossRegionsEnable):
+        self._CrossRegionsEnable = CrossRegionsEnable
+
+    @property
+    def CrossRegions(self):
+        r"""Cross-Regional snapshot backup.
+        :rtype: list of str
+        """
+        return self._CrossRegions
+
+    @CrossRegions.setter
+    def CrossRegions(self, CrossRegions):
+        self._CrossRegions = CrossRegions
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._CrossRegionsEnable = params.get("CrossRegionsEnable")
+        self._CrossRegions = params.get("CrossRegions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySnapBackupCrossRegionConfigResponse(AbstractModel):
+    r"""ModifySnapBackupCrossRegionConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyVaultRequest(AbstractModel):
+    r"""ModifyVault request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Safe ID
+        :type VaultId: str
+        :param _VaultName: Safe name, maximum 255 characters
+        :type VaultName: str
+        :param _VaultDescribe: Safe description, maximum 1024 characters
+        :type VaultDescribe: str
+        :param _BackupSaveSeconds: Backup retention period (seconds). Range: (0, 632448000].
+        :type BackupSaveSeconds: int
+        :param _KeyId: Encryption key ID, maximum 36 characters
+        :type KeyId: str
+        :param _KeyType: Key type, available values: cloud, custom
+        :type KeyType: str
+        :param _KeyRegion: Key region, maximum 32 characters
+        :type KeyRegion: str
+        :param _IsLock: Is the safe locked
+        :type IsLock: bool
+        :param _LockedTime: Lock expiry time, format: 2006-01-02 15:04:05, lock time current maximum 15 days
+        :type LockedTime: str
+        :param _IsEncryption: Whether it is encrypted
+        :type IsEncryption: bool
+        """
+        self._VaultId = None
+        self._VaultName = None
+        self._VaultDescribe = None
+        self._BackupSaveSeconds = None
+        self._KeyId = None
+        self._KeyType = None
+        self._KeyRegion = None
+        self._IsLock = None
+        self._LockedTime = None
+        self._IsEncryption = None
+
+    @property
+    def VaultId(self):
+        r"""Safe ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultName(self):
+        r"""Safe name, maximum 255 characters
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def VaultDescribe(self):
+        r"""Safe description, maximum 1024 characters
+        :rtype: str
+        """
+        return self._VaultDescribe
+
+    @VaultDescribe.setter
+    def VaultDescribe(self, VaultDescribe):
+        self._VaultDescribe = VaultDescribe
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""Backup retention period (seconds). Range: (0, 632448000].
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+    @property
+    def KeyId(self):
+        r"""Encryption key ID, maximum 36 characters
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyType(self):
+        r"""Key type, available values: cloud, custom
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def KeyRegion(self):
+        r"""Key region, maximum 32 characters
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
+    @property
+    def IsLock(self):
+        r"""Is the safe locked
+        :rtype: bool
+        """
+        return self._IsLock
+
+    @IsLock.setter
+    def IsLock(self, IsLock):
+        self._IsLock = IsLock
+
+    @property
+    def LockedTime(self):
+        r"""Lock expiry time, format: 2006-01-02 15:04:05, lock time current maximum 15 days
+        :rtype: str
+        """
+        return self._LockedTime
+
+    @LockedTime.setter
+    def LockedTime(self, LockedTime):
+        self._LockedTime = LockedTime
+
+    @property
+    def IsEncryption(self):
+        r"""Whether it is encrypted
+        :rtype: bool
+        """
+        return self._IsEncryption
+
+    @IsEncryption.setter
+    def IsEncryption(self, IsEncryption):
+        self._IsEncryption = IsEncryption
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._VaultName = params.get("VaultName")
+        self._VaultDescribe = params.get("VaultDescribe")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        self._KeyId = params.get("KeyId")
+        self._KeyType = params.get("KeyType")
+        self._KeyRegion = params.get("KeyRegion")
+        self._IsLock = params.get("IsLock")
+        self._LockedTime = params.get("LockedTime")
+        self._IsEncryption = params.get("IsEncryption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVaultResponse(AbstractModel):
+    r"""ModifyVault response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -29992,6 +42070,57 @@ class Module(AbstractModel):
     def _deserialize(self, params):
         self._IsDisable = params.get("IsDisable")
         self._ModuleName = params.get("ModuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MonthDay(AbstractModel):
+    r"""month date info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Month info
+        :type Month: int
+        :param _Day: date info
+        :type Day: int
+        """
+        self._Month = None
+        self._Day = None
+
+    @property
+    def Month(self):
+        r"""Month info
+        :rtype: int
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def Day(self):
+        r"""date info
+        :rtype: int
+        """
+        return self._Day
+
+    @Day.setter
+    def Day(self, Day):
+        self._Day = Day
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._Day = params.get("Day")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30608,6 +42737,181 @@ class OfflineInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OfflineLibraDBClusterRequest(AbstractModel):
+    r"""OfflineLibraDBCluster request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OfflineLibraDBClusterResponse(AbstractModel):
+    r"""OfflineLibraDBCluster response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: flow id
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""flow id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class OfflineLibraDBInstanceRequest(AbstractModel):
+    r"""OfflineLibraDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _InstanceIdList: Read-only analysis engine instance ID list
+        :type InstanceIdList: list of str
+        """
+        self._ClusterId = None
+        self._InstanceIdList = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceIdList(self):
+        r"""Read-only analysis engine instance ID list
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceIdList = params.get("InstanceIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OfflineLibraDBInstanceResponse(AbstractModel):
+    r"""OfflineLibraDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: task flow id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""task flow id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class OldAddrInfo(AbstractModel):
     r"""Database address
 
@@ -30687,16 +42991,19 @@ class OpenAuditServiceRequest(AbstractModel):
         :type LogExpireDay: int
         :param _HighLogExpireDay: Frequent log retention period
         :type HighLogExpireDay: int
-        :param _AuditRuleFilters: Audit rule. If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.
+        :param _AuditRuleFilters: Audit rule (deprecated).
         :type AuditRuleFilters: list of AuditRuleFilters
         :param _RuleTemplateIds: Rule template ID. If both this parameter and `AuditRuleFilters` are left empty, full audit will be applied.
         :type RuleTemplateIds: list of str
+        :param _AuditAll: 
+        :type AuditAll: bool
         """
         self._InstanceId = None
         self._LogExpireDay = None
         self._HighLogExpireDay = None
         self._AuditRuleFilters = None
         self._RuleTemplateIds = None
+        self._AuditAll = None
 
     @property
     def InstanceId(self):
@@ -30735,7 +43042,7 @@ class OpenAuditServiceRequest(AbstractModel):
     def AuditRuleFilters(self):
         warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
 
-        r"""Audit rule. If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.
+        r"""Audit rule (deprecated).
         :rtype: list of AuditRuleFilters
         """
         return self._AuditRuleFilters
@@ -30757,6 +43064,17 @@ class OpenAuditServiceRequest(AbstractModel):
     def RuleTemplateIds(self, RuleTemplateIds):
         self._RuleTemplateIds = RuleTemplateIds
 
+    @property
+    def AuditAll(self):
+        r"""
+        :rtype: bool
+        """
+        return self._AuditAll
+
+    @AuditAll.setter
+    def AuditAll(self, AuditAll):
+        self._AuditAll = AuditAll
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -30769,6 +43087,7 @@ class OpenAuditServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._AuditRuleFilters.append(obj)
         self._RuleTemplateIds = params.get("RuleTemplateIds")
+        self._AuditAll = params.get("AuditAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31100,11 +43419,14 @@ class OpenClusterTransparentEncryptRequest(AbstractModel):
         :type KeyId: str
         :param _KeyRegion: Key region.
         :type KeyRegion: str
+        :param _IsOpenGlobalEncryption: Whether global encryption is enabled
+        :type IsOpenGlobalEncryption: bool
         """
         self._ClusterId = None
         self._KeyType = None
         self._KeyId = None
         self._KeyRegion = None
+        self._IsOpenGlobalEncryption = None
 
     @property
     def ClusterId(self):
@@ -31150,12 +43472,24 @@ class OpenClusterTransparentEncryptRequest(AbstractModel):
     def KeyRegion(self, KeyRegion):
         self._KeyRegion = KeyRegion
 
+    @property
+    def IsOpenGlobalEncryption(self):
+        r"""Whether global encryption is enabled
+        :rtype: bool
+        """
+        return self._IsOpenGlobalEncryption
+
+    @IsOpenGlobalEncryption.setter
+    def IsOpenGlobalEncryption(self, IsOpenGlobalEncryption):
+        self._IsOpenGlobalEncryption = IsOpenGlobalEncryption
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._KeyType = params.get("KeyType")
         self._KeyId = params.get("KeyId")
         self._KeyRegion = params.get("KeyRegion")
+        self._IsOpenGlobalEncryption = params.get("IsOpenGlobalEncryption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32498,31 +44832,33 @@ class ParamItemDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CurrentValue: Current value
+        :param _CurrentValue: <p>Current value</p>
         :type CurrentValue: str
-        :param _Default: Default value
+        :param _Default: <p>Default value</p>
         :type Default: str
-        :param _EnumValue: Enumerated values of the parameter It is null if the parameter is non-enumerated.
+        :param _EnumValue: <p>Optional enumerated value of the parameter. If it is a non-enumerated value, it is empty.</p>
         :type EnumValue: list of str
-        :param _IsGlobal: Valid values: `1` (global parameter),  `0`  (non-global parameter).
+        :param _IsGlobal: <p>1: Global parameter, 0: Non-global parameter</p>
         :type IsGlobal: int
-        :param _Max: Maximum value
+        :param _Max: <p>Maximum value</p>
         :type Max: str
-        :param _Min: Minimum value
+        :param _Min: <p>Minimum value</p>
         :type Min: str
-        :param _NeedReboot: Whether to restart the database for the modified parameters to take effect. Valid values:  `0` (no), `1` (yes)
+        :param _NeedReboot: <p>After modifying parameters, whether database restart is required to take effect. 0-no restart required, 1-restart required.</p>
         :type NeedReboot: int
-        :param _ParamName: Parameter name
+        :param _ParamName: <p>Parameter name</p>
         :type ParamName: str
-        :param _ParamType: Parameter type. Valid values:  `integer`, `enum`, `float`, `string`, `func`.
+        :param _ParamType: <p>Parameter type: integer, enum, float, string, func</p>
         :type ParamType: str
-        :param _Description: Parameter description
+        :param _ModifiableInfo: <p>Whether the parameter is modifiable</p>
+        :type ModifiableInfo: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
+        :param _Description: <p>Parameter description</p>
         :type Description: str
-        :param _IsFunc: Whether the type is a formula.
+        :param _IsFunc: <p>Whether the type is formula</p>
         :type IsFunc: bool
-        :param _Func: Parameter configuration formula.
+        :param _Func: <p>Parameter configuration formula</p>
         :type Func: str
-        :param _FuncPattern: The default formula style of parameters that support formulas.
+        :param _FuncPattern: <p>Default formula style for parameters that support formulas</p>
         :type FuncPattern: str
         """
         self._CurrentValue = None
@@ -32534,6 +44870,7 @@ class ParamItemDetail(AbstractModel):
         self._NeedReboot = None
         self._ParamName = None
         self._ParamType = None
+        self._ModifiableInfo = None
         self._Description = None
         self._IsFunc = None
         self._Func = None
@@ -32541,7 +44878,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def CurrentValue(self):
-        r"""Current value
+        r"""<p>Current value</p>
         :rtype: str
         """
         return self._CurrentValue
@@ -32552,7 +44889,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def Default(self):
-        r"""Default value
+        r"""<p>Default value</p>
         :rtype: str
         """
         return self._Default
@@ -32563,7 +44900,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def EnumValue(self):
-        r"""Enumerated values of the parameter It is null if the parameter is non-enumerated.
+        r"""<p>Optional enumerated value of the parameter. If it is a non-enumerated value, it is empty.</p>
         :rtype: list of str
         """
         return self._EnumValue
@@ -32574,7 +44911,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def IsGlobal(self):
-        r"""Valid values: `1` (global parameter),  `0`  (non-global parameter).
+        r"""<p>1: Global parameter, 0: Non-global parameter</p>
         :rtype: int
         """
         return self._IsGlobal
@@ -32585,7 +44922,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def Max(self):
-        r"""Maximum value
+        r"""<p>Maximum value</p>
         :rtype: str
         """
         return self._Max
@@ -32596,7 +44933,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def Min(self):
-        r"""Minimum value
+        r"""<p>Minimum value</p>
         :rtype: str
         """
         return self._Min
@@ -32607,7 +44944,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def NeedReboot(self):
-        r"""Whether to restart the database for the modified parameters to take effect. Valid values:  `0` (no), `1` (yes)
+        r"""<p>After modifying parameters, whether database restart is required to take effect. 0-no restart required, 1-restart required.</p>
         :rtype: int
         """
         return self._NeedReboot
@@ -32618,7 +44955,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def ParamName(self):
-        r"""Parameter name
+        r"""<p>Parameter name</p>
         :rtype: str
         """
         return self._ParamName
@@ -32629,7 +44966,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def ParamType(self):
-        r"""Parameter type. Valid values:  `integer`, `enum`, `float`, `string`, `func`.
+        r"""<p>Parameter type: integer, enum, float, string, func</p>
         :rtype: str
         """
         return self._ParamType
@@ -32639,8 +44976,19 @@ class ParamItemDetail(AbstractModel):
         self._ParamType = ParamType
 
     @property
+    def ModifiableInfo(self):
+        r"""<p>Whether the parameter is modifiable</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
+        """
+        return self._ModifiableInfo
+
+    @ModifiableInfo.setter
+    def ModifiableInfo(self, ModifiableInfo):
+        self._ModifiableInfo = ModifiableInfo
+
+    @property
     def Description(self):
-        r"""Parameter description
+        r"""<p>Parameter description</p>
         :rtype: str
         """
         return self._Description
@@ -32651,7 +44999,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def IsFunc(self):
-        r"""Whether the type is a formula.
+        r"""<p>Whether the type is formula</p>
         :rtype: bool
         """
         return self._IsFunc
@@ -32662,7 +45010,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def Func(self):
-        r"""Parameter configuration formula.
+        r"""<p>Parameter configuration formula</p>
         :rtype: str
         """
         return self._Func
@@ -32673,7 +45021,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def FuncPattern(self):
-        r"""The default formula style of parameters that support formulas.
+        r"""<p>Default formula style for parameters that support formulas</p>
         :rtype: str
         """
         return self._FuncPattern
@@ -32693,6 +45041,9 @@ class ParamItemDetail(AbstractModel):
         self._NeedReboot = params.get("NeedReboot")
         self._ParamName = params.get("ParamName")
         self._ParamType = params.get("ParamType")
+        if params.get("ModifiableInfo") is not None:
+            self._ModifiableInfo = ModifiableInfo()
+            self._ModifiableInfo._deserialize(params.get("ModifiableInfo"))
         self._Description = params.get("Description")
         self._IsFunc = params.get("IsFunc")
         self._Func = params.get("Func")
@@ -32708,7 +45059,7 @@ class ParamItemDetail(AbstractModel):
 
 
 class ParamItemInfo(AbstractModel):
-    r"""Parameter Change Information
+    r"""
 
     """
 
@@ -33914,6 +46265,10 @@ class ProxyGroupRwInfo(AbstractModel):
         :type TransSplit: bool
         :param _AccessMode: Connection mode. Valid values: `balance`, `nearby`.
         :type AccessMode: str
+        :param _ApNodeAsRoNode: Whether to treat the libra node as an ordinary RO node
+        :type ApNodeAsRoNode: bool
+        :param _ApQueryToOtherNode: libra node fault, whether to forward to other nodes
+        :type ApQueryToOtherNode: bool
         """
         self._ConsistencyType = None
         self._ConsistencyTimeOut = None
@@ -33925,6 +46280,8 @@ class ProxyGroupRwInfo(AbstractModel):
         self._RwType = None
         self._TransSplit = None
         self._AccessMode = None
+        self._ApNodeAsRoNode = None
+        self._ApQueryToOtherNode = None
 
     @property
     def ConsistencyType(self):
@@ -34036,6 +46393,28 @@ class ProxyGroupRwInfo(AbstractModel):
     def AccessMode(self, AccessMode):
         self._AccessMode = AccessMode
 
+    @property
+    def ApNodeAsRoNode(self):
+        r"""Whether to treat the libra node as an ordinary RO node
+        :rtype: bool
+        """
+        return self._ApNodeAsRoNode
+
+    @ApNodeAsRoNode.setter
+    def ApNodeAsRoNode(self, ApNodeAsRoNode):
+        self._ApNodeAsRoNode = ApNodeAsRoNode
+
+    @property
+    def ApQueryToOtherNode(self):
+        r"""libra node fault, whether to forward to other nodes
+        :rtype: bool
+        """
+        return self._ApQueryToOtherNode
+
+    @ApQueryToOtherNode.setter
+    def ApQueryToOtherNode(self, ApQueryToOtherNode):
+        self._ApQueryToOtherNode = ApQueryToOtherNode
+
 
     def _deserialize(self, params):
         self._ConsistencyType = params.get("ConsistencyType")
@@ -34053,6 +46432,8 @@ class ProxyGroupRwInfo(AbstractModel):
         self._RwType = params.get("RwType")
         self._TransSplit = params.get("TransSplit")
         self._AccessMode = params.get("AccessMode")
+        self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
+        self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34141,7 +46522,7 @@ class ProxyNodeInfo(AbstractModel):
         :type Region: str
         :param _Zone: AZ
         :type Zone: str
-        :param _OssProxyNodeName: Database Proxy Node Name
+        :param _OssProxyNodeName: 
         :type OssProxyNodeName: str
         """
         self._ProxyNodeId = None
@@ -34268,7 +46649,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def OssProxyNodeName(self):
-        r"""Database Proxy Node Name
+        r"""
         :rtype: str
         """
         return self._OssProxyNodeName
@@ -34560,7 +46941,7 @@ class QueryParamFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Names: Search field. Valid values: "InstanceId", "ProjectId", "InstanceName", "Vip"
+        :param _Names: Search field. Currently supports: ProxyGroupId
         :type Names: list of str
         :param _Values: Search string
         :type Values: list of str
@@ -34573,7 +46954,7 @@ class QueryParamFilter(AbstractModel):
 
     @property
     def Names(self):
-        r"""Search field. Valid values: "InstanceId", "ProjectId", "InstanceName", "Vip"
+        r"""Search field. Currently supports: ProxyGroupId
         :rtype: list of str
         """
         return self._Names
@@ -34609,6 +46990,283 @@ class QueryParamFilter(AbstractModel):
         self._Names = params.get("Names")
         self._Values = params.get("Values")
         self._ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuerySimpleFilter(AbstractModel):
+    r"""Blurry query filter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Names: Field name
+        :type Names: list of str
+        :param _Values: Field value.
+        :type Values: list of str
+        :param _ExactMatch: Fuzzy matching. valid values: true (yes), false (no).
+        :type ExactMatch: bool
+        """
+        self._Names = None
+        self._Values = None
+        self._ExactMatch = None
+
+    @property
+    def Names(self):
+        r"""Field name
+        :rtype: list of str
+        """
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def Values(self):
+        r"""Field value.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ExactMatch(self):
+        r"""Fuzzy matching. valid values: true (yes), false (no).
+        :rtype: bool
+        """
+        return self._ExactMatch
+
+    @ExactMatch.setter
+    def ExactMatch(self, ExactMatch):
+        self._ExactMatch = ExactMatch
+
+
+    def _deserialize(self, params):
+        self._Names = params.get("Names")
+        self._Values = params.get("Values")
+        self._ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedoLogItem(AbstractModel):
+    r"""redo log details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: Filename.
+        :type FileName: str
+        :param _FileSize: File size
+        :type FileSize: int
+        :param _BackupTime: Backup time
+        :type BackupTime: str
+        :param _RedoLogId: redoLogId
+        :type RedoLogId: int
+        :param _RedoCrossRegions: Cross-Region information.
+        :type RedoCrossRegions: list of BackupRegionAndIds
+        :param _Status: Status.
+        :type Status: str
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _FinishTime: Completion time.
+        :type FinishTime: str
+        :param _VaultInfos: Safe info
+        :type VaultInfos: list of VaultInfo
+        :param _CopyStatus: Backup delivery status
+        :type CopyStatus: str
+        :param _EncryptKeyId: Encryption key
+        :type EncryptKeyId: str
+        :param _EncryptRegion: Key region for encryption
+        :type EncryptRegion: str
+        """
+        self._FileName = None
+        self._FileSize = None
+        self._BackupTime = None
+        self._RedoLogId = None
+        self._RedoCrossRegions = None
+        self._Status = None
+        self._StartTime = None
+        self._FinishTime = None
+        self._VaultInfos = None
+        self._CopyStatus = None
+        self._EncryptKeyId = None
+        self._EncryptRegion = None
+
+    @property
+    def FileName(self):
+        r"""Filename.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        r"""File size
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def BackupTime(self):
+        r"""Backup time
+        :rtype: str
+        """
+        return self._BackupTime
+
+    @BackupTime.setter
+    def BackupTime(self, BackupTime):
+        self._BackupTime = BackupTime
+
+    @property
+    def RedoLogId(self):
+        r"""redoLogId
+        :rtype: int
+        """
+        return self._RedoLogId
+
+    @RedoLogId.setter
+    def RedoLogId(self, RedoLogId):
+        self._RedoLogId = RedoLogId
+
+    @property
+    def RedoCrossRegions(self):
+        r"""Cross-Region information.
+        :rtype: list of BackupRegionAndIds
+        """
+        return self._RedoCrossRegions
+
+    @RedoCrossRegions.setter
+    def RedoCrossRegions(self, RedoCrossRegions):
+        self._RedoCrossRegions = RedoCrossRegions
+
+    @property
+    def Status(self):
+        r"""Status.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def FinishTime(self):
+        r"""Completion time.
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def VaultInfos(self):
+        r"""Safe info
+        :rtype: list of VaultInfo
+        """
+        return self._VaultInfos
+
+    @VaultInfos.setter
+    def VaultInfos(self, VaultInfos):
+        self._VaultInfos = VaultInfos
+
+    @property
+    def CopyStatus(self):
+        r"""Backup delivery status
+        :rtype: str
+        """
+        return self._CopyStatus
+
+    @CopyStatus.setter
+    def CopyStatus(self, CopyStatus):
+        self._CopyStatus = CopyStatus
+
+    @property
+    def EncryptKeyId(self):
+        r"""Encryption key
+        :rtype: str
+        """
+        return self._EncryptKeyId
+
+    @EncryptKeyId.setter
+    def EncryptKeyId(self, EncryptKeyId):
+        self._EncryptKeyId = EncryptKeyId
+
+    @property
+    def EncryptRegion(self):
+        r"""Key region for encryption
+        :rtype: str
+        """
+        return self._EncryptRegion
+
+    @EncryptRegion.setter
+    def EncryptRegion(self, EncryptRegion):
+        self._EncryptRegion = EncryptRegion
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._BackupTime = params.get("BackupTime")
+        self._RedoLogId = params.get("RedoLogId")
+        if params.get("RedoCrossRegions") is not None:
+            self._RedoCrossRegions = []
+            for item in params.get("RedoCrossRegions"):
+                obj = BackupRegionAndIds()
+                obj._deserialize(item)
+                self._RedoCrossRegions.append(obj)
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._FinishTime = params.get("FinishTime")
+        if params.get("VaultInfos") is not None:
+            self._VaultInfos = []
+            for item in params.get("VaultInfos"):
+                obj = VaultInfo()
+                obj._deserialize(item)
+                self._VaultInfos.append(obj)
+        self._CopyStatus = params.get("CopyStatus")
+        self._EncryptKeyId = params.get("EncryptKeyId")
+        self._EncryptRegion = params.get("EncryptRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34696,6 +47354,202 @@ class RefundResourcePackageResponse(AbstractModel):
     def _deserialize(self, params):
         self._DealNames = params.get("DealNames")
         self._RequestId = params.get("RequestId")
+
+
+class RegionInstanceSpecInfo(AbstractModel):
+    r"""Instance specifications in this region
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: Number of CPU cores
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Cpu: int
+        :param _Memory: Memory size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Memory: int
+        :param _MinStorageSize: Minimum storage size
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MinStorageSize: int
+        :param _MaxStorageSize: Maximum storage size
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxStorageSize: int
+        :param _HasStock: Whether there is inventory
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HasStock: bool
+        :param _InstanceType: Instance type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param _StorageType: Storage type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StorageType: str
+        :param _MinReplicaNum: minimum replica count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MinReplicaNum: int
+        :param _MaxReplicaNum: Maximum number of replicas
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxReplicaNum: int
+        :param _ZoneStockInfos: Availability zone inventory information list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneStockInfos: list of ZoneStockInfo4Libra
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._MinStorageSize = None
+        self._MaxStorageSize = None
+        self._HasStock = None
+        self._InstanceType = None
+        self._StorageType = None
+        self._MinReplicaNum = None
+        self._MaxReplicaNum = None
+        self._ZoneStockInfos = None
+
+    @property
+    def Cpu(self):
+        r"""Number of CPU cores
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""Memory size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def MinStorageSize(self):
+        r"""Minimum storage size
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._MinStorageSize
+
+    @MinStorageSize.setter
+    def MinStorageSize(self, MinStorageSize):
+        self._MinStorageSize = MinStorageSize
+
+    @property
+    def MaxStorageSize(self):
+        r"""Maximum storage size
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._MaxStorageSize
+
+    @MaxStorageSize.setter
+    def MaxStorageSize(self, MaxStorageSize):
+        self._MaxStorageSize = MaxStorageSize
+
+    @property
+    def HasStock(self):
+        r"""Whether there is inventory
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._HasStock
+
+    @HasStock.setter
+    def HasStock(self, HasStock):
+        self._HasStock = HasStock
+
+    @property
+    def InstanceType(self):
+        r"""Instance type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def StorageType(self):
+        r"""Storage type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def MinReplicaNum(self):
+        r"""minimum replica count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._MinReplicaNum
+
+    @MinReplicaNum.setter
+    def MinReplicaNum(self, MinReplicaNum):
+        self._MinReplicaNum = MinReplicaNum
+
+    @property
+    def MaxReplicaNum(self):
+        r"""Maximum number of replicas
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._MaxReplicaNum
+
+    @MaxReplicaNum.setter
+    def MaxReplicaNum(self, MaxReplicaNum):
+        self._MaxReplicaNum = MaxReplicaNum
+
+    @property
+    def ZoneStockInfos(self):
+        r"""Availability zone inventory information list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ZoneStockInfo4Libra
+        """
+        return self._ZoneStockInfos
+
+    @ZoneStockInfos.setter
+    def ZoneStockInfos(self, ZoneStockInfos):
+        self._ZoneStockInfos = ZoneStockInfos
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._MinStorageSize = params.get("MinStorageSize")
+        self._MaxStorageSize = params.get("MaxStorageSize")
+        self._HasStock = params.get("HasStock")
+        self._InstanceType = params.get("InstanceType")
+        self._StorageType = params.get("StorageType")
+        self._MinReplicaNum = params.get("MinReplicaNum")
+        self._MaxReplicaNum = params.get("MaxReplicaNum")
+        if params.get("ZoneStockInfos") is not None:
+            self._ZoneStockInfos = []
+            for item in params.get("ZoneStockInfos"):
+                obj = ZoneStockInfo4Libra()
+                obj._deserialize(item)
+                self._ZoneStockInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ReloadBalanceProxyNodeRequest(AbstractModel):
@@ -35085,6 +47939,190 @@ class RenewClustersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RenewLibraDBClustersRequest(AbstractModel):
+    r"""RenewLibraDBClusters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeSpan: Time interval
+        :type TimeSpan: int
+        :param _TimeUnit: Time unit
+        :type TimeUnit: str
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _DealMode: Order mode
+        :type DealMode: int
+        """
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ClusterId = None
+        self._DealMode = None
+
+    @property
+    def TimeSpan(self):
+        r"""Time interval
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""Time unit
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DealMode(self):
+        r"""Order mode
+        :rtype: int
+        """
+        return self._DealMode
+
+    @DealMode.setter
+    def DealMode(self, DealMode):
+        self._DealMode = DealMode
+
+
+    def _deserialize(self, params):
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ClusterId = params.get("ClusterId")
+        self._DealMode = params.get("DealMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewLibraDBClustersResponse(AbstractModel):
+    r"""RenewLibraDBClusters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealIds: Prepaid Total Order Number
+        :type BigDealIds: list of str
+        :param _TranId: Freeze transaction
+        :type TranId: str
+        :param _DealNames: Order name
+        :type DealNames: list of str
+        :param _ResourceIds: Resource ID
+        :type ResourceIds: list of str
+        :param _ClusterIds: Cluster ID.
+        :type ClusterIds: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BigDealIds = None
+        self._TranId = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._ClusterIds = None
+        self._RequestId = None
+
+    @property
+    def BigDealIds(self):
+        r"""Prepaid Total Order Number
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def TranId(self):
+        r"""Freeze transaction
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def DealNames(self):
+        r"""Order name
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        r"""Resource ID
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def ClusterIds(self):
+        r"""Cluster ID.
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigDealIds = params.get("BigDealIds")
+        self._TranId = params.get("TranId")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._ClusterIds = params.get("ClusterIds")
+        self._RequestId = params.get("RequestId")
+
+
 class ReplayInstanceAuditLogRequest(AbstractModel):
     r"""ReplayInstanceAuditLog request structure.
 
@@ -35271,6 +48309,114 @@ class ReplayInstanceAuditLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReplicationObject(AbstractModel):
+    r"""Analysis engine sync object
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcInstanceType: Source instance type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SrcInstanceType: str
+        :param _SrcClusterId: Source Cluster Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SrcClusterId: str
+        :param _SrcInstanceId: Source instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SrcInstanceId: str
+        :param _ReplicationJobId: Copy task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReplicationJobId: str
+        :param _MigrateObjects: sync object details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MigrateObjects: :class:`tencentcloud.cynosdb.v20190107.models.MigrateOpt`
+        """
+        self._SrcInstanceType = None
+        self._SrcClusterId = None
+        self._SrcInstanceId = None
+        self._ReplicationJobId = None
+        self._MigrateObjects = None
+
+    @property
+    def SrcInstanceType(self):
+        r"""Source instance type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SrcInstanceType
+
+    @SrcInstanceType.setter
+    def SrcInstanceType(self, SrcInstanceType):
+        self._SrcInstanceType = SrcInstanceType
+
+    @property
+    def SrcClusterId(self):
+        r"""Source Cluster Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SrcClusterId
+
+    @SrcClusterId.setter
+    def SrcClusterId(self, SrcClusterId):
+        self._SrcClusterId = SrcClusterId
+
+    @property
+    def SrcInstanceId(self):
+        r"""Source instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def ReplicationJobId(self):
+        r"""Copy task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ReplicationJobId
+
+    @ReplicationJobId.setter
+    def ReplicationJobId(self, ReplicationJobId):
+        self._ReplicationJobId = ReplicationJobId
+
+    @property
+    def MigrateObjects(self):
+        r"""sync object details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.MigrateOpt`
+        """
+        return self._MigrateObjects
+
+    @MigrateObjects.setter
+    def MigrateObjects(self, MigrateObjects):
+        self._MigrateObjects = MigrateObjects
+
+
+    def _deserialize(self, params):
+        self._SrcInstanceType = params.get("SrcInstanceType")
+        self._SrcClusterId = params.get("SrcClusterId")
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._ReplicationJobId = params.get("ReplicationJobId")
+        if params.get("MigrateObjects") is not None:
+            self._MigrateObjects = MigrateOpt()
+            self._MigrateObjects._deserialize(params.get("MigrateObjects"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetAccountPasswordRequest(AbstractModel):
     r"""ResetAccountPassword request structure.
 
@@ -35354,6 +48500,130 @@ class ResetAccountPasswordRequest(AbstractModel):
 
 class ResetAccountPasswordResponse(AbstractModel):
     r"""ResetAccountPassword response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetLibraDBClusterAccountPasswordRequest(AbstractModel):
+    r"""ResetLibraDBClusterAccountPassword request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Analysis Cluster ID
+        :type ClusterId: str
+        :param _AccountPassword: Password.
+        :type AccountPassword: str
+        :param _AccountName: Account
+        :type AccountName: str
+        :param _EncryptMethod: Encryption method
+        :type EncryptMethod: str
+        :param _Host: host
+        :type Host: str
+        """
+        self._ClusterId = None
+        self._AccountPassword = None
+        self._AccountName = None
+        self._EncryptMethod = None
+        self._Host = None
+
+    @property
+    def ClusterId(self):
+        r"""Analysis Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AccountPassword(self):
+        r"""Password.
+        :rtype: str
+        """
+        return self._AccountPassword
+
+    @AccountPassword.setter
+    def AccountPassword(self, AccountPassword):
+        self._AccountPassword = AccountPassword
+
+    @property
+    def AccountName(self):
+        r"""Account
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def EncryptMethod(self):
+        r"""Encryption method
+        :rtype: str
+        """
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
+    @property
+    def Host(self):
+        r"""host
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AccountPassword = params.get("AccountPassword")
+        self._AccountName = params.get("AccountName")
+        self._EncryptMethod = params.get("EncryptMethod")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetLibraDBClusterAccountPasswordResponse(AbstractModel):
+    r"""ResetLibraDBClusterAccountPassword response structure.
 
     """
 
@@ -35527,6 +48797,87 @@ class RestartInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RestartLibraDBInstanceRequest(AbstractModel):
+    r"""RestartLibraDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Read-only analysis engine instance ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Read-only analysis engine instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartLibraDBInstanceResponse(AbstractModel):
+    r"""RestartLibraDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Asynchronous task ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Asynchronous task ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ResumeServerlessRequest(AbstractModel):
     r"""ResumeServerless request structure.
 
@@ -35606,6 +48957,57 @@ class ResumeServerlessResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RoAddr(AbstractModel):
+    r"""Read-only instance address
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IP: IP address
+        :type IP: str
+        :param _Port: Port.
+        :type Port: int
+        """
+        self._IP = None
+        self._Port = None
+
+    @property
+    def IP(self):
+        r"""IP address
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Port(self):
+        r"""Port.
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._IP = params.get("IP")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RollBackClusterRequest(AbstractModel):
     r"""RollBackCluster request structure.
 
@@ -35629,6 +49031,8 @@ class RollBackClusterRequest(AbstractModel):
         :type RollbackTables: list of RollbackTable
         :param _RollbackMode: Mode of rolling back by time point. full: normal; db: fast; table: ultra-fast (the default value is normal).
         :type RollbackMode: str
+        :param _VaultId: Safe id
+        :type VaultId: str
         """
         self._ClusterId = None
         self._RollbackStrategy = None
@@ -35638,6 +49042,7 @@ class RollBackClusterRequest(AbstractModel):
         self._RollbackDatabases = None
         self._RollbackTables = None
         self._RollbackMode = None
+        self._VaultId = None
 
     @property
     def ClusterId(self):
@@ -35727,6 +49132,17 @@ class RollBackClusterRequest(AbstractModel):
     def RollbackMode(self, RollbackMode):
         self._RollbackMode = RollbackMode
 
+    @property
+    def VaultId(self):
+        r"""Safe id
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -35747,6 +49163,7 @@ class RollBackClusterRequest(AbstractModel):
                 obj._deserialize(item)
                 self._RollbackTables.append(obj)
         self._RollbackMode = params.get("RollbackMode")
+        self._VaultId = params.get("VaultId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35801,35 +49218,35 @@ class RollBackClusterResponse(AbstractModel):
 
 
 class RollbackData(AbstractModel):
-    r"""Rollback Task Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Cpu: Instance CPU
+        :param _Cpu: 
         :type Cpu: int
-        :param _Memory: Instance Memory
+        :param _Memory: 
         :type Memory: int
-        :param _StorageLimit: Cluster storage limit
+        :param _StorageLimit: 
         :type StorageLimit: int
-        :param _OriginalClusterId: Original Cluster id
+        :param _OriginalClusterId: 
         :type OriginalClusterId: str
-        :param _OriginalClusterName: Original Cluster Name
+        :param _OriginalClusterName: 
         :type OriginalClusterName: str
-        :param _RollbackStrategy: Rollback Method
+        :param _RollbackStrategy: 
         :type RollbackStrategy: str
-        :param _SnapshotTime: Snapshot Time
+        :param _SnapshotTime: 
         :type SnapshotTime: str
-        :param _MinCpu: Minimum CPU when rolling back to a serverlessls cluster.
+        :param _MinCpu: Roll back to the Serverless cluster with minimum CPU
         :type MinCpu: int
-        :param _MaxCpu: Maximum CPU when rolling back to a serverlessls cluster.
+        :param _MaxCpu: Roll back to the Serverless cluster with maximum CPU
         :type MaxCpu: int
         :param _SnapShotId: Snapshot ID.
         :type SnapShotId: int
-        :param _RollbackDatabases: Rollback Database
+        :param _RollbackDatabases: 
         :type RollbackDatabases: list of RollbackDatabase
-        :param _RollbackTables: Rollback Data Table
+        :param _RollbackTables: 
         :type RollbackTables: list of RollbackTable
         :param _BackupFileName: Specifies the backup file name.
         :type BackupFileName: str
@@ -35853,7 +49270,7 @@ class RollbackData(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Instance CPU
+        r"""
         :rtype: int
         """
         return self._Cpu
@@ -35864,7 +49281,7 @@ class RollbackData(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Instance Memory
+        r"""
         :rtype: int
         """
         return self._Memory
@@ -35875,7 +49292,7 @@ class RollbackData(AbstractModel):
 
     @property
     def StorageLimit(self):
-        r"""Cluster storage limit
+        r"""
         :rtype: int
         """
         return self._StorageLimit
@@ -35886,7 +49303,7 @@ class RollbackData(AbstractModel):
 
     @property
     def OriginalClusterId(self):
-        r"""Original Cluster id
+        r"""
         :rtype: str
         """
         return self._OriginalClusterId
@@ -35897,7 +49314,7 @@ class RollbackData(AbstractModel):
 
     @property
     def OriginalClusterName(self):
-        r"""Original Cluster Name
+        r"""
         :rtype: str
         """
         return self._OriginalClusterName
@@ -35908,7 +49325,7 @@ class RollbackData(AbstractModel):
 
     @property
     def RollbackStrategy(self):
-        r"""Rollback Method
+        r"""
         :rtype: str
         """
         return self._RollbackStrategy
@@ -35919,7 +49336,7 @@ class RollbackData(AbstractModel):
 
     @property
     def SnapshotTime(self):
-        r"""Snapshot Time
+        r"""
         :rtype: str
         """
         return self._SnapshotTime
@@ -35930,7 +49347,7 @@ class RollbackData(AbstractModel):
 
     @property
     def MinCpu(self):
-        r"""Minimum CPU when rolling back to a serverlessls cluster.
+        r"""Roll back to the Serverless cluster with minimum CPU
         :rtype: int
         """
         return self._MinCpu
@@ -35941,7 +49358,7 @@ class RollbackData(AbstractModel):
 
     @property
     def MaxCpu(self):
-        r"""Maximum CPU when rolling back to a serverlessls cluster.
+        r"""Roll back to the Serverless cluster with maximum CPU
         :rtype: int
         """
         return self._MaxCpu
@@ -35963,7 +49380,7 @@ class RollbackData(AbstractModel):
 
     @property
     def RollbackDatabases(self):
-        r"""Rollback Database
+        r"""
         :rtype: list of RollbackDatabase
         """
         return self._RollbackDatabases
@@ -35974,7 +49391,7 @@ class RollbackData(AbstractModel):
 
     @property
     def RollbackTables(self):
-        r"""Rollback Data Table
+        r"""
         :rtype: list of RollbackTable
         """
         return self._RollbackTables
@@ -36044,15 +49461,15 @@ class RollbackData(AbstractModel):
 
 
 class RollbackDatabase(AbstractModel):
-    r"""Rollback Database Information
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _OldDatabase: Old Database Name
+        :param _OldDatabase: 
         :type OldDatabase: str
-        :param _NewDatabase: New Database Name
+        :param _NewDatabase: 
         :type NewDatabase: str
         """
         self._OldDatabase = None
@@ -36060,7 +49477,7 @@ class RollbackDatabase(AbstractModel):
 
     @property
     def OldDatabase(self):
-        r"""Old Database Name
+        r"""
         :rtype: str
         """
         return self._OldDatabase
@@ -36071,7 +49488,7 @@ class RollbackDatabase(AbstractModel):
 
     @property
     def NewDatabase(self):
-        r"""New Database Name
+        r"""
         :rtype: str
         """
         return self._NewDatabase
@@ -36095,7 +49512,7 @@ class RollbackDatabase(AbstractModel):
 
 
 class RollbackInstanceInfo(AbstractModel):
-    r"""Rollback Instance Information
+    r"""
 
     """
 
@@ -36296,7 +49713,7 @@ class RollbackInstanceInfo(AbstractModel):
 
 
 class RollbackProcessInfo(AbstractModel):
-    r"""Rollback Progress Details
+    r"""
 
     """
 
@@ -36306,9 +49723,9 @@ class RollbackProcessInfo(AbstractModel):
         :type IsVipSwitchable: bool
         :param _VipSwitchableTime: The exchangeable time of vip.
         :type VipSwitchableTime: str
-        :param _ExchangeInstanceInfoList: Exchange Instance List
+        :param _ExchangeInstanceInfoList: 
         :type ExchangeInstanceInfoList: list of ExchangeInstanceInfo
-        :param _ExchangeRoGroupInfoList: Swap RO Group List
+        :param _ExchangeRoGroupInfoList: 
         :type ExchangeRoGroupInfoList: list of ExchangeRoGroupInfo
         :param _CurrentStep: Current step.
         :type CurrentStep: str
@@ -36349,7 +49766,7 @@ class RollbackProcessInfo(AbstractModel):
 
     @property
     def ExchangeInstanceInfoList(self):
-        r"""Exchange Instance List
+        r"""
         :rtype: list of ExchangeInstanceInfo
         """
         return self._ExchangeInstanceInfoList
@@ -36360,7 +49777,7 @@ class RollbackProcessInfo(AbstractModel):
 
     @property
     def ExchangeRoGroupInfoList(self):
-        r"""Swap RO Group List
+        r"""
         :rtype: list of ExchangeRoGroupInfo
         """
         return self._ExchangeRoGroupInfoList
@@ -36432,7 +49849,7 @@ class RollbackProcessInfo(AbstractModel):
 
 
 class RollbackRoGroupInfo(AbstractModel):
-    r"""Rollback RO Group Information
+    r"""
 
     """
 
@@ -36528,15 +49945,15 @@ class RollbackRoGroupInfo(AbstractModel):
 
 
 class RollbackTable(AbstractModel):
-    r"""Rollback Database and Tables
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Database: Database Name
+        :param _Database: 
         :type Database: str
-        :param _Tables: Database Table
+        :param _Tables: 
         :type Tables: list of RollbackTableInfo
         """
         self._Database = None
@@ -36544,7 +49961,7 @@ class RollbackTable(AbstractModel):
 
     @property
     def Database(self):
-        r"""Database Name
+        r"""
         :rtype: str
         """
         return self._Database
@@ -36555,7 +49972,7 @@ class RollbackTable(AbstractModel):
 
     @property
     def Tables(self):
-        r"""Database Table
+        r"""
         :rtype: list of RollbackTableInfo
         """
         return self._Tables
@@ -36584,7 +50001,7 @@ class RollbackTable(AbstractModel):
 
 
 class RollbackTableInfo(AbstractModel):
-    r"""Rollback Table Information
+    r"""
 
     """
 
@@ -36692,62 +50109,64 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: AZ.
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _OriginalClusterId: During rollback, pass in the source cluster ID to find the source pool ID.
+        :param _OriginalClusterId: <p>During rollback, input the source cluster ID to search for the source poolId</p>
         :type OriginalClusterId: str
-        :param _UniqVpcId: VPC ID.
+        :param _UniqVpcId: <p>VPC network ID</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: Subnet ID.
+        :param _UniqSubnetId: <p>Subnet ID</p>
         :type UniqSubnetId: str
-        :param _ClusterName: The cluster name should contain fewer than 64 characters. Valid values for each character: uppercase/lowercase letters, digits, and special characters ('-', '_', and '.').
+        :param _ClusterName: <p>Cluster name, length less than 64 characters. Each character value ranges from uppercase/lowercase letters, digits, to special symbols ('-', '_', '.').</p>
         :type ClusterName: str
-        :param _RollbackId: Rolls back by snapshot, which indicates snapshotId; rolls back by time point, which indicates queryId. When the value of queryId is 0, it indicates that the validity of the time point needs to be verified.
+        :param _RollbackId: <p>Snapshot rollback means snapshotId; point-in-time rollback means queryId. A value of 0 indicates requirement to judge whether the time point is valid.</p>
         :type RollbackId: int
-        :param _ExpectTime: Rolls back by time point, which indicates the specified time; rolls back by snapshot, which indicates the snapshot time.
+        :param _ExpectTime: <p>Point-in-time rollback, specified time; snapshot rollback, snapshot time</p>
         :type ExpectTime: str
-        :param _AutoVoucher: Whether to select promo vouchers automatically. 1: yes; 0: no. The default value is 0.
+        :param _AutoVoucher: <p>Whether to automatically select a voucher. 1: Yes; 0: No. Default is 0.</p>
         :type AutoVoucher: int
-        :param _ResourceTags: Information about the tag array to be bound during cluster creation.
+        :param _ResourceTags: <p>tag Array information that should be bound for cluster creation</p>
         :type ResourceTags: list of Tag
-        :param _DbMode: Database type. When the value of DbType is MYSQL, the valid values are NORMAL and SERVERLESS (the default value is NORMAL).
+        :param _DbMode: <p>DB type<br>Selectable when DbType is MYSQL (default NORMAL):</p><li>NORMAL</li><li>SERVERLESS</li>
         :type DbMode: str
-        :param _MinCpu: This parameter is required when the value of DbMode is SEVERLESS. For the settings of the minimum CPU value, refer to the value returned by the DescribeServerlessInstanceSpecs API for the valid value.
+        :param _MinCpu: <p>Required when DbMode is SEVERLESS<br>Minimum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs</p>
         :type MinCpu: float
-        :param _MaxCpu: This parameter is required when the value of DbMode is SEVERLESS. For the settings of the maximum CPU value, refer to the value returned by the DescribeServerlessInstanceSpecs API for the valid value.
+        :param _MaxCpu: <p>Required when DbMode is SEVERLESS:<br>Maximum value of cpu. For the optional range, see the API response of DescribeServerlessInstanceSpecs.</p>
         :type MaxCpu: float
-        :param _AutoPause: Specifies whether the cluster is automatically paused when the value of DbMode is SEVERLESS. Valid values: yes; no. The default value is yes.
+        :param _AutoPause: <p>When DbMode is SEVERLESS, whether to automatically pause within specified clusters. Optional range</p><li>yes</li><li>no</li>Default value: yes
         :type AutoPause: str
-        :param _AutoPauseDelay: Specifies the delay for automatic cluster pause (in seconds) when the value of DbMode is SEVERLESS. Value range: [600, 691200]. The default value is 600.
+        :param _AutoPauseDelay: <p>When DbMode is SEVERLESS, specify the delay for Cluster Auto-Pause in seconds, optional range [600,691200]<br>Default value: 600</p>
         :type AutoPauseDelay: int
-        :param _SecurityGroupIds: Security group ID array.
+        :param _SecurityGroupIds: <p>Security group id array</p>
         :type SecurityGroupIds: list of str
-        :param _AlarmPolicyIds: Alarm policy ID array.
+        :param _AlarmPolicyIds: <p>Alarm policy Id array</p>
         :type AlarmPolicyIds: list of str
-        :param _ClusterParams: Parameter array. The character_set_server (utf8 | latin1 | gbk | utf8mb4) is currently supported. lower_case_table_names: 1 - case-insensitive; 0 - case-sensitive.
+        :param _ClusterParams: <p>Parameter array, temporarily supports character_set_server (utf8|latin1|gbk|utf8mb4), lower_case_table_names, 1-case-insensitive, 0-case-sensitive.</p>
         :type ClusterParams: list of ParamItem
-        :param _ParamTemplateId: Parameter template ID, which can be obtained through the DescribeParamTemplates API.
+        :param _ParamTemplateId: <p>Parameter template ID. The parameter template ID can be obtained through querying parameter template information DescribeParamTemplates.</p>
         :type ParamTemplateId: int
-        :param _InstanceInitInfos: Instance initialization configuration information, which is mainly used for selecting different instance specifications during cluster purchase.
+        :param _InstanceInitInfos: <p>Instance initialization configuration information is mainly used to select different specification instances during cluster purchase.</p>
         :type InstanceInitInfos: list of InstanceInitInfo
-        :param _DealMode: 0 - place an order and pay; 1 - place an order.
+        :param _DealMode: <p>0-Place order and pay 1-Placing order</p>
         :type DealMode: int
-        :param _PayMode: Compute node billing mode: 0 - pay-as-you-go; 1 - prepaid.
+        :param _PayMode: <p>Pay-per-compute-node model: 0-Pay-As-You-Go, 1-Prepayment</p>
         :type PayMode: int
-        :param _TimeSpan: Time.
+        :param _TimeSpan: <p>Time</p>
         :type TimeSpan: int
-        :param _TimeUnit: Unit.
+        :param _TimeUnit: <p>Unit</p>
         :type TimeUnit: str
-        :param _RollbackDatabases: Rollback database information.
+        :param _RollbackDatabases: <p>Rollback database info</p>
         :type RollbackDatabases: list of RollbackDatabase
-        :param _RollbackTables: Rollback table information.
+        :param _RollbackTables: <p>Roll back table information</p>
         :type RollbackTables: list of RollbackTable
-        :param _OriginalROInstanceList: Source read-only instance information.
+        :param _OriginalROInstanceList: <p>Original ro instance information</p>
         :type OriginalROInstanceList: list of str
-        :param _ProjectId: Project ID
+        :param _ProjectId: <p>Project ID.</p>
         :type ProjectId: int
-        :param _AutoArchive: Whether to enable archiving. Valid values: yes; no. The default value is yes.
+        :param _AutoArchive: <p>Whether to enable archive. Optional range <li>yes</li><li>no</li> Default value: yes</p>
         :type AutoArchive: str
+        :param _FromSaveBackup: <p>Whether to restore from the saved backup</p>
+        :type FromSaveBackup: bool
         """
         self._Zone = None
         self._OriginalClusterId = None
@@ -36777,10 +50196,11 @@ class RollbackToNewClusterRequest(AbstractModel):
         self._OriginalROInstanceList = None
         self._ProjectId = None
         self._AutoArchive = None
+        self._FromSaveBackup = None
 
     @property
     def Zone(self):
-        r"""AZ.
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -36791,7 +50211,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def OriginalClusterId(self):
-        r"""During rollback, pass in the source cluster ID to find the source pool ID.
+        r"""<p>During rollback, input the source cluster ID to search for the source poolId</p>
         :rtype: str
         """
         return self._OriginalClusterId
@@ -36802,7 +50222,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""VPC ID.
+        r"""<p>VPC network ID</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -36813,7 +50233,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""Subnet ID.
+        r"""<p>Subnet ID</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -36824,7 +50244,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""The cluster name should contain fewer than 64 characters. Valid values for each character: uppercase/lowercase letters, digits, and special characters ('-', '_', and '.').
+        r"""<p>Cluster name, length less than 64 characters. Each character value ranges from uppercase/lowercase letters, digits, to special symbols ('-', '_', '.').</p>
         :rtype: str
         """
         return self._ClusterName
@@ -36835,7 +50255,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def RollbackId(self):
-        r"""Rolls back by snapshot, which indicates snapshotId; rolls back by time point, which indicates queryId. When the value of queryId is 0, it indicates that the validity of the time point needs to be verified.
+        r"""<p>Snapshot rollback means snapshotId; point-in-time rollback means queryId. A value of 0 indicates requirement to judge whether the time point is valid.</p>
         :rtype: int
         """
         return self._RollbackId
@@ -36846,7 +50266,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def ExpectTime(self):
-        r"""Rolls back by time point, which indicates the specified time; rolls back by snapshot, which indicates the snapshot time.
+        r"""<p>Point-in-time rollback, specified time; snapshot rollback, snapshot time</p>
         :rtype: str
         """
         return self._ExpectTime
@@ -36857,7 +50277,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""Whether to select promo vouchers automatically. 1: yes; 0: no. The default value is 0.
+        r"""<p>Whether to automatically select a voucher. 1: Yes; 0: No. Default is 0.</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -36868,7 +50288,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""Information about the tag array to be bound during cluster creation.
+        r"""<p>tag Array information that should be bound for cluster creation</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -36879,7 +50299,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def DbMode(self):
-        r"""Database type. When the value of DbType is MYSQL, the valid values are NORMAL and SERVERLESS (the default value is NORMAL).
+        r"""<p>DB type<br>Selectable when DbType is MYSQL (default NORMAL):</p><li>NORMAL</li><li>SERVERLESS</li>
         :rtype: str
         """
         return self._DbMode
@@ -36890,7 +50310,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def MinCpu(self):
-        r"""This parameter is required when the value of DbMode is SEVERLESS. For the settings of the minimum CPU value, refer to the value returned by the DescribeServerlessInstanceSpecs API for the valid value.
+        r"""<p>Required when DbMode is SEVERLESS<br>Minimum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs</p>
         :rtype: float
         """
         return self._MinCpu
@@ -36901,7 +50321,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def MaxCpu(self):
-        r"""This parameter is required when the value of DbMode is SEVERLESS. For the settings of the maximum CPU value, refer to the value returned by the DescribeServerlessInstanceSpecs API for the valid value.
+        r"""<p>Required when DbMode is SEVERLESS:<br>Maximum value of cpu. For the optional range, see the API response of DescribeServerlessInstanceSpecs.</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -36912,7 +50332,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def AutoPause(self):
-        r"""Specifies whether the cluster is automatically paused when the value of DbMode is SEVERLESS. Valid values: yes; no. The default value is yes.
+        r"""<p>When DbMode is SEVERLESS, whether to automatically pause within specified clusters. Optional range</p><li>yes</li><li>no</li>Default value: yes
         :rtype: str
         """
         return self._AutoPause
@@ -36923,7 +50343,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def AutoPauseDelay(self):
-        r"""Specifies the delay for automatic cluster pause (in seconds) when the value of DbMode is SEVERLESS. Value range: [600, 691200]. The default value is 600.
+        r"""<p>When DbMode is SEVERLESS, specify the delay for Cluster Auto-Pause in seconds, optional range [600,691200]<br>Default value: 600</p>
         :rtype: int
         """
         return self._AutoPauseDelay
@@ -36934,7 +50354,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""Security group ID array.
+        r"""<p>Security group id array</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -36945,7 +50365,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def AlarmPolicyIds(self):
-        r"""Alarm policy ID array.
+        r"""<p>Alarm policy Id array</p>
         :rtype: list of str
         """
         return self._AlarmPolicyIds
@@ -36956,7 +50376,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def ClusterParams(self):
-        r"""Parameter array. The character_set_server (utf8 | latin1 | gbk | utf8mb4) is currently supported. lower_case_table_names: 1 - case-insensitive; 0 - case-sensitive.
+        r"""<p>Parameter array, temporarily supports character_set_server (utf8|latin1|gbk|utf8mb4), lower_case_table_names, 1-case-insensitive, 0-case-sensitive.</p>
         :rtype: list of ParamItem
         """
         return self._ClusterParams
@@ -36967,7 +50387,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""Parameter template ID, which can be obtained through the DescribeParamTemplates API.
+        r"""<p>Parameter template ID. The parameter template ID can be obtained through querying parameter template information DescribeParamTemplates.</p>
         :rtype: int
         """
         return self._ParamTemplateId
@@ -36978,7 +50398,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def InstanceInitInfos(self):
-        r"""Instance initialization configuration information, which is mainly used for selecting different instance specifications during cluster purchase.
+        r"""<p>Instance initialization configuration information is mainly used to select different specification instances during cluster purchase.</p>
         :rtype: list of InstanceInitInfo
         """
         return self._InstanceInitInfos
@@ -36989,7 +50409,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def DealMode(self):
-        r"""0 - place an order and pay; 1 - place an order.
+        r"""<p>0-Place order and pay 1-Placing order</p>
         :rtype: int
         """
         return self._DealMode
@@ -37000,7 +50420,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""Compute node billing mode: 0 - pay-as-you-go; 1 - prepaid.
+        r"""<p>Pay-per-compute-node model: 0-Pay-As-You-Go, 1-Prepayment</p>
         :rtype: int
         """
         return self._PayMode
@@ -37011,7 +50431,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""Time.
+        r"""<p>Time</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -37022,7 +50442,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""Unit.
+        r"""<p>Unit</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -37033,7 +50453,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def RollbackDatabases(self):
-        r"""Rollback database information.
+        r"""<p>Rollback database info</p>
         :rtype: list of RollbackDatabase
         """
         return self._RollbackDatabases
@@ -37044,7 +50464,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def RollbackTables(self):
-        r"""Rollback table information.
+        r"""<p>Roll back table information</p>
         :rtype: list of RollbackTable
         """
         return self._RollbackTables
@@ -37055,7 +50475,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def OriginalROInstanceList(self):
-        r"""Source read-only instance information.
+        r"""<p>Original ro instance information</p>
         :rtype: list of str
         """
         return self._OriginalROInstanceList
@@ -37066,7 +50486,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""Project ID
+        r"""<p>Project ID.</p>
         :rtype: int
         """
         return self._ProjectId
@@ -37077,7 +50497,7 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     @property
     def AutoArchive(self):
-        r"""Whether to enable archiving. Valid values: yes; no. The default value is yes.
+        r"""<p>Whether to enable archive. Optional range <li>yes</li><li>no</li> Default value: yes</p>
         :rtype: str
         """
         return self._AutoArchive
@@ -37085,6 +50505,17 @@ class RollbackToNewClusterRequest(AbstractModel):
     @AutoArchive.setter
     def AutoArchive(self, AutoArchive):
         self._AutoArchive = AutoArchive
+
+    @property
+    def FromSaveBackup(self):
+        r"""<p>Whether to restore from the saved backup</p>
+        :rtype: bool
+        """
+        return self._FromSaveBackup
+
+    @FromSaveBackup.setter
+    def FromSaveBackup(self, FromSaveBackup):
+        self._FromSaveBackup = FromSaveBackup
 
 
     def _deserialize(self, params):
@@ -37141,6 +50572,7 @@ class RollbackToNewClusterRequest(AbstractModel):
         self._OriginalROInstanceList = params.get("OriginalROInstanceList")
         self._ProjectId = params.get("ProjectId")
         self._AutoArchive = params.get("AutoArchive")
+        self._FromSaveBackup = params.get("FromSaveBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37158,15 +50590,16 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranId: Frozen transaction ID.
+        :param _TranId: <p>Frozen transaction ID</p>
         :type TranId: str
-        :param _DealNames: Order ID
+        :param _DealNames: <p>Order ID</p>
         :type DealNames: list of str
-        :param _ResourceIds: Resource ID list (this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to obtain resource ids.).
+        :param _ResourceIds: <p>Resource ID list (This field is no longer maintained. Please use the dealNames field to query the API DescribeResourcesByDealName to obtain resource IDs.)</p>
         :type ResourceIds: list of str
-        :param _ClusterIds: Cluster ID list. this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to get the cluster ID.
+        :param _ClusterIds: <p>Cluster ID list (This field is no longer maintained. Please use the dealNames field to query the API DescribeResourcesByDealName to obtain cluster IDs.)</p>
         :type ClusterIds: list of str
-        :param _BigDealIds: Large order number.
+        :param _BigDealIds: <p>Large order number</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BigDealIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -37180,7 +50613,7 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def TranId(self):
-        r"""Frozen transaction ID.
+        r"""<p>Frozen transaction ID</p>
         :rtype: str
         """
         return self._TranId
@@ -37191,7 +50624,7 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""Order ID
+        r"""<p>Order ID</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -37202,7 +50635,7 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""Resource ID list (this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to obtain resource ids.).
+        r"""<p>Resource ID list (This field is no longer maintained. Please use the dealNames field to query the API DescribeResourcesByDealName to obtain resource IDs.)</p>
         :rtype: list of str
         """
         return self._ResourceIds
@@ -37213,7 +50646,7 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def ClusterIds(self):
-        r"""Cluster ID list. this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to get the cluster ID.
+        r"""<p>Cluster ID list (This field is no longer maintained. Please use the dealNames field to query the API DescribeResourcesByDealName to obtain cluster IDs.)</p>
         :rtype: list of str
         """
         return self._ClusterIds
@@ -37224,7 +50657,8 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def BigDealIds(self):
-        r"""Large order number.
+        r"""<p>Large order number</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._BigDealIds
@@ -37321,7 +50755,7 @@ class RuleFilters(AbstractModel):
 
 
 class RuleTemplateInfo(AbstractModel):
-    r"""Rule Template Content
+    r"""
 
     """
 
@@ -37838,6 +51272,182 @@ class SaleZone(AbstractModel):
         
 
 
+class SaveBackupClusterInfo(AbstractModel):
+    r"""Legacy backup list.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupId: Backup id of the deceased.
+        :type BackupId: int
+        :param _ClusterId: Cluster ID.
+        :type ClusterId: str
+        :param _ClusterName: Cluster name.
+        :type ClusterName: str
+        :param _Region: Region.
+        :type Region: str
+        :param _Zone: Availability zone
+        :type Zone: str
+        :param _BackupTime: Backup time
+        :type BackupTime: str
+        :param _DbVersion: Database version.
+        :type DbVersion: str
+        :param _DbMode: Db type (NORMAL, SERVERLESS).
+        :type DbMode: str
+        :param _ClusterStatus: Cluster status.
+        :type ClusterStatus: str
+        :param _Tasks: Task list.
+        :type Tasks: list of ObjectTask
+        """
+        self._BackupId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._Region = None
+        self._Zone = None
+        self._BackupTime = None
+        self._DbVersion = None
+        self._DbMode = None
+        self._ClusterStatus = None
+        self._Tasks = None
+
+    @property
+    def BackupId(self):
+        r"""Backup id of the deceased.
+        :rtype: int
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""Cluster name.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Region(self):
+        r"""Region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""Availability zone
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def BackupTime(self):
+        r"""Backup time
+        :rtype: str
+        """
+        return self._BackupTime
+
+    @BackupTime.setter
+    def BackupTime(self, BackupTime):
+        self._BackupTime = BackupTime
+
+    @property
+    def DbVersion(self):
+        r"""Database version.
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def DbMode(self):
+        r"""Db type (NORMAL, SERVERLESS).
+        :rtype: str
+        """
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
+    @property
+    def ClusterStatus(self):
+        r"""Cluster status.
+        :rtype: str
+        """
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def Tasks(self):
+        r"""Task list.
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._BackupTime = params.get("BackupTime")
+        self._DbVersion = params.get("DbVersion")
+        self._DbMode = params.get("DbMode")
+        self._ClusterStatus = params.get("ClusterStatus")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchClusterDatabasesRequest(AbstractModel):
     r"""SearchClusterDatabases request structure.
 
@@ -38231,19 +51841,19 @@ class ServerlessSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MinCpu: Specifies the minimum value of the cpu.
+        :param _MinCpu: <p>cpu minimum value</p>
         :type MinCpu: float
-        :param _MaxCpu: Maximum value of cpu.
+        :param _MaxCpu: <p>Maximum value of cpu</p>
         :type MaxCpu: float
-        :param _MaxStorageSize: Maximum storage space.
+        :param _MaxStorageSize: <p>Maximum storage space</p>
         :type MaxStorageSize: int
-        :param _IsDefault: Specifies whether it is the default specification.
+        :param _IsDefault: <p>Is the default specification</p>
         :type IsDefault: int
-        :param _HasStock: Whether there is inventory.
+        :param _HasStock: <p>Whether there is inventory</p>
         :type HasStock: bool
-        :param _StockCount: Inventory quantity.
+        :param _StockCount: <p>Inventory quantity</p>
         :type StockCount: int
-        :param _ZoneStockInfos: Availability zone inventory information.
+        :param _ZoneStockInfos: <p>Availability zone inventory information</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ZoneStockInfos: list of ServerlessZoneStockInfo
         """
@@ -38257,7 +51867,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MinCpu(self):
-        r"""Specifies the minimum value of the cpu.
+        r"""<p>cpu minimum value</p>
         :rtype: float
         """
         return self._MinCpu
@@ -38268,7 +51878,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxCpu(self):
-        r"""Maximum value of cpu.
+        r"""<p>Maximum value of cpu</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -38279,7 +51889,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxStorageSize(self):
-        r"""Maximum storage space.
+        r"""<p>Maximum storage space</p>
         :rtype: int
         """
         return self._MaxStorageSize
@@ -38290,7 +51900,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDefault(self):
-        r"""Specifies whether it is the default specification.
+        r"""<p>Is the default specification</p>
         :rtype: int
         """
         return self._IsDefault
@@ -38301,7 +51911,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HasStock(self):
-        r"""Whether there is inventory.
+        r"""<p>Whether there is inventory</p>
         :rtype: bool
         """
         return self._HasStock
@@ -38312,7 +51922,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StockCount(self):
-        r"""Inventory quantity.
+        r"""<p>Inventory quantity</p>
         :rtype: int
         """
         return self._StockCount
@@ -38323,7 +51933,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneStockInfos(self):
-        r"""Availability zone inventory information.
+        r"""<p>Availability zone inventory information</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ServerlessZoneStockInfo
         """
@@ -38443,6 +52053,100 @@ class ServerlessZoneStockInfo(AbstractModel):
         
 
 
+class SetLibraDBClusterRenewFlagRequest(AbstractModel):
+    r"""SetLibraDBClusterRenewFlag request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: Analysis Cluster ID List
+        :type ResourceIds: list of str
+        :param _AutoRenewFlag: Auto-renewal flag 0: Normal renewal 1: Automatic renewal 2: Non-renewal upon expiration
+        :type AutoRenewFlag: int
+        """
+        self._ResourceIds = None
+        self._AutoRenewFlag = None
+
+    @property
+    def ResourceIds(self):
+        r"""Analysis Cluster ID List
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def AutoRenewFlag(self):
+        r"""Auto-renewal flag 0: Normal renewal 1: Automatic renewal 2: Non-renewal upon expiration
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetLibraDBClusterRenewFlagResponse(AbstractModel):
+    r"""SetLibraDBClusterRenewFlag response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: Quantity.
+        :type Count: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""Quantity.
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
+
+
 class SetRenewFlagRequest(AbstractModel):
     r"""SetRenewFlag request structure.
 
@@ -38538,7 +52242,7 @@ class SetRenewFlagResponse(AbstractModel):
 
 
 class SlaveZoneAttrItem(AbstractModel):
-    r"""AZ Attribute Item
+    r"""
 
     """
 
@@ -38604,7 +52308,7 @@ class SlaveZoneAttrItem(AbstractModel):
 
 
 class SlaveZoneStockInfo(AbstractModel):
-    r"""Secondary AZ Inventory Information
+    r"""
 
     """
 
@@ -38974,6 +52678,437 @@ Specifies that the database kernel version is larger than 3.1.12.
         
 
 
+class SnapshotBackupConfig(AbstractModel):
+    r"""Snapshot backup settings.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupCustomAutoTime: System automation time.
+        :type BackupCustomAutoTime: bool
+        :param _BackupTimeBeg: Indicates the full backup start time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :type BackupTimeBeg: int
+        :param _BackupTimeEnd: Indicates the full backup end time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :type BackupTimeEnd: int
+        :param _BackupWeekDays: This parameter currently does not support modification and no need to specify. backup frequency is an array of length 7, corresponding to the backup method from sunday to saturday, full for full backup and increment for incremental backup.
+        :type BackupWeekDays: list of str
+        :param _BackupIntervalTime: Interval.
+        :type BackupIntervalTime: int
+        :param _ReserveDuration: Indicates the backup retention period in seconds. data will be cleaned up longer than this time. 7 days means 3600247=604800. the maximum is 158112000.
+        :type ReserveDuration: int
+        :param _BackupTriggerStrategy: Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high-frequency backup
+        :type BackupTriggerStrategy: str
+        :param _AutoCopyVaults: Safe info
+        :type AutoCopyVaults: list of CreateBackupVaultItem
+        """
+        self._BackupCustomAutoTime = None
+        self._BackupTimeBeg = None
+        self._BackupTimeEnd = None
+        self._BackupWeekDays = None
+        self._BackupIntervalTime = None
+        self._ReserveDuration = None
+        self._BackupTriggerStrategy = None
+        self._AutoCopyVaults = None
+
+    @property
+    def BackupCustomAutoTime(self):
+        r"""System automation time.
+        :rtype: bool
+        """
+        return self._BackupCustomAutoTime
+
+    @BackupCustomAutoTime.setter
+    def BackupCustomAutoTime(self, BackupCustomAutoTime):
+        self._BackupCustomAutoTime = BackupCustomAutoTime
+
+    @property
+    def BackupTimeBeg(self):
+        r"""Indicates the full backup start time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :rtype: int
+        """
+        return self._BackupTimeBeg
+
+    @BackupTimeBeg.setter
+    def BackupTimeBeg(self, BackupTimeBeg):
+        self._BackupTimeBeg = BackupTimeBeg
+
+    @property
+    def BackupTimeEnd(self):
+        r"""Indicates the full backup end time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :rtype: int
+        """
+        return self._BackupTimeEnd
+
+    @BackupTimeEnd.setter
+    def BackupTimeEnd(self, BackupTimeEnd):
+        self._BackupTimeEnd = BackupTimeEnd
+
+    @property
+    def BackupWeekDays(self):
+        r"""This parameter currently does not support modification and no need to specify. backup frequency is an array of length 7, corresponding to the backup method from sunday to saturday, full for full backup and increment for incremental backup.
+        :rtype: list of str
+        """
+        return self._BackupWeekDays
+
+    @BackupWeekDays.setter
+    def BackupWeekDays(self, BackupWeekDays):
+        self._BackupWeekDays = BackupWeekDays
+
+    @property
+    def BackupIntervalTime(self):
+        r"""Interval.
+        :rtype: int
+        """
+        return self._BackupIntervalTime
+
+    @BackupIntervalTime.setter
+    def BackupIntervalTime(self, BackupIntervalTime):
+        self._BackupIntervalTime = BackupIntervalTime
+
+    @property
+    def ReserveDuration(self):
+        r"""Indicates the backup retention period in seconds. data will be cleaned up longer than this time. 7 days means 3600247=604800. the maximum is 158112000.
+        :rtype: int
+        """
+        return self._ReserveDuration
+
+    @ReserveDuration.setter
+    def ReserveDuration(self, ReserveDuration):
+        self._ReserveDuration = ReserveDuration
+
+    @property
+    def BackupTriggerStrategy(self):
+        r"""Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high-frequency backup
+        :rtype: str
+        """
+        return self._BackupTriggerStrategy
+
+    @BackupTriggerStrategy.setter
+    def BackupTriggerStrategy(self, BackupTriggerStrategy):
+        self._BackupTriggerStrategy = BackupTriggerStrategy
+
+    @property
+    def AutoCopyVaults(self):
+        r"""Safe info
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
+
+
+    def _deserialize(self, params):
+        self._BackupCustomAutoTime = params.get("BackupCustomAutoTime")
+        self._BackupTimeBeg = params.get("BackupTimeBeg")
+        self._BackupTimeEnd = params.get("BackupTimeEnd")
+        self._BackupWeekDays = params.get("BackupWeekDays")
+        self._BackupIntervalTime = params.get("BackupIntervalTime")
+        self._ReserveDuration = params.get("ReserveDuration")
+        self._BackupTriggerStrategy = params.get("BackupTriggerStrategy")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparseBackupConfig(AbstractModel):
+    r"""Sparse backup configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SparseBackupSwitch: Sparse backup switch: ON/OFF
+        :type SparseBackupSwitch: str
+        :param _SparseBackupConfigInfos: Sparse backup policy list (1-3)
+        :type SparseBackupConfigInfos: list of SparseBackupConfigInfo
+        """
+        self._SparseBackupSwitch = None
+        self._SparseBackupConfigInfos = None
+
+    @property
+    def SparseBackupSwitch(self):
+        r"""Sparse backup switch: ON/OFF
+        :rtype: str
+        """
+        return self._SparseBackupSwitch
+
+    @SparseBackupSwitch.setter
+    def SparseBackupSwitch(self, SparseBackupSwitch):
+        self._SparseBackupSwitch = SparseBackupSwitch
+
+    @property
+    def SparseBackupConfigInfos(self):
+        r"""Sparse backup policy list (1-3)
+        :rtype: list of SparseBackupConfigInfo
+        """
+        return self._SparseBackupConfigInfos
+
+    @SparseBackupConfigInfos.setter
+    def SparseBackupConfigInfos(self, SparseBackupConfigInfos):
+        self._SparseBackupConfigInfos = SparseBackupConfigInfos
+
+
+    def _deserialize(self, params):
+        self._SparseBackupSwitch = params.get("SparseBackupSwitch")
+        if params.get("SparseBackupConfigInfos") is not None:
+            self._SparseBackupConfigInfos = []
+            for item in params.get("SparseBackupConfigInfos"):
+                obj = SparseBackupConfigInfo()
+                obj._deserialize(item)
+                self._SparseBackupConfigInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparseBackupConfigInfo(AbstractModel):
+    r"""Sparse backup policy configuration info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpType: <p>Operation type: add, modify, remove</p>
+        :type OpType: str
+        :param _ConfigId: <p>Configuration ID</p>
+        :type ConfigId: str
+        :param _SparsePeriodConfig: <p>Policy type: weekly/monthly/yearly</p>
+        :type SparsePeriodConfig: str
+        :param _SparsePeriodTime: <p>Cycle time configuration</p>
+        :type SparsePeriodTime: :class:`tencentcloud.cynosdb.v20190107.models.SparsePeriodTime`
+        :param _SparseBackupSaveDays: <p>Retention days (7-7320 days, longest 20 years)</p>
+        :type SparseBackupSaveDays: int
+        """
+        self._OpType = None
+        self._ConfigId = None
+        self._SparsePeriodConfig = None
+        self._SparsePeriodTime = None
+        self._SparseBackupSaveDays = None
+
+    @property
+    def OpType(self):
+        r"""<p>Operation type: add, modify, remove</p>
+        :rtype: str
+        """
+        return self._OpType
+
+    @OpType.setter
+    def OpType(self, OpType):
+        self._OpType = OpType
+
+    @property
+    def ConfigId(self):
+        r"""<p>Configuration ID</p>
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def SparsePeriodConfig(self):
+        r"""<p>Policy type: weekly/monthly/yearly</p>
+        :rtype: str
+        """
+        return self._SparsePeriodConfig
+
+    @SparsePeriodConfig.setter
+    def SparsePeriodConfig(self, SparsePeriodConfig):
+        self._SparsePeriodConfig = SparsePeriodConfig
+
+    @property
+    def SparsePeriodTime(self):
+        r"""<p>Cycle time configuration</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SparsePeriodTime`
+        """
+        return self._SparsePeriodTime
+
+    @SparsePeriodTime.setter
+    def SparsePeriodTime(self, SparsePeriodTime):
+        self._SparsePeriodTime = SparsePeriodTime
+
+    @property
+    def SparseBackupSaveDays(self):
+        r"""<p>Retention days (7-7320 days, longest 20 years)</p>
+        :rtype: int
+        """
+        return self._SparseBackupSaveDays
+
+    @SparseBackupSaveDays.setter
+    def SparseBackupSaveDays(self, SparseBackupSaveDays):
+        self._SparseBackupSaveDays = SparseBackupSaveDays
+
+
+    def _deserialize(self, params):
+        self._OpType = params.get("OpType")
+        self._ConfigId = params.get("ConfigId")
+        self._SparsePeriodConfig = params.get("SparsePeriodConfig")
+        if params.get("SparsePeriodTime") is not None:
+            self._SparsePeriodTime = SparsePeriodTime()
+            self._SparsePeriodTime._deserialize(params.get("SparsePeriodTime"))
+        self._SparseBackupSaveDays = params.get("SparseBackupSaveDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparseBackupConfigRsp(AbstractModel):
+    r"""Sparse backup configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SparseBackupSwitch: <p>Sparse backup switch: ON/OFF</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SparseBackupSwitch: str
+        :param _SparseBackupConfigInfos: <p>Sparse backup policy list (1-3)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SparseBackupConfigInfos: list of SparseBackupConfigInfo
+        """
+        self._SparseBackupSwitch = None
+        self._SparseBackupConfigInfos = None
+
+    @property
+    def SparseBackupSwitch(self):
+        r"""<p>Sparse backup switch: ON/OFF</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SparseBackupSwitch
+
+    @SparseBackupSwitch.setter
+    def SparseBackupSwitch(self, SparseBackupSwitch):
+        self._SparseBackupSwitch = SparseBackupSwitch
+
+    @property
+    def SparseBackupConfigInfos(self):
+        r"""<p>Sparse backup policy list (1-3)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SparseBackupConfigInfo
+        """
+        return self._SparseBackupConfigInfos
+
+    @SparseBackupConfigInfos.setter
+    def SparseBackupConfigInfos(self, SparseBackupConfigInfos):
+        self._SparseBackupConfigInfos = SparseBackupConfigInfos
+
+
+    def _deserialize(self, params):
+        self._SparseBackupSwitch = params.get("SparseBackupSwitch")
+        if params.get("SparseBackupConfigInfos") is not None:
+            self._SparseBackupConfigInfos = []
+            for item in params.get("SparseBackupConfigInfos"):
+                obj = SparseBackupConfigInfo()
+                obj._deserialize(item)
+                self._SparseBackupConfigInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparsePeriodTime(AbstractModel):
+    r"""Sparse backup cycle info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WeekDays: Weekly: List of days of the week, 1-7, 1=Monday, 7=Sunday (Only used for weekly cycle, up to 7).
+        :type WeekDays: list of int
+        :param _Days: By month: Date list, 1-31 (for monthly cycle only, up to 7)
+        :type Days: list of int
+        :param _MonthDays: Yearly: Month-day composite column (Only for yearly cycle, up to 7)
+        :type MonthDays: list of MonthDay
+        """
+        self._WeekDays = None
+        self._Days = None
+        self._MonthDays = None
+
+    @property
+    def WeekDays(self):
+        r"""Weekly: List of days of the week, 1-7, 1=Monday, 7=Sunday (Only used for weekly cycle, up to 7).
+        :rtype: list of int
+        """
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def Days(self):
+        r"""By month: Date list, 1-31 (for monthly cycle only, up to 7)
+        :rtype: list of int
+        """
+        return self._Days
+
+    @Days.setter
+    def Days(self, Days):
+        self._Days = Days
+
+    @property
+    def MonthDays(self):
+        r"""Yearly: Month-day composite column (Only for yearly cycle, up to 7)
+        :rtype: list of MonthDay
+        """
+        return self._MonthDays
+
+    @MonthDays.setter
+    def MonthDays(self, MonthDays):
+        self._MonthDays = MonthDays
+
+
+    def _deserialize(self, params):
+        self._WeekDays = params.get("WeekDays")
+        self._Days = params.get("Days")
+        if params.get("MonthDays") is not None:
+            self._MonthDays = []
+            for item in params.get("MonthDays"):
+                obj = MonthDay()
+                obj._deserialize(item)
+                self._MonthDays.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartCLSDeliveryRequest(AbstractModel):
     r"""StartCLSDelivery request structure.
 
@@ -39223,7 +53358,7 @@ class StopCLSDeliveryResponse(AbstractModel):
 
 
 class SwitchClusterLogBin(AbstractModel):
-    r"""Toggle Cluster log bin Switch
+    r"""
 
     """
 
@@ -39643,6 +53778,192 @@ class SwitchProxyVpcResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class TableMappingObject(AbstractModel):
+    r"""Mapping relationship
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcInstanceId: Source instance Id
+        :type SrcInstanceId: str
+        :param _DatabaseName: Database name.
+        :type DatabaseName: str
+        :param _TableName: Table name
+        :type TableName: str
+        :param _MapDatabaseName: Map database name
+        :type MapDatabaseName: str
+        :param _MapTableName: Mapping table name
+        :type MapTableName: str
+        :param _Status: Synchronization status
+        :type Status: str
+        :param _Process: Sync progress
+        :type Process: float
+        :param _Lag: Delay
+        :type Lag: int
+        :param _Message: Message
+        :type Message: str
+        :param _IsPrimary: Whether it is the main table
+        :type IsPrimary: bool
+        :param _VirtualColValue: Virtual column padding value
+        :type VirtualColValue: str
+        """
+        self._SrcInstanceId = None
+        self._DatabaseName = None
+        self._TableName = None
+        self._MapDatabaseName = None
+        self._MapTableName = None
+        self._Status = None
+        self._Process = None
+        self._Lag = None
+        self._Message = None
+        self._IsPrimary = None
+        self._VirtualColValue = None
+
+    @property
+    def SrcInstanceId(self):
+        r"""Source instance Id
+        :rtype: str
+        """
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def DatabaseName(self):
+        r"""Database name.
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        r"""Table name
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def MapDatabaseName(self):
+        r"""Map database name
+        :rtype: str
+        """
+        return self._MapDatabaseName
+
+    @MapDatabaseName.setter
+    def MapDatabaseName(self, MapDatabaseName):
+        self._MapDatabaseName = MapDatabaseName
+
+    @property
+    def MapTableName(self):
+        r"""Mapping table name
+        :rtype: str
+        """
+        return self._MapTableName
+
+    @MapTableName.setter
+    def MapTableName(self, MapTableName):
+        self._MapTableName = MapTableName
+
+    @property
+    def Status(self):
+        r"""Synchronization status
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Process(self):
+        r"""Sync progress
+        :rtype: float
+        """
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def Lag(self):
+        r"""Delay
+        :rtype: int
+        """
+        return self._Lag
+
+    @Lag.setter
+    def Lag(self, Lag):
+        self._Lag = Lag
+
+    @property
+    def Message(self):
+        r"""Message
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def IsPrimary(self):
+        r"""Whether it is the main table
+        :rtype: bool
+        """
+        return self._IsPrimary
+
+    @IsPrimary.setter
+    def IsPrimary(self, IsPrimary):
+        self._IsPrimary = IsPrimary
+
+    @property
+    def VirtualColValue(self):
+        r"""Virtual column padding value
+        :rtype: str
+        """
+        return self._VirtualColValue
+
+    @VirtualColValue.setter
+    def VirtualColValue(self, VirtualColValue):
+        self._VirtualColValue = VirtualColValue
+
+
+    def _deserialize(self, params):
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
+        self._MapDatabaseName = params.get("MapDatabaseName")
+        self._MapTableName = params.get("MapTableName")
+        self._Status = params.get("Status")
+        self._Process = params.get("Process")
+        self._Lag = params.get("Lag")
+        self._Message = params.get("Message")
+        self._IsPrimary = params.get("IsPrimary")
+        self._VirtualColValue = params.get("VirtualColValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TablePrivileges(AbstractModel):
@@ -40206,6 +54527,165 @@ class TradePrice(AbstractModel):
         
 
 
+class TransferClusterZoneRequest(AbstractModel):
+    r"""TransferClusterZone request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Source Cluster Id
+        :type ClusterId: str
+        :param _DstZone: Target availability zone
+        :type DstZone: str
+        :param _MaxLag: Cross-AZ migration master-slave data delay verification threshold, milliseconds (ms)
+        :type MaxLag: int
+        :param _TransferType: Immediate: Immediate execution, InMaintain: Time window execution
+        :type TransferType: str
+        :param _DstSlaveZone: Multi-availability zone backup zone
+        :type DstSlaveZone: str
+        :param _ProxyZones: Target zone info for proxy migration
+        :type ProxyZones: list of ProxyZone
+        """
+        self._ClusterId = None
+        self._DstZone = None
+        self._MaxLag = None
+        self._TransferType = None
+        self._DstSlaveZone = None
+        self._ProxyZones = None
+
+    @property
+    def ClusterId(self):
+        r"""Source Cluster Id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DstZone(self):
+        r"""Target availability zone
+        :rtype: str
+        """
+        return self._DstZone
+
+    @DstZone.setter
+    def DstZone(self, DstZone):
+        self._DstZone = DstZone
+
+    @property
+    def MaxLag(self):
+        r"""Cross-AZ migration master-slave data delay verification threshold, milliseconds (ms)
+        :rtype: int
+        """
+        return self._MaxLag
+
+    @MaxLag.setter
+    def MaxLag(self, MaxLag):
+        self._MaxLag = MaxLag
+
+    @property
+    def TransferType(self):
+        r"""Immediate: Immediate execution, InMaintain: Time window execution
+        :rtype: str
+        """
+        return self._TransferType
+
+    @TransferType.setter
+    def TransferType(self, TransferType):
+        self._TransferType = TransferType
+
+    @property
+    def DstSlaveZone(self):
+        r"""Multi-availability zone backup zone
+        :rtype: str
+        """
+        return self._DstSlaveZone
+
+    @DstSlaveZone.setter
+    def DstSlaveZone(self, DstSlaveZone):
+        self._DstSlaveZone = DstSlaveZone
+
+    @property
+    def ProxyZones(self):
+        r"""Target zone info for proxy migration
+        :rtype: list of ProxyZone
+        """
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._DstZone = params.get("DstZone")
+        self._MaxLag = params.get("MaxLag")
+        self._TransferType = params.get("TransferType")
+        self._DstSlaveZone = params.get("DstSlaveZone")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransferClusterZoneResponse(AbstractModel):
+    r"""TransferClusterZone response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Asynchronous task ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""Asynchronous task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class UnbindClusterResourcePackagesRequest(AbstractModel):
     r"""UnbindClusterResourcePackages request structure.
 
@@ -40283,6 +54763,87 @@ class UnbindClusterResourcePackagesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class UpgradeAnalysisInstanceVersionInfo(AbstractModel):
+    r"""Analyze instance version upgrade, connection information used for grayscale after the upgrade
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vip: <p>ip</p>
+        :type Vip: str
+        :param _Vport: <p>Port</p>
+        :type Vport: int
+        :param _EngineVersion: <p>Version</p>
+        :type EngineVersion: str
+        :param _ExpiredTime: <p>Expiry time</p>
+        :type ExpiredTime: int
+        """
+        self._Vip = None
+        self._Vport = None
+        self._EngineVersion = None
+        self._ExpiredTime = None
+
+    @property
+    def Vip(self):
+        r"""<p>ip</p>
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>Port</p>
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def EngineVersion(self):
+        r"""<p>Version</p>
+        :rtype: str
+        """
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def ExpiredTime(self):
+        r"""<p>Expiry time</p>
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+
+    def _deserialize(self, params):
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._EngineVersion = params.get("EngineVersion")
+        self._ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpgradeClusterVersionRequest(AbstractModel):
@@ -40409,6 +54970,10 @@ class UpgradeInstanceRequest(AbstractModel):
         :type Memory: int
         :param _UpgradeType: Upgrade type. Valid values: upgradeImmediate, upgradeInMaintain
         :type UpgradeType: str
+        :param _DeviceType: Instance Machine Type
+1. common: general.
+2. exclusive, dedicated.
+        :type DeviceType: str
         :param _StorageLimit: This parameter has been disused.
         :type StorageLimit: int
         :param _AutoVoucher: Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0
@@ -40419,16 +54984,20 @@ class UpgradeInstanceRequest(AbstractModel):
         :type DealMode: int
         :param _UpgradeMode: Valid values: `NormalUpgrade` (Normal mode), `FastUpgrade` (QuickChange). If the system detects that the configuration modification process will cause a momentary disconnection, the process will be terminated.
         :type UpgradeMode: str
+        :param _UpgradeProxy: 
+        :type UpgradeProxy: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxy`
         """
         self._InstanceId = None
         self._Cpu = None
         self._Memory = None
         self._UpgradeType = None
+        self._DeviceType = None
         self._StorageLimit = None
         self._AutoVoucher = None
         self._DbType = None
         self._DealMode = None
         self._UpgradeMode = None
+        self._UpgradeProxy = None
 
     @property
     def InstanceId(self):
@@ -40473,6 +55042,19 @@ class UpgradeInstanceRequest(AbstractModel):
     @UpgradeType.setter
     def UpgradeType(self, UpgradeType):
         self._UpgradeType = UpgradeType
+
+    @property
+    def DeviceType(self):
+        r"""Instance Machine Type
+1. common: general.
+2. exclusive, dedicated.
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
 
     @property
     def StorageLimit(self):
@@ -40529,17 +55111,32 @@ class UpgradeInstanceRequest(AbstractModel):
     def UpgradeMode(self, UpgradeMode):
         self._UpgradeMode = UpgradeMode
 
+    @property
+    def UpgradeProxy(self):
+        r"""
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxy`
+        """
+        return self._UpgradeProxy
+
+    @UpgradeProxy.setter
+    def UpgradeProxy(self, UpgradeProxy):
+        self._UpgradeProxy = UpgradeProxy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._UpgradeType = params.get("UpgradeType")
+        self._DeviceType = params.get("DeviceType")
         self._StorageLimit = params.get("StorageLimit")
         self._AutoVoucher = params.get("AutoVoucher")
         self._DbType = params.get("DbType")
         self._DealMode = params.get("DealMode")
         self._UpgradeMode = params.get("UpgradeMode")
+        if params.get("UpgradeProxy") is not None:
+            self._UpgradeProxy = UpgradeProxy()
+            self._UpgradeProxy._deserialize(params.get("UpgradeProxy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40623,6 +55220,92 @@ class UpgradeInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpgradeProxy(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: cpu
+        :type Cpu: int
+        :param _Mem: memory
+        :type Mem: int
+        :param _ProxyZones: 
+        :type ProxyZones: list of ProxyZone
+        :param _ReloadBalance: 
+        :type ReloadBalance: str
+        """
+        self._Cpu = None
+        self._Mem = None
+        self._ProxyZones = None
+        self._ReloadBalance = None
+
+    @property
+    def Cpu(self):
+        r"""cpu
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        r"""memory
+        :rtype: int
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def ProxyZones(self):
+        r"""
+        :rtype: list of ProxyZone
+        """
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+    @property
+    def ReloadBalance(self):
+        r"""
+        :rtype: str
+        """
+        return self._ReloadBalance
+
+    @ReloadBalance.setter
+    def ReloadBalance(self, ReloadBalance):
+        self._ReloadBalance = ReloadBalance
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
+        self._ReloadBalance = params.get("ReloadBalance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpgradeProxyRequest(AbstractModel):
     r"""UpgradeProxy request structure.
 
@@ -40646,6 +55329,10 @@ class UpgradeProxyRequest(AbstractModel):
         :type IsInMaintainPeriod: str
         :param _ProxyZones: Node information of the atabase proxy
         :type ProxyZones: list of ProxyZone
+        :param _IsRollUpgrade: whether rolling upgrade
+        :type IsRollUpgrade: str
+        :param _RollUpgradeWaitingTime: Rolling upgrade waiting time, unit: second
+        :type RollUpgradeWaitingTime: int
         """
         self._ClusterId = None
         self._Cpu = None
@@ -40655,6 +55342,8 @@ class UpgradeProxyRequest(AbstractModel):
         self._ReloadBalance = None
         self._IsInMaintainPeriod = None
         self._ProxyZones = None
+        self._IsRollUpgrade = None
+        self._RollUpgradeWaitingTime = None
 
     @property
     def ClusterId(self):
@@ -40744,6 +55433,28 @@ class UpgradeProxyRequest(AbstractModel):
     def ProxyZones(self, ProxyZones):
         self._ProxyZones = ProxyZones
 
+    @property
+    def IsRollUpgrade(self):
+        r"""whether rolling upgrade
+        :rtype: str
+        """
+        return self._IsRollUpgrade
+
+    @IsRollUpgrade.setter
+    def IsRollUpgrade(self, IsRollUpgrade):
+        self._IsRollUpgrade = IsRollUpgrade
+
+    @property
+    def RollUpgradeWaitingTime(self):
+        r"""Rolling upgrade waiting time, unit: second
+        :rtype: int
+        """
+        return self._RollUpgradeWaitingTime
+
+    @RollUpgradeWaitingTime.setter
+    def RollUpgradeWaitingTime(self, RollUpgradeWaitingTime):
+        self._RollUpgradeWaitingTime = RollUpgradeWaitingTime
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -40759,6 +55470,8 @@ class UpgradeProxyRequest(AbstractModel):
                 obj = ProxyZone()
                 obj._deserialize(item)
                 self._ProxyZones.append(obj)
+        self._IsRollUpgrade = params.get("IsRollUpgrade")
+        self._RollUpgradeWaitingTime = params.get("RollUpgradeWaitingTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41047,6 +55760,153 @@ class UserHostPrivilege(AbstractModel):
         
 
 
+class VaultInfo(AbstractModel):
+    r"""Safe info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: Safe id
+        :type VaultId: str
+        :param _VaultName: Safe name
+        :type VaultName: str
+        :param _VaultRegion: Safe region
+        :type VaultRegion: str
+        :param _VaultStatus: Safe status
+        :type VaultStatus: str
+        :param _BackupSaveSeconds: Backup retention period
+        :type BackupSaveSeconds: int
+        """
+        self._VaultId = None
+        self._VaultName = None
+        self._VaultRegion = None
+        self._VaultStatus = None
+        self._BackupSaveSeconds = None
+
+    @property
+    def VaultId(self):
+        r"""Safe id
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultName(self):
+        r"""Safe name
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def VaultRegion(self):
+        r"""Safe region
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
+    @property
+    def VaultStatus(self):
+        r"""Safe status
+        :rtype: str
+        """
+        return self._VaultStatus
+
+    @VaultStatus.setter
+    def VaultStatus(self, VaultStatus):
+        self._VaultStatus = VaultStatus
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""Backup retention period
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._VaultName = params.get("VaultName")
+        self._VaultRegion = params.get("VaultRegion")
+        self._VaultStatus = params.get("VaultStatus")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WillDeleteItem(AbstractModel):
+    r"""Backup file list that will be deleted
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupId: Backup file ID
+        :type BackupId: int
+        :param _BackupName: Backup file name
+        :type BackupName: str
+        """
+        self._BackupId = None
+        self._BackupName = None
+
+    @property
+    def BackupId(self):
+        r"""Backup file ID
+        :rtype: int
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def BackupName(self):
+        r"""Backup file name
+        :rtype: str
+        """
+        return self._BackupName
+
+    @BackupName.setter
+    def BackupName(self, BackupName):
+        self._BackupName = BackupName
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._BackupName = params.get("BackupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ZoneStockInfo(AbstractModel):
     r"""Inventory information in an AZ
 
@@ -41123,6 +55983,61 @@ class ZoneStockInfo(AbstractModel):
                 obj = SlaveZoneStockInfo()
                 obj._deserialize(item)
                 self._SlaveZoneStockInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneStockInfo4Libra(AbstractModel):
+    r"""Inventory information of regions sold by Libra
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: Availability zone
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Zone: str
+        :param _HasStock: whether there is inventory
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HasStock: bool
+        """
+        self._Zone = None
+        self._HasStock = None
+
+    @property
+    def Zone(self):
+        r"""Availability zone
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def HasStock(self):
+        r"""whether there is inventory
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._HasStock
+
+    @HasStock.setter
+    def HasStock(self, HasStock):
+        self._HasStock = HasStock
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._HasStock = params.get("HasStock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

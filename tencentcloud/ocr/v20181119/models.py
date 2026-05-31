@@ -595,6 +595,87 @@ class AirTransport(AbstractModel):
         
 
 
+class AnalyzedLog(AbstractModel):
+    r"""Intelligent review log
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StepKey: <p>Indexes of the procedure.</p><p>Enumeration value:</p><ul><li>L1_IMAGE_QUALITY: Image quality detection</li><li>L2_RULE_ENGINE: Rule verification</li><li>L3_LLM_JUDGE: Large model judgment</li></ul>
+        :type StepKey: str
+        :param _Decision: <p>Compliant and non-compliant are final states; to be determined is an intermediate state. Judgment status of each layer: Compliant Non-Compliant Pending.</p>
+        :type Decision: str
+        :param _DecisionMessage: <p>Reason for the current layer judgment</p>
+        :type DecisionMessage: str
+        :param _CostTime: <p>Time taken by the current layer</p><p>Unit: ms</p>
+        :type CostTime: int
+        """
+        self._StepKey = None
+        self._Decision = None
+        self._DecisionMessage = None
+        self._CostTime = None
+
+    @property
+    def StepKey(self):
+        r"""<p>Indexes of the procedure.</p><p>Enumeration value:</p><ul><li>L1_IMAGE_QUALITY: Image quality detection</li><li>L2_RULE_ENGINE: Rule verification</li><li>L3_LLM_JUDGE: Large model judgment</li></ul>
+        :rtype: str
+        """
+        return self._StepKey
+
+    @StepKey.setter
+    def StepKey(self, StepKey):
+        self._StepKey = StepKey
+
+    @property
+    def Decision(self):
+        r"""<p>Compliant and non-compliant are final states; to be determined is an intermediate state. Judgment status of each layer: Compliant Non-Compliant Pending.</p>
+        :rtype: str
+        """
+        return self._Decision
+
+    @Decision.setter
+    def Decision(self, Decision):
+        self._Decision = Decision
+
+    @property
+    def DecisionMessage(self):
+        r"""<p>Reason for the current layer judgment</p>
+        :rtype: str
+        """
+        return self._DecisionMessage
+
+    @DecisionMessage.setter
+    def DecisionMessage(self, DecisionMessage):
+        self._DecisionMessage = DecisionMessage
+
+    @property
+    def CostTime(self):
+        r"""<p>Time taken by the current layer</p><p>Unit: ms</p>
+        :rtype: int
+        """
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+
+    def _deserialize(self, params):
+        self._StepKey = params.get("StepKey")
+        self._Decision = params.get("Decision")
+        self._DecisionMessage = params.get("DecisionMessage")
+        self._CostTime = params.get("CostTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyCardVerificationExternalRequest(AbstractModel):
     r"""ApplyCardVerificationExternal request structure.
 
@@ -9417,6 +9498,180 @@ class OtherInvoiceList(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PODAuditAIRequest(AbstractModel):
+    r"""PODAuditAI request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64List: <p>The Base64 value of the image/PDF. The Base64 must be no more than 10M, resolution is recommended to be 600*800 or higher, and supports PNG, JPG, JPEG, BMP, PDF formats. Either ImageUrl or ImageBase64 of the image must be provided. If both are provided, only use ImageUrl. Example value: /9j/4AAQSkZJRg.....s97n//2Q==</p>
+        :type ImageBase64List: list of str
+        :param _ImageUrlList: <p>The Url address of the image/PDF. The image after Base64 encoding should be no more than 10M, with a resolution of 600*800 or higher, and supports PNG, JPG, JPEG, BMP, and PDF formats. The image download time should not exceed 3 seconds. Images stored in Tencent Cloud's Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud. The speed and stability of non-Tencent Cloud storage URLs may be impacted to a certain extent. Example value: https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.JPG</p>
+        :type ImageUrlList: list of str
+        :param _WaybillNumber: <p>Waybill number is used for pod rule review assistance</p>
+        :type WaybillNumber: str
+        :param _SignType: <p>No      The acknowledge type, 0 is selected by default</p><p>Enumeration value:</p><ul><li>0: Doorstep/yard</li><li>1: Parcel reception room</li><li>2: Myself/others acknowledge</li><li>3: Front desk/reception</li><li>4: Express delivery collection point</li><li>5: Express cabinet</li></ul>
+        :type SignType: int
+        """
+        self._ImageBase64List = None
+        self._ImageUrlList = None
+        self._WaybillNumber = None
+        self._SignType = None
+
+    @property
+    def ImageBase64List(self):
+        r"""<p>The Base64 value of the image/PDF. The Base64 must be no more than 10M, resolution is recommended to be 600*800 or higher, and supports PNG, JPG, JPEG, BMP, PDF formats. Either ImageUrl or ImageBase64 of the image must be provided. If both are provided, only use ImageUrl. Example value: /9j/4AAQSkZJRg.....s97n//2Q==</p>
+        :rtype: list of str
+        """
+        return self._ImageBase64List
+
+    @ImageBase64List.setter
+    def ImageBase64List(self, ImageBase64List):
+        self._ImageBase64List = ImageBase64List
+
+    @property
+    def ImageUrlList(self):
+        r"""<p>The Url address of the image/PDF. The image after Base64 encoding should be no more than 10M, with a resolution of 600*800 or higher, and supports PNG, JPG, JPEG, BMP, and PDF formats. The image download time should not exceed 3 seconds. Images stored in Tencent Cloud's Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud. The speed and stability of non-Tencent Cloud storage URLs may be impacted to a certain extent. Example value: https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.JPG</p>
+        :rtype: list of str
+        """
+        return self._ImageUrlList
+
+    @ImageUrlList.setter
+    def ImageUrlList(self, ImageUrlList):
+        self._ImageUrlList = ImageUrlList
+
+    @property
+    def WaybillNumber(self):
+        r"""<p>Waybill number is used for pod rule review assistance</p>
+        :rtype: str
+        """
+        return self._WaybillNumber
+
+    @WaybillNumber.setter
+    def WaybillNumber(self, WaybillNumber):
+        self._WaybillNumber = WaybillNumber
+
+    @property
+    def SignType(self):
+        r"""<p>No      The acknowledge type, 0 is selected by default</p><p>Enumeration value:</p><ul><li>0: Doorstep/yard</li><li>1: Parcel reception room</li><li>2: Myself/others acknowledge</li><li>3: Front desk/reception</li><li>4: Express delivery collection point</li><li>5: Express cabinet</li></ul>
+        :rtype: int
+        """
+        return self._SignType
+
+    @SignType.setter
+    def SignType(self, SignType):
+        self._SignType = SignType
+
+
+    def _deserialize(self, params):
+        self._ImageBase64List = params.get("ImageBase64List")
+        self._ImageUrlList = params.get("ImageUrlList")
+        self._WaybillNumber = params.get("WaybillNumber")
+        self._SignType = params.get("SignType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PODAuditAIResponse(AbstractModel):
+    r"""PODAuditAI response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditorDecision: <p>0 means non-compliance 1 means compliance</p>
+        :type AuditorDecision: int
+        :param _FailCode: <p>Reason code for non-compliance. If there are multiple, return a list of multiple codes.</p><p>Enumeration value:</p><ul><li>100: Wrong delivery address</li><li>101: No house number</li><li>104: Single question</li><li>200: No package</li><li>202: Privacy leakage</li></ul>
+        :type FailCode: list of str
+        :param _ResultAnalysis: <p>Entire approval result analysis content</p>
+        :type ResultAnalysis: str
+        :param _AnalyzedLogs: <p>Analysis result logs of each layer, including time taken, judgment reason, and judgment conclusion</p>
+        :type AnalyzedLogs: list of AnalyzedLog
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AuditorDecision = None
+        self._FailCode = None
+        self._ResultAnalysis = None
+        self._AnalyzedLogs = None
+        self._RequestId = None
+
+    @property
+    def AuditorDecision(self):
+        r"""<p>0 means non-compliance 1 means compliance</p>
+        :rtype: int
+        """
+        return self._AuditorDecision
+
+    @AuditorDecision.setter
+    def AuditorDecision(self, AuditorDecision):
+        self._AuditorDecision = AuditorDecision
+
+    @property
+    def FailCode(self):
+        r"""<p>Reason code for non-compliance. If there are multiple, return a list of multiple codes.</p><p>Enumeration value:</p><ul><li>100: Wrong delivery address</li><li>101: No house number</li><li>104: Single question</li><li>200: No package</li><li>202: Privacy leakage</li></ul>
+        :rtype: list of str
+        """
+        return self._FailCode
+
+    @FailCode.setter
+    def FailCode(self, FailCode):
+        self._FailCode = FailCode
+
+    @property
+    def ResultAnalysis(self):
+        r"""<p>Entire approval result analysis content</p>
+        :rtype: str
+        """
+        return self._ResultAnalysis
+
+    @ResultAnalysis.setter
+    def ResultAnalysis(self, ResultAnalysis):
+        self._ResultAnalysis = ResultAnalysis
+
+    @property
+    def AnalyzedLogs(self):
+        r"""<p>Analysis result logs of each layer, including time taken, judgment reason, and judgment conclusion</p>
+        :rtype: list of AnalyzedLog
+        """
+        return self._AnalyzedLogs
+
+    @AnalyzedLogs.setter
+    def AnalyzedLogs(self, AnalyzedLogs):
+        self._AnalyzedLogs = AnalyzedLogs
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AuditorDecision = params.get("AuditorDecision")
+        self._FailCode = params.get("FailCode")
+        self._ResultAnalysis = params.get("ResultAnalysis")
+        if params.get("AnalyzedLogs") is not None:
+            self._AnalyzedLogs = []
+            for item in params.get("AnalyzedLogs"):
+                obj = AnalyzedLog()
+                obj._deserialize(item)
+                self._AnalyzedLogs.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class PassportRecognizeInfos(AbstractModel):

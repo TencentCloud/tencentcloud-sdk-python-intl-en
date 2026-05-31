@@ -769,7 +769,7 @@ class SslClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UploadUpdateCertificateInstanceResponse:
         """
-        This API is used to update certificate content (certificate ID unchanged) and update associated Tencent Cloud resources. This is an asynchronous API. After calling, a DeployRecordId of 0 indicates that the task is in progress. Repeatedly request this API, and when DeployRecordId is greater than 0, it means the task has been successfully created. If the task is not successfully created, an exception will be thrown.
+        This API requires contacting support to be whitelisted for use, and it only supports updating CLB resources related to certificates. This API is used to update certificate content (certificate ID unchanged) and update associated Tencent Cloud resources. This is an asynchronous API. After calling, a DeployRecordId of 0 indicates that the task is in progress. Repeatedly request this API, and when DeployRecordId is greater than 0, it means the task has been successfully created. If the task is not successfully created, an exception will be thrown.
         """
         
         kwargs = {}

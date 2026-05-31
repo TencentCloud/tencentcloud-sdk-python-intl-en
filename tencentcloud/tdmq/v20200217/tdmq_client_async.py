@@ -335,6 +335,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRocketMQMigrationTask(
+            self,
+            request: models.CreateRocketMQMigrationTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQMigrationTaskResponse:
+        """
+        Create a RocketMQ metadata migration task to batch create topics and consumer group data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQMigrationTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQMigrationTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRocketMQNamespace(
             self,
             request: models.CreateRocketMQNamespaceRequest,
