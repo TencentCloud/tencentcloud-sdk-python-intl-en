@@ -25,9 +25,12 @@ class Account(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _User: New account name
+        :param _User: Account name, enter 1-32 characters.
         :type User: str
-        :param _Host: New account domain name
+        :param _Host: Account's host.
+Note:
+1. IP format. You can specify a percent sign (%).
+2. Multiple hosts are separated by a separator, which supports ;, |, line break, and space.
         :type Host: str
         """
         self._User = None
@@ -35,7 +38,7 @@ class Account(AbstractModel):
 
     @property
     def User(self):
-        r"""New account name
+        r"""Account name, enter 1-32 characters.
         :rtype: str
         """
         return self._User
@@ -46,7 +49,10 @@ class Account(AbstractModel):
 
     @property
     def Host(self):
-        r"""New account domain name
+        r"""Account's host.
+Note:
+1. IP format. You can specify a percent sign (%).
+2. Multiple hosts are separated by a separator, which supports ;, |, line break, and space.
         :rtype: str
         """
         return self._Host
@@ -90,6 +96,8 @@ class AccountInfo(AbstractModel):
         :type CreateTime: str
         :param _MaxUserConnections: The maximum number of instance connections supported by an account
         :type MaxUserConnections: int
+        :param _OpenCam: Is password rotation enabled for the user account?
+        :type OpenCam: bool
         """
         self._Notes = None
         self._Host = None
@@ -98,6 +106,7 @@ class AccountInfo(AbstractModel):
         self._ModifyPasswordTime = None
         self._CreateTime = None
         self._MaxUserConnections = None
+        self._OpenCam = None
 
     @property
     def Notes(self):
@@ -156,6 +165,8 @@ class AccountInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        warnings.warn("parameter `CreateTime` is deprecated", DeprecationWarning) 
+
         r"""This parameter is deprecated.
         :rtype: str
         """
@@ -163,6 +174,8 @@ class AccountInfo(AbstractModel):
 
     @CreateTime.setter
     def CreateTime(self, CreateTime):
+        warnings.warn("parameter `CreateTime` is deprecated", DeprecationWarning) 
+
         self._CreateTime = CreateTime
 
     @property
@@ -176,6 +189,17 @@ class AccountInfo(AbstractModel):
     def MaxUserConnections(self, MaxUserConnections):
         self._MaxUserConnections = MaxUserConnections
 
+    @property
+    def OpenCam(self):
+        r"""Is password rotation enabled for the user account?
+        :rtype: bool
+        """
+        return self._OpenCam
+
+    @OpenCam.setter
+    def OpenCam(self, OpenCam):
+        self._OpenCam = OpenCam
+
 
     def _deserialize(self, params):
         self._Notes = params.get("Notes")
@@ -185,6 +209,7 @@ class AccountInfo(AbstractModel):
         self._ModifyPasswordTime = params.get("ModifyPasswordTime")
         self._CreateTime = params.get("CreateTime")
         self._MaxUserConnections = params.get("MaxUserConnections")
+        self._OpenCam = params.get("OpenCam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -202,7 +227,7 @@ class AddTimeWindowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         :param _Monday: Maintenance window on Monday. The format should be 10:00-12:00. You can set multiple time windows on a day. Each time window lasts from half an hour to three hours, and must start and end on the hour or half hour. At least one time window is required in a week. The same rule applies to the following parameters.
         :type Monday: list of str
@@ -218,7 +243,7 @@ class AddTimeWindowRequest(AbstractModel):
         :type Saturday: list of str
         :param _Sunday: Maintenance window on Sunday. At least one time window is required in a week.
         :type Sunday: list of str
-        :param _MaxDelayTime: Maximum delay threshold, which takes effect only for source instances and disaster recovery instances.
+        :param _MaxDelayTime: Maximum delay threshold (seconds), only applicable to primary instance and disaster recovery instance. Default value: 10. Value ranges from 1 to 10 integers.
         :type MaxDelayTime: int
         """
         self._InstanceId = None
@@ -233,7 +258,7 @@ class AddTimeWindowRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -321,7 +346,7 @@ class AddTimeWindowRequest(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        r"""Maximum delay threshold, which takes effect only for source instances and disaster recovery instances.
+        r"""Maximum delay threshold (seconds), only applicable to primary instance and disaster recovery instance. Default value: 10. Value ranges from 1 to 10 integers.
         :rtype: int
         """
         return self._MaxDelayTime
@@ -386,34 +411,38 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: <p>Proxy group ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1">DescribeCdbProxyInfo</a> API.</p>
         :type ProxyGroupId: str
-        :param _WeightMode: Assignment mode of weights. Valid values: `system` (auto-assigned), `custom`.
+        :param _WeightMode: <p>Weight allocation mode,<br>system Auto-Assignment: "system", custom: "custom"</p>
         :type WeightMode: str
-        :param _IsKickOut: Whether to remove delayed read-only instances from the proxy group Valid values: `true`, `false`.
+        :param _IsKickOut: <p>Whether delay removal is enabled. Value: "true" | "false"</p>
         :type IsKickOut: bool
-        :param _MinCount: Least read-only instances. Minimum value:  `0`
+        :param _MinCount: <p>Minimum retention quantity, minimum value: 0.<br>Description: Valid only when IsKickOut is true.</p>
         :type MinCount: int
-        :param _MaxDelay: The delay threshold. Minimum value:  `0`
+        :param _MaxDelay: <p>Delay removal threshold, minimum value: 1, value ranges from 1 to 10000, integer.</p>
         :type MaxDelay: int
-        :param _FailOver: Whether to enable failover. Valid values: `true`, `false`.
+        :param _FailOver: <p>Whether fault migration is enabled, value: "true" | "false"</p>
         :type FailOver: bool
-        :param _AutoAddRo: Whether to automatically add newly created read-only instances. Valid values: `true`, `false`.
+        :param _AutoAddRo: <p>Automatically add RO. Parameter: "true" | "false"</p>
         :type AutoAddRo: bool
-        :param _ReadOnly: Whether it is read-only. Valid values: `true`, `false`.
+        :param _ReadOnly: <p>Whether it is read-only. Value: "true" | "false".</p>
         :type ReadOnly: bool
-        :param _ProxyAddressId: Address ID of the proxy group
+        :param _ProxyAddressId: <p>Proxy group address ID. Obtain through the <a href="https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1">DescribeCdbProxyInfo</a> API.</p>
         :type ProxyAddressId: str
-        :param _TransSplit: Whether to enable transaction splitting. Valid values: `true`, `false`.
+        :param _TransSplit: <p>Whether transaction splitting is enabled. Value: "true" | "false". Default value: false.</p>
         :type TransSplit: bool
-        :param _ConnectionPool: Whether to enable the connection pool
+        :param _ConnectionPool: <p>Whether the connection pool is enabled. Off by default.<br>Note: If you need to use the database proxy connection pool capability, the kernel minor version of the MySQL 8.0 primary instance must be at least MySQL 8.0 20230630.</p>
         :type ConnectionPool: bool
-        :param _ProxyAllocation: Assignment of read/write weights If `system` is passed in for `WeightMode`, only the default weight assigned by the system will take effect.
+        :param _ProxyAllocation: <p>Read-write weight allocation. If WeightMode is passed in as system, the passed-in weight does not take effect and the default weight is assigned by the system.</p>
         :type ProxyAllocation: list of ProxyAllocation
-        :param _AutoLoadBalance: Whether to enable adaptive load balancing. Disabled by default.
+        :param _AutoLoadBalance: <p>Whether self-adaptive load balancing is enabled. Off by default.</p>
         :type AutoLoadBalance: bool
-        :param _AccessMode: Access Mode: nearby - nearby access, balance - balanced allocation. Default is nearby access.
+        :param _AccessMode: <p>Access mode: nearby - proximity access, balance - balanced allocation. Default is proximity access.</p>
         :type AccessMode: str
+        :param _ApNodeAsRoNode: <p>Whether to treat the libra node as an ordinary RO node</p>
+        :type ApNodeAsRoNode: bool
+        :param _ApQueryToOtherNode: <p>Whether to forward to other nodes in case of a libra node fault</p>
+        :type ApQueryToOtherNode: bool
         """
         self._ProxyGroupId = None
         self._WeightMode = None
@@ -429,10 +458,12 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
         self._ProxyAllocation = None
         self._AutoLoadBalance = None
         self._AccessMode = None
+        self._ApNodeAsRoNode = None
+        self._ApQueryToOtherNode = None
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""<p>Proxy group ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1">DescribeCdbProxyInfo</a> API.</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -443,7 +474,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def WeightMode(self):
-        r"""Assignment mode of weights. Valid values: `system` (auto-assigned), `custom`.
+        r"""<p>Weight allocation mode,<br>system Auto-Assignment: "system", custom: "custom"</p>
         :rtype: str
         """
         return self._WeightMode
@@ -454,7 +485,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def IsKickOut(self):
-        r"""Whether to remove delayed read-only instances from the proxy group Valid values: `true`, `false`.
+        r"""<p>Whether delay removal is enabled. Value: "true" | "false"</p>
         :rtype: bool
         """
         return self._IsKickOut
@@ -465,7 +496,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def MinCount(self):
-        r"""Least read-only instances. Minimum value:  `0`
+        r"""<p>Minimum retention quantity, minimum value: 0.<br>Description: Valid only when IsKickOut is true.</p>
         :rtype: int
         """
         return self._MinCount
@@ -476,7 +507,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def MaxDelay(self):
-        r"""The delay threshold. Minimum value:  `0`
+        r"""<p>Delay removal threshold, minimum value: 1, value ranges from 1 to 10000, integer.</p>
         :rtype: int
         """
         return self._MaxDelay
@@ -487,7 +518,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def FailOver(self):
-        r"""Whether to enable failover. Valid values: `true`, `false`.
+        r"""<p>Whether fault migration is enabled, value: "true" | "false"</p>
         :rtype: bool
         """
         return self._FailOver
@@ -498,7 +529,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AutoAddRo(self):
-        r"""Whether to automatically add newly created read-only instances. Valid values: `true`, `false`.
+        r"""<p>Automatically add RO. Parameter: "true" | "false"</p>
         :rtype: bool
         """
         return self._AutoAddRo
@@ -509,7 +540,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""Whether it is read-only. Valid values: `true`, `false`.
+        r"""<p>Whether it is read-only. Value: "true" | "false".</p>
         :rtype: bool
         """
         return self._ReadOnly
@@ -520,7 +551,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ProxyAddressId(self):
-        r"""Address ID of the proxy group
+        r"""<p>Proxy group address ID. Obtain through the <a href="https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1">DescribeCdbProxyInfo</a> API.</p>
         :rtype: str
         """
         return self._ProxyAddressId
@@ -531,7 +562,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def TransSplit(self):
-        r"""Whether to enable transaction splitting. Valid values: `true`, `false`.
+        r"""<p>Whether transaction splitting is enabled. Value: "true" | "false". Default value: false.</p>
         :rtype: bool
         """
         return self._TransSplit
@@ -542,7 +573,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ConnectionPool(self):
-        r"""Whether to enable the connection pool
+        r"""<p>Whether the connection pool is enabled. Off by default.<br>Note: If you need to use the database proxy connection pool capability, the kernel minor version of the MySQL 8.0 primary instance must be at least MySQL 8.0 20230630.</p>
         :rtype: bool
         """
         return self._ConnectionPool
@@ -553,7 +584,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ProxyAllocation(self):
-        r"""Assignment of read/write weights If `system` is passed in for `WeightMode`, only the default weight assigned by the system will take effect.
+        r"""<p>Read-write weight allocation. If WeightMode is passed in as system, the passed-in weight does not take effect and the default weight is assigned by the system.</p>
         :rtype: list of ProxyAllocation
         """
         return self._ProxyAllocation
@@ -564,7 +595,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AutoLoadBalance(self):
-        r"""Whether to enable adaptive load balancing. Disabled by default.
+        r"""<p>Whether self-adaptive load balancing is enabled. Off by default.</p>
         :rtype: bool
         """
         return self._AutoLoadBalance
@@ -575,7 +606,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AccessMode(self):
-        r"""Access Mode: nearby - nearby access, balance - balanced allocation. Default is nearby access.
+        r"""<p>Access mode: nearby - proximity access, balance - balanced allocation. Default is proximity access.</p>
         :rtype: str
         """
         return self._AccessMode
@@ -583,6 +614,28 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
     @AccessMode.setter
     def AccessMode(self, AccessMode):
         self._AccessMode = AccessMode
+
+    @property
+    def ApNodeAsRoNode(self):
+        r"""<p>Whether to treat the libra node as an ordinary RO node</p>
+        :rtype: bool
+        """
+        return self._ApNodeAsRoNode
+
+    @ApNodeAsRoNode.setter
+    def ApNodeAsRoNode(self, ApNodeAsRoNode):
+        self._ApNodeAsRoNode = ApNodeAsRoNode
+
+    @property
+    def ApQueryToOtherNode(self):
+        r"""<p>Whether to forward to other nodes in case of a libra node fault</p>
+        :rtype: bool
+        """
+        return self._ApQueryToOtherNode
+
+    @ApQueryToOtherNode.setter
+    def ApQueryToOtherNode(self, ApQueryToOtherNode):
+        self._ApQueryToOtherNode = ApQueryToOtherNode
 
 
     def _deserialize(self, params):
@@ -605,6 +658,8 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
                 self._ProxyAllocation.append(obj)
         self._AutoLoadBalance = params.get("AutoLoadBalance")
         self._AccessMode = params.get("AccessMode")
+        self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
+        self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -622,7 +677,7 @@ class AdjustCdbProxyAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AsyncRequestId: <p>Asynchronous Task ID</p>
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -632,7 +687,7 @@ class AdjustCdbProxyAddressResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Asynchronous Task ID</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -665,11 +720,18 @@ class AdjustCdbProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
-        :param _ProxyNodeCustom: The specification configuration of a node
+        :param _ProxyNodeCustom: Node specification configuration
+Remark: Database proxy supported node specifications are 2C4000MB, 4C8000MB, 8C16000MB.
+Parameter description in the example.
+NodeCount: Number of nodes
+Region: Node region
+Zone: Node availability zone
+Cpu: Number of node cores for one agent (Unit: core)
+Mem: Memory size of each proxy node (unit: MB)
         :type ProxyNodeCustom: list of ProxyNodeCustom
         :param _ReloadBalance: Rebalance. Valid values:  `auto` (automatic), `manual` (manual).
         :type ReloadBalance: str
@@ -684,7 +746,7 @@ class AdjustCdbProxyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -695,7 +757,7 @@ class AdjustCdbProxyRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -706,7 +768,14 @@ class AdjustCdbProxyRequest(AbstractModel):
 
     @property
     def ProxyNodeCustom(self):
-        r"""The specification configuration of a node
+        r"""Node specification configuration
+Remark: Database proxy supported node specifications are 2C4000MB, 4C8000MB, 8C16000MB.
+Parameter description in the example.
+NodeCount: Number of nodes
+Region: Node region
+Zone: Node availability zone
+Cpu: Number of node cores for one agent (Unit: core)
+Mem: Memory size of each proxy node (unit: MB)
         :rtype: list of ProxyNodeCustom
         """
         return self._ProxyNodeCustom
@@ -766,7 +835,7 @@ class AdjustCdbProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AsyncRequestId: Asynchronous Task ID
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -776,7 +845,7 @@ class AdjustCdbProxyResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Asynchronous Task ID
         :rtype: str
         """
         return self._AsyncRequestId
@@ -1016,7 +1085,7 @@ class AnalyzeAuditLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         :param _StartTime: Start time of the log to be analyzed in the format of `2023-02-16 00:00:20`.
         :type StartTime: str
@@ -1024,7 +1093,7 @@ class AnalyzeAuditLogsRequest(AbstractModel):
         :type EndTime: str
         :param _AggregationConditions: Sorting conditions for aggregation dimension
         :type AggregationConditions: list of AggregationCondition
-        :param _AuditLogFilter: This parameter is disused. The result set of the audit log filtered by this condition is set as the analysis log.
+        :param _AuditLogFilter: Deprecated.
         :type AuditLogFilter: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
         :param _LogFilter: The result set of the audit log filtered by this condition is set as the analysis Log.
         :type LogFilter: list of InstanceAuditLogFilters
@@ -1038,7 +1107,7 @@ class AnalyzeAuditLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -1082,13 +1151,17 @@ class AnalyzeAuditLogsRequest(AbstractModel):
 
     @property
     def AuditLogFilter(self):
-        r"""This parameter is disused. The result set of the audit log filtered by this condition is set as the analysis log.
+        warnings.warn("parameter `AuditLogFilter` is deprecated", DeprecationWarning) 
+
+        r"""Deprecated.
         :rtype: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
         """
         return self._AuditLogFilter
 
     @AuditLogFilter.setter
     def AuditLogFilter(self, AuditLogFilter):
+        warnings.warn("parameter `AuditLogFilter` is deprecated", DeprecationWarning) 
+
         self._AuditLogFilter = AuditLogFilter
 
     @property
@@ -1139,11 +1212,9 @@ class AnalyzeAuditLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items: Information set of the aggregation bucket returned
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Items: Returned aggregation bucket information set
         :type Items: list of AuditLogAggregationResult
-        :param _TotalCount: Number of scanned logs
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: Number of logs scanned
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1154,8 +1225,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
-        r"""Information set of the aggregation bucket returned
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Returned aggregation bucket information set
         :rtype: list of AuditLogAggregationResult
         """
         return self._Items
@@ -1166,8 +1236,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        r"""Number of scanned logs
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of logs scanned
         :rtype: int
         """
         return self._TotalCount
@@ -1206,9 +1275,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: Security group ID.
+        :param _SecurityGroupId: Security group ID, which can be obtained through the [DescribeDBSecurityGroups](https://www.tencentcloud.com/document/api/236/15854?from_cn_redirect=1) API.
         :type SecurityGroupId: str
-        :param _InstanceIds: List of instance IDs, which is an array of one or more instance IDs.
+        :param _InstanceIds: Instance ID list, an array consisting of one or more instance IDs. You can obtain it through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceIds: list of str
         :param _ForReadonlyInstance: This parameter takes effect only when the IDs of read-only replicas are passed in. If this parameter is set to `False` or left empty, the security group will be bound to the RO groups of these read-only replicas. If this parameter is set to `True`, the security group will be bound to the read-only replicas themselves.
         :type ForReadonlyInstance: bool
@@ -1219,7 +1288,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        r"""Security group ID.
+        r"""Security group ID, which can be obtained through the [DescribeDBSecurityGroups](https://www.tencentcloud.com/document/api/236/15854?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._SecurityGroupId
@@ -1230,7 +1299,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of instance IDs, which is an array of one or more instance IDs.
+        r"""Instance ID list, an array consisting of one or more instance IDs. You can obtain it through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -1536,13 +1605,13 @@ class AuditLog(AbstractModel):
         :type AffectRows: int
         :param _ErrCode: The error code
         :type ErrCode: int
-        :param _SqlType: SQL Type.
+        :param _SqlType: 
         :type SqlType: str
         :param _PolicyName: Audit policy name, which will be unavailable soon.
         :type PolicyName: str
-        :param _DBName: Database Name.
+        :param _DBName: 
         :type DBName: str
-        :param _Sql: SQL Statement.
+        :param _Sql: 
         :type Sql: str
         :param _Host: Client address
         :type Host: str
@@ -1556,27 +1625,25 @@ class AuditLog(AbstractModel):
         :type SentRows: int
         :param _ThreadId: Thread ID
         :type ThreadId: int
-        :param _CheckRows: Number of scanned rows
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CheckRows: Number of scanned rows.
         :type CheckRows: int
-        :param _CpuTime: CPU execution time (μs)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CpuTime: cpu execution time, µs.
         :type CpuTime: float
-        :param _IoWaitTime: IO wait time (μs)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IoWaitTime: IO wait time, µs.
         :type IoWaitTime: int
-        :param _LockWaitTime: Lock wait time (μs)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LockWaitTime: Lock waiting time (unit: microsecond).
         :type LockWaitTime: int
-        :param _NsTime: Start time, which forms a time accurate to nanoseconds with·`timestamp`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NsTime: Start time, which combines with timestamp to form a time accurate to nanoseconds.
         :type NsTime: int
-        :param _TrxLivingTime: Transaction duration (μs)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TrxLivingTime: Transaction duration, µs.
         :type TrxLivingTime: int
-        :param _TemplateInfo: Basic information on the rule template hit by the log.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _TemplateInfo: Basic info of the log hit rule template
         :type TemplateInfo: list of LogRuleTemplateInfo
+        :param _TrxId: Transaction ID
+        :type TrxId: int
+        :param _ClientPort: Port.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClientPort: int
         """
         self._AffectRows = None
         self._ErrCode = None
@@ -1597,6 +1664,8 @@ Note: The return value may be null, indicating that no valid data can be obtaine
         self._NsTime = None
         self._TrxLivingTime = None
         self._TemplateInfo = None
+        self._TrxId = None
+        self._ClientPort = None
 
     @property
     def AffectRows(self):
@@ -1622,7 +1691,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def SqlType(self):
-        r"""SQL Type.
+        r"""
         :rtype: str
         """
         return self._SqlType
@@ -1644,7 +1713,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def DBName(self):
-        r"""Database Name.
+        r"""
         :rtype: str
         """
         return self._DBName
@@ -1655,7 +1724,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def Sql(self):
-        r"""SQL Statement.
+        r"""
         :rtype: str
         """
         return self._Sql
@@ -1732,8 +1801,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def CheckRows(self):
-        r"""Number of scanned rows
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of scanned rows.
         :rtype: int
         """
         return self._CheckRows
@@ -1744,8 +1812,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CpuTime(self):
-        r"""CPU execution time (μs)
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""cpu execution time, µs.
         :rtype: float
         """
         return self._CpuTime
@@ -1756,8 +1823,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IoWaitTime(self):
-        r"""IO wait time (μs)
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""IO wait time, µs.
         :rtype: int
         """
         return self._IoWaitTime
@@ -1768,8 +1834,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LockWaitTime(self):
-        r"""Lock wait time (μs)
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Lock waiting time (unit: microsecond).
         :rtype: int
         """
         return self._LockWaitTime
@@ -1780,8 +1845,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NsTime(self):
-        r"""Start time, which forms a time accurate to nanoseconds with·`timestamp`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Start time, which combines with timestamp to form a time accurate to nanoseconds.
         :rtype: int
         """
         return self._NsTime
@@ -1792,8 +1856,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrxLivingTime(self):
-        r"""Transaction duration (μs)
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Transaction duration, µs.
         :rtype: int
         """
         return self._TrxLivingTime
@@ -1804,8 +1867,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateInfo(self):
-        r"""Basic information on the rule template hit by the log.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""Basic info of the log hit rule template
         :rtype: list of LogRuleTemplateInfo
         """
         return self._TemplateInfo
@@ -1813,6 +1875,29 @@ Note: The return value may be null, indicating that no valid data can be obtaine
     @TemplateInfo.setter
     def TemplateInfo(self, TemplateInfo):
         self._TemplateInfo = TemplateInfo
+
+    @property
+    def TrxId(self):
+        r"""Transaction ID
+        :rtype: int
+        """
+        return self._TrxId
+
+    @TrxId.setter
+    def TrxId(self, TrxId):
+        self._TrxId = TrxId
+
+    @property
+    def ClientPort(self):
+        r"""Port.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ClientPort
+
+    @ClientPort.setter
+    def ClientPort(self, ClientPort):
+        self._ClientPort = ClientPort
 
 
     def _deserialize(self, params):
@@ -1840,6 +1925,8 @@ Note: The return value may be null, indicating that no valid data can be obtaine
                 obj = LogRuleTemplateInfo()
                 obj._deserialize(item)
                 self._TemplateInfo.append(obj)
+        self._TrxId = params.get("TrxId")
+        self._ClientPort = params.get("ClientPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1858,10 +1945,8 @@ class AuditLogAggregationResult(AbstractModel):
     def __init__(self):
         r"""
         :param _AggregationField: Aggregation dimension
-Note: This field may return null, indicating that no valid values can be obtained.
         :type AggregationField: str
-        :param _Buckets: Result set of an aggregation bucket
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Buckets: Aggregate bucket result set
         :type Buckets: list of Bucket
         """
         self._AggregationField = None
@@ -1870,7 +1955,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def AggregationField(self):
         r"""Aggregation dimension
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._AggregationField
@@ -1881,8 +1965,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Buckets(self):
-        r"""Result set of an aggregation bucket
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Aggregate bucket result set
         :rtype: list of Bucket
         """
         return self._Buckets
@@ -2032,15 +2115,15 @@ class AuditLogFilter(AbstractModel):
         :type Host: list of str
         :param _User: Username
         :type User: list of str
-        :param _DBName: Database Name.
+        :param _DBName: 
         :type DBName: list of str
         :param _TableName: Table name
         :type TableName: list of str
         :param _PolicyName: Audit policy name
         :type PolicyName: list of str
-        :param _Sql: SQL statement. Supports fuzzy matching.
+        :param _Sql: 
         :type Sql: str
-        :param _SqlType: SQL Type. Currently supports: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE".
+        :param _SqlType: 
         :type SqlType: str
         :param _ExecTime: Execution time in ms, which is used to filter the audit log with execution time greater than this value.
         :type ExecTime: int
@@ -2114,7 +2197,7 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def DBName(self):
-        r"""Database Name.
+        r"""
         :rtype: list of str
         """
         return self._DBName
@@ -2147,7 +2230,7 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def Sql(self):
-        r"""SQL statement. Supports fuzzy matching.
+        r"""
         :rtype: str
         """
         return self._Sql
@@ -2158,7 +2241,7 @@ class AuditLogFilter(AbstractModel):
 
     @property
     def SqlType(self):
-        r"""SQL Type. Currently supports: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE".
+        r"""
         :rtype: str
         """
         return self._SqlType
@@ -2367,11 +2450,9 @@ class AuditPolicy(AbstractModel):
         :type PolicyName: str
         :param _RuleId: Audit rule ID
         :type RuleId: str
-        :param _RuleName: Audit rule name
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _RuleName: Audit rule name.
         :type RuleName: str
         :param _InstanceName: Database instance name
-Note: This field may return `null`, indicating that no valid value was found.
         :type InstanceName: str
         """
         self._PolicyId = None
@@ -2467,8 +2548,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RuleName(self):
-        r"""Audit rule name
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Audit rule name.
         :rtype: str
         """
         return self._RuleName
@@ -2480,7 +2560,6 @@ Note: This field may return `null`, indicating that no valid value was found.
     @property
     def InstanceName(self):
         r"""Database instance name
-Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
         return self._InstanceName
@@ -2865,29 +2944,37 @@ class AuditRuleTemplateInfo(AbstractModel):
 
 
 class AutoStrategy(AbstractModel):
-    r"""Automatic scale-out policy for elastic CPU scale-out.
+    r"""CPU Elastic Scaling auto scale-out policy.
 
     """
 
     def __init__(self):
         r"""
-        :param _ExpandThreshold: CPU utilization threshold (percent value). Valid values: 70, 80, and 90. Automatic scale-out will be triggered when CPU utilization reaches the set threshold.
+        :param _ExpandThreshold: Auto scaling threshold. Available values: 40, 50, 60, 70, 80, 90. Represents the CPU utilization reaches 40%, 50%, 60%, 70%, 80%, or 90% to trigger auto scaling in the background.
         :type ExpandThreshold: int
-        :param _ExpandPeriod: Interval, in seconds. Valid values: 1, 3, 5, 10, 15, and 30. The system backend determines whether automatic scale-out is required at the set interval.
-        :type ExpandPeriod: int
         :param _ShrinkThreshold: CPU utilization threshold (percent value). Valid values: 10, 20, and 30. Automatic scale-in will be triggered when CPU utilization reaches the set threshold.
         :type ShrinkThreshold: int
-        :param _ShrinkPeriod: Interval, in seconds. Valid values: 5, 10, 15, and 30. The system backend determines whether automatic scale-in is required at the set interval.
+        :param _ExpandPeriod: Auto-scaling observation period, in minutes, available values 1, 3, 5, 10, 15, 30. The backend will judge scaling out according to the configured period.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpandPeriod: int
+        :param _ShrinkPeriod: Automatic scaling down observation period, in minutes, available values 5, 10, 15, 30. The backend performs scale-in judgment according to the configured period.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ShrinkPeriod: int
+        :param _ExpandSecondPeriod: Elastic scaling observation period (in seconds). Value is 15, 30, 45, 60, 180, 300, 600, 900, or 1800.
+        :type ExpandSecondPeriod: int
+        :param _ShrinkSecondPeriod: Scale-down observation period (in seconds). Valid values: 300, 600, 900, 1800.
+        :type ShrinkSecondPeriod: int
         """
         self._ExpandThreshold = None
-        self._ExpandPeriod = None
         self._ShrinkThreshold = None
+        self._ExpandPeriod = None
         self._ShrinkPeriod = None
+        self._ExpandSecondPeriod = None
+        self._ShrinkSecondPeriod = None
 
     @property
     def ExpandThreshold(self):
-        r"""CPU utilization threshold (percent value). Valid values: 70, 80, and 90. Automatic scale-out will be triggered when CPU utilization reaches the set threshold.
+        r"""Auto scaling threshold. Available values: 40, 50, 60, 70, 80, 90. Represents the CPU utilization reaches 40%, 50%, 60%, 70%, 80%, or 90% to trigger auto scaling in the background.
         :rtype: int
         """
         return self._ExpandThreshold
@@ -2895,17 +2982,6 @@ class AutoStrategy(AbstractModel):
     @ExpandThreshold.setter
     def ExpandThreshold(self, ExpandThreshold):
         self._ExpandThreshold = ExpandThreshold
-
-    @property
-    def ExpandPeriod(self):
-        r"""Interval, in seconds. Valid values: 1, 3, 5, 10, 15, and 30. The system backend determines whether automatic scale-out is required at the set interval.
-        :rtype: int
-        """
-        return self._ExpandPeriod
-
-    @ExpandPeriod.setter
-    def ExpandPeriod(self, ExpandPeriod):
-        self._ExpandPeriod = ExpandPeriod
 
     @property
     def ShrinkThreshold(self):
@@ -2919,22 +2995,67 @@ class AutoStrategy(AbstractModel):
         self._ShrinkThreshold = ShrinkThreshold
 
     @property
+    def ExpandPeriod(self):
+        warnings.warn("parameter `ExpandPeriod` is deprecated", DeprecationWarning) 
+
+        r"""Auto-scaling observation period, in minutes, available values 1, 3, 5, 10, 15, 30. The backend will judge scaling out according to the configured period.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ExpandPeriod
+
+    @ExpandPeriod.setter
+    def ExpandPeriod(self, ExpandPeriod):
+        warnings.warn("parameter `ExpandPeriod` is deprecated", DeprecationWarning) 
+
+        self._ExpandPeriod = ExpandPeriod
+
+    @property
     def ShrinkPeriod(self):
-        r"""Interval, in seconds. Valid values: 5, 10, 15, and 30. The system backend determines whether automatic scale-in is required at the set interval.
+        warnings.warn("parameter `ShrinkPeriod` is deprecated", DeprecationWarning) 
+
+        r"""Automatic scaling down observation period, in minutes, available values 5, 10, 15, 30. The backend performs scale-in judgment according to the configured period.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ShrinkPeriod
 
     @ShrinkPeriod.setter
     def ShrinkPeriod(self, ShrinkPeriod):
+        warnings.warn("parameter `ShrinkPeriod` is deprecated", DeprecationWarning) 
+
         self._ShrinkPeriod = ShrinkPeriod
+
+    @property
+    def ExpandSecondPeriod(self):
+        r"""Elastic scaling observation period (in seconds). Value is 15, 30, 45, 60, 180, 300, 600, 900, or 1800.
+        :rtype: int
+        """
+        return self._ExpandSecondPeriod
+
+    @ExpandSecondPeriod.setter
+    def ExpandSecondPeriod(self, ExpandSecondPeriod):
+        self._ExpandSecondPeriod = ExpandSecondPeriod
+
+    @property
+    def ShrinkSecondPeriod(self):
+        r"""Scale-down observation period (in seconds). Valid values: 300, 600, 900, 1800.
+        :rtype: int
+        """
+        return self._ShrinkSecondPeriod
+
+    @ShrinkSecondPeriod.setter
+    def ShrinkSecondPeriod(self, ShrinkSecondPeriod):
+        self._ShrinkSecondPeriod = ShrinkSecondPeriod
 
 
     def _deserialize(self, params):
         self._ExpandThreshold = params.get("ExpandThreshold")
-        self._ExpandPeriod = params.get("ExpandPeriod")
         self._ShrinkThreshold = params.get("ShrinkThreshold")
+        self._ExpandPeriod = params.get("ExpandPeriod")
         self._ShrinkPeriod = params.get("ShrinkPeriod")
+        self._ExpandSecondPeriod = params.get("ExpandSecondPeriod")
+        self._ShrinkSecondPeriod = params.get("ShrinkSecondPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2954,7 +3075,7 @@ class BackupConfig(AbstractModel):
         r"""
         :param _ReplicationMode: Replication mode of secondary database 2. Value range: async, semi-sync
         :type ReplicationMode: str
-        :param _Zone: Name of the AZ of secondary database 2, such as ap-shanghai-2
+        :param _Zone: The canonical name of the second secondary availability zone, for example ap-shanghai-2
         :type Zone: str
         :param _Vip: Private IP address of secondary database 2
         :type Vip: str
@@ -2979,7 +3100,7 @@ class BackupConfig(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Name of the AZ of secondary database 2, such as ap-shanghai-2
+        r"""The canonical name of the second secondary availability zone, for example ap-shanghai-2
         :rtype: str
         """
         return self._Zone
@@ -3033,47 +3154,52 @@ class BackupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Backup filename
+        :param _Name: <p>Backup file name</p>
         :type Name: str
-        :param _Size: Backup file size in bytes
+        :param _Size: <p>Backup file size, unit: Byte</p>
         :type Size: int
-        :param _Date: Backup snapshot time in the format of yyyy-MM-dd HH:mm:ss, such as 2016-03-17 02:10:37
+        :param _Date: <p>Backup snapshot time. Time format: 2016-03-17 02:10:37</p>
         :type Date: str
-        :param _IntranetUrl: Download address
+        :param _IntranetUrl: <p>Download link</p>
         :type IntranetUrl: str
-        :param _InternetUrl: Download address
+        :param _InternetUrl: <p>Download link</p>
         :type InternetUrl: str
-        :param _Type: Log type. Valid values: `logical` (logical cold backup), `physical` (physical cold backup).
+        :param _Type: <p>Specific type of logs. Possible values: "logical": logical cold backup, "physical": physical cold backup.</p>
         :type Type: str
-        :param _BackupId: Backup subtask ID, which is used when backup files are deleted
+        :param _BackupId: <p>ID of the backup subtask, used when deleting backup files</p>
         :type BackupId: int
-        :param _Status: Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).
+        :param _Status: <p>Backup task status. Possible values: "SUCCESS": backup successful, "FAILED": backup FAILED, "RUNNING": backup in progress.</p>
         :type Status: str
-        :param _FinishTime: Backup task completion time
+        :param _FinishTime: <p>Backup task completion time</p>
         :type FinishTime: str
-        :param _Creator: (This field will be disused and is thus not recommended) backup creator. Valid values: `SYSTEM` (created by system), `Uin` (initiator's `Uin` value).
+        :param _Creator: <p>(This value will be deprecated and is not recommended for use) Creator of the backup. Valid values: SYSTEM - generated by the system, Uin - Uin value of the initiator.</p>
         :type Creator: str
-        :param _StartTime: Backup task start time
+        :param _StartTime: <p>Start time of the backup task</p>
         :type StartTime: str
-        :param _Method: Backup method. Valid values: `full` (full backup), `partial` (partial backup).
+        :param _Method: <p>Backup method. Possible values are "full": full backup, "partial": partial backup.</p>
         :type Method: str
-        :param _Way: Backup mode. Valid values: `manual` (manual backup), `automatic` (automatic backup).
+        :param _Way: <p>Backup method. Possible values are "manual": manual backup, "automatic": automatic backup.</p>
         :type Way: str
-        :param _ManualBackupName: Manual backup alias
+        :param _ManualBackupName: <p>Manual backup alias</p>
         :type ManualBackupName: str
-        :param _SaveMode: Backup retention type. Valid values: `save_mode_regular` (non-archive backup), save_mode_period`(archive backup).
+        :param _SaveMode: <p>Backup retention type, save_mode_regular - Regular backup saving, save_mode_period - Periodic backup</p>
         :type SaveMode: str
-        :param _Region: The region where local backup resides
+        :param _Region: <p>Local backup region</p>
         :type Region: str
-        :param _RemoteInfo: Detailed information of remote backups
+        :param _RemoteInfo: <p>Detailed information of offsite backup</p>
         :type RemoteInfo: list of RemoteBackupInfo
-        :param _CosStorageType: Storage method. Valid values: `0` (regular storage), `1`(archive storage). Default value: `0`.
+        :param _CosStorageType: <p>Storage method: 0 - regular storage, 1 - archive storage, 2 - standard storage, defaults to 0.</p>
         :type CosStorageType: int
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :param _InstanceId: <p>Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.</p>
         :type InstanceId: str
-        :param _EncryptionFlag: Whether the backup file is encrypted. Valid values: `on` (encrypted), `off` (unencrypted).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Progress: <p>Backup completion progress</p>
+        :type Progress: int
+        :param _EncryptionFlag: <p>Whether the backup file is encrypted, on-encrypted, off-unencrypted</p>
         :type EncryptionFlag: str
+        :param _ExecutedGTIDSet: <p>Backup GTID position</p>
+        :type ExecutedGTIDSet: str
+        :param _MD5: <p>MD5 value of the backup file</p>
+        :type MD5: str
         """
         self._Name = None
         self._Size = None
@@ -3094,11 +3220,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RemoteInfo = None
         self._CosStorageType = None
         self._InstanceId = None
+        self._Progress = None
         self._EncryptionFlag = None
+        self._ExecutedGTIDSet = None
+        self._MD5 = None
 
     @property
     def Name(self):
-        r"""Backup filename
+        r"""<p>Backup file name</p>
         :rtype: str
         """
         return self._Name
@@ -3109,7 +3238,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Size(self):
-        r"""Backup file size in bytes
+        r"""<p>Backup file size, unit: Byte</p>
         :rtype: int
         """
         return self._Size
@@ -3120,7 +3249,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Date(self):
-        r"""Backup snapshot time in the format of yyyy-MM-dd HH:mm:ss, such as 2016-03-17 02:10:37
+        r"""<p>Backup snapshot time. Time format: 2016-03-17 02:10:37</p>
         :rtype: str
         """
         return self._Date
@@ -3131,7 +3260,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IntranetUrl(self):
-        r"""Download address
+        r"""<p>Download link</p>
         :rtype: str
         """
         return self._IntranetUrl
@@ -3142,7 +3271,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternetUrl(self):
-        r"""Download address
+        r"""<p>Download link</p>
         :rtype: str
         """
         return self._InternetUrl
@@ -3153,7 +3282,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        r"""Log type. Valid values: `logical` (logical cold backup), `physical` (physical cold backup).
+        r"""<p>Specific type of logs. Possible values: "logical": logical cold backup, "physical": physical cold backup.</p>
         :rtype: str
         """
         return self._Type
@@ -3164,7 +3293,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupId(self):
-        r"""Backup subtask ID, which is used when backup files are deleted
+        r"""<p>ID of the backup subtask, used when deleting backup files</p>
         :rtype: int
         """
         return self._BackupId
@@ -3175,7 +3304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).
+        r"""<p>Backup task status. Possible values: "SUCCESS": backup successful, "FAILED": backup FAILED, "RUNNING": backup in progress.</p>
         :rtype: str
         """
         return self._Status
@@ -3186,7 +3315,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishTime(self):
-        r"""Backup task completion time
+        r"""<p>Backup task completion time</p>
         :rtype: str
         """
         return self._FinishTime
@@ -3197,7 +3326,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Creator(self):
-        r"""(This field will be disused and is thus not recommended) backup creator. Valid values: `SYSTEM` (created by system), `Uin` (initiator's `Uin` value).
+        r"""<p>(This value will be deprecated and is not recommended for use) Creator of the backup. Valid values: SYSTEM - generated by the system, Uin - Uin value of the initiator.</p>
         :rtype: str
         """
         return self._Creator
@@ -3208,7 +3337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        r"""Backup task start time
+        r"""<p>Start time of the backup task</p>
         :rtype: str
         """
         return self._StartTime
@@ -3219,7 +3348,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        r"""Backup method. Valid values: `full` (full backup), `partial` (partial backup).
+        r"""<p>Backup method. Possible values are "full": full backup, "partial": partial backup.</p>
         :rtype: str
         """
         return self._Method
@@ -3230,7 +3359,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Way(self):
-        r"""Backup mode. Valid values: `manual` (manual backup), `automatic` (automatic backup).
+        r"""<p>Backup method. Possible values are "manual": manual backup, "automatic": automatic backup.</p>
         :rtype: str
         """
         return self._Way
@@ -3241,7 +3370,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ManualBackupName(self):
-        r"""Manual backup alias
+        r"""<p>Manual backup alias</p>
         :rtype: str
         """
         return self._ManualBackupName
@@ -3252,7 +3381,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SaveMode(self):
-        r"""Backup retention type. Valid values: `save_mode_regular` (non-archive backup), save_mode_period`(archive backup).
+        r"""<p>Backup retention type, save_mode_regular - Regular backup saving, save_mode_period - Periodic backup</p>
         :rtype: str
         """
         return self._SaveMode
@@ -3263,7 +3392,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
-        r"""The region where local backup resides
+        r"""<p>Local backup region</p>
         :rtype: str
         """
         return self._Region
@@ -3274,7 +3403,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RemoteInfo(self):
-        r"""Detailed information of remote backups
+        r"""<p>Detailed information of offsite backup</p>
         :rtype: list of RemoteBackupInfo
         """
         return self._RemoteInfo
@@ -3285,7 +3414,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosStorageType(self):
-        r"""Storage method. Valid values: `0` (regular storage), `1`(archive storage). Default value: `0`.
+        r"""<p>Storage method: 0 - regular storage, 1 - archive storage, 2 - standard storage, defaults to 0.</p>
         :rtype: int
         """
         return self._CosStorageType
@@ -3296,7 +3425,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        r"""<p>Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3306,9 +3435,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._InstanceId = InstanceId
 
     @property
+    def Progress(self):
+        r"""<p>Backup completion progress</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
     def EncryptionFlag(self):
-        r"""Whether the backup file is encrypted. Valid values: `on` (encrypted), `off` (unencrypted).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Whether the backup file is encrypted, on-encrypted, off-unencrypted</p>
         :rtype: str
         """
         return self._EncryptionFlag
@@ -3316,6 +3455,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @EncryptionFlag.setter
     def EncryptionFlag(self, EncryptionFlag):
         self._EncryptionFlag = EncryptionFlag
+
+    @property
+    def ExecutedGTIDSet(self):
+        r"""<p>Backup GTID position</p>
+        :rtype: str
+        """
+        return self._ExecutedGTIDSet
+
+    @ExecutedGTIDSet.setter
+    def ExecutedGTIDSet(self, ExecutedGTIDSet):
+        self._ExecutedGTIDSet = ExecutedGTIDSet
+
+    @property
+    def MD5(self):
+        r"""<p>MD5 value of the backup file</p>
+        :rtype: str
+        """
+        return self._MD5
+
+    @MD5.setter
+    def MD5(self, MD5):
+        self._MD5 = MD5
 
 
     def _deserialize(self, params):
@@ -3343,7 +3504,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self._RemoteInfo.append(obj)
         self._CosStorageType = params.get("CosStorageType")
         self._InstanceId = params.get("InstanceId")
+        self._Progress = params.get("Progress")
         self._EncryptionFlag = params.get("EncryptionFlag")
+        self._ExecutedGTIDSet = params.get("ExecutedGTIDSet")
+        self._MD5 = params.get("MD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3634,14 +3798,14 @@ class BalanceRoGroupLoadRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoGroupId: RO group ID in the format of `cdbrg-c1nl9rpv`.
+        :param _RoGroupId: ID of the RO group, in the format of cdbrg-c1nl9rpv. You can obtain it via [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1).
         :type RoGroupId: str
         """
         self._RoGroupId = None
 
     @property
     def RoGroupId(self):
-        r"""RO group ID in the format of `cdbrg-c1nl9rpv`.
+        r"""ID of the RO group, in the format of cdbrg-c1nl9rpv. You can obtain it via [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1).
         :rtype: str
         """
         return self._RoGroupId
@@ -3698,32 +3862,34 @@ class BinlogInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Binlog backup filename
+        :param _Name: <p>binlog backup file name</p>
         :type Name: str
-        :param _Size: Backup file size in bytes
+        :param _Size: <p>Backup file size, unit: Byte</p>
         :type Size: int
-        :param _Date: File stored time in the format of 2016-03-17 02:10:37
+        :param _Date: <p>File storage time. Time format: 2016-03-17 02:10:37</p>
         :type Date: str
-        :param _IntranetUrl: Download address
+        :param _IntranetUrl: <p>Download link<br>Description: This download link is the same as the download address of the parameter InternetUrl.</p>
         :type IntranetUrl: str
-        :param _InternetUrl: Download address
+        :param _InternetUrl: <p>Download address<br>Description: This download address is the same as the IntranetUrl download address.</p>
         :type InternetUrl: str
-        :param _Type: Log type. Value range: binlog
+        :param _Type: <p>Log specific type. Possible values: binlog - binary log</p>
         :type Type: str
-        :param _BinlogStartTime: Binlog file start file
+        :param _BinlogStartTime: <p>binlog file start time</p>
         :type BinlogStartTime: str
-        :param _BinlogFinishTime: Binlog file end time
+        :param _BinlogFinishTime: <p>binlog file expiration time</p>
         :type BinlogFinishTime: str
-        :param _Region: The region where the binlog file resides
+        :param _Region: <p>Region where local binlog files are located</p>
         :type Region: str
-        :param _Status: Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).
+        :param _Status: <p>Backup task status. Possible values: "SUCCESS": backup successful, "FAILED": backup FAILED, "RUNNING": backup in progress.</p>
         :type Status: str
-        :param _RemoteInfo: The detailed information of remote binlog backups
+        :param _RemoteInfo: <p>Detailed information of binlog offsite backup</p>
         :type RemoteInfo: list of RemoteBackupInfo
-        :param _CosStorageType: Storage method. Valid values: `0` (regular storage), `1`(archive storage). Default value: `0`.
+        :param _CosStorageType: <p>Storage method: 0 - regular storage, 1 - archive storage, 2 - standard storage, defaults to 0.</p>
         :type CosStorageType: int
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :param _InstanceId: <p>Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.</p>
         :type InstanceId: str
+        :param _Progress: <p>Backup completion progress</p>
+        :type Progress: int
         """
         self._Name = None
         self._Size = None
@@ -3738,10 +3904,11 @@ class BinlogInfo(AbstractModel):
         self._RemoteInfo = None
         self._CosStorageType = None
         self._InstanceId = None
+        self._Progress = None
 
     @property
     def Name(self):
-        r"""Binlog backup filename
+        r"""<p>binlog backup file name</p>
         :rtype: str
         """
         return self._Name
@@ -3752,7 +3919,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def Size(self):
-        r"""Backup file size in bytes
+        r"""<p>Backup file size, unit: Byte</p>
         :rtype: int
         """
         return self._Size
@@ -3763,7 +3930,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def Date(self):
-        r"""File stored time in the format of 2016-03-17 02:10:37
+        r"""<p>File storage time. Time format: 2016-03-17 02:10:37</p>
         :rtype: str
         """
         return self._Date
@@ -3774,7 +3941,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def IntranetUrl(self):
-        r"""Download address
+        r"""<p>Download link<br>Description: This download link is the same as the download address of the parameter InternetUrl.</p>
         :rtype: str
         """
         return self._IntranetUrl
@@ -3785,7 +3952,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def InternetUrl(self):
-        r"""Download address
+        r"""<p>Download address<br>Description: This download address is the same as the IntranetUrl download address.</p>
         :rtype: str
         """
         return self._InternetUrl
@@ -3796,7 +3963,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""Log type. Value range: binlog
+        r"""<p>Log specific type. Possible values: binlog - binary log</p>
         :rtype: str
         """
         return self._Type
@@ -3807,7 +3974,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def BinlogStartTime(self):
-        r"""Binlog file start file
+        r"""<p>binlog file start time</p>
         :rtype: str
         """
         return self._BinlogStartTime
@@ -3818,7 +3985,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def BinlogFinishTime(self):
-        r"""Binlog file end time
+        r"""<p>binlog file expiration time</p>
         :rtype: str
         """
         return self._BinlogFinishTime
@@ -3829,7 +3996,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""The region where the binlog file resides
+        r"""<p>Region where local binlog files are located</p>
         :rtype: str
         """
         return self._Region
@@ -3840,7 +4007,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).
+        r"""<p>Backup task status. Possible values: "SUCCESS": backup successful, "FAILED": backup FAILED, "RUNNING": backup in progress.</p>
         :rtype: str
         """
         return self._Status
@@ -3851,7 +4018,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def RemoteInfo(self):
-        r"""The detailed information of remote binlog backups
+        r"""<p>Detailed information of binlog offsite backup</p>
         :rtype: list of RemoteBackupInfo
         """
         return self._RemoteInfo
@@ -3862,7 +4029,7 @@ class BinlogInfo(AbstractModel):
 
     @property
     def CosStorageType(self):
-        r"""Storage method. Valid values: `0` (regular storage), `1`(archive storage). Default value: `0`.
+        r"""<p>Storage method: 0 - regular storage, 1 - archive storage, 2 - standard storage, defaults to 0.</p>
         :rtype: int
         """
         return self._CosStorageType
@@ -3873,14 +4040,29 @@ class BinlogInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
+        r"""<p>Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.</p>
         :rtype: str
         """
         return self._InstanceId
 
     @InstanceId.setter
     def InstanceId(self, InstanceId):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         self._InstanceId = InstanceId
+
+    @property
+    def Progress(self):
+        r"""<p>Backup completion progress</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
 
 
     def _deserialize(self, params):
@@ -3902,6 +4084,7 @@ class BinlogInfo(AbstractModel):
                 self._RemoteInfo.append(obj)
         self._CosStorageType = params.get("CosStorageType")
         self._InstanceId = params.get("InstanceId")
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3920,7 +4103,6 @@ class Bucket(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: None
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Key: str
         :param _Count: Number of occurrences of the key value
         :type Count: int
@@ -3931,7 +4113,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Key(self):
         r"""None
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Key
@@ -5028,9 +5209,9 @@ class CloseCDBProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
         :param _OnlyCloseRW: Whether only to disable read/write separation. Valid values: `true`, `false`. Default value: `false`.
         :type OnlyCloseRW: bool
@@ -5041,7 +5222,7 @@ class CloseCDBProxyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -5052,7 +5233,7 @@ class CloseCDBProxyRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -5122,9 +5303,9 @@ class CloseCdbProxyAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
-        :param _ProxyAddressId: Address ID of the proxy group
+        :param _ProxyAddressId: Proxy group address ID. You can obtain it through the API [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1).
         :type ProxyAddressId: str
         """
         self._ProxyGroupId = None
@@ -5132,7 +5313,7 @@ class CloseCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -5143,7 +5324,7 @@ class CloseCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ProxyAddressId(self):
-        r"""Address ID of the proxy group
+        r"""Proxy group address ID. You can obtain it through the API [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1).
         :rtype: str
         """
         return self._ProxyAddressId
@@ -5194,21 +5375,24 @@ class CloseCdbProxyAddressResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CloseWanServiceRequest(AbstractModel):
-    r"""CloseWanService request structure.
+class CloseSSLRequest(AbstractModel):
+    r"""CloseSSL request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        :param _InstanceId: Instance ID. Required when the read-only group ID is empty. Can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
+        :param _RoGroupId: Read-only group ID. Required when the instance ID is empty. Can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
+        :type RoGroupId: str
         """
         self._InstanceId = None
+        self._RoGroupId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        r"""Instance ID. Required when the read-only group ID is empty. Can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -5217,9 +5401,115 @@ class CloseWanServiceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def RoGroupId(self):
+        r"""Read-only group ID. Required when the instance ID is empty. Can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._RoGroupId
+
+    @RoGroupId.setter
+    def RoGroupId(self, RoGroupId):
+        self._RoGroupId = RoGroupId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._RoGroupId = params.get("RoGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseSSLResponse(AbstractModel):
+    r"""CloseSSL response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: Asynchronous request ID.
+        :type AsyncRequestId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        r"""Asynchronous request ID.
+        :rtype: str
+        """
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class CloseWanServiceRequest(AbstractModel):
+    r"""CloseWanService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. Use the query instance list API (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) to obtain it, with its value being the InstanceId field in the output parameter. Input the read-only group ID to disable public network access for the read-only group.
+        :type InstanceId: str
+        :param _OpResourceId: When updating the read-only group of a cloud disk edition instance, specify the instance ID in InstanceId and this parameter to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :type OpResourceId: str
+        """
+        self._InstanceId = None
+        self._OpResourceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. Use the query instance list API (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) to obtain it, with its value being the InstanceId field in the output parameter. Input the read-only group ID to disable public network access for the read-only group.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OpResourceId(self):
+        r"""When updating the read-only group of a cloud disk edition instance, specify the instance ID in InstanceId and this parameter to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :rtype: str
+        """
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5664,9 +5954,13 @@ class CreateAccountsRequest(AbstractModel):
         :type InstanceId: str
         :param _Accounts: List of TencentDB accounts
         :type Accounts: list of Account
-        :param _Password: Password of the new account
+        :param _Password: Password of the new account.
+Note:
+1. Within 8–64 characters (recommend not exceeding 12).
+2. At least two of the following items: lowercase letter a – z or uppercase letter A – Z, digit 0 – 9, _+-,&=!@#$%^*().|.
+3. Cannot contain invalid characters.
         :type Password: str
-        :param _Description: Remarks
+        :param _Description: Remark information. Input limit: 255 characters.
         :type Description: str
         :param _MaxUserConnections: Maximum connections of the new account. Default value: `10240`. Maximum value: `10240`.
         :type MaxUserConnections: int
@@ -5701,7 +5995,11 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Password of the new account
+        r"""Password of the new account.
+Note:
+1. Within 8–64 characters (recommend not exceeding 12).
+2. At least two of the following items: lowercase letter a – z or uppercase letter A – Z, digit 0 – 9, _+-,&=!@#$%^*().|.
+3. Cannot contain invalid characters.
         :rtype: str
         """
         return self._Password
@@ -5712,7 +6010,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""Remarks
+        r"""Remark information. Input limit: 255 characters.
         :rtype: str
         """
         return self._Description
@@ -6285,16 +6583,19 @@ class CreateBackupRequest(AbstractModel):
         :type InstanceId: str
         :param _BackupMethod: Target backup method. Valid values: `logical` (logical cold backup), `physical` (physical cold backup), `snapshot` (snapshot backup). Basic Edition instances only support snapshot backups.
         :type BackupMethod: str
-        :param _BackupDBTableList: Information of the table to be backed up. If this parameter is not set, the entire instance will be backed up by default. It can be set only in logical backup (i.e., BackupMethod = logical). The specified table must exist; otherwise, backup may fail.
-For example, if you want to backup tb1 and tb2 in db1 and the entire db2, you should set the parameter as [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"} ].
+        :param _BackupDBTableList: Database table information to be backed up. If this parameter is not set, the whole instance is backed up by default. This parameter can only be set when BackupMethod=logical. The specified database and tables must exist. Otherwise, backup may fail.
+If necessary to back up tables tb1 and tb2 in database db1 and database db2, configure the parameter as [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"}].
         :type BackupDBTableList: list of BackupItem
-        :param _ManualBackupName: Manual backup alias
+        :param _ManualBackupName: Manually back up the alias. Keep the input length within 60 characters.
         :type ManualBackupName: str
+        :param _EncryptionFlag: Whether the physical backup needs encryption, optional values: on - yes, off - no. This value is meaningful only when BackupMethod is physical. If not specified, use the default encryption policy of instance backup. Here, the default encryption policy refers to the current instance encryption policy queried via the api for the query [DescribeBackupEncryptionStatus](https://www.tencentcloud.com/document/product/236/86508?from_cn_redirect=1).
+        :type EncryptionFlag: str
         """
         self._InstanceId = None
         self._BackupMethod = None
         self._BackupDBTableList = None
         self._ManualBackupName = None
+        self._EncryptionFlag = None
 
     @property
     def InstanceId(self):
@@ -6320,8 +6621,8 @@ For example, if you want to backup tb1 and tb2 in db1 and the entire db2, you sh
 
     @property
     def BackupDBTableList(self):
-        r"""Information of the table to be backed up. If this parameter is not set, the entire instance will be backed up by default. It can be set only in logical backup (i.e., BackupMethod = logical). The specified table must exist; otherwise, backup may fail.
-For example, if you want to backup tb1 and tb2 in db1 and the entire db2, you should set the parameter as [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"} ].
+        r"""Database table information to be backed up. If this parameter is not set, the whole instance is backed up by default. This parameter can only be set when BackupMethod=logical. The specified database and tables must exist. Otherwise, backup may fail.
+If necessary to back up tables tb1 and tb2 in database db1 and database db2, configure the parameter as [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"}].
         :rtype: list of BackupItem
         """
         return self._BackupDBTableList
@@ -6332,7 +6633,7 @@ For example, if you want to backup tb1 and tb2 in db1 and the entire db2, you sh
 
     @property
     def ManualBackupName(self):
-        r"""Manual backup alias
+        r"""Manually back up the alias. Keep the input length within 60 characters.
         :rtype: str
         """
         return self._ManualBackupName
@@ -6340,6 +6641,17 @@ For example, if you want to backup tb1 and tb2 in db1 and the entire db2, you sh
     @ManualBackupName.setter
     def ManualBackupName(self, ManualBackupName):
         self._ManualBackupName = ManualBackupName
+
+    @property
+    def EncryptionFlag(self):
+        r"""Whether the physical backup needs encryption, optional values: on - yes, off - no. This value is meaningful only when BackupMethod is physical. If not specified, use the default encryption policy of instance backup. Here, the default encryption policy refers to the current instance encryption policy queried via the api for the query [DescribeBackupEncryptionStatus](https://www.tencentcloud.com/document/product/236/86508?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._EncryptionFlag
+
+    @EncryptionFlag.setter
+    def EncryptionFlag(self, EncryptionFlag):
+        self._EncryptionFlag = EncryptionFlag
 
 
     def _deserialize(self, params):
@@ -6352,6 +6664,7 @@ For example, if you want to backup tb1 and tb2 in db1 and the entire db2, you sh
                 obj._deserialize(item)
                 self._BackupDBTableList.append(obj)
         self._ManualBackupName = params.get("ManualBackupName")
+        self._EncryptionFlag = params.get("EncryptionFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6412,7 +6725,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
         :param _WeightMode: Assignment mode of weights. Valid values: `system` (auto-assigned), `custom`.
         :type WeightMode: str
@@ -6420,7 +6733,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         :type IsKickOut: bool
         :param _MinCount: Least read-only instances. Minimum value:  `0`
         :type MinCount: int
-        :param _MaxDelay: The delay threshold. Minimum value:  `0`
+        :param _MaxDelay: Delay removal threshold, minimum value: 1, range: 1–10000. The value is an integer.
         :type MaxDelay: int
         :param _FailOver: Whether to enable failover. Valid values: `true`, `false`.
         :type FailOver: bool
@@ -6432,25 +6745,26 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         :type TransSplit: bool
         :param _ProxyAllocation: Assignment of read/write weights
         :type ProxyAllocation: list of ProxyAllocation
-        :param _UniqVpcId: VPC ID
+        :param _UniqVpcId: VPC ID. Obtain through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type UniqVpcId: str
-        :param _UniqSubnetId: VPC subnet ID
+        :param _UniqSubnetId: Private subnet ID. Obtain through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type UniqSubnetId: str
-        :param _ConnectionPool: Whether to enable the connection pool. Valid values: 
+        :param _ConnectionPool: Whether to enable connection pool. Off by default.
+Note: If you need to use the database proxy connection pool capability, the kernel minor version of the MySQL 8.0 primary instance must be equal to or greater than MySQL 8.0 20230630.
         :type ConnectionPool: bool
         :param _Desc: Description
         :type Desc: str
-        :param _Vip: IP address
+        :param _Vip: IP. Leave it blank to default to a random supported IP in the selected VPC.
         :type Vip: str
-        :param _VPort: Port
+        :param _VPort: Port. Default value 3306.
         :type VPort: int
         :param _SecurityGroup: Security group
         :type SecurityGroup: list of str
-        :param _ConnectionPoolType: Connection pool type, which will take effect only when `ConnectionPool` is `true`. Valid values:  `transaction` (transaction-level), `connection` (session-level).
+        :param _ConnectionPoolType: Connection pool type. Available values: transaction (transaction-level connection pool), connection (session-level connection pool). This parameter is valid only when ConnectionPool is true. Default value: connection.
         :type ConnectionPoolType: str
-        :param _AutoLoadBalance: Whether to enable adaptive load balancing. Disabled by default.
+        :param _AutoLoadBalance: Whether adaptive load balancing is enabled. Off by default.
         :type AutoLoadBalance: bool
-        :param _AccessMode: Access Mode. nearBy - nearby access, balance - balanced allocation. Default value: nearBy.
+        :param _AccessMode: Access mode. nearBy - proximity access, balance - balanced allocation. Default value: nearBy.
         :type AccessMode: str
         """
         self._ProxyGroupId = None
@@ -6476,7 +6790,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -6520,7 +6834,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def MaxDelay(self):
-        r"""The delay threshold. Minimum value:  `0`
+        r"""Delay removal threshold, minimum value: 1, range: 1–10000. The value is an integer.
         :rtype: int
         """
         return self._MaxDelay
@@ -6586,7 +6900,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""VPC ID
+        r"""VPC ID. Obtain through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._UniqVpcId
@@ -6597,7 +6911,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""VPC subnet ID
+        r"""Private subnet ID. Obtain through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._UniqSubnetId
@@ -6608,7 +6922,8 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ConnectionPool(self):
-        r"""Whether to enable the connection pool. Valid values: 
+        r"""Whether to enable connection pool. Off by default.
+Note: If you need to use the database proxy connection pool capability, the kernel minor version of the MySQL 8.0 primary instance must be equal to or greater than MySQL 8.0 20230630.
         :rtype: bool
         """
         return self._ConnectionPool
@@ -6630,7 +6945,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def Vip(self):
-        r"""IP address
+        r"""IP. Leave it blank to default to a random supported IP in the selected VPC.
         :rtype: str
         """
         return self._Vip
@@ -6641,7 +6956,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def VPort(self):
-        r"""Port
+        r"""Port. Default value 3306.
         :rtype: int
         """
         return self._VPort
@@ -6663,7 +6978,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ConnectionPoolType(self):
-        r"""Connection pool type, which will take effect only when `ConnectionPool` is `true`. Valid values:  `transaction` (transaction-level), `connection` (session-level).
+        r"""Connection pool type. Available values: transaction (transaction-level connection pool), connection (session-level connection pool). This parameter is valid only when ConnectionPool is true. Default value: connection.
         :rtype: str
         """
         return self._ConnectionPoolType
@@ -6674,7 +6989,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AutoLoadBalance(self):
-        r"""Whether to enable adaptive load balancing. Disabled by default.
+        r"""Whether adaptive load balancing is enabled. Off by default.
         :rtype: bool
         """
         return self._AutoLoadBalance
@@ -6685,7 +7000,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AccessMode(self):
-        r"""Access Mode. nearBy - nearby access, balance - balanced allocation. Default value: nearBy.
+        r"""Access mode. nearBy - proximity access, balance - balanced allocation. Default value: nearBy.
         :rtype: str
         """
         return self._AccessMode
@@ -6738,7 +7053,7 @@ class CreateCdbProxyAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AsyncRequestId: Asynchronous Task ID
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6748,7 +7063,7 @@ class CreateCdbProxyAddressResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Asynchronous Task ID
         :rtype: str
         """
         return self._AsyncRequestId
@@ -6781,20 +7096,32 @@ class CreateCdbProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _UniqVpcId: VPC ID
+        :param _UniqVpcId: VPC ID. Obtain through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type UniqVpcId: str
-        :param _UniqSubnetId: VPC subnet ID
+        :param _UniqSubnetId: Private subnet ID. Obtain through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type UniqSubnetId: str
-        :param _ProxyNodeCustom: The specification configuration of a node
+        :param _ProxyNodeCustom: Node specification configuration.
+Parameter description in the example.
+NodeCount: Number of nodes.
+Region: Node region.
+Zone: Node availability zone.
+Cpu: Number of cores per proxy node (unit: core).
+Mem: Memory size of each proxy node (unit: MB).
+Remarks:
+1. Database proxy supported node specifications are: 2C4000MB, 4C8000MB, 8C16000MB.
+2. The above parameters (such as number of nodes, availability zone) are required. When calling the API, if incomplete, creation may fail.
         :type ProxyNodeCustom: list of ProxyNodeCustom
         :param _SecurityGroup: Security group
         :type SecurityGroup: list of str
         :param _Desc: Description
         :type Desc: str
         :param _ConnectionPoolLimit: Connection pool threshold
+Note: If you need to use the database proxy connection pool capability, the kernel minor version of the MySQL 8.0 primary instance must be equal to or greater than MySQL 8.0 20230630.
         :type ConnectionPoolLimit: int
+        :param _ProxyVersion: Specify the Linux kernel version of the purchased proxy. Leave it blank to ship the latest version by default.
+        :type ProxyVersion: str
         """
         self._InstanceId = None
         self._UniqVpcId = None
@@ -6803,10 +7130,11 @@ class CreateCdbProxyRequest(AbstractModel):
         self._SecurityGroup = None
         self._Desc = None
         self._ConnectionPoolLimit = None
+        self._ProxyVersion = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -6817,7 +7145,7 @@ class CreateCdbProxyRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""VPC ID
+        r"""VPC ID. Obtain through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._UniqVpcId
@@ -6828,7 +7156,7 @@ class CreateCdbProxyRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""VPC subnet ID
+        r"""Private subnet ID. Obtain through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._UniqSubnetId
@@ -6839,7 +7167,16 @@ class CreateCdbProxyRequest(AbstractModel):
 
     @property
     def ProxyNodeCustom(self):
-        r"""The specification configuration of a node
+        r"""Node specification configuration.
+Parameter description in the example.
+NodeCount: Number of nodes.
+Region: Node region.
+Zone: Node availability zone.
+Cpu: Number of cores per proxy node (unit: core).
+Mem: Memory size of each proxy node (unit: MB).
+Remarks:
+1. Database proxy supported node specifications are: 2C4000MB, 4C8000MB, 8C16000MB.
+2. The above parameters (such as number of nodes, availability zone) are required. When calling the API, if incomplete, creation may fail.
         :rtype: list of ProxyNodeCustom
         """
         return self._ProxyNodeCustom
@@ -6873,6 +7210,7 @@ class CreateCdbProxyRequest(AbstractModel):
     @property
     def ConnectionPoolLimit(self):
         r"""Connection pool threshold
+Note: If you need to use the database proxy connection pool capability, the kernel minor version of the MySQL 8.0 primary instance must be equal to or greater than MySQL 8.0 20230630.
         :rtype: int
         """
         return self._ConnectionPoolLimit
@@ -6880,6 +7218,17 @@ class CreateCdbProxyRequest(AbstractModel):
     @ConnectionPoolLimit.setter
     def ConnectionPoolLimit(self, ConnectionPoolLimit):
         self._ConnectionPoolLimit = ConnectionPoolLimit
+
+    @property
+    def ProxyVersion(self):
+        r"""Specify the Linux kernel version of the purchased proxy. Leave it blank to ship the latest version by default.
+        :rtype: str
+        """
+        return self._ProxyVersion
+
+    @ProxyVersion.setter
+    def ProxyVersion(self, ProxyVersion):
+        self._ProxyVersion = ProxyVersion
 
 
     def _deserialize(self, params):
@@ -6895,6 +7244,7 @@ class CreateCdbProxyRequest(AbstractModel):
         self._SecurityGroup = params.get("SecurityGroup")
         self._Desc = params.get("Desc")
         self._ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        self._ProxyVersion = params.get("ProxyVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6912,7 +7262,7 @@ class CreateCdbProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AsyncRequestId: Asynchronous Task ID
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6922,7 +7272,7 @@ class CreateCdbProxyResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Asynchronous Task ID
         :rtype: str
         """
         return self._AsyncRequestId
@@ -6955,49 +7305,64 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ID of the instance to be cloned from
+        :param _InstanceId: <p>Clone source instance ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">DescribeDBInstances</a> API.</p>
         :type InstanceId: str
-        :param _SpecifiedRollbackTime: To roll back the cloned instance to a specific point in time, set this parameter to a value in the format of "yyyy-mm-dd hh:mm:ss".
+        :param _SpecifiedRollbackTime: <p>If necessary, specify this value when cloning an instance and rolling back to a specified time. The time format is yyyy-mm-dd hh:mm:ss.<br>Note: This parameter and the SpecifiedBackupId parameter require a choice between the two for configuration.</p>
         :type SpecifiedRollbackTime: str
-        :param _SpecifiedBackupId: To roll back the cloned instance to a specific physical backup file, set this parameter to the ID of the physical backup file. The ID can be obtained by the [DescribeBackups](https://intl.cloud.tencent.com/document/api/236/15842?from_cn_redirect=1) API.
+        :param _SpecifiedBackupId: <p>If necessary to clone an instance and roll back to a designated backup set, specify this value as the Id of the backup file. Please use <a href="/document/api/236/15842">query data backup file list</a>.</p><p>If it is a clone of a two-node, three-node, or four-node instance, the backup file is a physical backup. If it is a clone of a single-node or cloud disk edition instance, the backup file is a snapshot backup.</p>
         :type SpecifiedBackupId: int
-        :param _UniqVpcId: VPC ID, which can be obtained by the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API. If this parameter is left empty, the classic network will be used by default.
+        :param _UniqVpcId: <p>VPC ID. Please use <a href="/document/api/215/15778">Querying VPC List</a>.</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: VPC subnet ID, which can be obtained by the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API. If `UniqVpcId` is set, `UniqSubnetId` will be required.
+        :param _UniqSubnetId: <p>Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use <a href="/document/api/215/15784">query subnet list</a>.</p>
         :type UniqSubnetId: str
-        :param _Memory: Memory of the cloned instance in MB, which should be equal to (by default) or larger than that of the original instance
+        :param _Memory: <p>Instance memory size, unit: MB, must not be less than the clone source instance. Default is same as the source instance.</p>
         :type Memory: int
-        :param _Volume: Disk capacity of the cloned instance in GB, which should be equal to (by default) or larger than that of the original instance
+        :param _Volume: <p>Instance disk size, unit: GB, must not be less than the clone source instance. Default is same as the source instance.</p>
         :type Volume: int
-        :param _InstanceName: Name of the cloned instance
+        :param _InstanceName: <p>Name of the newly generated clone instance. Support input of up to 60 characters.</p>
         :type InstanceName: str
-        :param _SecurityGroup: Security group parameter, which can be obtained by the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API
+        :param _SecurityGroup: <p>Security group parameters. Use the API <a href="https://www.tencentcloud.com/document/api/236/15850?from_cn_redirect=1">Query Project Security Group Information</a> to query security group details of a certain project.</p>
         :type SecurityGroup: list of str
-        :param _ResourceTags: Information of the cloned instance tag
+        :param _ResourceTags: <p>Tag information of the instance.</p>
         :type ResourceTags: list of TagInfo
-        :param _Cpu: The number of CPU cores of the cloned instance. It should be equal to (by default) or larger than that of the original instance.
+        :param _Cpu: <p>Instance Cpu cores, must not be less than the clone source instance. Default is same as the source instance.</p>
         :type Cpu: int
-        :param _ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.
+        :param _ProtectMode: <p>Data replication method, defaults to 0. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication.</p>
         :type ProtectMode: int
-        :param _DeployMode: Multi-AZ or single-AZ. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0.
+        :param _DeployMode: <p>Multiple Availability Zones, defaults to 0. Supported values include: 0 - means single availability zone, 1 - means multi-availability zone.</p>
         :type DeployMode: int
-        :param _SlaveZone: Availability zone information of replica 1 of the cloned instance, which is the same as the value of `Zone` of the original instance by default
+        :param _SlaveZone: <p>The AZ information of the newly generated clone instance standby 1 is the same as the source instance Zone by default.</p>
         :type SlaveZone: str
-        :param _BackupZone: Availability zone information of replica 2 of the cloned instance, 
-which is left empty by default. Specify this parameter when cloning a strong sync source instance.
+        :param _BackupZone: <p>AZ information of standby 2, empty by default. Specify this parameter when you clone a strong sync primary instance.</p>
         :type BackupZone: str
-        :param _DeviceType: Resource isolation type of the clone. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance). Default value: `UNIVERSAL`.
+        :param _DeviceType: <p>Clone instance type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "CLOUD_NATIVE_CLUSTER" - standard type for CLOUD disk, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - enhanced type for CLOUD disk. If not specified, it defaults to general-purpose instance.</p>
         :type DeviceType: str
-        :param _InstanceNodes: The number of nodes of the clone. If this parameter is set to `3` or the `BackupZone` parameter is specified, the clone will have three nodes. If this parameter is set to `2` or left empty, the clone will have two nodes.
+        :param _InstanceNodes: <p>Number of nodes in the new clone instance.</p><p>To clone a three-node instance, set this value to 3 or specify the BackupZone parameter. To clone a dual-node instance, set this value to 2. By default, a dual-node instance is cloned. To clone a four-node instance, set this value to 4 or specify the FourthZone parameter.</p>
         :type InstanceNodes: int
-        :param _DeployGroupId: Placement group ID.
+        :param _DeployGroupId: <p>Placement group ID.</p>
         :type DeployGroupId: str
-        :param _DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
+        :param _DryRun: <p>Whether to only pre-check this request. true: Send a check request without creating an instance. Check items include required parameters, request format, and service limits. If the check fails, return the corresponding error code; if the check passes, return RequestId. Default false: Send a normal request and create the instance directly after passing the check.</p>
         :type DryRun: bool
-        :param _CageId: Financial cage ID.
+        :param _CageId: <p>Financial Enclosure ID.</p>
         :type CageId: str
-        :param _ProjectId: Project ID. Default value: 0.
+        :param _ProjectId: <p>Project ID. Default project ID 0.</p>
         :type ProjectId: int
+        :param _PayType: <p>Payment type. Valid values: PRE_PAID (prepaid, also known as yearly/monthly subscription) and USED_PAID (pay-as-you-go). Default billing mode is pay-as-you-go.</p>
+        :type PayType: str
+        :param _Period: <p>Instance duration, required when PayType is PRE_PAID, measurement unit: month, optional values include [1,2,3,4,5,6,7,8,9,10,11,12,24,36].</p>
+        :type Period: int
+        :param _ClusterTopology: <p>Topology configuration for cloud disk edition nodes.</p>
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _SrcRegion: <p>Original instance region. Required when importing a remote backup, for example: ap-guangzhou</p>
+        :type SrcRegion: str
+        :param _SpecifiedSubBackupId: <p>Offsite data backup id</p>
+        :type SpecifiedSubBackupId: int
+        :param _MasterZone: <p>The AZ information of the newly generated clone instance primary database is the same as the source instance Zone by default.</p>
+        :type MasterZone: str
+        :param _Zone: <p>The AZ information of the newly generated clone instance's primary database defaults to the same as the source instance's Zone.</p>
+        :type Zone: str
+        :param _FourthZone: <p>AZ information of standby 3, empty by default. Specify this parameter when you proceed to purchase a four-node primary instance.</p>
+        :type FourthZone: str
         """
         self._InstanceId = None
         self._SpecifiedRollbackTime = None
@@ -7020,10 +7385,18 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self._DryRun = None
         self._CageId = None
         self._ProjectId = None
+        self._PayType = None
+        self._Period = None
+        self._ClusterTopology = None
+        self._SrcRegion = None
+        self._SpecifiedSubBackupId = None
+        self._MasterZone = None
+        self._Zone = None
+        self._FourthZone = None
 
     @property
     def InstanceId(self):
-        r"""ID of the instance to be cloned from
+        r"""<p>Clone source instance ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">DescribeDBInstances</a> API.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7034,7 +7407,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def SpecifiedRollbackTime(self):
-        r"""To roll back the cloned instance to a specific point in time, set this parameter to a value in the format of "yyyy-mm-dd hh:mm:ss".
+        r"""<p>If necessary, specify this value when cloning an instance and rolling back to a specified time. The time format is yyyy-mm-dd hh:mm:ss.<br>Note: This parameter and the SpecifiedBackupId parameter require a choice between the two for configuration.</p>
         :rtype: str
         """
         return self._SpecifiedRollbackTime
@@ -7045,7 +7418,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def SpecifiedBackupId(self):
-        r"""To roll back the cloned instance to a specific physical backup file, set this parameter to the ID of the physical backup file. The ID can be obtained by the [DescribeBackups](https://intl.cloud.tencent.com/document/api/236/15842?from_cn_redirect=1) API.
+        r"""<p>If necessary to clone an instance and roll back to a designated backup set, specify this value as the Id of the backup file. Please use <a href="/document/api/236/15842">query data backup file list</a>.</p><p>If it is a clone of a two-node, three-node, or four-node instance, the backup file is a physical backup. If it is a clone of a single-node or cloud disk edition instance, the backup file is a snapshot backup.</p>
         :rtype: int
         """
         return self._SpecifiedBackupId
@@ -7056,7 +7429,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def UniqVpcId(self):
-        r"""VPC ID, which can be obtained by the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API. If this parameter is left empty, the classic network will be used by default.
+        r"""<p>VPC ID. Please use <a href="/document/api/215/15778">Querying VPC List</a>.</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -7067,7 +7440,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def UniqSubnetId(self):
-        r"""VPC subnet ID, which can be obtained by the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API. If `UniqVpcId` is set, `UniqSubnetId` will be required.
+        r"""<p>Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use <a href="/document/api/215/15784">query subnet list</a>.</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -7078,7 +7451,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def Memory(self):
-        r"""Memory of the cloned instance in MB, which should be equal to (by default) or larger than that of the original instance
+        r"""<p>Instance memory size, unit: MB, must not be less than the clone source instance. Default is same as the source instance.</p>
         :rtype: int
         """
         return self._Memory
@@ -7089,7 +7462,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def Volume(self):
-        r"""Disk capacity of the cloned instance in GB, which should be equal to (by default) or larger than that of the original instance
+        r"""<p>Instance disk size, unit: GB, must not be less than the clone source instance. Default is same as the source instance.</p>
         :rtype: int
         """
         return self._Volume
@@ -7100,7 +7473,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def InstanceName(self):
-        r"""Name of the cloned instance
+        r"""<p>Name of the newly generated clone instance. Support input of up to 60 characters.</p>
         :rtype: str
         """
         return self._InstanceName
@@ -7111,7 +7484,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def SecurityGroup(self):
-        r"""Security group parameter, which can be obtained by the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API
+        r"""<p>Security group parameters. Use the API <a href="https://www.tencentcloud.com/document/api/236/15850?from_cn_redirect=1">Query Project Security Group Information</a> to query security group details of a certain project.</p>
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -7122,7 +7495,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def ResourceTags(self):
-        r"""Information of the cloned instance tag
+        r"""<p>Tag information of the instance.</p>
         :rtype: list of TagInfo
         """
         return self._ResourceTags
@@ -7133,7 +7506,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def Cpu(self):
-        r"""The number of CPU cores of the cloned instance. It should be equal to (by default) or larger than that of the original instance.
+        r"""<p>Instance Cpu cores, must not be less than the clone source instance. Default is same as the source instance.</p>
         :rtype: int
         """
         return self._Cpu
@@ -7144,7 +7517,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def ProtectMode(self):
-        r"""Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0.
+        r"""<p>Data replication method, defaults to 0. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication.</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -7155,7 +7528,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def DeployMode(self):
-        r"""Multi-AZ or single-AZ. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0.
+        r"""<p>Multiple Availability Zones, defaults to 0. Supported values include: 0 - means single availability zone, 1 - means multi-availability zone.</p>
         :rtype: int
         """
         return self._DeployMode
@@ -7166,7 +7539,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def SlaveZone(self):
-        r"""Availability zone information of replica 1 of the cloned instance, which is the same as the value of `Zone` of the original instance by default
+        r"""<p>The AZ information of the newly generated clone instance standby 1 is the same as the source instance Zone by default.</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -7177,8 +7550,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def BackupZone(self):
-        r"""Availability zone information of replica 2 of the cloned instance, 
-which is left empty by default. Specify this parameter when cloning a strong sync source instance.
+        r"""<p>AZ information of standby 2, empty by default. Specify this parameter when you clone a strong sync primary instance.</p>
         :rtype: str
         """
         return self._BackupZone
@@ -7189,7 +7561,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def DeviceType(self):
-        r"""Resource isolation type of the clone. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance). Default value: `UNIVERSAL`.
+        r"""<p>Clone instance type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "CLOUD_NATIVE_CLUSTER" - standard type for CLOUD disk, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - enhanced type for CLOUD disk. If not specified, it defaults to general-purpose instance.</p>
         :rtype: str
         """
         return self._DeviceType
@@ -7200,7 +7572,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def InstanceNodes(self):
-        r"""The number of nodes of the clone. If this parameter is set to `3` or the `BackupZone` parameter is specified, the clone will have three nodes. If this parameter is set to `2` or left empty, the clone will have two nodes.
+        r"""<p>Number of nodes in the new clone instance.</p><p>To clone a three-node instance, set this value to 3 or specify the BackupZone parameter. To clone a dual-node instance, set this value to 2. By default, a dual-node instance is cloned. To clone a four-node instance, set this value to 4 or specify the FourthZone parameter.</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -7211,7 +7583,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def DeployGroupId(self):
-        r"""Placement group ID.
+        r"""<p>Placement group ID.</p>
         :rtype: str
         """
         return self._DeployGroupId
@@ -7222,7 +7594,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def DryRun(self):
-        r"""Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
+        r"""<p>Whether to only pre-check this request. true: Send a check request without creating an instance. Check items include required parameters, request format, and service limits. If the check fails, return the corresponding error code; if the check passes, return RequestId. Default false: Send a normal request and create the instance directly after passing the check.</p>
         :rtype: bool
         """
         return self._DryRun
@@ -7233,7 +7605,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def CageId(self):
-        r"""Financial cage ID.
+        r"""<p>Financial Enclosure ID.</p>
         :rtype: str
         """
         return self._CageId
@@ -7244,7 +7616,7 @@ which is left empty by default. Specify this parameter when cloning a strong syn
 
     @property
     def ProjectId(self):
-        r"""Project ID. Default value: 0.
+        r"""<p>Project ID. Default project ID 0.</p>
         :rtype: int
         """
         return self._ProjectId
@@ -7252,6 +7624,98 @@ which is left empty by default. Specify this parameter when cloning a strong syn
     @ProjectId.setter
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
+
+    @property
+    def PayType(self):
+        r"""<p>Payment type. Valid values: PRE_PAID (prepaid, also known as yearly/monthly subscription) and USED_PAID (pay-as-you-go). Default billing mode is pay-as-you-go.</p>
+        :rtype: str
+        """
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def Period(self):
+        r"""<p>Instance duration, required when PayType is PRE_PAID, measurement unit: month, optional values include [1,2,3,4,5,6,7,8,9,10,11,12,24,36].</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def ClusterTopology(self):
+        r"""<p>Topology configuration for cloud disk edition nodes.</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        """
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
+    @property
+    def SrcRegion(self):
+        r"""<p>Original instance region. Required when importing a remote backup, for example: ap-guangzhou</p>
+        :rtype: str
+        """
+        return self._SrcRegion
+
+    @SrcRegion.setter
+    def SrcRegion(self, SrcRegion):
+        self._SrcRegion = SrcRegion
+
+    @property
+    def SpecifiedSubBackupId(self):
+        r"""<p>Offsite data backup id</p>
+        :rtype: int
+        """
+        return self._SpecifiedSubBackupId
+
+    @SpecifiedSubBackupId.setter
+    def SpecifiedSubBackupId(self, SpecifiedSubBackupId):
+        self._SpecifiedSubBackupId = SpecifiedSubBackupId
+
+    @property
+    def MasterZone(self):
+        warnings.warn("parameter `MasterZone` is deprecated", DeprecationWarning) 
+
+        r"""<p>The AZ information of the newly generated clone instance primary database is the same as the source instance Zone by default.</p>
+        :rtype: str
+        """
+        return self._MasterZone
+
+    @MasterZone.setter
+    def MasterZone(self, MasterZone):
+        warnings.warn("parameter `MasterZone` is deprecated", DeprecationWarning) 
+
+        self._MasterZone = MasterZone
+
+    @property
+    def Zone(self):
+        r"""<p>The AZ information of the newly generated clone instance's primary database defaults to the same as the source instance's Zone.</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def FourthZone(self):
+        r"""<p>AZ information of standby 3, empty by default. Specify this parameter when you proceed to purchase a four-node primary instance.</p>
+        :rtype: str
+        """
+        return self._FourthZone
+
+    @FourthZone.setter
+    def FourthZone(self, FourthZone):
+        self._FourthZone = FourthZone
 
 
     def _deserialize(self, params):
@@ -7281,6 +7745,16 @@ which is left empty by default. Specify this parameter when cloning a strong syn
         self._DryRun = params.get("DryRun")
         self._CageId = params.get("CageId")
         self._ProjectId = params.get("ProjectId")
+        self._PayType = params.get("PayType")
+        self._Period = params.get("Period")
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._SrcRegion = params.get("SrcRegion")
+        self._SpecifiedSubBackupId = params.get("SpecifiedSubBackupId")
+        self._MasterZone = params.get("MasterZone")
+        self._Zone = params.get("Zone")
+        self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7298,7 +7772,7 @@ class CreateCloneInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: LimitAsync task request ID, which can be used to query the execution result of an async task
+        :param _AsyncRequestId: <p>Request ID of the asynchronous task. Use this ID to query the outcome of the async task.</p>
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7308,7 +7782,7 @@ class CreateCloneInstanceResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""LimitAsync task request ID, which can be used to query the execution result of an async task
+        r"""<p>Request ID of the asynchronous task. Use this ID to query the outcome of the async task.</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -7495,80 +7969,92 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GoodsNum: Number of instances. Value range: 1-100. Default value: 1.
+        :param _GoodsNum: <p>Instance count. Default value is 1, minimum value 1, maximum value 100.</p>
         :type GoodsNum: int
-        :param _Memory: Instance memory size in MB. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported memory specifications.
+        :param _Memory: <p>Instance memory size. Unit: MB. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to obtain creatable memory specifications.</p>
         :type Memory: int
-        :param _Volume: Instance disk size in GB. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported disk specifications.
+        :param _Volume: <p>Instance disk size, unit: GB. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the creatable disk range.</p>
         :type Volume: int
-        :param _EngineVersion: MySQL version. Valid values: `5.5`, `5.6`, `5.7`, `8.0`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported versions.
+        :param _EngineVersion: <p>MySQL version, including 5.5, 5.6, 5.7, and 8.0. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the instance version created.<br>Note: When creating a non-cloud disk edition instance, specify the instance version as needed (recommend 5.7 or 8.0). If this parameter is left blank, the default value is 8.0. If creating a cloud disk edition instance, this parameter can only be set to 5.7 or 8.0.</p>
         :type EngineVersion: str
-        :param _UniqVpcId: VPC ID. If this parameter is not passed in, the basic network will be selected by default. Please use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs.
+        :param _UniqVpcId: <p>VPC ID. Please use <a href="/document/api/215/15778">Querying VPC List</a>.<br>Description: If you create a cloud disk edition instance, this item is required and must be VPC type. If this item is left blank, the system will select the default VPC by default.</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.
+        :param _UniqSubnetId: <p>Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use <a href="/document/api/215/15784">query subnet list</a>.<br>Description: If this item is not filled, the system will select the default subnet in the Default VPC.</p>
         :type UniqSubnetId: str
         :param _ProjectId: Project ID. If this is left empty, the default project will be used.
         :type ProjectId: int
-        :param _Zone: AZ information. By default, the system will automatically select an AZ. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.
+        :param _Zone: <p>For availability zone information, please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the availability zones where instances can be created.</p><p>If you create a single-node, two-node, three-node, or four-node instance, this parameter is required. Please specify an availability zone. If you do not specify one, the system will automatically select an availability zone (which may not be the one you want to deploy in). If you create a cloud disk edition instance, leave this parameter blank and configure the availability zones for read-write nodes and read-only nodes with parameter ClusterTopology.</p>
         :type Zone: str
-        :param _MasterInstanceId: Instance ID, which is required and the same as the primary instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance IDs.
+        :param _MasterInstanceId: <p>Instance ID, required when you purchase a read-only instance or disaster recovery instance. This field represents the primary instance ID of the read-only instance or disaster recovery instance. Please use the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">Query Instance List</a> API to query the cloud database instance ID.</p>
         :type MasterInstanceId: str
-        :param _InstanceRole: Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :param _InstanceRole: <p>Instance type. Supported values include: master - primary instance, dr - disaster recovery instance, ro - read-only instance.<br>Description: Select instance type. master is selected by default if left blank.</p>
         :type InstanceRole: str
-        :param _MasterRegion: Region information of the source instance, which is required when purchasing a read-only or disaster recovery instance.
+        :param _MasterRegion: <p>Region of the primary instance. This field is required when you purchase a disaster recovery or RO instance.</p>
         :type MasterRegion: str
-        :param _Port: Custom port. Value range: [1024-65535].
+        :param _Port: <p>Custom port. Supported range: [1024-65535].<br>Description: If left blank, it defaults to 3306.</p>
         :type Port: int
-        :param _Password: Sets the root account password. Rule: the password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
+        :param _Password: <p>Set the root account password. The password must contain 8 to 64 characters and at least two of the following: letters, digits, or characters (supported characters: _+-&amp;=!@#$%^*()). You can specify this parameter when purchasing a primary instance. This parameter is invalid when purchasing a read-only instance or disaster recovery instance.</p>
         :type Password: str
-        :param _ParamList: List of parameters in the format of `ParamList.0.Name=auto_increment&ParamList.0.Value=1`. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters.
+        :param _ParamList: <p>Parameter list. The parameter format is ParamList.0.Name=auto_increment&amp;ParamList.0.Value=1.</p><p>Query the configurable parameters by referring to <a href="https://www.tencentcloud.com/document/api/236/32662?from_cn_redirect=1">querying the default configurable parameter list</a>.<br>Note: table Name case sensitivity can be enabled or disabled with the parameter lower_case_table_names. a parameter Value of 0 means enabling, and a Value of 1 means disabling. If not set, the default Value is 0. If you create a MySQL 8.0 edition instance, you need to set the lower_case_table_names parameter when creating the instance to enable or disable table Name case sensitivity. After the instance is created, the parameter cannot be modified, meaning table Name case sensitivity cannot be changed once created. Instances of other database versions support modifying the lower_case_table_names parameter after creation. For the function invocation method to set table Name case sensitivity when creating an instance, please see examples in this document.</p>
         :type ParamList: list of ParamInfo
-        :param _ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
+        :param _ProtectMode: <p>Data replication method, defaults to 0. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication. You can specify this parameter when purchasing a primary instance. This parameter is invalid when purchasing a read-only instance or disaster recovery instance.</p>
         :type ProtectMode: int
-        :param _DeployMode: Multi-AZ. Valid value: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
+        :param _DeployMode: <p>Multiple Availability Zones, defaults to 0. Supported values include: 0 - means single availability zone, 1 - means multi-availability zone. Specify this parameter when purchasing the primary instance. This parameter is invalid when purchasing a read-only instance or disaster recovery instance.</p>
         :type DeployMode: int
-        :param _SlaveZone: AZ information of secondary database 1, which is the `Zone` value by default. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
+        :param _SlaveZone: <p>AZ information of standby database 1.</p><p>For two-node, three-node, or four-node instances, specify this parameter. If not specified, it defaults to the Zone value. For cloud disk edition instances, this parameter is optional. Configure the AZ for read-write and read-only nodes with parameter ClusterTopology. Single-node instances are in a single availability zone, so no need to specify this parameter.</p>
         :type SlaveZone: str
-        :param _BackupZone: The availability zone information of Replica 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.
+        :param _BackupZone: <p>AZ information of standby 2, empty by default.</p><p>Specify this parameter when you proceed to purchase a three-node primary instance or a four-node primary instance.</p>
         :type BackupZone: str
-        :param _SecurityGroup: Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.
+        :param _SecurityGroup: <p>Security group parameters. Use the API <a href="https://www.tencentcloud.com/document/api/236/15850?from_cn_redirect=1">Query Project Security Group Information</a> to query security group details of a certain project.</p>
         :type SecurityGroup: list of str
-        :param _RoGroup: Read-only instance information. This parameter must be passed in when purchasing read-only instances.
+        :param _RoGroup: <p>Read-only instance information. This parameter is required when you purchase a read-only instance.</p>
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
-        :param _AutoRenewFlag: This field is meaningless when purchasing pay-as-you-go instances.
+        :param _AutoRenewFlag: <p>This field is meaningless for pay-as-you-go instances.</p>
         :type AutoRenewFlag: int
-        :param _InstanceName: Instance name For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, and their instance names are db1, db2, and db3, respectively.
+        :param _InstanceName: <p>Instance name. When you purchase multiple instances only once, suffix numbers are used for case-sensitive instance naming. For example, instanceName=db and goodsNum=3, the instance names are db1, db2, and db3 respectively.</p>
         :type InstanceName: str
-        :param _ResourceTags: Instance tag information.
+        :param _ResourceTags: <p>Tag information of the instance.</p>
         :type ResourceTags: list of TagInfo
-        :param _DeployGroupId: Placement group ID.
+        :param _DeployGroupId: <p>Placement group ID.</p>
         :type DeployGroupId: str
-        :param _ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :param _ClientToken: <p>String used to ensure request idempotency. This string is generated by the customer and must be unique between different requests within 48 hours, with a maximum value of 64 ASCII characters. If not specified, request idempotency cannot be guaranteed.</p>
         :type ClientToken: str
-        :param _DeviceType: Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.
+        :param _DeviceType: <p>Instance isolation type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - CLOUD disk edition standard type, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - CLOUD disk edition enhanced. If not specified, it defaults to general-purpose instance.<br>Description: If a CLOUD disk edition instance is created, this parameter is required.</p>
         :type DeviceType: str
-        :param _ParamTemplateId: Parameter template ID.
+        :param _ParamTemplateId: <p>Parameter template ID.<br>Remark: If you use a custom parameter template ID, you can input the custom parameter template ID. If you plan to use the default parameter template, the input ID is invalid and you need to set ParamTemplateType.</p>
         :type ParamTemplateId: int
-        :param _AlarmPolicyList: Array of alarm policy IDs,  which is `OriginId` obtained through the `DescribeAlarmPolicy` API.
+        :param _AlarmPolicyList: <p>Array of alarm policy IDs. OriginId returned by the Tencent Cloud observability platform DescribeAlarmPolicy API.</p>
         :type AlarmPolicyList: list of int
-        :param _InstanceNodes: The number of nodes of the instance. To purchase a read-only replica or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.
+        :param _InstanceNodes: <p>Number of instance nodes.</p><p>For RO and basic edition instances, the value defaults to 1. To purchase a three-node instance, set this value to 3 or specify the BackupZone parameter. When purchasing a primary instance without specifying this parameter or the BackupZone parameter, the default value is 2, which means purchasing a dual-node instance. To purchase a four-node instance, set this value to 4 or specify the FourthZone parameter.</p>
         :type InstanceNodes: int
-        :param _Cpu: The number of CPU cores of the instance. If this parameter is left empty, the number of CPU cores depends on the `Memory` value.
+        :param _Cpu: <p>Number of Cpu cores of the instance.</p><p>When multiple Cpu configurations exist for the Memory specification (for example, 64000MB Memory corresponds to 8-core/16-core/32-core), the Cpu parameter must be provided.</p>
         :type Cpu: int
-        :param _AutoSyncFlag: Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes). Default value: `0`.
+        :param _AutoSyncFlag: <p>Whether to automatically initiate disaster recovery sync. This parameter only takes effect when purchasing a disaster recovery instance. Available values are: 0 - Do not automatically initiate disaster recovery sync; 1 - Automatically initiate disaster recovery sync. The default is 0.</p>
         :type AutoSyncFlag: int
-        :param _CageId: Financial cage ID.
+        :param _CageId: <p>Financial Enclosure ID.</p>
         :type CageId: str
-        :param _ParamTemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template). Default value: `HIGH_STABILITY`.
+        :param _ParamTemplateType: <p>Default parameter template type. Supported values include "HIGH_STABILITY" - HIGH-STABILITY template, "HIGH_PERFORMANCE" - HIGH-PERFORMANCE template. Default value is "HIGH_STABILITY".<br>Remark: If you need to use the cloud database MySQL default parameter template, set up ParamTemplateType.</p>
         :type ParamTemplateType: str
-        :param _AlarmPolicyIdList: The array of alarm policy names, such as ["policy-uyoee9wg"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.
+        :param _AlarmPolicyIdList: <p>Alarm policy name array, such as ["policy-uyoee9wg"]. This parameter is invalid when AlarmPolicyList is not empty.</p>
         :type AlarmPolicyIdList: list of str
-        :param _DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
+        :param _DryRun: <p>Whether to only pre-check this request. true: Send a check request without creating an instance. Check items include required parameters, request format, and service limits. If the check fails, return the corresponding error code; if the check passes, return RequestId. Default false: Send a normal request and create the instance directly after passing the check.</p>
         :type DryRun: bool
-        :param _EngineType: Instance engine type. Valid values: `InnoDB` (default); `RocksDB`.
+        :param _EngineType: <p>Instance engine type, defaults to "InnoDB". Supported values include "InnoDB" and "RocksDB".</p>
         :type EngineType: str
-        :param _Vips: The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.
+        :param _Vips: <p>Specify the IP list of the instance. Only the primary instance is supported. Process by instance sequence. Handle as unspecified if insufficient.</p>
         :type Vips: list of str
+        :param _DataProtectVolume: <p>The data protection space size of the cloud disk edition instance, in GB, has a setting range of 1 - 10.</p>
+        :type DataProtectVolume: int
+        :param _ClusterTopology: <p>Topology configuration for cloud disk edition nodes.<br>Description: If a cloud disk edition instance is purchased, this parameter is required. Set the topology for RW and RO nodes of the cloud disk edition instance. The node scope for RO nodes is 1-5. Set at least 1 RO node.</p>
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _DiskType: <p>Disk type. This parameter can be specified for single-node (cloud disk) or cloud disk edition instances. CLOUD_SSD means SSD Cloud Block Storage, CLOUD_HSSD means enhanced SSD cloud disk, and CLOUD_PREMIUM means high-performance cloud block storage.<br>Note: The supported regions for disk types of single-node (cloud disk) and cloud disk edition instances vary slightly. For specific support situation, refer to <a href="https://www.tencentcloud.com/document/product/236/8458?from_cn_redirect=1">Regions and Availability Zones</a>.</p>
+        :type DiskType: str
+        :param _ClusterType: <p>ClusterType: cage—Financial Enclosure, cdc—CDB ON CDC; dedicate—dedicated cluster</p>
+        :type ClusterType: str
+        :param _DestroyProtect: <p>Turn on or off instance destruction protection. on - turn on, off - turn off.</p>
+        :type DestroyProtect: str
+        :param _FourthZone: <p>AZ information of standby 3, empty by default. Specify this parameter when you proceed to purchase a four-node primary instance.</p>
+        :type FourthZone: str
         """
         self._GoodsNum = None
         self._Memory = None
@@ -7607,10 +8093,16 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DryRun = None
         self._EngineType = None
         self._Vips = None
+        self._DataProtectVolume = None
+        self._ClusterTopology = None
+        self._DiskType = None
+        self._ClusterType = None
+        self._DestroyProtect = None
+        self._FourthZone = None
 
     @property
     def GoodsNum(self):
-        r"""Number of instances. Value range: 1-100. Default value: 1.
+        r"""<p>Instance count. Default value is 1, minimum value 1, maximum value 100.</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -7621,7 +8113,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Instance memory size in MB. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported memory specifications.
+        r"""<p>Instance memory size. Unit: MB. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to obtain creatable memory specifications.</p>
         :rtype: int
         """
         return self._Memory
@@ -7632,7 +8124,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""Instance disk size in GB. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported disk specifications.
+        r"""<p>Instance disk size, unit: GB. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the creatable disk range.</p>
         :rtype: int
         """
         return self._Volume
@@ -7643,7 +8135,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""MySQL version. Valid values: `5.5`, `5.6`, `5.7`, `8.0`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported versions.
+        r"""<p>MySQL version, including 5.5, 5.6, 5.7, and 8.0. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the instance version created.<br>Note: When creating a non-cloud disk edition instance, specify the instance version as needed (recommend 5.7 or 8.0). If this parameter is left blank, the default value is 8.0. If creating a cloud disk edition instance, this parameter can only be set to 5.7 or 8.0.</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -7654,7 +8146,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""VPC ID. If this parameter is not passed in, the basic network will be selected by default. Please use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs.
+        r"""<p>VPC ID. Please use <a href="/document/api/215/15778">Querying VPC List</a>.<br>Description: If you create a cloud disk edition instance, this item is required and must be VPC type. If this item is left blank, the system will select the default VPC by default.</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -7665,7 +8157,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.
+        r"""<p>Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use <a href="/document/api/215/15784">query subnet list</a>.<br>Description: If this item is not filled, the system will select the default subnet in the Default VPC.</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -7687,7 +8179,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ information. By default, the system will automatically select an AZ. Please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.
+        r"""<p>For availability zone information, please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the availability zones where instances can be created.</p><p>If you create a single-node, two-node, three-node, or four-node instance, this parameter is required. Please specify an availability zone. If you do not specify one, the system will automatically select an availability zone (which may not be the one you want to deploy in). If you create a cloud disk edition instance, leave this parameter blank and configure the availability zones for read-write nodes and read-only nodes with parameter ClusterTopology.</p>
         :rtype: str
         """
         return self._Zone
@@ -7698,7 +8190,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def MasterInstanceId(self):
-        r"""Instance ID, which is required and the same as the primary instance ID when purchasing read-only or disaster recovery instances. Please use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance IDs.
+        r"""<p>Instance ID, required when you purchase a read-only instance or disaster recovery instance. This field represents the primary instance ID of the read-only instance or disaster recovery instance. Please use the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">Query Instance List</a> API to query the cloud database instance ID.</p>
         :rtype: str
         """
         return self._MasterInstanceId
@@ -7709,7 +8201,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        r"""Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        r"""<p>Instance type. Supported values include: master - primary instance, dr - disaster recovery instance, ro - read-only instance.<br>Description: Select instance type. master is selected by default if left blank.</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -7720,7 +8212,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def MasterRegion(self):
-        r"""Region information of the source instance, which is required when purchasing a read-only or disaster recovery instance.
+        r"""<p>Region of the primary instance. This field is required when you purchase a disaster recovery or RO instance.</p>
         :rtype: str
         """
         return self._MasterRegion
@@ -7731,7 +8223,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""Custom port. Value range: [1024-65535].
+        r"""<p>Custom port. Supported range: [1024-65535].<br>Description: If left blank, it defaults to 3306.</p>
         :rtype: int
         """
         return self._Port
@@ -7742,7 +8234,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Sets the root account password. Rule: the password can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
+        r"""<p>Set the root account password. The password must contain 8 to 64 characters and at least two of the following: letters, digits, or characters (supported characters: _+-&amp;=!@#$%^*()). You can specify this parameter when purchasing a primary instance. This parameter is invalid when purchasing a read-only instance or disaster recovery instance.</p>
         :rtype: str
         """
         return self._Password
@@ -7753,7 +8245,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ParamList(self):
-        r"""List of parameters in the format of `ParamList.0.Name=auto_increment&ParamList.0.Value=1`. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters.
+        r"""<p>Parameter list. The parameter format is ParamList.0.Name=auto_increment&amp;ParamList.0.Value=1.</p><p>Query the configurable parameters by referring to <a href="https://www.tencentcloud.com/document/api/236/32662?from_cn_redirect=1">querying the default configurable parameter list</a>.<br>Note: table Name case sensitivity can be enabled or disabled with the parameter lower_case_table_names. a parameter Value of 0 means enabling, and a Value of 1 means disabling. If not set, the default Value is 0. If you create a MySQL 8.0 edition instance, you need to set the lower_case_table_names parameter when creating the instance to enable or disable table Name case sensitivity. After the instance is created, the parameter cannot be modified, meaning table Name case sensitivity cannot be changed once created. Instances of other database versions support modifying the lower_case_table_names parameter after creation. For the function invocation method to set table Name case sensitivity when creating an instance, please see examples in this document.</p>
         :rtype: list of ParamInfo
         """
         return self._ParamList
@@ -7764,7 +8256,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). Default value: 0. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
+        r"""<p>Data replication method, defaults to 0. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication. You can specify this parameter when purchasing a primary instance. This parameter is invalid when purchasing a read-only instance or disaster recovery instance.</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -7775,7 +8267,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def DeployMode(self):
-        r"""Multi-AZ. Valid value: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
+        r"""<p>Multiple Availability Zones, defaults to 0. Supported values include: 0 - means single availability zone, 1 - means multi-availability zone. Specify this parameter when purchasing the primary instance. This parameter is invalid when purchasing a read-only instance or disaster recovery instance.</p>
         :rtype: int
         """
         return self._DeployMode
@@ -7786,7 +8278,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SlaveZone(self):
-        r"""AZ information of secondary database 1, which is the `Zone` value by default. This parameter can be specified when purchasing primary instances and is meaningless for read-only or disaster recovery instances.
+        r"""<p>AZ information of standby database 1.</p><p>For two-node, three-node, or four-node instances, specify this parameter. If not specified, it defaults to the Zone value. For cloud disk edition instances, this parameter is optional. Configure the AZ for read-write and read-only nodes with parameter ClusterTopology. Single-node instances are in a single availability zone, so no need to specify this parameter.</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -7797,7 +8289,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def BackupZone(self):
-        r"""The availability zone information of Replica 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.
+        r"""<p>AZ information of standby 2, empty by default.</p><p>Specify this parameter when you proceed to purchase a three-node primary instance or a four-node primary instance.</p>
         :rtype: str
         """
         return self._BackupZone
@@ -7808,7 +8300,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        r"""Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.
+        r"""<p>Security group parameters. Use the API <a href="https://www.tencentcloud.com/document/api/236/15850?from_cn_redirect=1">Query Project Security Group Information</a> to query security group details of a certain project.</p>
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -7819,7 +8311,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def RoGroup(self):
-        r"""Read-only instance information. This parameter must be passed in when purchasing read-only instances.
+        r"""<p>Read-only instance information. This parameter is required when you purchase a read-only instance.</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
         """
         return self._RoGroup
@@ -7830,7 +8322,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""This field is meaningless when purchasing pay-as-you-go instances.
+        r"""<p>This field is meaningless for pay-as-you-go instances.</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -7841,7 +8333,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, and their instance names are db1, db2, and db3, respectively.
+        r"""<p>Instance name. When you purchase multiple instances only once, suffix numbers are used for case-sensitive instance naming. For example, instanceName=db and goodsNum=3, the instance names are db1, db2, and db3 respectively.</p>
         :rtype: str
         """
         return self._InstanceName
@@ -7852,7 +8344,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""Instance tag information.
+        r"""<p>Tag information of the instance.</p>
         :rtype: list of TagInfo
         """
         return self._ResourceTags
@@ -7863,7 +8355,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def DeployGroupId(self):
-        r"""Placement group ID.
+        r"""<p>Placement group ID.</p>
         :rtype: str
         """
         return self._DeployGroupId
@@ -7874,7 +8366,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        r"""<p>String used to ensure request idempotency. This string is generated by the customer and must be unique between different requests within 48 hours, with a maximum value of 64 ASCII characters. If not specified, request idempotency cannot be guaranteed.</p>
         :rtype: str
         """
         return self._ClientToken
@@ -7885,7 +8377,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""Instance resource isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.
+        r"""<p>Instance isolation type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - CLOUD disk edition standard type, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - CLOUD disk edition enhanced. If not specified, it defaults to general-purpose instance.<br>Description: If a CLOUD disk edition instance is created, this parameter is required.</p>
         :rtype: str
         """
         return self._DeviceType
@@ -7896,7 +8388,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""Parameter template ID.
+        r"""<p>Parameter template ID.<br>Remark: If you use a custom parameter template ID, you can input the custom parameter template ID. If you plan to use the default parameter template, the input ID is invalid and you need to set ParamTemplateType.</p>
         :rtype: int
         """
         return self._ParamTemplateId
@@ -7907,7 +8399,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def AlarmPolicyList(self):
-        r"""Array of alarm policy IDs,  which is `OriginId` obtained through the `DescribeAlarmPolicy` API.
+        r"""<p>Array of alarm policy IDs. OriginId returned by the Tencent Cloud observability platform DescribeAlarmPolicy API.</p>
         :rtype: list of int
         """
         return self._AlarmPolicyList
@@ -7918,7 +8410,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceNodes(self):
-        r"""The number of nodes of the instance. To purchase a read-only replica or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.
+        r"""<p>Number of instance nodes.</p><p>For RO and basic edition instances, the value defaults to 1. To purchase a three-node instance, set this value to 3 or specify the BackupZone parameter. When purchasing a primary instance without specifying this parameter or the BackupZone parameter, the default value is 2, which means purchasing a dual-node instance. To purchase a four-node instance, set this value to 4 or specify the FourthZone parameter.</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -7929,7 +8421,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""The number of CPU cores of the instance. If this parameter is left empty, the number of CPU cores depends on the `Memory` value.
+        r"""<p>Number of Cpu cores of the instance.</p><p>When multiple Cpu configurations exist for the Memory specification (for example, 64000MB Memory corresponds to 8-core/16-core/32-core), the Cpu parameter must be provided.</p>
         :rtype: int
         """
         return self._Cpu
@@ -7940,7 +8432,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def AutoSyncFlag(self):
-        r"""Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes). Default value: `0`.
+        r"""<p>Whether to automatically initiate disaster recovery sync. This parameter only takes effect when purchasing a disaster recovery instance. Available values are: 0 - Do not automatically initiate disaster recovery sync; 1 - Automatically initiate disaster recovery sync. The default is 0.</p>
         :rtype: int
         """
         return self._AutoSyncFlag
@@ -7951,7 +8443,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def CageId(self):
-        r"""Financial cage ID.
+        r"""<p>Financial Enclosure ID.</p>
         :rtype: str
         """
         return self._CageId
@@ -7962,7 +8454,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def ParamTemplateType(self):
-        r"""Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template). Default value: `HIGH_STABILITY`.
+        r"""<p>Default parameter template type. Supported values include "HIGH_STABILITY" - HIGH-STABILITY template, "HIGH_PERFORMANCE" - HIGH-PERFORMANCE template. Default value is "HIGH_STABILITY".<br>Remark: If you need to use the cloud database MySQL default parameter template, set up ParamTemplateType.</p>
         :rtype: str
         """
         return self._ParamTemplateType
@@ -7973,7 +8465,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def AlarmPolicyIdList(self):
-        r"""The array of alarm policy names, such as ["policy-uyoee9wg"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.
+        r"""<p>Alarm policy name array, such as ["policy-uyoee9wg"]. This parameter is invalid when AlarmPolicyList is not empty.</p>
         :rtype: list of str
         """
         return self._AlarmPolicyIdList
@@ -7984,7 +8476,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        r"""Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
+        r"""<p>Whether to only pre-check this request. true: Send a check request without creating an instance. Check items include required parameters, request format, and service limits. If the check fails, return the corresponding error code; if the check passes, return RequestId. Default false: Send a normal request and create the instance directly after passing the check.</p>
         :rtype: bool
         """
         return self._DryRun
@@ -7995,7 +8487,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""Instance engine type. Valid values: `InnoDB` (default); `RocksDB`.
+        r"""<p>Instance engine type, defaults to "InnoDB". Supported values include "InnoDB" and "RocksDB".</p>
         :rtype: str
         """
         return self._EngineType
@@ -8006,7 +8498,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Vips(self):
-        r"""The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.
+        r"""<p>Specify the IP list of the instance. Only the primary instance is supported. Process by instance sequence. Handle as unspecified if insufficient.</p>
         :rtype: list of str
         """
         return self._Vips
@@ -8014,6 +8506,72 @@ class CreateDBInstanceHourRequest(AbstractModel):
     @Vips.setter
     def Vips(self, Vips):
         self._Vips = Vips
+
+    @property
+    def DataProtectVolume(self):
+        r"""<p>The data protection space size of the cloud disk edition instance, in GB, has a setting range of 1 - 10.</p>
+        :rtype: int
+        """
+        return self._DataProtectVolume
+
+    @DataProtectVolume.setter
+    def DataProtectVolume(self, DataProtectVolume):
+        self._DataProtectVolume = DataProtectVolume
+
+    @property
+    def ClusterTopology(self):
+        r"""<p>Topology configuration for cloud disk edition nodes.<br>Description: If a cloud disk edition instance is purchased, this parameter is required. Set the topology for RW and RO nodes of the cloud disk edition instance. The node scope for RO nodes is 1-5. Set at least 1 RO node.</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        """
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
+    @property
+    def DiskType(self):
+        r"""<p>Disk type. This parameter can be specified for single-node (cloud disk) or cloud disk edition instances. CLOUD_SSD means SSD Cloud Block Storage, CLOUD_HSSD means enhanced SSD cloud disk, and CLOUD_PREMIUM means high-performance cloud block storage.<br>Note: The supported regions for disk types of single-node (cloud disk) and cloud disk edition instances vary slightly. For specific support situation, refer to <a href="https://www.tencentcloud.com/document/product/236/8458?from_cn_redirect=1">Regions and Availability Zones</a>.</p>
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def ClusterType(self):
+        r"""<p>ClusterType: cage—Financial Enclosure, cdc—CDB ON CDC; dedicate—dedicated cluster</p>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def DestroyProtect(self):
+        r"""<p>Turn on or off instance destruction protection. on - turn on, off - turn off.</p>
+        :rtype: str
+        """
+        return self._DestroyProtect
+
+    @DestroyProtect.setter
+    def DestroyProtect(self, DestroyProtect):
+        self._DestroyProtect = DestroyProtect
+
+    @property
+    def FourthZone(self):
+        r"""<p>AZ information of standby 3, empty by default. Specify this parameter when you proceed to purchase a four-node primary instance.</p>
+        :rtype: str
+        """
+        return self._FourthZone
+
+    @FourthZone.setter
+    def FourthZone(self, FourthZone):
+        self._FourthZone = FourthZone
 
 
     def _deserialize(self, params):
@@ -8066,6 +8624,14 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DryRun = params.get("DryRun")
         self._EngineType = params.get("EngineType")
         self._Vips = params.get("Vips")
+        self._DataProtectVolume = params.get("DataProtectVolume")
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._DiskType = params.get("DiskType")
+        self._ClusterType = params.get("ClusterType")
+        self._DestroyProtect = params.get("DestroyProtect")
+        self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8083,9 +8649,9 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealIds: Short order ID.
+        :param _DealIds: <p>Short order ID.</p>
         :type DealIds: list of str
-        :param _InstanceIds: Instance ID list
+        :param _InstanceIds: <p>Instance ID list.</p>
         :type InstanceIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8096,7 +8662,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     @property
     def DealIds(self):
-        r"""Short order ID.
+        r"""<p>Short order ID.</p>
         :rtype: list of str
         """
         return self._DealIds
@@ -8107,7 +8673,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""Instance ID list
+        r"""<p>Instance ID list.</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -8141,104 +8707,92 @@ class CreateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Memory: Instance memory size in MB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported memory specifications.
+        :param _Memory: <p>Instance memory size. Unit: MB. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to obtain creatable memory specifications.</p>
         :type Memory: int
-        :param _Volume: Instance disk size in GB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported disk specifications.
+        :param _Volume: <p>Instance disk size, unit: GB. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the creatable disk range.</p>
         :type Volume: int
-        :param _Period: Instance validity period in months. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
+        :param _Period: <p>Instance duration, measurement unit: month, optional values include [1,2,3,4,5,6,7,8,9,10,11,12,24,36].</p>
         :type Period: int
-        :param _GoodsNum: Number of instances. Value range: 1-100. Default value: `1`.
+        :param _GoodsNum: <p>Instance count. Default value is 1, minimum value 1, maximum value 100.</p>
         :type GoodsNum: int
-        :param _Zone: For AZ information, please use the [Obtain the Purchasable Specifications of Cloud Databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to obtain the availability zones that can be created.
-Description: If you create a single-node, two-node, or three-node instance, this parameter is required. Specify an availability zone. If you do not specify an availability zone, the system will automatically select one (possibly not the availability zone you want to deploy in). If you create a cloud disk edition instance, leave this parameter empty. Configure the availability zone for the read-write node and read-only node with parameter ClusterTopology.
+        :param _Zone: <p>For availability zone information, please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the availability zones where instances can be created.</p><p>If you create a single-node, two-node, three-node, or four-node instance, this parameter is required. Please specify an availability zone. If you do not specify one, the system will automatically select an availability zone (which may not be the one you want to deploy in). If you create a cloud disk edition instance, leave this parameter blank and configure the availability zones for read-write nodes and read-only nodes with parameter ClusterTopology.</p>
         :type Zone: str
-        :param _UniqVpcId: VPC ID. Please use [Querying VPC list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1).
-Description: If a cloud disk edition instance is created, this item is required and must be a VPC type. If this item is left blank, the system will select the default VPC.
+        :param _UniqVpcId: <p>VPC ID. Please use <a href="/document/api/215/15778">Querying VPC List</a>.<br>Description: If you create a cloud disk edition instance, this item is required and must be VPC type. If this item is left blank, the system will select the default VPC by default.</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use [query subnet list](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1).
-Description: If this item is left empty, the system will select the default subnet in the Default VPC.
+        :param _UniqSubnetId: <p>Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use <a href="/document/api/215/15784">query subnet list</a>.<br>Description: If this item is not filled, the system will select the default subnet in the Default VPC.</p>
         :type UniqSubnetId: str
-        :param _ProjectId: Project ID. If this parameter is left empty, the default project will be used. When you purchase read-only instances and disaster recovery instances, the project ID is the same as that of the source instance by default.
+        :param _ProjectId: <p>Project ID. The default project is used if left empty. When you purchase a read-only instance or disaster recovery instance, the project ID is consistent with the primary instance by default.</p>
         :type ProjectId: int
-        :param _Port: Custom port. Port range: 1024-65535.
-Description: If this item is left blank, it defaults to 3306.
+        :param _Port: <p>Custom port. Supported range: [1024-65535].<br>Description: If this item is left blank, it defaults to 3306.</p>
         :type Port: int
-        :param _InstanceRole: Instance type. Supported values include: master - indicates the primary instance, dr - indicates the disaster recovery instance, ro - indicates the read-only instance.
-Description: Select instance type. The master type is selected by default if left empty.
+        :param _InstanceRole: <p>Instance type. Supported values include: master - primary instance, dr - disaster recovery instance, ro - read-only instance.<br>Description: Select instance type. master is selected by default if left blank.</p>
         :type InstanceRole: str
-        :param _MasterInstanceId: Instance ID, required when purchasing a read-only instance or disaster recovery instance. This field represents the primary instance ID of the read-only instance or disaster recovery instance. Please use the [Query Instance List](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) API to query the cloud database instance ID.
+        :param _MasterInstanceId: <p>Instance ID, required when purchasing a read-only instance or disaster recovery instance. This field represents the primary instance ID of the read-only instance or disaster recovery instance. Please use the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">Query Instance List</a> API to query the cloud database instance ID.</p>
         :type MasterInstanceId: str
-        :param _EngineVersion: MySQL version, including 5.5, 5.6, 5.7, and 8.0. Please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to get the version of the instance created.
-Description: When creating a non-cloud disk edition instance, specify the instance version as needed (recommend 5.7 or 8.0). If this parameter is left empty, the default value is 8.0. If creating a cloud disk edition instance, this parameter can only be set to 5.7 or 8.0.
+        :param _EngineVersion: <p>MySQL version, including 5.5, 5.6, 5.7, and 8.0. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the instance version created.<br>Note: When creating a non-cloud disk edition instance, specify the instance version as needed (recommend 5.7 or 8.0). If this parameter is left blank, the default value is 8.0. If creating a cloud disk edition instance, this parameter can only be set to 5.7 or 8.0.</p>
         :type EngineVersion: str
-        :param _Password: The root account password, which can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and symbols `_+-&=!@#$%^*()`. This parameter applies to source instances but not to read-only or disaster recovery instances.
+        :param _Password: <p>Set the root account password. The password must contain 8 to 64 characters and at least two of the following: letters, digits, or characters (supported characters: _+-&amp;=!@#$%^*()). You can specify this parameter when purchasing a primary instance. This parameter is invalid when purchasing a read-only instance or disaster recovery instance.</p>
         :type Password: str
-        :param _ProtectMode: Data replication mode. Valid values: `0` (async replication), `1` (semi-sync replication), `2` (strong sync replication). Default value: `0`.
+        :param _ProtectMode: <p>Data replication method, defaults to 0. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication.</p>
         :type ProtectMode: int
-        :param _DeployMode: Multi-AZ or single-AZ. Valid values: `0` (single-AZ), `1` (multi-AZ). Default value: `0`.
+        :param _DeployMode: <p>Multiple Availability Zones, defaults to 0. Supported values include: 0 - means single availability zone, 1 - means multi-availability zone.</p>
         :type DeployMode: int
-        :param _SlaveZone: AZ information of standby database 1.
-Description: For two-node and three-node instances, specify this parameter. If not specified, it defaults to the value of Zone. For cloud disk edition instances, this parameter is optional. Configure the availability zone for read-write nodes and read-only nodes with parameter ClusterTopology. Single-node instances are single availability zone and no need to specify this parameter.
+        :param _SlaveZone: <p>AZ information of standby database 1.</p><p>For two-node, three-node, or four-node instances, specify this parameter. If not specified, it defaults to the Zone value. For cloud disk edition instances, this parameter is optional. Configure the AZ for read-write and read-only nodes with parameter ClusterTopology. Single-node instances are in a single availability zone, so no need to specify this parameter.</p>
         :type SlaveZone: str
-        :param _ParamList: Parameter list. The parameter format is ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can query the configurable parameters by default by referring to [Querying the Default Configurable Parameter List](https://www.tencentcloud.com/document/api/236/32662?from_cn_redirect=1).
-Description: table name case sensitivity can be enabled or disabled with parameter lower_case_table_names. A parameter value of 0 means enabling, and 1 means disabling. If not set, the default value is 0. For MySQL 8.0 edition instances, you need to set the lower_case_table_names parameter when creating an instance to turn on or off table name case sensitivity. Once created, the parameter cannot be modified, meaning table name case sensitivity cannot be changed after creation. Other database versions support modifying the lower_case_table_names parameter after the instance is created. For the function invocation method to set table name case sensitivity when creating an instance, please see example 3 in this document.
+        :param _ParamList: <p>Parameter list. The parameter format is ParamList.0.Name=auto_increment&amp;ParamList.0.Value=1. You can query the configurable parameters by referring to <a href="https://www.tencentcloud.com/document/api/236/32662?from_cn_redirect=1">querying the default configurable parameter list</a>.<br>Description: table Name case sensitivity can be turned on or off by setting the parameter lower_case_table_names. a parameter Value of 0 means enabling, and a Value of 1 means disabling. If not set, the default Value is 0. If you create a MySQL 8.0 edition instance, you need to set the lower_case_table_names parameter when creating the instance to turn on or off table Name case sensitivity. After the instance is created, the parameter cannot be modified, meaning table Name case sensitivity cannot be changed once created. Instances of other database versions support modifying the lower_case_table_names parameter after creation. For the function invocation method to set table Name case sensitivity when creating an instance, please see example 3 in this document.</p>
         :type ParamList: list of ParamInfo
-        :param _BackupZone: Information of replica AZ 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.
+        :param _BackupZone: <p>AZ information of standby 2, empty by default.</p><p>Specify this parameter when you proceed to purchase a three-node primary instance or a four-node primary instance.</p>
         :type BackupZone: str
-        :param _AutoRenewFlag: Auto-renewal flag. Available values are: 0 - no auto-renewal; 1 - auto-renewal. Default is 0.
+        :param _AutoRenewFlag: <p>Auto-renewal flag. Available values are: 0 - no auto-renewal; 1 - auto-renewal. Default is 0.</p>
         :type AutoRenewFlag: int
-        :param _MasterRegion: Region information of the source instance, which is required when purchasing a read-only or disaster recovery instance.
+        :param _MasterRegion: <p>Region of the primary instance. This field is required when you purchase a disaster recovery or RO instance.</p>
         :type MasterRegion: str
-        :param _SecurityGroup: Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.
+        :param _SecurityGroup: <p>Security group parameters. Use the API <a href="https://www.tencentcloud.com/document/api/236/15850?from_cn_redirect=1">Query Project Security Group Information</a> to query security group details of a certain project.</p>
         :type SecurityGroup: list of str
-        :param _RoGroup: Read-only instance parameter. This parameter must be passed in when purchasing read-only instances.
+        :param _RoGroup: <p>Read-only instance parameter. This parameter is required when you purchase a read-only instance.</p>
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
-        :param _InstanceName: Instance name. For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, and their instance names are db1, db2, and db3, respectively.
+        :param _InstanceName: <p>Instance name. When you purchase multiple instances only once, suffix numbers are used for case-sensitive instance naming. For example, instnaceName=db and goodsNum=3, the instance names are db1, db2, and db3 respectively.</p>
         :type InstanceName: str
-        :param _ResourceTags: Instance tag information
+        :param _ResourceTags: <p>Tag information of the instance.</p>
         :type ResourceTags: list of TagInfo
-        :param _DeployGroupId: Placement group ID
+        :param _DeployGroupId: <p>Placement group ID.</p>
         :type DeployGroupId: str
-        :param _ClientToken: A string unique in 48 hours, which is supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :param _ClientToken: <p>String used to ensure request idempotency. This string is generated by the customer and must be unique between different requests within 48 hours, with a maximum value of 64 ASCII characters. If not specified, request idempotency cannot be guaranteed.</p>
         :type ClientToken: str
-        :param _DeviceType: Instance isolation type. Supported values include "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - standard type for cloud disk edition, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - enhanced for cloud disk edition. Default to general-purpose instance if not specified.
-Description: If a cloud disk edition instance is created, this parameter is required.
+        :param _DeviceType: <p>Instance isolation type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - CLOUD disk edition standard type, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - CLOUD disk edition enhanced. If not specified, it defaults to general-purpose instance.<br>Description: If a CLOUD disk edition instance is created, this parameter is required.</p>
         :type DeviceType: str
-        :param _ParamTemplateId: Parameter template id.
-Remark: If you use a custom parameter template ID, you can input the custom parameter template ID. If you plan to use the default parameter template, inputting the parameter template ID is invalid, and you need to set ParamTemplateType.
+        :param _ParamTemplateId: <p>Parameter template ID.<br>Remark: If you use a custom parameter template ID, you can input the custom parameter template ID. If you plan to use the default parameter template, the input ID is invalid and you need to set ParamTemplateType.</p>
         :type ParamTemplateId: int
-        :param _AlarmPolicyList: Array of alarm policy IDs, which can be obtained through the `OriginId` field in the return value of the `DescribeAlarmPolicy` API of TCOP.
+        :param _AlarmPolicyList: <p>Array of alarm policy IDs. OriginId returned by the Tencent Cloud observability platform DescribeAlarmPolicy API.</p>
         :type AlarmPolicyList: list of int
-        :param _InstanceNodes: The number of nodes of the instance. To purchase a read-only instance or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.
+        :param _InstanceNodes: <p>Number of instance nodes.</p><p>For RO and basic edition instances, the default value is 1. To purchase a three-node instance, set this value to 3 or specify the BackupZone parameter. When purchasing a primary instance without specifying this parameter or the BackupZone parameter, the default is 2, meaning a dual-node instance will be purchased. To purchase a four-node instance, set this value to 4 or specify the FourthZone parameter.</p>
         :type InstanceNodes: int
-        :param _Cpu: The number of the instance CPU cores. If this parameter is left empty, it will be subject to the `Memory` value.
+        :param _Cpu: <p>Number of Cpu cores of the instance.</p><p>When multiple Cpu configurations exist for the Memory specification (for example, 64000MB Memory corresponds to 8-core/16-core/32-core), the Cpu parameter must be provided.</p>
         :type Cpu: int
-        :param _AutoSyncFlag: Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes). Default value: `0`.
+        :param _AutoSyncFlag: <p>Whether to automatically initiate disaster recovery sync. This parameter only takes effect when purchasing a disaster recovery instance. Available values are: 0 - Do not automatically initiate disaster recovery sync; 1 - Automatically initiate disaster recovery sync. The default is 0.</p>
         :type AutoSyncFlag: int
-        :param _CageId: Financial cage ID.
+        :param _CageId: <p>Financial Enclosure ID.</p>
         :type CageId: str
-        :param _ParamTemplateType: Default parameter template type. Supported values include: "HIGH_STABILITY" - high-stability template, "HIGH_PERFORMANCE" - high-performance template.
-Remark: If you need to use the TencentDB for MySQL default parameter template, set up ParamTemplateType.
+        :param _ParamTemplateType: <p>Default parameter template type. Supported values include "HIGH_STABILITY" - HIGH-STABILITY template, "HIGH_PERFORMANCE" - HIGH-PERFORMANCE template.<br>Remark: If you need to use TencentDB for MySQL default parameter template, set up ParamTemplateType.</p>
         :type ParamTemplateType: str
-        :param _AlarmPolicyIdList: The array of alarm policy names, such as ["policy-uyoee9wg"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.
+        :param _AlarmPolicyIdList: <p>Alarm policy name array, such as ["policy-uyoee9wg"]. This parameter is invalid when AlarmPolicyList is not empty.</p>
         :type AlarmPolicyIdList: list of str
-        :param _DryRun: Whether to only pre-check this request. true: Send a check request without creating an instance. Check items include whether required parameters are filled, request format, and service limit. If the check failed, return the corresponding error code; if the check passed, return RequestId. false: Send a normal request and create the instance directly after passing the check.
-Defaults to false.
+        :param _DryRun: <p>Whether to perform a pre-check only for this request. true: Send a check request without creating an instance. Check items include whether required parameters are filled, request format, and service limit. If the check fails, return the corresponding error code; if the check passes, return RequestId. false: Send a normal request and create an instance directly after the check passes.<br>Default to false.</p>
         :type DryRun: bool
-        :param _EngineType: Instance engine type. Valid values: `InnoDB` (default), `RocksDB`.
+        :param _EngineType: <p>Instance engine type, defaults to "InnoDB". Supported values include "InnoDB" and "RocksDB".</p>
         :type EngineType: str
-        :param _Vips: The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.
+        :param _Vips: <p>Specify the IP list of the instance. Only the primary instance is supported. Process by instance sequence. Handle as unspecified if insufficient.</p>
         :type Vips: list of str
-        :param _DataProtectVolume: Data protection space size of the cloud disk edition instance in GB. Setting range is 1 - 10.
+        :param _DataProtectVolume: <p>The data protection space size of the cloud disk edition instance, in GB, has a setting range of 1 - 10.</p>
         :type DataProtectVolume: int
-        :param _ClusterTopology: Cloud disk edition node topology configuration.
-Description: If a cloud disk edition instance is purchased, this parameter is required. Set the RW and RO node topology for the cloud disk edition instance. The RO node scope is 1-5. Set at least 1 RO node.
+        :param _ClusterTopology: <p>Topology configuration for cloud disk edition nodes.<br>Description: If a cloud disk edition instance is purchased, this parameter is required. Set the topology for RW and RO nodes of the cloud disk edition instance. The node scope for RO nodes is 1-5. Set at least 1 RO node.</p>
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
-        :param _DiskType: Disk Type. This parameter can be specified for single-node (cloud disk edition) or cloud disk edition instance. CLOUD_SSD means SSD Cloud Block Storage, CLOUD_HSSD refers to enhanced SSD cloud disk, and CLOUD_PREMIUM indicates high-performance cloud block storage.
-Description: The supported regions for the hard disk type of single-node (cloud disk edition) and cloud disk edition instances vary slightly. For the specific support situation, refer to [Regions and Availability Zones](https://www.tencentcloud.com/document/product/236/8458?from_cn_redirect=1).
+        :param _DiskType: <p>Disk type. This parameter can be specified for single-node (cloud disk edition) or cloud disk edition instances. CLOUD_SSD means SSD Cloud Block Storage, CLOUD_HSSD means enhanced SSD cloud disk, and CLOUD_PREMIUM means high-performance cloud block storage.<br>Note: The supported regions for hard disk types of single-node (cloud disk edition) and cloud disk edition instances vary slightly. For specific support situation, refer to <a href="https://www.tencentcloud.com/document/product/236/8458?from_cn_redirect=1">Regions and Availability Zones</a>.</p>
         :type DiskType: str
-        :param _DestroyProtect: Turn on or off instance destruction protection. on - enabled, off - disabled.
+        :param _DestroyProtect: <p>Turn on or off instance destruction protection. on - turn on, off - turn off.</p>
         :type DestroyProtect: str
+        :param _FourthZone: <p>AZ information of standby 3, empty by default. Specify this parameter when you proceed to purchase a four-node primary instance.</p>
+        :type FourthZone: str
         """
         self._Memory = None
         self._Volume = None
@@ -8282,10 +8836,11 @@ Description: The supported regions for the hard disk type of single-node (cloud 
         self._ClusterTopology = None
         self._DiskType = None
         self._DestroyProtect = None
+        self._FourthZone = None
 
     @property
     def Memory(self):
-        r"""Instance memory size in MB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported memory specifications.
+        r"""<p>Instance memory size. Unit: MB. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to obtain creatable memory specifications.</p>
         :rtype: int
         """
         return self._Memory
@@ -8296,7 +8851,7 @@ Description: The supported regions for the hard disk type of single-node (cloud 
 
     @property
     def Volume(self):
-        r"""Instance disk size in GB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported disk specifications.
+        r"""<p>Instance disk size, unit: GB. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the creatable disk range.</p>
         :rtype: int
         """
         return self._Volume
@@ -8307,7 +8862,7 @@ Description: The supported regions for the hard disk type of single-node (cloud 
 
     @property
     def Period(self):
-        r"""Instance validity period in months. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
+        r"""<p>Instance duration, measurement unit: month, optional values include [1,2,3,4,5,6,7,8,9,10,11,12,24,36].</p>
         :rtype: int
         """
         return self._Period
@@ -8318,7 +8873,7 @@ Description: The supported regions for the hard disk type of single-node (cloud 
 
     @property
     def GoodsNum(self):
-        r"""Number of instances. Value range: 1-100. Default value: `1`.
+        r"""<p>Instance count. Default value is 1, minimum value 1, maximum value 100.</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -8329,8 +8884,7 @@ Description: The supported regions for the hard disk type of single-node (cloud 
 
     @property
     def Zone(self):
-        r"""For AZ information, please use the [Obtain the Purchasable Specifications of Cloud Databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to obtain the availability zones that can be created.
-Description: If you create a single-node, two-node, or three-node instance, this parameter is required. Specify an availability zone. If you do not specify an availability zone, the system will automatically select one (possibly not the availability zone you want to deploy in). If you create a cloud disk edition instance, leave this parameter empty. Configure the availability zone for the read-write node and read-only node with parameter ClusterTopology.
+        r"""<p>For availability zone information, please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the availability zones where instances can be created.</p><p>If you create a single-node, two-node, three-node, or four-node instance, this parameter is required. Please specify an availability zone. If you do not specify one, the system will automatically select an availability zone (which may not be the one you want to deploy in). If you create a cloud disk edition instance, leave this parameter blank and configure the availability zones for read-write nodes and read-only nodes with parameter ClusterTopology.</p>
         :rtype: str
         """
         return self._Zone
@@ -8341,8 +8895,7 @@ Description: If you create a single-node, two-node, or three-node instance, this
 
     @property
     def UniqVpcId(self):
-        r"""VPC ID. Please use [Querying VPC list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1).
-Description: If a cloud disk edition instance is created, this item is required and must be a VPC type. If this item is left blank, the system will select the default VPC.
+        r"""<p>VPC ID. Please use <a href="/document/api/215/15778">Querying VPC List</a>.<br>Description: If you create a cloud disk edition instance, this item is required and must be VPC type. If this item is left blank, the system will select the default VPC by default.</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -8353,8 +8906,7 @@ Description: If a cloud disk edition instance is created, this item is required 
 
     @property
     def UniqSubnetId(self):
-        r"""Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use [query subnet list](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1).
-Description: If this item is left empty, the system will select the default subnet in the Default VPC.
+        r"""<p>Subnet ID in the private network. If UniqVpcId is set up, UniqSubnetId is required. Please use <a href="/document/api/215/15784">query subnet list</a>.<br>Description: If this item is not filled, the system will select the default subnet in the Default VPC.</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -8365,7 +8917,7 @@ Description: If this item is left empty, the system will select the default subn
 
     @property
     def ProjectId(self):
-        r"""Project ID. If this parameter is left empty, the default project will be used. When you purchase read-only instances and disaster recovery instances, the project ID is the same as that of the source instance by default.
+        r"""<p>Project ID. The default project is used if left empty. When you purchase a read-only instance or disaster recovery instance, the project ID is consistent with the primary instance by default.</p>
         :rtype: int
         """
         return self._ProjectId
@@ -8376,8 +8928,7 @@ Description: If this item is left empty, the system will select the default subn
 
     @property
     def Port(self):
-        r"""Custom port. Port range: 1024-65535.
-Description: If this item is left blank, it defaults to 3306.
+        r"""<p>Custom port. Supported range: [1024-65535].<br>Description: If this item is left blank, it defaults to 3306.</p>
         :rtype: int
         """
         return self._Port
@@ -8388,8 +8939,7 @@ Description: If this item is left blank, it defaults to 3306.
 
     @property
     def InstanceRole(self):
-        r"""Instance type. Supported values include: master - indicates the primary instance, dr - indicates the disaster recovery instance, ro - indicates the read-only instance.
-Description: Select instance type. The master type is selected by default if left empty.
+        r"""<p>Instance type. Supported values include: master - primary instance, dr - disaster recovery instance, ro - read-only instance.<br>Description: Select instance type. master is selected by default if left blank.</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -8400,7 +8950,7 @@ Description: Select instance type. The master type is selected by default if lef
 
     @property
     def MasterInstanceId(self):
-        r"""Instance ID, required when purchasing a read-only instance or disaster recovery instance. This field represents the primary instance ID of the read-only instance or disaster recovery instance. Please use the [Query Instance List](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) API to query the cloud database instance ID.
+        r"""<p>Instance ID, required when purchasing a read-only instance or disaster recovery instance. This field represents the primary instance ID of the read-only instance or disaster recovery instance. Please use the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">Query Instance List</a> API to query the cloud database instance ID.</p>
         :rtype: str
         """
         return self._MasterInstanceId
@@ -8411,8 +8961,7 @@ Description: Select instance type. The master type is selected by default if lef
 
     @property
     def EngineVersion(self):
-        r"""MySQL version, including 5.5, 5.6, 5.7, and 8.0. Please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) API to get the version of the instance created.
-Description: When creating a non-cloud disk edition instance, specify the instance version as needed (recommend 5.7 or 8.0). If this parameter is left empty, the default value is 8.0. If creating a cloud disk edition instance, this parameter can only be set to 5.7 or 8.0.
+        r"""<p>MySQL version, including 5.5, 5.6, 5.7, and 8.0. Please use the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the instance version created.<br>Note: When creating a non-cloud disk edition instance, specify the instance version as needed (recommend 5.7 or 8.0). If this parameter is left blank, the default value is 8.0. If creating a cloud disk edition instance, this parameter can only be set to 5.7 or 8.0.</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -8423,7 +8972,7 @@ Description: When creating a non-cloud disk edition instance, specify the instan
 
     @property
     def Password(self):
-        r"""The root account password, which can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and symbols `_+-&=!@#$%^*()`. This parameter applies to source instances but not to read-only or disaster recovery instances.
+        r"""<p>Set the root account password. The password must contain 8 to 64 characters and at least two of the following: letters, digits, or characters (supported characters: _+-&amp;=!@#$%^*()). You can specify this parameter when purchasing a primary instance. This parameter is invalid when purchasing a read-only instance or disaster recovery instance.</p>
         :rtype: str
         """
         return self._Password
@@ -8434,7 +8983,7 @@ Description: When creating a non-cloud disk edition instance, specify the instan
 
     @property
     def ProtectMode(self):
-        r"""Data replication mode. Valid values: `0` (async replication), `1` (semi-sync replication), `2` (strong sync replication). Default value: `0`.
+        r"""<p>Data replication method, defaults to 0. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication.</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -8445,7 +8994,7 @@ Description: When creating a non-cloud disk edition instance, specify the instan
 
     @property
     def DeployMode(self):
-        r"""Multi-AZ or single-AZ. Valid values: `0` (single-AZ), `1` (multi-AZ). Default value: `0`.
+        r"""<p>Multiple Availability Zones, defaults to 0. Supported values include: 0 - means single availability zone, 1 - means multi-availability zone.</p>
         :rtype: int
         """
         return self._DeployMode
@@ -8456,8 +9005,7 @@ Description: When creating a non-cloud disk edition instance, specify the instan
 
     @property
     def SlaveZone(self):
-        r"""AZ information of standby database 1.
-Description: For two-node and three-node instances, specify this parameter. If not specified, it defaults to the value of Zone. For cloud disk edition instances, this parameter is optional. Configure the availability zone for read-write nodes and read-only nodes with parameter ClusterTopology. Single-node instances are single availability zone and no need to specify this parameter.
+        r"""<p>AZ information of standby database 1.</p><p>For two-node, three-node, or four-node instances, specify this parameter. If not specified, it defaults to the Zone value. For cloud disk edition instances, this parameter is optional. Configure the AZ for read-write and read-only nodes with parameter ClusterTopology. Single-node instances are in a single availability zone, so no need to specify this parameter.</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -8468,8 +9016,7 @@ Description: For two-node and three-node instances, specify this parameter. If n
 
     @property
     def ParamList(self):
-        r"""Parameter list. The parameter format is ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can query the configurable parameters by default by referring to [Querying the Default Configurable Parameter List](https://www.tencentcloud.com/document/api/236/32662?from_cn_redirect=1).
-Description: table name case sensitivity can be enabled or disabled with parameter lower_case_table_names. A parameter value of 0 means enabling, and 1 means disabling. If not set, the default value is 0. For MySQL 8.0 edition instances, you need to set the lower_case_table_names parameter when creating an instance to turn on or off table name case sensitivity. Once created, the parameter cannot be modified, meaning table name case sensitivity cannot be changed after creation. Other database versions support modifying the lower_case_table_names parameter after the instance is created. For the function invocation method to set table name case sensitivity when creating an instance, please see example 3 in this document.
+        r"""<p>Parameter list. The parameter format is ParamList.0.Name=auto_increment&amp;ParamList.0.Value=1. You can query the configurable parameters by referring to <a href="https://www.tencentcloud.com/document/api/236/32662?from_cn_redirect=1">querying the default configurable parameter list</a>.<br>Description: table Name case sensitivity can be turned on or off by setting the parameter lower_case_table_names. a parameter Value of 0 means enabling, and a Value of 1 means disabling. If not set, the default Value is 0. If you create a MySQL 8.0 edition instance, you need to set the lower_case_table_names parameter when creating the instance to turn on or off table Name case sensitivity. After the instance is created, the parameter cannot be modified, meaning table Name case sensitivity cannot be changed once created. Instances of other database versions support modifying the lower_case_table_names parameter after creation. For the function invocation method to set table Name case sensitivity when creating an instance, please see example 3 in this document.</p>
         :rtype: list of ParamInfo
         """
         return self._ParamList
@@ -8480,7 +9027,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def BackupZone(self):
-        r"""Information of replica AZ 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.
+        r"""<p>AZ information of standby 2, empty by default.</p><p>Specify this parameter when you proceed to purchase a three-node primary instance or a four-node primary instance.</p>
         :rtype: str
         """
         return self._BackupZone
@@ -8491,7 +9038,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def AutoRenewFlag(self):
-        r"""Auto-renewal flag. Available values are: 0 - no auto-renewal; 1 - auto-renewal. Default is 0.
+        r"""<p>Auto-renewal flag. Available values are: 0 - no auto-renewal; 1 - auto-renewal. Default is 0.</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -8502,7 +9049,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def MasterRegion(self):
-        r"""Region information of the source instance, which is required when purchasing a read-only or disaster recovery instance.
+        r"""<p>Region of the primary instance. This field is required when you purchase a disaster recovery or RO instance.</p>
         :rtype: str
         """
         return self._MasterRegion
@@ -8513,7 +9060,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def SecurityGroup(self):
-        r"""Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.
+        r"""<p>Security group parameters. Use the API <a href="https://www.tencentcloud.com/document/api/236/15850?from_cn_redirect=1">Query Project Security Group Information</a> to query security group details of a certain project.</p>
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -8524,7 +9071,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def RoGroup(self):
-        r"""Read-only instance parameter. This parameter must be passed in when purchasing read-only instances.
+        r"""<p>Read-only instance parameter. This parameter is required when you purchase a read-only instance.</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
         """
         return self._RoGroup
@@ -8535,7 +9082,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def InstanceName(self):
-        r"""Instance name. For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, and their instance names are db1, db2, and db3, respectively.
+        r"""<p>Instance name. When you purchase multiple instances only once, suffix numbers are used for case-sensitive instance naming. For example, instnaceName=db and goodsNum=3, the instance names are db1, db2, and db3 respectively.</p>
         :rtype: str
         """
         return self._InstanceName
@@ -8546,7 +9093,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def ResourceTags(self):
-        r"""Instance tag information
+        r"""<p>Tag information of the instance.</p>
         :rtype: list of TagInfo
         """
         return self._ResourceTags
@@ -8557,7 +9104,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def DeployGroupId(self):
-        r"""Placement group ID
+        r"""<p>Placement group ID.</p>
         :rtype: str
         """
         return self._DeployGroupId
@@ -8568,7 +9115,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def ClientToken(self):
-        r"""A string unique in 48 hours, which is supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        r"""<p>String used to ensure request idempotency. This string is generated by the customer and must be unique between different requests within 48 hours, with a maximum value of 64 ASCII characters. If not specified, request idempotency cannot be guaranteed.</p>
         :rtype: str
         """
         return self._ClientToken
@@ -8579,8 +9126,7 @@ Description: table name case sensitivity can be enabled or disabled with paramet
 
     @property
     def DeviceType(self):
-        r"""Instance isolation type. Supported values include "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - standard type for cloud disk edition, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - enhanced for cloud disk edition. Default to general-purpose instance if not specified.
-Description: If a cloud disk edition instance is created, this parameter is required.
+        r"""<p>Instance isolation type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - CLOUD disk edition standard type, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - CLOUD disk edition enhanced. If not specified, it defaults to general-purpose instance.<br>Description: If a CLOUD disk edition instance is created, this parameter is required.</p>
         :rtype: str
         """
         return self._DeviceType
@@ -8591,8 +9137,7 @@ Description: If a cloud disk edition instance is created, this parameter is requ
 
     @property
     def ParamTemplateId(self):
-        r"""Parameter template id.
-Remark: If you use a custom parameter template ID, you can input the custom parameter template ID. If you plan to use the default parameter template, inputting the parameter template ID is invalid, and you need to set ParamTemplateType.
+        r"""<p>Parameter template ID.<br>Remark: If you use a custom parameter template ID, you can input the custom parameter template ID. If you plan to use the default parameter template, the input ID is invalid and you need to set ParamTemplateType.</p>
         :rtype: int
         """
         return self._ParamTemplateId
@@ -8603,7 +9148,7 @@ Remark: If you use a custom parameter template ID, you can input the custom para
 
     @property
     def AlarmPolicyList(self):
-        r"""Array of alarm policy IDs, which can be obtained through the `OriginId` field in the return value of the `DescribeAlarmPolicy` API of TCOP.
+        r"""<p>Array of alarm policy IDs. OriginId returned by the Tencent Cloud observability platform DescribeAlarmPolicy API.</p>
         :rtype: list of int
         """
         return self._AlarmPolicyList
@@ -8614,7 +9159,7 @@ Remark: If you use a custom parameter template ID, you can input the custom para
 
     @property
     def InstanceNodes(self):
-        r"""The number of nodes of the instance. To purchase a read-only instance or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.
+        r"""<p>Number of instance nodes.</p><p>For RO and basic edition instances, the default value is 1. To purchase a three-node instance, set this value to 3 or specify the BackupZone parameter. When purchasing a primary instance without specifying this parameter or the BackupZone parameter, the default is 2, meaning a dual-node instance will be purchased. To purchase a four-node instance, set this value to 4 or specify the FourthZone parameter.</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -8625,7 +9170,7 @@ Remark: If you use a custom parameter template ID, you can input the custom para
 
     @property
     def Cpu(self):
-        r"""The number of the instance CPU cores. If this parameter is left empty, it will be subject to the `Memory` value.
+        r"""<p>Number of Cpu cores of the instance.</p><p>When multiple Cpu configurations exist for the Memory specification (for example, 64000MB Memory corresponds to 8-core/16-core/32-core), the Cpu parameter must be provided.</p>
         :rtype: int
         """
         return self._Cpu
@@ -8636,7 +9181,7 @@ Remark: If you use a custom parameter template ID, you can input the custom para
 
     @property
     def AutoSyncFlag(self):
-        r"""Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes). Default value: `0`.
+        r"""<p>Whether to automatically initiate disaster recovery sync. This parameter only takes effect when purchasing a disaster recovery instance. Available values are: 0 - Do not automatically initiate disaster recovery sync; 1 - Automatically initiate disaster recovery sync. The default is 0.</p>
         :rtype: int
         """
         return self._AutoSyncFlag
@@ -8647,7 +9192,7 @@ Remark: If you use a custom parameter template ID, you can input the custom para
 
     @property
     def CageId(self):
-        r"""Financial cage ID.
+        r"""<p>Financial Enclosure ID.</p>
         :rtype: str
         """
         return self._CageId
@@ -8658,8 +9203,7 @@ Remark: If you use a custom parameter template ID, you can input the custom para
 
     @property
     def ParamTemplateType(self):
-        r"""Default parameter template type. Supported values include: "HIGH_STABILITY" - high-stability template, "HIGH_PERFORMANCE" - high-performance template.
-Remark: If you need to use the TencentDB for MySQL default parameter template, set up ParamTemplateType.
+        r"""<p>Default parameter template type. Supported values include "HIGH_STABILITY" - HIGH-STABILITY template, "HIGH_PERFORMANCE" - HIGH-PERFORMANCE template.<br>Remark: If you need to use TencentDB for MySQL default parameter template, set up ParamTemplateType.</p>
         :rtype: str
         """
         return self._ParamTemplateType
@@ -8670,7 +9214,7 @@ Remark: If you need to use the TencentDB for MySQL default parameter template, s
 
     @property
     def AlarmPolicyIdList(self):
-        r"""The array of alarm policy names, such as ["policy-uyoee9wg"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.
+        r"""<p>Alarm policy name array, such as ["policy-uyoee9wg"]. This parameter is invalid when AlarmPolicyList is not empty.</p>
         :rtype: list of str
         """
         return self._AlarmPolicyIdList
@@ -8681,8 +9225,7 @@ Remark: If you need to use the TencentDB for MySQL default parameter template, s
 
     @property
     def DryRun(self):
-        r"""Whether to only pre-check this request. true: Send a check request without creating an instance. Check items include whether required parameters are filled, request format, and service limit. If the check failed, return the corresponding error code; if the check passed, return RequestId. false: Send a normal request and create the instance directly after passing the check.
-Defaults to false.
+        r"""<p>Whether to perform a pre-check only for this request. true: Send a check request without creating an instance. Check items include whether required parameters are filled, request format, and service limit. If the check fails, return the corresponding error code; if the check passes, return RequestId. false: Send a normal request and create an instance directly after the check passes.<br>Default to false.</p>
         :rtype: bool
         """
         return self._DryRun
@@ -8693,7 +9236,7 @@ Defaults to false.
 
     @property
     def EngineType(self):
-        r"""Instance engine type. Valid values: `InnoDB` (default), `RocksDB`.
+        r"""<p>Instance engine type, defaults to "InnoDB". Supported values include "InnoDB" and "RocksDB".</p>
         :rtype: str
         """
         return self._EngineType
@@ -8704,7 +9247,7 @@ Defaults to false.
 
     @property
     def Vips(self):
-        r"""The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.
+        r"""<p>Specify the IP list of the instance. Only the primary instance is supported. Process by instance sequence. Handle as unspecified if insufficient.</p>
         :rtype: list of str
         """
         return self._Vips
@@ -8715,7 +9258,7 @@ Defaults to false.
 
     @property
     def DataProtectVolume(self):
-        r"""Data protection space size of the cloud disk edition instance in GB. Setting range is 1 - 10.
+        r"""<p>The data protection space size of the cloud disk edition instance, in GB, has a setting range of 1 - 10.</p>
         :rtype: int
         """
         return self._DataProtectVolume
@@ -8726,8 +9269,7 @@ Defaults to false.
 
     @property
     def ClusterTopology(self):
-        r"""Cloud disk edition node topology configuration.
-Description: If a cloud disk edition instance is purchased, this parameter is required. Set the RW and RO node topology for the cloud disk edition instance. The RO node scope is 1-5. Set at least 1 RO node.
+        r"""<p>Topology configuration for cloud disk edition nodes.<br>Description: If a cloud disk edition instance is purchased, this parameter is required. Set the topology for RW and RO nodes of the cloud disk edition instance. The node scope for RO nodes is 1-5. Set at least 1 RO node.</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         """
         return self._ClusterTopology
@@ -8738,8 +9280,7 @@ Description: If a cloud disk edition instance is purchased, this parameter is re
 
     @property
     def DiskType(self):
-        r"""Disk Type. This parameter can be specified for single-node (cloud disk edition) or cloud disk edition instance. CLOUD_SSD means SSD Cloud Block Storage, CLOUD_HSSD refers to enhanced SSD cloud disk, and CLOUD_PREMIUM indicates high-performance cloud block storage.
-Description: The supported regions for the hard disk type of single-node (cloud disk edition) and cloud disk edition instances vary slightly. For the specific support situation, refer to [Regions and Availability Zones](https://www.tencentcloud.com/document/product/236/8458?from_cn_redirect=1).
+        r"""<p>Disk type. This parameter can be specified for single-node (cloud disk edition) or cloud disk edition instances. CLOUD_SSD means SSD Cloud Block Storage, CLOUD_HSSD means enhanced SSD cloud disk, and CLOUD_PREMIUM means high-performance cloud block storage.<br>Note: The supported regions for hard disk types of single-node (cloud disk edition) and cloud disk edition instances vary slightly. For specific support situation, refer to <a href="https://www.tencentcloud.com/document/product/236/8458?from_cn_redirect=1">Regions and Availability Zones</a>.</p>
         :rtype: str
         """
         return self._DiskType
@@ -8750,7 +9291,7 @@ Description: The supported regions for the hard disk type of single-node (cloud 
 
     @property
     def DestroyProtect(self):
-        r"""Turn on or off instance destruction protection. on - enabled, off - disabled.
+        r"""<p>Turn on or off instance destruction protection. on - turn on, off - turn off.</p>
         :rtype: str
         """
         return self._DestroyProtect
@@ -8758,6 +9299,17 @@ Description: The supported regions for the hard disk type of single-node (cloud 
     @DestroyProtect.setter
     def DestroyProtect(self, DestroyProtect):
         self._DestroyProtect = DestroyProtect
+
+    @property
+    def FourthZone(self):
+        r"""<p>AZ information of standby 3, empty by default. Specify this parameter when you proceed to purchase a four-node primary instance.</p>
+        :rtype: str
+        """
+        return self._FourthZone
+
+    @FourthZone.setter
+    def FourthZone(self, FourthZone):
+        self._FourthZone = FourthZone
 
 
     def _deserialize(self, params):
@@ -8817,6 +9369,7 @@ Description: The supported regions for the hard disk type of single-node (cloud 
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         self._DiskType = params.get("DiskType")
         self._DestroyProtect = params.get("DestroyProtect")
+        self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8834,9 +9387,9 @@ class CreateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealIds: Billing sub-order ID
+        :param _DealIds: <p>Billing sub-order ID.</p>
         :type DealIds: list of str
-        :param _InstanceIds: List of instance IDs
+        :param _InstanceIds: <p>Instance ID list.</p>
         :type InstanceIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8847,7 +9400,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     @property
     def DealIds(self):
-        r"""Billing sub-order ID
+        r"""<p>Billing sub-order ID.</p>
         :rtype: list of str
         """
         return self._DealIds
@@ -8858,7 +9411,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of instance IDs
+        r"""<p>Instance ID list.</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -8894,7 +9447,7 @@ class CreateDatabaseRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of `cdb-c1nl9rpv`,  which is the same as the one displayed in the TencentDB console.
         :type InstanceId: str
-        :param _DBName: Database Name, up to 64 characters in length.
+        :param _DBName: Database name, length not exceeding 64.
         :type DBName: str
         :param _CharacterSetName: Character set. Valid values:  `utf8`, `gbk`, `latin1`, `utf8mb4`.
         :type CharacterSetName: str
@@ -8916,7 +9469,7 @@ class CreateDatabaseRequest(AbstractModel):
 
     @property
     def DBName(self):
-        r"""Database Name, up to 64 characters in length.
+        r"""Database name, length not exceeding 64.
         :rtype: str
         """
         return self._DBName
@@ -8986,19 +9539,20 @@ class CreateParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Parameter template name.
+        :param _Name: Parameter template name. Up to 60 characters are allowed.
         :type Name: str
         :param _Description: Parameter template description.
         :type Description: str
-        :param _EngineVersion: MySQL version number.
+        :param _EngineVersion: MySQL version number. Available values: 5.6, 5.7, and 8.0.
         :type EngineVersion: str
-        :param _TemplateId: Source parameter template ID.
+        :param _TemplateId: Source parameter template ID, which can be obtained through the [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1) API.
         :type TemplateId: int
         :param _ParamList: List of parameters.
         :type ParamList: list of Parameter
         :param _TemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
         :type TemplateType: str
-        :param _EngineType: Instance engine type. Valid values: `InnoDB` (default), `RocksDB`.
+        :param _EngineType: Instance engine type, defaults to "InnoDB". Supported values include "InnoDB" and "RocksDB".
+Description: RocksDB is only supported in database versions MySQL 5.7 and MySQL 8.0.
         :type EngineType: str
         """
         self._Name = None
@@ -9011,7 +9565,7 @@ class CreateParamTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Parameter template name.
+        r"""Parameter template name. Up to 60 characters are allowed.
         :rtype: str
         """
         return self._Name
@@ -9033,7 +9587,7 @@ class CreateParamTemplateRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""MySQL version number.
+        r"""MySQL version number. Available values: 5.6, 5.7, and 8.0.
         :rtype: str
         """
         return self._EngineVersion
@@ -9044,7 +9598,7 @@ class CreateParamTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""Source parameter template ID.
+        r"""Source parameter template ID, which can be obtained through the [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1) API.
         :rtype: int
         """
         return self._TemplateId
@@ -9077,7 +9631,8 @@ class CreateParamTemplateRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""Instance engine type. Valid values: `InnoDB` (default), `RocksDB`.
+        r"""Instance engine type, defaults to "InnoDB". Supported values include "InnoDB" and "RocksDB".
+Description: RocksDB is only supported in database versions MySQL 5.7 and MySQL 8.0.
         :rtype: str
         """
         return self._EngineType
@@ -9314,9 +9869,9 @@ class CreateRotationPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, in the format of cdb-c1nl9rpv, which is the same as the instance ID displayed on the TencentDB for MySQL console page.
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :type InstanceId: str
-        :param _Accounts: Information about the account for which password rotation needs to be enabled. The account and host names are included.
+        :param _Accounts: Currently, enable password rotation for account information, including account name and host name.
         :type Accounts: list of Account
         """
         self._InstanceId = None
@@ -9324,7 +9879,7 @@ class CreateRotationPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID, in the format of cdb-c1nl9rpv, which is the same as the instance ID displayed on the TencentDB for MySQL console page.
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :rtype: str
         """
         return self._InstanceId
@@ -9335,7 +9890,7 @@ class CreateRotationPasswordRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""Information about the account for which password rotation needs to be enabled. The account and host names are included.
+        r"""Currently, enable password rotation for account information, including account name and host name.
         :rtype: list of Account
         """
         return self._Accounts
@@ -9398,20 +9953,15 @@ class CustomConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Device: Device
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _Device: device
         :type Device: str
-        :param _Type: Type
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _Type: Type.
         :type Type: str
         :param _DeviceType: Device type
-Note: this field may return `null`, indicating that no valid value can be found.
         :type DeviceType: str
-        :param _Memory: Memory
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _Memory: Memory, measured in MB
         :type Memory: int
-        :param _Cpu: Number of CPU cores
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _Cpu: Number of cores
         :type Cpu: int
         """
         self._Device = None
@@ -9422,8 +9972,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def Device(self):
-        r"""Device
-Note: this field may return `null`, indicating that no valid value can be found.
+        r"""device
         :rtype: str
         """
         return self._Device
@@ -9434,8 +9983,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def Type(self):
-        r"""Type
-Note: this field may return `null`, indicating that no valid value can be found.
+        r"""Type.
         :rtype: str
         """
         return self._Type
@@ -9447,7 +9995,6 @@ Note: this field may return `null`, indicating that no valid value can be found.
     @property
     def DeviceType(self):
         r"""Device type
-Note: this field may return `null`, indicating that no valid value can be found.
         :rtype: str
         """
         return self._DeviceType
@@ -9458,8 +10005,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def Memory(self):
-        r"""Memory
-Note: this field may return `null`, indicating that no valid value can be found.
+        r"""Memory, measured in MB
         :rtype: int
         """
         return self._Memory
@@ -9470,8 +10016,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def Cpu(self):
-        r"""Number of CPU cores
-Note: this field may return `null`, indicating that no valid value can be found.
+        r"""Number of cores
         :rtype: int
         """
         return self._Cpu
@@ -9980,7 +10525,7 @@ class DeleteBackupRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param _BackupId: Backup task ID, which is the task ID returned by the [TencentDB instance backup creating API](https://intl.cloud.tencent.com/document/api/236/15844?from_cn_redirect=1).
+        :param _BackupId: Backup task ID. Confirm it by querying the data backup file list (https://www.tencentcloud.com/document/api/236/15842?from_cn_redirect=1) to get the target backup task ID.
         :type BackupId: int
         """
         self._InstanceId = None
@@ -9999,7 +10544,7 @@ class DeleteBackupRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""Backup task ID, which is the task ID returned by the [TencentDB instance backup creating API](https://intl.cloud.tencent.com/document/api/236/15844?from_cn_redirect=1).
+        r"""Backup task ID. Confirm it by querying the data backup file list (https://www.tencentcloud.com/document/api/236/15842?from_cn_redirect=1) to get the target backup task ID.
         :rtype: int
         """
         return self._BackupId
@@ -10050,6 +10595,85 @@ class DeleteBackupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDatabaseRequest(AbstractModel):
+    r"""DeleteDatabase request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :type InstanceId: str
+        :param _DBName: Database name, length not exceeding 64.
+        :type DBName: str
+        """
+        self._InstanceId = None
+        self._DBName = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DBName(self):
+        r"""Database name, length not exceeding 64.
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DBName = params.get("DBName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDatabaseResponse(AbstractModel):
+    r"""DeleteDatabase response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteParamTemplateRequest(AbstractModel):
     r"""DeleteParamTemplate request structure.
 
@@ -10057,14 +10681,14 @@ class DeleteParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: Parameter template ID.
+        :param _TemplateId: Parameter template ID, which can be obtained through the API [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1).
         :type TemplateId: int
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        r"""Parameter template ID.
+        r"""Parameter template ID, which can be obtained through the API [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1).
         :rtype: int
         """
         return self._TemplateId
@@ -10088,6 +10712,130 @@ class DeleteParamTemplateRequest(AbstractModel):
 
 class DeleteParamTemplateResponse(AbstractModel):
     r"""DeleteParamTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRotationPasswordRequest(AbstractModel):
+    r"""DeleteRotationPassword request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :type InstanceId: str
+        :param _User: Instance account name with password rotation disabled, such as root
+        :type User: str
+        :param _Host: Disable the domain name of the instance account with password rotation, such as%
+        :type Host: str
+        :param _Password: The latest password of the instance account after disabling password rotation
+        :type Password: str
+        :param _EncryptMethod: If the input is not null, the password is encrypted.
+        :type EncryptMethod: str
+        """
+        self._InstanceId = None
+        self._User = None
+        self._Host = None
+        self._Password = None
+        self._EncryptMethod = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        r"""Instance account name with password rotation disabled, such as root
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        r"""Disable the domain name of the instance account with password rotation, such as%
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Password(self):
+        r"""The latest password of the instance account after disabling password rotation
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptMethod(self):
+        r"""If the input is not null, the password is encrypted.
+        :rtype: str
+        """
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        self._Password = params.get("Password")
+        self._EncryptMethod = params.get("EncryptMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRotationPasswordResponse(AbstractModel):
+    r"""DeleteRotationPassword response structure.
 
     """
 
@@ -10187,9 +10935,9 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param _User: Database user account.
+        :param _User: Account name of the database. Obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1) API.
         :type User: str
-        :param _Host: Database account domain name.
+        :param _Host: Domain name of the database account. Obtain through the API [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1).
         :type Host: str
         """
         self._InstanceId = None
@@ -10209,7 +10957,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def User(self):
-        r"""Database user account.
+        r"""Account name of the database. Obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._User
@@ -10220,7 +10968,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""Database account domain name.
+        r"""Domain name of the database account. Obtain through the API [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1).
         :rtype: str
         """
         return self._Host
@@ -10362,11 +11110,20 @@ class DescribeAccountsRequest(AbstractModel):
         :type Limit: int
         :param _AccountRegexp: Regex for matching account names, which complies with the rules at MySQL's official website
         :type AccountRegexp: str
+        :param _SortBy: Default none, support: ASC, DESC, asc, desc
+        :type SortBy: str
+        :param _OrderBy: Time field for sorting. Options: CreateTime (account creation time), ModifyTime (update time), ModifyPasswordTime (password modification time).
+        :type OrderBy: str
+        :param _HostRegexp: Regular expression to match the account host address (Host). The rule is the same as that on the MySQL official website.
+        :type HostRegexp: str
         """
         self._InstanceId = None
         self._Offset = None
         self._Limit = None
         self._AccountRegexp = None
+        self._SortBy = None
+        self._OrderBy = None
+        self._HostRegexp = None
 
     @property
     def InstanceId(self):
@@ -10412,12 +11169,48 @@ class DescribeAccountsRequest(AbstractModel):
     def AccountRegexp(self, AccountRegexp):
         self._AccountRegexp = AccountRegexp
 
+    @property
+    def SortBy(self):
+        r"""Default none, support: ASC, DESC, asc, desc
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def OrderBy(self):
+        r"""Time field for sorting. Options: CreateTime (account creation time), ModifyTime (update time), ModifyPasswordTime (password modification time).
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def HostRegexp(self):
+        r"""Regular expression to match the account host address (Host). The rule is the same as that on the MySQL official website.
+        :rtype: str
+        """
+        return self._HostRegexp
+
+    @HostRegexp.setter
+    def HostRegexp(self, HostRegexp):
+        self._HostRegexp = HostRegexp
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._AccountRegexp = params.get("AccountRegexp")
+        self._SortBy = params.get("SortBy")
+        self._OrderBy = params.get("OrderBy")
+        self._HostRegexp = params.get("HostRegexp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10549,11 +11342,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Task execution result. Valid values: INITIAL, RUNNING, SUCCESS, FAILED, KILLED, REMOVED, PAUSED.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Task execution result. Possible values: INITIAL - Initialization, RUNNING - Running, SUCCESS - Execution successful, FAILED - Execution failed, KILLED - Terminated, REMOVED - Deleted, PAUSED - Terminating.
         :type Status: str
-        :param _Info: Task execution information.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Info: Task execution information description.
         :type Info: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10564,8 +11355,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        r"""Task execution result. Valid values: INITIAL, RUNNING, SUCCESS, FAILED, KILLED, REMOVED, PAUSED.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Task execution result. Possible values: INITIAL - Initialization, RUNNING - Running, SUCCESS - Execution successful, FAILED - Execution failed, KILLED - Terminated, REMOVED - Deleted, PAUSED - Terminating.
         :rtype: str
         """
         return self._Status
@@ -10576,8 +11366,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Info(self):
-        r"""Task execution information.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Task execution information description.
         :rtype: str
         """
         return self._Info
@@ -11058,22 +11847,22 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _StartTime: Start time
+        :param _StartTime: Start time. We recommend that the interval between start and end time does not exceed 7 days.
         :type StartTime: str
-        :param _EndTime: End time
+        :param _EndTime: End time. We recommend that the interval between start and end time does not exceed 7 days.
         :type EndTime: str
         :param _Limit: The pagination parameter, which specifies the number of entries per page. Maximum value: 100 (default).
         :type Limit: int
-        :param _Offset: Pagination offset
+        :param _Offset: Log offset, supports up to 65535 log entries for offset querying. Fill in the range: 0 - 65535.
         :type Offset: int
-        :param _Order: Sorting order Valid values: `ASC (ascending), `DESC` (descending).
+        :param _Order: Sort order. Valid values: "ASC" - Ascending order, "DESC" - Descending order. Default value: "DESC".
         :type Order: str
-        :param _OrderBy: Sorting field Valid values: 
-`timestamp`: Timestamp,
-`affectRows`: Number of affected rows,
-`execTime`: Execution time.
+        :param _OrderBy: Field to sort by. Valid values:
+"timestamp" - timestamp;
+"affectRows" - Number of affected rows.
+"execTime" - Execution time.
         :type OrderBy: str
         :param _LogFilter: Filter. Multiple values are in `AND` relationship.
         :type LogFilter: list of InstanceAuditLogFilters
@@ -11089,7 +11878,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -11100,7 +11889,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start time
+        r"""Start time. We recommend that the interval between start and end time does not exceed 7 days.
         :rtype: str
         """
         return self._StartTime
@@ -11111,7 +11900,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End time
+        r"""End time. We recommend that the interval between start and end time does not exceed 7 days.
         :rtype: str
         """
         return self._EndTime
@@ -11133,7 +11922,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Pagination offset
+        r"""Log offset, supports up to 65535 log entries for offset querying. Fill in the range: 0 - 65535.
         :rtype: int
         """
         return self._Offset
@@ -11144,7 +11933,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""Sorting order Valid values: `ASC (ascending), `DESC` (descending).
+        r"""Sort order. Valid values: "ASC" - Ascending order, "DESC" - Descending order. Default value: "DESC".
         :rtype: str
         """
         return self._Order
@@ -11155,10 +11944,10 @@ class DescribeAuditLogsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""Sorting field Valid values: 
-`timestamp`: Timestamp,
-`affectRows`: Number of affected rows,
-`execTime`: Execution time.
+        r"""Field to sort by. Valid values:
+"timestamp" - timestamp;
+"affectRows" - Number of affected rows.
+"execTime" - Execution time.
         :rtype: str
         """
         return self._OrderBy
@@ -11405,8 +12194,7 @@ class DescribeAuditPoliciesResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of eligible audit policies
         :type TotalCount: int
-        :param _Items: Audit policy details
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _Items: Audit policy details.
         :type Items: list of AuditPolicy
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11428,8 +12216,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Items(self):
-        r"""Audit policy details
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""Audit policy details.
         :rtype: list of AuditPolicy
         """
         return self._Items
@@ -12062,6 +12849,8 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def StartTimeMin(self):
+        warnings.warn("parameter `StartTimeMin` is deprecated", DeprecationWarning) 
+
         r"""Earliest start time point of automatic backup, such as 2 (for 2:00 AM). (This field has been disused. You are recommended to use the `BackupTimeWindow` field)
         :rtype: int
         """
@@ -12069,10 +12858,14 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @StartTimeMin.setter
     def StartTimeMin(self, StartTimeMin):
+        warnings.warn("parameter `StartTimeMin` is deprecated", DeprecationWarning) 
+
         self._StartTimeMin = StartTimeMin
 
     @property
     def StartTimeMax(self):
+        warnings.warn("parameter `StartTimeMax` is deprecated", DeprecationWarning) 
+
         r"""Latest start time point of automatic backup, such as 6 (for 6:00 AM). (This field has been disused. You are recommended to use the `BackupTimeWindow` field)
         :rtype: int
         """
@@ -12080,6 +12873,8 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @StartTimeMax.setter
     def StartTimeMax(self, StartTimeMax):
+        warnings.warn("parameter `StartTimeMax` is deprecated", DeprecationWarning) 
+
         self._StartTimeMax = StartTimeMax
 
     @property
@@ -12313,17 +13108,20 @@ class DescribeBackupDecryptionKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of  cdb-XXXX,  which is the same as the instance ID displayed in the TencentDB console.
+        :param _InstanceId: Instance ID, in the format such as cdb-fybaegd8. This matches the instance ID displayed on the TencentDB console.
         :type InstanceId: str
-        :param _BackupId: Instance backup ID, which can be obtained by the `DescribeBackups` API.
+        :param _BackupId: Backup ID of the instance, which can be obtained through the [DescribeBackups](https://www.tencentcloud.com/document/api/236/15842?from_cn_redirect=1) API.
         :type BackupId: int
+        :param _BackupType: Backup type. data - data backup, binlog - log backup. The default value is data.
+        :type BackupType: str
         """
         self._InstanceId = None
         self._BackupId = None
+        self._BackupType = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of  cdb-XXXX,  which is the same as the instance ID displayed in the TencentDB console.
+        r"""Instance ID, in the format such as cdb-fybaegd8. This matches the instance ID displayed on the TencentDB console.
         :rtype: str
         """
         return self._InstanceId
@@ -12334,7 +13132,7 @@ class DescribeBackupDecryptionKeyRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""Instance backup ID, which can be obtained by the `DescribeBackups` API.
+        r"""Backup ID of the instance, which can be obtained through the [DescribeBackups](https://www.tencentcloud.com/document/api/236/15842?from_cn_redirect=1) API.
         :rtype: int
         """
         return self._BackupId
@@ -12343,10 +13141,22 @@ class DescribeBackupDecryptionKeyRequest(AbstractModel):
     def BackupId(self, BackupId):
         self._BackupId = BackupId
 
+    @property
+    def BackupType(self):
+        r"""Backup type. data - data backup, binlog - log backup. The default value is data.
+        :rtype: str
+        """
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._BackupId = params.get("BackupId")
+        self._BackupType = params.get("BackupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12600,14 +13410,14 @@ class DescribeBackupOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: TencentDB product type to be queried. Currently, only `mysql` is supported.
+        :param _Product: The cloud database product type for which a backup overview needs to be queried. The value can be mysql (two-node/three-node high-availability instances), mysql-basic (single-node cloud disk edition instance), or mysql-cluster (cloud disk edition instance).
         :type Product: str
         """
         self._Product = None
 
     @property
     def Product(self):
-        r"""TencentDB product type to be queried. Currently, only `mysql` is supported.
+        r"""The cloud database product type for which a backup overview needs to be queried. The value can be mysql (two-node/three-node high-availability instances), mysql-basic (single-node cloud disk edition instance), or mysql-cluster (cloud disk edition instance).
         :rtype: str
         """
         return self._Product
@@ -12644,14 +13454,11 @@ class DescribeBackupOverviewResponse(AbstractModel):
         :type BillingVolume: int
         :param _FreeVolume: Backup capacity in the free tier of a user in the current region.
         :type FreeVolume: int
-        :param _RemoteBackupVolume: Total capacity of backups of a user in the current region
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _RemoteBackupVolume: Total offsite backup capacity of the user in current region.
         :type RemoteBackupVolume: int
-        :param _BackupArchiveVolume: Archive backup capacity, which includes data backups and log backups.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _BackupArchiveVolume: Archive backup capacity, including data backup and log backup.
         :type BackupArchiveVolume: int
-        :param _BackupStandbyVolume: Backup capacity of standard storage, which includes data backups and log backups.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _BackupStandbyVolume: Standard storage backup capacity includes data backup and log backup.
         :type BackupStandbyVolume: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12711,8 +13518,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RemoteBackupVolume(self):
-        r"""Total capacity of backups of a user in the current region
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Total offsite backup capacity of the user in current region.
         :rtype: int
         """
         return self._RemoteBackupVolume
@@ -12723,8 +13529,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BackupArchiveVolume(self):
-        r"""Archive backup capacity, which includes data backups and log backups.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Archive backup capacity, including data backup and log backup.
         :rtype: int
         """
         return self._BackupArchiveVolume
@@ -12735,8 +13540,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BackupStandbyVolume(self):
-        r"""Backup capacity of standard storage, which includes data backups and log backups.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Standard storage backup capacity includes data backup and log backup.
         :rtype: int
         """
         return self._BackupStandbyVolume
@@ -12775,7 +13579,7 @@ class DescribeBackupSummariesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: TencentDB product type to be queried. Currently, only `mysql` is supported.
+        :param _Product: The cloud database product type for which real-time backup statistics need to be queried. The value can be mysql (two-node/three-node high-availability instances), mysql-basic (single-node cloud disk edition instance), or mysql-cluster (cloud disk edition instance).
         :type Product: str
         :param _Offset: Paginated query offset. Default value: `0`.
         :type Offset: int
@@ -12794,7 +13598,7 @@ class DescribeBackupSummariesRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""TencentDB product type to be queried. Currently, only `mysql` is supported.
+        r"""The cloud database product type for which real-time backup statistics need to be queried. The value can be mysql (two-node/three-node high-availability instances), mysql-basic (single-node cloud disk edition instance), or mysql-cluster (cloud disk edition instance).
         :rtype: str
         """
         return self._Product
@@ -12934,11 +13738,11 @@ class DescribeBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :type InstanceId: str
         :param _Offset: Offset. Minimum value: 0.
         :type Offset: int
-        :param _Limit: Number of entries per page. Value range: 1-100. Default value: 20.
+        :param _Limit: Page size. Default value: 20. Minimum value: 1. Maximum value: 1000.
         :type Limit: int
         """
         self._InstanceId = None
@@ -12947,7 +13751,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :rtype: str
         """
         return self._InstanceId
@@ -12969,7 +13773,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries per page. Value range: 1-100. Default value: 20.
+        r"""Page size. Default value: 20. Minimum value: 1. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -13063,14 +13867,14 @@ class DescribeBinlogBackupOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: TencentDB product type to be queried. Currently, only `mysql` is supported.
+        :param _Product: The cloud database product type for which a log backup overview needs to be queried. The value can be mysql (two-node/three-node high-availability instances), mysql-basic (single-node cloud disk edition instance), or mysql-cluster (cloud disk edition instance).
         :type Product: str
         """
         self._Product = None
 
     @property
     def Product(self):
-        r"""TencentDB product type to be queried. Currently, only `mysql` is supported.
+        r"""The cloud database product type for which a log backup overview needs to be queried. The value can be mysql (two-node/three-node high-availability instances), mysql-basic (single-node cloud disk edition instance), or mysql-cluster (cloud disk edition instance).
         :rtype: str
         """
         return self._Product
@@ -13251,18 +14055,21 @@ class DescribeBinlogsRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: Offset. Minimum value: 0.
         :type Offset: int
-        :param _Limit: Number of entries per page. Value range: 1-100. Default value: 20.
+        :param _Limit: Page size. Default value: 20. Minimum value: 1. Maximum value: 1000.
         :type Limit: int
         :param _MinStartTime: The earliest start time of binlog  in the format of 2016-03-17 02:10:37.
         :type MinStartTime: str
         :param _MaxStartTime: The latest start time of binlog  in the format of 2016-03-17 02:10:37.
         :type MaxStartTime: str
+        :param _ContainsMinStartTime: Whether the binlog list contains the starting node MinStartTime, no by default
+        :type ContainsMinStartTime: bool
         """
         self._InstanceId = None
         self._Offset = None
         self._Limit = None
         self._MinStartTime = None
         self._MaxStartTime = None
+        self._ContainsMinStartTime = None
 
     @property
     def InstanceId(self):
@@ -13288,7 +14095,7 @@ class DescribeBinlogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries per page. Value range: 1-100. Default value: 20.
+        r"""Page size. Default value: 20. Minimum value: 1. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -13319,6 +14126,17 @@ class DescribeBinlogsRequest(AbstractModel):
     def MaxStartTime(self, MaxStartTime):
         self._MaxStartTime = MaxStartTime
 
+    @property
+    def ContainsMinStartTime(self):
+        r"""Whether the binlog list contains the starting node MinStartTime, no by default
+        :rtype: bool
+        """
+        return self._ContainsMinStartTime
+
+    @ContainsMinStartTime.setter
+    def ContainsMinStartTime(self, ContainsMinStartTime):
+        self._ContainsMinStartTime = ContainsMinStartTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -13326,6 +14144,7 @@ class DescribeBinlogsRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._MinStartTime = params.get("MinStartTime")
         self._MaxStartTime = params.get("MaxStartTime")
+        self._ContainsMinStartTime = params.get("ContainsMinStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13399,6 +14218,159 @@ class DescribeBinlogsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCPUExpandStrategyInfoRequest(AbstractModel):
+    r"""DescribeCPUExpandStrategyInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCPUExpandStrategyInfoResponse(AbstractModel):
+    r"""DescribeCPUExpandStrategyInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Policy type. Output value: auto, manual, timeInterval, period.
+Description: 1. auto means auto-scaling. 2. manual means custom scaling with immediate effect. 3. timeInterval means custom scaling by time. 4. period means custom scaling by cycle. 5. If the return is NULL, the elastic expansion strategy is not yet opened.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _ExpandCpu: Custom expansion with CPU that takes effect immediately. Valid when Type is manual.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpandCpu: int
+        :param _AutoStrategy: Auto scale-out policy. Valid when Type is auto.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
+        :param _PeriodStrategy: Scaling policy by cycle. Valid when Type is period.
+        :type PeriodStrategy: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
+        :param _TimeIntervalStrategy: Scaling policy by time period. Valid when Type is timeInterval.
+        :type TimeIntervalStrategy: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Type = None
+        self._ExpandCpu = None
+        self._AutoStrategy = None
+        self._PeriodStrategy = None
+        self._TimeIntervalStrategy = None
+        self._RequestId = None
+
+    @property
+    def Type(self):
+        r"""Policy type. Output value: auto, manual, timeInterval, period.
+Description: 1. auto means auto-scaling. 2. manual means custom scaling with immediate effect. 3. timeInterval means custom scaling by time. 4. period means custom scaling by cycle. 5. If the return is NULL, the elastic expansion strategy is not yet opened.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExpandCpu(self):
+        r"""Custom expansion with CPU that takes effect immediately. Valid when Type is manual.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ExpandCpu
+
+    @ExpandCpu.setter
+    def ExpandCpu(self, ExpandCpu):
+        self._ExpandCpu = ExpandCpu
+
+    @property
+    def AutoStrategy(self):
+        r"""Auto scale-out policy. Valid when Type is auto.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
+        """
+        return self._AutoStrategy
+
+    @AutoStrategy.setter
+    def AutoStrategy(self, AutoStrategy):
+        self._AutoStrategy = AutoStrategy
+
+    @property
+    def PeriodStrategy(self):
+        r"""Scaling policy by cycle. Valid when Type is period.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
+        """
+        return self._PeriodStrategy
+
+    @PeriodStrategy.setter
+    def PeriodStrategy(self, PeriodStrategy):
+        self._PeriodStrategy = PeriodStrategy
+
+    @property
+    def TimeIntervalStrategy(self):
+        r"""Scaling policy by time period. Valid when Type is timeInterval.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
+        """
+        return self._TimeIntervalStrategy
+
+    @TimeIntervalStrategy.setter
+    def TimeIntervalStrategy(self, TimeIntervalStrategy):
+        self._TimeIntervalStrategy = TimeIntervalStrategy
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._ExpandCpu = params.get("ExpandCpu")
+        if params.get("AutoStrategy") is not None:
+            self._AutoStrategy = AutoStrategy()
+            self._AutoStrategy._deserialize(params.get("AutoStrategy"))
+        if params.get("PeriodStrategy") is not None:
+            self._PeriodStrategy = PeriodStrategy()
+            self._PeriodStrategy._deserialize(params.get("PeriodStrategy"))
+        if params.get("TimeIntervalStrategy") is not None:
+            self._TimeIntervalStrategy = TimeIntervalStrategy()
+            self._TimeIntervalStrategy._deserialize(params.get("TimeIntervalStrategy"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCdbProxyInfoRequest(AbstractModel):
     r"""DescribeCdbProxyInfo request structure.
 
@@ -13406,9 +14378,9 @@ class DescribeCdbProxyInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: Proxy group ID.
         :type ProxyGroupId: str
         """
         self._InstanceId = None
@@ -13416,7 +14388,7 @@ class DescribeCdbProxyInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -13427,7 +14399,7 @@ class DescribeCdbProxyInfoRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""Proxy group ID.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -13457,9 +14429,9 @@ class DescribeCdbProxyInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Count: Number of proxy groups Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Count: Number of proxy groups
         :type Count: int
-        :param _ProxyInfos: Proxy group information Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProxyInfos: Proxy group information
         :type ProxyInfos: list of ProxyGroupInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -13470,7 +14442,7 @@ class DescribeCdbProxyInfoResponse(AbstractModel):
 
     @property
     def Count(self):
-        r"""Number of proxy groups Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of proxy groups
         :rtype: int
         """
         return self._Count
@@ -13481,7 +14453,7 @@ class DescribeCdbProxyInfoResponse(AbstractModel):
 
     @property
     def ProxyInfos(self):
-        r"""Proxy group information Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Proxy group information
         :rtype: list of ProxyGroupInfo
         """
         return self._ProxyInfos
@@ -13571,11 +14543,11 @@ class DescribeCloneListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ID of the original instance. This parameter is used to query the clone task list of a specific original instance.
+        :param _InstanceId: Query the cloning task list of the specified source instance. Obtain the instance ID through the [DescribeDBInstances](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         :param _Offset: Paginated query offset. Default value: `0`.
         :type Offset: int
-        :param _Limit: Number of results per page. Default value: `20`.
+        :param _Limit: Number of entries per page for paging query. Default value: 20. Maximum value: 100 recommended.
         :type Limit: int
         """
         self._InstanceId = None
@@ -13584,7 +14556,7 @@ class DescribeCloneListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ID of the original instance. This parameter is used to query the clone task list of a specific original instance.
+        r"""Query the cloning task list of the specified source instance. Obtain the instance ID through the [DescribeDBInstances](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -13606,7 +14578,7 @@ class DescribeCloneListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results per page. Default value: `20`.
+        r"""Number of entries per page for paging query. Default value: 20. Maximum value: 100 recommended.
         :rtype: int
         """
         return self._Limit
@@ -13693,121 +14665,6 @@ class DescribeCloneListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeCpuExpandStrategyRequest(AbstractModel):
-    r"""DescribeCpuExpandStrategy request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Instance ID
-        :type InstanceId: str
-        """
-        self._InstanceId = None
-
-    @property
-    def InstanceId(self):
-        r"""Instance ID
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCpuExpandStrategyResponse(AbstractModel):
-    r"""DescribeCpuExpandStrategy response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Type: Policy type. Valid values: `auto`, `manual`.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Type: str
-        :param _ExpandCpu: Manually expanded CPU, which is valid when `Type` is `manual`.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ExpandCpu: str
-        :param _AutoStrategy: Automatic expansion policy, which is valid when `Type` is `auto`.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type AutoStrategy: str
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Type = None
-        self._ExpandCpu = None
-        self._AutoStrategy = None
-        self._RequestId = None
-
-    @property
-    def Type(self):
-        r"""Policy type. Valid values: `auto`, `manual`.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def ExpandCpu(self):
-        r"""Manually expanded CPU, which is valid when `Type` is `manual`.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._ExpandCpu
-
-    @ExpandCpu.setter
-    def ExpandCpu(self, ExpandCpu):
-        self._ExpandCpu = ExpandCpu
-
-    @property
-    def AutoStrategy(self):
-        r"""Automatic expansion policy, which is valid when `Type` is `auto`.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._AutoStrategy
-
-    @AutoStrategy.setter
-    def AutoStrategy(self, AutoStrategy):
-        self._AutoStrategy = AutoStrategy
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Type = params.get("Type")
-        self._ExpandCpu = params.get("ExpandCpu")
-        self._AutoStrategy = params.get("AutoStrategy")
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeDBFeaturesRequest(AbstractModel):
     r"""DescribeDBFeatures request structure.
 
@@ -13861,7 +14718,8 @@ class DescribeDBFeaturesResponse(AbstractModel):
         :type EncryptionNeedUpgrade: bool
         :param _IsRemoteRo: Whether the instance is a remote read-only instance
         :type IsRemoteRo: bool
-        :param _MasterRegion: Region of the source instance
+        :param _MasterRegion: Primary instance region.
+Description: This parameter may return null. You can ignore this return value. If needed, you can call the [Query Instance List](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API to obtain the instance region details.
         :type MasterRegion: str
         :param _IsSupportUpdateSubVersion: Whether minor version upgrade is supported
         :type IsSupportUpdateSubVersion: bool
@@ -13940,7 +14798,8 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def MasterRegion(self):
-        r"""Region of the source instance
+        r"""Primary instance region.
+Description: This parameter may return null. You can ignore this return value. If needed, you can call the [Query Instance List](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API to obtain the instance region details.
         :rtype: str
         """
         return self._MasterRegion
@@ -14252,14 +15111,14 @@ class DescribeDBInstanceConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param _InstanceId: <p>Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        r"""<p>Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -14288,20 +15147,22 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProtectMode: Data protection mode of the primary instance. Value range: 0 (async replication), 1 (semi-sync replication), 2 (strong sync replication).
+        :param _ProtectMode: <p>Data protection method of the primary instance, possible returned values: 0 - asynchronous replication mode, 1 - semi-sync replication mode, 2 - strong sync replication mode.</p>
         :type ProtectMode: int
-        :param _DeployMode: Master instance deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ)
+        :param _DeployMode: <p>Primary instance deployment mode. Possible returned values: 0 - single AZ deployment, 1 - multi-AZ deployment.</p>
         :type DeployMode: int
-        :param _Zone: Instance AZ information in the format of "ap-shanghai-2".
+        :param _Zone: <p>Primary AZ information of the instance, in the format of "ap-shanghai-2".</p>
         :type Zone: str
-        :param _SlaveConfig: Configurations of the replica node
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _SlaveConfig: <p>Configuration message of the first standby for two-node, three-node, and four-node instances.</p><p>When querying a two-node instance, this parameter returns the standby information of the two-node instance. When querying a three-node or four-node instance, this parameter returns the first standby information of the instance.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SlaveConfig: :class:`tencentcloud.cdb.v20170320.models.SlaveConfig`
-        :param _BackupConfig: Configurations of the second replica node of a strong-sync instance
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :param _BackupConfig: <p>Configuration message of the second standby database for three-node and 4-node instances.</p><p>When querying three-node and 4-node instances, this parameter returns the information of the second standby database.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BackupConfig: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
-        :param _Switched: This parameter is only available for multi-AZ instances. It indicates whether the source AZ is the same as the one specified upon purchase. `true`: not the same, `false`: the same.
+        :param _Switched: <p>Whether to switch over to the standby database.</p>
         :type Switched: bool
+        :param _FourthConfig: <p>Configuration message of the third standby database in a 4-node instance.</p><p>When querying a 4-node instance, this parameter returns the info of the third standby database.</p>
+        :type FourthConfig: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -14311,11 +15172,12 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self._SlaveConfig = None
         self._BackupConfig = None
         self._Switched = None
+        self._FourthConfig = None
         self._RequestId = None
 
     @property
     def ProtectMode(self):
-        r"""Data protection mode of the primary instance. Value range: 0 (async replication), 1 (semi-sync replication), 2 (strong sync replication).
+        r"""<p>Data protection method of the primary instance, possible returned values: 0 - asynchronous replication mode, 1 - semi-sync replication mode, 2 - strong sync replication mode.</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -14326,7 +15188,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def DeployMode(self):
-        r"""Master instance deployment mode. Value range: 0 (single-AZ), 1 (multi-AZ)
+        r"""<p>Primary instance deployment mode. Possible returned values: 0 - single AZ deployment, 1 - multi-AZ deployment.</p>
         :rtype: int
         """
         return self._DeployMode
@@ -14337,7 +15199,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Zone(self):
-        r"""Instance AZ information in the format of "ap-shanghai-2".
+        r"""<p>Primary AZ information of the instance, in the format of "ap-shanghai-2".</p>
         :rtype: str
         """
         return self._Zone
@@ -14348,8 +15210,8 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def SlaveConfig(self):
-        r"""Configurations of the replica node
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""<p>Configuration message of the first standby for two-node, three-node, and four-node instances.</p><p>When querying a two-node instance, this parameter returns the standby information of the two-node instance. When querying a three-node or four-node instance, this parameter returns the first standby information of the instance.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveConfig`
         """
         return self._SlaveConfig
@@ -14360,8 +15222,8 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def BackupConfig(self):
-        r"""Configurations of the second replica node of a strong-sync instance
-Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        r"""<p>Configuration message of the second standby database for three-node and 4-node instances.</p><p>When querying three-node and 4-node instances, this parameter returns the information of the second standby database.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
         """
         return self._BackupConfig
@@ -14372,7 +15234,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Switched(self):
-        r"""This parameter is only available for multi-AZ instances. It indicates whether the source AZ is the same as the one specified upon purchase. `true`: not the same, `false`: the same.
+        r"""<p>Whether to switch over to the standby database.</p>
         :rtype: bool
         """
         return self._Switched
@@ -14380,6 +15242,17 @@ Note: `null` may be returned for this field, indicating that no valid values can
     @Switched.setter
     def Switched(self, Switched):
         self._Switched = Switched
+
+    @property
+    def FourthConfig(self):
+        r"""<p>Configuration message of the third standby database in a 4-node instance.</p><p>When querying a 4-node instance, this parameter returns the info of the third standby database.</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
+        """
+        return self._FourthConfig
+
+    @FourthConfig.setter
+    def FourthConfig(self, FourthConfig):
+        self._FourthConfig = FourthConfig
 
     @property
     def RequestId(self):
@@ -14404,6 +15277,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
             self._BackupConfig = BackupConfig()
             self._BackupConfig._deserialize(params.get("BackupConfig"))
         self._Switched = params.get("Switched")
+        if params.get("FourthConfig") is not None:
+            self._FourthConfig = BackupConfig()
+            self._FourthConfig._deserialize(params.get("FourthConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -14493,14 +15369,16 @@ class DescribeDBInstanceInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+Description: Only the primary instance supports querying. This item only supports input of the primary instance ID.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+Description: Only the primary instance supports querying. This item only supports input of the primary instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -14535,14 +15413,11 @@ class DescribeDBInstanceInfoResponse(AbstractModel):
         :type InstanceName: str
         :param _Encryption: Whether encryption is enabled. YES: enabled, NO: not enabled.
         :type Encryption: str
-        :param _KeyId: Encryption key ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _KeyId: Key ID used for encryption.
         :type KeyId: str
         :param _KeyRegion: Key region.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type KeyRegion: str
-        :param _DefaultKmsRegion: The default region of the KMS service currently used by the TencentDB backend service.
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _DefaultKmsRegion: The default region of the KMS service used by the current CDB backend service.
         :type DefaultKmsRegion: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -14590,8 +15465,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def KeyId(self):
-        r"""Encryption key ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Key ID used for encryption.
         :rtype: str
         """
         return self._KeyId
@@ -14603,7 +15477,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def KeyRegion(self):
         r"""Key region.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._KeyRegion
@@ -14614,8 +15487,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultKmsRegion(self):
-        r"""The default region of the KMS service currently used by the TencentDB backend service.
-Note: this field may return `null`, indicating that no valid value can be found.
+        r"""The default region of the KMS service used by the current CDB backend service.
         :rtype: str
         """
         return self._DefaultKmsRegion
@@ -14653,14 +15525,17 @@ class DescribeDBInstanceLogToCLSRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
+        :param _ClsRegion: Region of the CLS service
+        :type ClsRegion: str
         """
         self._InstanceId = None
+        self._ClsRegion = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -14669,9 +15544,21 @@ class DescribeDBInstanceLogToCLSRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ClsRegion(self):
+        r"""Region of the CLS service
+        :rtype: str
+        """
+        return self._ClsRegion
+
+    @ClsRegion.setter
+    def ClsRegion(self, ClsRegion):
+        self._ClsRegion = ClsRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._ClsRegion = params.get("ClsRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14689,11 +15576,9 @@ class DescribeDBInstanceLogToCLSResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorLog: Configurations of sending error logs to CLS.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _ErrorLog: Error log delivery CLS configuration
         :type ErrorLog: :class:`tencentcloud.cdb.v20170320.models.LogToCLSConfig`
-        :param _SlowLog: Configurations of sending slow logs to CLS.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _SlowLog: Slow log delivery CLS configuration
         :type SlowLog: :class:`tencentcloud.cdb.v20170320.models.LogToCLSConfig`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -14704,8 +15589,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def ErrorLog(self):
-        r"""Configurations of sending error logs to CLS.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""Error log delivery CLS configuration
         :rtype: :class:`tencentcloud.cdb.v20170320.models.LogToCLSConfig`
         """
         return self._ErrorLog
@@ -14716,8 +15600,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def SlowLog(self):
-        r"""Configurations of sending slow logs to CLS.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""Slow log delivery CLS configuration
         :rtype: :class:`tencentcloud.cdb.v20170320.models.LogToCLSConfig`
         """
         return self._SlowLog
@@ -14755,14 +15638,24 @@ class DescribeDBInstanceRebootTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param _InstanceIds: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+Description: Multiple instance IDs allowed for query. json format as follows.
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
 
     @property
     def InstanceIds(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+Description: Multiple instance IDs allowed for query. json format as follows.
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14856,77 +15749,75 @@ class DescribeDBInstancesRequest(AbstractModel):
         r"""
         :param _ProjectId: Project ID.
         :type ProjectId: int
-        :param _InstanceTypes: Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only).
+        :param _InstanceTypes: <p>Instance type. Valid values: 1 - Primary instance, 2 - Disaster recovery instance, 3 - Read-only instance.</p>
         :type InstanceTypes: list of int non-negative
-        :param _Vips: Private IP address of the instance.
+        :param _Vips: <p>Private IP address of the instance.</p>
         :type Vips: list of str
-        :param _Status: Instance status. Valid values: <br>`0` (creating) <br>`1` (running) <br>`4` (isolating) <br>`5` (isolated; the instance can be restored and started in the recycle bin)
+        :param _Status: <p>Instance status. Valid values:<br>0 - Creating<br>1 - Running<br>4 - Isolation operation in progress<br>5 - Isolated (can be restored from the Recycle Bin)</p>
         :type Status: list of int non-negative
-        :param _Offset: Offset. Default value: 0.
+        :param _Offset: <p>Offset. Default value is 0.</p>
         :type Offset: int
-        :param _Limit: Number of results to be returned for a single request. Default value: 20. Maximum value: 2,000.
+        :param _Limit: <p>Number of items returned per request. Default value: 20. Maximum value: 2000.</p>
         :type Limit: int
-        :param _SecurityGroupId: Security group ID. When it is used as a filter, the `WithSecurityGroup` parameter should be set to 1.
+        :param _SecurityGroupId: <p>Security group ID. When using security group ID as the filter condition, the WithSecurityGroup parameter needs to be specified as 1.</p>
         :type SecurityGroupId: str
-        :param _PayTypes: Payment type. Valid values: 0 - yearly/monthly subscription; 1 - bill by hour.
+        :param _PayTypes: <p>Payment type. Valid values: 0 - yearly/monthly subscription; 1 - bill by hour.</p>
         :type PayTypes: list of int non-negative
-        :param _InstanceNames: Instance name.
+        :param _InstanceNames: <p>Instance name.</p>
         :type InstanceNames: list of str
-        :param _TaskStatus: Instance task status. Valid values:<br>0 - no task;<br>1 - upgrading;<br>2 - importing data;<br>3 - enabling secondary nodes;<br>4 - enabling public network access;<br>5 - executing batch operations;<br>6 - rolling back;<br>7 - disabling public network access;<br>8 - changing the password;<br>9 - renaming the instance;<br>10 - restarting;<br>12 - migrating self-built databases;<br>13 - deleting databases and tables;<br>14 - synchronizing the creation of disaster recovery instances;<br>15 - pending upgrade switch;<br>16 - under upgrade switch;<br>17 - upgrade switch completed;<br>19 - parameter settings pending execution;<br>34 - in-place upgrade pending execution.
+        :param _TaskStatus: <p>Instance task status, possible values:<br>0 - No tasks<br>1 - Upgrading<br>2 - Data import in progress<br>3 - Enabling Slave<br>4 - Enabling public network access<br>5 - Batch operation in progress<br>6 - Rolling back<br>7 - Disabling public network access<br>8 - Password change in progress<br>9 - Renaming instance<br>10 - Restarting<br>12 - Self-built migration in progress<br>13 - Deleting database table<br>14 - Disaster recovery instance creation sync in progress<br>15 - Upgrade pending switch<br>16 - Upgrade and switch in progress<br>17 - Switch completed<br>19 - Parameter setting pending execution<br>34 - Node in-place upgrade to be executed</p>
         :type TaskStatus: list of int non-negative
-        :param _EngineVersions: Version of the instance database engine. Value range: 5.1, 5.5, 5.6, 5.7.
+        :param _EngineVersions: <p>Database engine version of the instance. Possible values: 5.1, 5.5, 5.6, and 5.7.</p>
         :type EngineVersions: list of str
-        :param _VpcIds: VPC ID.
+        :param _VpcIds: <p>VPC ID.</p>
         :type VpcIds: list of int non-negative
-        :param _ZoneIds: AZ ID.
+        :param _ZoneIds: <p>Availability zone ID.</p>
         :type ZoneIds: list of int non-negative
-        :param _SubnetIds: Subnet ID.
+        :param _SubnetIds: <p>Subnet ID.</p>
         :type SubnetIds: list of int non-negative
-        :param _CdbErrors: Whether to lock disk write. Valid values: `0`(unlock), `1`(lock). Default value: 0.
+        :param _CdbErrors: <p>Whether to set the lock flag. Available values: 0 - not lock, 1 - lock. Default is 0.</p>
         :type CdbErrors: list of int
-        :param _OrderBy: Sorting field of the query results. Valid values: "instanceId", "instanceName", "createTime", and "deadlineTime".
+        :param _OrderBy: <p>Sorting field of the returned result set. Currently supports: "instanceId", "instanceName", "createTime", and "deadlineTime".</p>
         :type OrderBy: str
-        :param _OrderDirection: Sorting method of the returned result set. Valid values: "ASC" - ascending order; "DESC" - descending order. The default value is "DESC".
+        :param _OrderDirection: <p>Sorting method of the returned result set. Valid values: "ASC" - ascending order; "DESC" - descending order. The default is "DESC".</p>
         :type OrderDirection: str
-        :param _WithSecurityGroup: Whether to use the security group ID as the filter condition.
-Note: 0 indicates no; 1 indicates yes.
+        :param _WithSecurityGroup: <p>Whether to use security group ID as the filter condition.<br>Description: 0 indicates no, 1 indicates yes.</p>
         :type WithSecurityGroup: int
-        :param _WithExCluster: Whether dedicated cluster details are included. Value range: 0 (not included), 1 (included)
+        :param _WithExCluster: <p>Whether the exclusive cluster detail is included. Value range: 0 - not contained, 1 - contained.</p>
         :type WithExCluster: int
-        :param _ExClusterId: Exclusive cluster ID.
+        :param _ExClusterId: <p>Dedicated cluster ID.</p>
         :type ExClusterId: str
-        :param _InstanceIds: Instance ID.
+        :param _InstanceIds: <p>Instance ID.</p>
         :type InstanceIds: list of str
-        :param _InitFlag: Initialization flag. Value range: 0 (not initialized), 1 (initialized).
+        :param _InitFlag: <p>Initialization flag. Valid values: 0 - uninitialized, 1 - initialized.</p>
         :type InitFlag: int
-        :param _WithDr: Whether instances corresponding to the disaster recovery relationship are included. Valid values: 0 (not included), 1 (included). Default value: 1. If a primary instance is pulled, the data of the disaster recovery relationship will be in the `DrInfo` field. If a disaster recovery instance is pulled, the data of the disaster recovery relationship will be in the `MasterInfo` field. The disaster recovery relationship contains only partial basic data. To get the detailed data, you need to call an API to pull it.
+        :param _WithDr: <p>Whether the corresponding instance in the disaster recovery relationship is included. Valid values: 0 - excluding, 1 - included. Default value: 1. If pulling the primary instance, the data of the disaster recovery relationship is in the DrInfo field. If pulling the disaster recovery instance, the data of the disaster recovery relationship is in the MasterInfo field. The disaster recovery relationship only contains partial basic data. Detailed data must be pulled manually via the interface.</p>
         :type WithDr: int
-        :param _WithRo: Whether read-only instances are included. Valid values: 0 (not included), 1 (included). Default value: 1.
+        :param _WithRo: <p>Whether it contains read-only instances. Valid values: 0 - does not include, 1 - includes. Default value is 1.</p>
         :type WithRo: int
-        :param _WithMaster: Whether primary instances are included. Valid values: 0 (not included), 1 (included). Default value: 1.
+        :param _WithMaster: <p>Whether the primary instance is included. Valid values: 0 - does not include, 1 - includes. Default value is 1.</p>
         :type WithMaster: int
-        :param _DeployGroupIds: Placement group ID list.
+        :param _DeployGroupIds: <p>Placement group ID list.</p>
         :type DeployGroupIds: list of str
-        :param _TagKeysForSearch: Whether to use the tag key as a filter condition
+        :param _TagKeysForSearch: <p>Filter by tag key.</p>
         :type TagKeysForSearch: list of str
-        :param _CageIds: Financial cage IDs.
+        :param _CageIds: <p>Financial Enclosure ID.</p>
         :type CageIds: list of str
-        :param _TagValues: Tag value
+        :param _TagValues: <p>Tag value</p>
         :type TagValues: list of str
-        :param _UniqueVpcIds: VPC character vpcId
+        :param _UniqueVpcIds: <p>Character type VPC ID</p>
         :type UniqueVpcIds: list of str
-        :param _UniqSubnetIds: VPC character subnetId
+        :param _UniqSubnetIds: <p>VPC character type subnetId</p>
         :type UniqSubnetIds: list of str
-        :param _Tags: Tag key value.
-Note that tags cannot be queried for instances being created.
+        :param _Tags: <p>Tag key value<br>Please note, tags of the instance being created are unable to query.</p>
         :type Tags: list of Tag
-        :param _ProxyVips: Database proxy IP
+        :param _ProxyVips: <p>Database proxy IP.</p>
         :type ProxyVips: list of str
-        :param _ProxyIds: Database proxy ID
+        :param _ProxyIds: <p>Database proxy ID.</p>
         :type ProxyIds: list of str
-        :param _EngineTypes: Database engine type. Valid values: InnoDB; RocksDB.
+        :param _EngineTypes: <p>Database engine type. Valid values: InnoDB, RocksDB.</p>
         :type EngineTypes: list of str
-        :param _QueryClusterInfo: Whether to obtain the Cluster Edition instance node information. Valid values: true or false. The default value is false.
+        :param _QueryClusterInfo: <p>Whether to obtain the Cluster Edition instance node information. Valid values: true or false. The default value is false.</p>
         :type QueryClusterInfo: bool
         """
         self._ProjectId = None
@@ -14979,7 +15870,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def InstanceTypes(self):
-        r"""Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only).
+        r"""<p>Instance type. Valid values: 1 - Primary instance, 2 - Disaster recovery instance, 3 - Read-only instance.</p>
         :rtype: list of int non-negative
         """
         return self._InstanceTypes
@@ -14990,7 +15881,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def Vips(self):
-        r"""Private IP address of the instance.
+        r"""<p>Private IP address of the instance.</p>
         :rtype: list of str
         """
         return self._Vips
@@ -15001,7 +15892,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def Status(self):
-        r"""Instance status. Valid values: <br>`0` (creating) <br>`1` (running) <br>`4` (isolating) <br>`5` (isolated; the instance can be restored and started in the recycle bin)
+        r"""<p>Instance status. Valid values:<br>0 - Creating<br>1 - Running<br>4 - Isolation operation in progress<br>5 - Isolated (can be restored from the Recycle Bin)</p>
         :rtype: list of int non-negative
         """
         return self._Status
@@ -15012,7 +15903,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def Offset(self):
-        r"""Offset. Default value: 0.
+        r"""<p>Offset. Default value is 0.</p>
         :rtype: int
         """
         return self._Offset
@@ -15023,7 +15914,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def Limit(self):
-        r"""Number of results to be returned for a single request. Default value: 20. Maximum value: 2,000.
+        r"""<p>Number of items returned per request. Default value: 20. Maximum value: 2000.</p>
         :rtype: int
         """
         return self._Limit
@@ -15034,7 +15925,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def SecurityGroupId(self):
-        r"""Security group ID. When it is used as a filter, the `WithSecurityGroup` parameter should be set to 1.
+        r"""<p>Security group ID. When using security group ID as the filter condition, the WithSecurityGroup parameter needs to be specified as 1.</p>
         :rtype: str
         """
         return self._SecurityGroupId
@@ -15045,7 +15936,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def PayTypes(self):
-        r"""Payment type. Valid values: 0 - yearly/monthly subscription; 1 - bill by hour.
+        r"""<p>Payment type. Valid values: 0 - yearly/monthly subscription; 1 - bill by hour.</p>
         :rtype: list of int non-negative
         """
         return self._PayTypes
@@ -15056,7 +15947,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def InstanceNames(self):
-        r"""Instance name.
+        r"""<p>Instance name.</p>
         :rtype: list of str
         """
         return self._InstanceNames
@@ -15067,7 +15958,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def TaskStatus(self):
-        r"""Instance task status. Valid values:<br>0 - no task;<br>1 - upgrading;<br>2 - importing data;<br>3 - enabling secondary nodes;<br>4 - enabling public network access;<br>5 - executing batch operations;<br>6 - rolling back;<br>7 - disabling public network access;<br>8 - changing the password;<br>9 - renaming the instance;<br>10 - restarting;<br>12 - migrating self-built databases;<br>13 - deleting databases and tables;<br>14 - synchronizing the creation of disaster recovery instances;<br>15 - pending upgrade switch;<br>16 - under upgrade switch;<br>17 - upgrade switch completed;<br>19 - parameter settings pending execution;<br>34 - in-place upgrade pending execution.
+        r"""<p>Instance task status, possible values:<br>0 - No tasks<br>1 - Upgrading<br>2 - Data import in progress<br>3 - Enabling Slave<br>4 - Enabling public network access<br>5 - Batch operation in progress<br>6 - Rolling back<br>7 - Disabling public network access<br>8 - Password change in progress<br>9 - Renaming instance<br>10 - Restarting<br>12 - Self-built migration in progress<br>13 - Deleting database table<br>14 - Disaster recovery instance creation sync in progress<br>15 - Upgrade pending switch<br>16 - Upgrade and switch in progress<br>17 - Switch completed<br>19 - Parameter setting pending execution<br>34 - Node in-place upgrade to be executed</p>
         :rtype: list of int non-negative
         """
         return self._TaskStatus
@@ -15078,7 +15969,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def EngineVersions(self):
-        r"""Version of the instance database engine. Value range: 5.1, 5.5, 5.6, 5.7.
+        r"""<p>Database engine version of the instance. Possible values: 5.1, 5.5, 5.6, and 5.7.</p>
         :rtype: list of str
         """
         return self._EngineVersions
@@ -15089,7 +15980,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def VpcIds(self):
-        r"""VPC ID.
+        r"""<p>VPC ID.</p>
         :rtype: list of int non-negative
         """
         return self._VpcIds
@@ -15100,7 +15991,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def ZoneIds(self):
-        r"""AZ ID.
+        r"""<p>Availability zone ID.</p>
         :rtype: list of int non-negative
         """
         return self._ZoneIds
@@ -15111,7 +16002,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def SubnetIds(self):
-        r"""Subnet ID.
+        r"""<p>Subnet ID.</p>
         :rtype: list of int non-negative
         """
         return self._SubnetIds
@@ -15122,7 +16013,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def CdbErrors(self):
-        r"""Whether to lock disk write. Valid values: `0`(unlock), `1`(lock). Default value: 0.
+        r"""<p>Whether to set the lock flag. Available values: 0 - not lock, 1 - lock. Default is 0.</p>
         :rtype: list of int
         """
         return self._CdbErrors
@@ -15133,7 +16024,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def OrderBy(self):
-        r"""Sorting field of the query results. Valid values: "instanceId", "instanceName", "createTime", and "deadlineTime".
+        r"""<p>Sorting field of the returned result set. Currently supports: "instanceId", "instanceName", "createTime", and "deadlineTime".</p>
         :rtype: str
         """
         return self._OrderBy
@@ -15144,7 +16035,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def OrderDirection(self):
-        r"""Sorting method of the returned result set. Valid values: "ASC" - ascending order; "DESC" - descending order. The default value is "DESC".
+        r"""<p>Sorting method of the returned result set. Valid values: "ASC" - ascending order; "DESC" - descending order. The default is "DESC".</p>
         :rtype: str
         """
         return self._OrderDirection
@@ -15155,8 +16046,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def WithSecurityGroup(self):
-        r"""Whether to use the security group ID as the filter condition.
-Note: 0 indicates no; 1 indicates yes.
+        r"""<p>Whether to use security group ID as the filter condition.<br>Description: 0 indicates no, 1 indicates yes.</p>
         :rtype: int
         """
         return self._WithSecurityGroup
@@ -15167,7 +16057,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def WithExCluster(self):
-        r"""Whether dedicated cluster details are included. Value range: 0 (not included), 1 (included)
+        r"""<p>Whether the exclusive cluster detail is included. Value range: 0 - not contained, 1 - contained.</p>
         :rtype: int
         """
         return self._WithExCluster
@@ -15178,7 +16068,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def ExClusterId(self):
-        r"""Exclusive cluster ID.
+        r"""<p>Dedicated cluster ID.</p>
         :rtype: str
         """
         return self._ExClusterId
@@ -15189,7 +16079,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def InstanceIds(self):
-        r"""Instance ID.
+        r"""<p>Instance ID.</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -15200,7 +16090,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def InitFlag(self):
-        r"""Initialization flag. Value range: 0 (not initialized), 1 (initialized).
+        r"""<p>Initialization flag. Valid values: 0 - uninitialized, 1 - initialized.</p>
         :rtype: int
         """
         return self._InitFlag
@@ -15211,7 +16101,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def WithDr(self):
-        r"""Whether instances corresponding to the disaster recovery relationship are included. Valid values: 0 (not included), 1 (included). Default value: 1. If a primary instance is pulled, the data of the disaster recovery relationship will be in the `DrInfo` field. If a disaster recovery instance is pulled, the data of the disaster recovery relationship will be in the `MasterInfo` field. The disaster recovery relationship contains only partial basic data. To get the detailed data, you need to call an API to pull it.
+        r"""<p>Whether the corresponding instance in the disaster recovery relationship is included. Valid values: 0 - excluding, 1 - included. Default value: 1. If pulling the primary instance, the data of the disaster recovery relationship is in the DrInfo field. If pulling the disaster recovery instance, the data of the disaster recovery relationship is in the MasterInfo field. The disaster recovery relationship only contains partial basic data. Detailed data must be pulled manually via the interface.</p>
         :rtype: int
         """
         return self._WithDr
@@ -15222,7 +16112,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def WithRo(self):
-        r"""Whether read-only instances are included. Valid values: 0 (not included), 1 (included). Default value: 1.
+        r"""<p>Whether it contains read-only instances. Valid values: 0 - does not include, 1 - includes. Default value is 1.</p>
         :rtype: int
         """
         return self._WithRo
@@ -15233,7 +16123,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def WithMaster(self):
-        r"""Whether primary instances are included. Valid values: 0 (not included), 1 (included). Default value: 1.
+        r"""<p>Whether the primary instance is included. Valid values: 0 - does not include, 1 - includes. Default value is 1.</p>
         :rtype: int
         """
         return self._WithMaster
@@ -15244,7 +16134,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def DeployGroupIds(self):
-        r"""Placement group ID list.
+        r"""<p>Placement group ID list.</p>
         :rtype: list of str
         """
         return self._DeployGroupIds
@@ -15255,7 +16145,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def TagKeysForSearch(self):
-        r"""Whether to use the tag key as a filter condition
+        r"""<p>Filter by tag key.</p>
         :rtype: list of str
         """
         return self._TagKeysForSearch
@@ -15266,7 +16156,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def CageIds(self):
-        r"""Financial cage IDs.
+        r"""<p>Financial Enclosure ID.</p>
         :rtype: list of str
         """
         return self._CageIds
@@ -15277,7 +16167,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def TagValues(self):
-        r"""Tag value
+        r"""<p>Tag value</p>
         :rtype: list of str
         """
         return self._TagValues
@@ -15288,7 +16178,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def UniqueVpcIds(self):
-        r"""VPC character vpcId
+        r"""<p>Character type VPC ID</p>
         :rtype: list of str
         """
         return self._UniqueVpcIds
@@ -15299,7 +16189,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def UniqSubnetIds(self):
-        r"""VPC character subnetId
+        r"""<p>VPC character type subnetId</p>
         :rtype: list of str
         """
         return self._UniqSubnetIds
@@ -15310,8 +16200,7 @@ Note: 0 indicates no; 1 indicates yes.
 
     @property
     def Tags(self):
-        r"""Tag key value.
-Note that tags cannot be queried for instances being created.
+        r"""<p>Tag key value<br>Please note, tags of the instance being created are unable to query.</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -15322,7 +16211,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def ProxyVips(self):
-        r"""Database proxy IP
+        r"""<p>Database proxy IP.</p>
         :rtype: list of str
         """
         return self._ProxyVips
@@ -15333,7 +16222,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def ProxyIds(self):
-        r"""Database proxy ID
+        r"""<p>Database proxy ID.</p>
         :rtype: list of str
         """
         return self._ProxyIds
@@ -15344,7 +16233,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def EngineTypes(self):
-        r"""Database engine type. Valid values: InnoDB; RocksDB.
+        r"""<p>Database engine type. Valid values: InnoDB, RocksDB.</p>
         :rtype: list of str
         """
         return self._EngineTypes
@@ -15355,7 +16244,7 @@ Note that tags cannot be queried for instances being created.
 
     @property
     def QueryClusterInfo(self):
-        r"""Whether to obtain the Cluster Edition instance node information. Valid values: true or false. The default value is false.
+        r"""<p>Whether to obtain the Cluster Edition instance node information. Valid values: true or false. The default value is false.</p>
         :rtype: bool
         """
         return self._QueryClusterInfo
@@ -15424,9 +16313,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of eligible instances.
+        :param _TotalCount: <p>Total number of eligible instances.</p>
         :type TotalCount: int
-        :param _Items: List of instance details
+        :param _Items: <p>Instance detail list.</p>
         :type Items: list of InstanceInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -15437,7 +16326,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Number of eligible instances.
+        r"""<p>Total number of eligible instances.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -15448,7 +16337,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""List of instance details
+        r"""<p>Instance detail list.</p>
         :rtype: list of InstanceInfo
         """
         return self._Items
@@ -15487,33 +16376,33 @@ class DescribeDBPriceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: Instance validity period in months. Value range: 1-36. This field is invalid when querying the prices of pay-as-you-go instances.
+        :param _Period: <p>Instance duration, in months, minimum value 1, maximum value 36. This field is invalid when querying the pay-as-you-go rate.</p>
         :type Period: int
-        :param _Zone: AZ information in the format of "ap-guangzhou-3". You can use the <a href="https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1">DescribeDBZoneConfig</a> API to query the configurable values. This parameter is required when `InstanceId` is empty.
+        :param _Zone: <p>AZ information, in the format of "ap-guangzhou-2". For available values, query the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">DescribeDBZoneConfig</a> api. This parameter is required when InstanceId is empty.</p>
         :type Zone: str
-        :param _GoodsNum: Number of instances. Value range: 1-100. Default value: 1. This parameter is required when `InstanceId` is empty.
+        :param _GoodsNum: <p>Instance count. Default value is 1, minimum value 1, maximum value 100. This parameter is required when InstanceId is empty.</p>
         :type GoodsNum: int
-        :param _Memory: Instance memory size, unit: MB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable instance memory size range.
+        :param _Memory: <p>Instance memory size, measurement unit: MB. Required when InstanceId is empty. To ensure the input value is valid, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to obtain the saleable instance memory size range.</p>
         :type Memory: int
-        :param _Volume: Instance disk size, unit: GB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable disk size range.
+        :param _Volume: <p>Instance disk size, unit: GB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the saleable disk size range.</p>
         :type Volume: int
-        :param _InstanceRole: Instance type. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance). Default value: `master`. This parameter is required when `InstanceId` is empty.
+        :param _InstanceRole: <p>Instance type, defaults to master. Supported values include: master - primary instance, ro - read-only instance, dr - disaster recovery instance. Required when InstanceId is empty.</p>
         :type InstanceRole: str
-        :param _PayType: Billing mode. Valid values: `PRE_PAID` (yearly/monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.
+        :param _PayType: <p>Payment type. Supported values: PRE_PAID (yearly/monthly subscription) and HOUR_PAID (pay-as-you-go). This parameter is required when InstanceId is empty.</p>
         :type PayType: str
-        :param _ProtectMode: Data replication mode. Valid values: `0` (async), 1 (semi-sync), `2` (strong sync). Default value: `0`.
+        :param _ProtectMode: <p>Data replication method, defaults to 0. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication.</p>
         :type ProtectMode: int
-        :param _DeviceType: Instance isolation type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - single-node instance of cloud disk edition, "CLOUD_NATIVE_CLUSTER" - cluster version standard type, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - cluster version enhanced. Default to general-purpose instance if not specified.
+        :param _DeviceType: <p>Instance isolation type.</p><p>Enumeration value:</p><ul><li>UNIVERSAL: General-purpose instance</li><li>EXCLUSIVE: Dedicated instance</li><li>CLOUD_NATIVE_CLUSTER: Standard type of cloud disk edition</li><li>CLOUD_NATIVE_CLUSTER_EXCLUSIVE: Enhanced type of cloud disk edition</li><li>CLOUD_NATIVE_CLUSTER_ULTRA: Flagship type of cloud disk edition</li></ul><p>Default value: UNIVERSAL</p><p>If needed to query the price of a single-node instance of cloud disk edition, set up this parameter as CLOUD_NATIVE_CLUSTER and specify parameter InstanceNodes as 1.</p>
         :type DeviceType: str
-        :param _InstanceNodes: The number of the instance. Valid values: `1` (for read-only and basic instances), `2` (for other source instances). To query the price of a three-node instance, set this value to `3`.
+        :param _InstanceNodes: <p>Number of instance nodes.<br>1. When querying the price of a read-only instance or a single-node instance, the value of this field is 1.<br>2. When querying the price of a dual-node instance, the value of this field is 2.<br>3. When querying the price of a three-node instance, the value of this field is 3.<br>4. When querying the price of a cloud disk edition instance, the value range of this field can be 2 - 6. A value of 2 means the cloud disk edition instance has 1 read-write node + 1 read-only node. A value of 6 means the cloud disk edition instance has 1 read-write node + 5 read-only nodes. For other values (3 - 5), the rule is 1 read-write node + (value - 1) read-only nodes.</p>
         :type InstanceNodes: int
-        :param _Cpu: CPU core count of the price-queried instance. To ensure that the CPU value to be passed in is valid, use the [DescribeDBZoneConfig](https://www.tencentcloud.com/document/product/236/17229) API to query the number of purchasable cores. If this value is not specified, a default value based on memory size will be set.
+        :param _Cpu: <p>The number of CPU cores of the price-query instance, measurement unit: core. To ensure the validity of the input CPU value, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API acquisition to get the saleable number of cores. When this value is not specified, a default value will be padded based on the Memory size.</p>
         :type Cpu: int
-        :param _InstanceId: Instance ID for querying renewal price. To query the renewal price of the instance, pass in the values of `InstanceId` and `Period`.
+        :param _InstanceId: <p>Query the ID of the instance to be renewed. If needed, fill in InstanceId and Period to query instance renewal price.</p>
         :type InstanceId: str
-        :param _Ladder: Tiered pay-as-you-go pricing, which is valid only when `PayType` is set to `HOUR_PAID`. Valid values: `1`, `2`, `3`. For more information on tiered duration, visit https://intl.cloud.tencent.com/document/product/236/18335.?from_cn_redirect=1
+        :param _Ladder: <p>Usage-based billing tier. Valid only when PayType=HOUR_PAID. Supported values include: 1, 2, 3. For step duration, see https://www.tencentcloud.com/document/product/236/18335.?from_cn_redirect=1</p>
         :type Ladder: int
-        :param _DiskType: Disk Type. Specify this parameter when querying the price of a cluster edition or single-node instance of cloud disk edition. Supported values include "CLOUD_SSD" - SSD cloud disk, "CLOUD_HSSD" - enhanced SSD cloud disk. Default is SSD cloud disk.
+        :param _DiskType: <p>Disk Type. Specify this parameter when querying the price of CLOUD disk edition or single-node instance of CLOUD disk edition. Default value: SSD CLOUD Block Storage.<br>Supported values include:<br>"CLOUD_SSD" - SSD CLOUD Block Storage.<br>"CLOUD_HSSD" - Enhanced SSD CLOUD Disk.<br>"CLOUD_PREMIUM" - High-performance CLOUD Block Storage.</p>
         :type DiskType: str
         """
         self._Period = None
@@ -15533,7 +16422,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""Instance validity period in months. Value range: 1-36. This field is invalid when querying the prices of pay-as-you-go instances.
+        r"""<p>Instance duration, in months, minimum value 1, maximum value 36. This field is invalid when querying the pay-as-you-go rate.</p>
         :rtype: int
         """
         return self._Period
@@ -15544,7 +16433,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ information in the format of "ap-guangzhou-3". You can use the <a href="https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1">DescribeDBZoneConfig</a> API to query the configurable values. This parameter is required when `InstanceId` is empty.
+        r"""<p>AZ information, in the format of "ap-guangzhou-2". For available values, query the <a href="https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1">DescribeDBZoneConfig</a> api. This parameter is required when InstanceId is empty.</p>
         :rtype: str
         """
         return self._Zone
@@ -15555,7 +16444,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""Number of instances. Value range: 1-100. Default value: 1. This parameter is required when `InstanceId` is empty.
+        r"""<p>Instance count. Default value is 1, minimum value 1, maximum value 100. This parameter is required when InstanceId is empty.</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -15566,7 +16455,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Instance memory size, unit: MB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable instance memory size range.
+        r"""<p>Instance memory size, measurement unit: MB. Required when InstanceId is empty. To ensure the input value is valid, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to obtain the saleable instance memory size range.</p>
         :rtype: int
         """
         return self._Memory
@@ -15577,7 +16466,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""Instance disk size, unit: GB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the [obtain the purchasable specifications of cloud databases](https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1) API to get the saleable disk size range.
+        r"""<p>Instance disk size, unit: GB. This parameter is required when InstanceId is empty. To ensure the input value is valid, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the saleable disk size range.</p>
         :rtype: int
         """
         return self._Volume
@@ -15588,7 +16477,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        r"""Instance type. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance). Default value: `master`. This parameter is required when `InstanceId` is empty.
+        r"""<p>Instance type, defaults to master. Supported values include: master - primary instance, ro - read-only instance, dr - disaster recovery instance. Required when InstanceId is empty.</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -15599,7 +16488,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def PayType(self):
-        r"""Billing mode. Valid values: `PRE_PAID` (yearly/monthly subscribed), `HOUR_PAID` (pay-as-you-go). This parameter is required when `InstanceId` is empty.
+        r"""<p>Payment type. Supported values: PRE_PAID (yearly/monthly subscription) and HOUR_PAID (pay-as-you-go). This parameter is required when InstanceId is empty.</p>
         :rtype: str
         """
         return self._PayType
@@ -15610,7 +16499,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""Data replication mode. Valid values: `0` (async), 1 (semi-sync), `2` (strong sync). Default value: `0`.
+        r"""<p>Data replication method, defaults to 0. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication.</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -15621,7 +16510,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""Instance isolation type. Supported values include: "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC_V2" - single-node instance of cloud disk edition, "CLOUD_NATIVE_CLUSTER" - cluster version standard type, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - cluster version enhanced. Default to general-purpose instance if not specified.
+        r"""<p>Instance isolation type.</p><p>Enumeration value:</p><ul><li>UNIVERSAL: General-purpose instance</li><li>EXCLUSIVE: Dedicated instance</li><li>CLOUD_NATIVE_CLUSTER: Standard type of cloud disk edition</li><li>CLOUD_NATIVE_CLUSTER_EXCLUSIVE: Enhanced type of cloud disk edition</li><li>CLOUD_NATIVE_CLUSTER_ULTRA: Flagship type of cloud disk edition</li></ul><p>Default value: UNIVERSAL</p><p>If needed to query the price of a single-node instance of cloud disk edition, set up this parameter as CLOUD_NATIVE_CLUSTER and specify parameter InstanceNodes as 1.</p>
         :rtype: str
         """
         return self._DeviceType
@@ -15632,7 +16521,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def InstanceNodes(self):
-        r"""The number of the instance. Valid values: `1` (for read-only and basic instances), `2` (for other source instances). To query the price of a three-node instance, set this value to `3`.
+        r"""<p>Number of instance nodes.<br>1. When querying the price of a read-only instance or a single-node instance, the value of this field is 1.<br>2. When querying the price of a dual-node instance, the value of this field is 2.<br>3. When querying the price of a three-node instance, the value of this field is 3.<br>4. When querying the price of a cloud disk edition instance, the value range of this field can be 2 - 6. A value of 2 means the cloud disk edition instance has 1 read-write node + 1 read-only node. A value of 6 means the cloud disk edition instance has 1 read-write node + 5 read-only nodes. For other values (3 - 5), the rule is 1 read-write node + (value - 1) read-only nodes.</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -15643,7 +16532,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""CPU core count of the price-queried instance. To ensure that the CPU value to be passed in is valid, use the [DescribeDBZoneConfig](https://www.tencentcloud.com/document/product/236/17229) API to query the number of purchasable cores. If this value is not specified, a default value based on memory size will be set.
+        r"""<p>The number of CPU cores of the price-query instance, measurement unit: core. To ensure the validity of the input CPU value, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API acquisition to get the saleable number of cores. When this value is not specified, a default value will be padded based on the Memory size.</p>
         :rtype: int
         """
         return self._Cpu
@@ -15654,7 +16543,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID for querying renewal price. To query the renewal price of the instance, pass in the values of `InstanceId` and `Period`.
+        r"""<p>Query the ID of the instance to be renewed. If needed, fill in InstanceId and Period to query instance renewal price.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15665,7 +16554,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Ladder(self):
-        r"""Tiered pay-as-you-go pricing, which is valid only when `PayType` is set to `HOUR_PAID`. Valid values: `1`, `2`, `3`. For more information on tiered duration, visit https://intl.cloud.tencent.com/document/product/236/18335.?from_cn_redirect=1
+        r"""<p>Usage-based billing tier. Valid only when PayType=HOUR_PAID. Supported values include: 1, 2, 3. For step duration, see https://www.tencentcloud.com/document/product/236/18335.?from_cn_redirect=1</p>
         :rtype: int
         """
         return self._Ladder
@@ -15676,7 +16565,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""Disk Type. Specify this parameter when querying the price of a cluster edition or single-node instance of cloud disk edition. Supported values include "CLOUD_SSD" - SSD cloud disk, "CLOUD_HSSD" - enhanced SSD cloud disk. Default is SSD cloud disk.
+        r"""<p>Disk Type. Specify this parameter when querying the price of CLOUD disk edition or single-node instance of CLOUD disk edition. Default value: SSD CLOUD Block Storage.<br>Supported values include:<br>"CLOUD_SSD" - SSD CLOUD Block Storage.<br>"CLOUD_HSSD" - Enhanced SSD CLOUD Disk.<br>"CLOUD_PREMIUM" - High-performance CLOUD Block Storage.</p>
         :rtype: str
         """
         return self._DiskType
@@ -15718,11 +16607,11 @@ class DescribeDBPriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Price: Instance price. If `Currency` is set to `CNY`, the unit will be 0.01 CNY. If `Currency` is set to `USD`, the unit will be US Cent.
+        :param _Price: <p>Instance price, unit: cent.</p>
         :type Price: int
-        :param _OriginalPrice: Original price of the instance. If `Currency` is set to `CNY`, the unit will be 0.01 CNY. If `Currency` is set to `USD`, the unit will be US Cent.
+        :param _OriginalPrice: <p>Original price of instance. Measurement unit: cent.</p>
         :type OriginalPrice: int
-        :param _Currency: Currency: `CNY`, `USD`.
+        :param _Currency: <p>Currency unit. CNY - RMB, USD - USD.</p>
         :type Currency: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -15734,7 +16623,7 @@ class DescribeDBPriceResponse(AbstractModel):
 
     @property
     def Price(self):
-        r"""Instance price. If `Currency` is set to `CNY`, the unit will be 0.01 CNY. If `Currency` is set to `USD`, the unit will be US Cent.
+        r"""<p>Instance price, unit: cent.</p>
         :rtype: int
         """
         return self._Price
@@ -15745,7 +16634,7 @@ class DescribeDBPriceResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""Original price of the instance. If `Currency` is set to `CNY`, the unit will be 0.01 CNY. If `Currency` is set to `USD`, the unit will be US Cent.
+        r"""<p>Original price of instance. Measurement unit: cent.</p>
         :rtype: int
         """
         return self._OriginalPrice
@@ -15756,7 +16645,7 @@ class DescribeDBPriceResponse(AbstractModel):
 
     @property
     def Currency(self):
-        r"""Currency: `CNY`, `USD`.
+        r"""<p>Currency unit. CNY - RMB, USD - USD.</p>
         :rtype: str
         """
         return self._Currency
@@ -15795,9 +16684,12 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
         :type InstanceId: str
         :param _ForReadonlyInstance: This parameter takes effect only when the ID of a read-only instance is passed in. If the parameter is set to `False` or left empty, the security groups bound with the RO groups of the read-only instance can only be queried. If it is set to `True`, the security groups can be modified.
         :type ForReadonlyInstance: bool
+        :param _OpResourceId: When updating the read-only group of a cluster edition instance, specify the instance id in InstanceId and this parameter to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :type OpResourceId: str
         """
         self._InstanceId = None
         self._ForReadonlyInstance = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -15821,10 +16713,22 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
     def ForReadonlyInstance(self, ForReadonlyInstance):
         self._ForReadonlyInstance = ForReadonlyInstance
 
+    @property
+    def OpResourceId(self):
+        r"""When updating the read-only group of a cluster edition instance, specify the instance id in InstanceId and this parameter to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :rtype: str
+        """
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ForReadonlyInstance = params.get("ForReadonlyInstance")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15894,7 +16798,7 @@ class DescribeDBSwitchRecordsRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Number of entries per page. Value range: 1-2,000. Default value: 50.
+        :param _Limit: Page size. Default value: 50. Minimum value: 1. Maximum value: 1000.
         :type Limit: int
         """
         self._InstanceId = None
@@ -15925,7 +16829,7 @@ class DescribeDBSwitchRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries per page. Value range: 1-2,000. Default value: 50.
+        r"""Page size. Default value: 50. Minimum value: 1. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -16019,14 +16923,14 @@ class DescribeDataBackupOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: TencentDB product type to be queried. Currently, only `mysql` is supported.
+        :param _Product: The cloud database product type for which you need to query the data backup overview. Value is: mysql refers to two-node/three-node high-availability instances, mysql-basic refers to single-node (cloud disk) instances, mysql-cluster refers to cloud disk edition instances.
         :type Product: str
         """
         self._Product = None
 
     @property
     def Product(self):
-        r"""TencentDB product type to be queried. Currently, only `mysql` is supported.
+        r"""The cloud database product type for which you need to query the data backup overview. Value is: mysql refers to two-node/three-node high-availability instances, mysql-basic refers to single-node (cloud disk) instances, mysql-cluster refers to cloud disk edition instances.
         :rtype: str
         """
         return self._Product
@@ -16267,7 +17171,7 @@ class DescribeDatabasesRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: Offset. Minimum value: 0.
         :type Offset: int
-        :param _Limit: Number of results to be returned for a single request. Value range: 1-100. Maximum value: 20.
+        :param _Limit: Number of entries per request. Default value: 20. Minimum value: 1. Maximum value: 5000.
         :type Limit: int
         :param _DatabaseRegexp: Regular expression for matching database names.
         :type DatabaseRegexp: str
@@ -16301,7 +17205,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results to be returned for a single request. Value range: 1-100. Maximum value: 20.
+        r"""Number of entries per request. Default value: 20. Minimum value: 1. Maximum value: 5000.
         :rtype: int
         """
         return self._Limit
@@ -16422,11 +17326,12 @@ class DescribeDefaultParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EngineVersion: Engine version. Currently, the supported versions are `5.1`, `5.5`, `5.6`, `5.7`, and `8.0`.
+        :param _EngineVersion: Engine version. Currently supports ["5.1", "5.5", "5.6", "5.7", "8.0"].
+Description: Engine version is required.
         :type EngineVersion: str
-        :param _TemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
+        :param _TemplateType: Default parameter template type. Supported values include "HIGH_STABILITY" - high-stability template, "HIGH_PERFORMANCE" - high-performance template. Default value: HIGH_STABILITY.
         :type TemplateType: str
-        :param _EngineType: Parameter template engine. Default value: `InnoDB`.
+        :param _EngineType: Parameter template engine, default value: InnoDB, valid values: InnoDB, RocksDB.
         :type EngineType: str
         """
         self._EngineVersion = None
@@ -16435,7 +17340,8 @@ class DescribeDefaultParamsRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""Engine version. Currently, the supported versions are `5.1`, `5.5`, `5.6`, `5.7`, and `8.0`.
+        r"""Engine version. Currently supports ["5.1", "5.5", "5.6", "5.7", "8.0"].
+Description: Engine version is required.
         :rtype: str
         """
         return self._EngineVersion
@@ -16446,7 +17352,7 @@ class DescribeDefaultParamsRequest(AbstractModel):
 
     @property
     def TemplateType(self):
-        r"""Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
+        r"""Default parameter template type. Supported values include "HIGH_STABILITY" - high-stability template, "HIGH_PERFORMANCE" - high-performance template. Default value: HIGH_STABILITY.
         :rtype: str
         """
         return self._TemplateType
@@ -16457,7 +17363,7 @@ class DescribeDefaultParamsRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""Parameter template engine. Default value: `InnoDB`.
+        r"""Parameter template engine, default value: InnoDB, valid values: InnoDB, RocksDB.
         :rtype: str
         """
         return self._EngineType
@@ -16698,13 +17604,13 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _StartTime: Start timestamp, such as 1585142640.
+        :param _StartTime: Start timestamp. For example, 1585142640, in seconds.
         :type StartTime: int
-        :param _EndTime: End timestamp, such as 1585142640.
+        :param _EndTime: End timestamp. For example, 1585142640, in seconds.
         :type EndTime: int
-        :param _KeyWords: List of keywords to match. Up to 15 keywords are supported.
+        :param _KeyWords: Keyword list to match, supports up to 15 keywords with fuzzy matching support.
         :type KeyWords: list of str
         :param _Limit: The number of results per page in paginated queries. Default value: 100. Maximum value: 400.
         :type Limit: int
@@ -16723,7 +17629,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -16734,7 +17640,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start timestamp, such as 1585142640.
+        r"""Start timestamp. For example, 1585142640, in seconds.
         :rtype: int
         """
         return self._StartTime
@@ -16745,7 +17651,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End timestamp, such as 1585142640.
+        r"""End timestamp. For example, 1585142640, in seconds.
         :rtype: int
         """
         return self._EndTime
@@ -16756,7 +17662,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
 
     @property
     def KeyWords(self):
-        r"""List of keywords to match. Up to 15 keywords are supported.
+        r"""Keyword list to match, supports up to 15 keywords with fuzzy matching support.
         :rtype: list of str
         """
         return self._KeyWords
@@ -16826,8 +17732,7 @@ class DescribeErrorLogDataResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of eligible entries.
         :type TotalCount: int
-        :param _Items: Returned result.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Items: Returned records.
         :type Items: list of ErrlogItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -16849,8 +17754,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
-        r"""Returned result.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Returned records.
         :rtype: list of ErrlogItem
         """
         return self._Items
@@ -16882,6 +17786,225 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceAlarmEventsRequest(AbstractModel):
+    r"""DescribeInstanceAlarmEvents request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        :type InstanceId: str
+        :param _StartTime: Event query range start time, closed interval.
+        :type StartTime: str
+        :param _EndTime: End time of the event query range, closed interval.
+        :type EndTime: str
+        :param _EventName: Event name. Outofmemory - Memory OOM (status event); Switch - primary-secondary switch (status event); Roremove - read-only instance removal (status event); MemoryUsedHigh - high memory utilization (status event); CPUExpansion - CPU performance scale-out (stateless event); CPUExpansionFailed - CPU performance scale-out failed (stateless event); CPUContraction - CPU performance scale-in (stateless event); Restart - instance restart (status event); ServerFailureNodeMigration - ServerFailureNodeMigration (status event); PlannedSwitch - planned active/standby switch (stateless event); OverusedReadonlySet - instance will be locked (stateless event); OverusedReadWriteSet - instance unlock (stateless event).
+        :type EventName: list of str
+        :param _EventStatus: Event status. "1" - Event; "0" - Recovery event; "-" - Stateless event.
+        :type EventStatus: str
+        :param _Order: Sorting method. Sort by event occurrence. "DESC" - inverted; "ASC" - in order. Default is inverted.
+        :type Order: str
+        :param _Limit: Number of displayed events. Default is 100, maximum is 200.
+        :type Limit: str
+        :param _Offset: Offset.
+        :type Offset: str
+        :param _NodeId: Node ID.
+        :type NodeId: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._EventName = None
+        self._EventStatus = None
+        self._Order = None
+        self._Limit = None
+        self._Offset = None
+        self._NodeId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""Event query range start time, closed interval.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time of the event query range, closed interval.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def EventName(self):
+        r"""Event name. Outofmemory - Memory OOM (status event); Switch - primary-secondary switch (status event); Roremove - read-only instance removal (status event); MemoryUsedHigh - high memory utilization (status event); CPUExpansion - CPU performance scale-out (stateless event); CPUExpansionFailed - CPU performance scale-out failed (stateless event); CPUContraction - CPU performance scale-in (stateless event); Restart - instance restart (status event); ServerFailureNodeMigration - ServerFailureNodeMigration (status event); PlannedSwitch - planned active/standby switch (stateless event); OverusedReadonlySet - instance will be locked (stateless event); OverusedReadWriteSet - instance unlock (stateless event).
+        :rtype: list of str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventStatus(self):
+        r"""Event status. "1" - Event; "0" - Recovery event; "-" - Stateless event.
+        :rtype: str
+        """
+        return self._EventStatus
+
+    @EventStatus.setter
+    def EventStatus(self, EventStatus):
+        self._EventStatus = EventStatus
+
+    @property
+    def Order(self):
+        r"""Sorting method. Sort by event occurrence. "DESC" - inverted; "ASC" - in order. Default is inverted.
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Limit(self):
+        r"""Number of displayed events. Default is 100, maximum is 200.
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: str
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def NodeId(self):
+        r"""Node ID.
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._EventName = params.get("EventName")
+        self._EventStatus = params.get("EventStatus")
+        self._Order = params.get("Order")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceAlarmEventsResponse(AbstractModel):
+    r"""DescribeInstanceAlarmEvents response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of events.
+        :type TotalCount: int
+        :param _Items: Event information. Items is null when info is not found.
+        :type Items: list of InstEventInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of events.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""Event information. Items is null when info is not found.
+        :rtype: list of InstEventInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = InstEventInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceParamRecordsRequest(AbstractModel):
     r"""DescribeInstanceParamRecords request structure.
 
@@ -16893,7 +18016,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
-        :param _Limit: Number of entries per page. Default value: 20.
+        :param _Limit: Page size. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
         self._InstanceId = None
@@ -16924,7 +18047,7 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries per page. Default value: 20.
+        r"""Page size. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -17110,6 +18233,509 @@ class DescribeInstanceParamsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstancePasswordComplexityRequest(AbstractModel):
+    r"""DescribeInstancePasswordComplexity request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. 
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID. 
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancePasswordComplexityResponse(AbstractModel):
+    r"""DescribeInstancePasswordComplexity response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of password complexity related parameters
+        :type TotalCount: int
+        :param _Items: Password complexity parameter details. The policy value ranges from "" to "LOW" or "MEDIUM". Empty or LOW means password complexity is off. MEDIUM means password complexity is on. When the policy parameter value is MEDIUM, the following parameters take effect. length: value ranges from 8 to 64, means the minimum number of characters. mixed_case_count: value ranges from 1 to 16, means the minimum count of uppercase and lowercase letters. number_count: value ranges from 1 to 16, means the minimum count of numeric characters. special_char_count: value ranges from 1 to 16, means the minimum count of special characters.
+        :type Items: list of ParameterDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of password complexity related parameters
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""Password complexity parameter details. The policy value ranges from "" to "LOW" or "MEDIUM". Empty or LOW means password complexity is off. MEDIUM means password complexity is on. When the policy parameter value is MEDIUM, the following parameters take effect. length: value ranges from 8 to 64, means the minimum number of characters. mixed_case_count: value ranges from 1 to 16, means the minimum count of uppercase and lowercase letters. number_count: value ranges from 1 to 16, means the minimum count of numeric characters. special_char_count: value ranges from 1 to 16, means the minimum count of special characters.
+        :rtype: list of ParameterDetail
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ParameterDetail()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceUpgradeCheckJobRequest(AbstractModel):
+    r"""DescribeInstanceUpgradeCheckJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        :type InstanceId: str
+        :param _DstMysqlVersion: Target database version.
+Description: Available values 5.6, 5.7, 8.0. Cross-version upgrade is not supported. Downgrade is not supported after upgrade.
+        :type DstMysqlVersion: str
+        """
+        self._InstanceId = None
+        self._DstMysqlVersion = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DstMysqlVersion(self):
+        r"""Target database version.
+Description: Available values 5.6, 5.7, 8.0. Cross-version upgrade is not supported. Downgrade is not supported after upgrade.
+        :rtype: str
+        """
+        return self._DstMysqlVersion
+
+    @DstMysqlVersion.setter
+    def DstMysqlVersion(self, DstMysqlVersion):
+        self._DstMysqlVersion = DstMysqlVersion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DstMysqlVersion = params.get("DstMysqlVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceUpgradeCheckJobResponse(AbstractModel):
+    r"""DescribeInstanceUpgradeCheckJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExistUpgradeCheckJob: Existence of historic upgrade validation task within 24 hours
+        :type ExistUpgradeCheckJob: bool
+        :param _JobId: Task ID.
+        :type JobId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ExistUpgradeCheckJob = None
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def ExistUpgradeCheckJob(self):
+        r"""Existence of historic upgrade validation task within 24 hours
+        :rtype: bool
+        """
+        return self._ExistUpgradeCheckJob
+
+    @ExistUpgradeCheckJob.setter
+    def ExistUpgradeCheckJob(self, ExistUpgradeCheckJob):
+        self._ExistUpgradeCheckJob = ExistUpgradeCheckJob
+
+    @property
+    def JobId(self):
+        r"""Task ID.
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExistUpgradeCheckJob = params.get("ExistUpgradeCheckJob")
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceUpgradeTypeRequest(AbstractModel):
+    r"""DescribeInstanceUpgradeType request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1">DescribeDBInstances</a> API.</p>
+        :type InstanceId: str
+        :param _DstCpu: <p>The number of CPU cores of the target instance. To ensure the input value is valid, please use <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> to get the saleable CPU range of the instance.</p>
+        :type DstCpu: float
+        :param _DstMemory: <p>Target instance memory size, measurement unit: MB. To ensure the input value is valid, please use <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> to get the saleable memory size range of the instance.</p>
+        :type DstMemory: int
+        :param _DstDisk: <p>Target instance disk size, unit: GB. To ensure the input value is valid, please use <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> to get the saleable disk size range of the instance.</p>
+        :type DstDisk: int
+        :param _DstVersion: <p>Target instance database version. Available values: 5.6, 5.7, 8.0.</p>
+        :type DstVersion: str
+        :param _DstDeployMode: <p>Deployment model of the target instance. Defaults to 0. Supported values include: 0 - means single availability zone, 1 - means multi-availability zone.</p>
+        :type DstDeployMode: int
+        :param _DstProtectMode: <p>Replication type of the target instance. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication.</p>
+        :type DstProtectMode: int
+        :param _DstSlaveZone: <p>AZ ID of the standby instance 1 of the target instance. You can use the <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> API to obtain the availability zone ID.</p>
+        :type DstSlaveZone: int
+        :param _DstBackupZone: <p>AZ ID of the standby instance 2. You can use the <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> API to obtain the AZ ID.</p>
+        :type DstBackupZone: int
+        :param _DstCdbType: <p>Target instance type. Supported values include: "CUSTOM" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "ONTKE" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - standard type for CLOUD disk, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - enhanced type for CLOUD disk.</p>
+        :type DstCdbType: str
+        :param _DstZoneId: <p>Primary availability zone ID of the target instance. You can use the <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> API to obtain the AZ ID.</p>
+        :type DstZoneId: int
+        :param _NodeDistribution: <p>Node distribution of CDB instances in the dedicated cluster.</p>
+        :type NodeDistribution: :class:`tencentcloud.cdb.v20170320.models.NodeDistribution`
+        :param _ClusterTopology: <p>Topology configuration for cloud disk edition nodes. Nodeld information can be obtained through the <a href="https://www.tencentcloud.com/document/api/236/105116?from_cn_redirect=1">DescribeClusterInfo</a> API.</p>
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _DstFourthZone: <p>AZ ID of the standby instance 3 in the target instance. Use the <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> API to obtain the availability zone ID.</p>
+        :type DstFourthZone: int
+        """
+        self._InstanceId = None
+        self._DstCpu = None
+        self._DstMemory = None
+        self._DstDisk = None
+        self._DstVersion = None
+        self._DstDeployMode = None
+        self._DstProtectMode = None
+        self._DstSlaveZone = None
+        self._DstBackupZone = None
+        self._DstCdbType = None
+        self._DstZoneId = None
+        self._NodeDistribution = None
+        self._ClusterTopology = None
+        self._DstFourthZone = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1">DescribeDBInstances</a> API.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DstCpu(self):
+        r"""<p>The number of CPU cores of the target instance. To ensure the input value is valid, please use <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> to get the saleable CPU range of the instance.</p>
+        :rtype: float
+        """
+        return self._DstCpu
+
+    @DstCpu.setter
+    def DstCpu(self, DstCpu):
+        self._DstCpu = DstCpu
+
+    @property
+    def DstMemory(self):
+        r"""<p>Target instance memory size, measurement unit: MB. To ensure the input value is valid, please use <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> to get the saleable memory size range of the instance.</p>
+        :rtype: int
+        """
+        return self._DstMemory
+
+    @DstMemory.setter
+    def DstMemory(self, DstMemory):
+        self._DstMemory = DstMemory
+
+    @property
+    def DstDisk(self):
+        r"""<p>Target instance disk size, unit: GB. To ensure the input value is valid, please use <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> to get the saleable disk size range of the instance.</p>
+        :rtype: int
+        """
+        return self._DstDisk
+
+    @DstDisk.setter
+    def DstDisk(self, DstDisk):
+        self._DstDisk = DstDisk
+
+    @property
+    def DstVersion(self):
+        r"""<p>Target instance database version. Available values: 5.6, 5.7, 8.0.</p>
+        :rtype: str
+        """
+        return self._DstVersion
+
+    @DstVersion.setter
+    def DstVersion(self, DstVersion):
+        self._DstVersion = DstVersion
+
+    @property
+    def DstDeployMode(self):
+        r"""<p>Deployment model of the target instance. Defaults to 0. Supported values include: 0 - means single availability zone, 1 - means multi-availability zone.</p>
+        :rtype: int
+        """
+        return self._DstDeployMode
+
+    @DstDeployMode.setter
+    def DstDeployMode(self, DstDeployMode):
+        self._DstDeployMode = DstDeployMode
+
+    @property
+    def DstProtectMode(self):
+        r"""<p>Replication type of the target instance. Supported values include: 0 - means async replication, 1 - means semi-sync replication, 2 - means strong sync replication.</p>
+        :rtype: int
+        """
+        return self._DstProtectMode
+
+    @DstProtectMode.setter
+    def DstProtectMode(self, DstProtectMode):
+        self._DstProtectMode = DstProtectMode
+
+    @property
+    def DstSlaveZone(self):
+        r"""<p>AZ ID of the standby instance 1 of the target instance. You can use the <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> API to obtain the availability zone ID.</p>
+        :rtype: int
+        """
+        return self._DstSlaveZone
+
+    @DstSlaveZone.setter
+    def DstSlaveZone(self, DstSlaveZone):
+        self._DstSlaveZone = DstSlaveZone
+
+    @property
+    def DstBackupZone(self):
+        r"""<p>AZ ID of the standby instance 2. You can use the <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> API to obtain the AZ ID.</p>
+        :rtype: int
+        """
+        return self._DstBackupZone
+
+    @DstBackupZone.setter
+    def DstBackupZone(self, DstBackupZone):
+        self._DstBackupZone = DstBackupZone
+
+    @property
+    def DstCdbType(self):
+        r"""<p>Target instance type. Supported values include: "CUSTOM" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "ONTKE" - ONTKE single-node instance, "CLOUD_NATIVE_CLUSTER" - standard type for CLOUD disk, "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - enhanced type for CLOUD disk.</p>
+        :rtype: str
+        """
+        return self._DstCdbType
+
+    @DstCdbType.setter
+    def DstCdbType(self, DstCdbType):
+        self._DstCdbType = DstCdbType
+
+    @property
+    def DstZoneId(self):
+        r"""<p>Primary availability zone ID of the target instance. You can use the <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> API to obtain the AZ ID.</p>
+        :rtype: int
+        """
+        return self._DstZoneId
+
+    @DstZoneId.setter
+    def DstZoneId(self, DstZoneId):
+        self._DstZoneId = DstZoneId
+
+    @property
+    def NodeDistribution(self):
+        r"""<p>Node distribution of CDB instances in the dedicated cluster.</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.NodeDistribution`
+        """
+        return self._NodeDistribution
+
+    @NodeDistribution.setter
+    def NodeDistribution(self, NodeDistribution):
+        self._NodeDistribution = NodeDistribution
+
+    @property
+    def ClusterTopology(self):
+        r"""<p>Topology configuration for cloud disk edition nodes. Nodeld information can be obtained through the <a href="https://www.tencentcloud.com/document/api/236/105116?from_cn_redirect=1">DescribeClusterInfo</a> API.</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        """
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
+    @property
+    def DstFourthZone(self):
+        r"""<p>AZ ID of the standby instance 3 in the target instance. Use the <a href="https://www.tencentcloud.com/document/product/236/80281?from_cn_redirect=1">DescribeCdbZoneConfig</a> API to obtain the availability zone ID.</p>
+        :rtype: int
+        """
+        return self._DstFourthZone
+
+    @DstFourthZone.setter
+    def DstFourthZone(self, DstFourthZone):
+        self._DstFourthZone = DstFourthZone
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DstCpu = params.get("DstCpu")
+        self._DstMemory = params.get("DstMemory")
+        self._DstDisk = params.get("DstDisk")
+        self._DstVersion = params.get("DstVersion")
+        self._DstDeployMode = params.get("DstDeployMode")
+        self._DstProtectMode = params.get("DstProtectMode")
+        self._DstSlaveZone = params.get("DstSlaveZone")
+        self._DstBackupZone = params.get("DstBackupZone")
+        self._DstCdbType = params.get("DstCdbType")
+        self._DstZoneId = params.get("DstZoneId")
+        if params.get("NodeDistribution") is not None:
+            self._NodeDistribution = NodeDistribution()
+            self._NodeDistribution._deserialize(params.get("NodeDistribution"))
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._DstFourthZone = params.get("DstFourthZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceUpgradeTypeResponse(AbstractModel):
+    r"""DescribeInstanceUpgradeType response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        :param _UpgradeType: <p>Instance upgrade type. Trsf - Migration upgrade, InPlace - In-place upgrade, Topology - Architecture upgrade.</p>
+        :type UpgradeType: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._UpgradeType = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UpgradeType(self):
+        r"""<p>Instance upgrade type. Trsf - Migration upgrade, InPlace - In-place upgrade, Topology - Architecture upgrade.</p>
+        :rtype: str
+        """
+        return self._UpgradeType
+
+    @UpgradeType.setter
+    def UpgradeType(self, UpgradeType):
+        self._UpgradeType = UpgradeType
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UpgradeType = params.get("UpgradeType")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLocalBinlogConfigRequest(AbstractModel):
     r"""DescribeLocalBinlogConfig request structure.
 
@@ -17215,14 +18841,14 @@ class DescribeParamTemplateInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: Parameter template ID.
+        :param _TemplateId: Parameter template ID, which can be obtained through the [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1) API.
         :type TemplateId: int
         """
         self._TemplateId = None
 
     @property
     def TemplateId(self):
-        r"""Parameter template ID.
+        r"""Parameter template ID, which can be obtained through the [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1) API.
         :rtype: int
         """
         return self._TemplateId
@@ -17255,7 +18881,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type TemplateId: int
         :param _Name: Parameter template name.
         :type Name: str
-        :param _EngineVersion: Database engine version specified in the parameter template
+        :param _EngineVersion: The parameter template corresponds to the instance version. Valid values: 5.5, 5.6, 5.7, 8.0.
         :type EngineVersion: str
         :param _TotalCount: Number of parameters in the parameter template
         :type TotalCount: int
@@ -17265,8 +18891,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type Description: str
         :param _TemplateType: Type of the parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
         :type TemplateType: str
-        :param _EngineType: Parameter template engine.  Valid values: `InnoDB`, `RocksDB`. 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _EngineType: Parameter template engine. Supported values include "InnoDB", "RocksDB".
         :type EngineType: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -17305,7 +18930,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def EngineVersion(self):
-        r"""Database engine version specified in the parameter template
+        r"""The parameter template corresponds to the instance version. Valid values: 5.5, 5.6, 5.7, 8.0.
         :rtype: str
         """
         return self._EngineVersion
@@ -17360,8 +18985,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def EngineType(self):
-        r"""Parameter template engine.  Valid values: `InnoDB`, `RocksDB`. 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter template engine. Supported values include "InnoDB", "RocksDB".
         :rtype: str
         """
         return self._EngineType
@@ -17406,13 +19030,13 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EngineVersions: Engine version. If it is left empty, all parameter templates will be queried.
+        :param _EngineVersions: Engine version. Query all if default. Valid values: 5.5, 5.6, 5.7, 8.0.
         :type EngineVersions: list of str
-        :param _EngineTypes: Engine type. If it is left empty, all engine types will be queried.
+        :param _EngineTypes: Engine type. Query all if default. Valid values: InnoDB, RocksDB. Case-insensitive.
         :type EngineTypes: list of str
-        :param _TemplateNames: Template name. If it is left empty, all template names will be queried.
+        :param _TemplateNames: Template name. Query all if default. Support fuzzy matching.
         :type TemplateNames: list of str
-        :param _TemplateIds: Template ID. If it is left empty, all template IDs will be queried.
+        :param _TemplateIds: Template ID. Query all if default.
         :type TemplateIds: list of int
         """
         self._EngineVersions = None
@@ -17422,7 +19046,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def EngineVersions(self):
-        r"""Engine version. If it is left empty, all parameter templates will be queried.
+        r"""Engine version. Query all if default. Valid values: 5.5, 5.6, 5.7, 8.0.
         :rtype: list of str
         """
         return self._EngineVersions
@@ -17433,7 +19057,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def EngineTypes(self):
-        r"""Engine type. If it is left empty, all engine types will be queried.
+        r"""Engine type. Query all if default. Valid values: InnoDB, RocksDB. Case-insensitive.
         :rtype: list of str
         """
         return self._EngineTypes
@@ -17444,7 +19068,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def TemplateNames(self):
-        r"""Template name. If it is left empty, all template names will be queried.
+        r"""Template name. Query all if default. Support fuzzy matching.
         :rtype: list of str
         """
         return self._TemplateNames
@@ -17455,7 +19079,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
-        r"""Template ID. If it is left empty, all template IDs will be queried.
+        r"""Template ID. Query all if default.
         :rtype: list of int
         """
         return self._TemplateIds
@@ -17550,14 +19174,14 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: Project ID.
+        :param _ProjectId: Project ID. You can obtain it through the [DescribeProjects](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1) API.
         :type ProjectId: int
         """
         self._ProjectId = None
 
     @property
     def ProjectId(self):
-        r"""Project ID.
+        r"""Project ID. You can obtain it through the [DescribeProjects](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1) API.
         :rtype: int
         """
         return self._ProjectId
@@ -17649,7 +19273,7 @@ class DescribeProxyCustomConfRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         :param _Offset: Paginated query offset
         :type Offset: int
@@ -17662,7 +19286,7 @@ class DescribeProxyCustomConfRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -17715,27 +19339,26 @@ class DescribeProxyCustomConfResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Count: Number of queried proxy configurations
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _Count: Number of proxy configurations
         :type Count: int
-        :param _CustomConf: Proxy configuration details
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _CustomConf: proxy configuration
         :type CustomConf: :class:`tencentcloud.cdb.v20170320.models.CustomConfig`
-        :param _WeightRule: Weight rule
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _WeightRule: Weight limit
         :type WeightRule: :class:`tencentcloud.cdb.v20170320.models.Rule`
+        :param _CustomConfInfo: proxy configuration
+        :type CustomConfInfo: list of CustomConfig
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Count = None
         self._CustomConf = None
         self._WeightRule = None
+        self._CustomConfInfo = None
         self._RequestId = None
 
     @property
     def Count(self):
-        r"""Number of queried proxy configurations
-Note: this field may return `null`, indicating that no valid value can be found.
+        r"""Number of proxy configurations
         :rtype: int
         """
         return self._Count
@@ -17746,20 +19369,22 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def CustomConf(self):
-        r"""Proxy configuration details
-Note: this field may return `null`, indicating that no valid value can be found.
+        warnings.warn("parameter `CustomConf` is deprecated", DeprecationWarning) 
+
+        r"""proxy configuration
         :rtype: :class:`tencentcloud.cdb.v20170320.models.CustomConfig`
         """
         return self._CustomConf
 
     @CustomConf.setter
     def CustomConf(self, CustomConf):
+        warnings.warn("parameter `CustomConf` is deprecated", DeprecationWarning) 
+
         self._CustomConf = CustomConf
 
     @property
     def WeightRule(self):
-        r"""Weight rule
-Note: this field may return `null`, indicating that no valid value can be found.
+        r"""Weight limit
         :rtype: :class:`tencentcloud.cdb.v20170320.models.Rule`
         """
         return self._WeightRule
@@ -17767,6 +19392,17 @@ Note: this field may return `null`, indicating that no valid value can be found.
     @WeightRule.setter
     def WeightRule(self, WeightRule):
         self._WeightRule = WeightRule
+
+    @property
+    def CustomConfInfo(self):
+        r"""proxy configuration
+        :rtype: list of CustomConfig
+        """
+        return self._CustomConfInfo
+
+    @CustomConfInfo.setter
+    def CustomConfInfo(self, CustomConfInfo):
+        self._CustomConfInfo = CustomConfInfo
 
     @property
     def RequestId(self):
@@ -17788,6 +19424,12 @@ Note: this field may return `null`, indicating that no valid value can be found.
         if params.get("WeightRule") is not None:
             self._WeightRule = Rule()
             self._WeightRule._deserialize(params.get("WeightRule"))
+        if params.get("CustomConfInfo") is not None:
+            self._CustomConfInfo = []
+            for item in params.get("CustomConfInfo"):
+                obj = CustomConfig()
+                obj._deserialize(item)
+                self._CustomConfInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17798,14 +19440,14 @@ class DescribeProxySupportParamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -17834,22 +19476,26 @@ class DescribeProxySupportParamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyVersion: The supported maximum proxy version Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProxyVersion: Proxy supports the maximum version
         :type ProxyVersion: str
-        :param _SupportPool: Whether to support the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SupportPool: Whether connection pool is supported
         :type SupportPool: bool
-        :param _PoolMin: Minimum connections in the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PoolMin: Minimum value of the connection pool
         :type PoolMin: int
-        :param _PoolMax: Maximum connections in the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PoolMax: Maximum value of connection pool
         :type PoolMax: int
-        :param _SupportTransSplit: Whether to support transaction splitting Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SupportTransSplit: Whether transaction split is supported
         :type SupportTransSplit: bool
-        :param _SupportPoolMinVersion: Minimum proxy version supporting connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SupportPoolMinVersion: Minimum proxy version that supports connection pool
         :type SupportPoolMinVersion: str
-        :param _SupportTransSplitMinVersion: Minimum proxy version supporting transaction splitting Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SupportTransSplitMinVersion: Minimum proxy version supporting transaction split
         :type SupportTransSplitMinVersion: str
-        :param _SupportReadOnly: Whether read-only mode is supported Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SupportReadOnly: Whether setting as read-only is supported.
         :type SupportReadOnly: bool
+        :param _SupportAutoLoadBalance: Whether to automatically balance the load
+        :type SupportAutoLoadBalance: bool
+        :param _SupportAccessMode: Whether support access mode
+        :type SupportAccessMode: bool
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -17861,11 +19507,13 @@ class DescribeProxySupportParamResponse(AbstractModel):
         self._SupportPoolMinVersion = None
         self._SupportTransSplitMinVersion = None
         self._SupportReadOnly = None
+        self._SupportAutoLoadBalance = None
+        self._SupportAccessMode = None
         self._RequestId = None
 
     @property
     def ProxyVersion(self):
-        r"""The supported maximum proxy version Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Proxy supports the maximum version
         :rtype: str
         """
         return self._ProxyVersion
@@ -17876,7 +19524,7 @@ class DescribeProxySupportParamResponse(AbstractModel):
 
     @property
     def SupportPool(self):
-        r"""Whether to support the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether connection pool is supported
         :rtype: bool
         """
         return self._SupportPool
@@ -17887,7 +19535,7 @@ class DescribeProxySupportParamResponse(AbstractModel):
 
     @property
     def PoolMin(self):
-        r"""Minimum connections in the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Minimum value of the connection pool
         :rtype: int
         """
         return self._PoolMin
@@ -17898,7 +19546,7 @@ class DescribeProxySupportParamResponse(AbstractModel):
 
     @property
     def PoolMax(self):
-        r"""Maximum connections in the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Maximum value of connection pool
         :rtype: int
         """
         return self._PoolMax
@@ -17909,7 +19557,7 @@ class DescribeProxySupportParamResponse(AbstractModel):
 
     @property
     def SupportTransSplit(self):
-        r"""Whether to support transaction splitting Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether transaction split is supported
         :rtype: bool
         """
         return self._SupportTransSplit
@@ -17920,7 +19568,7 @@ class DescribeProxySupportParamResponse(AbstractModel):
 
     @property
     def SupportPoolMinVersion(self):
-        r"""Minimum proxy version supporting connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Minimum proxy version that supports connection pool
         :rtype: str
         """
         return self._SupportPoolMinVersion
@@ -17931,7 +19579,7 @@ class DescribeProxySupportParamResponse(AbstractModel):
 
     @property
     def SupportTransSplitMinVersion(self):
-        r"""Minimum proxy version supporting transaction splitting Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Minimum proxy version supporting transaction split
         :rtype: str
         """
         return self._SupportTransSplitMinVersion
@@ -17942,7 +19590,7 @@ class DescribeProxySupportParamResponse(AbstractModel):
 
     @property
     def SupportReadOnly(self):
-        r"""Whether read-only mode is supported Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether setting as read-only is supported.
         :rtype: bool
         """
         return self._SupportReadOnly
@@ -17950,6 +19598,28 @@ class DescribeProxySupportParamResponse(AbstractModel):
     @SupportReadOnly.setter
     def SupportReadOnly(self, SupportReadOnly):
         self._SupportReadOnly = SupportReadOnly
+
+    @property
+    def SupportAutoLoadBalance(self):
+        r"""Whether to automatically balance the load
+        :rtype: bool
+        """
+        return self._SupportAutoLoadBalance
+
+    @SupportAutoLoadBalance.setter
+    def SupportAutoLoadBalance(self, SupportAutoLoadBalance):
+        self._SupportAutoLoadBalance = SupportAutoLoadBalance
+
+    @property
+    def SupportAccessMode(self):
+        r"""Whether support access mode
+        :rtype: bool
+        """
+        return self._SupportAccessMode
+
+    @SupportAccessMode.setter
+    def SupportAccessMode(self, SupportAccessMode):
+        self._SupportAccessMode = SupportAccessMode
 
     @property
     def RequestId(self):
@@ -17972,6 +19642,8 @@ class DescribeProxySupportParamResponse(AbstractModel):
         self._SupportPoolMinVersion = params.get("SupportPoolMinVersion")
         self._SupportTransSplitMinVersion = params.get("SupportTransSplitMinVersion")
         self._SupportReadOnly = params.get("SupportReadOnly")
+        self._SupportAutoLoadBalance = params.get("SupportAutoLoadBalance")
+        self._SupportAccessMode = params.get("SupportAccessMode")
         self._RequestId = params.get("RequestId")
 
 
@@ -18121,14 +19793,14 @@ class DescribeRoGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of `cdb-c1nl9rpv` or `cdb-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of `cdb-c1nl9rpv` or `cdb-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page.
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :rtype: str
         """
         return self._InstanceId
@@ -18157,7 +19829,7 @@ class DescribeRoGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoGroups: RO group information array. An instance can be associated with multiple RO groups.
+        :param _RoGroups: RO group information array. An instance can associate with multiple RO groups.
         :type RoGroups: list of RoGroup
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18167,7 +19839,7 @@ class DescribeRoGroupsResponse(AbstractModel):
 
     @property
     def RoGroups(self):
-        r"""RO group information array. An instance can be associated with multiple RO groups.
+        r"""RO group information array. An instance can associate with multiple RO groups.
         :rtype: list of RoGroup
         """
         return self._RoGroups
@@ -18447,7 +20119,7 @@ class DescribeRollbackTaskDetailRequest(AbstractModel):
         :type InstanceId: str
         :param _AsyncRequestId: Async task ID.
         :type AsyncRequestId: str
-        :param _Limit: Pagination parameter, i.e., the number of entries to be returned for a single request. Default value: 20. Maximum value: 100.
+        :param _Limit: Pagination parameter. Number of records returned per request. Default value: 20. Maximum value: 100 is recommended.
         :type Limit: int
         :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
@@ -18481,7 +20153,7 @@ class DescribeRollbackTaskDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Pagination parameter, i.e., the number of entries to be returned for a single request. Default value: 20. Maximum value: 100.
+        r"""Pagination parameter. Number of records returned per request. Default value: 20. Maximum value: 100 is recommended.
         :rtype: int
         """
         return self._Limit
@@ -18527,7 +20199,6 @@ class DescribeRollbackTaskDetailResponse(AbstractModel):
         :param _TotalCount: Number of eligible entries.
         :type TotalCount: int
         :param _Items: Rollback task details.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Items: list of RollbackTask
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18550,7 +20221,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def Items(self):
         r"""Rollback task details.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of RollbackTask
         """
         return self._Items
@@ -18589,9 +20259,11 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872) API. Note: Either the instance ID or read-only group ID parameter needs to be specified. To query the enabling status of the SSL for two-node or three-node instances, you need to specify the instance ID parameter. Single-node (cloud disk) and Cluster Edition instances do not support enabling SSL; thus, queries are not supported.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+Description: Fill in either the instance ID or the read-only group ID. To query the SSL activation status of two-node or three-node instances, enter the instance ID parameter. Single-node (cloud disk) and cloud disk edition instances do not support enabling SSL, so queries are not supported.
         :type InstanceId: str
-        :param _RoGroupId: Read-only group ID, which can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/product/236/35704) API. Note: Either the instance ID or read-only group ID parameter needs to be specified. To query the enabling status of the SSL for read-only instances or groups, you need to specify the RoGroupId parameter. Note that the value should be the read-only group ID. Single-node (cloud disk) and Cluster Edition instances do not support enabling SSL; thus, queries are not supported.
+        :param _RoGroupId: Read-only group ID. Obtain through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
+Description: Fill in either the instance ID or the read-only group ID. To query the SSL activation status of a read-only instance or read-only group, fill in the RoGroupId parameter. Note that you should always enter the read-only group ID. Single-node (cloud disk) and cloud disk edition instances do not support enabling SSL, so they do not support querying.
         :type RoGroupId: str
         """
         self._InstanceId = None
@@ -18599,7 +20271,8 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872) API. Note: Either the instance ID or read-only group ID parameter needs to be specified. To query the enabling status of the SSL for two-node or three-node instances, you need to specify the instance ID parameter. Single-node (cloud disk) and Cluster Edition instances do not support enabling SSL; thus, queries are not supported.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+Description: Fill in either the instance ID or the read-only group ID. To query the SSL activation status of two-node or three-node instances, enter the instance ID parameter. Single-node (cloud disk) and cloud disk edition instances do not support enabling SSL, so queries are not supported.
         :rtype: str
         """
         return self._InstanceId
@@ -18610,7 +20283,8 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     @property
     def RoGroupId(self):
-        r"""Read-only group ID, which can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/product/236/35704) API. Note: Either the instance ID or read-only group ID parameter needs to be specified. To query the enabling status of the SSL for read-only instances or groups, you need to specify the RoGroupId parameter. Note that the value should be the read-only group ID. Single-node (cloud disk) and Cluster Edition instances do not support enabling SSL; thus, queries are not supported.
+        r"""Read-only group ID. Obtain through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
+Description: Fill in either the instance ID or the read-only group ID. To query the SSL activation status of a read-only instance or read-only group, fill in the RoGroupId parameter. Note that you should always enter the read-only group ID. Single-node (cloud disk) and cloud disk edition instances do not support enabling SSL, so they do not support querying.
         :rtype: str
         """
         return self._RoGroupId
@@ -18640,9 +20314,9 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Whether SSL is enabled. ON indicates enabled; OFF indicates not enabled.
+        :param _Status: Whether to enable SSL. ON represents enabled, OFF represents not enabled.
         :type Status: str
-        :param _Url: Certificate download link.
+        :param _Url: Certificate download URL.
         :type Url: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18653,7 +20327,7 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""Whether SSL is enabled. ON indicates enabled; OFF indicates not enabled.
+        r"""Whether to enable SSL. ON represents enabled, OFF represents not enabled.
         :rtype: str
         """
         return self._Status
@@ -18664,7 +20338,7 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""Certificate download link.
+        r"""Certificate download URL.
         :rtype: str
         """
         return self._Url
@@ -18698,11 +20372,13 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _StartTime: Start timestamp, such as 1585142640.
+        :param _StartTime: Session start timestamp. For example, 1585142640.
+Description: This parameter is a timestamp in seconds.
         :type StartTime: int
-        :param _EndTime: End timestamp, such as 1585142640.
+        :param _EndTime: End timestamp. Example: 1585142640.
+Description: This parameter is a timestamp in seconds.
         :type EndTime: int
         :param _UserHosts: Client `Host` list.
         :type UserHosts: list of str
@@ -18710,16 +20386,23 @@ class DescribeSlowLogDataRequest(AbstractModel):
         :type UserNames: list of str
         :param _DataBases: Accessed database list.
         :type DataBases: list of str
-        :param _SortBy: Sort by field. Valid values: Timestamp, QueryTime, LockTime, RowsExamined, RowsSent.
+        :param _SortBy: Sorting field. Currently supported fields and their meanings are as follows. Default value is Timestamp.
+1. Timestamp: SQL execution time
+2. QueryTime: SQL execution duration (seconds)
+3. LockTime: Lock duration (seconds)
+4. RowsExamined: Number of scanned rows
+5. RowsSent: Result set row count
         :type SortBy: str
-        :param _OrderBy: Sorting order. Valid values: ASC (ascending), DESC (descending).
+        :param _OrderBy: Ascending or descending order. Valid values: "ASC" - Ascending order, "DESC" - Descending order. Default value: "ASC".
         :type OrderBy: str
-        :param _Offset: Offset. Default value: 0.
+        :param _Offset: Offset. The default is 0, and the maximum is 9999.
         :type Offset: int
-        :param _Limit: The number of results per page in paginated queries. Default value: 100. Maximum value: 400.
+        :param _Limit: The number of records returned in a single use, default is 100, maximum is 800.
         :type Limit: int
         :param _InstType: This parameter is valid only for source or disaster recovery instances. Valid value: `slave`, which indicates pulling logs from the replica.
         :type InstType: str
+        :param _OpResourceId: Node ID.
+        :type OpResourceId: str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -18732,10 +20415,11 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._InstType = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -18746,7 +20430,8 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start timestamp, such as 1585142640.
+        r"""Session start timestamp. For example, 1585142640.
+Description: This parameter is a timestamp in seconds.
         :rtype: int
         """
         return self._StartTime
@@ -18757,7 +20442,8 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End timestamp, such as 1585142640.
+        r"""End timestamp. Example: 1585142640.
+Description: This parameter is a timestamp in seconds.
         :rtype: int
         """
         return self._EndTime
@@ -18801,7 +20487,12 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        r"""Sort by field. Valid values: Timestamp, QueryTime, LockTime, RowsExamined, RowsSent.
+        r"""Sorting field. Currently supported fields and their meanings are as follows. Default value is Timestamp.
+1. Timestamp: SQL execution time
+2. QueryTime: SQL execution duration (seconds)
+3. LockTime: Lock duration (seconds)
+4. RowsExamined: Number of scanned rows
+5. RowsSent: Result set row count
         :rtype: str
         """
         return self._SortBy
@@ -18812,7 +20503,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""Sorting order. Valid values: ASC (ascending), DESC (descending).
+        r"""Ascending or descending order. Valid values: "ASC" - Ascending order, "DESC" - Descending order. Default value: "ASC".
         :rtype: str
         """
         return self._OrderBy
@@ -18823,7 +20514,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset. Default value: 0.
+        r"""Offset. The default is 0, and the maximum is 9999.
         :rtype: int
         """
         return self._Offset
@@ -18834,7 +20525,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""The number of results per page in paginated queries. Default value: 100. Maximum value: 400.
+        r"""The number of records returned in a single use, default is 100, maximum is 800.
         :rtype: int
         """
         return self._Limit
@@ -18854,6 +20545,17 @@ class DescribeSlowLogDataRequest(AbstractModel):
     def InstType(self, InstType):
         self._InstType = InstType
 
+    @property
+    def OpResourceId(self):
+        r"""Node ID.
+        :rtype: str
+        """
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -18867,6 +20569,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._InstType = params.get("InstType")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18886,8 +20589,7 @@ class DescribeSlowLogDataResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of eligible entries.
         :type TotalCount: int
-        :param _Items: Queried results.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Items: Queried records.
         :type Items: list of SlowLogItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18909,8 +20611,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
-        r"""Queried results.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Queried records.
         :rtype: list of SlowLogItem
         """
         return self._Items
@@ -18953,7 +20654,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type InstanceId: str
         :param _Offset: Pagination offset, starting from `0`. Default value: `0`.
         :type Offset: int
-        :param _Limit: Number of entries per page. Value range: 1-100. Default value: 20.
+        :param _Limit: Page size. Default value: 20. Minimum value: 1. Maximum value: 1000.
         :type Limit: int
         """
         self._InstanceId = None
@@ -18984,7 +20685,7 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries per page. Value range: 1-100. Default value: 20.
+        r"""Page size. Default value: 20. Minimum value: 1. Maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -19195,6 +20896,130 @@ class DescribeSupportedPrivilegesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTableColumnsRequest(AbstractModel):
+    r"""DescribeTableColumns request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the [Query Instance List](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) API. Its value is the InstanceId field in the output parameter.
+        :type InstanceId: str
+        :param _Database: Database name. Obtain through the [Query Database](https://www.tencentcloud.com/document/api/236/17493?from_cn_redirect=1) API.
+        :type Database: str
+        :param _Table: Name of the table in the database.
+        :type Table: str
+        """
+        self._InstanceId = None
+        self._Database = None
+        self._Table = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the [Query Instance List](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) API. Its value is the InstanceId field in the output parameter.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Database(self):
+        r"""Database name. Obtain through the [Query Database](https://www.tencentcloud.com/document/api/236/17493?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        r"""Name of the table in the database.
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableColumnsResponse(AbstractModel):
+    r"""DescribeTableColumns response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of eligible instances.
+        :type TotalCount: int
+        :param _Items: Returned database column information.
+        :type Items: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of eligible instances.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""Returned database column information.
+        :rtype: list of str
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Items = params.get("Items")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTablesRequest(AbstractModel):
     r"""DescribeTables request structure.
 
@@ -19208,7 +21033,7 @@ class DescribeTablesRequest(AbstractModel):
         :type Database: str
         :param _Offset: Record offset. Default value: 0.
         :type Offset: int
-        :param _Limit: Number of results to be returned for a single request. Default value: 20. Maximum value: 2,000.
+        :param _Limit: Number of items returned per request. Default value: 20. Maximum value: 5000.
         :type Limit: int
         :param _TableRegexp: Regular expression for matching table names, which complies with the rules at MySQL's official website
         :type TableRegexp: str
@@ -19254,7 +21079,7 @@ class DescribeTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of results to be returned for a single request. Default value: 20. Maximum value: 2,000.
+        r"""Number of items returned per request. Default value: 20. Maximum value: 5000.
         :rtype: int
         """
         return self._Limit
@@ -19356,11 +21181,11 @@ class DescribeTagsOfInstanceIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: List of instances.
+        :param _InstanceIds: Instance list. Instance ID can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API. The length of the array passed in is not limited.
         :type InstanceIds: list of str
         :param _Offset: Pagination offset.
         :type Offset: int
-        :param _Limit: Number of entries per page.
+        :param _Limit: Page size. Defaults to 15.
         :type Limit: int
         """
         self._InstanceIds = None
@@ -19369,7 +21194,7 @@ class DescribeTagsOfInstanceIdsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of instances.
+        r"""Instance list. Instance ID can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API. The length of the array passed in is not limited.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -19391,7 +21216,7 @@ class DescribeTagsOfInstanceIdsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of entries per page.
+        r"""Page size. Defaults to 15.
         :rtype: int
         """
         return self._Limit
@@ -20407,11 +22232,11 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: Security group ID.
+        :param _SecurityGroupId: Security group ID. Obtain through the [DescribeDBSecurityGroups](https://www.tencentcloud.com/document/api/236/15854?from_cn_redirect=1) API.
         :type SecurityGroupId: str
-        :param _InstanceIds: List of instance IDs, which is an array of one or more instance IDs.
+        :param _InstanceIds: Instance ID list, an array consisting of one or more instance IDs, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceIds: list of str
-        :param _ForReadonlyInstance: This parameter takes effect only when the IDs of read-only replicas are passed in. If this parameter is set to `False` or left empty, the security group will be unbound from the RO groups of these read-only replicas. If this parameter is set to `True`, the security group will be unbound from the read-only replicas themselves.
+        :param _ForReadonlyInstance: When importing a read-only instance ID, the default operation is performed on the corresponding security group of the read-only group. If necessary to operate the security group of the read-only instance ID, set this input parameter to True. Default False.
         :type ForReadonlyInstance: bool
         """
         self._SecurityGroupId = None
@@ -20420,7 +22245,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        r"""Security group ID.
+        r"""Security group ID. Obtain through the [DescribeDBSecurityGroups](https://www.tencentcloud.com/document/api/236/15854?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._SecurityGroupId
@@ -20431,7 +22256,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of instance IDs, which is an array of one or more instance IDs.
+        r"""Instance ID list, an array consisting of one or more instance IDs, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -20442,7 +22267,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def ForReadonlyInstance(self):
-        r"""This parameter takes effect only when the IDs of read-only replicas are passed in. If this parameter is set to `False` or left empty, the security group will be unbound from the RO groups of these read-only replicas. If this parameter is set to `True`, the security group will be unbound from the read-only replicas themselves.
+        r"""When importing a read-only instance ID, the default operation is performed on the corresponding security group of the read-only group. If necessary to operate the security group of the read-only instance ID, set this input parameter to True. Default False.
         :rtype: bool
         """
         return self._ForReadonlyInstance
@@ -20688,11 +22513,9 @@ class ErrlogItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: Error occurrence time.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Timestamp: Error occurrence time. Timestamp in seconds.
         :type Timestamp: int
         :param _Content: Error details
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Content: str
         """
         self._Timestamp = None
@@ -20700,8 +22523,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timestamp(self):
-        r"""Error occurrence time.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Error occurrence time. Timestamp in seconds.
         :rtype: int
         """
         return self._Timestamp
@@ -20713,7 +22535,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def Content(self):
         r"""Error details
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Content
@@ -20743,11 +22564,11 @@ class ImportRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Status value
+        :param _Status: Status value. 0 - Initializing, 1 - Running, 2 - Operation successful, 3 - Operation failure.
         :type Status: int
-        :param _Code: Status value
+        :param _Code: Status value. Task exception when the value is negative.
         :type Code: int
-        :param _CostTime: Execution duration
+        :param _CostTime: Execution time, unit: seconds.
         :type CostTime: int
         :param _InstanceId: Instance ID
         :type InstanceId: str
@@ -20755,11 +22576,11 @@ class ImportRecord(AbstractModel):
         :type WorkId: str
         :param _FileName: Name of the file to be imported
         :type FileName: str
-        :param _Process: Execution progress
+        :param _Process: Execution progress, measurement unit: percentage.
         :type Process: int
         :param _CreateTime: Task creation time
         :type CreateTime: str
-        :param _FileSize: File size
+        :param _FileSize: File size, unit: byte.
         :type FileSize: str
         :param _Message: Task execution information
         :type Message: str
@@ -20786,7 +22607,7 @@ class ImportRecord(AbstractModel):
 
     @property
     def Status(self):
-        r"""Status value
+        r"""Status value. 0 - Initializing, 1 - Running, 2 - Operation successful, 3 - Operation failure.
         :rtype: int
         """
         return self._Status
@@ -20797,7 +22618,7 @@ class ImportRecord(AbstractModel):
 
     @property
     def Code(self):
-        r"""Status value
+        r"""Status value. Task exception when the value is negative.
         :rtype: int
         """
         return self._Code
@@ -20808,7 +22629,7 @@ class ImportRecord(AbstractModel):
 
     @property
     def CostTime(self):
-        r"""Execution duration
+        r"""Execution time, unit: seconds.
         :rtype: int
         """
         return self._CostTime
@@ -20852,7 +22673,7 @@ class ImportRecord(AbstractModel):
 
     @property
     def Process(self):
-        r"""Execution progress
+        r"""Execution progress, measurement unit: percentage.
         :rtype: int
         """
         return self._Process
@@ -20874,7 +22695,7 @@ class ImportRecord(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""File size
+        r"""File size, unit: byte.
         :rtype: str
         """
         return self._FileSize
@@ -20971,6 +22792,8 @@ class Inbound(AbstractModel):
         :type Dir: str
         :param _AddressModule: Address module
         :type AddressModule: str
+        :param _Id: Rule ID, rule ID of the nested security group
+        :type Id: str
         :param _Desc: Rule description
         :type Desc: str
         """
@@ -20980,6 +22803,7 @@ class Inbound(AbstractModel):
         self._IpProtocol = None
         self._Dir = None
         self._AddressModule = None
+        self._Id = None
         self._Desc = None
 
     @property
@@ -21049,6 +22873,17 @@ class Inbound(AbstractModel):
         self._AddressModule = AddressModule
 
     @property
+    def Id(self):
+        r"""Rule ID, rule ID of the nested security group
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
     def Desc(self):
         r"""Rule description
         :rtype: str
@@ -21067,7 +22902,104 @@ class Inbound(AbstractModel):
         self._IpProtocol = params.get("IpProtocol")
         self._Dir = params.get("Dir")
         self._AddressModule = params.get("AddressModule")
+        self._Id = params.get("Id")
         self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstEventInfo(AbstractModel):
+    r"""Instance event information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventName: Event name.
+        :type EventName: str
+        :param _EventStatus: Event status.
+        :type EventStatus: str
+        :param _OccurTime: Event occurrence time.
+        :type OccurTime: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _NodeId: Node ID.
+        :type NodeId: str
+        """
+        self._EventName = None
+        self._EventStatus = None
+        self._OccurTime = None
+        self._InstanceId = None
+        self._NodeId = None
+
+    @property
+    def EventName(self):
+        r"""Event name.
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventStatus(self):
+        r"""Event status.
+        :rtype: str
+        """
+        return self._EventStatus
+
+    @EventStatus.setter
+    def EventStatus(self, EventStatus):
+        self._EventStatus = EventStatus
+
+    @property
+    def OccurTime(self):
+        r"""Event occurrence time.
+        :rtype: str
+        """
+        return self._OccurTime
+
+    @OccurTime.setter
+    def OccurTime(self, OccurTime):
+        self._OccurTime = OccurTime
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeId(self):
+        r"""Node ID.
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._EventName = params.get("EventName")
+        self._EventStatus = params.get("EventStatus")
+        self._OccurTime = params.get("OccurTime")
+        self._InstanceId = params.get("InstanceId")
+        self._NodeId = params.get("NodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21534,112 +23466,113 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WanStatus: Public network access status. Value range: 0 (not enabled), 1 (enabled), 2 (disabled)
+        :param _WanStatus: <p>Public network status. Possible returned values: 0 - External network not enabled; 1 - Public network enabled; 2 - Public network disabled</p>
         :type WanStatus: int
-        :param _Zone: AZ information
+        :param _Zone: <p>AZ information</p>
         :type Zone: str
-        :param _InitFlag: Initialization flag. Value range: 0 (not initialized), 1 (initialized)
+        :param _InitFlag: <p>Initialization flag. Possible returned values: 0 - uninitialized; 1 - initialized.</p>
         :type InitFlag: int
-        :param _RoVipInfo: Read-only VIP information. This field is available only for read-only instances with dedicated access enabled.
+        :param _RoVipInfo: <p>Read-only vip information. This field is available only for read-only instances with separate instance access enabled.</p>
         :type RoVipInfo: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
-        :param _Memory: Memory capacity in MB
+        :param _Memory: <p>Memory capacity, in MB.</p>
         :type Memory: int
-        :param _Status: Instance status. Valid values: `0` (creating), `1` (running), `4` (isolating), `5` (isolated).
+        :param _Status: <p>Instance status. Valid values: 0: creating; 1: running; 4: isolation operation in progress; 5: isolated.</p>
         :type Status: int
-        :param _VpcId: VPC ID, such as 51102
+        :param _VpcId: <p>VPC ID, for example: 51102</p>
         :type VpcId: int
-        :param _SlaveInfo: Secondary server information.
+        :param _SlaveInfo: <p>Secondary server information</p>
         :type SlaveInfo: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID</p>
         :type InstanceId: str
-        :param _Volume: Disk capacity in GB
+        :param _Volume: <p>Disk capacity, in GB.</p>
         :type Volume: int
-        :param _AutoRenew: Auto-renewal flag. Value range: 0 (auto-renewal not enabled), 1 (auto-renewal enabled), 2 (auto-renewal disabled)
+        :param _AutoRenew: <p>Auto-renewal flag. Possible returned values: 0 - auto-renewal is not enabled; 1 - auto-renewal is enabled; 2 - automatic renewal is disabled.</p>
         :type AutoRenew: int
-        :param _ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync)
+        :param _ProtectMode: <p>Data replication mode. 0 - async replication; 1 - semi-sync replication; 2 - strong sync replication</p>
         :type ProtectMode: int
-        :param _RoGroups: Detailed information about the read-only group.
+        :param _RoGroups: <p>Read-only group detailed information</p>
         :type RoGroups: list of RoGroup
-        :param _SubnetId: Subnet ID, such as 2333
+        :param _SubnetId: <p>Subnet ID, for example: 2333</p>
         :type SubnetId: int
-        :param _InstanceType: Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only)
+        :param _InstanceType: <p>Instance type. Possible returned values: 1 - Primary instance; 2 - Disaster recovery instance; 3 - Read-only instance.</p>
         :type InstanceType: int
-        :param _ProjectId: Project ID
+        :param _ProjectId: <p>Project ID</p>
         :type ProjectId: int
-        :param _Region: Region information
+        :param _Region: <p>Regional information</p>
         :type Region: str
-        :param _DeadlineTime: Instance expiration time
+        :param _DeadlineTime: <p>Instance expiration time</p>
         :type DeadlineTime: str
-        :param _DeployMode: AZ deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ)
+        :param _DeployMode: <p>Availability Zone Deployment method. Valid values: 0 - single availability zone; 1 - multi-availability zone.</p>
         :type DeployMode: int
-        :param _TaskStatus: Instance task status. 0 - no task; 1 - upgrading; 2 - importing data; 3 - activating secondary; 4 - enabling public network access; 5 - batch operation in progress; 6 - rolling back; 7 - disabling public network access; 8 - changing password; 9 - renaming instance; 10 - restarting; 12 - migrating self-built instance; 13 - dropping table; 14 - creating and syncing disaster recovery instance; 15 - pending upgrade and switch; 16 - upgrade and switch in progress; 17 - upgrade and switch completed
+        :param _TaskStatus: <p>Instance task status. 0 - No tasks, 1 - Upgrading, 2 - Data import, 3 - Opening Slave, 4 - Public network access enabling, 5 - Batch operation executing, 6 - Rolling back, 7 - Public network access disabling, 8 - Password modification, 9 - Renaming instance, 10 - Restarting, 12 - Self-built migration, 13 - Database deletion, 14 - Disaster recovery instance creation sync, 15 - Upgrade pending switch, 16 - Upgrade and switch, 17 - Upgrade and switch completed</p>
         :type TaskStatus: int
-        :param _MasterInfo: Detailed information about the primary instance.
+        :param _MasterInfo: <p>Detailed information about the primary instance.</p>
         :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
-        :param _DeviceType: Instance type
+        :param _DeviceType: <p>Instance type</p>
         :type DeviceType: str
-        :param _EngineVersion: Kernel version
+        :param _EngineVersion: <p>Kernel version</p>
         :type EngineVersion: str
-        :param _InstanceName: Instance name
+        :param _InstanceName: <p>Instance name</p>
         :type InstanceName: str
-        :param _DrInfo: Detailed information about the disaster recovery instance.
+        :param _DrInfo: <p>Disaster recovery instance details</p>
         :type DrInfo: list of DrInfo
-        :param _WanDomain: Public domain name
+        :param _WanDomain: <p>public network domain name</p>
         :type WanDomain: str
-        :param _WanPort: Public network port number
+        :param _WanPort: <p>Public network port number</p>
         :type WanPort: int
         :param _PayType: Billing type
         :type PayType: int
-        :param _CreateTime: Instance creation time
+        :param _CreateTime: <p>Instance creation time</p>
         :type CreateTime: str
-        :param _Vip: Instance IP
+        :param _Vip: <p>Instance IP</p>
         :type Vip: str
-        :param _Vport: Port number
+        :param _Vport: <p>Port number</p>
         :type Vport: int
-        :param _CdbError: Whether the disk write is locked (It depends on whether the instance data in disk exceeds its quota). Valid values: `0` (unlocked), `1` (locked).
+        :param _CdbError: <p>Whether disk write is locked (data write volume of the instance exceeds disk quota). 0 - Unlocked 1 - Locked</p>
         :type CdbError: int
-        :param _UniqVpcId: VPC descriptor, such as "vpc-5v8wn9mg"
+        :param _UniqVpcId: <p>Private network descriptor, for example: "vpc-5v8wn9mg"</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: Subnet descriptor, such as "subnet-1typ0s7d"
+        :param _UniqSubnetId: <p>Subnet descriptor, such as "subnet-1typ0s7d"</p>
         :type UniqSubnetId: str
-        :param _PhysicalId: Physical ID
+        :param _PhysicalId: <p>Physical ID</p>
         :type PhysicalId: str
-        :param _Cpu: Number of cores
+        :param _Cpu: <p>Core count</p>
         :type Cpu: int
-        :param _Qps: Queries per second
+        :param _Qps: <p>Queries per second.</p>
         :type Qps: int
-        :param _ZoneName: AZ name
+        :param _ZoneName: <p>Chinese Name of Availability Zone</p>
         :type ZoneName: str
-        :param _DeviceClass: Physical server model.
+        :param _DeviceClass: <p>Physical machine model</p>
         :type DeviceClass: str
-        :param _DeployGroupId: Placement group ID.
+        :param _DeployGroupId: <p>Placement group ID</p>
         :type DeployGroupId: str
-        :param _ZoneId: AZ ID.
+        :param _ZoneId: <p>Availability zone ID</p>
         :type ZoneId: int
-        :param _InstanceNodes: Number of nodes
+        :param _InstanceNodes: <p>Number of nodes</p>
         :type InstanceNodes: int
-        :param _TagList: Tag list.
+        :param _TagList: <p>Tag list</p>
         :type TagList: list of TagInfoItem
-        :param _EngineType: Engine type.
+        :param _EngineType: <p>Engine type</p>
         :type EngineType: str
-        :param _MaxDelayTime: Maximum delay threshold.
+        :param _MaxDelayTime: <p>Maximum delay threshold</p>
         :type MaxDelayTime: int
-        :param _DiskType: Instance disk type. Valid values are returned only for Cluster Edition and single-node (cloud disk) instances.
-Note:
-1. If "DiskType": "CLOUD_HSSD" is returned, it indicates that the instance disk type is Enhanced SSD.
-2. If "DiskType": "CLOUD_SSD" is returned, it indicates that the instance disk type is Cloud SSD.
-3. If "DiskType": "" is returned and the DeviceType parameter value is UNIVERSAL or EXCLUSIVE, it indicates that the instance uses a local SSD.
+        :param _DiskType: <p>Instance disk type. Only CLOUD disk edition and single-node (CLOUD disk) instances will return a valid value.<br>Description:</p><ol><li>If "DiskType": "CLOUD_HSSD" is returned, it indicates that the instance disk type is enhanced SSD CLOUD disk.</li><li>If "DiskType": "CLOUD_SSD" is returned, it indicates that the instance disk type is SSD CLOUD Block Storage.</li><li>If "DiskType": "" is returned and the DeviceType parameter value is UNIVERSAL or EXCLUSIVE, it means that the instance uses local SSD.</li></ol>
         :type DiskType: str
-        :param _ExpandCpu: Current number of CPU cores for scale-out.
+        :param _ExpandCpu: <p>Current number of CPU cores for scale-out.</p>
         :type ExpandCpu: int
-        :param _ClusterInfo: Cluster Edition instance node information.
+        :param _ClusterInfo: <p>Cloud Disk Edition instance node information</p>
         :type ClusterInfo: list of ClusterInfo
-        :param _AnalysisNodeInfos: Analysis engine node list.
+        :param _AnalysisNodeInfos: <p>Analysis engine node list</p>
         :type AnalysisNodeInfos: list of AnalysisNodeInfo
-        :param _DeviceBandwidth: Device bandwidth, in GB. This parameter is valid when DeviceClass is specified. For example, 25 means the current device bandwidth is 25 GB; 10 means the current device bandwidth is 10 GB.
+        :param _DeviceBandwidth: <p>Device bandwidth, in G. This parameter is valid only when DeviceClass is not empty. For example, 25 means the current device bandwidth is 25G; 10 means the current device bandwidth is 10G.</p>
         :type DeviceBandwidth: int
-        :param _DestroyProtect: Instance termination protection status. on indicates enabled; otherwise, the protection is disabled.
+        :param _DestroyProtect: <p>Instance termination protection status. on indicates enabled; otherwise, the protection is disabled.</p>
         :type DestroyProtect: str
+        :param _CpuModel: <p>TDSQL engine parameters</p>
+        :type CpuModel: str
+        :param _AnalysisUpgradeVersionInfo: <p>Analysis engine instance version upgrade information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnalysisUpgradeVersionInfo: :class:`tencentcloud.cdb.v20170320.models.UpgradeAnalysisInstanceVersionInfo`
         """
         self._WanStatus = None
         self._Zone = None
@@ -21692,10 +23625,12 @@ Note:
         self._AnalysisNodeInfos = None
         self._DeviceBandwidth = None
         self._DestroyProtect = None
+        self._CpuModel = None
+        self._AnalysisUpgradeVersionInfo = None
 
     @property
     def WanStatus(self):
-        r"""Public network access status. Value range: 0 (not enabled), 1 (enabled), 2 (disabled)
+        r"""<p>Public network status. Possible returned values: 0 - External network not enabled; 1 - Public network enabled; 2 - Public network disabled</p>
         :rtype: int
         """
         return self._WanStatus
@@ -21706,7 +23641,7 @@ Note:
 
     @property
     def Zone(self):
-        r"""AZ information
+        r"""<p>AZ information</p>
         :rtype: str
         """
         return self._Zone
@@ -21717,7 +23652,7 @@ Note:
 
     @property
     def InitFlag(self):
-        r"""Initialization flag. Value range: 0 (not initialized), 1 (initialized)
+        r"""<p>Initialization flag. Possible returned values: 0 - uninitialized; 1 - initialized.</p>
         :rtype: int
         """
         return self._InitFlag
@@ -21728,7 +23663,7 @@ Note:
 
     @property
     def RoVipInfo(self):
-        r"""Read-only VIP information. This field is available only for read-only instances with dedicated access enabled.
+        r"""<p>Read-only vip information. This field is available only for read-only instances with separate instance access enabled.</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
         """
         return self._RoVipInfo
@@ -21739,7 +23674,7 @@ Note:
 
     @property
     def Memory(self):
-        r"""Memory capacity in MB
+        r"""<p>Memory capacity, in MB.</p>
         :rtype: int
         """
         return self._Memory
@@ -21750,7 +23685,7 @@ Note:
 
     @property
     def Status(self):
-        r"""Instance status. Valid values: `0` (creating), `1` (running), `4` (isolating), `5` (isolated).
+        r"""<p>Instance status. Valid values: 0: creating; 1: running; 4: isolation operation in progress; 5: isolated.</p>
         :rtype: int
         """
         return self._Status
@@ -21761,7 +23696,7 @@ Note:
 
     @property
     def VpcId(self):
-        r"""VPC ID, such as 51102
+        r"""<p>VPC ID, for example: 51102</p>
         :rtype: int
         """
         return self._VpcId
@@ -21772,7 +23707,7 @@ Note:
 
     @property
     def SlaveInfo(self):
-        r"""Secondary server information.
+        r"""<p>Secondary server information</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
         """
         return self._SlaveInfo
@@ -21783,7 +23718,7 @@ Note:
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -21794,7 +23729,7 @@ Note:
 
     @property
     def Volume(self):
-        r"""Disk capacity in GB
+        r"""<p>Disk capacity, in GB.</p>
         :rtype: int
         """
         return self._Volume
@@ -21805,7 +23740,7 @@ Note:
 
     @property
     def AutoRenew(self):
-        r"""Auto-renewal flag. Value range: 0 (auto-renewal not enabled), 1 (auto-renewal enabled), 2 (auto-renewal disabled)
+        r"""<p>Auto-renewal flag. Possible returned values: 0 - auto-renewal is not enabled; 1 - auto-renewal is enabled; 2 - automatic renewal is disabled.</p>
         :rtype: int
         """
         return self._AutoRenew
@@ -21816,7 +23751,7 @@ Note:
 
     @property
     def ProtectMode(self):
-        r"""Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync)
+        r"""<p>Data replication mode. 0 - async replication; 1 - semi-sync replication; 2 - strong sync replication</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -21827,7 +23762,7 @@ Note:
 
     @property
     def RoGroups(self):
-        r"""Detailed information about the read-only group.
+        r"""<p>Read-only group detailed information</p>
         :rtype: list of RoGroup
         """
         return self._RoGroups
@@ -21838,7 +23773,7 @@ Note:
 
     @property
     def SubnetId(self):
-        r"""Subnet ID, such as 2333
+        r"""<p>Subnet ID, for example: 2333</p>
         :rtype: int
         """
         return self._SubnetId
@@ -21849,7 +23784,7 @@ Note:
 
     @property
     def InstanceType(self):
-        r"""Instance type. Value range: 1 (primary), 2 (disaster recovery), 3 (read-only)
+        r"""<p>Instance type. Possible returned values: 1 - Primary instance; 2 - Disaster recovery instance; 3 - Read-only instance.</p>
         :rtype: int
         """
         return self._InstanceType
@@ -21860,7 +23795,7 @@ Note:
 
     @property
     def ProjectId(self):
-        r"""Project ID
+        r"""<p>Project ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -21871,7 +23806,7 @@ Note:
 
     @property
     def Region(self):
-        r"""Region information
+        r"""<p>Regional information</p>
         :rtype: str
         """
         return self._Region
@@ -21882,7 +23817,7 @@ Note:
 
     @property
     def DeadlineTime(self):
-        r"""Instance expiration time
+        r"""<p>Instance expiration time</p>
         :rtype: str
         """
         return self._DeadlineTime
@@ -21893,7 +23828,7 @@ Note:
 
     @property
     def DeployMode(self):
-        r"""AZ deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ)
+        r"""<p>Availability Zone Deployment method. Valid values: 0 - single availability zone; 1 - multi-availability zone.</p>
         :rtype: int
         """
         return self._DeployMode
@@ -21904,7 +23839,7 @@ Note:
 
     @property
     def TaskStatus(self):
-        r"""Instance task status. 0 - no task; 1 - upgrading; 2 - importing data; 3 - activating secondary; 4 - enabling public network access; 5 - batch operation in progress; 6 - rolling back; 7 - disabling public network access; 8 - changing password; 9 - renaming instance; 10 - restarting; 12 - migrating self-built instance; 13 - dropping table; 14 - creating and syncing disaster recovery instance; 15 - pending upgrade and switch; 16 - upgrade and switch in progress; 17 - upgrade and switch completed
+        r"""<p>Instance task status. 0 - No tasks, 1 - Upgrading, 2 - Data import, 3 - Opening Slave, 4 - Public network access enabling, 5 - Batch operation executing, 6 - Rolling back, 7 - Public network access disabling, 8 - Password modification, 9 - Renaming instance, 10 - Restarting, 12 - Self-built migration, 13 - Database deletion, 14 - Disaster recovery instance creation sync, 15 - Upgrade pending switch, 16 - Upgrade and switch, 17 - Upgrade and switch completed</p>
         :rtype: int
         """
         return self._TaskStatus
@@ -21915,7 +23850,7 @@ Note:
 
     @property
     def MasterInfo(self):
-        r"""Detailed information about the primary instance.
+        r"""<p>Detailed information about the primary instance.</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         """
         return self._MasterInfo
@@ -21926,7 +23861,7 @@ Note:
 
     @property
     def DeviceType(self):
-        r"""Instance type
+        r"""<p>Instance type</p>
         :rtype: str
         """
         return self._DeviceType
@@ -21937,7 +23872,7 @@ Note:
 
     @property
     def EngineVersion(self):
-        r"""Kernel version
+        r"""<p>Kernel version</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -21948,7 +23883,7 @@ Note:
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""<p>Instance name</p>
         :rtype: str
         """
         return self._InstanceName
@@ -21959,7 +23894,7 @@ Note:
 
     @property
     def DrInfo(self):
-        r"""Detailed information about the disaster recovery instance.
+        r"""<p>Disaster recovery instance details</p>
         :rtype: list of DrInfo
         """
         return self._DrInfo
@@ -21970,7 +23905,7 @@ Note:
 
     @property
     def WanDomain(self):
-        r"""Public domain name
+        r"""<p>public network domain name</p>
         :rtype: str
         """
         return self._WanDomain
@@ -21981,7 +23916,7 @@ Note:
 
     @property
     def WanPort(self):
-        r"""Public network port number
+        r"""<p>Public network port number</p>
         :rtype: int
         """
         return self._WanPort
@@ -22003,7 +23938,7 @@ Note:
 
     @property
     def CreateTime(self):
-        r"""Instance creation time
+        r"""<p>Instance creation time</p>
         :rtype: str
         """
         return self._CreateTime
@@ -22014,7 +23949,7 @@ Note:
 
     @property
     def Vip(self):
-        r"""Instance IP
+        r"""<p>Instance IP</p>
         :rtype: str
         """
         return self._Vip
@@ -22025,7 +23960,7 @@ Note:
 
     @property
     def Vport(self):
-        r"""Port number
+        r"""<p>Port number</p>
         :rtype: int
         """
         return self._Vport
@@ -22036,7 +23971,7 @@ Note:
 
     @property
     def CdbError(self):
-        r"""Whether the disk write is locked (It depends on whether the instance data in disk exceeds its quota). Valid values: `0` (unlocked), `1` (locked).
+        r"""<p>Whether disk write is locked (data write volume of the instance exceeds disk quota). 0 - Unlocked 1 - Locked</p>
         :rtype: int
         """
         return self._CdbError
@@ -22047,7 +23982,7 @@ Note:
 
     @property
     def UniqVpcId(self):
-        r"""VPC descriptor, such as "vpc-5v8wn9mg"
+        r"""<p>Private network descriptor, for example: "vpc-5v8wn9mg"</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -22058,7 +23993,7 @@ Note:
 
     @property
     def UniqSubnetId(self):
-        r"""Subnet descriptor, such as "subnet-1typ0s7d"
+        r"""<p>Subnet descriptor, such as "subnet-1typ0s7d"</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -22069,7 +24004,7 @@ Note:
 
     @property
     def PhysicalId(self):
-        r"""Physical ID
+        r"""<p>Physical ID</p>
         :rtype: str
         """
         return self._PhysicalId
@@ -22080,7 +24015,7 @@ Note:
 
     @property
     def Cpu(self):
-        r"""Number of cores
+        r"""<p>Core count</p>
         :rtype: int
         """
         return self._Cpu
@@ -22091,7 +24026,7 @@ Note:
 
     @property
     def Qps(self):
-        r"""Queries per second
+        r"""<p>Queries per second.</p>
         :rtype: int
         """
         return self._Qps
@@ -22102,7 +24037,7 @@ Note:
 
     @property
     def ZoneName(self):
-        r"""AZ name
+        r"""<p>Chinese Name of Availability Zone</p>
         :rtype: str
         """
         return self._ZoneName
@@ -22113,7 +24048,7 @@ Note:
 
     @property
     def DeviceClass(self):
-        r"""Physical server model.
+        r"""<p>Physical machine model</p>
         :rtype: str
         """
         return self._DeviceClass
@@ -22124,7 +24059,7 @@ Note:
 
     @property
     def DeployGroupId(self):
-        r"""Placement group ID.
+        r"""<p>Placement group ID</p>
         :rtype: str
         """
         return self._DeployGroupId
@@ -22135,7 +24070,7 @@ Note:
 
     @property
     def ZoneId(self):
-        r"""AZ ID.
+        r"""<p>Availability zone ID</p>
         :rtype: int
         """
         return self._ZoneId
@@ -22146,7 +24081,7 @@ Note:
 
     @property
     def InstanceNodes(self):
-        r"""Number of nodes
+        r"""<p>Number of nodes</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -22157,7 +24092,7 @@ Note:
 
     @property
     def TagList(self):
-        r"""Tag list.
+        r"""<p>Tag list</p>
         :rtype: list of TagInfoItem
         """
         return self._TagList
@@ -22168,7 +24103,7 @@ Note:
 
     @property
     def EngineType(self):
-        r"""Engine type.
+        r"""<p>Engine type</p>
         :rtype: str
         """
         return self._EngineType
@@ -22179,7 +24114,7 @@ Note:
 
     @property
     def MaxDelayTime(self):
-        r"""Maximum delay threshold.
+        r"""<p>Maximum delay threshold</p>
         :rtype: int
         """
         return self._MaxDelayTime
@@ -22190,11 +24125,7 @@ Note:
 
     @property
     def DiskType(self):
-        r"""Instance disk type. Valid values are returned only for Cluster Edition and single-node (cloud disk) instances.
-Note:
-1. If "DiskType": "CLOUD_HSSD" is returned, it indicates that the instance disk type is Enhanced SSD.
-2. If "DiskType": "CLOUD_SSD" is returned, it indicates that the instance disk type is Cloud SSD.
-3. If "DiskType": "" is returned and the DeviceType parameter value is UNIVERSAL or EXCLUSIVE, it indicates that the instance uses a local SSD.
+        r"""<p>Instance disk type. Only CLOUD disk edition and single-node (CLOUD disk) instances will return a valid value.<br>Description:</p><ol><li>If "DiskType": "CLOUD_HSSD" is returned, it indicates that the instance disk type is enhanced SSD CLOUD disk.</li><li>If "DiskType": "CLOUD_SSD" is returned, it indicates that the instance disk type is SSD CLOUD Block Storage.</li><li>If "DiskType": "" is returned and the DeviceType parameter value is UNIVERSAL or EXCLUSIVE, it means that the instance uses local SSD.</li></ol>
         :rtype: str
         """
         return self._DiskType
@@ -22205,7 +24136,7 @@ Note:
 
     @property
     def ExpandCpu(self):
-        r"""Current number of CPU cores for scale-out.
+        r"""<p>Current number of CPU cores for scale-out.</p>
         :rtype: int
         """
         return self._ExpandCpu
@@ -22216,7 +24147,7 @@ Note:
 
     @property
     def ClusterInfo(self):
-        r"""Cluster Edition instance node information.
+        r"""<p>Cloud Disk Edition instance node information</p>
         :rtype: list of ClusterInfo
         """
         return self._ClusterInfo
@@ -22227,7 +24158,7 @@ Note:
 
     @property
     def AnalysisNodeInfos(self):
-        r"""Analysis engine node list.
+        r"""<p>Analysis engine node list</p>
         :rtype: list of AnalysisNodeInfo
         """
         return self._AnalysisNodeInfos
@@ -22238,7 +24169,7 @@ Note:
 
     @property
     def DeviceBandwidth(self):
-        r"""Device bandwidth, in GB. This parameter is valid when DeviceClass is specified. For example, 25 means the current device bandwidth is 25 GB; 10 means the current device bandwidth is 10 GB.
+        r"""<p>Device bandwidth, in G. This parameter is valid only when DeviceClass is not empty. For example, 25 means the current device bandwidth is 25G; 10 means the current device bandwidth is 10G.</p>
         :rtype: int
         """
         return self._DeviceBandwidth
@@ -22249,7 +24180,7 @@ Note:
 
     @property
     def DestroyProtect(self):
-        r"""Instance termination protection status. on indicates enabled; otherwise, the protection is disabled.
+        r"""<p>Instance termination protection status. on indicates enabled; otherwise, the protection is disabled.</p>
         :rtype: str
         """
         return self._DestroyProtect
@@ -22257,6 +24188,29 @@ Note:
     @DestroyProtect.setter
     def DestroyProtect(self, DestroyProtect):
         self._DestroyProtect = DestroyProtect
+
+    @property
+    def CpuModel(self):
+        r"""<p>TDSQL engine parameters</p>
+        :rtype: str
+        """
+        return self._CpuModel
+
+    @CpuModel.setter
+    def CpuModel(self, CpuModel):
+        self._CpuModel = CpuModel
+
+    @property
+    def AnalysisUpgradeVersionInfo(self):
+        r"""<p>Analysis engine instance version upgrade information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeAnalysisInstanceVersionInfo`
+        """
+        return self._AnalysisUpgradeVersionInfo
+
+    @AnalysisUpgradeVersionInfo.setter
+    def AnalysisUpgradeVersionInfo(self, AnalysisUpgradeVersionInfo):
+        self._AnalysisUpgradeVersionInfo = AnalysisUpgradeVersionInfo
 
 
     def _deserialize(self, params):
@@ -22342,6 +24296,10 @@ Note:
                 self._AnalysisNodeInfos.append(obj)
         self._DeviceBandwidth = params.get("DeviceBandwidth")
         self._DestroyProtect = params.get("DestroyProtect")
+        self._CpuModel = params.get("CpuModel")
+        if params.get("AnalysisUpgradeVersionInfo") is not None:
+            self._AnalysisUpgradeVersionInfo = UpgradeAnalysisInstanceVersionInfo()
+            self._AnalysisUpgradeVersionInfo._deserialize(params.get("AnalysisUpgradeVersionInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22359,9 +24317,9 @@ class InstanceRebootTime(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :type InstanceId: str
-        :param _TimeInSeconds: Estimated restart time
+        :param _TimeInSeconds: Expected restart time, unit: second.
         :type TimeInSeconds: int
         """
         self._InstanceId = None
@@ -22369,7 +24327,7 @@ class InstanceRebootTime(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :rtype: str
         """
         return self._InstanceId
@@ -22380,7 +24338,7 @@ class InstanceRebootTime(AbstractModel):
 
     @property
     def TimeInSeconds(self):
-        r"""Estimated restart time
+        r"""Expected restart time, unit: second.
         :rtype: int
         """
         return self._TimeInSeconds
@@ -22410,7 +24368,7 @@ class InstanceRollbackRangeTime(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: Queries database error code
+        :param _Code: Query database error codes. 0 - Normal, 1600001 - Internal error, 1600003 - Input parameter exception, 1600009 - Instance does not exist, 1624001 - DB access exception.
         :type Code: int
         :param _Message: Queries database error message
         :type Message: str
@@ -22426,7 +24384,7 @@ class InstanceRollbackRangeTime(AbstractModel):
 
     @property
     def Code(self):
-        r"""Queries database error code
+        r"""Query database error codes. 0 - Normal, 1600001 - Internal error, 1600003 - Input parameter exception, 1600009 - Instance does not exist, 1624001 - DB access exception.
         :rtype: int
         """
         return self._Code
@@ -22532,8 +24490,7 @@ class IsolateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task. (This returned field has been disused. You can query the isolation status of an instance through the `DescribeDBInstances` API.)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _AsyncRequestId: Request ID of the async task. Use this ID to query the outcome of the async task. (This returned field is currently abandoned. The quarantined state of instances can be queried through the API to query instances.)
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -22543,14 +24500,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsyncRequestId(self):
-        r"""Async task request ID, which can be used to query the execution result of an async task. (This returned field has been disused. You can query the isolation status of an instance through the `DescribeDBInstances` API.)
-Note: this field may return null, indicating that no valid values can be obtained.
+        warnings.warn("parameter `AsyncRequestId` is deprecated", DeprecationWarning) 
+
+        r"""Request ID of the async task. Use this ID to query the outcome of the async task. (This returned field is currently abandoned. The quarantined state of instances can be queried through the API to query instances.)
         :rtype: str
         """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
     def AsyncRequestId(self, AsyncRequestId):
+        warnings.warn("parameter `AsyncRequestId` is deprecated", DeprecationWarning) 
+
         self._AsyncRequestId = AsyncRequestId
 
     @property
@@ -22571,15 +24531,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class LocalBinlogConfig(AbstractModel):
-    r"""Retention policy of local binlog
+    r"""Local binlog retention configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _SaveHours: Retention period of local binlog. Value range: [72,168].
+        :param _SaveHours: Local binlog retention duration. Valid values: [6,168].
         :type SaveHours: int
-        :param _MaxUsage: Space utilization of local binlog. Value range: [30,50].
+        :param _MaxUsage: Local binlog space utilization. Valid values: [30,50].
         :type MaxUsage: int
         """
         self._SaveHours = None
@@ -22587,7 +24547,7 @@ class LocalBinlogConfig(AbstractModel):
 
     @property
     def SaveHours(self):
-        r"""Retention period of local binlog. Value range: [72,168].
+        r"""Local binlog retention duration. Valid values: [6,168].
         :rtype: int
         """
         return self._SaveHours
@@ -22598,7 +24558,7 @@ class LocalBinlogConfig(AbstractModel):
 
     @property
     def MaxUsage(self):
-        r"""Space utilization of local binlog. Value range: [30,50].
+        r"""Local binlog space utilization. Valid values: [30,50].
         :rtype: int
         """
         return self._MaxUsage
@@ -22622,15 +24582,15 @@ class LocalBinlogConfig(AbstractModel):
 
 
 class LocalBinlogConfigDefault(AbstractModel):
-    r"""Default retention policy of local binlog.
+    r"""Default configuration of local binlog retention policy
 
     """
 
     def __init__(self):
         r"""
-        :param _SaveHours: Retention period of local binlog. Value range: [72,168].
+        :param _SaveHours: Local binlog retention duration. Valid values: [6,168].
         :type SaveHours: int
-        :param _MaxUsage: Space utilization of local binlog. Value range: [30,50].
+        :param _MaxUsage: Local binlog space utilization. Valid values: [30,50].
         :type MaxUsage: int
         """
         self._SaveHours = None
@@ -22638,7 +24598,7 @@ class LocalBinlogConfigDefault(AbstractModel):
 
     @property
     def SaveHours(self):
-        r"""Retention period of local binlog. Value range: [72,168].
+        r"""Local binlog retention duration. Valid values: [6,168].
         :rtype: int
         """
         return self._SaveHours
@@ -22649,7 +24609,7 @@ class LocalBinlogConfigDefault(AbstractModel):
 
     @property
     def MaxUsage(self):
-        r"""Space utilization of local binlog. Value range: [30,50].
+        r"""Local binlog space utilization. Valid values: [30,50].
         :rtype: int
         """
         return self._MaxUsage
@@ -22679,17 +24639,13 @@ class LogRuleTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateId: Template ID. 
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _RuleTemplateId: Template ID.
         :type RuleTemplateId: str
-        :param _RuleTemplateName: Template name.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _RuleTemplateName: Rule template name
         :type RuleTemplateName: str
-        :param _AlarmLevel: Alarm level. Valid values: 1: Low risk; 2: Medium risk; 3: High risk. 
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _AlarmLevel: Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
         :type AlarmLevel: str
-        :param _RuleTemplateStatus: Template change status. Valid values: 0: Unchanged; 1: Changed; 2: Deleted.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _RuleTemplateStatus: Rule template change status. Valid values: 0 - Not changed, 1 - changed, 2 - deleted.
         :type RuleTemplateStatus: int
         """
         self._RuleTemplateId = None
@@ -22699,8 +24655,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def RuleTemplateId(self):
-        r"""Template ID. 
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""Template ID.
         :rtype: str
         """
         return self._RuleTemplateId
@@ -22711,8 +24666,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def RuleTemplateName(self):
-        r"""Template name.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""Rule template name
         :rtype: str
         """
         return self._RuleTemplateName
@@ -22723,8 +24677,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def AlarmLevel(self):
-        r"""Alarm level. Valid values: 1: Low risk; 2: Medium risk; 3: High risk. 
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.
         :rtype: str
         """
         return self._AlarmLevel
@@ -22735,8 +24688,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def RuleTemplateStatus(self):
-        r"""Template change status. Valid values: 0: Unchanged; 1: Changed; 2: Deleted.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""Rule template change status. Valid values: 0 - Not changed, 1 - changed, 2 - deleted.
         :rtype: int
         """
         return self._RuleTemplateStatus
@@ -22768,24 +24720,23 @@ class LogToCLSConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Enabling status of the feature.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _Status: Delivery status on or turn off
         :type Status: str
-        :param _LogSetId: CLS log set ID.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _LogSetId: CLS Logset ID
         :type LogSetId: str
-        :param _LogTopicId: Log topic ID.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        :param _LogTopicId: Log topic ID
         :type LogTopicId: str
+        :param _ClsRegion: Region of the CLS service
+        :type ClsRegion: str
         """
         self._Status = None
         self._LogSetId = None
         self._LogTopicId = None
+        self._ClsRegion = None
 
     @property
     def Status(self):
-        r"""Enabling status of the feature.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""Delivery status on or turn off
         :rtype: str
         """
         return self._Status
@@ -22796,8 +24747,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def LogSetId(self):
-        r"""CLS log set ID.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""CLS Logset ID
         :rtype: str
         """
         return self._LogSetId
@@ -22808,8 +24758,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
 
     @property
     def LogTopicId(self):
-        r"""Log topic ID.
-Note: The return value may be null, indicating that no valid data can be obtained.
+        r"""Log topic ID
         :rtype: str
         """
         return self._LogTopicId
@@ -22818,11 +24767,23 @@ Note: The return value may be null, indicating that no valid data can be obtaine
     def LogTopicId(self, LogTopicId):
         self._LogTopicId = LogTopicId
 
+    @property
+    def ClsRegion(self):
+        r"""Region of the CLS service
+        :rtype: str
+        """
+        return self._ClsRegion
+
+    @ClsRegion.setter
+    def ClsRegion(self, ClsRegion):
+        self._ClsRegion = ClsRegion
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._LogSetId = params.get("LogSetId")
         self._LogTopicId = params.get("LogTopicId")
+        self._ClsRegion = params.get("ClsRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22840,41 +24801,41 @@ class MasterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: Region information
+        :param _Region: <p>Regional information</p>
         :type Region: str
-        :param _RegionId: Region ID
+        :param _RegionId: <p>Region ID</p>
         :type RegionId: int
-        :param _ZoneId: AZ ID
+        :param _ZoneId: <p>Availability zone ID.</p>
         :type ZoneId: int
-        :param _Zone: AZ information
+        :param _Zone: <p>AZ information</p>
         :type Zone: str
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _ResourceId: Long instance ID
+        :param _ResourceId: <p>Instance long ID</p>
         :type ResourceId: str
-        :param _Status: Instance status
+        :param _Status: <p>Instance status</p>
         :type Status: int
-        :param _InstanceName: Instance name
+        :param _InstanceName: <p>Instance name</p>
         :type InstanceName: str
-        :param _InstanceType: Instance type
+        :param _InstanceType: <p>Instance type</p>
         :type InstanceType: int
-        :param _TaskStatus: Task status
+        :param _TaskStatus: <p>Task status.</p>
         :type TaskStatus: int
-        :param _Memory: Memory capacity
+        :param _Memory: <p>Memory capacity</p>
         :type Memory: int
-        :param _Volume: Disk capacity
+        :param _Volume: <p>Disk capacity</p>
         :type Volume: int
-        :param _DeviceType: Instance model
+        :param _DeviceType: <p>Instance model</p>
         :type DeviceType: str
-        :param _Qps: Queries per second
+        :param _Qps: <p>Queries per second.</p>
         :type Qps: int
-        :param _VpcId: VPC ID
+        :param _VpcId: <p>VPC ID</p>
         :type VpcId: int
-        :param _SubnetId: Subnet ID
+        :param _SubnetId: <p>subnet ID</p>
         :type SubnetId: int
-        :param _ExClusterId: Dedicated cluster ID
+        :param _ExClusterId: <p>Dedicated cluster ID</p>
         :type ExClusterId: str
-        :param _ExClusterName: Dedicated cluster name
+        :param _ExClusterName: <p>Dedicated cluster name</p>
         :type ExClusterName: str
         """
         self._Region = None
@@ -22898,7 +24859,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""Region information
+        r"""<p>Regional information</p>
         :rtype: str
         """
         return self._Region
@@ -22909,7 +24870,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""Region ID
+        r"""<p>Region ID</p>
         :rtype: int
         """
         return self._RegionId
@@ -22920,7 +24881,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""AZ ID
+        r"""<p>Availability zone ID.</p>
         :rtype: int
         """
         return self._ZoneId
@@ -22931,7 +24892,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ information
+        r"""<p>AZ information</p>
         :rtype: str
         """
         return self._Zone
@@ -22942,7 +24903,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -22953,7 +24914,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""Long instance ID
+        r"""<p>Instance long ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -22964,7 +24925,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Instance status
+        r"""<p>Instance status</p>
         :rtype: int
         """
         return self._Status
@@ -22975,7 +24936,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""<p>Instance name</p>
         :rtype: str
         """
         return self._InstanceName
@@ -22986,7 +24947,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Instance type
+        r"""<p>Instance type</p>
         :rtype: int
         """
         return self._InstanceType
@@ -22997,7 +24958,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""Task status
+        r"""<p>Task status.</p>
         :rtype: int
         """
         return self._TaskStatus
@@ -23008,7 +24969,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Memory capacity
+        r"""<p>Memory capacity</p>
         :rtype: int
         """
         return self._Memory
@@ -23019,7 +24980,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Volume(self):
-        r"""Disk capacity
+        r"""<p>Disk capacity</p>
         :rtype: int
         """
         return self._Volume
@@ -23030,7 +24991,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""Instance model
+        r"""<p>Instance model</p>
         :rtype: str
         """
         return self._DeviceType
@@ -23041,7 +25002,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Qps(self):
-        r"""Queries per second
+        r"""<p>Queries per second.</p>
         :rtype: int
         """
         return self._Qps
@@ -23052,7 +25013,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""<p>VPC ID</p>
         :rtype: int
         """
         return self._VpcId
@@ -23063,7 +25024,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""Subnet ID
+        r"""<p>subnet ID</p>
         :rtype: int
         """
         return self._SubnetId
@@ -23074,7 +25035,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def ExClusterId(self):
-        r"""Dedicated cluster ID
+        r"""<p>Dedicated cluster ID</p>
         :rtype: str
         """
         return self._ExClusterId
@@ -23085,7 +25046,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def ExClusterName(self):
-        r"""Dedicated cluster name
+        r"""<p>Dedicated cluster name</p>
         :rtype: str
         """
         return self._ExClusterName
@@ -23133,9 +25094,9 @@ class ModifyAccountDescriptionRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param _Accounts: TencentDB account
+        :param _Accounts: TDSQL for MySQL accounts. Obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1) API.
         :type Accounts: list of Account
-        :param _Description: Database account remarks
+        :param _Description: Remark information of the database account. Input limit: 255 characters.
         :type Description: str
         """
         self._InstanceId = None
@@ -23155,7 +25116,7 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""TencentDB account
+        r"""TDSQL for MySQL accounts. Obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1) API.
         :rtype: list of Account
         """
         return self._Accounts
@@ -23166,7 +25127,7 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""Database account remarks
+        r"""Remark information of the database account. Input limit: 255 characters.
         :rtype: str
         """
         return self._Description
@@ -23245,7 +25206,7 @@ class ModifyAccountMaxUserConnectionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Accounts: List of TencentDB accounts
+        :param _Accounts: Cloud Database account. Obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1) API.
         :type Accounts: list of Account
         :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
@@ -23258,7 +25219,7 @@ class ModifyAccountMaxUserConnectionsRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""List of TencentDB accounts
+        r"""Cloud Database account. Obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1) API.
         :rtype: list of Account
         """
         return self._Accounts
@@ -23363,12 +25324,15 @@ class ModifyAccountPasswordRequest(AbstractModel):
         :type InstanceId: str
         :param _NewPassword: New password of the database account. It can only contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and special characters (_+-&=!@#$%^*()).
         :type NewPassword: str
-        :param _Accounts: TencentDB account
+        :param _Accounts: TDSQL for MySQL accounts. Obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1) API.
         :type Accounts: list of Account
+        :param _SkipValidatePassword: Deprecated.
+        :type SkipValidatePassword: bool
         """
         self._InstanceId = None
         self._NewPassword = None
         self._Accounts = None
+        self._SkipValidatePassword = None
 
     @property
     def InstanceId(self):
@@ -23394,7 +25358,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""TencentDB account
+        r"""TDSQL for MySQL accounts. Obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1) API.
         :rtype: list of Account
         """
         return self._Accounts
@@ -23402,6 +25366,21 @@ class ModifyAccountPasswordRequest(AbstractModel):
     @Accounts.setter
     def Accounts(self, Accounts):
         self._Accounts = Accounts
+
+    @property
+    def SkipValidatePassword(self):
+        warnings.warn("parameter `SkipValidatePassword` is deprecated", DeprecationWarning) 
+
+        r"""Deprecated.
+        :rtype: bool
+        """
+        return self._SkipValidatePassword
+
+    @SkipValidatePassword.setter
+    def SkipValidatePassword(self, SkipValidatePassword):
+        warnings.warn("parameter `SkipValidatePassword` is deprecated", DeprecationWarning) 
+
+        self._SkipValidatePassword = SkipValidatePassword
 
 
     def _deserialize(self, params):
@@ -23413,6 +25392,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
                 obj = Account()
                 obj._deserialize(item)
                 self._Accounts.append(obj)
+        self._SkipValidatePassword = params.get("SkipValidatePassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23475,7 +25455,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param _Accounts: Database account, including username and domain name.
+        :param _Accounts: Database account, includes users and domain name. Obtain through the API [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1).
         :type Accounts: list of Account
         :param _GlobalPrivileges: Global permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "PROCESS", "DROP", "REFERENCES", "INDEX", "ALTER", "SHOW DATABASES", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER", "CREATE USER", "RELOAD", "REPLICATION CLIENT", "REPLICATION SLAVE".
 Note: When “ModifyAction” is empty, if `GlobalPrivileges` is not passed in, it indicates the global permission will become ineffective.
@@ -23513,7 +25493,7 @@ Note: When “ModifyAction” is empty, if `ColumnPrivileges` is not passed in, 
 
     @property
     def Accounts(self):
-        r"""Database account, including username and domain name.
+        r"""Database account, includes users and domain name. Obtain through the API [DescribeAccounts](https://www.tencentcloud.com/document/api/236/17499?from_cn_redirect=1).
         :rtype: list of Account
         """
         return self._Accounts
@@ -24071,7 +26051,12 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param _InstanceIds: Instance ID, in the format of cdb-c1nl9rpv. This is identical to the instance ID displayed on the TencentDB console.
+Description: Multiple instance IDs can be entered for modification. The json format is as follows.
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :type InstanceIds: list of str
         :param _AutoRenew: Auto-renewal flag. Value range: 0 (auto-renewal not enabled), 1 (auto-renewal enabled).
         :type AutoRenew: int
@@ -24081,7 +26066,12 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        r"""Instance ID, in the format of cdb-c1nl9rpv. This is identical to the instance ID displayed on the TencentDB console.
+Description: Multiple instance IDs can be entered for modification. The json format is as follows.
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :rtype: list of str
         """
         return self._InstanceIds
@@ -24150,19 +26140,23 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :type InstanceId: str
-        :param _ExpireDays: Backup file retention period in days. Value range: 7-1830.
+        :param _ExpireDays: Retention time of the data backup file, in days.
+1. MySQL two-node, three-node, and cloud disk edition data backup files can be retained for 7-1830 days.
+2. MySQL single-node (cloud disk) data backup files can be retained for 7-30 days.
         :type ExpireDays: int
         :param _StartTime: (This parameter will be disused. The `BackupTimeWindow` parameter is recommended.) Backup time range in the format of 02:00-06:00, with the start time and end time on the hour. Valid values: 00:00-12:00, 02:00-06:00, 06:00-10:00, 10:00-14:00, 14:00-18:00, 18:00-22:00, 22:00-02:00.
         :type StartTime: str
         :param _BackupMethod: Automatic backup mode. Only `physical` (physical cold backup) is supported
         :type BackupMethod: str
-        :param _BinlogExpireDays: Binlog retention period in days. Value range: 7-1830. It can’t be greater than the retention period of backup files.
+        :param _BinlogExpireDays: binlog retention time in days.
+1. MySQL two-node, three-node, and cloud disk log backup files can be retained for 7 to 3650 days.
+2. MySQL single-node (cloud disk) log backup files can be retained for 7-30 days.
         :type BinlogExpireDays: int
         :param _BackupTimeWindow: Backup time window; for example, to set up backup between 10:00 and 14:00 on every Tuesday and Sunday, you should set this parameter as follows: {"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"} (Note: You can set up backup on different days, but the backup time windows need to be the same. If this field is set, the `StartTime` field will be ignored)
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
-        :param _EnableBackupPeriodSave: Switch for periodic archive. Valid values: `off` (disable), `on` (enable). Default value:`off`. When you enable the periodic archive policy for the first time, you need to enter the `BackupPeriodSaveDays`, `BackupPeriodSaveInterval`, `BackupPeriodSaveCount`, and `StartBackupPeriodSaveDate` parameters; otherwise, the policy will not take effect.
+        :param _EnableBackupPeriodSave: Periodic backup retention switch. off - periodic backup retention policy is not enabled, on - periodic backup retention policy is enabled. Default is off.
         :type EnableBackupPeriodSave: str
         :param _EnableBackupPeriodLongTermSave: Switch for long-term backup retention (This field can be ignored, for its feature hasn’t been launched). Valid values: `off` (disable), `on` (enable). Default value: `off`. Once enabled, the parameters (BackupPeriodSaveDays, BackupPeriodSaveInterval, and BackupPeriodSaveCount) will be invalid.
         :type EnableBackupPeriodLongTermSave: str
@@ -24174,19 +26168,19 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BackupPeriodSaveCount: int
         :param _StartBackupPeriodSaveDate: The start time in the format of yyyy-mm-dd HH:MM:SS, which is used to enable archive backup retention policy.
         :type StartBackupPeriodSaveDate: str
-        :param _EnableBackupArchive: Whether to enable the archive backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :param _EnableBackupArchive: Whether the data backup/archive policy is enabled. off - disabled, on - enabled. If not specified, remain unchanged.
         :type EnableBackupArchive: str
         :param _BackupArchiveDays: The period (in days) of how long a data backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.
         :type BackupArchiveDays: int
         :param _BinlogArchiveDays: The period (in days) of how long a log backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.
         :type BinlogArchiveDays: int
-        :param _EnableBinlogArchive: Whether to enable the archive backup of the log. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :param _EnableBinlogArchive: Whether to enable log backup archive strategy. off - off, on - on. If not specified, remain unchanged.
         :type EnableBinlogArchive: str
-        :param _EnableBackupStandby: Whether to enable the standard storage policy for data backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :param _EnableBackupStandby: Whether to enable the standard storage policy for data backup. off - disabled, on - enabled. If not specified, it remains unchanged.
         :type EnableBackupStandby: str
         :param _BackupStandbyDays: The period (in days) of how long a data backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.
         :type BackupStandbyDays: int
-        :param _EnableBinlogStandby: Whether to enable the standard storage policy for log backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :param _EnableBinlogStandby: Whether to enable log backup standard storage policy. off - off, on - on. If not specified, remain unchanged.
         :type EnableBinlogStandby: str
         :param _BinlogStandbyDays: The period (in days) of how long a log backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.
         :type BinlogStandbyDays: int
@@ -24214,7 +26208,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :rtype: str
         """
         return self._InstanceId
@@ -24225,7 +26219,9 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def ExpireDays(self):
-        r"""Backup file retention period in days. Value range: 7-1830.
+        r"""Retention time of the data backup file, in days.
+1. MySQL two-node, three-node, and cloud disk edition data backup files can be retained for 7-1830 days.
+2. MySQL single-node (cloud disk) data backup files can be retained for 7-30 days.
         :rtype: int
         """
         return self._ExpireDays
@@ -24258,7 +26254,9 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BinlogExpireDays(self):
-        r"""Binlog retention period in days. Value range: 7-1830. It can’t be greater than the retention period of backup files.
+        r"""binlog retention time in days.
+1. MySQL two-node, three-node, and cloud disk log backup files can be retained for 7 to 3650 days.
+2. MySQL single-node (cloud disk) log backup files can be retained for 7-30 days.
         :rtype: int
         """
         return self._BinlogExpireDays
@@ -24280,7 +26278,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBackupPeriodSave(self):
-        r"""Switch for periodic archive. Valid values: `off` (disable), `on` (enable). Default value:`off`. When you enable the periodic archive policy for the first time, you need to enter the `BackupPeriodSaveDays`, `BackupPeriodSaveInterval`, `BackupPeriodSaveCount`, and `StartBackupPeriodSaveDate` parameters; otherwise, the policy will not take effect.
+        r"""Periodic backup retention switch. off - periodic backup retention policy is not enabled, on - periodic backup retention policy is enabled. Default is off.
         :rtype: str
         """
         return self._EnableBackupPeriodSave
@@ -24346,7 +26344,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBackupArchive(self):
-        r"""Whether to enable the archive backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        r"""Whether the data backup/archive policy is enabled. off - disabled, on - enabled. If not specified, remain unchanged.
         :rtype: str
         """
         return self._EnableBackupArchive
@@ -24379,7 +26377,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBinlogArchive(self):
-        r"""Whether to enable the archive backup of the log. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        r"""Whether to enable log backup archive strategy. off - off, on - on. If not specified, remain unchanged.
         :rtype: str
         """
         return self._EnableBinlogArchive
@@ -24390,7 +26388,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBackupStandby(self):
-        r"""Whether to enable the standard storage policy for data backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        r"""Whether to enable the standard storage policy for data backup. off - disabled, on - enabled. If not specified, it remains unchanged.
         :rtype: str
         """
         return self._EnableBackupStandby
@@ -24412,7 +26410,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def EnableBinlogStandby(self):
-        r"""Whether to enable the standard storage policy for log backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        r"""Whether to enable log backup standard storage policy. off - off, on - on. If not specified, remain unchanged.
         :rtype: str
         """
         return self._EnableBinlogStandby
@@ -24634,9 +26632,12 @@ class ModifyBackupEncryptionStatusRequest(AbstractModel):
         :type InstanceId: str
         :param _EncryptionStatus: Default encryption status for the new auto-generated physical backup files. Valid values: `on`, `off`.
         :type EncryptionStatus: str
+        :param _BinlogEncryptionStatus: Set the default encryption status of the newly-added automated log backup file for the instance. Available values are on or off.
+        :type BinlogEncryptionStatus: str
         """
         self._InstanceId = None
         self._EncryptionStatus = None
+        self._BinlogEncryptionStatus = None
 
     @property
     def InstanceId(self):
@@ -24660,10 +26661,22 @@ class ModifyBackupEncryptionStatusRequest(AbstractModel):
     def EncryptionStatus(self, EncryptionStatus):
         self._EncryptionStatus = EncryptionStatus
 
+    @property
+    def BinlogEncryptionStatus(self):
+        r"""Set the default encryption status of the newly-added automated log backup file for the instance. Available values are on or off.
+        :rtype: str
+        """
+        return self._BinlogEncryptionStatus
+
+    @BinlogEncryptionStatus.setter
+    def BinlogEncryptionStatus(self, BinlogEncryptionStatus):
+        self._BinlogEncryptionStatus = BinlogEncryptionStatus
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._EncryptionStatus = params.get("EncryptionStatus")
+        self._BinlogEncryptionStatus = params.get("BinlogEncryptionStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24709,9 +26722,9 @@ class ModifyCdbProxyAddressDescRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
-        :param _ProxyAddressId: Address ID of the proxy group
+        :param _ProxyAddressId: Proxy group address ID. You can obtain it through the API [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1).
         :type ProxyAddressId: str
         :param _Desc: Description
         :type Desc: str
@@ -24722,7 +26735,7 @@ class ModifyCdbProxyAddressDescRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -24733,7 +26746,7 @@ class ModifyCdbProxyAddressDescRequest(AbstractModel):
 
     @property
     def ProxyAddressId(self):
-        r"""Address ID of the proxy group
+        r"""Proxy group address ID. You can obtain it through the API [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1).
         :rtype: str
         """
         return self._ProxyAddressId
@@ -24803,19 +26816,19 @@ class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: Proxy group ID. Obtain through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
-        :param _ProxyAddressId: Address ID of the proxy group
+        :param _ProxyAddressId: Proxy group address ID. Obtain through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyAddressId: str
-        :param _UniqVpcId: VPC ID
+        :param _UniqVpcId: VPC ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type UniqVpcId: str
-        :param _UniqSubnetId: VPC subnet ID
+        :param _UniqSubnetId: Private subnet ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type UniqSubnetId: str
-        :param _Vip: IP address
+        :param _Vip: IP. If not specified, the system will assign an available IP under subnet.
         :type Vip: str
-        :param _VPort: Port
+        :param _VPort: Port. Default value 3306, value ranges from 1024 to 65535.
         :type VPort: int
-        :param _ReleaseDuration: Valid Hours of Old IP
+        :param _ReleaseDuration: Old IP valid hours. Measurement unit: hr, default value: 24, value ranges from 0 to 168.
         :type ReleaseDuration: int
         """
         self._ProxyGroupId = None
@@ -24828,7 +26841,7 @@ class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""Proxy group ID. Obtain through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -24839,7 +26852,7 @@ class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
 
     @property
     def ProxyAddressId(self):
-        r"""Address ID of the proxy group
+        r"""Proxy group address ID. Obtain through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyAddressId
@@ -24850,7 +26863,7 @@ class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""VPC ID
+        r"""VPC ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._UniqVpcId
@@ -24861,7 +26874,7 @@ class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""VPC subnet ID
+        r"""Private subnet ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._UniqSubnetId
@@ -24872,7 +26885,7 @@ class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
 
     @property
     def Vip(self):
-        r"""IP address
+        r"""IP. If not specified, the system will assign an available IP under subnet.
         :rtype: str
         """
         return self._Vip
@@ -24883,7 +26896,7 @@ class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
 
     @property
     def VPort(self):
-        r"""Port
+        r"""Port. Default value 3306, value ranges from 1024 to 65535.
         :rtype: int
         """
         return self._VPort
@@ -24894,7 +26907,7 @@ class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
 
     @property
     def ReleaseDuration(self):
-        r"""Valid Hours of Old IP
+        r"""Old IP valid hours. Measurement unit: hr, default value: 24, value ranges from 0 to 168.
         :rtype: int
         """
         return self._ReleaseDuration
@@ -24957,11 +26970,12 @@ class ModifyCdbProxyParamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
-        :param _ConnectionPoolLimit: Connection pool threshold
+        :param _ConnectionPoolLimit: Connection pool threshold. Value ranges from above 0 to less than or equal to 300.
+Note: If you need to use the database proxy connection pool capability, the kernel minor version of the MySQL 8.0 primary instance must be equal to or greater than MySQL 8.0 20230630.
         :type ConnectionPoolLimit: int
         """
         self._InstanceId = None
@@ -24970,7 +26984,7 @@ class ModifyCdbProxyParamRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -24981,7 +26995,7 @@ class ModifyCdbProxyParamRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -24992,7 +27006,8 @@ class ModifyCdbProxyParamRequest(AbstractModel):
 
     @property
     def ConnectionPoolLimit(self):
-        r"""Connection pool threshold
+        r"""Connection pool threshold. Value ranges from above 0 to less than or equal to 300.
+Note: If you need to use the database proxy connection pool capability, the kernel minor version of the MySQL 8.0 primary instance must be equal to or greater than MySQL 8.0 20230630.
         :rtype: int
         """
         return self._ConnectionPoolLimit
@@ -25051,24 +27066,28 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _LogType: Log type. Valid values: error and slowLog.
+        :param _LogType: Log type. error: error log. slowlog: slow log.
         :type LogType: str
-        :param _Status: Enabling status. Valid values: ON and OFF.
+        :param _Status: Delivery status. ON: Enabled, OFF: Disabled.
         :type Status: str
-        :param _CreateLogset: Indicates whether a log set needs to be created.
+        :param _CreateLogset: Whether required to create logset. Default to false.
         :type CreateLogset: bool
-        :param _Logset: Log set name if the log set is to be created or ID of the selected existing log set.
+        :param _Logset: Logset name when creating a logset; logset ID when selecting an existing log set. Empty by default.
+Description: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.
         :type Logset: str
-        :param _CreateLogTopic: Indicates whether a log topic needs to be created.
+        :param _CreateLogTopic: Whether required to create log topic. Default to false.
         :type CreateLogTopic: bool
-        :param _LogTopic: Log topic name if the topic is to be created or ID of the selected existing topic.
+        :param _LogTopic: Log topic name when creating a log topic; log topic ID when selecting an existing log topic. Empty by default.
+Description: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.
         :type LogTopic: str
-        :param _Period: Log topic validity period, which is 30 days by default if not specified.
+        :param _Period: Log topic valid period. Default value: 30 days if left empty. Maximum value: 3600.
         :type Period: int
-        :param _CreateIndex: Indicates whether to create an index when creating the log topic.
+        :param _CreateIndex: Whether to create an index when creating a log topic. Default to false.
         :type CreateIndex: bool
+        :param _ClsRegion: The region of CLS. If left empty, it defaults to the parameter value of Region.
+        :type ClsRegion: str
         """
         self._InstanceId = None
         self._LogType = None
@@ -25079,10 +27098,11 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
         self._LogTopic = None
         self._Period = None
         self._CreateIndex = None
+        self._ClsRegion = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -25093,7 +27113,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""Log type. Valid values: error and slowLog.
+        r"""Log type. error: error log. slowlog: slow log.
         :rtype: str
         """
         return self._LogType
@@ -25104,7 +27124,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""Enabling status. Valid values: ON and OFF.
+        r"""Delivery status. ON: Enabled, OFF: Disabled.
         :rtype: str
         """
         return self._Status
@@ -25115,7 +27135,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def CreateLogset(self):
-        r"""Indicates whether a log set needs to be created.
+        r"""Whether required to create logset. Default to false.
         :rtype: bool
         """
         return self._CreateLogset
@@ -25126,7 +27146,8 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def Logset(self):
-        r"""Log set name if the log set is to be created or ID of the selected existing log set.
+        r"""Logset name when creating a logset; logset ID when selecting an existing log set. Empty by default.
+Description: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.
         :rtype: str
         """
         return self._Logset
@@ -25137,7 +27158,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def CreateLogTopic(self):
-        r"""Indicates whether a log topic needs to be created.
+        r"""Whether required to create log topic. Default to false.
         :rtype: bool
         """
         return self._CreateLogTopic
@@ -25148,7 +27169,8 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def LogTopic(self):
-        r"""Log topic name if the topic is to be created or ID of the selected existing topic.
+        r"""Log topic name when creating a log topic; log topic ID when selecting an existing log topic. Empty by default.
+Description: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.
         :rtype: str
         """
         return self._LogTopic
@@ -25159,7 +27181,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""Log topic validity period, which is 30 days by default if not specified.
+        r"""Log topic valid period. Default value: 30 days if left empty. Maximum value: 3600.
         :rtype: int
         """
         return self._Period
@@ -25170,7 +27192,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def CreateIndex(self):
-        r"""Indicates whether to create an index when creating the log topic.
+        r"""Whether to create an index when creating a log topic. Default to false.
         :rtype: bool
         """
         return self._CreateIndex
@@ -25178,6 +27200,17 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
     @CreateIndex.setter
     def CreateIndex(self, CreateIndex):
         self._CreateIndex = CreateIndex
+
+    @property
+    def ClsRegion(self):
+        r"""The region of CLS. If left empty, it defaults to the parameter value of Region.
+        :rtype: str
+        """
+        return self._ClsRegion
+
+    @ClsRegion.setter
+    def ClsRegion(self, ClsRegion):
+        self._ClsRegion = ClsRegion
 
 
     def _deserialize(self, params):
@@ -25190,6 +27223,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
         self._LogTopic = params.get("LogTopic")
         self._Period = params.get("Period")
         self._CreateIndex = params.get("CreateIndex")
+        self._ClsRegion = params.get("ClsRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25228,6 +27262,115 @@ class ModifyDBInstanceLogToCLSResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceModesRequest(AbstractModel):
+    r"""ModifyDBInstanceModes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.</p>
+        :type InstanceId: str
+        :param _Mode: <p>The mode of cloud databases currently only supports input "protectMode" to modify the Primary-standby sync mode.</p>
+        :type Mode: str
+        :param _ProtectMode: <p>Data synchronization mode, available values: 0 - async replication, 1 - semi-sync replication, 2 - strong sync replication.</p>
+        :type ProtectMode: int
+        """
+        self._InstanceId = None
+        self._Mode = None
+        self._ProtectMode = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Mode(self):
+        r"""<p>The mode of cloud databases currently only supports input "protectMode" to modify the Primary-standby sync mode.</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def ProtectMode(self):
+        r"""<p>Data synchronization mode, available values: 0 - async replication, 1 - semi-sync replication, 2 - strong sync replication.</p>
+        :rtype: int
+        """
+        return self._ProtectMode
+
+    @ProtectMode.setter
+    def ProtectMode(self, ProtectMode):
+        self._ProtectMode = ProtectMode
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Mode = params.get("Mode")
+        self._ProtectMode = params.get("ProtectMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceModesResponse(AbstractModel):
+    r"""ModifyDBInstanceModes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: <p>Request ID of the asynchronous task. Use this ID to query the outcome of the async task.</p>
+        :type AsyncRequestId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        r"""<p>Request ID of the asynchronous task. Use this ID to query the outcome of the async task.</p>
+        :rtype: str
+        """
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     r"""ModifyDBInstanceName request structure.
 
@@ -25237,7 +27380,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
         :type InstanceId: str
-        :param _InstanceName: The modified instance name.
+        :param _InstanceName: Modified instance name, which can only contain digits, English uppercase and lowercase letters, Chinese, and special characters -_./()[]（）+=:：@. Its length cannot exceed 60.
         :type InstanceName: str
         """
         self._InstanceId = None
@@ -25256,7 +27399,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""The modified instance name.
+        r"""Modified instance name, which can only contain digits, English uppercase and lowercase letters, Chinese, and special characters -_./()[]（）+=:：@. Its length cannot exceed 60.
         :rtype: str
         """
         return self._InstanceName
@@ -25314,9 +27457,15 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Array of instance IDs in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        :param _InstanceIds: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the query instance list API (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1). The value is the InstanceId field in the output parameter.
+Description: Multiple instance IDs can be entered for modification. The json format is as follows.
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :type InstanceIds: list of str
-        :param _NewProjectId: Project ID.
+        :param _NewProjectId: ID of the project to which instance belongs can be queried on the Projects page in the account center.
+Description: This item is required.
         :type NewProjectId: int
         """
         self._InstanceIds = None
@@ -25324,7 +27473,12 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""Array of instance IDs in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the query instance list API (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1). The value is the InstanceId field in the output parameter.
+Description: Multiple instance IDs can be entered for modification. The json format is as follows.
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :rtype: list of str
         """
         return self._InstanceIds
@@ -25335,7 +27489,8 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
 
     @property
     def NewProjectId(self):
-        r"""Project ID.
+        r"""ID of the project to which instance belongs can be queried on the Projects page in the account center.
+Description: This item is required.
         :rtype: int
         """
         return self._NewProjectId
@@ -25395,14 +27550,18 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param _SecurityGroupIds: List of IDs of security groups to be modified, which is an array of one or more security group IDs.
+        :param _SecurityGroupIds: List of security group IDs to modify, an array of security group IDs. It can be obtained through the API [DescribeDBSecurityGroups](https://www.tencentcloud.com/document/product/236/15854?from_cn_redirect=1). The input security group ID array has no length limit.
+**Note**: This input parameter performs a full replacement on all existing collections but not an incremental update. To modify it, import the expected full collections.
         :type SecurityGroupIds: list of str
-        :param _ForReadonlyInstance: This parameter takes effect only when the ID of read-only replica is passed in. If this parameter is set to `False` or left empty, the security groups bound with the RO group of the read-only replicas will be modified. If this parameter is set to `True`, the security groups bound with the read-only replica itself will be modified.
+        :param _ForReadonlyInstance: When importing a read-only instance ID, the default operation is performed on the corresponding security group of the read-only group. If necessary to operate the security group of the read-only instance ID, set this input parameter to True. Default False.
         :type ForReadonlyInstance: bool
+        :param _OpResourceId: When updating the read-only group of a cloud disk edition instance, specify the instance ID in InstanceId and this parameter to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :type OpResourceId: str
         """
         self._InstanceId = None
         self._SecurityGroupIds = None
         self._ForReadonlyInstance = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -25417,7 +27576,8 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""List of IDs of security groups to be modified, which is an array of one or more security group IDs.
+        r"""List of security group IDs to modify, an array of security group IDs. It can be obtained through the API [DescribeDBSecurityGroups](https://www.tencentcloud.com/document/product/236/15854?from_cn_redirect=1). The input security group ID array has no length limit.
+**Note**: This input parameter performs a full replacement on all existing collections but not an incremental update. To modify it, import the expected full collections.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -25428,7 +27588,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def ForReadonlyInstance(self):
-        r"""This parameter takes effect only when the ID of read-only replica is passed in. If this parameter is set to `False` or left empty, the security groups bound with the RO group of the read-only replicas will be modified. If this parameter is set to `True`, the security groups bound with the read-only replica itself will be modified.
+        r"""When importing a read-only instance ID, the default operation is performed on the corresponding security group of the read-only group. If necessary to operate the security group of the read-only instance ID, set this input parameter to True. Default False.
         :rtype: bool
         """
         return self._ForReadonlyInstance
@@ -25437,11 +27597,23 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     def ForReadonlyInstance(self, ForReadonlyInstance):
         self._ForReadonlyInstance = ForReadonlyInstance
 
+    @property
+    def OpResourceId(self):
+        r"""When updating the read-only group of a cloud disk edition instance, specify the instance ID in InstanceId and this parameter to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :rtype: str
+        """
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._ForReadonlyInstance = params.get("ForReadonlyInstance")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25489,9 +27661,9 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv, cdbro-c2nl9rpv, or cdbrg-c3nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872) API to query the ID, which is the value of the `InstanceId` output parameter.
         :type InstanceId: str
-        :param _DstIp: Target IP. Either this parameter or `DstPort` must be passed in.
+        :param _DstIp: Target IP address.
         :type DstIp: str
-        :param _DstPort: Target port number. Value range: 1024-65535. Either this parameter or `DstIp` must be passed in.
+        :param _DstPort: Destination port. Support scope: [1024-65535].
         :type DstPort: int
         :param _UniqVpcId: Unified VPC ID
         :type UniqVpcId: str
@@ -25499,6 +27671,8 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         :type UniqSubnetId: str
         :param _ReleaseDuration: Repossession duration in hours for old IP in the original network when changing from classic network to VPC or changing the VPC subnet. Value range: 0–168. Default value: `24`.
         :type ReleaseDuration: int
+        :param _OpResourceId: When updating the read-only group of a cluster edition instance, specify the instance id in InstanceId and this parameter is required to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :type OpResourceId: str
         """
         self._InstanceId = None
         self._DstIp = None
@@ -25506,6 +27680,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         self._UniqVpcId = None
         self._UniqSubnetId = None
         self._ReleaseDuration = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -25520,7 +27695,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
 
     @property
     def DstIp(self):
-        r"""Target IP. Either this parameter or `DstPort` must be passed in.
+        r"""Target IP address.
         :rtype: str
         """
         return self._DstIp
@@ -25531,7 +27706,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
 
     @property
     def DstPort(self):
-        r"""Target port number. Value range: 1024-65535. Either this parameter or `DstIp` must be passed in.
+        r"""Destination port. Support scope: [1024-65535].
         :rtype: int
         """
         return self._DstPort
@@ -25573,6 +27748,17 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
     def ReleaseDuration(self, ReleaseDuration):
         self._ReleaseDuration = ReleaseDuration
 
+    @property
+    def OpResourceId(self):
+        r"""When updating the read-only group of a cluster edition instance, specify the instance id in InstanceId and this parameter is required to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :rtype: str
+        """
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -25581,6 +27767,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
         self._UniqVpcId = params.get("UniqVpcId")
         self._UniqSubnetId = params.get("UniqSubnetId")
         self._ReleaseDuration = params.get("ReleaseDuration")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25598,8 +27785,7 @@ class ModifyDBInstanceVipVportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID. This parameter is deprecated.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AsyncRequestId: Asynchronous Task ID. (This returned field is currently abandoned)
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -25609,14 +27795,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID. This parameter is deprecated.
-Note: This field may return null, indicating that no valid values can be obtained.
+        warnings.warn("parameter `AsyncRequestId` is deprecated", DeprecationWarning) 
+
+        r"""Asynchronous Task ID. (This returned field is currently abandoned)
         :rtype: str
         """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
     def AsyncRequestId(self, AsyncRequestId):
+        warnings.warn("parameter `AsyncRequestId` is deprecated", DeprecationWarning) 
+
         self._AsyncRequestId = AsyncRequestId
 
     @property
@@ -25643,11 +27832,11 @@ class ModifyInstanceParamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: List of short instance IDs.
+        :param _InstanceIds: Instance ID list, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceIds: list of str
         :param _ParamList: List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value).
         :type ParamList: list of Parameter
-        :param _TemplateId: Template ID. At least one of `ParamList` and `TemplateId` must be passed in.
+        :param _TemplateId: Template ID. At least one of ParamList and TemplateId must be provided. It can be obtained through the API [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1).
         :type TemplateId: int
         :param _WaitSwitch: When to perform the parameter adjustment task. Default value: 0. Valid values: 0 - execute immediately, 1 - execute during window. When its value is 1, only one instance ID can be passed in (i.e., only one `InstanceIds` can be passed in).
         :type WaitSwitch: int
@@ -25665,7 +27854,7 @@ class ModifyInstanceParamRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""List of short instance IDs.
+        r"""Instance ID list, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -25687,7 +27876,7 @@ class ModifyInstanceParamRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""Template ID. At least one of `ParamList` and `TemplateId` must be passed in.
+        r"""Template ID. At least one of ParamList and TemplateId must be provided. It can be obtained through the API [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1).
         :rtype: int
         """
         return self._TemplateId
@@ -25802,9 +27991,23 @@ class ModifyInstancePasswordComplexityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Instance ID list
+        :param _InstanceIds: Instance ID of the instance for which the password complexity needs to be modified. The [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API can be called to obtain it.
+Description: Support multiple instance IDs for modification.
         :type InstanceIds: list of str
-        :param _ParamList: List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value). Valid values for `Name` of version 8.0: `validate_password.policy`, `validate_password.lengt`, `validate_password.mixed_case_coun`, `validate_password.number_coun`, `validate_password.special_char_count`. Valid values for `Name` of version 5.6 and 5.7: `validate_password_polic`, `validate_password_lengt` `validate_password_mixed_case_coun`, `validate_password_number_coun`, `validate_password_special_char_coun`.
+        :param _ParamList: Options to modify password complexity. Each option is written in metric combinations. A group includes Name and CurrentValue. Among them, Name refers to the parameter name of the corresponding option, and CurrentValue represents the parameter value. For example: [{"Name": "validate_password.length", "CurrentValue": "10"}] means changing the minimum number of characters in a password to 10.
+Description: The options for modifying password complexity vary by database version of instances as follows.
+1. MySQL 8.0:
+The option validate_password.policy means the switch for password complexity. A value of LOW means disabling; a value of MEDIUM means enabling.
+The option validate_password.length indicates the minimum number of characters for the total code length.
+The option validate_password.mixed_case_count indicates the minimum number of lowercase and uppercase letters.
+Option validate_password.number_count indicates the minimum number of digits.
+The option validate_password.special_char_count indicates the minimum number of special characters.
+2. MySQL 5.6,MySQL 5.7:
+The option validate_password_policy means the password complexity switch. A value of LOW means disabling; a value of MEDIUM means enabling.
+The option validate_password_length indicates the minimum number of characters for the total code length.
+The option validate_password_mixed_case_count means the minimum number of uppercase and lowercase letters.
+Option validate_password_number_count means the minimum number of digits.
+Option validate_password_special_char_count indicates the minimum number of special characters.
         :type ParamList: list of Parameter
         """
         self._InstanceIds = None
@@ -25812,7 +28015,8 @@ class ModifyInstancePasswordComplexityRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""Instance ID list
+        r"""Instance ID of the instance for which the password complexity needs to be modified. The [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API can be called to obtain it.
+Description: Support multiple instance IDs for modification.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -25823,7 +28027,20 @@ class ModifyInstancePasswordComplexityRequest(AbstractModel):
 
     @property
     def ParamList(self):
-        r"""List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value). Valid values for `Name` of version 8.0: `validate_password.policy`, `validate_password.lengt`, `validate_password.mixed_case_coun`, `validate_password.number_coun`, `validate_password.special_char_count`. Valid values for `Name` of version 5.6 and 5.7: `validate_password_polic`, `validate_password_lengt` `validate_password_mixed_case_coun`, `validate_password_number_coun`, `validate_password_special_char_coun`.
+        r"""Options to modify password complexity. Each option is written in metric combinations. A group includes Name and CurrentValue. Among them, Name refers to the parameter name of the corresponding option, and CurrentValue represents the parameter value. For example: [{"Name": "validate_password.length", "CurrentValue": "10"}] means changing the minimum number of characters in a password to 10.
+Description: The options for modifying password complexity vary by database version of instances as follows.
+1. MySQL 8.0:
+The option validate_password.policy means the switch for password complexity. A value of LOW means disabling; a value of MEDIUM means enabling.
+The option validate_password.length indicates the minimum number of characters for the total code length.
+The option validate_password.mixed_case_count indicates the minimum number of lowercase and uppercase letters.
+Option validate_password.number_count indicates the minimum number of digits.
+The option validate_password.special_char_count indicates the minimum number of special characters.
+2. MySQL 5.6,MySQL 5.7:
+The option validate_password_policy means the password complexity switch. A value of LOW means disabling; a value of MEDIUM means enabling.
+The option validate_password_length indicates the minimum number of characters for the total code length.
+The option validate_password_mixed_case_count means the minimum number of uppercase and lowercase letters.
+Option validate_password_number_count means the minimum number of digits.
+Option validate_password_special_char_count indicates the minimum number of special characters.
         :rtype: list of Parameter
         """
         return self._ParamList
@@ -25901,11 +28118,11 @@ class ModifyInstanceTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _ReplaceTags: Tag to be added or modified.
+        :param _ReplaceTags: Tags to add or modify. ReplaceTags or DeleteTags is mandatory to fill in one.
         :type ReplaceTags: list of TagInfo
-        :param _DeleteTags: Tag to be deleted.
+        :param _DeleteTags: Tag to delete. ReplaceTags or DeleteTags is mandatory to fill in one.
         :type DeleteTags: list of TagInfo
         """
         self._InstanceId = None
@@ -25914,7 +28131,7 @@ class ModifyInstanceTagRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -25925,7 +28142,7 @@ class ModifyInstanceTagRequest(AbstractModel):
 
     @property
     def ReplaceTags(self):
-        r"""Tag to be added or modified.
+        r"""Tags to add or modify. ReplaceTags or DeleteTags is mandatory to fill in one.
         :rtype: list of TagInfo
         """
         return self._ReplaceTags
@@ -25936,7 +28153,7 @@ class ModifyInstanceTagRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
-        r"""Tag to be deleted.
+        r"""Tag to delete. ReplaceTags or DeleteTags is mandatory to fill in one.
         :rtype: list of TagInfo
         """
         return self._DeleteTags
@@ -26005,11 +28222,15 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :type InstanceId: str
-        :param _SaveHours: Retention period of local binlog. Valid range: 72-168 hours. When there is disaster recovery instance, the valid range will be 120-168 hours.
+        :param _SaveHours: Local binlog retention duration. Values for different instances are as follows:
+1. The local binlog retention duration (hr) for cloud disk edition instances, dual-node instances, and three-node instances defaults to 120, with a range of 6 - 168.
+2. The retention duration of local binlog for disaster recovery instance defaults to 120 hr, with a range of 120 - 168.
+3. The retention duration (hr) of local binlog for a single-node cloud disk instance defaults to 120, with a range of 0 - 168.
+4. If a dual-node instance or three-node instance has no disaster recovery instance, the retention duration (hr) of local binlog for the primary instance ranges from 6 to 168. If a dual-node instance or three-node instance has a disaster recovery instance, or you want to add a disaster recovery instance to a dual-node instance or three-node instance, to avoid synchronization exception, the retention duration (hr) of local binlog for the primary instance cannot be set to less than 120 hr, ranging from 120 to 168.
         :type SaveHours: int
-        :param _MaxUsage: Space utilization of local binlog. Value range: [30,50].
+        :param _MaxUsage: Local binlog space utilization. Valid values: [30,50].
         :type MaxUsage: int
         """
         self._InstanceId = None
@@ -26018,7 +28239,7 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :rtype: str
         """
         return self._InstanceId
@@ -26029,7 +28250,11 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
 
     @property
     def SaveHours(self):
-        r"""Retention period of local binlog. Valid range: 72-168 hours. When there is disaster recovery instance, the valid range will be 120-168 hours.
+        r"""Local binlog retention duration. Values for different instances are as follows:
+1. The local binlog retention duration (hr) for cloud disk edition instances, dual-node instances, and three-node instances defaults to 120, with a range of 6 - 168.
+2. The retention duration of local binlog for disaster recovery instance defaults to 120 hr, with a range of 120 - 168.
+3. The retention duration (hr) of local binlog for a single-node cloud disk instance defaults to 120, with a range of 0 - 168.
+4. If a dual-node instance or three-node instance has no disaster recovery instance, the retention duration (hr) of local binlog for the primary instance ranges from 6 to 168. If a dual-node instance or three-node instance has a disaster recovery instance, or you want to add a disaster recovery instance to a dual-node instance or three-node instance, to avoid synchronization exception, the retention duration (hr) of local binlog for the primary instance cannot be set to less than 120 hr, ranging from 120 to 168.
         :rtype: int
         """
         return self._SaveHours
@@ -26040,7 +28265,7 @@ class ModifyLocalBinlogConfigRequest(AbstractModel):
 
     @property
     def MaxUsage(self):
-        r"""Space utilization of local binlog. Value range: [30,50].
+        r"""Local binlog space utilization. Valid values: [30,50].
         :rtype: int
         """
         return self._MaxUsage
@@ -26193,9 +28418,9 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: Template ID.
+        :param _TemplateId: Template ID, which can be obtained through the [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1) API.
         :type TemplateId: int
-        :param _Name: Template name (up to 64 characters)
+        :param _Name: Template name, supports numbers, English uppercase and lowercase letters, Chinese, and special characters _-./()[]+=:@, and the length cannot exceed 60.
         :type Name: str
         :param _Description: Template description (up to 255 characters)
         :type Description: str
@@ -26209,7 +28434,7 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""Template ID.
+        r"""Template ID, which can be obtained through the [DescribeParamTemplates](https://www.tencentcloud.com/document/api/236/32659?from_cn_redirect=1) API.
         :rtype: int
         """
         return self._TemplateId
@@ -26220,7 +28445,7 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Template name (up to 64 characters)
+        r"""Template name, supports numbers, English uppercase and lowercase letters, Chinese, and special characters _-./()[]+=:@, and the length cannot exceed 60.
         :rtype: str
         """
         return self._Name
@@ -26274,6 +28499,85 @@ class ModifyParamTemplateRequest(AbstractModel):
 
 class ModifyParamTemplateResponse(AbstractModel):
     r"""ModifyParamTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProtectModeRequest(AbstractModel):
+    r"""ModifyProtectMode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProtectMode: Data replication method, defaults to 0. Supported values include: 0 - asynchronous replication, 1 - semi-sync replication, 2 - strong sync replication.
+        :type ProtectMode: int
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self._ProtectMode = None
+        self._InstanceId = None
+
+    @property
+    def ProtectMode(self):
+        r"""Data replication method, defaults to 0. Supported values include: 0 - asynchronous replication, 1 - semi-sync replication, 2 - strong sync replication.
+        :rtype: int
+        """
+        return self._ProtectMode
+
+    @ProtectMode.setter
+    def ProtectMode(self, ProtectMode):
+        self._ProtectMode = ProtectMode
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ProtectMode = params.get("ProtectMode")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProtectModeResponse(AbstractModel):
+    r"""ModifyProtectMode response structure.
 
     """
 
@@ -26431,11 +28735,11 @@ class ModifyRoGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoGroupId: RO group ID.
+        :param _RoGroupId: ID of the RO group, which can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
         :type RoGroupId: str
         :param _RoGroupInfo: RO group details.
         :type RoGroupInfo: :class:`tencentcloud.cdb.v20170320.models.RoGroupAttr`
-        :param _RoWeightValues: Weights of instances in RO group. If the weighting mode of an RO group is changed to custom mode, this parameter must be set, and a weight value needs to be set for each RO instance.
+        :param _RoWeightValues: Weight of instances in the RO group. If modification is needed to set the weight mode of the RO group to user-defined mode (custom), this parameter must be set, and the weight value of each read-only instance needs to be set. The RO instance ID can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
         :type RoWeightValues: list of RoWeightValue
         :param _IsBalanceRoLoad: Whether to rebalance the loads of read-only replicas in the RO group. Valid values: `1` (yes), `0` (no). Default value: `0`. If this parameter is set to `1`, connections to the read-only replicas in the RO group will be interrupted transiently. Please ensure that your application has a reconnection mechanism.
         :type IsBalanceRoLoad: int
@@ -26450,7 +28754,7 @@ class ModifyRoGroupInfoRequest(AbstractModel):
 
     @property
     def RoGroupId(self):
-        r"""RO group ID.
+        r"""ID of the RO group, which can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._RoGroupId
@@ -26472,7 +28776,7 @@ class ModifyRoGroupInfoRequest(AbstractModel):
 
     @property
     def RoWeightValues(self):
-        r"""Weights of instances in RO group. If the weighting mode of an RO group is changed to custom mode, this parameter must be set, and a weight value needs to be set for each RO instance.
+        r"""Weight of instances in the RO group. If modification is needed to set the weight mode of the RO group to user-defined mode (custom), this parameter must be set, and the weight value of each read-only instance needs to be set. The RO instance ID can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
         :rtype: list of RoWeightValue
         """
         return self._RoWeightValues
@@ -26494,6 +28798,8 @@ class ModifyRoGroupInfoRequest(AbstractModel):
 
     @property
     def ReplicationDelayTime(self):
+        warnings.warn("parameter `ReplicationDelayTime` is deprecated", DeprecationWarning) 
+
         r"""This field has been deprecated.
         :rtype: int
         """
@@ -26501,6 +28807,8 @@ class ModifyRoGroupInfoRequest(AbstractModel):
 
     @ReplicationDelayTime.setter
     def ReplicationDelayTime(self, ReplicationDelayTime):
+        warnings.warn("parameter `ReplicationDelayTime` is deprecated", DeprecationWarning) 
+
         self._ReplicationDelayTime = ReplicationDelayTime
 
 
@@ -26534,8 +28842,7 @@ class ModifyRoGroupInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _AsyncRequestId: Asynchronous Task ID.
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -26545,8 +28852,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Asynchronous Task ID.
         :rtype: str
         """
         return self._AsyncRequestId
@@ -26572,6 +28878,100 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRoGroupVipVportRequest(AbstractModel):
+    r"""ModifyRoGroupVipVport request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UGroupId: ID of the RO group.
+        :type UGroupId: str
+        :param _DstIp: Target IP address.
+        :type DstIp: str
+        :param _DstPort: Target Port.
+        :type DstPort: int
+        """
+        self._UGroupId = None
+        self._DstIp = None
+        self._DstPort = None
+
+    @property
+    def UGroupId(self):
+        r"""ID of the RO group.
+        :rtype: str
+        """
+        return self._UGroupId
+
+    @UGroupId.setter
+    def UGroupId(self, UGroupId):
+        self._UGroupId = UGroupId
+
+    @property
+    def DstIp(self):
+        r"""Target IP address.
+        :rtype: str
+        """
+        return self._DstIp
+
+    @DstIp.setter
+    def DstIp(self, DstIp):
+        self._DstIp = DstIp
+
+    @property
+    def DstPort(self):
+        r"""Target Port.
+        :rtype: int
+        """
+        return self._DstPort
+
+    @DstPort.setter
+    def DstPort(self, DstPort):
+        self._DstPort = DstPort
+
+
+    def _deserialize(self, params):
+        self._UGroupId = params.get("UGroupId")
+        self._DstIp = params.get("DstIp")
+        self._DstPort = params.get("DstPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoGroupVipVportResponse(AbstractModel):
+    r"""ModifyRoGroupVipVport response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyTimeWindowRequest(AbstractModel):
     r"""ModifyTimeWindow request structure.
 
@@ -26579,13 +28979,23 @@ class ModifyTimeWindowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _TimeRanges: Time period available for maintenance after modification in the format of 10:00-12:00. Each period lasts from half an hour to three hours, with the start time and end time aligned by half-hour. Up to two time periods can be set. Start and end time range: [00:00, 24:00].
+        :param _TimeRanges: The modified maintenance time slot. Among them, each time period is in the format of 10:00-12:00. The start and end time is aligned by half hour. The shortest is half hour and the longest is three hours. Up to two time periods can be set. The start and end time ranges from [00:00, 24:00].
+Description: The following is an example of setting two time periods in json.
+[
+    "01:00-01:30",
+    "02:00-02:30"
+  ]
         :type TimeRanges: list of str
-        :param _Weekdays: Specifies for which day to modify the time period. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. If it is not specified or is left blank, the time period will be modified for every day by default.
+        :param _Weekdays: Specify which day to modify the maintenance time slot. Possible values are: monday, tuesday, wednesday, thursday, friday, saturday, sunday. If not specified or empty, modify all seven days of the week by default.
+Description: The json example for modifying more than one day is as follows.
+[
+    "monday",
+    "tuesday"
+  ]
         :type Weekdays: list of str
-        :param _MaxDelayTime: Data delay threshold. It takes effect only for source instance and disaster recovery instance. Default value: 10.
+        :param _MaxDelayTime: Data latency threshold (seconds), only applicable to primary instance and disaster recovery instance. No modification by default to keep the original threshold. Value ranges from 1 to 10 integers.
         :type MaxDelayTime: int
         """
         self._InstanceId = None
@@ -26595,7 +29005,7 @@ class ModifyTimeWindowRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -26606,7 +29016,12 @@ class ModifyTimeWindowRequest(AbstractModel):
 
     @property
     def TimeRanges(self):
-        r"""Time period available for maintenance after modification in the format of 10:00-12:00. Each period lasts from half an hour to three hours, with the start time and end time aligned by half-hour. Up to two time periods can be set. Start and end time range: [00:00, 24:00].
+        r"""The modified maintenance time slot. Among them, each time period is in the format of 10:00-12:00. The start and end time is aligned by half hour. The shortest is half hour and the longest is three hours. Up to two time periods can be set. The start and end time ranges from [00:00, 24:00].
+Description: The following is an example of setting two time periods in json.
+[
+    "01:00-01:30",
+    "02:00-02:30"
+  ]
         :rtype: list of str
         """
         return self._TimeRanges
@@ -26617,7 +29032,12 @@ class ModifyTimeWindowRequest(AbstractModel):
 
     @property
     def Weekdays(self):
-        r"""Specifies for which day to modify the time period. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. If it is not specified or is left blank, the time period will be modified for every day by default.
+        r"""Specify which day to modify the maintenance time slot. Possible values are: monday, tuesday, wednesday, thursday, friday, saturday, sunday. If not specified or empty, modify all seven days of the week by default.
+Description: The json example for modifying more than one day is as follows.
+[
+    "monday",
+    "tuesday"
+  ]
         :rtype: list of str
         """
         return self._Weekdays
@@ -26628,7 +29048,7 @@ class ModifyTimeWindowRequest(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        r"""Data delay threshold. It takes effect only for source instance and disaster recovery instance. Default value: 10.
+        r"""Data latency threshold (seconds), only applicable to primary instance and disaster recovery instance. No modification by default to keep the original threshold. Value ranges from 1 to 10 integers.
         :rtype: int
         """
         return self._MaxDelayTime
@@ -26679,6 +29099,72 @@ class ModifyTimeWindowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class NodeDistribution(AbstractModel):
+    r"""Node distribution of the dedicated cluster CDB instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Node: Host ID of the Master node of the primary instance or host ID of the read-only instance
+        :type Node: str
+        :param _SlaveNodeOne: Host ID where the first Slave node of the primary instance resides
+        :type SlaveNodeOne: str
+        :param _SlaveNodeTwo: Host ID where the second Slave node of the primary instance resides
+        :type SlaveNodeTwo: str
+        """
+        self._Node = None
+        self._SlaveNodeOne = None
+        self._SlaveNodeTwo = None
+
+    @property
+    def Node(self):
+        r"""Host ID of the Master node of the primary instance or host ID of the read-only instance
+        :rtype: str
+        """
+        return self._Node
+
+    @Node.setter
+    def Node(self, Node):
+        self._Node = Node
+
+    @property
+    def SlaveNodeOne(self):
+        r"""Host ID where the first Slave node of the primary instance resides
+        :rtype: str
+        """
+        return self._SlaveNodeOne
+
+    @SlaveNodeOne.setter
+    def SlaveNodeOne(self, SlaveNodeOne):
+        self._SlaveNodeOne = SlaveNodeOne
+
+    @property
+    def SlaveNodeTwo(self):
+        r"""Host ID where the second Slave node of the primary instance resides
+        :rtype: str
+        """
+        return self._SlaveNodeTwo
+
+    @SlaveNodeTwo.setter
+    def SlaveNodeTwo(self, SlaveNodeTwo):
+        self._SlaveNodeTwo = SlaveNodeTwo
+
+
+    def _deserialize(self, params):
+        self._Node = params.get("Node")
+        self._SlaveNodeOne = params.get("SlaveNodeOne")
+        self._SlaveNodeTwo = params.get("SlaveNodeTwo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OfflineIsolatedInstancesRequest(AbstractModel):
@@ -26752,17 +29238,32 @@ class OpenAuditServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: TencentDB for MySQL instance ID
+        :param _InstanceId: CDB instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _LogExpireDay: Retention period of the audit log. Valid values:  `7` (one week), `30` (one month), `90` (three months), `180` (six months), `365` (one year), `1095` (three years), `1825` (five years).
+        :param _LogExpireDay: Audit log retention period. Supported values include:
+7 - A week;
+30 - one month
+90 - three months;
+180 - 6 months;
+365 - One year;
+1095 - Three years;
+1825 - Five years.
         :type LogExpireDay: int
-        :param _HighLogExpireDay: Retention period of high-frequency audit logs. Valid values:  `7` (one week), `30` (one month).
+        :param _HighLogExpireDay: High frequency audit log retention period. Default value is 7. This item must take value less than or equal to LogExpireDay. Supported values include:
+3 - 3 days;
+7 - A week;
+30 - one month
+90 - three months;
+180 - 6 months;
+365 - One year;
+1095 - Three years;
+1825 - Five years.
         :type HighLogExpireDay: int
-        :param _AuditRuleFilters: Audit rule If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.
+        :param _AuditRuleFilters: Audit rule (deprecated, no longer effective).
         :type AuditRuleFilters: list of AuditRuleFilters
-        :param _RuleTemplateIds: Rule template ID. If both this parameter and AuditRuleFilters are not specified, all SQL statements will be recorded.
+        :param _RuleTemplateIds: Rule template ID.
         :type RuleTemplateIds: list of str
-        :param _AuditAll: Audit type. Valid values: true: Record all; false: Record by rules (default value).
+        :param _AuditAll: Audit type. true - full audit; default false - rule audit.
         :type AuditAll: bool
         """
         self._InstanceId = None
@@ -26774,7 +29275,7 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""TencentDB for MySQL instance ID
+        r"""CDB instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -26785,7 +29286,14 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def LogExpireDay(self):
-        r"""Retention period of the audit log. Valid values:  `7` (one week), `30` (one month), `90` (three months), `180` (six months), `365` (one year), `1095` (three years), `1825` (five years).
+        r"""Audit log retention period. Supported values include:
+7 - A week;
+30 - one month
+90 - three months;
+180 - 6 months;
+365 - One year;
+1095 - Three years;
+1825 - Five years.
         :rtype: int
         """
         return self._LogExpireDay
@@ -26796,7 +29304,15 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def HighLogExpireDay(self):
-        r"""Retention period of high-frequency audit logs. Valid values:  `7` (one week), `30` (one month).
+        r"""High frequency audit log retention period. Default value is 7. This item must take value less than or equal to LogExpireDay. Supported values include:
+3 - 3 days;
+7 - A week;
+30 - one month
+90 - three months;
+180 - 6 months;
+365 - One year;
+1095 - Three years;
+1825 - Five years.
         :rtype: int
         """
         return self._HighLogExpireDay
@@ -26807,18 +29323,22 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def AuditRuleFilters(self):
-        r"""Audit rule If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.
+        warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
+
+        r"""Audit rule (deprecated, no longer effective).
         :rtype: list of AuditRuleFilters
         """
         return self._AuditRuleFilters
 
     @AuditRuleFilters.setter
     def AuditRuleFilters(self, AuditRuleFilters):
+        warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
+
         self._AuditRuleFilters = AuditRuleFilters
 
     @property
     def RuleTemplateIds(self):
-        r"""Rule template ID. If both this parameter and AuditRuleFilters are not specified, all SQL statements will be recorded.
+        r"""Rule template ID.
         :rtype: list of str
         """
         return self._RuleTemplateIds
@@ -26829,7 +29349,7 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def AuditAll(self):
-        r"""Audit type. Valid values: true: Record all; false: Record by rules (default value).
+        r"""Audit type. true - full audit; default false - rule audit.
         :rtype: bool
         """
         return self._AuditAll
@@ -26896,11 +29416,11 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: TencentDB instance ID
+        :param _InstanceId: Cloud database instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _KeyId: Custom key ID, which is the unique CMK ID. If this value is empty, the key KMS-CDB auto-generated by Tencent Cloud will be used.
+        :param _KeyId: Custom key ID, the unique identifier of CMK. If left empty, the automatically generated key KMS-CDB by using Tencent Cloud will be used.
         :type KeyId: str
-        :param _KeyRegion: Custom storage region, such as ap-guangzhou. When `KeyId` is not empty, this parameter is required.
+        :param _KeyRegion: Storage region of the custom key. For example: ap-guangzhou. This parameter is required when KeyId is not empty.
         :type KeyRegion: str
         """
         self._InstanceId = None
@@ -26909,7 +29429,7 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""TencentDB instance ID
+        r"""Cloud database instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -26920,7 +29440,7 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""Custom key ID, which is the unique CMK ID. If this value is empty, the key KMS-CDB auto-generated by Tencent Cloud will be used.
+        r"""Custom key ID, the unique identifier of CMK. If left empty, the automatically generated key KMS-CDB by using Tencent Cloud will be used.
         :rtype: str
         """
         return self._KeyId
@@ -26931,7 +29451,7 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     @property
     def KeyRegion(self):
-        r"""Custom storage region, such as ap-guangzhou. When `KeyId` is not empty, this parameter is required.
+        r"""Storage region of the custom key. For example: ap-guangzhou. This parameter is required when KeyId is not empty.
         :rtype: str
         """
         return self._KeyRegion
@@ -27062,21 +29582,24 @@ class OpenDBInstanceGTIDResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class OpenWanServiceRequest(AbstractModel):
-    r"""OpenWanService request structure.
+class OpenSSLRequest(AbstractModel):
+    r"""OpenSSL request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        :param _InstanceId: Instance ID. Required when the read-only group ID is empty. Can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
+        :param _RoGroupId: Read-only group ID. Required when the instance ID is empty. Can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
+        :type RoGroupId: str
         """
         self._InstanceId = None
+        self._RoGroupId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        r"""Instance ID. Required when the read-only group ID is empty. Can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -27085,9 +29608,115 @@ class OpenWanServiceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def RoGroupId(self):
+        r"""Read-only group ID. Required when the instance ID is empty. Can be obtained through the [DescribeRoGroups](https://www.tencentcloud.com/document/api/236/40939?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._RoGroupId
+
+    @RoGroupId.setter
+    def RoGroupId(self, RoGroupId):
+        self._RoGroupId = RoGroupId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._RoGroupId = params.get("RoGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenSSLResponse(AbstractModel):
+    r"""OpenSSL response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: Asynchronous request ID.
+        :type AsyncRequestId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        r"""Asynchronous request ID.
+        :rtype: str
+        """
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class OpenWanServiceRequest(AbstractModel):
+    r"""OpenWanService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the query instance list API (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1). The value is the InstanceId field in the output parameter. The read-only group ID can be passed in.
+        :type InstanceId: str
+        :param _OpResourceId: When updating the read-only group of a cluster edition instance, specify the instance id in InstanceId and this parameter is required to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :type OpResourceId: str
+        """
+        self._InstanceId = None
+        self._OpResourceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the query instance list API (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1). The value is the InstanceId field in the output parameter. The read-only group ID can be passed in.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OpResourceId(self):
+        r"""When updating the read-only group of a cluster edition instance, specify the instance id in InstanceId and this parameter is required to indicate the operation is for the read-only group. If you perform the operation on the read-write node, this parameter is not required.
+        :rtype: str
+        """
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27455,17 +30084,17 @@ class ParamTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: Parameter template ID
+        :param _TemplateId: parameter template ID
         :type TemplateId: int
         :param _Name: Parameter template name
         :type Name: str
         :param _Description: Parameter template description
         :type Description: str
-        :param _EngineVersion: Instance engine version
+        :param _EngineVersion: Instance engine version. Values: 5.5, 5.6, 5.7, and 8.0.
         :type EngineVersion: str
-        :param _TemplateType: Parameter template type
+        :param _TemplateType: Parameter template type. Valid values: HIGH_STABILITY, HIGH_PERFORMANCE.
         :type TemplateType: str
-        :param _EngineType: Parameter template engine Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EngineType: Parameter template engine, values: InnoDB, RocksDB.
         :type EngineType: str
         """
         self._TemplateId = None
@@ -27477,7 +30106,7 @@ class ParamTemplateInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""Parameter template ID
+        r"""parameter template ID
         :rtype: int
         """
         return self._TemplateId
@@ -27510,7 +30139,7 @@ class ParamTemplateInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""Instance engine version
+        r"""Instance engine version. Values: 5.5, 5.6, 5.7, and 8.0.
         :rtype: str
         """
         return self._EngineVersion
@@ -27521,7 +30150,7 @@ class ParamTemplateInfo(AbstractModel):
 
     @property
     def TemplateType(self):
-        r"""Parameter template type
+        r"""Parameter template type. Valid values: HIGH_STABILITY, HIGH_PERFORMANCE.
         :rtype: str
         """
         return self._TemplateType
@@ -27532,7 +30161,7 @@ class ParamTemplateInfo(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""Parameter template engine Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parameter template engine, values: InnoDB, RocksDB.
         :rtype: str
         """
         return self._EngineType
@@ -27639,7 +30268,7 @@ class ParameterDetail(AbstractModel):
         :type MaxFunc: str
         :param _MinFunc: Minimum parameter value, which is valid only when `ParamType` is set to `func`
         :type MinFunc: str
-        :param _IsNotSupportEdit: Whether the parameter can be modified Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IsNotSupportEdit: Whether the parameter cannot be modified
         :type IsNotSupportEdit: bool
         """
         self._Name = None
@@ -27778,7 +30407,7 @@ class ParameterDetail(AbstractModel):
 
     @property
     def IsNotSupportEdit(self):
-        r"""Whether the parameter can be modified Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether the parameter cannot be modified
         :rtype: bool
         """
         return self._IsNotSupportEdit
@@ -27811,6 +30440,61 @@ class ParameterDetail(AbstractModel):
         
 
 
+class PeriodStrategy(AbstractModel):
+    r"""Scale by the selected period in the scaling policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeCycle: Scale-out period
+        :type TimeCycle: :class:`tencentcloud.cdb.v20170320.models.TImeCycle`
+        :param _TimeInterval: Time interval
+        :type TimeInterval: :class:`tencentcloud.cdb.v20170320.models.TimeInterval`
+        """
+        self._TimeCycle = None
+        self._TimeInterval = None
+
+    @property
+    def TimeCycle(self):
+        r"""Scale-out period
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.TImeCycle`
+        """
+        return self._TimeCycle
+
+    @TimeCycle.setter
+    def TimeCycle(self, TimeCycle):
+        self._TimeCycle = TimeCycle
+
+    @property
+    def TimeInterval(self):
+        r"""Time interval
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.TimeInterval`
+        """
+        return self._TimeInterval
+
+    @TimeInterval.setter
+    def TimeInterval(self, TimeInterval):
+        self._TimeInterval = TimeInterval
+
+
+    def _deserialize(self, params):
+        if params.get("TimeCycle") is not None:
+            self._TimeCycle = TImeCycle()
+            self._TimeCycle._deserialize(params.get("TimeCycle"))
+        if params.get("TimeInterval") is not None:
+            self._TimeInterval = TimeInterval()
+            self._TimeInterval._deserialize(params.get("TimeInterval"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProxyAddress(AbstractModel):
     r"""Information of the database proxy address
 
@@ -27828,28 +30512,37 @@ class ProxyAddress(AbstractModel):
         :type Vip: str
         :param _VPort: Port
         :type VPort: int
-        :param _WeightMode: Assignment mode of weights. Valid values: `system` (auto-assigned), `custom`. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _WeightMode: Weight allocation mode.
+System Auto-Assignment: "system", Custom: "custom"
         :type WeightMode: str
-        :param _IsKickOut: Whether to remove delayed read-only instances from the proxy group Valid values: `true`, `false`. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IsKickOut: Whether to enable delay removal. Parameter value: "true" | "false"
         :type IsKickOut: bool
-        :param _MinCount: Least read-only instances. Minimum value:  `0`. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MinCount: Minimum retention quantity, minimum value: 0.
         :type MinCount: int
-        :param _MaxDelay: The delay threshold. Minimum value:  `0`. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MaxDelay: Delay removal threshold, minimum value: 0
         :type MaxDelay: int
-        :param _AutoAddRo: Whether to automatically add newly created read-only instances. Valid values: `true`, `false`. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AutoAddRo: Automatically add RO. Value: "true" | "false"
         :type AutoAddRo: bool
-        :param _ReadOnly: Whether it is read-only. Valid values: `true`, `false`. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ReadOnly: Whether it is read-only. Value: "true" | "false".
         :type ReadOnly: bool
-        :param _TransSplit: Whether to enable transaction splitting Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransSplit: Whether transaction splitting is enabled
         :type TransSplit: bool
-        :param _FailOver: Whether to enable failover Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FailOver: Whether fault migration is enabled
         :type FailOver: bool
-        :param _ConnectionPool: Whether to enable the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ConnectionPool: Whether to enable connection pool
         :type ConnectionPool: bool
-        :param _Desc: Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _Desc: Description
         :type Desc: str
-        :param _ProxyAllocation: Read weight assignment for an instance Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProxyAllocation: Read weight distribution of an instance
         :type ProxyAllocation: list of ProxyAllocation
+        :param _AccessMode: Access mode
+        :type AccessMode: str
+        :param _AutoLoadBalance: Whether automatic CLB is enabled
+        :type AutoLoadBalance: bool
+        :param _ApNodeAsRoNode: Whether to treat libra as a read-only node
+        :type ApNodeAsRoNode: bool
+        :param _ApQueryToOtherNode: libra node fault, whether to forward to other nodes
+        :type ApQueryToOtherNode: bool
         """
         self._ProxyAddressId = None
         self._UniqVpcId = None
@@ -27867,6 +30560,10 @@ class ProxyAddress(AbstractModel):
         self._ConnectionPool = None
         self._Desc = None
         self._ProxyAllocation = None
+        self._AccessMode = None
+        self._AutoLoadBalance = None
+        self._ApNodeAsRoNode = None
+        self._ApQueryToOtherNode = None
 
     @property
     def ProxyAddressId(self):
@@ -27925,7 +30622,8 @@ class ProxyAddress(AbstractModel):
 
     @property
     def WeightMode(self):
-        r"""Assignment mode of weights. Valid values: `system` (auto-assigned), `custom`. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Weight allocation mode.
+System Auto-Assignment: "system", Custom: "custom"
         :rtype: str
         """
         return self._WeightMode
@@ -27936,7 +30634,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def IsKickOut(self):
-        r"""Whether to remove delayed read-only instances from the proxy group Valid values: `true`, `false`. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether to enable delay removal. Parameter value: "true" | "false"
         :rtype: bool
         """
         return self._IsKickOut
@@ -27947,7 +30645,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def MinCount(self):
-        r"""Least read-only instances. Minimum value:  `0`. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Minimum retention quantity, minimum value: 0.
         :rtype: int
         """
         return self._MinCount
@@ -27958,7 +30656,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def MaxDelay(self):
-        r"""The delay threshold. Minimum value:  `0`. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Delay removal threshold, minimum value: 0
         :rtype: int
         """
         return self._MaxDelay
@@ -27969,7 +30667,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def AutoAddRo(self):
-        r"""Whether to automatically add newly created read-only instances. Valid values: `true`, `false`. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Automatically add RO. Value: "true" | "false"
         :rtype: bool
         """
         return self._AutoAddRo
@@ -27980,7 +30678,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""Whether it is read-only. Valid values: `true`, `false`. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether it is read-only. Value: "true" | "false".
         :rtype: bool
         """
         return self._ReadOnly
@@ -27991,7 +30689,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def TransSplit(self):
-        r"""Whether to enable transaction splitting Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether transaction splitting is enabled
         :rtype: bool
         """
         return self._TransSplit
@@ -28002,7 +30700,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def FailOver(self):
-        r"""Whether to enable failover Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether fault migration is enabled
         :rtype: bool
         """
         return self._FailOver
@@ -28013,7 +30711,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def ConnectionPool(self):
-        r"""Whether to enable the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether to enable connection pool
         :rtype: bool
         """
         return self._ConnectionPool
@@ -28024,7 +30722,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def Desc(self):
-        r"""Note:  This field may return null, indicating that no valid values can be obtained.
+        r"""Description
         :rtype: str
         """
         return self._Desc
@@ -28035,7 +30733,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def ProxyAllocation(self):
-        r"""Read weight assignment for an instance Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Read weight distribution of an instance
         :rtype: list of ProxyAllocation
         """
         return self._ProxyAllocation
@@ -28043,6 +30741,50 @@ class ProxyAddress(AbstractModel):
     @ProxyAllocation.setter
     def ProxyAllocation(self, ProxyAllocation):
         self._ProxyAllocation = ProxyAllocation
+
+    @property
+    def AccessMode(self):
+        r"""Access mode
+        :rtype: str
+        """
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def AutoLoadBalance(self):
+        r"""Whether automatic CLB is enabled
+        :rtype: bool
+        """
+        return self._AutoLoadBalance
+
+    @AutoLoadBalance.setter
+    def AutoLoadBalance(self, AutoLoadBalance):
+        self._AutoLoadBalance = AutoLoadBalance
+
+    @property
+    def ApNodeAsRoNode(self):
+        r"""Whether to treat libra as a read-only node
+        :rtype: bool
+        """
+        return self._ApNodeAsRoNode
+
+    @ApNodeAsRoNode.setter
+    def ApNodeAsRoNode(self, ApNodeAsRoNode):
+        self._ApNodeAsRoNode = ApNodeAsRoNode
+
+    @property
+    def ApQueryToOtherNode(self):
+        r"""libra node fault, whether to forward to other nodes
+        :rtype: bool
+        """
+        return self._ApQueryToOtherNode
+
+    @ApQueryToOtherNode.setter
+    def ApQueryToOtherNode(self, ApQueryToOtherNode):
+        self._ApQueryToOtherNode = ApQueryToOtherNode
 
 
     def _deserialize(self, params):
@@ -28067,6 +30809,10 @@ class ProxyAddress(AbstractModel):
                 obj = ProxyAllocation()
                 obj._deserialize(item)
                 self._ProxyAllocation.append(obj)
+        self._AccessMode = params.get("AccessMode")
+        self._AutoLoadBalance = params.get("AutoLoadBalance")
+        self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
+        self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28157,23 +30903,23 @@ class ProxyGroupInfo(AbstractModel):
         r"""
         :param _ProxyGroupId: Proxy group ID
         :type ProxyGroupId: str
-        :param _ProxyVersion: Proxy version Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProxyVersion: proxy version
         :type ProxyVersion: str
-        :param _SupportUpgradeProxyVersion: Supported proxy upgrade version Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SupportUpgradeProxyVersion: Proxy supports edition upgrade
         :type SupportUpgradeProxyVersion: str
-        :param _Status: Proxy status Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Agent status. 0 - Initializing, 1 - Online, 2 - Online - Read-write separation, 3 - Offline, 4 - Terminated.
         :type Status: str
-        :param _TaskStatus: Proxy task status Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TaskStatus: Agent task status, Upgrading - upgrading, UpgradeTo - upgrade pending switch, UpgradeSwitching - upgrade and switch in progress, ProxyCreateAddress - configuring address, ProxyModifyAddress - changing address, ProxyCloseAddress - closing address.
         :type TaskStatus: str
-        :param _ProxyNode: Node information of the proxy group Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProxyNode: Proxy group node information
         :type ProxyNode: list of ProxyNode
-        :param _ProxyAddress: Address information of the proxy group Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProxyAddress: Proxy group address information
         :type ProxyAddress: list of ProxyAddress
-        :param _ConnectionPoolLimit: Connection pool threshold Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ConnectionPoolLimit: Connection pool threshold
         :type ConnectionPoolLimit: int
-        :param _SupportCreateProxyAddress: Whether to support address creation Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SupportCreateProxyAddress: Support creating an address
         :type SupportCreateProxyAddress: bool
-        :param _SupportUpgradeProxyMysqlVersion: TencentDB versions supporting proxy versions upgrade Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SupportUpgradeProxyMysqlVersion: cdb version required for proxy version upgrade
         :type SupportUpgradeProxyMysqlVersion: str
         """
         self._ProxyGroupId = None
@@ -28200,7 +30946,7 @@ class ProxyGroupInfo(AbstractModel):
 
     @property
     def ProxyVersion(self):
-        r"""Proxy version Note: This field may return null, indicating that no valid values can be obtained.
+        r"""proxy version
         :rtype: str
         """
         return self._ProxyVersion
@@ -28211,7 +30957,7 @@ class ProxyGroupInfo(AbstractModel):
 
     @property
     def SupportUpgradeProxyVersion(self):
-        r"""Supported proxy upgrade version Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Proxy supports edition upgrade
         :rtype: str
         """
         return self._SupportUpgradeProxyVersion
@@ -28222,7 +30968,7 @@ class ProxyGroupInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Proxy status Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Agent status. 0 - Initializing, 1 - Online, 2 - Online - Read-write separation, 3 - Offline, 4 - Terminated.
         :rtype: str
         """
         return self._Status
@@ -28233,7 +30979,7 @@ class ProxyGroupInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""Proxy task status Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Agent task status, Upgrading - upgrading, UpgradeTo - upgrade pending switch, UpgradeSwitching - upgrade and switch in progress, ProxyCreateAddress - configuring address, ProxyModifyAddress - changing address, ProxyCloseAddress - closing address.
         :rtype: str
         """
         return self._TaskStatus
@@ -28244,7 +30990,7 @@ class ProxyGroupInfo(AbstractModel):
 
     @property
     def ProxyNode(self):
-        r"""Node information of the proxy group Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Proxy group node information
         :rtype: list of ProxyNode
         """
         return self._ProxyNode
@@ -28255,7 +31001,7 @@ class ProxyGroupInfo(AbstractModel):
 
     @property
     def ProxyAddress(self):
-        r"""Address information of the proxy group Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Proxy group address information
         :rtype: list of ProxyAddress
         """
         return self._ProxyAddress
@@ -28266,7 +31012,7 @@ class ProxyGroupInfo(AbstractModel):
 
     @property
     def ConnectionPoolLimit(self):
-        r"""Connection pool threshold Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Connection pool threshold
         :rtype: int
         """
         return self._ConnectionPoolLimit
@@ -28277,7 +31023,7 @@ class ProxyGroupInfo(AbstractModel):
 
     @property
     def SupportCreateProxyAddress(self):
-        r"""Whether to support address creation Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Support creating an address
         :rtype: bool
         """
         return self._SupportCreateProxyAddress
@@ -28288,7 +31034,7 @@ class ProxyGroupInfo(AbstractModel):
 
     @property
     def SupportUpgradeProxyMysqlVersion(self):
-        r"""TencentDB versions supporting proxy versions upgrade Note: This field may return null, indicating that no valid values can be obtained.
+        r"""cdb version required for proxy version upgrade
         :rtype: str
         """
         return self._SupportUpgradeProxyMysqlVersion
@@ -28336,20 +31082,24 @@ class ProxyInst(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param _InstanceName: Instance name Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceName: Instance name.
         :type InstanceName: str
-        :param _InstanceType: Instance type. Valid values:  `master` (source instance), `ro` (read-only instance), `dr` (disaster recovery instance), `sdr` (disaster recovery instance of small specifications). Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceType: Instance type: 1 master primary instance; 2 read-only instance; 3 dr disaster recovery instance; 4 sdr (small disaster recovery) instance
         :type InstanceType: int
-        :param _Status: Instance status. Valid values:  `0` (creating), `1` (running), `4` (isolating), `5` (isolated). Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Instance status. Valid values: 0: creating; 1: running; 4: isolation; 5: isolated.
         :type Status: int
-        :param _Weight: Read weight. If it is assigned by the system automatically, the modification will not take effect but represents whether the instance is enabled. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Weight: Read-only weight. If the weight is automatically assigned by the system, this value does not take effect and only indicates whether the instance is enabled or not.
         :type Weight: int
-        :param _Region: Instance region Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Region: Instance region
         :type Region: str
-        :param _Zone: Instance AZ Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Zone: Availability zone to which the instance belongs
         :type Zone: str
+        :param _InstNodeId: Instance Node ID
+        :type InstNodeId: str
+        :param _InstNodeRole: Node role
+        :type InstNodeRole: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -28358,10 +31108,12 @@ class ProxyInst(AbstractModel):
         self._Weight = None
         self._Region = None
         self._Zone = None
+        self._InstNodeId = None
+        self._InstNodeRole = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -28372,7 +31124,7 @@ class ProxyInst(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance name.
         :rtype: str
         """
         return self._InstanceName
@@ -28383,7 +31135,7 @@ class ProxyInst(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Instance type. Valid values:  `master` (source instance), `ro` (read-only instance), `dr` (disaster recovery instance), `sdr` (disaster recovery instance of small specifications). Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance type: 1 master primary instance; 2 read-only instance; 3 dr disaster recovery instance; 4 sdr (small disaster recovery) instance
         :rtype: int
         """
         return self._InstanceType
@@ -28394,7 +31146,7 @@ class ProxyInst(AbstractModel):
 
     @property
     def Status(self):
-        r"""Instance status. Valid values:  `0` (creating), `1` (running), `4` (isolating), `5` (isolated). Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance status. Valid values: 0: creating; 1: running; 4: isolation; 5: isolated.
         :rtype: int
         """
         return self._Status
@@ -28405,7 +31157,7 @@ class ProxyInst(AbstractModel):
 
     @property
     def Weight(self):
-        r"""Read weight. If it is assigned by the system automatically, the modification will not take effect but represents whether the instance is enabled. Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Read-only weight. If the weight is automatically assigned by the system, this value does not take effect and only indicates whether the instance is enabled or not.
         :rtype: int
         """
         return self._Weight
@@ -28416,7 +31168,7 @@ class ProxyInst(AbstractModel):
 
     @property
     def Region(self):
-        r"""Instance region Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Instance region
         :rtype: str
         """
         return self._Region
@@ -28427,7 +31179,7 @@ class ProxyInst(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Instance AZ Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Availability zone to which the instance belongs
         :rtype: str
         """
         return self._Zone
@@ -28435,6 +31187,28 @@ class ProxyInst(AbstractModel):
     @Zone.setter
     def Zone(self, Zone):
         self._Zone = Zone
+
+    @property
+    def InstNodeId(self):
+        r"""Instance Node ID
+        :rtype: str
+        """
+        return self._InstNodeId
+
+    @InstNodeId.setter
+    def InstNodeId(self, InstNodeId):
+        self._InstNodeId = InstNodeId
+
+    @property
+    def InstNodeRole(self):
+        r"""Node role
+        :rtype: str
+        """
+        return self._InstNodeRole
+
+    @InstNodeRole.setter
+    def InstNodeRole(self, InstNodeRole):
+        self._InstNodeRole = InstNodeRole
 
 
     def _deserialize(self, params):
@@ -28445,6 +31219,8 @@ class ProxyInst(AbstractModel):
         self._Weight = params.get("Weight")
         self._Region = params.get("Region")
         self._Zone = params.get("Zone")
+        self._InstNodeId = params.get("InstNodeId")
+        self._InstNodeRole = params.get("InstNodeRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28462,19 +31238,19 @@ class ProxyNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyId: Proxy node ID Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProxyId: Proxy node ID
         :type ProxyId: str
-        :param _Cpu: Number of CPU cores Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Cpu: Number of CPU cores.
         :type Cpu: int
-        :param _Mem: Memory size Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Mem: Memory size, measured in MB.
         :type Mem: int
-        :param _Status: Node status Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Node status: 0 - Initializing, 1 - Online, 2 - Offline, 3 - Being destroyed, 4 - Recovering, 5 - Node fault, 6 - Switching.
         :type Status: str
-        :param _Zone: Proxy node AZ Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Zone: Proxy node availability zone
         :type Zone: str
-        :param _Region: Proxy node region Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Region: Proxy Node Region
         :type Region: str
-        :param _Connection: Connections Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Connection: Number of connections
         :type Connection: int
         """
         self._ProxyId = None
@@ -28487,7 +31263,7 @@ class ProxyNode(AbstractModel):
 
     @property
     def ProxyId(self):
-        r"""Proxy node ID Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Proxy node ID
         :rtype: str
         """
         return self._ProxyId
@@ -28498,7 +31274,7 @@ class ProxyNode(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Number of CPU cores Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of CPU cores.
         :rtype: int
         """
         return self._Cpu
@@ -28509,7 +31285,7 @@ class ProxyNode(AbstractModel):
 
     @property
     def Mem(self):
-        r"""Memory size Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Memory size, measured in MB.
         :rtype: int
         """
         return self._Mem
@@ -28520,7 +31296,7 @@ class ProxyNode(AbstractModel):
 
     @property
     def Status(self):
-        r"""Node status Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Node status: 0 - Initializing, 1 - Online, 2 - Offline, 3 - Being destroyed, 4 - Recovering, 5 - Node fault, 6 - Switching.
         :rtype: str
         """
         return self._Status
@@ -28531,7 +31307,7 @@ class ProxyNode(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Proxy node AZ Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Proxy node availability zone
         :rtype: str
         """
         return self._Zone
@@ -28542,7 +31318,7 @@ class ProxyNode(AbstractModel):
 
     @property
     def Region(self):
-        r"""Proxy node region Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Proxy Node Region
         :rtype: str
         """
         return self._Region
@@ -28553,7 +31329,7 @@ class ProxyNode(AbstractModel):
 
     @property
     def Connection(self):
-        r"""Connections Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Number of connections
         :rtype: int
         """
         return self._Connection
@@ -28801,14 +31577,24 @@ class ReleaseIsolatedDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Array of instance IDs in the format of `cdb-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID, whose value is the `InstanceId` value in the output parameters.
+        :param _InstanceIds: Instance ID. The instance ID is in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the API for querying the instance list (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1). The value is the InstanceId field in the output parameter.
+Description: Multiple instance IDs can be entered for operations. The json format is as follows.
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
 
     @property
     def InstanceIds(self):
-        r"""Array of instance IDs in the format of `cdb-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID, whose value is the `InstanceId` value in the output parameters.
+        r"""Instance ID. The instance ID is in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the API for querying the instance list (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1). The value is the InstanceId field in the output parameter.
+Description: Multiple instance IDs can be entered for operations. The json format is as follows.
+[
+    "cdb-30z11v8s",
+    "cdb-93h11efg"
+  ]
         :rtype: list of str
         """
         return self._InstanceIds
@@ -28951,9 +31737,12 @@ class ReloadBalanceProxyNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyGroupId: Proxy group ID
+        :param _ProxyGroupId: Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
-        :param _ProxyAddressId: Address ID of the proxy group
+        :param _ProxyAddressId: Proxy group address ID. You can obtain it through the API [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1).
+Note:
+1. For dual-node instances, this parameter is optional. If not provided, load balancing will be performed for ALL proxy group addresses.
+2. For cloud disk edition instances, this parameter is required.
         :type ProxyAddressId: str
         """
         self._ProxyGroupId = None
@@ -28961,7 +31750,7 @@ class ReloadBalanceProxyNodeRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Proxy group ID
+        r"""Proxy group ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -28972,7 +31761,10 @@ class ReloadBalanceProxyNodeRequest(AbstractModel):
 
     @property
     def ProxyAddressId(self):
-        r"""Address ID of the proxy group
+        r"""Proxy group address ID. You can obtain it through the API [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1).
+Note:
+1. For dual-node instances, this parameter is optional. If not provided, load balancing will be performed for ALL proxy group addresses.
+2. For cloud disk edition instances, this parameter is required.
         :rtype: str
         """
         return self._ProxyAddressId
@@ -29258,6 +32050,100 @@ class RenewDBInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResetPasswordRequest(AbstractModel):
+    r"""ResetPassword request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :type InstanceId: str
+        :param _User: Instance account name with manually refreshed rotation password, such as root
+        :type User: str
+        :param _Host: Manually refresh the domain name of the instance account with a rotated password, such as %
+        :type Host: str
+        """
+        self._InstanceId = None
+        self._User = None
+        self._Host = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        r"""Instance account name with manually refreshed rotation password, such as root
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        r"""Manually refresh the domain name of the instance account with a rotated password, such as %
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetPasswordResponse(AbstractModel):
+    r"""ResetPassword response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResetRootAccountRequest(AbstractModel):
     r"""ResetRootAccount request structure.
 
@@ -29265,14 +32151,14 @@ class ResetRootAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -29676,15 +32562,17 @@ class RoGroupAttr(AbstractModel):
         r"""
         :param _RoGroupName: RO group name.
         :type RoGroupName: str
-        :param _RoMaxDelayTime: Maximum delay threshold for RO instances in seconds. Minimum value: 1. Please note that this value will take effect only if an instance removal policy is enabled in the RO group.
+        :param _RoMaxDelayTime: Maximum delay threshold for the RO instance. Unit: seconds, minimum value is 1. Range: [1,10000], integer.
+Note: The RO group must have enabled the instance latency removal policy for this value to be valid.
         :type RoMaxDelayTime: int
         :param _RoOfflineDelay: Whether to enable instance removal. Valid values: 1 (enabled), 0 (not enabled). Please note that if instance removal is enabled, the delay threshold parameter (`RoMaxDelayTime`) must be set.
         :type RoOfflineDelay: int
-        :param _MinRoInGroup: Minimum number of instances to be retained, which can be set to any value less than or equal to the number of RO instances in the RO group. Please note that if this value is set to be greater than the number of RO instances, no removal will be performed, and if it is set to 0, all instances with an excessive delay will be removed.
+        :param _MinRoInGroup: Minimum reserved instances. Can be set to any value ≤ the number of instances in the RO group. Default value: 1.
+Note: If the set value is larger than the RO instance count, do not remove. If set to 0, all instances with delay above the limit will be excluded.
         :type MinRoInGroup: int
         :param _WeightMode: Weighting mode. Supported values include `system` (automatically assigned by the system) and `custom` (defined by user). Please note that if the `custom` mode is selected, the RO instance weight configuration parameter (RoWeightValues) must be set.
         :type WeightMode: str
-        :param _ReplicationDelayTime: Replication delay.
+        :param _ReplicationDelayTime: Delayed replication time. Unit: second, range: 1 - 259200 seconds, not required to enable delayed replication for the instance.
         :type ReplicationDelayTime: int
         """
         self._RoGroupName = None
@@ -29707,7 +32595,8 @@ class RoGroupAttr(AbstractModel):
 
     @property
     def RoMaxDelayTime(self):
-        r"""Maximum delay threshold for RO instances in seconds. Minimum value: 1. Please note that this value will take effect only if an instance removal policy is enabled in the RO group.
+        r"""Maximum delay threshold for the RO instance. Unit: seconds, minimum value is 1. Range: [1,10000], integer.
+Note: The RO group must have enabled the instance latency removal policy for this value to be valid.
         :rtype: int
         """
         return self._RoMaxDelayTime
@@ -29729,7 +32618,8 @@ class RoGroupAttr(AbstractModel):
 
     @property
     def MinRoInGroup(self):
-        r"""Minimum number of instances to be retained, which can be set to any value less than or equal to the number of RO instances in the RO group. Please note that if this value is set to be greater than the number of RO instances, no removal will be performed, and if it is set to 0, all instances with an excessive delay will be removed.
+        r"""Minimum reserved instances. Can be set to any value ≤ the number of instances in the RO group. Default value: 1.
+Note: If the set value is larger than the RO instance count, do not remove. If set to 0, all instances with delay above the limit will be excluded.
         :rtype: int
         """
         return self._MinRoInGroup
@@ -29751,7 +32641,7 @@ class RoGroupAttr(AbstractModel):
 
     @property
     def ReplicationDelayTime(self):
-        r"""Replication delay.
+        r"""Delayed replication time. Unit: second, range: 1 - 259200 seconds, not required to enable delayed replication for the instance.
         :rtype: int
         """
         return self._ReplicationDelayTime
@@ -30314,10 +33204,8 @@ class RollbackDBName(AbstractModel):
     def __init__(self):
         r"""
         :param _DatabaseName: Original database name before rollback
-Note: this field may return null, indicating that no valid values can be obtained.
         :type DatabaseName: str
-        :param _NewDatabaseName: New database name after rollback
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _NewDatabaseName: Name of the rolled back database
         :type NewDatabaseName: str
         """
         self._DatabaseName = None
@@ -30326,7 +33214,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def DatabaseName(self):
         r"""Original database name before rollback
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DatabaseName
@@ -30337,8 +33224,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewDatabaseName(self):
-        r"""New database name after rollback
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Name of the rolled back database
         :rtype: str
         """
         return self._NewDatabaseName
@@ -30368,18 +33254,15 @@ class RollbackInstancesInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: TencentDB instance ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: Cloud database instance ID.
         :type InstanceId: str
-        :param _Strategy: Rollback policy. Valid values: `table` (ultrafast mode), `db` (faster mode), and `full` (fast mode). Default value: `full`. In the ultrafast mode, only backups and binlogs of the tables specified by the `Tables` parameter are imported; if `Tables` does not include all of the tables involved in cross-table operations, the rollback may fail; and the `Database` parameter must be left empty. In the faster mode, only backups and binlogs of the databases specified by the `Databases` parameter are imported, and if `Databases` does not include all of the databases involved in cross-database operations, the rollback may fail. In the fast mode, backups and binlogs of the entire instance will be imported in a speed slower than the other modes.
+        :param _Strategy: Rollback strategy. Optional values: table, db, full. table - Ultra-fast rollback mode, only imports selected table-level backups and binlog. If there are cross-table operations and the associated table hasn't been selected, it will cause rollback failure. In this mode, parameter Databases must be empty. db - Quick mode, only imports selected database-level backups and binlog. If there are cross-database operations and the associated database hasn't been selected, it will cause rollback failure. full - Standard rollback mode, imports backups and binlog of the entire instance, speed is not as fast.
         :type Strategy: str
-        :param _RollbackTime: Database rollback time in the format of yyyy-mm-dd hh:mm:ss
+        :param _RollbackTime: Database rollback time in the format of yyyy-mm-dd hh:mm:ss.
         :type RollbackTime: str
-        :param _Databases: Information of the databases to be rolled back, which means rollback at the database level
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Databases: Database information to be rolled back, which means database rollback.
         :type Databases: list of RollbackDBName
-        :param _Tables: Information of the tables to be rolled back, which means rollback at the table level
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Tables: Database table information to be rolled back, which means rollback by table.
         :type Tables: list of RollbackTables
         """
         self._InstanceId = None
@@ -30390,8 +33273,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        r"""TencentDB instance ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Cloud database instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -30402,7 +33284,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Strategy(self):
-        r"""Rollback policy. Valid values: `table` (ultrafast mode), `db` (faster mode), and `full` (fast mode). Default value: `full`. In the ultrafast mode, only backups and binlogs of the tables specified by the `Tables` parameter are imported; if `Tables` does not include all of the tables involved in cross-table operations, the rollback may fail; and the `Database` parameter must be left empty. In the faster mode, only backups and binlogs of the databases specified by the `Databases` parameter are imported, and if `Databases` does not include all of the databases involved in cross-database operations, the rollback may fail. In the fast mode, backups and binlogs of the entire instance will be imported in a speed slower than the other modes.
+        r"""Rollback strategy. Optional values: table, db, full. table - Ultra-fast rollback mode, only imports selected table-level backups and binlog. If there are cross-table operations and the associated table hasn't been selected, it will cause rollback failure. In this mode, parameter Databases must be empty. db - Quick mode, only imports selected database-level backups and binlog. If there are cross-database operations and the associated database hasn't been selected, it will cause rollback failure. full - Standard rollback mode, imports backups and binlog of the entire instance, speed is not as fast.
         :rtype: str
         """
         return self._Strategy
@@ -30413,7 +33295,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RollbackTime(self):
-        r"""Database rollback time in the format of yyyy-mm-dd hh:mm:ss
+        r"""Database rollback time in the format of yyyy-mm-dd hh:mm:ss.
         :rtype: str
         """
         return self._RollbackTime
@@ -30424,8 +33306,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Databases(self):
-        r"""Information of the databases to be rolled back, which means rollback at the database level
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Database information to be rolled back, which means database rollback.
         :rtype: list of RollbackDBName
         """
         return self._Databases
@@ -30436,8 +33317,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tables(self):
-        r"""Information of the tables to be rolled back, which means rollback at the table level
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Database table information to be rolled back, which means rollback by table.
         :rtype: list of RollbackTables
         """
         return self._Tables
@@ -30480,11 +33360,9 @@ class RollbackTableName(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableName: Original table name before rollback
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TableName: Original database table name before rollback
         :type TableName: str
-        :param _NewTableName: New table name after rollback
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _NewTableName: Rolled back database table name
         :type NewTableName: str
         """
         self._TableName = None
@@ -30492,8 +33370,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
-        r"""Original table name before rollback
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Original database table name before rollback
         :rtype: str
         """
         return self._TableName
@@ -30504,8 +33381,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewTableName(self):
-        r"""New table name after rollback
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Rolled back database table name
         :rtype: str
         """
         return self._NewTableName
@@ -30536,10 +33412,8 @@ class RollbackTables(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: Database name
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Database: str
-        :param _Table: Table details
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Table: Database table details
         :type Table: list of RollbackTableName
         """
         self._Database = None
@@ -30548,7 +33422,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def Database(self):
         r"""Database name
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Database
@@ -30559,8 +33432,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Table(self):
-        r"""Table details
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Database table details
         :rtype: list of RollbackTableName
         """
         return self._Table
@@ -30605,8 +33477,7 @@ class RollbackTask(AbstractModel):
         :type StartTime: str
         :param _EndTime: Task end time.
         :type EndTime: str
-        :param _Detail: Rollback task details.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Detail: Rollback task detail.
         :type Detail: list of RollbackInstancesInfo
         """
         self._Info = None
@@ -30673,8 +33544,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Detail(self):
-        r"""Rollback task details.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Rollback task detail.
         :rtype: list of RollbackInstancesInfo
         """
         return self._Detail
@@ -30764,11 +33634,9 @@ class Rule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LessThan: The maximum weight
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _LessThan: Division ceiling
         :type LessThan: int
         :param _Weight: Weight
-Note: this field may return `null`, indicating that no valid value can be found.
         :type Weight: int
         """
         self._LessThan = None
@@ -30776,8 +33644,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def LessThan(self):
-        r"""The maximum weight
-Note: this field may return `null`, indicating that no valid value can be found.
+        r"""Division ceiling
         :rtype: int
         """
         return self._LessThan
@@ -30789,7 +33656,6 @@ Note: this field may return `null`, indicating that no valid value can be found.
     @property
     def Weight(self):
         r"""Weight
-Note: this field may return `null`, indicating that no valid value can be found.
         :rtype: int
         """
         return self._Weight
@@ -31254,7 +34120,7 @@ class SlaveConfig(AbstractModel):
         r"""
         :param _ReplicationMode: Replication mode of the secondary database. Value range: async, semi-sync
         :type ReplicationMode: str
-        :param _Zone: AZ name of the secondary database, such as ap-shanghai-2
+        :param _Zone: Canonical name of the read-only availability zone, for example ap-shanghai-2
         :type Zone: str
         """
         self._ReplicationMode = None
@@ -31273,7 +34139,7 @@ class SlaveConfig(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ name of the secondary database, such as ap-shanghai-2
+        r"""Canonical name of the read-only availability zone, for example ap-shanghai-2
         :rtype: str
         """
         return self._Zone
@@ -31303,9 +34169,9 @@ class SlaveInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _First: Information of secondary server 1
+        :param _First: <p>Secondary server information of the top spot</p>
         :type First: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
-        :param _Second: Second secondary server information.
+        :param _Second: <p>Second standby machine information</p>
         :type Second: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         self._First = None
@@ -31313,7 +34179,7 @@ class SlaveInfo(AbstractModel):
 
     @property
     def First(self):
-        r"""Information of secondary server 1
+        r"""<p>Secondary server information of the top spot</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         return self._First
@@ -31324,7 +34190,7 @@ class SlaveInfo(AbstractModel):
 
     @property
     def Second(self):
-        r"""Second secondary server information.
+        r"""<p>Second standby machine information</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         return self._Second
@@ -31443,7 +34309,7 @@ class SlowLogInfo(AbstractModel):
         :type Name: str
         :param _Size: Backup file size in bytes
         :type Size: int
-        :param _Date: Backup snapshot time in the format of yyyy-MM-dd HH:mm:ss, such as 2016-03-17 02:10:37
+        :param _Date: Backup snapshot time. Time format: 2016-03-17.
         :type Date: str
         :param _IntranetUrl: Download address on the private network
         :type IntranetUrl: str
@@ -31483,7 +34349,7 @@ class SlowLogInfo(AbstractModel):
 
     @property
     def Date(self):
-        r"""Backup snapshot time in the format of yyyy-MM-dd HH:mm:ss, such as 2016-03-17 02:10:37
+        r"""Backup snapshot time. Time format: 2016-03-17.
         :rtype: str
         """
         return self._Date
@@ -31550,38 +34416,27 @@ class SlowLogItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: SQL execution time.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Timestamp: Sql execution time. Unix second-level timestamp.
         :type Timestamp: int
-        :param _QueryTime: SQL execution duration in seconds.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _QueryTime: Execution duration of Sql (seconds).
         :type QueryTime: float
-        :param _SqlText: SQL statement.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SqlText: Sql statement.
         :type SqlText: str
-        :param _UserHost: Client address.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _UserHost: Client IP address.
         :type UserHost: str
         :param _UserName: Username.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type UserName: str
         :param _Database: Database name.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Database: str
-        :param _LockTime: Lock duration in seconds.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _LockTime: Lock duration (unit: second).
         :type LockTime: float
         :param _RowsExamined: Number of scanned rows.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type RowsExamined: int
-        :param _RowsSent: Number of rows in result set.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RowsSent: Result set row count.
         :type RowsSent: int
-        :param _SqlTemplate: SQL template.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SqlTemplate: Sql Template.
         :type SqlTemplate: str
-        :param _Md5: SQL statement MD5.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Md5: md5 of the Sql statement.
         :type Md5: str
         """
         self._Timestamp = None
@@ -31598,8 +34453,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timestamp(self):
-        r"""SQL execution time.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Sql execution time. Unix second-level timestamp.
         :rtype: int
         """
         return self._Timestamp
@@ -31610,8 +34464,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueryTime(self):
-        r"""SQL execution duration in seconds.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Execution duration of Sql (seconds).
         :rtype: float
         """
         return self._QueryTime
@@ -31622,8 +34475,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SqlText(self):
-        r"""SQL statement.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Sql statement.
         :rtype: str
         """
         return self._SqlText
@@ -31634,8 +34486,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserHost(self):
-        r"""Client address.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Client IP address.
         :rtype: str
         """
         return self._UserHost
@@ -31647,7 +34498,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def UserName(self):
         r"""Username.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._UserName
@@ -31659,7 +34509,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def Database(self):
         r"""Database name.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Database
@@ -31670,8 +34519,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LockTime(self):
-        r"""Lock duration in seconds.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Lock duration (unit: second).
         :rtype: float
         """
         return self._LockTime
@@ -31683,7 +34531,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     @property
     def RowsExamined(self):
         r"""Number of scanned rows.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._RowsExamined
@@ -31694,8 +34541,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RowsSent(self):
-        r"""Number of rows in result set.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Result set row count.
         :rtype: int
         """
         return self._RowsSent
@@ -31706,8 +34552,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SqlTemplate(self):
-        r"""SQL template.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""Sql Template.
         :rtype: str
         """
         return self._SqlTemplate
@@ -31718,8 +34563,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Md5(self):
-        r"""SQL statement MD5.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""md5 of the Sql statement.
         :rtype: str
         """
         return self._Md5
@@ -31955,24 +34799,33 @@ class StartCpuExpandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _Type: Scale-out mode. Valid values: auto and
-manual.
+        :param _Type: Scale-out type supports auto-scaling and custom scaling.
+Description: 1. auto means automatic scaling. 2. manual means custom scaling with immediate effect. 3. timeInterval means custom scaling by time. 4. period means custom scaling by cycle.
         :type Type: str
-        :param _ExpandCpu: Number of CPU cores to increase during manual scale-out. This parameter is required when Type is set to manual.
+        :param _ExpandCpu: Number of CPU cores for scale-out during customization.
+Description: 1. This parameter is required when Type is set to manual, timeInterval, or period. 2. The maximum number of CPU cores to increase is the current instance's CPU core number. For example, an 8-core 16GB instance can scale out up to 8 CPU cores, with a range of 1 - 8.
         :type ExpandCpu: int
         :param _AutoStrategy: Automatic scale-out policy. This parameter is required when Type is set to auto.
         :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
+        :param _TimeIntervalStrategy: Scaling policy by time period.
+Description: When Type is timeInterval, TimeIntervalStrategy is required.
+        :type TimeIntervalStrategy: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
+        :param _PeriodStrategy: Scale by cycle.
+Description: When Type is period, PeriodStrategy is required.
+        :type PeriodStrategy: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
         """
         self._InstanceId = None
         self._Type = None
         self._ExpandCpu = None
         self._AutoStrategy = None
+        self._TimeIntervalStrategy = None
+        self._PeriodStrategy = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -31983,8 +34836,8 @@ manual.
 
     @property
     def Type(self):
-        r"""Scale-out mode. Valid values: auto and
-manual.
+        r"""Scale-out type supports auto-scaling and custom scaling.
+Description: 1. auto means automatic scaling. 2. manual means custom scaling with immediate effect. 3. timeInterval means custom scaling by time. 4. period means custom scaling by cycle.
         :rtype: str
         """
         return self._Type
@@ -31995,7 +34848,8 @@ manual.
 
     @property
     def ExpandCpu(self):
-        r"""Number of CPU cores to increase during manual scale-out. This parameter is required when Type is set to manual.
+        r"""Number of CPU cores for scale-out during customization.
+Description: 1. This parameter is required when Type is set to manual, timeInterval, or period. 2. The maximum number of CPU cores to increase is the current instance's CPU core number. For example, an 8-core 16GB instance can scale out up to 8 CPU cores, with a range of 1 - 8.
         :rtype: int
         """
         return self._ExpandCpu
@@ -32015,6 +34869,30 @@ manual.
     def AutoStrategy(self, AutoStrategy):
         self._AutoStrategy = AutoStrategy
 
+    @property
+    def TimeIntervalStrategy(self):
+        r"""Scaling policy by time period.
+Description: When Type is timeInterval, TimeIntervalStrategy is required.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.TimeIntervalStrategy`
+        """
+        return self._TimeIntervalStrategy
+
+    @TimeIntervalStrategy.setter
+    def TimeIntervalStrategy(self, TimeIntervalStrategy):
+        self._TimeIntervalStrategy = TimeIntervalStrategy
+
+    @property
+    def PeriodStrategy(self):
+        r"""Scale by cycle.
+Description: When Type is period, PeriodStrategy is required.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.PeriodStrategy`
+        """
+        return self._PeriodStrategy
+
+    @PeriodStrategy.setter
+    def PeriodStrategy(self, PeriodStrategy):
+        self._PeriodStrategy = PeriodStrategy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -32023,6 +34901,12 @@ manual.
         if params.get("AutoStrategy") is not None:
             self._AutoStrategy = AutoStrategy()
             self._AutoStrategy._deserialize(params.get("AutoStrategy"))
+        if params.get("TimeIntervalStrategy") is not None:
+            self._TimeIntervalStrategy = TimeIntervalStrategy()
+            self._TimeIntervalStrategy._deserialize(params.get("TimeIntervalStrategy"))
+        if params.get("PeriodStrategy") is not None:
+            self._PeriodStrategy = PeriodStrategy()
+            self._PeriodStrategy._deserialize(params.get("PeriodStrategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32040,7 +34924,7 @@ class StartCpuExpandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID, which can be passed in by calling the `DescribeAsyncRequest` API for task progress query.
+        :param _AsyncRequestId: Asynchronous Task ID. Call the API DescribeAsyncRequest and input the ID to query the task execution progress.
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -32050,7 +34934,7 @@ class StartCpuExpandResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID, which can be passed in by calling the `DescribeAsyncRequest` API for task progress query.
+        r"""Asynchronous Task ID. Call the API DescribeAsyncRequest and input the ID to query the task execution progress.
         :rtype: str
         """
         return self._AsyncRequestId
@@ -32083,14 +34967,14 @@ class StartReplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Read-Only instance ID.
+        :param _InstanceId: Instance ID. It only supports read-only instances. It can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Read-Only instance ID.
+        r"""Instance ID. It only supports read-only instances. It can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -32119,8 +35003,7 @@ class StartReplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _AsyncRequestId: Asynchronous Task ID.
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -32130,8 +35013,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Asynchronous Task ID.
         :rtype: str
         """
         return self._AsyncRequestId
@@ -32164,14 +35046,14 @@ class StopCpuExpandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -32200,7 +35082,7 @@ class StopCpuExpandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID, which can be passed in by calling the `DescribeAsyncRequest` API for task progress query.
+        :param _AsyncRequestId: Asynchronous Task ID. When calling [DescribeAsyncRequestInfo](https://www.tencentcloud.com/document/api/236/20410?from_cn_redirect=1) to query the task execution progress, you can pass in this ID.
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -32210,7 +35092,7 @@ class StopCpuExpandResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID, which can be passed in by calling the `DescribeAsyncRequest` API for task progress query.
+        r"""Asynchronous Task ID. When calling [DescribeAsyncRequestInfo](https://www.tencentcloud.com/document/api/236/20410?from_cn_redirect=1) to query the task execution progress, you can pass in this ID.
         :rtype: str
         """
         return self._AsyncRequestId
@@ -32307,14 +35189,14 @@ class StopReplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Read-Only instance ID.
+        :param _InstanceId: Instance ID. It only supports read-only instances. It can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Read-Only instance ID.
+        r"""Instance ID. It only supports read-only instances. It can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -32343,8 +35225,7 @@ class StopReplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _AsyncRequestId: Asynchronous Task ID.
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -32354,8 +35235,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Asynchronous Task ID.
         :rtype: str
         """
         return self._AsyncRequestId
@@ -32388,14 +35268,14 @@ class StopRollbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ID of the instance whose rollback task is canceled
+        :param _InstanceId: Revoke the corresponding instance ID of the rollback task. Obtain through the API [DescribeDBInstances](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1).
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""ID of the instance whose rollback task is canceled
+        r"""Revoke the corresponding instance ID of the rollback task. Obtain through the API [DescribeDBInstances](https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1).
         :rtype: str
         """
         return self._InstanceId
@@ -32424,7 +35304,7 @@ class StopRollbackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task request ID
+        :param _AsyncRequestId: Asynchronous Task ID of the execution request.
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -32434,7 +35314,7 @@ class StopRollbackResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""Async task request ID
+        r"""Asynchronous Task ID of the execution request.
         :rtype: str
         """
         return self._AsyncRequestId
@@ -32460,6 +35340,102 @@ class StopRollbackResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SubmitInstanceUpgradeCheckJobRequest(AbstractModel):
+    r"""SubmitInstanceUpgradeCheckJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        :type InstanceId: str
+        :param _DstMysqlVersion: Target database version.
+Description: Available values: 5.6, 5.7, 8.0. Cross-version upgrade is not supported. Version downgrade is unsupported after upgrade.
+        :type DstMysqlVersion: str
+        """
+        self._InstanceId = None
+        self._DstMysqlVersion = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DstMysqlVersion(self):
+        r"""Target database version.
+Description: Available values: 5.6, 5.7, 8.0. Cross-version upgrade is not supported. Version downgrade is unsupported after upgrade.
+        :rtype: str
+        """
+        return self._DstMysqlVersion
+
+    @DstMysqlVersion.setter
+    def DstMysqlVersion(self, DstMysqlVersion):
+        self._DstMysqlVersion = DstMysqlVersion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DstMysqlVersion = params.get("DstMysqlVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitInstanceUpgradeCheckJobResponse(AbstractModel):
+    r"""SubmitInstanceUpgradeCheckJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: Task ID
+        :type JobId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""Task ID
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
 class SwitchCDBProxyRequest(AbstractModel):
     r"""SwitchCDBProxy request structure.
 
@@ -32467,9 +35443,9 @@ class SwitchCDBProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _ProxyGroupId: Database proxy ID
+        :param _ProxyGroupId: Database proxy ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
         """
         self._InstanceId = None
@@ -32477,7 +35453,7 @@ class SwitchCDBProxyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -32488,7 +35464,7 @@ class SwitchCDBProxyRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Database proxy ID
+        r"""Database proxy ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -32554,11 +35530,14 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
         :type ForceSwitch: bool
         :param _WaitSwitch: Whether to perform the switch during a time window. Valid values: `True`, `False` (default). If `ForceSwitch` is set to `True`, this parameter is invalid.
         :type WaitSwitch: bool
+        :param _DstNodeId: Trigger primary-secondary switch for the designated node ID of the cluster edition instance.
+        :type DstNodeId: str
         """
         self._InstanceId = None
         self._DstSlave = None
         self._ForceSwitch = None
         self._WaitSwitch = None
+        self._DstNodeId = None
 
     @property
     def InstanceId(self):
@@ -32604,12 +35583,24 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
     def WaitSwitch(self, WaitSwitch):
         self._WaitSwitch = WaitSwitch
 
+    @property
+    def DstNodeId(self):
+        r"""Trigger primary-secondary switch for the designated node ID of the cluster edition instance.
+        :rtype: str
+        """
+        return self._DstNodeId
+
+    @DstNodeId.setter
+    def DstNodeId(self, DstNodeId):
+        self._DstNodeId = DstNodeId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._DstSlave = params.get("DstSlave")
         self._ForceSwitch = params.get("ForceSwitch")
         self._WaitSwitch = params.get("WaitSwitch")
+        self._DstNodeId = params.get("DstNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32670,14 +35661,14 @@ class SwitchDrInstanceToMasterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Disaster recovery instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :param _InstanceId: Disaster recovery instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Disaster recovery instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        r"""Disaster recovery instance ID, in the format such as cdb-c1nl9rpv. This matches the instance ID displayed on the TencentDB console.
         :rtype: str
         """
         return self._InstanceId
@@ -32751,8 +35742,11 @@ class SwitchForUpgradeRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
+        :param _IsRelatedSwitch: Whether to enable association switchover. Enable for true and shutdown for false. Default false.
+        :type IsRelatedSwitch: bool
         """
         self._InstanceId = None
+        self._IsRelatedSwitch = None
 
     @property
     def InstanceId(self):
@@ -32765,9 +35759,21 @@ class SwitchForUpgradeRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def IsRelatedSwitch(self):
+        r"""Whether to enable association switchover. Enable for true and shutdown for false. Default false.
+        :rtype: bool
+        """
+        return self._IsRelatedSwitch
+
+    @IsRelatedSwitch.setter
+    def IsRelatedSwitch(self, IsRelatedSwitch):
+        self._IsRelatedSwitch = IsRelatedSwitch
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._IsRelatedSwitch = params.get("IsRelatedSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32804,6 +35810,146 @@ class SwitchForUpgradeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TImeCycle(AbstractModel):
+    r"""Scale-out period
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Monday: Whether to choose Monday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :type Monday: bool
+        :param _Tuesday: During scaling, whether to choose Tuesday for expansion.
+Description: Value "true" means select, value "false" means not select.
+        :type Tuesday: bool
+        :param _Wednesday: Whether to choose Wednesday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :type Wednesday: bool
+        :param _Thursday: Whether to choose Thursday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :type Thursday: bool
+        :param _Friday: Whether to choose Friday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :type Friday: bool
+        :param _Saturday: Whether to choose Saturday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :type Saturday: bool
+        :param _Sunday: Whether to choose Sunday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :type Sunday: bool
+        """
+        self._Monday = None
+        self._Tuesday = None
+        self._Wednesday = None
+        self._Thursday = None
+        self._Friday = None
+        self._Saturday = None
+        self._Sunday = None
+
+    @property
+    def Monday(self):
+        r"""Whether to choose Monday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :rtype: bool
+        """
+        return self._Monday
+
+    @Monday.setter
+    def Monday(self, Monday):
+        self._Monday = Monday
+
+    @property
+    def Tuesday(self):
+        r"""During scaling, whether to choose Tuesday for expansion.
+Description: Value "true" means select, value "false" means not select.
+        :rtype: bool
+        """
+        return self._Tuesday
+
+    @Tuesday.setter
+    def Tuesday(self, Tuesday):
+        self._Tuesday = Tuesday
+
+    @property
+    def Wednesday(self):
+        r"""Whether to choose Wednesday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :rtype: bool
+        """
+        return self._Wednesday
+
+    @Wednesday.setter
+    def Wednesday(self, Wednesday):
+        self._Wednesday = Wednesday
+
+    @property
+    def Thursday(self):
+        r"""Whether to choose Thursday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :rtype: bool
+        """
+        return self._Thursday
+
+    @Thursday.setter
+    def Thursday(self, Thursday):
+        self._Thursday = Thursday
+
+    @property
+    def Friday(self):
+        r"""Whether to choose Friday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :rtype: bool
+        """
+        return self._Friday
+
+    @Friday.setter
+    def Friday(self, Friday):
+        self._Friday = Friday
+
+    @property
+    def Saturday(self):
+        r"""Whether to choose Saturday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :rtype: bool
+        """
+        return self._Saturday
+
+    @Saturday.setter
+    def Saturday(self, Saturday):
+        self._Saturday = Saturday
+
+    @property
+    def Sunday(self):
+        r"""Whether to choose Sunday for scaling during the period.
+Description: Value "true" means select, value "false" means not select.
+        :rtype: bool
+        """
+        return self._Sunday
+
+    @Sunday.setter
+    def Sunday(self, Sunday):
+        self._Sunday = Sunday
+
+
+    def _deserialize(self, params):
+        self._Monday = params.get("Monday")
+        self._Tuesday = params.get("Tuesday")
+        self._Wednesday = params.get("Wednesday")
+        self._Thursday = params.get("Thursday")
+        self._Friday = params.get("Friday")
+        self._Saturday = params.get("Saturday")
+        self._Sunday = params.get("Sunday")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TablePrivilege(AbstractModel):
@@ -33132,6 +36278,61 @@ class TagsInfoOfInstance(AbstractModel):
         
 
 
+class TaskAttachInfo(AbstractModel):
+    r"""Some tasks in the task list support specific additional information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttachKey: Upgrade task
+"FastUpgradeStatus": Indicates the upgrade type. 1 - in-place upgrade; 0 - normal upgrade.
+        :type AttachKey: str
+        :param _AttachValue: Upgrade task
+"FastUpgradeStatus": Indicates the upgrade type. 1 - In-place upgrade; 0 - Normal upgrade.
+        :type AttachValue: str
+        """
+        self._AttachKey = None
+        self._AttachValue = None
+
+    @property
+    def AttachKey(self):
+        r"""Upgrade task
+"FastUpgradeStatus": Indicates the upgrade type. 1 - in-place upgrade; 0 - normal upgrade.
+        :rtype: str
+        """
+        return self._AttachKey
+
+    @AttachKey.setter
+    def AttachKey(self, AttachKey):
+        self._AttachKey = AttachKey
+
+    @property
+    def AttachValue(self):
+        r"""Upgrade task
+"FastUpgradeStatus": Indicates the upgrade type. 1 - In-place upgrade; 0 - Normal upgrade.
+        :rtype: str
+        """
+        return self._AttachValue
+
+    @AttachValue.setter
+    def AttachValue(self, AttachValue):
+        self._AttachValue = AttachValue
+
+
+    def _deserialize(self, params):
+        self._AttachKey = params.get("AttachKey")
+        self._AttachValue = params.get("AttachValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskDetail(AbstractModel):
     r"""Details of an instance task
 
@@ -33139,7 +36340,7 @@ class TaskDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: Error code.
+        :param _Code: Error code. `0` indicates success. Other values correspond to different error scenarios.
         :type Code: int
         :param _Message: Error message.
         :type Message: str
@@ -33176,11 +36377,12 @@ class TaskDetail(AbstractModel):
         :type StartTime: str
         :param _EndTime: Instance task end time.
         :type EndTime: str
-        :param _InstanceIds: ID of an instance associated with a task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceIds: ID of the associated instance.
         :type InstanceIds: list of str
         :param _AsyncRequestId: Async task request ID.
         :type AsyncRequestId: str
+        :param _TaskAttachInfo: Additional information of the task.
+        :type TaskAttachInfo: list of TaskAttachInfo
         """
         self._Code = None
         self._Message = None
@@ -33192,10 +36394,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EndTime = None
         self._InstanceIds = None
         self._AsyncRequestId = None
+        self._TaskAttachInfo = None
 
     @property
     def Code(self):
-        r"""Error code.
+        r"""Error code. `0` indicates success. Other values correspond to different error scenarios.
         :rtype: int
         """
         return self._Code
@@ -33304,8 +36507,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceIds(self):
-        r"""ID of an instance associated with a task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""ID of the associated instance.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -33325,6 +36527,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AsyncRequestId(self, AsyncRequestId):
         self._AsyncRequestId = AsyncRequestId
 
+    @property
+    def TaskAttachInfo(self):
+        r"""Additional information of the task.
+        :rtype: list of TaskAttachInfo
+        """
+        return self._TaskAttachInfo
+
+    @TaskAttachInfo.setter
+    def TaskAttachInfo(self, TaskAttachInfo):
+        self._TaskAttachInfo = TaskAttachInfo
+
 
     def _deserialize(self, params):
         self._Code = params.get("Code")
@@ -33337,6 +36550,199 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EndTime = params.get("EndTime")
         self._InstanceIds = params.get("InstanceIds")
         self._AsyncRequestId = params.get("AsyncRequestId")
+        if params.get("TaskAttachInfo") is not None:
+            self._TaskAttachInfo = []
+            for item in params.get("TaskAttachInfo"):
+                obj = TaskAttachInfo()
+                obj._deserialize(item)
+                self._TaskAttachInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeInterval(AbstractModel):
+    r"""Time period.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        r"""Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeIntervalStrategy(AbstractModel):
+    r"""Scaling policy by time period
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Expansion time started.
+Description: This value is a timestamp in seconds in Integer format.
+        :type StartTime: int
+        :param _EndTime: Expansion time ended.
+Description: This value is a timestamp in seconds in Integer format.
+        :type EndTime: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        r"""Expansion time started.
+Description: This value is a timestamp in seconds in Integer format.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""Expansion time ended.
+Description: This value is a timestamp in seconds in Integer format.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeAnalysisInstanceVersionInfo(AbstractModel):
+    r"""Analysis engine instance version upgrade info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vip: <p>Grayscale ip for version upgrade</p>
+        :type Vip: str
+        :param _Vport: <p>Grayscale port for version upgrade</p>
+        :type Vport: int
+        :param _EngineVersion: <p>Upgrade to a later version</p>
+        :type EngineVersion: str
+        :param _ExpireTime: <p>Grayscale event for instance upgrade</p><p>Unit: day</p>
+        :type ExpireTime: int
+        """
+        self._Vip = None
+        self._Vport = None
+        self._EngineVersion = None
+        self._ExpireTime = None
+
+    @property
+    def Vip(self):
+        r"""<p>Grayscale ip for version upgrade</p>
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>Grayscale port for version upgrade</p>
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def EngineVersion(self):
+        r"""<p>Upgrade to a later version</p>
+        :rtype: str
+        """
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def ExpireTime(self):
+        r"""<p>Grayscale event for instance upgrade</p><p>Unit: day</p>
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._EngineVersion = params.get("EngineVersion")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33354,9 +36760,9 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :type InstanceId: str
-        :param _ProxyGroupId: Database proxy ID
+        :param _ProxyGroupId: Database proxy ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :type ProxyGroupId: str
         :param _SrcProxyVersion: Current version of database proxy
         :type SrcProxyVersion: str
@@ -33373,7 +36779,7 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._InstanceId
@@ -33384,7 +36790,7 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Database proxy ID
+        r"""Database proxy ID, which can be obtained through the [DescribeCdbProxyInfo](https://www.tencentcloud.com/document/api/236/90585?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._ProxyGroupId
@@ -33450,8 +36856,7 @@ class UpgradeCDBProxyVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async request ID
-Note: this field may return `null`, indicating that no valid value can be found.
+        :param _AsyncRequestId: Async Processing ID
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -33461,8 +36866,7 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def AsyncRequestId(self):
-        r"""Async request ID
-Note: this field may return `null`, indicating that no valid value can be found.
+        r"""Async Processing ID
         :rtype: str
         """
         return self._AsyncRequestId
@@ -33495,26 +36899,32 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        :param _InstanceId: <p>Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">Query Instance List</a> API, with its value being the InstanceId field in the output parameter.</p>
         :type InstanceId: str
-        :param _EngineVersion: Version of primary instance database engine. Value range: 5.6, 5.7
+        :param _EngineVersion: <p>Database engine version of the primary instance. Supported values include 5.6, 5.7, 8.0.<br>Description: Cross-version upgrade is not supported. Downgrade is not supported after upgrade.</p>
         :type EngineVersion: str
-        :param _WaitSwitch: Switch mode for accessing the new instance.  Valid values:  `0` (switch immediately), `1` (switch within a time window). Default value: `0`. If the value is `1`, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.
+        :param _WaitSwitch: <p>The way to switch to a new instance defaults to 0. Supported values include: 0 - switch immediately, 1 - switch in a time window. When the value is 1, during the upgrade process, the switchover to a new instance will be performed in the time window, or the user can proactively call the API <a href="https://www.tencentcloud.com/document/product/236/15864?from_cn_redirect=1">switch to a new instance</a> to trigger the process.</p>
         :type WaitSwitch: int
-        :param _UpgradeSubversion: Whether to upgrade kernel minor version. Valid values: 1 (upgrade kernel minor version), 0 (upgrade database engine).
+        :param _UpgradeSubversion: <p>Whether to upgrade the kernel subversion. Supported values: 1 - upgrade kernel subversion; 0 - upgrade database engine version. No default value. Specify the version type to upgrade.</p>
         :type UpgradeSubversion: int
-        :param _MaxDelayTime: Delay threshold. Value range: 1-10
+        :param _MaxDelayTime: <p>Delay threshold. Value ranges from 1 to 10. No default value. When not specified, the delay threshold is 0, which means the delay threshold is not set.</p>
         :type MaxDelayTime: int
+        :param _IgnoreErrKeyword: <p>Whether to ignore keyword errors when upgrading from 5.7 to 8.0. The value ranges from 0 to 1. 1 means ignored, 0 means not ignored. No default value. Not specified means no action taken.</p>
+        :type IgnoreErrKeyword: int
+        :param _ParamList: <p>Upgrade support for specified parameters</p>
+        :type ParamList: list of UpgradeEngineVersionParams
         """
         self._InstanceId = None
         self._EngineVersion = None
         self._WaitSwitch = None
         self._UpgradeSubversion = None
         self._MaxDelayTime = None
+        self._IgnoreErrKeyword = None
+        self._ParamList = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) to query the ID, whose value is the `InstanceId` value in output parameters.
+        r"""<p>Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">Query Instance List</a> API, with its value being the InstanceId field in the output parameter.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -33525,7 +36935,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""Version of primary instance database engine. Value range: 5.6, 5.7
+        r"""<p>Database engine version of the primary instance. Supported values include 5.6, 5.7, 8.0.<br>Description: Cross-version upgrade is not supported. Downgrade is not supported after upgrade.</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -33536,7 +36946,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def WaitSwitch(self):
-        r"""Switch mode for accessing the new instance.  Valid values:  `0` (switch immediately), `1` (switch within a time window). Default value: `0`. If the value is `1`, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.
+        r"""<p>The way to switch to a new instance defaults to 0. Supported values include: 0 - switch immediately, 1 - switch in a time window. When the value is 1, during the upgrade process, the switchover to a new instance will be performed in the time window, or the user can proactively call the API <a href="https://www.tencentcloud.com/document/product/236/15864?from_cn_redirect=1">switch to a new instance</a> to trigger the process.</p>
         :rtype: int
         """
         return self._WaitSwitch
@@ -33547,7 +36957,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def UpgradeSubversion(self):
-        r"""Whether to upgrade kernel minor version. Valid values: 1 (upgrade kernel minor version), 0 (upgrade database engine).
+        r"""<p>Whether to upgrade the kernel subversion. Supported values: 1 - upgrade kernel subversion; 0 - upgrade database engine version. No default value. Specify the version type to upgrade.</p>
         :rtype: int
         """
         return self._UpgradeSubversion
@@ -33558,7 +36968,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        r"""Delay threshold. Value range: 1-10
+        r"""<p>Delay threshold. Value ranges from 1 to 10. No default value. When not specified, the delay threshold is 0, which means the delay threshold is not set.</p>
         :rtype: int
         """
         return self._MaxDelayTime
@@ -33567,6 +36977,28 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
     def MaxDelayTime(self, MaxDelayTime):
         self._MaxDelayTime = MaxDelayTime
 
+    @property
+    def IgnoreErrKeyword(self):
+        r"""<p>Whether to ignore keyword errors when upgrading from 5.7 to 8.0. The value ranges from 0 to 1. 1 means ignored, 0 means not ignored. No default value. Not specified means no action taken.</p>
+        :rtype: int
+        """
+        return self._IgnoreErrKeyword
+
+    @IgnoreErrKeyword.setter
+    def IgnoreErrKeyword(self, IgnoreErrKeyword):
+        self._IgnoreErrKeyword = IgnoreErrKeyword
+
+    @property
+    def ParamList(self):
+        r"""<p>Upgrade support for specified parameters</p>
+        :rtype: list of UpgradeEngineVersionParams
+        """
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -33574,6 +37006,13 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         self._WaitSwitch = params.get("WaitSwitch")
         self._UpgradeSubversion = params.get("UpgradeSubversion")
         self._MaxDelayTime = params.get("MaxDelayTime")
+        self._IgnoreErrKeyword = params.get("IgnoreErrKeyword")
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = UpgradeEngineVersionParams()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33591,7 +37030,7 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID. The task execution result can be queried using the [async task execution result querying API](https://intl.cloud.tencent.com/document/api/236/20410?from_cn_redirect=1).
+        :param _AsyncRequestId: <p>Asynchronous Task ID. Use <a href="https://www.tencentcloud.com/document/api/236/20410?from_cn_redirect=1">Query Asynchronous Task</a> to get its execution situation.</p>
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -33601,7 +37040,7 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""Async task ID. The task execution result can be queried using the [async task execution result querying API](https://intl.cloud.tencent.com/document/api/236/20410?from_cn_redirect=1).
+        r"""<p>Asynchronous Task ID. Use <a href="https://www.tencentcloud.com/document/api/236/20410?from_cn_redirect=1">Query Asynchronous Task</a> to get its execution situation.</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -33634,40 +37073,48 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of `cdb-c1nl9rpv` or `cdbro-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID, whose value is the `InstanceId` value in output parameters.
+        :param _InstanceId: <p>Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">Query Instance List</a> API, with its value being the InstanceId field in the output parameter.</p>
         :type InstanceId: str
-        :param _Memory: Memory size in MB after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the memory that can be upgraded to.
+        :param _Memory: <p>Memory size after upgrade, unit: MB. To ensure the validity of the imported Memory value, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the upgradeable memory specifications.<br>Note: If you perform business migration, fill in the instance specification (CPU, memory), otherwise the system will use the minimum allowed specification by default.</p>
         :type Memory: int
-        :param _Volume: Disk size in GB after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the disk that can be upgraded to.
+        :param _Volume: <p>Disk size after upgrade, unit: GB. To ensure the validity of the imported Volume value, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the upgradeable disk range.</p>
         :type Volume: int
-        :param _ProtectMode: Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
+        :param _ProtectMode: <p>Data replication method. Supported values include: 0 - async replication, 1 - semi-sync replication, 2 - strong sync replication. Specify this parameter when upgrading the primary instance. This parameter is invalid when upgrading a read-only instance or disaster recovery instance.</p>
         :type ProtectMode: int
-        :param _DeployMode: Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
+        :param _DeployMode: <p>Deployment mode, defaults to 0. Supported values include: 0 - single-AZ deployment, 1 - multi-AZ deployment. You can specify this parameter when upgrading the primary instance. This parameter is invalid when upgrading a read-only instance or disaster recovery instance.</p>
         :type DeployMode: int
-        :param _SlaveZone: AZ information of secondary database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading primary instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the supported AZs.
+        :param _SlaveZone: <p>The availability zone information of standby database 1 matches the Zone parameter of the instance by default. You can specify this parameter when upgrading the primary instance to multi-AZ deployment. This parameter is invalid when upgrading a read-only instance or disaster recovery instance. You can query the supported availability zones via the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API.</p>
         :type SlaveZone: str
-        :param _EngineVersion: Version of primary instance database engine. Valid values: 5.5, 5.6, 5.7.
+        :param _EngineVersion: <p>Database engine version of the primary instance. Supported values include 5.5, 5.6, 5.7, and 8.0.<br>Note: Please use the <a href="https://www.tencentcloud.com/document/api/236/15870?from_cn_redirect=1">UpgradeDBInstanceEngineVersion</a> API to upgrade the database version.</p>
         :type EngineVersion: str
-        :param _WaitSwitch: Switch mode for accessing the new instance.  Valid values:  `0` (switch immediately), `1` (switch within a time window). Default value: `0`. If the value is `1`, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.
+        :param _WaitSwitch: <p>The way to switch to a new instance defaults to 0. Supported values include: 0 - switch immediately, 1 - switch within a time window. When the value is 1, during the upgrade, the process to switch to a new instance will be performed within the time window, or the user can actively call the API <a href="https://www.tencentcloud.com/document/product/236/15864?from_cn_redirect=1">Switch to a New Instance</a> to trigger the process.</p>
         :type WaitSwitch: int
-        :param _BackupZone: AZ information of secondary database 2, which is empty by default. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
+        :param _BackupZone: <p>The availability zone information of standby 2 is empty by default. You can specify this parameter when upgrading the primary instance, but it is invalid when upgrading a read-only instance or disaster recovery instance. Query the supported AZs via the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API.<br>Remark: To downgrade a three-node instance to a two-node one, set this parameter to empty to achieve it.</p>
         :type BackupZone: str
-        :param _InstanceRole: Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        :param _InstanceRole: <p>Instance type, defaults to master. Supported values include: master - refers to the primary instance, dr - refers to the disaster recovery instance, ro - refers to the read-only instance.</p>
         :type InstanceRole: str
-        :param _DeviceType: The resource isolation type after the instance is upgraded. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). If this parameter is left empty, the resource isolation type will be the same as the original one.
+        :param _DeviceType: <p>Instance isolation type. Supported values include "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC" - BASIC edition instance.</p>
         :type DeviceType: str
-        :param _Cpu: The number of CPU cores after the instance is upgraded. If this parameter is left empty, the minimum value will be automatically filled based on the value specified by `Memory`.
+        :param _Cpu: <p>Number of cpu cores of the instance after upgrade. If not provided, the system will automatically fill in the minimum allowed specification based on the Memory size specified by Memory.<br>Description: If you need to migrate business, make sure to fill in the instance specification (cpu, Memory). Otherwise, the system will use the minimum allowed specification by default.</p>
         :type Cpu: int
-        :param _FastUpgrade: QuickChange options. Valid values: `0` (common upgrade), `1` (QuickChange), `2` (QuickChange first). After QuickChange is enabled, the required resources will be checked. QuickChange will be performed only when the required resources support the feature; otherwise, an error message will be returned.
+        :param _FastUpgrade: <p>Whether to perform Rapid Configuration Change. 0-Normal upgrade, 1-Rapid Configuration Change, 2-Precedence to rapid change. Selecting Rapid Configuration Change will validate whether it is possible to perform ultra-fast reconfiguration based on resource status. If conditions are met, ultra-fast reconfiguration will be performed; otherwise, error information will be returned.</p>
         :type FastUpgrade: int
-        :param _MaxDelayTime: Delay threshold. Value range: 1-10. Default value: `10`.
+        :param _MaxDelayTime: <p>Delay threshold. Value ranges from 1 to 10, default value is 10.</p>
         :type MaxDelayTime: int
-        :param _CrossCluster: Whether to migrate the source node across AZs. Valid values: `0` (no), `1`(yes). Default value: `0`. If it is `1`, you can modify the source node AZ.
+        :param _CrossCluster: <p>Whether to perform cross-region migration. 0 - ordinary migration, 1 - cross-region migration, default value is 0. When set to 1, it supports changes to the primary node availability zone of the instance.</p>
         :type CrossCluster: int
-        :param _ZoneId: New AZ of the source node. This field is only valid when `CrossCluster` is `1`. Only migration across AZs in the same region is supported.
+        :param _ZoneId: <p>Primary node availability zone. This parameter is valid only when cross-AZ migration. You can only migrate in the same region.</p>
         :type ZoneId: str
-        :param _RoTransType: Processing logic of the intra-AZ read-only instance for cross-cluster migration. Valid values: `together` (intra-AZ read-only instances will be migrated to the target AZ with the source instance by default.), `severally` (intra-AZ read-only instances will maintain the original deployment mode and will not be migrated to the target AZ.).
+        :param _RoTransType: <p>For cross-cluster migration scenarios, select the processing logic for intra-AZ read-only instances. together-intra-AZ read-only instances migrate with the primary instance to the target availability zone (default option), severally-intra-AZ read-only instances maintain the original deployment mode and do not move to the target availability zone.</p>
         :type RoTransType: str
+        :param _ClusterTopology: <p>Topology configuration of cloud disk edition nodes.</p>
+        :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _CheckFastUpgradeReboot: <p>Check whether in-place upgrade requires restart. 1-Check, 0-Do not check. If the value is 1 and the check shows that in-place upgrade must be restarted, the upgrade will be stopped and a notification will be returned. If in-place upgrade does not require restart, the upgrade process will proceed normally.</p>
+        :type CheckFastUpgradeReboot: int
+        :param _DataCheckSensitive: <p>Data validation sensitivity. This parameter is used for non-Rapid Configuration Change scenarios. Sensitivity is calculated based on current instance specifications to determine cpu resource usage for data comparison during the migration process. Corresponding options are: "high", "normal", "low", empty by default. Parameter explanation: "high": Corresponds to high in the console, not recommended when database load is too high. "normal": Corresponds to standard in the console. "low": Corresponds to low in the console.</p>
+        :type DataCheckSensitive: str
+        :param _FourthZone: <p>AZ information of standby database 3 is empty by default. You can specify this parameter when you proceed to purchase a four-node primary instance.</p>
+        :type FourthZone: str
         """
         self._InstanceId = None
         self._Memory = None
@@ -33686,10 +37133,14 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._CrossCluster = None
         self._ZoneId = None
         self._RoTransType = None
+        self._ClusterTopology = None
+        self._CheckFastUpgradeReboot = None
+        self._DataCheckSensitive = None
+        self._FourthZone = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID in the format of `cdb-c1nl9rpv` or `cdbro-c1nl9rpv`. It is the same as the instance ID displayed on the TencentDB Console page. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID, whose value is the `InstanceId` value in output parameters.
+        r"""<p>Instance ID, in the format such as cdb-c1nl9rpv or cdbro-c1nl9rpv. This matches the instance ID displayed on the TencentDB console. You can obtain it through the <a href="https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1">Query Instance List</a> API, with its value being the InstanceId field in the output parameter.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -33700,7 +37151,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Memory size in MB after upgrade. To ensure that the `Memory` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the memory that can be upgraded to.
+        r"""<p>Memory size after upgrade, unit: MB. To ensure the validity of the imported Memory value, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the upgradeable memory specifications.<br>Note: If you perform business migration, fill in the instance specification (CPU, memory), otherwise the system will use the minimum allowed specification by default.</p>
         :rtype: int
         """
         return self._Memory
@@ -33711,7 +37162,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""Disk size in GB after upgrade. To ensure that the `Volume` value to be passed in is valid, please use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the specifications of the disk that can be upgraded to.
+        r"""<p>Disk size after upgrade, unit: GB. To ensure the validity of the imported Volume value, please use the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API to get the upgradeable disk range.</p>
         :rtype: int
         """
         return self._Volume
@@ -33722,7 +37173,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""Data replication mode. Valid values: 0 (async), 1 (semi-sync), 2 (strong sync). This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
+        r"""<p>Data replication method. Supported values include: 0 - async replication, 1 - semi-sync replication, 2 - strong sync replication. Specify this parameter when upgrading the primary instance. This parameter is invalid when upgrading a read-only instance or disaster recovery instance.</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -33733,7 +37184,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def DeployMode(self):
-        r"""Deployment mode. Valid values: 0 (single-AZ), 1 (multi-AZ). Default value: 0. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
+        r"""<p>Deployment mode, defaults to 0. Supported values include: 0 - single-AZ deployment, 1 - multi-AZ deployment. You can specify this parameter when upgrading the primary instance. This parameter is invalid when upgrading a read-only instance or disaster recovery instance.</p>
         :rtype: int
         """
         return self._DeployMode
@@ -33744,7 +37195,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def SlaveZone(self):
-        r"""AZ information of secondary database 1, which is the `Zone` value of the instance by default. This parameter can be specified when upgrading primary instances in multi-AZ mode and is meaningless for read-only or disaster recovery instances. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/product/236/17229?from_cn_redirect=1) API to query the supported AZs.
+        r"""<p>The availability zone information of standby database 1 matches the Zone parameter of the instance by default. You can specify this parameter when upgrading the primary instance to multi-AZ deployment. This parameter is invalid when upgrading a read-only instance or disaster recovery instance. You can query the supported availability zones via the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API.</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -33755,7 +37206,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""Version of primary instance database engine. Valid values: 5.5, 5.6, 5.7.
+        r"""<p>Database engine version of the primary instance. Supported values include 5.5, 5.6, 5.7, and 8.0.<br>Note: Please use the <a href="https://www.tencentcloud.com/document/api/236/15870?from_cn_redirect=1">UpgradeDBInstanceEngineVersion</a> API to upgrade the database version.</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -33766,7 +37217,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def WaitSwitch(self):
-        r"""Switch mode for accessing the new instance.  Valid values:  `0` (switch immediately), `1` (switch within a time window). Default value: `0`. If the value is `1`, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.
+        r"""<p>The way to switch to a new instance defaults to 0. Supported values include: 0 - switch immediately, 1 - switch within a time window. When the value is 1, during the upgrade, the process to switch to a new instance will be performed within the time window, or the user can actively call the API <a href="https://www.tencentcloud.com/document/product/236/15864?from_cn_redirect=1">Switch to a New Instance</a> to trigger the process.</p>
         :rtype: int
         """
         return self._WaitSwitch
@@ -33777,7 +37228,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def BackupZone(self):
-        r"""AZ information of secondary database 2, which is empty by default. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
+        r"""<p>The availability zone information of standby 2 is empty by default. You can specify this parameter when upgrading the primary instance, but it is invalid when upgrading a read-only instance or disaster recovery instance. Query the supported AZs via the <a href="https://www.tencentcloud.com/document/product/236/17229?from_cn_redirect=1">obtain the purchasable specifications of cloud databases</a> API.<br>Remark: To downgrade a three-node instance to a two-node one, set this parameter to empty to achieve it.</p>
         :rtype: str
         """
         return self._BackupZone
@@ -33788,7 +37239,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        r"""Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
+        r"""<p>Instance type, defaults to master. Supported values include: master - refers to the primary instance, dr - refers to the disaster recovery instance, ro - refers to the read-only instance.</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -33799,7 +37250,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""The resource isolation type after the instance is upgraded. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). If this parameter is left empty, the resource isolation type will be the same as the original one.
+        r"""<p>Instance isolation type. Supported values include "UNIVERSAL" - general-purpose instance, "EXCLUSIVE" - dedicated instance, "BASIC" - BASIC edition instance.</p>
         :rtype: str
         """
         return self._DeviceType
@@ -33810,7 +37261,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""The number of CPU cores after the instance is upgraded. If this parameter is left empty, the minimum value will be automatically filled based on the value specified by `Memory`.
+        r"""<p>Number of cpu cores of the instance after upgrade. If not provided, the system will automatically fill in the minimum allowed specification based on the Memory size specified by Memory.<br>Description: If you need to migrate business, make sure to fill in the instance specification (cpu, Memory). Otherwise, the system will use the minimum allowed specification by default.</p>
         :rtype: int
         """
         return self._Cpu
@@ -33821,7 +37272,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def FastUpgrade(self):
-        r"""QuickChange options. Valid values: `0` (common upgrade), `1` (QuickChange), `2` (QuickChange first). After QuickChange is enabled, the required resources will be checked. QuickChange will be performed only when the required resources support the feature; otherwise, an error message will be returned.
+        r"""<p>Whether to perform Rapid Configuration Change. 0-Normal upgrade, 1-Rapid Configuration Change, 2-Precedence to rapid change. Selecting Rapid Configuration Change will validate whether it is possible to perform ultra-fast reconfiguration based on resource status. If conditions are met, ultra-fast reconfiguration will be performed; otherwise, error information will be returned.</p>
         :rtype: int
         """
         return self._FastUpgrade
@@ -33832,7 +37283,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        r"""Delay threshold. Value range: 1-10. Default value: `10`.
+        r"""<p>Delay threshold. Value ranges from 1 to 10, default value is 10.</p>
         :rtype: int
         """
         return self._MaxDelayTime
@@ -33843,7 +37294,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def CrossCluster(self):
-        r"""Whether to migrate the source node across AZs. Valid values: `0` (no), `1`(yes). Default value: `0`. If it is `1`, you can modify the source node AZ.
+        r"""<p>Whether to perform cross-region migration. 0 - ordinary migration, 1 - cross-region migration, default value is 0. When set to 1, it supports changes to the primary node availability zone of the instance.</p>
         :rtype: int
         """
         return self._CrossCluster
@@ -33854,7 +37305,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""New AZ of the source node. This field is only valid when `CrossCluster` is `1`. Only migration across AZs in the same region is supported.
+        r"""<p>Primary node availability zone. This parameter is valid only when cross-AZ migration. You can only migrate in the same region.</p>
         :rtype: str
         """
         return self._ZoneId
@@ -33865,7 +37316,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def RoTransType(self):
-        r"""Processing logic of the intra-AZ read-only instance for cross-cluster migration. Valid values: `together` (intra-AZ read-only instances will be migrated to the target AZ with the source instance by default.), `severally` (intra-AZ read-only instances will maintain the original deployment mode and will not be migrated to the target AZ.).
+        r"""<p>For cross-cluster migration scenarios, select the processing logic for intra-AZ read-only instances. together-intra-AZ read-only instances migrate with the primary instance to the target availability zone (default option), severally-intra-AZ read-only instances maintain the original deployment mode and do not move to the target availability zone.</p>
         :rtype: str
         """
         return self._RoTransType
@@ -33873,6 +37324,50 @@ class UpgradeDBInstanceRequest(AbstractModel):
     @RoTransType.setter
     def RoTransType(self, RoTransType):
         self._RoTransType = RoTransType
+
+    @property
+    def ClusterTopology(self):
+        r"""<p>Topology configuration of cloud disk edition nodes.</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        """
+        return self._ClusterTopology
+
+    @ClusterTopology.setter
+    def ClusterTopology(self, ClusterTopology):
+        self._ClusterTopology = ClusterTopology
+
+    @property
+    def CheckFastUpgradeReboot(self):
+        r"""<p>Check whether in-place upgrade requires restart. 1-Check, 0-Do not check. If the value is 1 and the check shows that in-place upgrade must be restarted, the upgrade will be stopped and a notification will be returned. If in-place upgrade does not require restart, the upgrade process will proceed normally.</p>
+        :rtype: int
+        """
+        return self._CheckFastUpgradeReboot
+
+    @CheckFastUpgradeReboot.setter
+    def CheckFastUpgradeReboot(self, CheckFastUpgradeReboot):
+        self._CheckFastUpgradeReboot = CheckFastUpgradeReboot
+
+    @property
+    def DataCheckSensitive(self):
+        r"""<p>Data validation sensitivity. This parameter is used for non-Rapid Configuration Change scenarios. Sensitivity is calculated based on current instance specifications to determine cpu resource usage for data comparison during the migration process. Corresponding options are: "high", "normal", "low", empty by default. Parameter explanation: "high": Corresponds to high in the console, not recommended when database load is too high. "normal": Corresponds to standard in the console. "low": Corresponds to low in the console.</p>
+        :rtype: str
+        """
+        return self._DataCheckSensitive
+
+    @DataCheckSensitive.setter
+    def DataCheckSensitive(self, DataCheckSensitive):
+        self._DataCheckSensitive = DataCheckSensitive
+
+    @property
+    def FourthZone(self):
+        r"""<p>AZ information of standby database 3 is empty by default. You can specify this parameter when you proceed to purchase a four-node primary instance.</p>
+        :rtype: str
+        """
+        return self._FourthZone
+
+    @FourthZone.setter
+    def FourthZone(self, FourthZone):
+        self._FourthZone = FourthZone
 
 
     def _deserialize(self, params):
@@ -33893,6 +37388,12 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._CrossCluster = params.get("CrossCluster")
         self._ZoneId = params.get("ZoneId")
         self._RoTransType = params.get("RoTransType")
+        if params.get("ClusterTopology") is not None:
+            self._ClusterTopology = ClusterTopology()
+            self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._CheckFastUpgradeReboot = params.get("CheckFastUpgradeReboot")
+        self._DataCheckSensitive = params.get("DataCheckSensitive")
+        self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33910,9 +37411,9 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealIds: Order ID.
+        :param _DealIds: <p>Order ID.</p>
         :type DealIds: list of str
-        :param _AsyncRequestId: Async task request ID, which can be used to query the execution result of an async task.
+        :param _AsyncRequestId: <p>Request ID of the async task. Use this ID to <a href="https://www.tencentcloud.com/document/product/236/20410?from_cn_redirect=1">query the outcome of the async task</a>.</p>
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -33923,7 +37424,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def DealIds(self):
-        r"""Order ID.
+        r"""<p>Order ID.</p>
         :rtype: list of str
         """
         return self._DealIds
@@ -33934,7 +37435,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""Async task request ID, which can be used to query the execution result of an async task.
+        r"""<p>Request ID of the async task. Use this ID to <a href="https://www.tencentcloud.com/document/product/236/20410?from_cn_redirect=1">query the outcome of the async task</a>.</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -33959,6 +37460,57 @@ class UpgradeDBInstanceResponse(AbstractModel):
         self._DealIds = params.get("DealIds")
         self._AsyncRequestId = params.get("AsyncRequestId")
         self._RequestId = params.get("RequestId")
+
+
+class UpgradeEngineVersionParams(AbstractModel):
+    r"""Structure of specified parameters for upgrade from 5.7 to 8.0
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Parameter name.
+        :type Name: str
+        :param _Value: Parameter value.
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""Parameter name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""Parameter value.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UploadInfo(AbstractModel):

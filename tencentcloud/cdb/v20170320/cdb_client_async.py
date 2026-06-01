@@ -31,7 +31,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddTimeWindowResponse:
         """
-        This API (AddTimeWindow) is used to add a maintenance time window for a TencentDB instance, so as to specify when the instance can automatically perform access switch operations.
+        This API is used to add a maintenance time window for cloud database instances to specify which time periods allow automatic execution of access operations.
         """
         
         kwargs = {}
@@ -49,7 +49,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AdjustCdbProxyResponse:
         """
-        This API is used to adjust the configuration of database proxy.
+        This API is used to adjust database proxy configuration.
         """
         
         kwargs = {}
@@ -67,7 +67,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AdjustCdbProxyAddressResponse:
         """
-        This API is used to adjust the database proxy address.
+        This API is used to adjust the database proxy address configuration.
         """
         
         kwargs = {}
@@ -85,7 +85,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AnalyzeAuditLogsResponse:
         """
-        This API is used to aggregate the audit logs filtered by different conditions and aggregate the statistics of the specified data rows.
+        This API is used to perform aggregation statistics on specified data columns in audit log result sets with different filter criteria.
         """
         
         kwargs = {}
@@ -157,7 +157,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloseCDBProxyResponse:
         """
-        This API is used to disable database proxy.
+        This API is used to disable the database proxy.
         """
         
         kwargs = {}
@@ -175,13 +175,31 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloseCdbProxyAddressResponse:
         """
-        This API is used to disable the database proxy address.
+        This API is used to disable database proxy.
         """
         
         kwargs = {}
         kwargs["action"] = "CloseCdbProxyAddress"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CloseCdbProxyAddressResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CloseSSL(
+            self,
+            request: models.CloseSSLRequest,
+            opts: Dict = None,
+    ) -> models.CloseSSLResponse:
+        """
+        This API is used to close the SSL connectivity function.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseSSL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseSSLResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -211,7 +229,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAccountsResponse:
         """
-        This API is used to create a TencentDB account. The account name, host address, and password are required. Account remarks and maximum connections can also be configured.
+        This API is used to create cloud database accounts. It requires specifying a new account name and domain name as well as the corresponding password. You can also set the account's remark information and maximum number of available connections.
         """
         
         kwargs = {}
@@ -283,7 +301,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateBackupResponse:
         """
-        This API (CreateBackup) is used to create a TencentDB instance backup.
+        This API is used to create a database backup.
         """
         
         kwargs = {}
@@ -301,7 +319,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCdbProxyResponse:
         """
-        This API is used create a database proxy for a source instance.
+        This API is used to create a database proxy for the primary instance.
         """
         
         kwargs = {}
@@ -319,7 +337,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCdbProxyAddressResponse:
         """
-        This API is used to create a database proxy address.
+        This API is used to add a proxy address for database proxy.
         """
         
         kwargs = {}
@@ -337,7 +355,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCloneInstanceResponse:
         """
-        This API is used to create a clone of a specific instance, and roll back the clone by using a physical backup file of the instance or roll back the clone to a point in time.
+        This API is used to create a clone instance from the source instance. You can specify a physical backup file or a rollback time point for the clone instance.
         """
         
         kwargs = {}
@@ -355,9 +373,8 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateDBImportJobResponse:
         """
-        This API (CreateDBImportJob) is used to create a data import task for a TencentDB instance.
-
-        Note that the files for a data import task must be uploaded to Tencent Cloud in advance. You need to do so in the console.
+        This API is used to create a cloud database data import task.
+        Note that the file for the data import task must be uploaded to Tencent Cloud in advance. The user must perform file import on the console.
         """
         
         kwargs = {}
@@ -401,15 +418,14 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateDBInstanceHourResponse:
         """
-        This API is used to create a pay-as-you-go TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.
+        This API is used to create pay-as-you-go instances. You can create a cloud database instance by inputting the instance specification, MySQL version number, quantity, etc. It supports the creation of primary instances, disaster recovery instances, and read-only instances.
 
-        This is an async API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the `Status` value of an instance is `1` and `TaskStatus` is `0`, the instance has been successfully delivered.
+        This API is an async API. You can also use the API for the query (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) to check the instance details. When the instance Status is 1 and TaskStatus is 0, it means the instance has been delivered successfully.
 
-        1. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances.
-        2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months.
-        3. MySQL 5.5, 5.6, 5.7, and 8.0 are supported.
-        4. Source instances, disaster recovery instances, and read-only instances can be created.
-        5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance will be initialized.
+        1. First, please use the API for the query (https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) to obtain the purchasable specifications of cloud databases, then please use the API for the query (https://www.tencentcloud.com/document/api/236/18566?from_cn_redirect=1) to query the instance selling price.
+        2. Supports a maximum of 100 instances created at a time, with a maximum duration of 36 months;
+        3. Support creating MySQL 5.5, MySQL 5.6, MySQL 5.7, and MySQL 8.0 versions.
+        4. Support creating primary instances, disaster recovery instances, and read-only instances.
         """
         
         kwargs = {}
@@ -445,7 +461,8 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateParamTemplateResponse:
         """
-        This API is used to create a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        This API is used to create a parameter template.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
         """
         
         kwargs = {}
@@ -499,7 +516,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteAccountsResponse:
         """
-        This API (DeleteAccounts) is used to delete TencentDB accounts.
+        This API is used to delete CDB accounts.
         """
         
         kwargs = {}
@@ -571,7 +588,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteBackupResponse:
         """
-        This API is used to delete a database backup. It can only delete manually initiated backups.
+        This API is used to delete database backups. It only supports deleting manually initiated backups.
         """
         
         kwargs = {}
@@ -583,13 +600,32 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDatabase(
+            self,
+            request: models.DeleteDatabaseRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDatabaseResponse:
+        """
+        This API is used to delete a database in a cloud database instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDatabase"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDatabaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteParamTemplate(
             self,
             request: models.DeleteParamTemplateRequest,
             opts: Dict = None,
     ) -> models.DeleteParamTemplateResponse:
         """
-        This API is used to delete a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        This API is used to delete parameter template.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
         """
         
         kwargs = {}
@@ -601,13 +637,31 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteRotationPassword(
+            self,
+            request: models.DeleteRotationPasswordRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRotationPasswordResponse:
+        """
+        This API is used to close instance account password rotation.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRotationPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRotationPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteTimeWindow(
             self,
             request: models.DeleteTimeWindowRequest,
             opts: Dict = None,
     ) -> models.DeleteTimeWindowResponse:
         """
-        This API (DeleteTimeWindow) is used to delete a maintenance time window for a TencentDB instance. After it is deleted, the default maintenance time window will be 03:00-04:00, i.e., switch to a new instance will be performed during 03:00-04:00 by default.
+        This API is used to delete the maintenance time window of a cloud database instance. After deleting the instance maintenance window, the default maintenance period is 03:00-04:00 daily with a data validation delay threshold of 10 seconds. When switching to a new instance during the maintenance time window, the switch is performed by default at 03:00-04:00.
         """
         
         kwargs = {}
@@ -625,7 +679,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAccountPrivilegesResponse:
         """
-        This API (DescribeAccountPrivileges) is used to query the information of TencentDB account permissions.
+        This API is used to query the permission information supported by a cloud database account.
         """
         
         kwargs = {}
@@ -643,7 +697,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAccountsResponse:
         """
-        This API is used to query information of all TencentDB accounts.
+        This API is used to query ALL account information of the cloud database.
         """
         
         kwargs = {}
@@ -733,7 +787,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAuditLogsResponse:
         """
-        This API is used to query a database audit log.
+        This API is used to query database audit logs.
         """
         
         kwargs = {}
@@ -751,7 +805,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAuditPoliciesResponse:
         """
-        This API is used to query the audit policies of a TencentDB instance.
+        This API is used to query audit policies of cloud database instances.
         """
         
         kwargs = {}
@@ -805,7 +859,9 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAuditRulesResponse:
         """
-        This API is used to query the audit rules in the current region.
+        This API is used to create audit rules no longer supported.
+
+        This API is used to query audit rules in current region.
         """
         
         kwargs = {}
@@ -823,7 +879,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBackupConfigResponse:
         """
-        This API (DescribeBackupConfig) is used to query the configuration information of a TencentDB instance backup.
+        This API is used to query database backup configuration info.
         """
         
         kwargs = {}
@@ -913,7 +969,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBackupSummariesResponse:
         """
-        This API is used to query the statistics of backups. It will return the capacity used by backups at the instance level and the number and used capacity of data backups and log backups of each instance (all capacity values are in bytes).
+        This API is used to query backup statistics, return the occupied capacity of backups by instance as well as the count and capacity of data backup and log backup for each instance (in bytes).
         """
         
         kwargs = {}
@@ -979,13 +1035,31 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCPUExpandStrategyInfo(
+            self,
+            request: models.DescribeCPUExpandStrategyInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCPUExpandStrategyInfoResponse:
+        """
+        This API is used to query the CPU Elastic Scaling information of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCPUExpandStrategyInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCPUExpandStrategyInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCdbProxyInfo(
             self,
             request: models.DescribeCdbProxyInfoRequest,
             opts: Dict = None,
     ) -> models.DescribeCdbProxyInfoResponse:
         """
-        This API is used to query the details of a database proxy.
+        This API is used to query database proxy detailed information.
         """
         
         kwargs = {}
@@ -1021,7 +1095,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloneListResponse:
         """
-        This API is used to query the clone task list of an instance.
+        This API is used to query the clone task list of a user instance.
         """
         
         kwargs = {}
@@ -1033,31 +1107,13 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeCpuExpandStrategy(
-            self,
-            request: models.DescribeCpuExpandStrategyRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCpuExpandStrategyResponse:
-        """
-        This API is used to query the elastic expansion policy of an instance.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCpuExpandStrategy"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCpuExpandStrategyResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeDBFeatures(
             self,
             request: models.DescribeDBFeaturesRequest,
             opts: Dict = None,
     ) -> models.DescribeDBFeaturesResponse:
         """
-        This API is used to query database version attributes, including supported features such as database encryption and audit.
+        This API is used to query cloud database version attributes, including whether database encryption and database audit are supported, and other features.
         """
         
         kwargs = {}
@@ -1111,7 +1167,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDBInstanceConfigResponse:
         """
-        This API (DescribeDBInstanceConfig) is used to query the configuration information of a TencentDB instance, such as its synchronization mode and deployment mode.
+        This API is used to query the configuration message of a cloud database instance, including sync mode and deployment mode.
         """
         
         kwargs = {}
@@ -1147,7 +1203,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDBInstanceInfoResponse:
         """
-        This API is used to query the basic information of an instance (instance ID, instance name, and whether encryption is enabled).
+        This API is used to query the basic information of an instance, including instance ID, instance name, and whether encryption is enabled. Querying read-only instances is not supported.
         """
         
         kwargs = {}
@@ -1165,7 +1221,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDBInstanceLogToCLSResponse:
         """
-        The API DescribeDBInstanceLogToCLS is used to query the configurations of sending slow and error logs of an instance (InstanceId) filtered by AppId and Region to Cloud Log Service (CLS).
+        This API is used to query the configuration of slow log and error log delivery to CLS for an instance. It filters out the present instance log delivery configuration to CLS by AppId, Region, and instance ID.
         """
         
         kwargs = {}
@@ -1183,7 +1239,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDBInstanceRebootTimeResponse:
         """
-        This API (DescribeDBInstanceRebootTime) is used to query the estimated time needed for a TencentDB instance to restart.
+        This API is used to query the expected time required to restart a cloud database instance.
         """
         
         kwargs = {}
@@ -1361,6 +1417,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceAlarmEvents(
+            self,
+            request: models.DescribeInstanceAlarmEventsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceAlarmEventsResponse:
+        """
+        This API is used to query event information of instance occurrence.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceAlarmEvents"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceAlarmEventsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstanceParamRecords(
             self,
             request: models.DescribeInstanceParamRecordsRequest,
@@ -1397,6 +1471,60 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstancePasswordComplexity(
+            self,
+            request: models.DescribeInstancePasswordComplexityRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstancePasswordComplexityResponse:
+        """
+        This API is used to query the password complexity parameter list of the instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstancePasswordComplexity"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstancePasswordComplexityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInstanceUpgradeCheckJob(
+            self,
+            request: models.DescribeInstanceUpgradeCheckJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceUpgradeCheckJobResponse:
+        """
+        This API is used to query the instance version upgrade validation task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceUpgradeCheckJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceUpgradeCheckJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInstanceUpgradeType(
+            self,
+            request: models.DescribeInstanceUpgradeTypeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceUpgradeTypeResponse:
+        """
+        This API is used to query the upgrade type of a database instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceUpgradeType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceUpgradeTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLocalBinlogConfig(
             self,
             request: models.DescribeLocalBinlogConfigRequest,
@@ -1421,7 +1549,8 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeParamTemplateInfoResponse:
         """
-        This API is used to query parameter template details. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        This API is used to query parameter template details.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
         """
         
         kwargs = {}
@@ -1439,7 +1568,8 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeParamTemplatesResponse:
         """
-        This API is used to query the parameter template list. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        This API is used to query the parameter template list.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
         """
         
         kwargs = {}
@@ -1493,7 +1623,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeProxySupportParamResponse:
         """
-        This API is used to query the supported proxy versions and parameters for an instance.
+        This API is used to query instance support proxy version and parameters.
         """
         
         kwargs = {}
@@ -1529,7 +1659,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRoGroupsResponse:
         """
-        This API is used to query the information of all RO groups of a TencentDB instance.
+        This API is used to query all RO groups of a cloud database instance.
         """
         
         kwargs = {}
@@ -1583,7 +1713,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRollbackTaskDetailResponse:
         """
-        This API is used to query the details of a TencentDB instance rollback task.
+        This API is used to query the rollback task detail of a cloud database instance.
         """
         
         kwargs = {}
@@ -1601,7 +1731,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSSLStatusResponse:
         """
-        This API is used to query the SSL enabling status. If the SSL is enabled, the certificate download link will be returned synchronously.
+        This API is used to query SSL activation status. If SSL has been enabled, it will synchronously return the certificate download URL.
         """
         
         kwargs = {}
@@ -1619,8 +1749,8 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSlowLogDataResponse:
         """
-        This API is used to query the slow logs of an instance over the past month by search criteria.
-        Note: the HTTP response packet will be very large if it contain a single large slow log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.
+        This API is used to search for instance slow logs under usage conditions. Only allow viewing slow logs within one month.
+        During use, pay attention: a single slow log may be too large, causing the entire http request return content to be too large, furthermore leading to API timeout. Once timed out, narrow down the Limit parameter value when querying, thereby reducing the size and enabling the API to return content promptly.
         """
         
         kwargs = {}
@@ -1638,7 +1768,8 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSlowLogsResponse:
         """
-        The API DescribeSlowLogs is used to obtain slow query logs of a cloud database (CDB) instance. Note: If the size of logs to be queried is too large, the operation may time out. It is recommended that you select a shorter time range, such as one hour.
+        This API is used to obtain the slow query log of a cloud database instance.
+        Description: If the data volume is too large in a single query, it may lead to response timeout. We recommend shortening the query time range per request, such as one hour, to avoid timeout.
         """
         
         kwargs = {}
@@ -1668,6 +1799,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTableColumns(
+            self,
+            request: models.DescribeTableColumnsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTableColumnsResponse:
+        """
+        This API is used to query table column information of a designated database in a cloud database instance. It only supports primary instance and disaster recovery instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTableColumns"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTableColumnsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTables(
             self,
             request: models.DescribeTablesRequest,
@@ -1692,7 +1841,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTagsOfInstanceIdsResponse:
         """
-        This API (DescribeTagsOfInstanceIds) is used to query the tag information of a TencentDB instance.
+        This API is used to access tag information of the instance for cloud databases.
         """
         
         kwargs = {}
@@ -1782,7 +1931,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.IsolateDBInstanceResponse:
         """
-        This API is used to isolate a TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to arrears, please top up your account as soon as possible.
+        This API is used to isolate a cloud database instance. After an instance is isolated, you cannot access the database via IP and port. The isolated instance can be started in the recycle bin. If the instance is isolated due to arrears, please recharge as soon as possible.
         """
         
         kwargs = {}
@@ -1818,7 +1967,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAccountMaxUserConnectionsResponse:
         """
-        This API is used to modify the maximum connections of one or more TencentDB instance accounts.
+        This API is used to modify the maximum number of available connections for a cloud database account.
         """
         
         kwargs = {}
@@ -1947,7 +2096,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyBackupConfigResponse:
         """
-        This API (ModifyBackupConfig) is used to modify the database backup configuration.
+        This API is used to modify database backup configuration.
         """
         
         kwargs = {}
@@ -2001,7 +2150,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyCdbProxyAddressDescResponse:
         """
-        This API is used to modify the description of a proxy address.
+        This API is used to modify the proxy address description.
         """
         
         kwargs = {}
@@ -2019,7 +2168,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyCdbProxyAddressVipAndVPortResponse:
         """
-        This API is used to modify the VPC of the database proxy address.
+        This API is used to modify the database proxy address VPC information.
         """
         
         kwargs = {}
@@ -2037,7 +2186,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyCdbProxyParamResponse:
         """
-        This API is used to configure the database proxy parameters.
+        This API is used to configure database proxy parameters.
         """
         
         kwargs = {}
@@ -2062,6 +2211,24 @@ class CdbClient(AbstractClient):
         kwargs["action"] = "ModifyDBInstanceLogToCLS"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDBInstanceLogToCLSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDBInstanceModes(
+            self,
+            request: models.ModifyDBInstanceModesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBInstanceModesResponse:
+        """
+        This API is used to change the mode of a cloud database.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBInstanceModes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBInstanceModesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2127,7 +2294,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyDBInstanceVipVportResponse:
         """
-        This API is used to modify the IP and port number of a TencentDB instance, switch from classic network to VPC, or change VPC subnets.
+        This API is used to modify the IP and port number of a cloud database instance. It can also perform basic network to VPC network and subnet change under VPC network.
         """
         
         kwargs = {}
@@ -2163,7 +2330,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyInstancePasswordComplexityResponse:
         """
-        This API is used to modify the password complexity of a TencentDB instance.
+        This API is used to modify the password complexity of a cloud database instance.
         """
         
         kwargs = {}
@@ -2199,7 +2366,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLocalBinlogConfigResponse:
         """
-        This API is used to modify the retention policy of local binlog of an instance.
+        This API is used to modify the local binlog retention policy of an instance.
         """
         
         kwargs = {}
@@ -2235,13 +2402,33 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyParamTemplateResponse:
         """
-        This API is used to modify a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        This API is used to modify parameter templates.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
         """
         
         kwargs = {}
         kwargs["action"] = "ModifyParamTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyParamTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyProtectMode(
+            self,
+            request: models.ModifyProtectModeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyProtectModeResponse:
+        """
+        This API is used to modify the sync method of an instance.
+        Description: This API can be called only by an exclusive cluster. This API is about to go offline.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyProtectMode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyProtectModeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2283,6 +2470,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyRoGroupVipVport(
+            self,
+            request: models.ModifyRoGroupVipVportRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRoGroupVipVportResponse:
+        """
+        This API is used to modify the vip and vport of a Ro group.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRoGroupVipVport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRoGroupVipVportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyTimeWindow(
             self,
             request: models.ModifyTimeWindowRequest,
@@ -2307,11 +2512,11 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OfflineIsolatedInstancesResponse:
         """
-        This API (OfflineIsolatedInstances) is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status, i.e., their `Status` value is 5 in the return of the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1).
+        This api is used to deactivate cloud database instances in quarantined state now. The instance Status for row operations must be quarantined state, such as instances with Status value 5 queried through the query instance list api.
 
-        This is an asynchronous API. There may be a delay in repossessing some resources. You can query the details by using the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) and specifying the InstanceId and the `Status` value as [5, 6, 7]. If the returned instance is empty, then all its resources have been released.
+        This API is used to perform asynchronous operation, and delays may occur when reclaiming partial resources. You can query by using the query instance list API (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) with specified instance InstanceId and status Status as [5,6,7]. Among them, 5 represents isolated, 6 represents offline, and 7 represents Offline. If the return instance is empty, all instance resources have been released.
 
-        Note that once an instance is deactivated, its resources and data will not be recoverable. Please do so with caution.
+        Note that after the instance goes offline, relevant resources and data cannot be recovered. Proceed with caution.
         """
         
         kwargs = {}
@@ -2329,7 +2534,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OpenAuditServiceResponse:
         """
-        This API is used to enable the audit service.
+        This API is used to activate audit service for CDB instance.
         """
         
         kwargs = {}
@@ -2347,17 +2552,18 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.OpenDBInstanceEncryptionResponse:
         """
-        This API is used to enable the encryption feature for instance data storage, and custom keys are supported.
+        This API is used to enable data storage encryption for instance and support users to specify custom keys.
 
-        Note: Before enabling data storage encryption for an instance, you need to perform the following operations:
+        Note that before enabling data storage encryption for instance, perform the following operations:
 
-        1. [Initialize an instance](https://intl.cloud.tencent.com/document/api/236/15873?from_cn_redirect=1).
+        1. Perform instance initialization (https://www.tencentcloud.com/document/api/236/15873?from_cn_redirect=1).
 
-        2. Enable [KMS service](https://console.cloud.tencent.com/kms2)
+        2. Enable the KMS service (https://console.cloud.tencent.com/kms2).
 
-        3. [Grant permission to access KMS](https://console.cloud.tencent.com/cam/role) for TencentDB for MySQL. The role name is `MySQL_QCSRole`, and the preset policy name is `QcloudAccessForMySQLRole`.
+        3. Grant the cloud database (MySQL) permission to access the KMS key (https://console.cloud.tencent.com/cam/role). The role name is MySQL_QCSRole and the preset policy name is QcloudAccessForMySQLRole.
+        4. Closing is not allowed after encryption being enabled.
 
-        This API calling may take up to 10 seconds, causing the client to time out. If it returns `InternalError`, call `DescribeDBInstanceInfo` to confirm whether the backend encryption is enabled successfully.
+        This API may take up to 10s, and the client may timeout. If the API call returns InternalError, please call [DescribeDBInstanceInfo](https://www.tencentcloud.com/document/product/236/44160?from_cn_redirect=1) to confirm whether backend encryption is successfully enabled. After calling, if the parameter Encryption is YES, it means activation is successful.
         """
         
         kwargs = {}
@@ -2382,6 +2588,24 @@ class CdbClient(AbstractClient):
         kwargs["action"] = "OpenDBInstanceGTID"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.OpenDBInstanceGTIDResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenSSL(
+            self,
+            request: models.OpenSSLRequest,
+            opts: Dict = None,
+    ) -> models.OpenSSLResponse:
+        """
+        This API is used to enable SSL connectivity function.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenSSL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenSSLResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2413,7 +2637,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ReleaseIsolatedDBInstancesResponse:
         """
-        This API is used to deisolate an isolated TencentDB instance.
+        This API is used to restore isolated cloud database instances. It is only used for de-isolating pay-as-you-go instances. For monthly subscription instances, please use RenewDBInstance.
         """
         
         kwargs = {}
@@ -2461,6 +2685,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ResetPassword(
+            self,
+            request: models.ResetPasswordRequest,
+            opts: Dict = None,
+    ) -> models.ResetPasswordResponse:
+        """
+        Manually refresh rotation passwords
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ResetRootAccount(
             self,
             request: models.ResetRootAccountRequest,
@@ -2485,11 +2727,11 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RestartDBInstancesResponse:
         """
-        This API (RestartDBInstances) is used to restart TencentDB instances.
+        This API is used to restart cloud database instances.
 
         Note:
-        1. This API only supports restarting primary instances.
-        2. The instance status must be normal, and no other async tasks are in progress.
+        This API supports performing a restart operation on primary instances, read-only instances, and disaster recovery instances.
+        2. The instance status must be normal and no other async tasks are in progress.
         """
         
         kwargs = {}
@@ -2525,7 +2767,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StartCpuExpandResponse:
         """
-        u200cThis API is used to enable elastic CPU expansion manually or automatically.
+        This API is used to enable CPU Elastic Scaling, including one-time manual scale-out and automatic elastic scaling.
         """
         
         kwargs = {}
@@ -2543,7 +2785,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StartReplicationResponse:
         """
-        This API is used to start the data replication from the source instance to the read-only instance.
+        This API is used to enable RO replication and sync data from the primary instance.
         """
         
         kwargs = {}
@@ -2579,7 +2821,8 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StopDBImportJobResponse:
         """
-        This API (StopDBImportJob) is used to stop a data import task.
+        This API is used to terminate a data import task.
+        Description: Only incomplete import jobs support termination, and the executed SQL part is retained after termination.
         """
         
         kwargs = {}
@@ -2597,7 +2840,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StopReplicationResponse:
         """
-        This API is used to stop the data replication from the source instance to the read-only instance.
+        This API is used to stop RO replication and interrupt data sync from the primary instance.
         """
         
         kwargs = {}
@@ -2615,7 +2858,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StopRollbackResponse:
         """
-        This API is used to cancel a rollback task in progress, and returns an async task ID. You can use the `DescribeAsyncRequestInfo` API to query the result of cancellation.
+        This api is used to revoke an ongoing rollback task of an instance. The api response returns an Asynchronous Task ID. The revocation result can be queried through [DescribeAsyncRequestInfo](https://www.tencentcloud.com/document/api/236/20410?from_cn_redirect=1) for task execution.
         """
         
         kwargs = {}
@@ -2627,13 +2870,31 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SubmitInstanceUpgradeCheckJob(
+            self,
+            request: models.SubmitInstanceUpgradeCheckJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitInstanceUpgradeCheckJobResponse:
+        """
+        This API is used to submit an instance version upgrade validation task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitInstanceUpgradeCheckJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitInstanceUpgradeCheckJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SwitchCDBProxy(
             self,
             request: models.SwitchCDBProxyRequest,
             opts: Dict = None,
     ) -> models.SwitchCDBProxyResponse:
         """
-        This API is used to switch database proxy after the proxy configuration is modified or the proxy version is upgraded.
+        This API is used to manually initiate an immediate switch after database proxy configuration modification or edition upgrade.
         """
         
         kwargs = {}
@@ -2669,7 +2930,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SwitchDrInstanceToMasterResponse:
         """
-        This API is used to promote a disaster recovery instance to source instance. The request parameter `Region` must be the region of the disaster recovery instance.
+        This API is used to switch a cloud database disaster recovery instance to primary instance. Note that the request must be sent to the region where the disaster recovery instance is located.
         """
         
         kwargs = {}
@@ -2705,7 +2966,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpgradeCDBProxyVersionResponse:
         """
-        This API is used to upgrade the version of database proxy.
+        This API is used to upgrade the database proxy version.
         """
         
         kwargs = {}
@@ -2723,7 +2984,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpgradeDBInstanceResponse:
         """
-        This API is used to upgrade or downgrade a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
+        This API is used to upgrade or downgrade the configuration of a cloud database instance. Supported instance types include primary instance, disaster recovery instance and read-only instance. If you need to migrate business, fill in the instance specification (CPU, memory), otherwise the system will use the minimum allowed specification by default.
         """
         
         kwargs = {}
@@ -2741,7 +3002,7 @@ class CdbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpgradeDBInstanceEngineVersionResponse:
         """
-        This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
+        This API is used to upgrade the version of a cloud database instance. Supported instance types include primary instance, disaster recovery instance, and read-only instance. Before upgrade, submit an upgrade check task via SubmitInstanceUpgradeCheckJob (https://www.tencentcloud.com/document/product/236/110468?from_cn_redirect=1).
         """
         
         kwargs = {}

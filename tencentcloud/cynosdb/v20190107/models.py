@@ -1115,7 +1115,7 @@ class AddInstancesResponse(AbstractModel):
         r"""
         :param _TranId: <p>Freeze transaction. One frozen flow is activated at a time.</p>
         :type TranId: str
-        :param _DealNames: <p>Order ID for payment. Description: Recommend you use the <a href="https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1">DescribeResourcesByDealName</a> api to query order associated instance.</p>
+        :param _DealNames: <p>Order ID for payment. Description: Recommend you use the <a href="https://www.tencentcloud.com/document/product/1098/40735">DescribeResourcesByDealName</a> api to query order associated instance.</p>
         :type DealNames: list of str
         :param _ResourceIds: <p>Delivery resource id list.</p>
         :type ResourceIds: list of str
@@ -1143,7 +1143,7 @@ class AddInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""<p>Order ID for payment. Description: Recommend you use the <a href="https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1">DescribeResourcesByDealName</a> api to query order associated instance.</p>
+        r"""<p>Order ID for payment. Description: Recommend you use the <a href="https://www.tencentcloud.com/document/product/1098/40735">DescribeResourcesByDealName</a> api to query order associated instance.</p>
         :rtype: list of str
         """
         return self._DealNames

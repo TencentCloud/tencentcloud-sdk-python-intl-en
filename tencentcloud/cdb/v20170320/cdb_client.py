@@ -27,7 +27,7 @@ class CdbClient(AbstractClient):
 
 
     def AddTimeWindow(self, request):
-        r"""This API (AddTimeWindow) is used to add a maintenance time window for a TencentDB instance, so as to specify when the instance can automatically perform access switch operations.
+        r"""This API is used to add a maintenance time window for cloud database instances to specify which time periods allow automatic execution of access operations.
 
         :param request: Request instance for AddTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AddTimeWindowRequest`
@@ -50,7 +50,7 @@ class CdbClient(AbstractClient):
 
 
     def AdjustCdbProxy(self, request):
-        r"""This API is used to adjust the configuration of database proxy.
+        r"""This API is used to adjust database proxy configuration.
 
         :param request: Request instance for AdjustCdbProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyRequest`
@@ -73,7 +73,7 @@ class CdbClient(AbstractClient):
 
 
     def AdjustCdbProxyAddress(self, request):
-        r"""This API is used to adjust the database proxy address.
+        r"""This API is used to adjust the database proxy address configuration.
 
         :param request: Request instance for AdjustCdbProxyAddress.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyAddressRequest`
@@ -96,7 +96,7 @@ class CdbClient(AbstractClient):
 
 
     def AnalyzeAuditLogs(self, request):
-        r"""This API is used to aggregate the audit logs filtered by different conditions and aggregate the statistics of the specified data rows.
+        r"""This API is used to perform aggregation statistics on specified data columns in audit log result sets with different filter criteria.
 
         :param request: Request instance for AnalyzeAuditLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.AnalyzeAuditLogsRequest`
@@ -188,7 +188,7 @@ class CdbClient(AbstractClient):
 
 
     def CloseCDBProxy(self, request):
-        r"""This API is used to disable database proxy.
+        r"""This API is used to disable the database proxy.
 
         :param request: Request instance for CloseCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CloseCDBProxyRequest`
@@ -211,7 +211,7 @@ class CdbClient(AbstractClient):
 
 
     def CloseCdbProxyAddress(self, request):
-        r"""This API is used to disable the database proxy address.
+        r"""This API is used to disable database proxy.
 
         :param request: Request instance for CloseCdbProxyAddress.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CloseCdbProxyAddressRequest`
@@ -224,6 +224,29 @@ class CdbClient(AbstractClient):
             body = self.call("CloseCdbProxyAddress", params, headers=headers)
             response = json.loads(body)
             model = models.CloseCdbProxyAddressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CloseSSL(self, request):
+        r"""This API is used to close the SSL connectivity function.
+
+        :param request: Request instance for CloseSSL.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CloseSSLRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CloseSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseSSLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -257,7 +280,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateAccounts(self, request):
-        r"""This API is used to create a TencentDB account. The account name, host address, and password are required. Account remarks and maximum connections can also be configured.
+        r"""This API is used to create cloud database accounts. It requires specifying a new account name and domain name as well as the corresponding password. You can also set the account's remark information and maximum number of available connections.
 
         :param request: Request instance for CreateAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAccountsRequest`
@@ -349,7 +372,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateBackup(self, request):
-        r"""This API (CreateBackup) is used to create a TencentDB instance backup.
+        r"""This API is used to create a database backup.
 
         :param request: Request instance for CreateBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateBackupRequest`
@@ -372,7 +395,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateCdbProxy(self, request):
-        r"""This API is used create a database proxy for a source instance.
+        r"""This API is used to create a database proxy for the primary instance.
 
         :param request: Request instance for CreateCdbProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCdbProxyRequest`
@@ -395,7 +418,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateCdbProxyAddress(self, request):
-        r"""This API is used to create a database proxy address.
+        r"""This API is used to add a proxy address for database proxy.
 
         :param request: Request instance for CreateCdbProxyAddress.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCdbProxyAddressRequest`
@@ -418,7 +441,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateCloneInstance(self, request):
-        r"""This API is used to create a clone of a specific instance, and roll back the clone by using a physical backup file of the instance or roll back the clone to a point in time.
+        r"""This API is used to create a clone instance from the source instance. You can specify a physical backup file or a rollback time point for the clone instance.
 
         :param request: Request instance for CreateCloneInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCloneInstanceRequest`
@@ -441,9 +464,8 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBImportJob(self, request):
-        r"""This API (CreateDBImportJob) is used to create a data import task for a TencentDB instance.
-
-        Note that the files for a data import task must be uploaded to Tencent Cloud in advance. You need to do so in the console.
+        r"""This API is used to create a cloud database data import task.
+        Note that the file for the data import task must be uploaded to Tencent Cloud in advance. The user must perform file import on the console.
 
         :param request: Request instance for CreateDBImportJob.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBImportJobRequest`
@@ -497,15 +519,14 @@ class CdbClient(AbstractClient):
 
 
     def CreateDBInstanceHour(self, request):
-        r"""This API is used to create a pay-as-you-go TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, and quantity.
+        r"""This API is used to create pay-as-you-go instances. You can create a cloud database instance by inputting the instance specification, MySQL version number, quantity, etc. It supports the creation of primary instances, disaster recovery instances, and read-only instances.
 
-        This is an async API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the `Status` value of an instance is `1` and `TaskStatus` is `0`, the instance has been successfully delivered.
+        This API is an async API. You can also use the API for the query (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) to check the instance details. When the instance Status is 1 and TaskStatus is 0, it means the instance has been delivered successfully.
 
-        1. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances.
-        2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months.
-        3. MySQL 5.5, 5.6, 5.7, and 8.0 are supported.
-        4. Source instances, disaster recovery instances, and read-only instances can be created.
-        5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance will be initialized.
+        1. First, please use the API for the query (https://www.tencentcloud.com/document/api/236/17229?from_cn_redirect=1) to obtain the purchasable specifications of cloud databases, then please use the API for the query (https://www.tencentcloud.com/document/api/236/18566?from_cn_redirect=1) to query the instance selling price.
+        2. Supports a maximum of 100 instances created at a time, with a maximum duration of 36 months;
+        3. Support creating MySQL 5.5, MySQL 5.6, MySQL 5.7, and MySQL 8.0 versions.
+        4. Support creating primary instances, disaster recovery instances, and read-only instances.
 
         :param request: Request instance for CreateDBInstanceHour.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceHourRequest`
@@ -551,7 +572,8 @@ class CdbClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        r"""This API is used to create a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to create a parameter template.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateParamTemplateRequest`
@@ -620,7 +642,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteAccounts(self, request):
-        r"""This API (DeleteAccounts) is used to delete TencentDB accounts.
+        r"""This API is used to delete CDB accounts.
 
         :param request: Request instance for DeleteAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAccountsRequest`
@@ -712,7 +734,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteBackup(self, request):
-        r"""This API is used to delete a database backup. It can only delete manually initiated backups.
+        r"""This API is used to delete database backups. It only supports deleting manually initiated backups.
 
         :param request: Request instance for DeleteBackup.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteBackupRequest`
@@ -734,8 +756,32 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDatabase(self, request):
+        r"""This API is used to delete a database in a cloud database instance.
+
+        :param request: Request instance for DeleteDatabase.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteDatabaseRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteParamTemplate(self, request):
-        r"""This API is used to delete a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to delete parameter template.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
 
         :param request: Request instance for DeleteParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteParamTemplateRequest`
@@ -757,8 +803,31 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRotationPassword(self, request):
+        r"""This API is used to close instance account password rotation.
+
+        :param request: Request instance for DeleteRotationPassword.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteRotationPasswordRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteRotationPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRotationPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRotationPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteTimeWindow(self, request):
-        r"""This API (DeleteTimeWindow) is used to delete a maintenance time window for a TencentDB instance. After it is deleted, the default maintenance time window will be 03:00-04:00, i.e., switch to a new instance will be performed during 03:00-04:00 by default.
+        r"""This API is used to delete the maintenance time window of a cloud database instance. After deleting the instance maintenance window, the default maintenance period is 03:00-04:00 daily with a data validation delay threshold of 10 seconds. When switching to a new instance during the maintenance time window, the switch is performed by default at 03:00-04:00.
 
         :param request: Request instance for DeleteTimeWindow.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteTimeWindowRequest`
@@ -781,7 +850,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAccountPrivileges(self, request):
-        r"""This API (DescribeAccountPrivileges) is used to query the information of TencentDB account permissions.
+        r"""This API is used to query the permission information supported by a cloud database account.
 
         :param request: Request instance for DescribeAccountPrivileges.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountPrivilegesRequest`
@@ -804,7 +873,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        r"""This API is used to query information of all TencentDB accounts.
+        r"""This API is used to query ALL account information of the cloud database.
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAccountsRequest`
@@ -919,7 +988,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditLogs(self, request):
-        r"""This API is used to query a database audit log.
+        r"""This API is used to query database audit logs.
 
         :param request: Request instance for DescribeAuditLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditLogsRequest`
@@ -942,7 +1011,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditPolicies(self, request):
-        r"""This API is used to query the audit policies of a TencentDB instance.
+        r"""This API is used to query audit policies of cloud database instances.
 
         :param request: Request instance for DescribeAuditPolicies.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditPoliciesRequest`
@@ -1011,7 +1080,9 @@ class CdbClient(AbstractClient):
 
 
     def DescribeAuditRules(self, request):
-        r"""This API is used to query the audit rules in the current region.
+        r"""This API is used to create audit rules no longer supported.
+
+        This API is used to query audit rules in current region.
 
         :param request: Request instance for DescribeAuditRules.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRulesRequest`
@@ -1034,7 +1105,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupConfig(self, request):
-        r"""This API (DescribeBackupConfig) is used to query the configuration information of a TencentDB instance backup.
+        r"""This API is used to query database backup configuration info.
 
         :param request: Request instance for DescribeBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupConfigRequest`
@@ -1149,7 +1220,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeBackupSummaries(self, request):
-        r"""This API is used to query the statistics of backups. It will return the capacity used by backups at the instance level and the number and used capacity of data backups and log backups of each instance (all capacity values are in bytes).
+        r"""This API is used to query backup statistics, return the occupied capacity of backups by instance as well as the count and capacity of data backup and log backup for each instance (in bytes).
 
         :param request: Request instance for DescribeBackupSummaries.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupSummariesRequest`
@@ -1240,8 +1311,31 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCPUExpandStrategyInfo(self, request):
+        r"""This API is used to query the CPU Elastic Scaling information of an instance.
+
+        :param request: Request instance for DescribeCPUExpandStrategyInfo.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCPUExpandStrategyInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCPUExpandStrategyInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCPUExpandStrategyInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCPUExpandStrategyInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCdbProxyInfo(self, request):
-        r"""This API is used to query the details of a database proxy.
+        r"""This API is used to query database proxy detailed information.
 
         :param request: Request instance for DescribeCdbProxyInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCdbProxyInfoRequest`
@@ -1287,7 +1381,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCloneList(self, request):
-        r"""This API is used to query the clone task list of an instance.
+        r"""This API is used to query the clone task list of a user instance.
 
         :param request: Request instance for DescribeCloneList.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCloneListRequest`
@@ -1309,31 +1403,8 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCpuExpandStrategy(self, request):
-        r"""This API is used to query the elastic expansion policy of an instance.
-
-        :param request: Request instance for DescribeCpuExpandStrategy.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCpuExpandStrategy", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCpuExpandStrategyResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDBFeatures(self, request):
-        r"""This API is used to query database version attributes, including supported features such as database encryption and audit.
+        r"""This API is used to query cloud database version attributes, including whether database encryption and database audit are supported, and other features.
 
         :param request: Request instance for DescribeDBFeatures.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBFeaturesRequest`
@@ -1402,7 +1473,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceConfig(self, request):
-        r"""This API (DescribeDBInstanceConfig) is used to query the configuration information of a TencentDB instance, such as its synchronization mode and deployment mode.
+        r"""This API is used to query the configuration message of a cloud database instance, including sync mode and deployment mode.
 
         :param request: Request instance for DescribeDBInstanceConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceConfigRequest`
@@ -1448,7 +1519,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceInfo(self, request):
-        r"""This API is used to query the basic information of an instance (instance ID, instance name, and whether encryption is enabled).
+        r"""This API is used to query the basic information of an instance, including instance ID, instance name, and whether encryption is enabled. Querying read-only instances is not supported.
 
         :param request: Request instance for DescribeDBInstanceInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceInfoRequest`
@@ -1471,7 +1542,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceLogToCLS(self, request):
-        r"""The API DescribeDBInstanceLogToCLS is used to query the configurations of sending slow and error logs of an instance (InstanceId) filtered by AppId and Region to Cloud Log Service (CLS).
+        r"""This API is used to query the configuration of slow log and error log delivery to CLS for an instance. It filters out the present instance log delivery configuration to CLS by AppId, Region, and instance ID.
 
         :param request: Request instance for DescribeDBInstanceLogToCLS.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceLogToCLSRequest`
@@ -1494,7 +1565,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDBInstanceRebootTime(self, request):
-        r"""This API (DescribeDBInstanceRebootTime) is used to query the estimated time needed for a TencentDB instance to restart.
+        r"""This API is used to query the expected time required to restart a cloud database instance.
 
         :param request: Request instance for DescribeDBInstanceRebootTime.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceRebootTimeRequest`
@@ -1727,6 +1798,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceAlarmEvents(self, request):
+        r"""This API is used to query event information of instance occurrence.
+
+        :param request: Request instance for DescribeInstanceAlarmEvents.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceAlarmEventsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceAlarmEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceAlarmEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceAlarmEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceParamRecords(self, request):
         r"""This API (DescribeInstanceParamRecords) is used to query the parameter modification records of an instance.
 
@@ -1773,6 +1867,75 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstancePasswordComplexity(self, request):
+        r"""This API is used to query the password complexity parameter list of the instance.
+
+        :param request: Request instance for DescribeInstancePasswordComplexity.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstancePasswordComplexityRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstancePasswordComplexityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancePasswordComplexity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancePasswordComplexityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceUpgradeCheckJob(self, request):
+        r"""This API is used to query the instance version upgrade validation task.
+
+        :param request: Request instance for DescribeInstanceUpgradeCheckJob.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceUpgradeCheckJobRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceUpgradeCheckJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceUpgradeCheckJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceUpgradeCheckJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceUpgradeType(self, request):
+        r"""This API is used to query the upgrade type of a database instance.
+
+        :param request: Request instance for DescribeInstanceUpgradeType.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceUpgradeTypeRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceUpgradeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceUpgradeType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceUpgradeTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLocalBinlogConfig(self, request):
         r"""This API is used to query the retention policy of local binlog of an instance.
 
@@ -1797,7 +1960,8 @@ class CdbClient(AbstractClient):
 
 
     def DescribeParamTemplateInfo(self, request):
-        r"""This API is used to query parameter template details. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to query parameter template details.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
 
         :param request: Request instance for DescribeParamTemplateInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplateInfoRequest`
@@ -1820,7 +1984,8 @@ class CdbClient(AbstractClient):
 
 
     def DescribeParamTemplates(self, request):
-        r"""This API is used to query the parameter template list. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to query the parameter template list.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
 
         :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplatesRequest`
@@ -1889,7 +2054,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeProxySupportParam(self, request):
-        r"""This API is used to query the supported proxy versions and parameters for an instance.
+        r"""This API is used to query instance support proxy version and parameters.
 
         :param request: Request instance for DescribeProxySupportParam.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxySupportParamRequest`
@@ -1935,7 +2100,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeRoGroups(self, request):
-        r"""This API is used to query the information of all RO groups of a TencentDB instance.
+        r"""This API is used to query all RO groups of a cloud database instance.
 
         :param request: Request instance for DescribeRoGroups.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRoGroupsRequest`
@@ -2004,7 +2169,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeRollbackTaskDetail(self, request):
-        r"""This API is used to query the details of a TencentDB instance rollback task.
+        r"""This API is used to query the rollback task detail of a cloud database instance.
 
         :param request: Request instance for DescribeRollbackTaskDetail.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRollbackTaskDetailRequest`
@@ -2027,7 +2192,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSSLStatus(self, request):
-        r"""This API is used to query the SSL enabling status. If the SSL is enabled, the certificate download link will be returned synchronously.
+        r"""This API is used to query SSL activation status. If SSL has been enabled, it will synchronously return the certificate download URL.
 
         :param request: Request instance for DescribeSSLStatus.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSSLStatusRequest`
@@ -2050,8 +2215,8 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSlowLogData(self, request):
-        r"""This API is used to query the slow logs of an instance over the past month by search criteria.
-        Note: the HTTP response packet will be very large if it contain a single large slow log, which causes the API call to time out. If this happens, we recommend you lower the value of the input parameter `Limit` to reduce the packet size so that the API can respond timely.
+        r"""This API is used to search for instance slow logs under usage conditions. Only allow viewing slow logs within one month.
+        During use, pay attention: a single slow log may be too large, causing the entire http request return content to be too large, furthermore leading to API timeout. Once timed out, narrow down the Limit parameter value when querying, thereby reducing the size and enabling the API to return content promptly.
 
         :param request: Request instance for DescribeSlowLogData.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogDataRequest`
@@ -2074,7 +2239,8 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSlowLogs(self, request):
-        r"""The API DescribeSlowLogs is used to obtain slow query logs of a cloud database (CDB) instance. Note: If the size of logs to be queried is too large, the operation may time out. It is recommended that you select a shorter time range, such as one hour.
+        r"""This API is used to obtain the slow query log of a cloud database instance.
+        Description: If the data volume is too large in a single query, it may lead to response timeout. We recommend shortening the query time range per request, such as one hour, to avoid timeout.
 
         :param request: Request instance for DescribeSlowLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogsRequest`
@@ -2119,6 +2285,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTableColumns(self, request):
+        r"""This API is used to query table column information of a designated database in a cloud database instance. It only supports primary instance and disaster recovery instance.
+
+        :param request: Request instance for DescribeTableColumns.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTableColumnsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeTableColumnsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableColumns", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableColumnsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTables(self, request):
         r"""This API is used to query the information of database tables in a TencentDB instance. It only supports source or disaster recovery instances.
 
@@ -2143,7 +2332,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeTagsOfInstanceIds(self, request):
-        r"""This API (DescribeTagsOfInstanceIds) is used to query the tag information of a TencentDB instance.
+        r"""This API is used to access tag information of the instance for cloud databases.
 
         :param request: Request instance for DescribeTagsOfInstanceIds.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTagsOfInstanceIdsRequest`
@@ -2258,7 +2447,7 @@ class CdbClient(AbstractClient):
 
 
     def IsolateDBInstance(self, request):
-        r"""This API is used to isolate a TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to arrears, please top up your account as soon as possible.
+        r"""This API is used to isolate a cloud database instance. After an instance is isolated, you cannot access the database via IP and port. The isolated instance can be started in the recycle bin. If the instance is isolated due to arrears, please recharge as soon as possible.
 
         :param request: Request instance for IsolateDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.IsolateDBInstanceRequest`
@@ -2304,7 +2493,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyAccountMaxUserConnections(self, request):
-        r"""This API is used to modify the maximum connections of one or more TencentDB instance accounts.
+        r"""This API is used to modify the maximum number of available connections for a cloud database account.
 
         :param request: Request instance for ModifyAccountMaxUserConnections.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountMaxUserConnectionsRequest`
@@ -2468,7 +2657,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyBackupConfig(self, request):
-        r"""This API (ModifyBackupConfig) is used to modify the database backup configuration.
+        r"""This API is used to modify database backup configuration.
 
         :param request: Request instance for ModifyBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupConfigRequest`
@@ -2537,7 +2726,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCdbProxyAddressDesc(self, request):
-        r"""This API is used to modify the description of a proxy address.
+        r"""This API is used to modify the proxy address description.
 
         :param request: Request instance for ModifyCdbProxyAddressDesc.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyAddressDescRequest`
@@ -2560,7 +2749,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCdbProxyAddressVipAndVPort(self, request):
-        r"""This API is used to modify the VPC of the database proxy address.
+        r"""This API is used to modify the database proxy address VPC information.
 
         :param request: Request instance for ModifyCdbProxyAddressVipAndVPort.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyAddressVipAndVPortRequest`
@@ -2583,7 +2772,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCdbProxyParam(self, request):
-        r"""This API is used to configure the database proxy parameters.
+        r"""This API is used to configure database proxy parameters.
 
         :param request: Request instance for ModifyCdbProxyParam.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyParamRequest`
@@ -2619,6 +2808,29 @@ class CdbClient(AbstractClient):
             body = self.call("ModifyDBInstanceLogToCLS", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBInstanceLogToCLSResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceModes(self, request):
+        r"""This API is used to change the mode of a cloud database.
+
+        :param request: Request instance for ModifyDBInstanceModes.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceModesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceModesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceModes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceModesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2698,7 +2910,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyDBInstanceVipVport(self, request):
-        r"""This API is used to modify the IP and port number of a TencentDB instance, switch from classic network to VPC, or change VPC subnets.
+        r"""This API is used to modify the IP and port number of a cloud database instance. It can also perform basic network to VPC network and subnet change under VPC network.
 
         :param request: Request instance for ModifyDBInstanceVipVport.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceVipVportRequest`
@@ -2744,7 +2956,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyInstancePasswordComplexity(self, request):
-        r"""This API is used to modify the password complexity of a TencentDB instance.
+        r"""This API is used to modify the password complexity of a cloud database instance.
 
         :param request: Request instance for ModifyInstancePasswordComplexity.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyInstancePasswordComplexityRequest`
@@ -2790,7 +3002,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyLocalBinlogConfig(self, request):
-        r"""This API is used to modify the retention policy of local binlog of an instance.
+        r"""This API is used to modify the local binlog retention policy of an instance.
 
         :param request: Request instance for ModifyLocalBinlogConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyLocalBinlogConfigRequest`
@@ -2836,7 +3048,8 @@ class CdbClient(AbstractClient):
 
 
     def ModifyParamTemplate(self, request):
-        r"""This API is used to modify a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
+        r"""This API is used to modify parameter templates.
+        Description: The parameter template is a common component, effective across all regions once configured. For api calls, Guangzhou or Singapore is available to configure region.
 
         :param request: Request instance for ModifyParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyParamTemplateRequest`
@@ -2849,6 +3062,30 @@ class CdbClient(AbstractClient):
             body = self.call("ModifyParamTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProtectMode(self, request):
+        r"""This API is used to modify the sync method of an instance.
+        Description: This API can be called only by an exclusive cluster. This API is about to go offline.
+
+        :param request: Request instance for ModifyProtectMode.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyProtectModeRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyProtectModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProtectMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProtectModeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2904,6 +3141,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRoGroupVipVport(self, request):
+        r"""This API is used to modify the vip and vport of a Ro group.
+
+        :param request: Request instance for ModifyRoGroupVipVport.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupVipVportRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupVipVportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRoGroupVipVport", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRoGroupVipVportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyTimeWindow(self, request):
         r"""This API (ModifyTimeWindow) is used to update the maintenance time window of a TencentDB instance.
 
@@ -2928,11 +3188,11 @@ class CdbClient(AbstractClient):
 
 
     def OfflineIsolatedInstances(self, request):
-        r"""This API (OfflineIsolatedInstances) is used to deactivate isolated TencentDB instances immediately. The instances must be in isolated status, i.e., their `Status` value is 5 in the return of the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1).
+        r"""This api is used to deactivate cloud database instances in quarantined state now. The instance Status for row operations must be quarantined state, such as instances with Status value 5 queried through the query instance list api.
 
-        This is an asynchronous API. There may be a delay in repossessing some resources. You can query the details by using the [instance list querying API](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) and specifying the InstanceId and the `Status` value as [5, 6, 7]. If the returned instance is empty, then all its resources have been released.
+        This API is used to perform asynchronous operation, and delays may occur when reclaiming partial resources. You can query by using the query instance list API (https://www.tencentcloud.com/document/api/236/15872?from_cn_redirect=1) with specified instance InstanceId and status Status as [5,6,7]. Among them, 5 represents isolated, 6 represents offline, and 7 represents Offline. If the return instance is empty, all instance resources have been released.
 
-        Note that once an instance is deactivated, its resources and data will not be recoverable. Please do so with caution.
+        Note that after the instance goes offline, relevant resources and data cannot be recovered. Proceed with caution.
 
         :param request: Request instance for OfflineIsolatedInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.OfflineIsolatedInstancesRequest`
@@ -2955,7 +3215,7 @@ class CdbClient(AbstractClient):
 
 
     def OpenAuditService(self, request):
-        r"""This API is used to enable the audit service.
+        r"""This API is used to activate audit service for CDB instance.
 
         :param request: Request instance for OpenAuditService.
         :type request: :class:`tencentcloud.cdb.v20170320.models.OpenAuditServiceRequest`
@@ -2978,17 +3238,18 @@ class CdbClient(AbstractClient):
 
 
     def OpenDBInstanceEncryption(self, request):
-        r"""This API is used to enable the encryption feature for instance data storage, and custom keys are supported.
+        r"""This API is used to enable data storage encryption for instance and support users to specify custom keys.
 
-        Note: Before enabling data storage encryption for an instance, you need to perform the following operations:
+        Note that before enabling data storage encryption for instance, perform the following operations:
 
-        1. [Initialize an instance](https://intl.cloud.tencent.com/document/api/236/15873?from_cn_redirect=1).
+        1. Perform instance initialization (https://www.tencentcloud.com/document/api/236/15873?from_cn_redirect=1).
 
-        2. Enable [KMS service](https://console.cloud.tencent.com/kms2)
+        2. Enable the KMS service (https://console.cloud.tencent.com/kms2).
 
-        3. [Grant permission to access KMS](https://console.cloud.tencent.com/cam/role) for TencentDB for MySQL. The role name is `MySQL_QCSRole`, and the preset policy name is `QcloudAccessForMySQLRole`.
+        3. Grant the cloud database (MySQL) permission to access the KMS key (https://console.cloud.tencent.com/cam/role). The role name is MySQL_QCSRole and the preset policy name is QcloudAccessForMySQLRole.
+        4. Closing is not allowed after encryption being enabled.
 
-        This API calling may take up to 10 seconds, causing the client to time out. If it returns `InternalError`, call `DescribeDBInstanceInfo` to confirm whether the backend encryption is enabled successfully.
+        This API may take up to 10s, and the client may timeout. If the API call returns InternalError, please call [DescribeDBInstanceInfo](https://www.tencentcloud.com/document/product/236/44160?from_cn_redirect=1) to confirm whether backend encryption is successfully enabled. After calling, if the parameter Encryption is YES, it means activation is successful.
 
         :param request: Request instance for OpenDBInstanceEncryption.
         :type request: :class:`tencentcloud.cdb.v20170320.models.OpenDBInstanceEncryptionRequest`
@@ -3033,6 +3294,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenSSL(self, request):
+        r"""This API is used to enable SSL connectivity function.
+
+        :param request: Request instance for OpenSSL.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.OpenSSLRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.OpenSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenSSLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OpenWanService(self, request):
         r"""This API (OpenWanService) is used to enable public network access for an instance.
 
@@ -3059,7 +3343,7 @@ class CdbClient(AbstractClient):
 
 
     def ReleaseIsolatedDBInstances(self, request):
-        r"""This API is used to deisolate an isolated TencentDB instance.
+        r"""This API is used to restore isolated cloud database instances. It is only used for de-isolating pay-as-you-go instances. For monthly subscription instances, please use RenewDBInstance.
 
         :param request: Request instance for ReleaseIsolatedDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ReleaseIsolatedDBInstancesRequest`
@@ -3127,6 +3411,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetPassword(self, request):
+        r"""Manually refresh rotation passwords
+
+        :param request: Request instance for ResetPassword.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ResetPasswordRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ResetPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResetRootAccount(self, request):
         r"""This API is used to reset the root account and initialize the account permissions.
 
@@ -3151,11 +3458,11 @@ class CdbClient(AbstractClient):
 
 
     def RestartDBInstances(self, request):
-        r"""This API (RestartDBInstances) is used to restart TencentDB instances.
+        r"""This API is used to restart cloud database instances.
 
         Note:
-        1. This API only supports restarting primary instances.
-        2. The instance status must be normal, and no other async tasks are in progress.
+        This API supports performing a restart operation on primary instances, read-only instances, and disaster recovery instances.
+        2. The instance status must be normal and no other async tasks are in progress.
 
         :param request: Request instance for RestartDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.RestartDBInstancesRequest`
@@ -3201,7 +3508,7 @@ class CdbClient(AbstractClient):
 
 
     def StartCpuExpand(self, request):
-        r"""u200cThis API is used to enable elastic CPU expansion manually or automatically.
+        r"""This API is used to enable CPU Elastic Scaling, including one-time manual scale-out and automatic elastic scaling.
 
         :param request: Request instance for StartCpuExpand.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StartCpuExpandRequest`
@@ -3224,7 +3531,7 @@ class CdbClient(AbstractClient):
 
 
     def StartReplication(self, request):
-        r"""This API is used to start the data replication from the source instance to the read-only instance.
+        r"""This API is used to enable RO replication and sync data from the primary instance.
 
         :param request: Request instance for StartReplication.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StartReplicationRequest`
@@ -3270,7 +3577,8 @@ class CdbClient(AbstractClient):
 
 
     def StopDBImportJob(self, request):
-        r"""This API (StopDBImportJob) is used to stop a data import task.
+        r"""This API is used to terminate a data import task.
+        Description: Only incomplete import jobs support termination, and the executed SQL part is retained after termination.
 
         :param request: Request instance for StopDBImportJob.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopDBImportJobRequest`
@@ -3293,7 +3601,7 @@ class CdbClient(AbstractClient):
 
 
     def StopReplication(self, request):
-        r"""This API is used to stop the data replication from the source instance to the read-only instance.
+        r"""This API is used to stop RO replication and interrupt data sync from the primary instance.
 
         :param request: Request instance for StopReplication.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopReplicationRequest`
@@ -3316,7 +3624,7 @@ class CdbClient(AbstractClient):
 
 
     def StopRollback(self, request):
-        r"""This API is used to cancel a rollback task in progress, and returns an async task ID. You can use the `DescribeAsyncRequestInfo` API to query the result of cancellation.
+        r"""This api is used to revoke an ongoing rollback task of an instance. The api response returns an Asynchronous Task ID. The revocation result can be queried through [DescribeAsyncRequestInfo](https://www.tencentcloud.com/document/api/236/20410?from_cn_redirect=1) for task execution.
 
         :param request: Request instance for StopRollback.
         :type request: :class:`tencentcloud.cdb.v20170320.models.StopRollbackRequest`
@@ -3338,8 +3646,31 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SubmitInstanceUpgradeCheckJob(self, request):
+        r"""This API is used to submit an instance version upgrade validation task.
+
+        :param request: Request instance for SubmitInstanceUpgradeCheckJob.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.SubmitInstanceUpgradeCheckJobRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.SubmitInstanceUpgradeCheckJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitInstanceUpgradeCheckJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitInstanceUpgradeCheckJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SwitchCDBProxy(self, request):
-        r"""This API is used to switch database proxy after the proxy configuration is modified or the proxy version is upgraded.
+        r"""This API is used to manually initiate an immediate switch after database proxy configuration modification or edition upgrade.
 
         :param request: Request instance for SwitchCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchCDBProxyRequest`
@@ -3385,7 +3716,7 @@ class CdbClient(AbstractClient):
 
 
     def SwitchDrInstanceToMaster(self, request):
-        r"""This API is used to promote a disaster recovery instance to source instance. The request parameter `Region` must be the region of the disaster recovery instance.
+        r"""This API is used to switch a cloud database disaster recovery instance to primary instance. Note that the request must be sent to the region where the disaster recovery instance is located.
 
         :param request: Request instance for SwitchDrInstanceToMaster.
         :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchDrInstanceToMasterRequest`
@@ -3431,7 +3762,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeCDBProxyVersion(self, request):
-        r"""This API is used to upgrade the version of database proxy.
+        r"""This API is used to upgrade the database proxy version.
 
         :param request: Request instance for UpgradeCDBProxyVersion.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyVersionRequest`
@@ -3454,7 +3785,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeDBInstance(self, request):
-        r"""This API is used to upgrade or downgrade a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
+        r"""This API is used to upgrade or downgrade the configuration of a cloud database instance. Supported instance types include primary instance, disaster recovery instance and read-only instance. If you need to migrate business, fill in the instance specification (CPU, memory), otherwise the system will use the minimum allowed specification by default.
 
         :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceRequest`
@@ -3477,7 +3808,7 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeDBInstanceEngineVersion(self, request):
-        r"""This API (UpgradeDBInstanceEngineVersion) is used to upgrade the version of a TencentDB instance, which can be a primary instance, disaster recovery instance, or read-only instance.
+        r"""This API is used to upgrade the version of a cloud database instance. Supported instance types include primary instance, disaster recovery instance, and read-only instance. Before upgrade, submit an upgrade check task via SubmitInstanceUpgradeCheckJob (https://www.tencentcloud.com/document/product/236/110468?from_cn_redirect=1).
 
         :param request: Request instance for UpgradeDBInstanceEngineVersion.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeDBInstanceEngineVersionRequest`
