@@ -4195,6 +4195,8 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         :type EndTime: str
         :param _Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
         :type Period: str
+        :param _RemoteIp: Peer IP address
+        :type RemoteIp: str
         """
         self._FlowId = None
         self._Type = None
@@ -4203,6 +4205,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         self._StartTime = None
         self._EndTime = None
         self._Period = None
+        self._RemoteIp = None
 
     @property
     def FlowId(self):
@@ -4283,6 +4286,17 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
     def Period(self, Period):
         self._Period = Period
 
+    @property
+    def RemoteIp(self):
+        r"""Peer IP address
+        :rtype: str
+        """
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -4292,6 +4306,7 @@ It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Period = params.get("Period")
+        self._RemoteIp = params.get("RemoteIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5777,6 +5792,36 @@ class FlowSRTInfo(AbstractModel):
         :type SendPacketDropNumber: int
         :param _RecvPacketDropNumber: The number of dropped packets for receiving.
         :type RecvPacketDropNumber: int
+        :param _Bandwidth: bandwidth
+        :type Bandwidth: float
+        :param _SendBandwidth: Transmit bandwidth
+        :type SendBandwidth: float
+        :param _RecvBandwidth: Receive bandwidth
+        :type RecvBandwidth: float
+        :param _SendPackets: Number of packets sent
+        :type SendPackets: int
+        :param _RecvPackets: Number of received packets
+        :type RecvPackets: int
+        :param _SendLostPackets: Send lost package
+        :type SendLostPackets: int
+        :param _RecvLostPackets: Accept lost packages
+        :type RecvLostPackets: int
+        :param _SendRetransmitPackets: Number of retransmission packets sent
+        :type SendRetransmitPackets: int
+        :param _RecvRetransmitPackets: Number of received retransmission packets
+        :type RecvRetransmitPackets: int
+        :param _FlightSize: Flight window size
+        :type FlightSize: int
+        :param _CongestionWindow: congestion window
+        :type CongestionWindow: int
+        :param _SendBuffer: Send buffer (ms)
+        :type SendBuffer: int
+        :param _RecvBuffer: Receive buffer (ms)
+        :type RecvBuffer: int
+        :param _SendLatency: Sending delay
+        :type SendLatency: int
+        :param _RecvLatency: Receiving delay
+        :type RecvLatency: int
         """
         self._Timestamp = None
         self._SendPacketLossRate = None
@@ -5787,6 +5832,21 @@ class FlowSRTInfo(AbstractModel):
         self._SessionId = None
         self._SendPacketDropNumber = None
         self._RecvPacketDropNumber = None
+        self._Bandwidth = None
+        self._SendBandwidth = None
+        self._RecvBandwidth = None
+        self._SendPackets = None
+        self._RecvPackets = None
+        self._SendLostPackets = None
+        self._RecvLostPackets = None
+        self._SendRetransmitPackets = None
+        self._RecvRetransmitPackets = None
+        self._FlightSize = None
+        self._CongestionWindow = None
+        self._SendBuffer = None
+        self._RecvBuffer = None
+        self._SendLatency = None
+        self._RecvLatency = None
 
     @property
     def Timestamp(self):
@@ -5887,6 +5947,171 @@ class FlowSRTInfo(AbstractModel):
     def RecvPacketDropNumber(self, RecvPacketDropNumber):
         self._RecvPacketDropNumber = RecvPacketDropNumber
 
+    @property
+    def Bandwidth(self):
+        r"""bandwidth
+        :rtype: float
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def SendBandwidth(self):
+        r"""Transmit bandwidth
+        :rtype: float
+        """
+        return self._SendBandwidth
+
+    @SendBandwidth.setter
+    def SendBandwidth(self, SendBandwidth):
+        self._SendBandwidth = SendBandwidth
+
+    @property
+    def RecvBandwidth(self):
+        r"""Receive bandwidth
+        :rtype: float
+        """
+        return self._RecvBandwidth
+
+    @RecvBandwidth.setter
+    def RecvBandwidth(self, RecvBandwidth):
+        self._RecvBandwidth = RecvBandwidth
+
+    @property
+    def SendPackets(self):
+        r"""Number of packets sent
+        :rtype: int
+        """
+        return self._SendPackets
+
+    @SendPackets.setter
+    def SendPackets(self, SendPackets):
+        self._SendPackets = SendPackets
+
+    @property
+    def RecvPackets(self):
+        r"""Number of received packets
+        :rtype: int
+        """
+        return self._RecvPackets
+
+    @RecvPackets.setter
+    def RecvPackets(self, RecvPackets):
+        self._RecvPackets = RecvPackets
+
+    @property
+    def SendLostPackets(self):
+        r"""Send lost package
+        :rtype: int
+        """
+        return self._SendLostPackets
+
+    @SendLostPackets.setter
+    def SendLostPackets(self, SendLostPackets):
+        self._SendLostPackets = SendLostPackets
+
+    @property
+    def RecvLostPackets(self):
+        r"""Accept lost packages
+        :rtype: int
+        """
+        return self._RecvLostPackets
+
+    @RecvLostPackets.setter
+    def RecvLostPackets(self, RecvLostPackets):
+        self._RecvLostPackets = RecvLostPackets
+
+    @property
+    def SendRetransmitPackets(self):
+        r"""Number of retransmission packets sent
+        :rtype: int
+        """
+        return self._SendRetransmitPackets
+
+    @SendRetransmitPackets.setter
+    def SendRetransmitPackets(self, SendRetransmitPackets):
+        self._SendRetransmitPackets = SendRetransmitPackets
+
+    @property
+    def RecvRetransmitPackets(self):
+        r"""Number of received retransmission packets
+        :rtype: int
+        """
+        return self._RecvRetransmitPackets
+
+    @RecvRetransmitPackets.setter
+    def RecvRetransmitPackets(self, RecvRetransmitPackets):
+        self._RecvRetransmitPackets = RecvRetransmitPackets
+
+    @property
+    def FlightSize(self):
+        r"""Flight window size
+        :rtype: int
+        """
+        return self._FlightSize
+
+    @FlightSize.setter
+    def FlightSize(self, FlightSize):
+        self._FlightSize = FlightSize
+
+    @property
+    def CongestionWindow(self):
+        r"""congestion window
+        :rtype: int
+        """
+        return self._CongestionWindow
+
+    @CongestionWindow.setter
+    def CongestionWindow(self, CongestionWindow):
+        self._CongestionWindow = CongestionWindow
+
+    @property
+    def SendBuffer(self):
+        r"""Send buffer (ms)
+        :rtype: int
+        """
+        return self._SendBuffer
+
+    @SendBuffer.setter
+    def SendBuffer(self, SendBuffer):
+        self._SendBuffer = SendBuffer
+
+    @property
+    def RecvBuffer(self):
+        r"""Receive buffer (ms)
+        :rtype: int
+        """
+        return self._RecvBuffer
+
+    @RecvBuffer.setter
+    def RecvBuffer(self, RecvBuffer):
+        self._RecvBuffer = RecvBuffer
+
+    @property
+    def SendLatency(self):
+        r"""Sending delay
+        :rtype: int
+        """
+        return self._SendLatency
+
+    @SendLatency.setter
+    def SendLatency(self, SendLatency):
+        self._SendLatency = SendLatency
+
+    @property
+    def RecvLatency(self):
+        r"""Receiving delay
+        :rtype: int
+        """
+        return self._RecvLatency
+
+    @RecvLatency.setter
+    def RecvLatency(self, RecvLatency):
+        self._RecvLatency = RecvLatency
+
 
     def _deserialize(self, params):
         self._Timestamp = params.get("Timestamp")
@@ -5898,6 +6123,21 @@ class FlowSRTInfo(AbstractModel):
         self._SessionId = params.get("SessionId")
         self._SendPacketDropNumber = params.get("SendPacketDropNumber")
         self._RecvPacketDropNumber = params.get("RecvPacketDropNumber")
+        self._Bandwidth = params.get("Bandwidth")
+        self._SendBandwidth = params.get("SendBandwidth")
+        self._RecvBandwidth = params.get("RecvBandwidth")
+        self._SendPackets = params.get("SendPackets")
+        self._RecvPackets = params.get("RecvPackets")
+        self._SendLostPackets = params.get("SendLostPackets")
+        self._RecvLostPackets = params.get("RecvLostPackets")
+        self._SendRetransmitPackets = params.get("SendRetransmitPackets")
+        self._RecvRetransmitPackets = params.get("RecvRetransmitPackets")
+        self._FlightSize = params.get("FlightSize")
+        self._CongestionWindow = params.get("CongestionWindow")
+        self._SendBuffer = params.get("SendBuffer")
+        self._RecvBuffer = params.get("RecvBuffer")
+        self._SendLatency = params.get("SendLatency")
+        self._RecvLatency = params.get("RecvLatency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

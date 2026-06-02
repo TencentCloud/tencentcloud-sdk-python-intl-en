@@ -84,6 +84,42 @@ class AIOptimizerStatus(AbstractModel):
         
 
 
+class AIOptimizerTaskData(AbstractModel):
+    r"""AI optimizer task data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateID: <p>Template ID</p>
+        :type TemplateID: str
+        """
+        self._TemplateID = None
+
+    @property
+    def TemplateID(self):
+        r"""<p>Template ID</p>
+        :rtype: str
+        """
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+
+    def _deserialize(self, params):
+        self._TemplateID = params.get("TemplateID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Ability(AbstractModel):
     r"""Features supported by the cluster
 
@@ -3858,93 +3894,98 @@ class BinlogItem(AbstractModel):
 
 
 class BizTaskInfo(AbstractModel):
-    r"""
+    r"""Task Information
 
     """
 
     def __init__(self):
         r"""
-        :param _ID: 
+        :param _ID: <p>Task ID.</p>
         :type ID: int
-        :param _AppId: 
+        :param _AppId: <p>User appid</p>
         :type AppId: int
-        :param _ClusterId: 
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _Region: Region
+        :param _Region: <p>Region</p>
         :type Region: str
-        :param _CreateTime: 
+        :param _CreateTime: <p>Task creation time</p>
         :type CreateTime: str
-        :param _DelayTime: Specifies the delayed execution time.
+        :param _DelayTime: <p>Delayed execution time</p>
         :type DelayTime: str
-        :param _ErrMsg: Task failure information.
+        :param _ErrMsg: <p>Task failure information</p>
         :type ErrMsg: str
-        :param _FlowId: 
+        :param _FlowId: <p>Asynchronous task flow id</p>
         :type FlowId: int
-        :param _Input: 
+        :param _Input: <p>Task input information</p>
         :type Input: str
-        :param _InstanceGrpId: 
+        :param _InstanceGrpId: <p>Instance group id.</p>
         :type InstanceGrpId: str
-        :param _InstanceGroupId: 
+        :param _InstanceGroupId: <p>Instance group id.</p>
         :type InstanceGroupId: str
-        :param _InstanceId: 
+        :param _InstanceId: <p>Instance id</p>
         :type InstanceId: str
-        :param _ObjectId: 
+        :param _ObjectId: <p>Task operation object id</p>
         :type ObjectId: str
-        :param _ObjectType: 
+        :param _ObjectType: <p>Task operation object type.</p>
         :type ObjectType: str
-        :param _Operator: 
+        :param _Operator: <p>Operator uin</p>
         :type Operator: str
-        :param _Output: 
+        :param _Output: <p>Task output information</p>
         :type Output: str
-        :param _Status: 
+        :param _Status: <p>Task status</p>
         :type Status: str
-        :param _TaskType: 
+        :param _TaskType: <p>Task type</p>
         :type TaskType: str
-        :param _TriggerTaskId: 
+        :param _TriggerTaskId: <p>Parent task ID that triggers this task</p>
         :type TriggerTaskId: int
-        :param _UpdateTime: 
+        :param _UpdateTime: <p>Update time.</p>
         :type UpdateTime: str
-        :param _StartTime: 
+        :param _StartTime: <p>Task start time</p>
         :type StartTime: str
-        :param _EndTime: 
+        :param _EndTime: <p>Task end time</p>
         :type EndTime: str
-        :param _ClusterName: 
+        :param _ClusterName: <p>Cluster name.</p>
         :type ClusterName: str
-        :param _InstanceName: 
+        :param _InstanceName: <p>Instance name</p>
         :type InstanceName: str
-        :param _Process: 
+        :param _Process: <p>Task progress</p>
         :type Process: int
-        :param _ModifyParamsData: 
+        :param _ModifyParamsData: <p>Modify parameter task information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ModifyParamsData: list of ModifyParamsData
-        :param _CreateClustersData: Create cluster task information.
+        :param _CreateClustersData: <p>Create cluster task information</p>
         :type CreateClustersData: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersData`
-        :param _RollbackData: Cluster rollback task information.
+        :param _RollbackData: <p>Cluster rollback task information</p>
         :type RollbackData: :class:`tencentcloud.cynosdb.v20190107.models.RollbackData`
-        :param _ModifyInstanceData: Instance configuration change task information.
+        :param _ModifyInstanceData: <p>Instance configuration change task information</p>
         :type ModifyInstanceData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceData`
-        :param _ManualBackupData: 
+        :param _ManualBackupData: <p>Manual backup task information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ManualBackupData: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
-        :param _ModifyDbVersionData: Modify kernel version task information.
+        :param _ModifyDbVersionData: <p>Modify kernel version task information</p>
         :type ModifyDbVersionData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDbVersionData`
-        :param _ClusterSlaveData: Cluster availability zone information.
+        :param _ClusterSlaveData: <p>Cluster Availability Zone Information</p>
         :type ClusterSlaveData: :class:`tencentcloud.cynosdb.v20190107.models.ClusterSlaveData`
-        :param _SwitchClusterLogBin: 
+        :param _SwitchClusterLogBin: <p>Convert cluster logs</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SwitchClusterLogBin: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterLogBin`
-        :param _ModifyInstanceParamsData: 
+        :param _ModifyInstanceParamsData: <p>Modify instance parameter data</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ModifyInstanceParamsData: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
-        :param _TaskMaintainInfo: Maintenance time.
+        :param _TaskMaintainInfo: <p>Maintenance time</p>
         :type TaskMaintainInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
-        :param _InstanceCLSDeliveryInfos: Instance log delivery information.
-
+        :param _InstanceCLSDeliveryInfos: <p>Instance Log Delivery Information</p>
         :type InstanceCLSDeliveryInfos: list of InstanceCLSDeliveryInfo
-        :param _TaskProgressInfo: Task progress information.
+        :param _TaskProgressInfo: <p>Task progress information</p>
         :type TaskProgressInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
-        :param _GdnTaskInfo: Global Database Network Task
+        :param _GdnTaskInfo: <p>Global database network task</p>
         :type GdnTaskInfo: :class:`tencentcloud.cynosdb.v20190107.models.GdnTaskInfo`
-        :param _VaultId: Safe id
+        :param _VaultId: <p>Safe id</p>
         :type VaultId: str
-        :param _VaultName: Safe name
+        :param _VaultName: <p>Safe name</p>
         :type VaultName: str
+        :param _AIOptimizerTaskData: <p>AI optimizer task information</p>
+        :type AIOptimizerTaskData: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerTaskData`
         """
         self._ID = None
         self._AppId = None
@@ -3986,10 +4027,11 @@ class BizTaskInfo(AbstractModel):
         self._GdnTaskInfo = None
         self._VaultId = None
         self._VaultName = None
+        self._AIOptimizerTaskData = None
 
     @property
     def ID(self):
-        r"""
+        r"""<p>Task ID.</p>
         :rtype: int
         """
         return self._ID
@@ -4000,7 +4042,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""
+        r"""<p>User appid</p>
         :rtype: int
         """
         return self._AppId
@@ -4011,7 +4053,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -4022,7 +4064,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""Region
+        r"""<p>Region</p>
         :rtype: str
         """
         return self._Region
@@ -4033,7 +4075,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""
+        r"""<p>Task creation time</p>
         :rtype: str
         """
         return self._CreateTime
@@ -4044,7 +4086,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""Specifies the delayed execution time.
+        r"""<p>Delayed execution time</p>
         :rtype: str
         """
         return self._DelayTime
@@ -4055,7 +4097,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ErrMsg(self):
-        r"""Task failure information.
+        r"""<p>Task failure information</p>
         :rtype: str
         """
         return self._ErrMsg
@@ -4066,7 +4108,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""
+        r"""<p>Asynchronous task flow id</p>
         :rtype: int
         """
         return self._FlowId
@@ -4077,7 +4119,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Input(self):
-        r"""
+        r"""<p>Task input information</p>
         :rtype: str
         """
         return self._Input
@@ -4090,7 +4132,7 @@ class BizTaskInfo(AbstractModel):
     def InstanceGrpId(self):
         warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""<p>Instance group id.</p>
         :rtype: str
         """
         return self._InstanceGrpId
@@ -4103,7 +4145,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        r"""
+        r"""<p>Instance group id.</p>
         :rtype: str
         """
         return self._InstanceGroupId
@@ -4114,7 +4156,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""
+        r"""<p>Instance id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4125,7 +4167,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ObjectId(self):
-        r"""
+        r"""<p>Task operation object id</p>
         :rtype: str
         """
         return self._ObjectId
@@ -4136,7 +4178,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ObjectType(self):
-        r"""
+        r"""<p>Task operation object type.</p>
         :rtype: str
         """
         return self._ObjectType
@@ -4147,7 +4189,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Operator(self):
-        r"""
+        r"""<p>Operator uin</p>
         :rtype: str
         """
         return self._Operator
@@ -4158,7 +4200,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Output(self):
-        r"""
+        r"""<p>Task output information</p>
         :rtype: str
         """
         return self._Output
@@ -4169,7 +4211,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""<p>Task status</p>
         :rtype: str
         """
         return self._Status
@@ -4180,7 +4222,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""
+        r"""<p>Task type</p>
         :rtype: str
         """
         return self._TaskType
@@ -4191,7 +4233,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TriggerTaskId(self):
-        r"""
+        r"""<p>Parent task ID that triggers this task</p>
         :rtype: int
         """
         return self._TriggerTaskId
@@ -4202,7 +4244,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""
+        r"""<p>Update time.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -4213,7 +4255,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""
+        r"""<p>Task start time</p>
         :rtype: str
         """
         return self._StartTime
@@ -4224,7 +4266,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""
+        r"""<p>Task end time</p>
         :rtype: str
         """
         return self._EndTime
@@ -4235,7 +4277,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""
+        r"""<p>Cluster name.</p>
         :rtype: str
         """
         return self._ClusterName
@@ -4246,7 +4288,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""
+        r"""<p>Instance name</p>
         :rtype: str
         """
         return self._InstanceName
@@ -4257,7 +4299,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Process(self):
-        r"""
+        r"""<p>Task progress</p>
         :rtype: int
         """
         return self._Process
@@ -4270,7 +4312,8 @@ class BizTaskInfo(AbstractModel):
     def ModifyParamsData(self):
         warnings.warn("parameter `ModifyParamsData` is deprecated", DeprecationWarning) 
 
-        r"""
+        r"""<p>Modify parameter task information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ModifyParamsData
         """
         return self._ModifyParamsData
@@ -4283,7 +4326,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def CreateClustersData(self):
-        r"""Create cluster task information.
+        r"""<p>Create cluster task information</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersData`
         """
         return self._CreateClustersData
@@ -4294,7 +4337,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def RollbackData(self):
-        r"""Cluster rollback task information.
+        r"""<p>Cluster rollback task information</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackData`
         """
         return self._RollbackData
@@ -4305,7 +4348,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ModifyInstanceData(self):
-        r"""Instance configuration change task information.
+        r"""<p>Instance configuration change task information</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceData`
         """
         return self._ModifyInstanceData
@@ -4316,7 +4359,8 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ManualBackupData(self):
-        r"""
+        r"""<p>Manual backup task information</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
         """
         return self._ManualBackupData
@@ -4327,7 +4371,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ModifyDbVersionData(self):
-        r"""Modify kernel version task information.
+        r"""<p>Modify kernel version task information</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDbVersionData`
         """
         return self._ModifyDbVersionData
@@ -4338,7 +4382,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterSlaveData(self):
-        r"""Cluster availability zone information.
+        r"""<p>Cluster Availability Zone Information</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ClusterSlaveData`
         """
         return self._ClusterSlaveData
@@ -4349,7 +4393,8 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def SwitchClusterLogBin(self):
-        r"""
+        r"""<p>Convert cluster logs</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterLogBin`
         """
         return self._SwitchClusterLogBin
@@ -4360,7 +4405,8 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ModifyInstanceParamsData(self):
-        r"""
+        r"""<p>Modify instance parameter data</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
         """
         return self._ModifyInstanceParamsData
@@ -4371,7 +4417,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TaskMaintainInfo(self):
-        r"""Maintenance time.
+        r"""<p>Maintenance time</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
         """
         return self._TaskMaintainInfo
@@ -4382,8 +4428,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceCLSDeliveryInfos(self):
-        r"""Instance log delivery information.
-
+        r"""<p>Instance Log Delivery Information</p>
         :rtype: list of InstanceCLSDeliveryInfo
         """
         return self._InstanceCLSDeliveryInfos
@@ -4394,7 +4439,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TaskProgressInfo(self):
-        r"""Task progress information.
+        r"""<p>Task progress information</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
         """
         return self._TaskProgressInfo
@@ -4405,7 +4450,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def GdnTaskInfo(self):
-        r"""Global Database Network Task
+        r"""<p>Global database network task</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.GdnTaskInfo`
         """
         return self._GdnTaskInfo
@@ -4416,7 +4461,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def VaultId(self):
-        r"""Safe id
+        r"""<p>Safe id</p>
         :rtype: str
         """
         return self._VaultId
@@ -4427,7 +4472,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def VaultName(self):
-        r"""Safe name
+        r"""<p>Safe name</p>
         :rtype: str
         """
         return self._VaultName
@@ -4435,6 +4480,17 @@ class BizTaskInfo(AbstractModel):
     @VaultName.setter
     def VaultName(self, VaultName):
         self._VaultName = VaultName
+
+    @property
+    def AIOptimizerTaskData(self):
+        r"""<p>AI optimizer task information</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerTaskData`
+        """
+        return self._AIOptimizerTaskData
+
+    @AIOptimizerTaskData.setter
+    def AIOptimizerTaskData(self, AIOptimizerTaskData):
+        self._AIOptimizerTaskData = AIOptimizerTaskData
 
 
     def _deserialize(self, params):
@@ -4510,6 +4566,9 @@ class BizTaskInfo(AbstractModel):
             self._GdnTaskInfo._deserialize(params.get("GdnTaskInfo"))
         self._VaultId = params.get("VaultId")
         self._VaultName = params.get("VaultName")
+        if params.get("AIOptimizerTaskData") is not None:
+            self._AIOptimizerTaskData = AIOptimizerTaskData()
+            self._AIOptimizerTaskData._deserialize(params.get("AIOptimizerTaskData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
