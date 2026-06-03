@@ -404,6 +404,132 @@ class AddTimeWindowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddressInfo(AbstractModel):
+    r"""Instance address information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: Resource ID identifier of the address.
+        :type ResourceId: str
+        :param _UniqVpcId: The vpc where the address resides.
+        :type UniqVpcId: str
+        :param _UniqSubnetId: The subnet where the address resides.
+        :type UniqSubnetId: str
+        :param _Vip: vip address.
+        :type Vip: str
+        :param _VPort: The port of the address.
+        :type VPort: int
+        :param _WanDomain: Public network address domain name.
+        :type WanDomain: str
+        :param _WanPort: Public network address port.
+        :type WanPort: int
+        """
+        self._ResourceId = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._Vip = None
+        self._VPort = None
+        self._WanDomain = None
+        self._WanPort = None
+
+    @property
+    def ResourceId(self):
+        r"""Resource ID identifier of the address.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def UniqVpcId(self):
+        r"""The vpc where the address resides.
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        r"""The subnet where the address resides.
+        :rtype: str
+        """
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def Vip(self):
+        r"""vip address.
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VPort(self):
+        r"""The port of the address.
+        :rtype: int
+        """
+        return self._VPort
+
+    @VPort.setter
+    def VPort(self, VPort):
+        self._VPort = VPort
+
+    @property
+    def WanDomain(self):
+        r"""Public network address domain name.
+        :rtype: str
+        """
+        return self._WanDomain
+
+    @WanDomain.setter
+    def WanDomain(self, WanDomain):
+        self._WanDomain = WanDomain
+
+    @property
+    def WanPort(self):
+        r"""Public network address port.
+        :rtype: int
+        """
+        return self._WanPort
+
+    @WanPort.setter
+    def WanPort(self, WanPort):
+        self._WanPort = WanPort
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._Vip = params.get("Vip")
+        self._VPort = params.get("VPort")
+        self._WanDomain = params.get("WanDomain")
+        self._WanPort = params.get("WanPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdjustCdbProxyAddressRequest(AbstractModel):
     r"""AdjustCdbProxyAddress request structure.
 
@@ -5619,6 +5745,102 @@ class ClusterInfo(AbstractModel):
         self._NodeId = params.get("NodeId")
         self._Role = params.get("Role")
         self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterNodeInfo(AbstractModel):
+    r"""Cluster Edition instance node information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: node id.
+        :type NodeId: str
+        :param _Role: Node role.
+        :type Role: str
+        :param _Zone: Node AZ.
+        :type Zone: str
+        :param _Weight: Weight of the node
+        :type Weight: int
+        :param _Status: Node status.
+        :type Status: str
+        """
+        self._NodeId = None
+        self._Role = None
+        self._Zone = None
+        self._Weight = None
+        self._Status = None
+
+    @property
+    def NodeId(self):
+        r"""node id.
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Role(self):
+        r"""Node role.
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Zone(self):
+        r"""Node AZ.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Weight(self):
+        r"""Weight of the node
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Status(self):
+        r"""Node status.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Role = params.get("Role")
+        self._Zone = params.get("Zone")
+        self._Weight = params.get("Weight")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14662,6 +14884,174 @@ class DescribeCloneListResponse(AbstractModel):
                 obj = CloneItem()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterInfoRequest(AbstractModel):
+    r"""DescribeClusterInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+Description: Only able to input the instance ID of instances with cloud disk architecture, corresponding to console instance configurations displayed as "Cloud Disk Edition (Cloud Disk)".
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+Description: Only able to input the instance ID of instances with cloud disk architecture, corresponding to console instance configurations displayed as "Cloud Disk Edition (Cloud Disk)".
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterInfoResponse(AbstractModel):
+    r"""DescribeClusterInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterName: Instance name.
+        :type ClusterName: str
+        :param _ReadWriteAddress: Address information for reading and writing of the cloud disk edition instance.
+        :type ReadWriteAddress: :class:`tencentcloud.cdb.v20170320.models.AddressInfo`
+        :param _ReadOnlyAddress: Read-only address information of the cloud disk edition instance.
+        :type ReadOnlyAddress: list of AddressInfo
+        :param _NodeList: Node list information of the Cloud Disk Edition instance.
+        :type NodeList: list of ClusterNodeInfo
+        :param _ReadonlyLimit: Read-only space protection threshold, GB
+        :type ReadonlyLimit: int
+        :param _NodeCount: Number of instance nodes.
+        :type NodeCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ClusterName = None
+        self._ReadWriteAddress = None
+        self._ReadOnlyAddress = None
+        self._NodeList = None
+        self._ReadonlyLimit = None
+        self._NodeCount = None
+        self._RequestId = None
+
+    @property
+    def ClusterName(self):
+        r"""Instance name.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ReadWriteAddress(self):
+        r"""Address information for reading and writing of the cloud disk edition instance.
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AddressInfo`
+        """
+        return self._ReadWriteAddress
+
+    @ReadWriteAddress.setter
+    def ReadWriteAddress(self, ReadWriteAddress):
+        self._ReadWriteAddress = ReadWriteAddress
+
+    @property
+    def ReadOnlyAddress(self):
+        r"""Read-only address information of the cloud disk edition instance.
+        :rtype: list of AddressInfo
+        """
+        return self._ReadOnlyAddress
+
+    @ReadOnlyAddress.setter
+    def ReadOnlyAddress(self, ReadOnlyAddress):
+        self._ReadOnlyAddress = ReadOnlyAddress
+
+    @property
+    def NodeList(self):
+        r"""Node list information of the Cloud Disk Edition instance.
+        :rtype: list of ClusterNodeInfo
+        """
+        return self._NodeList
+
+    @NodeList.setter
+    def NodeList(self, NodeList):
+        self._NodeList = NodeList
+
+    @property
+    def ReadonlyLimit(self):
+        r"""Read-only space protection threshold, GB
+        :rtype: int
+        """
+        return self._ReadonlyLimit
+
+    @ReadonlyLimit.setter
+    def ReadonlyLimit(self, ReadonlyLimit):
+        self._ReadonlyLimit = ReadonlyLimit
+
+    @property
+    def NodeCount(self):
+        r"""Number of instance nodes.
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClusterName = params.get("ClusterName")
+        if params.get("ReadWriteAddress") is not None:
+            self._ReadWriteAddress = AddressInfo()
+            self._ReadWriteAddress._deserialize(params.get("ReadWriteAddress"))
+        if params.get("ReadOnlyAddress") is not None:
+            self._ReadOnlyAddress = []
+            for item in params.get("ReadOnlyAddress"):
+                obj = AddressInfo()
+                obj._deserialize(item)
+                self._ReadOnlyAddress.append(obj)
+        if params.get("NodeList") is not None:
+            self._NodeList = []
+            for item in params.get("NodeList"):
+                obj = ClusterNodeInfo()
+                obj._deserialize(item)
+                self._NodeList.append(obj)
+        self._ReadonlyLimit = params.get("ReadonlyLimit")
+        self._NodeCount = params.get("NodeCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -27066,28 +27456,28 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        :param _InstanceId: <p>Instance ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1">DescribeDBInstances</a> API.</p>
         :type InstanceId: str
-        :param _LogType: Log type. error: error log. slowlog: slow log.
+        :param _LogType: <p>Log type. Error: error log, slowlog: slow log.</p>
         :type LogType: str
-        :param _Status: Delivery status. ON: Enabled, OFF: Disabled.
+        :param _Status: <p>Delivery status. ON: enabled, OFF: disabled.</p>
         :type Status: str
-        :param _CreateLogset: Whether required to create logset. Default to false.
+        :param _CreateLogset: <p>Whether required to create logset. Default to false.</p>
         :type CreateLogset: bool
-        :param _Logset: Logset name when creating a logset; logset ID when selecting an existing log set. Empty by default.
-Description: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.
+        :param _Logset: <p>Logset name when creating a logset; logset ID when selecting an existing logset. Empty by default.<br>Description: When the Status parameter is ON, either the Logset or LogTopic parameter must be filled.</p>
         :type Logset: str
-        :param _CreateLogTopic: Whether required to create log topic. Default to false.
+        :param _CreateLogTopic: <p>Whether required to create log topic. Default to false.</p>
         :type CreateLogTopic: bool
-        :param _LogTopic: Log topic name when creating a log topic; log topic ID when selecting an existing log topic. Empty by default.
-Description: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.
+        :param _LogTopic: <p>Enter a log topic name when creating a log topic, or enter a log topic ID when selecting an existing log topic. Empty by default.<br>Description: When the Status parameter is set to ON, either the Logset or LogTopic parameter must be specified.</p>
         :type LogTopic: str
-        :param _Period: Log topic valid period. Default value: 30 days if left empty. Maximum value: 3600.
+        :param _Period: <p>Valid period of the log topic. Default value: 30 days if left empty. Maximum value: 3600 days.</p>
         :type Period: int
-        :param _CreateIndex: Whether to create an index when creating a log topic. Default to false.
+        :param _CreateIndex: <p>Whether to create an index when creating a log topic. Defaults to false.</p>
         :type CreateIndex: bool
-        :param _ClsRegion: The region of CLS. If left empty, it defaults to the parameter value of Region.
+        :param _ClsRegion: <p>CLS region. If left empty, it defaults to the Region parameter value.</p>
         :type ClsRegion: str
+        :param _ResourceTags: <p>Selectable when creating a log topic. Cannot exceed 10 tags</p>
+        :type ResourceTags: list of TagInfoItem
         """
         self._InstanceId = None
         self._LogType = None
@@ -27099,10 +27489,11 @@ Description: When the parameter Status is set to ON, you must fill in either the
         self._Period = None
         self._CreateIndex = None
         self._ClsRegion = None
+        self._ResourceTags = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.
+        r"""<p>Instance ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1">DescribeDBInstances</a> API.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -27113,7 +27504,7 @@ Description: When the parameter Status is set to ON, you must fill in either the
 
     @property
     def LogType(self):
-        r"""Log type. error: error log. slowlog: slow log.
+        r"""<p>Log type. Error: error log, slowlog: slow log.</p>
         :rtype: str
         """
         return self._LogType
@@ -27124,7 +27515,7 @@ Description: When the parameter Status is set to ON, you must fill in either the
 
     @property
     def Status(self):
-        r"""Delivery status. ON: Enabled, OFF: Disabled.
+        r"""<p>Delivery status. ON: enabled, OFF: disabled.</p>
         :rtype: str
         """
         return self._Status
@@ -27135,7 +27526,7 @@ Description: When the parameter Status is set to ON, you must fill in either the
 
     @property
     def CreateLogset(self):
-        r"""Whether required to create logset. Default to false.
+        r"""<p>Whether required to create logset. Default to false.</p>
         :rtype: bool
         """
         return self._CreateLogset
@@ -27146,8 +27537,7 @@ Description: When the parameter Status is set to ON, you must fill in either the
 
     @property
     def Logset(self):
-        r"""Logset name when creating a logset; logset ID when selecting an existing log set. Empty by default.
-Description: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.
+        r"""<p>Logset name when creating a logset; logset ID when selecting an existing logset. Empty by default.<br>Description: When the Status parameter is ON, either the Logset or LogTopic parameter must be filled.</p>
         :rtype: str
         """
         return self._Logset
@@ -27158,7 +27548,7 @@ Description: When the parameter Status is set to ON, you must fill in either the
 
     @property
     def CreateLogTopic(self):
-        r"""Whether required to create log topic. Default to false.
+        r"""<p>Whether required to create log topic. Default to false.</p>
         :rtype: bool
         """
         return self._CreateLogTopic
@@ -27169,8 +27559,7 @@ Description: When the parameter Status is set to ON, you must fill in either the
 
     @property
     def LogTopic(self):
-        r"""Log topic name when creating a log topic; log topic ID when selecting an existing log topic. Empty by default.
-Description: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.
+        r"""<p>Enter a log topic name when creating a log topic, or enter a log topic ID when selecting an existing log topic. Empty by default.<br>Description: When the Status parameter is set to ON, either the Logset or LogTopic parameter must be specified.</p>
         :rtype: str
         """
         return self._LogTopic
@@ -27181,7 +27570,7 @@ Description: When the parameter Status is set to ON, you must fill in either the
 
     @property
     def Period(self):
-        r"""Log topic valid period. Default value: 30 days if left empty. Maximum value: 3600.
+        r"""<p>Valid period of the log topic. Default value: 30 days if left empty. Maximum value: 3600 days.</p>
         :rtype: int
         """
         return self._Period
@@ -27192,7 +27581,7 @@ Description: When the parameter Status is set to ON, you must fill in either the
 
     @property
     def CreateIndex(self):
-        r"""Whether to create an index when creating a log topic. Default to false.
+        r"""<p>Whether to create an index when creating a log topic. Defaults to false.</p>
         :rtype: bool
         """
         return self._CreateIndex
@@ -27203,7 +27592,7 @@ Description: When the parameter Status is set to ON, you must fill in either the
 
     @property
     def ClsRegion(self):
-        r"""The region of CLS. If left empty, it defaults to the parameter value of Region.
+        r"""<p>CLS region. If left empty, it defaults to the Region parameter value.</p>
         :rtype: str
         """
         return self._ClsRegion
@@ -27211,6 +27600,17 @@ Description: When the parameter Status is set to ON, you must fill in either the
     @ClsRegion.setter
     def ClsRegion(self, ClsRegion):
         self._ClsRegion = ClsRegion
+
+    @property
+    def ResourceTags(self):
+        r"""<p>Selectable when creating a log topic. Cannot exceed 10 tags</p>
+        :rtype: list of TagInfoItem
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
 
 
     def _deserialize(self, params):
@@ -27224,6 +27624,12 @@ Description: When the parameter Status is set to ON, you must fill in either the
         self._Period = params.get("Period")
         self._CreateIndex = params.get("CreateIndex")
         self._ClsRegion = params.get("ClsRegion")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfoItem()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -10088,7 +10088,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _CurrentIssueDate: The current date of issue
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CurrentIssueDate: str
-        :param _HKIDVersion: Hong kong identity card version.
+        :param _HKIDVersion: Hong Kong identity card version number, HKID-2003: 03 edition ID card, HKID-2018: 18 edition ID card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HKIDVersion: str
         """
@@ -10230,7 +10230,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HKIDVersion(self):
-        r"""Hong kong identity card version.
+        r"""Hong Kong identity card version number, HKID-2003: 03 edition ID card, HKID-2018: 18 edition ID card
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -10959,31 +10959,33 @@ class OCRResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsPass: Is the indentity verification or OCR process passed
+        :param _IsPass: <p>Whether the identity authentication or OCR process is successful.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IsPass: bool
-        :param _CardImageBase64: The Base64 of ID card image
+        :param _CardImageBase64: <p>Base64 of the ID image</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CardImageBase64: str
-        :param _CardInfo: OCR result of the ID card.
+        :param _CardInfo: <p>ID card recognition result</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CardInfo: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
-        :param _NormalCardInfo: OCR result of the ID card.
+        :param _NormalCardInfo: <p>Document recognition result (when CheckMode value is 4, return the OriginalCardInfo field; other scenarios return the current field)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NormalCardInfo: :class:`tencentcloud.faceid.v20180301.models.NormalCardInfo`
-        :param _RequestId: The request id
+        :param _RequestId: <p>Request id</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RequestId: str
-        :param _CardCutImageBase64: Base64 of cropped image of ID card
+        :param _CardCutImageBase64: <p>Base64 of the cropped ID image</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CardCutImageBase64: str
-        :param _CardBackCutImageBase64: Base64 of the cropped image on the reverse side of the ID card
+        :param _CardBackCutImageBase64: <p>Base64 of the cropped image of the back side of the ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CardBackCutImageBase64: str
-        :param _WarnCardInfos: Card Warning Information
-
--9101 Alarm for covered certificate,
--9102 Alarm for photocopied certificate,
--9103 Alarm for photographed certificate,
--9104 Alarm for PS certificate,
--9107 Alarm for reflective certificate,
--9108 Alarm for blurry image,
--9109 This capability is not enabled.
+        :param _WarnCardInfos: <p>Alarm code</p><p>Enumeration value:</p><ul><li>-9101: Alarm for incomplete document border</li><li>-9102: Alarm for document photocopy</li><li>-9103: Alarm for rephotographing</li><li>-9104: PS alarm</li><li>-9107: Reflective alarm</li><li>-9108: Blurry alarm</li><li>-9109: Alarm capability not enabled</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type WarnCardInfos: list of int
+        :param _OriginalCardInfo: <p>Original document recognition information (the current field will be returned when CheckMode value is 4)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCardInfo: str
         """
         self._IsPass = None
         self._CardImageBase64 = None
@@ -10993,10 +10995,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CardCutImageBase64 = None
         self._CardBackCutImageBase64 = None
         self._WarnCardInfos = None
+        self._OriginalCardInfo = None
 
     @property
     def IsPass(self):
-        r"""Is the indentity verification or OCR process passed
+        r"""<p>Whether the identity authentication or OCR process is successful.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
         return self._IsPass
@@ -11007,7 +11011,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardImageBase64(self):
-        r"""The Base64 of ID card image
+        r"""<p>Base64 of the ID image</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11021,7 +11025,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def CardInfo(self):
         warnings.warn("parameter `CardInfo` is deprecated", DeprecationWarning) 
 
-        r"""OCR result of the ID card.
+        r"""<p>ID card recognition result</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
         """
         return self._CardInfo
@@ -11034,7 +11039,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NormalCardInfo(self):
-        r"""OCR result of the ID card.
+        r"""<p>Document recognition result (when CheckMode value is 4, return the OriginalCardInfo field; other scenarios return the current field)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.NormalCardInfo`
         """
         return self._NormalCardInfo
@@ -11045,7 +11051,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        r"""The request id
+        r"""<p>Request id</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RequestId
@@ -11056,7 +11063,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardCutImageBase64(self):
-        r"""Base64 of cropped image of ID card
+        r"""<p>Base64 of the cropped ID image</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CardCutImageBase64
@@ -11067,7 +11075,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardBackCutImageBase64(self):
-        r"""Base64 of the cropped image on the reverse side of the ID card
+        r"""<p>Base64 of the cropped image of the back side of the ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CardBackCutImageBase64
@@ -11078,15 +11087,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WarnCardInfos(self):
-        r"""Card Warning Information
-
--9101 Alarm for covered certificate,
--9102 Alarm for photocopied certificate,
--9103 Alarm for photographed certificate,
--9104 Alarm for PS certificate,
--9107 Alarm for reflective certificate,
--9108 Alarm for blurry image,
--9109 This capability is not enabled.
+        r"""<p>Alarm code</p><p>Enumeration value:</p><ul><li>-9101: Alarm for incomplete document border</li><li>-9102: Alarm for document photocopy</li><li>-9103: Alarm for rephotographing</li><li>-9104: PS alarm</li><li>-9107: Reflective alarm</li><li>-9108: Blurry alarm</li><li>-9109: Alarm capability not enabled</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
         return self._WarnCardInfos
@@ -11094,6 +11096,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @WarnCardInfos.setter
     def WarnCardInfos(self, WarnCardInfos):
         self._WarnCardInfos = WarnCardInfos
+
+    @property
+    def OriginalCardInfo(self):
+        r"""<p>Original document recognition information (the current field will be returned when CheckMode value is 4)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OriginalCardInfo
+
+    @OriginalCardInfo.setter
+    def OriginalCardInfo(self, OriginalCardInfo):
+        self._OriginalCardInfo = OriginalCardInfo
 
 
     def _deserialize(self, params):
@@ -11109,6 +11123,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CardCutImageBase64 = params.get("CardCutImageBase64")
         self._CardBackCutImageBase64 = params.get("CardBackCutImageBase64")
         self._WarnCardInfos = params.get("WarnCardInfos")
+        self._OriginalCardInfo = params.get("OriginalCardInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12923,6 +12938,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Seq: Unique ID of this verification process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Seq: str
+        :param _LivenessInfoTag: Describe the detailed reason why the current request was rejected in the liveness phase. This parameter only applies to the PLUS edition eKYC service.
+-Details as follows:
+01-User eyes closed throughout
+02-User not completed specified action
+03-Suspected rephotography attack
+04-Suspected Synthesis Attack
+05-Suspected fraudulent template
+06-Suspected watermark
+07-Reflection validation failed
+08 - Suspected change of person midway
+09-Poor face quality
+10 - Distance validation failed
+11-Suspected adversarial sample attack
+12 - Suspected attack traces in the mouth area
+13 - Suspected attack traces exist in the eye area
+14 - Eye or mouth obstruction
+Note: This field may return null, indicating that no valid values can be obtained.
+Example value: ["01"].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LivenessInfoTag: list of str
         """
         self._ErrorCode = None
         self._ErrorMsg = None
@@ -12933,6 +12968,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ReqTimestamp = None
         self._Similarity = None
         self._Seq = None
+        self._LivenessInfoTag = None
 
     @property
     def ErrorCode(self):
@@ -13042,6 +13078,35 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Seq(self, Seq):
         self._Seq = Seq
 
+    @property
+    def LivenessInfoTag(self):
+        r"""Describe the detailed reason why the current request was rejected in the liveness phase. This parameter only applies to the PLUS edition eKYC service.
+-Details as follows:
+01-User eyes closed throughout
+02-User not completed specified action
+03-Suspected rephotography attack
+04-Suspected Synthesis Attack
+05-Suspected fraudulent template
+06-Suspected watermark
+07-Reflection validation failed
+08 - Suspected change of person midway
+09-Poor face quality
+10 - Distance validation failed
+11-Suspected adversarial sample attack
+12 - Suspected attack traces in the mouth area
+13 - Suspected attack traces exist in the eye area
+14 - Eye or mouth obstruction
+Note: This field may return null, indicating that no valid values can be obtained.
+Example value: ["01"].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._LivenessInfoTag
+
+    @LivenessInfoTag.setter
+    def LivenessInfoTag(self, LivenessInfoTag):
+        self._LivenessInfoTag = LivenessInfoTag
+
 
     def _deserialize(self, params):
         self._ErrorCode = params.get("ErrorCode")
@@ -13053,6 +13118,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ReqTimestamp = params.get("ReqTimestamp")
         self._Similarity = params.get("Similarity")
         self._Seq = params.get("Seq")
+        self._LivenessInfoTag = params.get("LivenessInfoTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

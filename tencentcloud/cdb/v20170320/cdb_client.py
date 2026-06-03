@@ -1403,6 +1403,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterInfo(self, request):
+        r"""This API is used to query cloud disk edition instance info.
+
+        :param request: Request instance for DescribeClusterInfo.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeClusterInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeClusterInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBFeatures(self, request):
         r"""This API is used to query cloud database version attributes, including whether database encryption and database audit are supported, and other features.
 

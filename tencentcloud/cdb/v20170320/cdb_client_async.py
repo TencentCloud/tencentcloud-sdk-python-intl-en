@@ -1107,6 +1107,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterInfo(
+            self,
+            request: models.DescribeClusterInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterInfoResponse:
+        """
+        This API is used to query cloud disk edition instance info.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBFeatures(
             self,
             request: models.DescribeDBFeaturesRequest,

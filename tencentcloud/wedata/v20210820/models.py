@@ -29,7 +29,7 @@ class AddProjectUserRoleRequest(AbstractModel):
         :type ProjectId: str
         :param _UserIds: User UIN
         :type UserIds: list of str
-        :param _RoleIds: Role id
+        :param _RoleIds: Role ID
         :type RoleIds: list of str
         """
         self._ProjectId = None
@@ -60,7 +60,7 @@ class AddProjectUserRoleRequest(AbstractModel):
 
     @property
     def RoleIds(self):
-        r"""Role id
+        r"""Role ID
         :rtype: list of str
         """
         return self._RoleIds
