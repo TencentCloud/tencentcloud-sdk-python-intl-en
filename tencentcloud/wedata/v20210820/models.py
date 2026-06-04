@@ -67710,7 +67710,7 @@ class SearchConditionInstanceNew(AbstractModel):
         :param _ExecutionSpace: Execution space, optional 
  "DRY_RUN"
         :type ExecutionSpace: str
-        :param _ProductName: Business Products, options: <DATA_DEV / DATA_QUALITY / DATA_INTEGRATION, default DATA_DEV. Non-empty. Default own project
+        :param _ProductName: Business Products, options: DATA_DEV, DATA_QUALITY, DATA_INTEGRATION, default DATA_DEV. Non-empty. Default own project
         :type ProductName: str
         :param _ResourceGroup: Resource Group Information, optional
         :type ResourceGroup: str
@@ -67733,7 +67733,7 @@ class SearchConditionInstanceNew(AbstractModel):
 
     @property
     def ProductName(self):
-        r"""Business Products, options: <DATA_DEV / DATA_QUALITY / DATA_INTEGRATION, default DATA_DEV. Non-empty. Default own project
+        r"""Business Products, options: DATA_DEV, DATA_QUALITY, DATA_INTEGRATION, default DATA_DEV. Non-empty. Default own project
         :rtype: str
         """
         return self._ProductName

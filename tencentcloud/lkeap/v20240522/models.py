@@ -18,6 +18,399 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ChatCompletionsRequest(AbstractModel):
+    r"""ChatCompletions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: Model name.
+        :type Model: str
+        :param _Messages: Chat contextual information.
+Description:
+1. Length: up to 40. Arranged in array from old to new by conversation time.
+2. Message.Role: system, user, assistant. Optional.
+Among them, the system role is optional. If it exists, it must be at the beginning of the list. User and assistant need to alternate, starting with a user question and ending with a user question. Content cannot be empty. An example of the order of roles: [system (optional) user assistant user assistant user...].
+
+        :type Messages: list of Message
+        :param _Stream: Whether it is streaming output.
+        :type Stream: bool
+        :param _Temperature: Controls the randomness of the generated content. a relatively high value generates more diversified output.
+        :type Temperature: float
+        :param _MaxTokens: Maximum number of generated tokens.
+        :type MaxTokens: int
+        :param _EnableSearch: 
+        :type EnableSearch: bool
+        """
+        self._Model = None
+        self._Messages = None
+        self._Stream = None
+        self._Temperature = None
+        self._MaxTokens = None
+        self._EnableSearch = None
+
+    @property
+    def Model(self):
+        r"""Model name.
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Messages(self):
+        r"""Chat contextual information.
+Description:
+1. Length: up to 40. Arranged in array from old to new by conversation time.
+2. Message.Role: system, user, assistant. Optional.
+Among them, the system role is optional. If it exists, it must be at the beginning of the list. User and assistant need to alternate, starting with a user question and ending with a user question. Content cannot be empty. An example of the order of roles: [system (optional) user assistant user assistant user...].
+
+        :rtype: list of Message
+        """
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def Stream(self):
+        r"""Whether it is streaming output.
+        :rtype: bool
+        """
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+    @property
+    def Temperature(self):
+        r"""Controls the randomness of the generated content. a relatively high value generates more diversified output.
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def MaxTokens(self):
+        r"""Maximum number of generated tokens.
+        :rtype: int
+        """
+        return self._MaxTokens
+
+    @MaxTokens.setter
+    def MaxTokens(self, MaxTokens):
+        self._MaxTokens = MaxTokens
+
+    @property
+    def EnableSearch(self):
+        r"""
+        :rtype: bool
+        """
+        return self._EnableSearch
+
+    @EnableSearch.setter
+    def EnableSearch(self, EnableSearch):
+        self._EnableSearch = EnableSearch
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = Message()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        self._Stream = params.get("Stream")
+        self._Temperature = params.get("Temperature")
+        self._MaxTokens = params.get("MaxTokens")
+        self._EnableSearch = params.get("EnableSearch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChatCompletionsResponse(AbstractModel):
+    r"""ChatCompletions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Created: Unix timestamp, in seconds.
+        :type Created: int
+        :param _Usage: Token statistical information.
+Charges are based on the total Token quantity.
+        :type Usage: :class:`tencentcloud.lkeap.v20240522.models.ChatUsage`
+        :param _Id: RequestId for this request.
+        :type Id: str
+        :param _Choices: Response content.
+        :type Choices: list of Choice
+        :param _Model: Model name.
+        :type Model: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header "X-TC-RequestId" of the HTTP response.
+        :type RequestId: str
+        """
+        self._Created = None
+        self._Usage = None
+        self._Id = None
+        self._Choices = None
+        self._Model = None
+        self._RequestId = None
+
+    @property
+    def Created(self):
+        r"""Unix timestamp, in seconds.
+        :rtype: int
+        """
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+    @property
+    def Usage(self):
+        r"""Token statistical information.
+Charges are based on the total Token quantity.
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.ChatUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def Id(self):
+        r"""RequestId for this request.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Choices(self):
+        r"""Response content.
+        :rtype: list of Choice
+        """
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+    @property
+    def Model(self):
+        r"""Model name.
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header "X-TC-RequestId" of the HTTP response.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Created = params.get("Created")
+        if params.get("Usage") is not None:
+            self._Usage = ChatUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._Id = params.get("Id")
+        if params.get("Choices") is not None:
+            self._Choices = []
+            for item in params.get("Choices"):
+                obj = Choice()
+                obj._deserialize(item)
+                self._Choices.append(obj)
+        self._Model = params.get("Model")
+        self._RequestId = params.get("RequestId")
+
+
+class ChatUsage(AbstractModel):
+    r"""Consumption.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTokens: Number of input tokens.
+        :type PromptTokens: int
+        :param _CompletionTokens: Number of output tokens.
+        :type CompletionTokens: int
+        :param _TotalTokens: Total number of tokens.
+        :type TotalTokens: int
+        """
+        self._PromptTokens = None
+        self._CompletionTokens = None
+        self._TotalTokens = None
+
+    @property
+    def PromptTokens(self):
+        r"""Number of input tokens.
+        :rtype: int
+        """
+        return self._PromptTokens
+
+    @PromptTokens.setter
+    def PromptTokens(self, PromptTokens):
+        self._PromptTokens = PromptTokens
+
+    @property
+    def CompletionTokens(self):
+        r"""Number of output tokens.
+        :rtype: int
+        """
+        return self._CompletionTokens
+
+    @CompletionTokens.setter
+    def CompletionTokens(self, CompletionTokens):
+        self._CompletionTokens = CompletionTokens
+
+    @property
+    def TotalTokens(self):
+        r"""Total number of tokens.
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._PromptTokens = params.get("PromptTokens")
+        self._CompletionTokens = params.get("CompletionTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Choice(AbstractModel):
+    r"""The returned response. Supports multiple responses.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FinishReason: The end flag, which can be "stop" or "content_filter."
+"Stop" indicates normal output end.
+"Content_filter" appears only when streaming output review is enabled, indicating that the security review has not passed.
+        :type FinishReason: str
+        :param _Delta: Incremental return value, used when making streaming calls.
+        :type Delta: :class:`tencentcloud.lkeap.v20240522.models.Delta`
+        :param _Message: Return value, used when making non-streaming calls.
+        :type Message: :class:`tencentcloud.lkeap.v20240522.models.Message`
+        :param _Index: Index value, used when making streaming calls.
+        :type Index: int
+        """
+        self._FinishReason = None
+        self._Delta = None
+        self._Message = None
+        self._Index = None
+
+    @property
+    def FinishReason(self):
+        r"""The end flag, which can be "stop" or "content_filter."
+"Stop" indicates normal output end.
+"Content_filter" appears only when streaming output review is enabled, indicating that the security review has not passed.
+        :rtype: str
+        """
+        return self._FinishReason
+
+    @FinishReason.setter
+    def FinishReason(self, FinishReason):
+        self._FinishReason = FinishReason
+
+    @property
+    def Delta(self):
+        r"""Incremental return value, used when making streaming calls.
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.Delta`
+        """
+        return self._Delta
+
+    @Delta.setter
+    def Delta(self, Delta):
+        self._Delta = Delta
+
+    @property
+    def Message(self):
+        r"""Return value, used when making non-streaming calls.
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.Message`
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Index(self):
+        r"""Index value, used when making streaming calls.
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._FinishReason = params.get("FinishReason")
+        if params.get("Delta") is not None:
+            self._Delta = Delta()
+            self._Delta._deserialize(params.get("Delta"))
+        if params.get("Message") is not None:
+            self._Message = Message()
+            self._Message._deserialize(params.get("Message"))
+        self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateReconstructDocumentFlowConfig(AbstractModel):
     r"""Configuration information for creating intelligent document parsing tasks.
 
@@ -553,6 +946,72 @@ The splitting results corresponding to the TaskId can be queried through the [Ge
         self._RequestId = params.get("RequestId")
 
 
+class Delta(AbstractModel):
+    r"""Returned content.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: Role name.
+        :type Role: str
+        :param _Content: Content details.
+        :type Content: str
+        :param _ReasoningContent: Chain of thought content. The ReasoningConent parameter only supports output parameters, and is only returned by the deepseek-r1 model.
+        :type ReasoningContent: str
+        """
+        self._Role = None
+        self._Content = None
+        self._ReasoningContent = None
+
+    @property
+    def Role(self):
+        r"""Role name.
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""Content details.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ReasoningContent(self):
+        r"""Chain of thought content. The ReasoningConent parameter only supports output parameters, and is only returned by the deepseek-r1 model.
+        :rtype: str
+        """
+        return self._ReasoningContent
+
+    @ReasoningContent.setter
+    def ReasoningContent(self, ReasoningContent):
+        self._ReasoningContent = ReasoningContent
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._ReasoningContent = params.get("ReasoningContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DocumentUsage(AbstractModel):
     r"""The usage of document splitting task.
 
@@ -649,6 +1108,57 @@ class EmbeddingObject(AbstractModel):
 
     def _deserialize(self, params):
         self._Embedding = params.get("Embedding")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ErrorInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 
+        :type Code: str
+        :param _Message: 
+        :type Message: str
+        """
+        self._Code = None
+        self._Message = None
+
+    @property
+    def Code(self):
+        r"""
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -865,12 +1375,18 @@ class GetReconstructDocumentResultResponse(AbstractModel):
         :type DocumentRecognizeResultUrl: str
         :param _FailedPages: Page number where document parsing fails.
         :type FailedPages: list of ReconstructDocumentFailedPage
+        :param _Usage: Amount of document parsing task.
+        :type Usage: :class:`tencentcloud.lkeap.v20240522.models.DocumentUsage`
+        :param _Error: Error message for failed document parsing task. When a document parsing task fails, a specific error message will be returned.
+        :type Error: :class:`tencentcloud.lkeap.v20240522.models.ErrorInfo`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Status = None
         self._DocumentRecognizeResultUrl = None
         self._FailedPages = None
+        self._Usage = None
+        self._Error = None
         self._RequestId = None
 
     @property
@@ -912,6 +1428,28 @@ class GetReconstructDocumentResultResponse(AbstractModel):
         self._FailedPages = FailedPages
 
     @property
+    def Usage(self):
+        r"""Amount of document parsing task.
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.DocumentUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def Error(self):
+        r"""Error message for failed document parsing task. When a document parsing task fails, a specific error message will be returned.
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.ErrorInfo`
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -932,6 +1470,12 @@ class GetReconstructDocumentResultResponse(AbstractModel):
                 obj = ReconstructDocumentFailedPage()
                 obj._deserialize(item)
                 self._FailedPages.append(obj)
+        if params.get("Usage") is not None:
+            self._Usage = DocumentUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        if params.get("Error") is not None:
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
         self._RequestId = params.get("RequestId")
 
 
