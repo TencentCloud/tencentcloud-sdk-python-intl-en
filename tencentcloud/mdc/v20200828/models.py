@@ -247,20 +247,20 @@ class CreateInput(AbstractModel):
 
 
 class CreateInputHLSPullSettings(AbstractModel):
-    r"""Created input HLS pull stream configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: The origin server address for the HLS origin server. There can be only one.
+        :param _SourceAddresses: 
         :type SourceAddresses: list of HLSPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""The origin server address for the HLS origin server. There can be only one.
+        r"""
         :rtype: list of HLSPullSourceAddress
         """
         return self._SourceAddresses
@@ -288,20 +288,20 @@ class CreateInputHLSPullSettings(AbstractModel):
 
 
 class CreateInputRTMPPullSettings(AbstractModel):
-    r"""Created input RTMP pull stream configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: The origin server address for the RTMP origin server. There can be only one.
+        :param _SourceAddresses: 
         :type SourceAddresses: list of RTMPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""The origin server address for the RTMP origin server. There can be only one.
+        r"""
         :rtype: list of RTMPPullSourceAddress
         """
         return self._SourceAddresses
@@ -380,20 +380,20 @@ class CreateInputRTPSettings(AbstractModel):
 
 
 class CreateInputRTSPPullSettings(AbstractModel):
-    r"""Created input RTSP pull stream configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: The origin server address for the RTSP origin server. There can be only one.
+        :param _SourceAddresses: 
         :type SourceAddresses: list of RTSPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""The origin server address for the RTSP origin server. There can be only one.
+        r"""
         :rtype: list of RTSPPullSourceAddress
         """
         return self._SourceAddresses
@@ -1229,11 +1229,14 @@ class CreateStreamLinkFlowRequest(AbstractModel):
         :type InputGroup: list of CreateInput
         :param _EventId: The media transmission event ID associated with the Flow. Each flow can only be associated with one event.
         :type EventId: str
+        :param _OutputGroup: Flow output group.
+        :type OutputGroup: list of CreateOutputInfo
         """
         self._FlowName = None
         self._MaxBandwidth = None
         self._InputGroup = None
         self._EventId = None
+        self._OutputGroup = None
 
     @property
     def FlowName(self):
@@ -1279,6 +1282,17 @@ class CreateStreamLinkFlowRequest(AbstractModel):
     def EventId(self, EventId):
         self._EventId = EventId
 
+    @property
+    def OutputGroup(self):
+        r"""Flow output group.
+        :rtype: list of CreateOutputInfo
+        """
+        return self._OutputGroup
+
+    @OutputGroup.setter
+    def OutputGroup(self, OutputGroup):
+        self._OutputGroup = OutputGroup
+
 
     def _deserialize(self, params):
         self._FlowName = params.get("FlowName")
@@ -1290,6 +1304,12 @@ class CreateStreamLinkFlowRequest(AbstractModel):
                 obj._deserialize(item)
                 self._InputGroup.append(obj)
         self._EventId = params.get("EventId")
+        if params.get("OutputGroup") is not None:
+            self._OutputGroup = []
+            for item in params.get("OutputGroup"):
+                obj = CreateOutputInfo()
+                obj._deserialize(item)
+                self._OutputGroup.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1826,20 +1846,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeHLSPullSourceAddress(AbstractModel):
-    r"""Query the input HLS configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: The Url of the HLS origin server.
+        :param _Url: 
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""The Url of the HLS origin server.
+        r"""
         :rtype: str
         """
         return self._Url
@@ -1894,13 +1914,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _FailOver: Input failover
 Note: this field may return `null`, indicating that no valid value was found.
         :type FailOver: str
-        :param _RTMPPullSettings: Input RTMP_PULL configuration.
+        :param _RTMPPullSettings: 
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPPullSettings`
-        :param _RTSPPullSettings: Input RTSP_PULL configuration.
+        :param _RTSPPullSettings: 
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTSPPullSettings`
-        :param _HLSPullSettings: Input HLS_PULL configuration.
+        :param _HLSPullSettings: 
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputHLSPullSettings`
-        :param _ResilientStream: Delayed broadcast smooth stream delivery configuration.
+        :param _ResilientStream: 
         :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         :param _SecurityGroupIds: The bound security group ID.
         :type SecurityGroupIds: list of str
@@ -2049,7 +2069,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RTMPPullSettings(self):
-        r"""Input RTMP_PULL configuration.
+        r"""
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPPullSettings`
         """
         return self._RTMPPullSettings
@@ -2060,7 +2080,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RTSPPullSettings(self):
-        r"""Input RTSP_PULL configuration.
+        r"""
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -2071,7 +2091,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def HLSPullSettings(self):
-        r"""Input HLS_PULL configuration.
+        r"""
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -2082,7 +2102,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def ResilientStream(self):
-        r"""Delayed broadcast smooth stream delivery configuration.
+        r"""
         :rtype: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         """
         return self._ResilientStream
@@ -2150,20 +2170,20 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class DescribeInputHLSPullSettings(AbstractModel):
-    r"""Query the input HLS configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: The address information of the HLS origin server.
+        :param _SourceAddresses: 
         :type SourceAddresses: list of DescribeHLSPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""The address information of the HLS origin server.
+        r"""
         :rtype: list of DescribeHLSPullSourceAddress
         """
         return self._SourceAddresses
@@ -2191,20 +2211,20 @@ class DescribeInputHLSPullSettings(AbstractModel):
 
 
 class DescribeInputRTMPPullSettings(AbstractModel):
-    r"""Query the input RTMP configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: The address information of the RTMP origin server.
+        :param _SourceAddresses: 
         :type SourceAddresses: list of DescribeRTMPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""The address information of the RTMP origin server.
+        r"""
         :rtype: list of DescribeRTMPPullSourceAddress
         """
         return self._SourceAddresses
@@ -2338,20 +2358,20 @@ class DescribeInputRTPSettings(AbstractModel):
 
 
 class DescribeInputRTSPPullSettings(AbstractModel):
-    r"""Query the input RTSP configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _SourceAddresses: The address information of the RTSP origin server.
+        :param _SourceAddresses: 
         :type SourceAddresses: list of DescribeRTSPPullSourceAddress
         """
         self._SourceAddresses = None
 
     @property
     def SourceAddresses(self):
-        r"""The address information of the RTSP origin server.
+        r"""
         :rtype: list of DescribeRTSPPullSourceAddress
         """
         return self._SourceAddresses
@@ -2582,11 +2602,11 @@ Note: This field may return `null`, indicating that no valid value was found.
 This parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.
 Note: This field may return `null`, indicating that no valid value was found.
         :type AllowIpList: list of str
-        :param _RTSPPullSettings: Output RTSP pull stream configuration.
+        :param _RTSPPullSettings: 
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTSPPullSettings`
-        :param _HLSPullSettings: Output HLS pull stream configuration.
+        :param _HLSPullSettings: 
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputHLSPullSettings`
-        :param _MaxConcurrent: Maximum pull stream concurrency, maximum 4, default 4.
+        :param _MaxConcurrent: 
         :type MaxConcurrent: int
         :param _SecurityGroupIds: The bound security group IDs.
         :type SecurityGroupIds: list of str
@@ -2750,7 +2770,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RTSPPullSettings(self):
-        r"""Output RTSP pull stream configuration.
+        r"""
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -2761,7 +2781,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def HLSPullSettings(self):
-        r"""Output HLS pull stream configuration.
+        r"""
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -2772,7 +2792,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def MaxConcurrent(self):
-        r"""Maximum pull stream concurrency, maximum 4, default 4.
+        r"""
         :rtype: int
         """
         return self._MaxConcurrent
@@ -2838,20 +2858,20 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class DescribeOutputHLSPullServerUrl(AbstractModel):
-    r"""Query output HLS pull stream URL information.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: The Url of the HLS pull stream address.
+        :param _Url: 
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""The Url of the HLS pull stream address.
+        r"""
         :rtype: str
         """
         return self._Url
@@ -2874,20 +2894,20 @@ class DescribeOutputHLSPullServerUrl(AbstractModel):
 
 
 class DescribeOutputHLSPullSettings(AbstractModel):
-    r"""Query the output HLS pull stream configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _ServerUrls: HLS pull stream address list.
+        :param _ServerUrls: 
         :type ServerUrls: list of DescribeOutputHLSPullServerUrl
         """
         self._ServerUrls = None
 
     @property
     def ServerUrls(self):
-        r"""HLS pull stream address list.
+        r"""
         :rtype: list of DescribeOutputHLSPullServerUrl
         """
         return self._ServerUrls
@@ -3163,20 +3183,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class DescribeOutputRTSPPullServerUrl(AbstractModel):
-    r"""Query output RTSP pull stream URL information.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: RTSP pull stream address Url.
+        :param _Url: 
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""RTSP pull stream address Url.
+        r"""
         :rtype: str
         """
         return self._Url
@@ -3199,20 +3219,20 @@ class DescribeOutputRTSPPullServerUrl(AbstractModel):
 
 
 class DescribeOutputRTSPPullSettings(AbstractModel):
-    r"""Query output RTSP pull stream configuration information.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _ServerUrls: RTSP pull stream address list.
+        :param _ServerUrls: 
         :type ServerUrls: list of DescribeOutputRTSPPullServerUrl
         """
         self._ServerUrls = None
 
     @property
     def ServerUrls(self):
-        r"""RTSP pull stream address list.
+        r"""
         :rtype: list of DescribeOutputRTSPPullServerUrl
         """
         return self._ServerUrls
@@ -3441,17 +3461,15 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class DescribeRTMPPullSourceAddress(AbstractModel):
-    r"""Query the input RTMP configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _TcUrl: The TcUrl address of the RTMP origin server.
+        :param _TcUrl: 
         :type TcUrl: str
-        :param _StreamKey: The StreamKey of the RTMP origin server.
-
-The concatenation rule for the RTMP origin server address is: $TcUrl/$StreamKey.
+        :param _StreamKey: 
         :type StreamKey: str
         """
         self._TcUrl = None
@@ -3459,7 +3477,7 @@ The concatenation rule for the RTMP origin server address is: $TcUrl/$StreamKey.
 
     @property
     def TcUrl(self):
-        r"""The TcUrl address of the RTMP origin server.
+        r"""
         :rtype: str
         """
         return self._TcUrl
@@ -3470,9 +3488,7 @@ The concatenation rule for the RTMP origin server address is: $TcUrl/$StreamKey.
 
     @property
     def StreamKey(self):
-        r"""The StreamKey of the RTMP origin server.
-
-The concatenation rule for the RTMP origin server address is: $TcUrl/$StreamKey.
+        r"""
         :rtype: str
         """
         return self._StreamKey
@@ -3496,20 +3512,20 @@ The concatenation rule for the RTMP origin server address is: $TcUrl/$StreamKey.
 
 
 class DescribeRTSPPullSourceAddress(AbstractModel):
-    r"""Query the input RTSP configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: The Url address of the RTSP origin server.
+        :param _Url: 
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""The Url address of the RTSP origin server.
+        r"""
         :rtype: str
         """
         return self._Url
@@ -5792,35 +5808,35 @@ class FlowSRTInfo(AbstractModel):
         :type SendPacketDropNumber: int
         :param _RecvPacketDropNumber: The number of dropped packets for receiving.
         :type RecvPacketDropNumber: int
-        :param _Bandwidth: bandwidth
+        :param _Bandwidth: Bandwidth
         :type Bandwidth: float
-        :param _SendBandwidth: Transmit bandwidth
+        :param _SendBandwidth: transmit bandwidth
         :type SendBandwidth: float
-        :param _RecvBandwidth: Receive bandwidth
+        :param _RecvBandwidth: Receiving bandwidth
         :type RecvBandwidth: float
-        :param _SendPackets: Number of packets sent
+        :param _SendPackets: Sent packet count
         :type SendPackets: int
-        :param _RecvPackets: Number of received packets
+        :param _RecvPackets: Received packets
         :type RecvPackets: int
-        :param _SendLostPackets: Send lost package
+        :param _SendLostPackets: Sent lost packets
         :type SendLostPackets: int
-        :param _RecvLostPackets: Accept lost packages
+        :param _RecvLostPackets: accept lost packets
         :type RecvLostPackets: int
-        :param _SendRetransmitPackets: Number of retransmission packets sent
+        :param _SendRetransmitPackets: Retransmitted packet count
         :type SendRetransmitPackets: int
-        :param _RecvRetransmitPackets: Number of received retransmission packets
+        :param _RecvRetransmitPackets: Retransmitted packets received
         :type RecvRetransmitPackets: int
-        :param _FlightSize: Flight window size
+        :param _FlightSize: Window size
         :type FlightSize: int
-        :param _CongestionWindow: congestion window
+        :param _CongestionWindow: Congestion window
         :type CongestionWindow: int
-        :param _SendBuffer: Send buffer (ms)
+        :param _SendBuffer: Sending buffer (ms)
         :type SendBuffer: int
         :param _RecvBuffer: Receive buffer (ms)
         :type RecvBuffer: int
-        :param _SendLatency: Sending delay
+        :param _SendLatency: Send delay
         :type SendLatency: int
-        :param _RecvLatency: Receiving delay
+        :param _RecvLatency: receive latency
         :type RecvLatency: int
         """
         self._Timestamp = None
@@ -5949,7 +5965,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""bandwidth
+        r"""Bandwidth
         :rtype: float
         """
         return self._Bandwidth
@@ -5960,7 +5976,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendBandwidth(self):
-        r"""Transmit bandwidth
+        r"""transmit bandwidth
         :rtype: float
         """
         return self._SendBandwidth
@@ -5971,7 +5987,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvBandwidth(self):
-        r"""Receive bandwidth
+        r"""Receiving bandwidth
         :rtype: float
         """
         return self._RecvBandwidth
@@ -5982,7 +5998,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendPackets(self):
-        r"""Number of packets sent
+        r"""Sent packet count
         :rtype: int
         """
         return self._SendPackets
@@ -5993,7 +6009,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvPackets(self):
-        r"""Number of received packets
+        r"""Received packets
         :rtype: int
         """
         return self._RecvPackets
@@ -6004,7 +6020,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendLostPackets(self):
-        r"""Send lost package
+        r"""Sent lost packets
         :rtype: int
         """
         return self._SendLostPackets
@@ -6015,7 +6031,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvLostPackets(self):
-        r"""Accept lost packages
+        r"""accept lost packets
         :rtype: int
         """
         return self._RecvLostPackets
@@ -6026,7 +6042,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendRetransmitPackets(self):
-        r"""Number of retransmission packets sent
+        r"""Retransmitted packet count
         :rtype: int
         """
         return self._SendRetransmitPackets
@@ -6037,7 +6053,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvRetransmitPackets(self):
-        r"""Number of received retransmission packets
+        r"""Retransmitted packets received
         :rtype: int
         """
         return self._RecvRetransmitPackets
@@ -6048,7 +6064,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def FlightSize(self):
-        r"""Flight window size
+        r"""Window size
         :rtype: int
         """
         return self._FlightSize
@@ -6059,7 +6075,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def CongestionWindow(self):
-        r"""congestion window
+        r"""Congestion window
         :rtype: int
         """
         return self._CongestionWindow
@@ -6070,7 +6086,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendBuffer(self):
-        r"""Send buffer (ms)
+        r"""Sending buffer (ms)
         :rtype: int
         """
         return self._SendBuffer
@@ -6092,7 +6108,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def SendLatency(self):
-        r"""Sending delay
+        r"""Send delay
         :rtype: int
         """
         return self._SendLatency
@@ -6103,7 +6119,7 @@ class FlowSRTInfo(AbstractModel):
 
     @property
     def RecvLatency(self):
-        r"""Receiving delay
+        r"""receive latency
         :rtype: int
         """
         return self._RecvLatency
@@ -6377,20 +6393,20 @@ class FlowVideo(AbstractModel):
 
 
 class HLSPullSourceAddress(AbstractModel):
-    r"""Created input HLS pull stream origin server configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: The Url of the HLS origin server.
+        :param _Url: 
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""The Url of the HLS origin server.
+        r"""
         :rtype: str
         """
         return self._Url
@@ -7303,15 +7319,15 @@ class RTMPAddressDestination(AbstractModel):
 
 
 class RTMPPullSourceAddress(AbstractModel):
-    r"""Created input RTMP pull stream origin server configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _TcUrl: The TcUrl address of the RTMP origin server.
+        :param _TcUrl: 
         :type TcUrl: str
-        :param _StreamKey: The StreamKey of the RTMP origin server.
+        :param _StreamKey: 
         :type StreamKey: str
         """
         self._TcUrl = None
@@ -7319,7 +7335,7 @@ class RTMPPullSourceAddress(AbstractModel):
 
     @property
     def TcUrl(self):
-        r"""The TcUrl address of the RTMP origin server.
+        r"""
         :rtype: str
         """
         return self._TcUrl
@@ -7330,7 +7346,7 @@ class RTMPPullSourceAddress(AbstractModel):
 
     @property
     def StreamKey(self):
-        r"""The StreamKey of the RTMP origin server.
+        r"""
         :rtype: str
         """
         return self._StreamKey
@@ -7405,20 +7421,20 @@ class RTPAddressDestination(AbstractModel):
 
 
 class RTSPPullSourceAddress(AbstractModel):
-    r"""Created input RTSP pull stream origin server configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: The Url address of the RTSP origin server.
+        :param _Url: 
         :type Url: str
         """
         self._Url = None
 
     @property
     def Url(self):
-        r"""The Url address of the RTSP origin server.
+        r"""
         :rtype: str
         """
         return self._Url
@@ -7477,15 +7493,15 @@ class RegionInfo(AbstractModel):
 
 
 class ResilientStreamConf(AbstractModel):
-    r"""Delayed broadcast smooth stream delivery configuration.
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _Enable: Whether to enable delayed broadcast smooth stream delivery: true to enable, false to disable. It is disabled by default.
+        :param _Enable: 
         :type Enable: bool
-        :param _BufferTime: Delayed broadcast duration, in seconds. Supported range: 10 to 300 seconds.
+        :param _BufferTime: 
         :type BufferTime: int
         """
         self._Enable = None
@@ -7493,7 +7509,7 @@ class ResilientStreamConf(AbstractModel):
 
     @property
     def Enable(self):
-        r"""Whether to enable delayed broadcast smooth stream delivery: true to enable, false to disable. It is disabled by default.
+        r"""
         :rtype: bool
         """
         return self._Enable
@@ -7504,7 +7520,7 @@ class ResilientStreamConf(AbstractModel):
 
     @property
     def BufferTime(self):
-        r"""Delayed broadcast duration, in seconds. Supported range: 10 to 300 seconds.
+        r"""
         :rtype: int
         """
         return self._BufferTime

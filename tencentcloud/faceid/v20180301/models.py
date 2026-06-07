@@ -5844,8 +5844,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _BestFrameBase64: The Base64-encoded string of the best face screenshot collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no best face screenshot is collected, null is returned.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BestFrameBase64: str
-        :param _OCRResult: Card recognize result.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OCRResult: Card recognize result
         :type OCRResult: list of OCRResult
         :param _Extra: The passthrough parameter of the business, max 1,000 characters, which will be returned in GetWebVerificationResultIntl.
         :type Extra: str
@@ -5924,8 +5923,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OCRResult(self):
-        r"""Card recognize result.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Card recognize result
         :rtype: list of OCRResult
         """
         return self._OCRResult
@@ -10953,7 +10951,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class OCRResult(AbstractModel):
-    r"""The content of a single license in the license information.
+    r"""The content of a single license in the license information
 
     """
 

@@ -1330,19 +1330,19 @@ Note: The returned value of this field may be null, indicating that no valid val
         :param _OrderType: Order type 
 Note: The returned value of this field may be null, indicating that no valid value is obtained.
         :type OrderType: str
-        :param _CheckStatus: Acceptance Status
+        :param _CheckStatus: 
         :type CheckStatus: str
-        :param _DeliverExpectTime: Expected Delivery Time
+        :param _DeliverExpectTime: 
         :type DeliverExpectTime: str
-        :param _DeliverFinishTime: Actual Delivery Completion Time
+        :param _DeliverFinishTime: 
         :type DeliverFinishTime: str
-        :param _CheckExpectTime: Expected Acceptance Time
+        :param _CheckExpectTime: 
         :type CheckExpectTime: str
-        :param _CheckFinishTime: Actual Acceptance Completion Time
+        :param _CheckFinishTime: 
         :type CheckFinishTime: str
-        :param _OrderSLA: Order SLA
+        :param _OrderSLA: 
         :type OrderSLA: str
-        :param _OrderPayPlan: Order Payment Plan
+        :param _OrderPayPlan: 
         :type OrderPayPlan: str
         """
         self._DedicatedClusterId = None
@@ -1386,6 +1386,8 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DedicatedClusterTypeId(self):
+        warnings.warn("parameter `DedicatedClusterTypeId` is deprecated", DeprecationWarning) 
+
         r"""CDC type id (moved to the next level, obsolete and will be deleted later)
         :rtype: str
         """
@@ -1393,10 +1395,14 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @DedicatedClusterTypeId.setter
     def DedicatedClusterTypeId(self, DedicatedClusterTypeId):
+        warnings.warn("parameter `DedicatedClusterTypeId` is deprecated", DeprecationWarning) 
+
         self._DedicatedClusterTypeId = DedicatedClusterTypeId
 
     @property
     def SupportedStorageType(self):
+        warnings.warn("parameter `SupportedStorageType` is deprecated", DeprecationWarning) 
+
         r"""List of supported storage types (moved to the next level, obsolete and will be deleted later)
         :rtype: list of str
         """
@@ -1404,10 +1410,14 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @SupportedStorageType.setter
     def SupportedStorageType(self, SupportedStorageType):
+        warnings.warn("parameter `SupportedStorageType` is deprecated", DeprecationWarning) 
+
         self._SupportedStorageType = SupportedStorageType
 
     @property
     def SupportedUplinkSpeed(self):
+        warnings.warn("parameter `SupportedUplinkSpeed` is deprecated", DeprecationWarning) 
+
         r"""Supported uplink switch transmission rate (GiB) (moved to the next level, obsolete and will be deleted later)
         :rtype: list of int
         """
@@ -1415,10 +1425,14 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @SupportedUplinkSpeed.setter
     def SupportedUplinkSpeed(self, SupportedUplinkSpeed):
+        warnings.warn("parameter `SupportedUplinkSpeed` is deprecated", DeprecationWarning) 
+
         self._SupportedUplinkSpeed = SupportedUplinkSpeed
 
     @property
     def SupportedInstanceFamily(self):
+        warnings.warn("parameter `SupportedInstanceFamily` is deprecated", DeprecationWarning) 
+
         r"""List of supported instance families (moved to the next level, obsolete and will be deleted later)
         :rtype: list of str
         """
@@ -1426,6 +1440,8 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @SupportedInstanceFamily.setter
     def SupportedInstanceFamily(self, SupportedInstanceFamily):
+        warnings.warn("parameter `SupportedInstanceFamily` is deprecated", DeprecationWarning) 
+
         self._SupportedInstanceFamily = SupportedInstanceFamily
 
     @property
@@ -1604,7 +1620,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CheckStatus(self):
-        r"""Acceptance Status
+        r"""
         :rtype: str
         """
         return self._CheckStatus
@@ -1615,7 +1631,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DeliverExpectTime(self):
-        r"""Expected Delivery Time
+        r"""
         :rtype: str
         """
         return self._DeliverExpectTime
@@ -1626,7 +1642,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def DeliverFinishTime(self):
-        r"""Actual Delivery Completion Time
+        r"""
         :rtype: str
         """
         return self._DeliverFinishTime
@@ -1637,7 +1653,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CheckExpectTime(self):
-        r"""Expected Acceptance Time
+        r"""
         :rtype: str
         """
         return self._CheckExpectTime
@@ -1648,7 +1664,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def CheckFinishTime(self):
-        r"""Actual Acceptance Completion Time
+        r"""
         :rtype: str
         """
         return self._CheckFinishTime
@@ -1659,7 +1675,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def OrderSLA(self):
-        r"""Order SLA
+        r"""
         :rtype: str
         """
         return self._OrderSLA
@@ -1670,7 +1686,7 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def OrderPayPlan(self):
-        r"""Order Payment Plan
+        r"""
         :rtype: str
         """
         return self._OrderPayPlan
@@ -2846,7 +2862,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
         :type Status: str
         :param _ActionType: The order type is the filter condition: CREATE EXTEND
         :type ActionType: str
-        :param _OrderTypes: Order Type List
+        :param _OrderTypes: 
         :type OrderTypes: list of str
         """
         self._DedicatedClusterIds = None
@@ -2925,7 +2941,7 @@ class DescribeDedicatedClusterOrdersRequest(AbstractModel):
 
     @property
     def OrderTypes(self):
-        r"""Order Type List
+        r"""
         :rtype: list of str
         """
         return self._OrderTypes
@@ -4013,21 +4029,21 @@ Note: The returned value of this field may be null, indicating that no valid val
 
 
 class HostDetailInfo(AbstractModel):
-    r"""Host Machine Resource Overview Details
+    r"""
 
     """
 
     def __init__(self):
         r"""
-        :param _HostTypeFamily: Type Family
+        :param _HostTypeFamily: 
         :type HostTypeFamily: str
-        :param _CpuTotal: Total CPU
+        :param _CpuTotal: 
         :type CpuTotal: float
-        :param _CpuAvailable: Available CPU
+        :param _CpuAvailable: 
         :type CpuAvailable: float
-        :param _MemTotal: Total Memory
+        :param _MemTotal: 
         :type MemTotal: float
-        :param _MemAvailable: Available Memory
+        :param _MemAvailable: 
         :type MemAvailable: float
         """
         self._HostTypeFamily = None
@@ -4038,7 +4054,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def HostTypeFamily(self):
-        r"""Type Family
+        r"""
         :rtype: str
         """
         return self._HostTypeFamily
@@ -4049,7 +4065,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def CpuTotal(self):
-        r"""Total CPU
+        r"""
         :rtype: float
         """
         return self._CpuTotal
@@ -4060,7 +4076,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def CpuAvailable(self):
-        r"""Available CPU
+        r"""
         :rtype: float
         """
         return self._CpuAvailable
@@ -4071,7 +4087,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def MemTotal(self):
-        r"""Total Memory
+        r"""
         :rtype: float
         """
         return self._MemTotal
@@ -4082,7 +4098,7 @@ class HostDetailInfo(AbstractModel):
 
     @property
     def MemAvailable(self):
-        r"""Available Memory
+        r"""
         :rtype: float
         """
         return self._MemAvailable
@@ -4153,6 +4169,8 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @property
     def HostIp(self):
+        warnings.warn("parameter `HostIp` is deprecated", DeprecationWarning) 
+
         r"""Host IP
         :rtype: str
         """
@@ -4160,6 +4178,8 @@ Note: The returned value of this field may be null, indicating that no valid val
 
     @HostIp.setter
     def HostIp(self, HostIp):
+        warnings.warn("parameter `HostIp` is deprecated", DeprecationWarning) 
+
         self._HostIp = HostIp
 
     @property
