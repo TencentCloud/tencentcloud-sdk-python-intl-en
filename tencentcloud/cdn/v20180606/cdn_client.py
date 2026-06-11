@@ -366,7 +366,7 @@ class CdnClient(AbstractClient):
     def DescribeIpStatus(self, request):
         r"""This API is used to query the IP details of edge nodes (available soon) and intermediate nodes. Note that there is a certain delay in data availability.
 
-        >? If you have migrated your ECDN service to CDN, you can use the <a href="https://intl.cloud.tencent.com/document/api/228/41954?from_cn_redirect=1">corresponding CDN API</a>.
+        If you have migrated your ECDN service to CDN, you can use the [DescribeIpStatus](https://www.tencentcloud.com/document/api/228/37471).
 
         :param request: Request instance for DescribeIpStatus.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeIpStatusRequest`
@@ -848,11 +848,11 @@ class CdnClient(AbstractClient):
 
 
     def ModifyDomainConfig(self, request):
-        r"""This API is used to modify the configuration of a CDN acceleration domain name in a finer manner than `UpdateDomainConfig`.
-        Notes:
-        In `Route`, separate values by dots (.). The last value is called a leaf node. For non-leaf nodes, keep the configuration unchanged.
-        The Value field is serialized to a JSON string {key:value}, where **key** is fixed to `update` and **value** is used to specify the value of the configuration parameter. To specify configurations with complex types, see https://intl.cloud.tencent.com/document/product/228/41116.?from_cn_redirect=1
-        The input parameters of this API are not reported to CloudAudit as it may contain sensitive data, such as keys and secrets.
+        r"""This API is used to modify the configuration of a CDN acceleration domain name.
+        Create and bind policy Query instance Reset instance access password.
+        The Route field uses dot separation, with the last segment called the leaf node, while non-leaf node configurations remain unchanged.
+        The Value Field is serialized using json, with "update" fixed as the key. For the configuration path Value, refer to the complex type of each configuration item in the API at [UpdateDomainConfig](https://www.tencentcloud.com/document/api/228/34018). It corresponds to the nodes under the complex type of the configuration path.
+        This API is used for CloudAudit-related operations. The input parameters may contain sensitive information such as keys, so they will not be reported to CloudAudit.
 
         :param request: Request instance for ModifyDomainConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ModifyDomainConfigRequest`
@@ -923,8 +923,8 @@ class CdnClient(AbstractClient):
 
 
     def PushUrlsCache(self, request):
-        r"""This API is used to cache specified URL resources to CDN nodes. You can specify acceleration regions for the prefetch.
-        By default, a maximum of 1000 URLs can be prefetched per day for regions either within or outside the Chinese mainland, and up to 500 tasks can be submitted at a time. Note that resources prefetched outside the Chinese mainland will be cached to CDN nodes outside the Chinese mainland and the traffic generated will incur costs.
+        r"""This API is used to load a list of specified URL resources to CDN nodes and supports preheating in designated acceleration regions.
+        By default, the daily pre-warming quota for domestic and outside the Chinese mainland is 1000 URLs each. You can submit up to 500 URLs with each submission. The number of URLs submitted will consume the total quota. For example, if you submit 500 URLs for global pre-warming, the remaining quota for domestic and outside the Chinese mainland pre-warming will be 500 URLs each. Note: For pre-warming outside the Chinese mainland, resources are loaded to edge nodes outside the Chinese mainland by default.
 
         :param request: Request instance for PushUrlsCache.
         :type request: :class:`tencentcloud.cdn.v20180606.models.PushUrlsCacheRequest`
@@ -1017,9 +1017,9 @@ class CdnClient(AbstractClient):
 
 
     def UpdateDomainConfig(self, request):
-        r"""This API is used to modify the configuration of CDN acceleration domain names.
-        Note: To update complex configuration items, all attributes of the object must be specified, or the default values are used. We recommend calling the querying API to get attributes before modifying and passing them to this API.
-        The input parameters of this API are not reported to CloudAudit as it may contain sensitive data, such as keys and secrets.
+        r"""This API is used to modify the configuration message of a CDN acceleration domain name.
+        Note: If you need to update a complex type configuration item, you must transmit all attributes of the entire object. Untransmitted attributes will use default values. It is recommended to pass the configuration attributes obtained from the query API after direct modification to this interface. If only modifying an individual configuration item, just pass the corresponding configuration parameter.
+        This API is used for CloudAudit-related operations. The input parameters may contain sensitive information such as keys, so they will not be reported to CloudAudit.
 
         :param request: Request instance for UpdateDomainConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateDomainConfigRequest`

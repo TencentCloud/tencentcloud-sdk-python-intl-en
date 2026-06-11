@@ -17183,15 +17183,15 @@ class DescribeTawInstancesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: Pagination offset
         :type Offset: int
-        :param _AreaIds: Region ID
+        :param _AreaIds: Region Id
         :type AreaIds: list of int
-        :param _InstanceStatuses: Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: terminating; 8: terminated)
+        :param _InstanceStatuses: Instance status (1=creating, 2=running, 3=abnormal, 4=restarting, 5=stopping, 6=stopped, 7=being destroyed, 8=terminated). Deprecated. Please note in Filters.
         :type InstanceStatuses: list of int
-        :param _InstanceIds: Instance ID
+        :param _InstanceIds: Instance Id, deprecated. Please note in Filters.
         :type InstanceIds: list of str
-        :param _Filters: Filter parameter
+        :param _Filters: Filter parameters; In demo mode, pass {"Name": "IsDemo", "Values":["1"]}.
         :type Filters: list of Filter
-        :param _IsDemo: Whether it is in the demo mode. `1`: Yes; `2`: No.
+        :param _IsDemo: Deprecated. For demo mode, please note in Filters.
         :type IsDemo: int
         """
         self._ChargeStatuses = None
@@ -17250,7 +17250,7 @@ class DescribeTawInstancesRequest(AbstractModel):
 
     @property
     def AreaIds(self):
-        r"""Region ID
+        r"""Region Id
         :rtype: list of int
         """
         return self._AreaIds
@@ -17263,7 +17263,7 @@ class DescribeTawInstancesRequest(AbstractModel):
     def InstanceStatuses(self):
         warnings.warn("parameter `InstanceStatuses` is deprecated", DeprecationWarning) 
 
-        r"""Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: terminating; 8: terminated)
+        r"""Instance status (1=creating, 2=running, 3=abnormal, 4=restarting, 5=stopping, 6=stopped, 7=being destroyed, 8=terminated). Deprecated. Please note in Filters.
         :rtype: list of int
         """
         return self._InstanceStatuses
@@ -17278,7 +17278,7 @@ class DescribeTawInstancesRequest(AbstractModel):
     def InstanceIds(self):
         warnings.warn("parameter `InstanceIds` is deprecated", DeprecationWarning) 
 
-        r"""Instance ID
+        r"""Instance Id, deprecated. Please note in Filters.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -17291,7 +17291,7 @@ class DescribeTawInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter parameter
+        r"""Filter parameters; In demo mode, pass {"Name": "IsDemo", "Values":["1"]}.
         :rtype: list of Filter
         """
         return self._Filters
@@ -17304,7 +17304,7 @@ class DescribeTawInstancesRequest(AbstractModel):
     def IsDemo(self):
         warnings.warn("parameter `IsDemo` is deprecated", DeprecationWarning) 
 
-        r"""Whether it is in the demo mode. `1`: Yes; `2`: No.
+        r"""Deprecated. For demo mode, please note in Filters.
         :rtype: int
         """
         return self._IsDemo
@@ -18770,37 +18770,37 @@ class RumAreaInfo(AbstractModel):
 
 
 class RumInstanceInfo(AbstractModel):
-    r"""RUM instance information
+    r"""Rum instance information
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceStatus: Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: deleted)
+        :param _InstanceStatus: Instance status (1=creating, 2=running, 3=abnormal, 4=restarting, 5=stopping, 6=stopped, 7=deleted)
         :type InstanceStatus: int
-        :param _AreaId: Region ID
+        :param _AreaId: Zone Id
         :type AreaId: int
         :param _Tags: Tag list
         :type Tags: list of Tag
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
         :param _ClusterId: Cluster ID
         :type ClusterId: int
         :param _InstanceDesc: Instance description
         :type InstanceDesc: str
-        :param _ChargeStatus: Billing status (1: in use; 2: expired; 3: terminated; 4: assigning; 5: assignment failed)
+        :param _ChargeStatus: Billing status (1=Active, 2=Expired, 3=Terminated, 4=Allocating, 5=Allocation failure)
         :type ChargeStatus: int
-        :param _ChargeType: Billing type (1: free; 2: prepaid; 3: postpaid)
+        :param _ChargeType: Billing type (1=Free edition, 2=Prepayment, 3=Pay-as-you-go)
         :type ChargeType: int
         :param _UpdatedAt: Update time
         :type UpdatedAt: str
-        :param _DataRetentionDays: Data retention period (in days)
+        :param _DataRetentionDays: Data retention time (days)
         :type DataRetentionDays: int
-        :param _InstanceName: Instance name
+        :param _InstanceName: Instance name.
         :type InstanceName: str
-        :param _CreatedAt: Creation time
+        :param _CreatedAt: Creation time.
         :type CreatedAt: str
-        :param _InstanceType: 
+        :param _InstanceType: Instance type 1: Original web-related class 2: app endpoint type
         :type InstanceType: int
         """
         self._InstanceStatus = None
@@ -18819,7 +18819,7 @@ class RumInstanceInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: deleted)
+        r"""Instance status (1=creating, 2=running, 3=abnormal, 4=restarting, 5=stopping, 6=stopped, 7=deleted)
         :rtype: int
         """
         return self._InstanceStatus
@@ -18830,7 +18830,7 @@ class RumInstanceInfo(AbstractModel):
 
     @property
     def AreaId(self):
-        r"""Region ID
+        r"""Zone Id
         :rtype: int
         """
         return self._AreaId
@@ -18852,7 +18852,7 @@ class RumInstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -18885,7 +18885,7 @@ class RumInstanceInfo(AbstractModel):
 
     @property
     def ChargeStatus(self):
-        r"""Billing status (1: in use; 2: expired; 3: terminated; 4: assigning; 5: assignment failed)
+        r"""Billing status (1=Active, 2=Expired, 3=Terminated, 4=Allocating, 5=Allocation failure)
         :rtype: int
         """
         return self._ChargeStatus
@@ -18896,7 +18896,7 @@ class RumInstanceInfo(AbstractModel):
 
     @property
     def ChargeType(self):
-        r"""Billing type (1: free; 2: prepaid; 3: postpaid)
+        r"""Billing type (1=Free edition, 2=Prepayment, 3=Pay-as-you-go)
         :rtype: int
         """
         return self._ChargeType
@@ -18918,7 +18918,7 @@ class RumInstanceInfo(AbstractModel):
 
     @property
     def DataRetentionDays(self):
-        r"""Data retention period (in days)
+        r"""Data retention time (days)
         :rtype: int
         """
         return self._DataRetentionDays
@@ -18929,7 +18929,7 @@ class RumInstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""Instance name.
         :rtype: str
         """
         return self._InstanceName
@@ -18940,7 +18940,7 @@ class RumInstanceInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""Creation time
+        r"""Creation time.
         :rtype: str
         """
         return self._CreatedAt
@@ -18951,7 +18951,7 @@ class RumInstanceInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""
+        r"""Instance type 1: Original web-related class 2: app endpoint type
         :rtype: int
         """
         return self._InstanceType
@@ -20140,7 +20140,7 @@ class StopProjectResponse(AbstractModel):
 
 
 class Tag(AbstractModel):
-    r"""Tag
+    r"""Tag.
 
     """
 

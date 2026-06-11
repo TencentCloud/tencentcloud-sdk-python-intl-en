@@ -1769,9 +1769,18 @@ The maximum per request is 100.
 
 Parameters must not be specified simultaneously `InstanceIds` and `Filters`.
         :type InstanceIds: list of str
-        :param _Filters: -agent-status - String - required: no - (filter condition) filters by agent status. valid values: Online, Offline. 
--environment - String - required: no - (filter condition) query by agent runtime environment. valid values: Linux, Windows.
--instance-id - String - required: no - (filter condition) filter by instance id. you can get the instance id through the query instance API of the corresponding cloud services. currently supports instance types: CVM, Lighthouse, and managed instances.
+        :param _Filters: - agent-status 
+    - String 
+    - required: no 
+    - (filter condition) filters by agent status. valid values: Online, Offline. 
+- environment 
+    - String 
+    - required: no 
+    - (filter condition) query by agent runtime environment. valid values: Linux, Windows.
+- instance-id 
+    - String 
+    - required: no 
+    - (filter condition) filter by instance id. you can get the instance id through the query instance API of the corresponding cloud services. currently supports instance types: CVM, Lighthouse, and managed instances.
 
 The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InstanceIds` and `Filters` parameters cannot be specified at the same time.
         :type Filters: list of Filter
@@ -1804,9 +1813,18 @@ Parameters must not be specified simultaneously `InstanceIds` and `Filters`.
 
     @property
     def Filters(self):
-        r"""-agent-status - String - required: no - (filter condition) filters by agent status. valid values: Online, Offline. 
--environment - String - required: no - (filter condition) query by agent runtime environment. valid values: Linux, Windows.
--instance-id - String - required: no - (filter condition) filter by instance id. you can get the instance id through the query instance API of the corresponding cloud services. currently supports instance types: CVM, Lighthouse, and managed instances.
+        r"""- agent-status 
+    - String 
+    - required: no 
+    - (filter condition) filters by agent status. valid values: Online, Offline. 
+- environment 
+    - String 
+    - required: no 
+    - (filter condition) query by agent runtime environment. valid values: Linux, Windows.
+- instance-id 
+    - String 
+    - required: no 
+    - (filter condition) filter by instance id. you can get the instance id through the query instance API of the corresponding cloud services. currently supports instance types: CVM, Lighthouse, and managed instances.
 
 The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InstanceIds` and `Filters` parameters cannot be specified at the same time.
         :rtype: list of Filter
@@ -3774,7 +3792,7 @@ class GeneralResourceQuotaSet(AbstractModel):
 Value is:.
 
 - COMMAND: COMMAND.
--REGISTER_CODE: managed instance registration code.
+- REGISTER_CODE: managed instance registration code.
         :type ResourceName: str
         :param _ResourceQuotaUsed: Used credit limit.
         :type ResourceQuotaUsed: int
@@ -3792,7 +3810,7 @@ Value is:.
 Value is:.
 
 - COMMAND: COMMAND.
--REGISTER_CODE: managed instance registration code.
+- REGISTER_CODE: managed instance registration code.
         :rtype: str
         """
         return self._ResourceName
@@ -3853,15 +3871,15 @@ class Invocation(AbstractModel):
         :type CommandName: str
         :param _InvocationStatus: Execution task status. valid values:.
 
--PENDING: waiting for distribution.
-- RUNNING: command RUNNING.
--Canceling.
--SUCCESS: command success.
--TIMEOUT: command timeout.
+- PENDING: waiting for distribution.
+- RUNNING: command is running.
+- CANCELLING: canceling.
+- SUCCESS: command success.
+- TIMEOUT: command timeout.
 - FAILED: command FAILED.
--CANCELLED: all commands canceled.
--PARTIAL_FAILED: the command partially failed.
--PARTIAL_CANCELLED: the command is partially canceled.
+- CANCELLED: all commands canceled.
+- PARTIAL_FAILED: the command partially failed.
+- PARTIAL_CANCELLED: the command is partially canceled.
         :type InvocationStatus: str
         :param _InvocationTaskBasicInfoSet: Execution task information list.
         :type InvocationTaskBasicInfoSet: list of InvocationTaskBasicInfo
@@ -3886,8 +3904,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Username: str
         :param _InvocationSource: Invocation source.
 
--USER: originate from user invocation.
--INVOKER: originate from scheduled execution.
+- USER: originate from user invocation.
+- INVOKER: originate from scheduled execution.
         :type InvocationSource: str
         :param _CommandContent: Base64-encoded command
         :type CommandContent: str
@@ -3961,15 +3979,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InvocationStatus(self):
         r"""Execution task status. valid values:.
 
--PENDING: waiting for distribution.
-- RUNNING: command RUNNING.
--Canceling.
--SUCCESS: command success.
--TIMEOUT: command timeout.
+- PENDING: waiting for distribution.
+- RUNNING: command is running.
+- CANCELLING: canceling.
+- SUCCESS: command success.
+- TIMEOUT: command timeout.
 - FAILED: command FAILED.
--CANCELLED: all commands canceled.
--PARTIAL_FAILED: the command partially failed.
--PARTIAL_CANCELLED: the command is partially canceled.
+- CANCELLED: all commands canceled.
+- PARTIAL_FAILED: the command partially failed.
+- PARTIAL_CANCELLED: the command is partially canceled.
         :rtype: str
         """
         return self._InvocationStatus
@@ -4093,8 +4111,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InvocationSource(self):
         r"""Invocation source.
 
--USER: originate from user invocation.
--INVOKER: originate from scheduled execution.
+- USER: originate from user invocation.
+- INVOKER: originate from scheduled execution.
         :rtype: str
         """
         return self._InvocationSource
@@ -4222,19 +4240,19 @@ class InvocationTask(AbstractModel):
         :type CommandId: str
         :param _TaskStatus: Execution task status. valid values:.
 
--PENDING: waiting for distribution.
--DELIVERING: distributing.
--DELIVER_DELAYED: delivery delay.
--DELIVER_FAILED: delivery fail.
--START_FAILED: command start failed.
+- PENDING: waiting for distribution.
+- DELIVERING: distributing.
+- DELIVER_DELAYED: delivery delay.
+- DELIVER_FAILED: delivery fail.
+- START_FAILED: command start failed.
 - RUNNING: command RUNNING.
--SUCCESS: command success.
--FAILED: command execution failed, exit code not 0.
--TIMEOUT: command timeout.
--TASK_TIMEOUT: client no response.
--Canceling.
+- SUCCESS: command success.
+- FAILED: command execution failed, exit code not 0.
+- TIMEOUT: command timeout.
+- TASK_TIMEOUT: client no response.
+- CANCELLING: canceling.
 - CANCELLED: canceled (command canceled before startup).
--TERMINATED: suspended (canceled during command execution).
+- TERMINATED: suspended (canceled during command execution).
         :type TaskStatus: str
         :param _InstanceId: Instance ID.
         :type InstanceId: str
@@ -4256,8 +4274,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ErrorInfo: str
         :param _InvocationSource: Invocation source.
 
--USER: originate from user invocation.
--INVOKER: originate from scheduled execution.
+- USER: originate from user invocation.
+- INVOKER: originate from scheduled execution.
         :type InvocationSource: str
         :param _CommandName: Name of the executed command.
         :type CommandName: str
@@ -4314,19 +4332,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TaskStatus(self):
         r"""Execution task status. valid values:.
 
--PENDING: waiting for distribution.
--DELIVERING: distributing.
--DELIVER_DELAYED: delivery delay.
--DELIVER_FAILED: delivery fail.
--START_FAILED: command start failed.
+- PENDING: waiting for distribution.
+- DELIVERING: distributing.
+- DELIVER_DELAYED: delivery delay.
+- DELIVER_FAILED: delivery fail.
+- START_FAILED: command start failed.
 - RUNNING: command RUNNING.
--SUCCESS: command success.
--FAILED: command execution failed, exit code not 0.
--TIMEOUT: command timeout.
--TASK_TIMEOUT: client no response.
--Canceling.
+- SUCCESS: command success.
+- FAILED: command execution failed, exit code not 0.
+- TIMEOUT: command timeout.
+- TASK_TIMEOUT: client no response.
+- CANCELLING: canceling.
 - CANCELLED: canceled (command canceled before startup).
--TERMINATED: suspended (canceled during command execution).
+- TERMINATED: suspended (canceled during command execution).
         :rtype: str
         """
         return self._TaskStatus
@@ -4429,8 +4447,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InvocationSource(self):
         r"""Invocation source.
 
--USER: originate from user invocation.
--INVOKER: originate from scheduled execution.
+- USER: originate from user invocation.
+- INVOKER: originate from scheduled execution.
         :rtype: str
         """
         return self._InvocationSource
@@ -4491,19 +4509,19 @@ class InvocationTaskBasicInfo(AbstractModel):
         :type InvocationTaskId: str
         :param _TaskStatus: Execution task status. valid values:.
 
--PENDING: waiting for distribution.
--DELIVERING: distributing.
--DELIVER_DELAYED: delivery delay.
--DELIVER_FAILED: delivery fail.
--START_FAILED: command start failed.
+- PENDING: waiting for distribution.
+- DELIVERING: distributing.
+- DELIVER_DELAYED: delivery delay.
+- DELIVER_FAILED: delivery fail.
+- START_FAILED: command start failed.
 - RUNNING: command RUNNING.
--SUCCESS: command success.
--FAILED: command execution failed, exit code not 0.
--TIMEOUT: command timeout.
--TASK_TIMEOUT: client no response.
--Canceling.
+- SUCCESS: command success.
+- FAILED: command execution failed, exit code not 0.
+- TIMEOUT: command timeout.
+- TASK_TIMEOUT: client no response.
+- CANCELLING: cancelling.
 - CANCELLED: canceled (command canceled before startup).
--TERMINATED: suspended (canceled during command execution).
+- TERMINATED: suspended (canceled during command execution).
         :type TaskStatus: str
         :param _InstanceId: Instance ID.
         :type InstanceId: str
@@ -4527,19 +4545,19 @@ class InvocationTaskBasicInfo(AbstractModel):
     def TaskStatus(self):
         r"""Execution task status. valid values:.
 
--PENDING: waiting for distribution.
--DELIVERING: distributing.
--DELIVER_DELAYED: delivery delay.
--DELIVER_FAILED: delivery fail.
--START_FAILED: command start failed.
+- PENDING: waiting for distribution.
+- DELIVERING: distributing.
+- DELIVER_DELAYED: delivery delay.
+- DELIVER_FAILED: delivery fail.
+- START_FAILED: command start failed.
 - RUNNING: command RUNNING.
--SUCCESS: command success.
--FAILED: command execution failed, exit code not 0.
--TIMEOUT: command timeout.
--TASK_TIMEOUT: client no response.
--Canceling.
+- SUCCESS: command success.
+- FAILED: command execution failed, exit code not 0.
+- TIMEOUT: command timeout.
+- TASK_TIMEOUT: client no response.
+- CANCELLING: cancelling.
 - CANCELLED: canceled (command canceled before startup).
--TERMINATED: suspended (canceled during command execution).
+- TERMINATED: suspended (canceled during command execution).
         :rtype: str
         """
         return self._TaskStatus
@@ -4991,15 +5009,15 @@ class InvokerRecord(AbstractModel):
         :type InvocationId: str
         :param _Result: Trigger result.
 
--PENDING: waiting for distribution.
+- PENDING: waiting for distribution.
 - RUNNING: command RUNNING.
--Canceling.
--SUCCESS: command success.
--TIMEOUT: command timeout.
+- CANCELLING: canceling.
+- SUCCESS: command success.
+- TIMEOUT: command timeout.
 - FAILED: command FAILED.
--CANCELLED: all commands canceled.
--PARTIAL_FAILED: the command partially failed.
--PARTIAL_CANCELLED: the command is partially canceled.
+- CANCELLED: all commands canceled.
+- PARTIAL_FAILED: the command partially failed.
+- PARTIAL_CANCELLED: the command is partially canceled.
         :type Result: str
         """
         self._InvokerId = None
@@ -5056,15 +5074,15 @@ class InvokerRecord(AbstractModel):
     def Result(self):
         r"""Trigger result.
 
--PENDING: waiting for distribution.
+- PENDING: waiting for distribution.
 - RUNNING: command RUNNING.
--Canceling.
--SUCCESS: command success.
--TIMEOUT: command timeout.
+- CANCELLING: canceling.
+- SUCCESS: command success.
+- TIMEOUT: command timeout.
 - FAILED: command FAILED.
--CANCELLED: all commands canceled.
--PARTIAL_FAILED: the command partially failed.
--PARTIAL_CANCELLED: the command is partially canceled.
+- CANCELLED: all commands canceled.
+- PARTIAL_FAILED: the command partially failed.
+- PARTIAL_CANCELLED: the command is partially canceled.
         :rtype: str
         """
         return self._Result
@@ -6696,8 +6714,8 @@ class ScheduleSettings(AbstractModel):
         r"""
         :param _Policy: Execution policy.
 
--ONCE: one-time execution.
--RECURRENCE: execute periodically.
+- ONCE: one-time execution.
+- RECURRENCE: execute periodically.
         :type Policy: str
         :param _Recurrence: Trigger the crontab expression. This field is required if `Policy` is `RECURRENCE`. The crontab expression is parsed in UTC+8.
         :type Recurrence: str
@@ -6714,8 +6732,8 @@ The time format is YYYY-MM-DDThh:MM:ssZ.
     def Policy(self):
         r"""Execution policy.
 
--ONCE: one-time execution.
--RECURRENCE: execute periodically.
+- ONCE: one-time execution.
+- RECURRENCE: execute periodically.
         :rtype: str
         """
         return self._Policy

@@ -169,6 +169,24 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMNGAppSecret(
+            self,
+            request: models.CreateMNGAppSecretRequest,
+            opts: Dict = None,
+    ) -> models.CreateMNGAppSecretResponse:
+        """
+        This API is used to generate a mini game secret key.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMNGAppSecret"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMNGAppSecretResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateMNGApproval(
             self,
             request: models.CreateMNGApprovalRequest,
@@ -223,6 +241,24 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMNGSubscribeMessageTemplate(
+            self,
+            request: models.CreateMNGSubscribeMessageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateMNGSubscribeMessageTemplateResponse:
+        """
+        This API is used to create a mini game subscription message template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMNGSubscribeMessageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMNGSubscribeMessageTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateMNGVersion(
             self,
             request: models.CreateMNGVersionRequest,
@@ -254,6 +290,24 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "CreateMNP"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateMNPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateMNPAppSecret(
+            self,
+            request: models.CreateMNPAppSecretRequest,
+            opts: Dict = None,
+    ) -> models.CreateMNPAppSecretResponse:
+        """
+        This API is used to generate a mini program secret key.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMNPAppSecret"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMNPAppSecretResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -326,6 +380,24 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "CreateMNPSensitiveAPIPermissionApproval"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateMNPSensitiveAPIPermissionApprovalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateMNPSubscribeMessageTemplate(
+            self,
+            request: models.CreateMNPSubscribeMessageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateMNPSubscribeMessageTemplateResponse:
+        """
+        This API is used to create a mini program subscription message template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMNPSubscribeMessageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMNPSubscribeMessageTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -475,6 +547,24 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteMNGSubscribeMessageTemplate(
+            self,
+            request: models.DeleteMNGSubscribeMessageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMNGSubscribeMessageTemplateResponse:
+        """
+        This API is used to delete a mini game subscription message template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMNGSubscribeMessageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMNGSubscribeMessageTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteMNP(
             self,
             request: models.DeleteMNPRequest,
@@ -488,6 +578,24 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "DeleteMNP"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteMNPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteMNPSubscribeMessageTemplate(
+            self,
+            request: models.DeleteMNPSubscribeMessageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMNPSubscribeMessageTemplateResponse:
+        """
+        This API is used to delete a mini program subscription message template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMNPSubscribeMessageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMNPSubscribeMessageTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -931,13 +1039,31 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGAllStageVersionsResponse:
         """
-        This API is used to query the mini game version information.
+        This API is used to query mini game version information across all phases.
         """
         
         kwargs = {}
         kwargs["action"] = "DescribeMNGAllStageVersions"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMNGAllStageVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGAppSecret(
+            self,
+            request: models.DescribeMNGAppSecretRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGAppSecretResponse:
+        """
+        This API is used to query mini game secret keys.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGAppSecret"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGAppSecretResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1231,6 +1357,78 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMNGSubscribeMessageTemplate(
+            self,
+            request: models.DescribeMNGSubscribeMessageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGSubscribeMessageTemplateResponse:
+        """
+        This API is used to query mini game subscription message template details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGSubscribeMessageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGSubscribeMessageTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGSubscribeMessageTemplateLibrary(
+            self,
+            request: models.DescribeMNGSubscribeMessageTemplateLibraryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGSubscribeMessageTemplateLibraryResponse:
+        """
+        This API is used to query mini game subscription message template library details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGSubscribeMessageTemplateLibrary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGSubscribeMessageTemplateLibraryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGSubscribeMessageTemplateLibraryList(
+            self,
+            request: models.DescribeMNGSubscribeMessageTemplateLibraryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGSubscribeMessageTemplateLibraryListResponse:
+        """
+        This API is used to query the mini game subscription message template library list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGSubscribeMessageTemplateLibraryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGSubscribeMessageTemplateLibraryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGSubscribeMessageTemplateList(
+            self,
+            request: models.DescribeMNGSubscribeMessageTemplateListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGSubscribeMessageTemplateListResponse:
+        """
+        This API is used to query the mini game subscription message template list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGSubscribeMessageTemplateList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGSubscribeMessageTemplateListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMNGVersion(
             self,
             request: models.DescribeMNGVersionRequest,
@@ -1327,13 +1525,31 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPAllStageVersionsResponse:
         """
-        This API is used to query versions of a mini program across all stages.
+        This API is used to query mini program version information across all phases.
         """
         
         kwargs = {}
         kwargs["action"] = "DescribeMNPAllStageVersions"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMNPAllStageVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPAppSecret(
+            self,
+            request: models.DescribeMNPAppSecretRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPAppSecretResponse:
+        """
+        This API is used to query mini program secret keys.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPAppSecret"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPAppSecretResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1645,6 +1861,78 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMNPSubscribeMessageTemplate(
+            self,
+            request: models.DescribeMNPSubscribeMessageTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPSubscribeMessageTemplateResponse:
+        """
+        This API is used to query mini program subscription message template details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPSubscribeMessageTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPSubscribeMessageTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPSubscribeMessageTemplateLibrary(
+            self,
+            request: models.DescribeMNPSubscribeMessageTemplateLibraryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPSubscribeMessageTemplateLibraryResponse:
+        """
+        This API is used to query mini program subscription message template library details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPSubscribeMessageTemplateLibrary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPSubscribeMessageTemplateLibraryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPSubscribeMessageTemplateLibraryList(
+            self,
+            request: models.DescribeMNPSubscribeMessageTemplateLibraryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPSubscribeMessageTemplateLibraryListResponse:
+        """
+        This API is used to query the mini program subscription message template library list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPSubscribeMessageTemplateLibraryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPSubscribeMessageTemplateLibraryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPSubscribeMessageTemplateList(
+            self,
+            request: models.DescribeMNPSubscribeMessageTemplateListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPSubscribeMessageTemplateListResponse:
+        """
+        This API is used to query the mini program subscription message template list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPSubscribeMessageTemplateList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPSubscribeMessageTemplateListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMNPVersion(
             self,
             request: models.DescribeMNPVersionRequest,
@@ -1951,6 +2239,24 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyMNGAppSecretStatus(
+            self,
+            request: models.ModifyMNGAppSecretStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMNGAppSecretStatusResponse:
+        """
+        This API is used to modify the secret key status of a mini game.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMNGAppSecretStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMNGAppSecretStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyMNGDomain(
             self,
             request: models.ModifyMNGDomainRequest,
@@ -1982,6 +2288,24 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "ModifyMNP"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyMNPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyMNPAppSecretStatus(
+            self,
+            request: models.ModifyMNPAppSecretStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMNPAppSecretStatusResponse:
+        """
+        This API is used to modify the secret key status of a mini program.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMNPAppSecretStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMNPAppSecretStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2162,6 +2486,42 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "RemoveMNP"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RemoveMNPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResetMNGAppSecret(
+            self,
+            request: models.ResetMNGAppSecretRequest,
+            opts: Dict = None,
+    ) -> models.ResetMNGAppSecretResponse:
+        """
+        This API is used to reset a mini game secret key.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetMNGAppSecret"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetMNGAppSecretResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResetMNPAppSecret(
+            self,
+            request: models.ResetMNPAppSecretRequest,
+            opts: Dict = None,
+    ) -> models.ResetMNPAppSecretResponse:
+        """
+        This API is used to reset a mini program secret key.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetMNPAppSecret"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetMNPAppSecretResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -1115,6 +1115,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOrgMemberAccountBalance(self, request):
+        r"""Query member available balance in batches
+
+        :param request: Request instance for DescribeOrgMemberAccountBalance.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeOrgMemberAccountBalanceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeOrgMemberAccountBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrgMemberAccountBalance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrgMemberAccountBalanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRenewInstances(self, request):
         r"""Notes:
         1. This API supports querying annual and monthly subscription instances integrated into the renewal management page, including running and isolated instances (some products unsupported).

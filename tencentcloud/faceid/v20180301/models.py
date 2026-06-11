@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Address(AbstractModel):
-    r"""
+    r"""Overseas Document Address
 
     """
 
@@ -349,10 +349,15 @@ The default value is blink. The different action types passed in this parameter 
 true (default value): Expired HKID is allowed to enter the liveness process.
 false : Expired HKID is rejected and cannot enter the liveness process.
         :type AllowExpiredDocument: bool
-        :param _SkipResultPage: 
+        :param _SkipResultPage: <p>Whether to display the final result page</p><p>Enumeration values:</p><ul><li>true: Do not display the result page</li><li>false: Display the result page</li></ul><p>Default value: false</p>
         :type SkipResultPage: bool
-        :param _CardOcrDisplayFields: 
+        :param _CardOcrDisplayFields: <p>Identified fields displayed during document OCR</p><p>Parameter format: ["ChineseName","FullName"]</p><p>Input constraints: <strong>Supported field names by document type:</strong><br><strong>HK (Hong Kong Identity Card):</strong> "ChineseName","FullName","LicenseNumber","Birthday","Sex", "IssuedDate", "Permanent", "Symbol", "CurrentIssueDate"<br><strong>ML (Malaysia Identity Card):</strong> "FullName","LicenseNumber","Sex", "Birthday", "Type", "FormattedAddress"<br><strong>IndonesiaIDCard (Indonesia Identity Card):</strong> "LicenseNumber","FullName","Sex", "Birthday", "FormattedAddress", "Nationality", "DueDate", "IssuedDate", "Street", "Village","Area","Province","City","MaritalStatus", "BloodType", "Religion", "Occupation"<br><strong>PhilippinesVoteID (Philippines Voter's ID):</strong> "FirstName","LastName","Birthday"<br><strong>PhilippinesDrivingLicense (Philippines Driving License):</strong> "LastName","FirstName","MiddleName","Sex","Birthday"<br><strong>PhilippinesTinID (Philippines TIN ID):</strong> "LicenseNumber", "FullName", "Birthday"<br><strong>PhilippinesSSSID (Philippines SSS ID):</strong> "LicenseNumber", "FullName", "Birthday"<br><strong>PhilippinesUMID (Philippines UMID):</strong> "Surname", "MiddleName", "GivenName", "Sex", "Birthday"<br><strong>MLIDPassport (Passports of Hong Kong, Macao, Taiwan and overseas regions):</strong> "LicenseNumber","FullName", "Surname", "GivenName", "Birthday", "Sex","DateOfExpiration","IssuingCountry"<br><strong>ThailandIDCard (Thailand Identity Card):</strong> "FullName", "LastName", "FirstName", "FormattedAddress", "LicenseNumber", "Birthday", "ExpirationDate", "IssuedDate", "RegistrationNumber", "Religion", "ThaiBirthday", "ThaiExpirationDate", "ThaiIssueDate"<br><strong>MainlandIDCard (Chinese Mainland Identity Card):</strong> "LicenseNumber", "FullName", "Sex", "Nation", "Birthday", "FormattedAddress"<br><strong>SingaporeIDCard (Singapore Identity Card):</strong> "ChineseName","Sex","Birthday","LicenseNumber","Nationality","FullName","Address"<br><strong>HMTPermit (Mainland Travel Permit for Hong Kong and Macao Residents / Mainland Travel Permit for Taiwan Residents):</strong> "Name", "EnglishName", "Sex", "Number", "ValidDate", "Birthday"</p><p>If no fields are specified, all identified fields will be displayed by default.</p>
+
         :type CardOcrDisplayFields: list of str
+        :param _RetryLimit: <p>Liveness retry attempts</p><p>Value range: [1, 5]</p><p>Default value: 5</p>
+        :type RetryLimit: int
+        :param _EnableForgeryDetectionImages: <p>Enable multi-image anti-spoofing for single-angle Identity Document Recognition</p><p>Default value: false</p><p>true - Enabled; false - Disabled</p>
+        :type EnableForgeryDetectionImages: bool
         """
         self._CheckMode = None
         self._SecurityLevel = None
@@ -368,6 +373,8 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._AllowExpiredDocument = None
         self._SkipResultPage = None
         self._CardOcrDisplayFields = None
+        self._RetryLimit = None
+        self._EnableForgeryDetectionImages = None
 
     @property
     def CheckMode(self):
@@ -547,7 +554,7 @@ false : Expired HKID is rejected and cannot enter the liveness process.
 
     @property
     def SkipResultPage(self):
-        r"""
+        r"""<p>Whether to display the final result page</p><p>Enumeration values:</p><ul><li>true: Do not display the result page</li><li>false: Display the result page</li></ul><p>Default value: false</p>
         :rtype: bool
         """
         return self._SkipResultPage
@@ -558,7 +565,8 @@ false : Expired HKID is rejected and cannot enter the liveness process.
 
     @property
     def CardOcrDisplayFields(self):
-        r"""
+        r"""<p>Identified fields displayed during document OCR</p><p>Parameter format: ["ChineseName","FullName"]</p><p>Input constraints: <strong>Supported field names by document type:</strong><br><strong>HK (Hong Kong Identity Card):</strong> "ChineseName","FullName","LicenseNumber","Birthday","Sex", "IssuedDate", "Permanent", "Symbol", "CurrentIssueDate"<br><strong>ML (Malaysia Identity Card):</strong> "FullName","LicenseNumber","Sex", "Birthday", "Type", "FormattedAddress"<br><strong>IndonesiaIDCard (Indonesia Identity Card):</strong> "LicenseNumber","FullName","Sex", "Birthday", "FormattedAddress", "Nationality", "DueDate", "IssuedDate", "Street", "Village","Area","Province","City","MaritalStatus", "BloodType", "Religion", "Occupation"<br><strong>PhilippinesVoteID (Philippines Voter's ID):</strong> "FirstName","LastName","Birthday"<br><strong>PhilippinesDrivingLicense (Philippines Driving License):</strong> "LastName","FirstName","MiddleName","Sex","Birthday"<br><strong>PhilippinesTinID (Philippines TIN ID):</strong> "LicenseNumber", "FullName", "Birthday"<br><strong>PhilippinesSSSID (Philippines SSS ID):</strong> "LicenseNumber", "FullName", "Birthday"<br><strong>PhilippinesUMID (Philippines UMID):</strong> "Surname", "MiddleName", "GivenName", "Sex", "Birthday"<br><strong>MLIDPassport (Passports of Hong Kong, Macao, Taiwan and overseas regions):</strong> "LicenseNumber","FullName", "Surname", "GivenName", "Birthday", "Sex","DateOfExpiration","IssuingCountry"<br><strong>ThailandIDCard (Thailand Identity Card):</strong> "FullName", "LastName", "FirstName", "FormattedAddress", "LicenseNumber", "Birthday", "ExpirationDate", "IssuedDate", "RegistrationNumber", "Religion", "ThaiBirthday", "ThaiExpirationDate", "ThaiIssueDate"<br><strong>MainlandIDCard (Chinese Mainland Identity Card):</strong> "LicenseNumber", "FullName", "Sex", "Nation", "Birthday", "FormattedAddress"<br><strong>SingaporeIDCard (Singapore Identity Card):</strong> "ChineseName","Sex","Birthday","LicenseNumber","Nationality","FullName","Address"<br><strong>HMTPermit (Mainland Travel Permit for Hong Kong and Macao Residents / Mainland Travel Permit for Taiwan Residents):</strong> "Name", "EnglishName", "Sex", "Number", "ValidDate", "Birthday"</p><p>If no fields are specified, all identified fields will be displayed by default.</p>
+
         :rtype: list of str
         """
         return self._CardOcrDisplayFields
@@ -566,6 +574,28 @@ false : Expired HKID is rejected and cannot enter the liveness process.
     @CardOcrDisplayFields.setter
     def CardOcrDisplayFields(self, CardOcrDisplayFields):
         self._CardOcrDisplayFields = CardOcrDisplayFields
+
+    @property
+    def RetryLimit(self):
+        r"""<p>Liveness retry attempts</p><p>Value range: [1, 5]</p><p>Default value: 5</p>
+        :rtype: int
+        """
+        return self._RetryLimit
+
+    @RetryLimit.setter
+    def RetryLimit(self, RetryLimit):
+        self._RetryLimit = RetryLimit
+
+    @property
+    def EnableForgeryDetectionImages(self):
+        r"""<p>Enable multi-image anti-spoofing for single-angle Identity Document Recognition</p><p>Default value: false</p><p>true - Enabled; false - Disabled</p>
+        :rtype: bool
+        """
+        return self._EnableForgeryDetectionImages
+
+    @EnableForgeryDetectionImages.setter
+    def EnableForgeryDetectionImages(self, EnableForgeryDetectionImages):
+        self._EnableForgeryDetectionImages = EnableForgeryDetectionImages
 
 
     def _deserialize(self, params):
@@ -583,6 +613,8 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._AllowExpiredDocument = params.get("AllowExpiredDocument")
         self._SkipResultPage = params.get("SkipResultPage")
         self._CardOcrDisplayFields = params.get("CardOcrDisplayFields")
+        self._RetryLimit = params.get("RetryLimit")
+        self._EnableForgeryDetectionImages = params.get("EnableForgeryDetectionImages")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -644,8 +676,8 @@ class ApplyWebVerificationBizTokenIntlRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _RedirectURL: Web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. 
-After the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.
-Example: https://www.tencentcloud.com/products/faceid.
+After the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of `https://www.tencentcloud.com/products/faceid?token={BizToken}` before redirect.
+Example: `https://www.tencentcloud.com/products/faceid.`
         :type RedirectURL: str
         :param _CompareImageBase64: The Base64-encoded string (max 8 MB in size) of the photo to be compared.The Data URI scheme header needs to be removed from the encoded string
 Example: xhBQAAACBjSFJNAAB6****AAAASUVORK5CYII=
@@ -667,8 +699,8 @@ Example: {"AutoSkip": true,"CheckMode": 1,"IdCardType": "HKIDCard"}
     @property
     def RedirectURL(self):
         r"""Web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. 
-After the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.
-Example: https://www.tencentcloud.com/products/faceid.
+After the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of `https://www.tencentcloud.com/products/faceid?token={BizToken}` before redirect.
+Example: `https://www.tencentcloud.com/products/faceid.`
         :rtype: str
         """
         return self._RedirectURL
@@ -750,7 +782,7 @@ class ApplyWebVerificationBizTokenIntlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VerificationUrl: The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
-Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442
+Example: `https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442`
         :type VerificationUrl: str
         :param _BizToken: A token that identifies a Web verification process, with a validity time of 10 minutes. after the process is complete, the token can be used to obtain the verification result.
         :type BizToken: str
@@ -770,7 +802,7 @@ Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBB
         warnings.warn("parameter `VerificationUrl` is deprecated", DeprecationWarning) 
 
         r"""The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
-Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442
+Example: `https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442`
         :rtype: str
         """
         return self._VerificationUrl
@@ -4166,7 +4198,7 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
 
 class EditDetail(AbstractModel):
-    r"""
+    r"""EKYC Document OCR Result Modification Details
 
     """
 
@@ -4232,7 +4264,7 @@ class EditDetail(AbstractModel):
 
 
 class Encryption(AbstractModel):
-    r"""
+    r"""Sensitive Data Encryption
 
     """
 
@@ -4338,20 +4370,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ExtraInfo(AbstractModel):
-    r"""
+    r"""Additional details
 
     """
 
     def __init__(self):
         r"""
-        :param _RetrievalLivenessExtraInfo: 
+        :param _RetrievalLivenessExtraInfo: Full details of the hit template; return solely the template with the maximum similarity.
         :type RetrievalLivenessExtraInfo: list of RetrievalLivenessExtraInfo
         """
         self._RetrievalLivenessExtraInfo = None
 
     @property
     def RetrievalLivenessExtraInfo(self):
-        r"""
+        r"""Full details of the hit template; return solely the template with the maximum similarity.
         :rtype: list of RetrievalLivenessExtraInfo
         """
         return self._RetrievalLivenessExtraInfo
@@ -8496,7 +8528,8 @@ class LivenessCompareResponse(AbstractModel):
         :type Result: str
         :param _Description: Service result description.
         :type Description: str
-        :param _BestFrameList: 
+        :param _BestFrameList: Best screenshot list.
+Returned only when multiple best screenshots are configured to be returned.
         :type BestFrameList: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8554,7 +8587,8 @@ class LivenessCompareResponse(AbstractModel):
 
     @property
     def BestFrameList(self):
-        r"""
+        r"""Best screenshot list.
+Returned only when multiple best screenshots are configured to be returned.
         :rtype: list of str
         """
         return self._BestFrameList
@@ -10978,7 +11012,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _CardBackCutImageBase64: <p>Base64 of the cropped image of the back side of the ID</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CardBackCutImageBase64: str
-        :param _WarnCardInfos: <p>Alarm code</p><p>Enumeration value:</p><ul><li>-9101: Alarm for incomplete document border</li><li>-9102: Alarm for document photocopy</li><li>-9103: Alarm for rephotographing</li><li>-9104: PS alarm</li><li>-9107: Reflective alarm</li><li>-9108: Blurry alarm</li><li>-9109: Alarm capability not enabled</li></ul>
+        :param _WarnCardInfos: <p>Alarm code</p><p>Enumeration value:</p><ul><li>9101: Alarm for incomplete document border</li><li>9102: Alarm for document photocopy</li><li>9103: Alarm for rephotographing</li><li>9104: PS alarm</li><li>9107: Reflective alarm</li><li>9108: Blurry alarm</li><li>9109: Alarm capability not enabled</li></ul>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WarnCardInfos: list of int
         :param _OriginalCardInfo: <p>Original document recognition information (the current field will be returned when CheckMode value is 4)</p>
@@ -11085,7 +11119,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WarnCardInfos(self):
-        r"""<p>Alarm code</p><p>Enumeration value:</p><ul><li>-9101: Alarm for incomplete document border</li><li>-9102: Alarm for document photocopy</li><li>-9103: Alarm for rephotographing</li><li>-9104: PS alarm</li><li>-9107: Reflective alarm</li><li>-9108: Blurry alarm</li><li>-9109: Alarm capability not enabled</li></ul>
+        r"""<p>Alarm code</p><p>Enumeration value:</p><ul><li>9101: Alarm for incomplete document border</li><li>9102: Alarm for document photocopy</li><li>9103: Alarm for rephotographing</li><li>9104: PS alarm</li><li>9107: Reflective alarm</li><li>9108: Blurry alarm</li><li>9109: Alarm capability not enabled</li></ul>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -12077,6 +12111,7 @@ class PhoneVerificationRequest(AbstractModel):
         :param _Phone: Mobile number.
         :type Phone: str
         :param _CiphertextBlob: Users with encryption requirements can import the CiphertextBlob of kms. Read the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document about encrypting data.
+
         :type CiphertextBlob: str
         :param _EncryptList: When using the encryption service, fill in the field to be encrypted.
 -This API can fill in one or more of encrypted IdCard, Name, and Phone.
@@ -12127,6 +12162,7 @@ class PhoneVerificationRequest(AbstractModel):
     @property
     def CiphertextBlob(self):
         r"""Users with encryption requirements can import the CiphertextBlob of kms. Read the <a href="https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1">data encryption</a> document about encrypting data.
+
         :rtype: str
         """
         return self._CiphertextBlob

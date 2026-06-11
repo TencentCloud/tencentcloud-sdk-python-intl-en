@@ -24211,6 +24211,321 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOrgMemberAccountBalanceData(AbstractModel):
+    r"""DescribeOrgMemberAccountBalanceData
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: <p>Member account Uin</p>
+        :type MemberUin: str
+        :param _MemberName: <p>Member name</p>
+        :type MemberName: str
+        :param _IsCreditAccount: <p>Whether it is a credit account</p>
+        :type IsCreditAccount: bool
+        :param _RealBalance: <p>Current actual available balance</p><p>Unit: cent</p>
+        :type RealBalance: float
+        :param _CashAccountBalance: <p>Cash account balance</p><p>Unit: cent</p>
+        :type CashAccountBalance: float
+        :param _CreditAmount: <p>Credit limit</p><p>Unit: cent</p><p>Credit limit = Basic credit limit + Temporary credit limit</p>
+        :type CreditAmount: float
+        :param _TempCredit: <p>Temporary credit limit</p><p>Unit: cent</p>
+        :type TempCredit: float
+        :param _BasicCreditAmount: <p>Basic credit limit</p><p>Unit: cent</p>
+        :type BasicCreditAmount: float
+        :param _OweAmount: <p>Overdue payments</p><p>Unit: cent</p>
+        :type OweAmount: float
+        """
+        self._MemberUin = None
+        self._MemberName = None
+        self._IsCreditAccount = None
+        self._RealBalance = None
+        self._CashAccountBalance = None
+        self._CreditAmount = None
+        self._TempCredit = None
+        self._BasicCreditAmount = None
+        self._OweAmount = None
+
+    @property
+    def MemberUin(self):
+        r"""<p>Member account Uin</p>
+        :rtype: str
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def MemberName(self):
+        r"""<p>Member name</p>
+        :rtype: str
+        """
+        return self._MemberName
+
+    @MemberName.setter
+    def MemberName(self, MemberName):
+        self._MemberName = MemberName
+
+    @property
+    def IsCreditAccount(self):
+        r"""<p>Whether it is a credit account</p>
+        :rtype: bool
+        """
+        return self._IsCreditAccount
+
+    @IsCreditAccount.setter
+    def IsCreditAccount(self, IsCreditAccount):
+        self._IsCreditAccount = IsCreditAccount
+
+    @property
+    def RealBalance(self):
+        r"""<p>Current actual available balance</p><p>Unit: cent</p>
+        :rtype: float
+        """
+        return self._RealBalance
+
+    @RealBalance.setter
+    def RealBalance(self, RealBalance):
+        self._RealBalance = RealBalance
+
+    @property
+    def CashAccountBalance(self):
+        r"""<p>Cash account balance</p><p>Unit: cent</p>
+        :rtype: float
+        """
+        return self._CashAccountBalance
+
+    @CashAccountBalance.setter
+    def CashAccountBalance(self, CashAccountBalance):
+        self._CashAccountBalance = CashAccountBalance
+
+    @property
+    def CreditAmount(self):
+        r"""<p>Credit limit</p><p>Unit: cent</p><p>Credit limit = Basic credit limit + Temporary credit limit</p>
+        :rtype: float
+        """
+        return self._CreditAmount
+
+    @CreditAmount.setter
+    def CreditAmount(self, CreditAmount):
+        self._CreditAmount = CreditAmount
+
+    @property
+    def TempCredit(self):
+        r"""<p>Temporary credit limit</p><p>Unit: cent</p>
+        :rtype: float
+        """
+        return self._TempCredit
+
+    @TempCredit.setter
+    def TempCredit(self, TempCredit):
+        self._TempCredit = TempCredit
+
+    @property
+    def BasicCreditAmount(self):
+        r"""<p>Basic credit limit</p><p>Unit: cent</p>
+        :rtype: float
+        """
+        return self._BasicCreditAmount
+
+    @BasicCreditAmount.setter
+    def BasicCreditAmount(self, BasicCreditAmount):
+        self._BasicCreditAmount = BasicCreditAmount
+
+    @property
+    def OweAmount(self):
+        r"""<p>Overdue payments</p><p>Unit: cent</p>
+        :rtype: float
+        """
+        return self._OweAmount
+
+    @OweAmount.setter
+    def OweAmount(self, OweAmount):
+        self._OweAmount = OweAmount
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        self._MemberName = params.get("MemberName")
+        self._IsCreditAccount = params.get("IsCreditAccount")
+        self._RealBalance = params.get("RealBalance")
+        self._CashAccountBalance = params.get("CashAccountBalance")
+        self._CreditAmount = params.get("CreditAmount")
+        self._TempCredit = params.get("TempCredit")
+        self._BasicCreditAmount = params.get("BasicCreditAmount")
+        self._OweAmount = params.get("OweAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrgMemberAccountBalanceRequest(AbstractModel):
+    r"""DescribeOrgMemberAccountBalance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: <p>Page number</p><p>Default value: 1</p><p>Value ranges from 1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>Page size</p><p>Value ranges from 1 to 10</p><p>Default value: 10</p>
+        :type PageSize: int
+        :param _MemberUins: <p>Member uin list</p><p>Input parameter limit: Elements must be pure digits and the number of elements cannot be greater than 10</p><p>Return the account balance information of all members within the organization when empty, and return the account balance information of specified members when not empty</p>
+        :type MemberUins: list of str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._MemberUins = None
+
+    @property
+    def PageNumber(self):
+        r"""<p>Page number</p><p>Default value: 1</p><p>Value ranges from 1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>Page size</p><p>Value ranges from 1 to 10</p><p>Default value: 10</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def MemberUins(self):
+        r"""<p>Member uin list</p><p>Input parameter limit: Elements must be pure digits and the number of elements cannot be greater than 10</p><p>Return the account balance information of all members within the organization when empty, and return the account balance information of specified members when not empty</p>
+        :rtype: list of str
+        """
+        return self._MemberUins
+
+    @MemberUins.setter
+    def MemberUins(self, MemberUins):
+        self._MemberUins = MemberUins
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._MemberUins = params.get("MemberUins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrgMemberAccountBalanceResponse(AbstractModel):
+    r"""DescribeOrgMemberAccountBalance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Member account balance list</p>
+        :type Data: list of DescribeOrgMemberAccountBalanceData
+        :param _TotalCount: <p>Total record count</p>
+        :type TotalCount: int
+        :param _PageSize: <p>Actual number of returned results on the current page</p>
+        :type PageSize: int
+        :param _PageNumber: <p>current page</p>
+        :type PageNumber: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Member account balance list</p>
+        :rtype: list of DescribeOrgMemberAccountBalanceData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total record count</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PageSize(self):
+        r"""<p>Actual number of returned results on the current page</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""<p>current page</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DescribeOrgMemberAccountBalanceData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRenewInstancesRequest(AbstractModel):
     r"""DescribeRenewInstances request structure.
 

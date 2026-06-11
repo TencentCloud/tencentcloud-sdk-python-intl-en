@@ -318,7 +318,8 @@ class AutoscalingClient(AbstractClient):
 
 
     def CreateScalingPolicy(self, request):
-        r"""This API (CreateScalingPolicy) is used to create an alarm trigger policy.
+        r"""This API is used to create an alarm-triggered scaling policy.
+        -The target tracking policy triggers scale-out when the specified type of metric exceeds the threshold (target value) for 3 consecutive cycles (1 minute each). It triggers auto scale-down when the specified type of metric is below the threshold (80% of the target value) for 15 consecutive cycles (1 minute each).
 
         :param request: Request instance for CreateScalingPolicy.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateScalingPolicyRequest`
@@ -527,7 +528,7 @@ class AutoscalingClient(AbstractClient):
 
 
     def DescribeAutoScalingActivities(self, request):
-        r"""This API (DescribeAutoScalingActivities) is used to query the activity history of an auto scaling group.
+        r"""This API is used to query the scaling activities of the scaling group. Currently, only scaling operations from the past two years are saved.
 
         :param request: Request instance for DescribeAutoScalingActivities.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingActivitiesRequest`

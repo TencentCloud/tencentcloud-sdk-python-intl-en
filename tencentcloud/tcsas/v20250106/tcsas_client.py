@@ -210,6 +210,29 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMNGAppSecret(self, request):
+        r"""This API is used to generate a mini game secret key.
+
+        :param request: Request instance for CreateMNGAppSecret.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateMNGAppSecretRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNGAppSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMNGAppSecret", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMNGAppSecretResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMNGApproval(self, request):
         r"""This API is used to create a mini game approval request.
 
@@ -279,6 +302,29 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMNGSubscribeMessageTemplate(self, request):
+        r"""This API is used to create a mini game subscription message template.
+
+        :param request: Request instance for CreateMNGSubscribeMessageTemplate.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateMNGSubscribeMessageTemplateRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNGSubscribeMessageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMNGSubscribeMessageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMNGSubscribeMessageTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMNGVersion(self, request):
         r"""This API is used to create a mini game version.
 
@@ -316,6 +362,29 @@ class TcsasClient(AbstractClient):
             body = self.call("CreateMNP", params, headers=headers)
             response = json.loads(body)
             model = models.CreateMNPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMNPAppSecret(self, request):
+        r"""This API is used to generate a mini program secret key.
+
+        :param request: Request instance for CreateMNPAppSecret.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPAppSecretRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPAppSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMNPAppSecret", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMNPAppSecretResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -408,6 +477,29 @@ class TcsasClient(AbstractClient):
             body = self.call("CreateMNPSensitiveAPIPermissionApproval", params, headers=headers)
             response = json.loads(body)
             model = models.CreateMNPSensitiveAPIPermissionApprovalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMNPSubscribeMessageTemplate(self, request):
+        r"""This API is used to create a mini program subscription message template.
+
+        :param request: Request instance for CreateMNPSubscribeMessageTemplate.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPSubscribeMessageTemplateRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.CreateMNPSubscribeMessageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMNPSubscribeMessageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMNPSubscribeMessageTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -601,6 +693,29 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteMNGSubscribeMessageTemplate(self, request):
+        r"""This API is used to delete a mini game subscription message template.
+
+        :param request: Request instance for DeleteMNGSubscribeMessageTemplate.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DeleteMNGSubscribeMessageTemplateRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DeleteMNGSubscribeMessageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMNGSubscribeMessageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMNGSubscribeMessageTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteMNP(self, request):
         r"""This API is used to delete a mini program.
 
@@ -615,6 +730,29 @@ class TcsasClient(AbstractClient):
             body = self.call("DeleteMNP", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteMNPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteMNPSubscribeMessageTemplate(self, request):
+        r"""This API is used to delete a mini program subscription message template.
+
+        :param request: Request instance for DeleteMNPSubscribeMessageTemplate.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DeleteMNPSubscribeMessageTemplateRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DeleteMNPSubscribeMessageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMNPSubscribeMessageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMNPSubscribeMessageTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1177,7 +1315,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGAllStageVersions(self, request):
-        r"""This API is used to query the mini game version information.
+        r"""This API is used to query mini game version information across all phases.
 
         :param request: Request instance for DescribeMNGAllStageVersions.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAllStageVersionsRequest`
@@ -1190,6 +1328,29 @@ class TcsasClient(AbstractClient):
             body = self.call("DescribeMNGAllStageVersions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMNGAllStageVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGAppSecret(self, request):
+        r"""This API is used to query mini game secret keys.
+
+        :param request: Request instance for DescribeMNGAppSecret.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAppSecretRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAppSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGAppSecret", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGAppSecretResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1567,6 +1728,98 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMNGSubscribeMessageTemplate(self, request):
+        r"""This API is used to query mini game subscription message template details.
+
+        :param request: Request instance for DescribeMNGSubscribeMessageTemplate.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSubscribeMessageTemplateRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSubscribeMessageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGSubscribeMessageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGSubscribeMessageTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGSubscribeMessageTemplateLibrary(self, request):
+        r"""This API is used to query mini game subscription message template library details.
+
+        :param request: Request instance for DescribeMNGSubscribeMessageTemplateLibrary.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSubscribeMessageTemplateLibraryRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSubscribeMessageTemplateLibraryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGSubscribeMessageTemplateLibrary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGSubscribeMessageTemplateLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGSubscribeMessageTemplateLibraryList(self, request):
+        r"""This API is used to query the mini game subscription message template library list.
+
+        :param request: Request instance for DescribeMNGSubscribeMessageTemplateLibraryList.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSubscribeMessageTemplateLibraryListRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSubscribeMessageTemplateLibraryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGSubscribeMessageTemplateLibraryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGSubscribeMessageTemplateLibraryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGSubscribeMessageTemplateList(self, request):
+        r"""This API is used to query the mini game subscription message template list.
+
+        :param request: Request instance for DescribeMNGSubscribeMessageTemplateList.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSubscribeMessageTemplateListRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGSubscribeMessageTemplateListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGSubscribeMessageTemplateList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGSubscribeMessageTemplateListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMNGVersion(self, request):
         r"""This API is used to query the mini game version creation results.
 
@@ -1683,7 +1936,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPAllStageVersions(self, request):
-        r"""This API is used to query versions of a mini program across all stages.
+        r"""This API is used to query mini program version information across all phases.
 
         :param request: Request instance for DescribeMNPAllStageVersions.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAllStageVersionsRequest`
@@ -1696,6 +1949,29 @@ class TcsasClient(AbstractClient):
             body = self.call("DescribeMNPAllStageVersions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMNPAllStageVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPAppSecret(self, request):
+        r"""This API is used to query mini program secret keys.
+
+        :param request: Request instance for DescribeMNPAppSecret.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAppSecretRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPAppSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPAppSecret", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPAppSecretResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2096,6 +2372,98 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMNPSubscribeMessageTemplate(self, request):
+        r"""This API is used to query mini program subscription message template details.
+
+        :param request: Request instance for DescribeMNPSubscribeMessageTemplate.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSubscribeMessageTemplateRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSubscribeMessageTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPSubscribeMessageTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPSubscribeMessageTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPSubscribeMessageTemplateLibrary(self, request):
+        r"""This API is used to query mini program subscription message template library details.
+
+        :param request: Request instance for DescribeMNPSubscribeMessageTemplateLibrary.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSubscribeMessageTemplateLibraryRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSubscribeMessageTemplateLibraryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPSubscribeMessageTemplateLibrary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPSubscribeMessageTemplateLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPSubscribeMessageTemplateLibraryList(self, request):
+        r"""This API is used to query the mini program subscription message template library list.
+
+        :param request: Request instance for DescribeMNPSubscribeMessageTemplateLibraryList.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSubscribeMessageTemplateLibraryListRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSubscribeMessageTemplateLibraryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPSubscribeMessageTemplateLibraryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPSubscribeMessageTemplateLibraryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPSubscribeMessageTemplateList(self, request):
+        r"""This API is used to query the mini program subscription message template list.
+
+        :param request: Request instance for DescribeMNPSubscribeMessageTemplateList.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSubscribeMessageTemplateListRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPSubscribeMessageTemplateListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPSubscribeMessageTemplateList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPSubscribeMessageTemplateListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMNPVersion(self, request):
         r"""This API is used to query the mini program version creation results.
 
@@ -2487,6 +2855,29 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMNGAppSecretStatus(self, request):
+        r"""This API is used to modify the secret key status of a mini game.
+
+        :param request: Request instance for ModifyMNGAppSecretStatus.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.ModifyMNGAppSecretStatusRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ModifyMNGAppSecretStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMNGAppSecretStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMNGAppSecretStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMNGDomain(self, request):
         r"""This API is used to edit the mini game domain information.
 
@@ -2524,6 +2915,29 @@ class TcsasClient(AbstractClient):
             body = self.call("ModifyMNP", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMNPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMNPAppSecretStatus(self, request):
+        r"""This API is used to modify the secret key status of a mini program.
+
+        :param request: Request instance for ModifyMNPAppSecretStatus.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.ModifyMNPAppSecretStatusRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ModifyMNPAppSecretStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMNPAppSecretStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMNPAppSecretStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2754,6 +3168,52 @@ class TcsasClient(AbstractClient):
             body = self.call("RemoveMNP", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveMNPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetMNGAppSecret(self, request):
+        r"""This API is used to reset a mini game secret key.
+
+        :param request: Request instance for ResetMNGAppSecret.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.ResetMNGAppSecretRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResetMNGAppSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetMNGAppSecret", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetMNGAppSecretResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetMNPAppSecret(self, request):
+        r"""This API is used to reset a mini program secret key.
+
+        :param request: Request instance for ResetMNPAppSecret.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.ResetMNPAppSecretRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ResetMNPAppSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetMNPAppSecret", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetMNPAppSecretResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

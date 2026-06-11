@@ -49,29 +49,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CancelIgnoreVul(self, request):
-        r"""This API is used to unignore the vulnerabilities.
-
-        :param request: Request instance for CancelIgnoreVul.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.CancelIgnoreVulRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.CancelIgnoreVulResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CancelIgnoreVul", params, headers=headers)
-            response = json.loads(body)
-            model = models.CancelIgnoreVulResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ChangeRuleEventsIgnoreStatus(self, request):
         r"""This API is used to ignore events or cancel ignoring in batches based on check item ID or event ID.
 
@@ -467,7 +444,7 @@ class CwpClient(AbstractClient):
 
 
     def CreateNetAttackWhiteList(self, request):
-        r"""This API is used to create a network attack allowlist.
+        r"""This API is used to create a network attack allowlist.
 
         :param request: Request instance for CreateNetAttackWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CreateNetAttackWhiteListRequest`
@@ -1179,6 +1156,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRaspRules(self, request):
+        r"""Deleting Entries from the Vulnerability Defense Allowlist
+
+        :param request: Request instance for DeleteRaspRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteRaspRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRaspRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteReverseShellEvents(self, request):
         r"""This API is used to delete Reverse Shell events based on IDs.
 
@@ -1456,7 +1456,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAccountStatistics(self, request):
-        r"""This API is used to obtain the account statistics data.
+        r"""This API is used to obtain account statistics list data.
 
         :param request: Request instance for DescribeAccountStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAccountStatisticsRequest`
@@ -2651,81 +2651,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAttackLogs(self, request):
-        r"""DescribeAttackEvents 代替
-
-        This API is used to display the list of network attack logs in pagination.
-
-        :param request: Request instance for DescribeAttackLogs.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAttackLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAttackLogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAttackSource(self, request):
-        r"""已废弃
-
-        This API is used to backtrack attacks.
-
-        :param request: Request instance for DescribeAttackSource.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAttackSource", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAttackSourceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAttackSourceEvents(self, request):
-        r"""已废弃
-
-        This API is used to query attack backtracking events.
-
-        :param request: Request instance for DescribeAttackSourceEvents.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceEventsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceEventsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAttackSourceEvents", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAttackSourceEventsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAttackStatistics(self, request):
         r"""This API is used to obtain the statistics of network attack data.
 
@@ -2795,6 +2720,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAttackType(self, request):
+        r"""This API is used to query the application protection allowlist attack type list.
+
+        :param request: Request instance for DescribeAttackType.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackTypeRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAttackType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAttackTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAttackVulTypeList(self, request):
         r"""This API is used to obtain the list of network attack threat types.
 
@@ -2809,29 +2757,6 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeAttackVulTypeList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAttackVulTypeListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAvailableExpertServiceDetail(self, request):
-        r"""This API is used to obtain available order details.
-
-        :param request: Request instance for DescribeAvailableExpertServiceDetail.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAvailableExpertServiceDetailRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAvailableExpertServiceDetailResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAvailableExpertServiceDetail", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAvailableExpertServiceDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3554,31 +3479,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeComponentStatistics(self, request):
-        r"""接口已无效
-
-        This API is used to obtain the data of the component statistics list.
-
-        :param request: Request instance for DescribeComponentStatistics.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentStatisticsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentStatisticsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeComponentStatistics", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeComponentStatisticsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDefenceEventDetail(self, request):
         r"""This API is used to obtain vulnerability defense event details.
 
@@ -3648,29 +3548,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeEmergencyResponseList(self, request):
-        r"""This API is used to obtain the emergency response list.
-
-        :param request: Request instance for DescribeEmergencyResponseList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyResponseListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyResponseListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEmergencyResponseList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEmergencyResponseListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeEmergencyVulList(self, request):
         r"""This API is used to obtain the list of emergency vulnerabilities.
 
@@ -3708,52 +3585,6 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeEventByTable", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEventByTableResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeExpertServiceList(self, request):
-        r"""This API is used to obtain the security manager list.
-
-        :param request: Request instance for DescribeExpertServiceList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeExpertServiceList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeExpertServiceListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeExpertServiceOrderList(self, request):
-        r"""This API is used to obtain the expert service order list.
-
-        :param request: Request instance for DescribeExpertServiceOrderList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceOrderListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceOrderListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeExpertServiceOrderList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeExpertServiceOrderListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3948,7 +3779,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHistoryAccounts(self, request):
-        r"""This API is used to obtain the data of the account change history list.
+        r"""This API is used to obtain the account change history list data.
 
         :param request: Request instance for DescribeHistoryAccounts.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHistoryAccountsRequest`
@@ -4017,7 +3848,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeHostLoginList(self, request):
-        r"""This API is used to retrieve the log-in audit list.
+        r"""Retrieve the abnormal login list
 
         :param request: Request instance for DescribeHostLoginList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHostLoginListRequest`
@@ -4131,22 +3962,20 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeIndexList(self, request):
-        r"""接口已废弃
+    def DescribeInjectRiskyServiceSwitch(self, request):
+        r"""Query java memory horse and rasp whether inject risk service configuration
 
-        This API is used to obtain the index list.
-
-        :param request: Request instance for DescribeIndexList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIndexListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeIndexListResponse`
+        :param request: Request instance for DescribeInjectRiskyServiceSwitch.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeInjectRiskyServiceSwitchRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeInjectRiskyServiceSwitchResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeIndexList", params, headers=headers)
+            body = self.call("DescribeInjectRiskyServiceSwitch", params, headers=headers)
             response = json.loads(body)
-            model = models.DescribeIndexListResponse()
+            model = models.DescribeInjectRiskyServiceSwitchResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4584,6 +4413,52 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeLogType", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLogTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLoginTypeGlobalConf(self, request):
+        r"""Retrieve the global configuration for uninstall protection
+
+        :param request: Request instance for DescribeLoginTypeGlobalConf.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginTypeGlobalConfRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginTypeGlobalConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLoginTypeGlobalConf", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLoginTypeGlobalConfResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLoginTypeHost(self, request):
+        r"""Retrieve the host list via QR code log-in
+
+        :param request: Request instance for DescribeLoginTypeHost.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginTypeHostRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginTypeHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLoginTypeHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLoginTypeHostResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5145,20 +5020,20 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeMonthInspectionReport(self, request):
-        r"""This API is used to download the monthly inspection report of the security manager.
+    def DescribeMemShellRules(self, request):
+        r"""This API is used to obtain the list of Reverse Shell rules.
 
-        :param request: Request instance for DescribeMonthInspectionReport.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMonthInspectionReportRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMonthInspectionReportResponse`
+        :param request: Request instance for DescribeMemShellRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMemShellRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMemShellRulesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeMonthInspectionReport", params, headers=headers)
+            body = self.call("DescribeMemShellRules", params, headers=headers)
             response = json.loads(body)
-            model = models.DescribeMonthInspectionReportResponse()
+            model = models.DescribeMemShellRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5251,6 +5126,52 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeOverviewStatistics", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOverviewStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePatchEffectHostList(self, request):
+        r"""Query the information list of affected hosts by a patch
+
+        :param request: Request instance for DescribePatchEffectHostList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePatchEffectHostListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribePatchEffectHostListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePatchEffectHostList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePatchEffectHostListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePatchInfo(self, request):
+        r"""Patch details
+
+        :param request: Request instance for DescribePatchInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePatchInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribePatchInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePatchInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePatchInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5651,6 +5572,259 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRaspEventCWP(self, request):
+        r"""This API is used to query application protection event lists
+
+        :param request: Request instance for DescribeRaspEventCWP.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspEventCWPRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspEventCWPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspEventCWP", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspEventCWPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspEventDetailCWP(self, request):
+        r"""Application defense event details
+
+        :param request: Request instance for DescribeRaspEventDetailCWP.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspEventDetailCWPRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspEventDetailCWPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspEventDetailCWP", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspEventDetailCWPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspEventDetailTCSS(self, request):
+        r"""Application defense event details
+
+        :param request: Request instance for DescribeRaspEventDetailTCSS.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspEventDetailTCSSRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspEventDetailTCSSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspEventDetailTCSS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspEventDetailTCSSResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspEventTCSS(self, request):
+        r"""This API is used to query application protection event lists
+
+        :param request: Request instance for DescribeRaspEventTCSS.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspEventTCSSRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspEventTCSSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspEventTCSS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspEventTCSSResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspLicenseList(self, request):
+        r"""Query the application protection license list
+
+        :param request: Request instance for DescribeRaspLicenseList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspLicenseListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspLicenseListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspLicenseList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspLicenseListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspMaxCpu(self, request):
+        r"""View the maximum cpu limitation for vulnerability defense
+
+        :param request: Request instance for DescribeRaspMaxCpu.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspMaxCpuRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspMaxCpuResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspMaxCpu", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspMaxCpuResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspMemShellDetailTCSS(self, request):
+        r"""Retrieve application protection Java Webshell scan event details from container perspective
+
+        :param request: Request instance for DescribeRaspMemShellDetailTCSS.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspMemShellDetailTCSSRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspMemShellDetailTCSSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspMemShellDetailTCSS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspMemShellDetailTCSSResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspMemShellListTCSS(self, request):
+        r"""Retrieve Java Webshell scan event list from container perspective
+
+        :param request: Request instance for DescribeRaspMemShellListTCSS.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspMemShellListTCSSRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspMemShellListTCSSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspMemShellListTCSS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspMemShellListTCSSResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspPluginList(self, request):
+        r"""Important Period Guarantee Protection License Plugin Detail List
+
+        :param request: Request instance for DescribeRaspPluginList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspPluginListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspPluginListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspPluginList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspPluginListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspRuleVuls(self, request):
+        r"""Retrieve the vulnerability list of the vulnerability defense allowlist
+
+        :param request: Request instance for DescribeRaspRuleVuls.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRuleVulsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRuleVulsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspRuleVuls", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspRuleVulsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspRules(self, request):
+        r"""This example shows you how to query the vulnerability defense allowlist.
+
+        :param request: Request instance for DescribeRaspRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRecommendedProtectCpu(self, request):
         r"""This API is used to query the recommended number of protection cores for purchase.
 
@@ -5734,6 +5908,52 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeReverseShellRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReverseShellRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReverseShellRulesAggregation(self, request):
+        r"""This API is used to obtain the list of Reverse Shell rules.
+
+        :param request: Request instance for DescribeReverseShellRulesAggregation.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellRulesAggregationRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellRulesAggregationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReverseShellRulesAggregation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReverseShellRulesAggregationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReverseShellSystemPolicyConfig(self, request):
+        r"""Query the configuration of the reverse shell system policy.
+
+        :param request: Request instance for DescribeReverseShellSystemPolicyConfig.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellSystemPolicyConfigRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellSystemPolicyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReverseShellSystemPolicyConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReverseShellSystemPolicyConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6502,31 +6722,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeSecurityProtectionStat(self, request):
-        r"""接口已无效
-
-        This API is used to obtain the summary of security protection statuses.
-
-        :param request: Request instance for DescribeSecurityProtectionStat.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityProtectionStatRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityProtectionStatResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSecurityProtectionStat", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSecurityProtectionStatResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeSecurityTrends(self, request):
         r"""This API is used to obtain the security event statistics data.
 
@@ -6564,6 +6759,52 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeServersAndRiskAndFirstInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeServersAndRiskAndFirstInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeShellPolicyList(self, request):
+        r"""This API is used to query the list of reverse shell policies.
+
+        :param request: Request instance for DescribeShellPolicyList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeShellPolicyListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeShellPolicyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeShellPolicyList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeShellPolicyListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSkillInfo(self, request):
+        r"""Patch details
+
+        :param request: Request instance for DescribeSkillInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSkillInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeSkillInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSkillInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSkillInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6941,6 +7182,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVulDefenceOverviewCount(self, request):
+        r"""This API is used to obtain vulnerability defense policies and event statistics.
+
+        :param request: Request instance for DescribeVulDefenceOverviewCount.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceOverviewCountRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceOverviewCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulDefenceOverviewCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulDefenceOverviewCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVulDefencePluginDetail(self, request):
         r"""This API is used to obtain the vulnerability defense plugin information on a single host.
 
@@ -7024,6 +7288,29 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeVulDefenceSetting", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVulDefenceSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulDefenceSettingList(self, request):
+        r"""This API is used to query the list of vulnerability defense settings.
+
+        :param request: Request instance for DescribeVulDefenceSettingList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceSettingListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVulDefenceSettingListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulDefenceSettingList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulDefenceSettingListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7516,6 +7803,52 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWindowsPatchList(self, request):
+        r"""Search patch information list
+
+        :param request: Request instance for DescribeWindowsPatchList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWindowsPatchListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeWindowsPatchListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWindowsPatchList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWindowsPatchListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeYDRaspBlackWhite(self, request):
+        r"""Query application protection allowlist rules
+
+        :param request: Request instance for DescribeYDRaspBlackWhite.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeYDRaspBlackWhiteRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeYDRaspBlackWhiteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeYDRaspBlackWhite", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeYDRaspBlackWhiteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroyOrder(self, request):
         r"""This API is used to terminate resources.
 
@@ -7586,7 +7919,7 @@ class CwpClient(AbstractClient):
 
 
     def EditReverseShellRules(self, request):
-        r"""This API is used to edit reverse shell rules (multiple servers supported).
+        r"""Editing Reverse Shell Rules. (Supporting Selecting Multiple Servers)
 
         :param request: Request instance for EditReverseShellRules.
         :type request: :class:`tencentcloud.cwp.v20180228.models.EditReverseShellRulesRequest`
@@ -8505,6 +8838,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportPatchEffectHostList(self, request):
+        r"""Export the affected host list of a patch
+
+        :param request: Request instance for ExportPatchEffectHostList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportPatchEffectHostListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportPatchEffectHostListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportPatchEffectHostList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportPatchEffectHostListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportPrivilegeEvents(self, request):
         r"""This API is used to export local privilege escalation events.
 
@@ -8988,6 +9344,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportWindowsPatchList(self, request):
+        r"""Export Windows patch list
+
+        :param request: Request instance for ExportWindowsPatchList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportWindowsPatchListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportWindowsPatchListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportWindowsPatchList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportWindowsPatchListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetLocalStorageItem(self, request):
         r"""This API is used to obtain the locally stored data.
 
@@ -9002,29 +9381,6 @@ class CwpClient(AbstractClient):
             body = self.call("GetLocalStorageItem", params, headers=headers)
             response = json.loads(body)
             model = models.GetLocalStorageItemResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def IgnoreImpactedHosts(self, request):
-        r"""This API is used to ignore vulnerabilities.
-
-        :param request: Request instance for IgnoreImpactedHosts.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.IgnoreImpactedHostsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.IgnoreImpactedHostsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("IgnoreImpactedHosts", params, headers=headers)
-            response = json.loads(body)
-            model = models.IgnoreImpactedHostsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -9747,6 +10103,75 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRaspMaxCpu(self, request):
+        r"""Edit the maximum cpu configuration for vulnerability defense
+
+        :param request: Request instance for ModifyRaspMaxCpu.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspMaxCpuRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspMaxCpuResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRaspMaxCpu", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRaspMaxCpuResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRaspRules(self, request):
+        r"""This example shows you how to add entries to the vulnerability defense allowlist.
+
+        :param request: Request instance for ModifyRaspRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRaspRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyReverseShellRulesAggregation(self, request):
+        r"""Editing Reverse Shell Rules. (Supporting Selecting Multiple Servers)
+
+        :param request: Request instance for ModifyReverseShellRulesAggregation.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyReverseShellRulesAggregationRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyReverseShellRulesAggregationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyReverseShellRulesAggregation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyReverseShellRulesAggregationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRiskDnsPolicy(self, request):
         r"""This API is used to modify malicious request policies.
 
@@ -10086,6 +10511,29 @@ class CwpClient(AbstractClient):
             body = self.call("RansomDefenseRollback", params, headers=headers)
             response = json.loads(body)
             model = models.RansomDefenseRollbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RaspEventOverview(self, request):
+        r"""This API is used to obtain the vulnerability defense overview information, including event trend and plugin enabling status.
+
+        :param request: Request instance for RaspEventOverview.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.RaspEventOverviewRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.RaspEventOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RaspEventOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.RaspEventOverviewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

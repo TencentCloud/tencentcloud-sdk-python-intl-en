@@ -43,24 +43,6 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CancelIgnoreVul(
-            self,
-            request: models.CancelIgnoreVulRequest,
-            opts: Dict = None,
-    ) -> models.CancelIgnoreVulResponse:
-        """
-        This API is used to unignore the vulnerabilities.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CancelIgnoreVul"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CancelIgnoreVulResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ChangeRuleEventsIgnoreStatus(
             self,
             request: models.ChangeRuleEventsIgnoreStatusRequest,
@@ -376,7 +358,7 @@ class CwpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateNetAttackWhiteListResponse:
         """
-        This API is used to create a network attack allowlist.
+        This API is used to create a network attack allowlist.
         """
         
         kwargs = {}
@@ -928,6 +910,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteRaspRules(
+            self,
+            request: models.DeleteRaspRulesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRaspRulesResponse:
+        """
+        Deleting Entries from the Vulnerability Defense Allowlist
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRaspRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRaspRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteReverseShellEvents(
             self,
             request: models.DeleteReverseShellEventsRequest,
@@ -1150,7 +1150,7 @@ class CwpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAccountStatisticsResponse:
         """
-        This API is used to obtain the account statistics data.
+        This API is used to obtain account statistics list data.
         """
         
         kwargs = {}
@@ -2080,66 +2080,6 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeAttackLogs(
-            self,
-            request: models.DescribeAttackLogsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAttackLogsResponse:
-        """
-        DescribeAttackEvents 代替
-
-        This API is used to display the list of network attack logs in pagination.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAttackLogs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAttackLogsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeAttackSource(
-            self,
-            request: models.DescribeAttackSourceRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAttackSourceResponse:
-        """
-        已废弃
-
-        This API is used to backtrack attacks.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAttackSource"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAttackSourceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeAttackSourceEvents(
-            self,
-            request: models.DescribeAttackSourceEventsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAttackSourceEventsResponse:
-        """
-        已废弃
-
-        This API is used to query attack backtracking events.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAttackSourceEvents"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAttackSourceEventsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeAttackStatistics(
             self,
             request: models.DescribeAttackStatisticsRequest,
@@ -2194,6 +2134,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAttackType(
+            self,
+            request: models.DescribeAttackTypeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAttackTypeResponse:
+        """
+        This API is used to query the application protection allowlist attack type list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAttackType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAttackTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAttackVulTypeList(
             self,
             request: models.DescribeAttackVulTypeListRequest,
@@ -2207,24 +2165,6 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeAttackVulTypeList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAttackVulTypeListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeAvailableExpertServiceDetail(
-            self,
-            request: models.DescribeAvailableExpertServiceDetailRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAvailableExpertServiceDetailResponse:
-        """
-        This API is used to obtain available order details.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAvailableExpertServiceDetail"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAvailableExpertServiceDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2788,26 +2728,6 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeComponentStatistics(
-            self,
-            request: models.DescribeComponentStatisticsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeComponentStatisticsResponse:
-        """
-        接口已无效
-
-        This API is used to obtain the data of the component statistics list.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeComponentStatistics"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeComponentStatisticsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeDefenceEventDetail(
             self,
             request: models.DescribeDefenceEventDetailRequest,
@@ -2862,24 +2782,6 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeEmergencyResponseList(
-            self,
-            request: models.DescribeEmergencyResponseListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeEmergencyResponseListResponse:
-        """
-        This API is used to obtain the emergency response list.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeEmergencyResponseList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeEmergencyResponseListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeEmergencyVulList(
             self,
             request: models.DescribeEmergencyVulListRequest,
@@ -2911,42 +2813,6 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeEventByTable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeEventByTableResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeExpertServiceList(
-            self,
-            request: models.DescribeExpertServiceListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeExpertServiceListResponse:
-        """
-        This API is used to obtain the security manager list.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeExpertServiceList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeExpertServiceListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeExpertServiceOrderList(
-            self,
-            request: models.DescribeExpertServiceOrderListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeExpertServiceOrderListResponse:
-        """
-        This API is used to obtain the expert service order list.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeExpertServiceOrderList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeExpertServiceOrderListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3102,7 +2968,7 @@ class CwpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeHistoryAccountsResponse:
         """
-        This API is used to obtain the data of the account change history list.
+        This API is used to obtain the account change history list data.
         """
         
         kwargs = {}
@@ -3156,7 +3022,7 @@ class CwpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeHostLoginListResponse:
         """
-        This API is used to retrieve the log-in audit list.
+        Retrieve the abnormal login list
         """
         
         kwargs = {}
@@ -3240,21 +3106,19 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeIndexList(
+    async def DescribeInjectRiskyServiceSwitch(
             self,
-            request: models.DescribeIndexListRequest,
+            request: models.DescribeInjectRiskyServiceSwitchRequest,
             opts: Dict = None,
-    ) -> models.DescribeIndexListResponse:
+    ) -> models.DescribeInjectRiskyServiceSwitchResponse:
         """
-        接口已废弃
-
-        This API is used to obtain the index list.
+        Query java memory horse and rasp whether inject risk service configuration
         """
         
         kwargs = {}
-        kwargs["action"] = "DescribeIndexList"
+        kwargs["action"] = "DescribeInjectRiskyServiceSwitch"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeIndexListResponse
+        kwargs["resp_cls"] = models.DescribeInjectRiskyServiceSwitchResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3597,6 +3461,42 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeLogType"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLogTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLoginTypeGlobalConf(
+            self,
+            request: models.DescribeLoginTypeGlobalConfRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLoginTypeGlobalConfResponse:
+        """
+        Retrieve the global configuration for uninstall protection
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLoginTypeGlobalConf"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLoginTypeGlobalConfResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLoginTypeHost(
+            self,
+            request: models.DescribeLoginTypeHostRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLoginTypeHostResponse:
+        """
+        Retrieve the host list via QR code log-in
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLoginTypeHost"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLoginTypeHostResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4034,19 +3934,19 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeMonthInspectionReport(
+    async def DescribeMemShellRules(
             self,
-            request: models.DescribeMonthInspectionReportRequest,
+            request: models.DescribeMemShellRulesRequest,
             opts: Dict = None,
-    ) -> models.DescribeMonthInspectionReportResponse:
+    ) -> models.DescribeMemShellRulesResponse:
         """
-        This API is used to download the monthly inspection report of the security manager.
+        This API is used to obtain the list of Reverse Shell rules.
         """
         
         kwargs = {}
-        kwargs["action"] = "DescribeMonthInspectionReport"
+        kwargs["action"] = "DescribeMemShellRules"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeMonthInspectionReportResponse
+        kwargs["resp_cls"] = models.DescribeMemShellRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4119,6 +4019,42 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeOverviewStatistics"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeOverviewStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePatchEffectHostList(
+            self,
+            request: models.DescribePatchEffectHostListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePatchEffectHostListResponse:
+        """
+        Query the information list of affected hosts by a patch
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePatchEffectHostList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePatchEffectHostListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePatchInfo(
+            self,
+            request: models.DescribePatchInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribePatchInfoResponse:
+        """
+        Patch details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePatchInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePatchInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4430,6 +4366,204 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRaspEventCWP(
+            self,
+            request: models.DescribeRaspEventCWPRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspEventCWPResponse:
+        """
+        This API is used to query application protection event lists
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspEventCWP"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspEventCWPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspEventDetailCWP(
+            self,
+            request: models.DescribeRaspEventDetailCWPRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspEventDetailCWPResponse:
+        """
+        Application defense event details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspEventDetailCWP"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspEventDetailCWPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspEventDetailTCSS(
+            self,
+            request: models.DescribeRaspEventDetailTCSSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspEventDetailTCSSResponse:
+        """
+        Application defense event details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspEventDetailTCSS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspEventDetailTCSSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspEventTCSS(
+            self,
+            request: models.DescribeRaspEventTCSSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspEventTCSSResponse:
+        """
+        This API is used to query application protection event lists
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspEventTCSS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspEventTCSSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspLicenseList(
+            self,
+            request: models.DescribeRaspLicenseListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspLicenseListResponse:
+        """
+        Query the application protection license list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspLicenseList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspLicenseListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspMaxCpu(
+            self,
+            request: models.DescribeRaspMaxCpuRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspMaxCpuResponse:
+        """
+        View the maximum cpu limitation for vulnerability defense
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspMaxCpu"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspMaxCpuResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspMemShellDetailTCSS(
+            self,
+            request: models.DescribeRaspMemShellDetailTCSSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspMemShellDetailTCSSResponse:
+        """
+        Retrieve application protection Java Webshell scan event details from container perspective
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspMemShellDetailTCSS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspMemShellDetailTCSSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspMemShellListTCSS(
+            self,
+            request: models.DescribeRaspMemShellListTCSSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspMemShellListTCSSResponse:
+        """
+        Retrieve Java Webshell scan event list from container perspective
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspMemShellListTCSS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspMemShellListTCSSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspPluginList(
+            self,
+            request: models.DescribeRaspPluginListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspPluginListResponse:
+        """
+        Important Period Guarantee Protection License Plugin Detail List
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspPluginList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspPluginListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspRuleVuls(
+            self,
+            request: models.DescribeRaspRuleVulsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspRuleVulsResponse:
+        """
+        Retrieve the vulnerability list of the vulnerability defense allowlist
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspRuleVuls"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspRuleVulsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspRules(
+            self,
+            request: models.DescribeRaspRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspRulesResponse:
+        """
+        This example shows you how to query the vulnerability defense allowlist.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRecommendedProtectCpu(
             self,
             request: models.DescribeRecommendedProtectCpuRequest,
@@ -4497,6 +4631,42 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeReverseShellRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeReverseShellRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReverseShellRulesAggregation(
+            self,
+            request: models.DescribeReverseShellRulesAggregationRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReverseShellRulesAggregationResponse:
+        """
+        This API is used to obtain the list of Reverse Shell rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReverseShellRulesAggregation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReverseShellRulesAggregationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReverseShellSystemPolicyConfig(
+            self,
+            request: models.DescribeReverseShellSystemPolicyConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReverseShellSystemPolicyConfigResponse:
+        """
+        Query the configuration of the reverse shell system policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReverseShellSystemPolicyConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReverseShellSystemPolicyConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5096,26 +5266,6 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeSecurityProtectionStat(
-            self,
-            request: models.DescribeSecurityProtectionStatRequest,
-            opts: Dict = None,
-    ) -> models.DescribeSecurityProtectionStatResponse:
-        """
-        接口已无效
-
-        This API is used to obtain the summary of security protection statuses.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeSecurityProtectionStat"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeSecurityProtectionStatResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeSecurityTrends(
             self,
             request: models.DescribeSecurityTrendsRequest,
@@ -5147,6 +5297,42 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeServersAndRiskAndFirstInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeServersAndRiskAndFirstInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeShellPolicyList(
+            self,
+            request: models.DescribeShellPolicyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeShellPolicyListResponse:
+        """
+        This API is used to query the list of reverse shell policies.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeShellPolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeShellPolicyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSkillInfo(
+            self,
+            request: models.DescribeSkillInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillInfoResponse:
+        """
+        Patch details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5440,6 +5626,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVulDefenceOverviewCount(
+            self,
+            request: models.DescribeVulDefenceOverviewCountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulDefenceOverviewCountResponse:
+        """
+        This API is used to obtain vulnerability defense policies and event statistics.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulDefenceOverviewCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulDefenceOverviewCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVulDefencePluginDetail(
             self,
             request: models.DescribeVulDefencePluginDetailRequest,
@@ -5507,6 +5711,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeVulDefenceSetting"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVulDefenceSettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulDefenceSettingList(
+            self,
+            request: models.DescribeVulDefenceSettingListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulDefenceSettingListResponse:
+        """
+        This API is used to query the list of vulnerability defense settings.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulDefenceSettingList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulDefenceSettingListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5890,6 +6112,42 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeWindowsPatchList(
+            self,
+            request: models.DescribeWindowsPatchListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWindowsPatchListResponse:
+        """
+        Search patch information list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWindowsPatchList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWindowsPatchListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeYDRaspBlackWhite(
+            self,
+            request: models.DescribeYDRaspBlackWhiteRequest,
+            opts: Dict = None,
+    ) -> models.DescribeYDRaspBlackWhiteResponse:
+        """
+        Query application protection allowlist rules
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeYDRaspBlackWhite"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeYDRaspBlackWhiteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DestroyOrder(
             self,
             request: models.DestroyOrderRequest,
@@ -5950,7 +6208,7 @@ class CwpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EditReverseShellRulesResponse:
         """
-        This API is used to edit reverse shell rules (multiple servers supported).
+        Editing Reverse Shell Rules. (Supporting Selecting Multiple Servers)
         """
         
         kwargs = {}
@@ -6664,6 +6922,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExportPatchEffectHostList(
+            self,
+            request: models.ExportPatchEffectHostListRequest,
+            opts: Dict = None,
+    ) -> models.ExportPatchEffectHostListResponse:
+        """
+        Export the affected host list of a patch
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportPatchEffectHostList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportPatchEffectHostListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExportPrivilegeEvents(
             self,
             request: models.ExportPrivilegeEventsRequest,
@@ -7042,6 +7318,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExportWindowsPatchList(
+            self,
+            request: models.ExportWindowsPatchListRequest,
+            opts: Dict = None,
+    ) -> models.ExportWindowsPatchListResponse:
+        """
+        Export Windows patch list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportWindowsPatchList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportWindowsPatchListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetLocalStorageItem(
             self,
             request: models.GetLocalStorageItemRequest,
@@ -7055,24 +7349,6 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "GetLocalStorageItem"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetLocalStorageItemResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def IgnoreImpactedHosts(
-            self,
-            request: models.IgnoreImpactedHostsRequest,
-            opts: Dict = None,
-    ) -> models.IgnoreImpactedHostsResponse:
-        """
-        This API is used to ignore vulnerabilities.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "IgnoreImpactedHosts"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.IgnoreImpactedHostsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7636,6 +7912,60 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyRaspMaxCpu(
+            self,
+            request: models.ModifyRaspMaxCpuRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRaspMaxCpuResponse:
+        """
+        Edit the maximum cpu configuration for vulnerability defense
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRaspMaxCpu"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRaspMaxCpuResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRaspRules(
+            self,
+            request: models.ModifyRaspRulesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRaspRulesResponse:
+        """
+        This example shows you how to add entries to the vulnerability defense allowlist.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRaspRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRaspRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyReverseShellRulesAggregation(
+            self,
+            request: models.ModifyReverseShellRulesAggregationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyReverseShellRulesAggregationResponse:
+        """
+        Editing Reverse Shell Rules. (Supporting Selecting Multiple Servers)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyReverseShellRulesAggregation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyReverseShellRulesAggregationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyRiskDnsPolicy(
             self,
             request: models.ModifyRiskDnsPolicyRequest,
@@ -7904,6 +8234,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "RansomDefenseRollback"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RansomDefenseRollbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RaspEventOverview(
+            self,
+            request: models.RaspEventOverviewRequest,
+            opts: Dict = None,
+    ) -> models.RaspEventOverviewResponse:
+        """
+        This API is used to obtain the vulnerability defense overview information, including event trend and plugin enabling status.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RaspEventOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RaspEventOverviewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -38,7 +38,7 @@ class TeoClient(AbstractClient):
         Step 4: Call ModifyHostsCertificate to issue a domain certificate configured to use the EdgeOne free certificate.
 
         The application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1).
-        description:.
+        description:
         - Only CNAME access mode can call this API to specify the free certificate application method. NS/DNSPod hosting access modes use automatic validation to apply for free certificates with no need to call this API.
         - If you need to switch the free certificate authentication method, you can call this API again by changing the VerificationMethod field to update it.
         - A domain name can only apply for one free certificate. After calling this API, the backend will trigger the free certificate application task. You need to complete the domain name verification info configuration within 2 days, then finish certificate authentication.
@@ -382,6 +382,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateFunctionReplica(
+            self,
+            request: models.CreateFunctionReplicaRequest,
+            opts: Dict = None,
+    ) -> models.CreateFunctionReplicaResponse:
+        """
+        This API is used to create copies of specified edge functions. After creating copies, when client requests match configured trigger rules or the default domain name, you can access specific function copies by adding EO-Function-Replica-Name:[copy name] to the request header. Each function supports creating two copies by default.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateFunctionReplica"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateFunctionReplicaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateFunctionRule(
             self,
             request: models.CreateFunctionRuleRequest,
@@ -645,14 +663,14 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateRealtimeLogDeliveryTaskResponse:
         """
-        This API is used to create a real-time log delivery task. The following limits apply.
-        -When the data delivery type (LogType) is site acceleration log (Layer 7 Access Logs), L4 proxy logs, or edge function logs, an entity (L7 domain, L4 proxy instance, or edge function instance) under the same combination of data delivery type (LogType) and data delivery area (Area) can only be added to the following real-time log delivery task type (TaskType) combinations:.
-        -A task to push to Tencent Cloud CLS, add another task to push to a custom HTTP(S) address;.
-        -A task to push to Tencent Cloud CLS, add another task to push to AWS S3-compatible Cloud Object Storage;.
-        -When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the same combination of data delivery type (LogType) and data delivery Area.
-        -When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only the data delivery type (LogType) as site acceleration log (domain). Under the combination of the same site (ZoneId) and data delivery area (Area), you can only add one real-time log delivery task for EdgeOne log analysis.
+        This API is used to create a real-time log delivery task. The following limits apply:
+        -When the data delivery type (LogType) is site acceleration log (Layer 7 Access Logs), four-layer proxy logs, or edge function logs, the same entity (L7 domain, L4 proxy instance, or edge function instance) under the same combination of data delivery type (LogType) and data delivery area (Area) can only be added to the following real-time log delivery task type (TaskType) combinations:
+        -A task to push to Tencent Cloud CLS, add another task to push to a custom HTTP(S) address.
+        -A task to push to Tencent Cloud CLS, add another task to push to S3-compatible object storage.
+        -When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the combination of the same data delivery type (LogType) and data delivery area (Area).
+        -When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only data delivery type (LogType) as site acceleration log (domain) or managed rule log (web-attack). Under the same site (ZoneId), same data delivery area (Area), and data combination, each data delivery type (LogType) can only add one real-time log delivery task pushed to EdgeOne log analysis.
 
-        This API is used to query the real-time log delivery task list based on the entity to check whether the entity has been added to another real-time log delivery task. It is advisable to use the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.com/document/product/1552/104110?from_cn_redirect=1) API first.
+        It is recommended to first query the real-time log delivery task list according to the entity via the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.com/document/product/1552/104110?from_cn_redirect=1) API, and check whether the entity has been added to another real-time log delivery task.
         """
         
         kwargs = {}
@@ -986,6 +1004,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DeleteFunction"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteFunctionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteFunctionReplica(
+            self,
+            request: models.DeleteFunctionReplicaRequest,
+            opts: Dict = None,
+    ) -> models.DeleteFunctionReplicaResponse:
+        """
+        This API is used to delete specified edge function replicas.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteFunctionReplica"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteFunctionReplicaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1707,6 +1743,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeFunctionComponentBindings"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeFunctionComponentBindingsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFunctionReplicas(
+            self,
+            request: models.DescribeFunctionReplicasRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFunctionReplicasResponse:
+        """
+        This API is used to query the replica list of edge functions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFunctionReplicas"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFunctionReplicasResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2501,8 +2555,8 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTimingL7OriginPullDataResponse:
         """
-        This API is used to query time series data of origin-pull for L7 domains.
-        Group aggregation can be performed by specifying the query dimension <code>DimensionName</code>, returning multiple groups of time series data. For detailed guide and limits, see [How to Use API to Implement Grouping Aggregation in a Single Call](https://www.tencentcloud.com/document/product/1145/77047?lang=en&pg=).
+        This API is used to query time series data of the layer-7 domain name business.
+        You can choose to perform grouping queries by specifying the query dimension <code>DimensionName</code>, returning multiple groups of time series data. For detailed directions and usage limits, see [How to Implement Group Query in a Single Call Using API](https://www.tencentcloud.com/document/product/1552/127501?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -3195,6 +3249,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyFunctionComponentBindings"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyFunctionComponentBindingsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyFunctionReplica(
+            self,
+            request: models.ModifyFunctionReplicaRequest,
+            opts: Dict = None,
+    ) -> models.ModifyFunctionReplicaResponse:
+        """
+        This API is used to modify the content and description of a specified edge function replica.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyFunctionReplica"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyFunctionReplicaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

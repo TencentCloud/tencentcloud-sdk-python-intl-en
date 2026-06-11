@@ -602,7 +602,7 @@ INVALIDPARAMETER_INVALIDRULEPROTO = 'InvalidParameter.InvalidRuleProto'
 # Invalid origin domain.
 INVALIDPARAMETER_INVALIDSERVERNAME = 'InvalidParameter.InvalidServerName'
 
-# 
+# The set match condition does not support EdgeOne Shield operation. Delete the configuration item.
 INVALIDPARAMETER_INVALIDSHIELDUNSUPPORTED = 'InvalidParameter.InvalidShieldUnsupported'
 
 # Invalid sorting order field.
@@ -791,28 +791,28 @@ INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
 # Configuration parameter error.
 INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
 
-# 
+# The current domain name does not support enabling EdgeOne Shield and cache pre-refresh simultaneously.
 INVALIDPARAMETER_SHIELDNOTSUPPORTHOSTCACHEPREFRESH = 'InvalidParameter.ShieldNotSupportHostCachePrefresh'
 
 # The domain name does not support enabling EdgeOne Shield and origin protection simultaneously.
 INVALIDPARAMETER_SHIELDNOTSUPPORTHOSTORIGINWHITELIST = 'InvalidParameter.ShieldNotSupportHostOriginWhitelist'
 
-# 
+# The current domain name does not support enabling EdgeOne Shield and smart acceleration simultaneously.
 INVALIDPARAMETER_SHIELDNOTSUPPORTHOSTSMARTROUTING = 'InvalidParameter.ShieldNotSupportHostSmartRouting'
 
-# 
+# The current site does not support enabling EdgeOne Shield and cache pre-refresh simultaneously.
 INVALIDPARAMETER_SHIELDNOTSUPPORTZONECACHEPREFRESH = 'InvalidParameter.ShieldNotSupportZoneCachePrefresh'
 
-# 
+# The current site does not support enabling EdgeOne Shield and smart acceleration simultaneously.
 INVALIDPARAMETER_SHIELDNOTSUPPORTZONESMARTROUTING = 'InvalidParameter.ShieldNotSupportZoneSmartRouting'
 
-# 
+# EdgeOne Shield space not found.
 INVALIDPARAMETER_SHIELDSPACENOTFOUND = 'InvalidParameter.ShieldSpaceNotFound'
 
-# 
+# EdgeOne Shield space parameter required.
 INVALIDPARAMETER_SHIELDSPACEREQUIREDERROR = 'InvalidParameter.ShieldSpaceRequiredError'
 
-# 
+# EdgeOne Shield space status must be online.
 INVALIDPARAMETER_SHIELDSPACESTATUSMUSTONLINE = 'InvalidParameter.ShieldSpaceStatusMustOnline'
 
 # Some bound origin server groups do not exist.
@@ -974,7 +974,7 @@ INVALIDPARAMETERVALUE_INVALIDKEYLESSSERVERID = 'InvalidParameterValue.InvalidKey
 # Incorrect DNS proxy
 INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOrigin'
 
-# 
+# The origin server failure failover configuration item exists under an unsupported match condition. Delete the configuration.
 INVALIDPARAMETERVALUE_INVALIDSITEFAILOVERUNSUPPORTED = 'InvalidParameterValue.InvalidSiteFailoverUnsupported'
 
 # The tag value contains invalid characters.
@@ -1016,13 +1016,13 @@ INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINSM2 = 'InvalidParameterValue.Serv
 # Enter a valid shared CNAME prefix of up to 50 characters.
 INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = 'InvalidParameterValue.SharedCNAMEPrefixNotMatch'
 
-# 
+# Enabling origin server failover and origin request rate limiting simultaneously is not supported.
 INVALIDPARAMETERVALUE_SITEFAILOVERNOTSUPPORTHOSTORIGINPULLRATELIMIT = 'InvalidParameterValue.SiteFailoverNotSupportHostOriginPullRateLimit'
 
-# 
+# Fault migration does not support VOD as the origin server type.
 INVALIDPARAMETERVALUE_SITEFAILOVERNOTSUPPORTHOSTORIGINTYPEVOD = 'InvalidParameterValue.SiteFailoverNotSupportHostOriginTypeVod'
 
-# 
+# Unsupported to enable origin server failover and origin-pull mutual authentication/origin certificate verification simultaneously.
 INVALIDPARAMETERVALUE_SITEFAILOVERNOTSUPPORTHOSTUPSTREAMVERIFY = 'InvalidParameterValue.SiteFailoverNotSupportHostUpstreamVerify'
 
 # The input template contains a template that is not a custom template.
@@ -1184,6 +1184,9 @@ OPERATIONDENIED_ENVNOTREADY = 'OperationDenied.EnvNotReady'
 # The EdgeOne service of the site is disabled. Please enable it and try again.
 OPERATIONDENIED_ERRZONEISALREADYPAUSED = 'OperationDenied.ErrZoneIsAlreadyPaused'
 
+# The edge HTTPS certificate of the domain name to be changed is inconsistent. Please confirm that the domain name certificates are consistent and retry.
+OPERATIONDENIED_HOSTSCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsCertificateInconsistency'
+
 # The edge mutual authentication certificates for the domain name to be changed are inconsistent. Please confirm that the domain name certificates are consistent and try again.
 OPERATIONDENIED_HOSTSCLIENTCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsClientCertificateInconsistency'
 
@@ -1268,7 +1271,7 @@ OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = 'OperationDenied.NSNotAllowTrafficSt
 # You can only switch a site connected without a domain name to connecting via the CNAME
 OPERATIONDENIED_NODOMAINACCESSZONEONLYALLOWMODIFIEDTOCNAME = 'OperationDenied.NoDomainAccessZoneOnlyAllowModifiedToCNAME'
 
-# 
+# Domainless access sites only support modifying the acceleration region and identical site identifier.
 OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYAREAANDALIASZONENAME = 'OperationDenied.NoDomainAccessZoneOnlySupportModifyAreaAndAliasZoneName'
 
 # You can only switch a site connected without a domain name to connecting via the CNAME. Other operations are not allowed.
@@ -1280,10 +1283,10 @@ OPERATIONDENIED_NOTINKEYLESSWHITELIST = 'OperationDenied.NotInKeylessWhiteList'
 # Not in the preheating origin speed limit allowlist. submit a ticket.
 OPERATIONDENIED_NOTINPREFETCHORIGINLIMITWHITELIST = 'OperationDenied.NotInPrefetchOriginLimitWhiteList'
 
-# 
+# EdgeOne Shield functionality is currently only available to allowlist users.
 OPERATIONDENIED_NOTINSHIELDSPACEWHITELIST = 'OperationDenied.NotInShieldSpaceWhiteList'
 
-# 
+# The current origin server failover feature is only available to allowlist users.
 OPERATIONDENIED_NOTINSITEFAILOVERWHITELIST = 'OperationDenied.NotInSiteFailoverWhiteList'
 
 # The current origin-pull mutual authentication feature is only available to allowlist users.
@@ -1355,6 +1358,12 @@ OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = 'OperationDenied.SharedCNAMEUnsuppo
 # The static IP cannot be enabled for this instance's region.
 OPERATIONDENIED_STATICIPAREACONFLICT = 'OperationDenied.StaticIpAreaConflict'
 
+# The current domain is integrated with both CDN and EO. Operation is not supported.
+OPERATIONDENIED_SWITCHAREACDNPLATFORMREUSE = 'OperationDenied.SwitchAreaCdnPlatformReuse'
+
+# The origin protection configuration is being deployed. Please switch the acceleration region after deployment.
+OPERATIONDENIED_SWITCHAREAORIGINPROTECTIONDEPLOYING = 'OperationDenied.SwitchAreaOriginProtectionDeploying'
+
 # Disabling the origin-pull mutual authentication is not supported now. To disable it, please change the edge HTTPS certificate configuration to 'none'.
 OPERATIONDENIED_UNSUPPORTTOCLOSEUPSTREAMMTLS = 'OperationDenied.UnSupportToCloseUpstreamMTLS'
 
@@ -1378,6 +1387,9 @@ OPERATIONDENIED_VERSIONCONTROLNEEDNSSWITCHED = 'OperationDenied.VersionControlNe
 
 # The specified site working mode is not applicable to the version management mode.
 OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = 'OperationDenied.WorkModeNotInVersionControl'
+
+# When modifying the acceleration region, if a domain name already exists under the site, you cannot simultaneously adjust other info.
+OPERATIONDENIED_ZONEHASHOSTSMODIFYCONFLICT = 'OperationDenied.ZoneHasHostsModifyConflict'
 
 # The shared CNAME has been bound to another site. Please unbind first.
 OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = 'OperationDenied.ZoneIsBindingSharedCNAME'

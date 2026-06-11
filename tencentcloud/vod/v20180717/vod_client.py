@@ -363,7 +363,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAigcCustomVoice(self, request):
-        r"""This API is used to create custom voice types for AIGC.
+        r"""This API is used to create custom voice types. Note that calling this API will incur customization fees. See the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#5e5217e8-29fc-467e-ac2d-853648f988b7).
 
         :param request: Request instance for CreateAigcCustomVoice.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcCustomVoiceRequest`
@@ -2192,6 +2192,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeAigcFaceInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAigcFaceInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAigcFaceInfoAsync(self, request):
+        r"""This API is used to asynchronously fetch AIGC face information. Note that calling this API incurs face recognition fees. Refer to the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#96b3b59a-f9e1-49e9-966a-bedb70a4bf12).
+
+        :param request: Request instance for DescribeAigcFaceInfoAsync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcFaceInfoAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcFaceInfoAsyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

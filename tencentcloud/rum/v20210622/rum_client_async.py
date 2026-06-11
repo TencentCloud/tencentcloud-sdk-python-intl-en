@@ -1215,7 +1215,7 @@ class RumClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTawInstancesResponse:
         """
-        This API is used to query instance information.
+        Query instance information.
         """
         
         kwargs = {}

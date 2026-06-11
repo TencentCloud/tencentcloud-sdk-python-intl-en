@@ -1507,7 +1507,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
         :type ExpireTime: int
         :param _ExpireTimeRequired: Whether the expiration time parameter is required
         :type ExpireTimeRequired: bool
-        :param _Format: URL composition, e.g., `${private_key}${schema}${host}${full_uri}`.
+        :param _Format: URL format, for example: ${private_key}${schema}${host}${full_uri}.
         :type Format: str
         :param _TimeFormat: Time format. Valid values: dec (decimal), hex (hexadecimal).
         :type TimeFormat: str
@@ -1589,7 +1589,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
 
     @property
     def Format(self):
-        r"""URL composition, e.g., `${private_key}${schema}${host}${full_uri}`.
+        r"""URL format, for example: ${private_key}${schema}${host}${full_uri}.
         :rtype: str
         """
         return self._Format
@@ -3327,12 +3327,12 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class AuthenticationTypeA(AbstractModel):
-    r"""Timestamp hotlink protection mode A configuration
-    The access URL format of timestamp hotlink protection mode A is as follows: http://DomainName/Filename?sign=timestamp-rand-uid-md5hash
-    Here, timestamp is a decimal timestamp in Unix format;
-    rand is a random string composed of 0-100 characters, including digits, upper and lower-case letters.
-    uid is 0;
-    md5hash: MD5 (file path-timestamp-rand-uid-custom key)
+    r"""Timestamp hotlink protection mode A configuration.
+    The access URL format for timestamp hotlink protection mode A is: `http://DomainName/Filename?sign=timestamp-rand-uid-md5hash`.
+    Among them, timestamp is a decimal UNIX timestamp.
+    Rand specifies a random string with 0 to 100 characters composed of upper- and lower-case letters and numbers.
+    Specifies the uid is 0.
+    md5hash: specifies md5 (file path-timestamp-rand-uid-custom key).
 
     """
 
@@ -3570,7 +3570,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 class AuthenticationTypeC(AbstractModel):
     r"""Timestamp hotlink protection mode C configuration
-    The access URL format of timestamp hotlink protection mode C is as follows: http://DomainName/md5hash/timestamp/FileName
+    The access URL format of timestamp hotlink protection mode C is as follows: `http://DomainName/md5hash/timestamp/FileName`
     Here, timestamp is a hexadecimal timestamp in Unix format;
     `md5hash`: MD5 (custom key + file path + timestamp)
 
@@ -3704,7 +3704,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 class AuthenticationTypeD(AbstractModel):
     r"""Timestamp hotlink protection mode D configuration
-    The access URL format of timestamp hotlink protection mode D is as follows: http://DomainName/FileName?sign=md5hash&t=timestamp
+    The access URL format of timestamp hotlink protection mode D is as follows: `http://DomainName/FileName?sign=md5hash&t=timestamp`
     Here, timestamp is a decimal or hexadecimal timestamp in Unix format;
     `md5hash`: MD5 (custom key + file path + timestamp)
 
@@ -3868,6 +3868,62 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class AutoGuard(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 
+        :type Switch: str
+        :param _FilterRules: 
+        :type FilterRules: list of FilterRules
+        """
+        self._Switch = None
+        self._FilterRules = None
+
+    @property
+    def Switch(self):
+        r"""
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FilterRules(self):
+        r"""
+        :rtype: list of FilterRules
+        """
+        return self._FilterRules
+
+    @FilterRules.setter
+    def FilterRules(self, FilterRules):
+        self._FilterRules = FilterRules
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        if params.get("FilterRules") is not None:
+            self._FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = FilterRules()
+                obj._deserialize(item)
+                self._FilterRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AvifAdapter(AbstractModel):
     r"""AVIF adapter, used for image optimization
 
@@ -3924,8 +3980,8 @@ class AwsPrivateAccess(AbstractModel):
         :param _AccessKey: Access ID.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AccessKey: str
-        :param _SecretKey: Key.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _SecretKey: Key. the field is returned with masking.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SecretKey: str
         :param _Region: Region.
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -3967,8 +4023,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SecretKey(self):
-        r"""Key.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Key. the field is returned with masking.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SecretKey
@@ -4917,12 +4973,19 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 It is disabled by default.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IgnoreSetCookie: str
+        :param _OriginMtimeCheckType: Whether to enable origin server mtime verification after cache expires. valid values: equal, since, none, and null. default value: equal, which validates the origin server file's mtime and length. domains created prior to 2024-09-12 18:00 default to null, with behavior remaining unchanged.
+equal: the mtime in the origin server response must match the mtime in the cache. if there is a difference in parameter values, purge the cache.
+since: purges cache if the origin server response mtime is larger than the cache mtime.
+none: when the cache expires and the file is retrieved from the origin server again to get the mtime and Length, it does not validate the mtime in the origin response. if the origin response carries a Content-Length header, the cache is updated only when the file size changes. if the origin response does not carry a Content-Length header, the cache is updated.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginMtimeCheckType: str
         """
         self._Switch = None
         self._CacheTime = None
         self._CompareMaxAge = None
         self._IgnoreCacheControl = None
         self._IgnoreSetCookie = None
+        self._OriginMtimeCheckType = None
 
     @property
     def Switch(self):
@@ -4996,6 +5059,21 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     def IgnoreSetCookie(self, IgnoreSetCookie):
         self._IgnoreSetCookie = IgnoreSetCookie
 
+    @property
+    def OriginMtimeCheckType(self):
+        r"""Whether to enable origin server mtime verification after cache expires. valid values: equal, since, none, and null. default value: equal, which validates the origin server file's mtime and length. domains created prior to 2024-09-12 18:00 default to null, with behavior remaining unchanged.
+equal: the mtime in the origin server response must match the mtime in the cache. if there is a difference in parameter values, purge the cache.
+since: purges cache if the origin server response mtime is larger than the cache mtime.
+none: when the cache expires and the file is retrieved from the origin server again to get the mtime and Length, it does not validate the mtime in the origin response. if the origin response carries a Content-Length header, the cache is updated only when the file size changes. if the origin response does not carry a Content-Length header, the cache is updated.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OriginMtimeCheckType
+
+    @OriginMtimeCheckType.setter
+    def OriginMtimeCheckType(self, OriginMtimeCheckType):
+        self._OriginMtimeCheckType = OriginMtimeCheckType
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
@@ -5003,6 +5081,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._CompareMaxAge = params.get("CompareMaxAge")
         self._IgnoreCacheControl = params.get("IgnoreCacheControl")
         self._IgnoreSetCookie = params.get("IgnoreSetCookie")
+        self._OriginMtimeCheckType = params.get("OriginMtimeCheckType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5027,9 +5106,16 @@ class CacheConfigFollowOrigin(AbstractModel):
         :param _HeuristicCache: Heuristic cache configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type HeuristicCache: :class:`tencentcloud.cdn.v20180606.models.HeuristicCache`
+        :param _OriginMtimeCheckType: Whether to enable origin server mtime verification after cache expires. valid values: equal, since, none, and null. default value: equal, which validates the origin server file's mtime and length. domains created prior to 2024-09-12 18:00 default to null, with behavior remaining unchanged.
+equal: the mtime in the origin server response must match the mtime in the cache. if there is a difference in parameter values, purge the cache.
+since: purges cache if the origin server response mtime is larger than the cache mtime.
+none: when the cache expires and the file is retrieved from the origin server again to get the mtime and Length, it does not validate the mtime in the origin response. if the origin response carries a Content-Length header, the cache is updated only when the file size changes. if the origin response does not carry a Content-Length header, the cache is updated.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginMtimeCheckType: str
         """
         self._Switch = None
         self._HeuristicCache = None
+        self._OriginMtimeCheckType = None
 
     @property
     def Switch(self):
@@ -5056,12 +5142,28 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     def HeuristicCache(self, HeuristicCache):
         self._HeuristicCache = HeuristicCache
 
+    @property
+    def OriginMtimeCheckType(self):
+        r"""Whether to enable origin server mtime verification after cache expires. valid values: equal, since, none, and null. default value: equal, which validates the origin server file's mtime and length. domains created prior to 2024-09-12 18:00 default to null, with behavior remaining unchanged.
+equal: the mtime in the origin server response must match the mtime in the cache. if there is a difference in parameter values, purge the cache.
+since: purges cache if the origin server response mtime is larger than the cache mtime.
+none: when the cache expires and the file is retrieved from the origin server again to get the mtime and Length, it does not validate the mtime in the origin response. if the origin response carries a Content-Length header, the cache is updated only when the file size changes. if the origin response does not carry a Content-Length header, the cache is updated.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OriginMtimeCheckType
+
+    @OriginMtimeCheckType.setter
+    def OriginMtimeCheckType(self, OriginMtimeCheckType):
+        self._OriginMtimeCheckType = OriginMtimeCheckType
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         if params.get("HeuristicCache") is not None:
             self._HeuristicCache = HeuristicCache()
             self._HeuristicCache._deserialize(params.get("HeuristicCache"))
+        self._OriginMtimeCheckType = params.get("OriginMtimeCheckType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5148,8 +5250,10 @@ class CacheKey(AbstractModel):
 `on`: Enable full-path cache (i.e., disable Ignore Query String)
 `off`: Disable full-path cache (i.e., enable Ignore Query String)
         :type FullUrlCache: str
-        :param _IgnoreCase: Specifies whether the cache key is case sensitive
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IgnoreCase: Specifies whether to use case-insensitive cache.
+on: enable.
+Off: turn off the switch.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IgnoreCase: str
         :param _QueryString: Request parameter contained in `CacheKey`
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -5194,8 +5298,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IgnoreCase(self):
-        r"""Specifies whether the cache key is case sensitive
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Specifies whether to use case-insensitive cache.
+on: enable.
+Off: turn off the switch.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IgnoreCase
@@ -8273,14 +8379,11 @@ class DescribeIpStatusRequest(AbstractModel):
 `last`: Intermediate server
 If this parameter is left empty, edge server information will be returned by default
         :type Layer: str
-        :param _Area: Specifies a region to query.
-`mainland`: Nodes in the Chinese mainland
-`overseas`: Nodes outside the Chinese mainland
-`global`: Global nodes
+        :param _Area: Query region: mainland: node in chinese mainland; overseas: node outside the chinese mainland; global: global node.
         :type Area: str
         :param _Segment: Whether to return a value as an IP range
         :type Segment: bool
-        :param _ShowIpv6: whether to query node IPV6 information.
+        :param _ShowIpv6: 
         :type ShowIpv6: bool
         :param _AbbreviationIpv6: Whether to abbreviate the IPv6 address.
         :type AbbreviationIpv6: bool
@@ -8319,10 +8422,7 @@ If this parameter is left empty, edge server information will be returned by def
 
     @property
     def Area(self):
-        r"""Specifies a region to query.
-`mainland`: Nodes in the Chinese mainland
-`overseas`: Nodes outside the Chinese mainland
-`global`: Global nodes
+        r"""Query region: mainland: node in chinese mainland; overseas: node outside the chinese mainland; global: global node.
         :rtype: str
         """
         return self._Area
@@ -8344,7 +8444,7 @@ If this parameter is left empty, edge server information will be returned by def
 
     @property
     def ShowIpv6(self):
-        r"""whether to query node IPV6 information.
+        r"""
         :rtype: bool
         """
         return self._ShowIpv6
@@ -12268,7 +12368,7 @@ Supports 400, 403, 404, 500.
 Supports 301 or 302.
         :type RedirectCode: int
         :param _RedirectUrl: Redirect URL
-Requires a full redirect path, such as https://www.test.com/error.html.
+Requires a full redirect path, such as `https://www.test.com/error.html`.
         :type RedirectUrl: str
         """
         self._StatusCode = None
@@ -12302,7 +12402,7 @@ Supports 301 or 302.
     @property
     def RedirectUrl(self):
         r"""Redirect URL
-Requires a full redirect path, such as https://www.test.com/error.html.
+Requires a full redirect path, such as `https://www.test.com/error.html`.
         :rtype: str
         """
         return self._RedirectUrl
@@ -12378,6 +12478,72 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = TopicInfo()
                 obj._deserialize(item)
                 self._Topics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilterRules(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterType: 
+        :type FilterType: str
+        :param _RuleType: 
+        :type RuleType: str
+        :param _RulePaths: 
+        :type RulePaths: list of str
+        """
+        self._FilterType = None
+        self._RuleType = None
+        self._RulePaths = None
+
+    @property
+    def FilterType(self):
+        r"""
+        :rtype: str
+        """
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def RuleType(self):
+        r"""
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def RulePaths(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._RulePaths
+
+    @RulePaths.setter
+    def RulePaths(self, RulePaths):
+        self._RulePaths = RulePaths
+
+
+    def _deserialize(self, params):
+        self._FilterType = params.get("FilterType")
+        self._RuleType = params.get("RuleType")
+        self._RulePaths = params.get("RulePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12464,9 +12630,9 @@ http: forced HTTP redirect
 https: forced HTTPS redirect
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type RedirectType: str
-        :param _RedirectStatusCode: Status code returned for forced redirect 
-Supports 301, 302.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _RedirectStatusCode: Specifies the return status code for forced redirection. 
+Supports 301, 302, 307, and 308.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RedirectStatusCode: int
         :param _CarryHeaders: Whether to return the newly added header during force redirection
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -12507,9 +12673,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RedirectStatusCode(self):
-        r"""Status code returned for forced redirect 
-Supports 301, 302.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Specifies the return status code for forced redirection. 
+Supports 301, 302, 307, and 308.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._RedirectStatusCode
@@ -12902,10 +13068,10 @@ class HeuristicCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable heuristic caching. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return·`null`, indicating that no valid values can be obtained.
+        :param _Switch: Specifies the heuristic cache configuration switch. valid values:.
+on: enable.
+Off: turn off the switch (default).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Switch: str
         :param _CacheConfig: Heuristic cache validity configuration
 Note: This field may return·`null`, indicating that no valid values can be obtained.
@@ -12916,10 +13082,10 @@ Note: This field may return·`null`, indicating that no valid values can be obta
 
     @property
     def Switch(self):
-        r"""Whether to enable heuristic caching. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return·`null`, indicating that no valid values can be obtained.
+        r"""Specifies the heuristic cache configuration switch. valid values:.
+on: enable.
+Off: turn off the switch (default).
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Switch
@@ -13046,10 +13212,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _HeaderName: HTTP header name. Up to 100 characters can be set.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type HeaderName: str
-        :param _HeaderValue: HTTP header value. Up to 1000 characters can be set.
-Not required when Mode is del
-Required when Mode is add/set
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _HeaderValue: http header value. custom request header supports up to 1000 characters. custom response header can be set up to 2000 characters.
+Optional when Mode is del.
+Required when Mode is add/set.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type HeaderValue: str
         :param _RuleType: Rule types:
 `all`: Apply to all files.
@@ -13101,10 +13267,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def HeaderValue(self):
-        r"""HTTP header value. Up to 1000 characters can be set.
-Not required when Mode is del
-Required when Mode is add/set
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""http header value. custom request header supports up to 1000 characters. custom response header can be set up to 2000 characters.
+Optional when Mode is del.
+Required when Mode is add/set.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._HeaderValue
@@ -13279,8 +13445,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param _Hsts: HSTS configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
-        :param _TlsVersion: TLS version settings, which only support certain advanced domain names. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _TlsVersion: Specifies the Tls version setting, which has partial support for Advance domain names and can be set to TLSv1, TLSv1.1, TLSv1.2, or TLSv1.3. consecutive versions must be enabled when modifying.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TlsVersion: list of str
         """
         self._Switch = None
@@ -13421,8 +13587,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TlsVersion(self):
-        r"""TLS version settings, which only support certain advanced domain names. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Specifies the Tls version setting, which has partial support for Advance domain names and can be set to TLSv1, TLSv1.1, TLSv1.2, or TLSv1.3. consecutive versions must be enabled when modifying.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._TlsVersion
@@ -13515,8 +13681,8 @@ class HwPrivateAccess(AbstractModel):
         :param _AccessKey: Access ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AccessKey: str
-        :param _SecretKey: Key
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _SecretKey: Key. the field is returned with masking.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SecretKey: str
         :param _Bucket: BucketName
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -13554,8 +13720,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SecretKey(self):
-        r"""Key
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Key. the field is returned with masking.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SecretKey
@@ -13705,15 +13871,15 @@ class IpFilter(AbstractModel):
 `blacklist`: IP blocklist
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type FilterType: str
-        :param _Filters: IP blocklist/allowlist
-Supports IPs in X.X.X.X format, or IP ranges in /8, /16, /24 format.
-Up to 50 whitelists or blacklists can be entered
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Filters: IP blocklist/allowlist configuration.
+Supports IPV4 addresses in X.X.X.X format, IPV6 addresses in X:X:X:X:X:X:X:X format, or network segments in /X format (IPV4: 1≤X≤32; IPV6: 1≤X≤128).
+Specifies a maximum of 200 allowlist or blocklist entries.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Filters: list of str
-        :param _FilterRules: IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _FilterRules: IP blocklist and allowlist path-specific configuration. the total count of blocklist and allowlist ips must not exceed 1000.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FilterRules: list of IpFilterPathRule
-        :param _ReturnCode: (Disused) Expected HTTP code to return when the IP allowlist/blocklist verification fails. <br><font color=red>The 514 code is used instead.</font>
+        :param _ReturnCode: (Disused) Expected HTTP code to return when the IP allowlist/blocklist verification fails. 
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ReturnCode: int
         """
@@ -13752,10 +13918,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Filters(self):
-        r"""IP blocklist/allowlist
-Supports IPs in X.X.X.X format, or IP ranges in /8, /16, /24 format.
-Up to 50 whitelists or blacklists can be entered
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""IP blocklist/allowlist configuration.
+Supports IPV4 addresses in X.X.X.X format, IPV6 addresses in X:X:X:X:X:X:X:X format, or network segments in /X format (IPV4: 1≤X≤32; IPV6: 1≤X≤128).
+Specifies a maximum of 200 allowlist or blocklist entries.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._Filters
@@ -13766,8 +13932,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FilterRules(self):
-        r"""IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""IP blocklist and allowlist path-specific configuration. the total count of blocklist and allowlist ips must not exceed 1000.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of IpFilterPathRule
         """
         return self._FilterRules
@@ -13778,7 +13944,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ReturnCode(self):
-        r"""(Disused) Expected HTTP code to return when the IP allowlist/blocklist verification fails. <br><font color=red>The 514 code is used instead.</font>
+        r"""(Disused) Expected HTTP code to return when the IP allowlist/blocklist verification fails. 
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -13822,10 +13988,10 @@ class IpFilterPathRule(AbstractModel):
 `blacklist`: blocklist IPs
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type FilterType: str
-        :param _Filters: IP blocklist/allowlist list
-Supports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges.
-Up to 50 allowlists or blocklists can be entered.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Filters: IP blocklist/allowlist configuration.
+Supports IPV4 addresses in X.X.X.X format, IPV6 addresses in X:X:X:X:X:X:X:X format, or network segments in /X format (IPV4: 1≤X≤32; IPV6: 1≤X≤128).
+Specifies a maximum of 500 allowlist or 200 blocklist entries.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Filters: list of str
         :param _RuleType: Rule types:
 `all`: Effective for all files
@@ -13841,11 +14007,14 @@ For `directory`, enter the path, such as /xxx/test/.
 For `path`, enter the corresponding absolute path, such as /xxx/test.html.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type RulePaths: list of str
+        :param _Remark: Remark information. supports up to 50 characters.
+        :type Remark: str
         """
         self._FilterType = None
         self._Filters = None
         self._RuleType = None
         self._RulePaths = None
+        self._Remark = None
 
     @property
     def FilterType(self):
@@ -13863,10 +14032,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Filters(self):
-        r"""IP blocklist/allowlist list
-Supports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges.
-Up to 50 allowlists or blocklists can be entered.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""IP blocklist/allowlist configuration.
+Supports IPV4 addresses in X.X.X.X format, IPV6 addresses in X:X:X:X:X:X:X:X format, or network segments in /X format (IPV4: 1≤X≤32; IPV6: 1≤X≤128).
+Specifies a maximum of 500 allowlist or 200 blocklist entries.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._Filters
@@ -13907,12 +14076,24 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     def RulePaths(self, RulePaths):
         self._RulePaths = RulePaths
 
+    @property
+    def Remark(self):
+        r"""Remark information. supports up to 50 characters.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._FilterType = params.get("FilterType")
         self._Filters = params.get("Filters")
         self._RuleType = params.get("RuleType")
         self._RulePaths = params.get("RulePaths")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14192,8 +14373,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 `off`: Disable full-path cache (i.e., enable Ignore Query String).
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type FullUrlCache: str
-        :param _IgnoreCase: Whether caches are case insensitive
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IgnoreCase: Specifies whether to use case-insensitive cache.
+on: enable.
+Off: turn off the switch.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IgnoreCase: str
         :param _QueryString: Request parameter contained in `CacheKey`
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -14257,8 +14440,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IgnoreCase(self):
-        r"""Whether caches are case insensitive
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Specifies whether to use case-insensitive cache.
+on: enable.
+Off: turn off the switch.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._IgnoreCase
@@ -16281,27 +16466,26 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 Note: To enable this configuration, you need to first grant CDN access to the private bucket. Values: `on` and `off`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type CosPrivateAccess: str
-        :param _OriginPullProtocol: Origin-pull protocol configuration
-http: forced HTTP origin-pull
-follow: protocol follow origin-pull
-https: forced HTTPS origin-pull. This only supports origin server port 443 for origin-pull.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _OriginPullProtocol: Configures the origin-pull protocol.
+Http: force http origin-pull.
+follow protocol for origin pull.
+Https: enforce https origin-pull.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginPullProtocol: str
         :param _BackupOrigins: List of secondary origin servers
 <font color=red>This field is used together with `BackupOriginType`.</font>
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type BackupOrigins: list of str
-        :param _BackupOriginType: Secondary origin type
-<font color=red>This field is used together with `BackupOrigins`.</font>
-Values:
-`domain`: Domain name
-`ip`: IP address
-The following secondary origin types are only available to beta users. Submit a ticket to use it.
-`ipv6_domain`: Multiple IPv6 addresses and one domain name
-`ip_ipv6`: Multiple IPv4 addresses and one IPv6 address
-`ipv6_domain`: Multiple IPv6 addresses and one domain name
-`ip_ipv6_domain`: Multiple IPv4 and IPv6 addresses and one domain name
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _BackupOriginType: Secondary origin type. valid values:.
+BackupOrigins specifies the backup origin list. required when not empty.
+Supports the following types.
+domain type.
+ip: ip list as the origin server.
+The following backup origin server types are not fully available yet and require trial use application.
+ipv6_domain: specifies the origin server list containing multiple ipv6 addresses and domain names.
+ip_ipv6: specifies the origin server list containing multiple ipv4 addresses and ipv6 addresses.
+ip_ipv6_domain: specifies the origin server list containing multiple ipv4 addresses, ipv6 addresses, and domain names.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BackupOriginType: str
         :param _BackupServerName: Host header used when accessing the backup origin server. If it is left empty, the `ServerName` of primary origin server will be used by default.
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -16427,11 +16611,11 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OriginPullProtocol(self):
-        r"""Origin-pull protocol configuration
-http: forced HTTP origin-pull
-follow: protocol follow origin-pull
-https: forced HTTPS origin-pull. This only supports origin server port 443 for origin-pull.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Configures the origin-pull protocol.
+Http: force http origin-pull.
+follow protocol for origin pull.
+Https: enforce https origin-pull.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OriginPullProtocol
@@ -16455,17 +16639,16 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BackupOriginType(self):
-        r"""Secondary origin type
-<font color=red>This field is used together with `BackupOrigins`.</font>
-Values:
-`domain`: Domain name
-`ip`: IP address
-The following secondary origin types are only available to beta users. Submit a ticket to use it.
-`ipv6_domain`: Multiple IPv6 addresses and one domain name
-`ip_ipv6`: Multiple IPv4 addresses and one IPv6 address
-`ipv6_domain`: Multiple IPv6 addresses and one domain name
-`ip_ipv6_domain`: Multiple IPv4 and IPv6 addresses and one domain name
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Secondary origin type. valid values:.
+BackupOrigins specifies the backup origin list. required when not empty.
+Supports the following types.
+domain type.
+ip: ip list as the origin server.
+The following backup origin server types are not fully available yet and require trial use application.
+ipv6_domain: specifies the origin server list containing multiple ipv6 addresses and domain names.
+ip_ipv6: specifies the origin server list containing multiple ipv4 addresses and ipv6 addresses.
+ip_ipv6_domain: specifies the origin server list containing multiple ipv4 addresses, ipv6 addresses, and domain names.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BackupOriginType
@@ -16969,8 +17152,8 @@ class OssPrivateAccess(AbstractModel):
         :param _AccessKey: Access ID.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AccessKey: str
-        :param _SecretKey: Key.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _SecretKey: Key. the field is returned with masking.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SecretKey: str
         :param _Region: Region
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -17012,8 +17195,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecretKey(self):
-        r"""Key.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""Key. the field is returned with masking.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SecretKey
@@ -17077,8 +17260,8 @@ class OthersPrivateAccess(AbstractModel):
         :param _AccessKey: Access ID.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AccessKey: str
-        :param _SecretKey: Key.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _SecretKey: Key. specifies the field with masking back.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SecretKey: str
         :param _Region: Region.
 Note: This field may return `null`, indicating that no valid values can be obtained.
@@ -17120,8 +17303,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecretKey(self):
-        r"""Key.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Key. specifies the field with masking back.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SecretKey
@@ -17728,6 +17911,140 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class ParamFilter(AbstractModel):
+    r"""Parameter blocklist.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Specifies the blocklist parameter switch.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        :param _FilterRules: Specifies the blocklist rule parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FilterRules: list of ParamFilterRule
+        """
+        self._Switch = None
+        self._FilterRules = None
+
+    @property
+    def Switch(self):
+        r"""Specifies the blocklist parameter switch.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FilterRules(self):
+        r"""Specifies the blocklist rule parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ParamFilterRule
+        """
+        return self._FilterRules
+
+    @FilterRules.setter
+    def FilterRules(self, FilterRules):
+        self._FilterRules = FilterRules
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        if params.get("FilterRules") is not None:
+            self._FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = ParamFilterRule()
+                obj._deserialize(item)
+                self._FilterRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamFilterRule(AbstractModel):
+    r"""Parameter blocklist rule.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Parameter name.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Key: str
+        :param _Values: Numeric array. value range: less than 10.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Values: list of str
+        :param _ReturnCode: http status code (only supports 403).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReturnCode: str
+        """
+        self._Key = None
+        self._Values = None
+        self._ReturnCode = None
+
+    @property
+    def Key(self):
+        r"""Parameter name.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        r"""Numeric array. value range: less than 10.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ReturnCode(self):
+        r"""http status code (only supports 403).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        self._ReturnCode = params.get("ReturnCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PathBasedOriginRule(AbstractModel):
     r"""Path-based origin-pull rule
 
@@ -18311,7 +18628,7 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Urls: List of URLs. The protocol header such as "http://" or "https://" needs to be included.
+        :param _Urls: List of URLs. The protocol header such as `http://` or `https://` needs to be included.
         :type Urls: list of str
         :param _Area: Purging region
 The acceleration region of the acceleration domain name will be purged if this parameter is not passed in.
@@ -18328,7 +18645,7 @@ The specified purging region should match the domain name acceleration region.
 
     @property
     def Urls(self):
-        r"""List of URLs. The protocol header such as "http://" or "https://" needs to be included.
+        r"""List of URLs. The protocol header such as `http://` or `https://` needs to be included.
         :rtype: list of str
         """
         return self._Urls
@@ -18570,7 +18887,7 @@ class PushUrlsCacheRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Urls: List of URLs. The protocol header such as "http://" or "https://" needs to be included.
+        :param _Urls: List of URLs. The protocol header such as `http://` or `https://` needs to be included.
         :type Urls: list of str
         :param _UserAgent: Specifies the User-Agent header of an HTTP prefetch request when it is forwarded to the origin server
 Default value: `TencentCdn`
@@ -18610,7 +18927,7 @@ This feature is in beta test.
 
     @property
     def Urls(self):
-        r"""List of URLs. The protocol header such as "http://" or "https://" needs to be included.
+        r"""List of URLs. The protocol header such as `http://` or `https://` needs to be included.
         :rtype: list of str
         """
         return self._Urls
@@ -18790,7 +19107,7 @@ class QnPrivateAccess(AbstractModel):
         :param _AccessKey: Access ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AccessKey: str
-        :param _SecretKey: Key
+        :param _SecretKey: Key. the field is returned with masking.
         :type SecretKey: str
         """
         self._Switch = None
@@ -18824,7 +19141,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SecretKey(self):
-        r"""Key
+        r"""Key. the field is returned with masking.
         :rtype: str
         """
         return self._SecretKey
@@ -21743,7 +22060,7 @@ class SearchClsLogRequest(AbstractModel):
         :type Limit: int
         :param _Channel: Specifies whether to access CDN or ECDN. Valid values: `cdn` (default) and `ecdn`.
         :type Channel: str
-        :param _Query: Query statement. For more details, see [https://intl.cloud.tencent.com/document/product/614/16982?from_cn_redirect=1].
+        :param _Query: Query statement. For more details, see [Syntax Rules](https://www.tencentcloud.com/document/product/614/37803).
         :type Query: str
         :param _Context: This field is used when loading more results. Pass through the last `context` value returned to get more log content. Up to 10,000 logs can be obtained through the cursor. Please narrow down the time range as much as possible.
         :type Context: str
@@ -21828,7 +22145,7 @@ class SearchClsLogRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""Query statement. For more details, see [https://intl.cloud.tencent.com/document/product/614/16982?from_cn_redirect=1].
+        r"""Query statement. For more details, see [Syntax Rules](https://www.tencentcloud.com/document/product/614/37803).
         :rtype: str
         """
         return self._Query
@@ -22681,8 +22998,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param _BpsThreshold: Bandwidth/Traffic threshold
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type BpsThreshold: int
-        :param _CounterMeasure: Specifies how to disable CDN service when the threshold is exceeded. `RETURN_404`: Return 404; `RESOLVE_DNS_TO_ORIGIN`: Forward to origin server.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _CounterMeasure: Shutdown method RETURN 404: RETURN_404.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CounterMeasure: str
         :param _AlertPercentage: Threshold (in percentage) that triggers alarms
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -22695,7 +23012,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _Metric: Metric type. `flux`: Traffic; `bandwidth`: Bandwidth.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Metric: str
-        :param _Cycle: Detection Cycle, Unit: Minutes, 60 or 1440
+        :param _Cycle: 
         :type Cycle: int
         :param _Switch: Whether to enable cumulative usage limit. Values:
 `on`: Enable
@@ -22751,8 +23068,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CounterMeasure(self):
-        r"""Specifies how to disable CDN service when the threshold is exceeded. `RETURN_404`: Return 404; `RESOLVE_DNS_TO_ORIGIN`: Forward to origin server.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Shutdown method RETURN 404: RETURN_404.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CounterMeasure
@@ -22801,7 +23118,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Cycle(self):
-        r"""Detection Cycle, Unit: Minutes, 60 or 1440
+        r"""
         :rtype: int
         """
         return self._Cycle
@@ -23580,6 +23897,10 @@ After switching to global acceleration, configurations of the domain name will b
         :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
         :param _HttpsBilling: HTTPS, which is a paid service. You can check the product document and Billing Overview for more information.
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
+        :param _ParamFilter: Specifies the blocklist parameter.
+        :type ParamFilter: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
+        :param _AutoGuard: 
+        :type AutoGuard: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
         """
         self._Domain = None
         self._ProjectId = None
@@ -23630,6 +23951,8 @@ After switching to global acceleration, configurations of the domain name will b
         self._QnPrivateAccess = None
         self._OthersPrivateAccess = None
         self._HttpsBilling = None
+        self._ParamFilter = None
+        self._AutoGuard = None
 
     @property
     def Domain(self):
@@ -24178,6 +24501,28 @@ After switching to global acceleration, configurations of the domain name will b
     def HttpsBilling(self, HttpsBilling):
         self._HttpsBilling = HttpsBilling
 
+    @property
+    def ParamFilter(self):
+        r"""Specifies the blocklist parameter.
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
+        """
+        return self._ParamFilter
+
+    @ParamFilter.setter
+    def ParamFilter(self, ParamFilter):
+        self._ParamFilter = ParamFilter
+
+    @property
+    def AutoGuard(self):
+        r"""
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
+        """
+        return self._AutoGuard
+
+    @AutoGuard.setter
+    def AutoGuard(self, AutoGuard):
+        self._AutoGuard = AutoGuard
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -24317,6 +24662,12 @@ After switching to global acceleration, configurations of the domain name will b
         if params.get("HttpsBilling") is not None:
             self._HttpsBilling = HttpsBilling()
             self._HttpsBilling._deserialize(params.get("HttpsBilling"))
+        if params.get("ParamFilter") is not None:
+            self._ParamFilter = ParamFilter()
+            self._ParamFilter._deserialize(params.get("ParamFilter"))
+        if params.get("AutoGuard") is not None:
+            self._AutoGuard = AutoGuard()
+            self._AutoGuard._deserialize(params.get("AutoGuard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24762,18 +25113,21 @@ class UrlRedirectRule(AbstractModel):
         :type Pattern: str
         :param _RedirectUrl: Target URL, starting with `/` and excluding parameters. The path can contain up to 1,024 characters. The wildcards in the matching path can be respectively captured using `$1`, `$2`, `$3`, `$4`, and `$5`. Up to 10 values can be captured.
         :type RedirectUrl: str
-        :param _RedirectHost: Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, “http://[current domain name]” will be used by default.
+        :param _RedirectHost: Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, "http://[current domain name]" will be used by default.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type RedirectHost: str
         :param _FullMatch: Whether to use full-path matching or arbitrary matching
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type FullMatch: bool
+        :param _Regex: 
+        :type Regex: bool
         """
         self._RedirectStatusCode = None
         self._Pattern = None
         self._RedirectUrl = None
         self._RedirectHost = None
         self._FullMatch = None
+        self._Regex = None
 
     @property
     def RedirectStatusCode(self):
@@ -24810,7 +25164,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RedirectHost(self):
-        r"""Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, “http://[current domain name]” will be used by default.
+        r"""Target host. It should be a standard domain name starting with `http://` or `https://`. If it is left empty, "http://[current domain name]" will be used by default.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -24832,6 +25186,17 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     def FullMatch(self, FullMatch):
         self._FullMatch = FullMatch
 
+    @property
+    def Regex(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
+
 
     def _deserialize(self, params):
         self._RedirectStatusCode = params.get("RedirectStatusCode")
@@ -24839,6 +25204,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._RedirectUrl = params.get("RedirectUrl")
         self._RedirectHost = params.get("RedirectHost")
         self._FullMatch = params.get("FullMatch")
+        self._Regex = params.get("Regex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24861,8 +25227,8 @@ class UserAgentFilter(AbstractModel):
 `off`: Disable
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
-        :param _FilterRules: UA blacklist/whitelist effect rule list
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _FilterRules: Effective rule list for UA blacklist and whitelist. must not exceed 10 rules.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FilterRules: list of UserAgentFilterRule
         """
         self._Switch = None
@@ -24884,8 +25250,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FilterRules(self):
-        r"""UA blacklist/whitelist effect rule list
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Effective rule list for UA blacklist and whitelist. must not exceed 10 rules.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of UserAgentFilterRule
         """
         return self._FilterRules
@@ -24930,8 +25296,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param _RulePaths: Effective access paths
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type RulePaths: list of str
-        :param _UserAgents: `UserAgent` list
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _UserAgents: UserAgent list. the count cannot exceed 10.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type UserAgents: list of str
         :param _FilterType: Blocklist or allowlist. Valid values: `blacklist`, `whitelist`
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -24972,8 +25338,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UserAgents(self):
-        r"""`UserAgent` list
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""UserAgent list. the count cannot exceed 10.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._UserAgents

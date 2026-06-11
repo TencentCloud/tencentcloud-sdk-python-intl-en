@@ -27,7 +27,9 @@ class TcssClient(AbstractClient):
 
 
     def AddAndPublishNetworkFirewallPolicyDetail(self, request):
-        r"""This API is used to create a task to add and publish a network policy in the container network.
+        r"""deprecated pending reconstruction
+
+        Create a network policy and add and distribute tasks for the container network.
 
         :param request: Request instance for AddAndPublishNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyDetailRequest`
@@ -50,7 +52,9 @@ class TcssClient(AbstractClient):
 
 
     def AddAndPublishNetworkFirewallPolicyYamlDetail(self, request):
-        r"""This API is used to create a task to configure and publish a YAML network policy in the container network.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Create a YAML network policy and distribute tasks for the container network.
 
         :param request: Request instance for AddAndPublishNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyYamlDetailRequest`
@@ -351,7 +355,9 @@ class TcssClient(AbstractClient):
 
 
     def AddNetworkFirewallPolicyDetail(self, request):
-        r"""This API is used to create a task to add a network policy in the container network.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Create a network policy and add tasks for the container network.
 
         :param request: Request instance for AddNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyDetailRequest`
@@ -374,7 +380,9 @@ class TcssClient(AbstractClient):
 
 
     def AddNetworkFirewallPolicyYamlDetail(self, request):
-        r"""This API is used to create a task to add a YAML network policy in the container network.
+        r"""deprecated pending reconstruction
+
+        Create a YAML network policy and add tasks for the container network.
 
         :param request: Request instance for AddNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyYamlDetailRequest`
@@ -396,8 +404,56 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddOrModifyMaliciousConnectionWhiteList(self, request):
+        r"""Add or modify the allowlist for malicious external connections.
+
+        :param request: Request instance for AddOrModifyMaliciousConnectionWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddOrModifyMaliciousConnectionWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddOrModifyMaliciousConnectionWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddOrModifyMaliciousConnectionWhiteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddOrModifyMaliciousConnectionWhiteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddOrModifyVirusWhiteListRule(self, request):
+        r"""This API is used to add or modify Trojan allowlist rules.
+
+        :param request: Request instance for AddOrModifyVirusWhiteListRule.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddOrModifyVirusWhiteListRuleRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddOrModifyVirusWhiteListRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddOrModifyVirusWhiteListRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddOrModifyVirusWhiteListRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckNetworkFirewallPolicyYaml(self, request):
-        r"""This API is used to create a task to check a YAML network policy in the container network.
+        r"""deprecated pending reconstruction
+
+        Create a task of check the YAML network policy for the container network.
 
         :param request: Request instance for CheckNetworkFirewallPolicyYaml.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CheckNetworkFirewallPolicyYamlRequest`
@@ -443,7 +499,9 @@ class TcssClient(AbstractClient):
 
 
     def ConfirmNetworkFirewallPolicy(self, request):
-        r"""This API is used to create a task to confirm a network policy in the container network.
+        r"""deprecated pending reconstruction
+
+        Create a network policy and confirm tasks for the container network.
 
         :param request: Request instance for ConfirmNetworkFirewallPolicy.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ConfirmNetworkFirewallPolicyRequest`
@@ -640,6 +698,29 @@ class TcssClient(AbstractClient):
             body = self.call("CreateCheckComponent", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCheckComponentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateClusterAccess(self, request):
+        r"""Create cluster access.
+
+        :param request: Request instance for CreateClusterAccess.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateClusterAccessRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateClusterAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateClusterAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateClusterAccessResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -926,7 +1007,7 @@ class TcssClient(AbstractClient):
 
 
     def CreateK8sApiAbnormalRuleInfo(self, request):
-        r"""This API is used to create K8sApi abnormal event rules.
+        r"""Create a k8s API exception event RULE. The Action in RuleInfoList only supports RULE_MODE_ALERT (ALERT) and no longer supports RULE_MODE_RELEASE/PASS (allow). The EventID parameter has been removed. To add an event to the allowlist, use the ModifyK8sApiAbnormalWhitelist API.
 
         :param request: Request instance for CreateK8sApiAbnormalRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalRuleInfoRequest`
@@ -949,7 +1030,9 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallClusterRefresh(self, request):
-        r"""This API is used to distribute a refresh task in the container network cluster.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Distribute refresh tasks of clusters for the container network.
 
         :param request: Request instance for CreateNetworkFirewallClusterRefresh.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallClusterRefreshRequest`
@@ -972,7 +1055,9 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallPolicyDiscover(self, request):
-        r"""This API is used to create a task to sync a network policy from the container network cluster.
+        r"""deprecated pending reconstruction
+
+        Create an auto-discovery task according to the container network and cluster network policies.
 
         :param request: Request instance for CreateNetworkFirewallPolicyDiscover.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPolicyDiscoverRequest`
@@ -995,7 +1080,9 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallPublish(self, request):
-        r"""This API is used to create a task to publish a network policy in the container network.
+        r"""deprecated pending reconstruction
+
+        Create a network policy and distribute tasks for the container network.
 
         :param request: Request instance for CreateNetworkFirewallPublish.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPublishRequest`
@@ -1018,7 +1105,9 @@ class TcssClient(AbstractClient):
 
 
     def CreateNetworkFirewallUndoPublish(self, request):
-        r"""This API is used to create a task to revoke a network policy in the container network.
+        r"""deprecated pending reconstruction
+
+        Create a network policy and cancel tasks for the container network.
 
         :param request: Request instance for CreateNetworkFirewallUndoPublish.
         :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallUndoPublishRequest`
@@ -1479,7 +1568,9 @@ class TcssClient(AbstractClient):
 
 
     def DeleteCompliancePolicyItemFromWhitelist(self, request):
-        r"""This API is used to remove the specified check item from the allowlist.
+        r"""Product refactoring and optimization, none of these APIs are called.
+
+        Remove the designated detection item from the allowlist.
 
         :param request: Request instance for DeleteCompliancePolicyItemFromWhitelist.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteCompliancePolicyItemFromWhitelistRequest`
@@ -1594,7 +1685,9 @@ class TcssClient(AbstractClient):
 
 
     def DeleteNetworkFirewallPolicyDetail(self, request):
-        r"""This API is used to create a task to delete a network policy in the container network.
+        r"""deprecated pending reconstruction
+
+        Create a network policy and delete tasks for the container network.
 
         :param request: Request instance for DeleteNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteNetworkFirewallPolicyDetailRequest`
@@ -1607,6 +1700,29 @@ class TcssClient(AbstractClient):
             body = self.call("DeleteNetworkFirewallPolicyDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteNetworkFirewallPolicyDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRaspRules(self, request):
+        r"""Deleting Entries from the Vulnerability Defense Allowlist
+
+        :param request: Request instance for DeleteRaspRules.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteRaspRulesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRaspRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1731,6 +1847,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteVirusWhiteListRule(self, request):
+        r"""This API is used to delete Trojan allowlist rules.
+
+        :param request: Request instance for DeleteVirusWhiteListRule.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteVirusWhiteListRuleRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteVirusWhiteListRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVirusWhiteListRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVirusWhiteListRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeABTestConfig(self, request):
         r"""This API is used to get the current canary configuration of the user.
 
@@ -1823,31 +1962,6 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAbnormalProcessEventsExport(self, request):
-        r"""接口已废弃
-
-        This API is used to query and export the list of abnormal process events at runtime.
-
-        :param request: Request instance for DescribeAbnormalProcessEventsExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventsExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventsExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAbnormalProcessEventsExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAbnormalProcessEventsExportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAbnormalProcessLevelSummary(self, request):
         r"""This API is used to count the number of pending abnormal process events at each severity level.
 
@@ -1908,31 +2022,6 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeAbnormalProcessRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAbnormalProcessRulesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAbnormalProcessRulesExport(self, request):
-        r"""接口已废弃
-
-        This API is used to query and export the list of abnormal process policies at runtime.
-
-        :param request: Request instance for DescribeAbnormalProcessRulesExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRulesExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRulesExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAbnormalProcessRulesExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAbnormalProcessRulesExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2048,31 +2137,6 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeAccessControlRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccessControlRulesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAccessControlRulesExport(self, request):
-        r"""接口已废弃
-
-        This API is used to export the list of access control policies at runtime.
-
-        :param request: Request instance for DescribeAccessControlRulesExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRulesExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRulesExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAccessControlRulesExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAccessControlRulesExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2464,31 +2528,6 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeAssetImageList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAssetImageListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAssetImageListExport(self, request):
-        r"""接口已废弃
-
-        This API is used to export the list of images.
-
-        :param request: Request instance for DescribeAssetImageListExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageListExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageListExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAssetImageListExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAssetImageListExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3694,31 +3733,6 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeEscapeEventsExport(self, request):
-        r"""接口已废弃
-
-        This API is used to export the list of container escape events.
-
-        :param request: Request instance for DescribeEscapeEventsExport.
-        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventsExportRequest`
-        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventsExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeEscapeEventsExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeEscapeEventsExportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeEscapeRuleInfo(self, request):
         r"""This API is used to query the information of a container escape scan rule.
 
@@ -3835,7 +3849,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeExportJobResult(self, request):
-        r"""This API is used to query the result of an export task.
+        r"""Query the progress of the export interface
 
         :param request: Request instance for DescribeExportJobResult.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobResultRequest`
@@ -3963,6 +3977,144 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeImageComponentList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeImageComponentListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyEventDetail(self, request):
+        r"""Query image interception event details.
+
+        :param request: Request instance for DescribeImageDenyEventDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyEventDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyEventDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyEventList(self, request):
+        r"""Query the list of image interception events.
+
+        :param request: Request instance for DescribeImageDenyEventList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyEventList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyEventListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyEventTendency(self, request):
+        r"""Query the trend of image interception events.
+
+        :param request: Request instance for DescribeImageDenyEventTendency.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventTendencyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventTendencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyEventTendency", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyEventTendencyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyRuleDetail(self, request):
+        r"""Query image interception rule details.
+
+        :param request: Request instance for DescribeImageDenyRuleDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyRuleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyRuleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyRuleList(self, request):
+        r"""Query the image interception rule list.
+
+        :param request: Request instance for DescribeImageDenyRuleList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyRuleSummary(self, request):
+        r"""Query image interception rule statistics.
+
+        :param request: Request instance for DescribeImageDenyRuleSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyRuleSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyRuleSummaryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4203,7 +4355,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalRuleList(self, request):
-        r"""This API is used to the K8sApi abnormal request rule list.
+        r"""This API is used to query the list of abnormal request rules for k8sapi. It supports fuzzy search by cluster name (ClusterName) and Cluster ID, with cluster rules (is_all=1) always returned. The response includes newly-added RuleInfoList (sub-rule content), RuleActions (deduplicated execution action list), and the EffectAllCluster field.
 
         :param request: Request instance for DescribeK8sApiAbnormalRuleList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleListRequest`
@@ -4317,8 +4469,56 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMaliciousConnectionBlackList(self, request):
+        r"""Query the malicious external connection blocklist.
+
+        :param request: Request instance for DescribeMaliciousConnectionBlackList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeMaliciousConnectionBlackListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeMaliciousConnectionBlackListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMaliciousConnectionBlackList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMaliciousConnectionBlackListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMaliciousConnectionWhiteList(self, request):
+        r"""Query the allowlist for malicious external connections.
+
+        :param request: Request instance for DescribeMaliciousConnectionWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeMaliciousConnectionWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeMaliciousConnectionWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMaliciousConnectionWhiteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMaliciousConnectionWhiteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNetworkFirewallAuditRecord(self, request):
-        r"""This API is used to query the list of cluster policy audits.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Query the cluster policy audit list.
 
         :param request: Request instance for DescribeNetworkFirewallAuditRecord.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallAuditRecordRequest`
@@ -4341,7 +4541,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallClusterList(self, request):
-        r"""This API is used to query the list of clusters.
+        r"""Query the network firewall cluster policy list.
 
         :param request: Request instance for DescribeNetworkFirewallClusterList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterListRequest`
@@ -4364,7 +4564,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallClusterRefreshStatus(self, request):
-        r"""This API is used to query the progress of the asset query task in the container network.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Query the asset task progress for the container network.
 
         :param request: Request instance for DescribeNetworkFirewallClusterRefreshStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterRefreshStatusRequest`
@@ -4387,7 +4589,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallNamespaceLabelList(self, request):
-        r"""This API is used to query the list of cluster network namespace labels.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Query the cluster network space tag list.
 
         :param request: Request instance for DescribeNetworkFirewallNamespaceLabelList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceLabelListRequest`
@@ -4410,7 +4614,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPodLabelsList(self, request):
-        r"""This API is used to query cluster network Pod labels.
+        r"""deprecated pending reconstruction
+
+        Query the cluster network pod tags.
 
         :param request: Request instance for DescribeNetworkFirewallPodLabelsList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPodLabelsListRequest`
@@ -4433,7 +4639,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyDetail(self, request):
-        r"""This API is used to view the details of a policy in the container network cluster.
+        r"""deprecated pending reconstruction
+
+        View policy details of clusters for the container network.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDetailRequest`
@@ -4456,7 +4664,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyDiscover(self, request):
-        r"""This API is used to query the progress of a network policy sync task in the container network.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Query the auto-discovery task process of the network policy for the network policy.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyDiscover.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDiscoverRequest`
@@ -4479,7 +4689,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyList(self, request):
-        r"""This API is used to query the list of cluster network policies.
+        r"""deprecated pending reconstruction
+
+        Query the cluster network policy list.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyListRequest`
@@ -4502,7 +4714,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyStatus(self, request):
-        r"""This API is used to query the execution status of a network policy in the container network.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Query the network policy execution status for the container network.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyStatus.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyStatusRequest`
@@ -4525,7 +4739,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeNetworkFirewallPolicyYamlDetail(self, request):
-        r"""This API is used to view the details of a YAML network policy in the container network cluster.
+        r"""deprecated pending reconstruction
+
+        View YAML network policy details of clusters for the container network.
 
         :param request: Request instance for DescribeNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyYamlDetailRequest`
@@ -4685,6 +4901,52 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRaspRuleVuls(self, request):
+        r"""Retrieve the list of vulnerabilities in the Vulnerability Defense Allowlist
+
+        :param request: Request instance for DescribeRaspRuleVuls.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRuleVulsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRuleVulsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspRuleVuls", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspRuleVulsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRaspRules(self, request):
+        r"""Query the list of vulnerabilities that can be defensed.
+
+        :param request: Request instance for DescribeRaspRules.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRulesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRaspRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRefreshTask(self, request):
         r"""This API is used to query a refresh task.
 
@@ -4768,6 +5030,52 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeReverseShellEventsExport", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReverseShellEventsExportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReverseShellRegexpWhiteList(self, request):
+        r"""Query the reverse shell regular expression allowlist.
+
+        :param request: Request instance for DescribeReverseShellRegexpWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellRegexpWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellRegexpWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReverseShellRegexpWhiteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReverseShellRegexpWhiteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReverseShellRegexpWhiteListInfo(self, request):
+        r"""Query details of the reverse shell regular expression allowlist.
+
+        :param request: Request instance for DescribeReverseShellRegexpWhiteListInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellRegexpWhiteListInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellRegexpWhiteListInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReverseShellRegexpWhiteListInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReverseShellRegexpWhiteListInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5697,6 +6005,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVirusMonitorConfig(self, request):
+        r"""Query real-time monitoring settings of file scan at runtime.
+
+        :param request: Request instance for DescribeVirusMonitorConfig.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusMonitorConfigRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusMonitorConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusMonitorConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVirusMonitorConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVirusMonitorSetting(self, request):
         r"""This API is used to query the real-time monitoring settings of virus scanning at runtime.
 
@@ -5734,6 +6065,29 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeVirusSampleDownloadUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVirusSampleDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVirusScanConfig(self, request):
+        r"""Query new settings of file scan at runtime.
+
+        :param request: Request instance for DescribeVirusScanConfig.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanConfigRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusScanConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVirusScanConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5849,6 +6203,29 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeVirusTaskList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVirusTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVirusWhiteListRules(self, request):
+        r"""This API is used to query the Trojan allowlist rule list.
+
+        :param request: Request instance for DescribeVirusWhiteListRules.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusWhiteListRulesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusWhiteListRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusWhiteListRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVirusWhiteListRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6663,6 +7040,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDefendStatus(self, request):
+        r"""This API is used to modify the protection status.
+
+        :param request: Request instance for ModifyDefendStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyDefendStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyDefendStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDefendStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDefendStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyEscapeEventStatus(self, request):
         r"""This API is used to change the status of a container escape scan event.
 
@@ -6779,7 +7179,7 @@ class TcssClient(AbstractClient):
 
 
     def ModifyK8sApiAbnormalRuleInfo(self, request):
-        r"""This API is used to modify the information of K8sApi abnormal rules.
+        r"""Modify the exception rule info of k8sapi. The Action in RuleInfoList only supports RULE_MODE_ALERT and no longer supports RULE_MODE_RELEASE/PASS.
 
         :param request: Request instance for ModifyK8sApiAbnormalRuleInfo.
         :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalRuleInfoRequest`
@@ -6824,6 +7224,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRaspRules(self, request):
+        r"""Edit or create a java Memory Trojan allowlist
+
+        :param request: Request instance for ModifyRaspRules.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyRaspRulesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyRaspRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRaspRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRaspRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyReverseShellStatus(self, request):
         r"""This API is used to change the status of a reverse shell event.
 
@@ -6838,6 +7261,29 @@ class TcssClient(AbstractClient):
             body = self.call("ModifyReverseShellStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyReverseShellStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRiskDnsEventStatus(self, request):
+        r"""Edit the malicious request event status.
+
+        :param request: Request instance for ModifyRiskDnsEventStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyRiskDnsEventStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyRiskDnsEventStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRiskDnsEventStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRiskDnsEventStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7491,8 +7937,33 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UninstallClusterContainerSecurity(self, request):
+        r"""Uninstall cluster container security.
+
+        :param request: Request instance for UninstallClusterContainerSecurity.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.UninstallClusterContainerSecurityRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.UninstallClusterContainerSecurityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UninstallClusterContainerSecurity", params, headers=headers)
+            response = json.loads(body)
+            model = models.UninstallClusterContainerSecurityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateAndPublishNetworkFirewallPolicyDetail(self, request):
-        r"""This API is used to create a task to update and publish a network policy in the container network.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Create a network policy and update and distribute tasks for the container network.
 
         :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyDetailRequest`
@@ -7515,7 +7986,9 @@ class TcssClient(AbstractClient):
 
 
     def UpdateAndPublishNetworkFirewallPolicyYamlDetail(self, request):
-        r"""This API is used to create a task to update and publish a YAML network policy in the container network.
+        r"""deprecated pending reconstruction
+
+        Update the YAML network policy and distribute tasks for the container network.
 
         :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest`
@@ -7584,7 +8057,9 @@ class TcssClient(AbstractClient):
 
 
     def UpdateNetworkFirewallPolicyDetail(self, request):
-        r"""This API is used to create a task to update a network policy in the container network.
+        r"""This feature is deprecated pending tripartite reconstruction
+
+        Create a network policy update task for the container network.
 
         :param request: Request instance for UpdateNetworkFirewallPolicyDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyDetailRequest`
@@ -7607,7 +8082,9 @@ class TcssClient(AbstractClient):
 
 
     def UpdateNetworkFirewallPolicyYamlDetail(self, request):
-        r"""This API is used to create a task to update a YAML network policy in the container network.
+        r"""deprecated pending reconstruction
+
+        Update the YAML network policy task for the container network.
 
         :param request: Request instance for UpdateNetworkFirewallPolicyYamlDetail.
         :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyYamlDetailRequest`

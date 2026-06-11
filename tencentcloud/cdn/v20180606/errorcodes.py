@@ -20,6 +20,12 @@ AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 # Failed to update the domain name configuration. Please submit a ticket for troubleshooting.
 FAILEDOPERATION_CDNCONFIGERROR = 'FailedOperation.CdnConfigError'
 
+# 
+FAILEDOPERATION_SSLCERTCANNOTGETORDER = 'FailedOperation.SslCertCannotGetOrder'
+
+# The certificate does not exist.
+FAILEDOPERATION_SSLCERTNOTFOUND = 'FailedOperation.SslCertNotFound'
+
 # Authentication system internal error.
 INTERNALERROR_CAMSYSTEMERROR = 'InternalError.CamSystemError'
 
@@ -209,6 +215,9 @@ INVALIDPARAMETER_CLSINVALIDCONTENT = 'InvalidParameter.ClsInvalidContent'
 # Invalid `Content-Type`.
 INVALIDPARAMETER_CLSINVALIDCONTENTTYPE = 'InvalidParameter.ClsInvalidContentType'
 
+# 
+INVALIDPARAMETER_CLSINVALIDLOGSETID = 'InvalidParameter.ClsInvalidLogsetId'
+
 # Parameter error. Please check and try again.
 INVALIDPARAMETER_CLSINVALIDPARAM = 'InvalidParameter.ClsInvalidParam'
 
@@ -257,6 +266,15 @@ INVALIDPARAMETER_SCDNLOGTASKNOTFOUNDORNOTFAIL = 'InvalidParameter.ScdnLogTaskNot
 # Incorrect time range
 INVALIDPARAMETER_SCDNLOGTASKTIMERANGEINVALID = 'InvalidParameter.ScdnLogTaskTimeRangeInvalid'
 
+# 
+INVALIDPARAMETER_SSLCERTCHAINERROR = 'InvalidParameter.SslCertChainError'
+
+# 
+INVALIDPARAMETER_SSLCERTMATCHERROR = 'InvalidParameter.SslCertMatchError'
+
+# 
+INVALIDPARAMETER_SSLCERTPARSEERROR = 'InvalidParameter.SslCertParseError'
+
 # The number of resource arrays exceeds the upper limit.
 LIMITEXCEEDED_CAMRESOURCEARRAYTOOLONG = 'LimitExceeded.CamResourceArrayTooLong'
 
@@ -287,10 +305,10 @@ LIMITEXCEEDED_CDNCONFIGTOOMANYCACHERULES = 'LimitExceeded.CdnConfigTooManyCacheR
 # Domain name operations are too frequent.
 LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = 'LimitExceeded.CdnHostOpTooOften'
 
-# The number of refreshed URLs exceeds the per-batch submission limit.
+# The number of urls to refresh exceeds the limit per batch submission.
 LIMITEXCEEDED_CDNPURGEEXCEEDBATCHLIMIT = 'LimitExceeded.CdnPurgeExceedBatchLimit'
 
-# The number of refreshed URLs exceeds the daily quota.
+# The number of urls refreshed exceeds the daily limit.
 LIMITEXCEEDED_CDNPURGEEXCEEDDAYLIMIT = 'LimitExceeded.CdnPurgeExceedDayLimit'
 
 # The number of directories to be purged exceeds the limit.
@@ -328,6 +346,9 @@ LIMITEXCEEDED_CLSTOPICEXCEED = 'LimitExceeded.ClsTopicExceed'
 
 # Daily task quota exceeded
 LIMITEXCEEDED_SCDNLOGTASKEXCEEDDAYLIMIT = 'LimitExceeded.ScdnLogTaskExceedDayLimit'
+
+# 
+LIMITEXCEEDED_SSLCERTREQUESTLIMITEXCEEDED = 'LimitExceeded.SslCertRequestLimitExceeded'
 
 # Inconsistent domain name. Please select again or submit a ticket.
 OPERATIONDENIED_SHARECACHEAREADNSNOTMATCH = 'OperationDenied.ShareCacheAreaDnsNotMatch'

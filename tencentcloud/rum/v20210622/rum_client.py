@@ -1536,7 +1536,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeTawInstances(self, request):
-        r"""This API is used to query instance information.
+        r"""Query instance information.
 
         :param request: Request instance for DescribeTawInstances.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeTawInstancesRequest`

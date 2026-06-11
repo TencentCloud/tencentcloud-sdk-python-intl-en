@@ -297,7 +297,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcCustomVoiceResponse:
         """
-        This API is used to create custom voice types for AIGC.
+        This API is used to create custom voice types. Note that calling this API will incur customization fees. See the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#5e5217e8-29fc-467e-ac2d-853648f988b7).
         """
         
         kwargs = {}
@@ -1735,6 +1735,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeAigcFaceInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAigcFaceInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcFaceInfoAsync(
+            self,
+            request: models.DescribeAigcFaceInfoAsyncRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcFaceInfoAsyncResponse:
+        """
+        This API is used to asynchronously fetch AIGC face information. Note that calling this API incurs face recognition fees. Refer to the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#96b3b59a-f9e1-49e9-966a-bedb70a4bf12).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcFaceInfoAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcFaceInfoAsyncResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

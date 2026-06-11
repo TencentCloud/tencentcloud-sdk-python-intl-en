@@ -9470,9 +9470,9 @@ Note: When the device is paid by the tenant and inactive (not selected for month
         :param _LastOnlineTime: Last online time
         :type LastOnlineTime: str
         :param _LicensePayMode: Authorization validity period
-Monthly authorization
+0: Monthly authorization
 1: Permanent license
--Unknown
+-1: Unknown
         :type LicensePayMode: int
         :param _Payer: Payer
 0: Customer payment
@@ -9594,9 +9594,9 @@ Note: When the device is paid by the tenant and inactive (not selected for month
     @property
     def LicensePayMode(self):
         r"""Authorization validity period
-Monthly authorization
+0: Monthly authorization
 1: Permanent license
--Unknown
+-1: Unknown
         :rtype: int
         """
         return self._LicensePayMode

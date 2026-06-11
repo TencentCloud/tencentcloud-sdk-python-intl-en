@@ -31,7 +31,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddAndPublishNetworkFirewallPolicyDetailResponse:
         """
-        This API is used to create a task to add and publish a network policy in the container network.
+        deprecated pending reconstruction
+
+        Create a network policy and add and distribute tasks for the container network.
         """
         
         kwargs = {}
@@ -49,7 +51,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddAndPublishNetworkFirewallPolicyYamlDetailResponse:
         """
-        This API is used to create a task to configure and publish a YAML network policy in the container network.
+        This feature is deprecated pending tripartite reconstruction
+
+        Create a YAML network policy and distribute tasks for the container network.
         """
         
         kwargs = {}
@@ -285,7 +289,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddNetworkFirewallPolicyDetailResponse:
         """
-        This API is used to create a task to add a network policy in the container network.
+        This feature is deprecated pending tripartite reconstruction
+
+        Create a network policy and add tasks for the container network.
         """
         
         kwargs = {}
@@ -303,7 +309,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddNetworkFirewallPolicyYamlDetailResponse:
         """
-        This API is used to create a task to add a YAML network policy in the container network.
+        deprecated pending reconstruction
+
+        Create a YAML network policy and add tasks for the container network.
         """
         
         kwargs = {}
@@ -315,13 +323,51 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddOrModifyMaliciousConnectionWhiteList(
+            self,
+            request: models.AddOrModifyMaliciousConnectionWhiteListRequest,
+            opts: Dict = None,
+    ) -> models.AddOrModifyMaliciousConnectionWhiteListResponse:
+        """
+        Add or modify the allowlist for malicious external connections.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddOrModifyMaliciousConnectionWhiteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddOrModifyMaliciousConnectionWhiteListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddOrModifyVirusWhiteListRule(
+            self,
+            request: models.AddOrModifyVirusWhiteListRuleRequest,
+            opts: Dict = None,
+    ) -> models.AddOrModifyVirusWhiteListRuleResponse:
+        """
+        This API is used to add or modify Trojan allowlist rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddOrModifyVirusWhiteListRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddOrModifyVirusWhiteListRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckNetworkFirewallPolicyYaml(
             self,
             request: models.CheckNetworkFirewallPolicyYamlRequest,
             opts: Dict = None,
     ) -> models.CheckNetworkFirewallPolicyYamlResponse:
         """
-        This API is used to create a task to check a YAML network policy in the container network.
+        deprecated pending reconstruction
+
+        Create a task of check the YAML network policy for the container network.
         """
         
         kwargs = {}
@@ -357,7 +403,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ConfirmNetworkFirewallPolicyResponse:
         """
-        This API is used to create a task to confirm a network policy in the container network.
+        deprecated pending reconstruction
+
+        Create a network policy and confirm tasks for the container network.
         """
         
         kwargs = {}
@@ -508,6 +556,24 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "CreateCheckComponent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateCheckComponentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateClusterAccess(
+            self,
+            request: models.CreateClusterAccessRequest,
+            opts: Dict = None,
+    ) -> models.CreateClusterAccessResponse:
+        """
+        Create cluster access.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateClusterAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateClusterAccessResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -735,7 +801,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateK8sApiAbnormalRuleInfoResponse:
         """
-        This API is used to create K8sApi abnormal event rules.
+        Create a k8s API exception event RULE. The Action in RuleInfoList only supports RULE_MODE_ALERT (ALERT) and no longer supports RULE_MODE_RELEASE/PASS (allow). The EventID parameter has been removed. To add an event to the allowlist, use the ModifyK8sApiAbnormalWhitelist API.
         """
         
         kwargs = {}
@@ -753,7 +819,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateNetworkFirewallClusterRefreshResponse:
         """
-        This API is used to distribute a refresh task in the container network cluster.
+        This feature is deprecated pending tripartite reconstruction
+
+        Distribute refresh tasks of clusters for the container network.
         """
         
         kwargs = {}
@@ -771,7 +839,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateNetworkFirewallPolicyDiscoverResponse:
         """
-        This API is used to create a task to sync a network policy from the container network cluster.
+        deprecated pending reconstruction
+
+        Create an auto-discovery task according to the container network and cluster network policies.
         """
         
         kwargs = {}
@@ -789,7 +859,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateNetworkFirewallPublishResponse:
         """
-        This API is used to create a task to publish a network policy in the container network.
+        deprecated pending reconstruction
+
+        Create a network policy and distribute tasks for the container network.
         """
         
         kwargs = {}
@@ -807,7 +879,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateNetworkFirewallUndoPublishResponse:
         """
-        This API is used to create a task to revoke a network policy in the container network.
+        deprecated pending reconstruction
+
+        Create a network policy and cancel tasks for the container network.
         """
         
         kwargs = {}
@@ -1168,7 +1242,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteCompliancePolicyItemFromWhitelistResponse:
         """
-        This API is used to remove the specified check item from the allowlist.
+        Product refactoring and optimization, none of these APIs are called.
+
+        Remove the designated detection item from the allowlist.
         """
         
         kwargs = {}
@@ -1258,13 +1334,33 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteNetworkFirewallPolicyDetailResponse:
         """
-        This API is used to create a task to delete a network policy in the container network.
+        deprecated pending reconstruction
+
+        Create a network policy and delete tasks for the container network.
         """
         
         kwargs = {}
         kwargs["action"] = "DeleteNetworkFirewallPolicyDetail"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteNetworkFirewallPolicyDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRaspRules(
+            self,
+            request: models.DeleteRaspRulesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRaspRulesResponse:
+        """
+        Deleting Entries from the Vulnerability Defense Allowlist
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRaspRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRaspRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1360,6 +1456,24 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteVirusWhiteListRule(
+            self,
+            request: models.DeleteVirusWhiteListRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVirusWhiteListRuleResponse:
+        """
+        This API is used to delete Trojan allowlist rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVirusWhiteListRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVirusWhiteListRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeABTestConfig(
             self,
             request: models.DescribeABTestConfigRequest,
@@ -1432,26 +1546,6 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeAbnormalProcessEventsExport(
-            self,
-            request: models.DescribeAbnormalProcessEventsExportRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAbnormalProcessEventsExportResponse:
-        """
-        接口已废弃
-
-        This API is used to query and export the list of abnormal process events at runtime.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAbnormalProcessEventsExport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAbnormalProcessEventsExportResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeAbnormalProcessLevelSummary(
             self,
             request: models.DescribeAbnormalProcessLevelSummaryRequest,
@@ -1501,26 +1595,6 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeAbnormalProcessRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAbnormalProcessRulesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeAbnormalProcessRulesExport(
-            self,
-            request: models.DescribeAbnormalProcessRulesExportRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAbnormalProcessRulesExportResponse:
-        """
-        接口已废弃
-
-        This API is used to query and export the list of abnormal process policies at runtime.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAbnormalProcessRulesExport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAbnormalProcessRulesExportResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1611,26 +1685,6 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeAccessControlRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAccessControlRulesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeAccessControlRulesExport(
-            self,
-            request: models.DescribeAccessControlRulesExportRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAccessControlRulesExportResponse:
-        """
-        接口已废弃
-
-        This API is used to export the list of access control policies at runtime.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAccessControlRulesExport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAccessControlRulesExportResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1937,26 +1991,6 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeAssetImageList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAssetImageListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeAssetImageListExport(
-            self,
-            request: models.DescribeAssetImageListExportRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAssetImageListExportResponse:
-        """
-        接口已废弃
-
-        This API is used to export the list of images.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAssetImageListExport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAssetImageListExportResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2898,26 +2932,6 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeEscapeEventsExport(
-            self,
-            request: models.DescribeEscapeEventsExportRequest,
-            opts: Dict = None,
-    ) -> models.DescribeEscapeEventsExportResponse:
-        """
-        接口已废弃
-
-        This API is used to export the list of container escape events.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeEscapeEventsExport"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeEscapeEventsExportResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeEscapeRuleInfo(
             self,
             request: models.DescribeEscapeRuleInfoRequest,
@@ -3014,7 +3028,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeExportJobResultResponse:
         """
-        This API is used to query the result of an export task.
+        Query the progress of the export interface
         """
         
         kwargs = {}
@@ -3111,6 +3125,114 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeImageComponentList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeImageComponentListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyEventDetail(
+            self,
+            request: models.DescribeImageDenyEventDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyEventDetailResponse:
+        """
+        Query image interception event details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyEventDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyEventDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyEventList(
+            self,
+            request: models.DescribeImageDenyEventListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyEventListResponse:
+        """
+        Query the list of image interception events.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyEventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyEventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyEventTendency(
+            self,
+            request: models.DescribeImageDenyEventTendencyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyEventTendencyResponse:
+        """
+        Query the trend of image interception events.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyEventTendency"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyEventTendencyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyRuleDetail(
+            self,
+            request: models.DescribeImageDenyRuleDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyRuleDetailResponse:
+        """
+        Query image interception rule details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyRuleDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyRuleDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyRuleList(
+            self,
+            request: models.DescribeImageDenyRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyRuleListResponse:
+        """
+        Query the image interception rule list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyRuleSummary(
+            self,
+            request: models.DescribeImageDenyRuleSummaryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyRuleSummaryResponse:
+        """
+        Query image interception rule statistics.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyRuleSummary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyRuleSummaryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3302,7 +3424,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeK8sApiAbnormalRuleListResponse:
         """
-        This API is used to the K8sApi abnormal request rule list.
+        This API is used to query the list of abnormal request rules for k8sapi. It supports fuzzy search by cluster name (ClusterName) and Cluster ID, with cluster rules (is_all=1) always returned. The response includes newly-added RuleInfoList (sub-rule content), RuleActions (deduplicated execution action list), and the EffectAllCluster field.
         """
         
         kwargs = {}
@@ -3386,13 +3508,51 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMaliciousConnectionBlackList(
+            self,
+            request: models.DescribeMaliciousConnectionBlackListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMaliciousConnectionBlackListResponse:
+        """
+        Query the malicious external connection blocklist.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMaliciousConnectionBlackList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMaliciousConnectionBlackListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMaliciousConnectionWhiteList(
+            self,
+            request: models.DescribeMaliciousConnectionWhiteListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMaliciousConnectionWhiteListResponse:
+        """
+        Query the allowlist for malicious external connections.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMaliciousConnectionWhiteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMaliciousConnectionWhiteListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNetworkFirewallAuditRecord(
             self,
             request: models.DescribeNetworkFirewallAuditRecordRequest,
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallAuditRecordResponse:
         """
-        This API is used to query the list of cluster policy audits.
+        This feature is deprecated pending tripartite reconstruction
+
+        Query the cluster policy audit list.
         """
         
         kwargs = {}
@@ -3410,7 +3570,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallClusterListResponse:
         """
-        This API is used to query the list of clusters.
+        Query the network firewall cluster policy list.
         """
         
         kwargs = {}
@@ -3428,7 +3588,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallClusterRefreshStatusResponse:
         """
-        This API is used to query the progress of the asset query task in the container network.
+        This feature is deprecated pending tripartite reconstruction
+
+        Query the asset task progress for the container network.
         """
         
         kwargs = {}
@@ -3446,7 +3608,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallNamespaceLabelListResponse:
         """
-        This API is used to query the list of cluster network namespace labels.
+        This feature is deprecated pending tripartite reconstruction
+
+        Query the cluster network space tag list.
         """
         
         kwargs = {}
@@ -3464,7 +3628,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPodLabelsListResponse:
         """
-        This API is used to query cluster network Pod labels.
+        deprecated pending reconstruction
+
+        Query the cluster network pod tags.
         """
         
         kwargs = {}
@@ -3482,7 +3648,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyDetailResponse:
         """
-        This API is used to view the details of a policy in the container network cluster.
+        deprecated pending reconstruction
+
+        View policy details of clusters for the container network.
         """
         
         kwargs = {}
@@ -3500,7 +3668,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyDiscoverResponse:
         """
-        This API is used to query the progress of a network policy sync task in the container network.
+        This feature is deprecated pending tripartite reconstruction
+
+        Query the auto-discovery task process of the network policy for the network policy.
         """
         
         kwargs = {}
@@ -3518,7 +3688,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyListResponse:
         """
-        This API is used to query the list of cluster network policies.
+        deprecated pending reconstruction
+
+        Query the cluster network policy list.
         """
         
         kwargs = {}
@@ -3536,7 +3708,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyStatusResponse:
         """
-        This API is used to query the execution status of a network policy in the container network.
+        This feature is deprecated pending tripartite reconstruction
+
+        Query the network policy execution status for the container network.
         """
         
         kwargs = {}
@@ -3554,7 +3728,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeNetworkFirewallPolicyYamlDetailResponse:
         """
-        This API is used to view the details of a YAML network policy in the container network cluster.
+        deprecated pending reconstruction
+
+        View YAML network policy details of clusters for the container network.
         """
         
         kwargs = {}
@@ -3674,6 +3850,42 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRaspRuleVuls(
+            self,
+            request: models.DescribeRaspRuleVulsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspRuleVulsResponse:
+        """
+        Retrieve the list of vulnerabilities in the Vulnerability Defense Allowlist
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspRuleVuls"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspRuleVulsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspRules(
+            self,
+            request: models.DescribeRaspRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspRulesResponse:
+        """
+        Query the list of vulnerabilities that can be defensed.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRefreshTask(
             self,
             request: models.DescribeRefreshTaskRequest,
@@ -3741,6 +3953,42 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeReverseShellEventsExport"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeReverseShellEventsExportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReverseShellRegexpWhiteList(
+            self,
+            request: models.DescribeReverseShellRegexpWhiteListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReverseShellRegexpWhiteListResponse:
+        """
+        Query the reverse shell regular expression allowlist.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReverseShellRegexpWhiteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReverseShellRegexpWhiteListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReverseShellRegexpWhiteListInfo(
+            self,
+            request: models.DescribeReverseShellRegexpWhiteListInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReverseShellRegexpWhiteListInfoResponse:
+        """
+        Query details of the reverse shell regular expression allowlist.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReverseShellRegexpWhiteListInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReverseShellRegexpWhiteListInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4466,6 +4714,24 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVirusMonitorConfig(
+            self,
+            request: models.DescribeVirusMonitorConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVirusMonitorConfigResponse:
+        """
+        Query real-time monitoring settings of file scan at runtime.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVirusMonitorConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVirusMonitorConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVirusMonitorSetting(
             self,
             request: models.DescribeVirusMonitorSettingRequest,
@@ -4497,6 +4763,24 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeVirusSampleDownloadUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVirusSampleDownloadUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVirusScanConfig(
+            self,
+            request: models.DescribeVirusScanConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVirusScanConfigResponse:
+        """
+        Query new settings of file scan at runtime.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVirusScanConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVirusScanConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4587,6 +4871,24 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeVirusTaskList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVirusTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVirusWhiteListRules(
+            self,
+            request: models.DescribeVirusWhiteListRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVirusWhiteListRulesResponse:
+        """
+        This API is used to query the Trojan allowlist rule list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVirusWhiteListRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVirusWhiteListRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5222,6 +5524,24 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDefendStatus(
+            self,
+            request: models.ModifyDefendStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDefendStatusResponse:
+        """
+        This API is used to modify the protection status.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDefendStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDefendStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyEscapeEventStatus(
             self,
             request: models.ModifyEscapeEventStatusRequest,
@@ -5318,7 +5638,7 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyK8sApiAbnormalRuleInfoResponse:
         """
-        This API is used to modify the information of K8sApi abnormal rules.
+        Modify the exception rule info of k8sapi. The Action in RuleInfoList only supports RULE_MODE_ALERT and no longer supports RULE_MODE_RELEASE/PASS.
         """
         
         kwargs = {}
@@ -5348,6 +5668,24 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyRaspRules(
+            self,
+            request: models.ModifyRaspRulesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRaspRulesResponse:
+        """
+        Edit or create a java Memory Trojan allowlist
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRaspRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRaspRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyReverseShellStatus(
             self,
             request: models.ModifyReverseShellStatusRequest,
@@ -5361,6 +5699,24 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "ModifyReverseShellStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyReverseShellStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRiskDnsEventStatus(
+            self,
+            request: models.ModifyRiskDnsEventStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRiskDnsEventStatusResponse:
+        """
+        Edit the malicious request event status.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRiskDnsEventStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRiskDnsEventStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5870,13 +6226,33 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UninstallClusterContainerSecurity(
+            self,
+            request: models.UninstallClusterContainerSecurityRequest,
+            opts: Dict = None,
+    ) -> models.UninstallClusterContainerSecurityResponse:
+        """
+        Uninstall cluster container security.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UninstallClusterContainerSecurity"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UninstallClusterContainerSecurityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateAndPublishNetworkFirewallPolicyDetail(
             self,
             request: models.UpdateAndPublishNetworkFirewallPolicyDetailRequest,
             opts: Dict = None,
     ) -> models.UpdateAndPublishNetworkFirewallPolicyDetailResponse:
         """
-        This API is used to create a task to update and publish a network policy in the container network.
+        This feature is deprecated pending tripartite reconstruction
+
+        Create a network policy and update and distribute tasks for the container network.
         """
         
         kwargs = {}
@@ -5894,7 +6270,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateAndPublishNetworkFirewallPolicyYamlDetailResponse:
         """
-        This API is used to create a task to update and publish a YAML network policy in the container network.
+        deprecated pending reconstruction
+
+        Update the YAML network policy and distribute tasks for the container network.
         """
         
         kwargs = {}
@@ -5948,7 +6326,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateNetworkFirewallPolicyDetailResponse:
         """
-        This API is used to create a task to update a network policy in the container network.
+        This feature is deprecated pending tripartite reconstruction
+
+        Create a network policy update task for the container network.
         """
         
         kwargs = {}
@@ -5966,7 +6346,9 @@ class TcssClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateNetworkFirewallPolicyYamlDetailResponse:
         """
-        This API is used to create a task to update a YAML network policy in the container network.
+        deprecated pending reconstruction
+
+        Update the YAML network policy task for the container network.
         """
         
         kwargs = {}

@@ -61,6 +61,44 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelRebuildIndexTask(
+            self,
+            request: models.CancelRebuildIndexTaskRequest,
+            opts: Dict = None,
+    ) -> models.CancelRebuildIndexTaskResponse:
+        """
+        This API is used to cancel creating a reindexing task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelRebuildIndexTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelRebuildIndexTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ChatCompletions(
+            self,
+            request: models.ChatCompletionsRequest,
+            opts: Dict = None,
+    ) -> models.ChatCompletionsResponse:
+        """
+        Call the API to initiate a dialogue request.
+        This API supports AI-powered logging features such as intelligently generating retrieval analysis statements.
+        Note: When calling this API via SSE streaming, ensure the request domain name is set to cls.ai.tencentcloudapi.com (configurable as cls.ai.internal.tencentcloudapi.com in a private network environment).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ChatCompletions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ChatCompletionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckFunction(
             self,
             request: models.CheckFunctionRequest,
@@ -115,6 +153,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CommitConsumerOffsets(
+            self,
+            request: models.CommitConsumerOffsetsRequest,
+            opts: Dict = None,
+    ) -> models.CommitConsumerOffsetsResponse:
+        """
+        This API is used to submit a consumption offset.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CommitConsumerOffsets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CommitConsumerOffsetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAlarm(
             self,
             request: models.CreateAlarmRequest,
@@ -139,7 +195,14 @@ class ClsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAlarmNoticeResponse:
         """
-        This API is used to create a notification group.
+        This API is used to create a notification channel group with two configuration modes to choose from.
+        1. Easy mode provides the most basic notification channel function. The following parameters are required:
+        - Type
+        - NoticeReceivers
+        - WebCallbacks
+
+        2. Advanced mode: On the basis of easy mode, it supports setting rules, setting notification channels for different types of alarms, and escalating alarms. The following parameters are required:
+        - NoticeRules
         """
         
         kwargs = {}
@@ -169,6 +232,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCloudProductLogCollection(
+            self,
+            request: models.CreateCloudProductLogCollectionRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudProductLogCollectionResponse:
+        """
+        Cloud product integration uses internal APIs
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudProductLogCollection"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudProductLogCollectionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateConfig(
             self,
             request: models.CreateConfigRequest,
@@ -182,6 +263,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "CreateConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateConsole(
+            self,
+            request: models.CreateConsoleRequest,
+            opts: Dict = None,
+    ) -> models.CreateConsoleResponse:
+        """
+        This API is used to create the DataSight Console
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateConsole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateConsoleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -205,6 +304,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateConsumerGroup(
+            self,
+            request: models.CreateConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateConsumerGroupResponse:
+        """
+        This API is used to check the heartbeat of a consumer group.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCosRecharge(
             self,
             request: models.CreateCosRechargeRequest,
@@ -218,6 +335,42 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "CreateCosRecharge"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateCosRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDashboard(
+            self,
+            request: models.CreateDashboardRequest,
+            opts: Dict = None,
+    ) -> models.CreateDashboardResponse:
+        """
+        This API is used to create a dashboard.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDashboard"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDashboardResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDashboardSubscribe(
+            self,
+            request: models.CreateDashboardSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.CreateDashboardSubscribeResponse:
+        """
+        This API is used to create a dashboard subscription.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDashboardSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDashboardSubscribeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -259,19 +412,73 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDlcDeliver(
+            self,
+            request: models.CreateDlcDeliverRequest,
+            opts: Dict = None,
+    ) -> models.CreateDlcDeliverResponse:
+        """
+        Create a DLC delivery task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDlcDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDlcDeliverResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateEsRecharge(
+            self,
+            request: models.CreateEsRechargeRequest,
+            opts: Dict = None,
+    ) -> models.CreateEsRechargeResponse:
+        """
+        This API is used to create an es import configuration
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEsRecharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEsRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateExport(
             self,
             request: models.CreateExportRequest,
             opts: Dict = None,
     ) -> models.CreateExportResponse:
         """
-        This API is used to create a download task. To get the returned download address, call DescribeExports to view the task list. The CosPath parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1
+        This API only creates download tasks. The download address returned by the task can be obtained by user invocation of [DescribeExports](https://www.tencentcloud.com/document/product/614/56449?from_cn_redirect=1) to view task list, which includes the CosPath parameter for the download address.
         """
         
         kwargs = {}
         kwargs["action"] = "CreateExport"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateExportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateHostMetricConfig(
+            self,
+            request: models.CreateHostMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateHostMetricConfigResponse:
+        """
+        This API is used to create host metric collection configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateHostMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateHostMetricConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -349,6 +556,138 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMetricConfig(
+            self,
+            request: models.CreateMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetricConfigResponse:
+        """
+        This API is used to create metric collection configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetricConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateMetricSubscribe(
+            self,
+            request: models.CreateMetricSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetricSubscribeResponse:
+        """
+        This API is used to create metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetricSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetricSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateNetworkApplication(
+            self,
+            request: models.CreateNetworkApplicationRequest,
+            opts: Dict = None,
+    ) -> models.CreateNetworkApplicationResponse:
+        """
+        This API is used to create a network application.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateNetworkApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateNetworkApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateNoticeContent(
+            self,
+            request: models.CreateNoticeContentRequest,
+            opts: Dict = None,
+    ) -> models.CreateNoticeContentResponse:
+        """
+        This API is used to create notification content.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateNoticeContent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateNoticeContentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRebuildIndexTask(
+            self,
+            request: models.CreateRebuildIndexTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRebuildIndexTaskResponse:
+        """
+        This API is used to creates rebuild index tasks.
+        Note:
+        -A single log topic allows only one index reconstruction task at a time and can have up to 10 rebuild index task records. Delete task records that are no longer needed before creating an index task.
+        -Logs within the same time range only allow rebuilding indexes once. Delete previous task records before rebuilding again.
+        -Deleting a rebuild index task record restores the index data before rebuilding an index.
+        -The log write traffic of the selected time range cannot exceed 5TB.
+        -The index rebuilding time range is subject to the log time. When the log uploading time has a deviation exceeding one hour from the index rebuilding time range (for example, reporting a new log at 16:00 for 02:00 to CLS and rebuilding the log index for 00:00–12:00), the logs will not be rebuilt and cannot be retrieved subsequently. When reporting a new log to the reconstructed log time range, it will not be rebuilt and cannot be retrieved subsequently.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRebuildIndexTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRebuildIndexTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRecordingRuleTask(
+            self,
+            request: models.CreateRecordingRuleTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRecordingRuleTaskResponse:
+        """
+        Creating a Metric Pre-Aggregation Task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRecordingRuleTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRecordingRuleTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRecordingRuleYamlTask(
+            self,
+            request: models.CreateRecordingRuleYamlTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRecordingRuleYamlTaskResponse:
+        """
+        Creating a Metric Pre-Aggregation Task Through a YAML File
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRecordingRuleYamlTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRecordingRuleYamlTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateScheduledSql(
             self,
             request: models.CreateScheduledSqlRequest,
@@ -362,6 +701,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "CreateScheduledSql"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateScheduledSqlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSearchView(
+            self,
+            request: models.CreateSearchViewRequest,
+            opts: Dict = None,
+    ) -> models.CreateSearchViewResponse:
+        """
+        Create a query view
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSearchView"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSearchViewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -385,19 +742,55 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSplunkDeliver(
+            self,
+            request: models.CreateSplunkDeliverRequest,
+            opts: Dict = None,
+    ) -> models.CreateSplunkDeliverResponse:
+        """
+        Create a Splunk delivery task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSplunkDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSplunkDeliverResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTopic(
             self,
             request: models.CreateTopicRequest,
             opts: Dict = None,
     ) -> models.CreateTopicResponse:
         """
-        This API is used to create a log topic.
+        This API is used to create logs or metric topics.
         """
         
         kwargs = {}
         kwargs["action"] = "CreateTopic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateWebCallback(
+            self,
+            request: models.CreateWebCallbackRequest,
+            opts: Dict = None,
+    ) -> models.CreateWebCallbackResponse:
+        """
+        This API is used to create alarm channel callback configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWebCallback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWebCallbackResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -445,13 +838,31 @@ class ClsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteAlarmShieldResponse:
         """
-        This API is used to delete an alarm blocking rule.
+        This API is used to delete an alarm blocking rule. When the alarm blocking rule is active or invalid, it cannot be deleted.
         """
         
         kwargs = {}
         kwargs["action"] = "DeleteAlarmShield"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAlarmShieldResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudProductLogCollection(
+            self,
+            request: models.DeleteCloudProductLogCollectionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudProductLogCollectionResponse:
+        """
+        Cloud product integration uses internal APIs
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudProductLogCollection"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudProductLogCollectionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -493,19 +904,109 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteConsole(
+            self,
+            request: models.DeleteConsoleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteConsoleResponse:
+        """
+        This API is used to delete the DataSight Console
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteConsole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteConsoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteConsumer(
             self,
             request: models.DeleteConsumerRequest,
             opts: Dict = None,
     ) -> models.DeleteConsumerResponse:
         """
-        This API is used to delete a shipping task.
+        Deleting a CKafka Delivery Task
         """
         
         kwargs = {}
         kwargs["action"] = "DeleteConsumer"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteConsumerGroup(
+            self,
+            request: models.DeleteConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteConsumerGroupResponse:
+        """
+        Delete consumer groups.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCosRecharge(
+            self,
+            request: models.DeleteCosRechargeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCosRechargeResponse:
+        """
+        This API is used to delete a cos Import Task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCosRecharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCosRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDashboard(
+            self,
+            request: models.DeleteDashboardRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDashboardResponse:
+        """
+        This API is used to delete dashboards.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDashboard"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDashboardResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDashboardSubscribe(
+            self,
+            request: models.DeleteDashboardSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDashboardSubscribeResponse:
+        """
+        This API is used to delete dashboard subscriptions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDashboardSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDashboardSubscribeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -529,6 +1030,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDlcDeliver(
+            self,
+            request: models.DeleteDlcDeliverRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDlcDeliverResponse:
+        """
+        Delete a DLC delivery task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDlcDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDlcDeliverResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteEsRecharge(
+            self,
+            request: models.DeleteEsRechargeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteEsRechargeResponse:
+        """
+        Delete es import configuration
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteEsRecharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteEsRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteExport(
             self,
             request: models.DeleteExportRequest,
@@ -542,6 +1079,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteExport"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteExportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteHostMetricConfig(
+            self,
+            request: models.DeleteHostMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteHostMetricConfigResponse:
+        """
+        Delete host metric collection configuration
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteHostMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteHostMetricConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -637,6 +1192,114 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteMetricConfig(
+            self,
+            request: models.DeleteMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMetricConfigResponse:
+        """
+        This API is used to delete metric collection configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMetricConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteMetricSubscribe(
+            self,
+            request: models.DeleteMetricSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMetricSubscribeResponse:
+        """
+        This API is used to delete metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMetricSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMetricSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteNetworkApplication(
+            self,
+            request: models.DeleteNetworkApplicationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteNetworkApplicationResponse:
+        """
+        Delete a web application
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteNetworkApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteNetworkApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteNoticeContent(
+            self,
+            request: models.DeleteNoticeContentRequest,
+            opts: Dict = None,
+    ) -> models.DeleteNoticeContentResponse:
+        """
+        This API is used to delete notification content configuration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteNoticeContent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteNoticeContentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRecordingRuleTask(
+            self,
+            request: models.DeleteRecordingRuleTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRecordingRuleTaskResponse:
+        """
+        This API is used to delete a pre-aggregation analysis task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRecordingRuleTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRecordingRuleTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRecordingRuleYamlTask(
+            self,
+            request: models.DeleteRecordingRuleYamlTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRecordingRuleYamlTaskResponse:
+        """
+        This API is used to delete the pre-aggregation task in yaml.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRecordingRuleYamlTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRecordingRuleYamlTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteScheduledSql(
             self,
             request: models.DeleteScheduledSqlRequest,
@@ -650,6 +1313,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteScheduledSql"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteScheduledSqlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSearchView(
+            self,
+            request: models.DeleteSearchViewRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSearchViewResponse:
+        """
+        This API is used to delete a query view.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSearchView"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSearchViewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -673,19 +1354,55 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteSplunkDeliver(
+            self,
+            request: models.DeleteSplunkDeliverRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSplunkDeliverResponse:
+        """
+        Delete a Splunk delivery task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSplunkDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSplunkDeliverResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteTopic(
             self,
             request: models.DeleteTopicRequest,
             opts: Dict = None,
     ) -> models.DeleteTopicResponse:
         """
-        This API is used to delete a log topic.
+        This API is used to delete logs or metric topics.
         """
         
         kwargs = {}
         kwargs["action"] = "DeleteTopic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteWebCallback(
+            self,
+            request: models.DeleteWebCallbackRequest,
+            opts: Dict = None,
+    ) -> models.DeleteWebCallbackResponse:
+        """
+        This API is used to delete alarm channel callback configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteWebCallback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteWebCallbackResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -763,6 +1480,60 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudProductLogTasks(
+            self,
+            request: models.DescribeCloudProductLogTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudProductLogTasksResponse:
+        """
+        Cloud product integration uses relevant APIs
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudProductLogTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudProductLogTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterBaseMetricConfigs(
+            self,
+            request: models.DescribeClusterBaseMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterBaseMetricConfigsResponse:
+        """
+        This API is used to obtain metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterBaseMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterBaseMetricConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterMetricConfigs(
+            self,
+            request: models.DescribeClusterMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterMetricConfigsResponse:
+        """
+        This API is used to obtain metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterMetricConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeConfigMachineGroups(
             self,
             request: models.DescribeConfigMachineGroupsRequest,
@@ -799,6 +1570,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeConsoles(
+            self,
+            request: models.DescribeConsolesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsolesResponse:
+        """
+        Query the DataSight console instance list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeConsumer(
             self,
             request: models.DescribeConsumerRequest,
@@ -812,6 +1601,78 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeConsumer"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumerGroups(
+            self,
+            request: models.DescribeConsumerGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerGroupsResponse:
+        """
+        This API is used to obtain the consumer group list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumerOffsets(
+            self,
+            request: models.DescribeConsumerOffsetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerOffsetsResponse:
+        """
+        Obtaining the Consumer Group Point Information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerOffsets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerOffsetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumerPreview(
+            self,
+            request: models.DescribeConsumerPreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerPreviewResponse:
+        """
+        This API is used to preview Kafka shipping data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerPreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerPreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumers(
+            self,
+            request: models.DescribeConsumersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumersResponse:
+        """
+        This API is used to obtain the shipping rule information list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -835,6 +1696,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDashboardSubscribes(
+            self,
+            request: models.DescribeDashboardSubscribesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDashboardSubscribesResponse:
+        """
+        This API is used to obtain the dashboard subscription list, and supports paging.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDashboardSubscribes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDashboardSubscribesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataTransformInfo(
             self,
             request: models.DescribeDataTransformInfoRequest,
@@ -853,6 +1732,60 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDlcDelivers(
+            self,
+            request: models.DescribeDlcDeliversRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDlcDeliversResponse:
+        """
+        This API is used to search alarm channel callback configuration lists.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDlcDelivers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDlcDeliversResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEsRechargePreview(
+            self,
+            request: models.DescribeEsRechargePreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEsRechargePreviewResponse:
+        """
+        Import Preview
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEsRechargePreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEsRechargePreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEsRecharges(
+            self,
+            request: models.DescribeEsRechargesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEsRechargesResponse:
+        """
+        Retrieve the es import configuration
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEsRecharges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEsRechargesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeExports(
             self,
             request: models.DescribeExportsRequest,
@@ -866,6 +1799,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeExports"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeExportsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostMetricConfigs(
+            self,
+            request: models.DescribeHostMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostMetricConfigsResponse:
+        """
+        This API is used to obtain metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostMetricConfigsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -902,6 +1853,78 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeKafkaConsumer"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeKafkaConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKafkaConsumerGroupDetail(
+            self,
+            request: models.DescribeKafkaConsumerGroupDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKafkaConsumerGroupDetailResponse:
+        """
+        Retrieve Kafka protocol consumption group details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKafkaConsumerGroupDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKafkaConsumerGroupDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKafkaConsumerGroupList(
+            self,
+            request: models.DescribeKafkaConsumerGroupListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKafkaConsumerGroupListResponse:
+        """
+        Retrieve the information list of Kafka protocol consumption groups
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKafkaConsumerGroupList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKafkaConsumerGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKafkaConsumerPreview(
+            self,
+            request: models.DescribeKafkaConsumerPreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKafkaConsumerPreviewResponse:
+        """
+        This API is used to preview the Kafka consumption.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKafkaConsumerPreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKafkaConsumerPreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKafkaConsumerTopics(
+            self,
+            request: models.DescribeKafkaConsumerTopicsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKafkaConsumerTopicsResponse:
+        """
+        This API is used to obtain the topic information list of Kafka consumption.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKafkaConsumerTopics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKafkaConsumerTopicsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1033,19 +2056,181 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMetricCorrectDimension(
+            self,
+            request: models.DescribeMetricCorrectDimensionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMetricCorrectDimensionResponse:
+        """
+        This API is used to obtain metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMetricCorrectDimension"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMetricCorrectDimensionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMetricSubscribePreview(
+            self,
+            request: models.DescribeMetricSubscribePreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMetricSubscribePreviewResponse:
+        """
+        This API is used to create metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMetricSubscribePreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMetricSubscribePreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMetricSubscribes(
+            self,
+            request: models.DescribeMetricSubscribesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMetricSubscribesResponse:
+        """
+        This API is used to obtain metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMetricSubscribes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMetricSubscribesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNetworkApplicationDetail(
+            self,
+            request: models.DescribeNetworkApplicationDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNetworkApplicationDetailResponse:
+        """
+        Retrieve web application details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNetworkApplicationDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNetworkApplicationDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNetworkApplications(
+            self,
+            request: models.DescribeNetworkApplicationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNetworkApplicationsResponse:
+        """
+        Retrieve the network application list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNetworkApplications"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNetworkApplicationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNoticeContents(
+            self,
+            request: models.DescribeNoticeContentsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNoticeContentsResponse:
+        """
+        This API is used to obtain the notification content list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNoticeContents"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNoticeContentsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePartitions(
             self,
             request: models.DescribePartitionsRequest,
             opts: Dict = None,
     ) -> models.DescribePartitionsResponse:
         """
-        This API is used to get the list of topic partitions.
+        This API is deprecated. If needed, please use the DescribeTopics API to get the number of partitions.
         """
         
         kwargs = {}
         kwargs["action"] = "DescribePartitions"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePartitionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRebuildIndexTasks(
+            self,
+            request: models.DescribeRebuildIndexTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRebuildIndexTasksResponse:
+        """
+        This API is used to obtain the list of rebuild index tasks.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRebuildIndexTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRebuildIndexTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRecordingRuleTask(
+            self,
+            request: models.DescribeRecordingRuleTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRecordingRuleTaskResponse:
+        """
+        This API is used to retrieve the pre-aggregation task list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRecordingRuleTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRecordingRuleTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRecordingRuleYamlTask(
+            self,
+            request: models.DescribeRecordingRuleYamlTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRecordingRuleYamlTaskResponse:
+        """
+        This API is used to retrieve the pre-aggregation task list in yaml.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRecordingRuleYamlTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRecordingRuleYamlTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1064,6 +2249,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeScheduledSqlInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeScheduledSqlInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSearchViews(
+            self,
+            request: models.DescribeSearchViewsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSearchViewsResponse:
+        """
+        Query view list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSearchViews"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSearchViewsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1105,19 +2308,127 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSplunkDelivers(
+            self,
+            request: models.DescribeSplunkDeliversRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSplunkDeliversResponse:
+        """
+        Retrieve the Splunk delivery task list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSplunkDelivers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSplunkDeliversResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSplunkPreview(
+            self,
+            request: models.DescribeSplunkPreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSplunkPreviewResponse:
+        """
+        splunk delivery task preview
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSplunkPreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSplunkPreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTopicBaseMetricConfigs(
+            self,
+            request: models.DescribeTopicBaseMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopicBaseMetricConfigsResponse:
+        """
+        This API is used to obtain metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopicBaseMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopicBaseMetricConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTopicMetricConfigs(
+            self,
+            request: models.DescribeTopicMetricConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopicMetricConfigsResponse:
+        """
+        This API is used to obtain metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopicMetricConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopicMetricConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTopics(
             self,
             request: models.DescribeTopicsRequest,
             opts: Dict = None,
     ) -> models.DescribeTopicsResponse:
         """
-        This API is used to get the list of log topics and supports pagination.
+        This API is used to obtain logs or metric topic lists and supports pagination.
         """
         
         kwargs = {}
         kwargs["action"] = "DescribeTopics"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTopicsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWebCallbacks(
+            self,
+            request: models.DescribeWebCallbacksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWebCallbacksResponse:
+        """
+        This API is used to search alarm channel callback configuration lists.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWebCallbacks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWebCallbacksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EstimateRebuildIndexTask(
+            self,
+            request: models.EstimateRebuildIndexTaskRequest,
+            opts: Dict = None,
+    ) -> models.EstimateRebuildIndexTaskResponse:
+        """
+        This API is used to estimate rebuild index tasks.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EstimateRebuildIndexTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EstimateRebuildIndexTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1141,13 +2452,50 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetClsService(
+            self,
+            request: models.GetClsServiceRequest,
+            opts: Dict = None,
+    ) -> models.GetClsServiceResponse:
+        """
+        This API is used to check whether CLS is enabled.
+        This API is used to fill in any region for Region, recommend using Guangzhou (ap-guangzhou).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetClsService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetClsServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetMetricLabelValues(
+            self,
+            request: models.GetMetricLabelValuesRequest,
+            opts: Dict = None,
+    ) -> models.GetMetricLabelValuesResponse:
+        """
+        This API is used to obtain the list of time series label values.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetMetricLabelValues"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetMetricLabelValuesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def MergePartition(
             self,
             request: models.MergePartitionRequest,
             opts: Dict = None,
     ) -> models.MergePartitionResponse:
         """
-        This API is used to merge a topic partition in read/write state. During merge, a topic partition ID can be specified, and CLS will automatically merge the partition adjacent to the right of the range.
+        This API is deprecated. If needed, please use the ModifyTopic API to change the number of partitions.
         """
         
         kwargs = {}
@@ -1201,13 +2549,31 @@ class ClsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAlarmShieldResponse:
         """
-        This API is used to modify alarm blocking rules.
+        This API is used to modify alarm blocking rules. When the alarm blocking rule is invalid, it cannot be modified.
         """
         
         kwargs = {}
         kwargs["action"] = "ModifyAlarmShield"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAlarmShieldResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCloudProductLogCollection(
+            self,
+            request: models.ModifyCloudProductLogCollectionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudProductLogCollectionResponse:
+        """
+        Cloud product integration uses internal APIs
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudProductLogCollection"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudProductLogCollectionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1231,6 +2597,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyConsole(
+            self,
+            request: models.ModifyConsoleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyConsoleResponse:
+        """
+        This API is used to edit the DataSight Console
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyConsole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyConsoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyConsumer(
             self,
             request: models.ModifyConsumerRequest,
@@ -1244,6 +2628,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyConsumer"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyConsumerGroup(
+            self,
+            request: models.ModifyConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyConsumerGroupResponse:
+        """
+        This API is used to update the consumer group information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyConsumerGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1267,6 +2669,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDashboard(
+            self,
+            request: models.ModifyDashboardRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDashboardResponse:
+        """
+        This API is used to modify the dashboard.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDashboard"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDashboardResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDashboardSubscribe(
+            self,
+            request: models.ModifyDashboardSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDashboardSubscribeResponse:
+        """
+        This API is used to modify dashboard subscriptions.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDashboardSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDashboardSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDataTransform(
             self,
             request: models.ModifyDataTransformRequest,
@@ -1280,6 +2718,60 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyDataTransform"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDataTransformResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDlcDeliver(
+            self,
+            request: models.ModifyDlcDeliverRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDlcDeliverResponse:
+        """
+        Modify a DLC delivery task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDlcDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDlcDeliverResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyEsRecharge(
+            self,
+            request: models.ModifyEsRechargeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEsRechargeResponse:
+        """
+        Modify es import configuration
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEsRecharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEsRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyHostMetricConfig(
+            self,
+            request: models.ModifyHostMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyHostMetricConfigResponse:
+        """
+        Modify host metric collection configuration
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyHostMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyHostMetricConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1316,6 +2808,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyKafkaConsumer"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyKafkaConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyKafkaConsumerGroupOffset(
+            self,
+            request: models.ModifyKafkaConsumerGroupOffsetRequest,
+            opts: Dict = None,
+    ) -> models.ModifyKafkaConsumerGroupOffsetResponse:
+        """
+        This API is used to modify Kafka protocol consumption group offsets.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyKafkaConsumerGroupOffset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyKafkaConsumerGroupOffsetResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1363,13 +2873,122 @@ class ClsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyMachineGroupResponse:
         """
-        This API is used to modify a machine group.
+        Modify machine group.
+        Note: Modifying the interface will directly overwrite historical data and change it to valid input parameters this time. Please be cautious when calling this API.
         """
         
         kwargs = {}
         kwargs["action"] = "ModifyMachineGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyMachineGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyMetricConfig(
+            self,
+            request: models.ModifyMetricConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMetricConfigResponse:
+        """
+        This API is used to create metric collection configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMetricConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMetricConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyMetricSubscribe(
+            self,
+            request: models.ModifyMetricSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMetricSubscribeResponse:
+        """
+        This API is used to modify metric subscription configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMetricSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMetricSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyNetworkApplication(
+            self,
+            request: models.ModifyNetworkApplicationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNetworkApplicationResponse:
+        """
+        Modify a web application
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNetworkApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNetworkApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyNoticeContent(
+            self,
+            request: models.ModifyNoticeContentRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNoticeContentResponse:
+        """
+        This API is used to modify notification content configuration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNoticeContent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNoticeContentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRecordingRuleTask(
+            self,
+            request: models.ModifyRecordingRuleTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRecordingRuleTaskResponse:
+        """
+        This API is used to modify a scheduled pre-aggregation task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRecordingRuleTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRecordingRuleTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRecordingRuleYamlTask(
+            self,
+            request: models.ModifyRecordingRuleYamlTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRecordingRuleYamlTaskResponse:
+        """
+        Modifying a Metric Pre-Aggregation Task Through a YAML File
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRecordingRuleYamlTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRecordingRuleYamlTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1393,6 +3012,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifySearchView(
+            self,
+            request: models.ModifySearchViewRequest,
+            opts: Dict = None,
+    ) -> models.ModifySearchViewResponse:
+        """
+        This API is used to modify a query view.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySearchView"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySearchViewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyShipper(
             self,
             request: models.ModifyShipperRequest,
@@ -1411,19 +3048,92 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifySplunkDeliver(
+            self,
+            request: models.ModifySplunkDeliverRequest,
+            opts: Dict = None,
+    ) -> models.ModifySplunkDeliverResponse:
+        """
+        Modify information related to splunk delivery task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySplunkDeliver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySplunkDeliverResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyTopic(
             self,
             request: models.ModifyTopicRequest,
             opts: Dict = None,
     ) -> models.ModifyTopicResponse:
         """
-        This API is used to modify a log topic.
+        This API is used to modify logs or metric topics.
         """
         
         kwargs = {}
         kwargs["action"] = "ModifyTopic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyWebCallback(
+            self,
+            request: models.ModifyWebCallbackRequest,
+            opts: Dict = None,
+    ) -> models.ModifyWebCallbackResponse:
+        """
+        This API is used to modify alarm channel callback configurations.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyWebCallback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyWebCallbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenClawService(
+            self,
+            request: models.OpenClawServiceRequest,
+            opts: Dict = None,
+    ) -> models.OpenClawServiceResponse:
+        """
+        This API is used to create resources and indexes dependent on OpenClaw.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenClawService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenClawServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenClsService(
+            self,
+            request: models.OpenClsServiceRequest,
+            opts: Dict = None,
+    ) -> models.OpenClsServiceResponse:
+        """
+        Enable logging
+        This API is used to enable CLS in all regions by filling any region for Region, recommend using Guangzhou (ap-guangzhou).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenClsService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenClsServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1471,7 +3181,8 @@ class ClsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryMetricResponse:
         """
-        This API is used to query the latest metric value at a specified time.
+        Query the latest metric value at a specified time.
+        If there is no metric data in the 5 minutes before that moment, there will be no query result.
         """
         
         kwargs = {}
@@ -1537,14 +3248,33 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SearchDashboardSubscribe(
+            self,
+            request: models.SearchDashboardSubscribeRequest,
+            opts: Dict = None,
+    ) -> models.SearchDashboardSubscribeResponse:
+        """
+        This API is used to preview the dashboard subscription.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchDashboardSubscribe"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchDashboardSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SearchLog(
             self,
             request: models.SearchLogRequest,
             opts: Dict = None,
     ) -> models.SearchLogResponse:
         """
-        This API is used to search and analyze logs. When using this API, please note the following:1. Besides being subject to the default API request frequency limit by this API, for a single log topic, the concurrency number cannot exceed 15. 2. For search syntax, it's recommended to use the CQL syntax rule. Please use the SyntaxRule parameter and set its value to 1.
-        3. The maximum value of API's response data packet is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).
+        This API is used to retrieve and analyze logs. Please note the following matters when using this API.
+        1. Besides being subject to the default API request rate limit, for a single log topic, the number of concurrent queries cannot exceed 15.
+        2. The API's return data packet maximum is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).
         """
         
         kwargs = {}
@@ -1556,13 +3286,31 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SendConsumerHeartbeat(
+            self,
+            request: models.SendConsumerHeartbeatRequest,
+            opts: Dict = None,
+    ) -> models.SendConsumerHeartbeatResponse:
+        """
+        This API is used to check the heartbeat of a consumer group.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SendConsumerHeartbeat"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SendConsumerHeartbeatResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SplitPartition(
             self,
             request: models.SplitPartitionRequest,
             opts: Dict = None,
     ) -> models.SplitPartitionResponse:
         """
-        This API is used to split a topic partition.
+        This API is deprecated. If needed, please use the ModifyTopic API to change the number of partitions.
         """
         
         kwargs = {}
@@ -1581,81 +3329,69 @@ class ClsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UploadLogResponse:
         """
-        ## Note
-        To ensure log data reliability and help you use CLS more efficiently, we recommend you use the optimized API to upload logs. For more information about the API, see [Uploading Log via API](https://intl.cloud.tencent.com/document/product/614/16873?from_cn_redirect=1).
+        ## Notification
+        To ensure the reliability of your log data and use the log service more efficiently, we recommend that you use the CLS-optimized API to upload structured logs (https://www.tencentcloud.com/document/product/614/16873?from_cn_redirect=1).
 
-        For the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Uploading Log via SDK](https://intl.cloud.tencent.com/document/product/614/67157?from_cn_redirect=1).
+        Meanwhile, we have specially optimized and customized SDKs in multiple languages for this API for you to choose from. The SDK provides unified async sending, resource control, automatic retry, graceful shutdown, perception reporting, and other features to improve the log reporting function. For details, refer to [SDK Collection](https://www.tencentcloud.com/document/product/614/67157?from_cn_redirect=1).
 
-        `UploadLog` allows you to synchronously upload log data. If you still want to continue to use this API instead of the optimized one, read this document.
+        Meanwhile, the log upload API also supports synchronous log data upload. If you select to continue using this API, refer to the following text.
 
         ## Feature Description
 
-        This API is used to write logs to a specified log topic.
+        This API is used to write logs to the designated log topic.
 
-        CLS provides the following two modes:
+        #### Input parameter (pb binary stream, located in body)
 
-        #### Load balancing mode
-
-        In this mode, logs will be automatically written to a target partition among all readable/writable partitions under the current log topic based on the load balancing principle. This mode is suitable for scenarios where sequential consumption is not needed.
-
-        #### Hash routing mode
-
-        In this mode, data will be written to a target partition that meets the range requirements based on the carried hash value (`X-CLS-HashKey`). For example, a log source can be bound to a topic partition through `HashKey`, strictly guaranteeing the sequence of the data written to and consumed in this partition.
-
-
-
-        #### Input parameters (pb binary streams in `body`)
-
-        | Parameter       | Type    | Location | Required | Description                                                         |
+        | Field name | Data type | Location | Must | Description |
         | ------------ | ------- | ---- | ---- | ------------------------------------------------------------ |
-        | logGroupList | message | pb   | Yes   | The `logGroup` list, which describes the encapsulated log groups. We recommend you enter up to five `logGroup` values. |
+        | logGroupList | message | pb   | Yes | logGroup list, encapsulated content of the log group list. It is advisable not to exceed 5 logGroups. |
 
-        `LogGroup` description:
+        Group description:
 
-        | Parameter      | Required | Description                                                         |
+        | Field name | Required or optional | Description |
         | ----------- | -------- | ------------------------------------------------------------ |
-        | logs        | Yes       | Log array consisting of multiple `Log` values. The `Log` indicates a log, and a `LogGroup` can contain up to 10,000 `Log` values. |
-        | contextFlow | No       | Unique `LogGroup` ID, which should be passed in if the context feature needs to be used. Format: "{Context ID}-{LogGroupID}". <br>Context ID: Uniquely identifies the context (a series of log files that are continuously scrolling or a series of logs that need to be sequenced), which is a 64-bit integer hex string. <br>LogGroupID: A 64-bit integer hex string that continuously increases, such as `102700A66102516A-59F59`.                        |
-        | filename    | No       | Log filename                                                   |
-        | source      | No       | Log source, which is generally the machine IP                           |
-        | logTags     | No       | List of log tags                                               |
+        | logs        | is       | a log array, which means a set of multiple logs. One Log represents one log, and the number of logs in one LogGroup cannot exceed 10000 |
+        | contextFlow | No | The unique ID of LogGroup, which must be imported when using context features. Format: "{context ID}-{LogGroupID}".<br>Context ID: A unique identifier for a context (a series of consecutively scrolled log files or a sequence of logs requiring order preservation), a 64-bit integer string in base 16.<br>LogGroupID: A consecutively incremental integer string in base 16. Example: "102700A66102516A-59F59".
+        | filename    | No       | Log file name |
+        | source      | No       | Log source, using machine IP as a label in general use       |
+        | logTags     | No       | Log tag list                                               |
 
-        `Log` description:
+        Log description:
 
-        | Parameter   | Required | Description                                                         |
+        | field name | Required or optional | Description |
         | -------- | -------- | ------------------------------------------------------------ |
-        | time     | Yes       | Unix timestamp of log time in seconds or milliseconds (recommended)      |
-        | contents | No       | Log content in key-value format. A log can contain multiple key-value pairs. |
+        | time     | is       | log time (Unix timestamp), supports second, millisecond, microsecond, milliseconds is recommended |
+        | contents | No | Key-value formatted log content, representing multiple key-value composites in a log |
 
-        `Content` description:
+        Content description:
 
-        | Parameter | Required | Description                                                         |
+        | Field name | Required or optional | Description |
         | ------ | -------- | ------------------------------------------------------------ |
-        | key    | Yes       | Key of a field group in one log, which cannot start with `_`.                 |
-        | value  | Yes       | Value of a field group. The `value` of one log cannot exceed 1 MB and the total `value` in `LogGroup` cannot exceed 5 MB. |
+        | key    | Yes       | The key value of a field group in a single-line log. It cannot start with `_` |
+        | value  | Yes       | The value of a field group in a single-line log. The value of a single-line log must not exceed 1MB, and the sum of ALL values in a LogGroup cannot exceed 5MB. |
 
-        `LogTag` description:
+        LogTag description:
 
-        | Parameter | Required | Description                             |
+        | Field name | Required or optional | Description |
         | ------ | -------- | -------------------------------- |
-        | key    | Yes       | Key of a custom tag                 |
-        | value  | Yes       | Value corresponding to the custom tag key |
+        | key    | Yes      | Custom tag key                 |
+        | value  | is       | value corresponding to the custom tag key |
 
-        ## pb Compilation Example
+        ## PB Compilation Example
 
-        This example shows you how to use the protoc compiler to compile a pb description file into a log upload API in C++.
+        This example shows how to use the official protoc compiler to compile and generate a C++ language adjustable log upload API from a description file.
 
-        > ?Currently, protoc supports compilation in multiple programming languages such as Java, C++, and Python. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).
+        Currently protoc officially supports compilation for languages such as Java, C++, and Python. For details, see [protoc](https://github.com/protocolbuffers/protobuf).
 
-        #### 1. Install protocol buffers
+        #### 1. Protocol Buffer installation
 
-        Download [Protocol Buffers](https://main.qcloudimg.com/raw/d7810aaf8b3073fbbc9d4049c21532aa/protobuf-2.6.1.tar.gz), decompress the package, and install the tool. The version used in the example is protobuf 2.6.1 running on CentOS 7.3. Run the following command to decompress the `protobuf-2.6.1.tar.gz` package to the `/usr/local` directory and go to the directory:
+        Download [Protocol Buffer](https://main.qcloudimg.com/raw/d7810aaf8b3073fbbc9d4049c21532aa/protobuf-2.6.1.tar.gz), unzip and install. The example version is protobuf 2.6.1, and the environment is Centos 7.3 system. Decompress the `protobuf-2.6.1.tar.gz` compressed package to the `/usr/local` directory and enter the directory. Execute the command as follows:
 
         ```
         tar -zxvf protobuf-2.6.1.tar.gz -C /usr/local/ && cd /usr/local/protobuf-2.6.1
         ```
 
-        Run the following commands to start compilation and installation and configure the environment variables:
+        Start compilation and installation, configure environment variables, execute the command as follows:
 
         ```
         [root@VM_0_8_centos protobuf-2.6.1]# ./configure
@@ -1663,22 +3399,22 @@ class ClsClient(AbstractClient):
         [root@VM_0_8_centos protobuf-2.6.1]# export PATH=$PATH:/usr/local/protobuf-2.6.1/bin
         ```
 
-        After the compilation succeeds, run the following command to check the version:
+        After successful compilation, view the version using the following command:
 
         ```
         [root@VM_0_8_centos protobuf-2.6.1]# protoc --version
         liprotoc 2.6.1
         ```
 
-        #### 2. Create a pb description file
+        #### 2. Create PB description file
 
-        A pb description file is an agreed-on data interchange format for communication. To upload logs, compile the specified protocol format to an API in the target programming language and add the API to the project code. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).
+        The PB description file is the data interchange format agreed by the communication parties. When uploading logs, compile the specified protocol format into the calling interface of the corresponding language version, then add to engineering code. For details, see [protoc](https://github.com/protocolbuffers/protobuf).
 
-        Create a pb message description file `cls.proto` based on the pb data format content specified by CLS.
+        Create a local PB message description file cls.proto based on the PB data format specified by the log service.
 
-        > !The pb description file content cannot be modified, and the filename must end with `.proto`.
+        !PB description file content immutable, and the file name must end with `.proto`.
 
-        The content of `cls.proto` (pb description file) is as follows:
+        The content of cls.proto (PB description file) is as follows:
 
         ```
         package cls;
@@ -1687,11 +3423,11 @@ class ClsClient(AbstractClient):
         {
             message Content
             {
-                required string key   = 1; // Key of each field group
-                required string value = 2; // Value of each field group
+        required string key = 1; // key for each group of fields
+        required string value = 2; // The value of the group field
             }
-            required int64   time     = 1; // Unix timestamp
-            repeated Content contents = 2; // Multiple key-value pairs in one log
+        required int64   time     = 1; // A timestamp in UNIX time format
+        repeated Content contents = 2; // multiple kv combinations in a log
         }
 
         message LogTag
@@ -1702,30 +3438,30 @@ class ClsClient(AbstractClient):
 
         message LogGroup
         {
-            repeated Log    logs        = 1; // Log array consisting of multiple logs
-            optional string contextFlow = 2; // This parameter does not take effect currently
-            optional string filename    = 3; // Log filename
-            optional string source      = 4; // Log source, which is generally the machine IP
+        repeated Log    logs        = 1; // log array composed of multiple logs
+        optional string contextFlow = 2; // Currently no utility
+        optional string filename = 3; // log file name
+        optional string source      = 4; // log source, general use machine IP
             repeated LogTag logTags     = 5;
         }
 
         message LogGroupList
         {
-            repeated LogGroup logGroupList = 1; // Log group list
+        repeated LogGroup logGroupList = 1; // log group list
         }
         ```
 
-        #### 3. Compile and generate the API
+        #### 3. Compile and generate
 
-        This example uses the proto compiler to generate a C++ file in the same directory as the `cls.proto` file. Run the following compilation command:
+        In this example, use the proto compiler to generate C++ language files under the same directory as the cls.proto file and execute the following compilation command:
 
         ```
         protoc --cpp_out=./ ./cls.proto
         ```
 
-        > ?`--cpp_out=./` indicates that the file will be compiled in cpp format and output to the current directory. `./cls.proto` indicates the `cls.proto` description file in the current directory.
+        `--cpp_out=./` means compile to cpp format and output in the current directory. `./cls.proto` refers to the cls.proto description file located in the current directory.
 
-        After the compilation succeeds, the code file in the corresponding programming language will be generated. This example generates the `cls.pb.h` header file and [cls.pb.cc](http://cls.pb.cc) code implementation file as shown below:
+        After successful compilation, it will output the code file in the corresponding language. This routine generates the cls.pb.h header file and the cls.pb.cc code implementation file, as shown below:
 
         ```
         [root@VM_0_8_centos protobuf-2.6.1]# protoc --cpp_out=./ ./cls.proto
@@ -1733,9 +3469,9 @@ class ClsClient(AbstractClient):
         cls.pb.cc cls.pb.h cls.proto
         ```
 
-        #### 4. Call the API
+        #### 4. Call
 
-        Import the generated `cls.pb.h` header file into the code and call the API for data encapsulation.
+        Import the generated cls.pb.h header file into the code and call the interface to encapsulate the data format.
         """
         
         kwargs = {}

@@ -870,6 +870,8 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type SubtitleSet: list of str
         :param _SubtitleInfoSet: <p>List of subtitle suppression information. A maximum of 2 are supported.</p>
         :type SubtitleInfoSet: list of SubtitleInfoInput
+        :param _DrmInfo: <p>Third-party DRM encrypted information. Task flow is not currently supported to initiate task via third-party DRM information.</p>
+        :type DrmInfo: :class:`tencentcloud.vod.v20180717.models.ThirdPartyDrmInfo`
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -878,6 +880,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         self._BlindWatermark = None
         self._SubtitleSet = None
         self._SubtitleInfoSet = None
+        self._DrmInfo = None
 
     @property
     def Definition(self):
@@ -956,6 +959,17 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
     def SubtitleInfoSet(self, SubtitleInfoSet):
         self._SubtitleInfoSet = SubtitleInfoSet
 
+    @property
+    def DrmInfo(self):
+        r"""<p>Third-party DRM encrypted information. Task flow is not currently supported to initiate task via third-party DRM information.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ThirdPartyDrmInfo`
+        """
+        return self._DrmInfo
+
+    @DrmInfo.setter
+    def DrmInfo(self, DrmInfo):
+        self._DrmInfo = DrmInfo
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -981,6 +995,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
                 obj = SubtitleInfoInput()
                 obj._deserialize(item)
                 self._SubtitleInfoSet.append(obj)
+        if params.get("DrmInfo") is not None:
+            self._DrmInfo = ThirdPartyDrmInfo()
+            self._DrmInfo._deserialize(params.get("DrmInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11854,7 +11871,7 @@ class AigcImageOutputConfig(AbstractModel):
         :type ClassId: int
         :param _ExpireTime: <p>The expiry date of the output file. The file will be deleted longer than this time. It defaults to no expiration, format according to ISO 8601 standard. For details, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :type ExpireTime: str
-        :param _Resolution: <p>Resolution of the generated image. Available values for each model:</p><ul><li>OG: 1K, 2K, 4K, default 1K;</li><li>GG 2.5: 1K, 2K, 4K, default 1K;</li><li>GG 3.0: 1K, 2K, 4K, default 1K;</li><li>GG 3.1: 512, 1K, 2K, 4K, default 1K;</li><li>Kling 2.1: 1k, 2k, default 1k;</li><li>Kling 3.0: 1k, 2k, default 1k;</li><li>Kling 3.0-Omni: 1k, 2k, 4k, default 1k;</li><li>Kling O1: 1k, 2k, 4k, default 1k;</li><li>SI 4.0: 1K, 2K, 4K, default 1K;</li><li>SI 4.5: 2K, 4K, default 2K;</li><li>SI 5.0-lite: 2K, 3K, default 2K;</li><li>Vidu q2: 1080p, 2K, 4K, default 1080p;</li><li>Hunyuan 3.0: This field is not currently supported. Set resolution via the <code>ExtInfo</code> field;</li><li>Qwen 0925: This field is not currently supported. Set resolution via the <code>ExtInfo</code> field;</li></ul>
+        :param _Resolution: <p>Image generation resolution. Available values for each model:</p><ul><li>OG: 1K, 2K, 4K, default 1K;</li><li>GG 2.5: 1K, 2K, 4K, default 1K;</li><li>GG 3.0: 1K, 2K, 4K, default 1K;</li><li>GG 3.1: 720P, 1K, 2K, 4K, default 1K;</li><li>Kling 2.1: 1k, 2k, default 1k;</li><li>Kling 3.0: 1k, 2k, default 1k;</li><li>Kling 3.0-Omni: 1k, 2k, 4k, default 1k;</li><li>Kling O1: 1k, 2k, 4k, default 1k;</li><li>SI 4.0: 1K, 2K, 4K, default 1K;</li><li>SI 4.5: 2K, 4K, default 2K;</li><li>SI 5.0-lite: 2K, 3K, default 2K;</li><li>Vidu q2: 1080p, 2K, 4K, default 1080p;</li><li>Hunyuan 3.0: This field is not currently supported. Use the <code>ExtInfo</code> field to set resolution;</li><li>Qwen 0925: This field is not currently supported. Use the <code>ExtInfo</code> field to set resolution;</li></ul>
         :type Resolution: str
         :param _AspectRatio: <p>Specify the aspect ratio of the generated image.</p><ul><li>OG: 1:1, 3:2, 2:3, 3:4, 4:3, 16:9, 9:16, 21:9, 9:21;</li><li>GG 2.5: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.0: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.1: 1:1, 1:4, 1:8, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 16:9, 21:9;</li><li>Kling 2.1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0-Omni: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Kling O1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Vidu q2: 16:9, 9:16, 1:1, 3:4, 4:3, 21:9, 2:3, 3:2;</li><li>SI 4.0: <strong>unsupported</strong>. Use prompt to specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>SI 4.5: <strong>unsupported</strong>. Use prompt to specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>SI 5.0-lite: <strong>unsupported</strong>. Use prompt to specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Hunyuan 3.0: unsupported;</li><li>Qwen 2.0: unsupported;</li><li>Qwen 0925: unsupported;</li></ul>
         :type AspectRatio: str
@@ -11930,7 +11947,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""<p>Resolution of the generated image. Available values for each model:</p><ul><li>OG: 1K, 2K, 4K, default 1K;</li><li>GG 2.5: 1K, 2K, 4K, default 1K;</li><li>GG 3.0: 1K, 2K, 4K, default 1K;</li><li>GG 3.1: 512, 1K, 2K, 4K, default 1K;</li><li>Kling 2.1: 1k, 2k, default 1k;</li><li>Kling 3.0: 1k, 2k, default 1k;</li><li>Kling 3.0-Omni: 1k, 2k, 4k, default 1k;</li><li>Kling O1: 1k, 2k, 4k, default 1k;</li><li>SI 4.0: 1K, 2K, 4K, default 1K;</li><li>SI 4.5: 2K, 4K, default 2K;</li><li>SI 5.0-lite: 2K, 3K, default 2K;</li><li>Vidu q2: 1080p, 2K, 4K, default 1080p;</li><li>Hunyuan 3.0: This field is not currently supported. Set resolution via the <code>ExtInfo</code> field;</li><li>Qwen 0925: This field is not currently supported. Set resolution via the <code>ExtInfo</code> field;</li></ul>
+        r"""<p>Image generation resolution. Available values for each model:</p><ul><li>OG: 1K, 2K, 4K, default 1K;</li><li>GG 2.5: 1K, 2K, 4K, default 1K;</li><li>GG 3.0: 1K, 2K, 4K, default 1K;</li><li>GG 3.1: 720P, 1K, 2K, 4K, default 1K;</li><li>Kling 2.1: 1k, 2k, default 1k;</li><li>Kling 3.0: 1k, 2k, default 1k;</li><li>Kling 3.0-Omni: 1k, 2k, 4k, default 1k;</li><li>Kling O1: 1k, 2k, 4k, default 1k;</li><li>SI 4.0: 1K, 2K, 4K, default 1K;</li><li>SI 4.5: 2K, 4K, default 2K;</li><li>SI 5.0-lite: 2K, 3K, default 2K;</li><li>Vidu q2: 1080p, 2K, 4K, default 1080p;</li><li>Hunyuan 3.0: This field is not currently supported. Use the <code>ExtInfo</code> field to set resolution;</li><li>Qwen 0925: This field is not currently supported. Use the <code>ExtInfo</code> field to set resolution;</li></ul>
         :rtype: str
         """
         return self._Resolution
@@ -12298,9 +12315,9 @@ class AigcImageTaskInput(AbstractModel):
         :type ModelVersion: str
         :param _FileInfos: <p>File information for AIGC image generation task input.</p>
         :type FileInfos: list of AigcImageTaskInputFileInfo
-        :param _Prompt: <p>Prompt for image generation. Supports up to 1000 characters. This parameter is required when FileInfos is empty.</p>
+        :param _Prompt: <p>Prompt content for image generation. This parameter is required when FileInfos is empty.</p>
         :type Prompt: str
-        :param _NegativePrompt: <p>To prevent the model from generating images, set a prompt. Supports a maximum of 1000 characters.</p>
+        :param _NegativePrompt: <p>To prevent the model from generating image prompts.</p>
         :type NegativePrompt: str
         :param _EnhancePrompt: <p>Whether to optimize Prompt content automatically. When Enabled, the passed in Prompt will be optimized automatically to enhance generation quality. Valid values: <li>Enabled: Enable;</li> <li>Disabled: Disable;</li></p>
         :type EnhancePrompt: str
@@ -12359,7 +12376,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""<p>Prompt for image generation. Supports up to 1000 characters. This parameter is required when FileInfos is empty.</p>
+        r"""<p>Prompt content for image generation. This parameter is required when FileInfos is empty.</p>
         :rtype: str
         """
         return self._Prompt
@@ -12370,7 +12387,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        r"""<p>To prevent the model from generating images, set a prompt. Supports a maximum of 1000 characters.</p>
+        r"""<p>To prevent the model from generating image prompts.</p>
         :rtype: str
         """
         return self._NegativePrompt
@@ -12470,29 +12487,29 @@ class AigcImageTaskInputFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Input video file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible URL;</li>
+        :param _Type: <p>Input file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible Url;</li> <li>Base64: Base64 string of image or video conversion;</li></p>
         :type Type: str
-        :param _FileId: The media File ID of the image File, which is the globally unique identifier of the File in vod, is assigned by the vod backend after successful upload. you can get this field in the [video upload completion event notification](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.cloud.tencent.com/vod/media). this parameter is valid when the Type value is File.
-Description:.
-1. recommended for use: image less than 7 mb.
-2. Valid values of image format: jpeg, jpg, png, and webp.
+        :param _FileId: <p>The media file ID of the image file, which is the globally unique identifier of this file in VOD, is assigned by the VOD backend after successful upload. You can obtain this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.<br>Note:</p><ol><li>Images less than 7M are recommended;</li><li>The image format values are: jpeg, jpg, png, webp.</li></ol>
         :type FileId: str
-        :param _Url: Accessible file URL. this parameter is valid when the Type value is URL.
-Description:.
-1. recommended for use: image less than 7 mb.
-2. Valid values of image format: jpeg, jpg, png, and webp.
+        :param _Url: <p>Accessible file URL. This parameter is valid when the Type value is URL.</p><ol><li>Images less than 7M are recommended.</li><li>Image format values: jpeg, jpg, png, webp.</li></ol>
         :type Url: str
-        :param _Text: Description of the input image, used to help the model understand the image. valid for GEM 2.5 and GEM 3.0 only.
+        :param _Base64: <p>Accessible file Base64. This parameter is valid when Type value is Base64. Description:</p><ol><li>Total size of all files must not exceed 7 MB to avoid exceeding the 10 MB size limit of the cloud API after converting to Base64;</li><li>Format should be jpeg, jpg, png, or webp;</li><li>Do not include prefixes such as data:image/jpeg;base64,.</li></ol>
+        :type Base64: str
+        :param _Text: <p>Description of the input image, used to help the model understand the image. Only valid for GEM 2.5 and GEM 3.0.</p>
         :type Text: str
+        :param _ReferenceType: <p><strong>Valid only when ModelName is OG</strong>. Image type.</p><p>Enumeration value:</p><ul><li>mask: Image mask.</li></ul>
+        :type ReferenceType: str
         """
         self._Type = None
         self._FileId = None
         self._Url = None
+        self._Base64 = None
         self._Text = None
+        self._ReferenceType = None
 
     @property
     def Type(self):
-        r"""Input video file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible URL;</li>
+        r"""<p>Input file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible Url;</li> <li>Base64: Base64 string of image or video conversion;</li></p>
         :rtype: str
         """
         return self._Type
@@ -12503,10 +12520,7 @@ Description:.
 
     @property
     def FileId(self):
-        r"""The media File ID of the image File, which is the globally unique identifier of the File in vod, is assigned by the vod backend after successful upload. you can get this field in the [video upload completion event notification](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.cloud.tencent.com/vod/media). this parameter is valid when the Type value is File.
-Description:.
-1. recommended for use: image less than 7 mb.
-2. Valid values of image format: jpeg, jpg, png, and webp.
+        r"""<p>The media file ID of the image file, which is the globally unique identifier of this file in VOD, is assigned by the VOD backend after successful upload. You can obtain this field in the <a href="/document/product/266/7830">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when the Type value is File.<br>Note:</p><ol><li>Images less than 7M are recommended;</li><li>The image format values are: jpeg, jpg, png, webp.</li></ol>
         :rtype: str
         """
         return self._FileId
@@ -12517,10 +12531,7 @@ Description:.
 
     @property
     def Url(self):
-        r"""Accessible file URL. this parameter is valid when the Type value is URL.
-Description:.
-1. recommended for use: image less than 7 mb.
-2. Valid values of image format: jpeg, jpg, png, and webp.
+        r"""<p>Accessible file URL. This parameter is valid when the Type value is URL.</p><ol><li>Images less than 7M are recommended.</li><li>Image format values: jpeg, jpg, png, webp.</li></ol>
         :rtype: str
         """
         return self._Url
@@ -12530,8 +12541,19 @@ Description:.
         self._Url = Url
 
     @property
+    def Base64(self):
+        r"""<p>Accessible file Base64. This parameter is valid when Type value is Base64. Description:</p><ol><li>Total size of all files must not exceed 7 MB to avoid exceeding the 10 MB size limit of the cloud API after converting to Base64;</li><li>Format should be jpeg, jpg, png, or webp;</li><li>Do not include prefixes such as data:image/jpeg;base64,.</li></ol>
+        :rtype: str
+        """
+        return self._Base64
+
+    @Base64.setter
+    def Base64(self, Base64):
+        self._Base64 = Base64
+
+    @property
     def Text(self):
-        r"""Description of the input image, used to help the model understand the image. valid for GEM 2.5 and GEM 3.0 only.
+        r"""<p>Description of the input image, used to help the model understand the image. Only valid for GEM 2.5 and GEM 3.0.</p>
         :rtype: str
         """
         return self._Text
@@ -12540,12 +12562,25 @@ Description:.
     def Text(self, Text):
         self._Text = Text
 
+    @property
+    def ReferenceType(self):
+        r"""<p><strong>Valid only when ModelName is OG</strong>. Image type.</p><p>Enumeration value:</p><ul><li>mask: Image mask.</li></ul>
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._FileId = params.get("FileId")
         self._Url = params.get("Url")
+        self._Base64 = params.get("Base64")
         self._Text = params.get("Text")
+        self._ReferenceType = params.get("ReferenceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12811,7 +12846,7 @@ class AigcVideoOutputConfig(AbstractModel):
         :type ClassId: int
         :param _ExpireTime: <p>The expiry date of the output file. The file will be deleted longer than this time. It defaults to no expiration, format according to ISO 8601 standard. For details, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :type ExpireTime: str
-        :param _Duration: <p>Duration of the generated video, unit: seconds.</p><li>When ModelName is Kling, available values are 5 and 10, default is 5;</li><li>When ModelName is Hailuo, available values are 6 and 10, default is 6;</li><li>When ModelName is Vidu, specify 1-10;</li><li>When ModelName is GV, available values are 8, default is 8;</li><li>When ModelName is OS, available values are 4, 8, and 12, default is 8;</li><li>When ModelName is PixVerse, specify 1-15, default is 5;</li>
+        :param _Duration: <p>Duration of the generated video, unit: seconds.</p><li>When ModelName is Kling, optional values are 3-15, default is 5.</li><li>When ModelName is Hailuo, optional values are 6 and 10, default is 6.</li><li>When ModelName is Vidu, specify 1-10.</li><li>When ModelName is GV, optional value is 8, default is 8.</li><li>When ModelName is OS, optional values are 4, 8, and 12, default is 8.</li><li>When ModelName is PixVerse, specify 1-15, default is 5.</li>
         :type Duration: float
         :param _Resolution: <p>Resolution of the generated video.</p><li>When ModelName is Kling, available values are 720P and 1080P, default is 720P;</li><li>When ModelName is Hailuo, available values are 768P and 1080P, default is 768P;</li><li>When ModelName is Vidu, available values are 720P and 1080P, default is 720P;</li><li>When ModelName is GV, available values are 720P and 1080P, default is 720P;</li><li>When ModelName is OS, available value is 720P;</li><li>When ModelName is PixVerse, available values are 540p, 720p, 1080p, 2k, and 4k, default is 720p;</li>
         :type Resolution: str
@@ -12899,7 +12934,7 @@ class AigcVideoOutputConfig(AbstractModel):
 
     @property
     def Duration(self):
-        r"""<p>Duration of the generated video, unit: seconds.</p><li>When ModelName is Kling, available values are 5 and 10, default is 5;</li><li>When ModelName is Hailuo, available values are 6 and 10, default is 6;</li><li>When ModelName is Vidu, specify 1-10;</li><li>When ModelName is GV, available values are 8, default is 8;</li><li>When ModelName is OS, available values are 4, 8, and 12, default is 8;</li><li>When ModelName is PixVerse, specify 1-15, default is 5;</li>
+        r"""<p>Duration of the generated video, unit: seconds.</p><li>When ModelName is Kling, optional values are 3-15, default is 5.</li><li>When ModelName is Hailuo, optional values are 6 and 10, default is 6.</li><li>When ModelName is Vidu, specify 1-10.</li><li>When ModelName is GV, optional value is 8, default is 8.</li><li>When ModelName is OS, optional values are 4, 8, and 12, default is 8.</li><li>When ModelName is PixVerse, specify 1-15, default is 5.</li>
         :rtype: float
         """
         return self._Duration
@@ -14095,7 +14130,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: <p>Input video file type. Valid values: <li>File: On-demand media file;</li> <li>Url: Accessible URL;</li></p>
+        :param _Type: <p>Input video file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible Url;</li> <li>Base64: Base64 string of image or video conversion;</li></p>
         :type Type: str
         :param _Category: <p>File category. Value is:</p><ul><li>Image: image. <strong>Note that the Usage field defines the image type.</strong></li><li>Video: video.</li></ul>
         :type Category: str
@@ -14103,7 +14138,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         :type FileId: str
         :param _Url: <p>Accessible file URL. This parameter is valid when the Type value is URL.<br>Description:</p><ol><li>Images less than 10M are recommended.</li><li>Image format values: jpeg, jpg, png.</li></ol>
         :type Url: str
-        :param _Base64: 
+        :param _Base64: <p>Accessible file Base64. This parameter is valid when Type value is Base64. Description:</p><ol><li>The total size of all files must not exceed 7MB to avoid exceeding the 10MB upper limit of message size for cloud APIs after conversion to Base64.</li><li>Image format should be: jpeg, jpg, png, webp.</li><li>Video format should be: mp4, mov, avi.</li><li>Do not include prefixes like data:image/jpeg;base64.</li></ol>
         :type Base64: str
         :param _ReferenceType: <p>Reference Type, applicable to GV, Kling, and PixVerse models.<br>Note:<br>When using the GV model, it can be used as a reference method, available values: asset means material, style means style;<br>When using the Kling model and Category is Video, distinct reference video types can be identified, feature means feature reference video, base means video to be edited;<br>When using the PixVerse model, applicable to multi-image (subject) reference generation mode, available values: subject means subject, background means background;</p>
         :type ReferenceType: str
@@ -14113,7 +14148,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         :type VoiceId: str
         :param _KeepOriginalSound: <p>Whether to retain the original sound of the video. Valid when Category is Video. Values are as follows:</p><li>Enabled: Retain</li><li>Disabled: Not retain</li>
         :type KeepOriginalSound: str
-        :param _Usage: <p>Used to distinguish whether the input image is for <strong>first (last) frame to video</strong>, <strong>image to video</strong>, or <strong>reference to video</strong>. Available values:</p><ul><li>FirstFrame: For first (last) frame to video or image to video;</li><li>Reference: For reference to video;</li></ul><p><strong>Note: FirstFrame is selected by default</strong></p>
+        :param _Usage: <p>Used to distinguish whether the input image is for <strong>first (last) frame to video</strong>, <strong>image to video</strong>, or <strong>reference to video</strong>. Available values:</p><ul><li>FirstFrame: Used for the first frame of first (last) frame to video or image to video.</li><li>Reference: Used for reference to video.</li><li>LastFrame: Used for the last frame of first (last) frame to video.</li></ul><p><strong>Note that FirstFrame is selected by default</strong></p>
         :type Usage: str
         :param _Text: <p><strong>Only the multi-image (subject) reference mode of the PixVerse model takes effect</strong>. Specify a name for the image to achieve more precise results. Usage: When the field value is "kitten", use @kitten in the Prompt to accurately describe the scenario. There must be a space after @Text, for example, @kitten run. The name referenced in the Prompt must be the same as the field value.</p>
         :type Text: str
@@ -14132,7 +14167,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""<p>Input video file type. Valid values: <li>File: On-demand media file;</li> <li>Url: Accessible URL;</li></p>
+        r"""<p>Input video file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible Url;</li> <li>Base64: Base64 string of image or video conversion;</li></p>
         :rtype: str
         """
         return self._Type
@@ -14176,7 +14211,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def Base64(self):
-        r"""
+        r"""<p>Accessible file Base64. This parameter is valid when Type value is Base64. Description:</p><ol><li>The total size of all files must not exceed 7MB to avoid exceeding the 10MB upper limit of message size for cloud APIs after conversion to Base64.</li><li>Image format should be: jpeg, jpg, png, webp.</li><li>Video format should be: mp4, mov, avi.</li><li>Do not include prefixes like data:image/jpeg;base64.</li></ol>
         :rtype: str
         """
         return self._Base64
@@ -14231,7 +14266,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def Usage(self):
-        r"""<p>Used to distinguish whether the input image is for <strong>first (last) frame to video</strong>, <strong>image to video</strong>, or <strong>reference to video</strong>. Available values:</p><ul><li>FirstFrame: For first (last) frame to video or image to video;</li><li>Reference: For reference to video;</li></ul><p><strong>Note: FirstFrame is selected by default</strong></p>
+        r"""<p>Used to distinguish whether the input image is for <strong>first (last) frame to video</strong>, <strong>image to video</strong>, or <strong>reference to video</strong>. Available values:</p><ul><li>FirstFrame: Used for the first frame of first (last) frame to video or image to video.</li><li>Reference: Used for reference to video.</li><li>LastFrame: Used for the last frame of first (last) frame to video.</li></ul><p><strong>Note that FirstFrame is selected by default</strong></p>
         :rtype: str
         """
         return self._Usage
@@ -14377,14 +14412,17 @@ class AigcVideoTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileInfos: Output file information of the AIGC video task.	
+        :param _FileInfos: <p>Output file info of the AIGC video task.</p>
         :type FileInfos: list of AigcVideoTaskOutputFileInfo
+        :param _ProcedureTaskIds: <p>The task ID of the task type Procedure. If a task flow template (Procedure) is specified when initiating <a href="https://www.tencentcloud.com/document/product/266/126239?from_cn_redirect=1">AIGC video task creation</a>, the task is initiated when the task flow template specifies one or more of MediaProcessTask, AiAnalysisTask, or AiRecognitionTask.</p>
+        :type ProcedureTaskIds: list of str
         """
         self._FileInfos = None
+        self._ProcedureTaskIds = None
 
     @property
     def FileInfos(self):
-        r"""Output file information of the AIGC video task.	
+        r"""<p>Output file info of the AIGC video task.</p>
         :rtype: list of AigcVideoTaskOutputFileInfo
         """
         return self._FileInfos
@@ -14392,6 +14430,17 @@ class AigcVideoTaskOutput(AbstractModel):
     @FileInfos.setter
     def FileInfos(self, FileInfos):
         self._FileInfos = FileInfos
+
+    @property
+    def ProcedureTaskIds(self):
+        r"""<p>The task ID of the task type Procedure. If a task flow template (Procedure) is specified when initiating <a href="https://www.tencentcloud.com/document/product/266/126239?from_cn_redirect=1">AIGC video task creation</a>, the task is initiated when the task flow template specifies one or more of MediaProcessTask, AiAnalysisTask, or AiRecognitionTask.</p>
+        :rtype: list of str
+        """
+        return self._ProcedureTaskIds
+
+    @ProcedureTaskIds.setter
+    def ProcedureTaskIds(self, ProcedureTaskIds):
+        self._ProcedureTaskIds = ProcedureTaskIds
 
 
     def _deserialize(self, params):
@@ -14401,6 +14450,7 @@ class AigcVideoTaskOutput(AbstractModel):
                 obj = AigcVideoTaskOutputFileInfo()
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
+        self._ProcedureTaskIds = params.get("ProcedureTaskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23408,6 +23458,8 @@ class CreateAigcAdvancedCustomElementRequest(AbstractModel):
         :type ElementImageList: str
         :param _TagList: <p>Configure tags for a subject. A subject can be configured with multiple tags.</p><ul><li>Use key:value pairs to carry them. Details are given below:</li></ul><p><pre><code>[  {        "tag_id": "o_101"  }, {        "tag_id": "o_102"    }]</code></pre></p>
         :type TagList: str
+        :param _DisableModeration: <p>If the overseas custom subject library is enabled, you can input <code>True</code> to use it.</p><p>Enumeration value:</p><ul><li>True: Use the overseas custom subject library.</li><li>False: Non-use of the overseas custom subject library.</li></ul>
+        :type DisableModeration: str
         :param _SessionId: <p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
         :type SessionId: str
         :param _SessionContext: <p>Source context. This is used to pass through user request information. The task complete callback returns the value of this field. The maximum length is 1000 characters.</p>
@@ -23423,6 +23475,7 @@ class CreateAigcAdvancedCustomElementRequest(AbstractModel):
         self._ElementVideoList = None
         self._ElementImageList = None
         self._TagList = None
+        self._DisableModeration = None
         self._SessionId = None
         self._SessionContext = None
         self._TasksPriority = None
@@ -23516,6 +23569,17 @@ class CreateAigcAdvancedCustomElementRequest(AbstractModel):
         self._TagList = TagList
 
     @property
+    def DisableModeration(self):
+        r"""<p>If the overseas custom subject library is enabled, you can input <code>True</code> to use it.</p><p>Enumeration value:</p><ul><li>True: Use the overseas custom subject library.</li><li>False: Non-use of the overseas custom subject library.</li></ul>
+        :rtype: str
+        """
+        return self._DisableModeration
+
+    @DisableModeration.setter
+    def DisableModeration(self, DisableModeration):
+        self._DisableModeration = DisableModeration
+
+    @property
     def SessionId(self):
         r"""<p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
         :rtype: str
@@ -23558,6 +23622,7 @@ class CreateAigcAdvancedCustomElementRequest(AbstractModel):
         self._ElementVideoList = params.get("ElementVideoList")
         self._ElementImageList = params.get("ElementImageList")
         self._TagList = params.get("TagList")
+        self._DisableModeration = params.get("DisableModeration")
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._TasksPriority = params.get("TasksPriority")
@@ -24509,11 +24574,13 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SubAppId: <p>VOD app ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).</p>
+        :type SubAppId: int
         :param _ModelName: <p>Model name.</p>
         :type ModelName: str
         :param _ModelVersion: <p>Specify the model version number. By default, the system uses the supported stable version of the model.</p>
         :type ModelVersion: str
-        :param _SceneType: <p>Designated scenarios currently support sfx (sound effects).</p>
+        :param _SceneType: <p>Designated scenarios currently support sfx (sound effects) and music.</p>
         :type SceneType: str
         :param _Prompt: <p>Description of the generated audio</p>
         :type Prompt: str
@@ -24526,6 +24593,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         :param _AdditionalParameters: <p>Special scenario parameters required by the model, formatted as a JSON serialized string.<br>Example:<br>{"camera_control":{"type":"simple"}}.</p>
         :type AdditionalParameters: str
         """
+        self._SubAppId = None
         self._ModelName = None
         self._ModelVersion = None
         self._SceneType = None
@@ -24534,6 +24602,17 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         self._AudioInfos = None
         self._OutputConfig = None
         self._AdditionalParameters = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>VOD app ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).</p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
 
     @property
     def ModelName(self):
@@ -24559,7 +24638,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""<p>Designated scenarios currently support sfx (sound effects).</p>
+        r"""<p>Designated scenarios currently support sfx (sound effects) and music.</p>
         :rtype: str
         """
         return self._SceneType
@@ -24625,6 +24704,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
         self._ModelName = params.get("ModelName")
         self._ModelVersion = params.get("ModelVersion")
         self._SceneType = params.get("SceneType")
@@ -24959,6 +25039,8 @@ class CreateAigcCustomVoiceRequest(AbstractModel):
         :type VoiceUrl: str
         :param _VideoId: <p>History works ID. Audio material can be provided by referring to history works.</p>
         :type VideoId: str
+        :param _DisableModeration: <p>If the overseas custom timbre library is enabled, you can input <code>True</code> to use it.</p><p>Enumeration value:</p><ul><li>True: Use the overseas custom timbre library.</li><li>False: Non-use of the overseas custom timbre library.</li></ul>
+        :type DisableModeration: str
         :param _SessionId: <p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
         :type SessionId: str
         :param _SessionContext: <p>Source context. This is used to pass through user request information. The task complete callback returns the value of this field. The maximum length is 1000 characters.</p>
@@ -24970,6 +25052,7 @@ class CreateAigcCustomVoiceRequest(AbstractModel):
         self._VoiceName = None
         self._VoiceUrl = None
         self._VideoId = None
+        self._DisableModeration = None
         self._SessionId = None
         self._SessionContext = None
         self._TasksPriority = None
@@ -25019,6 +25102,17 @@ class CreateAigcCustomVoiceRequest(AbstractModel):
         self._VideoId = VideoId
 
     @property
+    def DisableModeration(self):
+        r"""<p>If the overseas custom timbre library is enabled, you can input <code>True</code> to use it.</p><p>Enumeration value:</p><ul><li>True: Use the overseas custom timbre library.</li><li>False: Non-use of the overseas custom timbre library.</li></ul>
+        :rtype: str
+        """
+        return self._DisableModeration
+
+    @DisableModeration.setter
+    def DisableModeration(self, DisableModeration):
+        self._DisableModeration = DisableModeration
+
+    @property
     def SessionId(self):
         r"""<p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
         :rtype: str
@@ -25057,6 +25151,7 @@ class CreateAigcCustomVoiceRequest(AbstractModel):
         self._VoiceName = params.get("VoiceName")
         self._VoiceUrl = params.get("VoiceUrl")
         self._VideoId = params.get("VideoId")
+        self._DisableModeration = params.get("DisableModeration")
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._TasksPriority = params.get("TasksPriority")
@@ -25299,7 +25394,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type SubAppId: int
         :param _ModelName: <p>Model name. Value:</p><li>OG</li><li>GG</li><li>SI</li><li>Qwen</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
         :type ModelName: str
-        :param _ModelVersion: <p>Model version. Parameter value:</p><li>When ModelName is OG, available values are image2_low, image2_medium, image2_high;</li><li>When ModelName is GG, available values are 2.5, 3.0, 3.1;</li><li>When ModelName is Jimeng, available values are 4.0;</li><li>When ModelName is SI, available values are 4.0, 4.5, 5.0-lite;</li><li>When ModelName is Qwen, available values are 0925;</li><li>When ModelName is Hunyuan, available values are 3.0;</li><li>When ModelName is Vidu, available values are q2;</li><li>When ModelName is Kling, available values are 2.1, 3.0, 3.0-Omni, O1;</li>
+        :param _ModelVersion: <p>Model version. Parameter:</p><li>When ModelName is OG, available values are image2_low, image2_medium, image2_high;</li><li>When ModelName is GG, available values are 2.5, 3.0, 3.1;</li><li>When ModelName is Jimeng, available values are 4.0;</li><li>When ModelName is SI, available values are 4.0, 4.5, 5.0-lite;</li><li>When ModelName is Qwen, available values are 0925;</li><li>When ModelName is Hunyuan, available values are 3.0;</li><li>When ModelName is Vidu, available values are q2;</li><li>When ModelName is Kling, available values are 2.1, 3.0, 3.0-Omni, O1, scene;</li>
         :type ModelVersion: str
         :param _FileInfos: <p>File information of the input image for the AIGC image generation task. Maximum number of reference images supported by each model:</p><ul><li>GG 2.5: 3;</li><li>GG 3.0: 14;</li><li>GG 3.1: 14;</li><li>Kling 2.1: 4;</li><li>Kling 3.0: 1;</li><li>Kling 3.0-Omni: 10;</li><li>Kling O1: 10;</li><li>SI 4.0: 14;</li><li>SI 4.5: 14;</li><li>SI 5.0-lite: 14;</li><li>Vidu q2: 7;</li><li>Hunyuan 3.0: 3;</li><li>Qwen 0925: 1;</li><li>MJ v7: 3.</li></ul>
         :type FileInfos: list of AigcImageTaskInputFileInfo
@@ -25313,7 +25408,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
         :param _InputRegion: <p>Input region information. Available values:</p><ul><li>Mainland: Chinese mainland;</li><li>Oversea: overseas;</li><li>OverseaUSWest: overseas - western United States;</li></ul>
         :type InputRegion: str
-        :param _SceneType: <p>Scenario type. Values as follows: <li>When ModelName is Hunyuan: 3d_panorama means Panoramic View;</li> <li>Other ModelName is not currently supported.</li></p>
+        :param _SceneType: <p>Scenario type. Values are as follows:</p><li>When ModelName is Hunyuan: 3d_panorama means panoramic view;</li><li>When ModelName is Kling: image_expand means image expansion;</li><li>Other ModelNames are not currently supported.</li>
         :type SceneType: str
         :param _Seed: <p>Random seed of the model.</p>
         :type Seed: int
@@ -25323,7 +25418,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type SessionContext: str
         :param _TasksPriority: <p>Task priority. The higher the value, the higher the priority. The value range is from -10 to 10. If this is not specified, the default value is 0.</p>
         :type TasksPriority: int
-        :param _ExtInfo: <p>Reserved field, used for special purpose.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Supports freely setting resolution width and height. Both width and height must be within [512, 2048] pixels, and the product of width and height must be ≤ 1024x1024 pixels. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1024\"}"}</code></li></ul></li><li><p>SI series</p><ul><li>Supports freely setting resolution width and height:<ul><li>SI 4.0: Valid total pixel range [1280x720=921600, 4096x4096=16777216]. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1356\"}"}</code></li><li>SI 4.5: Valid total pixel range [2560x1440=3686400, 4096x4096=16777216]. Example: <code>{"AdditionalParameters": "{\"size\":\"2560x1440\"}"}</code></li><li>SI 5.0-lite: Valid total pixel range [2560x1440=3686400, 3072x3072x1.1025=10404496]. Example: <code>{"AdditionalParameters": "{\"size\":\"2560x1440\"}"}</code></li></ul></li><li>Can be used to enable output of multiple images. Example: <code>{"AdditionalParameters": "{\"sequential_image_generation\":\"auto\"}"}</code>. Besides, the number of output images must be specified in <code>Prompt</code>, such as: output 3 images.</li></ul></li><li><p>Qwen 0925</p><ul><li>Supports freely setting resolution width and height. Valid total pixel range [512x512=261632, 2048x2048=4194304]. Example: <code>{"AdditionalParameters": "{\"size\":\"728*1024\"}"}</code></li></ul></li></ul>
+        :param _ExtInfo: <p>Reserved field, used for special purpose.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Supports freely setting resolution width and height, both within [512, 2048] pixels, with the product of width and height ≤ 1024x1024 pixels. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1024\"}"}</code></li></ul></li><li><p>SI series</p><ul><li>Supports freely setting resolution width and height:<ul><li>SI 4.0: Valid total pixel range [1280x720=921600, 4096x4096=16777216]. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1356\"}"}</code></li><li>SI 4.5: Valid total pixel range [2560x1440=3686400, 4096x4096=16777216]. Example: <code>{"AdditionalParameters": "{\"size\":\"2560x1440\"}"}</code></li><li>SI 5.0-lite: Valid total pixel range [2560x1440=3686400, 3072x3072x1.1025=10404496]. Example: <code>{"AdditionalParameters": "{\"size\":\"2560x1440\"}"}</code></li></ul></li><li>Can be used to enable output of multiple images. Example: <code>{"AdditionalParameters": "{\"sequential_image_generation\":\"auto\"}"}</code>. Besides, the number of images to output must be specified in the <code>Prompt</code>, such as "output 3 images".</li></ul></li><li><p>Qwen 0925</p><ul><li>Supports freely setting resolution width and height, with valid total pixel range [512x512=261632, 2048x2048=4194304]. Example: <code>{"AdditionalParameters": "{\"size\":\"728*1024\"}"}</code></li></ul></li><li><p>OG</p><ul><li>Supports freely setting resolution width and height:<ul><li>Pixel size must be divisible by 16.</li><li>Total pixels must be at least 655,360 and should not exceed 8,294,400.</li><li>Example: <code>{"AdditionalParameters": "{\"size\":\"728*1024\"}"}</code></li></ul></li><li>Supports setting transparent layer:<ul><li>Example: <code>{"AdditionalParameters": "{\"background\":\"transparent\"}"}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>Supports setting image expansion parameters. Example: <code>{AdditionalParameters":"{\"down_expansion_ratio\":0.2,\"left_expansion_ratio\":0.3,\"right_expansion_ratio\":0.4,\"up_expansion_ratio\":0.1}}</code><ul><li>Common constraints:<ul><li>Value range: [0, 2].</li><li>The overall area of the new image should not exceed 3 times that of the original image.</li><li>Forward prompts can be input through the <code>Prompt</code> field.</li><li>Example description:<ul><li>up_expansion_ratio: Upward expansion range, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.1, the distance from the top edge of the original image to the top edge of the new image is 20 × 0.1 = 2, which is the expansion range.</li><li>down_expansion_ratio: Downward expansion range, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.2, the distance from the bottom edge of the original image to the bottom edge of the new image is 20 × 0.2 = 4, which is the expansion range.</li><li>left_expansion_ratio: Leftward expansion range, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.3, the distance from the left edge of the original image to the left edge of the new image is 30 × 0.3 = 9, which is the expansion range.</li><li>right_expansion_ratio: Rightward expansion range, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.4, the distance from the right edge of the original image to the right edge of the new image is 30 × 0.4 = 12, which is the expansion range.</li></ul></li></ul></li></ul></li></ul></li></ul>
         :type ExtInfo: str
         """
         self._SubAppId = None
@@ -25366,7 +25461,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>Model version. Parameter value:</p><li>When ModelName is OG, available values are image2_low, image2_medium, image2_high;</li><li>When ModelName is GG, available values are 2.5, 3.0, 3.1;</li><li>When ModelName is Jimeng, available values are 4.0;</li><li>When ModelName is SI, available values are 4.0, 4.5, 5.0-lite;</li><li>When ModelName is Qwen, available values are 0925;</li><li>When ModelName is Hunyuan, available values are 3.0;</li><li>When ModelName is Vidu, available values are q2;</li><li>When ModelName is Kling, available values are 2.1, 3.0, 3.0-Omni, O1;</li>
+        r"""<p>Model version. Parameter:</p><li>When ModelName is OG, available values are image2_low, image2_medium, image2_high;</li><li>When ModelName is GG, available values are 2.5, 3.0, 3.1;</li><li>When ModelName is Jimeng, available values are 4.0;</li><li>When ModelName is SI, available values are 4.0, 4.5, 5.0-lite;</li><li>When ModelName is Qwen, available values are 0925;</li><li>When ModelName is Hunyuan, available values are 3.0;</li><li>When ModelName is Vidu, available values are q2;</li><li>When ModelName is Kling, available values are 2.1, 3.0, 3.0-Omni, O1, scene;</li>
         :rtype: str
         """
         return self._ModelVersion
@@ -25443,7 +25538,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""<p>Scenario type. Values as follows: <li>When ModelName is Hunyuan: 3d_panorama means Panoramic View;</li> <li>Other ModelName is not currently supported.</li></p>
+        r"""<p>Scenario type. Values are as follows:</p><li>When ModelName is Hunyuan: 3d_panorama means panoramic view;</li><li>When ModelName is Kling: image_expand means image expansion;</li><li>Other ModelNames are not currently supported.</li>
         :rtype: str
         """
         return self._SceneType
@@ -25498,7 +25593,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""<p>Reserved field, used for special purpose.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Supports freely setting resolution width and height. Both width and height must be within [512, 2048] pixels, and the product of width and height must be ≤ 1024x1024 pixels. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1024\"}"}</code></li></ul></li><li><p>SI series</p><ul><li>Supports freely setting resolution width and height:<ul><li>SI 4.0: Valid total pixel range [1280x720=921600, 4096x4096=16777216]. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1356\"}"}</code></li><li>SI 4.5: Valid total pixel range [2560x1440=3686400, 4096x4096=16777216]. Example: <code>{"AdditionalParameters": "{\"size\":\"2560x1440\"}"}</code></li><li>SI 5.0-lite: Valid total pixel range [2560x1440=3686400, 3072x3072x1.1025=10404496]. Example: <code>{"AdditionalParameters": "{\"size\":\"2560x1440\"}"}</code></li></ul></li><li>Can be used to enable output of multiple images. Example: <code>{"AdditionalParameters": "{\"sequential_image_generation\":\"auto\"}"}</code>. Besides, the number of output images must be specified in <code>Prompt</code>, such as: output 3 images.</li></ul></li><li><p>Qwen 0925</p><ul><li>Supports freely setting resolution width and height. Valid total pixel range [512x512=261632, 2048x2048=4194304]. Example: <code>{"AdditionalParameters": "{\"size\":\"728*1024\"}"}</code></li></ul></li></ul>
+        r"""<p>Reserved field, used for special purpose.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Supports freely setting resolution width and height, both within [512, 2048] pixels, with the product of width and height ≤ 1024x1024 pixels. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1024\"}"}</code></li></ul></li><li><p>SI series</p><ul><li>Supports freely setting resolution width and height:<ul><li>SI 4.0: Valid total pixel range [1280x720=921600, 4096x4096=16777216]. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1356\"}"}</code></li><li>SI 4.5: Valid total pixel range [2560x1440=3686400, 4096x4096=16777216]. Example: <code>{"AdditionalParameters": "{\"size\":\"2560x1440\"}"}</code></li><li>SI 5.0-lite: Valid total pixel range [2560x1440=3686400, 3072x3072x1.1025=10404496]. Example: <code>{"AdditionalParameters": "{\"size\":\"2560x1440\"}"}</code></li></ul></li><li>Can be used to enable output of multiple images. Example: <code>{"AdditionalParameters": "{\"sequential_image_generation\":\"auto\"}"}</code>. Besides, the number of images to output must be specified in the <code>Prompt</code>, such as "output 3 images".</li></ul></li><li><p>Qwen 0925</p><ul><li>Supports freely setting resolution width and height, with valid total pixel range [512x512=261632, 2048x2048=4194304]. Example: <code>{"AdditionalParameters": "{\"size\":\"728*1024\"}"}</code></li></ul></li><li><p>OG</p><ul><li>Supports freely setting resolution width and height:<ul><li>Pixel size must be divisible by 16.</li><li>Total pixels must be at least 655,360 and should not exceed 8,294,400.</li><li>Example: <code>{"AdditionalParameters": "{\"size\":\"728*1024\"}"}</code></li></ul></li><li>Supports setting transparent layer:<ul><li>Example: <code>{"AdditionalParameters": "{\"background\":\"transparent\"}"}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>Supports setting image expansion parameters. Example: <code>{AdditionalParameters":"{\"down_expansion_ratio\":0.2,\"left_expansion_ratio\":0.3,\"right_expansion_ratio\":0.4,\"up_expansion_ratio\":0.1}}</code><ul><li>Common constraints:<ul><li>Value range: [0, 2].</li><li>The overall area of the new image should not exceed 3 times that of the original image.</li><li>Forward prompts can be input through the <code>Prompt</code> field.</li><li>Example description:<ul><li>up_expansion_ratio: Upward expansion range, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.1, the distance from the top edge of the original image to the top edge of the new image is 20 × 0.1 = 2, which is the expansion range.</li><li>down_expansion_ratio: Downward expansion range, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.2, the distance from the bottom edge of the original image to the bottom edge of the new image is 20 × 0.2 = 4, which is the expansion range.</li><li>left_expansion_ratio: Leftward expansion range, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.3, the distance from the left edge of the original image to the left edge of the new image is 30 × 0.3 = 9, which is the expansion range.</li><li>right_expansion_ratio: Rightward expansion range, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.4, the distance from the right edge of the original image to the right edge of the new image is 30 × 0.4 = 12, which is the expansion range.</li></ul></li></ul></li></ul></li></ul></li></ul>
         :rtype: str
         """
         return self._ExtInfo
@@ -26244,7 +26339,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type SubAppId: int
         :param _ModelName: <p>Model name. Parameter Value:<br>Kling: Keling;<br>Vidu;<br>Hailuo: Hailuo;<br>Hunyuan: Hunyuan;<br>Mingmou: Mingmou;<br>GV;<br>OS;<br>PixVerse;</p>
         :type ModelName: str
-        :param _ModelVersion: <p>Model version. Parameter Value:<br>When ModelName is Hailuo, optional values are 02, 2.3, and 2.3-fast.<br>When ModelName is Kling, optional values are 1.6, 2.0, 2.1, 2.5, 2.6, O1, 3.0, and 3.0-Omni.<br>When ModelName is Jimeng, optional value is 3.0pro.<br>When ModelName is Vidu, optional values are q2, q2-pro, q2-turbo, q3, q3-pro, and q3-turbo.<br>When ModelName is GV, optional values are 3.1 and 3.1-fast.<br>When ModelName is OS, optional value is 2.0.<br>When ModelName is Hunyuan, optional value is 1.5.<br>When ModelName is Mingmou, optional value is 1.0.<br>When ModelName is PixVerse, optional values are v5.6, v6, and c1.</p>
+        :param _ModelVersion: <p>Model version. Parameter value:<br>When ModelName is Hailuo, optional values are 02, 2.3, and 2.3-fast.<br>When ModelName is Kling, optional values are 1.6, 2.0, 2.1, 2.5, 2.6, O1, 3.0, and 3.0-Omni.<br>When ModelName is Vidu, optional values are q2, q2-pro, q2-turbo, q3, q3-pro, and q3-turbo.<br>When ModelName is GV, optional values are 3.1 and 3.1-fast.<br>When ModelName is OS, optional value is 2.0.<br>When ModelName is Hunyuan, optional value is 1.5.<br>When ModelName is Mingmou, optional value is 1.0.<br>When ModelName is PixVerse, optional values are v5.6, v6, and c1.</p>
         :type ModelVersion: str
         :param _FileInfos: <p>Describes the resource file to be used by the model for video generation, divided into <strong>first and last frame mode, reference image, video reference, video editing, and other modes</strong>.</p><p><strong>First and last frame video generation</strong>: The first frame supports only a <strong>single image</strong>, with the <strong>Usage field of the image set to FirstFrame</strong>. LastFrameFileId or LastFrameUrl represents the last frame. The first frame can be imported separately, but the last frame cannot. <strong>First and last frame generation refers to the image aspect ratio</strong>.<br><strong>Reference image generation</strong>: Allows input of a single image or multiple images, with the <strong>Usage field of the image set to Reference</strong>. Reference images can adjust the aspect ratio of the generated video.<br><strong>Video editing and video reference</strong>: Vidu and Kling can input a video as a reference or proceed with editing. Images can also be imported along with the video, with the <strong>Usage field of the image set to Reference</strong>.</p><p>Note:</p><ol><li>Image size should be no more than 10M.</li><li>Supported image formats: jpeg, jpg, png. x0b</li><li>To check whether a specific model version supports reference images, first and last frames, video editing, and other features, request the document from us or refer to the original document information.</li></ol>
         :type FileInfos: list of AigcVideoTaskInputFileInfo
@@ -26266,6 +26361,8 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type InputRegion: str
         :param _SceneType: <p>Scenario type. Values are as follows:</p><li>When ModelName is Kling: motion_control means action control; avatar_i2v means digital human; lip_sync means lip-sync;</li><li>When ModelName is Vidu: template_effect means special effect Template;</li><li>Other ModelNames are not currently supported.</li>
         :type SceneType: str
+        :param _Procedure: <p><a href="https://www.tencentcloud.com/document/product/266/33475?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81">Task flow name</a>. Fill in when you need to execute task flow for the generated new video.</p>
+        :type Procedure: str
         :param _Seed: <p>Random seed of the model.</p>
         :type Seed: int
         :param _SessionId: <p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
@@ -26290,6 +26387,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._OutputConfig = None
         self._InputRegion = None
         self._SceneType = None
+        self._Procedure = None
         self._Seed = None
         self._SessionId = None
         self._SessionContext = None
@@ -26320,7 +26418,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>Model version. Parameter Value:<br>When ModelName is Hailuo, optional values are 02, 2.3, and 2.3-fast.<br>When ModelName is Kling, optional values are 1.6, 2.0, 2.1, 2.5, 2.6, O1, 3.0, and 3.0-Omni.<br>When ModelName is Jimeng, optional value is 3.0pro.<br>When ModelName is Vidu, optional values are q2, q2-pro, q2-turbo, q3, q3-pro, and q3-turbo.<br>When ModelName is GV, optional values are 3.1 and 3.1-fast.<br>When ModelName is OS, optional value is 2.0.<br>When ModelName is Hunyuan, optional value is 1.5.<br>When ModelName is Mingmou, optional value is 1.0.<br>When ModelName is PixVerse, optional values are v5.6, v6, and c1.</p>
+        r"""<p>Model version. Parameter value:<br>When ModelName is Hailuo, optional values are 02, 2.3, and 2.3-fast.<br>When ModelName is Kling, optional values are 1.6, 2.0, 2.1, 2.5, 2.6, O1, 3.0, and 3.0-Omni.<br>When ModelName is Vidu, optional values are q2, q2-pro, q2-turbo, q3, q3-pro, and q3-turbo.<br>When ModelName is GV, optional values are 3.1 and 3.1-fast.<br>When ModelName is OS, optional value is 2.0.<br>When ModelName is Hunyuan, optional value is 1.5.<br>When ModelName is Mingmou, optional value is 1.0.<br>When ModelName is PixVerse, optional values are v5.6, v6, and c1.</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -26440,6 +26538,17 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._SceneType = SceneType
 
     @property
+    def Procedure(self):
+        r"""<p><a href="https://www.tencentcloud.com/document/product/266/33475?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81">Task flow name</a>. Fill in when you need to execute task flow for the generated new video.</p>
+        :rtype: str
+        """
+        return self._Procedure
+
+    @Procedure.setter
+    def Procedure(self, Procedure):
+        self._Procedure = Procedure
+
+    @property
     def Seed(self):
         r"""<p>Random seed of the model.</p>
         :rtype: int
@@ -26521,6 +26630,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
             self._OutputConfig._deserialize(params.get("OutputConfig"))
         self._InputRegion = params.get("InputRegion")
         self._SceneType = params.get("SceneType")
+        self._Procedure = params.get("Procedure")
         self._Seed = params.get("Seed")
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
@@ -36256,6 +36366,407 @@ class DescribeAigcApiTokensResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAigcFaceInfoAsyncInput(AbstractModel):
+    r"""Asynchronously fetch AIGC face information input.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileInfos: <p>Input video information that needs to get face information.</p>
+        :type FileInfos: list of AigcFaceInputFileInfo
+        """
+        self._FileInfos = None
+
+    @property
+    def FileInfos(self):
+        r"""<p>Input video information that needs to get face information.</p>
+        :rtype: list of AigcFaceInputFileInfo
+        """
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = AigcFaceInputFileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcFaceInfoAsyncOutput(AbstractModel):
+    r"""Asynchronously fetch AIGC human face information output
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaceInfoSet: <p>Face information.</p>
+        :type FaceInfoSet: list of AigcFaceInfo
+        """
+        self._FaceInfoSet = None
+
+    @property
+    def FaceInfoSet(self):
+        r"""<p>Face information.</p>
+        :rtype: list of AigcFaceInfo
+        """
+        return self._FaceInfoSet
+
+    @FaceInfoSet.setter
+    def FaceInfoSet(self, FaceInfoSet):
+        self._FaceInfoSet = FaceInfoSet
+
+
+    def _deserialize(self, params):
+        if params.get("FaceInfoSet") is not None:
+            self._FaceInfoSet = []
+            for item in params.get("FaceInfoSet"):
+                obj = AigcFaceInfo()
+                obj._deserialize(item)
+                self._FaceInfoSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcFaceInfoAsyncRequest(AbstractModel):
+    r"""DescribeAigcFaceInfoAsync request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
+        :type SubAppId: int
+        :param _FileInfos: <p>Input video information that needs to get face information. It can contain up to one file.</p>
+        :type FileInfos: list of AigcFaceInputFileInfo
+        :param _SessionId: <p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
+        :type SessionId: str
+        :param _SessionContext: <p>Source context. This is used to pass through user request information. The audio and video quality revival complete callback returns the value of this field. The maximum length is 1000 characters.</p>
+        :type SessionContext: str
+        :param _TasksPriority: <p>Task priority. The higher the value, the higher the priority. The value range is from -10 to 10. If this is not specified, the default value is 0.</p>
+        :type TasksPriority: int
+        """
+        self._SubAppId = None
+        self._FileInfos = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def FileInfos(self):
+        r"""<p>Input video information that needs to get face information. It can contain up to one file.</p>
+        :rtype: list of AigcFaceInputFileInfo
+        """
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+    @property
+    def SessionId(self):
+        r"""<p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>Source context. This is used to pass through user request information. The audio and video quality revival complete callback returns the value of this field. The maximum length is 1000 characters.</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        r"""<p>Task priority. The higher the value, the higher the priority. The value range is from -10 to 10. If this is not specified, the default value is 0.</p>
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = AigcFaceInputFileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcFaceInfoAsyncResponse(AbstractModel):
+    r"""DescribeAigcFaceInfoAsync response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcFaceInfoAsyncTask(AbstractModel):
+    r"""Asynchronously fetch AIGC face information tasks.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _Status: <p>Task status. Valid values: </p><li>PROCESSING: Processing; </li><li>FINISH: Completed.</li>
+        :type Status: str
+        :param _ErrCode: <p>Error code. It returns a non-zero error code in case of a source error. Please use the ErrCode of each specific task when it returns 0.</p>
+        :type ErrCode: int
+        :param _ErrCodeExt: <p>Extended error codes.</p><p>Parameter format: extended error codes.</p><p>Enumeration values:</p><ul><li>RequestLimitExceeded: The call exceeds the concurrency limit.</li><li>InvalidParameterValue: Parameter error.</li><li>InternalError: Internal error.</li><li>FailedOperation: Operation failed.</li></ul>
+        :type ErrCodeExt: str
+        :param _Message: <p>Error message.</p>
+        :type Message: str
+        :param _Progress: <p>Task progress, in the range of [0-100].</p>
+        :type Progress: int
+        :param _Input: <p>Input information to asynchronously fetch face information of the AIGC task.</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncInput`
+        :param _Output: <p>Asynchronously fetch the output message of the human face information task for AIGC.</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncOutput`
+        :param _SessionId: <p>Identifier for deduplication. If a request with the same identifier has been sent within the past seven days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
+        :type SessionId: str
+        :param _SessionContext: <p>Source context. This is used to pass user request information. The task status change callback returns the value of this field. The maximum length is 1000 characters.</p>
+        :type SessionContext: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Progress = None
+        self._Input = None
+        self._Output = None
+        self._SessionId = None
+        self._SessionContext = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>Task status. Valid values: </p><li>PROCESSING: Processing; </li><li>FINISH: Completed.</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>Error code. It returns a non-zero error code in case of a source error. Please use the ErrCode of each specific task when it returns 0.</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>Extended error codes.</p><p>Parameter format: extended error codes.</p><p>Enumeration values:</p><ul><li>RequestLimitExceeded: The call exceeds the concurrency limit.</li><li>InvalidParameterValue: Parameter error.</li><li>InternalError: Internal error.</li><li>FailedOperation: Operation failed.</li></ul>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""<p>Error message.</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Progress(self):
+        r"""<p>Task progress, in the range of [0-100].</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Input(self):
+        r"""<p>Input information to asynchronously fetch face information of the AIGC task.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>Asynchronously fetch the output message of the human face information task for AIGC.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionId(self):
+        r"""<p>Identifier for deduplication. If a request with the same identifier has been sent within the past seven days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>Source context. This is used to pass user request information. The task status change callback returns the value of this field. The maximum length is 1000 characters.</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        self._Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self._Input = DescribeAigcFaceInfoAsyncInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = DescribeAigcFaceInfoAsyncOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAigcFaceInfoRequest(AbstractModel):
     r"""DescribeAigcFaceInfo request structure.
 
@@ -36371,15 +36882,21 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: <p>End date, which must be greater than or equal to the start date. Use the <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#52">ISO date format</a>.</p>
         :type EndTime: str
-        :param _AigcType: <p>AIGC type.</p><p>Enumeration value:</p><ul><li>Video: Video</li><li>Image: Image</li><li>Text: Text</li><li>SceneAigcVideo: Scenario-based video processing</li><li>SceneAigcImage: Scenario-based image processing</li><li>SceneAigcTime: Scenario-based processing times</li></ul>
+        :param _AigcType: <p>AIGC type.</p><p>Enumeration value:</p><ul><li>Video: video</li><li>Image: image</li><li>Text: text</li><li>Audio: audio</li><li>SceneAigcVideo: scenario-based video processing</li><li>SceneAigcImage: scenario-based image processing</li><li>SceneAigcTime: scenario-based processing times</li></ul>
         :type AigcType: str
         :param _SubAppId: <p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :type SubAppId: int
+        :param _APIKey: <p>API Key</p>
+        :type APIKey: str
+        :param _APIKeys: <p>API Key</p>
+        :type APIKeys: list of str
         """
         self._StartTime = None
         self._EndTime = None
         self._AigcType = None
         self._SubAppId = None
+        self._APIKey = None
+        self._APIKeys = None
 
     @property
     def StartTime(self):
@@ -36405,7 +36922,7 @@ class DescribeAigcUsageDataRequest(AbstractModel):
 
     @property
     def AigcType(self):
-        r"""<p>AIGC type.</p><p>Enumeration value:</p><ul><li>Video: Video</li><li>Image: Image</li><li>Text: Text</li><li>SceneAigcVideo: Scenario-based video processing</li><li>SceneAigcImage: Scenario-based image processing</li><li>SceneAigcTime: Scenario-based processing times</li></ul>
+        r"""<p>AIGC type.</p><p>Enumeration value:</p><ul><li>Video: video</li><li>Image: image</li><li>Text: text</li><li>Audio: audio</li><li>SceneAigcVideo: scenario-based video processing</li><li>SceneAigcImage: scenario-based image processing</li><li>SceneAigcTime: scenario-based processing times</li></ul>
         :rtype: str
         """
         return self._AigcType
@@ -36425,12 +36942,36 @@ class DescribeAigcUsageDataRequest(AbstractModel):
     def SubAppId(self, SubAppId):
         self._SubAppId = SubAppId
 
+    @property
+    def APIKey(self):
+        r"""<p>API Key</p>
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
+    @property
+    def APIKeys(self):
+        r"""<p>API Key</p>
+        :rtype: list of str
+        """
+        return self._APIKeys
+
+    @APIKeys.setter
+    def APIKeys(self, APIKeys):
+        self._APIKeys = APIKeys
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._AigcType = params.get("AigcType")
         self._SubAppId = params.get("SubAppId")
+        self._APIKey = params.get("APIKey")
+        self._APIKeys = params.get("APIKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43599,7 +44140,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: <p>Task type. Value: <li>Procedure: Video processing task;</li><li>EditMedia: Video editing task;</li><li>SplitMedia: Video splitting task;</li><li>ComposeMedia: Media file creation task;</li><li>WechatPublish: WeChat publish task;</li><li>WechatMiniProgramPublish: WeChat Mini Program Video Publishing Task;</li><li>PullUpload: Pull and upload media files task;</li><li>FastClipMedia: Quick trimming task;</li><li>RemoveWatermarkTask: Intelligent watermark removal task;</li><li>DescribeFileAttributesTask: File attribute retrieval task;</li><li>RebuildMedia: Audio and video quality regeneration task (not recommended);</li><li>ReviewAudioVideo: Audio/video moderation task;</li><li>ExtractTraceWatermark: Source watermark extraction task;</li><li>ExtractCopyRightWatermark: Copyright Watermark Extraction Task;</li><li>QualityInspect: Audio and video quality inspection task;</li><li>QualityEnhance: Audio and video quality regeneration task;</li><li>ComplexAdaptiveDynamicStreaming: Complex adaptive bitstream task;</li><li>ProcessMediaByMPS: MPS video processing task;</li><li>AigcImageTask: AIGC image generation task;</li><li>SceneAigcImageTask: Scenario-based AIGC image generation task;</li><li>AigcVideoTask: AIGC video generation task;</li><li>ImportMediaKnowledge: Import media knowledge task.</li><li>SceneAigcVideoTask: Scenario-based AIGC video generation task;</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>CreateAigcAdvancedCustomElement: Create custom subject task</li><li>CreateAigcCustomVoice: Create custom voice type task</li><li>CreateAigcSubject: Create subject task</li><li>AigcVideoRedrawTask: AIGC video redraw task</li><li>CreateAigcAudioClone: AIGC sound clone task</li></p>
+        :param _TaskType: <p>Task type. Valid values: <li>Procedure: Video processing task;</li><li>EditMedia: Video editing task;</li><li>SplitMedia: Video splitting task;</li><li>ComposeMedia: Media file creation task;</li><li>WechatPublish: WeChat publishing task;</li><li>WechatMiniProgramPublish: WeChat Mini Program Video Publishing Task;</li><li>PullUpload: Pull and upload media files task;</li><li>FastClipMedia: Quick trimming task;</li><li>RemoveWatermarkTask: Intelligent watermark removal task;</li><li>DescribeFileAttributesTask: File attribute retrieval task;</li><li>RebuildMedia: Audio and video quality regeneration task (not recommended);</li><li>ReviewAudioVideo: Audio/video moderation task;</li><li>ExtractTraceWatermark: Source watermark extraction task;</li><li>ExtractCopyRightWatermark: Copyright Watermark Extraction Task;</li><li>QualityInspect: Audio and video quality inspection task;</li><li>QualityEnhance: Audio and video quality regeneration task;</li><li>ComplexAdaptiveDynamicStreaming: Complex adaptive bitstream task;</li><li>ProcessMediaByMPS: MPS video processing task;</li><li>AigcImageTask: AIGC image generation task;</li><li>SceneAigcImageTask: Scenario-based AIGC image generation task;</li><li>AigcVideoTask: AIGC video generation task;</li><li>ImportMediaKnowledge: Import media knowledge task.</li><li>SceneAigcVideoTask: Scenario-based AIGC video generation task;</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>CreateAigcAdvancedCustomElement: Create custom subject task</li><li>CreateAigcCustomVoice: Create custom voice type task</li><li>CreateAigcSubject: Create subject task</li><li>AigcVideoRedrawTask: AIGC video redraw task</li><li>CreateAigcAudioClone: AIGC voice clone task</li><li>DescribeAigcFaceInfoAsync: Asynchronously fetch AIGC face information task</li></p>
         :type TaskType: str
         :param _Status: <p>Task status. Value:</p><li>WAITING: Waiting;</li><li>PROCESSING: Processing;</li><li>FINISH: Completed;</li><li>ABORTED: Terminated.</li>
         :type Status: str
@@ -43697,12 +44238,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CreateAigcCustomVoiceTask: :class:`tencentcloud.vod.v20180717.models.CreateAigcCustomVoiceTask`
         :param _CreateAigcSubjectTask: <p>Create entity information. This field has a value only when TaskType is CreateAigcSubject.</p>
         :type CreateAigcSubjectTask: :class:`tencentcloud.vod.v20180717.models.CreateAigcSubjectTask`
-        :param _AigcVideoRedrawTask: <p>AIGC video conversion info. This field has a value only when TaskType is AigcVideoRedrawTask.</p>
+        :param _AigcVideoRedrawTask: <p>AIGC video redraw info, valid only when TaskType is AigcVideoRedrawTask and this field has a value.</p>
         :type AigcVideoRedrawTask: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTask`
-        :param _AigcAudioTask: <p>AIGC audio effect info. This field has a value only when TaskType is AigcAudioTask.</p>
+        :param _AigcAudioTask: <p>AIGC sound effect information. This field has a value only when TaskType is AigcAudioTask.</p>
         :type AigcAudioTask: :class:`tencentcloud.vod.v20180717.models.AigcAudioTask`
         :param _CreateAigcAudioCloneTask: <p>AIGC voice clone info. This field has a value only when TaskType is CreateAigcAudioClone.</p>
         :type CreateAigcAudioCloneTask: :class:`tencentcloud.vod.v20180717.models.CreateAigcAudioCloneTask`
+        :param _DescribeAigcFaceInfoAsyncTask: <p>Asynchronously fetch AIGC face information. This field has a value only when TaskType is DescribeAigcFaceInfoAsync.</p>
+        :type DescribeAigcFaceInfoAsyncTask: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncTask`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -43747,11 +44290,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AigcVideoRedrawTask = None
         self._AigcAudioTask = None
         self._CreateAigcAudioCloneTask = None
+        self._DescribeAigcFaceInfoAsyncTask = None
         self._RequestId = None
 
     @property
     def TaskType(self):
-        r"""<p>Task type. Value: <li>Procedure: Video processing task;</li><li>EditMedia: Video editing task;</li><li>SplitMedia: Video splitting task;</li><li>ComposeMedia: Media file creation task;</li><li>WechatPublish: WeChat publish task;</li><li>WechatMiniProgramPublish: WeChat Mini Program Video Publishing Task;</li><li>PullUpload: Pull and upload media files task;</li><li>FastClipMedia: Quick trimming task;</li><li>RemoveWatermarkTask: Intelligent watermark removal task;</li><li>DescribeFileAttributesTask: File attribute retrieval task;</li><li>RebuildMedia: Audio and video quality regeneration task (not recommended);</li><li>ReviewAudioVideo: Audio/video moderation task;</li><li>ExtractTraceWatermark: Source watermark extraction task;</li><li>ExtractCopyRightWatermark: Copyright Watermark Extraction Task;</li><li>QualityInspect: Audio and video quality inspection task;</li><li>QualityEnhance: Audio and video quality regeneration task;</li><li>ComplexAdaptiveDynamicStreaming: Complex adaptive bitstream task;</li><li>ProcessMediaByMPS: MPS video processing task;</li><li>AigcImageTask: AIGC image generation task;</li><li>SceneAigcImageTask: Scenario-based AIGC image generation task;</li><li>AigcVideoTask: AIGC video generation task;</li><li>ImportMediaKnowledge: Import media knowledge task.</li><li>SceneAigcVideoTask: Scenario-based AIGC video generation task;</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>CreateAigcAdvancedCustomElement: Create custom subject task</li><li>CreateAigcCustomVoice: Create custom voice type task</li><li>CreateAigcSubject: Create subject task</li><li>AigcVideoRedrawTask: AIGC video redraw task</li><li>CreateAigcAudioClone: AIGC sound clone task</li></p>
+        r"""<p>Task type. Valid values: <li>Procedure: Video processing task;</li><li>EditMedia: Video editing task;</li><li>SplitMedia: Video splitting task;</li><li>ComposeMedia: Media file creation task;</li><li>WechatPublish: WeChat publishing task;</li><li>WechatMiniProgramPublish: WeChat Mini Program Video Publishing Task;</li><li>PullUpload: Pull and upload media files task;</li><li>FastClipMedia: Quick trimming task;</li><li>RemoveWatermarkTask: Intelligent watermark removal task;</li><li>DescribeFileAttributesTask: File attribute retrieval task;</li><li>RebuildMedia: Audio and video quality regeneration task (not recommended);</li><li>ReviewAudioVideo: Audio/video moderation task;</li><li>ExtractTraceWatermark: Source watermark extraction task;</li><li>ExtractCopyRightWatermark: Copyright Watermark Extraction Task;</li><li>QualityInspect: Audio and video quality inspection task;</li><li>QualityEnhance: Audio and video quality regeneration task;</li><li>ComplexAdaptiveDynamicStreaming: Complex adaptive bitstream task;</li><li>ProcessMediaByMPS: MPS video processing task;</li><li>AigcImageTask: AIGC image generation task;</li><li>SceneAigcImageTask: Scenario-based AIGC image generation task;</li><li>AigcVideoTask: AIGC video generation task;</li><li>ImportMediaKnowledge: Import media knowledge task.</li><li>SceneAigcVideoTask: Scenario-based AIGC video generation task;</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>CreateAigcAdvancedCustomElement: Create custom subject task</li><li>CreateAigcCustomVoice: Create custom voice type task</li><li>CreateAigcSubject: Create subject task</li><li>AigcVideoRedrawTask: AIGC video redraw task</li><li>CreateAigcAudioClone: AIGC voice clone task</li><li>DescribeAigcFaceInfoAsync: Asynchronously fetch AIGC face information task</li></p>
         :rtype: str
         """
         return self._TaskType
@@ -44191,7 +44735,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AigcVideoRedrawTask(self):
-        r"""<p>AIGC video conversion info. This field has a value only when TaskType is AigcVideoRedrawTask.</p>
+        r"""<p>AIGC video redraw info, valid only when TaskType is AigcVideoRedrawTask and this field has a value.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTask`
         """
         return self._AigcVideoRedrawTask
@@ -44202,7 +44746,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AigcAudioTask(self):
-        r"""<p>AIGC audio effect info. This field has a value only when TaskType is AigcAudioTask.</p>
+        r"""<p>AIGC sound effect information. This field has a value only when TaskType is AigcAudioTask.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcAudioTask`
         """
         return self._AigcAudioTask
@@ -44221,6 +44765,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @CreateAigcAudioCloneTask.setter
     def CreateAigcAudioCloneTask(self, CreateAigcAudioCloneTask):
         self._CreateAigcAudioCloneTask = CreateAigcAudioCloneTask
+
+    @property
+    def DescribeAigcFaceInfoAsyncTask(self):
+        r"""<p>Asynchronously fetch AIGC face information. This field has a value only when TaskType is DescribeAigcFaceInfoAsync.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncTask`
+        """
+        return self._DescribeAigcFaceInfoAsyncTask
+
+    @DescribeAigcFaceInfoAsyncTask.setter
+    def DescribeAigcFaceInfoAsyncTask(self, DescribeAigcFaceInfoAsyncTask):
+        self._DescribeAigcFaceInfoAsyncTask = DescribeAigcFaceInfoAsyncTask
 
     @property
     def RequestId(self):
@@ -44348,6 +44903,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("CreateAigcAudioCloneTask") is not None:
             self._CreateAigcAudioCloneTask = CreateAigcAudioCloneTask()
             self._CreateAigcAudioCloneTask._deserialize(params.get("CreateAigcAudioCloneTask"))
+        if params.get("DescribeAigcFaceInfoAsyncTask") is not None:
+            self._DescribeAigcFaceInfoAsyncTask = DescribeAigcFaceInfoAsyncTask()
+            self._DescribeAigcFaceInfoAsyncTask._deserialize(params.get("DescribeAigcFaceInfoAsyncTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -55966,7 +56524,7 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type ExpireTime: str
         :param _Procedure: Post-editing Solidified Video On-demand Task Flow Processing. For details, see [upload specified task flow](https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1). Valid only when IsPersistence is 1.
         :type Procedure: str
-        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [Create Category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.
+        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [Create Category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
 <li>Default value: 0, indicating other categories.</li>
 Valid when IsPersistence is 1.
         :type ClassId: int
@@ -56079,7 +56637,7 @@ Valid when IsPersistence is 1.
 
     @property
     def ClassId(self):
-        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [Create Category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.
+        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [Create Category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
 <li>Default value: 0, indicating other categories.</li>
 Valid when IsPersistence is 1.
         :rtype: int
@@ -65715,47 +66273,36 @@ class MediaTranscodeItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: Address of output video file.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Url: <p>File URL of the transcoded video.</p>
         :type Url: str
-        :param _Definition: For transcoding specification ID, see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1). 
-<font color=red>Note: A value of 0 represents the original file. </font>
+        :param _Definition: <p>Transcoding specification ID. Please refer to <a href="https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1">transcoding parameter template</a>.<br><font color="red">Note: A value of 0 means the raw file.</font></p>
         :type Definition: int
-        :param _Bitrate: Sum of the average bitrate of a video stream and that of an audio stream in bps.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Bitrate: <p>Sum of the mean bitrate of a stream and the mean audio stream bit rate, unit: bps.</p>
         :type Bitrate: int
-        :param _Height: Maximum value of the height of a video stream in px.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Height: <p>Maximum value of video stream height. Unit: px.</p>
         :type Height: int
-        :param _Width: Maximum value of the width of a video stream in px.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Width: <p>Maximum value of video stream width. Unit: px.</p>
         :type Width: int
-        :param _Size: The file size (bytes).
-<li>If the file is an HLS file, the value of this parameter is the sum of the size of the M3U8 and TS files.</li>
+        :param _Size: <p>Total size of media files, measurement unit: byte.</p><li>When the media file is HLS, the size is the sum of m3u8 and ts file sizes.</li>
         :type Size: int
-        :param _Duration: Video duration in seconds.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Duration: <p>Video duration, in seconds.</p>
         :type Duration: float
-        :param _Md5: MD5 value of video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Md5: <p>md5 value of the video.</p>
         :type Md5: str
-        :param _Container: Container, such as m4a and mp4.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Container: <p>Container type, such as m4a, mp4.</p>
         :type Container: str
-        :param _VideoStreamSet: Video stream information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _VideoStreamSet: <p>Video stream information.</p>
         :type VideoStreamSet: list of MediaVideoStreamItem
-        :param _AudioStreamSet: Audio stream information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _AudioStreamSet: <p>Audio stream information.</p>
         :type AudioStreamSet: list of MediaAudioStreamItem
-        :param _DigitalWatermarkType: The watermark type. Valid values:
-<li>Trace: Digital watermark</li>
-<li>None: Regular watermark</li>
+        :param _DigitalWatermarkType: <p>Digital watermark type. Available values:</p><li>Trace means transit watermark processing;</li><li>CopyRight means copyright watermark processing;</li><li>None means no digital watermark processing.</li>
         :type DigitalWatermarkType: str
-        :param _CopyRightWatermarkText: 
+        :param _CopyRightWatermarkText: <p>Copyright information.</p>
         :type CopyRightWatermarkText: str
-        :param _BlindWatermarkDefinition: Digital watermark template id.
+        :param _BlindWatermarkDefinition: <p>Digital watermark template id.</p>
         :type BlindWatermarkDefinition: int
+        :param _FileId: <p>Generated new FileId for transcoding. Valid when requesting to enable independence media output.</p>
+        :type FileId: str
         """
         self._Url = None
         self._Definition = None
@@ -65771,11 +66318,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._DigitalWatermarkType = None
         self._CopyRightWatermarkText = None
         self._BlindWatermarkDefinition = None
+        self._FileId = None
 
     @property
     def Url(self):
-        r"""Address of output video file.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>File URL of the transcoded video.</p>
         :rtype: str
         """
         return self._Url
@@ -65786,8 +66333,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
-        r"""For transcoding specification ID, see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1). 
-<font color=red>Note: A value of 0 represents the original file. </font>
+        r"""<p>Transcoding specification ID. Please refer to <a href="https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1">transcoding parameter template</a>.<br><font color="red">Note: A value of 0 means the raw file.</font></p>
         :rtype: int
         """
         return self._Definition
@@ -65798,8 +66344,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bitrate(self):
-        r"""Sum of the average bitrate of a video stream and that of an audio stream in bps.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Sum of the mean bitrate of a stream and the mean audio stream bit rate, unit: bps.</p>
         :rtype: int
         """
         return self._Bitrate
@@ -65810,8 +66355,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
-        r"""Maximum value of the height of a video stream in px.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Maximum value of video stream height. Unit: px.</p>
         :rtype: int
         """
         return self._Height
@@ -65822,8 +66366,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
-        r"""Maximum value of the width of a video stream in px.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Maximum value of video stream width. Unit: px.</p>
         :rtype: int
         """
         return self._Width
@@ -65834,8 +66377,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Size(self):
-        r"""The file size (bytes).
-<li>If the file is an HLS file, the value of this parameter is the sum of the size of the M3U8 and TS files.</li>
+        r"""<p>Total size of media files, measurement unit: byte.</p><li>When the media file is HLS, the size is the sum of m3u8 and ts file sizes.</li>
         :rtype: int
         """
         return self._Size
@@ -65846,8 +66388,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Duration(self):
-        r"""Video duration in seconds.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Video duration, in seconds.</p>
         :rtype: float
         """
         return self._Duration
@@ -65858,8 +66399,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Md5(self):
-        r"""MD5 value of video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>md5 value of the video.</p>
         :rtype: str
         """
         return self._Md5
@@ -65870,8 +66410,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Container(self):
-        r"""Container, such as m4a and mp4.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Container type, such as m4a, mp4.</p>
         :rtype: str
         """
         return self._Container
@@ -65882,8 +66421,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoStreamSet(self):
-        r"""Video stream information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Video stream information.</p>
         :rtype: list of MediaVideoStreamItem
         """
         return self._VideoStreamSet
@@ -65894,8 +66432,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioStreamSet(self):
-        r"""Audio stream information.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>Audio stream information.</p>
         :rtype: list of MediaAudioStreamItem
         """
         return self._AudioStreamSet
@@ -65906,9 +66443,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DigitalWatermarkType(self):
-        r"""The watermark type. Valid values:
-<li>Trace: Digital watermark</li>
-<li>None: Regular watermark</li>
+        r"""<p>Digital watermark type. Available values:</p><li>Trace means transit watermark processing;</li><li>CopyRight means copyright watermark processing;</li><li>None means no digital watermark processing.</li>
         :rtype: str
         """
         return self._DigitalWatermarkType
@@ -65919,7 +66454,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CopyRightWatermarkText(self):
-        r"""
+        r"""<p>Copyright information.</p>
         :rtype: str
         """
         return self._CopyRightWatermarkText
@@ -65930,7 +66465,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BlindWatermarkDefinition(self):
-        r"""Digital watermark template id.
+        r"""<p>Digital watermark template id.</p>
         :rtype: int
         """
         return self._BlindWatermarkDefinition
@@ -65938,6 +66473,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @BlindWatermarkDefinition.setter
     def BlindWatermarkDefinition(self, BlindWatermarkDefinition):
         self._BlindWatermarkDefinition = BlindWatermarkDefinition
+
+    @property
+    def FileId(self):
+        r"""<p>Generated new FileId for transcoding. Valid when requesting to enable independence media output.</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
 
 
     def _deserialize(self, params):
@@ -65965,6 +66511,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._DigitalWatermarkType = params.get("DigitalWatermarkType")
         self._CopyRightWatermarkText = params.get("CopyRightWatermarkText")
         self._BlindWatermarkDefinition = params.get("BlindWatermarkDefinition")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -77855,6 +78402,8 @@ class ProcessMediaRequest(AbstractModel):
         :type ExtInfo: str
         :param _Url: <p>Valid when FileID is empty. Pull the Url to generate new media assets and generate a new FileID. The media processing product will be affiliated with the new media assets.</p><p>Note: Storage fees will occur for new media assets.</p>
         :type Url: str
+        :param _OutputAsIndependentMedia: <p>The media processing transcoding result is output as standalone media assets. Enabling this option will output the product as standalone media assets and generate a brand-new FileID. Currently only support outputting TranscodeTask transcoding tasks as standalone media assets.</p><p>Enumeration value:</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p><p>Note: New media assets will incur storage fees. This option does not currently support enabling for video opening/closing credits and traceable watermarks in transcoding tasks.</p>
+        :type OutputAsIndependentMedia: str
         """
         self._FileId = None
         self._MediaStoragePath = None
@@ -77869,6 +78418,7 @@ class ProcessMediaRequest(AbstractModel):
         self._SessionId = None
         self._ExtInfo = None
         self._Url = None
+        self._OutputAsIndependentMedia = None
 
     @property
     def FileId(self):
@@ -78013,6 +78563,17 @@ class ProcessMediaRequest(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def OutputAsIndependentMedia(self):
+        r"""<p>The media processing transcoding result is output as standalone media assets. Enabling this option will output the product as standalone media assets and generate a brand-new FileID. Currently only support outputting TranscodeTask transcoding tasks as standalone media assets.</p><p>Enumeration value:</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p><p>Note: New media assets will incur storage fees. This option does not currently support enabling for video opening/closing credits and traceable watermarks in transcoding tasks.</p>
+        :rtype: str
+        """
+        return self._OutputAsIndependentMedia
+
+    @OutputAsIndependentMedia.setter
+    def OutputAsIndependentMedia(self, OutputAsIndependentMedia):
+        self._OutputAsIndependentMedia = OutputAsIndependentMedia
+
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
@@ -78036,6 +78597,7 @@ class ProcessMediaRequest(AbstractModel):
         self._SessionId = params.get("SessionId")
         self._ExtInfo = params.get("ExtInfo")
         self._Url = params.get("Url")
+        self._OutputAsIndependentMedia = params.get("OutputAsIndependentMedia")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -78741,7 +79303,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 <li>If left blank, files will be uploaded to your [default region](https://www.tencentcloud.com/zh/document/product/266/18874?has_map=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) by default.</li>
 <li>If a designated upload park is specified, please confirm the [upload storage settings](https://www.tencentcloud.com/zh/document/product/266/18874) have already enabled corresponding storage regions.</li>
         :type StorageRegion: str
-        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.
+        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
         :type ClassId: int
         :param _TasksPriority: Task priority. The higher the value, the higher the priority. The value ranges from -10 to 10. If left blank, the default value is 0.
         :type TasksPriority: int
@@ -78867,7 +79429,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def ClassId(self):
-        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.
+        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
         :rtype: int
         """
         return self._ClassId
@@ -87238,6 +87800,117 @@ class SDMCDrmKeyProviderInfo(AbstractModel):
         
 
 
+class SPEKEDrm(AbstractModel):
+    r"""Third-party DRM manufacturer encrypted information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: <p>Resource tagging. This field content is user-customized. It supports 1-128 characters, including numbers, letters, underscores (_), and hyphens (-). This field corresponds to the cid field in the Speke request. Note: Different DRM manufacturers have differences in limitations for this field (for example: Huawei Xloud does not support underscores (_) in this field). For specific rules, contact the DRM manufacturer for confirmation.</p>
+        :type ResourceId: str
+        :param _KeyServerUrl: <p>DRM manufacturer access address. The field content is obtained from the DRM manufacturer. Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon limits the number to a maximum of 5 substreams, while DRMtoday only supports up to 9 substream encryptions.</p>
+        :type KeyServerUrl: str
+        :param _Vector: <p>Initialization vector (32-byte hexadecimal string) for encryption. The field content is user-customized.</p>
+        :type Vector: str
+        :param _EncryptionMethod: <p>Encryption method. Available values:<br>cbcs: supports PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, Widevine+PlayReady+FairPlay;<br>cenc: supports PlayReady, Widevine, Widevine+PlayReady;<br>If left blank, FairPlay defaults to cbcs;<br>PlayReady and Widevine default to cenc;<br>Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay default to cbcs;<br>Widevine+PlayReady defaults to cenc;</p>
+        :type EncryptionMethod: str
+        :param _EncryptionPreset: <p>Substream encryption rules, default preset 0<br>preset 0: use the same key to encrypt all substreams;<br>preset 1: use different keys to encrypt each substream;</p>
+        :type EncryptionPreset: str
+        :param _KeyAcquireMode: <p>DRM manufacturer request method.</p><p>Enumeration value:</p><ul><li>POST: Most DRM manufacturers use the POST method.</li><li>GET: Partial DRM manufacturers support the GET method. At the time of request using this method, the KeyServerUrl field needs to include all request information.</li></ul><p>Default value: POST</p>
+        :type KeyAcquireMode: str
+        """
+        self._ResourceId = None
+        self._KeyServerUrl = None
+        self._Vector = None
+        self._EncryptionMethod = None
+        self._EncryptionPreset = None
+        self._KeyAcquireMode = None
+
+    @property
+    def ResourceId(self):
+        r"""<p>Resource tagging. This field content is user-customized. It supports 1-128 characters, including numbers, letters, underscores (_), and hyphens (-). This field corresponds to the cid field in the Speke request. Note: Different DRM manufacturers have differences in limitations for this field (for example: Huawei Xloud does not support underscores (_) in this field). For specific rules, contact the DRM manufacturer for confirmation.</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def KeyServerUrl(self):
+        r"""<p>DRM manufacturer access address. The field content is obtained from the DRM manufacturer. Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon limits the number to a maximum of 5 substreams, while DRMtoday only supports up to 9 substream encryptions.</p>
+        :rtype: str
+        """
+        return self._KeyServerUrl
+
+    @KeyServerUrl.setter
+    def KeyServerUrl(self, KeyServerUrl):
+        self._KeyServerUrl = KeyServerUrl
+
+    @property
+    def Vector(self):
+        r"""<p>Initialization vector (32-byte hexadecimal string) for encryption. The field content is user-customized.</p>
+        :rtype: str
+        """
+        return self._Vector
+
+    @Vector.setter
+    def Vector(self, Vector):
+        self._Vector = Vector
+
+    @property
+    def EncryptionMethod(self):
+        r"""<p>Encryption method. Available values:<br>cbcs: supports PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, Widevine+PlayReady+FairPlay;<br>cenc: supports PlayReady, Widevine, Widevine+PlayReady;<br>If left blank, FairPlay defaults to cbcs;<br>PlayReady and Widevine default to cenc;<br>Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay default to cbcs;<br>Widevine+PlayReady defaults to cenc;</p>
+        :rtype: str
+        """
+        return self._EncryptionMethod
+
+    @EncryptionMethod.setter
+    def EncryptionMethod(self, EncryptionMethod):
+        self._EncryptionMethod = EncryptionMethod
+
+    @property
+    def EncryptionPreset(self):
+        r"""<p>Substream encryption rules, default preset 0<br>preset 0: use the same key to encrypt all substreams;<br>preset 1: use different keys to encrypt each substream;</p>
+        :rtype: str
+        """
+        return self._EncryptionPreset
+
+    @EncryptionPreset.setter
+    def EncryptionPreset(self, EncryptionPreset):
+        self._EncryptionPreset = EncryptionPreset
+
+    @property
+    def KeyAcquireMode(self):
+        r"""<p>DRM manufacturer request method.</p><p>Enumeration value:</p><ul><li>POST: Most DRM manufacturers use the POST method.</li><li>GET: Partial DRM manufacturers support the GET method. At the time of request using this method, the KeyServerUrl field needs to include all request information.</li></ul><p>Default value: POST</p>
+        :rtype: str
+        """
+        return self._KeyAcquireMode
+
+    @KeyAcquireMode.setter
+    def KeyAcquireMode(self, KeyAcquireMode):
+        self._KeyAcquireMode = KeyAcquireMode
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._KeyServerUrl = params.get("KeyServerUrl")
+        self._Vector = params.get("Vector")
+        self._EncryptionMethod = params.get("EncryptionMethod")
+        self._EncryptionPreset = params.get("EncryptionPreset")
+        self._KeyAcquireMode = params.get("KeyAcquireMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SampleSnapshotTaskInput(AbstractModel):
     r"""Input parameter type of sampling screencapturing task
 
@@ -89935,7 +90608,7 @@ class SimpleHlsClipRequest(AbstractModel):
         :type ExpireTime: str
         :param _Procedure: Post-editing Solidified Video On-demand Task Flow Processing. For details, see upload specified task flow (https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1). Valid only when IsPersistence is 1.
         :type Procedure: str
-        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.
+        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
 <li>Default value: 0, indicating other categories.</li>
 Valid when IsPersistence is 1.
         :type ClassId: int
@@ -90043,7 +90716,7 @@ Valid when IsPersistence is 1.
 
     @property
     def ClassId(self):
-        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.
+        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
 <li>Default value: 0, indicating other categories.</li>
 Valid when IsPersistence is 1.
         :rtype: int
@@ -94428,6 +95101,59 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThirdPartyDrmInfo(AbstractModel):
+    r"""Third-party Drm encrypted information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DrmTypes: <p>Encryption type:</p><ul><li>FairPlay: Can only be used for HLS. The slice format can only be mp4.</li><li>Widevine: Can be used for HLS and DASH. The slice format can only be mp4.</li><li>PlayReady: Can be used for HLS and DASH. The slice format can only be mp4.</li><li>Widevine+FairPlay, PlayReady+FairPlay, Widevine PlayReady FairPlay composite: Can only be used for HLS. The slice format can only be mp4.</li><li>Widevine PlayReady composite: Can be used for HLS and MPEG-DASH. The slice format can only be mp4.</li></ul>
+        :type DrmTypes: list of str
+        :param _SPEKEDrm: <p>External DRM vendor information.</p>
+        :type SPEKEDrm: :class:`tencentcloud.vod.v20180717.models.SPEKEDrm`
+        """
+        self._DrmTypes = None
+        self._SPEKEDrm = None
+
+    @property
+    def DrmTypes(self):
+        r"""<p>Encryption type:</p><ul><li>FairPlay: Can only be used for HLS. The slice format can only be mp4.</li><li>Widevine: Can be used for HLS and DASH. The slice format can only be mp4.</li><li>PlayReady: Can be used for HLS and DASH. The slice format can only be mp4.</li><li>Widevine+FairPlay, PlayReady+FairPlay, Widevine PlayReady FairPlay composite: Can only be used for HLS. The slice format can only be mp4.</li><li>Widevine PlayReady composite: Can be used for HLS and MPEG-DASH. The slice format can only be mp4.</li></ul>
+        :rtype: list of str
+        """
+        return self._DrmTypes
+
+    @DrmTypes.setter
+    def DrmTypes(self, DrmTypes):
+        self._DrmTypes = DrmTypes
+
+    @property
+    def SPEKEDrm(self):
+        r"""<p>External DRM vendor information.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SPEKEDrm`
+        """
+        return self._SPEKEDrm
+
+    @SPEKEDrm.setter
+    def SPEKEDrm(self, SPEKEDrm):
+        self._SPEKEDrm = SPEKEDrm
+
+
+    def _deserialize(self, params):
+        self._DrmTypes = params.get("DrmTypes")
+        if params.get("SPEKEDrm") is not None:
+            self._SPEKEDrm = SPEKEDrm()
+            self._SPEKEDrm._deserialize(params.get("SPEKEDrm"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
