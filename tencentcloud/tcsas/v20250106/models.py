@@ -3344,12 +3344,27 @@ class CreateMNGVersionRequest(AbstractModel):
         :type PlatformId: str
         :param _MNPVersionIntro: <p>Version description.</p>
         :type MNPVersionIntro: str
+        :param _VersionType: <p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>
+        :type VersionType: int
+        :param _CompileCondition: <p>Compilation condition.</p>
+        :type CompileCondition: str
+        :param _CompileConfig: <p>Compilation configuration.</p>
+        :type CompileConfig: str
+        :param _PipelineId: <p>CI/CD key ID.</p>
+        :type PipelineId: str
+        :param _FileInnerUrl: <p>Internal file URL.</p>
+        :type FileInnerUrl: str
         """
         self._MNPId = None
         self._MNPVersion = None
         self._FileUrl = None
         self._PlatformId = None
         self._MNPVersionIntro = None
+        self._VersionType = None
+        self._CompileCondition = None
+        self._CompileConfig = None
+        self._PipelineId = None
+        self._FileInnerUrl = None
 
     @property
     def MNPId(self):
@@ -3406,6 +3421,61 @@ class CreateMNGVersionRequest(AbstractModel):
     def MNPVersionIntro(self, MNPVersionIntro):
         self._MNPVersionIntro = MNPVersionIntro
 
+    @property
+    def VersionType(self):
+        r"""<p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>
+        :rtype: int
+        """
+        return self._VersionType
+
+    @VersionType.setter
+    def VersionType(self, VersionType):
+        self._VersionType = VersionType
+
+    @property
+    def CompileCondition(self):
+        r"""<p>Compilation condition.</p>
+        :rtype: str
+        """
+        return self._CompileCondition
+
+    @CompileCondition.setter
+    def CompileCondition(self, CompileCondition):
+        self._CompileCondition = CompileCondition
+
+    @property
+    def CompileConfig(self):
+        r"""<p>Compilation configuration.</p>
+        :rtype: str
+        """
+        return self._CompileConfig
+
+    @CompileConfig.setter
+    def CompileConfig(self, CompileConfig):
+        self._CompileConfig = CompileConfig
+
+    @property
+    def PipelineId(self):
+        r"""<p>CI/CD key ID.</p>
+        :rtype: str
+        """
+        return self._PipelineId
+
+    @PipelineId.setter
+    def PipelineId(self, PipelineId):
+        self._PipelineId = PipelineId
+
+    @property
+    def FileInnerUrl(self):
+        r"""<p>Internal file URL.</p>
+        :rtype: str
+        """
+        return self._FileInnerUrl
+
+    @FileInnerUrl.setter
+    def FileInnerUrl(self, FileInnerUrl):
+        self._FileInnerUrl = FileInnerUrl
+
 
     def _deserialize(self, params):
         self._MNPId = params.get("MNPId")
@@ -3413,6 +3483,11 @@ class CreateMNGVersionRequest(AbstractModel):
         self._FileUrl = params.get("FileUrl")
         self._PlatformId = params.get("PlatformId")
         self._MNPVersionIntro = params.get("MNPVersionIntro")
+        self._VersionType = params.get("VersionType")
+        self._CompileCondition = params.get("CompileCondition")
+        self._CompileConfig = params.get("CompileConfig")
+        self._PipelineId = params.get("PipelineId")
+        self._FileInnerUrl = params.get("FileInnerUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4118,9 +4193,12 @@ class CreateMNPSecretKeyRequest(AbstractModel):
         :type PlatformId: str
         :param _MNPId: <p>Mini program appid.</p>
         :type MNPId: str
+        :param _PipelineId: <p>CI/CD key ID.</p>
+        :type PipelineId: str
         """
         self._PlatformId = None
         self._MNPId = None
+        self._PipelineId = None
 
     @property
     def PlatformId(self):
@@ -4144,10 +4222,22 @@ class CreateMNPSecretKeyRequest(AbstractModel):
     def MNPId(self, MNPId):
         self._MNPId = MNPId
 
+    @property
+    def PipelineId(self):
+        r"""<p>CI/CD key ID.</p>
+        :rtype: str
+        """
+        return self._PipelineId
+
+    @PipelineId.setter
+    def PipelineId(self, PipelineId):
+        self._PipelineId = PipelineId
+
 
     def _deserialize(self, params):
         self._PlatformId = params.get("PlatformId")
         self._MNPId = params.get("MNPId")
+        self._PipelineId = params.get("PipelineId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4540,12 +4630,27 @@ class CreateMNPVersionRequest(AbstractModel):
         :type PlatformId: str
         :param _MNPVersionIntro: <p>Version description.</p>
         :type MNPVersionIntro: str
+        :param _VersionType: <p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>
+        :type VersionType: int
+        :param _CompileCondition: <p>Compilation condition.</p>
+        :type CompileCondition: str
+        :param _CompileConfig: <p>Compilation configuration.</p>
+        :type CompileConfig: str
+        :param _PipelineId: <p>CI/CD key ID.</p>
+        :type PipelineId: str
+        :param _FileInnerUrl: <p>Internal file URL.</p>
+        :type FileInnerUrl: str
         """
         self._MNPId = None
         self._MNPVersion = None
         self._FileUrl = None
         self._PlatformId = None
         self._MNPVersionIntro = None
+        self._VersionType = None
+        self._CompileCondition = None
+        self._CompileConfig = None
+        self._PipelineId = None
+        self._FileInnerUrl = None
 
     @property
     def MNPId(self):
@@ -4602,6 +4707,61 @@ class CreateMNPVersionRequest(AbstractModel):
     def MNPVersionIntro(self, MNPVersionIntro):
         self._MNPVersionIntro = MNPVersionIntro
 
+    @property
+    def VersionType(self):
+        r"""<p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>
+        :rtype: int
+        """
+        return self._VersionType
+
+    @VersionType.setter
+    def VersionType(self, VersionType):
+        self._VersionType = VersionType
+
+    @property
+    def CompileCondition(self):
+        r"""<p>Compilation condition.</p>
+        :rtype: str
+        """
+        return self._CompileCondition
+
+    @CompileCondition.setter
+    def CompileCondition(self, CompileCondition):
+        self._CompileCondition = CompileCondition
+
+    @property
+    def CompileConfig(self):
+        r"""<p>Compilation configuration.</p>
+        :rtype: str
+        """
+        return self._CompileConfig
+
+    @CompileConfig.setter
+    def CompileConfig(self, CompileConfig):
+        self._CompileConfig = CompileConfig
+
+    @property
+    def PipelineId(self):
+        r"""<p>CI/CD key ID.</p>
+        :rtype: str
+        """
+        return self._PipelineId
+
+    @PipelineId.setter
+    def PipelineId(self, PipelineId):
+        self._PipelineId = PipelineId
+
+    @property
+    def FileInnerUrl(self):
+        r"""<p>Internal file URL.</p>
+        :rtype: str
+        """
+        return self._FileInnerUrl
+
+    @FileInnerUrl.setter
+    def FileInnerUrl(self, FileInnerUrl):
+        self._FileInnerUrl = FileInnerUrl
+
 
     def _deserialize(self, params):
         self._MNPId = params.get("MNPId")
@@ -4609,6 +4769,11 @@ class CreateMNPVersionRequest(AbstractModel):
         self._FileUrl = params.get("FileUrl")
         self._PlatformId = params.get("PlatformId")
         self._MNPVersionIntro = params.get("MNPVersionIntro")
+        self._VersionType = params.get("VersionType")
+        self._CompileCondition = params.get("CompileCondition")
+        self._CompileConfig = params.get("CompileConfig")
+        self._PipelineId = params.get("PipelineId")
+        self._FileInnerUrl = params.get("FileInnerUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15883,9 +16048,12 @@ class DescribeMNGVersionRequest(AbstractModel):
         :type BusinessId: str
         :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
+        :param _PipelineId: <p>CI/CD key ID.</p>
+        :type PipelineId: str
         """
         self._BusinessId = None
         self._PlatformId = None
+        self._PipelineId = None
 
     @property
     def BusinessId(self):
@@ -15909,10 +16077,22 @@ class DescribeMNGVersionRequest(AbstractModel):
     def PlatformId(self, PlatformId):
         self._PlatformId = PlatformId
 
+    @property
+    def PipelineId(self):
+        r"""<p>CI/CD key ID.</p>
+        :rtype: str
+        """
+        return self._PipelineId
+
+    @PipelineId.setter
+    def PipelineId(self, PipelineId):
+        self._PipelineId = PipelineId
+
 
     def _deserialize(self, params):
         self._BusinessId = params.get("BusinessId")
         self._PlatformId = params.get("PlatformId")
+        self._PipelineId = params.get("PipelineId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15940,12 +16120,21 @@ class DescribeMNGVersionResp(AbstractModel):
         :type TaskMsg: str
         :param _MNPVersionId: <p>Mini game version ID (returned upon successful compilation).</p>
         :type MNPVersionId: int
+        :param _ExpireTime: <p>QR code expiration time.</p>
+        :type ExpireTime: int
+        :param _QRCode: <p>Version QR code.</p>
+        :type QRCode: str
+        :param _SubPackageInfos: <p>Compilation package information.</p>
+        :type SubPackageInfos: list of MNPVersionSubPackageInfo
         """
         self._MNPId = None
         self._TaskId = None
         self._TaskStatus = None
         self._TaskMsg = None
         self._MNPVersionId = None
+        self._ExpireTime = None
+        self._QRCode = None
+        self._SubPackageInfos = None
 
     @property
     def MNPId(self):
@@ -16002,6 +16191,39 @@ class DescribeMNGVersionResp(AbstractModel):
     def MNPVersionId(self, MNPVersionId):
         self._MNPVersionId = MNPVersionId
 
+    @property
+    def ExpireTime(self):
+        r"""<p>QR code expiration time.</p>
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def QRCode(self):
+        r"""<p>Version QR code.</p>
+        :rtype: str
+        """
+        return self._QRCode
+
+    @QRCode.setter
+    def QRCode(self, QRCode):
+        self._QRCode = QRCode
+
+    @property
+    def SubPackageInfos(self):
+        r"""<p>Compilation package information.</p>
+        :rtype: list of MNPVersionSubPackageInfo
+        """
+        return self._SubPackageInfos
+
+    @SubPackageInfos.setter
+    def SubPackageInfos(self, SubPackageInfos):
+        self._SubPackageInfos = SubPackageInfos
+
 
     def _deserialize(self, params):
         self._MNPId = params.get("MNPId")
@@ -16009,6 +16231,14 @@ class DescribeMNGVersionResp(AbstractModel):
         self._TaskStatus = params.get("TaskStatus")
         self._TaskMsg = params.get("TaskMsg")
         self._MNPVersionId = params.get("MNPVersionId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._QRCode = params.get("QRCode")
+        if params.get("SubPackageInfos") is not None:
+            self._SubPackageInfos = []
+            for item in params.get("SubPackageInfos"):
+                obj = MNPVersionSubPackageInfo()
+                obj._deserialize(item)
+                self._SubPackageInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21809,9 +22039,12 @@ class DescribeMNPVersionRequest(AbstractModel):
         :type BusinessId: str
         :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
+        :param _PipelineId: <p>CI/CD key ID.</p>
+        :type PipelineId: str
         """
         self._BusinessId = None
         self._PlatformId = None
+        self._PipelineId = None
 
     @property
     def BusinessId(self):
@@ -21835,10 +22068,22 @@ class DescribeMNPVersionRequest(AbstractModel):
     def PlatformId(self, PlatformId):
         self._PlatformId = PlatformId
 
+    @property
+    def PipelineId(self):
+        r"""<p>CI/CD key ID.</p>
+        :rtype: str
+        """
+        return self._PipelineId
+
+    @PipelineId.setter
+    def PipelineId(self, PipelineId):
+        self._PipelineId = PipelineId
+
 
     def _deserialize(self, params):
         self._BusinessId = params.get("BusinessId")
         self._PlatformId = params.get("PlatformId")
+        self._PipelineId = params.get("PipelineId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21866,12 +22111,21 @@ class DescribeMNPVersionResp(AbstractModel):
         :type TaskMsg: str
         :param _MNPVersionId: <p>Mini program version ID (returned upon successful compilation).</p>
         :type MNPVersionId: int
+        :param _ExpireTime: <p>QR code expiration time.</p>
+        :type ExpireTime: int
+        :param _QRCode: <p>Version QR code.</p>
+        :type QRCode: str
+        :param _SubPackageInfos: <p>Compilation package information.</p>
+        :type SubPackageInfos: list of MNPVersionSubPackageInfo
         """
         self._MNPId = None
         self._TaskId = None
         self._TaskStatus = None
         self._TaskMsg = None
         self._MNPVersionId = None
+        self._ExpireTime = None
+        self._QRCode = None
+        self._SubPackageInfos = None
 
     @property
     def MNPId(self):
@@ -21928,6 +22182,39 @@ class DescribeMNPVersionResp(AbstractModel):
     def MNPVersionId(self, MNPVersionId):
         self._MNPVersionId = MNPVersionId
 
+    @property
+    def ExpireTime(self):
+        r"""<p>QR code expiration time.</p>
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def QRCode(self):
+        r"""<p>Version QR code.</p>
+        :rtype: str
+        """
+        return self._QRCode
+
+    @QRCode.setter
+    def QRCode(self, QRCode):
+        self._QRCode = QRCode
+
+    @property
+    def SubPackageInfos(self):
+        r"""<p>Compilation package information.</p>
+        :rtype: list of MNPVersionSubPackageInfo
+        """
+        return self._SubPackageInfos
+
+    @SubPackageInfos.setter
+    def SubPackageInfos(self, SubPackageInfos):
+        self._SubPackageInfos = SubPackageInfos
+
 
     def _deserialize(self, params):
         self._MNPId = params.get("MNPId")
@@ -21935,6 +22222,14 @@ class DescribeMNPVersionResp(AbstractModel):
         self._TaskStatus = params.get("TaskStatus")
         self._TaskMsg = params.get("TaskMsg")
         self._MNPVersionId = params.get("MNPVersionId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._QRCode = params.get("QRCode")
+        if params.get("SubPackageInfos") is not None:
+            self._SubPackageInfos = []
+            for item in params.get("SubPackageInfos"):
+                obj = MNPVersionSubPackageInfo()
+                obj._deserialize(item)
+                self._SubPackageInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27486,6 +27781,57 @@ class MNPTypeDefine(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._CreateUser = params.get("CreateUser")
         self._IsSystem = params.get("IsSystem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MNPVersionSubPackageInfo(AbstractModel):
+    r"""Subpackage information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Package name.
+        :type Name: str
+        :param _Size: Package size. 
+        :type Size: int
+        """
+        self._Name = None
+        self._Size = None
+
+    @property
+    def Name(self):
+        r"""Package name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Size(self):
+        r"""Package size. 
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

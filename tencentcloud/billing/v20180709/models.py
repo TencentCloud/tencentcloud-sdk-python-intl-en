@@ -463,7 +463,7 @@ class AllocationDetail(AbstractModel):
         :type BusinessCodeName: str
         :param _PayMode: Billing mode code
         :type PayMode: str
-        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode: Resource billing mode, which can be yearly/monthly subscriptionor pay-as-you-go.
         :type PayModeName: str
         :param _ProjectId: Project ID
         :type ProjectId: int
@@ -787,7 +787,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayModeName(self):
-        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode: Resource billing mode, which can be yearly/monthly subscriptionor pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -3839,7 +3839,7 @@ class AllocationSummaryByItem(AbstractModel):
         :type OperateUin: str
         :param _PayMode: Billing mode code
         :type PayMode: str
-        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode: Resource billing mode, which can be  yearly/monthly subscriptionor pay-as-you-go.
         :type PayModeName: str
         :param _ActionType: Transaction type code
         :type ActionType: str
@@ -4132,7 +4132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayModeName(self):
-        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode: Resource billing mode, which can be  yearly/monthly subscriptionor pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -4982,7 +4982,7 @@ class AllocationSummaryByResource(AbstractModel):
         :type OperateUin: str
         :param _PayMode: Billing mode code
         :type PayMode: str
-        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode: Resource billing mode, which can be  yearly/monthly subscriptionor pay-as-you-go.
         :type PayModeName: str
         :param _ActionType: Transaction type code
         :type ActionType: str
@@ -5201,7 +5201,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayModeName(self):
-        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode: Resource billing mode, which can be  yearly/monthly subscriptionor pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -8568,7 +8568,7 @@ class BillDistributionResourceSummary(AbstractModel):
         :type BusinessCodeName: str
         :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.
         :type ProductCodeName: str
-        :param _PayModeName: Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode: The billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :type PayModeName: str
         :param _ProjectName: Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :type ProjectName: str
@@ -8580,9 +8580,9 @@ class BillDistributionResourceSummary(AbstractModel):
         :type ResourceId: str
         :param _ResourceName: Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
         :type ResourceName: str
-        :param _ActionTypeName: Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
+        :param _ActionTypeName: Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, pay-as-you-go deduction, etc.
         :type ActionTypeName: str
-        :param _OrderId: Order ID: The ID of a monthly subscription order.
+        :param _OrderId: Order ID: The ID of a yearly/monthly subscription order.
         :type OrderId: str
         :param _PayTime: Deduction time: The settlement cost deduction time.
         :type PayTime: str
@@ -8704,7 +8704,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode: The billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -8770,7 +8770,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
+        r"""Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, pay-as-you-go deduction, etc.
         :rtype: str
         """
         return self._ActionTypeName
@@ -8781,7 +8781,7 @@ class BillDistributionResourceSummary(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""Order ID: The ID of a monthly subscription order.
+        r"""Order ID: The ID of a yearly/monthly subscription order.
         :rtype: str
         """
         return self._OrderId
@@ -9340,7 +9340,7 @@ class BillPayMode(AbstractModel):
         r"""
         :param _PayMode: Billing mode code
         :type PayMode: str
-        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode: Resource billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :type PayModeName: str
         """
         self._PayMode = None
@@ -9359,7 +9359,7 @@ class BillPayMode(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode: Resource billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -25530,7 +25530,7 @@ class DistributionBillDetail(AbstractModel):
         :type BusinessCodeName: str
         :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.
         :type ProductCodeName: str
-        :param _PayModeName: Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode: The billing mode, which can be yearly/monthly subscriptionor pay-as-you-go.
         :type PayModeName: str
         :param _ProjectName: Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :type ProjectName: str
@@ -25542,9 +25542,9 @@ class DistributionBillDetail(AbstractModel):
         :type ResourceId: str
         :param _ResourceName: Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
         :type ResourceName: str
-        :param _ActionTypeName: Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
+        :param _ActionTypeName: Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, pay-as-you-go deduction, etc.
         :type ActionTypeName: str
-        :param _OrderId: Order ID: The ID of a monthly subscription order.
+        :param _OrderId: Order ID: The ID of a yearly/monthly subscription order.
         :type OrderId: str
         :param _BillId: Transaction ID: The ID of a settlement bill.
         :type BillId: str
@@ -25639,7 +25639,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode: The billing mode, which can be yearly/monthly subscriptionor pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -25705,7 +25705,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
+        r"""Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, pay-as-you-go deduction, etc.
         :rtype: str
         """
         return self._ActionTypeName
@@ -25716,7 +25716,7 @@ class DistributionBillDetail(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""Order ID: The ID of a monthly subscription order.
+        r"""Order ID: The ID of a yearly/monthly subscription order.
         :rtype: str
         """
         return self._OrderId
@@ -26114,7 +26114,7 @@ class GatherResourceSummary(AbstractModel):
         :type ProductCodeName: str
         :param _PayMode: Billing mode code
         :type PayMode: str
-        :param _PayModeName: Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode: Resource billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :type PayModeName: str
         :param _ActionType: Transaction type code
         :type ActionType: str
@@ -26534,7 +26534,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayModeName(self):
-        r"""Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode: Resource billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName

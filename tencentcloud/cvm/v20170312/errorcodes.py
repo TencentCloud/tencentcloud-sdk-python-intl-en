@@ -1157,7 +1157,7 @@ UNSUPPORTEDOPERATION_RESERVEDINSTANCEOUTOFQUATA = 'UnsupportedOperation.Reserved
 # Shared images cannot be exported.
 UNSUPPORTEDOPERATION_SHAREDIMAGEEXPORTUNSUPPORTED = 'UnsupportedOperation.SharedImageExportUnsupported'
 
-# 
+# Images shared from other accounts do not support attribute modification.
 UNSUPPORTEDOPERATION_SHAREDIMAGEMODIFYUNSUPPORTED = 'UnsupportedOperation.SharedImageModifyUnsupported'
 
 # This special instance type does not support the operation.

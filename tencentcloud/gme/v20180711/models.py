@@ -970,11 +970,14 @@ class DeleteRoomMemberRequest(AbstractModel):
         :type BizId: int
         :param _Uids: List of the members to remove
         :type Uids: list of str
+        :param _StrUids: List of users to exclude (string type)
+        :type StrUids: list of str
         """
         self._RoomId = None
         self._DeleteType = None
         self._BizId = None
         self._Uids = None
+        self._StrUids = None
 
     @property
     def RoomId(self):
@@ -1020,12 +1023,24 @@ class DeleteRoomMemberRequest(AbstractModel):
     def Uids(self, Uids):
         self._Uids = Uids
 
+    @property
+    def StrUids(self):
+        r"""List of users to exclude (string type)
+        :rtype: list of str
+        """
+        return self._StrUids
+
+    @StrUids.setter
+    def StrUids(self, StrUids):
+        self._StrUids = StrUids
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
         self._DeleteType = params.get("DeleteType")
         self._BizId = params.get("BizId")
         self._Uids = params.get("Uids")
+        self._StrUids = params.get("StrUids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2210,11 +2225,14 @@ class SceneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SceneId: 
+        :param _SceneId: RealTime: Real-time Voice Analysis; 
+VoiceMessage: Voice Message; 
+GMECloudApi: GME Cloud API; 
         :type SceneId: str
-        :param _Status: 
+        :param _Status: Switch state, true for on, false for off.
+
         :type Status: bool
-        :param _CallbackUrl: 
+        :param _CallbackUrl: callback URL
         :type CallbackUrl: str
         """
         self._SceneId = None
@@ -2223,7 +2241,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def SceneId(self):
-        r"""
+        r"""RealTime: Real-time Voice Analysis; 
+VoiceMessage: Voice Message; 
+GMECloudApi: GME Cloud API; 
         :rtype: str
         """
         return self._SceneId
@@ -2234,7 +2254,8 @@ class SceneInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""Switch state, true for on, false for off.
+
         :rtype: bool
         """
         return self._Status
@@ -2245,7 +2266,7 @@ class SceneInfo(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        r"""
+        r"""callback URL
         :rtype: str
         """
         return self._CallbackUrl

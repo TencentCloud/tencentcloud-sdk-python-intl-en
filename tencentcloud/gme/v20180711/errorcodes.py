@@ -41,7 +41,7 @@ INVALIDPARAMETER_TIMERANGEERROR = 'InvalidParameter.TimeRangeError'
 # Invalid BizId.(SDKAppid)
 INVALIDPARAMETERVALUE_INVALIDBIZID = 'InvalidParameterValue.InvalidBizId'
 
-# 
+# The input deletion type must be 1 or 2.
 INVALIDPARAMETERVALUE_INVALIDDELETETYPE = 'InvalidParameterValue.InvalidDeleteType'
 
 # Invalid RecordMode.
@@ -50,7 +50,7 @@ INVALIDPARAMETERVALUE_INVALIDRECORDMODE = 'InvalidParameterValue.InvalidRecordMo
 # Invalid RoomId.
 INVALIDPARAMETERVALUE_INVALIDROOMID = 'InvalidParameterValue.InvalidRoomId'
 
-# 
+# There is no need to fill in StrUid; please fill in Uid.
 INVALIDPARAMETERVALUE_INVALIDSTRUIN = 'InvalidParameterValue.InvalidStrUin'
 
 # Incorrect blocklist/allowlist format.
@@ -65,7 +65,7 @@ INVALIDPARAMETERVALUE_INVALIDTASKID = 'InvalidParameterValue.InvalidTaskId'
 # The number of entries on the blocklist exceeds 20.
 INVALIDPARAMETERVALUE_INVALIDUNSUBSCRIBEUSERIDS = 'InvalidParameterValue.InvalidUNSubscribeUserIds'
 
-# 
+# Cannot input both uid and strUid.
 INVALIDPARAMETERVALUE_INVALIDUINORSTRUIN = 'InvalidParameterValue.InvalidUinOrStrUin'
 
 # The number of created applications has reached the upper limit.
@@ -107,7 +107,7 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 # Operation unsupported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
-# 
+# Maximum number of kicks exceeded
 UNSUPPORTEDOPERATION_LIMITDELETEEXCEEDED = 'UnsupportedOperation.LimitDeleteExceeded'
 
 # The recording service is not activated.

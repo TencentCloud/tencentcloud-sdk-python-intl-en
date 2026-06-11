@@ -717,12 +717,24 @@ Supported languages for speech-to-text:
         :type AlternativeLanguage: list of str
         :param _VadLevel: vad far-field voice suppression capacity (does not impact asr recognition accuracy), range [0, 3], default is 0. Recommended setting is 2 for better far-field voice suppression.
         :type VadLevel: int
+        :param _FilterDirty: Whether to filter out dirty words (currently only support basic language engine and standard language engine). Range: [0, 2]. Default value: 0.
+0: Not filtering; 1: Filter out dirty words; 2: Replace dirty words with "*".
+        :type FilterDirty: int
+        :param _FilterModal: Whether to filter filler words (currently only support basic language engine and standard language engine). Range:  [0, 2]. Default value 0.
+0:No filtering; 1: Partial filtering; 2: Strict filtering.
+        :type FilterModal: int
+        :param _FilterPunc: Whether to filter periods at the end of sentences (currently only support basic language engine and standard language engine), range [0, 1], default value 0.
+0: Do not filter out periods at the end of sentences; 1: Filter out periods at the end of sentences.
+        :type FilterPunc: int
         """
         self._Lang = None
         self._VadSilenceTime = None
         self._HotWordList = None
         self._AlternativeLanguage = None
         self._VadLevel = None
+        self._FilterDirty = None
+        self._FilterModal = None
+        self._FilterPunc = None
 
     @property
     def Lang(self):
@@ -818,6 +830,42 @@ Supported languages for speech-to-text:
     def VadLevel(self, VadLevel):
         self._VadLevel = VadLevel
 
+    @property
+    def FilterDirty(self):
+        r"""Whether to filter out dirty words (currently only support basic language engine and standard language engine). Range: [0, 2]. Default value: 0.
+0: Not filtering; 1: Filter out dirty words; 2: Replace dirty words with "*".
+        :rtype: int
+        """
+        return self._FilterDirty
+
+    @FilterDirty.setter
+    def FilterDirty(self, FilterDirty):
+        self._FilterDirty = FilterDirty
+
+    @property
+    def FilterModal(self):
+        r"""Whether to filter filler words (currently only support basic language engine and standard language engine). Range:  [0, 2]. Default value 0.
+0:No filtering; 1: Partial filtering; 2: Strict filtering.
+        :rtype: int
+        """
+        return self._FilterModal
+
+    @FilterModal.setter
+    def FilterModal(self, FilterModal):
+        self._FilterModal = FilterModal
+
+    @property
+    def FilterPunc(self):
+        r"""Whether to filter periods at the end of sentences (currently only support basic language engine and standard language engine), range [0, 1], default value 0.
+0: Do not filter out periods at the end of sentences; 1: Filter out periods at the end of sentences.
+        :rtype: int
+        """
+        return self._FilterPunc
+
+    @FilterPunc.setter
+    def FilterPunc(self, FilterPunc):
+        self._FilterPunc = FilterPunc
+
 
     def _deserialize(self, params):
         self._Lang = params.get("Lang")
@@ -825,6 +873,9 @@ Supported languages for speech-to-text:
         self._HotWordList = params.get("HotWordList")
         self._AlternativeLanguage = params.get("AlternativeLanguage")
         self._VadLevel = params.get("VadLevel")
+        self._FilterDirty = params.get("FilterDirty")
+        self._FilterModal = params.get("FilterModal")
+        self._FilterPunc = params.get("FilterPunc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2346,18 +2397,20 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the transcribed room.
+        :param _SdkAppId: <p>The <a href="https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid">SdkAppId</a> of TRTC is the same as the SdkAppId corresponding to the transcribe room.</p>
         :type SdkAppId: int
-        :param _RoomId: [RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the transcribed TRTC room. Note: The room ID type defaults to integer. If the room ID type is string, specify it via RoomIdType.
+        :param _RoomId: <p>The <a href="https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid">RoomId</a> of TRTC, which is the RoomId corresponding to the transcribed TRTC room. Note: The room ID type defaults to integer. If the room ID type is string, specify it through RoomIdType.</p>
         :type RoomId: str
-        :param _RoomIdType: Room information RoomType must be the same as the RoomId type of the corresponding transcribed room. 0 indicates an integer type room ID, and 1 indicates a string Room Number.
+        :param _RoomIdType: <p>The room information RoomType must be identical to the data type of the RoomId corresponding to the transcribed room. 0 indicates an integer room number, and 1 indicates a string Room Number.</p>
         :type RoomIdType: int
-        :param _TranscriptionParam: Parameters for transcribe service to join TRTC room.
+        :param _TranscriptionParam: <p>Parameters for the transcribe service to join TRTC room.</p>
         :type TranscriptionParam: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParam`
-        :param _AsrParam: Parameters used by the ASR transcribe service.
+        :param _AsrParam: <p>Parameters used by the ASR transcribe service.</p>
         :type AsrParam: :class:`tencentcloud.trtc.v20190722.models.AsrParam`
-        :param _TranslationParam: Translation parameters used for transcription.
+        :param _TranslationParam: <p>Parameters used to transcribe the translation service.</p>
         :type TranslationParam: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
+        :param _TTSParam: <p>Parameters used by the TTS transcribe service.</p>
+        :type TTSParam: list of TTSParam
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -2365,10 +2418,11 @@ class CreateCloudTranscriptionRequest(AbstractModel):
         self._TranscriptionParam = None
         self._AsrParam = None
         self._TranslationParam = None
+        self._TTSParam = None
 
     @property
     def SdkAppId(self):
-        r"""[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the transcribed room.
+        r"""<p>The <a href="https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid">SdkAppId</a> of TRTC is the same as the SdkAppId corresponding to the transcribe room.</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -2379,7 +2433,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the transcribed TRTC room. Note: The room ID type defaults to integer. If the room ID type is string, specify it via RoomIdType.
+        r"""<p>The <a href="https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid">RoomId</a> of TRTC, which is the RoomId corresponding to the transcribed TRTC room. Note: The room ID type defaults to integer. If the room ID type is string, specify it through RoomIdType.</p>
         :rtype: str
         """
         return self._RoomId
@@ -2390,7 +2444,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
-        r"""Room information RoomType must be the same as the RoomId type of the corresponding transcribed room. 0 indicates an integer type room ID, and 1 indicates a string Room Number.
+        r"""<p>The room information RoomType must be identical to the data type of the RoomId corresponding to the transcribed room. 0 indicates an integer room number, and 1 indicates a string Room Number.</p>
         :rtype: int
         """
         return self._RoomIdType
@@ -2401,7 +2455,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def TranscriptionParam(self):
-        r"""Parameters for transcribe service to join TRTC room.
+        r"""<p>Parameters for the transcribe service to join TRTC room.</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParam`
         """
         return self._TranscriptionParam
@@ -2412,7 +2466,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def AsrParam(self):
-        r"""Parameters used by the ASR transcribe service.
+        r"""<p>Parameters used by the ASR transcribe service.</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.AsrParam`
         """
         return self._AsrParam
@@ -2423,7 +2477,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def TranslationParam(self):
-        r"""Translation parameters used for transcription.
+        r"""<p>Parameters used to transcribe the translation service.</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
         """
         return self._TranslationParam
@@ -2431,6 +2485,17 @@ class CreateCloudTranscriptionRequest(AbstractModel):
     @TranslationParam.setter
     def TranslationParam(self, TranslationParam):
         self._TranslationParam = TranslationParam
+
+    @property
+    def TTSParam(self):
+        r"""<p>Parameters used by the TTS transcribe service.</p>
+        :rtype: list of TTSParam
+        """
+        return self._TTSParam
+
+    @TTSParam.setter
+    def TTSParam(self, TTSParam):
+        self._TTSParam = TTSParam
 
 
     def _deserialize(self, params):
@@ -2446,6 +2511,12 @@ class CreateCloudTranscriptionRequest(AbstractModel):
         if params.get("TranslationParam") is not None:
             self._TranslationParam = TranslationParam()
             self._TranslationParam._deserialize(params.get("TranslationParam"))
+        if params.get("TTSParam") is not None:
+            self._TTSParam = []
+            for item in params.get("TTSParam"):
+                obj = TTSParam()
+                obj._deserialize(item)
+                self._TTSParam.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2463,7 +2534,7 @@ class CreateCloudTranscriptionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: A unique identifier for the transcription task, generated by the Tencent Cloud server. The TaskID parameter is required for all subsequent query and stop requests.
+        :param _TaskId: <p>A unique identifier for the transcription task, generated by the Tencent Cloud server. The TaskID parameter is required for all subsequent query and stop requests.</p>
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2473,7 +2544,7 @@ class CreateCloudTranscriptionResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""A unique identifier for the transcription task, generated by the Tencent Cloud server. The TaskID parameter is required for all subsequent query and stop requests.
+        r"""<p>A unique identifier for the transcription task, generated by the Tencent Cloud server. The TaskID parameter is required for all subsequent query and stop requests.</p>
         :rtype: str
         """
         return self._TaskId
@@ -10674,49 +10745,42 @@ You can unlock different languages by purchasing the "AI intelligent recognition
 
 Supported languages for different speech to text package versions are as follows:.
 
-Basic language engine:.
--"zh": chinese (simplified).
--`zh-TW`: chinese (traditional).
--"En": english.
--"16k_zh_edu": chinese education.
--"16k_zh_medical": medical chinese.
--"16k_zh_court": chinese court.
-
-**Standard language engine:**.
--"8k_zh_large": engine (large model version) for telecommunication. the current model supports chinese and other language recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for telephone audio in various scenarios and chinese dialects.
--"16k_zh_large": large model engine for mandarin, chinese dialects, and english. the current model supports language recognition for chinese, english, and multiple chinese dialects. it has a large number of parameters and enhanced language model performance, targeting low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away with greatly improved recognition accuracy.
--"16k_multi_lang": multilingual large model engine. the current model simultaneously supports english, japanese, korean, arabic, filipino, french, hindi, indonesian, malay, portuguese, spanish, thai, turkish, vietnamese, and german. it achieves auto-identification of 15 languages at the sentence or paragraph level.
--"16k_zh_en": chinese-english large model engine. the current model supports chinese and english recognition at the same time, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy against low-quality audio such as loud noise, echo, low voice volume, and voice from far away.
-
-**Advanced language engine:**.
--"zh-dialect": chinese dialect.
--"zh-yue": cantonese in china.
--"Vi": "vietnamese.".
--"Ja": "japanese.".
--"Ko": "korean.".
--"id": "indonesian".
--"Th": thai.
--"pt": portuguese.
--"tr": "turkish.".
--"Ar": "arabic".
--"es": "spanish".
--"Hi": "hindi".
--"Fr": "french.".
--"ms": malay.
--"Fil": filipino.
--"de": german.
--`It`: italian.
--"Ru": russian.
--"sv": "swedish.".
--"Da": "danish.".
--"No": norwegian.
+- "zh": chinese (simplified).
+- "zh-TW": chinese (traditional).
+- "en": english.
+- "zh-yue": cantonese in china.
+- "vi": "vietnamese.".
+- "ja": "japanese.".
+- "ko": "korean.".
+- "id": "indonesian".
+- "th": thai.
+- "pt": portuguese.
+- "tr": "turkish.".
+- "ar": "arabic".
+- "es": "spanish".
+- "hi": "hindi".
+- "ft": "french.".
+- "ms": malay.
+- "fil": filipino.
+- "de": german.
+-`it`: italian.
+- "ru": russian.
+- "sv": "swedish.".
+- "da": "danish.".
+- "no": norwegian.
+- "pl": polski.
+-"af-ZA": afrikaans.
+- "nl-NL": dutch.
+- "nl-BE": flemish.
+- "uz": uzbek.
+- "hu": hungarian.
+- "he": hebrew.
+- "ur": urdu.
 
 **Note**:.
 If the language you need is not available, contact our technical staff.
         :type Language: str
         :param _AlternativeLanguage: **Fuzzy recognition is an advanced edition capacity, charged by default as the advanced edition.**.
-Note: does not support entering "zh-dialect", "16k_zh_edu", "16k_zh_medical", "16k_zh_court", "8k_zh_large", "16k_zh_large", "16k_multi_lang", "16k_zh_en".
-
         :type AlternativeLanguage: list of str
         :param _CustomParam: Custom parameter. contact for background usage.
 
@@ -10740,42 +10804,37 @@ You can unlock different languages by purchasing the "AI intelligent recognition
 
 Supported languages for different speech to text package versions are as follows:.
 
-Basic language engine:.
--"zh": chinese (simplified).
--`zh-TW`: chinese (traditional).
--"En": english.
--"16k_zh_edu": chinese education.
--"16k_zh_medical": medical chinese.
--"16k_zh_court": chinese court.
-
-**Standard language engine:**.
--"8k_zh_large": engine (large model version) for telecommunication. the current model supports chinese and other language recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for telephone audio in various scenarios and chinese dialects.
--"16k_zh_large": large model engine for mandarin, chinese dialects, and english. the current model supports language recognition for chinese, english, and multiple chinese dialects. it has a large number of parameters and enhanced language model performance, targeting low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away with greatly improved recognition accuracy.
--"16k_multi_lang": multilingual large model engine. the current model simultaneously supports english, japanese, korean, arabic, filipino, french, hindi, indonesian, malay, portuguese, spanish, thai, turkish, vietnamese, and german. it achieves auto-identification of 15 languages at the sentence or paragraph level.
--"16k_zh_en": chinese-english large model engine. the current model supports chinese and english recognition at the same time, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy against low-quality audio such as loud noise, echo, low voice volume, and voice from far away.
-
-**Advanced language engine:**.
--"zh-dialect": chinese dialect.
--"zh-yue": cantonese in china.
--"Vi": "vietnamese.".
--"Ja": "japanese.".
--"Ko": "korean.".
--"id": "indonesian".
--"Th": thai.
--"pt": portuguese.
--"tr": "turkish.".
--"Ar": "arabic".
--"es": "spanish".
--"Hi": "hindi".
--"Fr": "french.".
--"ms": malay.
--"Fil": filipino.
--"de": german.
--`It`: italian.
--"Ru": russian.
--"sv": "swedish.".
--"Da": "danish.".
--"No": norwegian.
+- "zh": chinese (simplified).
+- "zh-TW": chinese (traditional).
+- "en": english.
+- "zh-yue": cantonese in china.
+- "vi": "vietnamese.".
+- "ja": "japanese.".
+- "ko": "korean.".
+- "id": "indonesian".
+- "th": thai.
+- "pt": portuguese.
+- "tr": "turkish.".
+- "ar": "arabic".
+- "es": "spanish".
+- "hi": "hindi".
+- "ft": "french.".
+- "ms": malay.
+- "fil": filipino.
+- "de": german.
+-`it`: italian.
+- "ru": russian.
+- "sv": "swedish.".
+- "da": "danish.".
+- "no": norwegian.
+- "pl": polski.
+-"af-ZA": afrikaans.
+- "nl-NL": dutch.
+- "nl-BE": flemish.
+- "uz": uzbek.
+- "hu": hungarian.
+- "he": hebrew.
+- "ur": urdu.
 
 **Note**:.
 If the language you need is not available, contact our technical staff.
@@ -10790,8 +10849,6 @@ If the language you need is not available, contact our technical staff.
     @property
     def AlternativeLanguage(self):
         r"""**Fuzzy recognition is an advanced edition capacity, charged by default as the advanced edition.**.
-Note: does not support entering "zh-dialect", "16k_zh_edu", "16k_zh_medical", "16k_zh_court", "8k_zh_large", "16k_zh_large", "16k_multi_lang", "16k_zh_en".
-
         :rtype: list of str
         """
         return self._AlternativeLanguage
@@ -13594,6 +13651,189 @@ class TTSConfig(AbstractModel):
         
 
 
+class TTSParam(AbstractModel):
+    r"""Transcription TTS parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>TTS model</p>
+        :type Model: str
+        :param _Language: <p>TTS language must be in the TargetLang list of TranslationParam.</p>
+        :type Language: str
+        :param _TargetUser: <p>The user requesting TTS playback. They must be on the subscription allowlist and not on the blocklist.</p>
+        :type TargetUser: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        :param _TTSRobotUser: <p>The robot user that pushes TTS audio back into the room.</p>
+        :type TTSRobotUser: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        :param _Voice: <p>TTS configuration parameters.</p>
+        :type Voice: :class:`tencentcloud.trtc.v20190722.models.TTSVoice`
+        """
+        self._Model = None
+        self._Language = None
+        self._TargetUser = None
+        self._TTSRobotUser = None
+        self._Voice = None
+
+    @property
+    def Model(self):
+        r"""<p>TTS model</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Language(self):
+        r"""<p>TTS language must be in the TargetLang list of TranslationParam.</p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def TargetUser(self):
+        r"""<p>The user requesting TTS playback. They must be on the subscription allowlist and not on the blocklist.</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        """
+        return self._TargetUser
+
+    @TargetUser.setter
+    def TargetUser(self, TargetUser):
+        self._TargetUser = TargetUser
+
+    @property
+    def TTSRobotUser(self):
+        r"""<p>The robot user that pushes TTS audio back into the room.</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        """
+        return self._TTSRobotUser
+
+    @TTSRobotUser.setter
+    def TTSRobotUser(self, TTSRobotUser):
+        self._TTSRobotUser = TTSRobotUser
+
+    @property
+    def Voice(self):
+        r"""<p>TTS configuration parameters.</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TTSVoice`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Language = params.get("Language")
+        if params.get("TargetUser") is not None:
+            self._TargetUser = TranscriptionUserInfoParams()
+            self._TargetUser._deserialize(params.get("TargetUser"))
+        if params.get("TTSRobotUser") is not None:
+            self._TTSRobotUser = TranscriptionUserInfoParams()
+            self._TTSRobotUser._deserialize(params.get("TTSRobotUser"))
+        if params.get("Voice") is not None:
+            self._Voice = TTSVoice()
+            self._Voice._deserialize(params.get("Voice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TTSVoice(AbstractModel):
+    r"""Speech parameter configuration for companion transcription TTS
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _Speed: <p>Speech speed. 0.5 for half speed, 2.0 for 2x speed, 1.0 for normal speed. Value range: [0.5, 2.0]. Default: 1.0.</p>
+        :type Speed: float
+        :param _Volume: <p>Audio volume. 0 is mute, 10 is maximum volume. It is recommended to keep the default value to 1.0. Value range: [0, 10]. Default: 1.0.</p>
+        :type Volume: float
+        :param _Pitch: <p>Pitch. Negative value makes the sound low and deep, positive value makes it sharper. 0 indicates the original pitch. Value range: [-12, 12]. Default 0.</p>
+        :type Pitch: int
+        """
+        self._VoiceId = None
+        self._Speed = None
+        self._Volume = None
+        self._Pitch = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Speed(self):
+        r"""<p>Speech speed. 0.5 for half speed, 2.0 for 2x speed, 1.0 for normal speed. Value range: [0.5, 2.0]. Default: 1.0.</p>
+        :rtype: float
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+    @property
+    def Volume(self):
+        r"""<p>Audio volume. 0 is mute, 10 is maximum volume. It is recommended to keep the default value to 1.0. Value range: [0, 10]. Default: 1.0.</p>
+        :rtype: float
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def Pitch(self):
+        r"""<p>Pitch. Negative value makes the sound low and deep, positive value makes it sharper. 0 indicates the original pitch. Value range: [-12, 12]. Default 0.</p>
+        :rtype: int
+        """
+        return self._Pitch
+
+    @Pitch.setter
+    def Pitch(self, Pitch):
+        self._Pitch = Pitch
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._Speed = params.get("Speed")
+        self._Volume = params.get("Volume")
+        self._Pitch = params.get("Pitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TencentVod(AbstractModel):
     r"""The Tencent Cloud VOD parameters.
 
@@ -13754,6 +13994,57 @@ The default value is 0, indicating other categories.
         
 
 
+class TermPair(AbstractModel):
+    r"""Glossary phrase pairs for transcription
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: <p>Source terms.</p>
+        :type Source: str
+        :param _Target: <p>Translated terms in target language.</p>
+        :type Target: str
+        """
+        self._Source = None
+        self._Target = None
+
+    @property
+    def Source(self):
+        r"""<p>Source terms.</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""<p>Translated terms in target language.</p>
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Terminology(AbstractModel):
     r"""Translate terminology.
 
@@ -13795,6 +14086,62 @@ class Terminology(AbstractModel):
     def _deserialize(self, params):
         self._Source = params.get("Source")
         self._Target = params.get("Target")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminologyItem(AbstractModel):
+    r"""Transcription companion terminology table entry
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetLang: <p>Target language.</p>
+        :type TargetLang: str
+        :param _Terminology: <p>Terminology configuration.</p>
+        :type Terminology: list of TermPair
+        """
+        self._TargetLang = None
+        self._Terminology = None
+
+    @property
+    def TargetLang(self):
+        r"""<p>Target language.</p>
+        :rtype: str
+        """
+        return self._TargetLang
+
+    @TargetLang.setter
+    def TargetLang(self, TargetLang):
+        self._TargetLang = TargetLang
+
+    @property
+    def Terminology(self):
+        r"""<p>Terminology configuration.</p>
+        :rtype: list of TermPair
+        """
+        return self._Terminology
+
+    @Terminology.setter
+    def Terminology(self, Terminology):
+        self._Terminology = Terminology
+
+
+    def _deserialize(self, params):
+        self._TargetLang = params.get("TargetLang")
+        if params.get("Terminology") is not None:
+            self._Terminology = []
+            for item in params.get("Terminology"):
+                obj = TermPair()
+                obj._deserialize(item)
+                self._Terminology.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14325,7 +14672,8 @@ If all anchors being transcribed continuously leave the TRTC room or switch to t
 - Default: 30
 - Range: 5 - 86400 (24 hours)
         :type MaxIdleTime: int
-        :param _SendCustomMode: Controls whether the custom data channel is enabled. Accepted values: 0 (disabled) or 1 (enabled). Defaults to 0 if omitted.
+        :param _SendCustomMode: Custom data mode: 0 indicates disabled, 1 indicates enabled.
+Leave blank defaults to 0, meaning custom data is disabled.
         :type SendCustomMode: int
         """
         self._UserId = None
@@ -14400,7 +14748,8 @@ If all anchors being transcribed continuously leave the TRTC room or switch to t
 
     @property
     def SendCustomMode(self):
-        r"""Controls whether the custom data channel is enabled. Accepted values: 0 (disabled) or 1 (enabled). Defaults to 0 if omitted.
+        r"""Custom data mode: 0 indicates disabled, 1 indicates enabled.
+Leave blank defaults to 0, meaning custom data is disabled.
         :rtype: int
         """
         return self._SendCustomMode
@@ -14702,50 +15051,17 @@ class TranslationParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetLang: Target language for translation. Example: ["en", "ja"].
-
-Supported target languages:
-
-- <code>"zh"</code>: Chinese
-- <code>"en"</code>: English
-- <code>"vi"</code>: Vietnamese
-- <code>"ja"</code>: Japanese
-- <code>"ko"</code>: Korean
-- <code>"id"</code>: Indonesian
-- <code>"th"</code>: Thai
-- <code>"pt"</code>: Portuguese
-- <code>"ar"</code>: Arabic
-- <code>"es"</code>: Spanish
-- <code>"fr"</code>: French
-- <code>"ms"</code>: Malay
-- <code>"de"</code>: German
-- <code>"it"</code>: Italian
-- <code>"ru"</code>: Russian
+        :param _TargetLang: <p>Target language for translation, example value ["en", "ja"]. Target language list [Chinese "zh", English "en", Vietnamese "vi", Japanese "ja", Korean "ko", Indonesian "id", Thai "th", Portuguese "pt", Arabic "ar", Spanish "es", French "fr", Malay "ms", German "de", Italian "it", Russian "ru"].</p>
         :type TargetLang: list of str
+        :param _Terminologies: <p>Glossary configuration.</p>
+        :type Terminologies: list of TerminologyItem
         """
         self._TargetLang = None
+        self._Terminologies = None
 
     @property
     def TargetLang(self):
-        r"""Target language for translation. Example: ["en", "ja"].
-
-Supported target languages:
-
-- <code>"zh"</code>: Chinese
-- <code>"en"</code>: English
-- <code>"vi"</code>: Vietnamese
-- <code>"ja"</code>: Japanese
-- <code>"ko"</code>: Korean
-- <code>"id"</code>: Indonesian
-- <code>"th"</code>: Thai
-- <code>"pt"</code>: Portuguese
-- <code>"ar"</code>: Arabic
-- <code>"es"</code>: Spanish
-- <code>"fr"</code>: French
-- <code>"ms"</code>: Malay
-- <code>"de"</code>: German
-- <code>"it"</code>: Italian
-- <code>"ru"</code>: Russian
+        r"""<p>Target language for translation, example value ["en", "ja"]. Target language list [Chinese "zh", English "en", Vietnamese "vi", Japanese "ja", Korean "ko", Indonesian "id", Thai "th", Portuguese "pt", Arabic "ar", Spanish "es", French "fr", Malay "ms", German "de", Italian "it", Russian "ru"].</p>
         :rtype: list of str
         """
         return self._TargetLang
@@ -14754,9 +15070,26 @@ Supported target languages:
     def TargetLang(self, TargetLang):
         self._TargetLang = TargetLang
 
+    @property
+    def Terminologies(self):
+        r"""<p>Glossary configuration.</p>
+        :rtype: list of TerminologyItem
+        """
+        return self._Terminologies
+
+    @Terminologies.setter
+    def Terminologies(self, Terminologies):
+        self._Terminologies = Terminologies
+
 
     def _deserialize(self, params):
         self._TargetLang = params.get("TargetLang")
+        if params.get("Terminologies") is not None:
+            self._Terminologies = []
+            for item in params.get("Terminologies"):
+                obj = TerminologyItem()
+                obj._deserialize(item)
+                self._Terminologies.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

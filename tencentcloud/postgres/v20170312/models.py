@@ -3398,7 +3398,7 @@ class CreateDatabaseRequest(AbstractModel):
         :param _DatabaseName: Specifies the user-created database name.
 Name specification: consists of letters (a-z, a-z), digits (0-9), and underscores (_), starting with a letter or underscore (_), up to 63 characters. system reserved keywords cannot be used, and 'postgres' is not allowed.
         :type DatabaseName: str
-        :param _DatabaseOwner: Owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :param _DatabaseOwner: Owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).
         :type DatabaseOwner: str
         :param _Encoding: Specifies the character encoding of the database.
 Supported character sets include UTF8, LATIN1, LATIN2, WIN1250, WIN1251, WIN1252, KOI8R, EUC_JP, and EUC_KR.
@@ -3441,7 +3441,7 @@ Name specification: consists of letters (a-z, a-z), digits (0-9), and underscore
 
     @property
     def DatabaseOwner(self):
-        r"""Owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        r"""Owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).
         :rtype: str
         """
         return self._DatabaseOwner
@@ -6688,7 +6688,7 @@ class DeleteAccountRequest(AbstractModel):
         r"""
         :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
-        :param _UserName: Account name to be deleted. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :param _UserName: Account name to be deleted. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).
         :type UserName: str
         """
         self._DBInstanceId = None
@@ -6707,7 +6707,7 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""Account name to be deleted. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        r"""Account name to be deleted. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).
         :rtype: str
         """
         return self._UserName
@@ -15576,7 +15576,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         r"""
         :param _DBInstanceId: Instance ID. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
-        :param _UserName: Modify the permission of this account for a database object. obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1) api.
+        :param _UserName: Modify the permission of this account for a database object. obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109) api.
         :type UserName: str
         :param _ModifyPrivilegeSet: Permission information to modify. supports batch modification. the maximum number of modifications per batch is 50.
         :type ModifyPrivilegeSet: list of ModifyPrivilege
@@ -15598,7 +15598,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""Modify the permission of this account for a database object. obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1) api.
+        r"""Modify the permission of this account for a database object. obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109) api.
         :rtype: str
         """
         return self._UserName
@@ -17693,7 +17693,7 @@ class ModifyDatabaseOwnerRequest(AbstractModel):
         :type DBInstanceId: str
         :param _DatabaseName: Database name. obtain through the api [DescribeDatabases](https://www.tencentcloud.com/document/product/409/37118).
         :type DatabaseName: str
-        :param _DatabaseOwner: New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :param _DatabaseOwner: New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).
         :type DatabaseOwner: str
         """
         self._DBInstanceId = None
@@ -17724,7 +17724,7 @@ class ModifyDatabaseOwnerRequest(AbstractModel):
 
     @property
     def DatabaseOwner(self):
-        r"""New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        r"""New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).
         :rtype: str
         """
         return self._DatabaseOwner
@@ -20825,15 +20825,15 @@ class ResetAccountPasswordRequest(AbstractModel):
         r"""
         :param _DBInstanceId: Specifies the instance ID, such as postgres-4wdeb0zv. obtain through the api [DescribeDBInstances](https://www.tencentcloud.com/document/api/409/16773?from_cn_redirect=1).
         :type DBInstanceId: str
-        :param _UserName: Instance account name. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        :param _UserName: Instance account name. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).
         :type UserName: str
         :param _Password: Specifies the new password for the UserName account.
 Password settings rule specifies the following:.
 - valid values: 8 to 32 characters. a password with more than 12 characters is recommended.
--Must not start with "/".
--Must include the following four items:.
-Lowercase letters a ~ z.
-Uppercase letters: A – Z.
+- Must not start with "/".
+- Must include the following four items:.
+Lowercase letters a - z.
+Uppercase letters: A - Z.
 Digits: 0-9.
 Special symbols: ()`~!@#$%^&*-+=_|{}[]:<>,.?/.
         :type Password: str
@@ -20855,7 +20855,7 @@ Special symbols: ()`~!@#$%^&*-+=_|{}[]:<>,.?/.
 
     @property
     def UserName(self):
-        r"""Instance account name. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).
+        r"""Instance account name. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).
         :rtype: str
         """
         return self._UserName
@@ -20869,10 +20869,10 @@ Special symbols: ()`~!@#$%^&*-+=_|{}[]:<>,.?/.
         r"""Specifies the new password for the UserName account.
 Password settings rule specifies the following:.
 - valid values: 8 to 32 characters. a password with more than 12 characters is recommended.
--Must not start with "/".
--Must include the following four items:.
-Lowercase letters a ~ z.
-Uppercase letters: A – Z.
+- Must not start with "/".
+- Must include the following four items:.
+Lowercase letters a - z.
+Uppercase letters: A - Z.
 Digits: 0-9.
 Special symbols: ()`~!@#$%^&*-+=_|{}[]:<>,.?/.
         :rtype: str
