@@ -3963,9 +3963,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LastName: str
         :param _Sex: Gender on the document.
--M: man.
--F: woman.
--X: other gender identity.
+- M: man.
+- F: woman.
+- X: other gender identity.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Sex: str
         :param _Age: Age. 0 means no valid info.
@@ -4166,9 +4166,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Sex(self):
         r"""Gender on the document.
--M: man.
--F: woman.
--X: other gender identity.
+- M: man.
+- F: woman.
+- X: other gender identity.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11779,9 +11779,9 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
         :type RNM: str
         :param _CPF: CPF
         :type CPF: str
-        :param _CLASSIFICATION: 
+        :param _CLASSIFICATION: Residence category
         :type CLASSIFICATION: str
-        :param _PRAZODERESIDENCIA: 
+        :param _PRAZODERESIDENCIA: Residence validity term
         :type PRAZODERESIDENCIA: str
         :param _ISSUANCE: Issue Date
         :type ISSUANCE: str
@@ -11915,7 +11915,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def CLASSIFICATION(self):
-        r"""
+        r"""Residence category
         :rtype: str
         """
         return self._CLASSIFICATION
@@ -11926,7 +11926,7 @@ class RecognizeBrazilRNMOCRResponse(AbstractModel):
 
     @property
     def PRAZODERESIDENCIA(self):
-        r"""
+        r"""Residence validity term
         :rtype: str
         """
         return self._PRAZODERESIDENCIA
