@@ -3375,6 +3375,78 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class CoverStaffInfo(AbstractModel):
+    r"""Shift personnel group information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CoverStaffIDs: Shift personnel ID group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CoverStaffIDs: list of str
+        :param _CoverStartTime: Shift start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CoverStartTime: int
+        :param _CoverEndTime: Shift end time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CoverEndTime: int
+        """
+        self._CoverStaffIDs = None
+        self._CoverStartTime = None
+        self._CoverEndTime = None
+
+    @property
+    def CoverStaffIDs(self):
+        r"""Shift personnel ID group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._CoverStaffIDs
+
+    @CoverStaffIDs.setter
+    def CoverStaffIDs(self, CoverStaffIDs):
+        self._CoverStaffIDs = CoverStaffIDs
+
+    @property
+    def CoverStartTime(self):
+        r"""Shift start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._CoverStartTime
+
+    @CoverStartTime.setter
+    def CoverStartTime(self, CoverStartTime):
+        self._CoverStartTime = CoverStartTime
+
+    @property
+    def CoverEndTime(self):
+        r"""Shift end time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._CoverEndTime
+
+    @CoverEndTime.setter
+    def CoverEndTime(self, CoverEndTime):
+        self._CoverEndTime = CoverEndTime
+
+
+    def _deserialize(self, params):
+        self._CoverStaffIDs = params.get("CoverStaffIDs")
+        self._CoverStartTime = params.get("CoverStartTime")
+        self._CoverEndTime = params.get("CoverEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAlarmNoticeRequest(AbstractModel):
     r"""CreateAlarmNotice request structure.
 
@@ -4753,6 +4825,250 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self._ChannelId = params.get("ChannelId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateOnCallFormRequest(AbstractModel):
+    r"""CreateOnCallForm request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: The fixed value is monitor.
+        :type Module: str
+        :param _OnCallFormName: On-call schedule name.
+        :type OnCallFormName: str
+        :param _StaffInfos: On-call personnel ID group.
+        :type StaffInfos: list of StaffInfo
+        :param _RotationType: Rotation type.
+        :type RotationType: str
+        :param _ShiftTime: Shift change time.
+        :type ShiftTime: str
+        :param _EffectiveStartTime: Effect time. Unit: seconds.
+        :type EffectiveStartTime: int
+        :param _EffectiveEndTime: End time of the validity period (in seconds).
+        :type EffectiveEndTime: int
+        :param _TimeZone: Time zone (-12 to 12).
+        :type TimeZone: float
+        :param _OnCallFormDesc: Description of the shift schedule.
+        :type OnCallFormDesc: str
+        :param _CoverStaffInfos: Shift information.
+        :type CoverStaffInfos: list of CoverStaffInfo
+        :param _Tags: Tag bound to the template
+        :type Tags: list of Tag
+        """
+        self._Module = None
+        self._OnCallFormName = None
+        self._StaffInfos = None
+        self._RotationType = None
+        self._ShiftTime = None
+        self._EffectiveStartTime = None
+        self._EffectiveEndTime = None
+        self._TimeZone = None
+        self._OnCallFormDesc = None
+        self._CoverStaffInfos = None
+        self._Tags = None
+
+    @property
+    def Module(self):
+        r"""The fixed value is monitor.
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def OnCallFormName(self):
+        r"""On-call schedule name.
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+    @property
+    def StaffInfos(self):
+        r"""On-call personnel ID group.
+        :rtype: list of StaffInfo
+        """
+        return self._StaffInfos
+
+    @StaffInfos.setter
+    def StaffInfos(self, StaffInfos):
+        self._StaffInfos = StaffInfos
+
+    @property
+    def RotationType(self):
+        r"""Rotation type.
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def ShiftTime(self):
+        r"""Shift change time.
+        :rtype: str
+        """
+        return self._ShiftTime
+
+    @ShiftTime.setter
+    def ShiftTime(self, ShiftTime):
+        self._ShiftTime = ShiftTime
+
+    @property
+    def EffectiveStartTime(self):
+        r"""Effect time. Unit: seconds.
+        :rtype: int
+        """
+        return self._EffectiveStartTime
+
+    @EffectiveStartTime.setter
+    def EffectiveStartTime(self, EffectiveStartTime):
+        self._EffectiveStartTime = EffectiveStartTime
+
+    @property
+    def EffectiveEndTime(self):
+        r"""End time of the validity period (in seconds).
+        :rtype: int
+        """
+        return self._EffectiveEndTime
+
+    @EffectiveEndTime.setter
+    def EffectiveEndTime(self, EffectiveEndTime):
+        self._EffectiveEndTime = EffectiveEndTime
+
+    @property
+    def TimeZone(self):
+        r"""Time zone (-12 to 12).
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def OnCallFormDesc(self):
+        r"""Description of the shift schedule.
+        :rtype: str
+        """
+        return self._OnCallFormDesc
+
+    @OnCallFormDesc.setter
+    def OnCallFormDesc(self, OnCallFormDesc):
+        self._OnCallFormDesc = OnCallFormDesc
+
+    @property
+    def CoverStaffInfos(self):
+        r"""Shift information.
+        :rtype: list of CoverStaffInfo
+        """
+        return self._CoverStaffInfos
+
+    @CoverStaffInfos.setter
+    def CoverStaffInfos(self, CoverStaffInfos):
+        self._CoverStaffInfos = CoverStaffInfos
+
+    @property
+    def Tags(self):
+        r"""Tag bound to the template
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._OnCallFormName = params.get("OnCallFormName")
+        if params.get("StaffInfos") is not None:
+            self._StaffInfos = []
+            for item in params.get("StaffInfos"):
+                obj = StaffInfo()
+                obj._deserialize(item)
+                self._StaffInfos.append(obj)
+        self._RotationType = params.get("RotationType")
+        self._ShiftTime = params.get("ShiftTime")
+        self._EffectiveStartTime = params.get("EffectiveStartTime")
+        self._EffectiveEndTime = params.get("EffectiveEndTime")
+        self._TimeZone = params.get("TimeZone")
+        self._OnCallFormDesc = params.get("OnCallFormDesc")
+        if params.get("CoverStaffInfos") is not None:
+            self._CoverStaffInfos = []
+            for item in params.get("CoverStaffInfos"):
+                obj = CoverStaffInfo()
+                obj._deserialize(item)
+                self._CoverStaffInfos.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOnCallFormResponse(AbstractModel):
+    r"""CreateOnCallForm response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallFormID: On-call schedule ID.
+        :type OnCallFormID: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._OnCallFormID = None
+        self._RequestId = None
+
+    @property
+    def OnCallFormID(self):
+        r"""On-call schedule ID.
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OnCallFormID = params.get("OnCallFormID")
         self._RequestId = params.get("RequestId")
 
 
@@ -7489,6 +7805,115 @@ class DeleteGrafanaNotificationChannelResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOnCallFormsRequest(AbstractModel):
+    r"""DeleteOnCallForms request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: The fixed value is monitor.
+        :type Module: str
+        :param _OnCallFormIDs: ID of the on-call schedule to be deleted.
+        :type OnCallFormIDs: list of str
+        """
+        self._Module = None
+        self._OnCallFormIDs = None
+
+    @property
+    def Module(self):
+        r"""The fixed value is monitor.
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def OnCallFormIDs(self):
+        r"""ID of the on-call schedule to be deleted.
+        :rtype: list of str
+        """
+        return self._OnCallFormIDs
+
+    @OnCallFormIDs.setter
+    def OnCallFormIDs(self, OnCallFormIDs):
+        self._OnCallFormIDs = OnCallFormIDs
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._OnCallFormIDs = params.get("OnCallFormIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOnCallFormsResponse(AbstractModel):
+    r"""DeleteOnCallForms response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedOnCallFormIDs: On-call schedule IDs failed to be deleted.
+        :type FailedOnCallFormIDs: list of str
+        :param _SuccessOnCallFormIDs: On-call schedule IDs deleted successfully.
+        :type SuccessOnCallFormIDs: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FailedOnCallFormIDs = None
+        self._SuccessOnCallFormIDs = None
+        self._RequestId = None
+
+    @property
+    def FailedOnCallFormIDs(self):
+        r"""On-call schedule IDs failed to be deleted.
+        :rtype: list of str
+        """
+        return self._FailedOnCallFormIDs
+
+    @FailedOnCallFormIDs.setter
+    def FailedOnCallFormIDs(self, FailedOnCallFormIDs):
+        self._FailedOnCallFormIDs = FailedOnCallFormIDs
+
+    @property
+    def SuccessOnCallFormIDs(self):
+        r"""On-call schedule IDs deleted successfully.
+        :rtype: list of str
+        """
+        return self._SuccessOnCallFormIDs
+
+    @SuccessOnCallFormIDs.setter
+    def SuccessOnCallFormIDs(self, SuccessOnCallFormIDs):
+        self._SuccessOnCallFormIDs = SuccessOnCallFormIDs
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FailedOnCallFormIDs = params.get("FailedOnCallFormIDs")
+        self._SuccessOnCallFormIDs = params.get("SuccessOnCallFormIDs")
         self._RequestId = params.get("RequestId")
 
 
@@ -13756,6 +14181,291 @@ class DescribeMonitorTypesResponse(AbstractModel):
                 obj = MonitorTypeInfo()
                 obj._deserialize(item)
                 self._MonitorTypeInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOnCallFormRequest(AbstractModel):
+    r"""DescribeOnCallForm request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: The fixed value is monitor.
+        :type Module: str
+        :param _OnCallFormID: On-call schedule ID.
+        :type OnCallFormID: str
+        """
+        self._Module = None
+        self._OnCallFormID = None
+
+    @property
+    def Module(self):
+        r"""The fixed value is monitor.
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def OnCallFormID(self):
+        r"""On-call schedule ID.
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._OnCallFormID = params.get("OnCallFormID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOnCallFormResponse(AbstractModel):
+    r"""DescribeOnCallForm response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallForm: On-call schedule details.
+        :type OnCallForm: :class:`tencentcloud.monitor.v20180724.models.OneOnCallForm`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._OnCallForm = None
+        self._RequestId = None
+
+    @property
+    def OnCallForm(self):
+        r"""On-call schedule details.
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.OneOnCallForm`
+        """
+        return self._OnCallForm
+
+    @OnCallForm.setter
+    def OnCallForm(self, OnCallForm):
+        self._OnCallForm = OnCallForm
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OnCallForm") is not None:
+            self._OnCallForm = OneOnCallForm()
+            self._OnCallForm._deserialize(params.get("OnCallForm"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOnCallFormsRequest(AbstractModel):
+    r"""DescribeOnCallForms request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: The fixed value is monitor.
+        :type Module: str
+        :param _Offset: Pagination start offset.
+        :type Offset: int
+        :param _Limit: Number of pages for pagination query.
+        :type Limit: int
+        :param _OnCallFormStaffIDs: Supports searching based on user ID.
+        :type OnCallFormStaffIDs: list of str
+        :param _RotationType: Rotation type
+        :type RotationType: str
+        :param _Order: Sorting method.
+        :type Order: str
+        :param _OnCallFormName: Supports searching bay on ID and name.
+        :type OnCallFormName: str
+        """
+        self._Module = None
+        self._Offset = None
+        self._Limit = None
+        self._OnCallFormStaffIDs = None
+        self._RotationType = None
+        self._Order = None
+        self._OnCallFormName = None
+
+    @property
+    def Module(self):
+        r"""The fixed value is monitor.
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def Offset(self):
+        r"""Pagination start offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of pages for pagination query.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OnCallFormStaffIDs(self):
+        r"""Supports searching based on user ID.
+        :rtype: list of str
+        """
+        return self._OnCallFormStaffIDs
+
+    @OnCallFormStaffIDs.setter
+    def OnCallFormStaffIDs(self, OnCallFormStaffIDs):
+        self._OnCallFormStaffIDs = OnCallFormStaffIDs
+
+    @property
+    def RotationType(self):
+        r"""Rotation type
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def Order(self):
+        r"""Sorting method.
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OnCallFormName(self):
+        r"""Supports searching bay on ID and name.
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OnCallFormStaffIDs = params.get("OnCallFormStaffIDs")
+        self._RotationType = params.get("RotationType")
+        self._Order = params.get("Order")
+        self._OnCallFormName = params.get("OnCallFormName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOnCallFormsResponse(AbstractModel):
+    r"""DescribeOnCallForms response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallForms: On-call schedule information
+        :type OnCallForms: list of OnCallForm
+        :param _TotalCount: Total number.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._OnCallForms = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def OnCallForms(self):
+        r"""On-call schedule information
+        :rtype: list of OnCallForm
+        """
+        return self._OnCallForms
+
+    @OnCallForms.setter
+    def OnCallForms(self, OnCallForms):
+        self._OnCallForms = OnCallForms
+
+    @property
+    def TotalCount(self):
+        r"""Total number.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OnCallForms") is not None:
+            self._OnCallForms = []
+            for item in params.get("OnCallForms"):
+                obj = OnCallForm()
+                obj._deserialize(item)
+                self._OnCallForms.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -27270,6 +27980,425 @@ class NoticeBindPolicys(AbstractModel):
         
 
 
+class OnCallForm(AbstractModel):
+    r"""Shift information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallFormID: Schedule ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OnCallFormID: str
+        :param _OnCallFormName: Shift name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OnCallFormName: str
+        :param _OnCallFormDesc: Schedule description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OnCallFormDesc: str
+        :param _RotationType: Rotation type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RotationType: str
+        :param _ShiftTime: Shift change time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShiftTime: str
+        :param _EffectiveStartTime: Validity start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EffectiveStartTime: int
+        :param _EffectiveEndTime: Validity end time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EffectiveEndTime: int
+        :param _TimeZone: Time zone
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeZone: float
+        :param _CurrOnCallStaffs: Current on-duty personnel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CurrOnCallStaffs: list of str
+        :param _Tags: Tag bound to the template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        """
+        self._OnCallFormID = None
+        self._OnCallFormName = None
+        self._OnCallFormDesc = None
+        self._RotationType = None
+        self._ShiftTime = None
+        self._EffectiveStartTime = None
+        self._EffectiveEndTime = None
+        self._TimeZone = None
+        self._CurrOnCallStaffs = None
+        self._Tags = None
+
+    @property
+    def OnCallFormID(self):
+        r"""Schedule ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def OnCallFormName(self):
+        r"""Shift name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+    @property
+    def OnCallFormDesc(self):
+        r"""Schedule description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OnCallFormDesc
+
+    @OnCallFormDesc.setter
+    def OnCallFormDesc(self, OnCallFormDesc):
+        self._OnCallFormDesc = OnCallFormDesc
+
+    @property
+    def RotationType(self):
+        r"""Rotation type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def ShiftTime(self):
+        r"""Shift change time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ShiftTime
+
+    @ShiftTime.setter
+    def ShiftTime(self, ShiftTime):
+        self._ShiftTime = ShiftTime
+
+    @property
+    def EffectiveStartTime(self):
+        r"""Validity start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._EffectiveStartTime
+
+    @EffectiveStartTime.setter
+    def EffectiveStartTime(self, EffectiveStartTime):
+        self._EffectiveStartTime = EffectiveStartTime
+
+    @property
+    def EffectiveEndTime(self):
+        r"""Validity end time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._EffectiveEndTime
+
+    @EffectiveEndTime.setter
+    def EffectiveEndTime(self, EffectiveEndTime):
+        self._EffectiveEndTime = EffectiveEndTime
+
+    @property
+    def TimeZone(self):
+        r"""Time zone
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def CurrOnCallStaffs(self):
+        r"""Current on-duty personnel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._CurrOnCallStaffs
+
+    @CurrOnCallStaffs.setter
+    def CurrOnCallStaffs(self, CurrOnCallStaffs):
+        self._CurrOnCallStaffs = CurrOnCallStaffs
+
+    @property
+    def Tags(self):
+        r"""Tag bound to the template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._OnCallFormID = params.get("OnCallFormID")
+        self._OnCallFormName = params.get("OnCallFormName")
+        self._OnCallFormDesc = params.get("OnCallFormDesc")
+        self._RotationType = params.get("RotationType")
+        self._ShiftTime = params.get("ShiftTime")
+        self._EffectiveStartTime = params.get("EffectiveStartTime")
+        self._EffectiveEndTime = params.get("EffectiveEndTime")
+        self._TimeZone = params.get("TimeZone")
+        self._CurrOnCallStaffs = params.get("CurrOnCallStaffs")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OneOnCallForm(AbstractModel):
+    r"""Shift details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallFormID: Duty ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OnCallFormID: str
+        :param _OnCallFormName: On-call name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OnCallFormName: str
+        :param _OnCallFormDesc: Shift description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OnCallFormDesc: str
+        :param _StaffInfos: On-duty personnel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StaffInfos: list of StaffInfo
+        :param _RotationType: Rotation type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RotationType: str
+        :param _ShiftTime: Shift change time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShiftTime: str
+        :param _EffectiveStartTime: Start time of the on-call validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EffectiveStartTime: int
+        :param _EffectiveEndTime: End time of the on-call validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EffectiveEndTime: int
+        :param _TimeZone: Time zone
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeZone: float
+        :param _CoverStaffInfos: Shift information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CoverStaffInfos: list of CoverStaffInfo
+        :param _Tags: Tag bound to the template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        """
+        self._OnCallFormID = None
+        self._OnCallFormName = None
+        self._OnCallFormDesc = None
+        self._StaffInfos = None
+        self._RotationType = None
+        self._ShiftTime = None
+        self._EffectiveStartTime = None
+        self._EffectiveEndTime = None
+        self._TimeZone = None
+        self._CoverStaffInfos = None
+        self._Tags = None
+
+    @property
+    def OnCallFormID(self):
+        r"""Duty ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def OnCallFormName(self):
+        r"""On-call name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+    @property
+    def OnCallFormDesc(self):
+        r"""Shift description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OnCallFormDesc
+
+    @OnCallFormDesc.setter
+    def OnCallFormDesc(self, OnCallFormDesc):
+        self._OnCallFormDesc = OnCallFormDesc
+
+    @property
+    def StaffInfos(self):
+        r"""On-duty personnel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of StaffInfo
+        """
+        return self._StaffInfos
+
+    @StaffInfos.setter
+    def StaffInfos(self, StaffInfos):
+        self._StaffInfos = StaffInfos
+
+    @property
+    def RotationType(self):
+        r"""Rotation type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def ShiftTime(self):
+        r"""Shift change time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ShiftTime
+
+    @ShiftTime.setter
+    def ShiftTime(self, ShiftTime):
+        self._ShiftTime = ShiftTime
+
+    @property
+    def EffectiveStartTime(self):
+        r"""Start time of the on-call validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._EffectiveStartTime
+
+    @EffectiveStartTime.setter
+    def EffectiveStartTime(self, EffectiveStartTime):
+        self._EffectiveStartTime = EffectiveStartTime
+
+    @property
+    def EffectiveEndTime(self):
+        r"""End time of the on-call validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._EffectiveEndTime
+
+    @EffectiveEndTime.setter
+    def EffectiveEndTime(self, EffectiveEndTime):
+        self._EffectiveEndTime = EffectiveEndTime
+
+    @property
+    def TimeZone(self):
+        r"""Time zone
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def CoverStaffInfos(self):
+        r"""Shift information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CoverStaffInfo
+        """
+        return self._CoverStaffInfos
+
+    @CoverStaffInfos.setter
+    def CoverStaffInfos(self, CoverStaffInfos):
+        self._CoverStaffInfos = CoverStaffInfos
+
+    @property
+    def Tags(self):
+        r"""Tag bound to the template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._OnCallFormID = params.get("OnCallFormID")
+        self._OnCallFormName = params.get("OnCallFormName")
+        self._OnCallFormDesc = params.get("OnCallFormDesc")
+        if params.get("StaffInfos") is not None:
+            self._StaffInfos = []
+            for item in params.get("StaffInfos"):
+                obj = StaffInfo()
+                obj._deserialize(item)
+                self._StaffInfos.append(obj)
+        self._RotationType = params.get("RotationType")
+        self._ShiftTime = params.get("ShiftTime")
+        self._EffectiveStartTime = params.get("EffectiveStartTime")
+        self._EffectiveEndTime = params.get("EffectiveEndTime")
+        self._TimeZone = params.get("TimeZone")
+        if params.get("CoverStaffInfos") is not None:
+            self._CoverStaffInfos = []
+            for item in params.get("CoverStaffInfos"):
+                obj = CoverStaffInfo()
+                obj._deserialize(item)
+                self._CoverStaffInfos.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Operator(AbstractModel):
     r"""Operators supported by the instance
 
@@ -33006,6 +34135,44 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StaffInfo(AbstractModel):
+    r"""On-duty personnel ID group.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StaffIDs: On-duty personnel ID group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StaffIDs: list of str
+        """
+        self._StaffIDs = None
+
+    @property
+    def StaffIDs(self):
+        r"""On-duty personnel ID group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._StaffIDs
+
+    @StaffIDs.setter
+    def StaffIDs(self, StaffIDs):
+        self._StaffIDs = StaffIDs
+
+
+    def _deserialize(self, params):
+        self._StaffIDs = params.get("StaffIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncPrometheusTempRequest(AbstractModel):
     r"""SyncPrometheusTemp request structure.
 
@@ -35516,6 +36683,245 @@ class UpdateGrafanaWhiteListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateOnCallFormRequest(AbstractModel):
+    r"""UpdateOnCallForm request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: The fixed value is monitor.
+        :type Module: str
+        :param _OnCallFormID: On-call schedule ID.
+        :type OnCallFormID: str
+        :param _OnCallFormName: On-call schedule name.
+        :type OnCallFormName: str
+        :param _StaffInfos: On-call personnel ID group.
+        :type StaffInfos: list of StaffInfo
+        :param _RotationType: Rotation type.
+        :type RotationType: str
+        :param _ShiftTime: Shift change time.
+        :type ShiftTime: str
+        :param _EffectiveStartTime: Effect time. Unit: seconds.
+        :type EffectiveStartTime: int
+        :param _EffectiveEndTime: End time of the validity period (in seconds).
+        :type EffectiveEndTime: int
+        :param _TimeZone: Time zone (-12 to 12).
+        :type TimeZone: float
+        :param _OnCallFormDesc: Description of the shift schedule.
+        :type OnCallFormDesc: str
+        :param _CoverStaffInfos: Shift information.
+        :type CoverStaffInfos: list of CoverStaffInfo
+        """
+        self._Module = None
+        self._OnCallFormID = None
+        self._OnCallFormName = None
+        self._StaffInfos = None
+        self._RotationType = None
+        self._ShiftTime = None
+        self._EffectiveStartTime = None
+        self._EffectiveEndTime = None
+        self._TimeZone = None
+        self._OnCallFormDesc = None
+        self._CoverStaffInfos = None
+
+    @property
+    def Module(self):
+        r"""The fixed value is monitor.
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def OnCallFormID(self):
+        r"""On-call schedule ID.
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def OnCallFormName(self):
+        r"""On-call schedule name.
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+    @property
+    def StaffInfos(self):
+        r"""On-call personnel ID group.
+        :rtype: list of StaffInfo
+        """
+        return self._StaffInfos
+
+    @StaffInfos.setter
+    def StaffInfos(self, StaffInfos):
+        self._StaffInfos = StaffInfos
+
+    @property
+    def RotationType(self):
+        r"""Rotation type.
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def ShiftTime(self):
+        r"""Shift change time.
+        :rtype: str
+        """
+        return self._ShiftTime
+
+    @ShiftTime.setter
+    def ShiftTime(self, ShiftTime):
+        self._ShiftTime = ShiftTime
+
+    @property
+    def EffectiveStartTime(self):
+        r"""Effect time. Unit: seconds.
+        :rtype: int
+        """
+        return self._EffectiveStartTime
+
+    @EffectiveStartTime.setter
+    def EffectiveStartTime(self, EffectiveStartTime):
+        self._EffectiveStartTime = EffectiveStartTime
+
+    @property
+    def EffectiveEndTime(self):
+        r"""End time of the validity period (in seconds).
+        :rtype: int
+        """
+        return self._EffectiveEndTime
+
+    @EffectiveEndTime.setter
+    def EffectiveEndTime(self, EffectiveEndTime):
+        self._EffectiveEndTime = EffectiveEndTime
+
+    @property
+    def TimeZone(self):
+        r"""Time zone (-12 to 12).
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def OnCallFormDesc(self):
+        r"""Description of the shift schedule.
+        :rtype: str
+        """
+        return self._OnCallFormDesc
+
+    @OnCallFormDesc.setter
+    def OnCallFormDesc(self, OnCallFormDesc):
+        self._OnCallFormDesc = OnCallFormDesc
+
+    @property
+    def CoverStaffInfos(self):
+        r"""Shift information.
+        :rtype: list of CoverStaffInfo
+        """
+        return self._CoverStaffInfos
+
+    @CoverStaffInfos.setter
+    def CoverStaffInfos(self, CoverStaffInfos):
+        self._CoverStaffInfos = CoverStaffInfos
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._OnCallFormID = params.get("OnCallFormID")
+        self._OnCallFormName = params.get("OnCallFormName")
+        if params.get("StaffInfos") is not None:
+            self._StaffInfos = []
+            for item in params.get("StaffInfos"):
+                obj = StaffInfo()
+                obj._deserialize(item)
+                self._StaffInfos.append(obj)
+        self._RotationType = params.get("RotationType")
+        self._ShiftTime = params.get("ShiftTime")
+        self._EffectiveStartTime = params.get("EffectiveStartTime")
+        self._EffectiveEndTime = params.get("EffectiveEndTime")
+        self._TimeZone = params.get("TimeZone")
+        self._OnCallFormDesc = params.get("OnCallFormDesc")
+        if params.get("CoverStaffInfos") is not None:
+            self._CoverStaffInfos = []
+            for item in params.get("CoverStaffInfos"):
+                obj = CoverStaffInfo()
+                obj._deserialize(item)
+                self._CoverStaffInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOnCallFormResponse(AbstractModel):
+    r"""UpdateOnCallForm response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallFormID: On-call schedule ID.
+        :type OnCallFormID: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._OnCallFormID = None
+        self._RequestId = None
+
+    @property
+    def OnCallFormID(self):
+        r"""On-call schedule ID.
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OnCallFormID = params.get("OnCallFormID")
         self._RequestId = params.get("RequestId")
 
 

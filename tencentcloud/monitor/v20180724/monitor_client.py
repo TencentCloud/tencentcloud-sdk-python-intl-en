@@ -281,6 +281,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOnCallForm(self, request):
+        r"""Creates an on-call schedule.
+
+        :param request: Request instance for CreateOnCallForm.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateOnCallFormRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateOnCallFormResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOnCallForm", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOnCallFormResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePolicyGroup(self, request):
         r"""This API is used to add a policy group.
 
@@ -760,6 +783,29 @@ class MonitorClient(AbstractClient):
             body = self.call("DeleteGrafanaNotificationChannel", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteGrafanaNotificationChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteOnCallForms(self, request):
+        r"""Deletes an on-call schedule.
+
+        :param request: Request instance for DeleteOnCallForms.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteOnCallFormsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteOnCallFormsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOnCallForms", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOnCallFormsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1636,6 +1682,52 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribeMonitorTypes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMonitorTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOnCallForm(self, request):
+        r"""Describes On-Call Schedule Details.
+
+        :param request: Request instance for DescribeOnCallForm.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeOnCallFormRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeOnCallFormResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOnCallForm", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOnCallFormResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOnCallForms(self, request):
+        r"""Describes on-call schedule list.
+
+        :param request: Request instance for DescribeOnCallForms.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeOnCallFormsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeOnCallFormsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOnCallForms", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOnCallFormsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3281,6 +3373,29 @@ class MonitorClient(AbstractClient):
             body = self.call("UpdateGrafanaWhiteList", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateGrafanaWhiteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateOnCallForm(self, request):
+        r"""Modifies an on-call schedule.
+
+        :param request: Request instance for UpdateOnCallForm.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateOnCallFormRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdateOnCallFormResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOnCallForm", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOnCallFormResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

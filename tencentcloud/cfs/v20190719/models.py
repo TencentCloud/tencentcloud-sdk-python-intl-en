@@ -1268,6 +1268,8 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type MountIP: str
         :param _FsName: Custom file system name
         :type FsName: str
+        :param _Encrypted: 
+        :type Encrypted: bool
         :param _ResourceTags: File system tag
         :type ResourceTags: list of TagInfo
         :param _ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. This string is valid for 2 hours.
@@ -1306,6 +1308,7 @@ Enhanced: creates enhanced metadata.
         self._SubnetId = None
         self._MountIP = None
         self._FsName = None
+        self._Encrypted = None
         self._ResourceTags = None
         self._ClientToken = None
         self._CcnId = None
@@ -1417,6 +1420,17 @@ Enhanced: creates enhanced metadata.
     @FsName.setter
     def FsName(self, FsName):
         self._FsName = FsName
+
+    @property
+    def Encrypted(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Encrypted
+
+    @Encrypted.setter
+    def Encrypted(self, Encrypted):
+        self._Encrypted = Encrypted
 
     @property
     def ResourceTags(self):
@@ -1547,6 +1561,7 @@ Enhanced: creates enhanced metadata.
         self._SubnetId = params.get("SubnetId")
         self._MountIP = params.get("MountIP")
         self._FsName = params.get("FsName")
+        self._Encrypted = params.get("Encrypted")
         if params.get("ResourceTags") is not None:
             self._ResourceTags = []
             for item in params.get("ResourceTags"):
@@ -2482,10 +2497,10 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
         :type FileSystemId: str
         :param _Type: Lifecycle task type; archive: settlement; restore: preheating; release: data release; metaload: metadata loading.
         :type Type: str
-        :param _TaskPath: The path or file to be settled supports passing only one path and cannot be empty.
-        :type TaskPath: str
         :param _TaskName: Task name.
         :type TaskName: str
+        :param _TaskPath: The path or file to be settled supports passing only one path and cannot be empty.
+        :type TaskPath: str
         :param _DataFlowId: Data flow ID. this api can be accessed through DescribeDataFlow.
         :type DataFlowId: str
         :param _IsOverwrite: When a file in CFS Turbo and an external storage have the same name, whether to overwrite. true: overwrite. false: not overwrite (at the same time, data storage will not be released). default false when empty.
@@ -2493,8 +2508,8 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
         """
         self._FileSystemId = None
         self._Type = None
-        self._TaskPath = None
         self._TaskName = None
+        self._TaskPath = None
         self._DataFlowId = None
         self._IsOverwrite = None
 
@@ -2521,17 +2536,6 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
         self._Type = Type
 
     @property
-    def TaskPath(self):
-        r"""The path or file to be settled supports passing only one path and cannot be empty.
-        :rtype: str
-        """
-        return self._TaskPath
-
-    @TaskPath.setter
-    def TaskPath(self, TaskPath):
-        self._TaskPath = TaskPath
-
-    @property
     def TaskName(self):
         r"""Task name.
         :rtype: str
@@ -2541,6 +2545,17 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
     @TaskName.setter
     def TaskName(self, TaskName):
         self._TaskName = TaskName
+
+    @property
+    def TaskPath(self):
+        r"""The path or file to be settled supports passing only one path and cannot be empty.
+        :rtype: str
+        """
+        return self._TaskPath
+
+    @TaskPath.setter
+    def TaskPath(self, TaskPath):
+        self._TaskPath = TaskPath
 
     @property
     def DataFlowId(self):
@@ -2568,8 +2583,8 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._Type = params.get("Type")
-        self._TaskPath = params.get("TaskPath")
         self._TaskName = params.get("TaskName")
+        self._TaskPath = params.get("TaskPath")
         self._DataFlowId = params.get("DataFlowId")
         self._IsOverwrite = params.get("IsOverwrite")
         memeber_set = set(params.keys())

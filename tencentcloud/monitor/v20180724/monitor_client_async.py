@@ -225,6 +225,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateOnCallForm(
+            self,
+            request: models.CreateOnCallFormRequest,
+            opts: Dict = None,
+    ) -> models.CreateOnCallFormResponse:
+        """
+        Creates an on-call schedule.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateOnCallForm"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateOnCallFormResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePolicyGroup(
             self,
             request: models.CreatePolicyGroupRequest,
@@ -603,6 +621,24 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "DeleteGrafanaNotificationChannel"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteGrafanaNotificationChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteOnCallForms(
+            self,
+            request: models.DeleteOnCallFormsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteOnCallFormsResponse:
+        """
+        Deletes an on-call schedule.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteOnCallForms"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteOnCallFormsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1289,6 +1325,42 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "DescribeMonitorTypes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMonitorTypesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeOnCallForm(
+            self,
+            request: models.DescribeOnCallFormRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOnCallFormResponse:
+        """
+        Describes On-Call Schedule Details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOnCallForm"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOnCallFormResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeOnCallForms(
+            self,
+            request: models.DescribeOnCallFormsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOnCallFormsResponse:
+        """
+        Describes on-call schedule list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOnCallForms"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOnCallFormsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2579,6 +2651,24 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "UpdateGrafanaWhiteList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateGrafanaWhiteListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateOnCallForm(
+            self,
+            request: models.UpdateOnCallFormRequest,
+            opts: Dict = None,
+    ) -> models.UpdateOnCallFormResponse:
+        """
+        Modifies an on-call schedule.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateOnCallForm"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateOnCallFormResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
