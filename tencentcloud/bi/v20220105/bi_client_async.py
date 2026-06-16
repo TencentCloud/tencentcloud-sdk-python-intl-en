@@ -61,6 +61,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDataTable(
+            self,
+            request: models.CreateDataTableRequest,
+            opts: Dict = None,
+    ) -> models.CreateDataTableResponse:
+        """
+        Add a data table
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDataTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDataTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDatasource(
             self,
             request: models.CreateDatasourceRequest,
@@ -110,6 +128,24 @@ class BiClient(AbstractClient):
         kwargs["action"] = "CreateEmbedToken"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateEmbedTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreatePermissionRanks(
+            self,
+            request: models.CreatePermissionRanksRequest,
+            opts: Dict = None,
+    ) -> models.CreatePermissionRanksResponse:
+        """
+        Create row/column permissions
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePermissionRanks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePermissionRanksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -313,6 +349,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSourceFieldList(
+            self,
+            request: models.DescribeSourceFieldListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSourceFieldListResponse:
+        """
+        API information for raw data table fields
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSourceFieldList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSourceFieldListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUserProjectList(
             self,
             request: models.DescribeUserProjectListRequest,
@@ -434,6 +488,42 @@ class BiClient(AbstractClient):
         kwargs["action"] = "ModifyProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyResourceUser(
+            self,
+            request: models.ModifyResourceUserRequest,
+            opts: Dict = None,
+    ) -> models.ModifyResourceUserResponse:
+        """
+        This API is used to modify by user resource.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyResourceUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyResourceUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyResourceUserGroupResource(
+            self,
+            request: models.ModifyResourceUserGroupResourceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyResourceUserGroupResourceResponse:
+        """
+        Update user group permission based on resources
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyResourceUserGroupResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyResourceUserGroupResourceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

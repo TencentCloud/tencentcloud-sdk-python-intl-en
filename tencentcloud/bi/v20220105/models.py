@@ -18,6 +18,335 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApiDatasourceConfig(AbstractModel):
+    r"""API data source connection configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldsJsonData: API data source parsing result
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FieldsJsonData: str
+        :param _ConnectionType: Connection Type 1: Direct Connection 2: Extraction
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConnectionType: int
+        :param _FrequencyConfig: Extraction frequency configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FrequencyConfig: :class:`tencentcloud.bi.v20220105.models.FrequencyConfig`
+        :param _Url: Request URL
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Url: str
+        :param _RequestMethod: 1:GET 2:POST
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RequestMethod: int
+        :param _RequestHeader: Request headers
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RequestHeader: str
+        :param _RequestParams: Request parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RequestParams: str
+        :param _RequestBody: request body
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RequestBody: str
+        :param _UserName: Username.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserName: str
+        :param _Password: Password.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Password: str
+        :param _AuthorizationType: Valid values: 1: no authentication; 2: BASIC_AUTH.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuthorizationType: int
+        :param _TableId: Table ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableId: int
+        :param _JsonPathDbNameMap: Mapping path DbName
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JsonPathDbNameMap: str
+        :param _AuthApi: Authentication API
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuthApi: str
+        :param _AppKey: Application Key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppKey: str
+        :param _AppSecret: application key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppSecret: str
+        :param _SecretKey: Data Key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SecretKey: str
+        :param _SecretIv: Data key initialization vector
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SecretIv: str
+        """
+        self._FieldsJsonData = None
+        self._ConnectionType = None
+        self._FrequencyConfig = None
+        self._Url = None
+        self._RequestMethod = None
+        self._RequestHeader = None
+        self._RequestParams = None
+        self._RequestBody = None
+        self._UserName = None
+        self._Password = None
+        self._AuthorizationType = None
+        self._TableId = None
+        self._JsonPathDbNameMap = None
+        self._AuthApi = None
+        self._AppKey = None
+        self._AppSecret = None
+        self._SecretKey = None
+        self._SecretIv = None
+
+    @property
+    def FieldsJsonData(self):
+        r"""API data source parsing result
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FieldsJsonData
+
+    @FieldsJsonData.setter
+    def FieldsJsonData(self, FieldsJsonData):
+        self._FieldsJsonData = FieldsJsonData
+
+    @property
+    def ConnectionType(self):
+        r"""Connection Type 1: Direct Connection 2: Extraction
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ConnectionType
+
+    @ConnectionType.setter
+    def ConnectionType(self, ConnectionType):
+        self._ConnectionType = ConnectionType
+
+    @property
+    def FrequencyConfig(self):
+        r"""Extraction frequency configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.FrequencyConfig`
+        """
+        return self._FrequencyConfig
+
+    @FrequencyConfig.setter
+    def FrequencyConfig(self, FrequencyConfig):
+        self._FrequencyConfig = FrequencyConfig
+
+    @property
+    def Url(self):
+        r"""Request URL
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestMethod(self):
+        r"""1:GET 2:POST
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._RequestMethod
+
+    @RequestMethod.setter
+    def RequestMethod(self, RequestMethod):
+        self._RequestMethod = RequestMethod
+
+    @property
+    def RequestHeader(self):
+        r"""Request headers
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+    @property
+    def RequestParams(self):
+        r"""Request parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RequestParams
+
+    @RequestParams.setter
+    def RequestParams(self, RequestParams):
+        self._RequestParams = RequestParams
+
+    @property
+    def RequestBody(self):
+        r"""request body
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+    @property
+    def UserName(self):
+        r"""Username.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""Password.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def AuthorizationType(self):
+        r"""Valid values: 1: no authentication; 2: BASIC_AUTH.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._AuthorizationType
+
+    @AuthorizationType.setter
+    def AuthorizationType(self, AuthorizationType):
+        self._AuthorizationType = AuthorizationType
+
+    @property
+    def TableId(self):
+        r"""Table ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def JsonPathDbNameMap(self):
+        r"""Mapping path DbName
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._JsonPathDbNameMap
+
+    @JsonPathDbNameMap.setter
+    def JsonPathDbNameMap(self, JsonPathDbNameMap):
+        self._JsonPathDbNameMap = JsonPathDbNameMap
+
+    @property
+    def AuthApi(self):
+        r"""Authentication API
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AuthApi
+
+    @AuthApi.setter
+    def AuthApi(self, AuthApi):
+        self._AuthApi = AuthApi
+
+    @property
+    def AppKey(self):
+        r"""Application Key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def AppSecret(self):
+        r"""application key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppSecret
+
+    @AppSecret.setter
+    def AppSecret(self, AppSecret):
+        self._AppSecret = AppSecret
+
+    @property
+    def SecretKey(self):
+        r"""Data Key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def SecretIv(self):
+        r"""Data key initialization vector
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SecretIv
+
+    @SecretIv.setter
+    def SecretIv(self, SecretIv):
+        self._SecretIv = SecretIv
+
+
+    def _deserialize(self, params):
+        self._FieldsJsonData = params.get("FieldsJsonData")
+        self._ConnectionType = params.get("ConnectionType")
+        if params.get("FrequencyConfig") is not None:
+            self._FrequencyConfig = FrequencyConfig()
+            self._FrequencyConfig._deserialize(params.get("FrequencyConfig"))
+        self._Url = params.get("Url")
+        self._RequestMethod = params.get("RequestMethod")
+        self._RequestHeader = params.get("RequestHeader")
+        self._RequestParams = params.get("RequestParams")
+        self._RequestBody = params.get("RequestBody")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._AuthorizationType = params.get("AuthorizationType")
+        self._TableId = params.get("TableId")
+        self._JsonPathDbNameMap = params.get("JsonPathDbNameMap")
+        self._AuthApi = params.get("AuthApi")
+        self._AppKey = params.get("AppKey")
+        self._AppSecret = params.get("AppSecret")
+        self._SecretKey = params.get("SecretKey")
+        self._SecretIv = params.get("SecretIv")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyEmbedIntervalRequest(AbstractModel):
     r"""ApplyEmbedInterval request structure.
 
@@ -731,6 +1060,484 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateDataTableRequest(AbstractModel):
+    r"""CreateDataTable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: The backend provides a dictionary: table type, 1. database table creation, 2. SQL table creation, 3. Excel upload, 4. API connection, 5. Tencent documentation, 6. cloud database, 7. manually enter, 8. join query.
+        :type Type: int
+        :param _Name: Data table name
+        :type Name: str
+        :param _ProjectId: None.
+        :type ProjectId: int
+        :param _FoldId: folder
+        :type FoldId: int
+        :param _DatasourceId: data source Id
+        :type DatasourceId: str
+        :param _TableName: physical table name
+        :type TableName: str
+        :param _Sql: sql statement
+        :type Sql: str
+        :param _ExcelUrl: excel address
+        :type ExcelUrl: str
+        :param _Fields: configure field
+        :type Fields: list of TableField
+        :param _TableNodeType: Multi-table join usage: 1: Data source original table, 2: Local table, 3: Excel table, 4: API table
+        :type TableNodeType: int
+        :param _Tables: Original table information for multi-table join
+        :type Tables: list of JoinSourceTable
+        :param _Joins: Multi-table join association information
+        :type Joins: list of JoinRelation
+        :param _ExtInfo: Additional info, such as api data source info and Tencent document access info
+        :type ExtInfo: str
+        :param _AsyncRequest: whether
+        :type AsyncRequest: bool
+        :param _ParentTranId: dependent async transaction id
+        :type ParentTranId: str
+        :param _ApiDatasourceConfig: API data source configuration
+        :type ApiDatasourceConfig: :class:`tencentcloud.bi.v20220105.models.ApiDatasourceConfig`
+        :param _ParamList: 1
+        :type ParamList: list of ParamCreateDTO
+        :param _DlcExtInfo: dlc advanced parameter
+        :type DlcExtInfo: str
+        :param _QueryDbData: Query database required or not
+        :type QueryDbData: str
+        :param _TableComment: Table remark
+        :type TableComment: str
+        :param _QueryFieldRemark: Whether to query field remarks
+        :type QueryFieldRemark: int
+        :param _FieldRemarkList: Field remarks list
+        :type FieldRemarkList: list of FieldRemarkDTO
+        """
+        self._Type = None
+        self._Name = None
+        self._ProjectId = None
+        self._FoldId = None
+        self._DatasourceId = None
+        self._TableName = None
+        self._Sql = None
+        self._ExcelUrl = None
+        self._Fields = None
+        self._TableNodeType = None
+        self._Tables = None
+        self._Joins = None
+        self._ExtInfo = None
+        self._AsyncRequest = None
+        self._ParentTranId = None
+        self._ApiDatasourceConfig = None
+        self._ParamList = None
+        self._DlcExtInfo = None
+        self._QueryDbData = None
+        self._TableComment = None
+        self._QueryFieldRemark = None
+        self._FieldRemarkList = None
+
+    @property
+    def Type(self):
+        r"""The backend provides a dictionary: table type, 1. database table creation, 2. SQL table creation, 3. Excel upload, 4. API connection, 5. Tencent documentation, 6. cloud database, 7. manually enter, 8. join query.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""Data table name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ProjectId(self):
+        r"""None.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FoldId(self):
+        r"""folder
+        :rtype: int
+        """
+        return self._FoldId
+
+    @FoldId.setter
+    def FoldId(self, FoldId):
+        self._FoldId = FoldId
+
+    @property
+    def DatasourceId(self):
+        r"""data source Id
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def TableName(self):
+        r"""physical table name
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Sql(self):
+        r"""sql statement
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def ExcelUrl(self):
+        r"""excel address
+        :rtype: str
+        """
+        return self._ExcelUrl
+
+    @ExcelUrl.setter
+    def ExcelUrl(self, ExcelUrl):
+        self._ExcelUrl = ExcelUrl
+
+    @property
+    def Fields(self):
+        r"""configure field
+        :rtype: list of TableField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def TableNodeType(self):
+        r"""Multi-table join usage: 1: Data source original table, 2: Local table, 3: Excel table, 4: API table
+        :rtype: int
+        """
+        return self._TableNodeType
+
+    @TableNodeType.setter
+    def TableNodeType(self, TableNodeType):
+        self._TableNodeType = TableNodeType
+
+    @property
+    def Tables(self):
+        r"""Original table information for multi-table join
+        :rtype: list of JoinSourceTable
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def Joins(self):
+        r"""Multi-table join association information
+        :rtype: list of JoinRelation
+        """
+        return self._Joins
+
+    @Joins.setter
+    def Joins(self, Joins):
+        self._Joins = Joins
+
+    @property
+    def ExtInfo(self):
+        r"""Additional info, such as api data source info and Tencent document access info
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def AsyncRequest(self):
+        r"""whether
+        :rtype: bool
+        """
+        return self._AsyncRequest
+
+    @AsyncRequest.setter
+    def AsyncRequest(self, AsyncRequest):
+        self._AsyncRequest = AsyncRequest
+
+    @property
+    def ParentTranId(self):
+        r"""dependent async transaction id
+        :rtype: str
+        """
+        return self._ParentTranId
+
+    @ParentTranId.setter
+    def ParentTranId(self, ParentTranId):
+        self._ParentTranId = ParentTranId
+
+    @property
+    def ApiDatasourceConfig(self):
+        r"""API data source configuration
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ApiDatasourceConfig`
+        """
+        return self._ApiDatasourceConfig
+
+    @ApiDatasourceConfig.setter
+    def ApiDatasourceConfig(self, ApiDatasourceConfig):
+        self._ApiDatasourceConfig = ApiDatasourceConfig
+
+    @property
+    def ParamList(self):
+        r"""1
+        :rtype: list of ParamCreateDTO
+        """
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
+    @property
+    def DlcExtInfo(self):
+        r"""dlc advanced parameter
+        :rtype: str
+        """
+        return self._DlcExtInfo
+
+    @DlcExtInfo.setter
+    def DlcExtInfo(self, DlcExtInfo):
+        self._DlcExtInfo = DlcExtInfo
+
+    @property
+    def QueryDbData(self):
+        r"""Query database required or not
+        :rtype: str
+        """
+        return self._QueryDbData
+
+    @QueryDbData.setter
+    def QueryDbData(self, QueryDbData):
+        self._QueryDbData = QueryDbData
+
+    @property
+    def TableComment(self):
+        r"""Table remark
+        :rtype: str
+        """
+        return self._TableComment
+
+    @TableComment.setter
+    def TableComment(self, TableComment):
+        self._TableComment = TableComment
+
+    @property
+    def QueryFieldRemark(self):
+        r"""Whether to query field remarks
+        :rtype: int
+        """
+        return self._QueryFieldRemark
+
+    @QueryFieldRemark.setter
+    def QueryFieldRemark(self, QueryFieldRemark):
+        self._QueryFieldRemark = QueryFieldRemark
+
+    @property
+    def FieldRemarkList(self):
+        r"""Field remarks list
+        :rtype: list of FieldRemarkDTO
+        """
+        return self._FieldRemarkList
+
+    @FieldRemarkList.setter
+    def FieldRemarkList(self, FieldRemarkList):
+        self._FieldRemarkList = FieldRemarkList
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._ProjectId = params.get("ProjectId")
+        self._FoldId = params.get("FoldId")
+        self._DatasourceId = params.get("DatasourceId")
+        self._TableName = params.get("TableName")
+        self._Sql = params.get("Sql")
+        self._ExcelUrl = params.get("ExcelUrl")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = TableField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        self._TableNodeType = params.get("TableNodeType")
+        if params.get("Tables") is not None:
+            self._Tables = []
+            for item in params.get("Tables"):
+                obj = JoinSourceTable()
+                obj._deserialize(item)
+                self._Tables.append(obj)
+        if params.get("Joins") is not None:
+            self._Joins = []
+            for item in params.get("Joins"):
+                obj = JoinRelation()
+                obj._deserialize(item)
+                self._Joins.append(obj)
+        self._ExtInfo = params.get("ExtInfo")
+        self._AsyncRequest = params.get("AsyncRequest")
+        self._ParentTranId = params.get("ParentTranId")
+        if params.get("ApiDatasourceConfig") is not None:
+            self._ApiDatasourceConfig = ApiDatasourceConfig()
+            self._ApiDatasourceConfig._deserialize(params.get("ApiDatasourceConfig"))
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamCreateDTO()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
+        self._DlcExtInfo = params.get("DlcExtInfo")
+        self._QueryDbData = params.get("QueryDbData")
+        self._TableComment = params.get("TableComment")
+        self._QueryFieldRemark = params.get("QueryFieldRemark")
+        if params.get("FieldRemarkList") is not None:
+            self._FieldRemarkList = []
+            for item in params.get("FieldRemarkList"):
+                obj = FieldRemarkDTO()
+                obj._deserialize(item)
+                self._FieldRemarkList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataTableResponse(AbstractModel):
+    r"""CreateDataTable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: Returned data table id on success
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.IdDTO`
+        :param _Extra: Additional Information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Error prompt
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        r"""Returned data table id on success
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.IdDTO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        r"""Additional Information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""Error prompt
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        if params.get("Data") is not None:
+            self._Data = IdDTO()
+            self._Data._deserialize(params.get("Data"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDatasourceCloudRequest(AbstractModel):
@@ -2084,6 +2891,265 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._Data = EmbedTokenInfo()
             self._Data._deserialize(params.get("Data"))
         self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePermissionRanksRequest(AbstractModel):
+    r"""CreatePermissionRanks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: <p>page number</p>
+        :type TableId: int
+        :param _Mode: <p>Mode</p><p>Enumeration value:</p><ul><li>ALL: All</li><li>Specify: Specify</li><li>TAG: Tag</li></ul><p>Default value: ALL</p>
+        :type Mode: str
+        :param _RoleType: <p>Role type</p><p>Enumeration value:</p><ul><li>ROLES: By role</li><li>Others: Other</li></ul><p>Default value: Others</p>
+        :type RoleType: str
+        :param _RoleId: <p>All page numbers</p>
+        :type RoleId: int
+        :param _RulerInfo: <p>Rule information</p>
+        :type RulerInfo: str
+        :param _Type: <p>Type</p><p>Enumeration value:</p><ul><li>ROW: row permission</li><li>COLUMN: column permission</li></ul><p>Default value: ROW</p>
+        :type Type: str
+        :param _OpenStatus: <p>Enabled status</p><p>Enumeration value:</p><ul><li>Open: Turn on</li><li>Close: Turn off</li></ul><p>Default value: Close</p>
+        :type OpenStatus: str
+        :param _ProjectId: <p>Project ID.</p>
+        :type ProjectId: int
+        :param _RowColumnConfigList: <p>Row/column permission configuration</p>
+        :type RowColumnConfigList: list of RowColumnConfig
+        """
+        self._TableId = None
+        self._Mode = None
+        self._RoleType = None
+        self._RoleId = None
+        self._RulerInfo = None
+        self._Type = None
+        self._OpenStatus = None
+        self._ProjectId = None
+        self._RowColumnConfigList = None
+
+    @property
+    def TableId(self):
+        r"""<p>page number</p>
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def Mode(self):
+        r"""<p>Mode</p><p>Enumeration value:</p><ul><li>ALL: All</li><li>Specify: Specify</li><li>TAG: Tag</li></ul><p>Default value: ALL</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def RoleType(self):
+        r"""<p>Role type</p><p>Enumeration value:</p><ul><li>ROLES: By role</li><li>Others: Other</li></ul><p>Default value: Others</p>
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def RoleId(self):
+        r"""<p>All page numbers</p>
+        :rtype: int
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RulerInfo(self):
+        r"""<p>Rule information</p>
+        :rtype: str
+        """
+        return self._RulerInfo
+
+    @RulerInfo.setter
+    def RulerInfo(self, RulerInfo):
+        self._RulerInfo = RulerInfo
+
+    @property
+    def Type(self):
+        r"""<p>Type</p><p>Enumeration value:</p><ul><li>ROW: row permission</li><li>COLUMN: column permission</li></ul><p>Default value: ROW</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def OpenStatus(self):
+        r"""<p>Enabled status</p><p>Enumeration value:</p><ul><li>Open: Turn on</li><li>Close: Turn off</li></ul><p>Default value: Close</p>
+        :rtype: str
+        """
+        return self._OpenStatus
+
+    @OpenStatus.setter
+    def OpenStatus(self, OpenStatus):
+        self._OpenStatus = OpenStatus
+
+    @property
+    def ProjectId(self):
+        r"""<p>Project ID.</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RowColumnConfigList(self):
+        r"""<p>Row/column permission configuration</p>
+        :rtype: list of RowColumnConfig
+        """
+        return self._RowColumnConfigList
+
+    @RowColumnConfigList.setter
+    def RowColumnConfigList(self, RowColumnConfigList):
+        self._RowColumnConfigList = RowColumnConfigList
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._Mode = params.get("Mode")
+        self._RoleType = params.get("RoleType")
+        self._RoleId = params.get("RoleId")
+        self._RulerInfo = params.get("RulerInfo")
+        self._Type = params.get("Type")
+        self._OpenStatus = params.get("OpenStatus")
+        self._ProjectId = params.get("ProjectId")
+        if params.get("RowColumnConfigList") is not None:
+            self._RowColumnConfigList = []
+            for item in params.get("RowColumnConfigList"):
+                obj = RowColumnConfig()
+                obj._deserialize(item)
+                self._RowColumnConfigList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePermissionRanksResponse(AbstractModel):
+    r"""CreatePermissionRanks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Msg: <p>Message</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _Extra: <p>112</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: <p>1</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Msg = None
+        self._Extra = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Msg(self):
+        r"""<p>Message</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Extra(self):
+        r"""<p>112</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        r"""<p>1</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Msg = params.get("Msg")
+        self._Extra = params.get("Extra")
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -4921,6 +5987,295 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSourceFieldListRequest(AbstractModel):
+    r"""DescribeSourceFieldList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSourceId: data source Id
+        :type DataSourceId: int
+        :param _TableName: Table name
+        :type TableName: str
+        :param _Sql: sql content
+        :type Sql: str
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _AsyncRequest: whether
+        :type AsyncRequest: bool
+        :param _TranId: async transaction id
+        :type TranId: str
+        :param _ParamList: 11
+        :type ParamList: list of ParamCreateDTO
+        :param _DlcExtInfo: DLC extension parameter
+        :type DlcExtInfo: str
+        :param _QueryDbData: Query database required or not
+        :type QueryDbData: str
+        :param _TableId: Data table Id
+        :type TableId: str
+        :param _TableType: The backend provides a dictionary: table type, 1. database table creation, 2. SQL table creation, 3. Excel upload, 4. API connection, 5. Tencent documentation, 6. cloud database, 7. manually enter, 8. join query.
+        :type TableType: int
+        """
+        self._DataSourceId = None
+        self._TableName = None
+        self._Sql = None
+        self._ProjectId = None
+        self._AsyncRequest = None
+        self._TranId = None
+        self._ParamList = None
+        self._DlcExtInfo = None
+        self._QueryDbData = None
+        self._TableId = None
+        self._TableType = None
+
+    @property
+    def DataSourceId(self):
+        r"""data source Id
+        :rtype: int
+        """
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
+
+    @property
+    def TableName(self):
+        r"""Table name
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Sql(self):
+        r"""sql content
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def ProjectId(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AsyncRequest(self):
+        r"""whether
+        :rtype: bool
+        """
+        return self._AsyncRequest
+
+    @AsyncRequest.setter
+    def AsyncRequest(self, AsyncRequest):
+        self._AsyncRequest = AsyncRequest
+
+    @property
+    def TranId(self):
+        r"""async transaction id
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def ParamList(self):
+        r"""11
+        :rtype: list of ParamCreateDTO
+        """
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
+    @property
+    def DlcExtInfo(self):
+        r"""DLC extension parameter
+        :rtype: str
+        """
+        return self._DlcExtInfo
+
+    @DlcExtInfo.setter
+    def DlcExtInfo(self, DlcExtInfo):
+        self._DlcExtInfo = DlcExtInfo
+
+    @property
+    def QueryDbData(self):
+        r"""Query database required or not
+        :rtype: str
+        """
+        return self._QueryDbData
+
+    @QueryDbData.setter
+    def QueryDbData(self, QueryDbData):
+        self._QueryDbData = QueryDbData
+
+    @property
+    def TableId(self):
+        r"""Data table Id
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TableType(self):
+        r"""The backend provides a dictionary: table type, 1. database table creation, 2. SQL table creation, 3. Excel upload, 4. API connection, 5. Tencent documentation, 6. cloud database, 7. manually enter, 8. join query.
+        :rtype: int
+        """
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+
+    def _deserialize(self, params):
+        self._DataSourceId = params.get("DataSourceId")
+        self._TableName = params.get("TableName")
+        self._Sql = params.get("Sql")
+        self._ProjectId = params.get("ProjectId")
+        self._AsyncRequest = params.get("AsyncRequest")
+        self._TranId = params.get("TranId")
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamCreateDTO()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
+        self._DlcExtInfo = params.get("DlcExtInfo")
+        self._QueryDbData = params.get("QueryDbData")
+        self._TableId = params.get("TableId")
+        self._TableType = params.get("TableType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSourceFieldListResponse(AbstractModel):
+    r"""DescribeSourceFieldList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Additional Information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _Data: List of fields in the table
+        :type Data: :class:`tencentcloud.bi.v20220105.models.TableColumnListData`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""Additional Information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""Information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""List of fields in the table
+        :rtype: :class:`tencentcloud.bi.v20220105.models.TableColumnListData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = TableColumnListData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserProjectListRequest(AbstractModel):
     r"""DescribeUserProjectList request structure.
 
@@ -5981,6 +7336,120 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class EmptyValue(AbstractModel):
+    r"""Empty value display style configuration value structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Empty value display style type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Custom: Display style type for null values corresponds to specific display string
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Custom: str
+        """
+        self._Type = None
+        self._Custom = None
+
+    @property
+    def Type(self):
+        r"""Empty value display style type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Custom(self):
+        r"""Display style type for null values corresponds to specific display string
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Custom
+
+    @Custom.setter
+    def Custom(self, Custom):
+        self._Custom = Custom
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Custom = params.get("Custom")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmptyValueConfig(AbstractModel):
+    r"""Empty value display style configuration structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Number: Numeric value field null style configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Number: :class:`tencentcloud.bi.v20220105.models.EmptyValue`
+        :param _String: Style configuration for empty string fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type String: :class:`tencentcloud.bi.v20220105.models.EmptyValue`
+        """
+        self._Number = None
+        self._String = None
+
+    @property
+    def Number(self):
+        r"""Numeric value field null style configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmptyValue`
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def String(self):
+        r"""Style configuration for empty string fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmptyValue`
+        """
+        return self._String
+
+    @String.setter
+    def String(self, String):
+        self._String = String
+
+
+    def _deserialize(self, params):
+        if params.get("Number") is not None:
+            self._Number = EmptyValue()
+            self._Number._deserialize(params.get("Number"))
+        if params.get("String") is not None:
+            self._String = EmptyValue()
+            self._String._deserialize(params.get("String"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ErrorInfo(AbstractModel):
     r"""Custom error information object
 
@@ -6336,6 +7805,201 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class FieldRemarkDTO(AbstractModel):
+    r"""Field remarks
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: field name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FieldName: str
+        :param _Comment: Field remarks list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Comment: list of str
+        """
+        self._FieldName = None
+        self._Comment = None
+
+    @property
+    def FieldName(self):
+        r"""field name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def Comment(self):
+        r"""Field remarks list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FrequencyConfig(AbstractModel):
+    r"""Scheduled task execution frequency configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Frequency: Cycle
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Frequency: str
+        :param _Dates: Date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Dates: list of int
+        :param _Time: Time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Time: str
+        :param _IntervalTime: Interval
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IntervalTime: int
+        :param _IntervalTimeUnit: 1:SECOND,2:MINUTE,3:HOUR,4:DAY
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IntervalTimeUnit: int
+        :param _Hours: hourly list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Hours: list of int
+        :param _Minute: Minute list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Minute: list of int
+        """
+        self._Frequency = None
+        self._Dates = None
+        self._Time = None
+        self._IntervalTime = None
+        self._IntervalTimeUnit = None
+        self._Hours = None
+        self._Minute = None
+
+    @property
+    def Frequency(self):
+        r"""Cycle
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Frequency
+
+    @Frequency.setter
+    def Frequency(self, Frequency):
+        self._Frequency = Frequency
+
+    @property
+    def Dates(self):
+        r"""Date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
+        return self._Dates
+
+    @Dates.setter
+    def Dates(self, Dates):
+        self._Dates = Dates
+
+    @property
+    def Time(self):
+        r"""Time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def IntervalTime(self):
+        r"""Interval
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._IntervalTime
+
+    @IntervalTime.setter
+    def IntervalTime(self, IntervalTime):
+        self._IntervalTime = IntervalTime
+
+    @property
+    def IntervalTimeUnit(self):
+        r"""1:SECOND,2:MINUTE,3:HOUR,4:DAY
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._IntervalTimeUnit
+
+    @IntervalTimeUnit.setter
+    def IntervalTimeUnit(self, IntervalTimeUnit):
+        self._IntervalTimeUnit = IntervalTimeUnit
+
+    @property
+    def Hours(self):
+        r"""hourly list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
+        return self._Hours
+
+    @Hours.setter
+    def Hours(self, Hours):
+        self._Hours = Hours
+
+    @property
+    def Minute(self):
+        r"""Minute list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
+        return self._Minute
+
+    @Minute.setter
+    def Minute(self, Minute):
+        self._Minute = Minute
+
+
+    def _deserialize(self, params):
+        self._Frequency = params.get("Frequency")
+        self._Dates = params.get("Dates")
+        self._Time = params.get("Time")
+        self._IntervalTime = params.get("IntervalTime")
+        self._IntervalTimeUnit = params.get("IntervalTimeUnit")
+        self._Hours = params.get("Hours")
+        self._Minute = params.get("Minute")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IdDTO(AbstractModel):
     r"""Object containing only ID
 
@@ -6440,6 +8104,355 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ProjectId = params.get("ProjectId")
         self._TranId = params.get("TranId")
         self._TranStatus = params.get("TranStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JoinRelation(AbstractModel):
+    r"""Join tables and view association information between original tables
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JoinId: Association relationship id, used by the frontend
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JoinId: str
+        :param _SourceTableNodeId: Original table node id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SourceTableNodeId: str
+        :param _TargetTableNodeId: Target table node id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TargetTableNodeId: str
+        :param _JoinType: Association type of multi-table join
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JoinType: str
+        :param _Fields: Field list for joined tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Fields: list of JoinRelationField
+        """
+        self._JoinId = None
+        self._SourceTableNodeId = None
+        self._TargetTableNodeId = None
+        self._JoinType = None
+        self._Fields = None
+
+    @property
+    def JoinId(self):
+        r"""Association relationship id, used by the frontend
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._JoinId
+
+    @JoinId.setter
+    def JoinId(self, JoinId):
+        self._JoinId = JoinId
+
+    @property
+    def SourceTableNodeId(self):
+        r"""Original table node id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SourceTableNodeId
+
+    @SourceTableNodeId.setter
+    def SourceTableNodeId(self, SourceTableNodeId):
+        self._SourceTableNodeId = SourceTableNodeId
+
+    @property
+    def TargetTableNodeId(self):
+        r"""Target table node id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TargetTableNodeId
+
+    @TargetTableNodeId.setter
+    def TargetTableNodeId(self, TargetTableNodeId):
+        self._TargetTableNodeId = TargetTableNodeId
+
+    @property
+    def JoinType(self):
+        r"""Association type of multi-table join
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._JoinType
+
+    @JoinType.setter
+    def JoinType(self, JoinType):
+        self._JoinType = JoinType
+
+    @property
+    def Fields(self):
+        r"""Field list for joined tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of JoinRelationField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+
+    def _deserialize(self, params):
+        self._JoinId = params.get("JoinId")
+        self._SourceTableNodeId = params.get("SourceTableNodeId")
+        self._TargetTableNodeId = params.get("TargetTableNodeId")
+        self._JoinType = params.get("JoinType")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = JoinRelationField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JoinRelationField(AbstractModel):
+    r"""Join tables and view association information between original tables
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldJoinId: Field association id, frontend usage
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FieldJoinId: str
+        :param _SourceField: Original table field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SourceField: :class:`tencentcloud.bi.v20220105.models.TableField`
+        :param _TargetField: Target table field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TargetField: :class:`tencentcloud.bi.v20220105.models.TableField`
+        """
+        self._FieldJoinId = None
+        self._SourceField = None
+        self._TargetField = None
+
+    @property
+    def FieldJoinId(self):
+        r"""Field association id, frontend usage
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FieldJoinId
+
+    @FieldJoinId.setter
+    def FieldJoinId(self, FieldJoinId):
+        self._FieldJoinId = FieldJoinId
+
+    @property
+    def SourceField(self):
+        r"""Original table field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.TableField`
+        """
+        return self._SourceField
+
+    @SourceField.setter
+    def SourceField(self, SourceField):
+        self._SourceField = SourceField
+
+    @property
+    def TargetField(self):
+        r"""Target table field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.TableField`
+        """
+        return self._TargetField
+
+    @TargetField.setter
+    def TargetField(self, TargetField):
+        self._TargetField = TargetField
+
+
+    def _deserialize(self, params):
+        self._FieldJoinId = params.get("FieldJoinId")
+        if params.get("SourceField") is not None:
+            self._SourceField = TableField()
+            self._SourceField._deserialize(params.get("SourceField"))
+        if params.get("TargetField") is not None:
+            self._TargetField = TableField()
+            self._TargetField._deserialize(params.get("TargetField"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JoinSourceTable(AbstractModel):
+    r"""Join tables and view original table information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableNodeType: 1: Data source original table, 2: Local table, 3: Excel table, 4: API table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableNodeType: int
+        :param _TableNodeId: Base Table Node Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableNodeId: str
+        :param _ParentId: Parent node ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ParentId: str
+        :param _TableId: Optional, the data source has no ID in the original table.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableId: str
+        :param _TableName: Required. Use the original table name for the data source. Use the logical table name for other types.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param _Fields: Field list to display in the base table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Fields: list of TableField
+        :param _DatasourceId: Data source ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DatasourceId: int
+        :param _TableAlias: Optional, alias of the data source displayed on the front-end, excel table creation is required
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableAlias: str
+        """
+        self._TableNodeType = None
+        self._TableNodeId = None
+        self._ParentId = None
+        self._TableId = None
+        self._TableName = None
+        self._Fields = None
+        self._DatasourceId = None
+        self._TableAlias = None
+
+    @property
+    def TableNodeType(self):
+        r"""1: Data source original table, 2: Local table, 3: Excel table, 4: API table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TableNodeType
+
+    @TableNodeType.setter
+    def TableNodeType(self, TableNodeType):
+        self._TableNodeType = TableNodeType
+
+    @property
+    def TableNodeId(self):
+        r"""Base Table Node Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TableNodeId
+
+    @TableNodeId.setter
+    def TableNodeId(self, TableNodeId):
+        self._TableNodeId = TableNodeId
+
+    @property
+    def ParentId(self):
+        r"""Parent node ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def TableId(self):
+        r"""Optional, the data source has no ID in the original table.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TableName(self):
+        r"""Required. Use the original table name for the data source. Use the logical table name for other types.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Fields(self):
+        r"""Field list to display in the base table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TableField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def DatasourceId(self):
+        r"""Data source ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def TableAlias(self):
+        r"""Optional, alias of the data source displayed on the front-end, excel table creation is required
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TableAlias
+
+    @TableAlias.setter
+    def TableAlias(self, TableAlias):
+        self._TableAlias = TableAlias
+
+
+    def _deserialize(self, params):
+        self._TableNodeType = params.get("TableNodeType")
+        self._TableNodeId = params.get("TableNodeId")
+        self._ParentId = params.get("ParentId")
+        self._TableId = params.get("TableId")
+        self._TableName = params.get("TableName")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = TableField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        self._DatasourceId = params.get("DatasourceId")
+        self._TableAlias = params.get("TableAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7694,6 +9707,402 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class ModifyResourceUserGroupResourceRequest(AbstractModel):
+    r"""ModifyResourceUserGroupResource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _UserGroupId: User ID
+        :type UserGroupId: int
+        :param _Resource: resource
+        :type Resource: :class:`tencentcloud.bi.v20220105.models.UserResourceDTO`
+        :param _EntityIds: Entity class
+        :type EntityIds: list of int
+        :param _ResourceType: Resource type.
+        :type ResourceType: str
+        """
+        self._ProjectId = None
+        self._UserGroupId = None
+        self._Resource = None
+        self._EntityIds = None
+        self._ResourceType = None
+
+    @property
+    def ProjectId(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UserGroupId(self):
+        r"""User ID
+        :rtype: int
+        """
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
+    @property
+    def Resource(self):
+        r"""resource
+        :rtype: :class:`tencentcloud.bi.v20220105.models.UserResourceDTO`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def EntityIds(self):
+        r"""Entity class
+        :rtype: list of int
+        """
+        return self._EntityIds
+
+    @EntityIds.setter
+    def EntityIds(self, EntityIds):
+        self._EntityIds = EntityIds
+
+    @property
+    def ResourceType(self):
+        r"""Resource type.
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._UserGroupId = params.get("UserGroupId")
+        if params.get("Resource") is not None:
+            self._Resource = UserResourceDTO()
+            self._Resource._deserialize(params.get("Resource"))
+        self._EntityIds = params.get("EntityIds")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceUserGroupResourceResponse(AbstractModel):
+    r"""ModifyResourceUserGroupResource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _Data: Data.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""Message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""Data.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyResourceUserRequest(AbstractModel):
+    r"""ModifyResourceUser request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _UserId: User ID
+        :type UserId: str
+        :param _Resource: resource
+        :type Resource: :class:`tencentcloud.bi.v20220105.models.UserResourceDTO`
+        :param _EntityIds: Entity class
+        :type EntityIds: list of int
+        :param _ResourceType: Resource type.
+        :type ResourceType: str
+        """
+        self._ProjectId = None
+        self._UserId = None
+        self._Resource = None
+        self._EntityIds = None
+        self._ResourceType = None
+
+    @property
+    def ProjectId(self):
+        r"""Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UserId(self):
+        r"""User ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Resource(self):
+        r"""resource
+        :rtype: :class:`tencentcloud.bi.v20220105.models.UserResourceDTO`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def EntityIds(self):
+        r"""Entity class
+        :rtype: list of int
+        """
+        return self._EntityIds
+
+    @EntityIds.setter
+    def EntityIds(self, EntityIds):
+        self._EntityIds = EntityIds
+
+    @property
+    def ResourceType(self):
+        r"""Resource type.
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._UserId = params.get("UserId")
+        if params.get("Resource") is not None:
+            self._Resource = UserResourceDTO()
+            self._Resource._deserialize(params.get("Resource"))
+        self._EntityIds = params.get("EntityIds")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceUserResponse(AbstractModel):
+    r"""ModifyResourceUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _Data: Data.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""Custom error information object
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""Message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""Data.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyUserRoleProjectRequest(AbstractModel):
     r"""ModifyUserRoleProject request structure.
 
@@ -8338,6 +10747,129 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ParamCreateDTO(AbstractModel):
+    r"""1
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: Parameter name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ParamName: str
+        :param _DefaultValue: Default value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DefaultValue: str
+        :param _ParamType: Parameter type, string/datetime/number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ParamType: str
+        :param _FormatRule: Format type, yyyy-MM-dd HH:mm:ss.SSS (only time required)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FormatRule: str
+        :param _ComplexType: Complex type, another format expression, such as YYYY-MM
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComplexType: str
+        :param _Scope: Application scope
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Scope: str
+        """
+        self._ParamName = None
+        self._DefaultValue = None
+        self._ParamType = None
+        self._FormatRule = None
+        self._ComplexType = None
+        self._Scope = None
+
+    @property
+    def ParamName(self):
+        r"""Parameter name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def DefaultValue(self):
+        r"""Default value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def ParamType(self):
+        r"""Parameter type, string/datetime/number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def FormatRule(self):
+        r"""Format type, yyyy-MM-dd HH:mm:ss.SSS (only time required)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FormatRule
+
+    @FormatRule.setter
+    def FormatRule(self, FormatRule):
+        self._FormatRule = FormatRule
+
+    @property
+    def ComplexType(self):
+        r"""Complex type, another format expression, such as YYYY-MM
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ComplexType
+
+    @ComplexType.setter
+    def ComplexType(self, ComplexType):
+        self._ComplexType = ComplexType
+
+    @property
+    def Scope(self):
+        r"""Application scope
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        self._DefaultValue = params.get("DefaultValue")
+        self._ParamType = params.get("ParamType")
+        self._FormatRule = params.get("FormatRule")
+        self._ComplexType = params.get("ComplexType")
+        self._Scope = params.get("Scope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PermissionComponent(AbstractModel):
     r"""Business edition permission unit
 
@@ -8351,10 +10883,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _IncludeType: Availability.
 Valid values:.
 
--usable.
--visible.
--disabled: unavailable.
--hidden: hide.
+- usable.
+- visible.
+- disabled: unavailable.
+- hidden: hide.
 
 Default value: disabled.
 Example value: disabled.
@@ -8393,10 +10925,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         r"""Availability.
 Valid values:.
 
--usable.
--visible.
--disabled: unavailable.
--hidden: hide.
+- usable.
+- visible.
+- disabled: unavailable.
+- hidden: hide.
 
 Default value: disabled.
 Example value: disabled.
@@ -9095,10 +11627,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _IncludeType: Configuration mode.
 Valid values:.
 
--usable.
--visible.
--disabled: unavailable.
--hidden: hide.
+- usable.
+- visible.
+- disabled: unavailable.
+- hidden: hide.
 
 Default value: disabled.
 Example value: disabled.
@@ -9129,10 +11661,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         r"""Configuration mode.
 Valid values:.
 
--usable.
--visible.
--disabled: unavailable.
--hidden: hide.
+- usable.
+- visible.
+- disabled: unavailable.
+- hidden: hide.
 
 Default value: disabled.
 Example value: disabled.
@@ -9241,6 +11773,1124 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self._List.append(obj)
         self._Total = params.get("Total")
         self._TotalPages = params.get("TotalPages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceItem(AbstractModel):
+    r"""resource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceName: Resource name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceName: str
+        :param _ResourceValue: resource value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceValue: bool
+        :param _CanChange: Changeable
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CanChange: bool
+        :param _Tips: Prompt message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tips: str
+        """
+        self._ResourceName = None
+        self._ResourceValue = None
+        self._CanChange = None
+        self._Tips = None
+
+    @property
+    def ResourceName(self):
+        r"""Resource name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceValue(self):
+        r"""resource value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._ResourceValue
+
+    @ResourceValue.setter
+    def ResourceValue(self, ResourceValue):
+        self._ResourceValue = ResourceValue
+
+    @property
+    def CanChange(self):
+        r"""Changeable
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._CanChange
+
+    @CanChange.setter
+    def CanChange(self, CanChange):
+        self._CanChange = CanChange
+
+    @property
+    def Tips(self):
+        r"""Prompt message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Tips
+
+    @Tips.setter
+    def Tips(self, Tips):
+        self._Tips = Tips
+
+
+    def _deserialize(self, params):
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceValue = params.get("ResourceValue")
+        self._CanChange = params.get("CanChange")
+        self._Tips = params.get("Tips")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RowColumnConfig(AbstractModel):
+    r"""Row/column permission configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RulerInfo: Row column permission rule
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RulerInfo: str
+        :param _TagValueList: Tag value list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagValueList: list of RowColumnTagValue
+        """
+        self._RulerInfo = None
+        self._TagValueList = None
+
+    @property
+    def RulerInfo(self):
+        r"""Row column permission rule
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RulerInfo
+
+    @RulerInfo.setter
+    def RulerInfo(self, RulerInfo):
+        self._RulerInfo = RulerInfo
+
+    @property
+    def TagValueList(self):
+        r"""Tag value list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of RowColumnTagValue
+        """
+        return self._TagValueList
+
+    @TagValueList.setter
+    def TagValueList(self, TagValueList):
+        self._TagValueList = TagValueList
+
+
+    def _deserialize(self, params):
+        self._RulerInfo = params.get("RulerInfo")
+        if params.get("TagValueList") is not None:
+            self._TagValueList = []
+            for item in params.get("TagValueList"):
+                obj = RowColumnTagValue()
+                obj._deserialize(item)
+                self._TagValueList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RowColumnTagValue(AbstractModel):
+    r"""Row/column permission tag input/output parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Tag ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: int
+        :param _Name: Tag name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Values: Tag value list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Values: list of str
+        """
+        self._Id = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Id(self):
+        r"""Tag ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""Tag name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""Tag value list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableColumn(AbstractModel):
+    r"""Column data abstraction of a table
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbName: Column name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbName: str
+        :param _AliasName: alias name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AliasName: str
+        :param _DbType: Column type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbType: str
+        :param _FieldType: Segment type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FieldType: str
+        :param _Mark: Remarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mark: str
+        :param _ExcelName: excel name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExcelName: str
+        :param _DictId: Associated dictionary table Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DictId: int
+        :param _DictName: Associated dictionary table name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DictName: str
+        :param _TableNodeId: Join tables and add fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableNodeId: str
+        :param _TableName: Table name to which the field belongs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param _FieldComplexType: Complex format of the target set by the user
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FieldComplexType: str
+        :param _FormatRule: format rule
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FormatRule: str
+        :param _IsFilter: Whether to filter empty data fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsFilter: bool
+        :param _CalcType: Compute field type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CalcType: str
+        :param _CalcFormula: Formula content of the calculated field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CalcFormula: str
+        :param _CalcDesc: Chinese formula content of the calculated field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CalcDesc: str
+        :param _JsonPathName: Api data source json path name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JsonPathName: str
+        :param _Granularity: Geographic type identifier
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Granularity: str
+        :param _GeoJsonId: Custom map Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GeoJsonId: int
+        :param _EmptyValueConfig: Style configuration for null value display
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EmptyValueConfig: :class:`tencentcloud.bi.v20220105.models.EmptyValueConfig`
+        :param _DbFieldName: Original column name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbFieldName: str
+        :param _IsCopyOperation: Whether to copy field operation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsCopyOperation: bool
+        :param _IsCopyFromNormal: Whether to copy from common fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsCopyFromNormal: bool
+        """
+        self._DbName = None
+        self._AliasName = None
+        self._DbType = None
+        self._FieldType = None
+        self._Mark = None
+        self._ExcelName = None
+        self._DictId = None
+        self._DictName = None
+        self._TableNodeId = None
+        self._TableName = None
+        self._FieldComplexType = None
+        self._FormatRule = None
+        self._IsFilter = None
+        self._CalcType = None
+        self._CalcFormula = None
+        self._CalcDesc = None
+        self._JsonPathName = None
+        self._Granularity = None
+        self._GeoJsonId = None
+        self._EmptyValueConfig = None
+        self._DbFieldName = None
+        self._IsCopyOperation = None
+        self._IsCopyFromNormal = None
+
+    @property
+    def DbName(self):
+        r"""Column name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def AliasName(self):
+        r"""alias name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+    @property
+    def DbType(self):
+        r"""Column type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def FieldType(self):
+        r"""Segment type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FieldType
+
+    @FieldType.setter
+    def FieldType(self, FieldType):
+        self._FieldType = FieldType
+
+    @property
+    def Mark(self):
+        r"""Remarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Mark
+
+    @Mark.setter
+    def Mark(self, Mark):
+        self._Mark = Mark
+
+    @property
+    def ExcelName(self):
+        r"""excel name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExcelName
+
+    @ExcelName.setter
+    def ExcelName(self, ExcelName):
+        self._ExcelName = ExcelName
+
+    @property
+    def DictId(self):
+        r"""Associated dictionary table Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def DictName(self):
+        r"""Associated dictionary table name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DictName
+
+    @DictName.setter
+    def DictName(self, DictName):
+        self._DictName = DictName
+
+    @property
+    def TableNodeId(self):
+        r"""Join tables and add fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TableNodeId
+
+    @TableNodeId.setter
+    def TableNodeId(self, TableNodeId):
+        self._TableNodeId = TableNodeId
+
+    @property
+    def TableName(self):
+        r"""Table name to which the field belongs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def FieldComplexType(self):
+        r"""Complex format of the target set by the user
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FieldComplexType
+
+    @FieldComplexType.setter
+    def FieldComplexType(self, FieldComplexType):
+        self._FieldComplexType = FieldComplexType
+
+    @property
+    def FormatRule(self):
+        r"""format rule
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FormatRule
+
+    @FormatRule.setter
+    def FormatRule(self, FormatRule):
+        self._FormatRule = FormatRule
+
+    @property
+    def IsFilter(self):
+        r"""Whether to filter empty data fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsFilter
+
+    @IsFilter.setter
+    def IsFilter(self, IsFilter):
+        self._IsFilter = IsFilter
+
+    @property
+    def CalcType(self):
+        r"""Compute field type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CalcType
+
+    @CalcType.setter
+    def CalcType(self, CalcType):
+        self._CalcType = CalcType
+
+    @property
+    def CalcFormula(self):
+        r"""Formula content of the calculated field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CalcFormula
+
+    @CalcFormula.setter
+    def CalcFormula(self, CalcFormula):
+        self._CalcFormula = CalcFormula
+
+    @property
+    def CalcDesc(self):
+        r"""Chinese formula content of the calculated field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CalcDesc
+
+    @CalcDesc.setter
+    def CalcDesc(self, CalcDesc):
+        self._CalcDesc = CalcDesc
+
+    @property
+    def JsonPathName(self):
+        r"""Api data source json path name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._JsonPathName
+
+    @JsonPathName.setter
+    def JsonPathName(self, JsonPathName):
+        self._JsonPathName = JsonPathName
+
+    @property
+    def Granularity(self):
+        r"""Geographic type identifier
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def GeoJsonId(self):
+        r"""Custom map Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._GeoJsonId
+
+    @GeoJsonId.setter
+    def GeoJsonId(self, GeoJsonId):
+        self._GeoJsonId = GeoJsonId
+
+    @property
+    def EmptyValueConfig(self):
+        r"""Style configuration for null value display
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmptyValueConfig`
+        """
+        return self._EmptyValueConfig
+
+    @EmptyValueConfig.setter
+    def EmptyValueConfig(self, EmptyValueConfig):
+        self._EmptyValueConfig = EmptyValueConfig
+
+    @property
+    def DbFieldName(self):
+        r"""Original column name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DbFieldName
+
+    @DbFieldName.setter
+    def DbFieldName(self, DbFieldName):
+        self._DbFieldName = DbFieldName
+
+    @property
+    def IsCopyOperation(self):
+        r"""Whether to copy field operation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsCopyOperation
+
+    @IsCopyOperation.setter
+    def IsCopyOperation(self, IsCopyOperation):
+        self._IsCopyOperation = IsCopyOperation
+
+    @property
+    def IsCopyFromNormal(self):
+        r"""Whether to copy from common fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsCopyFromNormal
+
+    @IsCopyFromNormal.setter
+    def IsCopyFromNormal(self, IsCopyFromNormal):
+        self._IsCopyFromNormal = IsCopyFromNormal
+
+
+    def _deserialize(self, params):
+        self._DbName = params.get("DbName")
+        self._AliasName = params.get("AliasName")
+        self._DbType = params.get("DbType")
+        self._FieldType = params.get("FieldType")
+        self._Mark = params.get("Mark")
+        self._ExcelName = params.get("ExcelName")
+        self._DictId = params.get("DictId")
+        self._DictName = params.get("DictName")
+        self._TableNodeId = params.get("TableNodeId")
+        self._TableName = params.get("TableName")
+        self._FieldComplexType = params.get("FieldComplexType")
+        self._FormatRule = params.get("FormatRule")
+        self._IsFilter = params.get("IsFilter")
+        self._CalcType = params.get("CalcType")
+        self._CalcFormula = params.get("CalcFormula")
+        self._CalcDesc = params.get("CalcDesc")
+        self._JsonPathName = params.get("JsonPathName")
+        self._Granularity = params.get("Granularity")
+        self._GeoJsonId = params.get("GeoJsonId")
+        if params.get("EmptyValueConfig") is not None:
+            self._EmptyValueConfig = EmptyValueConfig()
+            self._EmptyValueConfig._deserialize(params.get("EmptyValueConfig"))
+        self._DbFieldName = params.get("DbFieldName")
+        self._IsCopyOperation = params.get("IsCopyOperation")
+        self._IsCopyFromNormal = params.get("IsCopyFromNormal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableColumnListData(AbstractModel):
+    r"""Data list of all column names in the table
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: Column list in the table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type List: list of TableColumn
+        :param _TranId: async transaction id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranId: str
+        :param _TranStatus: Async transaction status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranStatus: int
+        """
+        self._List = None
+        self._TranId = None
+        self._TranStatus = None
+
+    @property
+    def List(self):
+        r"""Column list in the table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TableColumn
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TranId(self):
+        r"""async transaction id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def TranStatus(self):
+        r"""Async transaction status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TranStatus
+
+    @TranStatus.setter
+    def TranStatus(self, TranStatus):
+        self._TranStatus = TranStatus
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = TableColumn()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TranId = params.get("TranId")
+        self._TranStatus = params.get("TranStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableField(AbstractModel):
+    r"""Table field description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbName: Field name in the db
+        :type DbName: str
+        :param _AliasName: bi display name
+        :type AliasName: str
+        :param _DbType: Field type in the db
+        :type DbType: str
+        :param _FieldType: Abstract field types after BI categorization, such as string, number, time
+        :type FieldType: str
+        :param _FieldComplexType: Complex detail type generated after calculation formula of combination of fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FieldComplexType: str
+        :param _Mark: Field description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mark: str
+        :param _FormatRule: Field calculation formula
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FormatRule: str
+        :param _IsFilter: Whether to filter empty data fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsFilter: bool
+        :param _CalcType: Compute field type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CalcType: str
+        :param _CalcFormula: Formula content of the calculated field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CalcFormula: str
+        :param _CalcDesc: Chinese formula content of the calculated field, displayed on the front-end
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CalcDesc: str
+        :param _DictId: Associate dictionary table id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DictId: int
+        :param _DictName: Associate dictionary table name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DictName: str
+        :param _TableNodeId: Optional, join tables to add field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableNodeId: str
+        :param _ExcelName: excel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExcelName: str
+        :param _TableName: Optional, join tables to add field, name of the table the field belongs to
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param _JsonPathName: api data source path name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JsonPathName: str
+        :param _Granularity: Geographic field identifier
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Granularity: str
+        :param _GeoJsonId: Map id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GeoJsonId: int
+        :param _EmptyValueConfig: Style configuration for null value display
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EmptyValueConfig: :class:`tencentcloud.bi.v20220105.models.EmptyValueConfig`
+        :param _DbFieldName: Original column name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbFieldName: str
+        :param _IsCopyOperation: Whether to copy field operation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsCopyOperation: bool
+        :param _IsCopyFromNormal: Whether to copy from common fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsCopyFromNormal: bool
+        """
+        self._DbName = None
+        self._AliasName = None
+        self._DbType = None
+        self._FieldType = None
+        self._FieldComplexType = None
+        self._Mark = None
+        self._FormatRule = None
+        self._IsFilter = None
+        self._CalcType = None
+        self._CalcFormula = None
+        self._CalcDesc = None
+        self._DictId = None
+        self._DictName = None
+        self._TableNodeId = None
+        self._ExcelName = None
+        self._TableName = None
+        self._JsonPathName = None
+        self._Granularity = None
+        self._GeoJsonId = None
+        self._EmptyValueConfig = None
+        self._DbFieldName = None
+        self._IsCopyOperation = None
+        self._IsCopyFromNormal = None
+
+    @property
+    def DbName(self):
+        r"""Field name in the db
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def AliasName(self):
+        r"""bi display name
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+    @property
+    def DbType(self):
+        r"""Field type in the db
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def FieldType(self):
+        r"""Abstract field types after BI categorization, such as string, number, time
+        :rtype: str
+        """
+        return self._FieldType
+
+    @FieldType.setter
+    def FieldType(self, FieldType):
+        self._FieldType = FieldType
+
+    @property
+    def FieldComplexType(self):
+        r"""Complex detail type generated after calculation formula of combination of fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FieldComplexType
+
+    @FieldComplexType.setter
+    def FieldComplexType(self, FieldComplexType):
+        self._FieldComplexType = FieldComplexType
+
+    @property
+    def Mark(self):
+        r"""Field description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Mark
+
+    @Mark.setter
+    def Mark(self, Mark):
+        self._Mark = Mark
+
+    @property
+    def FormatRule(self):
+        r"""Field calculation formula
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FormatRule
+
+    @FormatRule.setter
+    def FormatRule(self, FormatRule):
+        self._FormatRule = FormatRule
+
+    @property
+    def IsFilter(self):
+        r"""Whether to filter empty data fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsFilter
+
+    @IsFilter.setter
+    def IsFilter(self, IsFilter):
+        self._IsFilter = IsFilter
+
+    @property
+    def CalcType(self):
+        r"""Compute field type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CalcType
+
+    @CalcType.setter
+    def CalcType(self, CalcType):
+        self._CalcType = CalcType
+
+    @property
+    def CalcFormula(self):
+        r"""Formula content of the calculated field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CalcFormula
+
+    @CalcFormula.setter
+    def CalcFormula(self, CalcFormula):
+        self._CalcFormula = CalcFormula
+
+    @property
+    def CalcDesc(self):
+        r"""Chinese formula content of the calculated field, displayed on the front-end
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CalcDesc
+
+    @CalcDesc.setter
+    def CalcDesc(self, CalcDesc):
+        self._CalcDesc = CalcDesc
+
+    @property
+    def DictId(self):
+        r"""Associate dictionary table id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def DictName(self):
+        r"""Associate dictionary table name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DictName
+
+    @DictName.setter
+    def DictName(self, DictName):
+        self._DictName = DictName
+
+    @property
+    def TableNodeId(self):
+        r"""Optional, join tables to add field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TableNodeId
+
+    @TableNodeId.setter
+    def TableNodeId(self, TableNodeId):
+        self._TableNodeId = TableNodeId
+
+    @property
+    def ExcelName(self):
+        r"""excel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExcelName
+
+    @ExcelName.setter
+    def ExcelName(self, ExcelName):
+        self._ExcelName = ExcelName
+
+    @property
+    def TableName(self):
+        r"""Optional, join tables to add field, name of the table the field belongs to
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def JsonPathName(self):
+        r"""api data source path name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._JsonPathName
+
+    @JsonPathName.setter
+    def JsonPathName(self, JsonPathName):
+        self._JsonPathName = JsonPathName
+
+    @property
+    def Granularity(self):
+        r"""Geographic field identifier
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def GeoJsonId(self):
+        r"""Map id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._GeoJsonId
+
+    @GeoJsonId.setter
+    def GeoJsonId(self, GeoJsonId):
+        self._GeoJsonId = GeoJsonId
+
+    @property
+    def EmptyValueConfig(self):
+        r"""Style configuration for null value display
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmptyValueConfig`
+        """
+        return self._EmptyValueConfig
+
+    @EmptyValueConfig.setter
+    def EmptyValueConfig(self, EmptyValueConfig):
+        self._EmptyValueConfig = EmptyValueConfig
+
+    @property
+    def DbFieldName(self):
+        r"""Original column name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DbFieldName
+
+    @DbFieldName.setter
+    def DbFieldName(self, DbFieldName):
+        self._DbFieldName = DbFieldName
+
+    @property
+    def IsCopyOperation(self):
+        r"""Whether to copy field operation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsCopyOperation
+
+    @IsCopyOperation.setter
+    def IsCopyOperation(self, IsCopyOperation):
+        self._IsCopyOperation = IsCopyOperation
+
+    @property
+    def IsCopyFromNormal(self):
+        r"""Whether to copy from common fields
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsCopyFromNormal
+
+    @IsCopyFromNormal.setter
+    def IsCopyFromNormal(self, IsCopyFromNormal):
+        self._IsCopyFromNormal = IsCopyFromNormal
+
+
+    def _deserialize(self, params):
+        self._DbName = params.get("DbName")
+        self._AliasName = params.get("AliasName")
+        self._DbType = params.get("DbType")
+        self._FieldType = params.get("FieldType")
+        self._FieldComplexType = params.get("FieldComplexType")
+        self._Mark = params.get("Mark")
+        self._FormatRule = params.get("FormatRule")
+        self._IsFilter = params.get("IsFilter")
+        self._CalcType = params.get("CalcType")
+        self._CalcFormula = params.get("CalcFormula")
+        self._CalcDesc = params.get("CalcDesc")
+        self._DictId = params.get("DictId")
+        self._DictName = params.get("DictName")
+        self._TableNodeId = params.get("TableNodeId")
+        self._ExcelName = params.get("ExcelName")
+        self._TableName = params.get("TableName")
+        self._JsonPathName = params.get("JsonPathName")
+        self._Granularity = params.get("Granularity")
+        self._GeoJsonId = params.get("GeoJsonId")
+        if params.get("EmptyValueConfig") is not None:
+            self._EmptyValueConfig = EmptyValueConfig()
+            self._EmptyValueConfig._deserialize(params.get("EmptyValueConfig"))
+        self._DbFieldName = params.get("DbFieldName")
+        self._IsCopyOperation = params.get("IsCopyOperation")
+        self._IsCopyFromNormal = params.get("IsCopyFromNormal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9414,8 +13064,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Status: User status.
 Valid values:.
 
--Enable.
--0: disabled.
+- 1: Enable.
+- 0: disabled.
 
 The default value is 1.
 Example value: 1.
@@ -9561,8 +13211,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         r"""User status.
 Valid values:.
 
--Enable.
--0: disabled.
+- 1: Enable.
+- 0: disabled.
 
 The default value is 1.
 Example value: 1.
@@ -9943,6 +13593,100 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AreaCode = params.get("AreaCode")
         self._AppUserId = params.get("AppUserId")
         self._AppUserName = params.get("AppUserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserResourceDTO(AbstractModel):
+    r"""User resource input parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: Enterprise ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CorpId: str
+        :param _UserId: User ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserId: str
+        :param _UserName: Username.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserName: str
+        :param _ResourceList: Resource list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceList: list of ResourceItem
+        """
+        self._CorpId = None
+        self._UserId = None
+        self._UserName = None
+        self._ResourceList = None
+
+    @property
+    def CorpId(self):
+        r"""Enterprise ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def UserId(self):
+        r"""User ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        r"""Username.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def ResourceList(self):
+        r"""Resource list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ResourceItem
+        """
+        return self._ResourceList
+
+    @ResourceList.setter
+    def ResourceList(self, ResourceList):
+        self._ResourceList = ResourceList
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        if params.get("ResourceList") is not None:
+            self._ResourceList = []
+            for item in params.get("ResourceList"):
+                obj = ResourceItem()
+                obj._deserialize(item)
+                self._ResourceList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

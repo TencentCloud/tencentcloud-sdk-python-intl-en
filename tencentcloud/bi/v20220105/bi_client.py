@@ -72,6 +72,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDataTable(self, request):
+        r"""Add a data table
+
+        :param request: Request instance for CreateDataTable.
+        :type request: :class:`tencentcloud.bi.v20220105.models.CreateDataTableRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreateDataTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDatasource(self, request):
         r"""This API is used to create a data source.
 
@@ -132,6 +155,29 @@ class BiClient(AbstractClient):
             body = self.call("CreateEmbedToken", params, headers=headers)
             response = json.loads(body)
             model = models.CreateEmbedTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreatePermissionRanks(self, request):
+        r"""Create row/column permissions
+
+        :param request: Request instance for CreatePermissionRanks.
+        :type request: :class:`tencentcloud.bi.v20220105.models.CreatePermissionRanksRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreatePermissionRanksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePermissionRanks", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePermissionRanksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -394,6 +440,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSourceFieldList(self, request):
+        r"""API information for raw data table fields
+
+        :param request: Request instance for DescribeSourceFieldList.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribeSourceFieldListRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeSourceFieldListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSourceFieldList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSourceFieldListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserProjectList(self, request):
         r"""This API is used to obtain the user interface in the project.
 
@@ -546,6 +615,52 @@ class BiClient(AbstractClient):
             body = self.call("ModifyProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyResourceUser(self, request):
+        r"""This API is used to modify by user resource.
+
+        :param request: Request instance for ModifyResourceUser.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourceUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourceUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyResourceUserGroupResource(self, request):
+        r"""Update user group permission based on resources
+
+        :param request: Request instance for ModifyResourceUserGroupResource.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserGroupResourceRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserGroupResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourceUserGroupResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourceUserGroupResourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
