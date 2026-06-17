@@ -4212,6 +4212,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenAIOptimizer(self, request):
+        r"""This API is used to start the optimizer switch of an instance.
+
+        :param request: Request instance for OpenAIOptimizer.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenAIOptimizerRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenAIOptimizerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAIOptimizer", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenAIOptimizerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OpenAuditService(self, request):
         r"""This API is used to enable database audit service for an instance.
 

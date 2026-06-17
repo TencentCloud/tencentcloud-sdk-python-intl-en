@@ -3301,6 +3301,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def OpenAIOptimizer(
+            self,
+            request: models.OpenAIOptimizerRequest,
+            opts: Dict = None,
+    ) -> models.OpenAIOptimizerResponse:
+        """
+        This API is used to start the optimizer switch of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenAIOptimizer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenAIOptimizerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def OpenAuditService(
             self,
             request: models.OpenAuditServiceRequest,

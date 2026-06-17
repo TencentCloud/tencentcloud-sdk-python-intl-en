@@ -9682,7 +9682,7 @@ class CreateProxyEndPointRequest(AbstractModel):
         :type AccessMode: str
         :param _InstanceWeights: <p>Instance weight.</p>
         :type InstanceWeights: list of ProxyInstanceWeight
-        :param _LoadBalanceMode: 
+        :param _LoadBalanceMode: <p>Load balancing mode</p><p>Enumeration value:</p><ul><li>static: Static load</li><li>dynamic: Dynamic load</li></ul>
         :type LoadBalanceMode: str
         """
         self._ClusterId = None
@@ -9905,7 +9905,7 @@ class CreateProxyEndPointRequest(AbstractModel):
 
     @property
     def LoadBalanceMode(self):
-        r"""
+        r"""<p>Load balancing mode</p><p>Enumeration value:</p><ul><li>static: Static load</li><li>dynamic: Dynamic load</li></ul>
         :rtype: str
         """
         return self._LoadBalanceMode
@@ -11476,135 +11476,121 @@ class CynosdbClusterDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID.
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _ClusterName: Cluster name.
+        :param _ClusterName: <p>Cluster name.</p>
         :type ClusterName: str
-        :param _Region: Region.
+        :param _Region: <p>Region</p>
         :type Region: str
-        :param _Zone: AZ.
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _PhysicalZone: Physical availability zone.
+        :param _PhysicalZone: <p>Physical AZ</p>
         :type PhysicalZone: str
-        :param _Status: Status. supported values are as follows:.
-- Creating: creating.
-- running: running.
-- isolating.
-- Isolated: isolated.
-- activating: restore from recycle bin.
-- offlining: offline.
-- offlined: offline.
-- deleting: deleting.
-- deleted: deleted.
+        :param _Status: <p>Status. Supported values are as follows:</p><ul><li>creating: Creating</li><li>running: Running</li><li>isolating: Isolation</li><li>isolated: Isolated</li><li>activating: Restore from recycle bin</li><li>offlining: Offline</li><li>offlined: Offline</li><li>deleting: Deleting</li><li>deleted: Deleted</li></ul>
         :type Status: str
-        :param _StatusDesc: Status description
+        :param _StatusDesc: <p>Status description</p>
         :type StatusDesc: str
-        :param _ServerlessStatus: Serverless cluster status when the database type is `SERVERLESS`. Valid values:
-resume
-resuming
-pause
-pausing
+        :param _ServerlessStatus: <p>When the Db type is SERVERLESS, the SERVERLESS cluster status. Available values:<br>resume<br>resuming<br>pause<br>pausing</p>
         :type ServerlessStatus: str
-        :param _StorageId: Storage Id.
+        :param _StorageId: <p>Storage Id</p>
         :type StorageId: str
-        :param _Storage: Storage size in gb.
+        :param _Storage: <p>Storage size in GB</p>
         :type Storage: int
-        :param _MaxStorageSize: Maximum storage specification, in gb.
+        :param _MaxStorageSize: <p>Maximum storage specification, in GB</p>
         :type MaxStorageSize: int
-        :param _MinStorageSize: Specifies the minimum storage specification, in gb.
+        :param _MinStorageSize: <p>Minimum storage specification, in GB</p>
         :type MinStorageSize: int
-        :param _StoragePayMode: Storage billing type. 1 indicates yearly/monthly subscription, and 0 indicates pay-as-you-go.
+        :param _StoragePayMode: <p>Storage billing type. Valid values: 1 (yearly/monthly subscription); 0 (pay-as-you-go).</p>
         :type StoragePayMode: int
-        :param _VpcName: VPC name.
+        :param _VpcName: <p>VPC name</p>
         :type VpcName: str
-        :param _VpcId: Unique VPC ID.
+        :param _VpcId: <p>vpc Unique id</p>
         :type VpcId: str
-        :param _SubnetName: Subnet name.
+        :param _SubnetName: <p>Subnet name.</p>
         :type SubnetName: str
-        :param _SubnetId: Subnet ID.
+        :param _SubnetId: <p>Subnet ID.</p>
         :type SubnetId: str
-        :param _Charset: Character set.
+        :param _Charset: <p>Character set.</p>
         :type Charset: str
-        :param _CreateTime: Creation time.
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _DbType: Database type.
+        :param _DbType: <p>Database type</p>
         :type DbType: str
-        :param _DbMode: Db type: <li>NORMAL</li> <li>SERVERLESS</li>.
+        :param _DbMode: <p>Db type: <li>NORMAL</li><li>SERVERLESS</li></p>
         :type DbMode: str
-        :param _DbVersion: Database version.
+        :param _DbVersion: <p>Database version</p>
         :type DbVersion: str
-        :param _StorageLimit: Specifies the maximum storage space.
+        :param _StorageLimit: <p>Storage space limit</p>
         :type StorageLimit: int
-        :param _UsedStorage: Used capacity.
+        :param _UsedStorage: <p>Used capacity</p>
         :type UsedStorage: int
-        :param _Vip: VIP.
+        :param _Vip: <p>vip address</p>
         :type Vip: str
-        :param _Vport: vport.
+        :param _Vport: <p>vport port</p>
         :type Vport: int
-        :param _RoAddr: VIP and vport of the read-only instance in a cluster.
+        :param _RoAddr: <p>vip address and vport of the cluster read-only instance</p>
         :type RoAddr: list of Addr
-        :param _Ability: Functions supported by the cluster.
+        :param _Ability: <p>Functions supported by the cluster</p>
         :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
-        :param _CynosVersion: Specifies the cynos version.
+        :param _CynosVersion: <p>cynos version</p>
         :type CynosVersion: str
-        :param _BusinessType: Business type.
+        :param _BusinessType: <p>Business type</p>
         :type BusinessType: str
-        :param _HasSlaveZone: Whether there is an availability zone.
+        :param _HasSlaveZone: <p>Whether there is a secondary AZ</p>
         :type HasSlaveZone: str
-        :param _IsFreeze: Whether to freeze.
+        :param _IsFreeze: <p>Freeze or not</p>
         :type IsFreeze: str
-        :param _Tasks: Task list.
+        :param _Tasks: <p>Task List</p>
         :type Tasks: list of ObjectTask
-        :param _MasterZone: Primary AZ.
+        :param _MasterZone: <p>Primary AZ</p>
         :type MasterZone: str
-        :param _SlaveZones: Availability zone list.
+        :param _SlaveZones: <p>From the AZ list</p>
         :type SlaveZones: list of str
-        :param _InstanceSet: Instance information.
+        :param _InstanceSet: <p>Instance information</p>
         :type InstanceSet: list of ClusterInstanceDetail
-        :param _PayMode: Billing mode.
+        :param _PayMode: <p>Payment mode</p>
         :type PayMode: int
-        :param _PeriodEndTime: Expiration time.
+        :param _PeriodEndTime: <p>Expiry time.</p>
         :type PeriodEndTime: str
-        :param _ProjectID: Project ID.
+        :param _ProjectID: <p>Project ID.</p>
         :type ProjectID: int
-        :param _ResourceTags: Array of tags bound to instance.
+        :param _ResourceTags: <p>tag Array information for instance binding</p>
         :type ResourceTags: list of Tag
-        :param _ProxyStatus: Proxy status.
+        :param _ProxyStatus: <p>Proxy status</p>
         :type ProxyStatus: str
-        :param _LogBin: binlog switch. valid values: ON, OFF.
+        :param _LogBin: <p>binlog switch, available values: ON, OFF</p>
         :type LogBin: str
-        :param _IsSkipTrade: Specifies whether to skip the transaction.
+        :param _IsSkipTrade: <p>Skip transaction or not</p>
         :type IsSkipTrade: str
-        :param _PitrType: PITR type: valid values: normal, redo_pitr.
+        :param _PitrType: <p>PITR type, available values: normal, redo_pitr</p>
         :type PitrType: str
-        :param _IsOpenPasswordComplexity: Whether to enable password complexity.
+        :param _IsOpenPasswordComplexity: <p>Whether to toggle on password complexity</p>
         :type IsOpenPasswordComplexity: str
-        :param _NetworkStatus: Network type.
+        :param _NetworkStatus: <p>Network type</p>
         :type NetworkStatus: str
-        :param _ResourcePackages: The resource package information that is bound to the cluster.	
+        :param _ResourcePackages: <p>Package info of the bound resource for the cluster</p>
         :type ResourcePackages: list of ResourcePackage
-        :param _RenewFlag: Auto-Renewal flag. 1 indicates auto-renewal. 0 indicates non-renewal upon expiration.
+        :param _RenewFlag: <p>Auto-renewal flag. 1 means auto-renewal, 0 means non-renewal upon expiration.</p>
         :type RenewFlag: int
-        :param _NetworkType: Specifies the node network type.
+        :param _NetworkType: <p>Node network type</p>
         :type NetworkType: str
-        :param _SlaveZoneAttr: Secondary availability zone property.
+        :param _SlaveZoneAttr: <p>Secondary availability zone property</p>
         :type SlaveZoneAttr: list of SlaveZoneAttrItem
-        :param _CynosVersionTag: Version Tag.
+        :param _CynosVersionTag: <p>Version tag</p>
         :type CynosVersionTag: str
-        :param _GdnId: Global database network unique id.
+        :param _GdnId: <p>Unique ID of the global database network</p>
         :type GdnId: str
-        :param _GdnRole: The role of clusters in the global data network.
-primary cluster.
-Slave cluster - standby.
-If empty, the field is invalid.
+        :param _GdnRole: <p>Role of the cluster in the global data network.<br>Primary cluster - primary<br>Slave cluster - standby<br>If empty, the field is invalid.</p>
         :type GdnRole: str
-        :param _UsedArchiveStorage: Secondary storage usage, unit: G.
+        :param _UsedArchiveStorage: <p>Second-level storage usage in GB</p>
         :type UsedArchiveStorage: int
-        :param _ArchiveStatus: Archiving status, enumeration value <li>normal: normal</li><li>archiving: archiving</li><li>resuming: recovering</li><li>archived: archived</li>.
+        :param _ArchiveStatus: <p>Archiving status. Enumeration value <li>normal: Normal</li><li>archiving: Archiving</li><li>resuming: Recovering</li><li>archived: Archived</li></p>
         :type ArchiveStatus: str
-        :param _ArchiveProgress: Archive progress, percentage.
+        :param _ArchiveProgress: <p>Archive progress, percentage.</p>
         :type ArchiveProgress: int
-        :param _IsOpenTDE: Whether transparent encryption is enabled.
+        :param _ClusterLevel: <p>Cluster level. For example P0, P1</p>
+        :type ClusterLevel: str
+        :param _IsOpenTDE: <p>Whether to enable transparent data encryption</p>
         :type IsOpenTDE: bool
         """
         self._ClusterId = None
@@ -11663,11 +11649,12 @@ If empty, the field is invalid.
         self._UsedArchiveStorage = None
         self._ArchiveStatus = None
         self._ArchiveProgress = None
+        self._ClusterLevel = None
         self._IsOpenTDE = None
 
     @property
     def ClusterId(self):
-        r"""Cluster ID.
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -11678,7 +11665,7 @@ If empty, the field is invalid.
 
     @property
     def ClusterName(self):
-        r"""Cluster name.
+        r"""<p>Cluster name.</p>
         :rtype: str
         """
         return self._ClusterName
@@ -11689,7 +11676,7 @@ If empty, the field is invalid.
 
     @property
     def Region(self):
-        r"""Region.
+        r"""<p>Region</p>
         :rtype: str
         """
         return self._Region
@@ -11700,7 +11687,7 @@ If empty, the field is invalid.
 
     @property
     def Zone(self):
-        r"""AZ.
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -11711,7 +11698,7 @@ If empty, the field is invalid.
 
     @property
     def PhysicalZone(self):
-        r"""Physical availability zone.
+        r"""<p>Physical AZ</p>
         :rtype: str
         """
         return self._PhysicalZone
@@ -11722,16 +11709,7 @@ If empty, the field is invalid.
 
     @property
     def Status(self):
-        r"""Status. supported values are as follows:.
-- Creating: creating.
-- running: running.
-- isolating.
-- Isolated: isolated.
-- activating: restore from recycle bin.
-- offlining: offline.
-- offlined: offline.
-- deleting: deleting.
-- deleted: deleted.
+        r"""<p>Status. Supported values are as follows:</p><ul><li>creating: Creating</li><li>running: Running</li><li>isolating: Isolation</li><li>isolated: Isolated</li><li>activating: Restore from recycle bin</li><li>offlining: Offline</li><li>offlined: Offline</li><li>deleting: Deleting</li><li>deleted: Deleted</li></ul>
         :rtype: str
         """
         return self._Status
@@ -11742,7 +11720,7 @@ If empty, the field is invalid.
 
     @property
     def StatusDesc(self):
-        r"""Status description
+        r"""<p>Status description</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -11753,11 +11731,7 @@ If empty, the field is invalid.
 
     @property
     def ServerlessStatus(self):
-        r"""Serverless cluster status when the database type is `SERVERLESS`. Valid values:
-resume
-resuming
-pause
-pausing
+        r"""<p>When the Db type is SERVERLESS, the SERVERLESS cluster status. Available values:<br>resume<br>resuming<br>pause<br>pausing</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -11768,7 +11742,7 @@ pausing
 
     @property
     def StorageId(self):
-        r"""Storage Id.
+        r"""<p>Storage Id</p>
         :rtype: str
         """
         return self._StorageId
@@ -11779,7 +11753,7 @@ pausing
 
     @property
     def Storage(self):
-        r"""Storage size in gb.
+        r"""<p>Storage size in GB</p>
         :rtype: int
         """
         return self._Storage
@@ -11790,7 +11764,7 @@ pausing
 
     @property
     def MaxStorageSize(self):
-        r"""Maximum storage specification, in gb.
+        r"""<p>Maximum storage specification, in GB</p>
         :rtype: int
         """
         return self._MaxStorageSize
@@ -11801,7 +11775,7 @@ pausing
 
     @property
     def MinStorageSize(self):
-        r"""Specifies the minimum storage specification, in gb.
+        r"""<p>Minimum storage specification, in GB</p>
         :rtype: int
         """
         return self._MinStorageSize
@@ -11812,7 +11786,7 @@ pausing
 
     @property
     def StoragePayMode(self):
-        r"""Storage billing type. 1 indicates yearly/monthly subscription, and 0 indicates pay-as-you-go.
+        r"""<p>Storage billing type. Valid values: 1 (yearly/monthly subscription); 0 (pay-as-you-go).</p>
         :rtype: int
         """
         return self._StoragePayMode
@@ -11823,7 +11797,7 @@ pausing
 
     @property
     def VpcName(self):
-        r"""VPC name.
+        r"""<p>VPC name</p>
         :rtype: str
         """
         return self._VpcName
@@ -11834,7 +11808,7 @@ pausing
 
     @property
     def VpcId(self):
-        r"""Unique VPC ID.
+        r"""<p>vpc Unique id</p>
         :rtype: str
         """
         return self._VpcId
@@ -11845,7 +11819,7 @@ pausing
 
     @property
     def SubnetName(self):
-        r"""Subnet name.
+        r"""<p>Subnet name.</p>
         :rtype: str
         """
         return self._SubnetName
@@ -11856,7 +11830,7 @@ pausing
 
     @property
     def SubnetId(self):
-        r"""Subnet ID.
+        r"""<p>Subnet ID.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -11867,7 +11841,7 @@ pausing
 
     @property
     def Charset(self):
-        r"""Character set.
+        r"""<p>Character set.</p>
         :rtype: str
         """
         return self._Charset
@@ -11878,7 +11852,7 @@ pausing
 
     @property
     def CreateTime(self):
-        r"""Creation time.
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -11889,7 +11863,7 @@ pausing
 
     @property
     def DbType(self):
-        r"""Database type.
+        r"""<p>Database type</p>
         :rtype: str
         """
         return self._DbType
@@ -11900,7 +11874,7 @@ pausing
 
     @property
     def DbMode(self):
-        r"""Db type: <li>NORMAL</li> <li>SERVERLESS</li>.
+        r"""<p>Db type: <li>NORMAL</li><li>SERVERLESS</li></p>
         :rtype: str
         """
         return self._DbMode
@@ -11911,7 +11885,7 @@ pausing
 
     @property
     def DbVersion(self):
-        r"""Database version.
+        r"""<p>Database version</p>
         :rtype: str
         """
         return self._DbVersion
@@ -11922,7 +11896,7 @@ pausing
 
     @property
     def StorageLimit(self):
-        r"""Specifies the maximum storage space.
+        r"""<p>Storage space limit</p>
         :rtype: int
         """
         return self._StorageLimit
@@ -11933,7 +11907,7 @@ pausing
 
     @property
     def UsedStorage(self):
-        r"""Used capacity.
+        r"""<p>Used capacity</p>
         :rtype: int
         """
         return self._UsedStorage
@@ -11944,7 +11918,7 @@ pausing
 
     @property
     def Vip(self):
-        r"""VIP.
+        r"""<p>vip address</p>
         :rtype: str
         """
         return self._Vip
@@ -11955,7 +11929,7 @@ pausing
 
     @property
     def Vport(self):
-        r"""vport.
+        r"""<p>vport port</p>
         :rtype: int
         """
         return self._Vport
@@ -11966,7 +11940,7 @@ pausing
 
     @property
     def RoAddr(self):
-        r"""VIP and vport of the read-only instance in a cluster.
+        r"""<p>vip address and vport of the cluster read-only instance</p>
         :rtype: list of Addr
         """
         return self._RoAddr
@@ -11977,7 +11951,7 @@ pausing
 
     @property
     def Ability(self):
-        r"""Functions supported by the cluster.
+        r"""<p>Functions supported by the cluster</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         """
         return self._Ability
@@ -11988,7 +11962,7 @@ pausing
 
     @property
     def CynosVersion(self):
-        r"""Specifies the cynos version.
+        r"""<p>cynos version</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -11999,7 +11973,7 @@ pausing
 
     @property
     def BusinessType(self):
-        r"""Business type.
+        r"""<p>Business type</p>
         :rtype: str
         """
         return self._BusinessType
@@ -12010,7 +11984,7 @@ pausing
 
     @property
     def HasSlaveZone(self):
-        r"""Whether there is an availability zone.
+        r"""<p>Whether there is a secondary AZ</p>
         :rtype: str
         """
         return self._HasSlaveZone
@@ -12021,7 +11995,7 @@ pausing
 
     @property
     def IsFreeze(self):
-        r"""Whether to freeze.
+        r"""<p>Freeze or not</p>
         :rtype: str
         """
         return self._IsFreeze
@@ -12032,7 +12006,7 @@ pausing
 
     @property
     def Tasks(self):
-        r"""Task list.
+        r"""<p>Task List</p>
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -12043,7 +12017,7 @@ pausing
 
     @property
     def MasterZone(self):
-        r"""Primary AZ.
+        r"""<p>Primary AZ</p>
         :rtype: str
         """
         return self._MasterZone
@@ -12054,7 +12028,7 @@ pausing
 
     @property
     def SlaveZones(self):
-        r"""Availability zone list.
+        r"""<p>From the AZ list</p>
         :rtype: list of str
         """
         return self._SlaveZones
@@ -12065,7 +12039,7 @@ pausing
 
     @property
     def InstanceSet(self):
-        r"""Instance information.
+        r"""<p>Instance information</p>
         :rtype: list of ClusterInstanceDetail
         """
         return self._InstanceSet
@@ -12076,7 +12050,7 @@ pausing
 
     @property
     def PayMode(self):
-        r"""Billing mode.
+        r"""<p>Payment mode</p>
         :rtype: int
         """
         return self._PayMode
@@ -12087,7 +12061,7 @@ pausing
 
     @property
     def PeriodEndTime(self):
-        r"""Expiration time.
+        r"""<p>Expiry time.</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -12098,7 +12072,7 @@ pausing
 
     @property
     def ProjectID(self):
-        r"""Project ID.
+        r"""<p>Project ID.</p>
         :rtype: int
         """
         return self._ProjectID
@@ -12109,7 +12083,7 @@ pausing
 
     @property
     def ResourceTags(self):
-        r"""Array of tags bound to instance.
+        r"""<p>tag Array information for instance binding</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -12120,7 +12094,7 @@ pausing
 
     @property
     def ProxyStatus(self):
-        r"""Proxy status.
+        r"""<p>Proxy status</p>
         :rtype: str
         """
         return self._ProxyStatus
@@ -12131,7 +12105,7 @@ pausing
 
     @property
     def LogBin(self):
-        r"""binlog switch. valid values: ON, OFF.
+        r"""<p>binlog switch, available values: ON, OFF</p>
         :rtype: str
         """
         return self._LogBin
@@ -12142,7 +12116,7 @@ pausing
 
     @property
     def IsSkipTrade(self):
-        r"""Specifies whether to skip the transaction.
+        r"""<p>Skip transaction or not</p>
         :rtype: str
         """
         return self._IsSkipTrade
@@ -12153,7 +12127,7 @@ pausing
 
     @property
     def PitrType(self):
-        r"""PITR type: valid values: normal, redo_pitr.
+        r"""<p>PITR type, available values: normal, redo_pitr</p>
         :rtype: str
         """
         return self._PitrType
@@ -12164,7 +12138,7 @@ pausing
 
     @property
     def IsOpenPasswordComplexity(self):
-        r"""Whether to enable password complexity.
+        r"""<p>Whether to toggle on password complexity</p>
         :rtype: str
         """
         return self._IsOpenPasswordComplexity
@@ -12175,7 +12149,7 @@ pausing
 
     @property
     def NetworkStatus(self):
-        r"""Network type.
+        r"""<p>Network type</p>
         :rtype: str
         """
         return self._NetworkStatus
@@ -12186,7 +12160,7 @@ pausing
 
     @property
     def ResourcePackages(self):
-        r"""The resource package information that is bound to the cluster.	
+        r"""<p>Package info of the bound resource for the cluster</p>
         :rtype: list of ResourcePackage
         """
         return self._ResourcePackages
@@ -12197,7 +12171,7 @@ pausing
 
     @property
     def RenewFlag(self):
-        r"""Auto-Renewal flag. 1 indicates auto-renewal. 0 indicates non-renewal upon expiration.
+        r"""<p>Auto-renewal flag. 1 means auto-renewal, 0 means non-renewal upon expiration.</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -12208,7 +12182,7 @@ pausing
 
     @property
     def NetworkType(self):
-        r"""Specifies the node network type.
+        r"""<p>Node network type</p>
         :rtype: str
         """
         return self._NetworkType
@@ -12219,7 +12193,7 @@ pausing
 
     @property
     def SlaveZoneAttr(self):
-        r"""Secondary availability zone property.
+        r"""<p>Secondary availability zone property</p>
         :rtype: list of SlaveZoneAttrItem
         """
         return self._SlaveZoneAttr
@@ -12230,7 +12204,7 @@ pausing
 
     @property
     def CynosVersionTag(self):
-        r"""Version Tag.
+        r"""<p>Version tag</p>
         :rtype: str
         """
         return self._CynosVersionTag
@@ -12241,7 +12215,7 @@ pausing
 
     @property
     def GdnId(self):
-        r"""Global database network unique id.
+        r"""<p>Unique ID of the global database network</p>
         :rtype: str
         """
         return self._GdnId
@@ -12252,10 +12226,7 @@ pausing
 
     @property
     def GdnRole(self):
-        r"""The role of clusters in the global data network.
-primary cluster.
-Slave cluster - standby.
-If empty, the field is invalid.
+        r"""<p>Role of the cluster in the global data network.<br>Primary cluster - primary<br>Slave cluster - standby<br>If empty, the field is invalid.</p>
         :rtype: str
         """
         return self._GdnRole
@@ -12266,7 +12237,7 @@ If empty, the field is invalid.
 
     @property
     def UsedArchiveStorage(self):
-        r"""Secondary storage usage, unit: G.
+        r"""<p>Second-level storage usage in GB</p>
         :rtype: int
         """
         return self._UsedArchiveStorage
@@ -12277,7 +12248,7 @@ If empty, the field is invalid.
 
     @property
     def ArchiveStatus(self):
-        r"""Archiving status, enumeration value <li>normal: normal</li><li>archiving: archiving</li><li>resuming: recovering</li><li>archived: archived</li>.
+        r"""<p>Archiving status. Enumeration value <li>normal: Normal</li><li>archiving: Archiving</li><li>resuming: Recovering</li><li>archived: Archived</li></p>
         :rtype: str
         """
         return self._ArchiveStatus
@@ -12288,7 +12259,7 @@ If empty, the field is invalid.
 
     @property
     def ArchiveProgress(self):
-        r"""Archive progress, percentage.
+        r"""<p>Archive progress, percentage.</p>
         :rtype: int
         """
         return self._ArchiveProgress
@@ -12298,8 +12269,19 @@ If empty, the field is invalid.
         self._ArchiveProgress = ArchiveProgress
 
     @property
+    def ClusterLevel(self):
+        r"""<p>Cluster level. For example P0, P1</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
+    @property
     def IsOpenTDE(self):
-        r"""Whether transparent encryption is enabled.
+        r"""<p>Whether to enable transparent data encryption</p>
         :rtype: bool
         """
         return self._IsOpenTDE
@@ -12398,6 +12380,7 @@ If empty, the field is invalid.
         self._UsedArchiveStorage = params.get("UsedArchiveStorage")
         self._ArchiveStatus = params.get("ArchiveStatus")
         self._ArchiveProgress = params.get("ArchiveProgress")
+        self._ClusterLevel = params.get("ClusterLevel")
         self._IsOpenTDE = params.get("IsOpenTDE")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -21199,22 +21182,23 @@ class DescribeInstanceSpecsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbType: Database type. Valid values: 
-<li> MYSQL </li>
+        :param _DbType: <p>Database type, value ranges from...to... </p><li> MYSQL </li>
         :type DbType: str
-        :param _IncludeZoneStocks: Whether to return the AZ information.
+        :param _IncludeZoneStocks: <p>Whether required to return AZ information</p>
         :type IncludeZoneStocks: bool
-        :param _DeviceType: Instance machine type.
+        :param _DeviceType: <p>Instance machine type.</p>
         :type DeviceType: str
+        :param _ClusterLevel: <p>Cluster level, optional. For example P0, P1</p>
+        :type ClusterLevel: str
         """
         self._DbType = None
         self._IncludeZoneStocks = None
         self._DeviceType = None
+        self._ClusterLevel = None
 
     @property
     def DbType(self):
-        r"""Database type. Valid values: 
-<li> MYSQL </li>
+        r"""<p>Database type, value ranges from...to... </p><li> MYSQL </li>
         :rtype: str
         """
         return self._DbType
@@ -21225,7 +21209,7 @@ class DescribeInstanceSpecsRequest(AbstractModel):
 
     @property
     def IncludeZoneStocks(self):
-        r"""Whether to return the AZ information.
+        r"""<p>Whether required to return AZ information</p>
         :rtype: bool
         """
         return self._IncludeZoneStocks
@@ -21236,7 +21220,7 @@ class DescribeInstanceSpecsRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""Instance machine type.
+        r"""<p>Instance machine type.</p>
         :rtype: str
         """
         return self._DeviceType
@@ -21245,11 +21229,23 @@ class DescribeInstanceSpecsRequest(AbstractModel):
     def DeviceType(self, DeviceType):
         self._DeviceType = DeviceType
 
+    @property
+    def ClusterLevel(self):
+        r"""<p>Cluster level, optional. For example P0, P1</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
 
     def _deserialize(self, params):
         self._DbType = params.get("DbType")
         self._IncludeZoneStocks = params.get("IncludeZoneStocks")
         self._DeviceType = params.get("DeviceType")
+        self._ClusterLevel = params.get("ClusterLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21267,7 +21263,7 @@ class DescribeInstanceSpecsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceSpecSet: Specification information
+        :param _InstanceSpecSet: <p>Specification information.</p>
         :type InstanceSpecSet: list of InstanceSpec
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -21277,7 +21273,7 @@ class DescribeInstanceSpecsResponse(AbstractModel):
 
     @property
     def InstanceSpecSet(self):
-        r"""Specification information
+        r"""<p>Specification information.</p>
         :rtype: list of InstanceSpec
         """
         return self._InstanceSpecSet
@@ -26944,14 +26940,17 @@ class DescribeServerlessInstanceSpecsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: Availability zone
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
+        :param _ClusterLevel: <p>Cluster level</p>
+        :type ClusterLevel: str
         """
         self._Zone = None
+        self._ClusterLevel = None
 
     @property
     def Zone(self):
-        r"""Availability zone
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -26960,9 +26959,21 @@ class DescribeServerlessInstanceSpecsRequest(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def ClusterLevel(self):
+        r"""<p>Cluster level</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
+        self._ClusterLevel = params.get("ClusterLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26980,7 +26991,7 @@ class DescribeServerlessInstanceSpecsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Specs: Available specifications of Serverless instance.
+        :param _Specs: <p>Serverless instance available specifications</p>
         :type Specs: list of ServerlessSpec
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -26990,7 +27001,7 @@ class DescribeServerlessInstanceSpecsResponse(AbstractModel):
 
     @property
     def Specs(self):
-        r"""Available specifications of Serverless instance.
+        r"""<p>Serverless instance available specifications</p>
         :rtype: list of ServerlessSpec
         """
         return self._Specs
@@ -40741,7 +40752,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         :type ApNodeAsRoNode: bool
         :param _ApQueryToOtherNode: <p>Whether to forward to other nodes when a libra node fault occurs</p>
         :type ApQueryToOtherNode: bool
-        :param _LoadBalanceMode: 
+        :param _LoadBalanceMode: <p>Load balancing mode</p><p>Enumeration value:</p><ul><li>static: Static load</li><li>dynamic: Dynamic load</li></ul>
         :type LoadBalanceMode: str
         """
         self._ClusterId = None
@@ -40952,7 +40963,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
 
     @property
     def LoadBalanceMode(self):
-        r"""
+        r"""<p>Load balancing mode</p><p>Enumeration value:</p><ul><li>static: Static load</li><li>dynamic: Dynamic load</li></ul>
         :rtype: str
         """
         return self._LoadBalanceMode
@@ -43049,6 +43060,100 @@ class OldAddrInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OpenAIOptimizerRequest(AbstractModel):
+    r"""OpenAIOptimizer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAIOptimizerResponse(AbstractModel):
+    r"""OpenAIOptimizer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task flow id.</p>
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task flow id.</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class OpenAuditServiceRequest(AbstractModel):
@@ -46342,7 +46447,7 @@ class ProxyGroupRwInfo(AbstractModel):
         :type ApNodeAsRoNode: bool
         :param _ApQueryToOtherNode: <p>Whether to forward to other nodes when a libra node fault occurs</p>
         :type ApQueryToOtherNode: bool
-        :param _LoadBalanceMode: 
+        :param _LoadBalanceMode: <p>Auto load</p><p>Enumeration value:</p><ul><li>static: Static load</li><li>dynamic: Dynamic load</li></ul>
         :type LoadBalanceMode: str
         """
         self._ConsistencyType = None
@@ -46493,7 +46598,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def LoadBalanceMode(self):
-        r"""
+        r"""<p>Auto load</p><p>Enumeration value:</p><ul><li>static: Static load</li><li>dynamic: Dynamic load</li></ul>
         :rtype: str
         """
         return self._LoadBalanceMode

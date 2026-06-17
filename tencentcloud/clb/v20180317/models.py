@@ -621,17 +621,19 @@ class AutoRewriteResponse(AbstractModel):
 
 
 class AvailableZoneAffinityInfo(AbstractModel):
-    r"""
+    r"""Availability zone forward affinity info
 
     """
 
     def __init__(self):
         r"""
-        :param _Enable: 
+        :param _Enable: Whether to enable availability zone forwarding affinity. true: enable availability zone forwarding affinity; false: enable availability zone forwarding affinity.
         :type Enable: bool
-        :param _ExitRatio: 
+        :param _ExitRatio: The threshold for availability zone forwarding affinity failure. When the healthy ratio of backend services in an availability zone is less than this threshold, the Cloud Load Balancer will exit availability zone forwarding affinity and convert to forwarding across all availability zones.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ExitRatio: int
-        :param _ReentryRatio: 
+        :param _ReentryRatio: The threshold for re-enabling availability zone affinity forwarding. When forwarding across all availability zones and the health ratio of backend services in the Cloud Load Balancer AZ is greater than or equal to this threshold, the CLB will enter availability zone affinity forwarding again.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ReentryRatio: int
         """
         self._Enable = None
@@ -640,7 +642,7 @@ class AvailableZoneAffinityInfo(AbstractModel):
 
     @property
     def Enable(self):
-        r"""
+        r"""Whether to enable availability zone forwarding affinity. true: enable availability zone forwarding affinity; false: enable availability zone forwarding affinity.
         :rtype: bool
         """
         return self._Enable
@@ -651,7 +653,8 @@ class AvailableZoneAffinityInfo(AbstractModel):
 
     @property
     def ExitRatio(self):
-        r"""
+        r"""The threshold for availability zone forwarding affinity failure. When the healthy ratio of backend services in an availability zone is less than this threshold, the Cloud Load Balancer will exit availability zone forwarding affinity and convert to forwarding across all availability zones.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ExitRatio
@@ -662,7 +665,8 @@ class AvailableZoneAffinityInfo(AbstractModel):
 
     @property
     def ReentryRatio(self):
-        r"""
+        r"""The threshold for re-enabling availability zone affinity forwarding. When forwarding across all availability zones and the health ratio of backend services in the Cloud Load Balancer AZ is greater than or equal to this threshold, the CLB will enter availability zone affinity forwarding again.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ReentryRatio
@@ -716,6 +720,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type EniId: str
         :param _Tag: Tag.
         :type Tag: str
+        :param _Zone: The availability zone where the backend service resides, such as ap-guangzhou-1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Zone: str
         """
         self._Type = None
         self._InstanceId = None
@@ -727,6 +734,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RegisteredTime = None
         self._EniId = None
         self._Tag = None
+        self._Zone = None
 
     @property
     def Type(self):
@@ -841,6 +849,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Tag(self, Tag):
         self._Tag = Tag
 
+    @property
+    def Zone(self):
+        r"""The availability zone where the backend service resides, such as ap-guangzhou-1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -853,6 +873,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RegisteredTime = params.get("RegisteredTime")
         self._EniId = params.get("EniId")
         self._Tag = params.get("Tag")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1134,9 +1155,9 @@ class BatchModifyTargetWeightRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: CLB instance ID
+        :param _LoadBalancerId: <p>CLB instance ID.</p>
         :type LoadBalancerId: str
-        :param _ModifyList: List of weights to be modified in batches
+        :param _ModifyList: <p>List of weights to be modified in batch. The ModifyList array can contain no more than 100 elements, ModifyList[i].Targets can have no more than 50, and the total number of Targets must not exceed 500.</p>
         :type ModifyList: list of RsWeightRule
         """
         self._LoadBalancerId = None
@@ -1144,7 +1165,7 @@ class BatchModifyTargetWeightRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""CLB instance ID
+        r"""<p>CLB instance ID.</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -1155,7 +1176,7 @@ class BatchModifyTargetWeightRequest(AbstractModel):
 
     @property
     def ModifyList(self):
-        r"""List of weights to be modified in batches
+        r"""<p>List of weights to be modified in batch. The ModifyList array can contain no more than 100 elements, ModifyList[i].Targets can have no more than 50, and the total number of Targets must not exceed 500.</p>
         :rtype: list of RsWeightRule
         """
         return self._ModifyList
@@ -2252,41 +2273,41 @@ class ClassicalListener(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: CLB listener ID
+        :param _ListenerId: <p>CLB listener ID</p>
         :type ListenerId: str
-        :param _ListenerPort: CLB listener port
+        :param _ListenerPort: <p>CLB listener port</p>
         :type ListenerPort: int
-        :param _InstancePort: Backend forwarding port of a listener
+        :param _InstancePort: <p>listener backend forwarding port</p>
         :type InstancePort: int
-        :param _ListenerName: Listener name
+        :param _ListenerName: <p>Listener name</p>
         :type ListenerName: str
-        :param _Protocol: Listener protocol type
+        :param _Protocol: <p>Listener protocol type</p>
         :type Protocol: str
-        :param _SessionExpire: Session persistence time
+        :param _SessionExpire: <p>Session persistence time</p>
         :type SessionExpire: int
-        :param _HealthSwitch: Whether health check is enabled. 1: enabled; 0: disabled.
+        :param _HealthSwitch: <p>Whether health check is enabled: 1 (enabled), 0 (disabled)</p>
         :type HealthSwitch: int
-        :param _TimeOut: Response timeout period
+        :param _TimeOut: <p>Response timeout</p><p>Unit: second</p>
         :type TimeOut: int
-        :param _IntervalTime: Check interval
+        :param _IntervalTime: <p>Check interval</p><p>Unit: seconds</p>
         :type IntervalTime: int
-        :param _HealthNum: Health threshold
+        :param _HealthNum: <p>Health threshold</p>
         :type HealthNum: int
-        :param _UnhealthNum: Unhealthy threshold
+        :param _UnhealthNum: <p>Unhealthy threshold</p>
         :type UnhealthNum: int
-        :param _HttpHash: Request balancing method for listeners of the classic public network CLB. An empty string or wrr indicates weighted round robin. ip_hash indicates consistent hashing based on the accessed source IP address. least_conn indicates least connections.
+        :param _HttpHash: <p>Request balancing method for listeners of the classic public network CLB. An empty string or wrr indicates weighted round robin. ip_hash indicates consistent hashing based on the accessed source IP address. least_conn indicates least connections.</p>
         :type HttpHash: str
-        :param _HttpCode: Health check return code for HTTP and HTTPS listeners of a public network classic CLB. For more information, see the explanation of the field in the listener creating API.
+        :param _HttpCode: <p>Health check return code of HTTP and HTTPS listeners for public network CLB. For details, see the explanation of this field in listener creation API.</p>
         :type HttpCode: int
-        :param _HttpCheckPath: Health check path for HTTP and HTTPS listeners of a public network classic CLB
+        :param _HttpCheckPath: <p>Health check path of HTTP and HTTPS listeners for public network CLB</p>
         :type HttpCheckPath: str
-        :param _SSLMode: Authentication method for an HTTPS listener of a public network classic CLB
+        :param _SSLMode: <p>Authentication method of the HTTPS listener for public network CLB</p>
         :type SSLMode: str
-        :param _CertId: Server certificate ID for an HTTPS listener of a public network classic CLB
+        :param _CertId: <p>Server certificate ID of the HTTPS listener for the public network CLB</p>
         :type CertId: str
-        :param _CertCaId: Client certificate ID for an HTTPS listener of a public network classic CLB
+        :param _CertCaId: <p>Client certificate ID of the HTTPS listener for public network CLB</p>
         :type CertCaId: str
-        :param _Status: Listener status. Value range: 0 (creating), 1 (running)
+        :param _Status: <p>Listener status. 0 indicates creating in progress, 1 indicates running.</p>
         :type Status: int
         """
         self._ListenerId = None
@@ -2310,7 +2331,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""CLB listener ID
+        r"""<p>CLB listener ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -2321,7 +2342,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def ListenerPort(self):
-        r"""CLB listener port
+        r"""<p>CLB listener port</p>
         :rtype: int
         """
         return self._ListenerPort
@@ -2332,7 +2353,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def InstancePort(self):
-        r"""Backend forwarding port of a listener
+        r"""<p>listener backend forwarding port</p>
         :rtype: int
         """
         return self._InstancePort
@@ -2343,7 +2364,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""Listener name
+        r"""<p>Listener name</p>
         :rtype: str
         """
         return self._ListenerName
@@ -2354,7 +2375,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""Listener protocol type
+        r"""<p>Listener protocol type</p>
         :rtype: str
         """
         return self._Protocol
@@ -2365,7 +2386,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def SessionExpire(self):
-        r"""Session persistence time
+        r"""<p>Session persistence time</p>
         :rtype: int
         """
         return self._SessionExpire
@@ -2376,7 +2397,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        r"""Whether health check is enabled. 1: enabled; 0: disabled.
+        r"""<p>Whether health check is enabled: 1 (enabled), 0 (disabled)</p>
         :rtype: int
         """
         return self._HealthSwitch
@@ -2387,7 +2408,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def TimeOut(self):
-        r"""Response timeout period
+        r"""<p>Response timeout</p><p>Unit: second</p>
         :rtype: int
         """
         return self._TimeOut
@@ -2398,7 +2419,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def IntervalTime(self):
-        r"""Check interval
+        r"""<p>Check interval</p><p>Unit: seconds</p>
         :rtype: int
         """
         return self._IntervalTime
@@ -2409,7 +2430,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HealthNum(self):
-        r"""Health threshold
+        r"""<p>Health threshold</p>
         :rtype: int
         """
         return self._HealthNum
@@ -2420,7 +2441,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        r"""Unhealthy threshold
+        r"""<p>Unhealthy threshold</p>
         :rtype: int
         """
         return self._UnhealthNum
@@ -2431,7 +2452,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HttpHash(self):
-        r"""Request balancing method for listeners of the classic public network CLB. An empty string or wrr indicates weighted round robin. ip_hash indicates consistent hashing based on the accessed source IP address. least_conn indicates least connections.
+        r"""<p>Request balancing method for listeners of the classic public network CLB. An empty string or wrr indicates weighted round robin. ip_hash indicates consistent hashing based on the accessed source IP address. least_conn indicates least connections.</p>
         :rtype: str
         """
         return self._HttpHash
@@ -2442,7 +2463,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HttpCode(self):
-        r"""Health check return code for HTTP and HTTPS listeners of a public network classic CLB. For more information, see the explanation of the field in the listener creating API.
+        r"""<p>Health check return code of HTTP and HTTPS listeners for public network CLB. For details, see the explanation of this field in listener creation API.</p>
         :rtype: int
         """
         return self._HttpCode
@@ -2453,7 +2474,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HttpCheckPath(self):
-        r"""Health check path for HTTP and HTTPS listeners of a public network classic CLB
+        r"""<p>Health check path of HTTP and HTTPS listeners for public network CLB</p>
         :rtype: str
         """
         return self._HttpCheckPath
@@ -2464,7 +2485,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def SSLMode(self):
-        r"""Authentication method for an HTTPS listener of a public network classic CLB
+        r"""<p>Authentication method of the HTTPS listener for public network CLB</p>
         :rtype: str
         """
         return self._SSLMode
@@ -2475,7 +2496,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def CertId(self):
-        r"""Server certificate ID for an HTTPS listener of a public network classic CLB
+        r"""<p>Server certificate ID of the HTTPS listener for the public network CLB</p>
         :rtype: str
         """
         return self._CertId
@@ -2486,7 +2507,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def CertCaId(self):
-        r"""Client certificate ID for an HTTPS listener of a public network classic CLB
+        r"""<p>Client certificate ID of the HTTPS listener for public network CLB</p>
         :rtype: str
         """
         return self._CertCaId
@@ -2497,7 +2518,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def Status(self):
-        r"""Listener status. Value range: 0 (creating), 1 (running)
+        r"""<p>Listener status. 0 indicates creating in progress, 1 indicates running.</p>
         :rtype: int
         """
         return self._Status
@@ -2786,7 +2807,7 @@ Note: A primary AZ loads traffic, while a secondary AZ does not load traffic by 
         :param _SlaveZoneId: Specifies the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It is applicable only to public network CLB.
 Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use the `DescribeMasterZones` API to query the primary and secondary AZ list of a region.
         :type SlaveZoneId: str
-        :param _ZoneId: Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to specify availability zone.
+        :param _ZoneId: Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to specify availability zone.
         :type ZoneId: str
         :param _InternetAccessible: CLB network billing mode, applicable only to public network CLB instances.
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
@@ -2810,9 +2831,9 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
         :type SlaType: str
         :param _ClusterTag: Specifies the Tag of the Stgw exclusive cluster.
         :type ClusterTag: str
-        :param _Zones: Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.
+        :param _Zones: Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.
         :type Zones: list of str
-        :param _EipAddressId: The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1).
+        :param _EipAddressId: The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1) API .
         :type EipAddressId: str
         """
         self._LoadBalancerId = None
@@ -2895,7 +2916,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def ZoneId(self):
-        r"""Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to specify availability zone.
+        r"""Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to specify availability zone.
         :rtype: str
         """
         return self._ZoneId
@@ -3027,7 +3048,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def Zones(self):
-        r"""Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.
+        r"""Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.
         :rtype: list of str
         """
         return self._Zones
@@ -3038,7 +3059,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
 
     @property
     def EipAddressId(self):
-        r"""The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1).
+        r"""The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1) API .
         :rtype: str
         """
         return self._EipAddressId
@@ -3423,72 +3444,63 @@ class CreateListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        :param _LoadBalancerId: <p>ID of the Cloud Load Balancer (CLB) instance. You can call the <a href="https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1">DescribeLoadBalancers</a> API to obtain the ID.</p>
         :type LoadBalancerId: str
-        :param _Ports: Ports for creating listeners. Each port corresponds to a listener.
-Port range: 1–65535.
+        :param _Ports: <p>Which ports to create listeners on, each port maps to a new listener.<br>Port range: 1–65535</p>
         :type Ports: list of int
-        :param _Protocol: Listener protocol. Valid values: TCP, UDP, HTTP, HTTPS, TCP_SSL, and QUIC.
+        :param _Protocol: <p>Listener protocol. Valid values: TCP, UDP, HTTP, HTTPS, TCP_SSL, and QUIC.</p>
         :type Protocol: str
-        :param _ListenerNames: List of names of listeners to be created. The names correspond to ports one by one. This parameter can be left blank if you do not want to name the listeners immediately.
+        :param _ListenerNames: <p>List of listener names to be created. Names correspond sequentially to Ports. If naming is not immediately necessary, this parameter need not be provided. Naming rule: 1-80 characters including English letters, Chinese characters, digits, connecting line "-", underscore "_" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>
         :type ListenerNames: list of str
-        :param _HealthCheck: Health check parameter. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners.
+        :param _HealthCheck: <p>Health check parameters. This parameter is applicable only to TCP/UDP/TCP_SSL/QUIC listeners.</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param _Certificate: Certificate-related information. The parameter limitations are as follows:
-<li>This parameter applies only to TCP_SSL listeners and HTTPS listeners with the SNI feature disabled.</li>
-<li>Either this parameter or the MultiCertInfo parameter should be specified when you create a TCP_SSL listener or an HTTPS listener with the SNI feature disabled. You cannot specify them at the same time.</li>
+        :param _Certificate: <p>Certificate-related information. The limits are as follows:</p><li>This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with SNI feature disabled.</li><li>When creating a TCP_SSL listener or an HTTPS listener with SNI feature disabled, a minimum of this parameter or MultiCertInfo must be specified, but they cannot be specified at the same time.</li>
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
-        :param _SessionExpireTime: Session persistence duration, in seconds. Value range: 30–3600. Default value: 0, indicating that session persistence is not enabled by default. This parameter applies only to TCP and UDP listeners.
+        :param _SessionExpireTime: <p>Session persistence duration, in seconds. Value range: 30–3600. Default value: 0, indicating that session persistence is not enabled by default. This parameter applies only to TCP and UDP listeners.</p>
         :type SessionExpireTime: int
-        :param _Scheduler: Listener forwarding mode. valid values: WRR (weighted round-robin), LEAST_CONN (LEAST connections).
-Default value: WRR. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners.
+        :param _Scheduler: <p>Listener forwarding mode. Available values: WRR (weighted round-robin), LEAST_CONN (least connections).<br>Default WRR. This parameter is applicable only to TCP/UDP/TCP_SSL/QUIC listeners.</p>
         :type Scheduler: str
-        :param _SniSwitch: Whether to enable the SNI feature. This parameter applies only to HTTPS listeners. 0: disable; 1: enable.
+        :param _SniSwitch: <p>Whether to enable SNI feature. This parameter applies only to HTTPS listeners. 0: not enabled, 1: enable.</p>
         :type SniSwitch: int
-        :param _TargetType: Real server type. NODE: ordinary node; TARGETGROUP: real server group. This parameter applies only to TCP and UDP listeners. For layer-7 listeners, set the type in forwarding rules.
+        :param _TargetType: <p>Backend target type. NODE indicates binding to a general node. TARGETGROUP indicates binding to a target group. This parameter is applicable only to TCP/UDP listeners. For layer-7 (HTTP/HTTPS) listeners, configure it in forwarding rules.</p>
         :type TargetType: str
-        :param _SessionType: Session persistence type. If this parameter is not specified or the value is set to NORMAL, the default session persistence type is used. QUIC_CID: perform session persistence based on QUIC connection ID. If the value is set to QUIC_CID, only the UDP protocol is supported. This parameter applies only to TCP and UDP listeners. For layer-7 listeners, set the type in forwarding rules. (If the value is set to QUIC_CID, the Protocol value should be UDP, the Scheduler value should be WRR, and only IPv4 addresses are supported.)
+        :param _SessionType: <p>Session persistence type. Leaving it blank or passing NORMAL means the default session persistence type. QUIC_CID refers to maintaining the session based on QUIC Connection ID. QUIC_CID supports only UDP Protocol. This parameter is applicable only to TCP/UDP listeners. Layer-7 (HTTP/HTTPS) listeners should set this in forwarding rules. (If QUIC_CID is selected, Protocol must be UDP, Scheduler must be WRR, and it supports only ipv4 concurrently).</p>
         :type SessionType: str
-        :param _KeepaliveEnable: Whether to enable the persistent connection feature. This parameter applies only to HTTP and HTTPS listeners. 0: disable; 1: enable. This feature is disabled by default.
-Enable this feature with caution if the maximum number of connections is limited for real servers. This feature is in beta testing. To use it, submit a [beta testing application](https://intl.cloud.tencent.com/apply/p/tsodp6qm21?from_cn_redirect=1).
+        :param _KeepaliveEnable: <p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS listeners. 0: off by default; 1: enable. <br>If the backend service has a connection limit, enable with caution. This feature is currently in internal testing. If you need to use it, submit a <a href="https://www.tencentcloud.com/apply/p/tsodp6qm21?from_cn_redirect=1">beta application</a>.</p>
         :type KeepaliveEnable: int
-        :param _EndPort: End port. This parameter is required for creating a listener with a port range. In this case, the input parameter Ports allows only one value to indicate the start port. To experience the port range feature, [submit a ticket for application](https://console.cloud.tencent.com/workorder/category).
+        :param _EndPort: <p>End port. This parameter is required for creating a listener with a port range. In this case, the input parameter Ports allows only one value to indicate the start port. To experience the port range feature, [submit a ticket for application](https://console.cloud.tencent.com/workorder/category).</p>
         :type EndPort: int
-        :param _DeregisterTargetRst: Reschedules when unbinding real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        :param _DeregisterTargetRst: <p>Rescheduling feature, which provides a switch for scaling out the backend service. If the switch is toggled on, rescheduling is triggered when the backend service is unbound. This parameter is applicable only to TCP/UDP listeners.</p>
         :type DeregisterTargetRst: bool
-        :param _MultiCertInfo: Certificate information. You can import multiple server certificates with different algorithms at the same time. The parameter limitations are as follows:
-<li>This parameter applies only to TCP_SSL listeners and HTTPS listeners with the SNI feature disabled.</li>
-<li>Either this parameter or the Certificate parameter should be specified when you create a TCP_SSL listener or an HTTPS listener with the SNI feature disabled. You cannot specify them at the same time.</li>
+        :param _MultiCertInfo: <p>Certificate information. Multiple server certificates with different algorithm types can be imported at the same time. Parameter constraints are as follows:</p><li>This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with SNI feature disabled.</li><li>When creating a TCP_SSL listener or an HTTPS listener with SNI feature disabled, a minimum of this parameter or Certificate must be specified, but they cannot be specified at the same time.</li>
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
-        :param _MaxConn: Maximum number of connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of connections is not limited. This parameter is not supported for classic network-based instances.
+        :param _MaxConn: <p>Maximum number of connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of connections is not limited. This parameter is not supported for classic network-based instances.</p>
         :type MaxConn: int
-        :param _MaxCps: Maximum number of new connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of new connections is not limited. This parameter is not supported for classic network-based instances.
+        :param _MaxCps: <p>Maximum number of new connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of new connections is not limited. This parameter is not supported for classic network-based instances.</p>
         :type MaxCps: int
-        :param _IdleConnectTimeout: Specifies the idle connection timeout in seconds. this parameter applies only to TCP/UDP listeners. default value: 900 for TCP listeners and 300 for UDP listeners. value range: 10–900 for shared instances and dedicated instances and 10–1980 for lcu-supported instances. to set a value exceeding the permissible range, [submit a ticket for application](https://console.cloud.tencent.com/workorder/category).
+        :param _IdleConnectTimeout: <p>Idle connection timeout, in seconds. This parameter applies only to TCP/UDP listeners. Default value: 900 for TCP listeners and 300 for UDP listeners. Value range: 10–900 for shared instances and dedicated instances and 10–1980 for LCU-supported instances. To set a value exceeding the permissible range, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket for application</a>.</p><p>Permissible range: [10, 1980]</p><p>Measurement unit: seconds</p><p>Default value: 900</p><p>Default value: 900 for TCP listeners and 300 for UDP listeners. Value range: 10–900 for shared instances and dedicated instances and 10–1980 for LCU-supported instances.</p>
         :type IdleConnectTimeout: int
-        :param _ProxyProtocol: Specifies whether PP is supported for TCP_SSL and QUIC.
+        :param _ProxyProtocol: <p>Whether TCP_SSL and QUIC support PP</p>
         :type ProxyProtocol: bool
-        :param _SnatEnable: Whether SNAT (source IP replacement) is enabled. valid values: True (enabled), False (disabled). disabled by default. note: when SnatEnable is enabled, the client source IP will be replaced, at this point the `pass through client source IP` option is disabled, and vice versa.
+        :param _SnatEnable: <p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>
         :type SnatEnable: bool
-        :param _FullEndPorts: End port of a listener with a port range. Range of the port: 2–65535.
+        :param _FullEndPorts: <p>End port of a listener with a port range. Range of the port: 2–65535.</p>
         :type FullEndPorts: list of int
-        :param _H2cSwitch: Enable private network http listener h2c switch. valid values: True (enable), False (disable).
-Disabled by default.
+        :param _H2cSwitch: <p>Enable the h2c switch for the private network HTTP listener.<br>True (enabled), False (disabled). Disabled by default.<br>Once enabled, the listener only supports creating layer-7 rules with GRPC or GRPCS as the backend forwarding type. When creating rules, explicitly input GRPC or GRPCS in Rules.N.ForwardType.</p>
         :type H2cSwitch: bool
-        :param _SslCloseSwitch: Whether to disable SSL for TCP_SSL listeners. dual-stack binding is still supported after SSL is disabled. valid values: True (disable), False (enable).
-Disabled by default.
+        :param _SslCloseSwitch: <p>Control whether to remove the SSL encryption layer for TCP_SSL listeners. Once enabled, the listener will run as a normal TCP protocol. Available values:</p><ul><li>True: Disable SSL (protocol downgraded to plain text TCP).</li><li>False (default): Keep SSL enabled.</li></ul>
         :type SslCloseSwitch: bool
-        :param _DataCompressMode: Data compression mode. Valid values: transparent (passthrough mode) and compatibility (compatibility mode).
+        :param _DataCompressMode: <p>Data compression mode. Valid values: transparent (passthrough mode) and compatibility (compatibility mode).</p>
         :type DataCompressMode: str
-        :param _RescheduleTargetZeroWeight: Reschedules when setting backend server weight to 0. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        :param _RescheduleTargetZeroWeight: <p>Rescheduling feature, which provides a switch for changing the weight to 0. If the switch is toggled on, rescheduling is triggered when the weight of a real server is changed to 0. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleTargetZeroWeight: bool
-        :param _RescheduleUnhealthy: Reschedules when health check exceptions occur on real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        :param _RescheduleUnhealthy: <p>Rescheduling feature, which provides a switch for detecting health check exceptions. If the switch is toggled on, rescheduling is triggered when the real server health check fails. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleUnhealthy: bool
-        :param _RescheduleExpandTarget: Reschedules when adding or removing backend servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        :param _RescheduleExpandTarget: <p>Rescheduling feature, which provides a switch for scaling out real servers. If the switch is toggled on, rescheduling is triggered when the number of real servers increases or decreases. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleExpandTarget: bool
-        :param _RescheduleStartTime: Specifies the trigger start time for rescheduling. value range: 0-3600s. supported only by TCP/UDP listeners.
+        :param _RescheduleStartTime: <p>Rescheduling trigger start time. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleStartTime: int
-        :param _RescheduleInterval: Rescheduling trigger duration. valid values: 0-3600s. only TCP/UDP listeners support this.
+        :param _RescheduleInterval: <p>Rescheduling trigger duration. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleInterval: int
         """
         self._LoadBalancerId = None
@@ -3523,7 +3535,7 @@ Disabled by default.
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        r"""<p>ID of the Cloud Load Balancer (CLB) instance. You can call the <a href="https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1">DescribeLoadBalancers</a> API to obtain the ID.</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3534,8 +3546,7 @@ Disabled by default.
 
     @property
     def Ports(self):
-        r"""Ports for creating listeners. Each port corresponds to a listener.
-Port range: 1–65535.
+        r"""<p>Which ports to create listeners on, each port maps to a new listener.<br>Port range: 1–65535</p>
         :rtype: list of int
         """
         return self._Ports
@@ -3546,7 +3557,7 @@ Port range: 1–65535.
 
     @property
     def Protocol(self):
-        r"""Listener protocol. Valid values: TCP, UDP, HTTP, HTTPS, TCP_SSL, and QUIC.
+        r"""<p>Listener protocol. Valid values: TCP, UDP, HTTP, HTTPS, TCP_SSL, and QUIC.</p>
         :rtype: str
         """
         return self._Protocol
@@ -3557,7 +3568,7 @@ Port range: 1–65535.
 
     @property
     def ListenerNames(self):
-        r"""List of names of listeners to be created. The names correspond to ports one by one. This parameter can be left blank if you do not want to name the listeners immediately.
+        r"""<p>List of listener names to be created. Names correspond sequentially to Ports. If naming is not immediately necessary, this parameter need not be provided. Naming rule: 1-80 characters including English letters, Chinese characters, digits, connecting line "-", underscore "_" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>
         :rtype: list of str
         """
         return self._ListenerNames
@@ -3568,7 +3579,7 @@ Port range: 1–65535.
 
     @property
     def HealthCheck(self):
-        r"""Health check parameter. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners.
+        r"""<p>Health check parameters. This parameter is applicable only to TCP/UDP/TCP_SSL/QUIC listeners.</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         """
         return self._HealthCheck
@@ -3579,9 +3590,7 @@ Port range: 1–65535.
 
     @property
     def Certificate(self):
-        r"""Certificate-related information. The parameter limitations are as follows:
-<li>This parameter applies only to TCP_SSL listeners and HTTPS listeners with the SNI feature disabled.</li>
-<li>Either this parameter or the MultiCertInfo parameter should be specified when you create a TCP_SSL listener or an HTTPS listener with the SNI feature disabled. You cannot specify them at the same time.</li>
+        r"""<p>Certificate-related information. The limits are as follows:</p><li>This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with SNI feature disabled.</li><li>When creating a TCP_SSL listener or an HTTPS listener with SNI feature disabled, a minimum of this parameter or MultiCertInfo must be specified, but they cannot be specified at the same time.</li>
         :rtype: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         """
         return self._Certificate
@@ -3592,7 +3601,7 @@ Port range: 1–65535.
 
     @property
     def SessionExpireTime(self):
-        r"""Session persistence duration, in seconds. Value range: 30–3600. Default value: 0, indicating that session persistence is not enabled by default. This parameter applies only to TCP and UDP listeners.
+        r"""<p>Session persistence duration, in seconds. Value range: 30–3600. Default value: 0, indicating that session persistence is not enabled by default. This parameter applies only to TCP and UDP listeners.</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -3603,8 +3612,7 @@ Port range: 1–65535.
 
     @property
     def Scheduler(self):
-        r"""Listener forwarding mode. valid values: WRR (weighted round-robin), LEAST_CONN (LEAST connections).
-Default value: WRR. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners.
+        r"""<p>Listener forwarding mode. Available values: WRR (weighted round-robin), LEAST_CONN (least connections).<br>Default WRR. This parameter is applicable only to TCP/UDP/TCP_SSL/QUIC listeners.</p>
         :rtype: str
         """
         return self._Scheduler
@@ -3615,7 +3623,7 @@ Default value: WRR. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC l
 
     @property
     def SniSwitch(self):
-        r"""Whether to enable the SNI feature. This parameter applies only to HTTPS listeners. 0: disable; 1: enable.
+        r"""<p>Whether to enable SNI feature. This parameter applies only to HTTPS listeners. 0: not enabled, 1: enable.</p>
         :rtype: int
         """
         return self._SniSwitch
@@ -3626,7 +3634,7 @@ Default value: WRR. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC l
 
     @property
     def TargetType(self):
-        r"""Real server type. NODE: ordinary node; TARGETGROUP: real server group. This parameter applies only to TCP and UDP listeners. For layer-7 listeners, set the type in forwarding rules.
+        r"""<p>Backend target type. NODE indicates binding to a general node. TARGETGROUP indicates binding to a target group. This parameter is applicable only to TCP/UDP listeners. For layer-7 (HTTP/HTTPS) listeners, configure it in forwarding rules.</p>
         :rtype: str
         """
         return self._TargetType
@@ -3637,7 +3645,7 @@ Default value: WRR. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC l
 
     @property
     def SessionType(self):
-        r"""Session persistence type. If this parameter is not specified or the value is set to NORMAL, the default session persistence type is used. QUIC_CID: perform session persistence based on QUIC connection ID. If the value is set to QUIC_CID, only the UDP protocol is supported. This parameter applies only to TCP and UDP listeners. For layer-7 listeners, set the type in forwarding rules. (If the value is set to QUIC_CID, the Protocol value should be UDP, the Scheduler value should be WRR, and only IPv4 addresses are supported.)
+        r"""<p>Session persistence type. Leaving it blank or passing NORMAL means the default session persistence type. QUIC_CID refers to maintaining the session based on QUIC Connection ID. QUIC_CID supports only UDP Protocol. This parameter is applicable only to TCP/UDP listeners. Layer-7 (HTTP/HTTPS) listeners should set this in forwarding rules. (If QUIC_CID is selected, Protocol must be UDP, Scheduler must be WRR, and it supports only ipv4 concurrently).</p>
         :rtype: str
         """
         return self._SessionType
@@ -3648,8 +3656,7 @@ Default value: WRR. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC l
 
     @property
     def KeepaliveEnable(self):
-        r"""Whether to enable the persistent connection feature. This parameter applies only to HTTP and HTTPS listeners. 0: disable; 1: enable. This feature is disabled by default.
-Enable this feature with caution if the maximum number of connections is limited for real servers. This feature is in beta testing. To use it, submit a [beta testing application](https://intl.cloud.tencent.com/apply/p/tsodp6qm21?from_cn_redirect=1).
+        r"""<p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS listeners. 0: off by default; 1: enable. <br>If the backend service has a connection limit, enable with caution. This feature is currently in internal testing. If you need to use it, submit a <a href="https://www.tencentcloud.com/apply/p/tsodp6qm21?from_cn_redirect=1">beta application</a>.</p>
         :rtype: int
         """
         return self._KeepaliveEnable
@@ -3660,7 +3667,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def EndPort(self):
-        r"""End port. This parameter is required for creating a listener with a port range. In this case, the input parameter Ports allows only one value to indicate the start port. To experience the port range feature, [submit a ticket for application](https://console.cloud.tencent.com/workorder/category).
+        r"""<p>End port. This parameter is required for creating a listener with a port range. In this case, the input parameter Ports allows only one value to indicate the start port. To experience the port range feature, [submit a ticket for application](https://console.cloud.tencent.com/workorder/category).</p>
         :rtype: int
         """
         return self._EndPort
@@ -3671,7 +3678,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def DeregisterTargetRst(self):
-        r"""Reschedules when unbinding real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        r"""<p>Rescheduling feature, which provides a switch for scaling out the backend service. If the switch is toggled on, rescheduling is triggered when the backend service is unbound. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: bool
         """
         return self._DeregisterTargetRst
@@ -3682,9 +3689,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def MultiCertInfo(self):
-        r"""Certificate information. You can import multiple server certificates with different algorithms at the same time. The parameter limitations are as follows:
-<li>This parameter applies only to TCP_SSL listeners and HTTPS listeners with the SNI feature disabled.</li>
-<li>Either this parameter or the Certificate parameter should be specified when you create a TCP_SSL listener or an HTTPS listener with the SNI feature disabled. You cannot specify them at the same time.</li>
+        r"""<p>Certificate information. Multiple server certificates with different algorithm types can be imported at the same time. Parameter constraints are as follows:</p><li>This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with SNI feature disabled.</li><li>When creating a TCP_SSL listener or an HTTPS listener with SNI feature disabled, a minimum of this parameter or Certificate must be specified, but they cannot be specified at the same time.</li>
         :rtype: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         return self._MultiCertInfo
@@ -3695,7 +3700,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def MaxConn(self):
-        r"""Maximum number of connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of connections is not limited. This parameter is not supported for classic network-based instances.
+        r"""<p>Maximum number of connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of connections is not limited. This parameter is not supported for classic network-based instances.</p>
         :rtype: int
         """
         return self._MaxConn
@@ -3706,7 +3711,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def MaxCps(self):
-        r"""Maximum number of new connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of new connections is not limited. This parameter is not supported for classic network-based instances.
+        r"""<p>Maximum number of new connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of new connections is not limited. This parameter is not supported for classic network-based instances.</p>
         :rtype: int
         """
         return self._MaxCps
@@ -3717,7 +3722,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def IdleConnectTimeout(self):
-        r"""Specifies the idle connection timeout in seconds. this parameter applies only to TCP/UDP listeners. default value: 900 for TCP listeners and 300 for UDP listeners. value range: 10–900 for shared instances and dedicated instances and 10–1980 for lcu-supported instances. to set a value exceeding the permissible range, [submit a ticket for application](https://console.cloud.tencent.com/workorder/category).
+        r"""<p>Idle connection timeout, in seconds. This parameter applies only to TCP/UDP listeners. Default value: 900 for TCP listeners and 300 for UDP listeners. Value range: 10–900 for shared instances and dedicated instances and 10–1980 for LCU-supported instances. To set a value exceeding the permissible range, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket for application</a>.</p><p>Permissible range: [10, 1980]</p><p>Measurement unit: seconds</p><p>Default value: 900</p><p>Default value: 900 for TCP listeners and 300 for UDP listeners. Value range: 10–900 for shared instances and dedicated instances and 10–1980 for LCU-supported instances.</p>
         :rtype: int
         """
         return self._IdleConnectTimeout
@@ -3728,7 +3733,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def ProxyProtocol(self):
-        r"""Specifies whether PP is supported for TCP_SSL and QUIC.
+        r"""<p>Whether TCP_SSL and QUIC support PP</p>
         :rtype: bool
         """
         return self._ProxyProtocol
@@ -3739,7 +3744,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def SnatEnable(self):
-        r"""Whether SNAT (source IP replacement) is enabled. valid values: True (enabled), False (disabled). disabled by default. note: when SnatEnable is enabled, the client source IP will be replaced, at this point the `pass through client source IP` option is disabled, and vice versa.
+        r"""<p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>
         :rtype: bool
         """
         return self._SnatEnable
@@ -3750,7 +3755,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def FullEndPorts(self):
-        r"""End port of a listener with a port range. Range of the port: 2–65535.
+        r"""<p>End port of a listener with a port range. Range of the port: 2–65535.</p>
         :rtype: list of int
         """
         return self._FullEndPorts
@@ -3761,8 +3766,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def H2cSwitch(self):
-        r"""Enable private network http listener h2c switch. valid values: True (enable), False (disable).
-Disabled by default.
+        r"""<p>Enable the h2c switch for the private network HTTP listener.<br>True (enabled), False (disabled). Disabled by default.<br>Once enabled, the listener only supports creating layer-7 rules with GRPC or GRPCS as the backend forwarding type. When creating rules, explicitly input GRPC or GRPCS in Rules.N.ForwardType.</p>
         :rtype: bool
         """
         return self._H2cSwitch
@@ -3773,8 +3777,7 @@ Disabled by default.
 
     @property
     def SslCloseSwitch(self):
-        r"""Whether to disable SSL for TCP_SSL listeners. dual-stack binding is still supported after SSL is disabled. valid values: True (disable), False (enable).
-Disabled by default.
+        r"""<p>Control whether to remove the SSL encryption layer for TCP_SSL listeners. Once enabled, the listener will run as a normal TCP protocol. Available values:</p><ul><li>True: Disable SSL (protocol downgraded to plain text TCP).</li><li>False (default): Keep SSL enabled.</li></ul>
         :rtype: bool
         """
         return self._SslCloseSwitch
@@ -3785,7 +3788,7 @@ Disabled by default.
 
     @property
     def DataCompressMode(self):
-        r"""Data compression mode. Valid values: transparent (passthrough mode) and compatibility (compatibility mode).
+        r"""<p>Data compression mode. Valid values: transparent (passthrough mode) and compatibility (compatibility mode).</p>
         :rtype: str
         """
         return self._DataCompressMode
@@ -3796,7 +3799,7 @@ Disabled by default.
 
     @property
     def RescheduleTargetZeroWeight(self):
-        r"""Reschedules when setting backend server weight to 0. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        r"""<p>Rescheduling feature, which provides a switch for changing the weight to 0. If the switch is toggled on, rescheduling is triggered when the weight of a real server is changed to 0. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: bool
         """
         return self._RescheduleTargetZeroWeight
@@ -3807,7 +3810,7 @@ Disabled by default.
 
     @property
     def RescheduleUnhealthy(self):
-        r"""Reschedules when health check exceptions occur on real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        r"""<p>Rescheduling feature, which provides a switch for detecting health check exceptions. If the switch is toggled on, rescheduling is triggered when the real server health check fails. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: bool
         """
         return self._RescheduleUnhealthy
@@ -3818,7 +3821,7 @@ Disabled by default.
 
     @property
     def RescheduleExpandTarget(self):
-        r"""Reschedules when adding or removing backend servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        r"""<p>Rescheduling feature, which provides a switch for scaling out real servers. If the switch is toggled on, rescheduling is triggered when the number of real servers increases or decreases. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: bool
         """
         return self._RescheduleExpandTarget
@@ -3829,7 +3832,7 @@ Disabled by default.
 
     @property
     def RescheduleStartTime(self):
-        r"""Specifies the trigger start time for rescheduling. value range: 0-3600s. supported only by TCP/UDP listeners.
+        r"""<p>Rescheduling trigger start time. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: int
         """
         return self._RescheduleStartTime
@@ -3840,7 +3843,7 @@ Disabled by default.
 
     @property
     def RescheduleInterval(self):
-        r"""Rescheduling trigger duration. valid values: 0-3600s. only TCP/UDP listeners support this.
+        r"""<p>Rescheduling trigger duration. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: int
         """
         return self._RescheduleInterval
@@ -3903,7 +3906,7 @@ class CreateListenerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerIds: Array of the unique IDs of created listeners.
+        :param _ListenerIds: <p>Array of the unique IDs of created listeners.</p>
         :type ListenerIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3913,7 +3916,7 @@ class CreateListenerResponse(AbstractModel):
 
     @property
     def ListenerIds(self):
-        r"""Array of the unique IDs of created listeners.
+        r"""<p>Array of the unique IDs of created listeners.</p>
         :rtype: list of str
         """
         return self._ListenerIds
@@ -3946,73 +3949,70 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerType: CLB instance network type:
-OPEN: public network; INTERNAL: private network.
+        :param _LoadBalancerType: <p>Network type of the Cloud Load Balancer instance:<br>OPEN: public network attribute, INTERNAL: private network attribute.</p>
         :type LoadBalancerType: str
-        :param _Forward: CLB instance type. Valid value: 1 (generic CLB instance).
+        :param _Forward: <p>Type of the Cloud Load Balancer instance. 1: Common CLB instance. Currently only support passing in 1.</p>
         :type Forward: int
-        :param _LoadBalancerName: CLB instance name, which takes effect only when only one instance is to be created in the request. It can consist 1 to 60 letters, digits, hyphens (-), or underscores (_).
-Note: if the name of the new CLB instance already exists, a default name will be generated automatically.
+        :param _LoadBalancerName: <p>The name of the Cloud Load Balancer instance is effective only when creating an instance. Rule: 1-80 characters in internationally compatible languages such as English letters, Chinese characters, digits, connecting line "-", underscore "_", and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden). Note: If the name is identical to an existing Cloud Load Balancer instance name in the system, the system will automatically generate the name for the created CLB instance.</p>
         :type LoadBalancerName: str
         :param _VpcId: Network ID of the target device on the CLB backend, such as `vpc-12345678`, which can be obtained through the `DescribeVpcEx` API. If this parameter is not entered, `DefaultVPC` is used by default. This parameter is required when creating a private network instance.
         :type VpcId: str
-        :param _SubnetId: A subnet ID should be specified when you purchase a private network CLB instance under a VPC. The VIP of the private network CLB instance is in this subnet. This parameter is required when you create a private network CLB instance but not supported when you create a public network IPv4 CLB instance.
+        :param _SubnetId: <p>When you purchase a private network CLB instance in a VPC, the subnet ID must be specified. The VIP of the private network CLB instance is generated in this subnet.<br>This parameter is required when you create a private network CLB instance or a CLB instance of the IPv6FullChain version.<br>It cannot be specified when you create a public network IPv4 CLB instance.</p>
         :type SubnetId: str
         :param _ProjectId: ID of the project to which a CLB instance belongs, which can be obtained through the `DescribeProject` API. If this parameter is not entered, the default project will be used.
         :type ProjectId: int
-        :param _AddressIPVersion: It's only applicable to public network CLB instances. IP version. Values: `IPV4`, `IPV6` and `IPv6FullChain` (case-insensitive). Default: `IPV4`. Note: `IPV6` indicates IPv6 NAT64, while `IPv6FullChain` indicates IPv6. 
+        :param _AddressIPVersion: <p>Applicable only to public network CLB. IP version, valid values: IPV4, IPV6, IPv6FullChain, case-insensitive, default value IPV4. Description: A value of IPV6 means IPV6 NAT64 version; a value of IPv6FullChain means IPv6 version.</p>
         :type AddressIPVersion: str
-        :param _Number: Specifies the count of cloud load balancers to create, with a default value of 1. the count must not exceed the maximum value allowed for the account, with a default creation maximum value of 20.
+        :param _Number: <p>Count of Cloud Load Balancers to create, default value is 1. The count must not exceed the maximum value allowed for the account, with a default creation maximum value of 20.</p>
         :type Number: int
-        :param _MasterZoneId: Applicable only to public network IPv4 cloud load balancer instances. specifies the primary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.
-Note: the primary AZ loads traffic. the secondary AZ does not load traffic by default and is used only if the primary AZ becomes unavailable.
+        :param _MasterZoneId: <p>Applicable only to public network load balancing with IP version IPv4. Sets the primary AZ ID for cross-AZ disaster recovery. Both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.<br>Note: The primary AZ loads traffic. The secondary AZ does not load traffic by default and is used only if the primary AZ becomes unavailable.</p>
         :type MasterZoneId: str
-        :param _ZoneId: Applicable only to public network IPv4 clb instances. specifies the AZ ID or availability zone name for creating a clb instance. for example, 100001 or ap-guangzhou-1.
+        :param _ZoneId: <p>Applicable only to public network load balancing with IP version IPv4. AZ ID, availability zone id and name are supported. Specify availability zone to create a CLB instance. For example: 100001 or ap-guangzhou-1.</p>
         :type ZoneId: str
-        :param _InternetAccessible: Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :param _InternetAccessible: <p>Maximum outbound bandwidth under the network billing mode. It applies only to LCU-supported instances of the private network type and all instances of the public network type.</p>
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param _VipIsp: ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). 
+        :param _VipIsp: <p>Applicable only to public network CLB. Currently, only Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu, and Chongqing regions support static single-line IP type. If you need to experience it, contact business manager to submit a request. After approval, you can select operator type of China Mobile (CMCC), China Unicom (CUCC), or China Telecom (CTCC). Only can be used network billing mode BANDWIDTH_PACKAGE. If this parameter is not specified, use BGP by default. You can query ISPs supported in a region via <a href="https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1">DescribeResources</a> api.</p>
         :type VipIsp: str
-        :param _Tags: Tags the CLB instance when purchasing it. Up to 20 tag key value pairs are supported.
+        :param _Tags: <p>When purchasing a Cloud Load Balancer, you can tag it with up to 20 tag key-value pairs.</p>
         :type Tags: list of TagInfo
-        :param _Vip: Specifies the VIP for the application of a CLB instance. This parameter is optional. If you do not specify this parameter, the system automatically assigns a value for the parameter. IPv4 and IPv6 CLB instances support this parameter, but IPv6 NAT64 CLB instances do not.
-Note: If the specified VIP is occupied or is not within the IP range of the specified VPC subnet, you cannot use the VIP to create a CLB instance in a private network or an IPv6 BGP CLB instance in a public network.
+        :param _Vip: <p>Specify VIP to apply for Cloud Load Balancer. This parameter is optional. If this parameter is not specified, VIP is automatically assigned. This parameter is supported for IPv4 and IPv6 types but not for IPv6 NAT64 type.<br>Note: When creating a private network instance or a public IPv6 BGP instance with a designated VIP, creation fails if the VIP is not within the IP range of the specified VPC subnet or if the VIP is already occupied.</p>
         :type Vip: str
-        :param _BandwidthPackageId: BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) api. specifies the BANDWIDTH PACKAGE ID. when this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE). the attributes of the BANDWIDTH PACKAGE determine the settlement method. for IPv6 clb instances purchased by non-promoted users, if the operator type is not BGP, the BANDWIDTH PACKAGE ID cannot be specified.
+        :param _BandwidthPackageId: <p>Bandwidth package ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1">DescribeBandwidthPackages</a> API. When this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by bandwidth package (BANDWIDTH_PACKAGE), and the bandwidth package attributes determine the settlement method. For IPv6 Cloud Load Balancer instances purchased by non-promoted users with a non-BGP operator type, specifying bandwidth package ID is unsupported.</p>
         :type BandwidthPackageId: str
-        :param _ExclusiveCluster: Information about the dedicated CLB instance. You must specify this parameter when you create a dedicated CLB instance in a private network.
+        :param _ExclusiveCluster: <p>Dedicated instance info. This parameter is required when creating a private network CLB instance of exclusive type.</p>
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
-        :param _SlaType: Specification of the LCU-supported instance.<ul><li>If you need to create an LCU-supported instance, this parameter is required. Valid values:<ul><li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li></ul></li><li>If you need to create a shared instance, this parameter is not required.</li></ul> For specification details, see [Instance Specifications Comparison](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1).
+        :param _SlaType: <p>Performance capacity specification.</p><ul><li>If you need to create an LCU-supported instance, this parameter is required. Valid values:<ul><li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li></ul></li><li>For Chinese site users who need to create a shared instance, this parameter is not required. International site users will purchase a standard instance by default if this parameter is not passed.</li></ul> For specification details, see [Instance Specifications Comparison](https://www.tencentcloud.com/document/product/214/84689?from_cn_redirect=1).
         :type SlaType: str
-        :param _ClusterIds: Cluster ID. This cluster identifier is used for configuring a public cloud exclusive cluster or a cloud dedicated cluster. To apply for a public cloud exclusive cluster, [submit a ticket](https://console.cloud.tencent.com/workorder/category). For cloud dedicated clusters, see the descriptions in [Cloud Dedicated Cluster](https://intl.cloud.tencent.com/document/product/1346?from_cn_redirect=1).
+        :param _ClusterIds: <p>Cluster ID. This cluster identifier is used for configuring a public cloud exclusive cluster or a local dedicated cluster. To apply for a public cloud exclusive cluster, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a>. For local dedicated clusters, refer to the description in <a href="https://www.tencentcloud.com/document/product/1346?from_cn_redirect=1">Local Dedicated Cluster</a>.</p>
         :type ClusterIds: list of str
-        :param _ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :param _ClientToken: <p>String used to ensure request idempotency. This string is generated by the customer and must be unique among different requests, with a maximum value of 64 ASCII characters. If not specified, request idempotency cannot be guaranteed.</p>
         :type ClientToken: str
-        :param _SnatPro: Whether Binding IPs of other VPCs feature switch
+        :param _SnatPro: <p>Whether binding cross-regional or cross-Vpc IP addresses is supported.</p>
         :type SnatPro: bool
-        :param _SnatIps: Creates `SnatIp` when the binding IPs of other VPCs feature is enabled
+        :param _SnatIps: <p>Enable the cross-regional or cross-Vpc IP binding feature to create a SnatIp.</p>
         :type SnatIps: list of SnatIp
-        :param _ClusterTag: Tag for the STGW exclusive cluster.
+        :param _ClusterTag: <p>Tag of the Stgw exclusive cluster.</p>
         :type ClusterTag: str
-        :param _SlaveZoneId: Applicable only to public network IPv4 clb instances. specifies the secondary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.
-Note: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :param _SlaveZoneId: <p>Applicable only to public network load balancing with IP version IPv4. Sets the secondary AZ ID for cross-AZ disaster recovery. AZ ID and name are supported, such as 100001 or ap-guangzhou-1.<br>Note: The secondary AZ is the availability zone that needs to carry traffic after primary availability zone failure. Query a region's list of primary/secondary AZs via the <a href="https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1">DescribeResources</a> API. [If you need to trial the feature, submit a ticket application via <a href="https://console.cloud.tencent.com/workorder/category">Work Order</a>]</p>
         :type SlaveZoneId: str
-        :param _EipAddressId: The unique ID of EIP, which can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1). format: EIP-qhx8udkc. applicable only to private network clb binding EIP.
+        :param _EipAddressId: <p>The unique ID of EIP can be accessed through the <a href="https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1">DescribeAddresses</a> api for the query. Example: eip-qhx8udkc, applicable only to bind EIP for private network CLB.</p>
         :type EipAddressId: str
-        :param _LoadBalancerPassToTarget: Specifies whether to allow CLB traffic to the Target. enable (true): verify security groups on CLB. disable (false): verify security groups on both CLB and backend instances. IPv6 CLB security group default permit, this parameter is not required.
+        :param _LoadBalancerPassToTarget: <p>Allow CLB traffic to the Target. Enable (true): verify security groups on CLB; deny CLB traffic to the Target (false): verify security groups on both CLB and backend instances. IPv6 CLB security group default permit, this parameter is not required.</p>
         :type LoadBalancerPassToTarget: bool
-        :param _DynamicVip: Upgrades to domain name-based CLB
+        :param _DynamicVip: <p>Create a domain-name based CLB.</p>
         :type DynamicVip: bool
-        :param _Egress: Network egress point
+        :param _Egress: <p>Network outbound</p>
         :type Egress: str
-        :param _LBChargePrepaid: Prepayment-related attributes of a CLB instance. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :param _LBChargePrepaid: <p>Prepaid billing attributes of the CLB instance</p>
         :type LBChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
-        :param _LBChargeType: Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :param _LBChargeType: <p>Billing type of the CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR.</p><p>Enumeration values:</p><ul><li>POSTPAID_BY_HOUR: Pay-As-You-Go</li><li>PREPAID: Monthly Subscription</li></ul>
         :type LBChargeType: str
-        :param _AccessLogTopicId: Topic ID of logs of traffic access over layer-7 protocols.
+        :param _AccessLogTopicId: <p>L7 access log topic ID</p>
         :type AccessLogTopicId: str
-        :param _AdvancedRoute: Whether layer-7 advanced routing is enabled.
+        :param _AdvancedRoute: <p>Whether layer-7 advanced routing is enabled</p>
         :type AdvancedRoute: bool
+        :param _AvailableZoneAffinityInfo: <p>Availability zone affinity info</p>
+        :type AvailableZoneAffinityInfo: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
         """
         self._LoadBalancerType = None
         self._Forward = None
@@ -4045,11 +4045,11 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
         self._LBChargeType = None
         self._AccessLogTopicId = None
         self._AdvancedRoute = None
+        self._AvailableZoneAffinityInfo = None
 
     @property
     def LoadBalancerType(self):
-        r"""CLB instance network type:
-OPEN: public network; INTERNAL: private network.
+        r"""<p>Network type of the Cloud Load Balancer instance:<br>OPEN: public network attribute, INTERNAL: private network attribute.</p>
         :rtype: str
         """
         return self._LoadBalancerType
@@ -4060,7 +4060,7 @@ OPEN: public network; INTERNAL: private network.
 
     @property
     def Forward(self):
-        r"""CLB instance type. Valid value: 1 (generic CLB instance).
+        r"""<p>Type of the Cloud Load Balancer instance. 1: Common CLB instance. Currently only support passing in 1.</p>
         :rtype: int
         """
         return self._Forward
@@ -4071,8 +4071,7 @@ OPEN: public network; INTERNAL: private network.
 
     @property
     def LoadBalancerName(self):
-        r"""CLB instance name, which takes effect only when only one instance is to be created in the request. It can consist 1 to 60 letters, digits, hyphens (-), or underscores (_).
-Note: if the name of the new CLB instance already exists, a default name will be generated automatically.
+        r"""<p>The name of the Cloud Load Balancer instance is effective only when creating an instance. Rule: 1-80 characters in internationally compatible languages such as English letters, Chinese characters, digits, connecting line "-", underscore "_", and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden). Note: If the name is identical to an existing Cloud Load Balancer instance name in the system, the system will automatically generate the name for the created CLB instance.</p>
         :rtype: str
         """
         return self._LoadBalancerName
@@ -4094,7 +4093,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
 
     @property
     def SubnetId(self):
-        r"""A subnet ID should be specified when you purchase a private network CLB instance under a VPC. The VIP of the private network CLB instance is in this subnet. This parameter is required when you create a private network CLB instance but not supported when you create a public network IPv4 CLB instance.
+        r"""<p>When you purchase a private network CLB instance in a VPC, the subnet ID must be specified. The VIP of the private network CLB instance is generated in this subnet.<br>This parameter is required when you create a private network CLB instance or a CLB instance of the IPv6FullChain version.<br>It cannot be specified when you create a public network IPv4 CLB instance.</p>
         :rtype: str
         """
         return self._SubnetId
@@ -4116,7 +4115,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
 
     @property
     def AddressIPVersion(self):
-        r"""It's only applicable to public network CLB instances. IP version. Values: `IPV4`, `IPV6` and `IPv6FullChain` (case-insensitive). Default: `IPV4`. Note: `IPV6` indicates IPv6 NAT64, while `IPv6FullChain` indicates IPv6. 
+        r"""<p>Applicable only to public network CLB. IP version, valid values: IPV4, IPV6, IPv6FullChain, case-insensitive, default value IPV4. Description: A value of IPV6 means IPV6 NAT64 version; a value of IPv6FullChain means IPv6 version.</p>
         :rtype: str
         """
         return self._AddressIPVersion
@@ -4127,7 +4126,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
 
     @property
     def Number(self):
-        r"""Specifies the count of cloud load balancers to create, with a default value of 1. the count must not exceed the maximum value allowed for the account, with a default creation maximum value of 20.
+        r"""<p>Count of Cloud Load Balancers to create, default value is 1. The count must not exceed the maximum value allowed for the account, with a default creation maximum value of 20.</p>
         :rtype: int
         """
         return self._Number
@@ -4138,8 +4137,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
 
     @property
     def MasterZoneId(self):
-        r"""Applicable only to public network IPv4 cloud load balancer instances. specifies the primary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.
-Note: the primary AZ loads traffic. the secondary AZ does not load traffic by default and is used only if the primary AZ becomes unavailable.
+        r"""<p>Applicable only to public network load balancing with IP version IPv4. Sets the primary AZ ID for cross-AZ disaster recovery. Both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.<br>Note: The primary AZ loads traffic. The secondary AZ does not load traffic by default and is used only if the primary AZ becomes unavailable.</p>
         :rtype: str
         """
         return self._MasterZoneId
@@ -4150,7 +4148,7 @@ Note: the primary AZ loads traffic. the secondary AZ does not load traffic by de
 
     @property
     def ZoneId(self):
-        r"""Applicable only to public network IPv4 clb instances. specifies the AZ ID or availability zone name for creating a clb instance. for example, 100001 or ap-guangzhou-1.
+        r"""<p>Applicable only to public network load balancing with IP version IPv4. AZ ID, availability zone id and name are supported. Specify availability zone to create a CLB instance. For example: 100001 or ap-guangzhou-1.</p>
         :rtype: str
         """
         return self._ZoneId
@@ -4161,7 +4159,7 @@ Note: the primary AZ loads traffic. the secondary AZ does not load traffic by de
 
     @property
     def InternetAccessible(self):
-        r"""Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        r"""<p>Maximum outbound bandwidth under the network billing mode. It applies only to LCU-supported instances of the private network type and all instances of the public network type.</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -4172,7 +4170,7 @@ Note: the primary AZ loads traffic. the secondary AZ does not load traffic by de
 
     @property
     def VipIsp(self):
-        r"""ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). 
+        r"""<p>Applicable only to public network CLB. Currently, only Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu, and Chongqing regions support static single-line IP type. If you need to experience it, contact business manager to submit a request. After approval, you can select operator type of China Mobile (CMCC), China Unicom (CUCC), or China Telecom (CTCC). Only can be used network billing mode BANDWIDTH_PACKAGE. If this parameter is not specified, use BGP by default. You can query ISPs supported in a region via <a href="https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1">DescribeResources</a> api.</p>
         :rtype: str
         """
         return self._VipIsp
@@ -4183,7 +4181,7 @@ Note: the primary AZ loads traffic. the secondary AZ does not load traffic by de
 
     @property
     def Tags(self):
-        r"""Tags the CLB instance when purchasing it. Up to 20 tag key value pairs are supported.
+        r"""<p>When purchasing a Cloud Load Balancer, you can tag it with up to 20 tag key-value pairs.</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -4194,8 +4192,7 @@ Note: the primary AZ loads traffic. the secondary AZ does not load traffic by de
 
     @property
     def Vip(self):
-        r"""Specifies the VIP for the application of a CLB instance. This parameter is optional. If you do not specify this parameter, the system automatically assigns a value for the parameter. IPv4 and IPv6 CLB instances support this parameter, but IPv6 NAT64 CLB instances do not.
-Note: If the specified VIP is occupied or is not within the IP range of the specified VPC subnet, you cannot use the VIP to create a CLB instance in a private network or an IPv6 BGP CLB instance in a public network.
+        r"""<p>Specify VIP to apply for Cloud Load Balancer. This parameter is optional. If this parameter is not specified, VIP is automatically assigned. This parameter is supported for IPv4 and IPv6 types but not for IPv6 NAT64 type.<br>Note: When creating a private network instance or a public IPv6 BGP instance with a designated VIP, creation fails if the VIP is not within the IP range of the specified VPC subnet or if the VIP is already occupied.</p>
         :rtype: str
         """
         return self._Vip
@@ -4206,7 +4203,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def BandwidthPackageId(self):
-        r"""BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) api. specifies the BANDWIDTH PACKAGE ID. when this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE). the attributes of the BANDWIDTH PACKAGE determine the settlement method. for IPv6 clb instances purchased by non-promoted users, if the operator type is not BGP, the BANDWIDTH PACKAGE ID cannot be specified.
+        r"""<p>Bandwidth package ID, which can be obtained through the <a href="https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1">DescribeBandwidthPackages</a> API. When this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by bandwidth package (BANDWIDTH_PACKAGE), and the bandwidth package attributes determine the settlement method. For IPv6 Cloud Load Balancer instances purchased by non-promoted users with a non-BGP operator type, specifying bandwidth package ID is unsupported.</p>
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -4217,7 +4214,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def ExclusiveCluster(self):
-        r"""Information about the dedicated CLB instance. You must specify this parameter when you create a dedicated CLB instance in a private network.
+        r"""<p>Dedicated instance info. This parameter is required when creating a private network CLB instance of exclusive type.</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         """
         return self._ExclusiveCluster
@@ -4228,7 +4225,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def SlaType(self):
-        r"""Specification of the LCU-supported instance.<ul><li>If you need to create an LCU-supported instance, this parameter is required. Valid values:<ul><li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li></ul></li><li>If you need to create a shared instance, this parameter is not required.</li></ul> For specification details, see [Instance Specifications Comparison](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1).
+        r"""<p>Performance capacity specification.</p><ul><li>If you need to create an LCU-supported instance, this parameter is required. Valid values:<ul><li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li></ul></li><li>For Chinese site users who need to create a shared instance, this parameter is not required. International site users will purchase a standard instance by default if this parameter is not passed.</li></ul> For specification details, see [Instance Specifications Comparison](https://www.tencentcloud.com/document/product/214/84689?from_cn_redirect=1).
         :rtype: str
         """
         return self._SlaType
@@ -4239,7 +4236,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def ClusterIds(self):
-        r"""Cluster ID. This cluster identifier is used for configuring a public cloud exclusive cluster or a cloud dedicated cluster. To apply for a public cloud exclusive cluster, [submit a ticket](https://console.cloud.tencent.com/workorder/category). For cloud dedicated clusters, see the descriptions in [Cloud Dedicated Cluster](https://intl.cloud.tencent.com/document/product/1346?from_cn_redirect=1).
+        r"""<p>Cluster ID. This cluster identifier is used for configuring a public cloud exclusive cluster or a local dedicated cluster. To apply for a public cloud exclusive cluster, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket</a>. For local dedicated clusters, refer to the description in <a href="https://www.tencentcloud.com/document/product/1346?from_cn_redirect=1">Local Dedicated Cluster</a>.</p>
         :rtype: list of str
         """
         return self._ClusterIds
@@ -4250,7 +4247,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def ClientToken(self):
-        r"""A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        r"""<p>String used to ensure request idempotency. This string is generated by the customer and must be unique among different requests, with a maximum value of 64 ASCII characters. If not specified, request idempotency cannot be guaranteed.</p>
         :rtype: str
         """
         return self._ClientToken
@@ -4261,7 +4258,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def SnatPro(self):
-        r"""Whether Binding IPs of other VPCs feature switch
+        r"""<p>Whether binding cross-regional or cross-Vpc IP addresses is supported.</p>
         :rtype: bool
         """
         return self._SnatPro
@@ -4272,7 +4269,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def SnatIps(self):
-        r"""Creates `SnatIp` when the binding IPs of other VPCs feature is enabled
+        r"""<p>Enable the cross-regional or cross-Vpc IP binding feature to create a SnatIp.</p>
         :rtype: list of SnatIp
         """
         return self._SnatIps
@@ -4283,7 +4280,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def ClusterTag(self):
-        r"""Tag for the STGW exclusive cluster.
+        r"""<p>Tag of the Stgw exclusive cluster.</p>
         :rtype: str
         """
         return self._ClusterTag
@@ -4294,8 +4291,7 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def SlaveZoneId(self):
-        r"""Applicable only to public network IPv4 clb instances. specifies the secondary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.
-Note: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        r"""<p>Applicable only to public network load balancing with IP version IPv4. Sets the secondary AZ ID for cross-AZ disaster recovery. AZ ID and name are supported, such as 100001 or ap-guangzhou-1.<br>Note: The secondary AZ is the availability zone that needs to carry traffic after primary availability zone failure. Query a region's list of primary/secondary AZs via the <a href="https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1">DescribeResources</a> API. [If you need to trial the feature, submit a ticket application via <a href="https://console.cloud.tencent.com/workorder/category">Work Order</a>]</p>
         :rtype: str
         """
         return self._SlaveZoneId
@@ -4306,7 +4302,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def EipAddressId(self):
-        r"""The unique ID of EIP, which can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1). format: EIP-qhx8udkc. applicable only to private network clb binding EIP.
+        r"""<p>The unique ID of EIP can be accessed through the <a href="https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1">DescribeAddresses</a> api for the query. Example: eip-qhx8udkc, applicable only to bind EIP for private network CLB.</p>
         :rtype: str
         """
         return self._EipAddressId
@@ -4317,7 +4313,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def LoadBalancerPassToTarget(self):
-        r"""Specifies whether to allow CLB traffic to the Target. enable (true): verify security groups on CLB. disable (false): verify security groups on both CLB and backend instances. IPv6 CLB security group default permit, this parameter is not required.
+        r"""<p>Allow CLB traffic to the Target. Enable (true): verify security groups on CLB; deny CLB traffic to the Target (false): verify security groups on both CLB and backend instances. IPv6 CLB security group default permit, this parameter is not required.</p>
         :rtype: bool
         """
         return self._LoadBalancerPassToTarget
@@ -4328,7 +4324,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def DynamicVip(self):
-        r"""Upgrades to domain name-based CLB
+        r"""<p>Create a domain-name based CLB.</p>
         :rtype: bool
         """
         return self._DynamicVip
@@ -4339,7 +4335,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def Egress(self):
-        r"""Network egress point
+        r"""<p>Network outbound</p>
         :rtype: str
         """
         return self._Egress
@@ -4350,7 +4346,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def LBChargePrepaid(self):
-        r"""Prepayment-related attributes of a CLB instance. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        r"""<p>Prepaid billing attributes of the CLB instance</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
         """
         return self._LBChargePrepaid
@@ -4361,7 +4357,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def LBChargeType(self):
-        r"""Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        r"""<p>Billing type of the CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR.</p><p>Enumeration values:</p><ul><li>POSTPAID_BY_HOUR: Pay-As-You-Go</li><li>PREPAID: Monthly Subscription</li></ul>
         :rtype: str
         """
         return self._LBChargeType
@@ -4372,7 +4368,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def AccessLogTopicId(self):
-        r"""Topic ID of logs of traffic access over layer-7 protocols.
+        r"""<p>L7 access log topic ID</p>
         :rtype: str
         """
         return self._AccessLogTopicId
@@ -4383,7 +4379,7 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
 
     @property
     def AdvancedRoute(self):
-        r"""Whether layer-7 advanced routing is enabled.
+        r"""<p>Whether layer-7 advanced routing is enabled</p>
         :rtype: bool
         """
         return self._AdvancedRoute
@@ -4391,6 +4387,17 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
     @AdvancedRoute.setter
     def AdvancedRoute(self, AdvancedRoute):
         self._AdvancedRoute = AdvancedRoute
+
+    @property
+    def AvailableZoneAffinityInfo(self):
+        r"""<p>Availability zone affinity info</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
+        """
+        return self._AvailableZoneAffinityInfo
+
+    @AvailableZoneAffinityInfo.setter
+    def AvailableZoneAffinityInfo(self, AvailableZoneAffinityInfo):
+        self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo
 
 
     def _deserialize(self, params):
@@ -4441,6 +4448,9 @@ Note: The secondary AZ sustains traffic when the primary AZ encounters faults. Y
         self._LBChargeType = params.get("LBChargeType")
         self._AccessLogTopicId = params.get("AccessLogTopicId")
         self._AdvancedRoute = params.get("AdvancedRoute")
+        if params.get("AvailableZoneAffinityInfo") is not None:
+            self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo()
+            self._AvailableZoneAffinityInfo._deserialize(params.get("AvailableZoneAffinityInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4458,12 +4468,11 @@ class CreateLoadBalancerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: Array of unique CLB instance IDs.
-This field may return `null` in some cases, such as there is delay during instance creation. You can query the IDs of the created instances by invoking `DescribeTaskStatus` with the `RequestId` or `DealName` returned by this API.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _LoadBalancerIds: <p>An array consisting of the unique IDs of Cloud Load Balancer instances.<br>In certain scenarios, such as delay in creation, this field may return null. At this point, you can query the created resource ID through the DescribeTaskStatus API using the RequestId or DealName parameter returned by the API.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LoadBalancerIds: list of str
-        :param _DealName: Order ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _DealName: <p>Order number.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4474,9 +4483,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LoadBalancerIds(self):
-        r"""Array of unique CLB instance IDs.
-This field may return `null` in some cases, such as there is delay during instance creation. You can query the IDs of the created instances by invoking `DescribeTaskStatus` with the `RequestId` or `DealName` returned by this API.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>An array consisting of the unique IDs of Cloud Load Balancer instances.<br>In certain scenarios, such as delay in creation, this field may return null. At this point, you can query the created resource ID through the DescribeTaskStatus API using the RequestId or DealName parameter returned by the API.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -4487,8 +4495,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DealName(self):
-        r"""Order ID.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>Order number.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DealName
@@ -4735,38 +4743,35 @@ class CreateTargetGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupName: Target group name (up to 50 characters)
+        :param _TargetGroupName: <p>Target group name. Naming rule: 1-80 English letters, Chinese characters and other internationally compatible language characters, digits, connecting line "-", underscore "_" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>
         :type TargetGroupName: str
-        :param _VpcId: Specifies the vpc id attribute of the target group. uses the default vpc if left empty.
+        :param _VpcId: <p>The vpcId attribute of the target group. Leave it blank to use the default VPC.</p>
         :type VpcId: str
-        :param _Port: Specifies the default Port of the target group. the default Port can be used when servers are added subsequently. this parameter is not supported for full-listen target groups. for non-full-listen target groups, either Port or Port in TargetGroupInstances.N is required.
-
+        :param _Port: <p>Default port of target group. Default port can be used when servers are added subsequently. Full listen target group does not support this parameter. For non-full listen target group, either Port or port in TargetGroupInstances.N is required.</p>
         :type Port: int
-        :param _TargetGroupInstances: Specifies the real servers bound to the target group. supports up to 50 at a time.
+        :param _TargetGroupInstances: <p>The target group supports up to 50 real servers bound to it.</p>
         :type TargetGroupInstances: list of TargetGroupInstance
-        :param _Type: Target group type, currently supported v1 (legacy version target group) and v2 (new version target group), defaults to v1 (legacy version target group).
+        :param _Type: <p>Target Group Type, currently supported v1 (legacy version target group), v2 (new version target group), defaults to v1 (legacy version target group).</p>
         :type Type: str
-        :param _Protocol: Backend forwarding protocol of the target group. this field is required for the new version (v2) target group. currently supports TCP, UDP, HTTP, HTTPS, GRPC.
+        :param _Protocol: <p>Backend forwarding protocol of the target group. This field is required for the new version target group v2. Currently supports TCP, UDP, HTTP, HTTPS, GRPC.</p>
         :type Protocol: str
-        :param _HealthCheck: Health check.
+        :param _HealthCheck: <p>Health check.</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
-        :param _ScheduleAlgorithm: Scheduling algorithm. this parameter is valid only for target groups of the new version V2 when the backend forwarding protocol is HTTP, HTTPS, or GRPC. available values:.
-<ur><li>WRR: weighted round-robin.</li><li>LEAST_CONN: LEAST connection.</li><li>IP_HASH: based on IP HASH.</li><li>default is WRR.</li></ur>.
+        :param _ScheduleAlgorithm: <p>Scheduling algorithm. This parameter is valid only for new version V2 target groups with backend forwarding protocol (HTTP|HTTPS|GRPC). Available values:</p><li>WRR: weighted round-robin.</li><li>LEAST_CONN: least connection.</li><li>IP_HASH: based on IP hash.</li><li>Default WRR.</li>
         :type ScheduleAlgorithm: str
-        :param _Tags: Tag.
+        :param _Tags: <p>Tag.</p>
         :type Tags: list of TagInfo
-        :param _Weight: Specifies the default weight of the backend service. among them:.
-<ul><li>Value ranges from 0 to 100.</li><li>after setting this value, when adding a backend service to the target group, if the backend service does not set Weight separately, use the default Weight here.</li><li>Weight parameter settings not supported for v1 target group type.</li></ul>.
+        :param _Weight: <p>Default weight of the backend service, where:</p><ul><li>Value ranges from 0 to 100.</li><li>After setting this value, when adding a backend service to the target group, if the backend service does not set the weight separately, use the default weight here.</li><li>Weight parameter settings not supported for v1 target group type.</li></ul>
         :type Weight: int
-        :param _FullListenSwitch: Full listen target group flag. valid values: true (yes), false (no). only target groups of the new version V2 event type support this parameter.
+        :param _FullListenSwitch: <p>Full listen target group flag. true: yes, false: no. Only target groups of the new version V2 support this parameter.</p>
         :type FullListenSwitch: bool
-        :param _KeepaliveEnable: Specifies whether to enable the persistent connection feature. this parameter applies only to HTTP and HTTPS target groups. 0: disable; 1: enable. this feature is off by default.
+        :param _KeepaliveEnable: <p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS target groups. 0: off; 1: on. Off by default.</p>
         :type KeepaliveEnable: bool
-        :param _SessionExpireTime: Session hold time, unit: second. value range: 30-3600. default: 0, disabled. this parameter is supported only for target groups with HTTP/HTTPS/GRPC backend forwarding protocol in the new version V2.
+        :param _SessionExpireTime: <p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled. This parameter is supported only for target groups with HTTP/HTTPS/GRPC backend forwarding protocol in the new version V2.</p>
         :type SessionExpireTime: int
-        :param _IpVersion: IP version type.
+        :param _IpVersion: <p>IP version type.</p>
         :type IpVersion: str
-        :param _SnatEnable: 
+        :param _SnatEnable: <p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>
         :type SnatEnable: bool
         """
         self._TargetGroupName = None
@@ -4787,7 +4792,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        r"""Target group name (up to 50 characters)
+        r"""<p>Target group name. Naming rule: 1-80 English letters, Chinese characters and other internationally compatible language characters, digits, connecting line "-", underscore "_" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -4798,7 +4803,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""Specifies the vpc id attribute of the target group. uses the default vpc if left empty.
+        r"""<p>The vpcId attribute of the target group. Leave it blank to use the default VPC.</p>
         :rtype: str
         """
         return self._VpcId
@@ -4809,8 +4814,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""Specifies the default Port of the target group. the default Port can be used when servers are added subsequently. this parameter is not supported for full-listen target groups. for non-full-listen target groups, either Port or Port in TargetGroupInstances.N is required.
-
+        r"""<p>Default port of target group. Default port can be used when servers are added subsequently. Full listen target group does not support this parameter. For non-full listen target group, either Port or port in TargetGroupInstances.N is required.</p>
         :rtype: int
         """
         return self._Port
@@ -4821,7 +4825,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def TargetGroupInstances(self):
-        r"""Specifies the real servers bound to the target group. supports up to 50 at a time.
+        r"""<p>The target group supports up to 50 real servers bound to it.</p>
         :rtype: list of TargetGroupInstance
         """
         return self._TargetGroupInstances
@@ -4832,7 +4836,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""Target group type, currently supported v1 (legacy version target group) and v2 (new version target group), defaults to v1 (legacy version target group).
+        r"""<p>Target Group Type, currently supported v1 (legacy version target group), v2 (new version target group), defaults to v1 (legacy version target group).</p>
         :rtype: str
         """
         return self._Type
@@ -4843,7 +4847,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""Backend forwarding protocol of the target group. this field is required for the new version (v2) target group. currently supports TCP, UDP, HTTP, HTTPS, GRPC.
+        r"""<p>Backend forwarding protocol of the target group. This field is required for the new version target group v2. Currently supports TCP, UDP, HTTP, HTTPS, GRPC.</p>
         :rtype: str
         """
         return self._Protocol
@@ -4854,7 +4858,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""Health check.
+        r"""<p>Health check.</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
         """
         return self._HealthCheck
@@ -4865,8 +4869,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def ScheduleAlgorithm(self):
-        r"""Scheduling algorithm. this parameter is valid only for target groups of the new version V2 when the backend forwarding protocol is HTTP, HTTPS, or GRPC. available values:.
-<ur><li>WRR: weighted round-robin.</li><li>LEAST_CONN: LEAST connection.</li><li>IP_HASH: based on IP HASH.</li><li>default is WRR.</li></ur>.
+        r"""<p>Scheduling algorithm. This parameter is valid only for new version V2 target groups with backend forwarding protocol (HTTP|HTTPS|GRPC). Available values:</p><li>WRR: weighted round-robin.</li><li>LEAST_CONN: least connection.</li><li>IP_HASH: based on IP hash.</li><li>Default WRR.</li>
         :rtype: str
         """
         return self._ScheduleAlgorithm
@@ -4877,7 +4880,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tag.
+        r"""<p>Tag.</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -4888,8 +4891,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Weight(self):
-        r"""Specifies the default weight of the backend service. among them:.
-<ul><li>Value ranges from 0 to 100.</li><li>after setting this value, when adding a backend service to the target group, if the backend service does not set Weight separately, use the default Weight here.</li><li>Weight parameter settings not supported for v1 target group type.</li></ul>.
+        r"""<p>Default weight of the backend service, where:</p><ul><li>Value ranges from 0 to 100.</li><li>After setting this value, when adding a backend service to the target group, if the backend service does not set the weight separately, use the default weight here.</li><li>Weight parameter settings not supported for v1 target group type.</li></ul>
         :rtype: int
         """
         return self._Weight
@@ -4900,7 +4902,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def FullListenSwitch(self):
-        r"""Full listen target group flag. valid values: true (yes), false (no). only target groups of the new version V2 event type support this parameter.
+        r"""<p>Full listen target group flag. true: yes, false: no. Only target groups of the new version V2 support this parameter.</p>
         :rtype: bool
         """
         return self._FullListenSwitch
@@ -4911,7 +4913,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def KeepaliveEnable(self):
-        r"""Specifies whether to enable the persistent connection feature. this parameter applies only to HTTP and HTTPS target groups. 0: disable; 1: enable. this feature is off by default.
+        r"""<p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS target groups. 0: off; 1: on. Off by default.</p>
         :rtype: bool
         """
         return self._KeepaliveEnable
@@ -4922,7 +4924,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def SessionExpireTime(self):
-        r"""Session hold time, unit: second. value range: 30-3600. default: 0, disabled. this parameter is supported only for target groups with HTTP/HTTPS/GRPC backend forwarding protocol in the new version V2.
+        r"""<p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled. This parameter is supported only for target groups with HTTP/HTTPS/GRPC backend forwarding protocol in the new version V2.</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -4933,7 +4935,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def IpVersion(self):
-        r"""IP version type.
+        r"""<p>IP version type.</p>
         :rtype: str
         """
         return self._IpVersion
@@ -4944,7 +4946,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def SnatEnable(self):
-        r"""
+        r"""<p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>
         :rtype: bool
         """
         return self._SnatEnable
@@ -4999,7 +5001,7 @@ class CreateTargetGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: ID generated after target group creation
+        :param _TargetGroupId: <p>Generated id after target group creation</p>
         :type TargetGroupId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5009,7 +5011,7 @@ class CreateTargetGroupResponse(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        r"""ID generated after target group creation
+        r"""<p>Generated id after target group creation</p>
         :rtype: str
         """
         return self._TargetGroupId
@@ -5838,7 +5840,7 @@ class DeleteRuleRequest(AbstractModel):
         :type LocationIds: list of str
         :param _Domain: Domain name of the forwarding rule to be deleted. if it is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.
         :type Domain: str
-        :param _Url: Forwarding path of the forwarding rule to be deleted can be accessed through the DescribeLoadBalancersDetail api (https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1).
+        :param _Url: Forwarding path of the forwarding rule to be deleted can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.
         :type Url: str
         :param _NewDefaultServerDomain: A default domain name must be configured under the listener. when you need to delete the default domain name, you can specify another domain name as the new default domain name. if the new default domain name is multiple domains, you can specify any one of the domain name list. it can be accessed through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :type NewDefaultServerDomain: str
@@ -5896,7 +5898,7 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""Forwarding path of the forwarding rule to be deleted can be accessed through the DescribeLoadBalancersDetail api (https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1).
+        r"""Forwarding path of the forwarding rule to be deleted can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._Url
@@ -7975,7 +7977,7 @@ class DescribeListenersRequest(AbstractModel):
         :type LoadBalancerId: str
         :param _ListenerIds: Specifies the array of clb listener ids to query, with a maximum of 100. you can call the [DescribeListeners](https://www.tencentcloud.com/document/api/214/30686?from_cn_redirect=1) api to obtain the ids.
         :type ListenerIds: list of str
-        :param _Protocol: Type of the listener protocols to be queried. Values: TCP`, `UDP`, `HTTP`, `HTTPS`, `TCP_SSL` and `QUIC`.
+        :param _Protocol: Type of the listener protocols to be queried. Values: `TCP`, `UDP`, `HTTP`, `HTTPS`, `TCP_SSL`  and  `QUIC`.
         :type Protocol: str
         :param _Port: Port of listener to query. value range: 1-65535.
         :type Port: int
@@ -8009,7 +8011,7 @@ class DescribeListenersRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""Type of the listener protocols to be queried. Values: TCP`, `UDP`, `HTTP`, `HTTPS`, `TCP_SSL` and `QUIC`.
+        r"""Type of the listener protocols to be queried. Values: `TCP`, `UDP`, `HTTP`, `HTTPS`, `TCP_SSL`  and  `QUIC`.
         :rtype: str
         """
         return self._Protocol
@@ -8383,7 +8385,7 @@ class DescribeLoadBalancersDetailRequest(AbstractModel):
         :type Limit: int
         :param _Offset: Starting offset of the CLB instance list returned. Default value: 0.
         :type Offset: int
-        :param _Fields: List of fields. Only fields specified will be returned. If it’s left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields, see <a href="https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#LoadBalancerDetail">LoadBalancerDetail</a>.
+        :param _Fields: List of fields. Only fields specified will be returned. If it's left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields, see [LoadBalancerDetail](https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#LoadBalancerDetail)
         :type Fields: list of str
         :param _TargetType: When the Fields include TargetId, TargetAddress, TargetPort, TargetWeight, ListenerId, Protocol, Port, LocationId, Domain, and Url, you must select exporting the Target of the Target GROUP or a non-Target GROUP. valid values: NODE, GROUP.
         :type TargetType: str
@@ -8467,7 +8469,7 @@ Required: No
 
     @property
     def Fields(self):
-        r"""List of fields. Only fields specified will be returned. If it’s left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields, see <a href="https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#LoadBalancerDetail">LoadBalancerDetail</a>.
+        r"""List of fields. Only fields specified will be returned. If it's left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields, see [LoadBalancerDetail](https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#LoadBalancerDetail)
         :rtype: list of str
         """
         return self._Fields
@@ -9371,6 +9373,105 @@ class DescribeRewriteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTargetGroupInstanceStatusRequest(AbstractModel):
+    r"""DescribeTargetGroupInstanceStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetGroupId: Unique target group ID
+        :type TargetGroupId: str
+        :param _TargetGroupInstanceIps: List of backend service IPs bound to the target group
+        :type TargetGroupInstanceIps: list of str
+        """
+        self._TargetGroupId = None
+        self._TargetGroupInstanceIps = None
+
+    @property
+    def TargetGroupId(self):
+        r"""Unique target group ID
+        :rtype: str
+        """
+        return self._TargetGroupId
+
+    @TargetGroupId.setter
+    def TargetGroupId(self, TargetGroupId):
+        self._TargetGroupId = TargetGroupId
+
+    @property
+    def TargetGroupInstanceIps(self):
+        r"""List of backend service IPs bound to the target group
+        :rtype: list of str
+        """
+        return self._TargetGroupInstanceIps
+
+    @TargetGroupInstanceIps.setter
+    def TargetGroupInstanceIps(self, TargetGroupInstanceIps):
+        self._TargetGroupInstanceIps = TargetGroupInstanceIps
+
+
+    def _deserialize(self, params):
+        self._TargetGroupId = params.get("TargetGroupId")
+        self._TargetGroupInstanceIps = params.get("TargetGroupInstanceIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTargetGroupInstanceStatusResponse(AbstractModel):
+    r"""DescribeTargetGroupInstanceStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetGroupInstanceSet: Health check backend RS status list
+        :type TargetGroupInstanceSet: list of TargetGroupInstanceStatus
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TargetGroupInstanceSet = None
+        self._RequestId = None
+
+    @property
+    def TargetGroupInstanceSet(self):
+        r"""Health check backend RS status list
+        :rtype: list of TargetGroupInstanceStatus
+        """
+        return self._TargetGroupInstanceSet
+
+    @TargetGroupInstanceSet.setter
+    def TargetGroupInstanceSet(self, TargetGroupInstanceSet):
+        self._TargetGroupInstanceSet = TargetGroupInstanceSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TargetGroupInstanceSet") is not None:
+            self._TargetGroupInstanceSet = []
+            for item in params.get("TargetGroupInstanceSet"):
+                obj = TargetGroupInstanceStatus()
+                obj._deserialize(item)
+                self._TargetGroupInstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTargetGroupInstancesRequest(AbstractModel):
     r"""DescribeTargetGroupInstances request structure.
 
@@ -9527,13 +9628,13 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupIds: Target group ID array
+        :param _TargetGroupIds: <p>Target group ID array.</p>
         :type TargetGroupIds: list of str
-        :param _Filters: Filter array, which is exclusive of `TargetGroupIds`. Valid values: `TargetGroupVpcId` and `TargetGroupName`. Target group ID will be used first.
+        :param _Filters: <p>Filter condition array. Support TargetGroupVpcId and TargetGroupName. Mutually exclusive with TargetGroupIds. Prioritize target group ID.</p>
         :type Filters: list of Filter
-        :param _Offset: Starting display offset
+        :param _Offset: <p>Starting display offset.</p>
         :type Offset: int
-        :param _Limit: Limit of the number of displayed results. Default value: 20.
+        :param _Limit: <p>Number of entries displayed per page.</p><p>Value ranges from 0 to 100.</p><p>The default value is 20.</p>
         :type Limit: int
         """
         self._TargetGroupIds = None
@@ -9543,7 +9644,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def TargetGroupIds(self):
-        r"""Target group ID array
+        r"""<p>Target group ID array.</p>
         :rtype: list of str
         """
         return self._TargetGroupIds
@@ -9554,7 +9655,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Filter array, which is exclusive of `TargetGroupIds`. Valid values: `TargetGroupVpcId` and `TargetGroupName`. Target group ID will be used first.
+        r"""<p>Filter condition array. Support TargetGroupVpcId and TargetGroupName. Mutually exclusive with TargetGroupIds. Prioritize target group ID.</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -9565,7 +9666,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Starting display offset
+        r"""<p>Starting display offset.</p>
         :rtype: int
         """
         return self._Offset
@@ -9576,7 +9677,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Limit of the number of displayed results. Default value: 20.
+        r"""<p>Number of entries displayed per page.</p><p>Value ranges from 0 to 100.</p><p>The default value is 20.</p>
         :rtype: int
         """
         return self._Limit
@@ -9613,9 +9714,9 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of displayed results
+        :param _TotalCount: <p>Number of displayed results.</p>
         :type TotalCount: int
-        :param _TargetGroupSet: Information set of displayed target groups
+        :param _TargetGroupSet: <p>Collection of displayed target group information.</p>
         :type TargetGroupSet: list of TargetGroupInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9626,7 +9727,7 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Number of displayed results
+        r"""<p>Number of displayed results.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -9637,7 +9738,7 @@ class DescribeTargetGroupListResponse(AbstractModel):
 
     @property
     def TargetGroupSet(self):
-        r"""Information set of displayed target groups
+        r"""<p>Collection of displayed target group information.</p>
         :rtype: list of TargetGroupInfo
         """
         return self._TargetGroupSet
@@ -9825,11 +9926,11 @@ class DescribeTargetHealthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: List of IDs of CLB instances to be queried
+        :param _LoadBalancerIds: <p>List of Cloud Load Balancer instance IDs to query. The array size supports up to 30.</p>
         :type LoadBalancerIds: list of str
-        :param _ListenerIds: Specifies the listener ID list to query.
+        :param _ListenerIds: <p>Listener ID list to query.</p>
         :type ListenerIds: list of str
-        :param _LocationIds: Specifies the list of rule ids to be queried.
+        :param _LocationIds: <p>List of forwarding rule IDs to query.</p>
         :type LocationIds: list of str
         """
         self._LoadBalancerIds = None
@@ -9838,7 +9939,7 @@ class DescribeTargetHealthRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        r"""List of IDs of CLB instances to be queried
+        r"""<p>List of Cloud Load Balancer instance IDs to query. The array size supports up to 30.</p>
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -9849,7 +9950,7 @@ class DescribeTargetHealthRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        r"""Specifies the listener ID list to query.
+        r"""<p>Listener ID list to query.</p>
         :rtype: list of str
         """
         return self._ListenerIds
@@ -9860,7 +9961,7 @@ class DescribeTargetHealthRequest(AbstractModel):
 
     @property
     def LocationIds(self):
-        r"""Specifies the list of rule ids to be queried.
+        r"""<p>List of forwarding rule IDs to query.</p>
         :rtype: list of str
         """
         return self._LocationIds
@@ -9891,7 +9992,7 @@ class DescribeTargetHealthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancers: LoadBalancer list.
+        :param _LoadBalancers: <p>CLB list.</p>
         :type LoadBalancers: list of LoadBalancerHealth
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9901,7 +10002,7 @@ class DescribeTargetHealthResponse(AbstractModel):
 
     @property
     def LoadBalancers(self):
-        r"""LoadBalancer list.
+        r"""<p>CLB list.</p>
         :rtype: list of LoadBalancerHealth
         """
         return self._LoadBalancers
@@ -10506,9 +10607,9 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Filter name
+        :param _Name: <p>Filter name</p>
         :type Name: str
-        :param _Values: Filter value array
+        :param _Values: <p>filter value array</p>
         :type Values: list of str
         """
         self._Name = None
@@ -10516,7 +10617,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""Filter name
+        r"""<p>Filter name</p>
         :rtype: str
         """
         return self._Name
@@ -10527,7 +10628,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""Filter value array
+        r"""<p>filter value array</p>
         :rtype: list of str
         """
         return self._Values
@@ -12238,66 +12339,67 @@ class Listener(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: CLB listener ID
+        :param _ListenerId: <p>CLB listener ID</p>
         :type ListenerId: str
-        :param _Protocol: Listener protocol. valid values: TCP, UDP, HTTP, HTTPS, TCP_SSL, QUIC.
+        :param _Protocol: <p>Listener protocol. Available values: TCP, UDP, HTTP, HTTPS, TCP_SSL, QUIC</p>
         :type Protocol: str
-        :param _Port: Listener port. value range: 1-65535.
+        :param _Port: <p>Listener port, port range: 1–65535</p>
         :type Port: int
-        :param _Certificate: Information of certificates bound to the listener
+        :param _Certificate: <p>Listener bound certificate information</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateOutput`
-        :param _HealthCheck: Health check information of the listener
+        :param _HealthCheck: <p>Health check information of the listener</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param _Scheduler: Request scheduling method. WRR, LEAST_CONN, and IP_HASH respectively indicate weighted round robin, least connections, and IP hash.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Scheduler: <p>Requested scheduling method. WRR, LEAST_CONN, and IP_HASH indicate weighted round-robin, least connection, and IP Hash respectively.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Scheduler: str
-        :param _SessionExpireTime: Session persistence time, in seconds. value range: 30-3600. default value: 0, indicating that session persistence is not enabled by default. this parameter applies only to TCP and UDP listeners.
+        :param _SessionExpireTime: <p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled by default. This parameter is applicable only to TCP/UDP listener.</p><p>Unit: second</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SessionExpireTime: int
-        :param _SniSwitch: Specifies whether to enable the SNI feature. 1: enable; 0: disable. this parameter is applicable only to HTTPS listeners.
+        :param _SniSwitch: <p>Whether to enable SNI feature. 1: enable, 0: disabled (this parameter is applicable only to HTTPS listeners)</p>
         :type SniSwitch: int
-        :param _Rules: All forwarding rules under a listener (this parameter is meaningful only for HTTP/HTTPS listeners)
+        :param _Rules: <p>All forwarding rules under a listener (this parameter is only meaningful for HTTP/HTTPS listeners)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Rules: list of RuleOutput
-        :param _ListenerName: Listener name
+        :param _ListenerName: <p>Listener name</p>
         :type ListenerName: str
-        :param _CreateTime: Listener creation time
+        :param _CreateTime: <p>Listener creation time.</p>
         :type CreateTime: str
-        :param _EndPort: End port of the port range. value range: 2-65535.
+        :param _EndPort: <p>End port of the port range: 2–65535</p>
         :type EndPort: int
-        :param _TargetType: Backend server type. available values: NODE, POLARIS, TARGETGROUP, TARGETGROUP-V2.
+        :param _TargetType: <p>Backend server type. Available values: NODE, POLARIS, TARGETGROUP, TARGETGROUP-V2.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TargetType: str
-        :param _TargetGroup: Basic information of a bound target group. This field will be returned when a target group is bound to a listener.
+        :param _TargetGroup: <p>Bound target group basic information; return this field when listener binding target group.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TargetGroup: :class:`tencentcloud.clb.v20180317.models.BasicTargetGroupInfo`
-        :param _SessionType: Session persistence type. NORMAL: Default session persistence type; QUIC_CID: Session persistence by Quic Connection ID.
+        :param _SessionType: <p>Session persistence type. NORMAL means the default session persistence type. QUIC_CID refers to maintaining the session based on Quic Connection ID.</p>
         :type SessionType: str
-        :param _KeepaliveEnable: Whether a persistent connection is enabled (1: enabled; 0: disabled). This parameter can only be configured in HTTP/HTTPS listeners.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _KeepaliveEnable: <p>Whether to enable long connections. 1: enable, 0: disable (this parameter is applicable only to HTTP/HTTPS listeners)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type KeepaliveEnable: int
-        :param _Toa: Supports Nat64 CLB TCP listeners only
+        :param _Toa: <p>Only supports Nat64 CLB TCP listener</p>
         :type Toa: bool
-        :param _DeregisterTargetRst: Reschedules when unbinding real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        :param _DeregisterTargetRst: <p>Rescheduling feature, which provides a switch for scaling out the backend service. If the switch is toggled on, rescheduling is triggered when the backend service is unbound. This parameter is applicable only to TCP/UDP listeners.</p>
         :type DeregisterTargetRst: bool
-        :param _AttrFlags: Describes the attributes of the listener.
+        :param _AttrFlags: <p>Listener attribute.</p>
         :type AttrFlags: list of str
-        :param _TargetGroupList: List of bound target groups
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _TargetGroupList: <p>List of bound target groups</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TargetGroupList: list of BasicTargetGroupInfo
-        :param _MaxConn: Maximum number of connections to a listener. -1 indicates unlimited speed at the listener dimension.
+        :param _MaxConn: <p>Maximum number of connections to a listener. -1 means no speed limit at the listener dimension.</p>
         :type MaxConn: int
-        :param _MaxCps: Maximum number of new connections to a listener. -1 means no speed limit at the listener dimension.
+        :param _MaxCps: <p>Maximum number of new connections to a listener. -1 means no speed limit at the listener dimension.</p>
         :type MaxCps: int
-        :param _IdleConnectTimeout: Connection idle timeout period (in seconds). It’s only available to TCP listeners. Value range: 300-900 for shared and dedicated instances; 300-2000 for LCU-supported CLB instances. It defaults to 900.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _IdleConnectTimeout: <p>Idle connection timeout is only supported for TCP listeners. Default value: 900. Value range: 300–900 for shared instances and dedicated instances and 300–1980 for LCU-supported instances.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IdleConnectTimeout: int
-        :param _RescheduleInterval: Rescheduling trigger duration, valid values: 0-3600s. only TCP/UDP listeners support this. after triggering rescheduling, persistent connections will disconnect and be reassigned within the set scheduling time.
+        :param _RescheduleInterval: <p>Rescheduling trigger duration. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners. After rescheduling is triggered, persistent connections will be disconnected and reassigned within the scheduled time window. </p><p>Unit: s.</p>
         :type RescheduleInterval: int
-        :param _DataCompressMode: Data compression mode.
+        :param _DataCompressMode: <p>Data compression mode</p>
         :type DataCompressMode: str
-        :param _RescheduleStartTime: Reschedules the startup time. when configured, rescheduling will be triggered upon arrival of the start time.
+        :param _RescheduleStartTime: <p>Rescheduling startup time: After the rescheduling startup time is configured, rescheduling is triggered when the startup time is arrived.</p>
         :type RescheduleStartTime: int
         """
         self._ListenerId = None
@@ -12329,7 +12431,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ListenerId(self):
-        r"""CLB listener ID
+        r"""<p>CLB listener ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -12340,7 +12442,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Protocol(self):
-        r"""Listener protocol. valid values: TCP, UDP, HTTP, HTTPS, TCP_SSL, QUIC.
+        r"""<p>Listener protocol. Available values: TCP, UDP, HTTP, HTTPS, TCP_SSL, QUIC</p>
         :rtype: str
         """
         return self._Protocol
@@ -12351,7 +12453,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Port(self):
-        r"""Listener port. value range: 1-65535.
+        r"""<p>Listener port, port range: 1–65535</p>
         :rtype: int
         """
         return self._Port
@@ -12362,7 +12464,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Certificate(self):
-        r"""Information of certificates bound to the listener
+        r"""<p>Listener bound certificate information</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.clb.v20180317.models.CertificateOutput`
         """
@@ -12374,7 +12476,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthCheck(self):
-        r"""Health check information of the listener
+        r"""<p>Health check information of the listener</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         """
@@ -12386,7 +12488,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Scheduler(self):
-        r"""Request scheduling method. WRR, LEAST_CONN, and IP_HASH respectively indicate weighted round robin, least connections, and IP hash.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Requested scheduling method. WRR, LEAST_CONN, and IP_HASH indicate weighted round-robin, least connection, and IP Hash respectively.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Scheduler
@@ -12397,7 +12500,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionExpireTime(self):
-        r"""Session persistence time, in seconds. value range: 30-3600. default value: 0, indicating that session persistence is not enabled by default. this parameter applies only to TCP and UDP listeners.
+        r"""<p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled by default. This parameter is applicable only to TCP/UDP listener.</p><p>Unit: second</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -12409,7 +12512,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SniSwitch(self):
-        r"""Specifies whether to enable the SNI feature. 1: enable; 0: disable. this parameter is applicable only to HTTPS listeners.
+        r"""<p>Whether to enable SNI feature. 1: enable, 0: disabled (this parameter is applicable only to HTTPS listeners)</p>
         :rtype: int
         """
         return self._SniSwitch
@@ -12420,7 +12523,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rules(self):
-        r"""All forwarding rules under a listener (this parameter is meaningful only for HTTP/HTTPS listeners)
+        r"""<p>All forwarding rules under a listener (this parameter is only meaningful for HTTP/HTTPS listeners)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of RuleOutput
         """
@@ -12432,7 +12535,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListenerName(self):
-        r"""Listener name
+        r"""<p>Listener name</p>
         :rtype: str
         """
         return self._ListenerName
@@ -12443,7 +12546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
-        r"""Listener creation time
+        r"""<p>Listener creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -12454,7 +12557,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndPort(self):
-        r"""End port of the port range. value range: 2-65535.
+        r"""<p>End port of the port range: 2–65535</p>
         :rtype: int
         """
         return self._EndPort
@@ -12465,7 +12568,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetType(self):
-        r"""Backend server type. available values: NODE, POLARIS, TARGETGROUP, TARGETGROUP-V2.
+        r"""<p>Backend server type. Available values: NODE, POLARIS, TARGETGROUP, TARGETGROUP-V2.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -12477,7 +12580,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetGroup(self):
-        r"""Basic information of a bound target group. This field will be returned when a target group is bound to a listener.
+        r"""<p>Bound target group basic information; return this field when listener binding target group.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.clb.v20180317.models.BasicTargetGroupInfo`
         """
@@ -12489,7 +12592,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionType(self):
-        r"""Session persistence type. NORMAL: Default session persistence type; QUIC_CID: Session persistence by Quic Connection ID.
+        r"""<p>Session persistence type. NORMAL means the default session persistence type. QUIC_CID refers to maintaining the session based on Quic Connection ID.</p>
         :rtype: str
         """
         return self._SessionType
@@ -12500,8 +12603,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeepaliveEnable(self):
-        r"""Whether a persistent connection is enabled (1: enabled; 0: disabled). This parameter can only be configured in HTTP/HTTPS listeners.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>Whether to enable long connections. 1: enable, 0: disable (this parameter is applicable only to HTTP/HTTPS listeners)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._KeepaliveEnable
@@ -12512,7 +12615,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Toa(self):
-        r"""Supports Nat64 CLB TCP listeners only
+        r"""<p>Only supports Nat64 CLB TCP listener</p>
         :rtype: bool
         """
         return self._Toa
@@ -12523,7 +12626,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeregisterTargetRst(self):
-        r"""Reschedules when unbinding real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        r"""<p>Rescheduling feature, which provides a switch for scaling out the backend service. If the switch is toggled on, rescheduling is triggered when the backend service is unbound. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: bool
         """
         return self._DeregisterTargetRst
@@ -12534,7 +12637,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AttrFlags(self):
-        r"""Describes the attributes of the listener.
+        r"""<p>Listener attribute.</p>
         :rtype: list of str
         """
         return self._AttrFlags
@@ -12545,8 +12648,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TargetGroupList(self):
-        r"""List of bound target groups
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>List of bound target groups</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of BasicTargetGroupInfo
         """
         return self._TargetGroupList
@@ -12557,7 +12660,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaxConn(self):
-        r"""Maximum number of connections to a listener. -1 indicates unlimited speed at the listener dimension.
+        r"""<p>Maximum number of connections to a listener. -1 means no speed limit at the listener dimension.</p>
         :rtype: int
         """
         return self._MaxConn
@@ -12568,7 +12671,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaxCps(self):
-        r"""Maximum number of new connections to a listener. -1 means no speed limit at the listener dimension.
+        r"""<p>Maximum number of new connections to a listener. -1 means no speed limit at the listener dimension.</p>
         :rtype: int
         """
         return self._MaxCps
@@ -12579,8 +12682,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IdleConnectTimeout(self):
-        r"""Connection idle timeout period (in seconds). It’s only available to TCP listeners. Value range: 300-900 for shared and dedicated instances; 300-2000 for LCU-supported CLB instances. It defaults to 900.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""<p>Idle connection timeout is only supported for TCP listeners. Default value: 900. Value range: 300–900 for shared instances and dedicated instances and 300–1980 for LCU-supported instances.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._IdleConnectTimeout
@@ -12591,7 +12694,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RescheduleInterval(self):
-        r"""Rescheduling trigger duration, valid values: 0-3600s. only TCP/UDP listeners support this. after triggering rescheduling, persistent connections will disconnect and be reassigned within the set scheduling time.
+        r"""<p>Rescheduling trigger duration. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners. After rescheduling is triggered, persistent connections will be disconnected and reassigned within the scheduled time window. </p><p>Unit: s.</p>
         :rtype: int
         """
         return self._RescheduleInterval
@@ -12602,7 +12705,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DataCompressMode(self):
-        r"""Data compression mode.
+        r"""<p>Data compression mode</p>
         :rtype: str
         """
         return self._DataCompressMode
@@ -12613,7 +12716,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RescheduleStartTime(self):
-        r"""Reschedules the startup time. when configured, rescheduling will be triggered upon arrival of the start time.
+        r"""<p>Rescheduling startup time: After the rescheduling startup time is configured, rescheduling is triggered when the startup time is arrived.</p>
         :rtype: int
         """
         return self._RescheduleStartTime
@@ -13035,7 +13138,7 @@ class LoadBalancer(AbstractModel):
         :param _LoadBalancerName: CLB instance name.
         :type LoadBalancerName: str
         :param _LoadBalancerType: Network type of the load balancing instance.
-OPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on binding elastic IP (https://www.tencentcloud.com/document/product/215/16700?from_cn_redirect=1).
+OPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on [Binding Elastic IP](https://www.tencentcloud.com/document/product/215/16700?from_cn_redirect=1).
         :type LoadBalancerType: str
         :param _Forward: CLB type identifier. Value range: 1 (CLB); 0 (classic CLB).
         :type Forward: int
@@ -13077,13 +13180,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AnycastZone: str
         :param _AddressIPVersion: IP Version, ipv4 | ipv6
         :type AddressIPVersion: str
-        :param _NumericalVpcId: Specifies the VPC ID in numerical form, obtainable through the DescribeVpcs API (https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1).
+        :param _NumericalVpcId: Specifies the VPC ID in numerical form, obtainable through the [DescribeVpcs]((https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1)) API.
         :type NumericalVpcId: int
         :param _VipIsp: Specifies the ISP of the load balancer IP address.
 
--BGP (multi-line).
+- BGP (multi-line).
 - CMCC: CMCC single line network.
--CTCC: ctcc single-line.
+- CTCC: ctcc single-line.
 - CUCC: china unicom single-line.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VipIsp: str
@@ -13198,7 +13301,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type TargetCount: int
         :param _AssociateEndpoint: Specifies the Endpoint id associated with the clb instance.
         :type AssociateEndpoint: str
-        :param _AvailableZoneAffinityInfo: 
+        :param _AvailableZoneAffinityInfo: Availability zone forwarding affinity info
         :type AvailableZoneAffinityInfo: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
         """
         self._LoadBalancerId = None
@@ -13286,7 +13389,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def LoadBalancerType(self):
         r"""Network type of the load balancing instance.
-OPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on binding elastic IP (https://www.tencentcloud.com/document/product/215/16700?from_cn_redirect=1).
+OPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on [Binding Elastic IP](https://www.tencentcloud.com/document/product/215/16700?from_cn_redirect=1).
         :rtype: str
         """
         return self._LoadBalancerType
@@ -13503,7 +13606,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NumericalVpcId(self):
-        r"""Specifies the VPC ID in numerical form, obtainable through the DescribeVpcs API (https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1).
+        r"""Specifies the VPC ID in numerical form, obtainable through the [DescribeVpcs]((https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1)) API.
         :rtype: int
         """
         return self._NumericalVpcId
@@ -13516,9 +13619,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def VipIsp(self):
         r"""Specifies the ISP of the load balancer IP address.
 
--BGP (multi-line).
+- BGP (multi-line).
 - CMCC: CMCC single line network.
--CTCC: ctcc single-line.
+- CTCC: ctcc single-line.
 - CUCC: china unicom single-line.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -13957,7 +14060,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AvailableZoneAffinityInfo(self):
-        r"""
+        r"""Availability zone forwarding affinity info
         :rtype: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
         """
         return self._AvailableZoneAffinityInfo
@@ -14195,6 +14298,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Exclusive: 0 means non-dedicated instance. 1 means dedicated instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Exclusive: int
+        :param _AvailableZoneAffinityInfo: Availability zone forwarding affinity info
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AvailableZoneAffinityInfo: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -14238,6 +14344,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AttributeFlags = None
         self._SlaType = None
         self._Exclusive = None
+        self._AvailableZoneAffinityInfo = None
 
     @property
     def LoadBalancerId(self):
@@ -14739,6 +14846,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Exclusive(self, Exclusive):
         self._Exclusive = Exclusive
 
+    @property
+    def AvailableZoneAffinityInfo(self):
+        r"""Availability zone forwarding affinity info
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
+        """
+        return self._AvailableZoneAffinityInfo
+
+    @AvailableZoneAffinityInfo.setter
+    def AvailableZoneAffinityInfo(self, AvailableZoneAffinityInfo):
+        self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -14794,6 +14913,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AttributeFlags = params.get("AttributeFlags")
         self._SlaType = params.get("SlaType")
         self._Exclusive = params.get("Exclusive")
+        if params.get("AvailableZoneAffinityInfo") is not None:
+            self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo()
+            self._AvailableZoneAffinityInfo._deserialize(params.get("AvailableZoneAffinityInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15925,65 +16047,53 @@ class ModifyListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: ID of the CLB instance. You can call the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        :param _LoadBalancerId: <p>ID of the Cloud Load Balancer (CLB) instance. You can call the <a href="https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1">DescribeLoadBalancers</a> API to query the ID.</p>
         :type LoadBalancerId: str
-        :param _ListenerId: ID of the CLB instance listener. You can call the [DescribeListeners](https://intl.cloud.tencent.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.
+        :param _ListenerId: <p>ID of the CLB listener. You can call the <a href="https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1">DescribeListeners</a> API to query the ID.</p>
         :type ListenerId: str
-        :param _ListenerName: New listener name. The maximum length is 255 characters.
+        :param _ListenerName: <p>New listener name. Naming rule: 1-80 characters including English letters, Chinese characters, digits, connecting line "-", underscore "_" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>
         :type ListenerName: str
-        :param _SessionExpireTime: Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.
+        :param _SessionExpireTime: <p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled. This parameter is applicable only to TCP/UDP listener.</p>
         :type SessionExpireTime: int
-        :param _HealthCheck: Health check parameter. It is only applicable only to TCP, UDP, TCP_SSL and QUIC listeners.
+        :param _HealthCheck: <p>Health check parameters. This parameter is applicable only to TCP/UDP/TCP_SSL/QUIC listeners.</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param _Certificate: Certificate information. This parameter is only applicable to HTTPS/TCP_SSL/QUIC listeners. `Certificate` and `MultiCertInfo` cannot be both specified.
+        :param _Certificate: <p>Certificate-related information. This parameter is applicable only to HTTPS/TCP_SSL/QUIC listeners. This parameter and MultiCertInfo cannot be specified at the same time.</p>
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
-        :param _Scheduler: Listener forwarding method. Valid values: WRR (weighted round-robin), LEAST_CONN (least connections), and IP_HASH (IP address hash).
-They indicate weighted round-robin and least connections, respectively. Default value: WRR.
-Use cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners. The balancing method for Layer-7 listeners should be modified in the forwarding rules.
+        :param _Scheduler: <p>Listener forwarding method. Valid values: WRR (weighted round-robin), LEAST_CONN (least connections), and IP_HASH (IP address hash).<br>They indicate weighted round-robin and least connection respectively. Default is WRR.<br>Usage scenario: Suitable for TCP/UDP/TCP_SSL/QUIC listeners. The balancing method for Layer-7 listeners should be modified in the forwarding rules.</p>
         :type Scheduler: str
-        :param _SniSwitch: Whether to enable the SNI feature. This parameter applies only to HTTPS listeners. The default value is 0, indicating disabled, and 1 indicates enabled. Note: The SNI feature can be enabled for listeners that have not enabled SNI, but cannot be disabled for listeners that have enabled SNI.
+        :param _SniSwitch: <p>Whether to enable SNI feature. This parameter applies only to HTTPS listeners. Default is 0 (disabled) or 1 (enable). Note: You can enable SNI for listeners without SNI. SNI cannot be disabled for listeners with SNI enabled.</p>
         :type SniSwitch: int
-        :param _TargetType: Target backend type. `NODE`: A single node; `TARGETGROUP`: A target group.
+        :param _TargetType: <p>Backend target type. NODE indicates binding to a general node. TARGETGROUP indicates binding to a target group.</p>
         :type TargetType: str
-        :param _KeepaliveEnable: Whether to enable the persistent connection feature. This parameter applies only to HTTP/HTTPS listeners.
-The default value is 0, indicating disabled, and 1 indicates enabled.
-
-Enable this feature with caution if the maximum number of connections is limited for real servers. This feature is in beta testing. To use it, submit a [beta testing application](https://intl.cloud.tencent.com/apply/p/tsodp6qm21?from_cn_redirect=1).
+        :param _KeepaliveEnable: <p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS listeners.<br>The default value 0 means disabled, and 1 means enable.<br>If the backend service has a connection limit, enable with caution. This feature is currently in internal testing. If needed, submit a <a href="https://www.tencentcloud.com/apply/p/tsodp6qm21?from_cn_redirect=1">beta application</a>.</p>
         :type KeepaliveEnable: int
-        :param _DeregisterTargetRst: Reschedules when unbinding real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        :param _DeregisterTargetRst: <p>Rescheduling feature, which provides a switch for scaling out the backend service. If the switch is toggled on, rescheduling is triggered when the backend service is unbound. This parameter is applicable only to TCP/UDP listeners.</p>
         :type DeregisterTargetRst: bool
-        :param _SessionType: Session persistence type. NORMAL: default session persistence type; QUIC_CID: perform session persistence based on QUIC connection ID. If the value is set to QUIC_CID, only the UDP protocol is supported.
-Use cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners.
-
-Default value: NORMAL.
+        :param _SessionType: <p>Session persistence type. NORMAL means the default session persistence type. QUIC_CID refers to maintaining the session based on Quic Connection ID. QUIC_CID supports only UDP Protocol.<br>Usage scenario: Applicable to TCP/UDP/TCP_SSL/QUIC listeners.<br>Default is NORMAL.</p>
         :type SessionType: str
-        :param _MultiCertInfo: Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
+        :param _MultiCertInfo: <p>Certificate information. Multiple server certificates with different algorithm types can be imported at the same time. This parameter is applicable only to HTTPS listeners with SNI feature disabled. This parameter and Certificate cannot be specified at the same time.</p>
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
-        :param _MaxConn: Maximum number of concurrent connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of concurrent connections for the instance specification. -1 indicates that no limit is set on the concurrent connections at the listener level. Classic network instances do not support this parameter.
-
-Default value: -1, which indicates no limit.
+        :param _MaxConn: <p>Maximum number of concurrent connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of concurrent connections for the instance specification. -1 indicates no speed limit on the concurrent connections at the listener level. Classic network instances do not support this parameter.<br>Default value is -1, which means unlimited speed.</p>
         :type MaxConn: int
-        :param _MaxCps: Maximum number of new connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of new connections for the instance specification. -1 indicates that no limit is set on the new connections at the listener level. Classic network instances do not support this parameter.
-
-Default value: -1, which indicates no limit.
+        :param _MaxCps: <p>Maximum number of new connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of new connections for the instance specification. -1 indicates no speed limit on new connections at the listener level. Classic network instances do not support this parameter.<br>Default is -1, which means unlimited speed.</p>
         :type MaxCps: int
-        :param _IdleConnectTimeout: Specifies the idle connection timeout in seconds. this parameter applies only to TCP/UDP listeners. default value: 900 for TCP listeners and 300 for UDP listeners. value range: 10–900 for shared instances and dedicated instances and 10–1980 for lcu-supported instances. to set a value exceeding 1980, [submit a ticket application](https://console.cloud.tencent.com/workorder/category). the maximum settable value is 3600.
+        :param _IdleConnectTimeout: <p>Idle connection timeout. This parameter applies only to TCP/UDP listeners. To set a value exceeding 1980, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket for application</a>. The maximum value can be 3600.</p><p>Range of values: [10, 1980]</p><p>Unit: seconds</p><p>Default value: 900</p><p>Default value for TCP listeners: 900. Default value for UDP listeners: 300. Value range: 10–900 for shared instances and dedicated instances and 10–1980 for LCU-supported instances.</p>
         :type IdleConnectTimeout: int
-        :param _ProxyProtocol: Specifies whether PP is supported for TCP_SSL and QUIC.
+        :param _ProxyProtocol: <p>Whether TCP_SSL and QUIC support PP</p>
         :type ProxyProtocol: bool
-        :param _SnatEnable: Whether SNAT (source IP replacement) is enabled. valid values: True (enabled), False (disabled). disabled by default. note: when SnatEnable is enabled, the client source IP will be replaced, at this point the `pass through client source IP` option is disabled, and vice versa.
+        :param _SnatEnable: <p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>
         :type SnatEnable: bool
-        :param _DataCompressMode: Data compression mode.
+        :param _DataCompressMode: <p>Data compression mode</p><p>Enumeration value:</p><ul><li>transparent: Transparent mode (default value)</li><li>compatibility: Compatible mode (enable gzip compression configuration)</li></ul>
         :type DataCompressMode: str
-        :param _RescheduleTargetZeroWeight: Reschedules when setting backend server weight to 0. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        :param _RescheduleTargetZeroWeight: <p>Rescheduling feature, which provides a switch for changing the weight to 0. If the switch is toggled on, rescheduling is triggered when the weight of a real server is changed to 0. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleTargetZeroWeight: bool
-        :param _RescheduleUnhealthy: Reschedules when health check exceptions occur on real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        :param _RescheduleUnhealthy: <p>Rescheduling feature, which provides a switch for detecting health check exceptions. If the switch is toggled on, rescheduling is triggered when the real server health check fails. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleUnhealthy: bool
-        :param _RescheduleExpandTarget: Reschedules when adding or removing backend servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        :param _RescheduleExpandTarget: <p>Rescheduling feature, which provides a switch for scaling out real servers. If the switch is toggled on, rescheduling is triggered when the number of real servers increases or decreases. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleExpandTarget: bool
-        :param _RescheduleStartTime: Specifies the trigger start time for rescheduling. value range: 0-3600s. supported only by TCP/UDP listeners.
+        :param _RescheduleStartTime: <p>Rescheduling trigger start time. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleStartTime: int
-        :param _RescheduleInterval: Rescheduling trigger duration. valid values: 0-3600s. only TCP/UDP listeners support this.
+        :param _RescheduleInterval: <p>Rescheduling trigger duration. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>
         :type RescheduleInterval: int
         """
         self._LoadBalancerId = None
@@ -16013,7 +16123,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def LoadBalancerId(self):
-        r"""ID of the CLB instance. You can call the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.
+        r"""<p>ID of the Cloud Load Balancer (CLB) instance. You can call the <a href="https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1">DescribeLoadBalancers</a> API to query the ID.</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -16024,7 +16134,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def ListenerId(self):
-        r"""ID of the CLB instance listener. You can call the [DescribeListeners](https://intl.cloud.tencent.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.
+        r"""<p>ID of the CLB listener. You can call the <a href="https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1">DescribeListeners</a> API to query the ID.</p>
         :rtype: str
         """
         return self._ListenerId
@@ -16035,7 +16145,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def ListenerName(self):
-        r"""New listener name. The maximum length is 255 characters.
+        r"""<p>New listener name. Naming rule: 1-80 characters including English letters, Chinese characters, digits, connecting line "-", underscore "_" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>
         :rtype: str
         """
         return self._ListenerName
@@ -16046,7 +16156,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def SessionExpireTime(self):
-        r"""Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.
+        r"""<p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled. This parameter is applicable only to TCP/UDP listener.</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -16057,7 +16167,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def HealthCheck(self):
-        r"""Health check parameter. It is only applicable only to TCP, UDP, TCP_SSL and QUIC listeners.
+        r"""<p>Health check parameters. This parameter is applicable only to TCP/UDP/TCP_SSL/QUIC listeners.</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         """
         return self._HealthCheck
@@ -16068,7 +16178,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def Certificate(self):
-        r"""Certificate information. This parameter is only applicable to HTTPS/TCP_SSL/QUIC listeners. `Certificate` and `MultiCertInfo` cannot be both specified.
+        r"""<p>Certificate-related information. This parameter is applicable only to HTTPS/TCP_SSL/QUIC listeners. This parameter and MultiCertInfo cannot be specified at the same time.</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         """
         return self._Certificate
@@ -16079,9 +16189,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def Scheduler(self):
-        r"""Listener forwarding method. Valid values: WRR (weighted round-robin), LEAST_CONN (least connections), and IP_HASH (IP address hash).
-They indicate weighted round-robin and least connections, respectively. Default value: WRR.
-Use cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners. The balancing method for Layer-7 listeners should be modified in the forwarding rules.
+        r"""<p>Listener forwarding method. Valid values: WRR (weighted round-robin), LEAST_CONN (least connections), and IP_HASH (IP address hash).<br>They indicate weighted round-robin and least connection respectively. Default is WRR.<br>Usage scenario: Suitable for TCP/UDP/TCP_SSL/QUIC listeners. The balancing method for Layer-7 listeners should be modified in the forwarding rules.</p>
         :rtype: str
         """
         return self._Scheduler
@@ -16092,7 +16200,7 @@ Use cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners. The balancing method 
 
     @property
     def SniSwitch(self):
-        r"""Whether to enable the SNI feature. This parameter applies only to HTTPS listeners. The default value is 0, indicating disabled, and 1 indicates enabled. Note: The SNI feature can be enabled for listeners that have not enabled SNI, but cannot be disabled for listeners that have enabled SNI.
+        r"""<p>Whether to enable SNI feature. This parameter applies only to HTTPS listeners. Default is 0 (disabled) or 1 (enable). Note: You can enable SNI for listeners without SNI. SNI cannot be disabled for listeners with SNI enabled.</p>
         :rtype: int
         """
         return self._SniSwitch
@@ -16103,7 +16211,7 @@ Use cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners. The balancing method 
 
     @property
     def TargetType(self):
-        r"""Target backend type. `NODE`: A single node; `TARGETGROUP`: A target group.
+        r"""<p>Backend target type. NODE indicates binding to a general node. TARGETGROUP indicates binding to a target group.</p>
         :rtype: str
         """
         return self._TargetType
@@ -16114,10 +16222,7 @@ Use cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners. The balancing method 
 
     @property
     def KeepaliveEnable(self):
-        r"""Whether to enable the persistent connection feature. This parameter applies only to HTTP/HTTPS listeners.
-The default value is 0, indicating disabled, and 1 indicates enabled.
-
-Enable this feature with caution if the maximum number of connections is limited for real servers. This feature is in beta testing. To use it, submit a [beta testing application](https://intl.cloud.tencent.com/apply/p/tsodp6qm21?from_cn_redirect=1).
+        r"""<p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS listeners.<br>The default value 0 means disabled, and 1 means enable.<br>If the backend service has a connection limit, enable with caution. This feature is currently in internal testing. If needed, submit a <a href="https://www.tencentcloud.com/apply/p/tsodp6qm21?from_cn_redirect=1">beta application</a>.</p>
         :rtype: int
         """
         return self._KeepaliveEnable
@@ -16128,7 +16233,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def DeregisterTargetRst(self):
-        r"""Reschedules when unbinding real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        r"""<p>Rescheduling feature, which provides a switch for scaling out the backend service. If the switch is toggled on, rescheduling is triggered when the backend service is unbound. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: bool
         """
         return self._DeregisterTargetRst
@@ -16139,10 +16244,7 @@ Enable this feature with caution if the maximum number of connections is limited
 
     @property
     def SessionType(self):
-        r"""Session persistence type. NORMAL: default session persistence type; QUIC_CID: perform session persistence based on QUIC connection ID. If the value is set to QUIC_CID, only the UDP protocol is supported.
-Use cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners.
-
-Default value: NORMAL.
+        r"""<p>Session persistence type. NORMAL means the default session persistence type. QUIC_CID refers to maintaining the session based on Quic Connection ID. QUIC_CID supports only UDP Protocol.<br>Usage scenario: Applicable to TCP/UDP/TCP_SSL/QUIC listeners.<br>Default is NORMAL.</p>
         :rtype: str
         """
         return self._SessionType
@@ -16153,7 +16255,7 @@ Default value: NORMAL.
 
     @property
     def MultiCertInfo(self):
-        r"""Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
+        r"""<p>Certificate information. Multiple server certificates with different algorithm types can be imported at the same time. This parameter is applicable only to HTTPS listeners with SNI feature disabled. This parameter and Certificate cannot be specified at the same time.</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         return self._MultiCertInfo
@@ -16164,9 +16266,7 @@ Default value: NORMAL.
 
     @property
     def MaxConn(self):
-        r"""Maximum number of concurrent connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of concurrent connections for the instance specification. -1 indicates that no limit is set on the concurrent connections at the listener level. Classic network instances do not support this parameter.
-
-Default value: -1, which indicates no limit.
+        r"""<p>Maximum number of concurrent connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of concurrent connections for the instance specification. -1 indicates no speed limit on the concurrent connections at the listener level. Classic network instances do not support this parameter.<br>Default value is -1, which means unlimited speed.</p>
         :rtype: int
         """
         return self._MaxConn
@@ -16177,9 +16277,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def MaxCps(self):
-        r"""Maximum number of new connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of new connections for the instance specification. -1 indicates that no limit is set on the new connections at the listener level. Classic network instances do not support this parameter.
-
-Default value: -1, which indicates no limit.
+        r"""<p>Maximum number of new connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of new connections for the instance specification. -1 indicates no speed limit on new connections at the listener level. Classic network instances do not support this parameter.<br>Default is -1, which means unlimited speed.</p>
         :rtype: int
         """
         return self._MaxCps
@@ -16190,7 +16288,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def IdleConnectTimeout(self):
-        r"""Specifies the idle connection timeout in seconds. this parameter applies only to TCP/UDP listeners. default value: 900 for TCP listeners and 300 for UDP listeners. value range: 10–900 for shared instances and dedicated instances and 10–1980 for lcu-supported instances. to set a value exceeding 1980, [submit a ticket application](https://console.cloud.tencent.com/workorder/category). the maximum settable value is 3600.
+        r"""<p>Idle connection timeout. This parameter applies only to TCP/UDP listeners. To set a value exceeding 1980, <a href="https://console.cloud.tencent.com/workorder/category">submit a ticket for application</a>. The maximum value can be 3600.</p><p>Range of values: [10, 1980]</p><p>Unit: seconds</p><p>Default value: 900</p><p>Default value for TCP listeners: 900. Default value for UDP listeners: 300. Value range: 10–900 for shared instances and dedicated instances and 10–1980 for LCU-supported instances.</p>
         :rtype: int
         """
         return self._IdleConnectTimeout
@@ -16201,7 +16299,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def ProxyProtocol(self):
-        r"""Specifies whether PP is supported for TCP_SSL and QUIC.
+        r"""<p>Whether TCP_SSL and QUIC support PP</p>
         :rtype: bool
         """
         return self._ProxyProtocol
@@ -16212,7 +16310,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def SnatEnable(self):
-        r"""Whether SNAT (source IP replacement) is enabled. valid values: True (enabled), False (disabled). disabled by default. note: when SnatEnable is enabled, the client source IP will be replaced, at this point the `pass through client source IP` option is disabled, and vice versa.
+        r"""<p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>
         :rtype: bool
         """
         return self._SnatEnable
@@ -16223,7 +16321,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def DataCompressMode(self):
-        r"""Data compression mode.
+        r"""<p>Data compression mode</p><p>Enumeration value:</p><ul><li>transparent: Transparent mode (default value)</li><li>compatibility: Compatible mode (enable gzip compression configuration)</li></ul>
         :rtype: str
         """
         return self._DataCompressMode
@@ -16234,7 +16332,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def RescheduleTargetZeroWeight(self):
-        r"""Reschedules when setting backend server weight to 0. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        r"""<p>Rescheduling feature, which provides a switch for changing the weight to 0. If the switch is toggled on, rescheduling is triggered when the weight of a real server is changed to 0. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: bool
         """
         return self._RescheduleTargetZeroWeight
@@ -16245,7 +16343,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def RescheduleUnhealthy(self):
-        r"""Reschedules when health check exceptions occur on real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        r"""<p>Rescheduling feature, which provides a switch for detecting health check exceptions. If the switch is toggled on, rescheduling is triggered when the real server health check fails. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: bool
         """
         return self._RescheduleUnhealthy
@@ -16256,7 +16354,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def RescheduleExpandTarget(self):
-        r"""Reschedules when adding or removing backend servers. only supported for TCP/UDP listeners. toggle on to enable this feature.
+        r"""<p>Rescheduling feature, which provides a switch for scaling out real servers. If the switch is toggled on, rescheduling is triggered when the number of real servers increases or decreases. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: bool
         """
         return self._RescheduleExpandTarget
@@ -16267,7 +16365,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def RescheduleStartTime(self):
-        r"""Specifies the trigger start time for rescheduling. value range: 0-3600s. supported only by TCP/UDP listeners.
+        r"""<p>Rescheduling trigger start time. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: int
         """
         return self._RescheduleStartTime
@@ -16278,7 +16376,7 @@ Default value: -1, which indicates no limit.
 
     @property
     def RescheduleInterval(self):
-        r"""Rescheduling trigger duration. valid values: 0-3600s. only TCP/UDP listeners support this.
+        r"""<p>Rescheduling trigger duration. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>
         :rtype: int
         """
         return self._RescheduleInterval
@@ -16364,28 +16462,25 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        :param _LoadBalancerId: <p>Unique ID of the Cloud Load Balancer (CLB). You can call the <a href="https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1">DescribeLoadBalancers</a> API to obtain the ID.</p>
         :type LoadBalancerId: str
-        :param _LoadBalancerName: Load balancing instance name. rule: 1-60 english letters, chinese characters, digits, hyphens "-", or underscores "_".
+        :param _LoadBalancerName: <p>CLB instance name. Rules: 1-80 internationally compatible characters including letters, Chinese characters, digits, "-", "_", and other common characters (Unicode supplementary characters such as emojis and rare Chinese characters are forbidden).</p>
         :type LoadBalancerName: str
-        :param _TargetRegionInfo: The backend service information of cross-region binding 1.0
+        :param _TargetRegionInfo: <p>Set the backend service information for cross-region binding 1.0 of Cloud Load Balancer.</p>
         :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
-        :param _InternetChargeInfo: Network billing parameter
+        :param _InternetChargeInfo: <p>Network billing related parameters</p>
         :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param _LoadBalancerPassToTarget: Specifies whether to allow CLB traffic to the Target.
-Enable pass-through (true): verify security groups on CLB only.
-Denies CLB traffic to the target (false): verify security groups on both CLB and backend instances.
-Specifies no modification if left blank.
+        :param _LoadBalancerPassToTarget: <p>Allow CLB traffic to the Target.<br>Enable (true): verify security groups on CLB;<br>deny CLB traffic to the Target (false): verify security groups on both CLB and backend instances.<br>Leave blank for no modification.</p>
         :type LoadBalancerPassToTarget: bool
-        :param _SwitchFlag: 
+        :param _SwitchFlag: <p>Switchover between different billing modes: 0 means no switchover, 1 means switch between prepaid and postpaid, 2 means switch between postpaid modes. Default value: 0</p>
         :type SwitchFlag: int
-        :param _SnatPro: Specifies whether the cross-region binding 2.0 feature is enabled. leave blank for no modification.
+        :param _SnatPro: <p>Whether cross-region binding 2.0 is enabled. Leave it blank for no modification.</p>
         :type SnatPro: bool
-        :param _DeleteProtect: Specifies whether to enable deletion protection. leave it blank to keep the current setting.
+        :param _DeleteProtect: <p>Whether to enable deletion protection. Leave it empty to skip modification.</p>
         :type DeleteProtect: bool
-        :param _ModifyClassicDomain: Modifies the second-level domain name of cloud load balancer from mycloud.com to tencentclb.com. the subdomain will be transformed, and the mycloud.com domain name will become invalid after modification. leave it blank if no modification is required.
+        :param _ModifyClassicDomain: <p>Change the second-level domain name of Cloud Load Balancer (CLB) from mycloud.com to tencentclb.com. The subdomain will also be transformed. After modification, the mycloud.com domain name will become invalid. Leave it blank if no modification is needed.</p>
         :type ModifyClassicDomain: bool
-        :param _AssociateEndpoint: The associated endpoint Id, which can be queried via the [DescribeVpcEndPoint](https://www.tencentcloud.com/document/product/215/54679?from_cn_redirect=1) api. input an empty string to unbind.
+        :param _AssociateEndpoint: <p>Id of the associated endpoint, which can be queried via the <a href="https://www.tencentcloud.com/document/product/215/54679?from_cn_redirect=1">DescribeVpcEndPoint</a> api. Input an empty string to unbind.</p>
         :type AssociateEndpoint: str
         """
         self._LoadBalancerId = None
@@ -16401,7 +16496,7 @@ Specifies no modification if left blank.
 
     @property
     def LoadBalancerId(self):
-        r"""Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.
+        r"""<p>Unique ID of the Cloud Load Balancer (CLB). You can call the <a href="https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1">DescribeLoadBalancers</a> API to obtain the ID.</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -16412,7 +16507,7 @@ Specifies no modification if left blank.
 
     @property
     def LoadBalancerName(self):
-        r"""Load balancing instance name. rule: 1-60 english letters, chinese characters, digits, hyphens "-", or underscores "_".
+        r"""<p>CLB instance name. Rules: 1-80 internationally compatible characters including letters, Chinese characters, digits, "-", "_", and other common characters (Unicode supplementary characters such as emojis and rare Chinese characters are forbidden).</p>
         :rtype: str
         """
         return self._LoadBalancerName
@@ -16423,7 +16518,7 @@ Specifies no modification if left blank.
 
     @property
     def TargetRegionInfo(self):
-        r"""The backend service information of cross-region binding 1.0
+        r"""<p>Set the backend service information for cross-region binding 1.0 of Cloud Load Balancer.</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
         """
         return self._TargetRegionInfo
@@ -16434,7 +16529,7 @@ Specifies no modification if left blank.
 
     @property
     def InternetChargeInfo(self):
-        r"""Network billing parameter
+        r"""<p>Network billing related parameters</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         """
         return self._InternetChargeInfo
@@ -16445,10 +16540,7 @@ Specifies no modification if left blank.
 
     @property
     def LoadBalancerPassToTarget(self):
-        r"""Specifies whether to allow CLB traffic to the Target.
-Enable pass-through (true): verify security groups on CLB only.
-Denies CLB traffic to the target (false): verify security groups on both CLB and backend instances.
-Specifies no modification if left blank.
+        r"""<p>Allow CLB traffic to the Target.<br>Enable (true): verify security groups on CLB;<br>deny CLB traffic to the Target (false): verify security groups on both CLB and backend instances.<br>Leave blank for no modification.</p>
         :rtype: bool
         """
         return self._LoadBalancerPassToTarget
@@ -16459,7 +16551,7 @@ Specifies no modification if left blank.
 
     @property
     def SwitchFlag(self):
-        r"""
+        r"""<p>Switchover between different billing modes: 0 means no switchover, 1 means switch between prepaid and postpaid, 2 means switch between postpaid modes. Default value: 0</p>
         :rtype: int
         """
         return self._SwitchFlag
@@ -16470,7 +16562,7 @@ Specifies no modification if left blank.
 
     @property
     def SnatPro(self):
-        r"""Specifies whether the cross-region binding 2.0 feature is enabled. leave blank for no modification.
+        r"""<p>Whether cross-region binding 2.0 is enabled. Leave it blank for no modification.</p>
         :rtype: bool
         """
         return self._SnatPro
@@ -16481,7 +16573,7 @@ Specifies no modification if left blank.
 
     @property
     def DeleteProtect(self):
-        r"""Specifies whether to enable deletion protection. leave it blank to keep the current setting.
+        r"""<p>Whether to enable deletion protection. Leave it empty to skip modification.</p>
         :rtype: bool
         """
         return self._DeleteProtect
@@ -16492,7 +16584,7 @@ Specifies no modification if left blank.
 
     @property
     def ModifyClassicDomain(self):
-        r"""Modifies the second-level domain name of cloud load balancer from mycloud.com to tencentclb.com. the subdomain will be transformed, and the mycloud.com domain name will become invalid after modification. leave it blank if no modification is required.
+        r"""<p>Change the second-level domain name of Cloud Load Balancer (CLB) from mycloud.com to tencentclb.com. The subdomain will also be transformed. After modification, the mycloud.com domain name will become invalid. Leave it blank if no modification is needed.</p>
         :rtype: bool
         """
         return self._ModifyClassicDomain
@@ -16503,7 +16595,7 @@ Specifies no modification if left blank.
 
     @property
     def AssociateEndpoint(self):
-        r"""The associated endpoint Id, which can be queried via the [DescribeVpcEndPoint](https://www.tencentcloud.com/document/product/215/54679?from_cn_redirect=1) api. input an empty string to unbind.
+        r"""<p>Id of the associated endpoint, which can be queried via the <a href="https://www.tencentcloud.com/document/product/215/54679?from_cn_redirect=1">DescribeVpcEndPoint</a> api. Input an empty string to unbind.</p>
         :rtype: str
         """
         return self._AssociateEndpoint
@@ -16545,8 +16637,8 @@ class ModifyLoadBalancerAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: This parameter can be used to query whether CLB billing mode switch is successful.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _DealName: <p>When switching the billing mode of Cloud Load Balancer, you can use this parameter to check if the switch task is successful.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -16556,8 +16648,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealName(self):
-        r"""This parameter can be used to query whether CLB billing mode switch is successful.
-Note: this field may return null, indicating that no valid values can be obtained.
+        r"""<p>When switching the billing mode of Cloud Load Balancer, you can use this parameter to check if the switch task is successful.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DealName
@@ -16646,7 +16738,7 @@ class ModifyLoadBalancerSlaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 
+        :param _DealName: Order number.
         :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -16656,7 +16748,7 @@ class ModifyLoadBalancerSlaResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""
+        r"""Order number.
         :rtype: str
         """
         return self._DealName
@@ -16774,7 +16866,7 @@ class ModifyRuleRequest(AbstractModel):
         :type LoadBalancerId: str
         :param _ListenerId: ID of the clb listener. can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) api.
         :type ListenerId: str
-        :param _LocationId: Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1).
+        :param _LocationId: Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API.
         :type LocationId: str
         :param _Url: New forwarding path of the forwarding rule. This parameter is not required if the URL does not need to be modified.
         :type Url: str
@@ -16834,7 +16926,7 @@ Defaults to 0.
 
     @property
     def LocationId(self):
-        r"""Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1).
+        r"""Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._LocationId
@@ -17007,24 +17099,23 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: Target group ID
+        :param _TargetGroupId: <p>Target group ID.</p>
         :type TargetGroupId: str
-        :param _TargetGroupName: New name of target group
+        :param _TargetGroupName: <p>New name of target group. Naming rule: 1-80 English letters, Chinese characters and other internationally compatible language characters, digits, connecting line "-", underscore "_" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>
         :type TargetGroupName: str
-        :param _Port: The new default port of the target group. this parameter is not supported for full listen target groups.
+        :param _Port: <p>New default port of target group. Full listen target group does not support this parameter.</p>
         :type Port: int
-        :param _ScheduleAlgorithm: Scheduling algorithm. this parameter is valid only for target groups of the new version V2 when the backend forwarding protocol is HTTP, HTTPS, or GRPC. available values:.
-<ur><li>WRR: weighted round-robin.</li><li>LEAST_CONN: LEAST connection.</li><li>IP_HASH: based on IP HASH.</li><li>default is WRR.</li></ur>.
+        :param _ScheduleAlgorithm: <p>Scheduling algorithm. This parameter is valid only for new version V2 target groups with backend forwarding protocol (HTTP|HTTPS|GRPC). Available values:<br>&lt;ur&gt;<li>WRR: weighted round-robin.</li><li>LEAST_CONN: least connection.</li><li>IP_HASH: based on IP hash.</li><li>Default WRR.</li>&lt;ur&gt;</p>
         :type ScheduleAlgorithm: str
-        :param _HealthCheck: Health check details.
+        :param _HealthCheck: <p>Health check details.</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
-        :param _Weight: Default Weight for backend service. among them: <ul><li>value ranges from 0 to 100.</li><li>after setting this value, when adding a backend service to the target group, if the backend service does not set Weight separately, use the default Weight here.</li><li>Weight parameter settings not supported for v1 target group type.</li></ul>.
+        :param _Weight: <p>Default weight of the backend service. Among them: <ul><li>Value ranges from 0 to 100.</li><li>After setting this value, when adding a backend service to the target group, if the backend service does not set weight individually, use the default weight here.</li><li>Weight parameter settings not supported for Target Group Type v1.</li></ul></p>
         :type Weight: int
-        :param _KeepaliveEnable: Specifies whether to enable the persistent connection feature. this parameter applies only to HTTP and HTTPS target groups. true: disable; false: enable. this feature is off by default.
+        :param _KeepaliveEnable: <p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS target groups. true: off; false: on. Off by default.</p>
         :type KeepaliveEnable: bool
-        :param _SessionExpireTime: Specifies the session persistence time in seconds. value range: 30-3600. default: 0 (disabled). this parameter is unsupported for TCP/UDP target groups.
+        :param _SessionExpireTime: <p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled. This parameter is not supported for TCP/UDP target group.</p>
         :type SessionExpireTime: int
-        :param _SnatEnable: 
+        :param _SnatEnable: <p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>
         :type SnatEnable: bool
         """
         self._TargetGroupId = None
@@ -17039,7 +17130,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        r"""Target group ID
+        r"""<p>Target group ID.</p>
         :rtype: str
         """
         return self._TargetGroupId
@@ -17050,7 +17141,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        r"""New name of target group
+        r"""<p>New name of target group. Naming rule: 1-80 English letters, Chinese characters and other internationally compatible language characters, digits, connecting line "-", underscore "_" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -17061,7 +17152,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""The new default port of the target group. this parameter is not supported for full listen target groups.
+        r"""<p>New default port of target group. Full listen target group does not support this parameter.</p>
         :rtype: int
         """
         return self._Port
@@ -17072,8 +17163,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def ScheduleAlgorithm(self):
-        r"""Scheduling algorithm. this parameter is valid only for target groups of the new version V2 when the backend forwarding protocol is HTTP, HTTPS, or GRPC. available values:.
-<ur><li>WRR: weighted round-robin.</li><li>LEAST_CONN: LEAST connection.</li><li>IP_HASH: based on IP HASH.</li><li>default is WRR.</li></ur>.
+        r"""<p>Scheduling algorithm. This parameter is valid only for new version V2 target groups with backend forwarding protocol (HTTP|HTTPS|GRPC). Available values:<br>&lt;ur&gt;<li>WRR: weighted round-robin.</li><li>LEAST_CONN: least connection.</li><li>IP_HASH: based on IP hash.</li><li>Default WRR.</li>&lt;ur&gt;</p>
         :rtype: str
         """
         return self._ScheduleAlgorithm
@@ -17084,7 +17174,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""Health check details.
+        r"""<p>Health check details.</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
         """
         return self._HealthCheck
@@ -17095,7 +17185,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def Weight(self):
-        r"""Default Weight for backend service. among them: <ul><li>value ranges from 0 to 100.</li><li>after setting this value, when adding a backend service to the target group, if the backend service does not set Weight separately, use the default Weight here.</li><li>Weight parameter settings not supported for v1 target group type.</li></ul>.
+        r"""<p>Default weight of the backend service. Among them: <ul><li>Value ranges from 0 to 100.</li><li>After setting this value, when adding a backend service to the target group, if the backend service does not set weight individually, use the default weight here.</li><li>Weight parameter settings not supported for Target Group Type v1.</li></ul></p>
         :rtype: int
         """
         return self._Weight
@@ -17106,7 +17196,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def KeepaliveEnable(self):
-        r"""Specifies whether to enable the persistent connection feature. this parameter applies only to HTTP and HTTPS target groups. true: disable; false: enable. this feature is off by default.
+        r"""<p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS target groups. true: off; false: on. Off by default.</p>
         :rtype: bool
         """
         return self._KeepaliveEnable
@@ -17117,7 +17207,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def SessionExpireTime(self):
-        r"""Specifies the session persistence time in seconds. value range: 30-3600. default: 0 (disabled). this parameter is unsupported for TCP/UDP target groups.
+        r"""<p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled. This parameter is not supported for TCP/UDP target group.</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -17128,7 +17218,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
 
     @property
     def SnatEnable(self):
-        r"""
+        r"""<p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>
         :rtype: bool
         """
         return self._SnatEnable
@@ -18209,7 +18299,7 @@ class RegisterTargetsRequest(AbstractModel):
         :type ListenerId: str
         :param _Targets: List of real servers to be bound. Array length limit: 20.
         :type Targets: list of Target
-        :param _LocationId: Specifies the forwarding rule ID, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1). you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.
+        :param _LocationId: Specifies the forwarding rule ID, which can be obtained through the [DescribeListeners]((https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1)) API. you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.
         :type LocationId: str
         :param _Domain: Target forwarding rule domain name. This parameter does not take effect if LocationId is specified.
         :type Domain: str
@@ -18258,7 +18348,7 @@ class RegisterTargetsRequest(AbstractModel):
 
     @property
     def LocationId(self):
-        r"""Specifies the forwarding rule ID, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1). you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.
+        r"""Specifies the forwarding rule ID, which can be obtained through the [DescribeListeners]((https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1)) API. you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.
         :rtype: str
         """
         return self._LocationId
@@ -18421,6 +18511,102 @@ class RegisterTargetsWithClassicalLBResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RenewLoadBalancersRequest(AbstractModel):
+    r"""RenewLoadBalancers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerIds: Unique ID array of the CLB instance, supports up to 20.
+        :type LoadBalancerIds: list of str
+        :param _LBChargePrepaid: Prepaid billing attributes of the CLB instance.
+        :type LBChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        """
+        self._LoadBalancerIds = None
+        self._LBChargePrepaid = None
+
+    @property
+    def LoadBalancerIds(self):
+        r"""Unique ID array of the CLB instance, supports up to 20.
+        :rtype: list of str
+        """
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
+
+    @property
+    def LBChargePrepaid(self):
+        r"""Prepaid billing attributes of the CLB instance.
+        :rtype: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        """
+        return self._LBChargePrepaid
+
+    @LBChargePrepaid.setter
+    def LBChargePrepaid(self, LBChargePrepaid):
+        self._LBChargePrepaid = LBChargePrepaid
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
+        if params.get("LBChargePrepaid") is not None:
+            self._LBChargePrepaid = LBChargePrepaid()
+            self._LBChargePrepaid._deserialize(params.get("LBChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewLoadBalancersResponse(AbstractModel):
+    r"""RenewLoadBalancers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: Order number.
+        :type DealName: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""Order number.
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
 
 
@@ -18850,13 +19036,13 @@ class RsTagRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: CLB listener ID.
+        :param _ListenerId: <p>CLB listener ID.</p>
         :type ListenerId: str
-        :param _Targets: List of real servers with tags to be modified.
+        :param _Targets: <p>List of real servers with tags to be modified.</p>
         :type Targets: list of Target
-        :param _LocationId: Forwarding rule ID, which is required only for Layer-7 rules but not for Layer-4 rules.
+        :param _LocationId: <p>Forwarding rule ID, required for layer-7 rules, not required for layer-4 rules.</p>
         :type LocationId: str
-        :param _Tag: Modified Tag of the backend service. this parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://www.tencentcloud.com/document/api/214/30694?from_cn_redirect=1#Target). the final Tag value is based on the Tag parameter in the Target. the Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.
+        :param _Tag: <p>Modified tag of the backend service. This parameter has a lower priority than the Tag parameter in the aforementioned <a href="https://www.tencentcloud.com/document/api/214/30694?from_cn_redirect=1#Target">Target</a>. The final tag value is based on the Tag parameter in the Target. The Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.</p>
         :type Tag: str
         """
         self._ListenerId = None
@@ -18866,7 +19052,7 @@ class RsTagRule(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""CLB listener ID.
+        r"""<p>CLB listener ID.</p>
         :rtype: str
         """
         return self._ListenerId
@@ -18877,7 +19063,7 @@ class RsTagRule(AbstractModel):
 
     @property
     def Targets(self):
-        r"""List of real servers with tags to be modified.
+        r"""<p>List of real servers with tags to be modified.</p>
         :rtype: list of Target
         """
         return self._Targets
@@ -18888,7 +19074,7 @@ class RsTagRule(AbstractModel):
 
     @property
     def LocationId(self):
-        r"""Forwarding rule ID, which is required only for Layer-7 rules but not for Layer-4 rules.
+        r"""<p>Forwarding rule ID, required for layer-7 rules, not required for layer-4 rules.</p>
         :rtype: str
         """
         return self._LocationId
@@ -18899,7 +19085,7 @@ class RsTagRule(AbstractModel):
 
     @property
     def Tag(self):
-        r"""Modified Tag of the backend service. this parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://www.tencentcloud.com/document/api/214/30694?from_cn_redirect=1#Target). the final Tag value is based on the Tag parameter in the Target. the Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.
+        r"""<p>Modified tag of the backend service. This parameter has a lower priority than the Tag parameter in the aforementioned <a href="https://www.tencentcloud.com/document/api/214/30694?from_cn_redirect=1#Target">Target</a>. The final tag value is based on the Tag parameter in the Target. The Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.</p>
         :rtype: str
         """
         return self._Tag
@@ -20053,7 +20239,7 @@ class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
         :param _UconfigId: Personalized configuration ID. this field is required except when creating a custom configuration, for example: pz-1234abcd.
         :type UconfigId: str
         :param _ConfigContent: Specifies the personalized configuration content. this field is required when creating or modifying custom configuration.
-Specifies specific restrictions. view layer-7 personalized configuration (https://www.tencentcloud.com/document/product/214/15171?from_cn_redirect=1).
+Specifies specific restrictions. view [layer-7 personalized configuration](https://www.tencentcloud.com/document/product/214/15171?from_cn_redirect=1).
         :type ConfigContent: str
         :param _ConfigName: Custom configuration name. specifies the name when creating or modifying a custom configuration. this field is required.
         :type ConfigName: str
@@ -20097,7 +20283,7 @@ Can be queried through the [DescribeLoadBalancers](https://www.tencentcloud.com/
     @property
     def ConfigContent(self):
         r"""Specifies the personalized configuration content. this field is required when creating or modifying custom configuration.
-Specifies specific restrictions. view layer-7 personalized configuration (https://www.tencentcloud.com/document/product/214/15171?from_cn_redirect=1).
+Specifies specific restrictions. view [layer-7 personalized configuration](https://www.tencentcloud.com/document/product/214/15171?from_cn_redirect=1).
         :rtype: str
         """
         return self._ConfigContent
@@ -21503,55 +21689,52 @@ class TargetGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: Target group ID
+        :param _TargetGroupId: <p>Target group ID</p>
         :type TargetGroupId: str
-        :param _VpcId: `vpcid` of target group
+        :param _VpcId: <p>VPC ID of the target group</p>
         :type VpcId: str
-        :param _TargetGroupName: Target group name
+        :param _TargetGroupName: <p>Target group name</p>
         :type TargetGroupName: str
-        :param _Port: Specifies the default port of the target group. for a full listen target group, this field returns 0, indicating an invalid port.
+        :param _Port: <p>Default port of target group. This field returns 0 for full listen target group, indicating an invalid port.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Port: int
-        :param _CreatedTime: Target group creation time
+        :param _CreatedTime: <p>Creation time of target group</p>
         :type CreatedTime: str
-        :param _UpdatedTime: Target group modification time
+        :param _UpdatedTime: <p>Target group modification time</p>
         :type UpdatedTime: str
-        :param _AssociatedRule: Associated rule array. This parameter cannot be obtained when the DescribeTargetGroupList API is called.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AssociatedRule: <p>Associated rule array. This parameter cannot be obtained in the DescribeTargetGroupList API call.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AssociatedRule: list of AssociationItem
-        :param _Protocol: Backend forwarding protocol of the target group. only returns valid values for the new version (v2) target group.
+        :param _Protocol: <p>Backend forwarding protocol of the target group. Only the new version target group v2 returns a valid value.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
-        :param _ScheduleAlgorithm: Scheduling algorithm. returns a valid value only when the backend forwarding protocol is HTTP, HTTPS, or GRPC. available values:.
-<ur>
-<Li>WRR: weighted round-robin.</li>.
-<Li>LEAST_CONN: specifies the least connection.</li>.
-<Li>IP_HASH: based on ip hash.</li>.
-</ur>
-
+        :param _ScheduleAlgorithm: <p>Scheduling algorithm. This parameter returns valid values only for target groups with backend forwarding protocol (HTTP, HTTPS, GRPC). Available values:</p><ur></p><li>WRR: weighted round-robin.</li><li>LEAST_CONN: LEAST connection.</li><li>IP_HASH: based on IP HASH.</li></ur>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ScheduleAlgorithm: str
-        :param _HealthCheck: Health check details.
+        :param _HealthCheck: <p>Health check details.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
-        :param _TargetGroupType: Target group type, currently supported v1 (legacy version target group) and v2 (new version target group). defaults to v1 (legacy version target group).
+        :param _TargetGroupType: <p>Target Group Type, currently supported v1 (legacy version target group), v2 (new version target group). Defaults to v1 (legacy version target group).</p>
         :type TargetGroupType: str
-        :param _AssociatedRuleCount: Number of rules associated with the target group.
+        :param _AssociatedRuleCount: <p>Number of rules associated with the target group.</p>
         :type AssociatedRuleCount: int
-        :param _RegisteredInstancesCount: Specifies the number of instances in the target group.
+        :param _RegisteredInstancesCount: <p>Number of instances in the target group.</p>
         :type RegisteredInstancesCount: int
-        :param _Tag: Tag.
+        :param _Tag: <p>Tag.</p>
         :type Tag: list of TagInfo
-        :param _Weight: Default weight. only target groups of v2 type return this field. when NULL is returned, it means the default weight is not set.
+        :param _Weight: <p>Default weight. Only target groups of v2 type return this field. When NULL is returned, it means the default weight is not set.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Weight: int
-        :param _FullListenSwitch: Specifies whether to listen to all target groups.
+        :param _FullListenSwitch: <p>Whether to listen to the target group.</p>
         :type FullListenSwitch: bool
-        :param _KeepaliveEnable: Whether to enable persistent connections. valid only when the backend forwarding protocol is HTTP/HTTPS/GRPC and returned by the target group.
+        :param _KeepaliveEnable: <p>Whether to enable long connections. Only target groups with HTTP/HTTPS/GRPC as the backend forwarding protocol return a valid value.</p>
         :type KeepaliveEnable: bool
-        :param _SessionExpireTime: Session persistence time. valid only when the backend forwarding protocol is HTTP/HTTPS/GRPC and the target group returns a valid value.
+        :param _SessionExpireTime: <p>Session hold time. Only target groups with backend forwarding protocol set to HTTP/HTTPS/GRPC return a valid value.</p>
         :type SessionExpireTime: int
-        :param _IpVersion: IP version.
+        :param _IpVersion: <p>IP version.</p>
         :type IpVersion: str
+        :param _SnatEnable: <p>Whether to enable SNAT</p>
+        :type SnatEnable: bool
         """
         self._TargetGroupId = None
         self._VpcId = None
@@ -21572,10 +21755,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._KeepaliveEnable = None
         self._SessionExpireTime = None
         self._IpVersion = None
+        self._SnatEnable = None
 
     @property
     def TargetGroupId(self):
-        r"""Target group ID
+        r"""<p>Target group ID</p>
         :rtype: str
         """
         return self._TargetGroupId
@@ -21586,7 +21770,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
-        r"""`vpcid` of target group
+        r"""<p>VPC ID of the target group</p>
         :rtype: str
         """
         return self._VpcId
@@ -21597,7 +21781,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetGroupName(self):
-        r"""Target group name
+        r"""<p>Target group name</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -21608,7 +21792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
-        r"""Specifies the default port of the target group. for a full listen target group, this field returns 0, indicating an invalid port.
+        r"""<p>Default port of target group. This field returns 0 for full listen target group, indicating an invalid port.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -21620,7 +21804,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        r"""Target group creation time
+        r"""<p>Creation time of target group</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -21631,7 +21815,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedTime(self):
-        r"""Target group modification time
+        r"""<p>Target group modification time</p>
         :rtype: str
         """
         return self._UpdatedTime
@@ -21642,7 +21826,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssociatedRule(self):
-        r"""Associated rule array. This parameter cannot be obtained when the DescribeTargetGroupList API is called.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Associated rule array. This parameter cannot be obtained in the DescribeTargetGroupList API call.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AssociationItem
         """
         return self._AssociatedRule
@@ -21653,7 +21838,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
-        r"""Backend forwarding protocol of the target group. only returns valid values for the new version (v2) target group.
+        r"""<p>Backend forwarding protocol of the target group. Only the new version target group v2 returns a valid value.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -21665,13 +21850,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScheduleAlgorithm(self):
-        r"""Scheduling algorithm. returns a valid value only when the backend forwarding protocol is HTTP, HTTPS, or GRPC. available values:.
-<ur>
-<Li>WRR: weighted round-robin.</li>.
-<Li>LEAST_CONN: specifies the least connection.</li>.
-<Li>IP_HASH: based on ip hash.</li>.
-</ur>
-
+        r"""<p>Scheduling algorithm. This parameter returns valid values only for target groups with backend forwarding protocol (HTTP, HTTPS, GRPC). Available values:</p><ur></p><li>WRR: weighted round-robin.</li><li>LEAST_CONN: LEAST connection.</li><li>IP_HASH: based on IP HASH.</li></ur>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -21683,7 +21862,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthCheck(self):
-        r"""Health check details.
+        r"""<p>Health check details.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
         """
@@ -21695,7 +21874,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetGroupType(self):
-        r"""Target group type, currently supported v1 (legacy version target group) and v2 (new version target group). defaults to v1 (legacy version target group).
+        r"""<p>Target Group Type, currently supported v1 (legacy version target group), v2 (new version target group). Defaults to v1 (legacy version target group).</p>
         :rtype: str
         """
         return self._TargetGroupType
@@ -21706,7 +21885,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssociatedRuleCount(self):
-        r"""Number of rules associated with the target group.
+        r"""<p>Number of rules associated with the target group.</p>
         :rtype: int
         """
         return self._AssociatedRuleCount
@@ -21717,7 +21896,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegisteredInstancesCount(self):
-        r"""Specifies the number of instances in the target group.
+        r"""<p>Number of instances in the target group.</p>
         :rtype: int
         """
         return self._RegisteredInstancesCount
@@ -21728,7 +21907,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tag(self):
-        r"""Tag.
+        r"""<p>Tag.</p>
         :rtype: list of TagInfo
         """
         return self._Tag
@@ -21739,7 +21918,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Weight(self):
-        r"""Default weight. only target groups of v2 type return this field. when NULL is returned, it means the default weight is not set.
+        r"""<p>Default weight. Only target groups of v2 type return this field. When NULL is returned, it means the default weight is not set.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -21751,7 +21930,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullListenSwitch(self):
-        r"""Specifies whether to listen to all target groups.
+        r"""<p>Whether to listen to the target group.</p>
         :rtype: bool
         """
         return self._FullListenSwitch
@@ -21762,7 +21941,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeepaliveEnable(self):
-        r"""Whether to enable persistent connections. valid only when the backend forwarding protocol is HTTP/HTTPS/GRPC and returned by the target group.
+        r"""<p>Whether to enable long connections. Only target groups with HTTP/HTTPS/GRPC as the backend forwarding protocol return a valid value.</p>
         :rtype: bool
         """
         return self._KeepaliveEnable
@@ -21773,7 +21952,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionExpireTime(self):
-        r"""Session persistence time. valid only when the backend forwarding protocol is HTTP/HTTPS/GRPC and the target group returns a valid value.
+        r"""<p>Session hold time. Only target groups with backend forwarding protocol set to HTTP/HTTPS/GRPC return a valid value.</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -21784,7 +21963,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpVersion(self):
-        r"""IP version.
+        r"""<p>IP version.</p>
         :rtype: str
         """
         return self._IpVersion
@@ -21792,6 +21971,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @IpVersion.setter
     def IpVersion(self, IpVersion):
         self._IpVersion = IpVersion
+
+    @property
+    def SnatEnable(self):
+        r"""<p>Whether to enable SNAT</p>
+        :rtype: bool
+        """
+        return self._SnatEnable
+
+    @SnatEnable.setter
+    def SnatEnable(self, SnatEnable):
+        self._SnatEnable = SnatEnable
 
 
     def _deserialize(self, params):
@@ -21826,6 +22016,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._KeepaliveEnable = params.get("KeepaliveEnable")
         self._SessionExpireTime = params.get("SessionExpireTime")
         self._IpVersion = params.get("IpVersion")
+        self._SnatEnable = params.get("SnatEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21911,6 +22102,112 @@ Valid values: 0-100.
         self._Port = params.get("Port")
         self._Weight = params.get("Weight")
         self._NewPort = params.get("NewPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TargetGroupInstanceStatus(AbstractModel):
+    r"""It is used for the health check status of the target group backend RS.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIp: IP of backend RS
+        :type InstanceIp: str
+        :param _Status: Health check status. Parameter values and meanings are as follows:
+● on: Indicates checking.
+● off: means health check disabled.
+● Health: Indicates healthy.
+● unhealth: indicates being abnormal.
+        :type Status: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _Port: Port.
+        :type Port: int
+        :param _EniId: NIC ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EniId: str
+        """
+        self._InstanceIp = None
+        self._Status = None
+        self._InstanceId = None
+        self._Port = None
+        self._EniId = None
+
+    @property
+    def InstanceIp(self):
+        r"""IP of backend RS
+        :rtype: str
+        """
+        return self._InstanceIp
+
+    @InstanceIp.setter
+    def InstanceIp(self, InstanceIp):
+        self._InstanceIp = InstanceIp
+
+    @property
+    def Status(self):
+        r"""Health check status. Parameter values and meanings are as follows:
+● on: Indicates checking.
+● off: means health check disabled.
+● Health: Indicates healthy.
+● unhealth: indicates being abnormal.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Port(self):
+        r"""Port.
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def EniId(self):
+        r"""NIC ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EniId
+
+    @EniId.setter
+    def EniId(self, EniId):
+        self._EniId = EniId
+
+
+    def _deserialize(self, params):
+        self._InstanceIp = params.get("InstanceIp")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        self._Port = params.get("Port")
+        self._EniId = params.get("EniId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
