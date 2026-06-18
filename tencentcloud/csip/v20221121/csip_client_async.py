@@ -97,6 +97,60 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateIaCAccessToken(
+            self,
+            request: models.CreateIaCAccessTokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateIaCAccessTokenResponse:
+        """
+        Create an IaC detection integration Token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateIaCAccessToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateIaCAccessTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateIaCFileExportJob(
+            self,
+            request: models.CreateIaCFileExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateIaCFileExportJobResponse:
+        """
+        Create an IaC detection file export task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateIaCFileExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateIaCFileExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateIaCFileReScanTask(
+            self,
+            request: models.CreateIaCFileReScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateIaCFileReScanTaskResponse:
+        """
+        Create an IaC detection file rescan task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateIaCFileReScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateIaCFileReScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRiskCenterScanTask(
             self,
             request: models.CreateRiskCenterScanTaskRequest,
@@ -110,6 +164,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateRiskCenterScanTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateRiskCenterScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSkillScan(
+            self,
+            request: models.CreateSkillScanRequest,
+            opts: Dict = None,
+    ) -> models.CreateSkillScanResponse:
+        """
+        Upload the Skill ZIP file to trigger asynchronous security detection. After a successful upload, use the returned ContentHash and EngineVersion to poll the DescribeSkillScanResult API to obtain the result. The upload API is idempotent, and uploading the same file with an identical hash will not create a repetition task. The detection result is reserved for 90 days. If overdue, reupload the file for detection.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSkillScan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSkillScanResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -133,6 +205,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteIaCAccessToken(
+            self,
+            request: models.DeleteIaCAccessTokenRequest,
+            opts: Dict = None,
+    ) -> models.DeleteIaCAccessTokenResponse:
+        """
+        Delete an IaC detection integration Token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteIaCAccessToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteIaCAccessTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteIaCFile(
+            self,
+            request: models.DeleteIaCFileRequest,
+            opts: Dict = None,
+    ) -> models.DeleteIaCFileResponse:
+        """
+        Delete IaC detection file
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteIaCFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteIaCFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteRiskScanTask(
             self,
             request: models.DeleteRiskScanTaskRequest,
@@ -146,6 +254,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteRiskScanTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRiskScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAIAgentAssetList(
+            self,
+            request: models.DescribeAIAgentAssetListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIAgentAssetListResponse:
+        """
+        Retrieve the AI agent asset list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIAgentAssetList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIAgentAssetListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAKAnalysisDetail(
+            self,
+            request: models.DescribeAKAnalysisDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAKAnalysisDetailResponse:
+        """
+        Access key alarm record AI analysis result details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAKAnalysisDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAKAnalysisDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -295,6 +439,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAlertList(
+            self,
+            request: models.DescribeAlertListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAlertListResponse:
+        """
+        This API is used to list all alarms in the alert center.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAlertList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAlertListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAssetProcessList(
             self,
             request: models.DescribeAssetProcessListRequest,
@@ -308,6 +470,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeAssetProcessList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAssetProcessListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAssetRiskList(
+            self,
+            request: models.DescribeAssetRiskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAssetRiskListResponse:
+        """
+        Cloud resource configuration risk list from asset perspective
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAssetRiskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAssetRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAssetViewVulRiskList(
+            self,
+            request: models.DescribeAssetViewVulRiskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAssetViewVulRiskListResponse:
+        """
+        Obtain Vulnerability Risk List from Asset's Perspective
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAssetViewVulRiskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAssetViewVulRiskListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -373,7 +571,7 @@ class CsipClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCVMAssetsResponse:
         """
-        This API is used to query the list of CVM assets.
+        Retrieve the cvm list.
         """
         
         kwargs = {}
@@ -398,6 +596,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeCallRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCallRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCheckViewRisks(
+            self,
+            request: models.DescribeCheckViewRisksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCheckViewRisksResponse:
+        """
+        List of cloud resource configuration risks from a check perspective
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCheckViewRisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCheckViewRisksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -434,6 +650,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeClusterPodAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeClusterPodAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConfigCheckRules(
+            self,
+            request: models.DescribeConfigCheckRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConfigCheckRulesResponse:
+        """
+        Cloud Resource Configuration Risk Rule List Example
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConfigCheckRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConfigCheckRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -583,6 +817,114 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeIaCFileList(
+            self,
+            request: models.DescribeIaCFileListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIaCFileListResponse:
+        """
+        Retrieve the IaC detection file list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIaCFileList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIaCFileListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIaCFileOverview(
+            self,
+            request: models.DescribeIaCFileOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIaCFileOverviewResponse:
+        """
+        Retrieve IaC detection file overview
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIaCFileOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIaCFileOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIaCFileReport(
+            self,
+            request: models.DescribeIaCFileReportRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIaCFileReportResponse:
+        """
+        Retrieve the IaC detection file report
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIaCFileReport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIaCFileReportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIaCTokenList(
+            self,
+            request: models.DescribeIaCTokenListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIaCTokenListResponse:
+        """
+        Retrieve the IaC detection integration Token list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIaCTokenList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIaCTokenListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKeySandboxCredential(
+            self,
+            request: models.DescribeKeySandboxCredentialRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKeySandboxCredentialResponse:
+        """
+        Query credential details and return credential metadata and masked credential data. The access kind returns an Access array (original Key, masked Value), and the sts kind returns an STS object (original System, masked SecretID and SecretKey).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKeySandboxCredential"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKeySandboxCredentialResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKeySandboxCredentialList(
+            self,
+            request: models.DescribeKeySandboxCredentialListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKeySandboxCredentialListResponse:
+        """
+        Query the voucher list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKeySandboxCredentialList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKeySandboxCredentialListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeListenerList(
             self,
             request: models.DescribeListenerListRequest,
@@ -625,7 +967,7 @@ class CsipClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeOrganizationInfoResponse:
         """
-        Check group account details
+        Query Group Account Details
         """
         
         kwargs = {}
@@ -643,7 +985,7 @@ class CsipClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeOrganizationUserInfoResponse:
         """
-        Query group account user list
+        Query Group Account User List
         """
         
         kwargs = {}
@@ -877,13 +1219,67 @@ class CsipClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRiskCenterWebsiteRiskListResponse:
         """
-        This API is used to get the list of content risks.
+        Obtain Content Risk List
         """
         
         kwargs = {}
         kwargs["action"] = "DescribeRiskCenterWebsiteRiskList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRiskCenterWebsiteRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRiskDetailList(
+            self,
+            request: models.DescribeRiskDetailListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRiskDetailListResponse:
+        """
+        Risk detail list example
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRiskDetailList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRiskDetailListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRiskRuleDetail(
+            self,
+            request: models.DescribeRiskRuleDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRiskRuleDetailResponse:
+        """
+        Query risk rule details example
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRiskRuleDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRiskRuleDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRiskRules(
+            self,
+            request: models.DescribeRiskRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRiskRulesResponse:
+        """
+        Advanced configuration risk rule list illustrative example
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRiskRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRiskRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -961,6 +1357,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSkillScanPayInfo(
+            self,
+            request: models.DescribeSkillScanPayInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillScanPayInfoResponse:
+        """
+        This API is used to query the billing information of Skill security detection, including order status, total quota, consumed quota, expiry time, and payment mode. It returns zero values (only TimeNow and BetaEndTime included) when no order exists. Trial orders can be claimed via ModifyTrialStatus(Module=9), and official orders are generated by the billing system.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillScanPayInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillScanPayInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSkillScanResult(
+            self,
+            request: models.DescribeSkillScanResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillScanResultResponse:
+        """
+        Query the security detection result of Skill. After successfully calling CreateSkillScan, use the returned ContentHash + EngineVersion to poll this interface and obtain the result. For the first time, poll 5 minutes after successful upload. If detection is not completed, poll every 1 minute afterward. The response distinguishes four types of status via the Status field: detection complete (SUCCESS), in-progress detection (SCANNING), no record (NOT_FOUND), and detection failed (FAILED). Note: The detection result is retained for 90 days. It will return NOT_FOUND when overdue.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillScanResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillScanResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSourceIPAsset(
             self,
             request: models.DescribeSourceIPAssetRequest,
@@ -985,7 +1417,7 @@ class CsipClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSubUserInfoResponse:
         """
-        Query the group's sub-account list
+        Query the sub-account list of the group
         """
         
         kwargs = {}
@@ -1046,6 +1478,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeTaskLogURL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTaskLogURLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTopAttackInfo(
+            self,
+            request: models.DescribeTopAttackInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopAttackInfoResponse:
+        """
+        Query TOP attack information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopAttackInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopAttackInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUebaRule(
+            self,
+            request: models.DescribeUebaRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUebaRuleResponse:
+        """
+        Query the user behavior analysis policy list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUebaRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUebaRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1177,6 +1645,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyIaCTokenPeriod(
+            self,
+            request: models.ModifyIaCTokenPeriodRequest,
+            opts: Dict = None,
+    ) -> models.ModifyIaCTokenPeriodResponse:
+        """
+        This API is used to modify the storage cycle of the IaC detection integration Token.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyIaCTokenPeriod"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyIaCTokenPeriodResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyOrganizationAccountStatus(
             self,
             request: models.ModifyOrganizationAccountStatusRequest,
@@ -1231,6 +1717,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyUebaRuleSwitch(
+            self,
+            request: models.ModifyUebaRuleSwitchRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUebaRuleSwitchResponse:
+        """
+        Refresh the custom policy switch
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUebaRuleSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUebaRuleSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StopRiskCenterTask(
             self,
             request: models.StopRiskCenterTaskRequest,
@@ -1280,6 +1784,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "UpdateAccessKeyRemark"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateAccessKeyRemarkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateAlertStatusList(
+            self,
+            request: models.UpdateAlertStatusListRequest,
+            opts: Dict = None,
+    ) -> models.UpdateAlertStatusListResponse:
+        """
+        Batch alarm status process API
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateAlertStatusList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateAlertStatusListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -35,7 +35,7 @@ INVALIDPARAMETER_INVALIDTEXT = 'InvalidParameter.InvalidText'
 # Invalid `AppId`. See the description of `AppId`.
 INVALIDPARAMETERVALUE_APPID = 'InvalidParameterValue.AppId'
 
-# The `APPID` is not registered. Activate the service in the TTS console (https://console.cloud.tencent.com/tts) first.
+# The `APPID` is not registered. Activate the service in the [TTS console ](https://console.cloud.tencent.com/tts) first.
 INVALIDPARAMETERVALUE_APPIDNOTREGISTERED = 'InvalidParameterValue.AppIdNotRegistered'
 
 # Invalid `Codec`. See the description of `Codec`.

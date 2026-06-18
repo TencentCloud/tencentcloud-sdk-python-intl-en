@@ -157,7 +157,7 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
 <li>101055-zhiyou (Chinese)</li>
 <li>101056-zhilin (Northeastern Mandarin)</li>
         :type VoiceType: int
-        :param _FastVoiceType: 
+        :param _FastVoiceType: Instant Voice Clone Voice ID. Required when using Instant Voice Clone voices.
         :type FastVoiceType: str
         :param _PrimaryLanguage: Primary language type: <li>1 - Chinese (default)</li><li>2 - English</li>
         :type PrimaryLanguage: int
@@ -169,9 +169,9 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
         :type EnableSubtitle: bool
         :param _SegmentRate: The threshold of speech segmentation sensibility, which can be `0` (default), `1`, or `2`. A larger value indicates fewer segments, and the model tends to only segment sentences based on punctuation marks. We recommend you not change this parameter to avoid adverse effect on speech synthesis.
         :type SegmentRate: int
-        :param _EmotionCategory: 
+        :param _EmotionCategory: Controls the emotion of synthesized speech. This parameter is supported only by multi-emotion voices. Valid values: neutral, sad, happy, angry, fear, news, story, radio, poetry, call, sajiao, disgusted, amaze, peaceful, exciting, aojiao, jieshuo. <br>Example value: neutral.
         :type EmotionCategory: str
-        :param _EmotionIntensity: 
+        :param _EmotionIntensity: Controls the intensity of emotion in synthesized speech. Valid values: [50, 200]. Default: 100. Takes effect only when EmotionCategoryis specified.
         :type EmotionIntensity: int
         """
         self._Text = None
@@ -274,7 +274,7 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
 
     @property
     def FastVoiceType(self):
-        r"""
+        r"""Instant Voice Clone Voice ID. Required when using Instant Voice Clone voices.
         :rtype: str
         """
         return self._FastVoiceType
@@ -340,7 +340,7 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
 
     @property
     def EmotionCategory(self):
-        r"""
+        r"""Controls the emotion of synthesized speech. This parameter is supported only by multi-emotion voices. Valid values: neutral, sad, happy, angry, fear, news, story, radio, poetry, call, sajiao, disgusted, amaze, peaceful, exciting, aojiao, jieshuo. <br>Example value: neutral.
         :rtype: str
         """
         return self._EmotionCategory
@@ -351,7 +351,7 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
 
     @property
     def EmotionIntensity(self):
-        r"""
+        r"""Controls the intensity of emotion in synthesized speech. Valid values: [50, 200]. Default: 100. Takes effect only when EmotionCategoryis specified.
         :rtype: int
         """
         return self._EmotionIntensity

@@ -97,6 +97,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateUsers(
+            self,
+            request: models.CreateUsersRequest,
+            opts: Dict = None,
+    ) -> models.CreateUsersResponse:
+        """
+        This API is used to create users in batches.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDBSBackupSets(
             self,
             request: models.DeleteDBSBackupSetsRequest,
@@ -110,6 +128,24 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "DeleteDBSBackupSets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDBSBackupSetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteUsers(
+            self,
+            request: models.DeleteUsersRequest,
+            opts: Dict = None,
+    ) -> models.DeleteUsersResponse:
+        """
+        This API is used to batch delete users.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteUsersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -367,6 +403,42 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceSSLStatus(
+            self,
+            request: models.DescribeInstanceSSLStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceSSLStatusResponse:
+        """
+        This API is used to query the SSL status of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceSSLStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceSSLStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMaintenanceWindow(
+            self,
+            request: models.DescribeMaintenanceWindowRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMaintenanceWindowResponse:
+        """
+        Query maintenance time window configurations
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMaintenanceWindow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMaintenanceWindowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSaleInfo(
             self,
             request: models.DescribeSaleInfoRequest,
@@ -380,6 +452,24 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "DescribeSaleInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSaleInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSlowLogs(
+            self,
+            request: models.DescribeSlowLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSlowLogsResponse:
+        """
+        This API is used to query slow logs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSlowLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSlowLogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -529,6 +619,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDBInstanceVPort(
+            self,
+            request: models.ModifyDBInstanceVPortRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBInstanceVPortResponse:
+        """
+        This API is used to modify the VPC port of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBInstanceVPort"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBInstanceVPortResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDBParameters(
             self,
             request: models.ModifyDBParametersRequest,
@@ -601,6 +709,60 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInstanceNetwork(
+            self,
+            request: models.ModifyInstanceNetworkRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceNetworkResponse:
+        """
+        This API is used to modify the network to which the instance belongs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceNetwork"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceNetworkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyInstanceSSLStatus(
+            self,
+            request: models.ModifyInstanceSSLStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceSSLStatusResponse:
+        """
+        This API is used to enable or disable the SSL feature of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceSSLStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceSSLStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyMaintenanceWindow(
+            self,
+            request: models.ModifyMaintenanceWindowRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMaintenanceWindowResponse:
+        """
+        Add new or modify instance maintenance time window configurations
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMaintenanceWindow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMaintenanceWindowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyUserPrivileges(
             self,
             request: models.ModifyUserPrivilegesRequest,
@@ -614,6 +776,24 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "ModifyUserPrivileges"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyUserPrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResetUserPassword(
+            self,
+            request: models.ResetUserPasswordRequest,
+            opts: Dict = None,
+    ) -> models.ResetUserPasswordResponse:
+        """
+        This API is used to reset user password.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetUserPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetUserPasswordResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -4629,6 +4629,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMachineInfo(self, request):
+        r"""This API is used to get server details.
+
+        :param request: Request instance for DescribeMachineInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMachineInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMachineInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMachineLicenseDetail(self, request):
         r"""This API is used to query the machine authorization information.
 

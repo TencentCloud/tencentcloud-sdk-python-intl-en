@@ -2153,6 +2153,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type FullReplications: int
         :param _InstanceMode: <p>Instance mode, normal: standard type; enhanced: enhanced</p>
         :type InstanceMode: str
+        :param _SecurityGroupIds: <p>Security group id list</p>
+        :type SecurityGroupIds: list of str
         """
         self._Zone = None
         self._VpcId = None
@@ -2174,6 +2176,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._Zones = None
         self._FullReplications = None
         self._InstanceMode = None
+        self._SecurityGroupIds = None
 
     @property
     def Zone(self):
@@ -2395,6 +2398,17 @@ class CreateCloneInstanceRequest(AbstractModel):
     def InstanceMode(self, InstanceMode):
         self._InstanceMode = InstanceMode
 
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>Security group id list</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2422,6 +2436,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._Zones = params.get("Zones")
         self._FullReplications = params.get("FullReplications")
         self._InstanceMode = params.get("InstanceMode")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2561,6 +2576,14 @@ class CreateDBInstancesRequest(AbstractModel):
         :type SQLMode: str
         :param _AutoScaleConfig: <p>ccu configuration of the svls instance</p>
         :type AutoScaleConfig: :class:`tencentcloud.tdmysql.v20211122.models.AutoScalingConfig`
+        :param _SecurityGroupIds: <p>Bind to security group list</p>
+        :type SecurityGroupIds: list of str
+        :param _UserName: <p>root userName. The default is dbaadmin in the current version. It will reset to dbaadmin even if a value is passed.</p>
+        :type UserName: str
+        :param _Password: <p>dbaadmin password</p>
+        :type Password: str
+        :param _EncryptionEnable: <p>Whether transparent data encryption is enabled. 0: not enabled; 1: enabled</p>
+        :type EncryptionEnable: int
         """
         self._Zone = None
         self._VpcId = None
@@ -2592,6 +2615,10 @@ class CreateDBInstancesRequest(AbstractModel):
         self._TemplateId = None
         self._SQLMode = None
         self._AutoScaleConfig = None
+        self._SecurityGroupIds = None
+        self._UserName = None
+        self._Password = None
+        self._EncryptionEnable = None
 
     @property
     def Zone(self):
@@ -2923,6 +2950,50 @@ class CreateDBInstancesRequest(AbstractModel):
     def AutoScaleConfig(self, AutoScaleConfig):
         self._AutoScaleConfig = AutoScaleConfig
 
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>Bind to security group list</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def UserName(self):
+        r"""<p>root userName. The default is dbaadmin in the current version. It will reset to dbaadmin even if a value is passed.</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""<p>dbaadmin password</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptionEnable(self):
+        r"""<p>Whether transparent data encryption is enabled. 0: not enabled; 1: enabled</p>
+        :rtype: int
+        """
+        return self._EncryptionEnable
+
+    @EncryptionEnable.setter
+    def EncryptionEnable(self, EncryptionEnable):
+        self._EncryptionEnable = EncryptionEnable
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2967,6 +3038,10 @@ class CreateDBInstancesRequest(AbstractModel):
         if params.get("AutoScaleConfig") is not None:
             self._AutoScaleConfig = AutoScalingConfig()
             self._AutoScaleConfig._deserialize(params.get("AutoScaleConfig"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._EncryptionEnable = params.get("EncryptionEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3171,6 +3246,150 @@ class CreateDBSBackupResponse(AbstractModel):
     def _deserialize(self, params):
         self._BackupSetId = params.get("BackupSetId")
         self._IsSuccess = params.get("IsSuccess")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateUsersRequest(AbstractModel):
+    r"""CreateUsers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance id</p>
+        :type InstanceId: str
+        :param _Users: <p>Add user list</p>
+        :type Users: list of User
+        :param _Password: <p>Unencrypted password</p>
+        :type Password: str
+        :param _EncryptedPassword: <p>Encryption password</p>
+        :type EncryptedPassword: str
+        :param _Description: <p>User description</p>
+        :type Description: str
+        """
+        self._InstanceId = None
+        self._Users = None
+        self._Password = None
+        self._EncryptedPassword = None
+        self._Description = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Users(self):
+        r"""<p>Add user list</p>
+        :rtype: list of User
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def Password(self):
+        r"""<p>Unencrypted password</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptedPassword(self):
+        r"""<p>Encryption password</p>
+        :rtype: str
+        """
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
+    @property
+    def Description(self):
+        r"""<p>User description</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = User()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        self._Password = params.get("Password")
+        self._EncryptedPassword = params.get("EncryptedPassword")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUsersResponse(AbstractModel):
+    r"""CreateUsers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>Task ID.</p>
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>Task ID.</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3737,6 +3956,105 @@ class DeleteDBSBackupSetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteUsersRequest(AbstractModel):
+    r"""DeleteUsers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance id</p>
+        :type InstanceId: str
+        :param _Users: <p>Batch delete user list</p>
+        :type Users: list of User
+        """
+        self._InstanceId = None
+        self._Users = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Users(self):
+        r"""<p>Batch delete user list</p>
+        :rtype: list of User
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = User()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUsersResponse(AbstractModel):
+    r"""DeleteUsers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>Task ID.</p>
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>Task ID.</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceDetailRequest(AbstractModel):
     r"""DescribeDBInstanceDetail request structure.
 
@@ -3903,6 +4221,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AnalysisInstanceInfo: :class:`tencentcloud.tdmysql.v20211122.models.AnalysisInstanceInfo`
         :param _MaintenanceWindow: <p>Maintenance window configuration</p>
         :type MaintenanceWindow: :class:`tencentcloud.tdmysql.v20211122.models.MaintenanceWindowInfo`
+        :param _EncryptionEnable: <p>Whether transparent data encryption is enabled. 0: not enabled; 1: enabled</p>
+        :type EncryptionEnable: int
+        :param _EncryptionKmsRegion: <p>Real-use kms region for subsequent call to kms service</p>
+        :type EncryptionKmsRegion: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3965,6 +4287,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AnalysisRelationInfos = None
         self._AnalysisInstanceInfo = None
         self._MaintenanceWindow = None
+        self._EncryptionEnable = None
+        self._EncryptionKmsRegion = None
         self._RequestId = None
 
     @property
@@ -4622,6 +4946,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._MaintenanceWindow = MaintenanceWindow
 
     @property
+    def EncryptionEnable(self):
+        r"""<p>Whether transparent data encryption is enabled. 0: not enabled; 1: enabled</p>
+        :rtype: int
+        """
+        return self._EncryptionEnable
+
+    @EncryptionEnable.setter
+    def EncryptionEnable(self, EncryptionEnable):
+        self._EncryptionEnable = EncryptionEnable
+
+    @property
+    def EncryptionKmsRegion(self):
+        r"""<p>Real-use kms region for subsequent call to kms service</p>
+        :rtype: str
+        """
+        return self._EncryptionKmsRegion
+
+    @EncryptionKmsRegion.setter
+    def EncryptionKmsRegion(self, EncryptionKmsRegion):
+        self._EncryptionKmsRegion = EncryptionKmsRegion
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -4719,6 +5065,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("MaintenanceWindow") is not None:
             self._MaintenanceWindow = MaintenanceWindowInfo()
             self._MaintenanceWindow._deserialize(params.get("MaintenanceWindow"))
+        self._EncryptionEnable = params.get("EncryptionEnable")
+        self._EncryptionKmsRegion = params.get("EncryptionKmsRegion")
         self._RequestId = params.get("RequestId")
 
 
@@ -4729,20 +5077,23 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: Filter parameters.
+        :param _Filters: <p>Filter parameters</p>
         :type Filters: list of InstanceFilter
-        :param _Limit: Maximum return count, defaults to 20, maximum 100
+        :param _Limit: <p>Maximum return count, defaults to 20, maximum 100</p>
         :type Limit: int
-        :param _Offset: Offset, which is an integer multiple of Limit.
+        :param _Offset: <p>Offset, which is an integer multiple of Limit.</p>
         :type Offset: int
+        :param _EngineType: <p>Specified query engine type</p><p>Enumeration value:</p><ul><li>libra: Column storage engine</li></ul>
+        :type EngineType: str
         """
         self._Filters = None
         self._Limit = None
         self._Offset = None
+        self._EngineType = None
 
     @property
     def Filters(self):
-        r"""Filter parameters.
+        r"""<p>Filter parameters</p>
         :rtype: list of InstanceFilter
         """
         return self._Filters
@@ -4753,7 +5104,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Maximum return count, defaults to 20, maximum 100
+        r"""<p>Maximum return count, defaults to 20, maximum 100</p>
         :rtype: int
         """
         return self._Limit
@@ -4764,7 +5115,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset, which is an integer multiple of Limit.
+        r"""<p>Offset, which is an integer multiple of Limit.</p>
         :rtype: int
         """
         return self._Offset
@@ -4772,6 +5123,17 @@ class DescribeDBInstancesRequest(AbstractModel):
     @Offset.setter
     def Offset(self, Offset):
         self._Offset = Offset
+
+    @property
+    def EngineType(self):
+        r"""<p>Specified query engine type</p><p>Enumeration value:</p><ul><li>libra: Column storage engine</li></ul>
+        :rtype: str
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
 
 
     def _deserialize(self, params):
@@ -4783,6 +5145,7 @@ class DescribeDBInstancesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4800,9 +5163,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Instances: Return the instance list information
+        :param _Instances: <p>Return to instance list information</p>
         :type Instances: list of InstanceInfo
-        :param _TotalCount: Total number of conditions met
+        :param _TotalCount: <p>Total number of conditions met</p>
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4813,7 +5176,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        r"""Return the instance list information
+        r"""<p>Return to instance list information</p>
         :rtype: list of InstanceInfo
         """
         return self._Instances
@@ -4824,7 +5187,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of conditions met
+        r"""<p>Total number of conditions met</p>
         :rtype: int
         """
         return self._TotalCount
@@ -5185,11 +5548,8 @@ class DescribeDBSAvailableRecoveryTimeRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _BackupSetId: <p>Backup set ID. the value comes from the DescribeDBSBackupSets api response.</p>
-        :type BackupSetId: int
         """
         self._InstanceId = None
-        self._BackupSetId = None
 
     @property
     def InstanceId(self):
@@ -5202,21 +5562,9 @@ class DescribeDBSAvailableRecoveryTimeRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
-    @property
-    def BackupSetId(self):
-        r"""<p>Backup set ID. the value comes from the DescribeDBSBackupSets api response.</p>
-        :rtype: int
-        """
-        return self._BackupSetId
-
-    @BackupSetId.setter
-    def BackupSetId(self, BackupSetId):
-        self._BackupSetId = BackupSetId
-
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._BackupSetId = params.get("BackupSetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6728,6 +7076,194 @@ class DescribeFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceSSLStatusRequest(AbstractModel):
+    r"""DescribeInstanceSSLStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceSSLStatusResponse(AbstractModel):
+    r"""DescribeInstanceSSLStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SSLStatus: <p>SSL enable status</p><p>Enumeration values:</p><ul><li>Enabled: SSL is on</li><li>Disabled: SSL is closed</li><li>Enabling: SSL is enabling</li><li>Disabling: SSL is disabling</li></ul>
+        :type SSLStatus: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SSLStatus = None
+        self._RequestId = None
+
+    @property
+    def SSLStatus(self):
+        r"""<p>SSL enable status</p><p>Enumeration values:</p><ul><li>Enabled: SSL is on</li><li>Disabled: SSL is closed</li><li>Enabling: SSL is enabling</li><li>Disabling: SSL is disabling</li></ul>
+        :rtype: str
+        """
+        return self._SSLStatus
+
+    @SSLStatus.setter
+    def SSLStatus(self, SSLStatus):
+        self._SSLStatus = SSLStatus
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SSLStatus = params.get("SSLStatus")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMaintenanceWindowRequest(AbstractModel):
+    r"""DescribeMaintenanceWindow request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMaintenanceWindowResponse(AbstractModel):
+    r"""DescribeMaintenanceWindow response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        :param _MaintenanceWindow: <p>Ops window time range</p>
+        :type MaintenanceWindow: str
+        :param _WeekDays: <p>Ops window number of days range</p>
+        :type WeekDays: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._MaintenanceWindow = None
+        self._WeekDays = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MaintenanceWindow(self):
+        r"""<p>Ops window time range</p>
+        :rtype: str
+        """
+        return self._MaintenanceWindow
+
+    @MaintenanceWindow.setter
+    def MaintenanceWindow(self, MaintenanceWindow):
+        self._MaintenanceWindow = MaintenanceWindow
+
+    @property
+    def WeekDays(self):
+        r"""<p>Ops window number of days range</p>
+        :rtype: list of str
+        """
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MaintenanceWindow = params.get("MaintenanceWindow")
+        self._WeekDays = params.get("WeekDays")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSaleInfoRequest(AbstractModel):
     r"""DescribeSaleInfo request structure.
 
@@ -7223,6 +7759,217 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeSlowLogsRequest(AbstractModel):
+    r"""DescribeSlowLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _StartTime: Search log start time
+        :type StartTime: str
+        :param _EndTime: End time to retrieve logs
+        :type EndTime: str
+        :param _LogFilter: Filter criteria.
+        :type LogFilter: list of LogFilter
+        :param _Limit: Items per page limit
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _Order: Sort, selectable: ASC, DESC
+        :type Order: str
+        :param _OrderBy: Sorting criteria may not be the same as selectable fields used to sort according to business.
+        :type OrderBy: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LogFilter = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._OrderBy = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""Search log start time
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""End time to retrieve logs
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LogFilter(self):
+        r"""Filter criteria.
+        :rtype: list of LogFilter
+        """
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
+    @property
+    def Limit(self):
+        r"""Items per page limit
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""Sort, selectable: ASC, DESC
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        r"""Sorting criteria may not be the same as selectable fields used to sort according to business.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = LogFilter()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlowLogsResponse(AbstractModel):
+    r"""DescribeSlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of logs
+        :type TotalCount: int
+        :param _Items: Log details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Items: list of SlowLogData
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Total number of logs
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""Log details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SlowLogData
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SlowLogData()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSpecsRequest(AbstractModel):
@@ -7849,6 +8596,231 @@ class ExpandInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Explain(AbstractModel):
+    r"""Execution plan
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>Identifier</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ID: str
+        :param _SelectType: <p>Query type</p><p>Enumeration value:</p><ul><li>SIMPLE: A regular query with no subquery and UNION. Single table or ordinary JOIN is SIMPLE.</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SelectType: str
+        :param _Table: <p>Table name</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Table: str
+        :param _Partitions: <p>Partition</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Partitions: str
+        :param _Type: <p>Access type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _PossibleKeys: <p>Possibly used indexes</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PossibleKeys: str
+        :param _Key: <p>Used Indexes</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Key: str
+        :param _KeyLen: <p>Used Indexes length</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KeyLen: str
+        :param _Ref: <p>Column or constant to compare with the index</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Ref: str
+        :param _Rows: <p>Estimate the number of scanned rows</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Rows: str
+        :param _Filtered: <p>Estimated percentage of remaining rows after conditional filtering</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Filtered: str
+        :param _Extra: <p>Additional information, such as Using index, Using filesort</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        """
+        self._ID = None
+        self._SelectType = None
+        self._Table = None
+        self._Partitions = None
+        self._Type = None
+        self._PossibleKeys = None
+        self._Key = None
+        self._KeyLen = None
+        self._Ref = None
+        self._Rows = None
+        self._Filtered = None
+        self._Extra = None
+
+    @property
+    def ID(self):
+        r"""<p>Identifier</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def SelectType(self):
+        r"""<p>Query type</p><p>Enumeration value:</p><ul><li>SIMPLE: A regular query with no subquery and UNION. Single table or ordinary JOIN is SIMPLE.</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SelectType
+
+    @SelectType.setter
+    def SelectType(self, SelectType):
+        self._SelectType = SelectType
+
+    @property
+    def Table(self):
+        r"""<p>Table name</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Partitions(self):
+        r"""<p>Partition</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Type(self):
+        r"""<p>Access type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PossibleKeys(self):
+        r"""<p>Possibly used indexes</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PossibleKeys
+
+    @PossibleKeys.setter
+    def PossibleKeys(self, PossibleKeys):
+        self._PossibleKeys = PossibleKeys
+
+    @property
+    def Key(self):
+        r"""<p>Used Indexes</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def KeyLen(self):
+        r"""<p>Used Indexes length</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._KeyLen
+
+    @KeyLen.setter
+    def KeyLen(self, KeyLen):
+        self._KeyLen = KeyLen
+
+    @property
+    def Ref(self):
+        r"""<p>Column or constant to compare with the index</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Ref
+
+    @Ref.setter
+    def Ref(self, Ref):
+        self._Ref = Ref
+
+    @property
+    def Rows(self):
+        r"""<p>Estimate the number of scanned rows</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def Filtered(self):
+        r"""<p>Estimated percentage of remaining rows after conditional filtering</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Filtered
+
+    @Filtered.setter
+    def Filtered(self, Filtered):
+        self._Filtered = Filtered
+
+    @property
+    def Extra(self):
+        r"""<p>Additional information, such as Using index, Using filesort</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._SelectType = params.get("SelectType")
+        self._Table = params.get("Table")
+        self._Partitions = params.get("Partitions")
+        self._Type = params.get("Type")
+        self._PossibleKeys = params.get("PossibleKeys")
+        self._Key = params.get("Key")
+        self._KeyLen = params.get("KeyLen")
+        self._Ref = params.get("Ref")
+        self._Rows = params.get("Rows")
+        self._Filtered = params.get("Filtered")
+        self._Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceFilter(AbstractModel):
     r"""List filter criteria for instances
 
@@ -8059,6 +9031,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AnalysisMode: str
         :param _AnalysisRelationInfos: <p>Analysis engine relationship information</p>
         :type AnalysisRelationInfos: list of AnalysisRelationInfo
+        :param _AnalysisInstanceInfo: <p>Analysis engine instance info</p>
+        :type AnalysisInstanceInfo: :class:`tencentcloud.tdmysql.v20211122.models.AnalysisInstanceInfo`
         """
         self._ComputeNodeNum = None
         self._Zone = None
@@ -8122,6 +9096,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AutoScaleConfig = None
         self._AnalysisMode = None
         self._AnalysisRelationInfos = None
+        self._AnalysisInstanceInfo = None
 
     @property
     def ComputeNodeNum(self):
@@ -8881,6 +9856,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AnalysisRelationInfos(self, AnalysisRelationInfos):
         self._AnalysisRelationInfos = AnalysisRelationInfos
 
+    @property
+    def AnalysisInstanceInfo(self):
+        r"""<p>Analysis engine instance info</p>
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.AnalysisInstanceInfo`
+        """
+        return self._AnalysisInstanceInfo
+
+    @AnalysisInstanceInfo.setter
+    def AnalysisInstanceInfo(self, AnalysisInstanceInfo):
+        self._AnalysisInstanceInfo = AnalysisInstanceInfo
+
 
     def _deserialize(self, params):
         self._ComputeNodeNum = params.get("ComputeNodeNum")
@@ -8967,6 +9953,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = AnalysisRelationInfo()
                 obj._deserialize(item)
                 self._AnalysisRelationInfos.append(obj)
+        if params.get("AnalysisInstanceInfo") is not None:
+            self._AnalysisInstanceInfo = AnalysisInstanceInfo()
+            self._AnalysisInstanceInfo._deserialize(params.get("AnalysisInstanceInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9674,6 +10663,124 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class LogFilter(AbstractModel):
+    r"""Slow log filtering
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Filter criterion name.
+
+For example: sql - SQL command details
+
+host - client IP
+user - database account;
+dbName – Database name;
+sqlType - SQL type;
+Error code
+
+execTime - Execution time
+lockWaitTime - Lock waiting time
+ioWaitTime - IO wait time
+trxLivingTime - Transaction execution time
+Cpu time
+
+threadId - Thread ID
+trxId - Transaction ID
+checkRows - Number of scanned rows
+affectRows - Number of rows affected
+sentRows - Number of rows returned
+        :type Type: str
+        :param _Compare: Filter condition match type. Supported:
+INC – Includes (multiple values are in a || relationship before).
+EXC - excluding (multiple values are in an && relationship)
+EQS – equal to (multiple values before are in a || relationship).
+NEQ – not equal to (multiple values are in && relationship)
+
+RG - Range;
+        :type Compare: str
+        :param _Value: Filter condition matching value. When Compare=RG, for example ["1-100","200-300"].
+        :type Value: list of str
+        """
+        self._Type = None
+        self._Compare = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""Filter criterion name.
+
+For example: sql - SQL command details
+
+host - client IP
+user - database account;
+dbName – Database name;
+sqlType - SQL type;
+Error code
+
+execTime - Execution time
+lockWaitTime - Lock waiting time
+ioWaitTime - IO wait time
+trxLivingTime - Transaction execution time
+Cpu time
+
+threadId - Thread ID
+trxId - Transaction ID
+checkRows - Number of scanned rows
+affectRows - Number of rows affected
+sentRows - Number of rows returned
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Compare(self):
+        r"""Filter condition match type. Supported:
+INC – Includes (multiple values are in a || relationship before).
+EXC - excluding (multiple values are in an && relationship)
+EQS – equal to (multiple values before are in a || relationship).
+NEQ – not equal to (multiple values are in && relationship)
+
+RG - Range;
+        :rtype: str
+        """
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def Value(self):
+        r"""Filter condition matching value. When Compare=RG, for example ["1-100","200-300"].
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Compare = params.get("Compare")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MaintenanceWindowInfo(AbstractModel):
     r"""Maintenance window configuration
 
@@ -9895,6 +11002,100 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceVPortRequest(AbstractModel):
+    r"""ModifyDBInstanceVPort request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, such as tdsql3-5baee8df.
+        :type InstanceId: str
+        :param _Vport: New VPC port 3308
+        :type Vport: int
+        """
+        self._InstanceId = None
+        self._Vport = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID, such as tdsql3-5baee8df.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Vport(self):
+        r"""New VPC port 3308
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Vport = params.get("Vport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceVPortResponse(AbstractModel):
+    r"""ModifyDBInstanceVPort response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Return the async task FlowId
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""Return the async task FlowId
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -10285,6 +11486,333 @@ class ModifyInstanceNameRequest(AbstractModel):
 
 class ModifyInstanceNameResponse(AbstractModel):
     r"""ModifyInstanceName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceNetworkRequest(AbstractModel):
+    r"""ModifyInstanceNetwork request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _VpcId: VpcId of the target VPC network
+        :type VpcId: str
+        :param _SubnetId: Subnet ID of the target VPC network
+        :type SubnetId: str
+        :param _VipReleaseDelay: VIP retention duration, in hours, value ranges from 0 to 168. 0 means immediate release with a one-minute delay. Not specified, default is 24 hr for VIP release.
+        :type VipReleaseDelay: int
+        :param _Vip: Assign vip modification. Leave blank for a random vip.
+        :type Vip: str
+        """
+        self._InstanceId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._VipReleaseDelay = None
+        self._Vip = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VpcId(self):
+        r"""VpcId of the target VPC network
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""Subnet ID of the target VPC network
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def VipReleaseDelay(self):
+        r"""VIP retention duration, in hours, value ranges from 0 to 168. 0 means immediate release with a one-minute delay. Not specified, default is 24 hr for VIP release.
+        :rtype: int
+        """
+        return self._VipReleaseDelay
+
+    @VipReleaseDelay.setter
+    def VipReleaseDelay(self, VipReleaseDelay):
+        self._VipReleaseDelay = VipReleaseDelay
+
+    @property
+    def Vip(self):
+        r"""Assign vip modification. Leave blank for a random vip.
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._VipReleaseDelay = params.get("VipReleaseDelay")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceNetworkResponse(AbstractModel):
+    r"""ModifyInstanceNetwork response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceSSLStatusRequest(AbstractModel):
+    r"""ModifyInstanceSSLStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        :param _Enabled: <p>Whether to enable SSL.</p>
+        :type Enabled: bool
+        """
+        self._InstanceId = None
+        self._Enabled = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Enabled(self):
+        r"""<p>Whether to enable SSL.</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceSSLStatusResponse(AbstractModel):
+    r"""ModifyInstanceSSLStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>Async process ID.</p>
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>Async process ID.</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMaintenanceWindowRequest(AbstractModel):
+    r"""ModifyMaintenanceWindow request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Instance ID.</p>
+        :type InstanceId: str
+        :param _StartTime: <p>Ops window start time</p><p>Parameter format: hh:mm:ss</p>
+        :type StartTime: str
+        :param _Duration: <p>Ops window duration</p><p>Value ranges from 1 to 3</p><p>Unit: hour</p>
+        :type Duration: int
+        :param _WeekDays: <p>Ops window date</p><p>Enumeration value:</p><ul><li>Monday: Monday</li><li>Tuesday: Tuesday</li><li>Wednesday: Wednesday</li><li>Thursday: Thursday</li><li>Friday: Friday</li><li>Saturday: Saturday</li><li>Sunday: Sunday</li></ul>
+        :type WeekDays: list of str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._Duration = None
+        self._WeekDays = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Instance ID.</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""<p>Ops window start time</p><p>Parameter format: hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Duration(self):
+        r"""<p>Ops window duration</p><p>Value ranges from 1 to 3</p><p>Unit: hour</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def WeekDays(self):
+        r"""<p>Ops window date</p><p>Enumeration value:</p><ul><li>Monday: Monday</li><li>Tuesday: Tuesday</li><li>Wednesday: Wednesday</li><li>Thursday: Thursday</li><li>Friday: Friday</li><li>Saturday: Saturday</li><li>Sunday: Sunday</li></ul>
+        :rtype: list of str
+        """
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._Duration = params.get("Duration")
+        self._WeekDays = params.get("WeekDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMaintenanceWindowResponse(AbstractModel):
+    r"""ModifyMaintenanceWindow response structure.
 
     """
 
@@ -10876,6 +12404,130 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ResetUserPasswordRequest(AbstractModel):
+    r"""ResetUserPassword request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: Username.
+        :type UserName: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _Host: Host IP, IP range ending with % to denote permission for all IPs in the range
+        :type Host: str
+        :param _Password: New password, required length 8-32, include at least two of English, digits and symbols.
+        :type Password: str
+        :param _EncryptedPassword: Encryption password
+        :type EncryptedPassword: str
+        """
+        self._UserName = None
+        self._InstanceId = None
+        self._Host = None
+        self._Password = None
+        self._EncryptedPassword = None
+
+    @property
+    def UserName(self):
+        r"""Username.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def InstanceId(self):
+        r"""Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Host(self):
+        r"""Host IP, IP range ending with % to denote permission for all IPs in the range
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Password(self):
+        r"""New password, required length 8-32, include at least two of English, digits and symbols.
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptedPassword(self):
+        r"""Encryption password
+        :rtype: str
+        """
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._InstanceId = params.get("InstanceId")
+        self._Host = params.get("Host")
+        self._Password = params.get("Password")
+        self._EncryptedPassword = params.get("EncryptedPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetUserPasswordResponse(AbstractModel):
+    r"""ResetUserPassword response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResourceTag(AbstractModel):
     r"""tag parameter
 
@@ -11279,6 +12931,338 @@ class ServerlessCcu(AbstractModel):
     def _deserialize(self, params):
         self._MinCcu = params.get("MinCcu")
         self._MaxCcu = params.get("MaxCcu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogData(AbstractModel):
+    r"""slow log information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>Sql execution time</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Timestamp: str
+        :param _QueryTime: <p>Sql execution duration (seconds)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QueryTime: float
+        :param _SqlText: <p>Sql statement</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SqlText: str
+        :param _UserHost: <p>Client IP address</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserHost: str
+        :param _UserName: <p>Username.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserName: str
+        :param _Database: <p>Database name.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Database: str
+        :param _LockTime: <p>Lock duration (seconds)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LockTime: float
+        :param _RowsExamined: <p>Number of scanned rows</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RowsExamined: int
+        :param _RowsSent: <p>Result set row count</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RowsSent: int
+        :param _TransactionId: <p>Transaction ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransactionId: str
+        :param _RpcTime: <p>rpc duration</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RpcTime: float
+        :param _StorageRpcTime: <p>rpc duration for node interaction with storage</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StorageRpcTime: float
+        :param _RpcRetryDelayTime: <p>rpc retry latency</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RpcRetryDelayTime: float
+        :param _NodeId: <p>node Name</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NodeId: str
+        :param _RpcTrace: <p>rpc link tracing</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RpcTrace: str
+        :param _TDStoreLockTime: <p>TDStore lock duration</p><p>Unit: seconds</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TDStoreLockTime: float
+        :param _TraceId: <p>Global ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TraceId: str
+        :param _Explain: <p>Execution plan</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Explain: list of Explain
+        """
+        self._Timestamp = None
+        self._QueryTime = None
+        self._SqlText = None
+        self._UserHost = None
+        self._UserName = None
+        self._Database = None
+        self._LockTime = None
+        self._RowsExamined = None
+        self._RowsSent = None
+        self._TransactionId = None
+        self._RpcTime = None
+        self._StorageRpcTime = None
+        self._RpcRetryDelayTime = None
+        self._NodeId = None
+        self._RpcTrace = None
+        self._TDStoreLockTime = None
+        self._TraceId = None
+        self._Explain = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>Sql execution time</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def QueryTime(self):
+        r"""<p>Sql execution duration (seconds)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._QueryTime
+
+    @QueryTime.setter
+    def QueryTime(self, QueryTime):
+        self._QueryTime = QueryTime
+
+    @property
+    def SqlText(self):
+        r"""<p>Sql statement</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def UserHost(self):
+        r"""<p>Client IP address</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UserHost
+
+    @UserHost.setter
+    def UserHost(self, UserHost):
+        self._UserHost = UserHost
+
+    @property
+    def UserName(self):
+        r"""<p>Username.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Database(self):
+        r"""<p>Database name.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def LockTime(self):
+        r"""<p>Lock duration (seconds)</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._LockTime
+
+    @LockTime.setter
+    def LockTime(self, LockTime):
+        self._LockTime = LockTime
+
+    @property
+    def RowsExamined(self):
+        r"""<p>Number of scanned rows</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._RowsExamined
+
+    @RowsExamined.setter
+    def RowsExamined(self, RowsExamined):
+        self._RowsExamined = RowsExamined
+
+    @property
+    def RowsSent(self):
+        r"""<p>Result set row count</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._RowsSent
+
+    @RowsSent.setter
+    def RowsSent(self, RowsSent):
+        self._RowsSent = RowsSent
+
+    @property
+    def TransactionId(self):
+        r"""<p>Transaction ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TransactionId
+
+    @TransactionId.setter
+    def TransactionId(self, TransactionId):
+        self._TransactionId = TransactionId
+
+    @property
+    def RpcTime(self):
+        r"""<p>rpc duration</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._RpcTime
+
+    @RpcTime.setter
+    def RpcTime(self, RpcTime):
+        self._RpcTime = RpcTime
+
+    @property
+    def StorageRpcTime(self):
+        r"""<p>rpc duration for node interaction with storage</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._StorageRpcTime
+
+    @StorageRpcTime.setter
+    def StorageRpcTime(self, StorageRpcTime):
+        self._StorageRpcTime = StorageRpcTime
+
+    @property
+    def RpcRetryDelayTime(self):
+        r"""<p>rpc retry latency</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._RpcRetryDelayTime
+
+    @RpcRetryDelayTime.setter
+    def RpcRetryDelayTime(self, RpcRetryDelayTime):
+        self._RpcRetryDelayTime = RpcRetryDelayTime
+
+    @property
+    def NodeId(self):
+        r"""<p>node Name</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def RpcTrace(self):
+        r"""<p>rpc link tracing</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RpcTrace
+
+    @RpcTrace.setter
+    def RpcTrace(self, RpcTrace):
+        self._RpcTrace = RpcTrace
+
+    @property
+    def TDStoreLockTime(self):
+        r"""<p>TDStore lock duration</p><p>Unit: seconds</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._TDStoreLockTime
+
+    @TDStoreLockTime.setter
+    def TDStoreLockTime(self, TDStoreLockTime):
+        self._TDStoreLockTime = TDStoreLockTime
+
+    @property
+    def TraceId(self):
+        r"""<p>Global ID</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def Explain(self):
+        r"""<p>Execution plan</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Explain
+        """
+        return self._Explain
+
+    @Explain.setter
+    def Explain(self, Explain):
+        self._Explain = Explain
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._QueryTime = params.get("QueryTime")
+        self._SqlText = params.get("SqlText")
+        self._UserHost = params.get("UserHost")
+        self._UserName = params.get("UserName")
+        self._Database = params.get("Database")
+        self._LockTime = params.get("LockTime")
+        self._RowsExamined = params.get("RowsExamined")
+        self._RowsSent = params.get("RowsSent")
+        self._TransactionId = params.get("TransactionId")
+        self._RpcTime = params.get("RpcTime")
+        self._StorageRpcTime = params.get("StorageRpcTime")
+        self._RpcRetryDelayTime = params.get("RpcRetryDelayTime")
+        self._NodeId = params.get("NodeId")
+        self._RpcTrace = params.get("RpcTrace")
+        self._TDStoreLockTime = params.get("TDStoreLockTime")
+        self._TraceId = params.get("TraceId")
+        if params.get("Explain") is not None:
+            self._Explain = []
+            for item in params.get("Explain"):
+                obj = Explain()
+                obj._deserialize(item)
+                self._Explain.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
