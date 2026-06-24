@@ -288,19 +288,25 @@ class FuseFaceResponse(AbstractModel):
 
 
 class FuseFaceReviewDetail(AbstractModel):
-    r"""
+    r"""Facial Information of Inappropriate Content Detection in Face Fusion
 
     """
 
     def __init__(self):
         r"""
-        :param _Field: 
+        :param _Field: Reserved field
         :type Field: str
-        :param _Label: 
+        :param _Label: Label Names Matched by Content Moderation
         :type Label: str
-        :param _Confidence: 
+        :param _Confidence: Confidence score of the detection label. A higher score means a greater likelihood of violations.
+0-70: Suggestion = PASS
+70-80: Suggestion = REVIEW
+80-100: Suggestion = BLOCK
         :type Confidence: float
-        :param _Suggestion: 
+        :param _Suggestion: Moderation Conclusion for Detection Scenarios
+PASS: Normal
+REVIEW: Suspicious
+BLOCK: Violation
         :type Suggestion: str
         """
         self._Field = None
@@ -310,7 +316,7 @@ class FuseFaceReviewDetail(AbstractModel):
 
     @property
     def Field(self):
-        r"""
+        r"""Reserved field
         :rtype: str
         """
         return self._Field
@@ -321,7 +327,7 @@ class FuseFaceReviewDetail(AbstractModel):
 
     @property
     def Label(self):
-        r"""
+        r"""Label Names Matched by Content Moderation
         :rtype: str
         """
         return self._Label
@@ -332,7 +338,10 @@ class FuseFaceReviewDetail(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""
+        r"""Confidence score of the detection label. A higher score means a greater likelihood of violations.
+0-70: Suggestion = PASS
+70-80: Suggestion = REVIEW
+80-100: Suggestion = BLOCK
         :rtype: float
         """
         return self._Confidence
@@ -343,7 +352,10 @@ class FuseFaceReviewDetail(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""
+        r"""Moderation Conclusion for Detection Scenarios
+PASS: Normal
+REVIEW: Suspicious
+BLOCK: Violation
         :rtype: str
         """
         return self._Suggestion
@@ -369,23 +381,23 @@ class FuseFaceReviewDetail(AbstractModel):
 
 
 class FuseFaceReviewResult(AbstractModel):
-    r"""
+    r"""Face Fusion Inappropriate Content Detection Response Parameter item
 
     """
 
     def __init__(self):
         r"""
-        :param _Category: 
+        :param _Category: Reserved field
         :type Category: str
-        :param _Code: 
+        :param _Code: Status code. 0 indicates successful processing; other values indicate failure.
         :type Code: str
-        :param _CodeDescription: 
+        :param _CodeDescription: Corresponding Status Code Description
         :type CodeDescription: str
-        :param _Confidence: 
+        :param _Confidence: Reserved field
         :type Confidence: float
-        :param _Suggestion: 
+        :param _Suggestion: Reserved field
         :type Suggestion: str
-        :param _DetailSet: 
+        :param _DetailSet: Detailed Moderation Content
         :type DetailSet: list of FuseFaceReviewDetail
         """
         self._Category = None
@@ -397,7 +409,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def Category(self):
-        r"""
+        r"""Reserved field
         :rtype: str
         """
         return self._Category
@@ -408,7 +420,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def Code(self):
-        r"""
+        r"""Status code. 0 indicates successful processing; other values indicate failure.
         :rtype: str
         """
         return self._Code
@@ -419,7 +431,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def CodeDescription(self):
-        r"""
+        r"""Corresponding Status Code Description
         :rtype: str
         """
         return self._CodeDescription
@@ -430,7 +442,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""
+        r"""Reserved field
         :rtype: float
         """
         return self._Confidence
@@ -441,7 +453,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""
+        r"""Reserved field
         :rtype: str
         """
         return self._Suggestion
@@ -452,7 +464,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     @property
     def DetailSet(self):
-        r"""
+        r"""Detailed Moderation Content
         :rtype: list of FuseFaceReviewDetail
         """
         return self._DetailSet

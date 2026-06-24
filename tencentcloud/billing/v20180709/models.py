@@ -7283,7 +7283,7 @@ class BillDetail(AbstractModel):
         :type BusinessCodeName: str
         :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Standard S1.
         :type ProductCodeName: str
-        :param _PayModeName: Billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :type PayModeName: str
         :param _ProjectName: Project name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :type ProjectName: str
@@ -7295,9 +7295,9 @@ class BillDetail(AbstractModel):
         :type ResourceId: str
         :param _ResourceName: Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
         :type ResourceName: str
-        :param _ActionTypeName: Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        :param _ActionTypeName: Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, or pay-as-you-go deduction.
         :type ActionTypeName: str
-        :param _OrderId: Order ID: The sub-order number corresponding to the monthly subscription mode. In the postpaid billing model, the bill amount does not exist as an order concept, and this parameter can be ignored.
+        :param _OrderId: Order ID: The sub-order number corresponding to the yearly/monthly subscription mode. In the postpaid billing model, the bill amount does not exist as an order concept, and this parameter can be ignored.
 
         :type OrderId: str
         :param _BillId: Transaction ID: The bill number for a deducted payment
@@ -7417,7 +7417,7 @@ class BillDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""Billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -7483,7 +7483,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        r"""Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, or pay-as-you-go deduction.
         :rtype: str
         """
         return self._ActionTypeName
@@ -7494,7 +7494,7 @@ class BillDetail(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""Order ID: The sub-order number corresponding to the monthly subscription mode. In the postpaid billing model, the bill amount does not exist as an order concept, and this parameter can be ignored.
+        r"""Order ID: The sub-order number corresponding to the yearly/monthly subscription mode. In the postpaid billing model, the bill amount does not exist as an order concept, and this parameter can be ignored.
 
         :rtype: str
         """
@@ -9617,7 +9617,7 @@ class BillResourceSummary(AbstractModel):
         :type BusinessCodeName: str
         :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Computing C5t.
         :type ProductCodeName: str
-        :param _PayModeName: Billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :type PayModeName: str
         :param _ProjectName: Project name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :type ProjectName: str
@@ -9629,9 +9629,9 @@ class BillResourceSummary(AbstractModel):
         :type ResourceId: str
         :param _ResourceName: Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
         :type ResourceName: str
-        :param _ActionTypeName: Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        :param _ActionTypeName: Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, or pay-as-you-go deduction.
         :type ActionTypeName: str
-        :param _OrderId: Order ID: The order number for a monthly subscription purchase
+        :param _OrderId: Order ID: The order number for a yearly/monthly subscription purchase
         :type OrderId: str
         :param _PayTime: Transaction time: The time at which a payment was deducted
         :type PayTime: str
@@ -9758,7 +9758,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""Billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -9824,7 +9824,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
+        r"""Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, or pay-as-you-go deduction.
         :rtype: str
         """
         return self._ActionTypeName
@@ -9835,7 +9835,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""Order ID: The order number for a monthly subscription purchase
+        r"""Order ID: The order number for a yearly/monthly subscription purchase
         :rtype: str
         """
         return self._OrderId
@@ -27350,19 +27350,19 @@ class PayModeSummaryOverviewItem(AbstractModel):
         r"""
         :param _PayMode: Billing mode code
         :type PayMode: str
-        :param _PayModeName: Billing mode, which can be monthly subscription or pay-as-you-go.
+        :param _PayModeName: Billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :type PayModeName: str
         :param _RealTotalCostRatio: Cost ratio, to two decimal points
         :type RealTotalCostRatio: str
         :param _RealTotalCost: Total amount after discount
         :type RealTotalCost: str
-        :param _CashPayAmount: Cash credit: The amount paid from the user’s cash balance
+        :param _CashPayAmount: Cash credit: The amount paid from the user's cash balance
         :type CashPayAmount: str
-        :param _IncentivePayAmount: Free credit: The amount paid with the user’s free credit
+        :param _IncentivePayAmount: Free credit: The amount paid with the user's free credit
         :type IncentivePayAmount: str
         :param _VoucherPayAmount: Voucher payment: The voucher deduction amount
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user’s commission credit.
+        :param _TransferPayAmount: Commission credit: The amount paid with the user's commission credit.
         :type TransferPayAmount: str
         :param _TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
@@ -27393,7 +27393,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""Billing mode, which can be monthly subscription or pay-as-you-go.
+        r"""Billing mode, which can be yearly/monthly subscription or pay-as-you-go.
         :rtype: str
         """
         return self._PayModeName
@@ -27426,7 +27426,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        r"""Cash credit: The amount paid from the user’s cash balance
+        r"""Cash credit: The amount paid from the user's cash balance
         :rtype: str
         """
         return self._CashPayAmount
@@ -27437,7 +27437,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        r"""Free credit: The amount paid with the user’s free credit
+        r"""Free credit: The amount paid with the user's free credit
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -27459,7 +27459,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""Commission credit: The amount paid with the user’s commission credit.
+        r"""Commission credit: The amount paid with the user's commission credit.
         :rtype: str
         """
         return self._TransferPayAmount
