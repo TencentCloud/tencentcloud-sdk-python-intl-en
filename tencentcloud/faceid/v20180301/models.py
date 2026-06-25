@@ -13387,100 +13387,39 @@ class WebVerificationConfigIntl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoSkipStartPage: When starting verification, whether to skip the starting verification page. If true, enter the verification process directly. This configuration will not take effect if the downgrade policy is triggered. The default is false.
-Example: false
+        :param _AutoSkipStartPage: <p>Whether to skip the start verification webpage when starting verification. If true, directly enter the verification process. Default false. If the degradation policy is triggered, this configuration will not take effect.</p>
         :type AutoSkipStartPage: bool
-        :param _AutoSkip: When the verification passed, whether to skip the result page and automatically jump to RedirectURL. The default value is false.
-Example: false
+        :param _AutoSkip: <p>Whether to skip the result display page and automatically jump to RedirectURL when verification is successful. Default false.</p>
         :type AutoSkip: bool
-        :param _CheckMode: Detection mode, parameter values are as follows:
-1: OCR+liveness detection & face comparison;
-2: Liveness detection & face comparison;
-3: Liveness detection;
-4: OCR;
-The default value is 2.
-Example: 3
+        :param _CheckMode: <p>Detection mode. Parameter values are as follows:<br>1: OCR+liveness detection+face comparison;<br>2: liveness detection+face comparison;<br>3: liveness detection;<br>4: OCR;<br>Default value is 2.</p>
         :type CheckMode: int
-        :param _IDCardType: Card Type for verification. The following types are supported:
-1.HKIDCard: Hong Kong (China) ID card
-2.MLIDCard: Malaysia ID card
-3.IndonesiaIDCard: Indonesia ID card
-4.PhilippinesVoteID: Philippines Vote lD card
-5.PhilippinesDrivingLicense: Philippines driving license
-6.PhilippinesTinID: Philippines TinID card
-7.PhilippinesSSSID: Philippines SSSID card
-8.PhilippinesUMID: Philippines UMID card
-9.InternationalIDPassport: ID cards of Hong Kong (China), Macao (China) and Taiwan (China), and international passport.
-10.ThailandIDCard: Thailand ID card
-11.SingaporeIDCard: Singapore ID card
-12.MainlandIDCard: Mainland (China) ID card
-Example: HKIDCard
+        :param _IDCardType: <p>Identity document type used for authentication. Currently supported:<br>1.HKIDCard: Hong Kong (China) identity card<br>2.MLIDCard: Malaysian identity card<br>3.IndonesiaIDCard: Indonesian Identity Card<br>4.PhilippinesVoteID: Philippines voter card<br>5.PhilippinesDrivingLicense: Philippines driving license<br>6.PhilippinesTinID: Philippines TinID<br>7.PhilippinesSSSID: Philippines SSSID<br>8.PhilippinesUMID: Philippines UMID<br>9.InternationalIDPassport: Passport for Hong Kong (China), Macao (China), and Taiwan (China) as well as overseas passport<br>10.ThailandIDCard: Thai Identity Card<br>11.SingaporeIDCard: Singapore ID card<br>12.MainlandIDCard: Mainland ID card</p>
         :type IDCardType: str
-        :param _DisableCheckOcrWarnings: Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
-Example: false
+        :param _DisableCheckOcrWarnings: <p>Want to close document alarm, false by default (enable alarm detection). When enabled, the identity verification process will intercept based on the document alarm status. If you need to use document anti-counterfeiting functionality, <a href="https://www.tencentcloud.com/zh/contact-us">contact us</a>.</p>
         :type DisableCheckOcrWarnings: bool
-        :param _SecurityLevel: Liveness security level, the default value is 3. The currently supported security level are as follows:
-1:Silent mode;
-2:Action mode;
-3:Lighting mode;
-4:Action+Lighting mode;
-5:Action+Lighting(High security) mode. This mode offers higher security but has a lower pass rate. Please contact us before use.
-
-Example: 4
+        :param _SecurityLevel: <p>Security level of authentication:<br>1: Silent liveness;<br>2: Action liveness;<br>3: Light liveness;<br>4: Action + light liveness;<br>Default value is 3.</p>
         :type SecurityLevel: int
-        :param _SkipPrivacyPolicy: Whether to skip the agreement page. When SkipPrivacyPolicy is false, the agreement page will be displayed and the privacy agreement needs to be checked; when SkipPrivacyPolicy is true, the agreement page will be skipped and the liveness process will be entered directly without checking the privacy agreement page. The default is false.
-Example: false
+        :param _SkipPrivacyPolicy: <p>Whether to skip the privacy agreement webpage, default false. When SkipPrivacyPolicy is false, the privacy agreement webpage will show and the privacy agreement must be checked. When SkipPrivacyPolicy is true, the privacy agreement webpage will be skipped to directly enter the Live Face Process without the need to check the privacy agreement webpage.</p>
         :type SkipPrivacyPolicy: bool
-        :param _IdCardCutReturn: whether to display the cropped ID card image. When set to false, the original ID card image is displayed. When set to true, the cropped version is displayed. The default value is false. 
-Example: false
+        :param _IdCardCutReturn: <p>Default false. When false, show the original document image. When true, show the split document image.</p>
         :type IdCardCutReturn: bool
-        :param _ThemeColor: Front-end theme color, in the format of RGB hexadecimal color code. If the format is incorrect, the default value color will be used. The default value is "#2d72f1".
-Example: #2d72f1
+        :param _ThemeColor: <p>Frontend theme color in base 16 RGB format. Defaults to "#2d72f1". Uses default values if the format is incorrect.</p>
         :type ThemeColor: str
-        :param _Language: International language, the default value is en (English). The currently supported language are as follows: 
-th: Thai; 
-en: English; 
-zh-cn: Simplified Chinese; 
-zh-tc: Tradionnal Chinese; 
-id: Bahasa Indonesia.
+        :param _Language: <p>Internationalized language, defaults to en (English). Currently supported:<br>th: Thai;<br>en: English;<br>zh-cn: Simplified Chinese;<br>zh-tc: Traditional Chinese;<br>id: Indonesia;</p>
         :type Language: str
-        :param _AutoDowngrade: Automatic downgrade mode, the following parameter are supported: 
-1: Downgrade to silent live mode; 
-2: Disable downgrade mode. 
-The default value is 1.
+        :param _AutoDowngrade: <p>Automatic downgrade mode. Parameter values as follows:<br>1: Downgrade to silent liveness mode.<br>2: Disable downgrade mode.<br>Default value: 1.</p>
         :type AutoDowngrade: int
-        :param _ActionList: This interface is used to control th action sequences.
-The supported action types are as follows:
-"blink";
-"mouth";
-"nod";
-"shake".
-You can choose 1-2 actions out of the four. Single action example: "blink". Multiple action example: "blink,mouth". The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
-The default value is blink.
+        :param _ActionList: <p>Control the action sequence. Action types are as follows:<br>"blink"<br>"mouth"<br>"nod"<br>"shake"<br>Choose 1-2 actions from the four.<br>Single action example: "blink"<br>Multi-action example: "blink,mouth".<br>Default value: blink<br>Input this parameter only when SecurityLevel is 2, 4, or 5 for different action types to take effect; otherwise, an API error occurs.</p>
         :type ActionList: str
-        :param _LivenessRetryLimit: Maximum liveness verification attempts. Valid range: [1,99].
-The default value is 99.
+        :param _LivenessRetryLimit: <p>Maximum liveness verification attempts. Value ranges from 1 to 99. Default value is 99.</p>
         :type LivenessRetryLimit: int
-        :param _LivenessTimeout: Specifies the liveness detection timeout period in seconds. Value range: (0,600].
-The default value is 45.
+        :param _LivenessTimeout: <p>Control the liveness detection timeout period in seconds. The value ranges from 0 to 600. Default: 45 seconds.</p>
         :type LivenessTimeout: int
-        :param _SelectedWarningCodes: Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective. The supported alarm types are as follows:
--9101: Incomplete Border Alert;
--9102: Copy Document Alert;
--9103: Remediated Document Alert;
--9104: PS-altered Document Alert;
--9107: Glare Alert;
--9108: Blurriness Alert;
--9109: Alert Not Activated.
+        :param _SelectedWarningCodes: <p>Select OCR alarms that require attention. When an OCR alarm is generated, the identity verification process will be interrupted. The default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the alarm is disabled, this parameter will not be effective.</p><p>Alarm code list and definitions:<br>-9101 Incomplete border alarm<br>-9102 Photocopies alarm<br>-9103 Alarm for rephotographing<br>-9104 ps alarm<br>-9107 Reflective alarm<br>-9108 Blurry alarm<br>-9109 Alarm not enabled</p>
         :type SelectedWarningCodes: str
-        :param _AllowExpiredDocument: Whether expired identity documents are permitted to proceed to the liveness detection process. This parameter only takes effect when the document type is Hong Kong Identity Card (HKID).
-true (default value): Expired HKID is allowed to enter the liveness process.
-false : Expired HKID is rejected and cannot enter the liveness process.
+        :param _AllowExpiredDocument: <p>Whether to allow expired identity documents to enter the liveness detection process. This parameter is valid only when the document type is Hong Kong identity card (HKID).<br>true (default value): Allow expired Hong Kong identity card to enter the liveness detection process.<br>false: Reject expired Hong Kong identity card, not accessible to the liveness detection process.</p>
         :type AllowExpiredDocument: bool
-        :param _Version: Service version, including Basic version (BASIC) and PLUS version (PLUS). The currently supported service version are as follows:
-BASIC: Basic version.
-PLUS: PLUS version.
-The default value is BASIC.
+        :param _Version: <p>Service version, including basic version (BASIC) and PLUS version (PLUS).</p><p>Enumeration value:</p><ul><li>BASIC: Basic version</li><li>PLUS: PLUS version</li></ul><p>Default value: BASIC.</p>
         :type Version: str
         """
         self._AutoSkipStartPage = None
@@ -13503,8 +13442,7 @@ The default value is BASIC.
 
     @property
     def AutoSkipStartPage(self):
-        r"""When starting verification, whether to skip the starting verification page. If true, enter the verification process directly. This configuration will not take effect if the downgrade policy is triggered. The default is false.
-Example: false
+        r"""<p>Whether to skip the start verification webpage when starting verification. If true, directly enter the verification process. Default false. If the degradation policy is triggered, this configuration will not take effect.</p>
         :rtype: bool
         """
         return self._AutoSkipStartPage
@@ -13515,8 +13453,7 @@ Example: false
 
     @property
     def AutoSkip(self):
-        r"""When the verification passed, whether to skip the result page and automatically jump to RedirectURL. The default value is false.
-Example: false
+        r"""<p>Whether to skip the result display page and automatically jump to RedirectURL when verification is successful. Default false.</p>
         :rtype: bool
         """
         return self._AutoSkip
@@ -13527,13 +13464,7 @@ Example: false
 
     @property
     def CheckMode(self):
-        r"""Detection mode, parameter values are as follows:
-1: OCR+liveness detection & face comparison;
-2: Liveness detection & face comparison;
-3: Liveness detection;
-4: OCR;
-The default value is 2.
-Example: 3
+        r"""<p>Detection mode. Parameter values are as follows:<br>1: OCR+liveness detection+face comparison;<br>2: liveness detection+face comparison;<br>3: liveness detection;<br>4: OCR;<br>Default value is 2.</p>
         :rtype: int
         """
         return self._CheckMode
@@ -13544,20 +13475,7 @@ Example: 3
 
     @property
     def IDCardType(self):
-        r"""Card Type for verification. The following types are supported:
-1.HKIDCard: Hong Kong (China) ID card
-2.MLIDCard: Malaysia ID card
-3.IndonesiaIDCard: Indonesia ID card
-4.PhilippinesVoteID: Philippines Vote lD card
-5.PhilippinesDrivingLicense: Philippines driving license
-6.PhilippinesTinID: Philippines TinID card
-7.PhilippinesSSSID: Philippines SSSID card
-8.PhilippinesUMID: Philippines UMID card
-9.InternationalIDPassport: ID cards of Hong Kong (China), Macao (China) and Taiwan (China), and international passport.
-10.ThailandIDCard: Thailand ID card
-11.SingaporeIDCard: Singapore ID card
-12.MainlandIDCard: Mainland (China) ID card
-Example: HKIDCard
+        r"""<p>Identity document type used for authentication. Currently supported:<br>1.HKIDCard: Hong Kong (China) identity card<br>2.MLIDCard: Malaysian identity card<br>3.IndonesiaIDCard: Indonesian Identity Card<br>4.PhilippinesVoteID: Philippines voter card<br>5.PhilippinesDrivingLicense: Philippines driving license<br>6.PhilippinesTinID: Philippines TinID<br>7.PhilippinesSSSID: Philippines SSSID<br>8.PhilippinesUMID: Philippines UMID<br>9.InternationalIDPassport: Passport for Hong Kong (China), Macao (China), and Taiwan (China) as well as overseas passport<br>10.ThailandIDCard: Thai Identity Card<br>11.SingaporeIDCard: Singapore ID card<br>12.MainlandIDCard: Mainland ID card</p>
         :rtype: str
         """
         return self._IDCardType
@@ -13568,8 +13486,7 @@ Example: HKIDCard
 
     @property
     def DisableCheckOcrWarnings(self):
-        r"""Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
-Example: false
+        r"""<p>Want to close document alarm, false by default (enable alarm detection). When enabled, the identity verification process will intercept based on the document alarm status. If you need to use document anti-counterfeiting functionality, <a href="https://www.tencentcloud.com/zh/contact-us">contact us</a>.</p>
         :rtype: bool
         """
         return self._DisableCheckOcrWarnings
@@ -13580,14 +13497,7 @@ Example: false
 
     @property
     def SecurityLevel(self):
-        r"""Liveness security level, the default value is 3. The currently supported security level are as follows:
-1:Silent mode;
-2:Action mode;
-3:Lighting mode;
-4:Action+Lighting mode;
-5:Action+Lighting(High security) mode. This mode offers higher security but has a lower pass rate. Please contact us before use.
-
-Example: 4
+        r"""<p>Security level of authentication:<br>1: Silent liveness;<br>2: Action liveness;<br>3: Light liveness;<br>4: Action + light liveness;<br>Default value is 3.</p>
         :rtype: int
         """
         return self._SecurityLevel
@@ -13598,8 +13508,7 @@ Example: 4
 
     @property
     def SkipPrivacyPolicy(self):
-        r"""Whether to skip the agreement page. When SkipPrivacyPolicy is false, the agreement page will be displayed and the privacy agreement needs to be checked; when SkipPrivacyPolicy is true, the agreement page will be skipped and the liveness process will be entered directly without checking the privacy agreement page. The default is false.
-Example: false
+        r"""<p>Whether to skip the privacy agreement webpage, default false. When SkipPrivacyPolicy is false, the privacy agreement webpage will show and the privacy agreement must be checked. When SkipPrivacyPolicy is true, the privacy agreement webpage will be skipped to directly enter the Live Face Process without the need to check the privacy agreement webpage.</p>
         :rtype: bool
         """
         return self._SkipPrivacyPolicy
@@ -13610,8 +13519,7 @@ Example: false
 
     @property
     def IdCardCutReturn(self):
-        r"""whether to display the cropped ID card image. When set to false, the original ID card image is displayed. When set to true, the cropped version is displayed. The default value is false. 
-Example: false
+        r"""<p>Default false. When false, show the original document image. When true, show the split document image.</p>
         :rtype: bool
         """
         return self._IdCardCutReturn
@@ -13622,8 +13530,7 @@ Example: false
 
     @property
     def ThemeColor(self):
-        r"""Front-end theme color, in the format of RGB hexadecimal color code. If the format is incorrect, the default value color will be used. The default value is "#2d72f1".
-Example: #2d72f1
+        r"""<p>Frontend theme color in base 16 RGB format. Defaults to "#2d72f1". Uses default values if the format is incorrect.</p>
         :rtype: str
         """
         return self._ThemeColor
@@ -13634,12 +13541,7 @@ Example: #2d72f1
 
     @property
     def Language(self):
-        r"""International language, the default value is en (English). The currently supported language are as follows: 
-th: Thai; 
-en: English; 
-zh-cn: Simplified Chinese; 
-zh-tc: Tradionnal Chinese; 
-id: Bahasa Indonesia.
+        r"""<p>Internationalized language, defaults to en (English). Currently supported:<br>th: Thai;<br>en: English;<br>zh-cn: Simplified Chinese;<br>zh-tc: Traditional Chinese;<br>id: Indonesia;</p>
         :rtype: str
         """
         return self._Language
@@ -13650,10 +13552,7 @@ id: Bahasa Indonesia.
 
     @property
     def AutoDowngrade(self):
-        r"""Automatic downgrade mode, the following parameter are supported: 
-1: Downgrade to silent live mode; 
-2: Disable downgrade mode. 
-The default value is 1.
+        r"""<p>Automatic downgrade mode. Parameter values as follows:<br>1: Downgrade to silent liveness mode.<br>2: Disable downgrade mode.<br>Default value: 1.</p>
         :rtype: int
         """
         return self._AutoDowngrade
@@ -13664,14 +13563,7 @@ The default value is 1.
 
     @property
     def ActionList(self):
-        r"""This interface is used to control th action sequences.
-The supported action types are as follows:
-"blink";
-"mouth";
-"nod";
-"shake".
-You can choose 1-2 actions out of the four. Single action example: "blink". Multiple action example: "blink,mouth". The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
-The default value is blink.
+        r"""<p>Control the action sequence. Action types are as follows:<br>"blink"<br>"mouth"<br>"nod"<br>"shake"<br>Choose 1-2 actions from the four.<br>Single action example: "blink"<br>Multi-action example: "blink,mouth".<br>Default value: blink<br>Input this parameter only when SecurityLevel is 2, 4, or 5 for different action types to take effect; otherwise, an API error occurs.</p>
         :rtype: str
         """
         return self._ActionList
@@ -13682,8 +13574,7 @@ The default value is blink.
 
     @property
     def LivenessRetryLimit(self):
-        r"""Maximum liveness verification attempts. Valid range: [1,99].
-The default value is 99.
+        r"""<p>Maximum liveness verification attempts. Value ranges from 1 to 99. Default value is 99.</p>
         :rtype: int
         """
         return self._LivenessRetryLimit
@@ -13694,8 +13585,7 @@ The default value is 99.
 
     @property
     def LivenessTimeout(self):
-        r"""Specifies the liveness detection timeout period in seconds. Value range: (0,600].
-The default value is 45.
+        r"""<p>Control the liveness detection timeout period in seconds. The value ranges from 0 to 600. Default: 45 seconds.</p>
         :rtype: int
         """
         return self._LivenessTimeout
@@ -13706,14 +13596,7 @@ The default value is 45.
 
     @property
     def SelectedWarningCodes(self):
-        r"""Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective. The supported alarm types are as follows:
--9101: Incomplete Border Alert;
--9102: Copy Document Alert;
--9103: Remediated Document Alert;
--9104: PS-altered Document Alert;
--9107: Glare Alert;
--9108: Blurriness Alert;
--9109: Alert Not Activated.
+        r"""<p>Select OCR alarms that require attention. When an OCR alarm is generated, the identity verification process will be interrupted. The default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the alarm is disabled, this parameter will not be effective.</p><p>Alarm code list and definitions:<br>-9101 Incomplete border alarm<br>-9102 Photocopies alarm<br>-9103 Alarm for rephotographing<br>-9104 ps alarm<br>-9107 Reflective alarm<br>-9108 Blurry alarm<br>-9109 Alarm not enabled</p>
         :rtype: str
         """
         return self._SelectedWarningCodes
@@ -13724,9 +13607,7 @@ The default value is 45.
 
     @property
     def AllowExpiredDocument(self):
-        r"""Whether expired identity documents are permitted to proceed to the liveness detection process. This parameter only takes effect when the document type is Hong Kong Identity Card (HKID).
-true (default value): Expired HKID is allowed to enter the liveness process.
-false : Expired HKID is rejected and cannot enter the liveness process.
+        r"""<p>Whether to allow expired identity documents to enter the liveness detection process. This parameter is valid only when the document type is Hong Kong identity card (HKID).<br>true (default value): Allow expired Hong Kong identity card to enter the liveness detection process.<br>false: Reject expired Hong Kong identity card, not accessible to the liveness detection process.</p>
         :rtype: bool
         """
         return self._AllowExpiredDocument
@@ -13737,10 +13618,7 @@ false : Expired HKID is rejected and cannot enter the liveness process.
 
     @property
     def Version(self):
-        r"""Service version, including Basic version (BASIC) and PLUS version (PLUS). The currently supported service version are as follows:
-BASIC: Basic version.
-PLUS: PLUS version.
-The default value is BASIC.
+        r"""<p>Service version, including basic version (BASIC) and PLUS version (PLUS).</p><p>Enumeration value:</p><ul><li>BASIC: Basic version</li><li>PLUS: PLUS version</li></ul><p>Default value: BASIC.</p>
         :rtype: str
         """
         return self._Version

@@ -490,9 +490,57 @@ class CosBackup(AbstractModel):
         :type IsAutoBackup: bool
         :param _BackupTime: Auto-backup time (accurate down to the hour), such as "22:00"
         :type BackupTime: str
+        :param _SnapshotName: Backup snapshot prefix.
+        :type SnapshotName: str
+        :param _EsRepositoryType: Valid values: 0 (Tencent Cloud repository) and 1 (customer repository).
+        :type EsRepositoryType: int
+        :param _PaasEsRepository: Managed snapshot repository name.
+        :type PaasEsRepository: str
+        :param _UserEsRepository: Customer snapshot repository name.
+        :type UserEsRepository: str
+        :param _CosBasePath: COS storage folder directory.
+        :type CosBasePath: str
+        :param _StorageDuration: Snapshot storage cycle in days.
+        :type StorageDuration: int
+        :param _AutoBackupInterval: Auto backup frequency in hours.
+        :type AutoBackupInterval: int
+        :param _CosRetention: Backup lock. Valid values: 0 (not locked) and 1 (locked).
+        :type CosRetention: int
+        :param _RetainUntilDate: Lock expiration date, such as 2022-12-10T08:34:48.000Z.
+        :type RetainUntilDate: str
+        :param _RetentionGraceTime: Lock grace period.
+        :type RetentionGraceTime: int
+        :param _RemoteCos: Cross-region backup. Valid values: 0 (disabled) and 1 (enabled).
+        :type RemoteCos: int
+        :param _RemoteCosRegion: Region name for cross-region backup, such as ap-guangzhou.
+        :type RemoteCosRegion: str
+        :param _StrategyName: Policy name.
+        :type StrategyName: str
+        :param _Indices: Backup index list. If left empty, it means to back up all indexes.
+        :type Indices: str
+        :param _MultiAz: 
+        :type MultiAz: int
+        :param _CreateTime: Policy creation time.
+        :type CreateTime: str
         """
         self._IsAutoBackup = None
         self._BackupTime = None
+        self._SnapshotName = None
+        self._EsRepositoryType = None
+        self._PaasEsRepository = None
+        self._UserEsRepository = None
+        self._CosBasePath = None
+        self._StorageDuration = None
+        self._AutoBackupInterval = None
+        self._CosRetention = None
+        self._RetainUntilDate = None
+        self._RetentionGraceTime = None
+        self._RemoteCos = None
+        self._RemoteCosRegion = None
+        self._StrategyName = None
+        self._Indices = None
+        self._MultiAz = None
+        self._CreateTime = None
 
     @property
     def IsAutoBackup(self):
@@ -516,10 +564,202 @@ class CosBackup(AbstractModel):
     def BackupTime(self, BackupTime):
         self._BackupTime = BackupTime
 
+    @property
+    def SnapshotName(self):
+        r"""Backup snapshot prefix.
+        :rtype: str
+        """
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def EsRepositoryType(self):
+        r"""Valid values: 0 (Tencent Cloud repository) and 1 (customer repository).
+        :rtype: int
+        """
+        return self._EsRepositoryType
+
+    @EsRepositoryType.setter
+    def EsRepositoryType(self, EsRepositoryType):
+        self._EsRepositoryType = EsRepositoryType
+
+    @property
+    def PaasEsRepository(self):
+        r"""Managed snapshot repository name.
+        :rtype: str
+        """
+        return self._PaasEsRepository
+
+    @PaasEsRepository.setter
+    def PaasEsRepository(self, PaasEsRepository):
+        self._PaasEsRepository = PaasEsRepository
+
+    @property
+    def UserEsRepository(self):
+        r"""Customer snapshot repository name.
+        :rtype: str
+        """
+        return self._UserEsRepository
+
+    @UserEsRepository.setter
+    def UserEsRepository(self, UserEsRepository):
+        self._UserEsRepository = UserEsRepository
+
+    @property
+    def CosBasePath(self):
+        r"""COS storage folder directory.
+        :rtype: str
+        """
+        return self._CosBasePath
+
+    @CosBasePath.setter
+    def CosBasePath(self, CosBasePath):
+        self._CosBasePath = CosBasePath
+
+    @property
+    def StorageDuration(self):
+        r"""Snapshot storage cycle in days.
+        :rtype: int
+        """
+        return self._StorageDuration
+
+    @StorageDuration.setter
+    def StorageDuration(self, StorageDuration):
+        self._StorageDuration = StorageDuration
+
+    @property
+    def AutoBackupInterval(self):
+        r"""Auto backup frequency in hours.
+        :rtype: int
+        """
+        return self._AutoBackupInterval
+
+    @AutoBackupInterval.setter
+    def AutoBackupInterval(self, AutoBackupInterval):
+        self._AutoBackupInterval = AutoBackupInterval
+
+    @property
+    def CosRetention(self):
+        r"""Backup lock. Valid values: 0 (not locked) and 1 (locked).
+        :rtype: int
+        """
+        return self._CosRetention
+
+    @CosRetention.setter
+    def CosRetention(self, CosRetention):
+        self._CosRetention = CosRetention
+
+    @property
+    def RetainUntilDate(self):
+        r"""Lock expiration date, such as 2022-12-10T08:34:48.000Z.
+        :rtype: str
+        """
+        return self._RetainUntilDate
+
+    @RetainUntilDate.setter
+    def RetainUntilDate(self, RetainUntilDate):
+        self._RetainUntilDate = RetainUntilDate
+
+    @property
+    def RetentionGraceTime(self):
+        r"""Lock grace period.
+        :rtype: int
+        """
+        return self._RetentionGraceTime
+
+    @RetentionGraceTime.setter
+    def RetentionGraceTime(self, RetentionGraceTime):
+        self._RetentionGraceTime = RetentionGraceTime
+
+    @property
+    def RemoteCos(self):
+        r"""Cross-region backup. Valid values: 0 (disabled) and 1 (enabled).
+        :rtype: int
+        """
+        return self._RemoteCos
+
+    @RemoteCos.setter
+    def RemoteCos(self, RemoteCos):
+        self._RemoteCos = RemoteCos
+
+    @property
+    def RemoteCosRegion(self):
+        r"""Region name for cross-region backup, such as ap-guangzhou.
+        :rtype: str
+        """
+        return self._RemoteCosRegion
+
+    @RemoteCosRegion.setter
+    def RemoteCosRegion(self, RemoteCosRegion):
+        self._RemoteCosRegion = RemoteCosRegion
+
+    @property
+    def StrategyName(self):
+        r"""Policy name.
+        :rtype: str
+        """
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def Indices(self):
+        r"""Backup index list. If left empty, it means to back up all indexes.
+        :rtype: str
+        """
+        return self._Indices
+
+    @Indices.setter
+    def Indices(self, Indices):
+        self._Indices = Indices
+
+    @property
+    def MultiAz(self):
+        r"""
+        :rtype: int
+        """
+        return self._MultiAz
+
+    @MultiAz.setter
+    def MultiAz(self, MultiAz):
+        self._MultiAz = MultiAz
+
+    @property
+    def CreateTime(self):
+        r"""Policy creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._IsAutoBackup = params.get("IsAutoBackup")
         self._BackupTime = params.get("BackupTime")
+        self._SnapshotName = params.get("SnapshotName")
+        self._EsRepositoryType = params.get("EsRepositoryType")
+        self._PaasEsRepository = params.get("PaasEsRepository")
+        self._UserEsRepository = params.get("UserEsRepository")
+        self._CosBasePath = params.get("CosBasePath")
+        self._StorageDuration = params.get("StorageDuration")
+        self._AutoBackupInterval = params.get("AutoBackupInterval")
+        self._CosRetention = params.get("CosRetention")
+        self._RetainUntilDate = params.get("RetainUntilDate")
+        self._RetentionGraceTime = params.get("RetentionGraceTime")
+        self._RemoteCos = params.get("RemoteCos")
+        self._RemoteCosRegion = params.get("RemoteCosRegion")
+        self._StrategyName = params.get("StrategyName")
+        self._Indices = params.get("Indices")
+        self._MultiAz = params.get("MultiAz")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -528,6 +768,102 @@ class CosBackup(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAutoBackUpStrategyRequest(AbstractModel):
+    r"""CreateAutoBackUpStrategy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance name.
+        :type InstanceId: str
+        :param _CosBackup: Policy information.
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        self._InstanceId = None
+        self._CosBackup = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance name.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CosBackup(self):
+        r"""Policy information.
+        :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        return self._CosBackup
+
+    @CosBackup.setter
+    def CosBackup(self, CosBackup):
+        self._CosBackup = CosBackup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("CosBackup") is not None:
+            self._CosBackup = CosBackup()
+            self._CosBackup._deserialize(params.get("CosBackup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAutoBackUpStrategyResponse(AbstractModel):
+    r"""CreateAutoBackUpStrategy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Valid values: true (success) and false (failure).
+        :type Status: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""Valid values: true (success) and false (failure).
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateIndexRequest(AbstractModel):
@@ -1247,7 +1583,7 @@ class CreateInstanceResponse(AbstractModel):
         :param _DealName: Order ID
 Note: This field may return `null`, indicating that no valid value was found.
         :type DealName: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._InstanceId = None
@@ -1279,7 +1615,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1292,6 +1628,100 @@ Note: This field may return `null`, indicating that no valid value was found.
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAutoBackUpStrategyRequest(AbstractModel):
+    r"""DeleteAutoBackUpStrategy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance name.
+        :type InstanceId: str
+        :param _StrategyName: Policy name.
+        :type StrategyName: list of str
+        """
+        self._InstanceId = None
+        self._StrategyName = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance name.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StrategyName(self):
+        r"""Policy name.
+        :rtype: list of str
+        """
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StrategyName = params.get("StrategyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAutoBackUpStrategyResponse(AbstractModel):
+    r"""DeleteAutoBackUpStrategy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Valid values: true (success) and false (failure).
+        :type Status: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""Valid values: true (success) and false (failure).
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -1477,14 +1907,14 @@ class DeleteInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1495,6 +1925,90 @@ class DeleteInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAutoBackUpStrategyRequest(AbstractModel):
+    r"""DescribeAutoBackUpStrategy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance name.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance name.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoBackUpStrategyResponse(AbstractModel):
+    r"""DescribeAutoBackUpStrategy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBackupList: Policy information.
+        :type CosBackupList: list of CosBackup
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CosBackupList = None
+        self._RequestId = None
+
+    @property
+    def CosBackupList(self):
+        r"""Policy information.
+        :rtype: list of CosBackup
+        """
+        return self._CosBackupList
+
+    @CosBackupList.setter
+    def CosBackupList(self, CosBackupList):
+        self._CosBackupList = CosBackupList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosBackupList") is not None:
+            self._CosBackupList = []
+            for item in params.get("CosBackupList"):
+                obj = CosBackup()
+                obj._deserialize(item)
+                self._CosBackupList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1682,7 +2196,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param _TotalCount: Total number of results
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IndexMetaFields = None
@@ -1715,7 +2229,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1842,7 +2356,7 @@ class DescribeIndexMetaResponse(AbstractModel):
         :param _IndexMetaField: Index metadata field
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IndexMetaField: :class:`tencentcloud.es.v20180416.models.IndexMetaField`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IndexMetaField = None
@@ -1862,7 +2376,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2202,7 +2716,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
         :type TotalCount: int
         :param _Operations: Operation history
         :type Operations: list of Operation
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2233,7 +2747,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2471,7 +2985,7 @@ class DescribeInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param _InstanceList: List of instance details
         :type InstanceList: list of InstanceInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2502,7 +3016,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2575,7 +3089,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param _KibanasView: Kibana view
 Note: This field may return `null`, indicating that no valid value was found.
         :type KibanasView: list of KibanaView
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ClusterView = None
@@ -2621,7 +3135,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3030,7 +3544,7 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
         r"""
         :param _TargetNodeTypes: A list of node types used to receive requests.
         :type TargetNodeTypes: list of str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TargetNodeTypes = None
@@ -3049,7 +3563,7 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -3077,6 +3591,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param _IndexName: Index name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IndexName: str
+        :param _IndexMetaJson: 
+        :type IndexMetaJson: str
         :param _IndexStatus: Index status
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IndexStatus: str
@@ -3116,6 +3632,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """
         self._IndexType = None
         self._IndexName = None
+        self._IndexMetaJson = None
         self._IndexStatus = None
         self._IndexStorage = None
         self._IndexCreateTime = None
@@ -3152,6 +3669,17 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @IndexName.setter
     def IndexName(self, IndexName):
         self._IndexName = IndexName
+
+    @property
+    def IndexMetaJson(self):
+        r"""
+        :rtype: str
+        """
+        return self._IndexMetaJson
+
+    @IndexMetaJson.setter
+    def IndexMetaJson(self, IndexMetaJson):
+        self._IndexMetaJson = IndexMetaJson
 
     @property
     def IndexStatus(self):
@@ -3301,6 +3829,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._IndexType = params.get("IndexType")
         self._IndexName = params.get("IndexName")
+        self._IndexMetaJson = params.get("IndexMetaJson")
         self._IndexStatus = params.get("IndexStatus")
         self._IndexStorage = params.get("IndexStorage")
         self._IndexCreateTime = params.get("IndexCreateTime")
@@ -5629,6 +6158,151 @@ class MasterNodeInfo(AbstractModel):
         
 
 
+class ModifyAutoBackUpCommonInfoRequest(AbstractModel):
+    r"""ModifyAutoBackUpCommonInfo request structure.
+
+    """
+
+
+class ModifyAutoBackUpCommonInfoResponse(AbstractModel):
+    r"""ModifyAutoBackUpCommonInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAutoBackUpStrategyRequest(AbstractModel):
+    r"""ModifyAutoBackUpStrategy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance name.
+        :type InstanceId: str
+        :param _StrategyName: Current policy name.
+        :type StrategyName: str
+        :param _CosBackup: Policy information.
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        self._InstanceId = None
+        self._StrategyName = None
+        self._CosBackup = None
+
+    @property
+    def InstanceId(self):
+        r"""Instance name.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StrategyName(self):
+        r"""Current policy name.
+        :rtype: str
+        """
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def CosBackup(self):
+        r"""Policy information.
+        :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        return self._CosBackup
+
+    @CosBackup.setter
+    def CosBackup(self, CosBackup):
+        self._CosBackup = CosBackup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StrategyName = params.get("StrategyName")
+        if params.get("CosBackup") is not None:
+            self._CosBackup = CosBackup()
+            self._CosBackup._deserialize(params.get("CosBackup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAutoBackUpStrategyResponse(AbstractModel):
+    r"""ModifyAutoBackUpStrategy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Valid values: true (success) and false (failure).
+        :type Status: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""Valid values: true (success) and false (failure).
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class NodeInfo(AbstractModel):
     r"""Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated primary node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a primary node, then the `DiskType` and `DiskSize` parameters will be ignored (as a primary node has no data disks)
 
@@ -6693,14 +7367,14 @@ class RestartInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6757,14 +7431,14 @@ class RestartKibanaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6881,14 +7555,14 @@ class RestartNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7330,14 +8004,14 @@ class UpdateDictionariesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7372,6 +8046,12 @@ class UpdateIndexRequest(AbstractModel):
         :type Password: str
         :param _RolloverBackingIndex: Whether to roll over the backup index
         :type RolloverBackingIndex: bool
+        :param _MountIndex: 
+        :type MountIndex: bool
+        :param _IndexUuid: 
+        :type IndexUuid: str
+        :param _BackingIndexName: 
+        :type BackingIndexName: str
         """
         self._InstanceId = None
         self._IndexType = None
@@ -7380,6 +8060,9 @@ class UpdateIndexRequest(AbstractModel):
         self._Username = None
         self._Password = None
         self._RolloverBackingIndex = None
+        self._MountIndex = None
+        self._IndexUuid = None
+        self._BackingIndexName = None
 
     @property
     def InstanceId(self):
@@ -7458,6 +8141,39 @@ class UpdateIndexRequest(AbstractModel):
     def RolloverBackingIndex(self, RolloverBackingIndex):
         self._RolloverBackingIndex = RolloverBackingIndex
 
+    @property
+    def MountIndex(self):
+        r"""
+        :rtype: bool
+        """
+        return self._MountIndex
+
+    @MountIndex.setter
+    def MountIndex(self, MountIndex):
+        self._MountIndex = MountIndex
+
+    @property
+    def IndexUuid(self):
+        r"""
+        :rtype: str
+        """
+        return self._IndexUuid
+
+    @IndexUuid.setter
+    def IndexUuid(self, IndexUuid):
+        self._IndexUuid = IndexUuid
+
+    @property
+    def BackingIndexName(self):
+        r"""
+        :rtype: str
+        """
+        return self._BackingIndexName
+
+    @BackingIndexName.setter
+    def BackingIndexName(self, BackingIndexName):
+        self._BackingIndexName = BackingIndexName
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7467,6 +8183,9 @@ class UpdateIndexRequest(AbstractModel):
         self._Username = params.get("Username")
         self._Password = params.get("Password")
         self._RolloverBackingIndex = params.get("RolloverBackingIndex")
+        self._MountIndex = params.get("MountIndex")
+        self._IndexUuid = params.get("IndexUuid")
+        self._BackingIndexName = params.get("BackingIndexName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7484,14 +8203,14 @@ class UpdateIndexResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8074,7 +8793,7 @@ class UpdateInstanceResponse(AbstractModel):
         :param _DealName: Order ID
 Note: This field may return `null`, indicating that no valid value was found.
         :type DealName: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DealName = None
@@ -8094,7 +8813,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8227,14 +8946,14 @@ class UpdatePluginsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8306,14 +9025,14 @@ class UpdateRequestTargetNodeTypesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8475,14 +9194,14 @@ class UpgradeInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8617,7 +9336,7 @@ class UpgradeLicenseResponse(AbstractModel):
         :param _DealName: Order ID
 Note: This field may return `null`, indicating that no valid value was found.
         :type DealName: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DealName = None
@@ -8637,7 +9356,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

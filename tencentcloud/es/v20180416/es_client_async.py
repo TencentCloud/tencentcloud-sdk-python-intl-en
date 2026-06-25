@@ -25,6 +25,24 @@ class EsClient(AbstractClient):
     _endpoint = 'es.intl.tencentcloudapi.com'
     _service = 'es'
 
+    async def CreateAutoBackUpStrategy(
+            self,
+            request: models.CreateAutoBackUpStrategyRequest,
+            opts: Dict = None,
+    ) -> models.CreateAutoBackUpStrategyResponse:
+        """
+        This API is used to create an auto backup snapshot policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAutoBackUpStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAutoBackUpStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateIndex(
             self,
             request: models.CreateIndexRequest,
@@ -61,6 +79,24 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAutoBackUpStrategy(
+            self,
+            request: models.DeleteAutoBackUpStrategyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAutoBackUpStrategyResponse:
+        """
+        This API is used to delete an auto backup snapshot policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAutoBackUpStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAutoBackUpStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteIndex(
             self,
             request: models.DeleteIndexRequest,
@@ -92,6 +128,24 @@ class EsClient(AbstractClient):
         kwargs["action"] = "DeleteInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAutoBackUpStrategy(
+            self,
+            request: models.DescribeAutoBackUpStrategyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAutoBackUpStrategyResponse:
+        """
+        This API is used to obtain an auto backup snapshot policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAutoBackUpStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAutoBackUpStrategyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -218,6 +272,42 @@ class EsClient(AbstractClient):
         kwargs["action"] = "GetRequestTargetNodeTypes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetRequestTargetNodeTypesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAutoBackUpCommonInfo(
+            self,
+            request: models.ModifyAutoBackUpCommonInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAutoBackUpCommonInfoResponse:
+        """
+        This API is used to modify the common information of an auto backup snapshot policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAutoBackUpCommonInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAutoBackUpCommonInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAutoBackUpStrategy(
+            self,
+            request: models.ModifyAutoBackUpStrategyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAutoBackUpStrategyResponse:
+        """
+        This API is used to modify an auto backup snapshot policy.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAutoBackUpStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAutoBackUpStrategyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

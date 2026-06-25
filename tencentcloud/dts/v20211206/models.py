@@ -884,10 +884,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ThreadCount: The number of threads, which defaults to 1. Value range: 1-5.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ThreadCount: int
+        :param _Type: 
+        :type Type: str
         """
         self._Method = None
         self._SampleRate = None
         self._ThreadCount = None
+        self._Type = None
 
     @property
     def Method(self):
@@ -924,11 +927,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ThreadCount(self, ThreadCount):
         self._ThreadCount = ThreadCount
 
+    @property
+    def Type(self):
+        r"""
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Method = params.get("Method")
         self._SampleRate = params.get("SampleRate")
         self._ThreadCount = params.get("ThreadCount")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1476,6 +1491,10 @@ class ConfigureSubscribeJobRequest(AbstractModel):
         :type PipelineInfo: list of PipelineInfo
         :param _ExtraAttr: Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. If true is filled in, it will be processed. If it is left blank or filled with other values, it will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported. If not filled in, the default is changeStream.Other businesses currently have no optional parameters.
         :type ExtraAttr: list of KeyValuePairOption
+        :param _ConsumerVpcId: 
+        :type ConsumerVpcId: str
+        :param _ConsumerSubnetId: 
+        :type ConsumerSubnetId: str
         """
         self._SubscribeId = None
         self._SubscribeMode = None
@@ -1486,6 +1505,8 @@ class ConfigureSubscribeJobRequest(AbstractModel):
         self._Protocol = None
         self._PipelineInfo = None
         self._ExtraAttr = None
+        self._ConsumerVpcId = None
+        self._ConsumerSubnetId = None
 
     @property
     def SubscribeId(self):
@@ -1586,6 +1607,28 @@ class ConfigureSubscribeJobRequest(AbstractModel):
     def ExtraAttr(self, ExtraAttr):
         self._ExtraAttr = ExtraAttr
 
+    @property
+    def ConsumerVpcId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ConsumerVpcId
+
+    @ConsumerVpcId.setter
+    def ConsumerVpcId(self, ConsumerVpcId):
+        self._ConsumerVpcId = ConsumerVpcId
+
+    @property
+    def ConsumerSubnetId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ConsumerSubnetId
+
+    @ConsumerSubnetId.setter
+    def ConsumerSubnetId(self, ConsumerSubnetId):
+        self._ConsumerSubnetId = ConsumerSubnetId
+
 
     def _deserialize(self, params):
         self._SubscribeId = params.get("SubscribeId")
@@ -1619,6 +1662,8 @@ class ConfigureSubscribeJobRequest(AbstractModel):
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
                 self._ExtraAttr.append(obj)
+        self._ConsumerVpcId = params.get("ConsumerVpcId")
+        self._ConsumerSubnetId = params.get("ConsumerSubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2933,6 +2978,8 @@ class CreateSubscribeRequest(AbstractModel):
         :type Tags: list of TagItem
         :param _Name: Custom task name
         :type Name: str
+        :param _InstanceClass: 
+        :type InstanceClass: str
         """
         self._Product = None
         self._PayType = None
@@ -2941,6 +2988,7 @@ class CreateSubscribeRequest(AbstractModel):
         self._Count = None
         self._Tags = None
         self._Name = None
+        self._InstanceClass = None
 
     @property
     def Product(self):
@@ -3019,6 +3067,17 @@ class CreateSubscribeRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def InstanceClass(self):
+        r"""
+        :rtype: str
+        """
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
 
     def _deserialize(self, params):
         self._Product = params.get("Product")
@@ -3033,6 +3092,7 @@ class CreateSubscribeRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Name = params.get("Name")
+        self._InstanceClass = params.get("InstanceClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3107,6 +3167,8 @@ class CreateSyncJobRequest(AbstractModel):
         :type DstRegion: str
         :param _Specification: Sync task specification, such as `Standard`.
         :type Specification: str
+        :param _TimeSpan: 
+        :type TimeSpan: int
         :param _Tags: Tag information
         :type Tags: list of TagItem
         :param _Count: The number of sync tasks purchased at a time. Value range: [1, 10]. Default value: `1`.
@@ -3126,6 +3188,7 @@ class CreateSyncJobRequest(AbstractModel):
         self._DstDatabaseType = None
         self._DstRegion = None
         self._Specification = None
+        self._TimeSpan = None
         self._Tags = None
         self._Count = None
         self._AutoRenew = None
@@ -3198,6 +3261,17 @@ class CreateSyncJobRequest(AbstractModel):
     @Specification.setter
     def Specification(self, Specification):
         self._Specification = Specification
+
+    @property
+    def TimeSpan(self):
+        r"""
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
 
     @property
     def Tags(self):
@@ -3273,6 +3347,7 @@ class CreateSyncJobRequest(AbstractModel):
         self._DstDatabaseType = params.get("DstDatabaseType")
         self._DstRegion = params.get("DstRegion")
         self._Specification = params.get("Specification")
+        self._TimeSpan = params.get("TimeSpan")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -3368,7 +3443,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _DatabaseNetEnv: Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DatabaseNetEnv: str
-        :param _ConnectType: TDSQL connection method: proxy - access each set node via TDSQL proxy hosts. Note that this connection method is only available in self-developed cloud environments. Only proxy host information needs to be provided in Info. set - directly connect to set nodes. If selecting direct set connection, both proxy host information and all set node information must be correctly filled in Info. Mandatory when source is TDSQL MySQL type.
+        :param _ConnectType: 
         :type ConnectType: str
         """
         self._Region = None
@@ -3479,7 +3554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConnectType(self):
-        r"""TDSQL connection method: proxy - access each set node via TDSQL proxy hosts. Note that this connection method is only available in self-developed cloud environments. Only proxy host information needs to be provided in Info. set - directly connect to set nodes. If selecting direct set connection, both proxy host information and all set node information must be correctly filled in Info. Mandatory when source is TDSQL MySQL type.
+        r"""
         :rtype: str
         """
         return self._ConnectType
@@ -3583,6 +3658,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type TmpSecretKey: str
         :param _TmpToken: Temporary token, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
         :type TmpToken: str
+        :param _EncryptConn: 
+        :type EncryptConn: str
         """
         self._Role = None
         self._DbKernel = None
@@ -3604,6 +3681,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TmpSecretId = None
         self._TmpSecretKey = None
         self._TmpToken = None
+        self._EncryptConn = None
 
     @property
     def Role(self):
@@ -3842,6 +3920,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TmpToken(self, TmpToken):
         self._TmpToken = TmpToken
 
+    @property
+    def EncryptConn(self):
+        r"""
+        :rtype: str
+        """
+        return self._EncryptConn
+
+    @EncryptConn.setter
+    def EncryptConn(self, EncryptConn):
+        self._EncryptConn = EncryptConn
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
@@ -3864,6 +3953,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TmpSecretId = params.get("TmpSecretId")
         self._TmpSecretKey = params.get("TmpSecretKey")
         self._TmpToken = params.get("TmpToken")
+        self._EncryptConn = params.get("EncryptConn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7230,6 +7320,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _KafkaConfig: Kafka configuration information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type KafkaConfig: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
+        :param _KafkaVersion: 
+        :type KafkaVersion: str
         :param _AccessType: Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.Note: This field may return null, indicating that no valid values can be obtained.
         :type AccessType: str
         :param _Endpoints: Access type information
@@ -7245,6 +7337,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Errors: list of SubsErr
         :param _ExtraAttr: Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. Fill in true to process, others will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported.Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtraAttr: list of KeyValuePairOption
+        :param _SubscribeVersion: 
+        :type SubscribeVersion: str
+        :param _ConsumerVpcId: 
+        :type ConsumerVpcId: str
+        :param _ConsumerSubnetId: 
+        :type ConsumerSubnetId: str
+        :param _InstanceClass: 
+        :type InstanceClass: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -7269,12 +7369,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Protocol = None
         self._SubscribeObjects = None
         self._KafkaConfig = None
+        self._KafkaVersion = None
         self._AccessType = None
         self._Endpoints = None
         self._PipelineInfo = None
         self._Tags = None
         self._Errors = None
         self._ExtraAttr = None
+        self._SubscribeVersion = None
+        self._ConsumerVpcId = None
+        self._ConsumerSubnetId = None
+        self._InstanceClass = None
         self._RequestId = None
 
     @property
@@ -7511,6 +7616,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._KafkaConfig = KafkaConfig
 
     @property
+    def KafkaVersion(self):
+        r"""
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
     def AccessType(self):
         r"""Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -7580,6 +7696,50 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ExtraAttr = ExtraAttr
 
     @property
+    def SubscribeVersion(self):
+        r"""
+        :rtype: str
+        """
+        return self._SubscribeVersion
+
+    @SubscribeVersion.setter
+    def SubscribeVersion(self, SubscribeVersion):
+        self._SubscribeVersion = SubscribeVersion
+
+    @property
+    def ConsumerVpcId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ConsumerVpcId
+
+    @ConsumerVpcId.setter
+    def ConsumerVpcId(self, ConsumerVpcId):
+        self._ConsumerVpcId = ConsumerVpcId
+
+    @property
+    def ConsumerSubnetId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ConsumerSubnetId
+
+    @ConsumerSubnetId.setter
+    def ConsumerSubnetId(self, ConsumerSubnetId):
+        self._ConsumerSubnetId = ConsumerSubnetId
+
+    @property
+    def InstanceClass(self):
+        r"""
+        :rtype: str
+        """
+        return self._InstanceClass
+
+    @InstanceClass.setter
+    def InstanceClass(self, InstanceClass):
+        self._InstanceClass = InstanceClass
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -7620,6 +7780,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("KafkaConfig") is not None:
             self._KafkaConfig = SubscribeKafkaConfig()
             self._KafkaConfig._deserialize(params.get("KafkaConfig"))
+        self._KafkaVersion = params.get("KafkaVersion")
         self._AccessType = params.get("AccessType")
         if params.get("Endpoints") is not None:
             self._Endpoints = []
@@ -7651,6 +7812,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
                 self._ExtraAttr.append(obj)
+        self._SubscribeVersion = params.get("SubscribeVersion")
+        self._ConsumerVpcId = params.get("ConsumerVpcId")
+        self._ConsumerSubnetId = params.get("ConsumerSubnetId")
+        self._InstanceClass = params.get("InstanceClass")
         self._RequestId = params.get("RequestId")
 
 
@@ -7663,10 +7828,14 @@ class DescribeSubscribeJobsRequest(AbstractModel):
         r"""
         :param _SubscribeId: Subscription ID (exact match)
         :type SubscribeId: str
+        :param _SubscribeIds: 
+        :type SubscribeIds: list of str
         :param _SubscribeName: Subscription name (prefix fuzzy match)
         :type SubscribeName: str
         :param _InstanceId: Subscribed cloud database instance ID (exact match)
         :type InstanceId: str
+        :param _Topic: 
+        :type Topic: str
         :param _PayType: Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
         :type PayType: int
         :param _Product: Subscribed database product. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
@@ -7685,8 +7854,10 @@ class DescribeSubscribeJobsRequest(AbstractModel):
         :type TagFilters: list of TagFilter
         """
         self._SubscribeId = None
+        self._SubscribeIds = None
         self._SubscribeName = None
         self._InstanceId = None
+        self._Topic = None
         self._PayType = None
         self._Product = None
         self._Status = None
@@ -7706,6 +7877,17 @@ class DescribeSubscribeJobsRequest(AbstractModel):
     @SubscribeId.setter
     def SubscribeId(self, SubscribeId):
         self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeIds(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._SubscribeIds
+
+    @SubscribeIds.setter
+    def SubscribeIds(self, SubscribeIds):
+        self._SubscribeIds = SubscribeIds
 
     @property
     def SubscribeName(self):
@@ -7728,6 +7910,17 @@ class DescribeSubscribeJobsRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        r"""
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
 
     @property
     def PayType(self):
@@ -7820,8 +8013,10 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeIds = params.get("SubscribeIds")
         self._SubscribeName = params.get("SubscribeName")
         self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
         self._PayType = params.get("PayType")
         self._Product = params.get("Product")
         self._Status = params.get("Status")
@@ -9116,11 +9311,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _CcnOwnerUin: The root account of CCN in the scenario where the database is connected to CCN under another Tencent Cloud account
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CcnOwnerUin: str
-        :param _ChildInstanceId: The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster
+        :param _ChildInstanceId: 
         :type ChildInstanceId: str
-        :param _ChildInstanceType: When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.
+        :param _ChildInstanceType: 
         :type ChildInstanceType: str
-        :param _SetId: Shard id of tdsql. Mandatory when node type is set.
+        :param _SetId: 
         :type SetId: str
         """
         self._Region = None
@@ -9477,7 +9672,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceId(self):
-        r"""The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster
+        r"""
         :rtype: str
         """
         return self._ChildInstanceId
@@ -9488,7 +9683,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceType(self):
-        r"""When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.
+        r"""
         :rtype: str
         """
         return self._ChildInstanceType
@@ -9499,7 +9694,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SetId(self):
-        r"""Shard id of tdsql. Mandatory when node type is set.
+        r"""
         :rtype: str
         """
         return self._SetId
@@ -9589,9 +9784,9 @@ class EndpointItem(AbstractModel):
         :type CcnOwnerUin: str
         :param _ExtraAttr: Additional information added for the business. Parameter name is called key, parameter value is called value. Mandatory parameters for tdpg: PgDatabase (subscribed database name).Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtraAttr: list of KeyValuePairOption
-        :param _ChildInstanceId: The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster
+        :param _ChildInstanceId: 
         :type ChildInstanceId: str
-        :param _ChildInstanceType: When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.
+        :param _ChildInstanceType: 
         :type ChildInstanceType: str
         """
         self._DatabaseRegion = None
@@ -9791,7 +9986,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def ChildInstanceId(self):
-        r"""The ID of the sub-instance when the database is cynos and it is a sub-database instance within a cynos cluster
+        r"""
         :rtype: str
         """
         return self._ChildInstanceId
@@ -9802,7 +9997,7 @@ class EndpointItem(AbstractModel):
 
     @property
     def ChildInstanceType(self):
-        r"""When the database is cynos and it is a sub-database instance within a cynos cluster, this parameter represents the type of the sub-instance, for example: pass 'ro' for read-only instances, 'rw' for read-write instances.
+        r"""
         :rtype: str
         """
         return self._ChildInstanceType
@@ -11199,7 +11394,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 ["DstWriteMode": `normal`. 	Target database write mode. Valid values: `clearData` (Clear the target instance data), overwrite` (Execute the task in overwriting mode), `normal` (Follow the normal steps) 	"IsDstReadOnly": `true`. 	Whether to set the target database to read-only for a migration task. Valid values: `true` (Yes), `false` (No) 	"ClientOutputBufferHardLimit": 512. 	Hard limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferSoftLimit": 512. 	Soft limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferPersistTime": 60. Soft limit duration of the replica buffer zone in seconds. 	"ReplBacklogSize": 512, 	Limit of the circular buffer zone capacity in MB. 	"ReplTimeout":120,		Replication timeout period in seconds]
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtraAttr: list of KeyValuePairOption
-        :param _MigrateWay: PostgreSQL migration types: logical (logical migration), physical (physical migration)
+        :param _MigrateWay: 
         :type MigrateWay: str
         """
         self._DatabaseTable = None
@@ -11298,7 +11493,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrateWay(self):
-        r"""PostgreSQL migration types: logical (logical migration), physical (physical migration)
+        r"""
         :rtype: str
         """
         return self._MigrateWay
@@ -11761,15 +11956,12 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
         :type AccountName: str
         :param _ConsumerGroupName: Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
         :type ConsumerGroupName: str
-        :param _OldPassword: Old Password.
-        :type OldPassword: str
         :param _NewPassword: New password. The character length is no less than 3 and no more than 32.
         :type NewPassword: str
         """
         self._SubscribeId = None
         self._AccountName = None
         self._ConsumerGroupName = None
-        self._OldPassword = None
         self._NewPassword = None
 
     @property
@@ -11806,17 +11998,6 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
         self._ConsumerGroupName = ConsumerGroupName
 
     @property
-    def OldPassword(self):
-        r"""Old Password.
-        :rtype: str
-        """
-        return self._OldPassword
-
-    @OldPassword.setter
-    def OldPassword(self, OldPassword):
-        self._OldPassword = OldPassword
-
-    @property
     def NewPassword(self):
         r"""New password. The character length is no less than 3 and no more than 32.
         :rtype: str
@@ -11832,7 +12013,6 @@ class ModifyConsumerGroupPasswordRequest(AbstractModel):
         self._SubscribeId = params.get("SubscribeId")
         self._AccountName = params.get("AccountName")
         self._ConsumerGroupName = params.get("ConsumerGroupName")
-        self._OldPassword = params.get("OldPassword")
         self._NewPassword = params.get("NewPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -13092,14 +13272,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Databases: list of Database
         :param _AdvancedObjects: Advanced object types, such as function and procedure. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration. When advanced objects need to be synchronized, the initialization type must include the structure initialization type, that is, the Options.InitType value of the task is Structure or Full.Note: This field may return null, indicating that no valid values can be obtained.
         :type AdvancedObjects: list of str
-        :param _OnlineDDL: A redundant field that specifies the online DDL type
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         """
         self._Mode = None
         self._Databases = None
         self._AdvancedObjects = None
-        self._OnlineDDL = None
 
     @property
     def Mode(self):
@@ -13135,18 +13311,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AdvancedObjects(self, AdvancedObjects):
         self._AdvancedObjects = AdvancedObjects
 
-    @property
-    def OnlineDDL(self):
-        r"""A redundant field that specifies the online DDL type
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
-        """
-        return self._OnlineDDL
-
-    @OnlineDDL.setter
-    def OnlineDDL(self, OnlineDDL):
-        self._OnlineDDL = OnlineDDL
-
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
@@ -13157,9 +13321,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._Databases.append(obj)
         self._AdvancedObjects = params.get("AdvancedObjects")
-        if params.get("OnlineDDL") is not None:
-            self._OnlineDDL = OnlineDDL()
-            self._OnlineDDL._deserialize(params.get("OnlineDDL"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13221,44 +13382,6 @@ class OffsetTimeMap(AbstractModel):
         
 
 
-class OnlineDDL(AbstractModel):
-    r"""Online DDL type
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Status: Status
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Status: str
-        """
-        self._Status = None
-
-    @property
-    def Status(self):
-        r"""Status
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-
-    def _deserialize(self, params):
-        self._Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Options(AbstractModel):
     r"""Data sync options
 
@@ -13296,9 +13419,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AutoRetryTimeRangeMinutes: Settings of the automatic retry time range
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AutoRetryTimeRangeMinutes: int
-        :param _FilterBeginCommit: Whether to filter out begin and commit messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.
+        :param _StartPosition: 
+        :type StartPosition: str
+        :param _FilterBeginCommit: 
         :type FilterBeginCommit: bool
-        :param _FilterCheckpoint: Whether to filter out checkpoint messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.
+        :param _FilterCheckpoint: 
         :type FilterCheckpoint: bool
         """
         self._InitType = None
@@ -13311,6 +13436,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._KafkaOption = None
         self._RateLimitOption = None
         self._AutoRetryTimeRangeMinutes = None
+        self._StartPosition = None
         self._FilterBeginCommit = None
         self._FilterCheckpoint = None
 
@@ -13435,8 +13561,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
     @property
+    def StartPosition(self):
+        r"""
+        :rtype: str
+        """
+        return self._StartPosition
+
+    @StartPosition.setter
+    def StartPosition(self, StartPosition):
+        self._StartPosition = StartPosition
+
+    @property
     def FilterBeginCommit(self):
-        r"""Whether to filter out begin and commit messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.
+        r"""
         :rtype: bool
         """
         return self._FilterBeginCommit
@@ -13447,7 +13584,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterCheckpoint(self):
-        r"""Whether to filter out checkpoint messages when synchronizing to the kafka link. Currently only supported for MySQL-to-kafka links.
+        r"""
         :rtype: bool
         """
         return self._FilterCheckpoint
@@ -13479,6 +13616,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._RateLimitOption = RateLimitOption()
             self._RateLimitOption._deserialize(params.get("RateLimitOption"))
         self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+        self._StartPosition = params.get("StartPosition")
         self._FilterBeginCommit = params.get("FilterBeginCommit")
         self._FilterCheckpoint = params.get("FilterCheckpoint")
         memeber_set = set(params.keys())
@@ -17223,6 +17361,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _OfflineTime: Deletion time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OfflineTime: str
+        :param _OptObjStatus: 
+        :type OptObjStatus: str
         :param _AutoRetryTimeRangeMinutes: Settings of automatic retry time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AutoRetryTimeRangeMinutes: int
@@ -17263,6 +17403,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._InstanceClass = None
         self._AutoRenew = None
         self._OfflineTime = None
+        self._OptObjStatus = None
         self._AutoRetryTimeRangeMinutes = None
         self._DumperResumeCtrl = None
 
@@ -17663,6 +17804,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OfflineTime = OfflineTime
 
     @property
+    def OptObjStatus(self):
+        r"""
+        :rtype: str
+        """
+        return self._OptObjStatus
+
+    @OptObjStatus.setter
+    def OptObjStatus(self, OptObjStatus):
+        self._OptObjStatus = OptObjStatus
+
+    @property
     def AutoRetryTimeRangeMinutes(self):
         r"""Settings of automatic retry time
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -17740,6 +17892,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._InstanceClass = params.get("InstanceClass")
         self._AutoRenew = params.get("AutoRenew")
         self._OfflineTime = params.get("OfflineTime")
+        self._OptObjStatus = params.get("OptObjStatus")
         self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         self._DumperResumeCtrl = params.get("DumperResumeCtrl")
         memeber_set = set(params.keys())

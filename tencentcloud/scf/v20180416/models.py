@@ -3478,8 +3478,8 @@ class GetFunctionLogsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _FunctionName: Function name.
-- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583?from_cn_redirect=1) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
-- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.
+- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
+- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875) to get the best log retrieval experience.
         :type FunctionName: str
         :param _Offset: Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
         :type Offset: int
@@ -3520,8 +3520,8 @@ class GetFunctionLogsRequest(AbstractModel):
     @property
     def FunctionName(self):
         r"""Function name.
-- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583?from_cn_redirect=1) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
-- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.
+- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
+- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875) to get the best log retrieval experience.
         :rtype: str
         """
         return self._FunctionName
@@ -10607,7 +10607,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
         :type TriggerName: str
         :param _Type: Trigger Type
         :type Type: str
-        :param _Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        :param _Qualifier: Function version. It defaults to `$LATEST`. It's recommended to use [$DEFAULT](https://www.tencentcloud.com/document/product/583/37458) for canary release.
         :type Qualifier: str
         :param _Namespace: Function namespace
         :type Namespace: str
@@ -10668,7 +10668,7 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Qualifier(self):
-        r"""Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        r"""Function version. It defaults to `$LATEST`. It's recommended to use [$DEFAULT](https://www.tencentcloud.com/document/product/583/37458) for canary release.
         :rtype: str
         """
         return self._Qualifier

@@ -37,6 +37,8 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
         :type Destination: str
         :param _RoutingKey: Binding key.
         :type RoutingKey: str
+        :param _Arguments: 
+        :type Arguments: list of RabbitMQServerlessKeyValuePair
         """
         self._InstanceId = None
         self._VirtualHost = None
@@ -44,6 +46,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
         self._DestinationType = None
         self._Destination = None
         self._RoutingKey = None
+        self._Arguments = None
 
     @property
     def InstanceId(self):
@@ -111,6 +114,17 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
     def RoutingKey(self, RoutingKey):
         self._RoutingKey = RoutingKey
 
+    @property
+    def Arguments(self):
+        r"""
+        :rtype: list of RabbitMQServerlessKeyValuePair
+        """
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -119,6 +133,12 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
         self._DestinationType = params.get("DestinationType")
         self._Destination = params.get("Destination")
         self._RoutingKey = params.get("RoutingKey")
+        if params.get("Arguments") is not None:
+            self._Arguments = []
+            for item in params.get("Arguments"):
+                obj = RabbitMQServerlessKeyValuePair()
+                obj._deserialize(item)
+                self._Arguments.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1972,9 +1992,24 @@ class DescribeRabbitMQServerlessConnectionRequest(AbstractModel):
         :type InstanceId: str
         :param _VirtualHost: Specifies the vhost name.
         :type VirtualHost: str
+        :param _SortElement: Sort by which field. Supported options: channel (channel count), incoming_bytes (inbound traffic size), outgoing_bytes (outbound traffic size)
+        :type SortElement: str
+        :param _SortType: Sort order: ASC, DESC
+        :type SortType: str
+        :param _Offset: 
+        :type Offset: int
+        :param _Limit: 
+        :type Limit: int
+        :param _Name: 
+        :type Name: str
         """
         self._InstanceId = None
         self._VirtualHost = None
+        self._SortElement = None
+        self._SortType = None
+        self._Offset = None
+        self._Limit = None
+        self._Name = None
 
     @property
     def InstanceId(self):
@@ -1998,10 +2033,70 @@ class DescribeRabbitMQServerlessConnectionRequest(AbstractModel):
     def VirtualHost(self, VirtualHost):
         self._VirtualHost = VirtualHost
 
+    @property
+    def SortElement(self):
+        r"""Sort by which field. Supported options: channel (channel count), incoming_bytes (inbound traffic size), outgoing_bytes (outbound traffic size)
+        :rtype: str
+        """
+        return self._SortElement
+
+    @SortElement.setter
+    def SortElement(self, SortElement):
+        self._SortElement = SortElement
+
+    @property
+    def SortType(self):
+        r"""Sort order: ASC, DESC
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def Offset(self):
+        r"""
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Name(self):
+        r"""
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._VirtualHost = params.get("VirtualHost")
+        self._SortElement = params.get("SortElement")
+        self._SortType = params.get("SortType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7385,6 +7480,57 @@ class RabbitMQServerlessInstance(AbstractModel):
         self._NodeCount = params.get("NodeCount")
         self._MaxStorage = params.get("MaxStorage")
         self._IsolatedTime = params.get("IsolatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQServerlessKeyValuePair(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 
+        :type Key: str
+        :param _Value: 
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

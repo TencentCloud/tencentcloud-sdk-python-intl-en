@@ -23,6 +23,9 @@ FAILEDOPERATION_ACCESSGROUPBOUND = 'FailedOperation.AccessGroupBound'
 # The account balance is insufficient.
 FAILEDOPERATION_ACCOUNTINSUFFICIENTBALANCE = 'FailedOperation.AccountInsufficientBalance'
 
+# 
+FAILEDOPERATION_ACCOUNTSUSPENDED = 'FailedOperation.AccountSuspended'
+
 # The account identity is not verified.
 FAILEDOPERATION_ACCOUNTUNAUTHENTICATED = 'FailedOperation.AccountUnauthenticated'
 

@@ -545,12 +545,12 @@ class CreateFileSystemRequest(AbstractModel):
         r"""
         :param _FileSystemName: File system name
         :type FileSystemName: str
-        :param _CapacityQuota: File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB
-        :type CapacityQuota: int
         :param _PosixAcl: Whether to verify POSIX ACL
         :type PosixAcl: bool
         :param _Description: File system description, which is an empty string by default
         :type Description: str
+        :param _CapacityQuota: File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB
+        :type CapacityQuota: int
         :param _SuperUsers: List of superuser names, which is an empty array by default
         :type SuperUsers: list of str
         :param _RootInodeUser: Username of the root directory Inode, which is `hadoop` by default
@@ -565,9 +565,9 @@ class CreateFileSystemRequest(AbstractModel):
         :type Tags: list of Tag
         """
         self._FileSystemName = None
-        self._CapacityQuota = None
         self._PosixAcl = None
         self._Description = None
+        self._CapacityQuota = None
         self._SuperUsers = None
         self._RootInodeUser = None
         self._RootInodeGroup = None
@@ -585,17 +585,6 @@ class CreateFileSystemRequest(AbstractModel):
     @FileSystemName.setter
     def FileSystemName(self, FileSystemName):
         self._FileSystemName = FileSystemName
-
-    @property
-    def CapacityQuota(self):
-        r"""File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB
-        :rtype: int
-        """
-        return self._CapacityQuota
-
-    @CapacityQuota.setter
-    def CapacityQuota(self, CapacityQuota):
-        self._CapacityQuota = CapacityQuota
 
     @property
     def PosixAcl(self):
@@ -618,6 +607,17 @@ class CreateFileSystemRequest(AbstractModel):
     @Description.setter
     def Description(self, Description):
         self._Description = Description
+
+    @property
+    def CapacityQuota(self):
+        r"""File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB
+        :rtype: int
+        """
+        return self._CapacityQuota
+
+    @CapacityQuota.setter
+    def CapacityQuota(self, CapacityQuota):
+        self._CapacityQuota = CapacityQuota
 
     @property
     def SuperUsers(self):
@@ -688,9 +688,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._FileSystemName = params.get("FileSystemName")
-        self._CapacityQuota = params.get("CapacityQuota")
         self._PosixAcl = params.get("PosixAcl")
         self._Description = params.get("Description")
+        self._CapacityQuota = params.get("CapacityQuota")
         self._SuperUsers = params.get("SuperUsers")
         self._RootInodeUser = params.get("RootInodeUser")
         self._RootInodeGroup = params.get("RootInodeGroup")
@@ -1809,6 +1809,36 @@ class DescribeFileSystemsRequest(AbstractModel):
     r"""DescribeFileSystems request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemIdMarker: 
+        :type FileSystemIdMarker: str
+        """
+        self._FileSystemIdMarker = None
+
+    @property
+    def FileSystemIdMarker(self):
+        r"""
+        :rtype: str
+        """
+        return self._FileSystemIdMarker
+
+    @FileSystemIdMarker.setter
+    def FileSystemIdMarker(self, FileSystemIdMarker):
+        self._FileSystemIdMarker = FileSystemIdMarker
+
+
+    def _deserialize(self, params):
+        self._FileSystemIdMarker = params.get("FileSystemIdMarker")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeFileSystemsResponse(AbstractModel):
