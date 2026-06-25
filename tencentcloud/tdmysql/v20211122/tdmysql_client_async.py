@@ -799,6 +799,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ResetUsersPassword(
+            self,
+            request: models.ResetUsersPasswordRequest,
+            opts: Dict = None,
+    ) -> models.ResetUsersPasswordResponse:
+        """
+        This API is used to batch reset user password.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetUsersPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetUsersPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RestartDBInstances(
             self,
             request: models.RestartDBInstancesRequest,

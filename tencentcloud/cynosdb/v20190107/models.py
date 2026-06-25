@@ -13953,6 +13953,354 @@ class CynosdbInstanceDetail(AbstractModel):
         
 
 
+class CynosdbInstanceGroup(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 
+        :type AppId: int
+        :param _ClusterId: 
+        :type ClusterId: str
+        :param _CreatedTime: 
+        :type CreatedTime: str
+        :param _DeletedTime: 
+        :type DeletedTime: str
+        :param _InstanceGroupId: 
+        :type InstanceGroupId: str
+        :param _Status: 
+        :type Status: str
+        :param _Type: Type of the instance group (network). ha-ha group; ro - read-only group; proxy - proxy; singleRo - read-only instance exclusive.
+        :type Type: str
+        :param _UpdatedTime: 
+        :type UpdatedTime: str
+        :param _Vip: 
+        :type Vip: str
+        :param _Vport: 
+        :type Vport: int
+        :param _WanDomain: 
+        :type WanDomain: str
+        :param _WanIP: 
+        :type WanIP: str
+        :param _WanPort: 
+        :type WanPort: int
+        :param _WanStatus: 
+        :type WanStatus: str
+        :param _InstanceSet: 
+        :type InstanceSet: list of CynosdbInstance
+        :param _UniqVpcId: VPC ID
+        :type UniqVpcId: str
+        :param _UniqSubnetId: Specifies the subnet ID.
+        :type UniqSubnetId: str
+        :param _OldAddrInfo: Recycling IP information.
+        :type OldAddrInfo: :class:`tencentcloud.cynosdb.v20190107.models.OldAddrInfo`
+        :param _ProcessingTasks: 
+        :type ProcessingTasks: list of str
+        :param _Tasks: 
+        :type Tasks: list of ObjectTask
+        :param _NetServiceId: 
+        :type NetServiceId: int
+        """
+        self._AppId = None
+        self._ClusterId = None
+        self._CreatedTime = None
+        self._DeletedTime = None
+        self._InstanceGroupId = None
+        self._Status = None
+        self._Type = None
+        self._UpdatedTime = None
+        self._Vip = None
+        self._Vport = None
+        self._WanDomain = None
+        self._WanIP = None
+        self._WanPort = None
+        self._WanStatus = None
+        self._InstanceSet = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._OldAddrInfo = None
+        self._ProcessingTasks = None
+        self._Tasks = None
+        self._NetServiceId = None
+
+    @property
+    def AppId(self):
+        r"""
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def CreatedTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def DeletedTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._DeletedTime
+
+    @DeletedTime.setter
+    def DeletedTime(self, DeletedTime):
+        self._DeletedTime = DeletedTime
+
+    @property
+    def InstanceGroupId(self):
+        r"""
+        :rtype: str
+        """
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
+
+    @property
+    def Status(self):
+        r"""
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""Type of the instance group (network). ha-ha group; ro - read-only group; proxy - proxy; singleRo - read-only instance exclusive.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UpdatedTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def Vip(self):
+        r"""
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def WanDomain(self):
+        r"""
+        :rtype: str
+        """
+        return self._WanDomain
+
+    @WanDomain.setter
+    def WanDomain(self, WanDomain):
+        self._WanDomain = WanDomain
+
+    @property
+    def WanIP(self):
+        r"""
+        :rtype: str
+        """
+        return self._WanIP
+
+    @WanIP.setter
+    def WanIP(self, WanIP):
+        self._WanIP = WanIP
+
+    @property
+    def WanPort(self):
+        r"""
+        :rtype: int
+        """
+        return self._WanPort
+
+    @WanPort.setter
+    def WanPort(self, WanPort):
+        self._WanPort = WanPort
+
+    @property
+    def WanStatus(self):
+        r"""
+        :rtype: str
+        """
+        return self._WanStatus
+
+    @WanStatus.setter
+    def WanStatus(self, WanStatus):
+        self._WanStatus = WanStatus
+
+    @property
+    def InstanceSet(self):
+        r"""
+        :rtype: list of CynosdbInstance
+        """
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def UniqVpcId(self):
+        r"""VPC ID
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        r"""Specifies the subnet ID.
+        :rtype: str
+        """
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def OldAddrInfo(self):
+        r"""Recycling IP information.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OldAddrInfo`
+        """
+        return self._OldAddrInfo
+
+    @OldAddrInfo.setter
+    def OldAddrInfo(self, OldAddrInfo):
+        self._OldAddrInfo = OldAddrInfo
+
+    @property
+    def ProcessingTasks(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._ProcessingTasks
+
+    @ProcessingTasks.setter
+    def ProcessingTasks(self, ProcessingTasks):
+        self._ProcessingTasks = ProcessingTasks
+
+    @property
+    def Tasks(self):
+        r"""
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def NetServiceId(self):
+        r"""
+        :rtype: int
+        """
+        return self._NetServiceId
+
+    @NetServiceId.setter
+    def NetServiceId(self, NetServiceId):
+        self._NetServiceId = NetServiceId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._CreatedTime = params.get("CreatedTime")
+        self._DeletedTime = params.get("DeletedTime")
+        self._InstanceGroupId = params.get("InstanceGroupId")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._WanDomain = params.get("WanDomain")
+        self._WanIP = params.get("WanIP")
+        self._WanPort = params.get("WanPort")
+        self._WanStatus = params.get("WanStatus")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = CynosdbInstance()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        if params.get("OldAddrInfo") is not None:
+            self._OldAddrInfo = OldAddrInfo()
+            self._OldAddrInfo._deserialize(params.get("OldAddrInfo"))
+        self._ProcessingTasks = params.get("ProcessingTasks")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._NetServiceId = params.get("NetServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CynosdbInstanceGrp(AbstractModel):
     r"""Instance group information
 
@@ -19285,6 +19633,105 @@ class DescribeClusterDetailResponse(AbstractModel):
         if params.get("Detail") is not None:
             self._Detail = CynosdbClusterDetail()
             self._Detail._deserialize(params.get("Detail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterInstanceGroupsRequest(AbstractModel):
+    r"""DescribeClusterInstanceGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterInstanceGroupsResponse(AbstractModel):
+    r"""DescribeClusterInstanceGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of instance groups
+        :type TotalCount: int
+        :param _InstanceGroupInfoList: Instance Group List
+        :type InstanceGroupInfoList: list of CynosdbInstanceGroup
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstanceGroupInfoList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of instance groups
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceGroupInfoList(self):
+        r"""Instance Group List
+        :rtype: list of CynosdbInstanceGroup
+        """
+        return self._InstanceGroupInfoList
+
+    @InstanceGroupInfoList.setter
+    def InstanceGroupInfoList(self, InstanceGroupInfoList):
+        self._InstanceGroupInfoList = InstanceGroupInfoList
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceGroupInfoList") is not None:
+            self._InstanceGroupInfoList = []
+            for item in params.get("InstanceGroupInfoList"):
+                obj = CynosdbInstanceGroup()
+                obj._deserialize(item)
+                self._InstanceGroupInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

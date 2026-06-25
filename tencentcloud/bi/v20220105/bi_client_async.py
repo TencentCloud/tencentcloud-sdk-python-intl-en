@@ -61,6 +61,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCorpTag(
+            self,
+            request: models.CreateCorpTagRequest,
+            opts: Dict = None,
+    ) -> models.CreateCorpTagResponse:
+        """
+        Create a business tag
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCorpTag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCorpTagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDataTable(
             self,
             request: models.CreateDataTableRequest,
@@ -164,6 +182,24 @@ class BiClient(AbstractClient):
         kwargs["action"] = "CreateProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateTagTable(
+            self,
+            request: models.CreateTagTableRequest,
+            opts: Dict = None,
+    ) -> models.CreateTagTableResponse:
+        """
+        Create a tag table
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTagTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTagTableResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -421,6 +457,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EditCorpTag(
+            self,
+            request: models.EditCorpTagRequest,
+            opts: Dict = None,
+    ) -> models.EditCorpTagResponse:
+        """
+        Edit business tags (async)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EditCorpTag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EditCorpTagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExportScreenPage(
             self,
             request: models.ExportScreenPageRequest,
@@ -529,6 +583,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyTagTable(
+            self,
+            request: models.ModifyTagTableRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTagTableResponse:
+        """
+        Edit tag table
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTagTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTagTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyUserRole(
             self,
             request: models.ModifyUserRoleRequest,
@@ -560,6 +632,24 @@ class BiClient(AbstractClient):
         kwargs["action"] = "ModifyUserRoleProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyUserRoleProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyUserTag(
+            self,
+            request: models.ModifyUserTagRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserTagResponse:
+        """
+        Modify user tag value
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUserTag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserTagResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

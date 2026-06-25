@@ -1544,6 +1544,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterInstanceGroups(self, request):
+        r"""This API is used to query instance group info.
+
+        :param request: Request instance for DescribeClusterInstanceGroups.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterInstanceGroupsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterInstanceGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterInstanceGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterInstanceGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterInstanceGrps(self, request):
         r"""This API is used to query instance groups.
 

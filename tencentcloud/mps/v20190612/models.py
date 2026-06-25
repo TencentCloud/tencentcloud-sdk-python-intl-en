@@ -12135,6 +12135,216 @@ class AiSampleWordInfo(AbstractModel):
         
 
 
+class AigcAudioExtraParam(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioOutputAudioInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        :param _Duration: 
+        :type Duration: int
+        """
+        self._Url = None
+        self._Duration = None
+
+    @property
+    def Url(self):
+        r"""
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Duration(self):
+        r"""
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioOutputVideoInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        :param _Duration: 
+        :type Duration: int
+        """
+        self._Url = None
+        self._Duration = None
+
+    @property
+    def Url(self):
+        r"""
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Duration(self):
+        r"""
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioReferenceAudioInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioUrl: 
+        :type AudioUrl: str
+        """
+        self._AudioUrl = None
+
+    @property
+    def AudioUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+
+    def _deserialize(self, params):
+        self._AudioUrl = params.get("AudioUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioReferenceVideoInfo(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoUrl: 
+        :type VideoUrl: str
+        """
+        self._VideoUrl = None
+
+    @property
+    def VideoUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+
+    def _deserialize(self, params):
+        self._VideoUrl = params.get("VideoUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcImageExtraParam(AbstractModel):
     r"""Extended parameters used for AIGC image generation.
 
@@ -18455,6 +18665,249 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAigcAudioTaskRequest(AbstractModel):
+    r"""CreateAigcAudioTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: Model name. Currently supported models for music generation: GL, MinimaxMusic.Example value: MiniMaxMusic
+        :type ModelName: str
+        :param _ModelVersion: Specifies the model version. By default, the system uses the supported stable version of the model.Supported versions for GL: 2.0, 3.0-clip, 3.0-pro.Supported versions for MinimaxMusic: 2.0, 2.5, 2.6.Example value: 2.0
+        :type ModelVersion: str
+        :param _SceneType: Specifies the audio generation scene. Music: music.Example value: music
+        :type SceneType: str
+        :param _Prompt: Description of the generated audio. (Note: Supports up to 2000 characters.) This parameter is required when no reference image is passed in.Example value: generate a piece of music
+        :type Prompt: str
+        :param _VideoInfos: Reference video information. Only supported by certain models.
+        :type VideoInfos: list of AigcAudioReferenceVideoInfo
+        :param _AudioInfos: Reference audio information.For example, this parameter is required when generating music from a reference audio.
+        :type AudioInfos: list of AigcAudioReferenceAudioInfo
+        :param _OutputAudioFormat: Output audio format. Empty by default. Supported values: mp3, wav.Example value: wav
+        :type OutputAudioFormat: str
+        :param _StoreCosParam: COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
+        :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        :param _ExtraParameters: Additional parameters required for the model.
+        :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
+        :param _AdditionalParameters: Used to input some special scene parameters required by the model, serialized into a string in JSON format.Example: when passing lyrics to the MinimaxMusic model:{"lyric":{"The pony runs happily, flowers are blooming"}}Example value: {"sequential_image_generation":"auto"}
+        :type AdditionalParameters: str
+        :param _Operator: API operator name.Example value: admin
+        :type Operator: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+        self._SceneType = None
+        self._Prompt = None
+        self._VideoInfos = None
+        self._AudioInfos = None
+        self._OutputAudioFormat = None
+        self._StoreCosParam = None
+        self._ExtraParameters = None
+        self._AdditionalParameters = None
+        self._Operator = None
+
+    @property
+    def ModelName(self):
+        r"""Model name. Currently supported models for music generation: GL, MinimaxMusic.Example value: MiniMaxMusic
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""Specifies the model version. By default, the system uses the supported stable version of the model.Supported versions for GL: 2.0, 3.0-clip, 3.0-pro.Supported versions for MinimaxMusic: 2.0, 2.5, 2.6.Example value: 2.0
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def SceneType(self):
+        r"""Specifies the audio generation scene. Music: music.Example value: music
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def Prompt(self):
+        r"""Description of the generated audio. (Note: Supports up to 2000 characters.) This parameter is required when no reference image is passed in.Example value: generate a piece of music
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def VideoInfos(self):
+        r"""Reference video information. Only supported by certain models.
+        :rtype: list of AigcAudioReferenceVideoInfo
+        """
+        return self._VideoInfos
+
+    @VideoInfos.setter
+    def VideoInfos(self, VideoInfos):
+        self._VideoInfos = VideoInfos
+
+    @property
+    def AudioInfos(self):
+        r"""Reference audio information.For example, this parameter is required when generating music from a reference audio.
+        :rtype: list of AigcAudioReferenceAudioInfo
+        """
+        return self._AudioInfos
+
+    @AudioInfos.setter
+    def AudioInfos(self, AudioInfos):
+        self._AudioInfos = AudioInfos
+
+    @property
+    def OutputAudioFormat(self):
+        r"""Output audio format. Empty by default. Supported values: mp3, wav.Example value: wav
+        :rtype: str
+        """
+        return self._OutputAudioFormat
+
+    @OutputAudioFormat.setter
+    def OutputAudioFormat(self, OutputAudioFormat):
+        self._OutputAudioFormat = OutputAudioFormat
+
+    @property
+    def StoreCosParam(self):
+        r"""COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        """
+        return self._StoreCosParam
+
+    @StoreCosParam.setter
+    def StoreCosParam(self, StoreCosParam):
+        self._StoreCosParam = StoreCosParam
+
+    @property
+    def ExtraParameters(self):
+        r"""Additional parameters required for the model.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
+        """
+        return self._ExtraParameters
+
+    @ExtraParameters.setter
+    def ExtraParameters(self, ExtraParameters):
+        self._ExtraParameters = ExtraParameters
+
+    @property
+    def AdditionalParameters(self):
+        r"""Used to input some special scene parameters required by the model, serialized into a string in JSON format.Example: when passing lyrics to the MinimaxMusic model:{"lyric":{"The pony runs happily, flowers are blooming"}}Example value: {"sequential_image_generation":"auto"}
+        :rtype: str
+        """
+        return self._AdditionalParameters
+
+    @AdditionalParameters.setter
+    def AdditionalParameters(self, AdditionalParameters):
+        self._AdditionalParameters = AdditionalParameters
+
+    @property
+    def Operator(self):
+        r"""API operator name.Example value: admin
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._SceneType = params.get("SceneType")
+        self._Prompt = params.get("Prompt")
+        if params.get("VideoInfos") is not None:
+            self._VideoInfos = []
+            for item in params.get("VideoInfos"):
+                obj = AigcAudioReferenceVideoInfo()
+                obj._deserialize(item)
+                self._VideoInfos.append(obj)
+        if params.get("AudioInfos") is not None:
+            self._AudioInfos = []
+            for item in params.get("AudioInfos"):
+                obj = AigcAudioReferenceAudioInfo()
+                obj._deserialize(item)
+                self._AudioInfos.append(obj)
+        self._OutputAudioFormat = params.get("OutputAudioFormat")
+        if params.get("StoreCosParam") is not None:
+            self._StoreCosParam = AigcStoreCosParam()
+            self._StoreCosParam._deserialize(params.get("StoreCosParam"))
+        if params.get("ExtraParameters") is not None:
+            self._ExtraParameters = AigcAudioExtraParam()
+            self._ExtraParameters._deserialize(params.get("ExtraParameters"))
+        self._AdditionalParameters = params.get("AdditionalParameters")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcAudioTaskResponse(AbstractModel):
+    r"""CreateAigcAudioTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: The task ID returned after the task is created successfully.Call the query API to poll for task progress and the generation result.Example value: 24*******AigcAudio-6a38**3a9f51468da5bfc25****9a462
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""The task ID returned after the task is created successfully.Call the query API to poll for task progress and the generation result.Example value: 24*******AigcAudio-6a38**3a9f51468da5bfc25****9a462
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcImageTaskRequest(AbstractModel):
     r"""CreateAigcImageTask request structure.
 
@@ -24572,6 +25025,140 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
                 obj = AdaptiveDynamicStreamingTemplate()
                 obj._deserialize(item)
                 self._AdaptiveDynamicStreamingTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcAudioTaskRequest(AbstractModel):
+    r"""DescribeAigcAudioTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: The task ID returned when creating the AIGC audio generation task.Example value: 24000145-****d**-cb46b8040b684b539bbd46****e*e2fd
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""The task ID returned when creating the AIGC audio generation task.Example value: 24000145-****d**-cb46b8040b684b539bbd46****e*e2fd
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcAudioTaskResponse(AbstractModel):
+    r"""DescribeAigcAudioTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.Example value: DONE
+        :type Status: str
+        :param _Message: When the task status is FAIL, the failure information is returned.
+        :type Message: str
+        :param _AudioInfos: Output audio information.
+        :type AudioInfos: list of AigcAudioOutputAudioInfo
+        :param _VideoInfos: Output video information. Only returned for scenarios such as video dubbing.
+        :type VideoInfos: list of AigcAudioOutputVideoInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._AudioInfos = None
+        self._VideoInfos = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.Example value: DONE
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""When the task status is FAIL, the failure information is returned.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def AudioInfos(self):
+        r"""Output audio information.
+        :rtype: list of AigcAudioOutputAudioInfo
+        """
+        return self._AudioInfos
+
+    @AudioInfos.setter
+    def AudioInfos(self, AudioInfos):
+        self._AudioInfos = AudioInfos
+
+    @property
+    def VideoInfos(self):
+        r"""Output video information. Only returned for scenarios such as video dubbing.
+        :rtype: list of AigcAudioOutputVideoInfo
+        """
+        return self._VideoInfos
+
+    @VideoInfos.setter
+    def VideoInfos(self, VideoInfos):
+        self._VideoInfos = VideoInfos
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        if params.get("AudioInfos") is not None:
+            self._AudioInfos = []
+            for item in params.get("AudioInfos"):
+                obj = AigcAudioOutputAudioInfo()
+                obj._deserialize(item)
+                self._AudioInfos.append(obj)
+        if params.get("VideoInfos") is not None:
+            self._VideoInfos = []
+            for item in params.get("VideoInfos"):
+                obj = AigcAudioOutputVideoInfo()
+                obj._deserialize(item)
+                self._VideoInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 

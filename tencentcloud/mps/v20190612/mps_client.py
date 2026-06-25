@@ -119,6 +119,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAigcAudioTask(self, request):
+        r"""This API is used to create AIGC audio generation tasks.
+
+        :param request: Request instance for CreateAigcAudioTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAigcAudioTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAigcAudioTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcAudioTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcAudioTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAigcImageTask(self, request):
         r"""This API is used to create AIGC image generation tasks.
 
@@ -1243,6 +1266,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAdaptiveDynamicStreamingTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAigcAudioTask(self, request):
+        r"""This API is used to query the progress of AIGC audio generation tasks and obtain the generation results.
+
+        :param request: Request instance for DescribeAigcAudioTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcAudioTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAigcAudioTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcAudioTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcAudioTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

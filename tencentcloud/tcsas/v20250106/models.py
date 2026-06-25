@@ -7651,6 +7651,12 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
         :type EngineType: int
         :param _CategoryList: Category information.
         :type CategoryList: list of CategoryInfo
+        :param _TeamId: Team ID.
+        :type TeamId: str
+        :param _TeamName: Team name.
+        :type TeamName: str
+        :param _TeamTypeId: Team type ID.
+        :type TeamTypeId: int
         """
         self._MNPId = None
         self._MNPIcon = None
@@ -7663,6 +7669,9 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
         self._OnlineStatus = None
         self._EngineType = None
         self._CategoryList = None
+        self._TeamId = None
+        self._TeamName = None
+        self._TeamTypeId = None
 
     @property
     def MNPId(self):
@@ -7785,6 +7794,39 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
     def CategoryList(self, CategoryList):
         self._CategoryList = CategoryList
 
+    @property
+    def TeamId(self):
+        r"""Team ID.
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def TeamName(self):
+        r"""Team name.
+        :rtype: str
+        """
+        return self._TeamName
+
+    @TeamName.setter
+    def TeamName(self, TeamName):
+        self._TeamName = TeamName
+
+    @property
+    def TeamTypeId(self):
+        r"""Team type ID.
+        :rtype: int
+        """
+        return self._TeamTypeId
+
+    @TeamTypeId.setter
+    def TeamTypeId(self, TeamTypeId):
+        self._TeamTypeId = TeamTypeId
+
 
     def _deserialize(self, params):
         self._MNPId = params.get("MNPId")
@@ -7803,6 +7845,9 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
                 obj = CategoryInfo()
                 obj._deserialize(item)
                 self._CategoryList.append(obj)
+        self._TeamId = params.get("TeamId")
+        self._TeamName = params.get("TeamName")
+        self._TeamTypeId = params.get("TeamTypeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11447,6 +11492,10 @@ class DescribeMNGListData(AbstractModel):
         :type EffectMNPVersionId: int
         :param _EffectMNPVersion: <p>Effective mini game version number bound to the superapp. </p>
         :type EffectMNPVersion: str
+        :param _TeamId: Team ID.
+        :type TeamId: str
+        :param _TeamTypeId: Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :type TeamTypeId: int
         """
         self._MNPId = None
         self._MNPIcon = None
@@ -11463,6 +11512,8 @@ class DescribeMNGListData(AbstractModel):
         self._EffectStatus = None
         self._EffectMNPVersionId = None
         self._EffectMNPVersion = None
+        self._TeamId = None
+        self._TeamTypeId = None
 
     @property
     def MNPId(self):
@@ -11629,6 +11680,28 @@ class DescribeMNGListData(AbstractModel):
     def EffectMNPVersion(self, EffectMNPVersion):
         self._EffectMNPVersion = EffectMNPVersion
 
+    @property
+    def TeamId(self):
+        r"""Team ID.
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def TeamTypeId(self):
+        r"""Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :rtype: int
+        """
+        return self._TeamTypeId
+
+    @TeamTypeId.setter
+    def TeamTypeId(self, TeamTypeId):
+        self._TeamTypeId = TeamTypeId
+
 
     def _deserialize(self, params):
         self._MNPId = params.get("MNPId")
@@ -11646,6 +11719,8 @@ class DescribeMNGListData(AbstractModel):
         self._EffectStatus = params.get("EffectStatus")
         self._EffectMNPVersionId = params.get("EffectMNPVersionId")
         self._EffectMNPVersion = params.get("EffectMNPVersion")
+        self._TeamId = params.get("TeamId")
+        self._TeamTypeId = params.get("TeamTypeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12364,6 +12439,8 @@ class DescribeMNGManagerDetailData(AbstractModel):
         :type Status: int
         :param _I18nList: <p>Mini game information in multiple languages.</p>
         :type I18nList: list of MNPDetailI18nVO
+        :param _TeamTypeId: Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :type TeamTypeId: int
         """
         self._MNPType = None
         self._MNPId = None
@@ -12378,6 +12455,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
         self._TeamId = None
         self._Status = None
         self._I18nList = None
+        self._TeamTypeId = None
 
     @property
     def MNPType(self):
@@ -12522,6 +12600,17 @@ class DescribeMNGManagerDetailData(AbstractModel):
     def I18nList(self, I18nList):
         self._I18nList = I18nList
 
+    @property
+    def TeamTypeId(self):
+        r"""Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :rtype: int
+        """
+        return self._TeamTypeId
+
+    @TeamTypeId.setter
+    def TeamTypeId(self, TeamTypeId):
+        self._TeamTypeId = TeamTypeId
+
 
     def _deserialize(self, params):
         self._MNPType = params.get("MNPType")
@@ -12542,6 +12631,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
                 obj = MNPDetailI18nVO()
                 obj._deserialize(item)
                 self._I18nList.append(obj)
+        self._TeamTypeId = params.get("TeamTypeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17764,6 +17854,10 @@ class DescribeMNPListData(AbstractModel):
         :type EffectMNPVersionId: int
         :param _EffectMNPVersion: Effective mini program version number bound to the superapp. 
         :type EffectMNPVersion: str
+        :param _TeamId: Team ID.
+        :type TeamId: str
+        :param _TeamTypeId: Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :type TeamTypeId: int
         """
         self._MNPId = None
         self._MNPIcon = None
@@ -17780,6 +17874,8 @@ class DescribeMNPListData(AbstractModel):
         self._EffectStatus = None
         self._EffectMNPVersionId = None
         self._EffectMNPVersion = None
+        self._TeamId = None
+        self._TeamTypeId = None
 
     @property
     def MNPId(self):
@@ -17946,6 +18042,28 @@ class DescribeMNPListData(AbstractModel):
     def EffectMNPVersion(self, EffectMNPVersion):
         self._EffectMNPVersion = EffectMNPVersion
 
+    @property
+    def TeamId(self):
+        r"""Team ID.
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def TeamTypeId(self):
+        r"""Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :rtype: int
+        """
+        return self._TeamTypeId
+
+    @TeamTypeId.setter
+    def TeamTypeId(self, TeamTypeId):
+        self._TeamTypeId = TeamTypeId
+
 
     def _deserialize(self, params):
         self._MNPId = params.get("MNPId")
@@ -17963,6 +18081,8 @@ class DescribeMNPListData(AbstractModel):
         self._EffectStatus = params.get("EffectStatus")
         self._EffectMNPVersionId = params.get("EffectMNPVersionId")
         self._EffectMNPVersion = params.get("EffectMNPVersion")
+        self._TeamId = params.get("TeamId")
+        self._TeamTypeId = params.get("TeamTypeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18681,6 +18801,8 @@ class DescribeMNPManagerDetailData(AbstractModel):
         :type Status: int
         :param _I18nList: <p>The mini program name and description in multiple languages.</p>
         :type I18nList: list of MNPDetailI18nVO
+        :param _TeamTypeId: Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :type TeamTypeId: int
         """
         self._MNPType = None
         self._MNPId = None
@@ -18695,6 +18817,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
         self._TeamId = None
         self._Status = None
         self._I18nList = None
+        self._TeamTypeId = None
 
     @property
     def MNPType(self):
@@ -18839,6 +18962,17 @@ class DescribeMNPManagerDetailData(AbstractModel):
     def I18nList(self, I18nList):
         self._I18nList = I18nList
 
+    @property
+    def TeamTypeId(self):
+        r"""Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :rtype: int
+        """
+        return self._TeamTypeId
+
+    @TeamTypeId.setter
+    def TeamTypeId(self, TeamTypeId):
+        self._TeamTypeId = TeamTypeId
+
 
     def _deserialize(self, params):
         self._MNPType = params.get("MNPType")
@@ -18859,6 +18993,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
                 obj = MNPDetailI18nVO()
                 obj._deserialize(item)
                 self._I18nList.append(obj)
+        self._TeamTypeId = params.get("TeamTypeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

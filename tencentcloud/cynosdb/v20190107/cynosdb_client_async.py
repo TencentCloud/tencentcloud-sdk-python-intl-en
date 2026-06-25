@@ -1213,6 +1213,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterInstanceGroups(
+            self,
+            request: models.DescribeClusterInstanceGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterInstanceGroupsResponse:
+        """
+        This API is used to query instance group info.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterInstanceGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterInstanceGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterInstanceGrps(
             self,
             request: models.DescribeClusterInstanceGrpsRequest,

@@ -98,6 +98,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcAudioTask(
+            self,
+            request: models.CreateAigcAudioTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcAudioTaskResponse:
+        """
+        This API is used to create AIGC audio generation tasks.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcAudioTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcAudioTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcImageTask(
             self,
             request: models.CreateAigcImageTaskRequest,
@@ -986,6 +1004,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeAdaptiveDynamicStreamingTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAdaptiveDynamicStreamingTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcAudioTask(
+            self,
+            request: models.DescribeAigcAudioTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcAudioTaskResponse:
+        """
+        This API is used to query the progress of AIGC audio generation tasks and obtain the generation results.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcAudioTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcAudioTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -14098,16 +14098,15 @@ class Deal(AbstractModel):
         :param _PayMode: Billing mode: `prePay` (prepaid), `postPay` (pay-as-you-go), `riPay` (reserved instance)
         :type PayMode: str
         :param _Action: Transaction type
-
 Modify network mode adjust bandwidth mode.
 Adjust bandwidth size.
-`Refund`: refund.
+Refund: refund.
 downgrade.
 upgrade configuration.
 renew.
 purchase.
-preMoveOut monthly subscription resource migration out.
-preMoveIn specifies the monthly subscription resources to migrate.
+preMoveOut yearly/monthly subscription resource migration out.
+preMoveIn specifies the yearly/monthly subscription resources to migrate.
 preToPost specifies the prepaid to postpaid conversion.
 postMoveOut specifies the pay-as-you-go resources to be migrated out.
 postMoveIn specifies the pay-as-you-go resources for inbound migration.
@@ -14395,16 +14394,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Action(self):
         r"""Transaction type
-
 Modify network mode adjust bandwidth mode.
 Adjust bandwidth size.
-`Refund`: refund.
+Refund: refund.
 downgrade.
 upgrade configuration.
 renew.
 purchase.
-preMoveOut monthly subscription resource migration out.
-preMoveIn specifies the monthly subscription resources to migrate.
+preMoveOut yearly/monthly subscription resource migration out.
+preMoveIn specifies the yearly/monthly subscription resources to migrate.
 preToPost specifies the prepaid to postpaid conversion.
 postMoveOut specifies the pay-as-you-go resources to be migrated out.
 postMoveIn specifies the pay-as-you-go resources for inbound migration.
@@ -23297,7 +23295,7 @@ class DescribeDealsByCondRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: Start time 
-Example :2016-01-01 00:00:00
+Example :2016-01-01 00:00:00.
         :type StartTime: str
         :param _EndTime: End time 
 Example:2016-02-01 00:00:00. 
@@ -23313,11 +23311,11 @@ Status of the order
 2: paid 
 3: shipment in progress
 4: shipped
-5`: Shipment Failed
-6`: Refunded
-7`: Ticket closed
-8`: Order expired
-9`: Order invalid
+5: Shipment Failed
+6: Refunded
+7: Ticket closed
+8: Order expired
+9: Order invalid
 10: product invalidated
 11: third-party payment refused
 12: payment in process
@@ -23347,7 +23345,7 @@ Example:ins-a2bb34
     @property
     def StartTime(self):
         r"""Start time 
-Example :2016-01-01 00:00:00
+Example :2016-01-01 00:00:00.
         :rtype: str
         """
         return self._StartTime
@@ -23399,11 +23397,11 @@ Status of the order
 2: paid 
 3: shipment in progress
 4: shipped
-5`: Shipment Failed
-6`: Refunded
-7`: Ticket closed
-8`: Order expired
-9`: Order invalid
+5: Shipment Failed
+6: Refunded
+7: Ticket closed
+8: Order expired
+9: Order invalid
 10: product invalidated
 11: third-party payment refused
 12: payment in process
