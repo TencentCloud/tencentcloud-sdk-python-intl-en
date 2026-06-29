@@ -689,6 +689,11 @@ def test_import_tmt_v20180321():
     from tencentcloud.tmt.v20180321 import models
 
 
+def test_import_tokenhub_v20260322():
+    from tencentcloud.tokenhub.v20260322 import tokenhub_client
+    from tencentcloud.tokenhub.v20260322 import models
+
+
 def test_import_trabbit_v20230418():
     from tencentcloud.trabbit.v20230418 import trabbit_client
     from tencentcloud.trabbit.v20230418 import models

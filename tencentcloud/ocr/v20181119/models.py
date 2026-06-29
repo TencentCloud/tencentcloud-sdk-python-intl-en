@@ -31,13 +31,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _PostalCode: Postal code.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PostalCode: str
-        :param _Subdivision: Specifies the sub-region.
+        :param _Subdivision: Sub-region or state/province.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Subdivision: str
-        :param _City: Specifies the city.
+        :param _District: District or county.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type District: str
+        :param _City: City name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type City: str
-        :param _FormattedAddress: Complete address.
+        :param _Subdistrict: Subdistrict or township.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Subdistrict: str
+        :param _FormattedAddress: Formatted complete address.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FormattedAddress: str
         :param _LineOne: First line of the address bar.
@@ -52,14 +58,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _LineFour: Specifies the fourth line of the address bar.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LineFour: str
-        :param _LineFive: Specifies the fifth line in the address bar.
+        :param _LineFive: Specifies the fifth line of the address bar.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LineFive: str
         """
         self._Country = None
         self._PostalCode = None
         self._Subdivision = None
+        self._District = None
         self._City = None
+        self._Subdistrict = None
         self._FormattedAddress = None
         self._LineOne = None
         self._LineTwo = None
@@ -93,7 +101,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Subdivision(self):
-        r"""Specifies the sub-region.
+        r"""Sub-region or state/province.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -104,8 +112,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Subdivision = Subdivision
 
     @property
+    def District(self):
+        r"""District or county.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
     def City(self):
-        r"""Specifies the city.
+        r"""City name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -116,8 +136,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._City = City
 
     @property
+    def Subdistrict(self):
+        r"""Subdistrict or township.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Subdistrict
+
+    @Subdistrict.setter
+    def Subdistrict(self, Subdistrict):
+        self._Subdistrict = Subdistrict
+
+    @property
     def FormattedAddress(self):
-        r"""Complete address.
+        r"""Formatted complete address.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -177,7 +209,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LineFive(self):
-        r"""Specifies the fifth line in the address bar.
+        r"""Specifies the fifth line of the address bar.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -192,7 +224,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Country = params.get("Country")
         self._PostalCode = params.get("PostalCode")
         self._Subdivision = params.get("Subdivision")
+        self._District = params.get("District")
         self._City = params.get("City")
+        self._Subdistrict = params.get("Subdistrict")
         self._FormattedAddress = params.get("FormattedAddress")
         self._LineOne = params.get("LineOne")
         self._LineTwo = params.get("LineTwo")
@@ -683,60 +717,38 @@ class ApplyCardVerificationExternalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Nationality: Specifies the country of the document.
-ARG:Argentina
-AUS:Australia
-KHM:Cambodia
-CAN:Canada
-SGP:Singapore
-CHL:Chile
-DEU:Germany
-MEX:Mexico
-MMR:Myanmar
-NZL:New Zealand
-BGD:Bangladesh
-NGA:Nigeria
-PAK:Pakistan
-RUS:Russia
-IDN:Indonesia
-HKG:Hong Kong, China
-THA:Thailand
-MYS:Malaysia
-JPN:Japan
-PHL:Philippines
-MAC:Macao, China
-CHN:ChinaPermit
-TWN:Taiwan, China
-BGD:Bangladesh
-NGA:Nigeria 
-PAK:Pakistan
-
-AUTO: supports cards and documents from 200+ countries
+        :param _Nationality: Country/Region of the document. For the full list of supported countries/regions, refer to the API description.
         :type Nationality: str
-        :param _CardType: Document type.
-ID_CARD
-PASSPORT
-DRIVING_LICENSE
-RESIDENCE_PERMIT (Supported in certain countries/regions, including Australia, Canada, Germany, New Zealand, Nigeria, Singapore).
+        :param _CardType: Document type. Supported values: ID_CARD, PASSPORT, DRIVING_LICENSE, RESIDENCE_PERMIT (only supported in certain countries/regions, including Australia, Canada, Germany, New Zealand, Nigeria, Singapore).
         :type CardType: str
-        :param _ImageBase64Front: The Base64 value of the document Front. supported image formats: PNG, JPG/JPEG. 
-Supported image size: the downloaded image after Base64 encoding must be no more than 2M. image download time must be no more than 5 seconds. 
-Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only ImageUrlFront will be used.
+        :param _ImageBase64Front: Base64-encoded image of the document front.
+Supported image formats: PNG, JPG/JPEG (GIF not supported).
+Supported image size: The downloaded image after Base64 encoding must not exceed 2 MB. Image download time must not exceed 5 seconds.
+Supported image resolution: Between 256*256 and 4096*4096 pixels.
+Note: You must provide either ImageUrlFront or ImageBase64Front. If both are provided, only ImageUrlFront is used.
         :type ImageBase64Front: str
         :param _ImageBase64Back: The Base64 value of the reverse side of the document. Supported image formats: PNG, JPG/JPEG. 
-Supported image size: the downloaded image after Base64 encoding must be no more than 2M. image download time must be no more than 5 seconds. 
+Supported image size: the downloaded image after Base64 encoding must be no more than 2M. Image download time must be no more than 5 seconds. 
 Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only ImageUrlBack is used.
         :type ImageBase64Back: str
-        :param _ImageUrlFront: Url of the document Front. supported image formats: PNG, JPG/JPEG. 
-Supported image size: the downloaded image after Base64 encoding must be no more than 2M. image download time must be no more than 5 seconds. 
-Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only ImageUrlFront will be used.
+        :param _ImageUrlFront: URL of the document front image.
+Supported image formats: PNG, JPG/JPEG (GIF not supported).
+Supported image size: The downloaded image after Base64 encoding must not exceed 2 MB. Image download time must not exceed 5 seconds.
+Supported image resolution: Between 256*256 and 4096*4096 pixels.
+Note: You must provide either ImageUrlFront or ImageBase64Front. If both are provided, only ImageUrlFront is used.
         :type ImageUrlFront: str
-        :param _ImageUrlBack: Specifies the Url of the document Back. supported image formats: PNG, JPG/JPEG
-Supported image size: no more than 2M after Base64 encoding. image download time should not exceed 5 seconds. 
-Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only use ImageUrlBack.
-
+        :param _ImageUrlBack: URL of the document back image.
+Supported image formats: PNG, JPG/JPEG (GIF not supported).
+Supported image size: The downloaded image after Base64 encoding must not exceed 2 MB. Image download time must not exceed 5 seconds.
+Supported image resolution: Between 256*256 and 4096*4096 pixels.
+Note: For some documents, you must provide either ImageUrlBack or ImageBase64Back. If both are provided, only ImageUrlBack is used.
         :type ImageUrlBack: str
-        :param _ReturnHeadImage: Whether to extract the ID portrait. Default value: false.
+        :param _ReturnHeadImage: Whether to crop and return the face image from the document. Default: false.
+If set to true, the image constraints are:
+- Size after Base64 encoding must not exceed 5 MB.
+- Maximum pixel width/height: 4000 for JPG, 2000 for other formats.
+- Minimum pixel width/height: 64.
+- Supported formats: PNG, JPG, JPEG, BMP (GIF not supported).
         :type ReturnHeadImage: bool
         """
         self._Nationality = None
@@ -749,35 +761,7 @@ Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some docume
 
     @property
     def Nationality(self):
-        r"""Specifies the country of the document.
-ARG:Argentina
-AUS:Australia
-KHM:Cambodia
-CAN:Canada
-SGP:Singapore
-CHL:Chile
-DEU:Germany
-MEX:Mexico
-MMR:Myanmar
-NZL:New Zealand
-BGD:Bangladesh
-NGA:Nigeria
-PAK:Pakistan
-RUS:Russia
-IDN:Indonesia
-HKG:Hong Kong, China
-THA:Thailand
-MYS:Malaysia
-JPN:Japan
-PHL:Philippines
-MAC:Macao, China
-CHN:ChinaPermit
-TWN:Taiwan, China
-BGD:Bangladesh
-NGA:Nigeria 
-PAK:Pakistan
-
-AUTO: supports cards and documents from 200+ countries
+        r"""Country/Region of the document. For the full list of supported countries/regions, refer to the API description.
         :rtype: str
         """
         return self._Nationality
@@ -788,11 +772,7 @@ AUTO: supports cards and documents from 200+ countries
 
     @property
     def CardType(self):
-        r"""Document type.
-ID_CARD
-PASSPORT
-DRIVING_LICENSE
-RESIDENCE_PERMIT (Supported in certain countries/regions, including Australia, Canada, Germany, New Zealand, Nigeria, Singapore).
+        r"""Document type. Supported values: ID_CARD, PASSPORT, DRIVING_LICENSE, RESIDENCE_PERMIT (only supported in certain countries/regions, including Australia, Canada, Germany, New Zealand, Nigeria, Singapore).
         :rtype: str
         """
         return self._CardType
@@ -803,9 +783,11 @@ RESIDENCE_PERMIT (Supported in certain countries/regions, including Australia, C
 
     @property
     def ImageBase64Front(self):
-        r"""The Base64 value of the document Front. supported image formats: PNG, JPG/JPEG. 
-Supported image size: the downloaded image after Base64 encoding must be no more than 2M. image download time must be no more than 5 seconds. 
-Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only ImageUrlFront will be used.
+        r"""Base64-encoded image of the document front.
+Supported image formats: PNG, JPG/JPEG (GIF not supported).
+Supported image size: The downloaded image after Base64 encoding must not exceed 2 MB. Image download time must not exceed 5 seconds.
+Supported image resolution: Between 256*256 and 4096*4096 pixels.
+Note: You must provide either ImageUrlFront or ImageBase64Front. If both are provided, only ImageUrlFront is used.
         :rtype: str
         """
         return self._ImageBase64Front
@@ -817,7 +799,7 @@ Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some docume
     @property
     def ImageBase64Back(self):
         r"""The Base64 value of the reverse side of the document. Supported image formats: PNG, JPG/JPEG. 
-Supported image size: the downloaded image after Base64 encoding must be no more than 2M. image download time must be no more than 5 seconds. 
+Supported image size: the downloaded image after Base64 encoding must be no more than 2M. Image download time must be no more than 5 seconds. 
 Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only ImageUrlBack is used.
         :rtype: str
         """
@@ -829,9 +811,11 @@ Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some docume
 
     @property
     def ImageUrlFront(self):
-        r"""Url of the document Front. supported image formats: PNG, JPG/JPEG. 
-Supported image size: the downloaded image after Base64 encoding must be no more than 2M. image download time must be no more than 5 seconds. 
-Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only ImageUrlFront will be used.
+        r"""URL of the document front image.
+Supported image formats: PNG, JPG/JPEG (GIF not supported).
+Supported image size: The downloaded image after Base64 encoding must not exceed 2 MB. Image download time must not exceed 5 seconds.
+Supported image resolution: Between 256*256 and 4096*4096 pixels.
+Note: You must provide either ImageUrlFront or ImageBase64Front. If both are provided, only ImageUrlFront is used.
         :rtype: str
         """
         return self._ImageUrlFront
@@ -842,10 +826,11 @@ Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some docume
 
     @property
     def ImageUrlBack(self):
-        r"""Specifies the Url of the document Back. supported image formats: PNG, JPG/JPEG
-Supported image size: no more than 2M after Base64 encoding. image download time should not exceed 5 seconds. 
-Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some documents, either ImageUrlBack or ImageBase64Back must be provided. If both are provided, only use ImageUrlBack.
-
+        r"""URL of the document back image.
+Supported image formats: PNG, JPG/JPEG (GIF not supported).
+Supported image size: The downloaded image after Base64 encoding must not exceed 2 MB. Image download time must not exceed 5 seconds.
+Supported image resolution: Between 256*256 and 4096*4096 pixels.
+Note: For some documents, you must provide either ImageUrlBack or ImageBase64Back. If both are provided, only ImageUrlBack is used.
         :rtype: str
         """
         return self._ImageUrlBack
@@ -856,7 +841,12 @@ Supported image resolution: between 256 \* 256 and 4096 \* 4096. For some docume
 
     @property
     def ReturnHeadImage(self):
-        r"""Whether to extract the ID portrait. Default value: false.
+        r"""Whether to crop and return the face image from the document. Default: false.
+If set to true, the image constraints are:
+- Size after Base64 encoding must not exceed 5 MB.
+- Maximum pixel width/height: 4000 for JPG, 2000 for other formats.
+- Minimum pixel width/height: 64.
+- Supported formats: PNG, JPG, JPEG, BMP (GIF not supported).
         :rtype: bool
         """
         return self._ReturnHeadImage
@@ -891,7 +881,7 @@ class ApplyCardVerificationExternalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CardVerificationToken: Process token, which is used to obtain the result.
+        :param _CardVerificationToken: Unique token for the verification process, used to retrieve the result.
         :type CardVerificationToken: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -901,7 +891,7 @@ class ApplyCardVerificationExternalResponse(AbstractModel):
 
     @property
     def CardVerificationToken(self):
-        r"""Process token, which is used to obtain the result.
+        r"""Unique token for the verification process, used to retrieve the result.
         :rtype: str
         """
         return self._CardVerificationToken
@@ -3929,95 +3919,155 @@ class GeneralCard(AbstractModel):
         :param _LicenseNumber: ID number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LicenseNumber: str
-        :param _PersonalNumber: Personal number. returned when the identity document type is passport.
+        :param _PersonalNumber: Personal number. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PersonalNumber: str
-        :param _PassportCodeFirst: Passport mrz line 1.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PassportCodeFirst: str
-        :param _PassportCodeSecond: Passport mrz line 2.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PassportCodeSecond: str
-        :param _ExpirationDate: Expiration date, in YYYY-MM-DD format.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ExpirationDate: str
-        :param _DueDate: Expiration date in YYYY-MM-DD format.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type DueDate: str
-        :param _IssuedDate: Issue date, in YYYY-MM-DD format.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type IssuedDate: str
-        :param _IssuedAuthority: Issuing authority.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type IssuedAuthority: str
-        :param _IssuedCountry: Issuing country, following the ISO 3166 country coding specification.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type IssuedCountry: str
-        :param _FullName: Specifies the name.
+        :param _FullName: Full name on the document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FullName: str
-        :param _FirstName: Name.
+        :param _FullNameLocal: Full name in local language.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FullNameLocal: str
+        :param _FirstName: First name or given name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FirstName: str
-        :param _LastName: Name.
+        :param _FirstNameLocal: First name in local language.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FirstNameLocal: str
+        :param _MiddleName: Middle name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MiddleName: str
+        :param _MiddleNameLocal: Middle name in local language.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MiddleNameLocal: str
+        :param _LastName: Last name or surname.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LastName: str
+        :param _LastNameLocal: Last name in local language.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastNameLocal: str
         :param _Sex: Gender on the document.
 - M: man.
 - F: woman.
 - X: other gender identity.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Sex: str
-        :param _Age: Age. 0 means no valid info.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Age: str
         :param _Birthday: Date of birth.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Birthday: str
         :param _BirthPlace: Birth place.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BirthPlace: str
+        :param _IssuedDate: Issue date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedDate: str
+        :param _IssuedAuthority: Issuing authority.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedAuthority: str
+        :param _IssuedPlace: Place of issue.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedPlace: str
+        :param _IssuedCountry: Issuing country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountry: str
+        :param _IssuedCountryCode: Country code of issue, ISO Alpha-3 format.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountryCode: str
+        :param _ExpirationDate: Expiry date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpirationDate: str
+        :param _MRZLine1: First line of the Machine Readable Zone (MRZ).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MRZLine1: str
+        :param _MRZLine2: Second line of the Machine Readable Zone (MRZ).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MRZLine2: str
         :param _Nationality: Document nationality, following ISO 3166 country coding specification.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Nationality: str
+        :param _Address: Address information on the document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Address: :class:`tencentcloud.ocr.v20181119.models.AddressInfo`
+        :param _Religion: Religion (if displayed on the document).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Religion: str
+        :param _Type: Type of document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _BloodType: Blood type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BloodType: str
+        :param _Height: Height.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Height: str
+        :param _Weight: Weight.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Weight: str
+        :param _VehicleClass: Vehicle class authorized on the driver license (e.g., A, B, C).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VehicleClass: str
+        :param _Restrictions: Restrictions on the driver license.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Restrictions: str
+        :param _Endorsement: Endorsements or additional records on the driver license.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Endorsement: str
+        :param _Others: Supplementary fields (varies by document type).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Others: str
+        :param _PassportCodeFirst: First line of the passport MRZ (Machine Readable Zone).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PassportCodeFirst: str
+        :param _PassportCodeSecond: Second line of the passport MRZ (Machine Readable Zone).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PassportCodeSecond: str
+        :param _DueDate: Expiry date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DueDate: str
+        :param _Age: Age. 0 means no valid info.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Age: str
         :param _RegistrationNumber: Registration number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RegistrationNumber: str
-        :param _Address: Specifies the address information of the document.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Address: :class:`tencentcloud.ocr.v20181119.models.AddressInfo`
-        :param _FullNameLocal: Localized name.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type FullNameLocal: str
-        :param _FirstNameLocal: Localization name.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type FirstNameLocal: str
-        :param _LastNameLocal: Localized surname.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type LastNameLocal: str
         """
         self._LicenseNumber = None
         self._PersonalNumber = None
-        self._PassportCodeFirst = None
-        self._PassportCodeSecond = None
-        self._ExpirationDate = None
-        self._DueDate = None
-        self._IssuedDate = None
-        self._IssuedAuthority = None
-        self._IssuedCountry = None
         self._FullName = None
+        self._FullNameLocal = None
         self._FirstName = None
+        self._FirstNameLocal = None
+        self._MiddleName = None
+        self._MiddleNameLocal = None
         self._LastName = None
+        self._LastNameLocal = None
         self._Sex = None
-        self._Age = None
         self._Birthday = None
         self._BirthPlace = None
+        self._IssuedDate = None
+        self._IssuedAuthority = None
+        self._IssuedPlace = None
+        self._IssuedCountry = None
+        self._IssuedCountryCode = None
+        self._ExpirationDate = None
+        self._MRZLine1 = None
+        self._MRZLine2 = None
         self._Nationality = None
-        self._RegistrationNumber = None
         self._Address = None
-        self._FullNameLocal = None
-        self._FirstNameLocal = None
-        self._LastNameLocal = None
+        self._Religion = None
+        self._Type = None
+        self._BloodType = None
+        self._Height = None
+        self._Weight = None
+        self._VehicleClass = None
+        self._Restrictions = None
+        self._Endorsement = None
+        self._Others = None
+        self._PassportCodeFirst = None
+        self._PassportCodeSecond = None
+        self._DueDate = None
+        self._Age = None
+        self._RegistrationNumber = None
 
     @property
     def LicenseNumber(self):
@@ -4033,7 +4083,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonalNumber(self):
-        r"""Personal number. returned when the identity document type is passport.
+        r"""Personal number. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4044,92 +4094,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PersonalNumber = PersonalNumber
 
     @property
-    def PassportCodeFirst(self):
-        r"""Passport mrz line 1.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._PassportCodeFirst
-
-    @PassportCodeFirst.setter
-    def PassportCodeFirst(self, PassportCodeFirst):
-        self._PassportCodeFirst = PassportCodeFirst
-
-    @property
-    def PassportCodeSecond(self):
-        r"""Passport mrz line 2.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._PassportCodeSecond
-
-    @PassportCodeSecond.setter
-    def PassportCodeSecond(self, PassportCodeSecond):
-        self._PassportCodeSecond = PassportCodeSecond
-
-    @property
-    def ExpirationDate(self):
-        r"""Expiration date, in YYYY-MM-DD format.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._ExpirationDate
-
-    @ExpirationDate.setter
-    def ExpirationDate(self, ExpirationDate):
-        self._ExpirationDate = ExpirationDate
-
-    @property
-    def DueDate(self):
-        r"""Expiration date in YYYY-MM-DD format.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._DueDate
-
-    @DueDate.setter
-    def DueDate(self, DueDate):
-        self._DueDate = DueDate
-
-    @property
-    def IssuedDate(self):
-        r"""Issue date, in YYYY-MM-DD format.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._IssuedDate
-
-    @IssuedDate.setter
-    def IssuedDate(self, IssuedDate):
-        self._IssuedDate = IssuedDate
-
-    @property
-    def IssuedAuthority(self):
-        r"""Issuing authority.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._IssuedAuthority
-
-    @IssuedAuthority.setter
-    def IssuedAuthority(self, IssuedAuthority):
-        self._IssuedAuthority = IssuedAuthority
-
-    @property
-    def IssuedCountry(self):
-        r"""Issuing country, following the ISO 3166 country coding specification.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._IssuedCountry
-
-    @IssuedCountry.setter
-    def IssuedCountry(self, IssuedCountry):
-        self._IssuedCountry = IssuedCountry
-
-    @property
     def FullName(self):
-        r"""Specifies the name.
+        r"""Full name on the document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4140,8 +4106,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._FullName = FullName
 
     @property
+    def FullNameLocal(self):
+        r"""Full name in local language.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FullNameLocal
+
+    @FullNameLocal.setter
+    def FullNameLocal(self, FullNameLocal):
+        self._FullNameLocal = FullNameLocal
+
+    @property
     def FirstName(self):
-        r"""Name.
+        r"""First name or given name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4152,8 +4130,44 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._FirstName = FirstName
 
     @property
+    def FirstNameLocal(self):
+        r"""First name in local language.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FirstNameLocal
+
+    @FirstNameLocal.setter
+    def FirstNameLocal(self, FirstNameLocal):
+        self._FirstNameLocal = FirstNameLocal
+
+    @property
+    def MiddleName(self):
+        r"""Middle name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MiddleName
+
+    @MiddleName.setter
+    def MiddleName(self, MiddleName):
+        self._MiddleName = MiddleName
+
+    @property
+    def MiddleNameLocal(self):
+        r"""Middle name in local language.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MiddleNameLocal
+
+    @MiddleNameLocal.setter
+    def MiddleNameLocal(self, MiddleNameLocal):
+        self._MiddleNameLocal = MiddleNameLocal
+
+    @property
     def LastName(self):
-        r"""Name.
+        r"""Last name or surname.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4162,6 +4176,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @LastName.setter
     def LastName(self, LastName):
         self._LastName = LastName
+
+    @property
+    def LastNameLocal(self):
+        r"""Last name in local language.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LastNameLocal
+
+    @LastNameLocal.setter
+    def LastNameLocal(self, LastNameLocal):
+        self._LastNameLocal = LastNameLocal
 
     @property
     def Sex(self):
@@ -4177,18 +4203,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Sex.setter
     def Sex(self, Sex):
         self._Sex = Sex
-
-    @property
-    def Age(self):
-        r"""Age. 0 means no valid info.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Age
-
-    @Age.setter
-    def Age(self, Age):
-        self._Age = Age
 
     @property
     def Birthday(self):
@@ -4215,6 +4229,102 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BirthPlace = BirthPlace
 
     @property
+    def IssuedDate(self):
+        r"""Issue date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedDate
+
+    @IssuedDate.setter
+    def IssuedDate(self, IssuedDate):
+        self._IssuedDate = IssuedDate
+
+    @property
+    def IssuedAuthority(self):
+        r"""Issuing authority.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedAuthority
+
+    @IssuedAuthority.setter
+    def IssuedAuthority(self, IssuedAuthority):
+        self._IssuedAuthority = IssuedAuthority
+
+    @property
+    def IssuedPlace(self):
+        r"""Place of issue.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedPlace
+
+    @IssuedPlace.setter
+    def IssuedPlace(self, IssuedPlace):
+        self._IssuedPlace = IssuedPlace
+
+    @property
+    def IssuedCountry(self):
+        r"""Issuing country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedCountry
+
+    @IssuedCountry.setter
+    def IssuedCountry(self, IssuedCountry):
+        self._IssuedCountry = IssuedCountry
+
+    @property
+    def IssuedCountryCode(self):
+        r"""Country code of issue, ISO Alpha-3 format.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedCountryCode
+
+    @IssuedCountryCode.setter
+    def IssuedCountryCode(self, IssuedCountryCode):
+        self._IssuedCountryCode = IssuedCountryCode
+
+    @property
+    def ExpirationDate(self):
+        r"""Expiry date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExpirationDate
+
+    @ExpirationDate.setter
+    def ExpirationDate(self, ExpirationDate):
+        self._ExpirationDate = ExpirationDate
+
+    @property
+    def MRZLine1(self):
+        r"""First line of the Machine Readable Zone (MRZ).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MRZLine1
+
+    @MRZLine1.setter
+    def MRZLine1(self, MRZLine1):
+        self._MRZLine1 = MRZLine1
+
+    @property
+    def MRZLine2(self):
+        r"""Second line of the Machine Readable Zone (MRZ).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MRZLine2
+
+    @MRZLine2.setter
+    def MRZLine2(self, MRZLine2):
+        self._MRZLine2 = MRZLine2
+
+    @property
     def Nationality(self):
         r"""Document nationality, following ISO 3166 country coding specification.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -4227,20 +4337,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Nationality = Nationality
 
     @property
-    def RegistrationNumber(self):
-        r"""Registration number.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._RegistrationNumber
-
-    @RegistrationNumber.setter
-    def RegistrationNumber(self, RegistrationNumber):
-        self._RegistrationNumber = RegistrationNumber
-
-    @property
     def Address(self):
-        r"""Specifies the address information of the document.
+        r"""Address information on the document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.AddressInfo`
         """
@@ -4251,67 +4349,234 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Address = Address
 
     @property
-    def FullNameLocal(self):
-        r"""Localized name.
+    def Religion(self):
+        r"""Religion (if displayed on the document).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
-        return self._FullNameLocal
+        return self._Religion
 
-    @FullNameLocal.setter
-    def FullNameLocal(self, FullNameLocal):
-        self._FullNameLocal = FullNameLocal
+    @Religion.setter
+    def Religion(self, Religion):
+        self._Religion = Religion
 
     @property
-    def FirstNameLocal(self):
-        r"""Localization name.
+    def Type(self):
+        r"""Type of document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
-        return self._FirstNameLocal
+        return self._Type
 
-    @FirstNameLocal.setter
-    def FirstNameLocal(self, FirstNameLocal):
-        self._FirstNameLocal = FirstNameLocal
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
-    def LastNameLocal(self):
-        r"""Localized surname.
+    def BloodType(self):
+        r"""Blood type.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
-        return self._LastNameLocal
+        return self._BloodType
 
-    @LastNameLocal.setter
-    def LastNameLocal(self, LastNameLocal):
-        self._LastNameLocal = LastNameLocal
+    @BloodType.setter
+    def BloodType(self, BloodType):
+        self._BloodType = BloodType
+
+    @property
+    def Height(self):
+        r"""Height.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Weight(self):
+        r"""Weight.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def VehicleClass(self):
+        r"""Vehicle class authorized on the driver license (e.g., A, B, C).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VehicleClass
+
+    @VehicleClass.setter
+    def VehicleClass(self, VehicleClass):
+        self._VehicleClass = VehicleClass
+
+    @property
+    def Restrictions(self):
+        r"""Restrictions on the driver license.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Restrictions
+
+    @Restrictions.setter
+    def Restrictions(self, Restrictions):
+        self._Restrictions = Restrictions
+
+    @property
+    def Endorsement(self):
+        r"""Endorsements or additional records on the driver license.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Endorsement
+
+    @Endorsement.setter
+    def Endorsement(self, Endorsement):
+        self._Endorsement = Endorsement
+
+    @property
+    def Others(self):
+        r"""Supplementary fields (varies by document type).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+    @property
+    def PassportCodeFirst(self):
+        warnings.warn("parameter `PassportCodeFirst` is deprecated", DeprecationWarning) 
+
+        r"""First line of the passport MRZ (Machine Readable Zone).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PassportCodeFirst
+
+    @PassportCodeFirst.setter
+    def PassportCodeFirst(self, PassportCodeFirst):
+        warnings.warn("parameter `PassportCodeFirst` is deprecated", DeprecationWarning) 
+
+        self._PassportCodeFirst = PassportCodeFirst
+
+    @property
+    def PassportCodeSecond(self):
+        warnings.warn("parameter `PassportCodeSecond` is deprecated", DeprecationWarning) 
+
+        r"""Second line of the passport MRZ (Machine Readable Zone).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PassportCodeSecond
+
+    @PassportCodeSecond.setter
+    def PassportCodeSecond(self, PassportCodeSecond):
+        warnings.warn("parameter `PassportCodeSecond` is deprecated", DeprecationWarning) 
+
+        self._PassportCodeSecond = PassportCodeSecond
+
+    @property
+    def DueDate(self):
+        warnings.warn("parameter `DueDate` is deprecated", DeprecationWarning) 
+
+        r"""Expiry date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DueDate
+
+    @DueDate.setter
+    def DueDate(self, DueDate):
+        warnings.warn("parameter `DueDate` is deprecated", DeprecationWarning) 
+
+        self._DueDate = DueDate
+
+    @property
+    def Age(self):
+        warnings.warn("parameter `Age` is deprecated", DeprecationWarning) 
+
+        r"""Age. 0 means no valid info.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        warnings.warn("parameter `Age` is deprecated", DeprecationWarning) 
+
+        self._Age = Age
+
+    @property
+    def RegistrationNumber(self):
+        warnings.warn("parameter `RegistrationNumber` is deprecated", DeprecationWarning) 
+
+        r"""Registration number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RegistrationNumber
+
+    @RegistrationNumber.setter
+    def RegistrationNumber(self, RegistrationNumber):
+        warnings.warn("parameter `RegistrationNumber` is deprecated", DeprecationWarning) 
+
+        self._RegistrationNumber = RegistrationNumber
 
 
     def _deserialize(self, params):
         self._LicenseNumber = params.get("LicenseNumber")
         self._PersonalNumber = params.get("PersonalNumber")
-        self._PassportCodeFirst = params.get("PassportCodeFirst")
-        self._PassportCodeSecond = params.get("PassportCodeSecond")
-        self._ExpirationDate = params.get("ExpirationDate")
-        self._DueDate = params.get("DueDate")
-        self._IssuedDate = params.get("IssuedDate")
-        self._IssuedAuthority = params.get("IssuedAuthority")
-        self._IssuedCountry = params.get("IssuedCountry")
         self._FullName = params.get("FullName")
+        self._FullNameLocal = params.get("FullNameLocal")
         self._FirstName = params.get("FirstName")
+        self._FirstNameLocal = params.get("FirstNameLocal")
+        self._MiddleName = params.get("MiddleName")
+        self._MiddleNameLocal = params.get("MiddleNameLocal")
         self._LastName = params.get("LastName")
+        self._LastNameLocal = params.get("LastNameLocal")
         self._Sex = params.get("Sex")
-        self._Age = params.get("Age")
         self._Birthday = params.get("Birthday")
         self._BirthPlace = params.get("BirthPlace")
+        self._IssuedDate = params.get("IssuedDate")
+        self._IssuedAuthority = params.get("IssuedAuthority")
+        self._IssuedPlace = params.get("IssuedPlace")
+        self._IssuedCountry = params.get("IssuedCountry")
+        self._IssuedCountryCode = params.get("IssuedCountryCode")
+        self._ExpirationDate = params.get("ExpirationDate")
+        self._MRZLine1 = params.get("MRZLine1")
+        self._MRZLine2 = params.get("MRZLine2")
         self._Nationality = params.get("Nationality")
-        self._RegistrationNumber = params.get("RegistrationNumber")
         if params.get("Address") is not None:
             self._Address = AddressInfo()
             self._Address._deserialize(params.get("Address"))
-        self._FullNameLocal = params.get("FullNameLocal")
-        self._FirstNameLocal = params.get("FirstNameLocal")
-        self._LastNameLocal = params.get("LastNameLocal")
+        self._Religion = params.get("Religion")
+        self._Type = params.get("Type")
+        self._BloodType = params.get("BloodType")
+        self._Height = params.get("Height")
+        self._Weight = params.get("Weight")
+        self._VehicleClass = params.get("VehicleClass")
+        self._Restrictions = params.get("Restrictions")
+        self._Endorsement = params.get("Endorsement")
+        self._Others = params.get("Others")
+        self._PassportCodeFirst = params.get("PassportCodeFirst")
+        self._PassportCodeSecond = params.get("PassportCodeSecond")
+        self._DueDate = params.get("DueDate")
+        self._Age = params.get("Age")
+        self._RegistrationNumber = params.get("RegistrationNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4506,28 +4771,36 @@ class GetCardVerificationExternalResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Indicates the status. valid values: 
-PASSED
+        :param _Status: Verification status. Valid values: 
 PROCESSING
-WARNING
+ABNORMAL
+COMPLETED
         :type Status: str
-        :param _WarnInfo: Indicates the anti-counterfeiting information.
--ScreenshotSuspected: The image is a screenshot.
--RetakeSuspected: The image is taken from another screen.
--PaperCopy: The image is a black and white, or color photocopy.
--FakeSuspected: The image of the card, or the information on the card has been edited or altered.
--OtherWarning: Document's authenticity is not verified for various reasons.
+        :param _WarnInfo: Anti-counterfeiting information. 
+- ScreenshotSuspected: The image is a screenshot.
+- RetakeSuspected: The image is taken from another screen.
+- PaperCopy: The image is a black and white, or color photocopy.
+- FakeSuspected: The image of the card, or the information on the card has been edited or altered.
+- PoorImageQuality: The image is bad quality.
+- InformationVerificationFailed: Information verification failed based on OCR recognition results
+- TooManyCards: Multiple cards present in the frame.
+- IncompleteCard: Captured document is incomplete.
+- OtherWarning: Document's authenticity is not verified for various reasons.
+
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WarnInfo: list of str
-        :param _Nationality: Country Code.
+        :param _Nationality: Country or region of the document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Nationality: str
-        :param _CardInfo: Recognition result of the text in the id photo.	
+        :param _CardInfo: Front-side document recognition results. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CardInfo: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
-        :param _CardVerificationToken: Specifies the token in the request parameters.
+        :param _BackCardInfo: Back-side document recognition results.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackCardInfo: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        :param _CardVerificationToken: The token passed in the input parameters.
         :type CardVerificationToken: str
-        :param _HeadImageBase64: If the ReturnHeadImage is false or not passed when initiating the card and certificate recognition, the HeadImageBase64 will return an empty string. If the ReturnHeadImage is true when initiating the card and certificate recognition and the HeadImageBase64 returns an empty string, it indicates that the face image recognition has failed. Please check the image.
+        :param _HeadImageBase64: Base64-encoded head image from the document. If ReturnHeadImage was set to false or not provided in the request, this field returns an empty string. If ReturnHeadImage was set to true and this field returns an empty string, indicating a failure to extract the head image extraction failed. Please check the input document photo.
         :type HeadImageBase64: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4536,16 +4809,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._WarnInfo = None
         self._Nationality = None
         self._CardInfo = None
+        self._BackCardInfo = None
         self._CardVerificationToken = None
         self._HeadImageBase64 = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""Indicates the status. valid values: 
-PASSED
+        r"""Verification status. Valid values: 
 PROCESSING
-WARNING
+ABNORMAL
+COMPLETED
         :rtype: str
         """
         return self._Status
@@ -4556,12 +4830,17 @@ WARNING
 
     @property
     def WarnInfo(self):
-        r"""Indicates the anti-counterfeiting information.
--ScreenshotSuspected: The image is a screenshot.
--RetakeSuspected: The image is taken from another screen.
--PaperCopy: The image is a black and white, or color photocopy.
--FakeSuspected: The image of the card, or the information on the card has been edited or altered.
--OtherWarning: Document's authenticity is not verified for various reasons.
+        r"""Anti-counterfeiting information. 
+- ScreenshotSuspected: The image is a screenshot.
+- RetakeSuspected: The image is taken from another screen.
+- PaperCopy: The image is a black and white, or color photocopy.
+- FakeSuspected: The image of the card, or the information on the card has been edited or altered.
+- PoorImageQuality: The image is bad quality.
+- InformationVerificationFailed: Information verification failed based on OCR recognition results
+- TooManyCards: Multiple cards present in the frame.
+- IncompleteCard: Captured document is incomplete.
+- OtherWarning: Document's authenticity is not verified for various reasons.
+
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -4573,7 +4852,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nationality(self):
-        r"""Country Code.
+        warnings.warn("parameter `Nationality` is deprecated", DeprecationWarning) 
+
+        r"""Country or region of the document.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4581,11 +4862,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @Nationality.setter
     def Nationality(self, Nationality):
+        warnings.warn("parameter `Nationality` is deprecated", DeprecationWarning) 
+
         self._Nationality = Nationality
 
     @property
     def CardInfo(self):
-        r"""Recognition result of the text in the id photo.	
+        r"""Front-side document recognition results. 
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
         """
@@ -4596,8 +4879,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CardInfo = CardInfo
 
     @property
+    def BackCardInfo(self):
+        r"""Back-side document recognition results.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCard`
+        """
+        return self._BackCardInfo
+
+    @BackCardInfo.setter
+    def BackCardInfo(self, BackCardInfo):
+        self._BackCardInfo = BackCardInfo
+
+    @property
     def CardVerificationToken(self):
-        r"""Specifies the token in the request parameters.
+        r"""The token passed in the input parameters.
         :rtype: str
         """
         return self._CardVerificationToken
@@ -4608,7 +4903,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeadImageBase64(self):
-        r"""If the ReturnHeadImage is false or not passed when initiating the card and certificate recognition, the HeadImageBase64 will return an empty string. If the ReturnHeadImage is true when initiating the card and certificate recognition and the HeadImageBase64 returns an empty string, it indicates that the face image recognition has failed. Please check the image.
+        r"""Base64-encoded head image from the document. If ReturnHeadImage was set to false or not provided in the request, this field returns an empty string. If ReturnHeadImage was set to true and this field returns an empty string, indicating a failure to extract the head image extraction failed. Please check the input document photo.
         :rtype: str
         """
         return self._HeadImageBase64
@@ -4636,6 +4931,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("CardInfo") is not None:
             self._CardInfo = GeneralCard()
             self._CardInfo._deserialize(params.get("CardInfo"))
+        if params.get("BackCardInfo") is not None:
+            self._BackCardInfo = GeneralCard()
+            self._BackCardInfo._deserialize(params.get("BackCardInfo"))
         self._CardVerificationToken = params.get("CardVerificationToken")
         self._HeadImageBase64 = params.get("HeadImageBase64")
         self._RequestId = params.get("RequestId")

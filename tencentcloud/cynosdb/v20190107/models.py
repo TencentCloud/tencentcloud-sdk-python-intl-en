@@ -47475,43 +47475,32 @@ class ProxyZone(AbstractModel):
 
 
 class QueryFilter(AbstractModel):
-    r"""Query filter
+    r"""Query filter. Filter criteria for the DescribeClusterAndInstances API.
 
     """
 
     def __init__(self):
         r"""
-        :param _Names: Search field. Valid values: "InstanceId", "ProjectId", "InstanceName", "Vip"
-        :type Names: list of str
-        :param _Values: Search string
+        :param _Values: Field value list, in one-to-one correspondence with Names. InstanceId/ClusterId uses exact matching, and InstanceName uses fuzzy matching by default.
         :type Values: list of str
-        :param _ExactMatch: Whether to use exact match
+        :param _Names: Search field name list, support the following 3 fields (case-insensitive, multiple values are OR relationship): ClusterId (filter by cluster ID, exact match), InstanceId (reverse-check cluster by instance ID), InstanceName (reverse-check cluster by instance name, default LIKE fuzzy matching, exact match when ExactMatch=true). Take the intersection when InstanceId and InstanceName are input at the same time (AND semantics).
+        :type Names: list of str
+        :param _ExactMatch: Exact match. Only applicable to InstanceName: true for exact matching, false (default) for LIKE fuzzy matching.
         :type ExactMatch: bool
-        :param _Name: Search field
+        :param _Name: Search field name (single field mode, choose between this and Names). ClusterId, InstanceId, and InstanceName are supported.
         :type Name: str
-        :param _Operator: Operator
+        :param _Operator: Operator (reserved field, currently disabled). Available values: >, >=, !=, =, <, <=
         :type Operator: str
         """
-        self._Names = None
         self._Values = None
+        self._Names = None
         self._ExactMatch = None
         self._Name = None
         self._Operator = None
 
     @property
-    def Names(self):
-        r"""Search field. Valid values: "InstanceId", "ProjectId", "InstanceName", "Vip"
-        :rtype: list of str
-        """
-        return self._Names
-
-    @Names.setter
-    def Names(self, Names):
-        self._Names = Names
-
-    @property
     def Values(self):
-        r"""Search string
+        r"""Field value list, in one-to-one correspondence with Names. InstanceId/ClusterId uses exact matching, and InstanceName uses fuzzy matching by default.
         :rtype: list of str
         """
         return self._Values
@@ -47521,8 +47510,19 @@ class QueryFilter(AbstractModel):
         self._Values = Values
 
     @property
+    def Names(self):
+        r"""Search field name list, support the following 3 fields (case-insensitive, multiple values are OR relationship): ClusterId (filter by cluster ID, exact match), InstanceId (reverse-check cluster by instance ID), InstanceName (reverse-check cluster by instance name, default LIKE fuzzy matching, exact match when ExactMatch=true). Take the intersection when InstanceId and InstanceName are input at the same time (AND semantics).
+        :rtype: list of str
+        """
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
     def ExactMatch(self):
-        r"""Whether to use exact match
+        r"""Exact match. Only applicable to InstanceName: true for exact matching, false (default) for LIKE fuzzy matching.
         :rtype: bool
         """
         return self._ExactMatch
@@ -47533,7 +47533,7 @@ class QueryFilter(AbstractModel):
 
     @property
     def Name(self):
-        r"""Search field
+        r"""Search field name (single field mode, choose between this and Names). ClusterId, InstanceId, and InstanceName are supported.
         :rtype: str
         """
         return self._Name
@@ -47546,7 +47546,7 @@ class QueryFilter(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""Operator
+        r"""Operator (reserved field, currently disabled). Available values: >, >=, !=, =, <, <=
         :rtype: str
         """
         return self._Operator
@@ -47559,8 +47559,8 @@ class QueryFilter(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Names = params.get("Names")
         self._Values = params.get("Values")
+        self._Names = params.get("Names")
         self._ExactMatch = params.get("ExactMatch")
         self._Name = params.get("Name")
         self._Operator = params.get("Operator")

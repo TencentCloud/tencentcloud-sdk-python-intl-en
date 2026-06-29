@@ -31,9 +31,9 @@ class OcrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ApplyCardVerificationExternalResponse:
         """
-        This API is used for general recognition of overseas cards.
+        This API provides general OCR recognition for overseas identity documents.
 
-        The following list details the countries or regions, document types supported by the overseas document recognition API and whether the back side of the document is required:
+        The following table lists the supported countries or regions, document types, and whether the back side is required:
 
         <table>
         <thead>
