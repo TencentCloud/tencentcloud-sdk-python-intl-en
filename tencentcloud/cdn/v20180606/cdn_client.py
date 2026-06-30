@@ -95,29 +95,6 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateScdnFailedLogTask(self, request):
-        r"""This API is used to recreate a failed event log task.
-
-        :param request: Request instance for CreateScdnFailedLogTask.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnFailedLogTaskRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateScdnFailedLogTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateScdnFailedLogTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateScdnFailedLogTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteCdnDomain(self, request):
         r"""This API is used to delete a specified acceleration domain name.
 
@@ -250,6 +227,7 @@ class CdnClient(AbstractClient):
 
     def DescribeCdnIp(self, request):
         r"""This API is used to query CDN IP ownership.
+        This API is used to create and bind a policy. (Note: The API request frequency limit follows CDN's restriction: 200 requests/10 minutes).
 
         :param request: Request instance for DescribeCdnIp.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnIpRequest`
@@ -272,7 +250,8 @@ class CdnClient(AbstractClient):
 
 
     def DescribeCdnOriginIp(self, request):
-        r"""This API is used to query the IP information of CDN intermediate nodes. Note: this API will be deactivated soon and no longer be maintained. Please call `DescribeIpStatus` instead.
+        r"""**This API is deprecated.**.
+        This API is used to query the IP information of CDN origin-pull nodes. (Note: The replace API is DescribeIpStatus.).
 
         :param request: Request instance for DescribeCdnOriginIp.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnOriginIpRequest`
@@ -609,8 +588,8 @@ class CdnClient(AbstractClient):
 
 
     def DescribeUrlViolations(self, request):
-        r"""This API is used to query the list of domain name URLs containing regulation-violating content scanned and detected by the CDN system, and the current status of the URLs.
-        It corresponds to the **Pornography Detection** page on the CDN Console.
+        r"""This API is used to query the URL list with domain violations detected by the CDN system scan and their status.
+        This API is used to correspond to the content compliant webpage in the CDN console.
 
         :param request: Request instance for DescribeUrlViolations.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeUrlViolationsRequest`
@@ -623,29 +602,6 @@ class CdnClient(AbstractClient):
             body = self.call("DescribeUrlViolations", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUrlViolationsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DisableCaches(self, request):
-        r"""This API is used to block access to a specific URL on CDN. When a URL is blocked, error 403 will be returned for requests from the Chinese mainland. URL blocking is not permanent. Note that this API is only available to beta users now.
-
-        :param request: Request instance for DisableCaches.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.DisableCachesRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.DisableCachesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DisableCaches", params, headers=headers)
-            response = json.loads(body)
-            model = models.DisableCachesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -678,20 +634,20 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def EnableCaches(self, request):
-        r"""This API (EnableCaches) is used to unblock manually blocked URLs. After a URL is successfully unblocked, it takes about 5 to 10 minutes to take effect across the entire network. (This API is during beta test and not fully available now.)
+    def DuplicateDomainConfig(self, request):
+        r"""This API is used to copy the configuration of a reference domain to a new domain name. Self-owned certificates and customization options are not currently supported.
 
-        :param request: Request instance for EnableCaches.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.EnableCachesRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.EnableCachesResponse`
+        :param request: Request instance for DuplicateDomainConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DuplicateDomainConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DuplicateDomainConfigResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("EnableCaches", params, headers=headers)
+            body = self.call("DuplicateDomainConfig", params, headers=headers)
             response = json.loads(body)
-            model = models.EnableCachesResponse()
+            model = models.DuplicateDomainConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -715,29 +671,6 @@ class CdnClient(AbstractClient):
             body = self.call("EnableClsLogTopic", params, headers=headers)
             response = json.loads(body)
             model = models.EnableClsLogTopicResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetDisableRecords(self, request):
-        r"""This API is used to query the resource blocking history and the current URL status. (This API is in beta test and not generally available yet.)
-
-        :param request: Request instance for GetDisableRecords.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.GetDisableRecordsRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.GetDisableRecordsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetDisableRecords", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetDisableRecordsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1055,29 +988,6 @@ class CdnClient(AbstractClient):
             body = self.call("UpdatePayType", params, headers=headers)
             response = json.loads(body)
             model = models.UpdatePayTypeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpdateScdnDomain(self, request):
-        r"""This API is used to modify security configurations of SCDN acceleration domain names.
-
-        :param request: Request instance for UpdateScdnDomain.
-        :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateScdnDomainRequest`
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.UpdateScdnDomainResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpdateScdnDomain", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpdateScdnDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

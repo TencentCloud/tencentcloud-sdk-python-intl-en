@@ -547,6 +547,24 @@ class SqlserverClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteRestoreTask(
+            self,
+            request: models.DeleteRestoreTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRestoreTaskResponse:
+        """
+        This API is used to delete rollback task records.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRestoreTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRestoreTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAccountPrivilegeByDB(
             self,
             request: models.DescribeAccountPrivilegeByDBRequest,
@@ -1573,6 +1591,24 @@ class SqlserverClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeUploadIncrementalInfo(
+            self,
+            request: models.DescribeUploadIncrementalInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUploadIncrementalInfoResponse:
+        """
+        This API is used to query upload permissions for incremental backups.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUploadIncrementalInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUploadIncrementalInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeXEvents(
             self,
             request: models.DescribeXEventsRequest,
@@ -1640,6 +1676,24 @@ class SqlserverClient(AbstractClient):
         kwargs["action"] = "InquiryPriceCreateDBInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.InquiryPriceCreateDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InquiryPriceRenewDBInstance(
+            self,
+            request: models.InquiryPriceRenewDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.InquiryPriceRenewDBInstanceResponse:
+        """
+        This API is used to query the renewal price of a monthly subscription instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquiryPriceRenewDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquiryPriceRenewDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1875,6 +1929,24 @@ class SqlserverClient(AbstractClient):
         kwargs["action"] = "ModifyDBInstanceProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDBInstanceProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDBInstanceRenewFlag(
+            self,
+            request: models.ModifyDBInstanceRenewFlagRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBInstanceRenewFlagResponse:
+        """
+        This API is used to modify the instance renewal flag.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBInstanceRenewFlag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBInstanceRenewFlagResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2314,6 +2386,24 @@ class SqlserverClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RenewDBInstance(
+            self,
+            request: models.RenewDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.RenewDBInstanceResponse:
+        """
+        This API is used to renew instances. For pay-as-you-go instances, the billing method will change to monthly subscription after renewal. You can call the InquiryPriceRenewDBInstance API for the renewal price of pay-as-you-go instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RenewPostpaidDBInstance(
             self,
             request: models.RenewPostpaidDBInstanceRequest,
@@ -2471,6 +2561,42 @@ class SqlserverClient(AbstractClient):
         kwargs["action"] = "StartInstanceXEvent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StartInstanceXEventResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StartMigrationCheck(
+            self,
+            request: models.StartMigrationCheckRequest,
+            opts: Dict = None,
+    ) -> models.StartMigrationCheckResponse:
+        """
+        This API is used to start a pre-migration verification task, applicable to the migration method where the migration source type is TencentDB for SQL Server.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartMigrationCheck"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartMigrationCheckResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopMigration(
+            self,
+            request: models.StopMigrationRequest,
+            opts: Dict = None,
+    ) -> models.StopMigrationResponse:
+        """
+        This API is used to terminate a migration task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopMigration"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopMigrationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

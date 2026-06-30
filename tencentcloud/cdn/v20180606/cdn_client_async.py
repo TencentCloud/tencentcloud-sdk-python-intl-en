@@ -79,24 +79,6 @@ class CdnClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateScdnFailedLogTask(
-            self,
-            request: models.CreateScdnFailedLogTaskRequest,
-            opts: Dict = None,
-    ) -> models.CreateScdnFailedLogTaskResponse:
-        """
-        This API is used to recreate a failed event log task.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateScdnFailedLogTask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateScdnFailedLogTaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteCdnDomain(
             self,
             request: models.DeleteCdnDomainRequest,
@@ -209,6 +191,7 @@ class CdnClient(AbstractClient):
     ) -> models.DescribeCdnIpResponse:
         """
         This API is used to query CDN IP ownership.
+        This API is used to create and bind a policy. (Note: The API request frequency limit follows CDN's restriction: 200 requests/10 minutes).
         """
         
         kwargs = {}
@@ -226,7 +209,8 @@ class CdnClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCdnOriginIpResponse:
         """
-        This API is used to query the IP information of CDN intermediate nodes. Note: this API will be deactivated soon and no longer be maintained. Please call `DescribeIpStatus` instead.
+        **This API is deprecated.**.
+        This API is used to query the IP information of CDN origin-pull nodes. (Note: The replace API is DescribeIpStatus.).
         """
         
         kwargs = {}
@@ -493,32 +477,14 @@ class CdnClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeUrlViolationsResponse:
         """
-        This API is used to query the list of domain name URLs containing regulation-violating content scanned and detected by the CDN system, and the current status of the URLs.
-        It corresponds to the **Pornography Detection** page on the CDN Console.
+        This API is used to query the URL list with domain violations detected by the CDN system scan and their status.
+        This API is used to correspond to the content compliant webpage in the CDN console.
         """
         
         kwargs = {}
         kwargs["action"] = "DescribeUrlViolations"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeUrlViolationsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DisableCaches(
-            self,
-            request: models.DisableCachesRequest,
-            opts: Dict = None,
-    ) -> models.DisableCachesResponse:
-        """
-        This API is used to block access to a specific URL on CDN. When a URL is blocked, error 403 will be returned for requests from the Chinese mainland. URL blocking is not permanent. Note that this API is only available to beta users now.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DisableCaches"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DisableCachesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -542,19 +508,19 @@ class CdnClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def EnableCaches(
+    async def DuplicateDomainConfig(
             self,
-            request: models.EnableCachesRequest,
+            request: models.DuplicateDomainConfigRequest,
             opts: Dict = None,
-    ) -> models.EnableCachesResponse:
+    ) -> models.DuplicateDomainConfigResponse:
         """
-        This API (EnableCaches) is used to unblock manually blocked URLs. After a URL is successfully unblocked, it takes about 5 to 10 minutes to take effect across the entire network. (This API is during beta test and not fully available now.)
+        This API is used to copy the configuration of a reference domain to a new domain name. Self-owned certificates and customization options are not currently supported.
         """
         
         kwargs = {}
-        kwargs["action"] = "EnableCaches"
+        kwargs["action"] = "DuplicateDomainConfig"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.EnableCachesResponse
+        kwargs["resp_cls"] = models.DuplicateDomainConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -573,24 +539,6 @@ class CdnClient(AbstractClient):
         kwargs["action"] = "EnableClsLogTopic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.EnableClsLogTopicResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def GetDisableRecords(
-            self,
-            request: models.GetDisableRecordsRequest,
-            opts: Dict = None,
-    ) -> models.GetDisableRecordsResponse:
-        """
-        This API is used to query the resource blocking history and the current URL status. (This API is in beta test and not generally available yet.)
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetDisableRecords"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetDisableRecordsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -843,24 +791,6 @@ class CdnClient(AbstractClient):
         kwargs["action"] = "UpdatePayType"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdatePayTypeResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def UpdateScdnDomain(
-            self,
-            request: models.UpdateScdnDomainRequest,
-            opts: Dict = None,
-    ) -> models.UpdateScdnDomainResponse:
-        """
-        This API is used to modify security configurations of SCDN acceleration domain names.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UpdateScdnDomain"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UpdateScdnDomainResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

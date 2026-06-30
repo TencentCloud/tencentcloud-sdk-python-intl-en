@@ -693,6 +693,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRestoreTask(self, request):
+        r"""This API is used to delete rollback task records.
+
+        :param request: Request instance for DeleteRestoreTask.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteRestoreTaskRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeleteRestoreTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRestoreTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRestoreTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccountPrivilegeByDB(self, request):
         r"""This API is used to query information on the account and permissions associated with the database.
 
@@ -2004,6 +2027,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUploadIncrementalInfo(self, request):
+        r"""This API is used to query upload permissions for incremental backups.
+
+        :param request: Request instance for DescribeUploadIncrementalInfo.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUploadIncrementalInfoRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUploadIncrementalInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUploadIncrementalInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUploadIncrementalInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeXEvents(self, request):
         r"""This API is used to query the list of extended events.
 
@@ -2087,6 +2133,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("InquiryPriceCreateDBInstances", params, headers=headers)
             response = json.loads(body)
             model = models.InquiryPriceCreateDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquiryPriceRenewDBInstance(self, request):
+        r"""This API is used to query the renewal price of a monthly subscription instance.
+
+        :param request: Request instance for InquiryPriceRenewDBInstance.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.InquiryPriceRenewDBInstanceRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.InquiryPriceRenewDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceRenewDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceRenewDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2387,6 +2456,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyDBInstanceProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBInstanceProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceRenewFlag(self, request):
+        r"""This API is used to modify the instance renewal flag.
+
+        :param request: Request instance for ModifyDBInstanceRenewFlag.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceRenewFlagRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceRenewFlagResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2950,6 +3042,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RenewDBInstance(self, request):
+        r"""This API is used to renew instances. For pay-as-you-go instances, the billing method will change to monthly subscription after renewal. You can call the InquiryPriceRenewDBInstance API for the renewal price of pay-as-you-go instances.
+
+        :param request: Request instance for RenewDBInstance.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.RenewDBInstanceRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.RenewDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RenewPostpaidDBInstance(self, request):
         r"""This API is used to recover the pay-as-you-go instance that is manually isolated through the API TerminateDBInstance from the recycle bin.
 
@@ -3148,6 +3263,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("StartInstanceXEvent", params, headers=headers)
             response = json.loads(body)
             model = models.StartInstanceXEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartMigrationCheck(self, request):
+        r"""This API is used to start a pre-migration verification task, applicable to the migration method where the migration source type is TencentDB for SQL Server.
+
+        :param request: Request instance for StartMigrationCheck.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.StartMigrationCheckRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.StartMigrationCheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartMigrationCheck", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartMigrationCheckResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopMigration(self, request):
+        r"""This API is used to terminate a migration task.
+
+        :param request: Request instance for StopMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.StopMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.StopMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopMigration", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopMigrationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -205,11 +205,14 @@ class AddCLSTopicDomainsRequest(AbstractModel):
         :type DomainAreaConfigs: list of DomainAreaConfig
         :param _Channel: Specifies whether to access CDN or ECDN. Valid values: `cdn` (default) and `ecdn`.
         :type Channel: str
+        :param _InheritDomainTags: Specifies whether to inherit the domain name tag. default reservation is the value changed last time.
+        :type InheritDomainTags: bool
         """
         self._LogsetId = None
         self._TopicId = None
         self._DomainAreaConfigs = None
         self._Channel = None
+        self._InheritDomainTags = None
 
     @property
     def LogsetId(self):
@@ -255,6 +258,17 @@ class AddCLSTopicDomainsRequest(AbstractModel):
     def Channel(self, Channel):
         self._Channel = Channel
 
+    @property
+    def InheritDomainTags(self):
+        r"""Specifies whether to inherit the domain name tag. default reservation is the value changed last time.
+        :rtype: bool
+        """
+        return self._InheritDomainTags
+
+    @InheritDomainTags.setter
+    def InheritDomainTags(self, InheritDomainTags):
+        self._InheritDomainTags = InheritDomainTags
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -266,6 +280,7 @@ class AddCLSTopicDomainsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._DomainAreaConfigs.append(obj)
         self._Channel = params.get("Channel")
+        self._InheritDomainTags = params.get("InheritDomainTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2238,191 +2253,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
-class AdvancedCCRules(AbstractModel):
-    r"""SCDN custom CC rules
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RuleName: Rule name
-        :type RuleName: str
-        :param _DetectionTime: Detection duration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DetectionTime: int
-        :param _FrequencyLimit: Detection frequency threshold
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type FrequencyLimit: int
-        :param _PunishmentSwitch: Whether to enable IP blocking. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return·`null`, indicating that no valid values can be obtained.
-        :type PunishmentSwitch: str
-        :param _PunishmentTime: IP penalty duration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PunishmentTime: int
-        :param _Action: Action. Valid values: `intercept` and `redirect`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Action: str
-        :param _RedirectUrl: A redirection URL used when Action is `redirect`
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type RedirectUrl: str
-        :param _Configure: Layer-7 rule configuration for CC frequency limiting
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Configure: list of ScdnSevenLayerRules
-        :param _Switch: Whether to enable custom CC rules. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return·`null`, indicating that no valid values can be obtained.
-        :type Switch: str
-        """
-        self._RuleName = None
-        self._DetectionTime = None
-        self._FrequencyLimit = None
-        self._PunishmentSwitch = None
-        self._PunishmentTime = None
-        self._Action = None
-        self._RedirectUrl = None
-        self._Configure = None
-        self._Switch = None
-
-    @property
-    def RuleName(self):
-        r"""Rule name
-        :rtype: str
-        """
-        return self._RuleName
-
-    @RuleName.setter
-    def RuleName(self, RuleName):
-        self._RuleName = RuleName
-
-    @property
-    def DetectionTime(self):
-        r"""Detection duration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: int
-        """
-        return self._DetectionTime
-
-    @DetectionTime.setter
-    def DetectionTime(self, DetectionTime):
-        self._DetectionTime = DetectionTime
-
-    @property
-    def FrequencyLimit(self):
-        r"""Detection frequency threshold
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: int
-        """
-        return self._FrequencyLimit
-
-    @FrequencyLimit.setter
-    def FrequencyLimit(self, FrequencyLimit):
-        self._FrequencyLimit = FrequencyLimit
-
-    @property
-    def PunishmentSwitch(self):
-        r"""Whether to enable IP blocking. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return·`null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._PunishmentSwitch
-
-    @PunishmentSwitch.setter
-    def PunishmentSwitch(self, PunishmentSwitch):
-        self._PunishmentSwitch = PunishmentSwitch
-
-    @property
-    def PunishmentTime(self):
-        r"""IP penalty duration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: int
-        """
-        return self._PunishmentTime
-
-    @PunishmentTime.setter
-    def PunishmentTime(self, PunishmentTime):
-        self._PunishmentTime = PunishmentTime
-
-    @property
-    def Action(self):
-        r"""Action. Valid values: `intercept` and `redirect`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Action
-
-    @Action.setter
-    def Action(self, Action):
-        self._Action = Action
-
-    @property
-    def RedirectUrl(self):
-        r"""A redirection URL used when Action is `redirect`
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._RedirectUrl
-
-    @RedirectUrl.setter
-    def RedirectUrl(self, RedirectUrl):
-        self._RedirectUrl = RedirectUrl
-
-    @property
-    def Configure(self):
-        r"""Layer-7 rule configuration for CC frequency limiting
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: list of ScdnSevenLayerRules
-        """
-        return self._Configure
-
-    @Configure.setter
-    def Configure(self, Configure):
-        self._Configure = Configure
-
-    @property
-    def Switch(self):
-        r"""Whether to enable custom CC rules. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return·`null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-
-    def _deserialize(self, params):
-        self._RuleName = params.get("RuleName")
-        self._DetectionTime = params.get("DetectionTime")
-        self._FrequencyLimit = params.get("FrequencyLimit")
-        self._PunishmentSwitch = params.get("PunishmentSwitch")
-        self._PunishmentTime = params.get("PunishmentTime")
-        self._Action = params.get("Action")
-        self._RedirectUrl = params.get("RedirectUrl")
-        if params.get("Configure") is not None:
-            self._Configure = []
-            for item in params.get("Configure"):
-                obj = ScdnSevenLayerRules()
-                obj._deserialize(item)
-                self._Configure.append(obj)
-        self._Switch = params.get("Switch")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class AdvancedCache(AbstractModel):
     r"""(Disused) Advanced cache validity configuration. You can use `RuleCache` instead.
 
@@ -2504,677 +2334,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 self._CacheRules.append(obj)
         self._IgnoreCacheControl = params.get("IgnoreCacheControl")
         self._IgnoreSetCookie = params.get("IgnoreSetCookie")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AdvancedScdnAclGroup(AbstractModel):
-    r"""SCDN precise access control configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RuleName: Rule name
-        :type RuleName: str
-        :param _Configure: Specific configurations
-        :type Configure: list of AdvancedScdnAclRule
-        :param _Result: Action. Valid values: `intercept` and `redirect`.
-        :type Result: str
-        :param _Status: Whether the rule is activated. Valid values: `active` and `inactive`.
-        :type Status: str
-        :param _ErrorPage: Error page configuration
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        """
-        self._RuleName = None
-        self._Configure = None
-        self._Result = None
-        self._Status = None
-        self._ErrorPage = None
-
-    @property
-    def RuleName(self):
-        r"""Rule name
-        :rtype: str
-        """
-        return self._RuleName
-
-    @RuleName.setter
-    def RuleName(self, RuleName):
-        self._RuleName = RuleName
-
-    @property
-    def Configure(self):
-        r"""Specific configurations
-        :rtype: list of AdvancedScdnAclRule
-        """
-        return self._Configure
-
-    @Configure.setter
-    def Configure(self, Configure):
-        self._Configure = Configure
-
-    @property
-    def Result(self):
-        r"""Action. Valid values: `intercept` and `redirect`.
-        :rtype: str
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def Status(self):
-        r"""Whether the rule is activated. Valid values: `active` and `inactive`.
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def ErrorPage(self):
-        r"""Error page configuration
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        """
-        return self._ErrorPage
-
-    @ErrorPage.setter
-    def ErrorPage(self, ErrorPage):
-        self._ErrorPage = ErrorPage
-
-
-    def _deserialize(self, params):
-        self._RuleName = params.get("RuleName")
-        if params.get("Configure") is not None:
-            self._Configure = []
-            for item in params.get("Configure"):
-                obj = AdvancedScdnAclRule()
-                obj._deserialize(item)
-                self._Configure.append(obj)
-        self._Result = params.get("Result")
-        self._Status = params.get("Status")
-        if params.get("ErrorPage") is not None:
-            self._ErrorPage = ScdnErrorPage()
-            self._ErrorPage._deserialize(params.get("ErrorPage"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AdvancedScdnAclRule(AbstractModel):
-    r"""Precise access control rule
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _MatchKey: Keyword. Valid values:
-`protocol`: HTTP protocol
-`httpVersion`: HTTP version
-`method`: request method
-`ip`: requester IP
-`ipAsn`: ASN of the requester IP
-`ipCountry`: country/region of the requester IP
-`ipArea`: region of the requester IP
-`xForwardFor`: X-Forward-For request header
-`directory`: Path
-`index`: Homepage
-`path`: Full path of a file
-`file`: File extension
-`param`: Request parameter
-`referer`: Referer request header
-`cookie`: Cookie request header
-`userAgent`: User-Agent request header
-`head`: Custom request header
-        :type MatchKey: str
-        :param _LogicOperator: Logical operator. Valid values:
-`exclude`: The keyword is not included
-`include`: The keyword is included
-`notequal`: Not the same as the keyword
-`equal`: The same as the keyword
-`matching`: The prefix is matched
-`null`: Empty or does not exist
-        :type LogicOperator: str
-        :param _MatchValue: Matched value.
-When `MatchKey` is `protocol`,
-Values: `HTTP` and `HTTPS`.
-
-When `MatchKey` is `httpVersion`,
-Values: `HTTP/1.0`, `HTTP/1.1`, `HTTP/1.2`, `HTTP/2`, and `HTTP/3`.
-
-When `MatchKey` is `method`,
-Values: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.
-
-When `MatchKey` is `ipCountry`, valid values include:
-`OTHER`: Other areas
-`VE`: Venezuela
-`UY`: Uruguay
-`SR`: Suriname
-`PY`: Paraguay
-`PE`: Peru
-`GY`: Guyana
-`EC`: Ecuador
-`CO`: Colombia
-`CL`: Chile
-`BR`: Brazil
-`BO`: Bolivia
-`AR`: Argentina
-`NZ`: New Zealand
-`WS`: Samoa
-`VU`: Vanuatu
-`TV`: Tuvalu
-`TO`: Tonga
-`TK`: Tokelau
-`PW`: Palau
-`NU`: Niue
-`NR`: Nauru
-`KI`: Kiribati
-`GU`: Guam
-`FM`: Micronesia
-`AU`: Australia
-`US`: United States
-`PR`: Puerto Rico
-`DO`: Dominican Republic
-`CR`: Costa Rica
-`AS`: American Samoa
-`AG`: Antigua and Barbuda
-`PA`: Panama
-`NI`: Nicaragua
-`MX`: Mexico
-`JM`: Jamaica
-`HT`: Haiti
-`HN`: Honduras
-`GT`: Guatemala
-`GP`: Guadeloupe
-`GL`: Greenland
-`GD`: Grenada
-`CU`: Cuba
-`CA`: Canada
-`BZ`: Belize
-`BS`: Bahamas
-`BM`: Bermuda
-`BB`: Barbados
-`AW`: Aruba
-`AI`: Anguilla
-`VA`: Vatican
-`SK`: Slovakia
-`GB`: United Kingdom
-`CZ`: Czech Republic
-`UA`: Ukraine
-`TR`: Türkiye
-`SI`: Slovenia
-`SE`: Sweden
-`RS`: Republic of Serbia
-`RO`: Romania
-`PT`: Portugal
-`PL`: Poland
-`NO`: Norway
-`NL`: Netherlands
-`MT`: Malta
-`MK`: Macedonia
-`ME`: Montenegro
-`MD`: Moldova
-`MC`: Monaco
-`LV`: Latvia
-`LU`: Luxembourg
-`LT`: Lithuania
-`LI`: Liechtenstein
-`KZ`: Kazakhstan
-`IT`: Italy
-`IS`: Iceland
-`IE`: Ireland
-`HU`: Hungary
-`HR`: Croatia
-`GR`: Greece
-`GI`: Gibraltar
-`GG`: Guernsey
-`GE`: Georgia
-`FR`: France
-`FI`: Finland
-`ES`: Spain
-`EE`: Estonia
-`DK`: Denmark
-`DE`: Germany
-`CY`: Cyprus
-`CH`: Switzerland
-`BY`: Belarus
-`BG`: Bulgaria
-`BE`: Belgium
-`AZ`: Azerbaijan
-`AT`: Austria
-`AM`: Armenia
-`AL`: Albania
-`AD`: Andorra
-`TL`: East Timor
-`SY`: Syria
-`SA`: Saudi Arabia
-`PS`: Palestine
-`LK`: Sri Lanka
-`LK`: Sri Lanka
-`KP`: North Korea
-`KG`: Kyrgyzstan
-`HK`: Hong Kong, China
-`BN`: Brunei
-`BD`: Bangladesh
-`AE`: United Arab Emirates
-`YE`: Yemen
-`VN`: Vietnam
-`UZ`: Uzbekistan
-`TW`: Taiwan, China
-`TM`: Turkmenistan
-`TJ`: Tajikistan
-`TH`: Thailand
-`SG`: Singapore
-`QA`: Qatar
-`PK`: Pakistan
-`PH`: Philippines
-`OM`: Oman
-`NP`: Nepal
-`MY`: Malaysia
-`MV`: Maldives
-`MO`: Macao, China
-`MN`: Mongolia
-`MM`: Myanmar
-`LB`: Lebanon
-`KW`: Kuwait
-`KR`: South Korea
-`KH`: Cambodia
-`JP`: Japan
-`JO`: Jordan
-`IR`: Iran
-`IQ`: Iraq
-`IN`: India
-`IL`: Israel
-`ID`: Indonesia
-`CN`: China
-`BT`: Bhutan
-`BH`: Bahrain
-`AF`: Afghanistan
-`LY`: Libya
-`CD`: Democratic Republic of the Congo
-`RE`: La Réunion
-`SZ`: Swaziland
-`ZW`: Zimbabwe
-`ZM`: Zambia
-`YT`: Mayotte
-`UG`: Uganda
-`TZ`: Tanzania
-`TN`: Tunisia
-`TG`: Togo
-`TD`: Chad
-`SO`: Somalia
-`SN`: Senegal
-`SD`: Sudan
-`SC`: Seychelles
-`RW`: Rwanda
-`NG`: Nigeria
-`NE`: Niger
-`NA`: Namibia
-`MZ`: Mozambique
-`MW`: Malawi
-`MU`: Mauritius
-`MR`: Mauritania
-`ML`: Mali
-`MG`: Madagascar
-`MA`: Morocco
-`LS`: Lesotho
-`LR`: Liberia
-`KM`: Comoros
-`KE`: Kenya
-`GN`: Guinea
-`GM`: Gambia
-`GH`: Ghana
-`GA`: Gabon
-`ET`: Ethiopia
-`ER`: Eritrea
-`EG`: Egypt
-`DZ`: Algeria
-`DJ`: Djibouti
-`CM`: Cameroon
-`CG`: Republic of the Congo
-`BW`: Botswana
-`BJ`: Benin
-`BI`: Burundi
-`AO`: Angola
-
-When MatchKey is `ipArea`, valid values include:
-`OTHER`: Other areas
-`AS`: Asia
-`EU`: Europe
-`AN`: Antarctica
-`AF`: Africa
-`OC`: Oceania
-`NA`: North America
-`SA`: South America
-
-When MatchKey is `index`,
-valid value is `/;/index.html`.
-        :type MatchValue: list of str
-        :param _CaseSensitive: Whether to distinguish uppercase or lowercase letters. `true`: case sensitive; `false`: case insensitive.
-        :type CaseSensitive: bool
-        :param _MatchKeyParam: This field is required when `MatchKey` is `param` or `cookie`. For `param`, it indicates a key value of the request parameter if MatchKey is `param`, while a key value of the Cookie request header if MatchKey is `cookie`.
-        :type MatchKeyParam: str
-        """
-        self._MatchKey = None
-        self._LogicOperator = None
-        self._MatchValue = None
-        self._CaseSensitive = None
-        self._MatchKeyParam = None
-
-    @property
-    def MatchKey(self):
-        r"""Keyword. Valid values:
-`protocol`: HTTP protocol
-`httpVersion`: HTTP version
-`method`: request method
-`ip`: requester IP
-`ipAsn`: ASN of the requester IP
-`ipCountry`: country/region of the requester IP
-`ipArea`: region of the requester IP
-`xForwardFor`: X-Forward-For request header
-`directory`: Path
-`index`: Homepage
-`path`: Full path of a file
-`file`: File extension
-`param`: Request parameter
-`referer`: Referer request header
-`cookie`: Cookie request header
-`userAgent`: User-Agent request header
-`head`: Custom request header
-        :rtype: str
-        """
-        return self._MatchKey
-
-    @MatchKey.setter
-    def MatchKey(self, MatchKey):
-        self._MatchKey = MatchKey
-
-    @property
-    def LogicOperator(self):
-        r"""Logical operator. Valid values:
-`exclude`: The keyword is not included
-`include`: The keyword is included
-`notequal`: Not the same as the keyword
-`equal`: The same as the keyword
-`matching`: The prefix is matched
-`null`: Empty or does not exist
-        :rtype: str
-        """
-        return self._LogicOperator
-
-    @LogicOperator.setter
-    def LogicOperator(self, LogicOperator):
-        self._LogicOperator = LogicOperator
-
-    @property
-    def MatchValue(self):
-        r"""Matched value.
-When `MatchKey` is `protocol`,
-Values: `HTTP` and `HTTPS`.
-
-When `MatchKey` is `httpVersion`,
-Values: `HTTP/1.0`, `HTTP/1.1`, `HTTP/1.2`, `HTTP/2`, and `HTTP/3`.
-
-When `MatchKey` is `method`,
-Values: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.
-
-When `MatchKey` is `ipCountry`, valid values include:
-`OTHER`: Other areas
-`VE`: Venezuela
-`UY`: Uruguay
-`SR`: Suriname
-`PY`: Paraguay
-`PE`: Peru
-`GY`: Guyana
-`EC`: Ecuador
-`CO`: Colombia
-`CL`: Chile
-`BR`: Brazil
-`BO`: Bolivia
-`AR`: Argentina
-`NZ`: New Zealand
-`WS`: Samoa
-`VU`: Vanuatu
-`TV`: Tuvalu
-`TO`: Tonga
-`TK`: Tokelau
-`PW`: Palau
-`NU`: Niue
-`NR`: Nauru
-`KI`: Kiribati
-`GU`: Guam
-`FM`: Micronesia
-`AU`: Australia
-`US`: United States
-`PR`: Puerto Rico
-`DO`: Dominican Republic
-`CR`: Costa Rica
-`AS`: American Samoa
-`AG`: Antigua and Barbuda
-`PA`: Panama
-`NI`: Nicaragua
-`MX`: Mexico
-`JM`: Jamaica
-`HT`: Haiti
-`HN`: Honduras
-`GT`: Guatemala
-`GP`: Guadeloupe
-`GL`: Greenland
-`GD`: Grenada
-`CU`: Cuba
-`CA`: Canada
-`BZ`: Belize
-`BS`: Bahamas
-`BM`: Bermuda
-`BB`: Barbados
-`AW`: Aruba
-`AI`: Anguilla
-`VA`: Vatican
-`SK`: Slovakia
-`GB`: United Kingdom
-`CZ`: Czech Republic
-`UA`: Ukraine
-`TR`: Türkiye
-`SI`: Slovenia
-`SE`: Sweden
-`RS`: Republic of Serbia
-`RO`: Romania
-`PT`: Portugal
-`PL`: Poland
-`NO`: Norway
-`NL`: Netherlands
-`MT`: Malta
-`MK`: Macedonia
-`ME`: Montenegro
-`MD`: Moldova
-`MC`: Monaco
-`LV`: Latvia
-`LU`: Luxembourg
-`LT`: Lithuania
-`LI`: Liechtenstein
-`KZ`: Kazakhstan
-`IT`: Italy
-`IS`: Iceland
-`IE`: Ireland
-`HU`: Hungary
-`HR`: Croatia
-`GR`: Greece
-`GI`: Gibraltar
-`GG`: Guernsey
-`GE`: Georgia
-`FR`: France
-`FI`: Finland
-`ES`: Spain
-`EE`: Estonia
-`DK`: Denmark
-`DE`: Germany
-`CY`: Cyprus
-`CH`: Switzerland
-`BY`: Belarus
-`BG`: Bulgaria
-`BE`: Belgium
-`AZ`: Azerbaijan
-`AT`: Austria
-`AM`: Armenia
-`AL`: Albania
-`AD`: Andorra
-`TL`: East Timor
-`SY`: Syria
-`SA`: Saudi Arabia
-`PS`: Palestine
-`LK`: Sri Lanka
-`LK`: Sri Lanka
-`KP`: North Korea
-`KG`: Kyrgyzstan
-`HK`: Hong Kong, China
-`BN`: Brunei
-`BD`: Bangladesh
-`AE`: United Arab Emirates
-`YE`: Yemen
-`VN`: Vietnam
-`UZ`: Uzbekistan
-`TW`: Taiwan, China
-`TM`: Turkmenistan
-`TJ`: Tajikistan
-`TH`: Thailand
-`SG`: Singapore
-`QA`: Qatar
-`PK`: Pakistan
-`PH`: Philippines
-`OM`: Oman
-`NP`: Nepal
-`MY`: Malaysia
-`MV`: Maldives
-`MO`: Macao, China
-`MN`: Mongolia
-`MM`: Myanmar
-`LB`: Lebanon
-`KW`: Kuwait
-`KR`: South Korea
-`KH`: Cambodia
-`JP`: Japan
-`JO`: Jordan
-`IR`: Iran
-`IQ`: Iraq
-`IN`: India
-`IL`: Israel
-`ID`: Indonesia
-`CN`: China
-`BT`: Bhutan
-`BH`: Bahrain
-`AF`: Afghanistan
-`LY`: Libya
-`CD`: Democratic Republic of the Congo
-`RE`: La Réunion
-`SZ`: Swaziland
-`ZW`: Zimbabwe
-`ZM`: Zambia
-`YT`: Mayotte
-`UG`: Uganda
-`TZ`: Tanzania
-`TN`: Tunisia
-`TG`: Togo
-`TD`: Chad
-`SO`: Somalia
-`SN`: Senegal
-`SD`: Sudan
-`SC`: Seychelles
-`RW`: Rwanda
-`NG`: Nigeria
-`NE`: Niger
-`NA`: Namibia
-`MZ`: Mozambique
-`MW`: Malawi
-`MU`: Mauritius
-`MR`: Mauritania
-`ML`: Mali
-`MG`: Madagascar
-`MA`: Morocco
-`LS`: Lesotho
-`LR`: Liberia
-`KM`: Comoros
-`KE`: Kenya
-`GN`: Guinea
-`GM`: Gambia
-`GH`: Ghana
-`GA`: Gabon
-`ET`: Ethiopia
-`ER`: Eritrea
-`EG`: Egypt
-`DZ`: Algeria
-`DJ`: Djibouti
-`CM`: Cameroon
-`CG`: Republic of the Congo
-`BW`: Botswana
-`BJ`: Benin
-`BI`: Burundi
-`AO`: Angola
-
-When MatchKey is `ipArea`, valid values include:
-`OTHER`: Other areas
-`AS`: Asia
-`EU`: Europe
-`AN`: Antarctica
-`AF`: Africa
-`OC`: Oceania
-`NA`: North America
-`SA`: South America
-
-When MatchKey is `index`,
-valid value is `/;/index.html`.
-        :rtype: list of str
-        """
-        return self._MatchValue
-
-    @MatchValue.setter
-    def MatchValue(self, MatchValue):
-        self._MatchValue = MatchValue
-
-    @property
-    def CaseSensitive(self):
-        r"""Whether to distinguish uppercase or lowercase letters. `true`: case sensitive; `false`: case insensitive.
-        :rtype: bool
-        """
-        return self._CaseSensitive
-
-    @CaseSensitive.setter
-    def CaseSensitive(self, CaseSensitive):
-        self._CaseSensitive = CaseSensitive
-
-    @property
-    def MatchKeyParam(self):
-        r"""This field is required when `MatchKey` is `param` or `cookie`. For `param`, it indicates a key value of the request parameter if MatchKey is `param`, while a key value of the Cookie request header if MatchKey is `cookie`.
-        :rtype: str
-        """
-        return self._MatchKeyParam
-
-    @MatchKeyParam.setter
-    def MatchKeyParam(self, MatchKeyParam):
-        self._MatchKeyParam = MatchKeyParam
-
-
-    def _deserialize(self, params):
-        self._MatchKey = params.get("MatchKey")
-        self._LogicOperator = params.get("LogicOperator")
-        self._MatchValue = params.get("MatchValue")
-        self._CaseSensitive = params.get("CaseSensitive")
-        self._MatchKeyParam = params.get("MatchKeyParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3936,8 +3095,21 @@ class AvifAdapter(AbstractModel):
 `off`: Disable
 Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type Switch: str
+        :param _FallbackFormats: When the original image is avif and the client Accept header contains image/avif, return directly the original image.
+When the original image is in avif format and the client Accept header does not include image/avif but includes image/webp, convert avif to webp format and return. if the Accept header does not include image/webp, convert to jpeg and return.
+
+Valid values:. 
+- []
+- ["webp"]
+- ["jpeg"]
+- ["webp", "jpeg"]
+
+"Webp": whether avif to webp is enabled, "jpeg": whether avif to jpeg is enabled. if both webp and jpeg are enabled, webp must be before jpeg.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FallbackFormats: list of str
         """
         self._Switch = None
+        self._FallbackFormats = None
 
     @property
     def Switch(self):
@@ -3953,9 +3125,31 @@ Note: This field may return·`null`, indicating that no valid values can be obta
     def Switch(self, Switch):
         self._Switch = Switch
 
+    @property
+    def FallbackFormats(self):
+        r"""When the original image is avif and the client Accept header contains image/avif, return directly the original image.
+When the original image is in avif format and the client Accept header does not include image/avif but includes image/webp, convert avif to webp format and return. if the Accept header does not include image/webp, convert to jpeg and return.
+
+Valid values:. 
+- []
+- ["webp"]
+- ["jpeg"]
+- ["webp", "jpeg"]
+
+"Webp": whether avif to webp is enabled, "jpeg": whether avif to jpeg is enabled. if both webp and jpeg are enabled, webp must be before jpeg.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._FallbackFormats
+
+    @FallbackFormats.setter
+    def FallbackFormats(self, FallbackFormats):
+        self._FallbackFormats = FallbackFormats
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        self._FallbackFormats = params.get("FallbackFormats")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4255,244 +3449,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = StatisticItem()
                 obj._deserialize(item)
                 self._StatisticItems.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class BotCookie(AbstractModel):
-    r"""Bot cookie policy
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Switch: Whether to enable bot cookie policies. Values:
-`on`: Enable
-`off`: Disable
-        :type Switch: str
-        :param _RuleType: Rule type, which can only be `all` currently.
-        :type RuleType: str
-        :param _RuleValue: Rule value. Valid value: `*`.
-        :type RuleValue: list of str
-        :param _Action: Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.
-        :type Action: str
-        :param _RedirectUrl: Redirection target page
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RedirectUrl: str
-        :param _UpdateTime: Update time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type UpdateTime: str
-        """
-        self._Switch = None
-        self._RuleType = None
-        self._RuleValue = None
-        self._Action = None
-        self._RedirectUrl = None
-        self._UpdateTime = None
-
-    @property
-    def Switch(self):
-        r"""Whether to enable bot cookie policies. Values:
-`on`: Enable
-`off`: Disable
-        :rtype: str
-        """
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-    @property
-    def RuleType(self):
-        r"""Rule type, which can only be `all` currently.
-        :rtype: str
-        """
-        return self._RuleType
-
-    @RuleType.setter
-    def RuleType(self, RuleType):
-        self._RuleType = RuleType
-
-    @property
-    def RuleValue(self):
-        r"""Rule value. Valid value: `*`.
-        :rtype: list of str
-        """
-        return self._RuleValue
-
-    @RuleValue.setter
-    def RuleValue(self, RuleValue):
-        self._RuleValue = RuleValue
-
-    @property
-    def Action(self):
-        r"""Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.
-        :rtype: str
-        """
-        return self._Action
-
-    @Action.setter
-    def Action(self, Action):
-        self._Action = Action
-
-    @property
-    def RedirectUrl(self):
-        r"""Redirection target page
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._RedirectUrl
-
-    @RedirectUrl.setter
-    def RedirectUrl(self, RedirectUrl):
-        self._RedirectUrl = RedirectUrl
-
-    @property
-    def UpdateTime(self):
-        r"""Update time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._UpdateTime
-
-    @UpdateTime.setter
-    def UpdateTime(self, UpdateTime):
-        self._UpdateTime = UpdateTime
-
-
-    def _deserialize(self, params):
-        self._Switch = params.get("Switch")
-        self._RuleType = params.get("RuleType")
-        self._RuleValue = params.get("RuleValue")
-        self._Action = params.get("Action")
-        self._RedirectUrl = params.get("RedirectUrl")
-        self._UpdateTime = params.get("UpdateTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class BotJavaScript(AbstractModel):
-    r"""Bot JS policy
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Switch: Whether to enable bot JS policies. Values:
-`on`: Enable
-`off`: Disable
-        :type Switch: str
-        :param _RuleType: Rule type, which can only be `file` currently.
-        :type RuleType: str
-        :param _RuleValue: Rule value. Valid values: `html` and `htm`.
-        :type RuleValue: list of str
-        :param _Action: Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.
-        :type Action: str
-        :param _RedirectUrl: Redirection target page
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RedirectUrl: str
-        :param _UpdateTime: Update time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type UpdateTime: str
-        """
-        self._Switch = None
-        self._RuleType = None
-        self._RuleValue = None
-        self._Action = None
-        self._RedirectUrl = None
-        self._UpdateTime = None
-
-    @property
-    def Switch(self):
-        r"""Whether to enable bot JS policies. Values:
-`on`: Enable
-`off`: Disable
-        :rtype: str
-        """
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-    @property
-    def RuleType(self):
-        r"""Rule type, which can only be `file` currently.
-        :rtype: str
-        """
-        return self._RuleType
-
-    @RuleType.setter
-    def RuleType(self, RuleType):
-        self._RuleType = RuleType
-
-    @property
-    def RuleValue(self):
-        r"""Rule value. Valid values: `html` and `htm`.
-        :rtype: list of str
-        """
-        return self._RuleValue
-
-    @RuleValue.setter
-    def RuleValue(self, RuleValue):
-        self._RuleValue = RuleValue
-
-    @property
-    def Action(self):
-        r"""Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.
-        :rtype: str
-        """
-        return self._Action
-
-    @Action.setter
-    def Action(self, Action):
-        self._Action = Action
-
-    @property
-    def RedirectUrl(self):
-        r"""Redirection target page
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._RedirectUrl
-
-    @RedirectUrl.setter
-    def RedirectUrl(self, RedirectUrl):
-        self._RedirectUrl = RedirectUrl
-
-    @property
-    def UpdateTime(self):
-        r"""Update time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._UpdateTime
-
-    @UpdateTime.setter
-    def UpdateTime(self, UpdateTime):
-        self._UpdateTime = UpdateTime
-
-
-    def _deserialize(self, params):
-        self._Switch = params.get("Switch")
-        self._RuleType = params.get("RuleType")
-        self._RuleValue = params.get("RuleValue")
-        self._Action = params.get("Action")
-        self._RedirectUrl = params.get("RedirectUrl")
-        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5407,61 +4363,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = KeyRule()
                 obj._deserialize(item)
                 self._KeyRules.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CacheOptResult(AbstractModel):
-    r"""Result of blocking/unblocking URLs
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SuccessUrls: List of succeeded URLs
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type SuccessUrls: list of str
-        :param _FailUrls: List of failed URLs
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type FailUrls: list of str
-        """
-        self._SuccessUrls = None
-        self._FailUrls = None
-
-    @property
-    def SuccessUrls(self):
-        r"""List of succeeded URLs
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: list of str
-        """
-        return self._SuccessUrls
-
-    @SuccessUrls.setter
-    def SuccessUrls(self, SuccessUrls):
-        self._SuccessUrls = SuccessUrls
-
-    @property
-    def FailUrls(self):
-        r"""List of failed URLs
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: list of str
-        """
-        return self._FailUrls
-
-    @FailUrls.setter
-    def FailUrls(self, FailUrls):
-        self._FailUrls = FailUrls
-
-
-    def _deserialize(self, params):
-        self._SuccessUrls = params.get("SuccessUrls")
-        self._FailUrls = params.get("FailUrls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6516,11 +5417,14 @@ class CreateClsLogTopicRequest(AbstractModel):
         :type Channel: str
         :param _DomainAreaConfigs: Domain name region information
         :type DomainAreaConfigs: list of DomainAreaConfig
+        :param _InheritDomainTags: Specifies whether to inherit the domain name tag. default false.
+        :type InheritDomainTags: bool
         """
         self._TopicName = None
         self._LogsetId = None
         self._Channel = None
         self._DomainAreaConfigs = None
+        self._InheritDomainTags = None
 
     @property
     def TopicName(self):
@@ -6566,6 +5470,17 @@ class CreateClsLogTopicRequest(AbstractModel):
     def DomainAreaConfigs(self, DomainAreaConfigs):
         self._DomainAreaConfigs = DomainAreaConfigs
 
+    @property
+    def InheritDomainTags(self):
+        r"""Specifies whether to inherit the domain name tag. default false.
+        :rtype: bool
+        """
+        return self._InheritDomainTags
+
+    @InheritDomainTags.setter
+    def InheritDomainTags(self, InheritDomainTags):
+        self._InheritDomainTags = InheritDomainTags
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
@@ -6577,6 +5492,7 @@ class CreateClsLogTopicRequest(AbstractModel):
                 obj = DomainAreaConfig()
                 obj._deserialize(item)
                 self._DomainAreaConfigs.append(obj)
+        self._InheritDomainTags = params.get("InheritDomainTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6595,7 +5511,6 @@ class CreateClsLogTopicResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: Topic ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :type TopicId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6606,7 +5521,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @property
     def TopicId(self):
         r"""Topic ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._TopicId
@@ -6629,102 +5543,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
-        self._RequestId = params.get("RequestId")
-
-
-class CreateScdnFailedLogTaskRequest(AbstractModel):
-    r"""CreateScdnFailedLogTask request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskId: ID of the failed task to retry
-        :type TaskId: str
-        :param _Area: Region. Valid values: `mainland` and `overseas`.
-        :type Area: str
-        """
-        self._TaskId = None
-        self._Area = None
-
-    @property
-    def TaskId(self):
-        r"""ID of the failed task to retry
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def Area(self):
-        r"""Region. Valid values: `mainland` and `overseas`.
-        :rtype: str
-        """
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateScdnFailedLogTaskResponse(AbstractModel):
-    r"""CreateScdnFailedLogTask response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Result: Creation result. 
-0: Creation succeeded
-        :type Result: str
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Result = None
-        self._RequestId = None
-
-    @property
-    def Result(self):
-        r"""Creation result. 
-0: Creation succeeded
-        :rtype: str
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 
@@ -6932,7 +5750,7 @@ Default value: `bandwidth`
         :type Metric: str
         :param _Product: Specifies the product to query, either `cdn` (default) or `ecdn`.
         :type Product: str
-        :param _TimeZone: Specify the time zone for query time, default UTC+08:00
+        :param _TimeZone: 
         :type TimeZone: str
         """
         self._StartTime = None
@@ -7066,7 +5884,7 @@ Default value: `bandwidth`
 
     @property
     def TimeZone(self):
-        r"""Specify the time zone for query time, default UTC+08:00
+        r"""
         :rtype: str
         """
         return self._TimeZone
@@ -7216,8 +6034,8 @@ Note that `Project` will be ignored if `Domains` is specified.
 `hour`: Return data with 1-hour granularity. It’s available when the query period is within 31 days.
 `day`: Return data with 1-day granularity. It’s available when the query period is longer than 31 days.
         :type Interval: str
-        :param _Detail: The aggregate data for multiple domain names is returned by default (false) during a multi-domain-name query.
-You can set it to true to return the details for each Domain (the statusCode metric is currently not supported).
+        :param _Detail: Queries multiple domain names and returns aggregated data by default (false).
+Specifies as required to be true, returns detailed data for each Domain (statusCode, 2xx, 3xx, 4xx, 5xx metrics not currently supported).
         :type Detail: bool
         :param _Isp: Specifies an ISP when you query the CDN data within the Chinese mainland. If this is left blank, all ISPs will be queried.
 To view ISP codes, see [ISP Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
@@ -7369,8 +6187,8 @@ Note that `Project` will be ignored if `Domains` is specified.
 
     @property
     def Detail(self):
-        r"""The aggregate data for multiple domain names is returned by default (false) during a multi-domain-name query.
-You can set it to true to return the details for each Domain (the statusCode metric is currently not supported).
+        r"""Queries multiple domain names and returns aggregated data by default (false).
+Specifies as required to be true, returns detailed data for each Domain (statusCode, 2xx, 3xx, 4xx, 5xx metrics not currently supported).
         :rtype: bool
         """
         return self._Detail
@@ -7603,22 +6421,21 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
         r"""
         :param _Domain: Specifies a domain name for the query
         :type Domain: str
-        :param _StartTime: Starting time, such as `2019-09-04 00:00:00`
+        :param _StartTime: Start time.
         :type StartTime: str
-        :param _EndTime: End time, such as `2019-09-04 12:00:00`
+        :param _EndTime: End time.
         :type EndTime: str
         :param _Offset: Offset for paginated queries. Default value: 0
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: 100. Maximum value: 1,000
         :type Limit: int
-        :param _Area: Specifies a region for the query.
-`mainland`: specifies to return the download link of logs on acceleration within Mainland China;
-`overseas`: specifies to return the download link of logs on acceleration outside Mainland China;
-`global`: specifies to return a download link of logs on acceleration within Mainland China and a link of logs on acceleration outside Mainland China.
-Default value: `mainland`.
+        :param _Area: Specifies the region for log download, defaults to mainland. valid values:.
+<li>mainland: specifies the download url for the domestic acceleration log package.</li>.
+<Li>Overseas: specifies the url for obtaining overseas acceleration logs package download.</li>.
+<li>global: simultaneously obtain domestic and overseas acceleration logs package download urls (separately packaged).</li>.
         :type Area: str
-        :param _LogType: Specifies the type of logs to download (only access logs supported).
-`access`: Access logs.
+        :param _LogType: Specifies the type of logs to download. valid values:.
+<Li>Access: specifies the access log.</li>.
         :type LogType: str
         """
         self._Domain = None
@@ -7642,7 +6459,7 @@ Default value: `mainland`.
 
     @property
     def StartTime(self):
-        r"""Starting time, such as `2019-09-04 00:00:00`
+        r"""Start time.
         :rtype: str
         """
         return self._StartTime
@@ -7653,7 +6470,7 @@ Default value: `mainland`.
 
     @property
     def EndTime(self):
-        r"""End time, such as `2019-09-04 12:00:00`
+        r"""End time.
         :rtype: str
         """
         return self._EndTime
@@ -7686,11 +6503,10 @@ Default value: `mainland`.
 
     @property
     def Area(self):
-        r"""Specifies a region for the query.
-`mainland`: specifies to return the download link of logs on acceleration within Mainland China;
-`overseas`: specifies to return the download link of logs on acceleration outside Mainland China;
-`global`: specifies to return a download link of logs on acceleration within Mainland China and a link of logs on acceleration outside Mainland China.
-Default value: `mainland`.
+        r"""Specifies the region for log download, defaults to mainland. valid values:.
+<li>mainland: specifies the download url for the domestic acceleration log package.</li>.
+<Li>Overseas: specifies the url for obtaining overseas acceleration logs package download.</li>.
+<li>global: simultaneously obtain domestic and overseas acceleration logs package download urls (separately packaged).</li>.
         :rtype: str
         """
         return self._Area
@@ -7701,8 +6517,8 @@ Default value: `mainland`.
 
     @property
     def LogType(self):
-        r"""Specifies the type of logs to download (only access logs supported).
-`access`: Access logs.
+        r"""Specifies the type of logs to download. valid values:.
+<Li>Access: specifies the access log.</li>.
         :rtype: str
         """
         return self._LogType
@@ -7737,8 +6553,8 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainLogs: Download link of the log package.
-You can open the link to download a .gz log package that contains all log files without extension.
+        :param _DomainLogs: Specifies the download url of the log package.
+Download content is a compression package with the gz suffix. after decompression, it becomes a text file without an extension. link validity period is 1 day.
         :type DomainLogs: list of DomainLog
         :param _TotalCount: Total number of entries obtained
         :type TotalCount: int
@@ -7751,8 +6567,8 @@ You can open the link to download a .gz log package that contains all log files 
 
     @property
     def DomainLogs(self):
-        r"""Download link of the log package.
-You can open the link to download a .gz log package that contains all log files without extension.
+        r"""Specifies the download url of the log package.
+Download content is a compression package with the gz suffix. after decompression, it becomes a text file without an extension. link validity period is 1 day.
         :rtype: list of DomainLog
         """
         return self._DomainLogs
@@ -7802,14 +6618,14 @@ class DescribeCdnIpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ips: List of IPs to be queried
+        :param _Ips: IP list you want to query. supports 1-20 ip inquiries at a time.
         :type Ips: list of str
         """
         self._Ips = None
 
     @property
     def Ips(self):
-        r"""List of IPs to be queried
+        r"""IP list you want to query. supports 1-20 ip inquiries at a time.
         :rtype: list of str
         """
         return self._Ips
@@ -7957,7 +6773,7 @@ class DescribeCertDomainsRequest(AbstractModel):
         r"""
         :param _Cert: Base64-encoded string of certificate in PEM format
         :type Cert: str
-        :param _CertId: Managed certificate ID. `Cert` and `CertId` cannot be both empty. If they’re both filled in, `CerID` prevails.
+        :param _CertId: Managed certificate ID. Cert and CertId cannot both be empty. if both are filled in, CertId takes precedence.
         :type CertId: str
         :param _Product: Product of the domain name, either `cdn` (default) or `ecdn`.
         :type Product: str
@@ -7979,7 +6795,7 @@ class DescribeCertDomainsRequest(AbstractModel):
 
     @property
     def CertId(self):
-        r"""Managed certificate ID. `Cert` and `CertId` cannot be both empty. If they’re both filled in, `CerID` prevails.
+        r"""Managed certificate ID. Cert and CertId cannot both be empty. if both are filled in, CertId takes precedence.
         :rtype: str
         """
         return self._CertId
@@ -8021,11 +6837,9 @@ class DescribeCertDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domains: List of domain names connected to CDN
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Domains: List of domain names integrated with CDN.
         :type Domains: list of str
-        :param _CertifiedDomains: List of CDN domain names with certificates configured
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _CertifiedDomains: List of CDN domain names with configured certificates.
         :type CertifiedDomains: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8036,8 +6850,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Domains(self):
-        r"""List of domain names connected to CDN
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""List of domain names integrated with CDN.
         :rtype: list of str
         """
         return self._Domains
@@ -8048,8 +6861,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CertifiedDomains(self):
-        r"""List of CDN domain names with certificates configured
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""List of CDN domain names with configured certificates.
         :rtype: list of str
         """
         return self._CertifiedDomains
@@ -8085,7 +6897,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
         r"""
         :param _Offset: Offset for paginated queries. Default value: 0
         :type Offset: int
-        :param _Limit: Limit on paginated queries. Default value: 100. Maximum value: 1000.
+        :param _Limit: Number limit of paginated query. default value: 100. maximum settable: 100.
         :type Limit: int
         :param _Filters: Query condition filter, complex type.
         :type Filters: list of DomainFilter
@@ -8110,7 +6922,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Limit on paginated queries. Default value: 100. Maximum value: 1000.
+        r"""Number limit of paginated query. default value: 100. maximum settable: 100.
         :rtype: int
         """
         return self._Limit
@@ -8886,8 +7698,8 @@ If the domain name information is specified, this parameter can be ignored.
 `hour`: Return data with 1-hour granularity. It’s available when the query period is within 31 days.
 `day`: Return data with 1-day granularity. It’s available when the query period is longer than 31 days.
         :type Interval: str
-        :param _Detail: The aggregate data for multiple domain names is returned by default (false) when multiple `Domains` are passed in.
-You can set it to true to return the details for each Domain (the statusCode metric is currently not supported)
+        :param _Detail: Domains specifies multiple domain names to import. default (false) indicates aggregated data for multiple domain names.
+Specifies as required to be true, returns detailed data for each Domain (statusCode, 2xx, 3xx, 4xx, 5xx metrics not currently supported).
         :type Detail: bool
         :param _Area: Specifies the service region. If this value is left blank, it means to query CDN data within the Chinese mainland.
 `mainland`: Query CDN data in the Chinese mainland.
@@ -8995,8 +7807,8 @@ If the domain name information is specified, this parameter can be ignored.
 
     @property
     def Detail(self):
-        r"""The aggregate data for multiple domain names is returned by default (false) when multiple `Domains` are passed in.
-You can set it to true to return the details for each Domain (the statusCode metric is currently not supported)
+        r"""Domains specifies multiple domain names to import. default (false) indicates aggregated data for multiple domain names.
+Specifies as required to be true, returns detailed data for each Domain (statusCode, 2xx, 3xx, 4xx, 5xx metrics not currently supported).
         :rtype: bool
         """
         return self._Detail
@@ -9593,11 +8405,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PurgeLogs: Detailed purge record.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _PurgeLogs: Specifies the detailed refresh record.
         :type PurgeLogs: list of PurgeTask
-        :param _TotalCount: Total number of tasks, which is used for pagination.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _TotalCount: Total number of tasks. for pagination.
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9608,8 +8418,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PurgeLogs(self):
-        r"""Detailed purge record.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Specifies the detailed refresh record.
         :rtype: list of PurgeTask
         """
         return self._PurgeLogs
@@ -9620,8 +8429,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalCount(self):
-        r"""Total number of tasks, which is used for pagination.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Total number of tasks. for pagination.
         :rtype: int
         """
         return self._TotalCount
@@ -9871,11 +8679,9 @@ class DescribePushTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PushLogs: Prefetch history
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _PushLogs: Preheating history.
         :type PushLogs: list of PushTask
-        :param _TotalCount: Total number of tasks, which is used for pagination.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _TotalCount: Total number of tasks. for pagination.
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9886,8 +8692,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def PushLogs(self):
-        r"""Prefetch history
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Preheating history.
         :rtype: list of PushTask
         """
         return self._PushLogs
@@ -9898,8 +8703,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalCount(self):
-        r"""Total number of tasks, which is used for pagination.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Total number of tasks. for pagination.
         :rtype: int
         """
         return self._TotalCount
@@ -10501,6 +9305,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _OthersPrivateAccess: Origin-pull authentication for other origins
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
+        :param _ParamFilter: Specifies the blocklist parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ParamFilter: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
+        :param _AutoGuard: 
+        :type AutoGuard: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
         """
         self._ResourceId = None
         self._AppId = None
@@ -10568,6 +9377,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._QnPrivateAccess = None
         self._HttpsBilling = None
         self._OthersPrivateAccess = None
+        self._ParamFilter = None
+        self._AutoGuard = None
 
     @property
     def ResourceId(self):
@@ -11379,6 +10190,29 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     def OthersPrivateAccess(self, OthersPrivateAccess):
         self._OthersPrivateAccess = OthersPrivateAccess
 
+    @property
+    def ParamFilter(self):
+        r"""Specifies the blocklist parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
+        """
+        return self._ParamFilter
+
+    @ParamFilter.setter
+    def ParamFilter(self, ParamFilter):
+        self._ParamFilter = ParamFilter
+
+    @property
+    def AutoGuard(self):
+        r"""
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
+        """
+        return self._AutoGuard
+
+    @AutoGuard.setter
+    def AutoGuard(self, AutoGuard):
+        self._AutoGuard = AutoGuard
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -11555,6 +10389,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("OthersPrivateAccess") is not None:
             self._OthersPrivateAccess = OthersPrivateAccess()
             self._OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
+        if params.get("ParamFilter") is not None:
+            self._ParamFilter = ParamFilter()
+            self._ParamFilter._deserialize(params.get("ParamFilter"))
+        if params.get("AutoGuard") is not None:
+            self._AutoGuard = AutoGuard()
+            self._AutoGuard._deserialize(params.get("AutoGuard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11563,108 +10403,6 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class DisableCachesRequest(AbstractModel):
-    r"""DisableCaches request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Urls: List of URLs to be blocked (URLs must contain `http://` or `https://`).
-Up to 100 entries can be submitted at a time and 3,000 entries per day.
-        :type Urls: list of str
-        """
-        self._Urls = None
-
-    @property
-    def Urls(self):
-        r"""List of URLs to be blocked (URLs must contain `http://` or `https://`).
-Up to 100 entries can be submitted at a time and 3,000 entries per day.
-        :rtype: list of str
-        """
-        return self._Urls
-
-    @Urls.setter
-    def Urls(self, Urls):
-        self._Urls = Urls
-
-
-    def _deserialize(self, params):
-        self._Urls = params.get("Urls")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DisableCachesResponse(AbstractModel):
-    r"""DisableCaches response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _CacheOptResult: Submission result
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
-        :param _TaskId: Task ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type TaskId: str
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._CacheOptResult = None
-        self._TaskId = None
-        self._RequestId = None
-
-    @property
-    def CacheOptResult(self):
-        r"""Submission result
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
-        """
-        return self._CacheOptResult
-
-    @CacheOptResult.setter
-    def CacheOptResult(self, CacheOptResult):
-        self._CacheOptResult = CacheOptResult
-
-    @property
-    def TaskId(self):
-        r"""Task ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("CacheOptResult") is not None:
-            self._CacheOptResult = CacheOptResult()
-            self._CacheOptResult._deserialize(params.get("CacheOptResult"))
-        self._TaskId = params.get("TaskId")
-        self._RequestId = params.get("RequestId")
 
 
 class DisableClsLogTopicRequest(AbstractModel):
@@ -11819,20 +10557,20 @@ class DomainFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Filter filter. Values:
-- `origin`: Primary origin server.
-- `domain`: Domain name.
-- `resourceId`: Domain name ID.
-- `status`: Domain name status. Values: `online`, `offline`, and `processing`.
-- `serviceType`: Service type. Values: `web`, `download`, `media`, `hybrid` and `dynamic`.
-- `projectId`: Project ID.
-- `domainType`: Primary origin type. Values: `cname` (customer origin), `COS` (COS origin), `third_party` (third-party object storage origin), and `igtm` (IGTM origin).
-- `fullUrlCache`: Whether to enable path cache. Values: `on`, `off`.
-- `https`: Whether to configure HTTPS. Values: `on`, `off` and `processing`.
-- `originPullProtocol`: Origin-pull protocol type. Value: `http`, `follow`, and `https`.
-- `tagKey`: Tag key.
+        :param _Name: Filter field name. supported list as follows:.
+-`Origin`: specifies the primary origin server.
+-Domain name. specifies the domain name.
+-resourceId: domain id.
+-Status: specifies the domain name status. valid values: online, offline, processing, deleted.
+-serviceType: specifies the business type. valid values: web, download, media, hybrid, dynamic.
+-projectId: specifies the project ID.
+-domainType: specifies the primary origin server type. valid values: cname (self-owned origin), cos (cloud object storage integration), third_party (third-party object storage), igtm (igtm multi-active origin).
+-fullUrlCache. specifies full path cache. valid values: on, off.
+-Specifies whether to configure https. valid values: on, off, processing.
+-originPullProtocol: specifies the origin-pull protocol. valid values: http, follow, https.
+-tagKey: specifies the Tag key.
         :type Name: str
-        :param _Value: Filter field value.
+        :param _Value: Specifies the filter field value. the default maximum is 5. when Name is origin/domain and Fuzzy is true, the maximum is 1.
         :type Value: list of str
         :param _Fuzzy: Whether to enable fuzzy query. Only `origin` or `domain` is supported for the filter field name.
 When fuzzy query is enabled, the maximum Value length is 1. When fuzzy query is disabled, the maximum Value length is 5.
@@ -11844,18 +10582,18 @@ When fuzzy query is enabled, the maximum Value length is 1. When fuzzy query is 
 
     @property
     def Name(self):
-        r"""Filter filter. Values:
-- `origin`: Primary origin server.
-- `domain`: Domain name.
-- `resourceId`: Domain name ID.
-- `status`: Domain name status. Values: `online`, `offline`, and `processing`.
-- `serviceType`: Service type. Values: `web`, `download`, `media`, `hybrid` and `dynamic`.
-- `projectId`: Project ID.
-- `domainType`: Primary origin type. Values: `cname` (customer origin), `COS` (COS origin), `third_party` (third-party object storage origin), and `igtm` (IGTM origin).
-- `fullUrlCache`: Whether to enable path cache. Values: `on`, `off`.
-- `https`: Whether to configure HTTPS. Values: `on`, `off` and `processing`.
-- `originPullProtocol`: Origin-pull protocol type. Value: `http`, `follow`, and `https`.
-- `tagKey`: Tag key.
+        r"""Filter field name. supported list as follows:.
+-`Origin`: specifies the primary origin server.
+-Domain name. specifies the domain name.
+-resourceId: domain id.
+-Status: specifies the domain name status. valid values: online, offline, processing, deleted.
+-serviceType: specifies the business type. valid values: web, download, media, hybrid, dynamic.
+-projectId: specifies the project ID.
+-domainType: specifies the primary origin server type. valid values: cname (self-owned origin), cos (cloud object storage integration), third_party (third-party object storage), igtm (igtm multi-active origin).
+-fullUrlCache. specifies full path cache. valid values: on, off.
+-Specifies whether to configure https. valid values: on, off, processing.
+-originPullProtocol: specifies the origin-pull protocol. valid values: http, follow, https.
+-tagKey: specifies the Tag key.
         :rtype: str
         """
         return self._Name
@@ -11866,7 +10604,7 @@ When fuzzy query is enabled, the maximum Value length is 1. When fuzzy query is 
 
     @property
     def Value(self):
-        r"""Filter field value.
+        r"""Specifies the filter field value. the default maximum is 5. when Name is origin/domain and Fuzzy is true, the maximum is 1.
         :rtype: list of str
         """
         return self._Value
@@ -12081,47 +10819,47 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
-class EnableCachesRequest(AbstractModel):
-    r"""EnableCaches request structure.
+class DuplicateDomainConfigRequest(AbstractModel):
+    r"""DuplicateDomainConfig request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _Urls: List of unblocked URLs
-        :type Urls: list of str
-        :param _Date: URL blocking date
-        :type Date: str
+        :param _Domain: Adds a domain name.
+        :type Domain: str
+        :param _ReferenceDomain: Specifies the configured domain name to be copied.
+        :type ReferenceDomain: str
         """
-        self._Urls = None
-        self._Date = None
+        self._Domain = None
+        self._ReferenceDomain = None
 
     @property
-    def Urls(self):
-        r"""List of unblocked URLs
-        :rtype: list of str
-        """
-        return self._Urls
-
-    @Urls.setter
-    def Urls(self, Urls):
-        self._Urls = Urls
-
-    @property
-    def Date(self):
-        r"""URL blocking date
+    def Domain(self):
+        r"""Adds a domain name.
         :rtype: str
         """
-        return self._Date
+        return self._Domain
 
-    @Date.setter
-    def Date(self, Date):
-        self._Date = Date
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def ReferenceDomain(self):
+        r"""Specifies the configured domain name to be copied.
+        :rtype: str
+        """
+        return self._ReferenceDomain
+
+    @ReferenceDomain.setter
+    def ReferenceDomain(self, ReferenceDomain):
+        self._ReferenceDomain = ReferenceDomain
 
 
     def _deserialize(self, params):
-        self._Urls = params.get("Urls")
-        self._Date = params.get("Date")
+        self._Domain = params.get("Domain")
+        self._ReferenceDomain = params.get("ReferenceDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12132,49 +10870,17 @@ class EnableCachesRequest(AbstractModel):
         
 
 
-class EnableCachesResponse(AbstractModel):
-    r"""EnableCaches response structure.
+class DuplicateDomainConfigResponse(AbstractModel):
+    r"""DuplicateDomainConfig response structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _CacheOptResult: Result list
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
-        :param _TaskId: Task ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self._CacheOptResult = None
-        self._TaskId = None
         self._RequestId = None
-
-    @property
-    def CacheOptResult(self):
-        r"""Result list
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
-        """
-        return self._CacheOptResult
-
-    @CacheOptResult.setter
-    def CacheOptResult(self, CacheOptResult):
-        self._CacheOptResult = CacheOptResult
-
-    @property
-    def TaskId(self):
-        r"""Task ID
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -12189,10 +10895,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
     def _deserialize(self, params):
-        if params.get("CacheOptResult") is not None:
-            self._CacheOptResult = CacheOptResult()
-            self._CacheOptResult._deserialize(params.get("CacheOptResult"))
-        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -12710,203 +11412,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class GetDisableRecordsRequest(AbstractModel):
-    r"""GetDisableRecords request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Url: Specifies the URL to be queried
-        :type Url: str
-        :param _StartTime: Starting time, such as `2018-12-12 10:24:00`
-        :type StartTime: str
-        :param _EndTime: End time, such as `2018-12-14 10:24:00`
-        :type EndTime: str
-        :param _Status: Current URL status
-disable: The URL remains disabled, and accessing it will return an error 403
-enable: The URL is enabled (unblocked) and can be normally accessed
-        :type Status: str
-        :param _Offset: Offset for paginated queries. Default value: 0
-        :type Offset: int
-        :param _Limit: Pagination limit. Default value: 20.
-        :type Limit: int
-        :param _TaskId: Task ID. The task ID and start time cannot be both left empty.
-        :type TaskId: str
-        """
-        self._Url = None
-        self._StartTime = None
-        self._EndTime = None
-        self._Status = None
-        self._Offset = None
-        self._Limit = None
-        self._TaskId = None
-
-    @property
-    def Url(self):
-        r"""Specifies the URL to be queried
-        :rtype: str
-        """
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
-
-    @property
-    def StartTime(self):
-        r"""Starting time, such as `2018-12-12 10:24:00`
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        r"""End time, such as `2018-12-14 10:24:00`
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def Status(self):
-        r"""Current URL status
-disable: The URL remains disabled, and accessing it will return an error 403
-enable: The URL is enabled (unblocked) and can be normally accessed
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def Offset(self):
-        r"""Offset for paginated queries. Default value: 0
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        r"""Pagination limit. Default value: 20.
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def TaskId(self):
-        r"""Task ID. The task ID and start time cannot be both left empty.
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-
-    def _deserialize(self, params):
-        self._Url = params.get("Url")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._Status = params.get("Status")
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
-        self._TaskId = params.get("TaskId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetDisableRecordsResponse(AbstractModel):
-    r"""GetDisableRecords response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _UrlRecordList: Blocking history
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type UrlRecordList: list of UrlRecord
-        :param _TotalCount: Total number of tasks, which is used for pagination.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._UrlRecordList = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def UrlRecordList(self):
-        r"""Blocking history
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: list of UrlRecord
-        """
-        return self._UrlRecordList
-
-    @UrlRecordList.setter
-    def UrlRecordList(self, UrlRecordList):
-        self._UrlRecordList = UrlRecordList
-
-    @property
-    def TotalCount(self):
-        r"""Total number of tasks, which is used for pagination.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("UrlRecordList") is not None:
-            self._UrlRecordList = []
-            for item in params.get("UrlRecordList"):
-                obj = UrlRecord()
-                obj._deserialize(item)
-                self._UrlRecordList.append(obj)
-        self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
 
 
 class GuetzliAdapter(AbstractModel):
@@ -14706,9 +13211,10 @@ class ListClsTopicDomainsResponse(AbstractModel):
         :type DomainAreaConfigs: list of DomainAreaConfig
         :param _TopicName: Log topic name
         :type TopicName: str
-        :param _UpdateTime: Last modified time of log topic
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _UpdateTime: Latest update time of the log topic.
         :type UpdateTime: str
+        :param _InheritDomainTags: Specifies whether to inherit the domain name tag.
+        :type InheritDomainTags: bool
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -14719,6 +13225,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._DomainAreaConfigs = None
         self._TopicName = None
         self._UpdateTime = None
+        self._InheritDomainTags = None
         self._RequestId = None
 
     @property
@@ -14789,8 +13296,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
-        r"""Last modified time of log topic
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""Latest update time of the log topic.
         :rtype: str
         """
         return self._UpdateTime
@@ -14798,6 +13304,17 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def InheritDomainTags(self):
+        r"""Specifies whether to inherit the domain name tag.
+        :rtype: bool
+        """
+        return self._InheritDomainTags
+
+    @InheritDomainTags.setter
+    def InheritDomainTags(self, InheritDomainTags):
+        self._InheritDomainTags = InheritDomainTags
 
     @property
     def RequestId(self):
@@ -14824,6 +13341,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 self._DomainAreaConfigs.append(obj)
         self._TopicName = params.get("TopicName")
         self._UpdateTime = params.get("UpdateTime")
+        self._InheritDomainTags = params.get("InheritDomainTags")
         self._RequestId = params.get("RequestId")
 
 
@@ -14842,12 +13360,12 @@ Only data for the last 90 days can be queried.
 Only data queries at the granularity of days are supported. Take the day in the input parameter as the end date, and the data generated on or before 23:59:59 on the end date is returned. For example, if the value of `EndTime` is 2018-09-05 22:40:00, the end time of the data returned is 2018-09-05 23:59:59.
 `EndTime` must be later than or equal to `StartTime`.
         :type EndTime: str
-        :param _Metric: Objects to be sorted. Valid values:
-`url`: Sort by access URL (URLs carrying no parameters). Supported filters are `flux` and `request`.
-`district`: sorts provinces or countries/regions. Supported filters are `flux` and `request`.
-`isp`: sorts ISPs. Supported filters are `flux` and `request`.
-`host`: Sort by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, and `statusCode` (2XX, 3XX, 4XX, 5XX).
-`originHost`: Sort by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, and `OriginStatusCode` (origin_2XX, origin_3XX, origin_4XX, origin_5XX).
+        :param _Metric: Sorting object, which supports the following formats.
+url: specifies the access url in alphabetical order (no parameters). supported filters: flux, request.
+district: specifies the province or country/region sorting order. supported filters are flux and request.
+isp: specifies the carrier sorting order. supported filters are flux and request.
+host: specifies the domain name data access sorting order. supported filters: flux, request, bandwidth, fluxHitRate, 2XX, 3XX, 4XX, 5XX, statusCode.   
+originHost: specifies the domain name origin-pull data sort. supported filters: flux, request, bandwidth, origin_2XX, origin_3XX, origin_4XX, origin_5XX, OriginStatusCode.
         :type Metric: str
         :param _Filter: Metric name used for sorting:
 flux: If Metric is `host`, it indicates the access traffic; if Metric is `originHost`, it indicates the origin-pull traffic.
@@ -14929,12 +13447,12 @@ Only data queries at the granularity of days are supported. Take the day in the 
 
     @property
     def Metric(self):
-        r"""Objects to be sorted. Valid values:
-`url`: Sort by access URL (URLs carrying no parameters). Supported filters are `flux` and `request`.
-`district`: sorts provinces or countries/regions. Supported filters are `flux` and `request`.
-`isp`: sorts ISPs. Supported filters are `flux` and `request`.
-`host`: Sort by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, and `statusCode` (2XX, 3XX, 4XX, 5XX).
-`originHost`: Sort by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, and `OriginStatusCode` (origin_2XX, origin_3XX, origin_4XX, origin_5XX).
+        r"""Sorting object, which supports the following formats.
+url: specifies the access url in alphabetical order (no parameters). supported filters: flux, request.
+district: specifies the province or country/region sorting order. supported filters are flux and request.
+isp: specifies the carrier sorting order. supported filters are flux and request.
+host: specifies the domain name data access sorting order. supported filters: flux, request, bandwidth, fluxHitRate, 2XX, 3XX, 4XX, 5XX, statusCode.   
+originHost: specifies the domain name origin-pull data sort. supported filters: flux, request, bandwidth, origin_2XX, origin_3XX, origin_4XX, origin_5XX, OriginStatusCode.
         :rtype: str
         """
         return self._Metric
@@ -15883,11 +14401,14 @@ class ManageClsTopicDomainsRequest(AbstractModel):
         :type Channel: str
         :param _DomainAreaConfigs: Domain name region configuration. Note: if this field is empty, it means to unbind all domain names from the corresponding topic
         :type DomainAreaConfigs: list of DomainAreaConfig
+        :param _InheritDomainTags: Specifies whether to inherit the domain name tag.
+        :type InheritDomainTags: bool
         """
         self._LogsetId = None
         self._TopicId = None
         self._Channel = None
         self._DomainAreaConfigs = None
+        self._InheritDomainTags = None
 
     @property
     def LogsetId(self):
@@ -15933,6 +14454,17 @@ class ManageClsTopicDomainsRequest(AbstractModel):
     def DomainAreaConfigs(self, DomainAreaConfigs):
         self._DomainAreaConfigs = DomainAreaConfigs
 
+    @property
+    def InheritDomainTags(self):
+        r"""Specifies whether to inherit the domain name tag.
+        :rtype: bool
+        """
+        return self._InheritDomainTags
+
+    @InheritDomainTags.setter
+    def InheritDomainTags(self, InheritDomainTags):
+        self._InheritDomainTags = InheritDomainTags
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -15944,6 +14476,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
                 obj = DomainAreaConfig()
                 obj._deserialize(item)
                 self._DomainAreaConfigs.append(obj)
+        self._InheritDomainTags = params.get("InheritDomainTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20907,1098 +19440,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
-class ScdnAclConfig(AbstractModel):
-    r"""SCDN access control
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Switch: Whether to enable SCDN access. Values:
-`on`: Enable
-`off`: Disable
-        :type Switch: str
-        :param _ScriptData: This field is disused. Please use `AdvancedScriptData` instead.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ScriptData: list of ScdnAclGroup
-        :param _ErrorPage: Error page configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        :param _AdvancedScriptData: ACL rule group, which is required when the access control is on.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type AdvancedScriptData: list of AdvancedScdnAclGroup
-        """
-        self._Switch = None
-        self._ScriptData = None
-        self._ErrorPage = None
-        self._AdvancedScriptData = None
-
-    @property
-    def Switch(self):
-        r"""Whether to enable SCDN access. Values:
-`on`: Enable
-`off`: Disable
-        :rtype: str
-        """
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-    @property
-    def ScriptData(self):
-        r"""This field is disused. Please use `AdvancedScriptData` instead.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: list of ScdnAclGroup
-        """
-        return self._ScriptData
-
-    @ScriptData.setter
-    def ScriptData(self, ScriptData):
-        self._ScriptData = ScriptData
-
-    @property
-    def ErrorPage(self):
-        r"""Error page configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        """
-        return self._ErrorPage
-
-    @ErrorPage.setter
-    def ErrorPage(self, ErrorPage):
-        self._ErrorPage = ErrorPage
-
-    @property
-    def AdvancedScriptData(self):
-        r"""ACL rule group, which is required when the access control is on.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: list of AdvancedScdnAclGroup
-        """
-        return self._AdvancedScriptData
-
-    @AdvancedScriptData.setter
-    def AdvancedScriptData(self, AdvancedScriptData):
-        self._AdvancedScriptData = AdvancedScriptData
-
-
-    def _deserialize(self, params):
-        self._Switch = params.get("Switch")
-        if params.get("ScriptData") is not None:
-            self._ScriptData = []
-            for item in params.get("ScriptData"):
-                obj = ScdnAclGroup()
-                obj._deserialize(item)
-                self._ScriptData.append(obj)
-        if params.get("ErrorPage") is not None:
-            self._ErrorPage = ScdnErrorPage()
-            self._ErrorPage._deserialize(params.get("ErrorPage"))
-        if params.get("AdvancedScriptData") is not None:
-            self._AdvancedScriptData = []
-            for item in params.get("AdvancedScriptData"):
-                obj = AdvancedScdnAclGroup()
-                obj._deserialize(item)
-                self._AdvancedScriptData.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnAclGroup(AbstractModel):
-    r"""SCDN precise access control configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RuleName: Rule name
-        :type RuleName: str
-        :param _Configure: Specific configurations
-        :type Configure: list of ScdnAclRule
-        :param _Result: Action. Valid values: `intercept` and `redirect`.
-        :type Result: str
-        :param _Status: Whether the rule is activated. Valid values: `active` and `inactive`.
-        :type Status: str
-        :param _ErrorPage: Error page configuration
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        """
-        self._RuleName = None
-        self._Configure = None
-        self._Result = None
-        self._Status = None
-        self._ErrorPage = None
-
-    @property
-    def RuleName(self):
-        r"""Rule name
-        :rtype: str
-        """
-        return self._RuleName
-
-    @RuleName.setter
-    def RuleName(self, RuleName):
-        self._RuleName = RuleName
-
-    @property
-    def Configure(self):
-        r"""Specific configurations
-        :rtype: list of ScdnAclRule
-        """
-        return self._Configure
-
-    @Configure.setter
-    def Configure(self, Configure):
-        self._Configure = Configure
-
-    @property
-    def Result(self):
-        r"""Action. Valid values: `intercept` and `redirect`.
-        :rtype: str
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def Status(self):
-        r"""Whether the rule is activated. Valid values: `active` and `inactive`.
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def ErrorPage(self):
-        r"""Error page configuration
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        """
-        return self._ErrorPage
-
-    @ErrorPage.setter
-    def ErrorPage(self, ErrorPage):
-        self._ErrorPage = ErrorPage
-
-
-    def _deserialize(self, params):
-        self._RuleName = params.get("RuleName")
-        if params.get("Configure") is not None:
-            self._Configure = []
-            for item in params.get("Configure"):
-                obj = ScdnAclRule()
-                obj._deserialize(item)
-                self._Configure.append(obj)
-        self._Result = params.get("Result")
-        self._Status = params.get("Status")
-        if params.get("ErrorPage") is not None:
-            self._ErrorPage = ScdnErrorPage()
-            self._ErrorPage._deserialize(params.get("ErrorPage"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnAclRule(AbstractModel):
-    r"""Precise access control match rule
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _MatchKey: Keyword
-        :type MatchKey: str
-        :param _LogiOperator: Logical operator. Valid values:
-        :type LogiOperator: str
-        :param _MatchValue: Matched value
-        :type MatchValue: str
-        """
-        self._MatchKey = None
-        self._LogiOperator = None
-        self._MatchValue = None
-
-    @property
-    def MatchKey(self):
-        r"""Keyword
-        :rtype: str
-        """
-        return self._MatchKey
-
-    @MatchKey.setter
-    def MatchKey(self, MatchKey):
-        self._MatchKey = MatchKey
-
-    @property
-    def LogiOperator(self):
-        r"""Logical operator. Valid values:
-        :rtype: str
-        """
-        return self._LogiOperator
-
-    @LogiOperator.setter
-    def LogiOperator(self, LogiOperator):
-        self._LogiOperator = LogiOperator
-
-    @property
-    def MatchValue(self):
-        r"""Matched value
-        :rtype: str
-        """
-        return self._MatchValue
-
-    @MatchValue.setter
-    def MatchValue(self, MatchValue):
-        self._MatchValue = MatchValue
-
-
-    def _deserialize(self, params):
-        self._MatchKey = params.get("MatchKey")
-        self._LogiOperator = params.get("LogiOperator")
-        self._MatchValue = params.get("MatchValue")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnBotConfig(AbstractModel):
-    r"""Bot configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Switch: Whether to enable SCDN bot configuration. Values:
-`on`: Enable
-`off`: Disable
-        :type Switch: str
-        :param _BotCookie: Bot cookie policy
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type BotCookie: list of BotCookie
-        :param _BotJavaScript: Bot JS policy
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type BotJavaScript: list of BotJavaScript
-        """
-        self._Switch = None
-        self._BotCookie = None
-        self._BotJavaScript = None
-
-    @property
-    def Switch(self):
-        r"""Whether to enable SCDN bot configuration. Values:
-`on`: Enable
-`off`: Disable
-        :rtype: str
-        """
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-    @property
-    def BotCookie(self):
-        r"""Bot cookie policy
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: list of BotCookie
-        """
-        return self._BotCookie
-
-    @BotCookie.setter
-    def BotCookie(self, BotCookie):
-        self._BotCookie = BotCookie
-
-    @property
-    def BotJavaScript(self):
-        r"""Bot JS policy
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: list of BotJavaScript
-        """
-        return self._BotJavaScript
-
-    @BotJavaScript.setter
-    def BotJavaScript(self, BotJavaScript):
-        self._BotJavaScript = BotJavaScript
-
-
-    def _deserialize(self, params):
-        self._Switch = params.get("Switch")
-        if params.get("BotCookie") is not None:
-            self._BotCookie = []
-            for item in params.get("BotCookie"):
-                obj = BotCookie()
-                obj._deserialize(item)
-                self._BotCookie.append(obj)
-        if params.get("BotJavaScript") is not None:
-            self._BotJavaScript = []
-            for item in params.get("BotJavaScript"):
-                obj = BotJavaScript()
-                obj._deserialize(item)
-                self._BotJavaScript.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnCCRules(AbstractModel):
-    r"""SCDN custom CC rules
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RuleType: Rule types:
-`all`: effective for all files.
-`file`: Apply to files with the specified suffixes.
-`directory`: Apply to specified paths.
-`path`: Apply to specified absolute paths.
-`index`: effective for web homepages and root directories.
-        :type RuleType: str
-        :param _RuleValue: Rule value (blocking condition)
-        :type RuleValue: list of str
-        :param _Qps: IP access limit rule
-        :type Qps: int
-        :param _DetectionTime: Detection granularity
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DetectionTime: int
-        :param _FrequencyLimit: Frequency threshold
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type FrequencyLimit: int
-        :param _PunishmentSwitch: Whether to enable IP blocking. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type PunishmentSwitch: str
-        :param _PunishmentTime: Suspicious IP restriction duration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PunishmentTime: int
-        :param _Action: Action. Valid values: `intercept` and `redirect`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Action: str
-        :param _RedirectUrl: The redirection target URL used when the `Action` is `redirect`
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type RedirectUrl: str
-        """
-        self._RuleType = None
-        self._RuleValue = None
-        self._Qps = None
-        self._DetectionTime = None
-        self._FrequencyLimit = None
-        self._PunishmentSwitch = None
-        self._PunishmentTime = None
-        self._Action = None
-        self._RedirectUrl = None
-
-    @property
-    def RuleType(self):
-        r"""Rule types:
-`all`: effective for all files.
-`file`: Apply to files with the specified suffixes.
-`directory`: Apply to specified paths.
-`path`: Apply to specified absolute paths.
-`index`: effective for web homepages and root directories.
-        :rtype: str
-        """
-        return self._RuleType
-
-    @RuleType.setter
-    def RuleType(self, RuleType):
-        self._RuleType = RuleType
-
-    @property
-    def RuleValue(self):
-        r"""Rule value (blocking condition)
-        :rtype: list of str
-        """
-        return self._RuleValue
-
-    @RuleValue.setter
-    def RuleValue(self, RuleValue):
-        self._RuleValue = RuleValue
-
-    @property
-    def Qps(self):
-        r"""IP access limit rule
-        :rtype: int
-        """
-        return self._Qps
-
-    @Qps.setter
-    def Qps(self, Qps):
-        self._Qps = Qps
-
-    @property
-    def DetectionTime(self):
-        r"""Detection granularity
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: int
-        """
-        return self._DetectionTime
-
-    @DetectionTime.setter
-    def DetectionTime(self, DetectionTime):
-        self._DetectionTime = DetectionTime
-
-    @property
-    def FrequencyLimit(self):
-        r"""Frequency threshold
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: int
-        """
-        return self._FrequencyLimit
-
-    @FrequencyLimit.setter
-    def FrequencyLimit(self, FrequencyLimit):
-        self._FrequencyLimit = FrequencyLimit
-
-    @property
-    def PunishmentSwitch(self):
-        r"""Whether to enable IP blocking. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._PunishmentSwitch
-
-    @PunishmentSwitch.setter
-    def PunishmentSwitch(self, PunishmentSwitch):
-        self._PunishmentSwitch = PunishmentSwitch
-
-    @property
-    def PunishmentTime(self):
-        r"""Suspicious IP restriction duration
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: int
-        """
-        return self._PunishmentTime
-
-    @PunishmentTime.setter
-    def PunishmentTime(self, PunishmentTime):
-        self._PunishmentTime = PunishmentTime
-
-    @property
-    def Action(self):
-        r"""Action. Valid values: `intercept` and `redirect`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Action
-
-    @Action.setter
-    def Action(self, Action):
-        self._Action = Action
-
-    @property
-    def RedirectUrl(self):
-        r"""The redirection target URL used when the `Action` is `redirect`
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._RedirectUrl
-
-    @RedirectUrl.setter
-    def RedirectUrl(self, RedirectUrl):
-        self._RedirectUrl = RedirectUrl
-
-
-    def _deserialize(self, params):
-        self._RuleType = params.get("RuleType")
-        self._RuleValue = params.get("RuleValue")
-        self._Qps = params.get("Qps")
-        self._DetectionTime = params.get("DetectionTime")
-        self._FrequencyLimit = params.get("FrequencyLimit")
-        self._PunishmentSwitch = params.get("PunishmentSwitch")
-        self._PunishmentTime = params.get("PunishmentTime")
-        self._Action = params.get("Action")
-        self._RedirectUrl = params.get("RedirectUrl")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnConfig(AbstractModel):
-    r"""CC attack defense configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Switch: Whether to enable SCDN CC configuration. Values:
-`on`: Enable
-`off`: Disable
-        :type Switch: str
-        :param _Rules: Custom CC attack defense rule
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Rules: list of ScdnCCRules
-        :param _AdvancedRules: Advanced custom CC attack defense rule
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type AdvancedRules: list of AdvancedCCRules
-        :param _GlobalAdvancedRules: Global advanced CC protection rules
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type GlobalAdvancedRules: list of AdvancedCCRules
-        """
-        self._Switch = None
-        self._Rules = None
-        self._AdvancedRules = None
-        self._GlobalAdvancedRules = None
-
-    @property
-    def Switch(self):
-        r"""Whether to enable SCDN CC configuration. Values:
-`on`: Enable
-`off`: Disable
-        :rtype: str
-        """
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-    @property
-    def Rules(self):
-        r"""Custom CC attack defense rule
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: list of ScdnCCRules
-        """
-        return self._Rules
-
-    @Rules.setter
-    def Rules(self, Rules):
-        self._Rules = Rules
-
-    @property
-    def AdvancedRules(self):
-        r"""Advanced custom CC attack defense rule
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: list of AdvancedCCRules
-        """
-        return self._AdvancedRules
-
-    @AdvancedRules.setter
-    def AdvancedRules(self, AdvancedRules):
-        self._AdvancedRules = AdvancedRules
-
-    @property
-    def GlobalAdvancedRules(self):
-        r"""Global advanced CC protection rules
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :rtype: list of AdvancedCCRules
-        """
-        return self._GlobalAdvancedRules
-
-    @GlobalAdvancedRules.setter
-    def GlobalAdvancedRules(self, GlobalAdvancedRules):
-        self._GlobalAdvancedRules = GlobalAdvancedRules
-
-
-    def _deserialize(self, params):
-        self._Switch = params.get("Switch")
-        if params.get("Rules") is not None:
-            self._Rules = []
-            for item in params.get("Rules"):
-                obj = ScdnCCRules()
-                obj._deserialize(item)
-                self._Rules.append(obj)
-        if params.get("AdvancedRules") is not None:
-            self._AdvancedRules = []
-            for item in params.get("AdvancedRules"):
-                obj = AdvancedCCRules()
-                obj._deserialize(item)
-                self._AdvancedRules.append(obj)
-        if params.get("GlobalAdvancedRules") is not None:
-            self._GlobalAdvancedRules = []
-            for item in params.get("GlobalAdvancedRules"):
-                obj = AdvancedCCRules()
-                obj._deserialize(item)
-                self._GlobalAdvancedRules.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnDdosConfig(AbstractModel):
-    r"""DDoS configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Switch: Whether to enable SCDN DDoS configuration. Values:
-`on`: Enable
-`off`: Disable
-        :type Switch: str
-        """
-        self._Switch = None
-
-    @property
-    def Switch(self):
-        r"""Whether to enable SCDN DDoS configuration. Values:
-`on`: Enable
-`off`: Disable
-        :rtype: str
-        """
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-
-    def _deserialize(self, params):
-        self._Switch = params.get("Switch")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnErrorPage(AbstractModel):
-    r"""ACL error page
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RedirectCode: Status code
-`403` is passed in when the action is `intercept`.
-`301` is passed in when the action is `redirect`.
-        :type RedirectCode: int
-        :param _RedirectUrl: URL to be redirected
-        :type RedirectUrl: str
-        """
-        self._RedirectCode = None
-        self._RedirectUrl = None
-
-    @property
-    def RedirectCode(self):
-        r"""Status code
-`403` is passed in when the action is `intercept`.
-`301` is passed in when the action is `redirect`.
-        :rtype: int
-        """
-        return self._RedirectCode
-
-    @RedirectCode.setter
-    def RedirectCode(self, RedirectCode):
-        self._RedirectCode = RedirectCode
-
-    @property
-    def RedirectUrl(self):
-        r"""URL to be redirected
-        :rtype: str
-        """
-        return self._RedirectUrl
-
-    @RedirectUrl.setter
-    def RedirectUrl(self, RedirectUrl):
-        self._RedirectUrl = RedirectUrl
-
-
-    def _deserialize(self, params):
-        self._RedirectCode = params.get("RedirectCode")
-        self._RedirectUrl = params.get("RedirectUrl")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnSevenLayerRules(AbstractModel):
-    r"""SCDN layer-7 rule configuration for CC frequency limiting
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _CaseSensitive: Whether values are case sensitive
-        :type CaseSensitive: bool
-        :param _RuleType: Rule types:
-`protocol`: protocol. Valid values: `HTTP` and `HTTPS`.
-`method`: request method. Valid values: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.
-`all`: domain name. The matching content is `*` and cannot be edited.
-`ip`: IP in CIDR format.
-`directory`: path starting with a slash (/). You can specify a directory or specific path using up to 128 characters.
-`index`: default homepage, which is specified by `/;/index.html` and cannot be edited.
-`path`: full path of the file, such as `/acb/test.png`. Wildcard is supported, such as `/abc/*.jpg`.
-`file`: file extension, such as `jpg`, `png` and `css`.
-`param`: request parameter. The value can contain up to 512 characters.
-`referer`: Referer. The value can contain up to 512 characters.
-`cookie`: Cookie. The value can contain up to 512 characters.
-`user-agent`: User-Agent. The value can contain up to 512 characters.
-`head`: custom header. The value can contain up to 512 characters. If the matching content is blank or does not exist, enter the matching parameter directly.
-        :type RuleType: str
-        :param _LogicOperator: Logical operator, which connects the relation between RuleType and RuleValue. Valid values:
-`exclude`: the rule value is not contained. 
-`include`: the rule value is contained. 
-`notequal`: the rule value is not equal to the specified rule type. 
-`equal`: the rule value is equal to the specified rule type. 
-`matching`: the rule value matches with the prefix of the specified rule type.
-`null`: the rule value is empty or does not exist.
-        :type LogicOperator: str
-        :param _RuleValue: Rule value
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type RuleValue: list of str
-        :param _RuleParam: Matched parameter. Only request parameters, Cookie, and custom request headers have a value.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type RuleParam: str
-        """
-        self._CaseSensitive = None
-        self._RuleType = None
-        self._LogicOperator = None
-        self._RuleValue = None
-        self._RuleParam = None
-
-    @property
-    def CaseSensitive(self):
-        r"""Whether values are case sensitive
-        :rtype: bool
-        """
-        return self._CaseSensitive
-
-    @CaseSensitive.setter
-    def CaseSensitive(self, CaseSensitive):
-        self._CaseSensitive = CaseSensitive
-
-    @property
-    def RuleType(self):
-        r"""Rule types:
-`protocol`: protocol. Valid values: `HTTP` and `HTTPS`.
-`method`: request method. Valid values: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.
-`all`: domain name. The matching content is `*` and cannot be edited.
-`ip`: IP in CIDR format.
-`directory`: path starting with a slash (/). You can specify a directory or specific path using up to 128 characters.
-`index`: default homepage, which is specified by `/;/index.html` and cannot be edited.
-`path`: full path of the file, such as `/acb/test.png`. Wildcard is supported, such as `/abc/*.jpg`.
-`file`: file extension, such as `jpg`, `png` and `css`.
-`param`: request parameter. The value can contain up to 512 characters.
-`referer`: Referer. The value can contain up to 512 characters.
-`cookie`: Cookie. The value can contain up to 512 characters.
-`user-agent`: User-Agent. The value can contain up to 512 characters.
-`head`: custom header. The value can contain up to 512 characters. If the matching content is blank or does not exist, enter the matching parameter directly.
-        :rtype: str
-        """
-        return self._RuleType
-
-    @RuleType.setter
-    def RuleType(self, RuleType):
-        self._RuleType = RuleType
-
-    @property
-    def LogicOperator(self):
-        r"""Logical operator, which connects the relation between RuleType and RuleValue. Valid values:
-`exclude`: the rule value is not contained. 
-`include`: the rule value is contained. 
-`notequal`: the rule value is not equal to the specified rule type. 
-`equal`: the rule value is equal to the specified rule type. 
-`matching`: the rule value matches with the prefix of the specified rule type.
-`null`: the rule value is empty or does not exist.
-        :rtype: str
-        """
-        return self._LogicOperator
-
-    @LogicOperator.setter
-    def LogicOperator(self, LogicOperator):
-        self._LogicOperator = LogicOperator
-
-    @property
-    def RuleValue(self):
-        r"""Rule value
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: list of str
-        """
-        return self._RuleValue
-
-    @RuleValue.setter
-    def RuleValue(self, RuleValue):
-        self._RuleValue = RuleValue
-
-    @property
-    def RuleParam(self):
-        r"""Matched parameter. Only request parameters, Cookie, and custom request headers have a value.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._RuleParam
-
-    @RuleParam.setter
-    def RuleParam(self, RuleParam):
-        self._RuleParam = RuleParam
-
-
-    def _deserialize(self, params):
-        self._CaseSensitive = params.get("CaseSensitive")
-        self._RuleType = params.get("RuleType")
-        self._LogicOperator = params.get("LogicOperator")
-        self._RuleValue = params.get("RuleValue")
-        self._RuleParam = params.get("RuleParam")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnWafConfig(AbstractModel):
-    r"""WAF configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Switch: Whether to enable SCDN WAF configuration. Values:
-`on`: Enable
-`off`: Disable
-        :type Switch: str
-        :param _Mode: WAF protection mode. Valid values: `intercept` and `observe`. Default value: `intercept`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Mode: str
-        :param _ErrorPage: Redirection error page
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        :param _WebShellSwitch: Whether to enable webshell blocking. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type WebShellSwitch: str
-        :param _Rules: Attack blocking rules
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type Rules: list of ScdnWafRule
-        :param _Level: WAF rule level. Valid values: 100, 200, and 300.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type Level: int
-        :param _SubRuleSwitch: Whether to enable WAF sub-rules. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type SubRuleSwitch: list of WafSubRuleStatus
-        """
-        self._Switch = None
-        self._Mode = None
-        self._ErrorPage = None
-        self._WebShellSwitch = None
-        self._Rules = None
-        self._Level = None
-        self._SubRuleSwitch = None
-
-    @property
-    def Switch(self):
-        r"""Whether to enable SCDN WAF configuration. Values:
-`on`: Enable
-`off`: Disable
-        :rtype: str
-        """
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-    @property
-    def Mode(self):
-        r"""WAF protection mode. Valid values: `intercept` and `observe`. Default value: `intercept`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Mode
-
-    @Mode.setter
-    def Mode(self, Mode):
-        self._Mode = Mode
-
-    @property
-    def ErrorPage(self):
-        r"""Redirection error page
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        """
-        return self._ErrorPage
-
-    @ErrorPage.setter
-    def ErrorPage(self, ErrorPage):
-        self._ErrorPage = ErrorPage
-
-    @property
-    def WebShellSwitch(self):
-        r"""Whether to enable webshell blocking. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._WebShellSwitch
-
-    @WebShellSwitch.setter
-    def WebShellSwitch(self, WebShellSwitch):
-        self._WebShellSwitch = WebShellSwitch
-
-    @property
-    def Rules(self):
-        r"""Attack blocking rules
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :rtype: list of ScdnWafRule
-        """
-        return self._Rules
-
-    @Rules.setter
-    def Rules(self, Rules):
-        self._Rules = Rules
-
-    @property
-    def Level(self):
-        r"""WAF rule level. Valid values: 100, 200, and 300.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: int
-        """
-        return self._Level
-
-    @Level.setter
-    def Level(self, Level):
-        self._Level = Level
-
-    @property
-    def SubRuleSwitch(self):
-        r"""Whether to enable WAF sub-rules. Values:
-`on`: Enable
-`off`: Disable
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :rtype: list of WafSubRuleStatus
-        """
-        return self._SubRuleSwitch
-
-    @SubRuleSwitch.setter
-    def SubRuleSwitch(self, SubRuleSwitch):
-        self._SubRuleSwitch = SubRuleSwitch
-
-
-    def _deserialize(self, params):
-        self._Switch = params.get("Switch")
-        self._Mode = params.get("Mode")
-        if params.get("ErrorPage") is not None:
-            self._ErrorPage = ScdnErrorPage()
-            self._ErrorPage._deserialize(params.get("ErrorPage"))
-        self._WebShellSwitch = params.get("WebShellSwitch")
-        if params.get("Rules") is not None:
-            self._Rules = []
-            for item in params.get("Rules"):
-                obj = ScdnWafRule()
-                obj._deserialize(item)
-                self._Rules.append(obj)
-        self._Level = params.get("Level")
-        if params.get("SubRuleSwitch") is not None:
-            self._SubRuleSwitch = []
-            for item in params.get("SubRuleSwitch"):
-                obj = WafSubRuleStatus()
-                obj._deserialize(item)
-                self._SubRuleSwitch.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ScdnWafRule(AbstractModel):
-    r"""WAF rule information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AttackType: Attack type
-        :type AttackType: str
-        :param _Operate: Defense action. Valid value: `observe`.
-        :type Operate: str
-        """
-        self._AttackType = None
-        self._Operate = None
-
-    @property
-    def AttackType(self):
-        r"""Attack type
-        :rtype: str
-        """
-        return self._AttackType
-
-    @AttackType.setter
-    def AttackType(self, AttackType):
-        self._AttackType = AttackType
-
-    @property
-    def Operate(self):
-        r"""Defense action. Valid value: `observe`.
-        :rtype: str
-        """
-        return self._Operate
-
-    @Operate.setter
-    def Operate(self, Operate):
-        self._Operate = Operate
-
-
-    def _deserialize(self, params):
-        self._AttackType = params.get("AttackType")
-        self._Operate = params.get("Operate")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class SchemeKey(AbstractModel):
     r"""A part of `CacheKey`
 
@@ -24785,259 +22226,6 @@ class UpdatePayTypeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class UpdateScdnDomainRequest(AbstractModel):
-    r"""UpdateScdnDomain request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Domain: Domain name
-        :type Domain: str
-        :param _Waf: WAF configuration
-        :type Waf: :class:`tencentcloud.cdn.v20180606.models.ScdnWafConfig`
-        :param _Acl: Custom defense policy configuration
-        :type Acl: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`
-        :param _CC: CC attack defense configurations. CC attack defense is enabled by default.
-        :type CC: :class:`tencentcloud.cdn.v20180606.models.ScdnConfig`
-        :param _Ddos: DDoS defense configuration. DDoS defense is enabled by default.
-        :type Ddos: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`
-        :param _Bot: Bot defense configuration
-        :type Bot: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`
-        """
-        self._Domain = None
-        self._Waf = None
-        self._Acl = None
-        self._CC = None
-        self._Ddos = None
-        self._Bot = None
-
-    @property
-    def Domain(self):
-        r"""Domain name
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def Waf(self):
-        r"""WAF configuration
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ScdnWafConfig`
-        """
-        return self._Waf
-
-    @Waf.setter
-    def Waf(self, Waf):
-        self._Waf = Waf
-
-    @property
-    def Acl(self):
-        r"""Custom defense policy configuration
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`
-        """
-        return self._Acl
-
-    @Acl.setter
-    def Acl(self, Acl):
-        self._Acl = Acl
-
-    @property
-    def CC(self):
-        r"""CC attack defense configurations. CC attack defense is enabled by default.
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ScdnConfig`
-        """
-        return self._CC
-
-    @CC.setter
-    def CC(self, CC):
-        self._CC = CC
-
-    @property
-    def Ddos(self):
-        r"""DDoS defense configuration. DDoS defense is enabled by default.
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`
-        """
-        return self._Ddos
-
-    @Ddos.setter
-    def Ddos(self, Ddos):
-        self._Ddos = Ddos
-
-    @property
-    def Bot(self):
-        r"""Bot defense configuration
-        :rtype: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`
-        """
-        return self._Bot
-
-    @Bot.setter
-    def Bot(self, Bot):
-        self._Bot = Bot
-
-
-    def _deserialize(self, params):
-        self._Domain = params.get("Domain")
-        if params.get("Waf") is not None:
-            self._Waf = ScdnWafConfig()
-            self._Waf._deserialize(params.get("Waf"))
-        if params.get("Acl") is not None:
-            self._Acl = ScdnAclConfig()
-            self._Acl._deserialize(params.get("Acl"))
-        if params.get("CC") is not None:
-            self._CC = ScdnConfig()
-            self._CC._deserialize(params.get("CC"))
-        if params.get("Ddos") is not None:
-            self._Ddos = ScdnDdosConfig()
-            self._Ddos._deserialize(params.get("Ddos"))
-        if params.get("Bot") is not None:
-            self._Bot = ScdnBotConfig()
-            self._Bot._deserialize(params.get("Bot"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UpdateScdnDomainResponse(AbstractModel):
-    r"""UpdateScdnDomain response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Result: Result of the request. `Success` indicates that the configurations are updated.
-        :type Result: str
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Result = None
-        self._RequestId = None
-
-    @property
-    def Result(self):
-        r"""Result of the request. `Success` indicates that the configurations are updated.
-        :rtype: str
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Result = params.get("Result")
-        self._RequestId = params.get("RequestId")
-
-
-class UrlRecord(AbstractModel):
-    r"""Details of the blocked URLs
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Status: Status. `disable`: Blocked; `enable`: Unblocked.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type Status: str
-        :param _RealUrl: Corresponding URL
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type RealUrl: str
-        :param _CreateTime: Creation time
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type CreateTime: str
-        :param _UpdateTime: Update time.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type UpdateTime: str
-        """
-        self._Status = None
-        self._RealUrl = None
-        self._CreateTime = None
-        self._UpdateTime = None
-
-    @property
-    def Status(self):
-        r"""Status. `disable`: Blocked; `enable`: Unblocked.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def RealUrl(self):
-        r"""Corresponding URL
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: str
-        """
-        return self._RealUrl
-
-    @RealUrl.setter
-    def RealUrl(self, RealUrl):
-        self._RealUrl = RealUrl
-
-    @property
-    def CreateTime(self):
-        r"""Creation time
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: str
-        """
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
-    def UpdateTime(self):
-        r"""Update time.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: str
-        """
-        return self._UpdateTime
-
-    @UpdateTime.setter
-    def UpdateTime(self, UpdateTime):
-        self._UpdateTime = UpdateTime
-
-
-    def _deserialize(self, params):
-        self._Status = params.get("Status")
-        self._RealUrl = params.get("RealUrl")
-        self._CreateTime = params.get("CreateTime")
-        self._UpdateTime = params.get("UpdateTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class UrlRedirect(AbstractModel):
     r"""Configuration of URL rewriting
 
@@ -25527,61 +22715,6 @@ class ViolationUrl(AbstractModel):
         self._UrlStatus = params.get("UrlStatus")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WafSubRuleStatus(AbstractModel):
-    r"""WAF sub-rule switch status
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Switch: Whether to enable WAF sub-rules. Values:
-`on`: Enable
-`off`: Disable
-        :type Switch: str
-        :param _SubIds: List of rule IDs
-        :type SubIds: list of int
-        """
-        self._Switch = None
-        self._SubIds = None
-
-    @property
-    def Switch(self):
-        r"""Whether to enable WAF sub-rules. Values:
-`on`: Enable
-`off`: Disable
-        :rtype: str
-        """
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-    @property
-    def SubIds(self):
-        r"""List of rule IDs
-        :rtype: list of int
-        """
-        return self._SubIds
-
-    @SubIds.setter
-    def SubIds(self, SubIds):
-        self._SubIds = SubIds
-
-
-    def _deserialize(self, params):
-        self._Switch = params.get("Switch")
-        self._SubIds = params.get("SubIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
