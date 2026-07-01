@@ -2479,6 +2479,43 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportPrometheusReadOnlyDynamicAPI(self, request):
+        r"""Prometheus internal read-only dynamic api proxy supports accessing native Prometheus APIs via cloud api format
+        support the following APIs:
+
+        | path | method | purpose |
+        | - | - | - |
+        /api/v1/query | GET, POST | point query
+        /api/v1/query_range | GET, POST | Range query
+        /api/v1/series | GET, POST | Query the series list
+        /api/v1/labels | GET, POST | Query labels
+        /api/v1/label/{label_name}/values | GET | Query label values.
+        /api/v1/rules | GET | Query pre-aggregation and alert rules.
+        /api/v1/user_limits | GET | Query prometheus instance limits
+         /alertmanager/api/v2/alerts/groups | GET | Query current alarm information
+        /alertmanager/api/v2/silences | GET | Query alert silences
+        /alertmanager/api/v2/silence/{id} | GET | Query alert silence details
+
+        :param request: Request instance for ExportPrometheusReadOnlyDynamicAPI.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ExportPrometheusReadOnlyDynamicAPIRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ExportPrometheusReadOnlyDynamicAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportPrometheusReadOnlyDynamicAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportPrometheusReadOnlyDynamicAPIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetMonitorData(self, request):
         r"""This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, use the [DescribeStatisticData](https://www.tencentcloud.com/document/product/248/39481) API.
         You can get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.
@@ -2933,6 +2970,45 @@ class MonitorClient(AbstractClient):
             body = self.call("ResumeGrafanaInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ResumeGrafanaInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RoutePrometheusDynamicAPI(self, request):
+        r"""Prometheus internal dynamics api proxy supports accessing Prometheus native APIs via cloud APIs.
+        support the following APIs:
+
+        It is recommended to use the ExportPrometheusReadOnlyDynamicAPI call for Read API, supporting longer query latency and response size. Meanwhile, it makes permission management easy.
+
+        | path | method | purpose |
+        | - | - | - |
+        /api/v1/query | GET, POST | point query
+        /api/v1/query_range | GET, POST | Range query
+        /api/v1/series | GET, POST | Query the series list
+        /api/v1/labels | GET, POST | Query labels
+        /api/v1/label/{label_name}/values | GET | Query label values.
+        /api/v1/rules | GET | Query pre-aggregation and alert rules.
+        /api/v1/user_limits | GET | Query prometheus instance limits
+         /alertmanager/api/v2/alerts/groups | GET | Query current alarm information
+        /alertmanager/api/v2/silences | GET, POST | Query, create, or modify alert silences
+        /alertmanager/api/v2/silence/{id} | GET, DELETE | Query alert silence details, Delete alert silence
+
+        :param request: Request instance for RoutePrometheusDynamicAPI.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.RoutePrometheusDynamicAPIRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.RoutePrometheusDynamicAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RoutePrometheusDynamicAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.RoutePrometheusDynamicAPIResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -408,6 +408,33 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAigcQuota(self, request):
+        r"""This API is used to create and enable AIGC quota configuration. Quota usage starts accumulating when the quota feature is enabled. The AIGC feature will no longer be usable when the quota is reached.
+
+        If the quota is re-enabled after deletion, the amount will be cleared and recalculated.
+
+        Since AGC content generation is an async task, real-time usage data cannot be obtained. Therefore, the Quota limit may result in some errors, and completely precise control cannot be achieved with the set limit.
+
+        :param request: Request instance for CreateAigcQuota.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcQuotaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAigcSubject(self, request):
         r"""This API is used to create AIGC custom subjects (Vidu). Note that calling this API may incur fees. Refer to the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#96b3b59a-f9e1-49e9-966a-bedb70a4bf12).
 
@@ -1407,6 +1434,31 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAigcQuota(self, request):
+        r"""This API is used to delete AIGC quota configurations. Once deleted, it will no longer limit the initiation of AIGC tasks.
+
+        If the quota is re-enabled after deletion, the amount will be cleared and recalculated.
+
+        :param request: Request instance for DeleteAigcQuota.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAigcQuotaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteAigcQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAigcQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAigcQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAnimatedGraphicsTemplate(self, request):
         r"""This API is used to delete a custom animated image generating template.
 
@@ -2215,6 +2267,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeAigcFaceInfoAsync", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAigcFaceInfoAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAigcQuotas(self, request):
+        r"""This API is used to query the AIGC quota configuration.
+
+        :param request: Request instance for DescribeAigcQuotas.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAigcQuotasRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcQuotasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcQuotas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcQuotasResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3925,6 +4000,31 @@ class VodClient(AbstractClient):
             body = self.call("ModifyAdaptiveDynamicStreamingTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAdaptiveDynamicStreamingTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAigcQuota(self, request):
+        r"""This API is used to edit AIGC quota configuration. Quota usage starts accumulating when the quota functionality is enabled. The AIGC functionality will no longer be usable once the quota is reached.
+
+        Since AGC content generation is an async task, real-time usage data cannot be obtained. Therefore, the Quota limit may result in some errors, and completely precise control cannot be achieved with the set limit.
+
+        :param request: Request instance for ModifyAigcQuota.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyAigcQuotaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyAigcQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAigcQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAigcQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

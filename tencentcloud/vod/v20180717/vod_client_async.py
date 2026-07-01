@@ -327,6 +327,28 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcQuota(
+            self,
+            request: models.CreateAigcQuotaRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcQuotaResponse:
+        """
+        This API is used to create and enable AIGC quota configuration. Quota usage starts accumulating when the quota feature is enabled. The AIGC feature will no longer be usable when the quota is reached.
+
+        If the quota is re-enabled after deletion, the amount will be cleared and recalculated.
+
+        Since AGC content generation is an async task, real-time usage data cannot be obtained. Therefore, the Quota limit may result in some errors, and completely precise control cannot be achieved with the set limit.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcSubject(
             self,
             request: models.CreateAigcSubjectRequest,
@@ -1116,6 +1138,26 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAigcQuota(
+            self,
+            request: models.DeleteAigcQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAigcQuotaResponse:
+        """
+        This API is used to delete AIGC quota configurations. Once deleted, it will no longer limit the initiation of AIGC tasks.
+
+        If the quota is re-enabled after deletion, the amount will be cleared and recalculated.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAigcQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAigcQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAnimatedGraphicsTemplate(
             self,
             request: models.DeleteAnimatedGraphicsTemplateRequest,
@@ -1753,6 +1795,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeAigcFaceInfoAsync"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAigcFaceInfoAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcQuotas(
+            self,
+            request: models.DescribeAigcQuotasRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcQuotasResponse:
+        """
+        This API is used to query the AIGC quota configuration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcQuotas"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcQuotasResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3118,6 +3178,26 @@ class VodClient(AbstractClient):
         kwargs["action"] = "ModifyAdaptiveDynamicStreamingTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAdaptiveDynamicStreamingTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAigcQuota(
+            self,
+            request: models.ModifyAigcQuotaRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAigcQuotaResponse:
+        """
+        This API is used to edit AIGC quota configuration. Quota usage starts accumulating when the quota functionality is enabled. The AIGC functionality will no longer be usable once the quota is reached.
+
+        Since AGC content generation is an async task, real-time usage data cannot be obtained. Therefore, the Quota limit may result in some errors, and completely precise control cannot be achieved with the set limit.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAigcQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAigcQuotaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

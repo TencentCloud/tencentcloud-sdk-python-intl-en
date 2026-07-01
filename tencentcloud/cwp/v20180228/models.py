@@ -39363,7 +39363,7 @@ class DescribeLoginTypeHostRequest(AbstractModel):
         :type Limit: int
         :param _Offset: <p>Offset. Default value: 0.</p>
         :type Offset: int
-        :param _Order: <p>Sort order: [ASC: ascending | DESC: descending]</p>
+        :param _Order: <p>Sort order: [ASC: ascending, DESC: descending]</p>
         :type Order: str
         :param _By: <p>Optional sorting column: [Id]</p>
         :type By: str
@@ -39409,7 +39409,7 @@ class DescribeLoginTypeHostRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""<p>Sort order: [ASC: ascending | DESC: descending]</p>
+        r"""<p>Sort order: [ASC: ascending, DESC: descending]</p>
         :rtype: str
         """
         return self._Order

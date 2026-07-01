@@ -12775,6 +12775,87 @@ class AigcImageTaskOutputFileInfo(AbstractModel):
         
 
 
+class AigcQuotaItem(AbstractModel):
+    r"""AIGC quota
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuotaType: <p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :type QuotaType: str
+        :param _ApiToken: <p>Valid only when QuotaLimit=Text, used to select the ApiToken that needs quota limit</p>
+        :type ApiToken: str
+        :param _QuotaLimit: <p>Number of task quotas</p><p>Unit:</p><ul><li>When QuotaLimit=Image, unit: piece</li><li>When QuotaLimit=Video, unit: seconds</li><li>When QuotaLimit=Text, unit: token</li></ul>
+        :type QuotaLimit: int
+        :param _Usage: <p>Amount already used</p><p>Unit:</p><ul><li>When QuotaLimit=Image, unit: piece</li><li>When QuotaLimit=Video, unit: seconds</li><li>When QuotaLimit=Text, unit: token</li></ul>
+        :type Usage: int
+        """
+        self._QuotaType = None
+        self._ApiToken = None
+        self._QuotaLimit = None
+        self._Usage = None
+
+    @property
+    def QuotaType(self):
+        r"""<p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def ApiToken(self):
+        r"""<p>Valid only when QuotaLimit=Text, used to select the ApiToken that needs quota limit</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>Number of task quotas</p><p>Unit:</p><ul><li>When QuotaLimit=Image, unit: piece</li><li>When QuotaLimit=Video, unit: seconds</li><li>When QuotaLimit=Text, unit: token</li></ul>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def Usage(self):
+        r"""<p>Amount already used</p><p>Unit:</p><ul><li>When QuotaLimit=Image, unit: piece</li><li>When QuotaLimit=Video, unit: seconds</li><li>When QuotaLimit=Text, unit: token</li></ul>
+        :rtype: int
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+
+    def _deserialize(self, params):
+        self._QuotaType = params.get("QuotaType")
+        self._ApiToken = params.get("ApiToken")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._Usage = params.get("Usage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcUsageDataItem(AbstractModel):
     r"""AIGC stats
 
@@ -25679,6 +25760,115 @@ class CreateAigcImageTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAigcQuotaRequest(AbstractModel):
+    r"""CreateAigcQuota request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b></p>
+        :type SubAppId: int
+        :param _QuotaType: <p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :type QuotaType: str
+        :param _QuotaLimit: <p>Number of task quotas</p><p>Unit:</p><ul><li>When QuotaLimit=Image, unit: piece</li><li>When QuotaLimit=Video, unit: seconds</li><li>When QuotaLimit=Text, unit: token</li></ul>
+        :type QuotaLimit: int
+        :param _ApiToken: <p>Valid only when QuotaLimit=Text, used to select the ApiToken that needs quota limit</p>
+        :type ApiToken: str
+        """
+        self._SubAppId = None
+        self._QuotaType = None
+        self._QuotaLimit = None
+        self._ApiToken = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def QuotaType(self):
+        r"""<p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>Number of task quotas</p><p>Unit:</p><ul><li>When QuotaLimit=Image, unit: piece</li><li>When QuotaLimit=Video, unit: seconds</li><li>When QuotaLimit=Text, unit: token</li></ul>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def ApiToken(self):
+        r"""<p>Valid only when QuotaLimit=Text, used to select the ApiToken that needs quota limit</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._QuotaType = params.get("QuotaType")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._ApiToken = params.get("ApiToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcQuotaResponse(AbstractModel):
+    r"""CreateAigcQuota response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcSubjectInput(AbstractModel):
     r"""Create subject input message.
 
@@ -33437,6 +33627,100 @@ class DeleteAigcApiTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAigcQuotaRequest(AbstractModel):
+    r"""DeleteAigcQuota request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b></p>
+        :type SubAppId: int
+        :param _QuotaType: <p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :type QuotaType: str
+        :param _ApiToken: <p>Valid only when QuotaLimit=Text, used to select ApiToken for quota limit.</p>
+        :type ApiToken: str
+        """
+        self._SubAppId = None
+        self._QuotaType = None
+        self._ApiToken = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def QuotaType(self):
+        r"""<p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def ApiToken(self):
+        r"""<p>Valid only when QuotaLimit=Text, used to select ApiToken for quota limit.</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._QuotaType = params.get("QuotaType")
+        self._ApiToken = params.get("ApiToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAigcQuotaResponse(AbstractModel):
+    r"""DeleteAigcQuota response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
     r"""DeleteAnimatedGraphicsTemplate request structure.
 
@@ -36868,6 +37152,165 @@ class DescribeAigcFaceInfoResponse(AbstractModel):
                 obj = AigcFaceInfo()
                 obj._deserialize(item)
                 self._FaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcQuotasRequest(AbstractModel):
+    r"""DescribeAigcQuotas request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b></p>
+        :type SubAppId: int
+        :param _QuotaType: <p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :type QuotaType: str
+        :param _ApiToken: <p>Valid only when QuotaLimit=Text, used to select the ApiToken that needs quota limit</p>
+        :type ApiToken: str
+        :param _Limit: <p>Number of records returned in pages, displaying entries from Offset to Offset+Limit-1.</p><p>Value ranges from 1 to 100.</p><p>Default value: 10.</p>
+        :type Limit: int
+        :param _Offset: <p>Starting offset amount for pagination return. Default value: 0. Returns entries from Offset to Offset + Limit - 1.</p><p>Default value: 0</p>
+        :type Offset: int
+        """
+        self._SubAppId = None
+        self._QuotaType = None
+        self._ApiToken = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def QuotaType(self):
+        r"""<p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def ApiToken(self):
+        r"""<p>Valid only when QuotaLimit=Text, used to select the ApiToken that needs quota limit</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+    @property
+    def Limit(self):
+        r"""<p>Number of records returned in pages, displaying entries from Offset to Offset+Limit-1.</p><p>Value ranges from 1 to 100.</p><p>Default value: 10.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Starting offset amount for pagination return. Default value: 0. Returns entries from Offset to Offset + Limit - 1.</p><p>Default value: 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._QuotaType = params.get("QuotaType")
+        self._ApiToken = params.get("ApiToken")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcQuotasResponse(AbstractModel):
+    r"""DescribeAigcQuotas response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuotaSet: <p>Quota list</p>
+        :type QuotaSet: list of AigcQuotaItem
+        :param _TotalCount: <p>Total quantity.</p>
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._QuotaSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def QuotaSet(self):
+        r"""<p>Quota list</p>
+        :rtype: list of AigcQuotaItem
+        """
+        return self._QuotaSet
+
+    @QuotaSet.setter
+    def QuotaSet(self, QuotaSet):
+        self._QuotaSet = QuotaSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total quantity.</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaSet") is not None:
+            self._QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = AigcQuotaItem()
+                obj._deserialize(item)
+                self._QuotaSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -67398,6 +67841,115 @@ Note: The frame rate of each stream must remain consistent. If inconsistent, use
 
 class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
     r"""ModifyAdaptiveDynamicStreamingTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAigcQuotaRequest(AbstractModel):
+    r"""ModifyAigcQuota request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b></p>
+        :type SubAppId: int
+        :param _QuotaType: <p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :type QuotaType: str
+        :param _QuotaLimit: <p>Task quota quantity</p><p>Unit:</p><ul><li>When QuotaLimit=Image, unit: sheets</li><li>When QuotaLimit=Video, unit: seconds</li><li>When QuotaLimit=Text, unit: tokens</li></ul>
+        :type QuotaLimit: int
+        :param _ApiToken: <p>Valid only when QuotaLimit=Text, used to select the ApiToken that needs quota limit</p>
+        :type ApiToken: str
+        """
+        self._SubAppId = None
+        self._QuotaType = None
+        self._QuotaLimit = None
+        self._ApiToken = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def QuotaType(self):
+        r"""<p>Quota type</p><p>Enumeration value:</p><ul><li>Image: AIGC image generation task</li><li>Video: AIGC video generation task</li><li>Text: AIGC text generation task</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>Task quota quantity</p><p>Unit:</p><ul><li>When QuotaLimit=Image, unit: sheets</li><li>When QuotaLimit=Video, unit: seconds</li><li>When QuotaLimit=Text, unit: tokens</li></ul>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def ApiToken(self):
+        r"""<p>Valid only when QuotaLimit=Text, used to select the ApiToken that needs quota limit</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._QuotaType = params.get("QuotaType")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._ApiToken = params.get("ApiToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAigcQuotaResponse(AbstractModel):
+    r"""ModifyAigcQuota response structure.
 
     """
 

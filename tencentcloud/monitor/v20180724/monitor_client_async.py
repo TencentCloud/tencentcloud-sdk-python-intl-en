@@ -1948,6 +1948,38 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExportPrometheusReadOnlyDynamicAPI(
+            self,
+            request: models.ExportPrometheusReadOnlyDynamicAPIRequest,
+            opts: Dict = None,
+    ) -> models.ExportPrometheusReadOnlyDynamicAPIResponse:
+        """
+        Prometheus internal read-only dynamic api proxy supports accessing native Prometheus APIs via cloud api format
+        support the following APIs:
+
+        | path | method | purpose |
+        | - | - | - |
+        /api/v1/query | GET, POST | point query
+        /api/v1/query_range | GET, POST | Range query
+        /api/v1/series | GET, POST | Query the series list
+        /api/v1/labels | GET, POST | Query labels
+        /api/v1/label/{label_name}/values | GET | Query label values.
+        /api/v1/rules | GET | Query pre-aggregation and alert rules.
+        /api/v1/user_limits | GET | Query prometheus instance limits
+         /alertmanager/api/v2/alerts/groups | GET | Query current alarm information
+        /alertmanager/api/v2/silences | GET | Query alert silences
+        /alertmanager/api/v2/silence/{id} | GET | Query alert silence details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportPrometheusReadOnlyDynamicAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportPrometheusReadOnlyDynamicAPIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetMonitorData(
             self,
             request: models.GetMonitorDataRequest,
@@ -2306,6 +2338,40 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "ResumeGrafanaInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ResumeGrafanaInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RoutePrometheusDynamicAPI(
+            self,
+            request: models.RoutePrometheusDynamicAPIRequest,
+            opts: Dict = None,
+    ) -> models.RoutePrometheusDynamicAPIResponse:
+        """
+        Prometheus internal dynamics api proxy supports accessing Prometheus native APIs via cloud APIs.
+        support the following APIs:
+
+        It is recommended to use the ExportPrometheusReadOnlyDynamicAPI call for Read API, supporting longer query latency and response size. Meanwhile, it makes permission management easy.
+
+        | path | method | purpose |
+        | - | - | - |
+        /api/v1/query | GET, POST | point query
+        /api/v1/query_range | GET, POST | Range query
+        /api/v1/series | GET, POST | Query the series list
+        /api/v1/labels | GET, POST | Query labels
+        /api/v1/label/{label_name}/values | GET | Query label values.
+        /api/v1/rules | GET | Query pre-aggregation and alert rules.
+        /api/v1/user_limits | GET | Query prometheus instance limits
+         /alertmanager/api/v2/alerts/groups | GET | Query current alarm information
+        /alertmanager/api/v2/silences | GET, POST | Query, create, or modify alert silences
+        /alertmanager/api/v2/silence/{id} | GET, DELETE | Query alert silence details, Delete alert silence
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RoutePrometheusDynamicAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RoutePrometheusDynamicAPIResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
