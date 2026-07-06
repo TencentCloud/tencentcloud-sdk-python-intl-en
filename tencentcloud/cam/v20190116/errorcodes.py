@@ -158,6 +158,9 @@ INVALIDPARAMETER_ORGANIZATIONROLEOPERATEERROR = 'InvalidParameter.OrganizationRo
 # Invalid input parameter.
 INVALIDPARAMETER_PARAMERROR = 'InvalidParameter.ParamError'
 
+# Password rule error.
+INVALIDPARAMETER_PASSWORDRULEERROR = 'InvalidParameter.PasswordRuleError'
+
 # Password incompatible with user safety settings.
 INVALIDPARAMETER_PASSWORDVIOLATEDRULES = 'InvalidParameter.PasswordViolatedRules'
 

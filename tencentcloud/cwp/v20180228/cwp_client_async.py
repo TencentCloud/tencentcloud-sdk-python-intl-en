@@ -3472,7 +3472,7 @@ class CwpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLoginTypeGlobalConfResponse:
         """
-        Retrieve the global configuration for uninstall protection
+        This API is used to obtain the global configuration for QR code login.
         """
         
         kwargs = {}

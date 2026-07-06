@@ -397,26 +397,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def BankCardOCR(
-            self,
-            request: models.BankCardOCRRequest,
-            opts: Dict = None,
-    ) -> models.BankCardOCRResponse:
-        """
-        This API is used to detect and recognize key fields such as the card number, bank information, and expiration date on mainstream bank cards in Mainland China.
-
-        This API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "BankCardOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.BankCardOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ExtractDocMulti(
             self,
             request: models.ExtractDocMultiRequest,
@@ -520,111 +500,6 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "HKIDCardOCR"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.HKIDCardOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def HmtResidentPermitOCR(
-            self,
-            request: models.HmtResidentPermitOCRRequest,
-            opts: Dict = None,
-    ) -> models.HmtResidentPermitOCRResponse:
-        """
-        This API is used to recognize key fields on the front and back sides of a residence permit for Hong Kong, Macao, or Taiwan residents, including name, gender, date of birth, address, ID number, issuing authority, validity period, number of issues, and permit number. It can be used for residence permit OCR in scenarios such as bank account opening and user registration.
-
-        A maximum of 20 requests can be initiated per second for this API.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "HmtResidentPermitOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.HmtResidentPermitOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def IDCardOCR(
-            self,
-            request: models.IDCardOCRRequest,
-            opts: Dict = None,
-    ) -> models.IDCardOCRResponse:
-        """
-        This API is used to recognize all fields on the front and back sides of a second-generation resident identity card for the Chinese mainland: name, gender, ethnicity, date of birth, domicile, identification number, issuing authority, and validity period, with a recognition accuracy of over 99%.
-
-        In addition, this API supports multiple value-added capabilities to meet the needs of different scenarios. It can crop ID card photos and profile photos, and provide warnings for nine cases, as detailed below.
-
-        <table style="width:650px">
-              <thead>
-                <tr>
-               <th width="150">Capability</th>
-                  <th width="500">Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td rowspan="2">Cropping</td>
-                  <td>Crops the ID card photo (by removing extra edges outside the ID card and automatically correcting the shooting angle).</td>
-                </tr>
-                <tr>
-                  <td>Crops the profile photo (by automatically cutting out the face area in the ID card).</td>
-                </tr>
-                <tr>
-                  <td rowspan="9">Warning</td>
-                  <td>Warns about invalid ID card validity periods.</td>
-                </tr>
-                <tr>
-                  <td>Warns about  incomplete ID card borders.</td>
-                </tr>
-                <tr>
-                  <td>Warns about photocopied images.</td>
-                </tr>
-                <tr>
-                  <td>Warns about spoofed images.</td>
-                </tr>
-                  <tr>
-                  <td>Warns about border and frame occlusions.</td>
-                </tr>
-                 <tr>
-                  <td>Warns about temporary ID cards.</td>
-                </tr>
-                  <tr>
-                  <td>Warns about photoshopped images.</td>
-                </tr>
-                  <tr>
-                  <td>Warns about blurry ID card images (blurriness can be determined based on the image quality score).</td>
-                </tr>
-              </tbody>
-            </table>
-
-        A maximum of 20 requests can be initiated per second for this API.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "IDCardOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.IDCardOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def LicensePlateOCR(
-            self,
-            request: models.LicensePlateOCRRequest,
-            opts: Dict = None,
-    ) -> models.LicensePlateOCRResponse:
-        """
-        This API is used to recognize a license plate attached to a motor vehicle in the Chinese mainland and return the regional code, license plate number, and license plate color.
-
-        A maximum of 10 requests can be initiated per second for this API.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "LicensePlateOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.LicensePlateOCRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -837,150 +712,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def RecognizeGeneralInvoice(
-            self,
-            request: models.RecognizeGeneralInvoiceRequest,
-            opts: Dict = None,
-    ) -> models.RecognizeGeneralInvoiceResponse:
-        """
-        This API is used to recognize various types of invoices or tickets in an image or PDF file. You can also specify a type. 14 types of standard expense reimbursement invoices are supported, including value-added tax (VAT) invoice (special, general, roll, blockchain, and toll), fully digitalized electronic invoice (special and general), non-tax revenue invoice (general receipt and general payment voucher), quota invoice, general machine-printed invoice, car sales invoice (motor vehicle sales invoice and used car invoice), train ticket, taxi receipt, itinerary/receipt of e-ticket for air transportation, bus ticket, ship ticket, toll receipt, and medical invoice (inpatient and outpatient). This API can also be used for intelligent recognition of other types of invoices. To try now, click [here](https://intl.cloud.tencent.com/product/ocr?from_cn_redirect=1).
-
-        A maximum of 5 requests can be initiated per second for this API.
-
-
-        The invoice/ticket subtype (SubType), subtype description (TypeDescription), and parent type (Type) can be returned, as described below:
-        <table style="width:715px">
-              <thead>
-                <tr>
-                  <th style="width:200px">SubType</th>
-                  <th style="width:200px">TypeDescription</th>
-                  <th >Type</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td> VatSpecialInvoice</td>
-                  <td> Special VAT invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatCommonInvoice</td>
-                  <td> General VAT invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicCommonInvoice </td>
-                  <td> Electronic general VAT invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicSpecialInvoice </td>
-                  <td> Electronic special VAT invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicInvoiceBlockchain</td>
-                  <td> Blockchain electronic invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicInvoiceToll</td>
-                  <td> Electronic general VAT invoice (toll)</td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicSpecialInvoiceFull</td>
-                  <td> Electronic invoice (special)</td>
-                  <td> 16 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicInvoiceFull</td>
-                  <td> Electronic invoice (general) </td>
-                  <td> 16 </td>
-                </tr>
-                <tr>
-                  <td> MotorVehicleSaleInvoice </td>
-                  <td> Motor vehicle sales invoice </td>
-                  <td> 12 </td>
-                </tr>
-                <tr>
-                  <td> UsedCarPurchaseInvoice </td>
-                  <td> Used car invoice </td>
-                  <td> 12 </td>
-                </tr>
-                <tr>
-                  <td> VatInvoiceRoll </td>
-                  <td> General VAT invoice (roll) </td>
-                  <td> 11 </td>
-                </tr>
-                <tr>
-                  <td> TaxiTicket </td>
-                  <td> Taxi receipt </td>
-                  <td> 0 </td>
-                </tr>
-                <tr>
-                  <td> QuotaInvoice </td>
-                  <td> Quota invoice </td>
-                  <td> 1 </td>
-                </tr>
-                <tr>
-                  <td> TrainTicket </td>
-                  <td> Train ticket </td>
-                  <td> 2 </td>
-                </tr>
-                <tr>
-                  <td> AirTransport </td>
-                  <td> Itinerary/Receipt of e-ticket for air transportation </td>
-                  <td> 5 </td>
-                </tr>
-                <tr>
-                  <td> MachinePrintedInvoice </td>
-                  <td> General machine-printed invoice </td>
-                  <td> 8 </td>
-                </tr>
-                <tr>
-                  <td> BusInvoice </td>
-                  <td> Bus ticket </td>
-                  <td> 9 </td>
-                </tr>
-                <tr>
-                  <td> ShippingInvoice </td>
-                  <td> Ship ticket </td>
-                  <td> 10 </td>
-                </tr>
-                <tr>
-                  <td> NonTaxIncomeGeneralBill </td>
-                  <td> General receipt for non-tax revenue </td>
-                  <td> 15 </td>
-                </tr>
-                <tr>
-                  <td> NonTaxIncomeElectronicBill </td>
-                  <td> General payment voucher for non-tax revenue (electronic) </td>
-                  <td> 15 </td>
-                </tr>
-                <tr>
-                  <td> TollInvoice </td>
-                  <td> Toll receipt </td>
-                  <td> 13 </td>
-                </tr>
-                <tr>
-                  <td> OtherInvoice </td>
-                  <td> Other </td>
-                  <td> -1 </td>
-                </tr>
-              </tbody>
-            </table>
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RecognizeGeneralInvoice"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RecognizeGeneralInvoiceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def RecognizeIndonesiaIDCardOCR(
             self,
             request: models.RecognizeIndonesiaIDCardOCRRequest,
@@ -996,42 +727,6 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "RecognizeIndonesiaIDCardOCR"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RecognizeIndonesiaIDCardOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def RecognizeKoreanDrivingLicenseOCR(
-            self,
-            request: models.RecognizeKoreanDrivingLicenseOCRRequest,
-            opts: Dict = None,
-    ) -> models.RecognizeKoreanDrivingLicenseOCRResponse:
-        """
-        This API is used to recognize a South Korean driver's license.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RecognizeKoreanDrivingLicenseOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RecognizeKoreanDrivingLicenseOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def RecognizeKoreanIDCardOCR(
-            self,
-            request: models.RecognizeKoreanIDCardOCRRequest,
-            opts: Dict = None,
-    ) -> models.RecognizeKoreanIDCardOCRResponse:
-        """
-        This API is used to recognize a South Korean ID card.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RecognizeKoreanIDCardOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RecognizeKoreanIDCardOCRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1063,8 +758,9 @@ class OcrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RecognizeMainlandIDCardOCRResponse:
         """
-        This interface supports the identification of all fields on the front and back of the second-generation ID card for mainland Chinese residents.Including name, gender, ethnicity, date of birth, address, citizen ID number, issuing authority, and validity period, the identification accuracy reaches more than 99%.In addition, this interface also supports a variety of value-added capabilities to meet the needs of different scenarios. Such as the cropping function of ID card photos and portrait photos, and also has 5 alarm functions.
-        As shown in the table below. <table style="width:650px"> <thead> <tr> <th width="150">Value-added ability</th> <th width="500">Ability items</th> </tr> </thead> <tbody> <tr> <td rowspan="9">Alarm function</td> </tr> <tr> <td>ID card photocopy warning</td> </tr> <tr> <td>ID card on-screen display warning</td> </tr> <tr> <td>Alarm for occlusion in the ID card frame</td> </tr> <tr> <td>ID card reflective warning</td> </tr> <tr> <td>Blurry picture warning</td> </tr> </tbody> </table> Default interface request frequency limit: 20 times/second
+        This interface recognizes all fields on both sides of the Mainland China Resident Identity Card (second-generation), including name, gender, ethnicity, date of birth, address, ID number, issuing authority, and validity period, with an accuracy of over 99%.
+
+        In addition, the interface provides additional features for various scenarios, such as ID card and portrait photo cropping, along with five alarm detections (see table below).<table style="width:650px"> <thead> <tr> <th width="150">Value-added ability</th> <th width="500">Ability items</th> </tr> </thead> <tbody> <tr> <td rowspan="9">Alarm function</td> </tr> <tr> <td>ID card photocopy warning</td> </tr> <tr> <td>ID card on-screen display warning</td> </tr> <tr> <td>Alarm for occlusion in the ID card frame</td> </tr> <tr> <td>ID card reflective warning</td> </tr> <tr> <td>Blurry picture warning</td> </tr> </tbody> </table> Default rate limit: 20 requests/second.
         """
         
         kwargs = {}
@@ -1205,26 +901,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def RecognizeTableAccurateOCR(
-            self,
-            request: models.RecognizeTableAccurateOCRRequest,
-            opts: Dict = None,
-    ) -> models.RecognizeTableAccurateOCRResponse:
-        """
-        This API is used to recognize regular tables, borderless tables, or multi-tables in images or PDF files containing Chinese and English texts. It returns the text content of each cell, supports recognition of rotated table images, and can save the recognition results into an Excel document. It delivers higher recognition accuracy than that of table OCR v2 and applies to more scenarios. The recognition accuracy in difficult table scenarios, such as irregular tables and nested tables (borderless tables contained in bordered tables), is better than that of table OCR v2. To try it, click [here](https://intl.cloud.tencent.com/product/smart?from_cn_redirect=1-ocr).
-
-        A maximum of 2 requests can be initiated per second for this API.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RecognizeTableAccurateOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RecognizeTableAccurateOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def RecognizeThaiIDCardOCR(
             self,
             request: models.RecognizeThaiIDCardOCRRequest,
@@ -1266,26 +942,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def SealOCR(
-            self,
-            request: models.SealOCRRequest,
-            opts: Dict = None,
-    ) -> models.SealOCRResponse:
-        """
-        This API is used to recognize various types of seals, including invoice seals and finance seals. It is suitable for scenarios such as official document and invoice/ticket OCR.
-
-        A maximum of 5 requests can be initiated per second for this API.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "SealOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.SealOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def SmartStructuralOCRV2(
             self,
             request: models.SmartStructuralOCRV2Request,
@@ -1301,46 +957,6 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "SmartStructuralOCRV2"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SmartStructuralOCRV2Response
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def SmartStructuralPro(
-            self,
-            request: models.SmartStructuralProRequest,
-            opts: Dict = None,
-    ) -> models.SmartStructuralProResponse:
-        """
-        This API is used to recognize fields from cards, documents, bills, forms, contracts, and other structured information. It is flexible and efficient to use, without any configuration required. This API is suitable for recognizing structured information.
-
-        A maximum of 10 requests can be initiated per second for this API.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "SmartStructuralPro"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.SmartStructuralProResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def TableOCR(
-            self,
-            request: models.TableOCRRequest,
-            opts: Dict = None,
-    ) -> models.TableOCRResponse:
-        """
-        This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.
-
-        This API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "TableOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.TableOCRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

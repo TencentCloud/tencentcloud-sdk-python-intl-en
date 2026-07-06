@@ -1137,6 +1137,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteVoice(self, request):
+        r"""This API is used to delete a voice (created via voice cloning or design).
+
+        :param request: Request instance for DeleteVoice.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteVoiceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteWatermarkTemplate(self, request):
         r"""This API is used to delete a custom watermarking template.
 
@@ -2039,7 +2062,7 @@ class MpsClient(AbstractClient):
 
 
     def DesignVoiceAsync(self, request):
-        r"""This API is used to design a voice. It generates a voice ID based on a prompt.
+        r"""This API is used to design a voice. It generates a voice ID based on a prompt. The default maximum number of cloned or designed voices is 100.
 
         :param request: Request instance for DesignVoiceAsync.
         :type request: :class:`tencentcloud.mps.v20190612.models.DesignVoiceAsyncRequest`
@@ -2052,6 +2075,52 @@ class MpsClient(AbstractClient):
             body = self.call("DesignVoiceAsync", params, headers=headers)
             response = json.loads(body)
             model = models.DesignVoiceAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DetectVideoSubtitleArea(self, request):
+        r"""This API is used to quickly detect the hard subtitle area in a video file.
+
+        :param request: Request instance for DetectVideoSubtitleArea.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DetectVideoSubtitleAreaRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DetectVideoSubtitleAreaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetectVideoSubtitleArea", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetectVideoSubtitleAreaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DetectVideoWatermark(self, request):
+        r"""This API is used to quickly detect whether a video file contains a watermark.
+
+        :param request: Request instance for DetectVideoWatermark.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DetectVideoWatermarkRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DetectVideoWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetectVideoWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetectVideoWatermarkResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2952,7 +3021,7 @@ class MpsClient(AbstractClient):
 
 
     def SyncDubbing(self, request):
-        r"""This API is used to return the clone voice type Id or synthetic audio results synchronously.
+        r"""This API is used to return the cloned voice ID or synthetic audio result. The default maximum number of cloned or designed voices is 100.
 
         :param request: Request instance for SyncDubbing.
         :type request: :class:`tencentcloud.mps.v20190612.models.SyncDubbingRequest`
@@ -3034,6 +3103,29 @@ class MpsClient(AbstractClient):
             body = self.call("UpdateProject", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateVoice(self, request):
+        r"""This API is used to update the voice information.
+
+        :param request: Request instance for UpdateVoice.
+        :type request: :class:`tencentcloud.mps.v20190612.models.UpdateVoiceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateVoiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -901,6 +901,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteVoice(
+            self,
+            request: models.DeleteVoiceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVoiceResponse:
+        """
+        This API is used to delete a voice (created via voice cloning or design).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVoiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteWatermarkTemplate(
             self,
             request: models.DeleteWatermarkTemplateRequest,
@@ -1613,13 +1631,49 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DesignVoiceAsyncResponse:
         """
-        This API is used to design a voice. It generates a voice ID based on a prompt.
+        This API is used to design a voice. It generates a voice ID based on a prompt. The default maximum number of cloned or designed voices is 100.
         """
         
         kwargs = {}
         kwargs["action"] = "DesignVoiceAsync"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DesignVoiceAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DetectVideoSubtitleArea(
+            self,
+            request: models.DetectVideoSubtitleAreaRequest,
+            opts: Dict = None,
+    ) -> models.DetectVideoSubtitleAreaResponse:
+        """
+        This API is used to quickly detect the hard subtitle area in a video file.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DetectVideoSubtitleArea"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DetectVideoSubtitleAreaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DetectVideoWatermark(
+            self,
+            request: models.DetectVideoWatermarkRequest,
+            opts: Dict = None,
+    ) -> models.DetectVideoWatermarkResponse:
+        """
+        This API is used to quickly detect whether a video file contains a watermark.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DetectVideoWatermark"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DetectVideoWatermarkResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2336,7 +2390,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SyncDubbingResponse:
         """
-        This API is used to return the clone voice type Id or synthetic audio results synchronously.
+        This API is used to return the cloned voice ID or synthetic audio result. The default maximum number of cloned or designed voices is 100.
         """
         
         kwargs = {}
@@ -2397,6 +2451,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "UpdateProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateVoice(
+            self,
+            request: models.UpdateVoiceRequest,
+            opts: Dict = None,
+    ) -> models.UpdateVoiceResponse:
+        """
+        This API is used to update the voice information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateVoiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

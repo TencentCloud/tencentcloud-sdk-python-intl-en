@@ -35,13 +35,10 @@ FAILEDOPERATION_IDCARDINFOILLEGAL = 'FailedOperation.IdCardInfoIllegal'
 # The resolution of the image is too low or the proportion of the ID card in the image is too small.
 FAILEDOPERATION_IDCARDTOOSMALL = 'FailedOperation.IdCardTooSmall'
 
-# Invalid bank card information.
-FAILEDOPERATION_ILLEGALBANKCARDERROR = 'FailedOperation.IllegalBankCardError'
-
 # The image is blurry.
 FAILEDOPERATION_IMAGEBLUR = 'FailedOperation.ImageBlur'
 
-# Image decoding failed.
+# Failed to decode the image.
 FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 
 # No ID card is detected in the image.
@@ -59,22 +56,22 @@ FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
 # The information in the visual zone does not match that in the machine-readable zone.
 FAILEDOPERATION_INCONSISTENCYBETWEENMRZANDVRZ = 'FailedOperation.InconsistencyBetweenMRZAndVRZ'
 
+# The length of the postal code recognized from the Malaysian ID card is incorrect.
+FAILEDOPERATION_INVALIDPOSTALCODELENGTH = 'FailedOperation.InvalidPostalCodeLength'
+
 # Large model service invocation failed. Try again later.
 FAILEDOPERATION_LLMSERVICEFAILED = 'FailedOperation.LLMServiceFailed'
 
 # The input language is not supported.
 FAILEDOPERATION_LANGUAGENOTSUPPORT = 'FailedOperation.LanguageNotSupport'
 
-# There are multiple cards in the photo.
+# Multiple cards of the same side are detected in the image. Please upload an image with a single side or one front and one back side.
 FAILEDOPERATION_MULTICARDERROR = 'FailedOperation.MultiCardError'
-
-# No bank card found.
-FAILEDOPERATION_NOBANKCARDERROR = 'FailedOperation.NoBankCardError'
 
 # Not a Hong Kong identity card.
 FAILEDOPERATION_NOHKIDCARD = 'FailedOperation.NoHKIDCard'
 
-# Non-Malaysian ID cards.
+# The image does not contain a Malaysian ID card.
 FAILEDOPERATION_NOMASIDCARD = 'FailedOperation.NoMASIDCard'
 
 # Not a passport.
@@ -92,7 +89,7 @@ FAILEDOPERATION_UNKNOWFILETYPEERROR = 'FailedOperation.UnKnowFileTypeError'
 # The service has not been activated.
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
 
-# General Alarm Service exception
+# The general warning service encountered an exception.
 FAILEDOPERATION_WARNINGSERVICEFAILED = 'FailedOperation.WarningServiceFailed'
 
 # Config is not in valid JSON format.
@@ -107,7 +104,7 @@ INVALIDPARAMETERVALUE_INVALIDFILECONTENTSIZE = 'InvalidParameterValue.InvalidFil
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = 'InvalidParameterValue.InvalidParameterValueLimit'
 
-# The file is too large.
+# The file size exceeds the limit
 LIMITEXCEEDED_TOOLARGEFILEERROR = 'LimitExceeded.TooLargeFileError'
 
 # Image file download failed.
@@ -119,7 +116,7 @@ RESOURCEUNAVAILABLE_INARREARS = 'ResourceUnavailable.InArrears'
 # The resource package has been exhausted.
 RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = 'ResourceUnavailable.ResourcePackageRunOut'
 
-# Exceptional billing status.
+# The billing status is abnormal.
 RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = 'ResourcesSoldOut.ChargeStatusException'
 
 # Unknown parameter error.

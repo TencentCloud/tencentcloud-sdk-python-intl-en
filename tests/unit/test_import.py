@@ -459,6 +459,11 @@ def test_import_monitor_v20180724():
     from tencentcloud.monitor.v20180724 import models
 
 
+def test_import_monitor_v20230616():
+    from tencentcloud.monitor.v20230616 import monitor_client
+    from tencentcloud.monitor.v20230616 import models
+
+
 def test_import_mps_v20190612():
     from tencentcloud.mps.v20190612 import mps_client
     from tencentcloud.mps.v20190612 import models

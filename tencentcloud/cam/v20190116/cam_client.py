@@ -970,6 +970,29 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetPasswordRules(self, request):
+        r"""Obtaining CAM Console Password Rules
+
+        :param request: Request instance for GetPasswordRules.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetPasswordRulesRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetPasswordRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetPasswordRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetPasswordRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetPolicy(self, request):
         r"""This API (GetPolicy) is used to query and view policy details.
 
@@ -1720,6 +1743,29 @@ class CamClient(AbstractClient):
             body = self.call("UpdateOIDCConfig", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateOIDCConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdatePasswordRules(self, request):
+        r"""Updating CAM Console Password Rules
+
+        :param request: Request instance for UpdatePasswordRules.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdatePasswordRulesRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdatePasswordRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdatePasswordRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdatePasswordRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

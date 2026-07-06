@@ -403,31 +403,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def BankCardOCR(self, request):
-        r"""This API is used to detect and recognize key fields such as the card number, bank information, and expiration date on mainstream bank cards in Mainland China.
-
-        This API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).
-
-        :param request: Request instance for BankCardOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.BankCardOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.BankCardOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("BankCardOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.BankCardOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ExtractDocMulti(self, request):
         r"""This API supports identifying and extracting field information in structured scenarios such as complex scenarios and multiple formats. Key scenarios include: finance, health care, transportation, travel, insurance. Click [experience now](https://ocrdemo.cloud.tencent.com/).
 
@@ -552,126 +527,6 @@ class OcrClient(AbstractClient):
             body = self.call("HKIDCardOCR", params, headers=headers)
             response = json.loads(body)
             model = models.HKIDCardOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def HmtResidentPermitOCR(self, request):
-        r"""This API is used to recognize key fields on the front and back sides of a residence permit for Hong Kong, Macao, or Taiwan residents, including name, gender, date of birth, address, ID number, issuing authority, validity period, number of issues, and permit number. It can be used for residence permit OCR in scenarios such as bank account opening and user registration.
-
-        A maximum of 20 requests can be initiated per second for this API.
-
-        :param request: Request instance for HmtResidentPermitOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.HmtResidentPermitOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.HmtResidentPermitOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("HmtResidentPermitOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.HmtResidentPermitOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def IDCardOCR(self, request):
-        r"""This API is used to recognize all fields on the front and back sides of a second-generation resident identity card for the Chinese mainland: name, gender, ethnicity, date of birth, domicile, identification number, issuing authority, and validity period, with a recognition accuracy of over 99%.
-
-        In addition, this API supports multiple value-added capabilities to meet the needs of different scenarios. It can crop ID card photos and profile photos, and provide warnings for nine cases, as detailed below.
-
-        <table style="width:650px">
-              <thead>
-                <tr>
-               <th width="150">Capability</th>
-                  <th width="500">Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td rowspan="2">Cropping</td>
-                  <td>Crops the ID card photo (by removing extra edges outside the ID card and automatically correcting the shooting angle).</td>
-                </tr>
-                <tr>
-                  <td>Crops the profile photo (by automatically cutting out the face area in the ID card).</td>
-                </tr>
-                <tr>
-                  <td rowspan="9">Warning</td>
-                  <td>Warns about invalid ID card validity periods.</td>
-                </tr>
-                <tr>
-                  <td>Warns about  incomplete ID card borders.</td>
-                </tr>
-                <tr>
-                  <td>Warns about photocopied images.</td>
-                </tr>
-                <tr>
-                  <td>Warns about spoofed images.</td>
-                </tr>
-                  <tr>
-                  <td>Warns about border and frame occlusions.</td>
-                </tr>
-                 <tr>
-                  <td>Warns about temporary ID cards.</td>
-                </tr>
-                  <tr>
-                  <td>Warns about photoshopped images.</td>
-                </tr>
-                  <tr>
-                  <td>Warns about blurry ID card images (blurriness can be determined based on the image quality score).</td>
-                </tr>
-              </tbody>
-            </table>
-
-        A maximum of 20 requests can be initiated per second for this API.
-
-        :param request: Request instance for IDCardOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.IDCardOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("IDCardOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.IDCardOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def LicensePlateOCR(self, request):
-        r"""This API is used to recognize a license plate attached to a motor vehicle in the Chinese mainland and return the regional code, license plate number, and license plate color.
-
-        A maximum of 10 requests can be initiated per second for this API.
-
-        :param request: Request instance for LicensePlateOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.LicensePlateOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.LicensePlateOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("LicensePlateOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.LicensePlateOCRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -943,155 +798,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RecognizeGeneralInvoice(self, request):
-        r"""This API is used to recognize various types of invoices or tickets in an image or PDF file. You can also specify a type. 14 types of standard expense reimbursement invoices are supported, including value-added tax (VAT) invoice (special, general, roll, blockchain, and toll), fully digitalized electronic invoice (special and general), non-tax revenue invoice (general receipt and general payment voucher), quota invoice, general machine-printed invoice, car sales invoice (motor vehicle sales invoice and used car invoice), train ticket, taxi receipt, itinerary/receipt of e-ticket for air transportation, bus ticket, ship ticket, toll receipt, and medical invoice (inpatient and outpatient). This API can also be used for intelligent recognition of other types of invoices. To try now, click [here](https://intl.cloud.tencent.com/product/ocr?from_cn_redirect=1).
-
-        A maximum of 5 requests can be initiated per second for this API.
-
-
-        The invoice/ticket subtype (SubType), subtype description (TypeDescription), and parent type (Type) can be returned, as described below:
-        <table style="width:715px">
-              <thead>
-                <tr>
-                  <th style="width:200px">SubType</th>
-                  <th style="width:200px">TypeDescription</th>
-                  <th >Type</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td> VatSpecialInvoice</td>
-                  <td> Special VAT invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatCommonInvoice</td>
-                  <td> General VAT invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicCommonInvoice </td>
-                  <td> Electronic general VAT invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicSpecialInvoice </td>
-                  <td> Electronic special VAT invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicInvoiceBlockchain</td>
-                  <td> Blockchain electronic invoice </td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicInvoiceToll</td>
-                  <td> Electronic general VAT invoice (toll)</td>
-                  <td> 3 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicSpecialInvoiceFull</td>
-                  <td> Electronic invoice (special)</td>
-                  <td> 16 </td>
-                </tr>
-                <tr>
-                  <td> VatElectronicInvoiceFull</td>
-                  <td> Electronic invoice (general) </td>
-                  <td> 16 </td>
-                </tr>
-                <tr>
-                  <td> MotorVehicleSaleInvoice </td>
-                  <td> Motor vehicle sales invoice </td>
-                  <td> 12 </td>
-                </tr>
-                <tr>
-                  <td> UsedCarPurchaseInvoice </td>
-                  <td> Used car invoice </td>
-                  <td> 12 </td>
-                </tr>
-                <tr>
-                  <td> VatInvoiceRoll </td>
-                  <td> General VAT invoice (roll) </td>
-                  <td> 11 </td>
-                </tr>
-                <tr>
-                  <td> TaxiTicket </td>
-                  <td> Taxi receipt </td>
-                  <td> 0 </td>
-                </tr>
-                <tr>
-                  <td> QuotaInvoice </td>
-                  <td> Quota invoice </td>
-                  <td> 1 </td>
-                </tr>
-                <tr>
-                  <td> TrainTicket </td>
-                  <td> Train ticket </td>
-                  <td> 2 </td>
-                </tr>
-                <tr>
-                  <td> AirTransport </td>
-                  <td> Itinerary/Receipt of e-ticket for air transportation </td>
-                  <td> 5 </td>
-                </tr>
-                <tr>
-                  <td> MachinePrintedInvoice </td>
-                  <td> General machine-printed invoice </td>
-                  <td> 8 </td>
-                </tr>
-                <tr>
-                  <td> BusInvoice </td>
-                  <td> Bus ticket </td>
-                  <td> 9 </td>
-                </tr>
-                <tr>
-                  <td> ShippingInvoice </td>
-                  <td> Ship ticket </td>
-                  <td> 10 </td>
-                </tr>
-                <tr>
-                  <td> NonTaxIncomeGeneralBill </td>
-                  <td> General receipt for non-tax revenue </td>
-                  <td> 15 </td>
-                </tr>
-                <tr>
-                  <td> NonTaxIncomeElectronicBill </td>
-                  <td> General payment voucher for non-tax revenue (electronic) </td>
-                  <td> 15 </td>
-                </tr>
-                <tr>
-                  <td> TollInvoice </td>
-                  <td> Toll receipt </td>
-                  <td> 13 </td>
-                </tr>
-                <tr>
-                  <td> OtherInvoice </td>
-                  <td> Other </td>
-                  <td> -1 </td>
-                </tr>
-              </tbody>
-            </table>
-
-        :param request: Request instance for RecognizeGeneralInvoice.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralInvoiceRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeGeneralInvoiceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeGeneralInvoice", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeGeneralInvoiceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RecognizeIndonesiaIDCardOCR(self, request):
         r"""Indonesian identity card recognition
 
@@ -1108,52 +814,6 @@ class OcrClient(AbstractClient):
             body = self.call("RecognizeIndonesiaIDCardOCR", params, headers=headers)
             response = json.loads(body)
             model = models.RecognizeIndonesiaIDCardOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RecognizeKoreanDrivingLicenseOCR(self, request):
-        r"""This API is used to recognize a South Korean driver's license.
-
-        :param request: Request instance for RecognizeKoreanDrivingLicenseOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanDrivingLicenseOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanDrivingLicenseOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeKoreanDrivingLicenseOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeKoreanDrivingLicenseOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RecognizeKoreanIDCardOCR(self, request):
-        r"""This API is used to recognize a South Korean ID card.
-
-        :param request: Request instance for RecognizeKoreanIDCardOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanIDCardOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeKoreanIDCardOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeKoreanIDCardOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeKoreanIDCardOCRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1189,8 +849,9 @@ class OcrClient(AbstractClient):
 
 
     def RecognizeMainlandIDCardOCR(self, request):
-        r"""This interface supports the identification of all fields on the front and back of the second-generation ID card for mainland Chinese residents.Including name, gender, ethnicity, date of birth, address, citizen ID number, issuing authority, and validity period, the identification accuracy reaches more than 99%.In addition, this interface also supports a variety of value-added capabilities to meet the needs of different scenarios. Such as the cropping function of ID card photos and portrait photos, and also has 5 alarm functions.
-        As shown in the table below. <table style="width:650px"> <thead> <tr> <th width="150">Value-added ability</th> <th width="500">Ability items</th> </tr> </thead> <tbody> <tr> <td rowspan="9">Alarm function</td> </tr> <tr> <td>ID card photocopy warning</td> </tr> <tr> <td>ID card on-screen display warning</td> </tr> <tr> <td>Alarm for occlusion in the ID card frame</td> </tr> <tr> <td>ID card reflective warning</td> </tr> <tr> <td>Blurry picture warning</td> </tr> </tbody> </table> Default interface request frequency limit: 20 times/second
+        r"""This interface recognizes all fields on both sides of the Mainland China Resident Identity Card (second-generation), including name, gender, ethnicity, date of birth, address, ID number, issuing authority, and validity period, with an accuracy of over 99%.
+
+        In addition, the interface provides additional features for various scenarios, such as ID card and portrait photo cropping, along with five alarm detections (see table below).<table style="width:650px"> <thead> <tr> <th width="150">Value-added ability</th> <th width="500">Ability items</th> </tr> </thead> <tbody> <tr> <td rowspan="9">Alarm function</td> </tr> <tr> <td>ID card photocopy warning</td> </tr> <tr> <td>ID card on-screen display warning</td> </tr> <tr> <td>Alarm for occlusion in the ID card frame</td> </tr> <tr> <td>ID card reflective warning</td> </tr> <tr> <td>Blurry picture warning</td> </tr> </tbody> </table> Default rate limit: 20 requests/second.
 
         :param request: Request instance for RecognizeMainlandIDCardOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeMainlandIDCardOCRRequest`
@@ -1376,31 +1037,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RecognizeTableAccurateOCR(self, request):
-        r"""This API is used to recognize regular tables, borderless tables, or multi-tables in images or PDF files containing Chinese and English texts. It returns the text content of each cell, supports recognition of rotated table images, and can save the recognition results into an Excel document. It delivers higher recognition accuracy than that of table OCR v2 and applies to more scenarios. The recognition accuracy in difficult table scenarios, such as irregular tables and nested tables (borderless tables contained in bordered tables), is better than that of table OCR v2. To try it, click [here](https://intl.cloud.tencent.com/product/smart?from_cn_redirect=1-ocr).
-
-        A maximum of 2 requests can be initiated per second for this API.
-
-        :param request: Request instance for RecognizeTableAccurateOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableAccurateOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableAccurateOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeTableAccurateOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeTableAccurateOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RecognizeThaiIDCardOCR(self, request):
         r"""This API is used to recognize the fields on a Thai identity card, including name in Thai, name in English, address, date of birth, identification number, date of issue, and date of expiry.
 
@@ -1452,31 +1088,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def SealOCR(self, request):
-        r"""This API is used to recognize various types of seals, including invoice seals and finance seals. It is suitable for scenarios such as official document and invoice/ticket OCR.
-
-        A maximum of 5 requests can be initiated per second for this API.
-
-        :param request: Request instance for SealOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.SealOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.SealOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SealOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.SealOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def SmartStructuralOCRV2(self, request):
         r"""This API is used to recognize fields from cards, documents, bills, forms, contracts, and other structured information. It is flexible and efficient to use, without any configuration required. This API is suitable for recognizing structured information.
 
@@ -1493,56 +1104,6 @@ class OcrClient(AbstractClient):
             body = self.call("SmartStructuralOCRV2", params, headers=headers)
             response = json.loads(body)
             model = models.SmartStructuralOCRV2Response()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def SmartStructuralPro(self, request):
-        r"""This API is used to recognize fields from cards, documents, bills, forms, contracts, and other structured information. It is flexible and efficient to use, without any configuration required. This API is suitable for recognizing structured information.
-
-        A maximum of 10 requests can be initiated per second for this API.
-
-        :param request: Request instance for SmartStructuralPro.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralProRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralProResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SmartStructuralPro", params, headers=headers)
-            response = json.loads(body)
-            model = models.SmartStructuralProResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def TableOCR(self, request):
-        r"""This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.
-
-        This API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).
-
-        :param request: Request instance for TableOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.TableOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.TableOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("TableOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.TableOCRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

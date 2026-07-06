@@ -39209,7 +39209,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: <p>Whether uninstall protection is enabled <li>0: No</li> <li>1: Yes</li> <li>9: Not set, equivalent to 0 (disabled)</li></p>
+        :param _Enable: <p>Whether to enable QR code log-in <li>0 No</li> <li>1 Yes</li> <li>9 Not set, same as 0 means not enabled</li></p>
         :type Enable: int
         :param _Scope: <p>Scope <li>0: Selected hosts</li> <li>1: All hosts</li></p>
         :type Scope: int
@@ -39240,7 +39240,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def Enable(self):
-        r"""<p>Whether uninstall protection is enabled <li>0: No</li> <li>1: Yes</li> <li>9: Not set, equivalent to 0 (disabled)</li></p>
+        r"""<p>Whether to enable QR code log-in <li>0 No</li> <li>1 Yes</li> <li>9 Not set, same as 0 means not enabled</li></p>
         :rtype: int
         """
         return self._Enable

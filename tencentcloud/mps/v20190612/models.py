@@ -6388,6 +6388,157 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class AiPosterSuiteConfig(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 
+        :type Mode: str
+        :param _Definition: 
+        :type Definition: int
+        :param _Recipe: 
+        :type Recipe: list of RecipeItem
+        :param _Language: 
+        :type Language: str
+        :param _PanelRatio: 
+        :type PanelRatio: str
+        :param _PanelResolution: 
+        :type PanelResolution: str
+        :param _CustomVariables: 
+        :type CustomVariables: list of CustomVariable
+        :param _Model: 
+        :type Model: str
+        """
+        self._Mode = None
+        self._Definition = None
+        self._Recipe = None
+        self._Language = None
+        self._PanelRatio = None
+        self._PanelResolution = None
+        self._CustomVariables = None
+        self._Model = None
+
+    @property
+    def Mode(self):
+        r"""
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Definition(self):
+        r"""
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Recipe(self):
+        r"""
+        :rtype: list of RecipeItem
+        """
+        return self._Recipe
+
+    @Recipe.setter
+    def Recipe(self, Recipe):
+        self._Recipe = Recipe
+
+    @property
+    def Language(self):
+        r"""
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def PanelRatio(self):
+        r"""
+        :rtype: str
+        """
+        return self._PanelRatio
+
+    @PanelRatio.setter
+    def PanelRatio(self, PanelRatio):
+        self._PanelRatio = PanelRatio
+
+    @property
+    def PanelResolution(self):
+        r"""
+        :rtype: str
+        """
+        return self._PanelResolution
+
+    @PanelResolution.setter
+    def PanelResolution(self, PanelResolution):
+        self._PanelResolution = PanelResolution
+
+    @property
+    def CustomVariables(self):
+        r"""
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def Model(self):
+        r"""
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Definition = params.get("Definition")
+        if params.get("Recipe") is not None:
+            self._Recipe = []
+            for item in params.get("Recipe"):
+                obj = RecipeItem()
+                obj._deserialize(item)
+                self._Recipe.append(obj)
+        self._Language = params.get("Language")
+        self._PanelRatio = params.get("PanelRatio")
+        self._PanelResolution = params.get("PanelResolution")
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiQualityControlTaskInput(AbstractModel):
     r"""Input parameter type for media quality inspection.
 
@@ -6904,15 +7055,15 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: Confidence of a recognition segment. Value range: 0-100.
+        :param _Confidence: <p>Confidence of the recognized segment. Value range: 0–100.</p>
         :type Confidence: float
-        :param _StartTimeOffset: Start time offset of a recognition segment in seconds.
+        :param _StartTimeOffset: <p>Start time offset of the recognized segment, in seconds.</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: End time offset of a recognition segment in seconds.
+        :param _EndTimeOffset: <p>End time offset of the recognized segment, in seconds.</p>
         :type EndTimeOffset: float
-        :param _Text: Recognized text.
+        :param _Text: <p>Recognized text.</p>
         :type Text: str
-        :param _Wordlist: Word timestamp information.
+        :param _Wordlist: <p>Word timestamp information.</p>
         :type Wordlist: list of WordResult
         """
         self._Confidence = None
@@ -6923,7 +7074,7 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Confidence of a recognition segment. Value range: 0-100.
+        r"""<p>Confidence of the recognized segment. Value range: 0–100.</p>
         :rtype: float
         """
         return self._Confidence
@@ -6934,7 +7085,7 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""Start time offset of a recognition segment in seconds.
+        r"""<p>Start time offset of the recognized segment, in seconds.</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -6945,7 +7096,7 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""End time offset of a recognition segment in seconds.
+        r"""<p>End time offset of the recognized segment, in seconds.</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -6956,7 +7107,7 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def Text(self):
-        r"""Recognized text.
+        r"""<p>Recognized text.</p>
         :rtype: str
         """
         return self._Text
@@ -6967,7 +7118,7 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def Wordlist(self):
-        r"""Word timestamp information.
+        r"""<p>Word timestamp information.</p>
         :rtype: list of WordResult
         """
         return self._Wordlist
@@ -8463,11 +8614,11 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: Confidence of a recognition segment. Value range: 0-100.
+        :param _Confidence: <p>Confidence of the recognized segment. Value range: 0–100.</p>
         :type Confidence: float
-        :param _AreaCoordSet: Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :param _AreaCoordSet: <p>Area coordinates of the recognition result. The array contains 4 elements [x1,y1,x2,y2], representing the horizontal and vertical coordinates of the top-left corner and bottom-right corner.</p>
         :type AreaCoordSet: list of int
-        :param _Text: Recognized text.
+        :param _Text: <p>Recognized text.</p>
         :type Text: str
         """
         self._Confidence = None
@@ -8476,7 +8627,7 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Confidence of a recognition segment. Value range: 0-100.
+        r"""<p>Confidence of the recognized segment. Value range: 0–100.</p>
         :rtype: float
         """
         return self._Confidence
@@ -8487,7 +8638,7 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
-        r"""Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        r"""<p>Area coordinates of the recognition result. The array contains 4 elements [x1,y1,x2,y2], representing the horizontal and vertical coordinates of the top-left corner and bottom-right corner.</p>
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -8498,7 +8649,7 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     @property
     def Text(self):
-        r"""Recognized text.
+        r"""<p>Recognized text.</p>
         :rtype: str
         """
         return self._Text
@@ -9086,17 +9237,17 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: The confidence score for a segment. Value range: 0-100.
+        :param _Confidence: <p>Confidence of the recognized segment. Value range: 0–100.</p>
         :type Confidence: float
-        :param _StartTimeOffset: The start time offset (seconds) of a segment.
+        :param _StartTimeOffset: <p>Start time offset of the recognized segment, in seconds.</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: The end time offset (seconds) of a segment.
+        :param _EndTimeOffset: <p>End time offset of the recognized segment, in seconds.</p>
         :type EndTimeOffset: float
-        :param _Text: The text transcript.
+        :param _Text: <p>Recognized text.</p>
         :type Text: str
-        :param _Trans: The translation.
+        :param _Trans: <p>Translated text.</p>
         :type Trans: str
-        :param _Wordlist: Word timestamp information.
+        :param _Wordlist: <p>Word timestamp information.</p>
         :type Wordlist: list of WordResult
         """
         self._Confidence = None
@@ -9108,7 +9259,7 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""The confidence score for a segment. Value range: 0-100.
+        r"""<p>Confidence of the recognized segment. Value range: 0–100.</p>
         :rtype: float
         """
         return self._Confidence
@@ -9119,7 +9270,7 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""The start time offset (seconds) of a segment.
+        r"""<p>Start time offset of the recognized segment, in seconds.</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -9130,7 +9281,7 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""The end time offset (seconds) of a segment.
+        r"""<p>End time offset of the recognized segment, in seconds.</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -9141,7 +9292,7 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Text(self):
-        r"""The text transcript.
+        r"""<p>Recognized text.</p>
         :rtype: str
         """
         return self._Text
@@ -9152,7 +9303,7 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Trans(self):
-        r"""The translation.
+        r"""<p>Translated text.</p>
         :rtype: str
         """
         return self._Trans
@@ -9163,7 +9314,7 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Wordlist(self):
-        r"""Word timestamp information.
+        r"""<p>Word timestamp information.</p>
         :rtype: list of WordResult
         """
         return self._Wordlist
@@ -12352,13 +12503,13 @@ class AigcImageExtraParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AspectRatio: <p>Aspect ratio of the generated video.</p><p>Supported aspect ratios for different models:</p><ol><li>GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.</li></ol><p>Note: For more information about the aspect ratios of specific models, see the model website.</p>
+        :param _AspectRatio: <p>Aspect ratio of the generated video.</p><p>Supported aspect ratios for different models:</p><ol><li>Kling 2.1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, and 21:9.</li><li>Kling 3.0: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, and 21:9.</li><li>Kling 3.0-Omni: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, and 21:9.</li><li>Kling O1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, and 21:9.</li><li>Vidu q2: 16:9, 9:16, 1:1, 3:4, 4:3, 21:9, 2:3, and 3:2.</li><li>MJ v7: The aspect ratio needs to be specified in the prompt.</li></ol><p>Note: For more information about the aspect ratios of specific models, see the model website.</p>
         :type AspectRatio: str
         :param _Resolution: <p>Output resolution of the image.</p><p>Models that support this parameter:<br>Valid values: 720P, 1080P, 2K, and 4K.</p>
         :type Resolution: str
         :param _LogoAdd: <p>Indicates whether to add a logo watermark. No watermark is added by default. 1 - A watermark is added. 0 - No watermark is added.</p><p>Value range: [0, 1].</p><p>Default value: 0.</p>
         :type LogoAdd: int
-        :param _OutputFormat: 
+        :param _OutputFormat: <p>Specifies the output format of the image. JPEG and PNG formats are supported.</p>
         :type OutputFormat: str
         """
         self._AspectRatio = None
@@ -12368,7 +12519,7 @@ class AigcImageExtraParam(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""<p>Aspect ratio of the generated video.</p><p>Supported aspect ratios for different models:</p><ol><li>GEM: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, and 21:9.</li></ol><p>Note: For more information about the aspect ratios of specific models, see the model website.</p>
+        r"""<p>Aspect ratio of the generated video.</p><p>Supported aspect ratios for different models:</p><ol><li>Kling 2.1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, and 21:9.</li><li>Kling 3.0: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, and 21:9.</li><li>Kling 3.0-Omni: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, and 21:9.</li><li>Kling O1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, and 21:9.</li><li>Vidu q2: 16:9, 9:16, 1:1, 3:4, 4:3, 21:9, 2:3, and 3:2.</li><li>MJ v7: The aspect ratio needs to be specified in the prompt.</li></ol><p>Note: For more information about the aspect ratios of specific models, see the model website.</p>
         :rtype: str
         """
         return self._AspectRatio
@@ -12401,7 +12552,7 @@ class AigcImageExtraParam(AbstractModel):
 
     @property
     def OutputFormat(self):
-        r"""
+        r"""<p>Specifies the output format of the image. JPEG and PNG formats are supported.</p>
         :rtype: str
         """
         return self._OutputFormat
@@ -12480,7 +12631,7 @@ Note:1. When the model uses Vidu's q2 multi-reference image generation, this can
 
 
 class AigcStoreCosParam(AbstractModel):
-    r"""Information required for uploading AIGC result files to COS. The LVB_QCSRole role needs to be created and authorized.
+    r"""Information required for uploading AIGC result files to COS. The MPS_QcsRole role needs to be created and authorized.
 
     """
 
@@ -12552,13 +12703,13 @@ class AigcVideoExtraParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Resolution: <p>Resolution of the generated video. The resolution is related to the selected model and set video duration.</p><p>Supported resolution options for different models:</p><ol><li>Kling: 720P (default) and 1080P.</li><li>Hailuo: 768P (default) and 1080P.</li><li>Vidu: 720P (default) and 1080P.</li><li>GV: 720P (default) and 1080P.</li><li>OS: 720P. For images, only 1280x720 and 720x1280 are supported. Resolution cannot be specified.</li></ol><p>Note: In addition to the resolution supported by the model, 2K and 4K resolutions are also available.</p>
+        :param _Resolution: <p>Resolution of the generated video. The resolution is related to the selected model and set video duration.</p><p>Supported resolution options for different models:</p><ol><li>Kling: 720P (default) and 1080P. Kling 3.0 and Kling 3.0-Omni support 4K.</li><li>Hailuo: 768P (default) and 1080P.</li><li>Vidu: 540P, 720P (default), and 1080P.</li><li>PixVerse: 540P, 720P (default), and 1080P.</li><li>H2: 720P and 1080P (default).</li></ol><p>Note: In addition to the resolution supported by the model, 2K and 4K resolutions are also available.</p>
         :type Resolution: str
-        :param _AspectRatio: <p>Aspect ratio of the generated video.</p><p>Support for this parameter by different models:</p><ol><li>Kling only supports this parameter for text-to-video, with aspect ratios of 16:9 (default), 9:16, and 1:1.</li><li>Hailuo does not support this parameter.</li><li>Vidu supports [16:9, 9:16, 4:3, 3:4, 1:1] for text-to-video and reference image-to-video only. Only q2 supports 4:3 and 3:4.</li><li>GV supports 16:9 (default) and 9:16.</li><li>OS only supports this parameter for text-to-video, with aspect ratios of 16:9 (default) and 9:16.</li></ol><p>Note: For more information about the supported aspect ratios of specific models, see the model website.</p>
+        :param _AspectRatio: <p>Aspect ratio of the generated video.</p><p>Support for this parameter by different models:</p><ol><li>Kling only supports this parameter for text-to-video, with aspect ratios of 16:9 (default), 9:16, and 1:1.</li><li>Hailuo does not support this parameter.</li><li>Vidu supports [16:9, 9:16, 4:3, 3:4, 1:1] for text-to-video and reference image-to-video only. Only q2 supports 4:3 and 3:4.</li><li>PixVerse supports [16:9, 9:16, 4:3, 3:4, 1:1, 2:3, 3:2, 21:9] for text-to-video and reference image-to-video only. Only v6 and c1 support 2:3, 3:2, and 21:9.</li><li>H2 supports [16:9, 9:16, 4:3, 3:4, 4:5, 5:4, 1:1, 21:9, 9:21] for text-to-video and reference image-to-video only.</li></ol><p>Note: For more information about the supported aspect ratios of specific models, see the model website.</p>
         :type AspectRatio: str
-        :param _LogoAdd: <p>Indicates whether to add a logo watermark.</p><ol><li>Hailuo supports this parameter.</li><li>Kling supports this parameter.</li><li>Vidu supports this parameter.</li></ol>
+        :param _LogoAdd: <p>Indicates whether to add a logo watermark.</p><ol><li>Hailuo supports this parameter.</li><li>Kling supports this parameter.</li><li>Vidu supports this parameter.</li><li>H2 supports this parameter.</li></ol>
         :type LogoAdd: int
-        :param _EnableAudio: <p>Indicates whether to generate audio for the video. Valid values: true or false.</p><p>Models that support this parameter:</p><ol><li>GV. Default value: true.</li><li>OS. Default value: true.</li></ol>
+        :param _EnableAudio: <p>Indicates whether to generate audio for the video. Valid values: true or false.</p><p>Models that support this parameter:</p><ol><li>Vidu. Only q3 series models support this parameter. Default value: false.</li><li>PixVerse. Default value: false.</li><li>Kling. Default value: false.</li></ol>
         :type EnableAudio: bool
         :param _OffPeak: <p>Indicates whether to use the off-peak scheduling mode. Only Vidu supports this parameter.<br>Tasks submitted in off-peak mode will be processed within 48 hours. Uncompleted tasks will be canceled.</p>
         :type OffPeak: bool
@@ -12574,7 +12725,7 @@ class AigcVideoExtraParam(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""<p>Resolution of the generated video. The resolution is related to the selected model and set video duration.</p><p>Supported resolution options for different models:</p><ol><li>Kling: 720P (default) and 1080P.</li><li>Hailuo: 768P (default) and 1080P.</li><li>Vidu: 720P (default) and 1080P.</li><li>GV: 720P (default) and 1080P.</li><li>OS: 720P. For images, only 1280x720 and 720x1280 are supported. Resolution cannot be specified.</li></ol><p>Note: In addition to the resolution supported by the model, 2K and 4K resolutions are also available.</p>
+        r"""<p>Resolution of the generated video. The resolution is related to the selected model and set video duration.</p><p>Supported resolution options for different models:</p><ol><li>Kling: 720P (default) and 1080P. Kling 3.0 and Kling 3.0-Omni support 4K.</li><li>Hailuo: 768P (default) and 1080P.</li><li>Vidu: 540P, 720P (default), and 1080P.</li><li>PixVerse: 540P, 720P (default), and 1080P.</li><li>H2: 720P and 1080P (default).</li></ol><p>Note: In addition to the resolution supported by the model, 2K and 4K resolutions are also available.</p>
         :rtype: str
         """
         return self._Resolution
@@ -12585,7 +12736,7 @@ class AigcVideoExtraParam(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""<p>Aspect ratio of the generated video.</p><p>Support for this parameter by different models:</p><ol><li>Kling only supports this parameter for text-to-video, with aspect ratios of 16:9 (default), 9:16, and 1:1.</li><li>Hailuo does not support this parameter.</li><li>Vidu supports [16:9, 9:16, 4:3, 3:4, 1:1] for text-to-video and reference image-to-video only. Only q2 supports 4:3 and 3:4.</li><li>GV supports 16:9 (default) and 9:16.</li><li>OS only supports this parameter for text-to-video, with aspect ratios of 16:9 (default) and 9:16.</li></ol><p>Note: For more information about the supported aspect ratios of specific models, see the model website.</p>
+        r"""<p>Aspect ratio of the generated video.</p><p>Support for this parameter by different models:</p><ol><li>Kling only supports this parameter for text-to-video, with aspect ratios of 16:9 (default), 9:16, and 1:1.</li><li>Hailuo does not support this parameter.</li><li>Vidu supports [16:9, 9:16, 4:3, 3:4, 1:1] for text-to-video and reference image-to-video only. Only q2 supports 4:3 and 3:4.</li><li>PixVerse supports [16:9, 9:16, 4:3, 3:4, 1:1, 2:3, 3:2, 21:9] for text-to-video and reference image-to-video only. Only v6 and c1 support 2:3, 3:2, and 21:9.</li><li>H2 supports [16:9, 9:16, 4:3, 3:4, 4:5, 5:4, 1:1, 21:9, 9:21] for text-to-video and reference image-to-video only.</li></ol><p>Note: For more information about the supported aspect ratios of specific models, see the model website.</p>
         :rtype: str
         """
         return self._AspectRatio
@@ -12596,7 +12747,7 @@ class AigcVideoExtraParam(AbstractModel):
 
     @property
     def LogoAdd(self):
-        r"""<p>Indicates whether to add a logo watermark.</p><ol><li>Hailuo supports this parameter.</li><li>Kling supports this parameter.</li><li>Vidu supports this parameter.</li></ol>
+        r"""<p>Indicates whether to add a logo watermark.</p><ol><li>Hailuo supports this parameter.</li><li>Kling supports this parameter.</li><li>Vidu supports this parameter.</li><li>H2 supports this parameter.</li></ol>
         :rtype: int
         """
         return self._LogoAdd
@@ -12607,7 +12758,7 @@ class AigcVideoExtraParam(AbstractModel):
 
     @property
     def EnableAudio(self):
-        r"""<p>Indicates whether to generate audio for the video. Valid values: true or false.</p><p>Models that support this parameter:</p><ol><li>GV. Default value: true.</li><li>OS. Default value: true.</li></ol>
+        r"""<p>Indicates whether to generate audio for the video. Valid values: true or false.</p><p>Models that support this parameter:</p><ol><li>Vidu. Only q3 series models support this parameter. Default value: false.</li><li>PixVerse. Default value: false.</li><li>Kling. Default value: false.</li></ol>
         :rtype: bool
         """
         return self._EnableAudio
@@ -14009,51 +14160,16 @@ class AudioTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Specifies the encoding format of the audio stream.
-When audio transcoding is not needed, the optional values are:.
-<li>copy.</li>
-When the outer parameter Container is mp3, the valid values are:.
-<li>mp3.</li>
-When the outer parameter Container is ogg or flac, the valid values are:.
-<li>flac.</li>
-When the outer parameter Container is m4a, valid values are:.
-<li>aac;</li>
-<li>ac3.</li>
-When the outer parameter Container is mp4 or flv, valid values are:.
-<li>aac: more suitable for mp4;</li>.
-<li>mp3: more suitable for flv;</li>.
-<li>mp2.</li>
-When the outer parameter Container is hls, valid values are:.
-<li>aac;</li>
-<li>mp3;</li>
-<li>eac3: used when merging adaptive transcoding audio tracks.</li>.
+        :param _Codec: <p>Audio stream encoding format.<br>When audio transcoding is not needed, the valid value is:</p><li>copy.</li>When the outer parameter Container is mp3, the valid value is:<li>mp3.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>aac;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>aac: suitable for mp4.</li><li>mp3: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid values are:<li>aac.</li><li>mp3.</li><li>eac3: used when merging audio tracks with adaptive transcoding.</li>When the outer parameter Container is wav, the valid values are:<li>pcm16 and pcm24.</li>
         :type Codec: str
-        :param _Bitrate: The bitrate of the audio stream. value ranges from 0 to 26 and in the range of [26, 256]. measurement unit: kbps.
-If the value is 0, the audio bitrate will be the same as that of the original audio.
-Specifies that when using the TrackChannelInfo parameter for adaptive transcoding audio track merging, the valid values are:.
-Cannot be set to 0.
-2). when Codec is aac, valid values: [26, 256].
-3). when Codec is ac3, valid values: [26, 640].
-4) when Codec is eac3, value range: [26, 6144]. remark: when SampleRate is 44100HZ, maximum value: 5644. when SampleRate is 48000HZ, maximum value: 6144.
-
-
+        :param _Bitrate: <p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256].<br>When the value is 0, it means the audio bitrate remains consistent with that of the original audio.<br>Note: If the TrackChannelInfo parameter is used for audio track merging with adaptive transcoding, the value range:<br>1) cannot be 0.<br>2) When Codec is aac, the value range is [26, 256].<br>3) When Codec is ac3, the value range is [26, 640].<br>4) When Codec is eac3, the value range is [26, 6144]. Note: When SampleRate is 44100HZ, the maximum value is 5644. When SampleRate is 48000HZ, the maximum value is 6144.</p>
         :type Bitrate: int
-        :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
-Unit: Hz.
-Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
+        :param _SampleRate: <p>Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. Enter 0 to use the source audio sampling rate.<br>For details, see <a href="https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53">Audio Sampling Rate Range</a>.<br>Unit: Hz.<br>Note: Ensure the source audio stream sampling rate is within the supported range. Otherwise, transcoding may fail.</p>
         :type SampleRate: int
-        :param _AudioChannel: Audio channel mode. Valid values:
-<li>1: mono-channel.</li>
-<li>2: dual-channel.</li>
-<li>6: 5.1 surround sound.
-<li>Default value: 2.
-When the container format is audio (flac, ogg, mp3, and m4a), the audio channel cannot be set to 5.1 surround sound.
+        :param _AudioChannel: <p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
         :type AudioChannel: int
-        :param _TrackChannelInfo: Merge audio track information.
-This field only takes effect in adaptive bitrate transcoding.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _TrackChannelInfo: <p>Audio track merging information.<br>Note: This field only takes effect for adaptive transcoding.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TrackChannelInfo: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         """
         self._Codec = None
@@ -14064,24 +14180,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Codec(self):
-        r"""Specifies the encoding format of the audio stream.
-When audio transcoding is not needed, the optional values are:.
-<li>copy.</li>
-When the outer parameter Container is mp3, the valid values are:.
-<li>mp3.</li>
-When the outer parameter Container is ogg or flac, the valid values are:.
-<li>flac.</li>
-When the outer parameter Container is m4a, valid values are:.
-<li>aac;</li>
-<li>ac3.</li>
-When the outer parameter Container is mp4 or flv, valid values are:.
-<li>aac: more suitable for mp4;</li>.
-<li>mp3: more suitable for flv;</li>.
-<li>mp2.</li>
-When the outer parameter Container is hls, valid values are:.
-<li>aac;</li>
-<li>mp3;</li>
-<li>eac3: used when merging adaptive transcoding audio tracks.</li>.
+        r"""<p>Audio stream encoding format.<br>When audio transcoding is not needed, the valid value is:</p><li>copy.</li>When the outer parameter Container is mp3, the valid value is:<li>mp3.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>aac;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>aac: suitable for mp4.</li><li>mp3: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid values are:<li>aac.</li><li>mp3.</li><li>eac3: used when merging audio tracks with adaptive transcoding.</li>When the outer parameter Container is wav, the valid values are:<li>pcm16 and pcm24.</li>
         :rtype: str
         """
         return self._Codec
@@ -14092,15 +14191,7 @@ When the outer parameter Container is hls, valid values are:.
 
     @property
     def Bitrate(self):
-        r"""The bitrate of the audio stream. value ranges from 0 to 26 and in the range of [26, 256]. measurement unit: kbps.
-If the value is 0, the audio bitrate will be the same as that of the original audio.
-Specifies that when using the TrackChannelInfo parameter for adaptive transcoding audio track merging, the valid values are:.
-Cannot be set to 0.
-2). when Codec is aac, valid values: [26, 256].
-3). when Codec is ac3, valid values: [26, 640].
-4) when Codec is eac3, value range: [26, 6144]. remark: when SampleRate is 44100HZ, maximum value: 5644. when SampleRate is 48000HZ, maximum value: 6144.
-
-
+        r"""<p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256].<br>When the value is 0, it means the audio bitrate remains consistent with that of the original audio.<br>Note: If the TrackChannelInfo parameter is used for audio track merging with adaptive transcoding, the value range:<br>1) cannot be 0.<br>2) When Codec is aac, the value range is [26, 256].<br>3) When Codec is ac3, the value range is [26, 640].<br>4) When Codec is eac3, the value range is [26, 6144]. Note: When SampleRate is 44100HZ, the maximum value is 5644. When SampleRate is 48000HZ, the maximum value is 6144.</p>
         :rtype: int
         """
         return self._Bitrate
@@ -14111,10 +14202,7 @@ Cannot be set to 0.
 
     @property
     def SampleRate(self):
-        r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
-Unit: Hz.
-Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
+        r"""<p>Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. Enter 0 to use the source audio sampling rate.<br>For details, see <a href="https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53">Audio Sampling Rate Range</a>.<br>Unit: Hz.<br>Note: Ensure the source audio stream sampling rate is within the supported range. Otherwise, transcoding may fail.</p>
         :rtype: int
         """
         return self._SampleRate
@@ -14125,12 +14213,7 @@ Note: Make sure that the sampling rate of the source audio stream is among the a
 
     @property
     def AudioChannel(self):
-        r"""Audio channel mode. Valid values:
-<li>1: mono-channel.</li>
-<li>2: dual-channel.</li>
-<li>6: 5.1 surround sound.
-<li>Default value: 2.
-When the container format is audio (flac, ogg, mp3, and m4a), the audio channel cannot be set to 5.1 surround sound.
+        r"""<p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
         :rtype: int
         """
         return self._AudioChannel
@@ -14141,10 +14224,8 @@ When the container format is audio (flac, ogg, mp3, and m4a), the audio channel 
 
     @property
     def TrackChannelInfo(self):
-        r"""Merge audio track information.
-This field only takes effect in adaptive bitrate transcoding.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Audio track merging information.<br>Note: This field only takes effect for adaptive transcoding.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         """
         return self._TrackChannelInfo
@@ -14179,42 +14260,20 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Audio stream encoding format.
-When audio transcoding is not needed, the value is:
-<li>copy.</li>
-When the outer parameter Container is mp3, the value is:
-<li>mp3.</li>
-When the outer parameter Container is ogg or flac, the value is:
-<li>flac.</li>
-When the outer parameter Container is m4a, valid values are:
-<li>aac;</li>
-<li>ac3.</li>
-When the outer parameter Container is mp4 or flv, valid values are:
-<li>aac: more suitable for mp4;</li>
-<li>mp3: more suitable for flv;</li>
-<li>mp2.</li>
-When the outer parameter Container is hls, valid values are:
-<li>aac;</li>
-<li>mp3.</li>
+        :param _Codec: <p>Audio stream encoding format.<br>When audio transcoding is not needed, the valid value is:</p><li>copy.</li>When the outer parameter Container is mp3, the valid value is:<li>mp3.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>aac;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>aac: suitable for mp4.</li><li>mp3: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid values are:<li>aac.</li><li>mp3.</li>When the outer parameter Container is wav, the valid values are:<li>pcm16 and pcm24.</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Codec: str
-        :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
+        :param _Bitrate: <p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means the audio bitrate remains consistent with that of the original audio.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Bitrate: int
-        :param _SampleRate: Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
-Unit: Hz.
-Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
+        :param _SampleRate: <p>Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. Enter 0 to use the source audio sampling rate.<br>For details, see <a href="https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53">Audio Sampling Rate Range</a>.<br>Unit: Hz.<br>Note: Ensure the source audio stream sampling rate is within the supported range. Otherwise, transcoding may fail.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SampleRate: int
-        :param _AudioChannel: Audio channel mode. Valid values:
-<li>1: mono-channel.</li>
-<li>2: dual-channel.</li>
-<li>6: 5.1 surround sound.
-When the container format is audio (flac, ogg, mp3, and m4a), the audio channel cannot be set to 5.1 surround sound.
-
+        :param _AudioChannel: <p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AudioChannel: int
-        :param _StreamSelects: The audio tracks to retain. All audio tracks are retained by default.
+        :param _StreamSelects: <p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StreamSelects: list of int
         """
         self._Codec = None
@@ -14225,23 +14284,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Codec(self):
-        r"""Audio stream encoding format.
-When audio transcoding is not needed, the value is:
-<li>copy.</li>
-When the outer parameter Container is mp3, the value is:
-<li>mp3.</li>
-When the outer parameter Container is ogg or flac, the value is:
-<li>flac.</li>
-When the outer parameter Container is m4a, valid values are:
-<li>aac;</li>
-<li>ac3.</li>
-When the outer parameter Container is mp4 or flv, valid values are:
-<li>aac: more suitable for mp4;</li>
-<li>mp3: more suitable for flv;</li>
-<li>mp2.</li>
-When the outer parameter Container is hls, valid values are:
-<li>aac;</li>
-<li>mp3.</li>
+        r"""<p>Audio stream encoding format.<br>When audio transcoding is not needed, the valid value is:</p><li>copy.</li>When the outer parameter Container is mp3, the valid value is:<li>mp3.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>aac;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>aac: suitable for mp4.</li><li>mp3: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid values are:<li>aac.</li><li>mp3.</li>When the outer parameter Container is wav, the valid values are:<li>pcm16 and pcm24.</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -14253,7 +14296,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bitrate(self):
-        r"""Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
+        r"""<p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means the audio bitrate remains consistent with that of the original audio.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Bitrate
@@ -14264,10 +14308,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleRate(self):
-        r"""Sampling rate of the audio stream. Different encoding standards support different sampling rate options. The value of 0 indicates using the sampling rate value of the source audio.
-For details, see [Supported Range of Audio Sampling Rate](https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
-Unit: Hz.
-Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
+        r"""<p>Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. Enter 0 to use the source audio sampling rate.<br>For details, see <a href="https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53">Audio Sampling Rate Range</a>.<br>Unit: Hz.<br>Note: Ensure the source audio stream sampling rate is within the supported range. Otherwise, transcoding may fail.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -14279,12 +14320,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioChannel(self):
-        r"""Audio channel mode. Valid values:
-<li>1: mono-channel.</li>
-<li>2: dual-channel.</li>
-<li>6: 5.1 surround sound.
-When the container format is audio (flac, ogg, mp3, and m4a), the audio channel cannot be set to 5.1 surround sound.
-
+        r"""<p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -14296,7 +14332,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamSelects(self):
-        r"""The audio tracks to retain. All audio tracks are retained by default.
+        r"""<p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
         return self._StreamSelects
@@ -18915,21 +18952,23 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: <p>Model name.<br>Supported models:<br>Hunyuan.<br>GEM.<br>Qwen.</p>
+        :param _ModelName: <p>Model name.<br>Supported models:<br>Hunyuan.<br>Qwen.<br>Vidu.<br>Kling.<br>MJ.</p>
         :type ModelName: str
-        :param _ModelVersion: <p>Specify the model version number. By default, the system uses the supported stable version of the model.</p><ol><li>GEM: [2.5 and 3.0].</li></ol>
+        :param _ModelVersion: <p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hunyuan: [3.0].</li><li>Vidu: [q2].</li><li>Kling: [2.1, O1, 3.0, and 3.0-Omni].</li><li>Qwen: [0925].</li><li>MJ: [v7].</li></ol>
         :type ModelVersion: str
-        :param _Prompt: <p>Description of the generated image. (Note: Supports up to 1000 characters.) This parameter is required when no reference image is passed in.</p>
+        :param _SceneType: <p>Used for scene-based image generation; only supported by some models.</p><p>Enumeration value:</p><ul><li>3d_panorama: panoramic view. Only Hunyuan supports this.</li></ul>
+        :type SceneType: str
+        :param _Prompt: <p>Description of the generated image. This parameter is required when no reference image is specified.</p>
         :type Prompt: str
-        :param _NegativePrompt: <p>Specifies the content you want to prevent the model from generating. Note: Not all models support this. For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.</p>
+        :param _NegativePrompt: <p>Specifies the content you want to prevent the model from generating. Note: Not all models support this.</p><p>For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.</p>
         :type NegativePrompt: str
-        :param _EnhancePrompt: <p>The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
+        :param _EnhancePrompt: <p>The default value is False, meaning the model follows instructions strictly.<br>For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
         :type EnhancePrompt: bool
-        :param _ImageInfos: <p>Used for inputting image information as a resource for reference. Default support for inputting an image.</p><p>Models supporting multi-image input:</p><ol><li>GEM, supporting up to 3 images as resource input.</li></ol><p>Note:</p><ol><li>Recommended image less than 7M. Limits vary by model.</li><li>Format support: jpeg, png, webp.</li></ol>
+        :param _ImageInfos: <p>Reference resource images. By default, one image can be specified.</p><p>Models supporting multiple images:</p><ol><li>Kling 2.1 supports up to 4 images as resource image input.</li><li>Kling 3.0-Omni supports up to 10 images as resource image input.</li><li>Kling O1 supports up to 10 images as resource image input.</li><li>Vidu q2 supports up to 7 images as resource image input.</li><li>Hunyuan 3.0 supports up to 3 images as resource image input.</li><li>MJ v7 supports up to 3 images as resource image input.</li></ol><p>Note:</p><ol><li>The recommended image size is less than 7 MB. Different models have different limits.</li><li>Supported image formats: JPEG, PNG, and WebP.</li></ol>
         :type ImageInfos: list of AigcImageInfo
         :param _ExtraParameters: <p>Additional parameters required for the model.</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
-        :param _AdditionalParameters: <p>Used to input some special scene parameters required by the model, serialized into a string in Json format. Example: {"size":"2048x2048"}</p>
+        :param _AdditionalParameters: <p>Special scenario parameters required by the model, formatted as a JSON serialized string.</p><ol><li>Hunyuan 3.0 supports freely setting resolution width and height within [512, 2048] pixels, with the product of width and height less than or equal to 1024x1024 pixels.</li><li>Qwen 0925 supports freely setting resolution width and height, with a valid total pixel range of [512x512=261632, 2048x2048=4194304].</li></ol><p>Example: {"size":"1024x1024"}.</p>
         :type AdditionalParameters: str
         :param _StoreCosParam: <p>COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.</p>
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
@@ -18938,6 +18977,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         """
         self._ModelName = None
         self._ModelVersion = None
+        self._SceneType = None
         self._Prompt = None
         self._NegativePrompt = None
         self._EnhancePrompt = None
@@ -18949,7 +18989,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>Model name.<br>Supported models:<br>Hunyuan.<br>GEM.<br>Qwen.</p>
+        r"""<p>Model name.<br>Supported models:<br>Hunyuan.<br>Qwen.<br>Vidu.<br>Kling.<br>MJ.</p>
         :rtype: str
         """
         return self._ModelName
@@ -18960,7 +19000,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>Specify the model version number. By default, the system uses the supported stable version of the model.</p><ol><li>GEM: [2.5 and 3.0].</li></ol>
+        r"""<p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hunyuan: [3.0].</li><li>Vidu: [q2].</li><li>Kling: [2.1, O1, 3.0, and 3.0-Omni].</li><li>Qwen: [0925].</li><li>MJ: [v7].</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -18970,8 +19010,19 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._ModelVersion = ModelVersion
 
     @property
+    def SceneType(self):
+        r"""<p>Used for scene-based image generation; only supported by some models.</p><p>Enumeration value:</p><ul><li>3d_panorama: panoramic view. Only Hunyuan supports this.</li></ul>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
     def Prompt(self):
-        r"""<p>Description of the generated image. (Note: Supports up to 1000 characters.) This parameter is required when no reference image is passed in.</p>
+        r"""<p>Description of the generated image. This parameter is required when no reference image is specified.</p>
         :rtype: str
         """
         return self._Prompt
@@ -18982,7 +19033,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        r"""<p>Specifies the content you want to prevent the model from generating. Note: Not all models support this. For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.</p>
+        r"""<p>Specifies the content you want to prevent the model from generating. Note: Not all models support this.</p><p>For example: top lighting, bright colors, people, animals, multiple vehicles, and wind.</p>
         :rtype: str
         """
         return self._NegativePrompt
@@ -18993,7 +19044,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def EnhancePrompt(self):
-        r"""<p>The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
+        r"""<p>The default value is False, meaning the model follows instructions strictly.<br>For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
         :rtype: bool
         """
         return self._EnhancePrompt
@@ -19004,7 +19055,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ImageInfos(self):
-        r"""<p>Used for inputting image information as a resource for reference. Default support for inputting an image.</p><p>Models supporting multi-image input:</p><ol><li>GEM, supporting up to 3 images as resource input.</li></ol><p>Note:</p><ol><li>Recommended image less than 7M. Limits vary by model.</li><li>Format support: jpeg, png, webp.</li></ol>
+        r"""<p>Reference resource images. By default, one image can be specified.</p><p>Models supporting multiple images:</p><ol><li>Kling 2.1 supports up to 4 images as resource image input.</li><li>Kling 3.0-Omni supports up to 10 images as resource image input.</li><li>Kling O1 supports up to 10 images as resource image input.</li><li>Vidu q2 supports up to 7 images as resource image input.</li><li>Hunyuan 3.0 supports up to 3 images as resource image input.</li><li>MJ v7 supports up to 3 images as resource image input.</li></ol><p>Note:</p><ol><li>The recommended image size is less than 7 MB. Different models have different limits.</li><li>Supported image formats: JPEG, PNG, and WebP.</li></ol>
         :rtype: list of AigcImageInfo
         """
         return self._ImageInfos
@@ -19026,7 +19077,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def AdditionalParameters(self):
-        r"""<p>Used to input some special scene parameters required by the model, serialized into a string in Json format. Example: {"size":"2048x2048"}</p>
+        r"""<p>Special scenario parameters required by the model, formatted as a JSON serialized string.</p><ol><li>Hunyuan 3.0 supports freely setting resolution width and height within [512, 2048] pixels, with the product of width and height less than or equal to 1024x1024 pixels.</li><li>Qwen 0925 supports freely setting resolution width and height, with a valid total pixel range of [512x512=261632, 2048x2048=4194304].</li></ol><p>Example: {"size":"1024x1024"}.</p>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -19061,6 +19112,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
         self._ModelVersion = params.get("ModelVersion")
+        self._SceneType = params.get("SceneType")
         self._Prompt = params.get("Prompt")
         self._NegativePrompt = params.get("NegativePrompt")
         self._EnhancePrompt = params.get("EnhancePrompt")
@@ -19138,33 +19190,33 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: <p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>OS.<br>GV.<br>PixVerse.</p>
+        :param _ModelName: <p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>PixVerse.<br>Mingmou.<br>H2.</p>
         :type ModelName: str
-        :param _ModelVersion: <p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hailuo: [02, 2.3, and 2.3-fast].</li><li>Kling: [1.6, 2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, q3-turbo, q3, and q3-mix].</li><li>GV: [3.1 and 3.1-fast].</li><li>OS: [2.0].</li><li>PixVerse: [v5.6, v6, and c1].</li></ol>
+        :param _ModelVersion: <p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hunyuan: [1.5].</li><li>Hailuo: [02, 2.3, and 2.3-fast].</li><li>Kling: [1.6, 2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, q3-turbo, q3, and q3-mix].</li><li>PixVerse: [v5.6, v6, and c1].</li><li>H2: [1.0].</li></ol>
         :type ModelVersion: str
-        :param _SceneType: <p>Scenario for the generated video.<br>Note: Not all models support scenarios.</p><ol><li>Kling supports motion control (motion_control).</li><li>Mingmou supports landscape-to-portrait conversion (land2port).</li><li>Vidu supports special effect templates (template_effect).</li></ol>
+        :param _SceneType: <p>Scenario for the generated video.<br>Note: Not all models support scenarios.</p><ol><li>Kling supports: motion control (motion_control), digital human (avatar_i2v), and lip sync (lip_sync).</li><li>Mingmou supports: landscape-to-portrait conversion (land2port).</li><li>Vidu supports: effect templates (template_effect).</li><li>Hunyuan supports: 3D world model (3d_scene). The returned file is not a video.</li></ol>
         :type SceneType: str
-        :param _Prompt: <p>Description of the generated video. (Note: A maximum of 2000 characters is supported.) This parameter is required when no reference image is specified.</p>
+        :param _Prompt: <p>Description of the generated video. This parameter is required when no image is specified.</p>
         :type Prompt: str
         :param _NegativePrompt: <p>Specifies the content you want to prevent the model from generating.<br>Note: Not all models support this.<br>For example:<br>Top lighting and bright colors.<br>People and animals.<br>Multiple vehicles and wind.</p>
         :type NegativePrompt: str
-        :param _EnhancePrompt: <p>The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
+        :param _EnhancePrompt: <p>The default value is False, meaning the model follows instructions strictly.<br>For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
         :type EnhancePrompt: bool
-        :param _ImageUrl: <p>Image URL for video generation. The URL must be accessible from the public network.<br>Note:</p><ol><li>The recommended image size is no more than 10 MB. Different models have different size limits.</li><li>Supported image formats: JPEG and PNG.</li><li>If the OS model is used, the input image dimension should be 1280x720 or 720x1280.</li></ol>
+        :param _ImageUrl: <p>Image URL used for video generation. The URL must be accessible from the public network.<br>Note:</p><ol><li>The recommended image size is no more than 10 MB. Different models have different size limits. See the model website for a more complete description.</li><li>Supported image formats: JPEG and PNG.</li></ol>
         :type ImageUrl: str
-        :param _LastImageUrl: <p>The model will generate a video using the image of this parameter as the ending frame.<br>Models that support this parameter:</p><ol><li>GV. If the ending frame image is specified, ImageUrl is required as the starting frame.</li><li>Kling. Version 2.1 supports starting and ending frames with a resolution of 1080P.</li><li>Vidu. q2-pro and q2-turbo support starting and ending frames.</li></ol><p>Note:</p><ol><li>The recommended image size is no more than 10 MB. Different models have different limits.</li><li>Supported image formats: JPEG and PNG.</li></ol>
+        :param _LastImageUrl: <p>The model will generate a video using the image of this parameter as the ending frame.<br>Models that support this parameter:</p><ol><li>Kling 2.0, O1, 3.0, and 3.0-Omni support starting and ending frames.</li><li>Kling 1.6, 2.1, 2.5, and 2.6 support starting and ending frames with Resolution:1080p.</li><li>Vidu q2-pro, q2-turbo, q3-pro, and q3-turbo support starting and ending frames.</li><li>PixVerse v5.6, v6, and c1 support starting and ending frames.</li><li>Hailuo 02 supports starting and ending frames.</li></ol><p>Note:</p><ol><li>The recommended image size is no more than 10 MB. Different models have different limits.</li><li>Supported image formats: JPEG and PNG.</li></ol>
         :type LastImageUrl: str
-        :param _ImageInfos: <p>List of up to 3 asset images, used to describe the images the model should use for video generation.</p><p>Model that supports multiple images:</p><ol><li>GV. If multiple images are specified, ImageUrl and LastImageUrl are unavailable.</li><li>Vidu supports video generation with multiple reference images. The q2 model accepts 1 to 7 images. The ReferenceType in ImageInfos can be used to specify the subject ID for the input.</li></ol><p>Note:</p><ol><li>The image size cannot exceed 10 MB.</li><li>Supported image formats: JPEG and PNG.</li></ol>
+        :param _ImageInfos: <p>List of multiple asset resource images used to describe the resource images used by the model for video generation.</p><p>Models that support multiple images:</p><ol><li>Vidu q2, q2-pro, q3-turbo, q3, and q3-mix support video generation with multiple reference images. One to 7 images can be uploaded. The ReferenceType in ImageInfos can be used to specify the subject ID for the input.</li><li>Kling O1, 3.0-Omni, and 1.6 support video generation with multiple reference images.<ol><li>Kling 1.6 allows uploading 1 to 4 images.</li><li>Kling O1 and 3.0-Omni allow uploading 1 to 7 images. If a reference video is present, 0 to 4 images can be uploaded.</li></ol></li><li>PixVerse, v5.6, v6, and c1 support video generation with multiple reference images. One to 7 images can be uploaded, and image names need to be specified via the Text field in ImageInfos.</li><li>H2 1.0 supports video generation with multiple image parameters. One to 9 images can be uploaded. If a reference video is present, 0 to 5 images can be uploaded.</li></ol><p>Note:</p><ol><li>The image size cannot exceed 10 MB.</li><li>Supported image formats: JPEG and PNG.</li></ol>
         :type ImageInfos: list of AigcVideoReferenceImageInfo
-        :param _VideoInfos: <p>Only Kling O1 supports reference video information.<br>This can be used as a feature reference video or a video for editing. The default type is video for editing. You can choose to keep the original sound of the video.</p>
+        :param _VideoInfos: <p>Only Kling O1, Kling 3.0-Omni, Vidu q2-pro, and H2 1.0 support reference video information.</p><ol><li>For Kling O1 and 3.0-Omni, the reference video can be used as a feature reference video or a video for editing. The default type is video for editing. You can choose to keep the original sound of the video.</li><li>Vidu q2-pro supports video reference.</li><li>H2 1.0 supports video reference.</li></ol>
         :type VideoInfos: list of AigcVideoReferenceVideoInfo
-        :param _Duration: <p>Duration of the generated video.<br>Note:</p><ol><li>Kling supports 5 and 10 seconds. Default value: 5 seconds.</li><li>The std mode of Hailuo supports 6 and 10 seconds, and other modes support 6 seconds. Default value: 6 seconds.</li><li>Vidu supports 1 to 10 seconds.</li><li>GV supports 8 seconds. Default value: 8 seconds.</li><li>OS supports 4, 8, and 12 seconds. Default value: 8 seconds.</li></ol>
+        :param _Duration: <p>Duration of the generated video.<br>Note:</p><ol><li>Kling: default value: 5 seconds.<ul><li>O1 supports 3 to 10 seconds.</li><li>3.0-Omni supports 3 to 15 seconds, or 3 to 10 seconds when a video reference is used.</li><li>3.0 supports 3 to 15 seconds.</li><li>Other versions support 5 and 10 seconds.</li></ul></li><li>The std mode of Hailuo supports 6 and 10 seconds, and other modes support 6 seconds. Default value: 6 seconds.</li><li>Vidu: default value: 5 seconds.<ul><li>q3-pro, q3-turbo, q3, and q3-mix support 3 to 16 seconds.</li><li>q2-pro, q2-turbo, and q2 support 1 to 10 seconds.</li></ul></li><li>PixVerse: default value: 5 seconds.<ul><li>v5.6 supports 5, 8, and 10 seconds.</li><li>v6 and c1 support 1 to 15 seconds.</li></ul></li><li>H2 supports 3 to 15 seconds. Default value: 5 seconds.</li></ol>
         :type Duration: int
         :param _ExtraParameters: <p>Additional parameters required.</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
         :param _StoreCosParam: <p>COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.</p>
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
-        :param _AdditionalParameters: <p>Special scenario parameters required by the model, formatted as a JSON serialized string.<br>Example:<br>{"camera_control":{"type":"simple"}}.</p>
+        :param _AdditionalParameters: <p>Special scenario parameters or storyboard prompts required by the model, formatted as a JSON serialized string.<br>Example:<br>{"camera_control":{"type":"simple"}}.</p>
         :type AdditionalParameters: str
         :param _Operator: <p>API operator name.</p>
         :type Operator: str
@@ -19187,7 +19239,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>OS.<br>GV.<br>PixVerse.</p>
+        r"""<p>Model name.<br>Supported models:<br>Hunyuan.<br>Hailuo.<br>Kling.<br>Vidu.<br>PixVerse.<br>Mingmou.<br>H2.</p>
         :rtype: str
         """
         return self._ModelName
@@ -19198,7 +19250,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hailuo: [02, 2.3, and 2.3-fast].</li><li>Kling: [1.6, 2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, q3-turbo, q3, and q3-mix].</li><li>GV: [3.1 and 3.1-fast].</li><li>OS: [2.0].</li><li>PixVerse: [v5.6, v6, and c1].</li></ol>
+        r"""<p>Specific version number of the model. By default, the system uses the supported stable version of the model.</p><ol><li>Hunyuan: [1.5].</li><li>Hailuo: [02, 2.3, and 2.3-fast].</li><li>Kling: [1.6, 2.0, 2.1, 2.5, O1, 2.6, 3.0, and 3.0-Omni].</li><li>Vidu: [q2, q2-pro, q2-turbo, q3-pro, q3-turbo, q3, and q3-mix].</li><li>PixVerse: [v5.6, v6, and c1].</li><li>H2: [1.0].</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -19209,7 +19261,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""<p>Scenario for the generated video.<br>Note: Not all models support scenarios.</p><ol><li>Kling supports motion control (motion_control).</li><li>Mingmou supports landscape-to-portrait conversion (land2port).</li><li>Vidu supports special effect templates (template_effect).</li></ol>
+        r"""<p>Scenario for the generated video.<br>Note: Not all models support scenarios.</p><ol><li>Kling supports: motion control (motion_control), digital human (avatar_i2v), and lip sync (lip_sync).</li><li>Mingmou supports: landscape-to-portrait conversion (land2port).</li><li>Vidu supports: effect templates (template_effect).</li><li>Hunyuan supports: 3D world model (3d_scene). The returned file is not a video.</li></ol>
         :rtype: str
         """
         return self._SceneType
@@ -19220,7 +19272,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""<p>Description of the generated video. (Note: A maximum of 2000 characters is supported.) This parameter is required when no reference image is specified.</p>
+        r"""<p>Description of the generated video. This parameter is required when no image is specified.</p>
         :rtype: str
         """
         return self._Prompt
@@ -19242,7 +19294,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def EnhancePrompt(self):
-        r"""<p>The default value is False, meaning the model follows instructions strictly. For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
+        r"""<p>The default value is False, meaning the model follows instructions strictly.<br>For better results with more nuanced prompts, set this parameter to True to automatically optimize the input prompt and improve generation quality.</p>
         :rtype: bool
         """
         return self._EnhancePrompt
@@ -19253,7 +19305,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""<p>Image URL for video generation. The URL must be accessible from the public network.<br>Note:</p><ol><li>The recommended image size is no more than 10 MB. Different models have different size limits.</li><li>Supported image formats: JPEG and PNG.</li><li>If the OS model is used, the input image dimension should be 1280x720 or 720x1280.</li></ol>
+        r"""<p>Image URL used for video generation. The URL must be accessible from the public network.<br>Note:</p><ol><li>The recommended image size is no more than 10 MB. Different models have different size limits. See the model website for a more complete description.</li><li>Supported image formats: JPEG and PNG.</li></ol>
         :rtype: str
         """
         return self._ImageUrl
@@ -19264,7 +19316,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def LastImageUrl(self):
-        r"""<p>The model will generate a video using the image of this parameter as the ending frame.<br>Models that support this parameter:</p><ol><li>GV. If the ending frame image is specified, ImageUrl is required as the starting frame.</li><li>Kling. Version 2.1 supports starting and ending frames with a resolution of 1080P.</li><li>Vidu. q2-pro and q2-turbo support starting and ending frames.</li></ol><p>Note:</p><ol><li>The recommended image size is no more than 10 MB. Different models have different limits.</li><li>Supported image formats: JPEG and PNG.</li></ol>
+        r"""<p>The model will generate a video using the image of this parameter as the ending frame.<br>Models that support this parameter:</p><ol><li>Kling 2.0, O1, 3.0, and 3.0-Omni support starting and ending frames.</li><li>Kling 1.6, 2.1, 2.5, and 2.6 support starting and ending frames with Resolution:1080p.</li><li>Vidu q2-pro, q2-turbo, q3-pro, and q3-turbo support starting and ending frames.</li><li>PixVerse v5.6, v6, and c1 support starting and ending frames.</li><li>Hailuo 02 supports starting and ending frames.</li></ol><p>Note:</p><ol><li>The recommended image size is no more than 10 MB. Different models have different limits.</li><li>Supported image formats: JPEG and PNG.</li></ol>
         :rtype: str
         """
         return self._LastImageUrl
@@ -19275,7 +19327,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ImageInfos(self):
-        r"""<p>List of up to 3 asset images, used to describe the images the model should use for video generation.</p><p>Model that supports multiple images:</p><ol><li>GV. If multiple images are specified, ImageUrl and LastImageUrl are unavailable.</li><li>Vidu supports video generation with multiple reference images. The q2 model accepts 1 to 7 images. The ReferenceType in ImageInfos can be used to specify the subject ID for the input.</li></ol><p>Note:</p><ol><li>The image size cannot exceed 10 MB.</li><li>Supported image formats: JPEG and PNG.</li></ol>
+        r"""<p>List of multiple asset resource images used to describe the resource images used by the model for video generation.</p><p>Models that support multiple images:</p><ol><li>Vidu q2, q2-pro, q3-turbo, q3, and q3-mix support video generation with multiple reference images. One to 7 images can be uploaded. The ReferenceType in ImageInfos can be used to specify the subject ID for the input.</li><li>Kling O1, 3.0-Omni, and 1.6 support video generation with multiple reference images.<ol><li>Kling 1.6 allows uploading 1 to 4 images.</li><li>Kling O1 and 3.0-Omni allow uploading 1 to 7 images. If a reference video is present, 0 to 4 images can be uploaded.</li></ol></li><li>PixVerse, v5.6, v6, and c1 support video generation with multiple reference images. One to 7 images can be uploaded, and image names need to be specified via the Text field in ImageInfos.</li><li>H2 1.0 supports video generation with multiple image parameters. One to 9 images can be uploaded. If a reference video is present, 0 to 5 images can be uploaded.</li></ol><p>Note:</p><ol><li>The image size cannot exceed 10 MB.</li><li>Supported image formats: JPEG and PNG.</li></ol>
         :rtype: list of AigcVideoReferenceImageInfo
         """
         return self._ImageInfos
@@ -19286,7 +19338,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def VideoInfos(self):
-        r"""<p>Only Kling O1 supports reference video information.<br>This can be used as a feature reference video or a video for editing. The default type is video for editing. You can choose to keep the original sound of the video.</p>
+        r"""<p>Only Kling O1, Kling 3.0-Omni, Vidu q2-pro, and H2 1.0 support reference video information.</p><ol><li>For Kling O1 and 3.0-Omni, the reference video can be used as a feature reference video or a video for editing. The default type is video for editing. You can choose to keep the original sound of the video.</li><li>Vidu q2-pro supports video reference.</li><li>H2 1.0 supports video reference.</li></ol>
         :rtype: list of AigcVideoReferenceVideoInfo
         """
         return self._VideoInfos
@@ -19297,7 +19349,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def Duration(self):
-        r"""<p>Duration of the generated video.<br>Note:</p><ol><li>Kling supports 5 and 10 seconds. Default value: 5 seconds.</li><li>The std mode of Hailuo supports 6 and 10 seconds, and other modes support 6 seconds. Default value: 6 seconds.</li><li>Vidu supports 1 to 10 seconds.</li><li>GV supports 8 seconds. Default value: 8 seconds.</li><li>OS supports 4, 8, and 12 seconds. Default value: 8 seconds.</li></ol>
+        r"""<p>Duration of the generated video.<br>Note:</p><ol><li>Kling: default value: 5 seconds.<ul><li>O1 supports 3 to 10 seconds.</li><li>3.0-Omni supports 3 to 15 seconds, or 3 to 10 seconds when a video reference is used.</li><li>3.0 supports 3 to 15 seconds.</li><li>Other versions support 5 and 10 seconds.</li></ul></li><li>The std mode of Hailuo supports 6 and 10 seconds, and other modes support 6 seconds. Default value: 6 seconds.</li><li>Vidu: default value: 5 seconds.<ul><li>q3-pro, q3-turbo, q3, and q3-mix support 3 to 16 seconds.</li><li>q2-pro, q2-turbo, and q2 support 1 to 10 seconds.</li></ul></li><li>PixVerse: default value: 5 seconds.<ul><li>v5.6 supports 5, 8, and 10 seconds.</li><li>v6 and c1 support 1 to 15 seconds.</li></ul></li><li>H2 supports 3 to 15 seconds. Default value: 5 seconds.</li></ol>
         :rtype: int
         """
         return self._Duration
@@ -19330,7 +19382,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def AdditionalParameters(self):
-        r"""<p>Special scenario parameters required by the model, formatted as a JSON serialized string.<br>Example:<br>{"camera_control":{"type":"simple"}}.</p>
+        r"""<p>Special scenario parameters or storyboard prompts required by the model, formatted as a JSON serialized string.<br>Example:<br>{"camera_control":{"type":"simple"}}.</p>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -21676,12 +21728,7 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
         r"""
         :param _Name: <p>Intelligent subtitle template name<br>Length limit: 64 characters.</p>
         :type Name: str
-        :param _VideoSrcLanguage: <p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br><br>ASR recognition and pure caption translation currently support the following: 
-
-[ASR Supported Languages](https://www.tencentcloud.com/zh/document/product/1041/68175#ASRlanguages)
-
-
-Common available language codes:<br>`auto` (Auto Recognition), <br>`zh` (Simplified Chinese), <br>`en` (English), <br>`ja` (Japanese), <br>`ko` (Korean), <br>`zh-PY `(Chinese, English and Cantonese), <br>`zh_medical `(Medical Chinese), <br>`vi` (Vietnamese), <br>`ms` (Malay), <br>`id` (Indonesian), <br>`fil` (Filipino), <br>`th` (Thai), <br>`pt` (Portuguese), <br>`tr` (Turkish), <br>`ar` (Arabic), <br>`es` (Spanish), <br>`hi` (Hindi), <br>`fr` (French), <br>`de` (German), <br>`it` (Italian), <br>`zh_dialect` (Chinese Dialects), <br>`zh_en` (Chinese & English Mixed), <br>`yue` (Cantonese), <br>`ru` (Russian), <br>`prime_zh` (Chinese, English & Chinese Dialects)
+        :param _VideoSrcLanguage: <p>Smart subtitling video source language.</p><p>For ASR and subtitle translation parameter values, see <a href="https://www.tencentcloud.com/document/product/862/116243?from_cn_redirect=1#ASRlanguages">ASR Languages</a>.</p><p>The following lists some commonly used values:</p><p><code>auto</code>: automatic identification. <code>zh</code>: Simplified Chinese. <code>en</code>: English. <code>ja</code>: Japanese. <code>ko</code>: Korean. <code>zh-PY</code>: Chinese, English, and Cantonese. <code>zh_medical</code>: Chinese health care. <code>vi</code>: Vietnamese. <code>ms</code>: Malay. <code>id</code>: Indonesian. <code>fil</code>: Filipino. <code>th</code>: Thai. <code>pt</code>: Portuguese. <code>tr</code>: Turkish. <code>ar</code>: Arabic. <code>es</code>: Spanish. <code>hi</code>: Hindi. <code>fr</code>: French. <code>de</code>: German. <code>it</code>: Italian. <code>zh_dialect</code>: Chinese dialect. <code>zh_en</code>: Chinese and English. <code>yue</code>: Cantonese. <code>ru</code>: Russian. <code>prime_zh</code>: Chinese and English dialects.</p><p>OCR only supports the following values:</p><p><code>zh_en</code>: Chinese and English<br><code>multi</code>: others</p><p>For languages supported by different values, see <a href="https://www.tencentcloud.com/document/product/862/116243?from_cn_redirect=1#OCRlanguages">OCR Languages</a></p>
         :type VideoSrcLanguage: str
         :param _SubtitleType: <p>Intelligent caption subtitle language type<br>0: Source language<br>1: Target language<br>2: Source language + target language<br>Only 0 is supported when TranslateSwitch is OFF<br>Only 1 or 2 is supported when TranslateSwitch is ON</p>
         :type SubtitleType: int
@@ -21693,7 +21740,7 @@ Common available language codes:<br>`auto` (Auto Recognition), <br>`zh` (Simplif
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         :param _TranslateSwitch: <p>Subtitle translation switch<br><code>ON</code>: Enable translation<br><code>OFF</code>: Disable translation</p><p><strong>Note</strong>: For pure subtitle translation mode, the default value is enabled if the field is unspecified. The field cannot be left blank or set to <code>OFF</code>.</p>
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: <p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: GaLanguage<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method.<code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
+        :param _TranslateDstLanguage: <p>This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:</p><p>For ASR extraction and translation, see <a href="https://www.tencentcloud.com/document/product/862/116243?from_cn_redirect=1#ASRlanguages">ASR Translation Languages</a>.<br>For OCR extraction and translation, see <a href="https://www.tencentcloud.com/document/product/862/116243?from_cn_redirect=1#OCRlanguages">OCR Translation Languages</a>.</p><p><strong>Note</strong>: Use <code>/</code> to separate multiple languages, such as <code>en/ja</code>, which indicates English and Japanese.</p><p>Examples of some commonly used languages:</p><p><code>ar</code>: Arabic<br><code>en</code>: English<br><code>fr</code>: French<br><code>it</code>: Italian<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>ru</code>: Russian<br><code>th</code>: Thai<br><code>tr</code>: Turkish<br><code>vi</code>: Vietnamese<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese</p>
         :type TranslateDstLanguage: str
         :param _ProcessType: <p>Subtitle processing type:</p><ul><li>0: ASR recognition subtitle</li><li>1: Pure caption translation</li><li>2: OCR recognition subtitle</li></ul><p><strong>Note</strong>: The default type is ASR recognition subtitle if the field is unspecified.</p>
         :type ProcessType: int
@@ -21733,12 +21780,7 @@ Common available language codes:<br>`auto` (Auto Recognition), <br>`zh` (Simplif
 
     @property
     def VideoSrcLanguage(self):
-        r"""<p>Smart subtitling video source language<br>OCR recognition supports the following languages:<br><code>zh_en</code>: Chinese-English<br><code>multi</code>: Other<br><br>ASR recognition and pure caption translation currently support the following: 
-
-[ASR Supported Languages](https://www.tencentcloud.com/zh/document/product/1041/68175#ASRlanguages)
-
-
-Common available language codes:<br>`auto` (Auto Recognition), <br>`zh` (Simplified Chinese), <br>`en` (English), <br>`ja` (Japanese), <br>`ko` (Korean), <br>`zh-PY `(Chinese, English and Cantonese), <br>`zh_medical `(Medical Chinese), <br>`vi` (Vietnamese), <br>`ms` (Malay), <br>`id` (Indonesian), <br>`fil` (Filipino), <br>`th` (Thai), <br>`pt` (Portuguese), <br>`tr` (Turkish), <br>`ar` (Arabic), <br>`es` (Spanish), <br>`hi` (Hindi), <br>`fr` (French), <br>`de` (German), <br>`it` (Italian), <br>`zh_dialect` (Chinese Dialects), <br>`zh_en` (Chinese & English Mixed), <br>`yue` (Cantonese), <br>`ru` (Russian), <br>`prime_zh` (Chinese, English & Chinese Dialects)
+        r"""<p>Smart subtitling video source language.</p><p>For ASR and subtitle translation parameter values, see <a href="https://www.tencentcloud.com/document/product/862/116243?from_cn_redirect=1#ASRlanguages">ASR Languages</a>.</p><p>The following lists some commonly used values:</p><p><code>auto</code>: automatic identification. <code>zh</code>: Simplified Chinese. <code>en</code>: English. <code>ja</code>: Japanese. <code>ko</code>: Korean. <code>zh-PY</code>: Chinese, English, and Cantonese. <code>zh_medical</code>: Chinese health care. <code>vi</code>: Vietnamese. <code>ms</code>: Malay. <code>id</code>: Indonesian. <code>fil</code>: Filipino. <code>th</code>: Thai. <code>pt</code>: Portuguese. <code>tr</code>: Turkish. <code>ar</code>: Arabic. <code>es</code>: Spanish. <code>hi</code>: Hindi. <code>fr</code>: French. <code>de</code>: German. <code>it</code>: Italian. <code>zh_dialect</code>: Chinese dialect. <code>zh_en</code>: Chinese and English. <code>yue</code>: Cantonese. <code>ru</code>: Russian. <code>prime_zh</code>: Chinese and English dialects.</p><p>OCR only supports the following values:</p><p><code>zh_en</code>: Chinese and English<br><code>multi</code>: others</p><p>For languages supported by different values, see <a href="https://www.tencentcloud.com/document/product/862/116243?from_cn_redirect=1#OCRlanguages">OCR Languages</a></p>
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -21804,7 +21846,7 @@ Common available language codes:<br>`auto` (Auto Recognition), <br>`zh` (Simplif
 
     @property
     def TranslateDstLanguage(self):
-        r"""<p>Subtitle target language<br>Take effect when TranslateSwitch is ON. Translation language list:<br><code>ab</code>: Abkhaz<br><code>ace</code>: Acehnese<br><code>ach</code>: Acholi<br><code>af</code>: Afrikaans<br><code>ak</code>: Akan<br><code>am</code>: Amharic<br><code>ar</code>: Arabic<br><code>as</code>: Assamese<br><code>ay</code>: Aymara<br><code>az</code>: Azerbaijani<br><code>ba</code>: Bashkir<br><code>ban</code>: Balinese<br><code>bbc</code>: Batak Toba<br><code>bem</code>: Bemba<br><code>bew</code>: Betawi<br><code>bg</code>: Bulgarian<br><code>bho</code>: Bhojpuri<br><code>bik</code>: Bikol<br><code>bm</code>: Bambara<br><code>bn</code>: Bengali<br><code>br</code>: Breton<br><code>bs</code>: Bosnian<br><code>btx</code>: Batak Karo<br><code>bts</code>: Batak Simalungun<br><code>bua</code>: Buryat<br><code>ca</code>: Catalan<br><code>ceb</code>: Cebuano<br><code>cgg</code>: Kiga<br><code>chm</code>: Meadow Mari<br><code>ckb</code>: Kurdish (Sorani)<br><code>cnh</code>: Hakha Chin<br><code>co</code>: Corsican<br><code>crh</code>: Crimean Tatar<br><code>crs</code>: Seychellois Creole<br><code>cs</code>: Czech<br><code>cv</code>: Chuvash<br><code>cy</code>: Welsh<br><code>da</code>: Danish<br><code>de</code>: German<br><code>din</code>: Dinka<br><code>doi</code>: Dogri<br><code>dov</code>: Dombe<br><code>dv</code>: Dhivehi<br><code>dz</code>: Dzongkha<br><code>ee</code>: Ewe<br><code>el</code>: Greek<br><code>en</code>: English<br><code>eo</code>: Esperanto<br><code>es</code>: Spanish<br><code>et</code>: Estonian<br><code>eu</code>: Basque<br><code>fa</code>: Persian<br><code>ff</code>: Fula<br><code>fi</code>: Finnish<br><code>fil</code>: Filipino (Tagalog)<br><code>fj</code>: Fijian<br><code>fr</code>: French<br><code>fr-CA</code>: French (Canada)<br><code>fr-FR</code>: French (France)<br><code>fy</code>: Frisian<br><code>ga</code>: Irish<br><code>gaa</code>: GaLanguage<br><code>gd</code>: Scottish Gaelic<br><code>gl</code>: Galician<br><code>gn</code>: Guarani<br><code>gom</code>: Konkani<br><code>gu</code>: Gujarati<br><code>gv</code>: Manx<br><code>ha</code>: Hausa<br><code>haw</code>: Hawaiian<br><code>he</code>: Hebrew<br><code>hi</code>: Hindi<br><code>hil</code>: Hiligaynon<br><code>hmn</code>: Hmong<br><code>hr</code>: Croatian<br><code>hrx</code>: Hunsrik<br><code>ht</code>: Haitian Creole<br><code>hu</code>: Hungarian<br><code>hy</code>: Armenian<br><code>id</code>: Indonesian<br><code>ig</code>: Igbo<br><code>ilo</code>: Ilocano<br><code>is</code>: Icelandic<br><code>it</code>: Italian<br><code>iw</code>: Hebrew<br><code>ja</code>: Japanese<br><code>jv</code>: Javanese<br><code>ka</code>: Georgian<br><code>kk</code>: Kazakh<br><code>km</code>: Khmer<br><code>kn</code>: Kannada<br><code>ko</code>: Korean<br><code>kri</code>: Krio<br><code>ku</code>: Kurdish (Kurmanji)<br><code>ktu</code>: Kituba<br><code>ky</code>: Kyrgyz<br><code>la</code>: Latin<br><code>lb</code>: Luxembourgish<br><code>lg</code>: Ganda (Luganda)<br><code>li</code>: Limburgish<br><code>lij</code>: Ligurian<br><code>lmo</code>: Lombard<br><code>ln</code>: Lingala<br><code>lo</code>: Lao<br><code>lt</code>: Lithuanian<br><code>ltg</code>: Latgalian<br><code>luo</code>: Luo<br><code>lus</code>: Mizo<br><code>lv</code>: Latvian<br><code>mai</code>: Maithili<br><code>mak</code>: Makassar<br><code>mg</code>: Malagasy<br><code>mi</code>: Maori<br><code>min</code>: Minangkabau<br><code>mk</code>: Macedonian<br><code>ml</code>: Malayalam<br><code>mn</code>: Mongolian<br><code>mr</code>: Marathi<br><code>ms</code>: Malay<br><code>mt</code>: Maltese<br><code>my</code>: Burmese<br><code>ne</code>: Nepali<br><code>new</code>: Newari<br><code>nl</code>: Dutch<br><code>no</code>: Norwegian<br><code>nr</code>: Southern Ndebele<br><code>nso</code>: Northern Sotho (Sepedi)<br><code>nus</code>: Nuer<br><code>ny</code>: Chichewa (Nyanja)<br><code>oc</code>: Occitan<br><code>om</code>: Oromo<br><code>or</code>: Odia<br><code>pa</code>: Punjabi<br><code>pag</code>: Pangasinan<br><code>pam</code>: Kapampangan<br><code>pap</code>: Papiamento<br><code>pl</code>: Polish<br><code>ps</code>: Pashto<br><code>pt</code>: Portuguese<br><code>pt-BR</code>: Portuguese (Brazil)<br><code>pt-PT</code>: Portuguese (Portugal)<br><code>qu</code>: Quechua<br><code>ro</code>: Romanian<br><code>rom</code>: Romani<br><code>rn</code>: Rundi<br><code>ru</code>: Russian<br><code>rw</code>: Kinyarwanda<br><code>sa</code>: Sanskrit<br><code>scn</code>: Sicilian<br><code>sd</code>: Sindhi<br><code>sg</code>: Sango<br><code>shn</code>: Shan<br><code>si</code>: Sinhalese<br><code>sk</code>: Slovak<br><code>sl</code>: Slovenian<br><code>sm</code>: Samoan<br><code>sn</code>: Shona<br><code>so</code>: Somali<br><code>sq</code>: Albanian<br><code>sr</code>: Serbian<br><code>ss</code>: Swati<br><code>st</code>: Sesotho<br><code>su</code>: Sundanese<br><code>sv</code>: Swedish<br><code>sw</code>: Swahili<br><code>szl</code>: Silesian<br><code>ta</code>: Tamil<br><code>te</code>: Telugu<br><code>tet</code>: Tetum<br><code>tg</code>: Tajik<br><code>th</code>: Thai<br><code>ti</code>: Tigrinya<br><code>tk</code>: Turkmen<br><code>tn</code>: Tswana<br><code>tr</code>: Turkish<br><code>ts</code>: Tsonga<br><code>tt</code>: Tatar<br><code>ug</code>: Uyghur<br><code>uk</code>: Ukrainian<br><code>ur</code>: Urdu<br><code>uz</code>: Uzbek<br><code>vi</code>: Vietnamese<br><code>xh</code>: Xhosa<br><code>yi</code>: Yiddish<br><code>yo</code>: Yoruba<br><code>yua</code>: Yucatec Maya<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese<br><code>zu</code>: Zulu</p><p><strong>Note</strong>: Use the multilingual method.<code>/</code> to separate, such as <code>en/ja</code>, which indicates English and Japanese.</p>
+        r"""<p>This parameter takes effect when the value of TranslateSwitch is ON. Valid translation languages:</p><p>For ASR extraction and translation, see <a href="https://www.tencentcloud.com/document/product/862/116243?from_cn_redirect=1#ASRlanguages">ASR Translation Languages</a>.<br>For OCR extraction and translation, see <a href="https://www.tencentcloud.com/document/product/862/116243?from_cn_redirect=1#OCRlanguages">OCR Translation Languages</a>.</p><p><strong>Note</strong>: Use <code>/</code> to separate multiple languages, such as <code>en/ja</code>, which indicates English and Japanese.</p><p>Examples of some commonly used languages:</p><p><code>ar</code>: Arabic<br><code>en</code>: English<br><code>fr</code>: French<br><code>it</code>: Italian<br><code>ja</code>: Japanese<br><code>ko</code>: Korean<br><code>ru</code>: Russian<br><code>th</code>: Thai<br><code>tr</code>: Turkish<br><code>vi</code>: Vietnamese<br><code>yue</code>: Cantonese<br><code>zh</code>: Simplified Chinese<br><code>zh-TW</code>: Traditional Chinese</p>
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -22243,31 +22285,25 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Container: Container format. Valid values: mp4, flv, hls, ts, webm, mkv, mxf, mov, mp3, flac, ogg, and m4a. Among them, mp3, flac, ogg, and m4a are for audio-only files.
+        :param _Container: <p>Container format. Valid values: mp4, flv, hls, ts, webm, mkv, mxf, mov, mp3, flac, ogg, m4a, and wav. Among them, mp3, flac, ogg, m4a, and wav are for audio-only files.</p>
         :type Container: str
-        :param _Name: Name of a transcoding template. Length limit: 64 characters.
+        :param _Name: <p>Transcoding template name. Length limit: 64 characters.</p>
         :type Name: str
-        :param _Comment: Template description. Length limit: 256 characters.
+        :param _Comment: <p>Transcoding template description. Length limit: 256 characters.</p>
         :type Comment: str
-        :param _RemoveVideo: Whether to remove video data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
-Default value: 0.
+        :param _RemoveVideo: <p>Indicates whether to remove video data. Valid values:</p><li>0: Data is reserved.</li><li>1: Data is removed.</li>Default value: 0.
         :type RemoveVideo: int
-        :param _RemoveAudio: Whether to remove audio data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
-Default value: 0.
+        :param _RemoveAudio: <p>Indicates whether to remove audio data. Valid values:</p><li>0: Data is reserved.</li><li>1: Data is removed.</li>Default value: 0.
         :type RemoveAudio: int
-        :param _VideoTemplate: Video stream configuration parameter. This field is required when `RemoveVideo` is 0.
+        :param _VideoTemplate: <p>Video stream configuration parameters. This field is required when RemoveVideo is 0.</p>
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
-        :param _AudioTemplate: Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.
+        :param _AudioTemplate: <p>Audio stream configuration parameters. This field is required when RemoveAudio is 0.</p>
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
-        :param _TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+        :param _TEHDConfig: <p>Top Speed Codec transcoding parameters.</p>
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
-        :param _EnhanceConfig: Audio/Video enhancement configuration.
+        :param _EnhanceConfig: <p>Audio/video enhancement configurations.</p>
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
-        :param _StdExtInfo: Additional parameter, which is a serialized JSON string.
+        :param _StdExtInfo: <p>Extended parameter, which is a serialized JSON string.</p>
         :type StdExtInfo: str
         """
         self._Container = None
@@ -22283,7 +22319,7 @@ Default value: 0.
 
     @property
     def Container(self):
-        r"""Container format. Valid values: mp4, flv, hls, ts, webm, mkv, mxf, mov, mp3, flac, ogg, and m4a. Among them, mp3, flac, ogg, and m4a are for audio-only files.
+        r"""<p>Container format. Valid values: mp4, flv, hls, ts, webm, mkv, mxf, mov, mp3, flac, ogg, m4a, and wav. Among them, mp3, flac, ogg, m4a, and wav are for audio-only files.</p>
         :rtype: str
         """
         return self._Container
@@ -22294,7 +22330,7 @@ Default value: 0.
 
     @property
     def Name(self):
-        r"""Name of a transcoding template. Length limit: 64 characters.
+        r"""<p>Transcoding template name. Length limit: 64 characters.</p>
         :rtype: str
         """
         return self._Name
@@ -22305,7 +22341,7 @@ Default value: 0.
 
     @property
     def Comment(self):
-        r"""Template description. Length limit: 256 characters.
+        r"""<p>Transcoding template description. Length limit: 256 characters.</p>
         :rtype: str
         """
         return self._Comment
@@ -22316,10 +22352,7 @@ Default value: 0.
 
     @property
     def RemoveVideo(self):
-        r"""Whether to remove video data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
-Default value: 0.
+        r"""<p>Indicates whether to remove video data. Valid values:</p><li>0: Data is reserved.</li><li>1: Data is removed.</li>Default value: 0.
         :rtype: int
         """
         return self._RemoveVideo
@@ -22330,10 +22363,7 @@ Default value: 0.
 
     @property
     def RemoveAudio(self):
-        r"""Whether to remove audio data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
-Default value: 0.
+        r"""<p>Indicates whether to remove audio data. Valid values:</p><li>0: Data is reserved.</li><li>1: Data is removed.</li>Default value: 0.
         :rtype: int
         """
         return self._RemoveAudio
@@ -22344,7 +22374,7 @@ Default value: 0.
 
     @property
     def VideoTemplate(self):
-        r"""Video stream configuration parameter. This field is required when `RemoveVideo` is 0.
+        r"""<p>Video stream configuration parameters. This field is required when RemoveVideo is 0.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         """
         return self._VideoTemplate
@@ -22355,7 +22385,7 @@ Default value: 0.
 
     @property
     def AudioTemplate(self):
-        r"""Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.
+        r"""<p>Audio stream configuration parameters. This field is required when RemoveAudio is 0.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
         """
         return self._AudioTemplate
@@ -22366,7 +22396,7 @@ Default value: 0.
 
     @property
     def TEHDConfig(self):
-        r"""TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+        r"""<p>Top Speed Codec transcoding parameters.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         """
         return self._TEHDConfig
@@ -22377,7 +22407,7 @@ Default value: 0.
 
     @property
     def EnhanceConfig(self):
-        r"""Audio/Video enhancement configuration.
+        r"""<p>Audio/video enhancement configurations.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         return self._EnhanceConfig
@@ -22388,7 +22418,7 @@ Default value: 0.
 
     @property
     def StdExtInfo(self):
-        r"""Additional parameter, which is a serialized JSON string.
+        r"""<p>Extended parameter, which is a serialized JSON string.</p>
         :rtype: str
         """
         return self._StdExtInfo
@@ -22434,7 +22464,7 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique ID of a transcoding template.
+        :param _Definition: <p>Unique identifier of the transcoding template.</p>
         :type Definition: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -22444,7 +22474,7 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Unique ID of a transcoding template.
+        r"""<p>Unique identifier of the transcoding template.</p>
         :rtype: int
         """
         return self._Definition
@@ -23046,6 +23076,57 @@ class CreateWorkflowResponse(AbstractModel):
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
         self._RequestId = params.get("RequestId")
+
+
+class CustomVariable(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        :param _Description: 
+        :type Description: str
+        """
+        self._Type = None
+        self._Description = None
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        r"""
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteAIAnalysisTemplateRequest(AbstractModel):
@@ -24325,6 +24406,115 @@ class DeleteTranscodeTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVoiceRequest(AbstractModel):
+    r"""DeleteVoice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p>
+        :type ExtParam: str
+        """
+        self._VoiceId = None
+        self._ExtParam = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters in the format of a JSON string.</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVoiceResponse(AbstractModel):
+    r"""DeleteVoice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
+        :type ErrorCode: int
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>Error message. success is returned if the request is successful.</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
         self._RequestId = params.get("RequestId")
 
 
@@ -26781,6 +26971,8 @@ class DescribeDesignTaskResponse(AbstractModel):
         :param _VoiceId: <p>Voice ID.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VoiceId: str
+        :param _AudioUrl: <p>Audition audio URL.</p>
+        :type AudioUrl: str
         :param _ExtInfo: <p>Extended information.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtInfo: str
@@ -26791,6 +26983,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Msg = None
         self._Status = None
         self._VoiceId = None
+        self._AudioUrl = None
         self._ExtInfo = None
         self._RequestId = None
 
@@ -26840,6 +27033,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._VoiceId = VoiceId
 
     @property
+    def AudioUrl(self):
+        r"""<p>Audition audio URL.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
     def ExtInfo(self):
         r"""<p>Extended information.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -26868,6 +27072,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Msg = params.get("Msg")
         self._Status = params.get("Status")
         self._VoiceId = params.get("VoiceId")
+        self._AudioUrl = params.get("AudioUrl")
         self._ExtInfo = params.get("ExtInfo")
         self._RequestId = params.get("RequestId")
 
@@ -30348,18 +30553,53 @@ class DescribeVoicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VoiceType: <p>Voice type. </p><p>Enumeration value: </p><ul><li>system: System audio.</li></ul>
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _VoiceType: <p>Voice type.</p><p>Enumeration values:</p><ul><li>system: system audio.</li><li>clone: cloned audio.</li><li>design: designed audio.</li><li>all: All voices (default).</li></ul>
         :type VoiceType: str
+        :param _VoiceName: <p>Voice name.</p>
+        :type VoiceName: str
+        :param _Description: <p>Voice description.</p>
+        :type Description: str
+        :param _Gender: <p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :type Gender: str
+        :param _Age: <p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :type Age: str
+        :param _Languages: <p>Language.</p>
+        :type Languages: list of str
+        :param _Labels: <p>Tag.</p>
+        :type Labels: list of str
+        :param _Scenes: <p>Scenario.</p>
+        :type Scenes: list of str
         :param _ExtParam: <p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:
 voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>
         :type ExtParam: str
         """
+        self._VoiceId = None
         self._VoiceType = None
+        self._VoiceName = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
         self._ExtParam = None
 
     @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
     def VoiceType(self):
-        r"""<p>Voice type. </p><p>Enumeration value: </p><ul><li>system: System audio.</li></ul>
+        r"""<p>Voice type.</p><p>Enumeration values:</p><ul><li>system: system audio.</li><li>clone: cloned audio.</li><li>design: designed audio.</li><li>all: All voices (default).</li></ul>
         :rtype: str
         """
         return self._VoiceType
@@ -30367,6 +30607,83 @@ voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. 
     @VoiceType.setter
     def VoiceType(self, VoiceType):
         self._VoiceType = VoiceType
+
+    @property
+    def VoiceName(self):
+        r"""<p>Voice name.</p>
+        :rtype: str
+        """
+        return self._VoiceName
+
+    @VoiceName.setter
+    def VoiceName(self, VoiceName):
+        self._VoiceName = VoiceName
+
+    @property
+    def Description(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>Language.</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>Tag.</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>Scenario.</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
 
     @property
     def ExtParam(self):
@@ -30382,7 +30699,15 @@ voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. 
 
 
     def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
         self._VoiceType = params.get("VoiceType")
+        self._VoiceName = params.get("VoiceName")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -30977,10 +31302,16 @@ class DesignVoiceAsyncRequest(AbstractModel):
         r"""
         :param _Prompt: <p>Voice description.</p>
         :type Prompt: str
+        :param _VoiceProfile: <p>Voice attribute.</p>
+        :type VoiceProfile: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        :param _Text: <p>Audition audio text. The length cannot exceed 500.</p>
+        :type Text: str
         :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p>
         :type ExtParam: str
         """
         self._Prompt = None
+        self._VoiceProfile = None
+        self._Text = None
         self._ExtParam = None
 
     @property
@@ -30993,6 +31324,28 @@ class DesignVoiceAsyncRequest(AbstractModel):
     @Prompt.setter
     def Prompt(self, Prompt):
         self._Prompt = Prompt
+
+    @property
+    def VoiceProfile(self):
+        r"""<p>Voice attribute.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        """
+        return self._VoiceProfile
+
+    @VoiceProfile.setter
+    def VoiceProfile(self, VoiceProfile):
+        self._VoiceProfile = VoiceProfile
+
+    @property
+    def Text(self):
+        r"""<p>Audition audio text. The length cannot exceed 500.</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
     @property
     def ExtParam(self):
@@ -31008,6 +31361,10 @@ class DesignVoiceAsyncRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
+        if params.get("VoiceProfile") is not None:
+            self._VoiceProfile = VoiceProfile()
+            self._VoiceProfile._deserialize(params.get("VoiceProfile"))
+        self._Text = params.get("Text")
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -31089,6 +31446,278 @@ class DesignVoiceAsyncResponse(AbstractModel):
         self._ErrorCode = params.get("ErrorCode")
         self._Msg = params.get("Msg")
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DetectVideoSubtitleAreaRequest(AbstractModel):
+    r"""DetectVideoSubtitleArea request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: <p>Input information, which supports only URL and COS.</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _VideoLanguage: <p>Video language. If you know the language of the video, you can specify this parameter to improve the recognition accuracy.</p><p>Enumeration values:</p><ul><li>zh_en: Chinese and English</li><li>en: English</li><li>ja: Japanese</li><li>ko: Korean</li></ul>
+        :type VideoLanguage: str
+        :param _UserExtPara: <p>Extended parameter. This is left empty by default.</p>
+        :type UserExtPara: str
+        """
+        self._InputInfo = None
+        self._VideoLanguage = None
+        self._UserExtPara = None
+
+    @property
+    def InputInfo(self):
+        r"""<p>Input information, which supports only URL and COS.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def VideoLanguage(self):
+        r"""<p>Video language. If you know the language of the video, you can specify this parameter to improve the recognition accuracy.</p><p>Enumeration values:</p><ul><li>zh_en: Chinese and English</li><li>en: English</li><li>ja: Japanese</li><li>ko: Korean</li></ul>
+        :rtype: str
+        """
+        return self._VideoLanguage
+
+    @VideoLanguage.setter
+    def VideoLanguage(self, VideoLanguage):
+        self._VideoLanguage = VideoLanguage
+
+    @property
+    def UserExtPara(self):
+        r"""<p>Extended parameter. This is left empty by default.</p>
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._VideoLanguage = params.get("VideoLanguage")
+        self._UserExtPara = params.get("UserExtPara")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectVideoSubtitleAreaResponse(AbstractModel):
+    r"""DetectVideoSubtitleArea response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: <p>Video width.</p><p>Unit: px.</p>
+        :type Width: int
+        :param _Height: <p>Video height.</p><p>Unit: px.</p>
+        :type Height: int
+        :param _Result: <p>Detected subtitle box. If nothing is detected, the value is empty.</p>
+        :type Result: list of SubtitleArea
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Width = None
+        self._Height = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Width(self):
+        r"""<p>Video width.</p><p>Unit: px.</p>
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""<p>Video height.</p><p>Unit: px.</p>
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Result(self):
+        r"""<p>Detected subtitle box. If nothing is detected, the value is empty.</p>
+        :rtype: list of SubtitleArea
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        if params.get("Result") is not None:
+            self._Result = []
+            for item in params.get("Result"):
+                obj = SubtitleArea()
+                obj._deserialize(item)
+                self._Result.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DetectVideoWatermarkRequest(AbstractModel):
+    r"""DetectVideoWatermark request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: <p>Input information, which supports only URL and COS.</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _UserExtPara: <p>Extended parameter. This is left empty by default.</p>
+        :type UserExtPara: str
+        """
+        self._InputInfo = None
+        self._UserExtPara = None
+
+    @property
+    def InputInfo(self):
+        r"""<p>Input information, which supports only URL and COS.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def UserExtPara(self):
+        r"""<p>Extended parameter. This is left empty by default.</p>
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._UserExtPara = params.get("UserExtPara")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectVideoWatermarkResponse(AbstractModel):
+    r"""DetectVideoWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: <p>Confidence of watermark presence.</p><p>Value range: [0, 100].</p>
+        :type Confidence: float
+        :param _HasWatermark: <p>Indicates whether a watermark is present in the video.</p>
+        :type HasWatermark: bool
+        :param _Description: <p>Watermark description.</p>
+        :type Description: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Confidence = None
+        self._HasWatermark = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Confidence(self):
+        r"""<p>Confidence of watermark presence.</p><p>Value range: [0, 100].</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def HasWatermark(self):
+        r"""<p>Indicates whether a watermark is present in the video.</p>
+        :rtype: bool
+        """
+        return self._HasWatermark
+
+    @HasWatermark.setter
+    def HasWatermark(self, HasWatermark):
+        self._HasWatermark = HasWatermark
+
+    @property
+    def Description(self):
+        r"""<p>Watermark description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._HasWatermark = params.get("HasWatermark")
+        self._Description = params.get("Description")
         self._RequestId = params.get("RequestId")
 
 
@@ -35132,24 +35761,27 @@ class ImageTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EncodeConfig: Image encoding configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _EncodeConfig: <p>Image encoding configuration.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EncodeConfig: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
-        :param _EnhanceConfig: Image enhancement configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _EnhanceConfig: <p>Image enhancement configuration.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
-        :param _EraseConfig: Image erasing configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _EraseConfig: <p>Image erasing configuration.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EraseConfig: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
+        :param _AiPosterSuiteConfig: 
+        :type AiPosterSuiteConfig: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
         self._EraseConfig = None
+        self._AiPosterSuiteConfig = None
 
     @property
     def EncodeConfig(self):
-        r"""Image encoding configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Image encoding configuration.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
         """
         return self._EncodeConfig
@@ -35160,8 +35792,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EnhanceConfig(self):
-        r"""Image enhancement configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Image enhancement configuration.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
         """
         return self._EnhanceConfig
@@ -35172,8 +35804,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EraseConfig(self):
-        r"""Image erasing configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Image erasing configuration.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
         """
         return self._EraseConfig
@@ -35181,6 +35813,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     @EraseConfig.setter
     def EraseConfig(self, EraseConfig):
         self._EraseConfig = EraseConfig
+
+    @property
+    def AiPosterSuiteConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
+        """
+        return self._AiPosterSuiteConfig
+
+    @AiPosterSuiteConfig.setter
+    def AiPosterSuiteConfig(self, AiPosterSuiteConfig):
+        self._AiPosterSuiteConfig = AiPosterSuiteConfig
 
 
     def _deserialize(self, params):
@@ -35193,6 +35836,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("EraseConfig") is not None:
             self._EraseConfig = ImageEraseConfig()
             self._EraseConfig._deserialize(params.get("EraseConfig"))
+        if params.get("AiPosterSuiteConfig") is not None:
+            self._AiPosterSuiteConfig = AiPosterSuiteConfig()
+            self._AiPosterSuiteConfig._deserialize(params.get("AiPosterSuiteConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35490,6 +36136,304 @@ class ImageWatermarkTemplate(AbstractModel):
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._RepeatType = params.get("RepeatType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMDetectionIssue(AbstractModel):
+    r"""Issue detected by the LLM.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tag: <p>Issue category tag.</p>
+        :type Tag: str
+        :param _Description: <p>Issue description.</p>
+        :type Description: str
+        :param _Score: <p>Quality score of the issue. Value range: [0, 100].</p>
+        :type Score: float
+        :param _Confidence: <p>Detection confidence for the issue. Value range: [0, 100].</p>
+        :type Confidence: float
+        :param _StartTimeMs: <p>Issue start time (ms).</p>
+        :type StartTimeMs: int
+        :param _EndTimeMs: <p>Issue end time (ms).</p>
+        :type EndTimeMs: int
+        :param _ExtraData: <p>Additional data (JSON format), such as severity and other supplementary information.</p>
+        :type ExtraData: str
+        """
+        self._Tag = None
+        self._Description = None
+        self._Score = None
+        self._Confidence = None
+        self._StartTimeMs = None
+        self._EndTimeMs = None
+        self._ExtraData = None
+
+    @property
+    def Tag(self):
+        r"""<p>Issue category tag.</p>
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Description(self):
+        r"""<p>Issue description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Score(self):
+        r"""<p>Quality score of the issue. Value range: [0, 100].</p>
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Confidence(self):
+        r"""<p>Detection confidence for the issue. Value range: [0, 100].</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeMs(self):
+        r"""<p>Issue start time (ms).</p>
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def EndTimeMs(self):
+        r"""<p>Issue end time (ms).</p>
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
+
+    @property
+    def ExtraData(self):
+        r"""<p>Additional data (JSON format), such as severity and other supplementary information.</p>
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+
+    def _deserialize(self, params):
+        self._Tag = params.get("Tag")
+        self._Description = params.get("Description")
+        self._Score = params.get("Score")
+        self._Confidence = params.get("Confidence")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._EndTimeMs = params.get("EndTimeMs")
+        self._ExtraData = params.get("ExtraData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMDetectionReport(AbstractModel):
+    r"""LLM detection result report.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultCount: <p>Number of detection results.</p>
+        :type ResultCount: int
+        :param _ResultSet: <p>Detection item result list.</p>
+        :type ResultSet: list of LLMDetectionResultItem
+        """
+        self._ResultCount = None
+        self._ResultSet = None
+
+    @property
+    def ResultCount(self):
+        r"""<p>Number of detection results.</p>
+        :rtype: int
+        """
+        return self._ResultCount
+
+    @ResultCount.setter
+    def ResultCount(self, ResultCount):
+        self._ResultCount = ResultCount
+
+    @property
+    def ResultSet(self):
+        r"""<p>Detection item result list.</p>
+        :rtype: list of LLMDetectionResultItem
+        """
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+
+    def _deserialize(self, params):
+        self._ResultCount = params.get("ResultCount")
+        if params.get("ResultSet") is not None:
+            self._ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = LLMDetectionResultItem()
+                obj._deserialize(item)
+                self._ResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMDetectionResultItem(AbstractModel):
+    r"""Aggregation results of each LLM detection item.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: <p>Detection category.</p><p>Enumeration value:</p><ul><li>AIGCQualityCharacteristics: AIGC quality characteristics.</li></ul>
+        :type Category: str
+        :param _Group: <p>Detection group.</p><p>Enumeration values:</p><ul><li>AIGCAuthenticity: AIGC authenticity, including human body plausibility, physical plausibility, and cross-frame consistency.</li><li>AIGCTechQuality: AIGC technology quality, including aspect ratio, black border, and forced portrait mode.</li></ul>
+        :type Group: str
+        :param _Type: <p>Detection type name.</p><p>Enumeration values:</p><ul><li>BodyPoseCheck: Human body pose plausibility, which belongs to AIGCAuthenticity.</li><li>BodyDetailCheck: Human body detail plausibility, including finger count and facial symmetry, which belongs to AIGCAuthenticity.</li><li>PhysicRulesCheck: Physics rules plausibility, including perspective, lighting, and gravity, which belongs to AIGCAuthenticity.</li><li>ObjectConsistencyCheck: Cross-frame object consistency, which belongs to AIGCAuthenticity.</li><li>FormatCheck: Aspect ratio, black border, forced portrait mode, and other format issues, which belong to AIGCTechQuality.</li></ul>
+        :type Type: str
+        :param _Score: <p>Overall quality score. Value range: [0, 100]. Higher values indicate better quality.</p>
+        :type Score: float
+        :param _Confidence: <p>Detection confidence. Value range: [0, 100]. Higher values indicate greater certainty.</p>
+        :type Confidence: float
+        :param _IssueSet: <p>List of issues detected. This is empty if no issue is detected.</p>
+        :type IssueSet: list of LLMDetectionIssue
+        """
+        self._Category = None
+        self._Group = None
+        self._Type = None
+        self._Score = None
+        self._Confidence = None
+        self._IssueSet = None
+
+    @property
+    def Category(self):
+        r"""<p>Detection category.</p><p>Enumeration value:</p><ul><li>AIGCQualityCharacteristics: AIGC quality characteristics.</li></ul>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Group(self):
+        r"""<p>Detection group.</p><p>Enumeration values:</p><ul><li>AIGCAuthenticity: AIGC authenticity, including human body plausibility, physical plausibility, and cross-frame consistency.</li><li>AIGCTechQuality: AIGC technology quality, including aspect ratio, black border, and forced portrait mode.</li></ul>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Type(self):
+        r"""<p>Detection type name.</p><p>Enumeration values:</p><ul><li>BodyPoseCheck: Human body pose plausibility, which belongs to AIGCAuthenticity.</li><li>BodyDetailCheck: Human body detail plausibility, including finger count and facial symmetry, which belongs to AIGCAuthenticity.</li><li>PhysicRulesCheck: Physics rules plausibility, including perspective, lighting, and gravity, which belongs to AIGCAuthenticity.</li><li>ObjectConsistencyCheck: Cross-frame object consistency, which belongs to AIGCAuthenticity.</li><li>FormatCheck: Aspect ratio, black border, forced portrait mode, and other format issues, which belong to AIGCTechQuality.</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Score(self):
+        r"""<p>Overall quality score. Value range: [0, 100]. Higher values indicate better quality.</p>
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Confidence(self):
+        r"""<p>Detection confidence. Value range: [0, 100]. Higher values indicate greater certainty.</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def IssueSet(self):
+        r"""<p>List of issues detected. This is empty if no issue is detected.</p>
+        :rtype: list of LLMDetectionIssue
+        """
+        return self._IssueSet
+
+    @IssueSet.setter
+    def IssueSet(self, IssueSet):
+        self._IssueSet = IssueSet
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Group = params.get("Group")
+        self._Type = params.get("Type")
+        self._Score = params.get("Score")
+        self._Confidence = params.get("Confidence")
+        if params.get("IssueSet") is not None:
+            self._IssueSet = []
+            for item in params.get("IssueSet"):
+                obj = LLMDetectionIssue()
+                obj._deserialize(item)
+                self._IssueSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46414,29 +47358,25 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique ID of a transcoding template.
+        :param _Definition: <p>Unique identifier of the transcoding template.</p>
         :type Definition: int
-        :param _Container: Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        :param _Container: <p>Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, m4a, and wav. Among them, mp3, flac, ogg, m4a, and wav are for audio-only files.</p>
         :type Container: str
-        :param _Name: Name of a transcoding template. Length limit: 64 characters.
+        :param _Name: <p>Transcoding template name. Length limit: 64 characters.</p>
         :type Name: str
-        :param _Comment: Template description. Length limit: 256 characters.
+        :param _Comment: <p>Transcoding template description. Length limit: 256 characters.</p>
         :type Comment: str
-        :param _RemoveVideo: Whether to remove video data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
+        :param _RemoveVideo: <p>Indicates whether to remove video data. Valid values:</p><li>0: Data is reserved.</li><li>1: Data is removed.</li>
         :type RemoveVideo: int
-        :param _RemoveAudio: Whether to remove audio data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
+        :param _RemoveAudio: <p>Indicates whether to remove audio data. Valid values:</p><li>0: Data is reserved.</li><li>1: Data is removed.</li>
         :type RemoveAudio: int
-        :param _VideoTemplate: Video stream configuration parameter.
+        :param _VideoTemplate: <p>Video stream configuration parameters.</p>
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
-        :param _AudioTemplate: Audio stream configuration parameter.
+        :param _AudioTemplate: <p>Audio stream configuration parameters.</p>
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
-        :param _TEHDConfig: TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+        :param _TEHDConfig: <p>Top Speed Codec transcoding parameters.</p>
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
-        :param _EnhanceConfig: Audio/Video enhancement settings.
+        :param _EnhanceConfig: <p>Audio/video enhancement parameters.</p>
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self._Definition = None
@@ -46452,7 +47392,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Unique ID of a transcoding template.
+        r"""<p>Unique identifier of the transcoding template.</p>
         :rtype: int
         """
         return self._Definition
@@ -46463,7 +47403,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Container(self):
-        r"""Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        r"""<p>Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, m4a, and wav. Among them, mp3, flac, ogg, m4a, and wav are for audio-only files.</p>
         :rtype: str
         """
         return self._Container
@@ -46474,7 +47414,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Name of a transcoding template. Length limit: 64 characters.
+        r"""<p>Transcoding template name. Length limit: 64 characters.</p>
         :rtype: str
         """
         return self._Name
@@ -46485,7 +47425,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""Template description. Length limit: 256 characters.
+        r"""<p>Transcoding template description. Length limit: 256 characters.</p>
         :rtype: str
         """
         return self._Comment
@@ -46496,9 +47436,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveVideo(self):
-        r"""Whether to remove video data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
+        r"""<p>Indicates whether to remove video data. Valid values:</p><li>0: Data is reserved.</li><li>1: Data is removed.</li>
         :rtype: int
         """
         return self._RemoveVideo
@@ -46509,9 +47447,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveAudio(self):
-        r"""Whether to remove audio data. Valid values:
-<li>0: Retain</li>
-<li>1: Remove</li>
+        r"""<p>Indicates whether to remove audio data. Valid values:</p><li>0: Data is reserved.</li><li>1: Data is removed.</li>
         :rtype: int
         """
         return self._RemoveAudio
@@ -46522,7 +47458,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def VideoTemplate(self):
-        r"""Video stream configuration parameter.
+        r"""<p>Video stream configuration parameters.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
         """
         return self._VideoTemplate
@@ -46533,7 +47469,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def AudioTemplate(self):
-        r"""Audio stream configuration parameter.
+        r"""<p>Audio stream configuration parameters.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
         """
         return self._AudioTemplate
@@ -46544,7 +47480,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def TEHDConfig(self):
-        r"""TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+        r"""<p>Top Speed Codec transcoding parameters.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         """
         return self._TEHDConfig
@@ -46555,7 +47491,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def EnhanceConfig(self):
-        r"""Audio/Video enhancement settings.
+        r"""<p>Audio/video enhancement parameters.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         return self._EnhanceConfig
@@ -49823,7 +50759,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: <p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href="https://www.tencentcloud.com/products/css?from_qcintl=topnav&lang=en&pg=">CSS</a>. To obtain the address, <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">see</a>.</p><p>For SRT-supported addresses, <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a>.</p>
+        :param _Url: <p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a> live streams. For more information about how to obtain the address, see <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">this reference</a>.</p><p>For supported SRT addresses, see <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">this reference</a>.</p>
         :type Url: str
         :param _TaskNotifyConfig: <p>Event notification information of the task. This is used to specify the live stream processing result.</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
@@ -49866,7 +50802,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""<p>The live streaming URL (must be a live streaming address, supporting rtmp, hls, flv, trtc, webrtc, srt, etc.).<br>The trtc address is as follows:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the trtc room number ID, which must be a number.<br><code>&lt;sdkappid&gt;</code> is the trtc SDK app ID.<br><code>&lt;userid&gt;</code> is the user ID of the service entering the room, which can distinguish robots.<br><code>&lt;usersig&gt;</code> is the trtc user's signature.</p><p>WebRTC supports the live stream of <a href="https://www.tencentcloud.com/products/css?from_qcintl=topnav&lang=en&pg=">CSS</a>. To obtain the address, <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">see</a>.</p><p>For SRT-supported addresses, <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">refer</a>.</p>
+        r"""<p>Live stream URL (this must be a live stream address; supported formats include RTMP, HLS, FLV, TRTC, WebRTC, and SRT).<br>TRTC address example:<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> is the TRTC room ID.<br><code>&lt;sdkappid&gt;</code> is the TRTC SDK app ID.<br><code>&lt;userid&gt;</code> is the ID of the user who enters the room, which can be used to distinguish bots.<br><code>&lt;usersig&gt;</code> is the TRTC user signature.</p><p>WebRTC supports <a href="https://www.tencentcloud.com/product/leb?from_cn_redirect=1">LEB</a> live streams. For more information about how to obtain the address, see <a href="https://www.tencentcloud.com/document/product/267/32720?from_cn_redirect=1">this reference</a>.</p><p>For supported SRT addresses, see <a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">this reference</a>.</p>
         :rtype: str
         """
         return self._Url
@@ -51218,6 +52154,8 @@ class QualityControlData(AbstractModel):
         :type QualityControlResultSet: list of QualityControlResult
         :param _ContainerDiagnoseResultSet: <p>Exception items detected in format diagnosis.</p>
         :type ContainerDiagnoseResultSet: list of ContainerDiagnoseResultItem
+        :param _LLMDetectionReport: <p>LLM AIGC quality detection result.</p>
+        :type LLMDetectionReport: :class:`tencentcloud.mps.v20190612.models.LLMDetectionReport`
         """
         self._NoAudio = None
         self._NoVideo = None
@@ -51226,6 +52164,7 @@ class QualityControlData(AbstractModel):
         self._AestheticEvaluationScore = None
         self._QualityControlResultSet = None
         self._ContainerDiagnoseResultSet = None
+        self._LLMDetectionReport = None
 
     @property
     def NoAudio(self):
@@ -51304,6 +52243,17 @@ class QualityControlData(AbstractModel):
     def ContainerDiagnoseResultSet(self, ContainerDiagnoseResultSet):
         self._ContainerDiagnoseResultSet = ContainerDiagnoseResultSet
 
+    @property
+    def LLMDetectionReport(self):
+        r"""<p>LLM AIGC quality detection result.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LLMDetectionReport`
+        """
+        return self._LLMDetectionReport
+
+    @LLMDetectionReport.setter
+    def LLMDetectionReport(self, LLMDetectionReport):
+        self._LLMDetectionReport = LLMDetectionReport
+
 
     def _deserialize(self, params):
         self._NoAudio = params.get("NoAudio")
@@ -51323,6 +52273,9 @@ class QualityControlData(AbstractModel):
                 obj = ContainerDiagnoseResultItem()
                 obj._deserialize(item)
                 self._ContainerDiagnoseResultSet.append(obj)
+        if params.get("LLMDetectionReport") is not None:
+            self._LLMDetectionReport = LLMDetectionReport()
+            self._LLMDetectionReport._deserialize(params.get("LLMDetectionReport"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52894,6 +53847,57 @@ Default value: 0 px.
         if params.get("ImageTemplate") is not None:
             self._ImageTemplate = RawImageWatermarkInput()
             self._ImageTemplate._deserialize(params.get("ImageTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecipeItem(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Theme: 
+        :type Theme: str
+        :param _Num: 
+        :type Num: int
+        """
+        self._Theme = None
+        self._Num = None
+
+    @property
+    def Theme(self):
+        r"""
+        :rtype: str
+        """
+        return self._Theme
+
+    @Theme.setter
+    def Theme(self, Theme):
+        self._Theme = Theme
+
+    @property
+    def Num(self):
+        r"""
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+
+    def _deserialize(self, params):
+        self._Theme = params.get("Theme")
+        self._Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57055,19 +58059,18 @@ class SmartSubtitleTaskAsrFullTextSegmentItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: Confidence of a recognized segment. Value range: 0-100.
+        :param _Confidence: <p>Confidence of the recognized segment. Value range: 0–100.</p>
         :type Confidence: float
-        :param _StartTimeOffset: Start time offset of a recognized segment, in seconds.
+        :param _StartTimeOffset: <p>Start time offset of the recognized segment, in seconds.</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: End time offset of a recognized segment, in seconds.
+        :param _EndTimeOffset: <p>End time offset of the recognized segment, in seconds.</p>
         :type EndTimeOffset: float
-        :param _Text: Recognized text.
+        :param _Text: <p>Recognized text.</p>
         :type Text: str
-        :param _Wordlist: Word timestamp information.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Wordlist: <p>Word timestamp information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Wordlist: list of WordResult
-        :param _SpeakerId: Speaker ID (if speaker recognition is enabled).
+        :param _SpeakerId: <p>Speaker ID (if speaker recognition is enabled).</p>
         :type SpeakerId: str
         """
         self._Confidence = None
@@ -57079,7 +58082,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Confidence(self):
-        r"""Confidence of a recognized segment. Value range: 0-100.
+        r"""<p>Confidence of the recognized segment. Value range: 0–100.</p>
         :rtype: float
         """
         return self._Confidence
@@ -57090,7 +58093,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StartTimeOffset(self):
-        r"""Start time offset of a recognized segment, in seconds.
+        r"""<p>Start time offset of the recognized segment, in seconds.</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -57101,7 +58104,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EndTimeOffset(self):
-        r"""End time offset of a recognized segment, in seconds.
+        r"""<p>End time offset of the recognized segment, in seconds.</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -57112,7 +58115,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Text(self):
-        r"""Recognized text.
+        r"""<p>Recognized text.</p>
         :rtype: str
         """
         return self._Text
@@ -57123,9 +58126,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Wordlist(self):
-        r"""Word timestamp information.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Word timestamp information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of WordResult
         """
         return self._Wordlist
@@ -57136,7 +58138,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SpeakerId(self):
-        r"""Speaker ID (if speaker recognition is enabled).
+        r"""<p>Speaker ID (if speaker recognition is enabled).</p>
         :rtype: str
         """
         return self._SpeakerId
@@ -59206,6 +60208,59 @@ preset1: use different keys for each substream
         self._Vector = params.get("Vector")
         self._EncryptionMethod = params.get("EncryptionMethod")
         self._EncryptionPreset = params.get("EncryptionPreset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleArea(AbstractModel):
+    r"""Data structure that indicates the subtitle area coordinates for the automatic hard subtitle area detection. The confidence is also included.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Area: <p>Detected subtitle area.</p>
+        :type Area: :class:`tencentcloud.mps.v20190612.models.EraseArea`
+        :param _Confidence: <p>Confidence of the detected area.</p><p>Value range: [0, 100].</p>
+        :type Confidence: float
+        """
+        self._Area = None
+        self._Confidence = None
+
+    @property
+    def Area(self):
+        r"""<p>Detected subtitle area.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EraseArea`
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Confidence(self):
+        r"""<p>Confidence of the detected area.</p><p>Value range: [0, 100].</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+
+    def _deserialize(self, params):
+        if params.get("Area") is not None:
+            self._Area = EraseArea()
+            self._Area._deserialize(params.get("Area"))
+        self._Confidence = params.get("Confidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61385,9 +62440,13 @@ class SyncDubbingRequest(AbstractModel):
         :type AudioUrl: str
         :param _AudioLang: <p>Cloning audio language. The default language is Chinese. <br>Supported languages are the same as those for TextLang.</p>
         :type AudioLang: str
-        :param _Output: <p>Output parameters.</p><p>Specifies the output format, etc.</p>
+        :param _VoiceProfile: <p>Voice attribute.</p>
+        :type VoiceProfile: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        :param _Output: <p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is base64.</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
-        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p><p>‑ synExt (Object): Speech synthesis extension parameter.<br>- duration (Float): Synthesized audio duration, in seconds. Example: 5.2.<br>- sampleRate (Integer): Synthesized audio sample rate. Default value: 16000. Supported values: [8000,16000,22050,32000,44100].<br> pitch (Integer): -Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br>‑ cloneExt (Object): Voice cloning extension parameter.<br>    - timeRanges (Float[][]): Specifies the time ranges for audio cloning. Default value: [[0, 20]]. Example: [[5.2, 10], [45, 59.8]].</p>
+        :param _ResourceId: <p>Resource ID. The resource needs to be enabled. The default value is the account's primary resource ID.</p>
+        :type ResourceId: str
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p><p><strong>synExt</strong>    Object    Extended text to speech parameter.<br>  <strong>duration</strong>    Float    Synthesized audio duration, in seconds. Example: 5.2.<br>  <strong>sampleRate</strong>    Integer    Synthesized audio sample rate. Default value: 16000. Valid values: [8000, 16000, 22050, 24000, 32000, 44100].<br>  <strong>pitch</strong>    Integer    Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br><strong>cloneExt</strong>    Object    Extended voice cloning parameter.<br>  <strong>timeRanges</strong>    Float[][]    Specifies the time ranges for audio cloning. The default value is the first 20 seconds of the audio. Example: [[5.2, 10], [45, 59.8]].</p>
         :type ExtParam: str
         """
         self._Text = None
@@ -61396,7 +62455,9 @@ class SyncDubbingRequest(AbstractModel):
         self._AudioData = None
         self._AudioUrl = None
         self._AudioLang = None
+        self._VoiceProfile = None
         self._Output = None
+        self._ResourceId = None
         self._ExtParam = None
 
     @property
@@ -61466,8 +62527,19 @@ class SyncDubbingRequest(AbstractModel):
         self._AudioLang = AudioLang
 
     @property
+    def VoiceProfile(self):
+        r"""<p>Voice attribute.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        """
+        return self._VoiceProfile
+
+    @VoiceProfile.setter
+    def VoiceProfile(self, VoiceProfile):
+        self._VoiceProfile = VoiceProfile
+
+    @property
     def Output(self):
-        r"""<p>Output parameters.</p><p>Specifies the output format, etc.</p>
+        r"""<p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is base64.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
         """
         return self._Output
@@ -61477,8 +62549,19 @@ class SyncDubbingRequest(AbstractModel):
         self._Output = Output
 
     @property
+    def ResourceId(self):
+        r"""<p>Resource ID. The resource needs to be enabled. The default value is the account's primary resource ID.</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
     def ExtParam(self):
-        r"""<p>Extended parameters in the format of a JSON string.</p><p>‑ synExt (Object): Speech synthesis extension parameter.<br>- duration (Float): Synthesized audio duration, in seconds. Example: 5.2.<br>- sampleRate (Integer): Synthesized audio sample rate. Default value: 16000. Supported values: [8000,16000,22050,32000,44100].<br> pitch (Integer): -Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br>‑ cloneExt (Object): Voice cloning extension parameter.<br>    - timeRanges (Float[][]): Specifies the time ranges for audio cloning. Default value: [[0, 20]]. Example: [[5.2, 10], [45, 59.8]].</p>
+        r"""<p>Extended parameters in the format of a JSON string.</p><p><strong>synExt</strong>    Object    Extended text to speech parameter.<br>  <strong>duration</strong>    Float    Synthesized audio duration, in seconds. Example: 5.2.<br>  <strong>sampleRate</strong>    Integer    Synthesized audio sample rate. Default value: 16000. Valid values: [8000, 16000, 22050, 24000, 32000, 44100].<br>  <strong>pitch</strong>    Integer    Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br><strong>cloneExt</strong>    Object    Extended voice cloning parameter.<br>  <strong>timeRanges</strong>    Float[][]    Specifies the time ranges for audio cloning. The default value is the first 20 seconds of the audio. Example: [[5.2, 10], [45, 59.8]].</p>
         :rtype: str
         """
         return self._ExtParam
@@ -61495,9 +62578,13 @@ class SyncDubbingRequest(AbstractModel):
         self._AudioData = params.get("AudioData")
         self._AudioUrl = params.get("AudioUrl")
         self._AudioLang = params.get("AudioLang")
+        if params.get("VoiceProfile") is not None:
+            self._VoiceProfile = VoiceProfile()
+            self._VoiceProfile._deserialize(params.get("VoiceProfile"))
         if params.get("Output") is not None:
             self._Output = SyncDubbingOutputOption()
             self._Output._deserialize(params.get("Output"))
+        self._ResourceId = params.get("ResourceId")
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -61836,31 +62923,24 @@ class TaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotifyType: Notification type. available values:.
-<li>CMQ: offline. switch to TDMQ-CMQ.</li>.
-<Li>TDMQ-CMQ: message queue</li>.
-<li>URL: when a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. the callback protocol is HTTP+json. the content of the packet body is the same as the output parameters of the parseeventnotification api.</li>.
-<Li>SCF: not recommended. additional configuration is required in the console.</li>.
-<Li>AWS-SQS: aws queue, suitable for aws tasks only and requires the same region.</li>.
-<font color="red">note: if left blank, it is TDMQ-CMQ by default. to use another type, you need to fill in the corresponding type value. if using TDMQ-CMQ message queue, an excessively large task response may cause queue failure.</font>.
+        :param _NotifyType: <p>Notification type. Valid values:</p><li>CMQ: Removed. We recommend that you switch to TDMQ-CMQ.</li><li>TDMQ-CMQ: TDMQ.</li><li>URL: If URL is specified, HTTP callbacks are pushed to the URL specified in NotifyUrl. The callback protocol is HTTP and JSON. The packet body is the same as the output parameter of the event parsing notification API.</li><li>SCF: This is not recommended. Additional configuration for SCF is required in the console.</li><li>AWS-SQS: AWS queue. This is only suitable for AWS tasks in the same region.</li><font color="red"> Note: The default value is TDMQ-CMQ if this is not specified or empty. To use another type, you need to specify the corresponding value. If TDMQ-CMQ is used, oversized task response may cause failure to write to the queue. </font>
         :type NotifyType: str
-        :param _NotifyMode: Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.
+        :param _NotifyMode: <p>Workflow notification mode. Valid values are Finish and Change. If this is not specified, the default value is Finish.</p>
         :type NotifyMode: str
-        :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
+        :param _NotifyUrl: <p>HTTP callback URL. This is required if NotifyType is URL.</p>
         :type NotifyUrl: str
-        :param _CmqModel: The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.
+        :param _CmqModel: <p>CMQ or TDMQ for CMQ model. Valid values are Queue and Topic.</p>
         :type CmqModel: str
-        :param _CmqRegion: The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).
+        :param _CmqRegion: <p>CMQ or TDMQ for CMQ region, such as sh or bj.</p>
         :type CmqRegion: str
-        :param _TopicName: The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.
+        :param _TopicName: <p>This field takes effect if the model is Topic. It indicates the topic name of the CMQ or TDMQ for CMQ for receiving event notifications.</p>
         :type TopicName: str
-        :param _QueueName: The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.
+        :param _QueueName: <p>This field takes effect if the model is Queue. It indicates the queue name of the CMQ or TDMQ for CMQ for receiving event notifications.</p>
         :type QueueName: str
-        :param _AwsSQS: The AWS SQS queue. This parameter is required if `NotifyType` is `AWS-SQS`.
-
+        :param _AwsSQS: <p>AWS SQS callback. This is required if NotifyType is AWS-SQS.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
-        :param _NotifyKey: key used to generate a callback signature.
+        :param _NotifyKey: <p>Key used to generate the callback signature.</p>
         :type NotifyKey: str
         """
         self._NotifyType = None
@@ -61875,13 +62955,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyType(self):
-        r"""Notification type. available values:.
-<li>CMQ: offline. switch to TDMQ-CMQ.</li>.
-<Li>TDMQ-CMQ: message queue</li>.
-<li>URL: when a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. the callback protocol is HTTP+json. the content of the packet body is the same as the output parameters of the parseeventnotification api.</li>.
-<Li>SCF: not recommended. additional configuration is required in the console.</li>.
-<Li>AWS-SQS: aws queue, suitable for aws tasks only and requires the same region.</li>.
-<font color="red">note: if left blank, it is TDMQ-CMQ by default. to use another type, you need to fill in the corresponding type value. if using TDMQ-CMQ message queue, an excessively large task response may cause queue failure.</font>.
+        r"""<p>Notification type. Valid values:</p><li>CMQ: Removed. We recommend that you switch to TDMQ-CMQ.</li><li>TDMQ-CMQ: TDMQ.</li><li>URL: If URL is specified, HTTP callbacks are pushed to the URL specified in NotifyUrl. The callback protocol is HTTP and JSON. The packet body is the same as the output parameter of the event parsing notification API.</li><li>SCF: This is not recommended. Additional configuration for SCF is required in the console.</li><li>AWS-SQS: AWS queue. This is only suitable for AWS tasks in the same region.</li><font color="red"> Note: The default value is TDMQ-CMQ if this is not specified or empty. To use another type, you need to specify the corresponding value. If TDMQ-CMQ is used, oversized task response may cause failure to write to the queue. </font>
         :rtype: str
         """
         return self._NotifyType
@@ -61892,7 +62966,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyMode(self):
-        r"""Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.
+        r"""<p>Workflow notification mode. Valid values are Finish and Change. If this is not specified, the default value is Finish.</p>
         :rtype: str
         """
         return self._NotifyMode
@@ -61903,7 +62977,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyUrl(self):
-        r"""HTTP callback URL, required if `NotifyType` is set to `URL`
+        r"""<p>HTTP callback URL. This is required if NotifyType is URL.</p>
         :rtype: str
         """
         return self._NotifyUrl
@@ -61914,7 +62988,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CmqModel(self):
-        r"""The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.
+        r"""<p>CMQ or TDMQ for CMQ model. Valid values are Queue and Topic.</p>
         :rtype: str
         """
         return self._CmqModel
@@ -61925,7 +62999,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CmqRegion(self):
-        r"""The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).
+        r"""<p>CMQ or TDMQ for CMQ region, such as sh or bj.</p>
         :rtype: str
         """
         return self._CmqRegion
@@ -61936,7 +63010,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
-        r"""The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.
+        r"""<p>This field takes effect if the model is Topic. It indicates the topic name of the CMQ or TDMQ for CMQ for receiving event notifications.</p>
         :rtype: str
         """
         return self._TopicName
@@ -61947,7 +63021,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueName(self):
-        r"""The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.
+        r"""<p>This field takes effect if the model is Queue. It indicates the queue name of the CMQ or TDMQ for CMQ for receiving event notifications.</p>
         :rtype: str
         """
         return self._QueueName
@@ -61958,8 +63032,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AwsSQS(self):
-        r"""The AWS SQS queue. This parameter is required if `NotifyType` is `AWS-SQS`.
-
+        r"""<p>AWS SQS callback. This is required if NotifyType is AWS-SQS.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         """
@@ -61971,7 +63044,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyKey(self):
-        r"""key used to generate a callback signature.
+        r"""<p>Key used to generate the callback signature.</p>
         :rtype: str
         """
         return self._NotifyKey
@@ -64983,6 +66056,149 @@ Note: Input [] for the erasing area; if this parameter is unspecified, the templ
         
 
 
+class UpdateVoiceRequest(AbstractModel):
+    r"""UpdateVoice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _VoiceFields: <p>Fields of the updated voice.</p>
+        :type VoiceFields: :class:`tencentcloud.mps.v20190612.models.VoiceUpdateFields`
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p>
+        :type ExtParam: str
+        """
+        self._VoiceId = None
+        self._VoiceFields = None
+        self._ExtParam = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def VoiceFields(self):
+        r"""<p>Fields of the updated voice.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceUpdateFields`
+        """
+        return self._VoiceFields
+
+    @VoiceFields.setter
+    def VoiceFields(self, VoiceFields):
+        self._VoiceFields = VoiceFields
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters in the format of a JSON string.</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        if params.get("VoiceFields") is not None:
+            self._VoiceFields = VoiceUpdateFields()
+            self._VoiceFields._deserialize(params.get("VoiceFields"))
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateVoiceResponse(AbstractModel):
+    r"""UpdateVoice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
+        :type ErrorCode: int
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
+        :type Msg: str
+        :param _Voice: <p>Voice information after the update.</p>
+        :type Voice: :class:`tencentcloud.mps.v20190612.models.VoiceInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._Voice = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>Error message. success is returned if the request is successful.</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Voice(self):
+        r"""<p>Voice information after the update.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceInfo`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        if params.get("Voice") is not None:
+            self._Voice = VoiceInfo()
+            self._Voice._deserialize(params.get("Voice"))
+        self._RequestId = params.get("RequestId")
+
+
 class UrlInputInfo(AbstractModel):
     r"""The URL of the object to process.
 
@@ -67670,6 +68886,8 @@ class VoiceInfo(AbstractModel):
         :type Category: str
         :param _Gender: <p>Gender. </p><p>Enumeration values: </p><ul><li>male: Male, </li><li>female: Female.</li></ul>
         :type Gender: str
+        :param _Age: <p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :type Age: str
         :param _Languages: <p>List of supported languages. </p><p>For example: en.</p>
         :type Languages: list of str
         :param _AudioUrl: <p>Audition audio URL.</p>
@@ -67684,6 +68902,7 @@ class VoiceInfo(AbstractModel):
         self._Description = None
         self._Category = None
         self._Gender = None
+        self._Age = None
         self._Languages = None
         self._AudioUrl = None
         self._Labels = None
@@ -67745,6 +68964,17 @@ class VoiceInfo(AbstractModel):
         self._Gender = Gender
 
     @property
+    def Age(self):
+        r"""<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
     def Languages(self):
         r"""<p>List of supported languages. </p><p>For example: en.</p>
         :rtype: list of str
@@ -67795,10 +69025,278 @@ class VoiceInfo(AbstractModel):
         self._Description = params.get("Description")
         self._Category = params.get("Category")
         self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
         self._Languages = params.get("Languages")
         self._AudioUrl = params.get("AudioUrl")
         self._Labels = params.get("Labels")
         self._Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceProfile(AbstractModel):
+    r"""Voice attribute.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Voice name.</p>
+        :type Name: str
+        :param _Description: <p>Voice description.</p>
+        :type Description: str
+        :param _Gender: <p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :type Gender: str
+        :param _Age: <p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :type Age: str
+        :param _Languages: <p>Language. Supported languages:<br>zh Chinese<br>en English<br>ja Japanese<br>de German<br>fr French<br>ko Korean<br>ru Russian<br>uk Ukrainian<br>pt Portuguese<br>it Italian<br>es Spanish<br>id Indonesian<br>nl Dutch<br>tr Turkish<br>fil Filipino<br>ms Malay<br>el Greek<br>fi Finnish<br>hr Croatian<br>sk Slovak<br>pl Polish<br>sv Swedish<br>hi Hindi<br>bg Bulgarian<br>ro Romanian<br>ar Arabic<br>cs Czech<br>da Danish<br>ta Tamil<br>hun Hungarian<br>vi Vietnamese<br>no Norwegian<br>yue Cantonese<br>th Thai<br>he Hebrew<br>ca Catalan<br>nn Nynorsk<br>af Afrikaans<br>fa Persian<br>sl Slovenian</p>
+        :type Languages: list of str
+        :param _Labels: <p>Tag.</p>
+        :type Labels: list of str
+        :param _Scenes: <p>Scenario.</p>
+        :type Scenes: list of str
+        """
+        self._Name = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
+
+    @property
+    def Name(self):
+        r"""<p>Voice name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>Language. Supported languages:<br>zh Chinese<br>en English<br>ja Japanese<br>de German<br>fr French<br>ko Korean<br>ru Russian<br>uk Ukrainian<br>pt Portuguese<br>it Italian<br>es Spanish<br>id Indonesian<br>nl Dutch<br>tr Turkish<br>fil Filipino<br>ms Malay<br>el Greek<br>fi Finnish<br>hr Croatian<br>sk Slovak<br>pl Polish<br>sv Swedish<br>hi Hindi<br>bg Bulgarian<br>ro Romanian<br>ar Arabic<br>cs Czech<br>da Danish<br>ta Tamil<br>hun Hungarian<br>vi Vietnamese<br>no Norwegian<br>yue Cantonese<br>th Thai<br>he Hebrew<br>ca Catalan<br>nn Nynorsk<br>af Afrikaans<br>fa Persian<br>sl Slovenian</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>Tag.</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>Scenario.</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceUpdateFields(AbstractModel):
+    r"""Fields of the updated voice.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Voice name.</p>
+        :type Name: str
+        :param _Description: <p>Voice description.</p>
+        :type Description: str
+        :param _Gender: <p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :type Gender: str
+        :param _Age: <p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :type Age: str
+        :param _Languages: <p>Language.</p>
+        :type Languages: list of str
+        :param _Labels: <p>Tag.</p>
+        :type Labels: list of str
+        :param _Scenes: <p>Scenario.</p>
+        :type Scenes: list of str
+        :param _AudioUrl: <p>Audition audio.</p>
+        :type AudioUrl: str
+        """
+        self._Name = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
+        self._AudioUrl = None
+
+    @property
+    def Name(self):
+        r"""<p>Voice name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>Language.</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>Tag.</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>Scenario.</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Audition audio.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        self._AudioUrl = params.get("AudioUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

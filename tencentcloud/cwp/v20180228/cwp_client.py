@@ -4423,7 +4423,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLoginTypeGlobalConf(self, request):
-        r"""Retrieve the global configuration for uninstall protection
+        r"""This API is used to obtain the global configuration for QR code login.
 
         :param request: Request instance for DescribeLoginTypeGlobalConf.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginTypeGlobalConfRequest`
