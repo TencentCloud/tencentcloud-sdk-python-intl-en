@@ -62446,7 +62446,20 @@ class SyncDubbingRequest(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
         :param _ResourceId: <p>Resource ID. The resource needs to be enabled. The default value is the account's primary resource ID.</p>
         :type ResourceId: str
-        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p><p><strong>synExt</strong>    Object    Extended text to speech parameter.<br>  <strong>duration</strong>    Float    Synthesized audio duration, in seconds. Example: 5.2.<br>  <strong>sampleRate</strong>    Integer    Synthesized audio sample rate. Default value: 16000. Valid values: [8000, 16000, 22050, 24000, 32000, 44100].<br>  <strong>pitch</strong>    Integer    Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br><strong>cloneExt</strong>    Object    Extended voice cloning parameter.<br>  <strong>timeRanges</strong>    Float[][]    Specifies the time ranges for audio cloning. The default value is the first 20 seconds of the audio. Example: [[5.2, 10], [45, 59.8]].</p>
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p>
+<p>
+
+- <strong>synExt</strong>    Object;    Extended text to speech parameter.<br>
+- <strong>duration</strong>    Float;    Synthesized audio duration, in seconds. Example: 5.2.<br>
+- <strong>sampleRate</strong>    Integer;    Synthesized audio sample rate. Default value: 16000. Valid values: [8000, 16000, 22050, 24000, 32000, 44100].<br>
+- <strong>pitch</strong>    Integer;    Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br>
+- <strong>cloneExt</strong>    Object;    Extended voice cloning parameter.<br>
+- <strong>timeRanges</strong>    Float;    Specifies the time ranges for audio cloning. The default value is the first 20 seconds of the audio. Example: [[5.2, 10], [45, 59.8]].
+
+</p>
+
+
+
         :type ExtParam: str
         """
         self._Text = None
@@ -62561,7 +62574,20 @@ class SyncDubbingRequest(AbstractModel):
 
     @property
     def ExtParam(self):
-        r"""<p>Extended parameters in the format of a JSON string.</p><p><strong>synExt</strong>    Object    Extended text to speech parameter.<br>  <strong>duration</strong>    Float    Synthesized audio duration, in seconds. Example: 5.2.<br>  <strong>sampleRate</strong>    Integer    Synthesized audio sample rate. Default value: 16000. Valid values: [8000, 16000, 22050, 24000, 32000, 44100].<br>  <strong>pitch</strong>    Integer    Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br><strong>cloneExt</strong>    Object    Extended voice cloning parameter.<br>  <strong>timeRanges</strong>    Float[][]    Specifies the time ranges for audio cloning. The default value is the first 20 seconds of the audio. Example: [[5.2, 10], [45, 59.8]].</p>
+        r"""<p>Extended parameters in the format of a JSON string.</p>
+<p>
+
+- <strong>synExt</strong>    Object;    Extended text to speech parameter.<br>
+- <strong>duration</strong>    Float;    Synthesized audio duration, in seconds. Example: 5.2.<br>
+- <strong>sampleRate</strong>    Integer;    Synthesized audio sample rate. Default value: 16000. Valid values: [8000, 16000, 22050, 24000, 32000, 44100].<br>
+- <strong>pitch</strong>    Integer;    Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br>
+- <strong>cloneExt</strong>    Object;    Extended voice cloning parameter.<br>
+- <strong>timeRanges</strong>    Float;    Specifies the time ranges for audio cloning. The default value is the first 20 seconds of the audio. Example: [[5.2, 10], [45, 59.8]].
+
+</p>
+
+
+
         :rtype: str
         """
         return self._ExtParam
