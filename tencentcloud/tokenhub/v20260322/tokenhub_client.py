@@ -26,6 +26,31 @@ class TokenhubClient(AbstractClient):
     _service = 'tokenhub'
 
 
+    def CreateApiKey(self, request):
+        r"""Create an API key.
+
+        Create a new API key. Upon successful creation, return the API Key ID. Specify the platform kind, binding method, and initial state.
+
+        :param request: Request instance for CreateApiKey.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.CreateApiKeyRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.CreateApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateApiKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGlossary(self, request):
         r"""Create a Termbase.
 
@@ -67,6 +92,29 @@ class TokenhubClient(AbstractClient):
             body = self.call("CreateGlossaryEntries", params, headers=headers)
             response = json.loads(body)
             model = models.CreateGlossaryEntriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteApiKey(self, request):
+        r"""This API is used to delete specified api keys and clean up associated model binding relationships.
+
+        :param request: Request instance for DeleteApiKey.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DeleteApiKeyRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DeleteApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteApiKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -167,6 +215,54 @@ class TokenhubClient(AbstractClient):
             body = self.call("DescribeGlossaryEntries", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeGlossaryEntriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApiKeyInfo(self, request):
+        r"""Refresh API key information.
+
+        This API is used to update the remark information, IP allowlist and Token quota of an API key (recommended to use QuotaDesired parameter for quota modification). Passing no optional parameters means no modification.
+
+        :param request: Request instance for ModifyApiKeyInfo.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyInfoRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApiKeyInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApiKeyInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApiKeyStatus(self, request):
+        r"""This API is used to enable or disable the status of an api key.
+
+        :param request: Request instance for ModifyApiKeyStatus.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyStatusRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApiKeyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApiKeyStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

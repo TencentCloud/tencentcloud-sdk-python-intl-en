@@ -25,6 +25,26 @@ class TokenhubClient(AbstractClient):
     _endpoint = 'tokenhub.intl.tencentcloudapi.com'
     _service = 'tokenhub'
 
+    async def CreateApiKey(
+            self,
+            request: models.CreateApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.CreateApiKeyResponse:
+        """
+        Create an API key.
+
+        Create a new API key. Upon successful creation, return the API Key ID. Specify the platform kind, binding method, and initial state.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateApiKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateGlossary(
             self,
             request: models.CreateGlossaryRequest,
@@ -60,6 +80,24 @@ class TokenhubClient(AbstractClient):
         kwargs["action"] = "CreateGlossaryEntries"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateGlossaryEntriesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteApiKey(
+            self,
+            request: models.DeleteApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteApiKeyResponse:
+        """
+        This API is used to delete specified api keys and clean up associated model binding relationships.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteApiKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -140,6 +178,44 @@ class TokenhubClient(AbstractClient):
         kwargs["action"] = "DescribeGlossaryEntries"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeGlossaryEntriesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyApiKeyInfo(
+            self,
+            request: models.ModifyApiKeyInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyApiKeyInfoResponse:
+        """
+        Refresh API key information.
+
+        This API is used to update the remark information, IP allowlist and Token quota of an API key (recommended to use QuotaDesired parameter for quota modification). Passing no optional parameters means no modification.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyApiKeyInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyApiKeyInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyApiKeyStatus(
+            self,
+            request: models.ModifyApiKeyStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyApiKeyStatusResponse:
+        """
+        This API is used to enable or disable the status of an api key.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyApiKeyStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyApiKeyStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

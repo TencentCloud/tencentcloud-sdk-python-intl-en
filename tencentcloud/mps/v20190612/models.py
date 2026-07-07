@@ -18966,6 +18966,8 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type EnhancePrompt: bool
         :param _ImageInfos: <p>Reference resource images. By default, one image can be specified.</p><p>Models supporting multiple images:</p><ol><li>Kling 2.1 supports up to 4 images as resource image input.</li><li>Kling 3.0-Omni supports up to 10 images as resource image input.</li><li>Kling O1 supports up to 10 images as resource image input.</li><li>Vidu q2 supports up to 7 images as resource image input.</li><li>Hunyuan 3.0 supports up to 3 images as resource image input.</li><li>MJ v7 supports up to 3 images as resource image input.</li></ol><p>Note:</p><ol><li>The recommended image size is less than 7 MB. Different models have different limits.</li><li>Supported image formats: JPEG, PNG, and WebP.</li></ol>
         :type ImageInfos: list of AigcImageInfo
+        :param _OutputImageCount: 
+        :type OutputImageCount: int
         :param _ExtraParameters: <p>Additional parameters required for the model.</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
         :param _AdditionalParameters: <p>Special scenario parameters required by the model, formatted as a JSON serialized string.</p><ol><li>Hunyuan 3.0 supports freely setting resolution width and height within [512, 2048] pixels, with the product of width and height less than or equal to 1024x1024 pixels.</li><li>Qwen 0925 supports freely setting resolution width and height, with a valid total pixel range of [512x512=261632, 2048x2048=4194304].</li></ol><p>Example: {"size":"1024x1024"}.</p>
@@ -18982,6 +18984,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._NegativePrompt = None
         self._EnhancePrompt = None
         self._ImageInfos = None
+        self._OutputImageCount = None
         self._ExtraParameters = None
         self._AdditionalParameters = None
         self._StoreCosParam = None
@@ -19065,6 +19068,17 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._ImageInfos = ImageInfos
 
     @property
+    def OutputImageCount(self):
+        r"""
+        :rtype: int
+        """
+        return self._OutputImageCount
+
+    @OutputImageCount.setter
+    def OutputImageCount(self, OutputImageCount):
+        self._OutputImageCount = OutputImageCount
+
+    @property
     def ExtraParameters(self):
         r"""<p>Additional parameters required for the model.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
@@ -19122,6 +19136,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
                 obj = AigcImageInfo()
                 obj._deserialize(item)
                 self._ImageInfos.append(obj)
+        self._OutputImageCount = params.get("OutputImageCount")
         if params.get("ExtraParameters") is not None:
             self._ExtraParameters = AigcImageExtraParam()
             self._ExtraParameters._deserialize(params.get("ExtraParameters"))
