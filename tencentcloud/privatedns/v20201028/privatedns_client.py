@@ -26,6 +26,29 @@ class PrivatednsClient(AbstractClient):
     _service = 'privatedns'
 
 
+    def AddSpecifyPrivateZoneVpc(self, request):
+        r"""This API is used to add the VPC associated with the private domain.
+
+        :param request: Request instance for AddSpecifyPrivateZoneVpc.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.AddSpecifyPrivateZoneVpcRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.AddSpecifyPrivateZoneVpcResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddSpecifyPrivateZoneVpc", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddSpecifyPrivateZoneVpcResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateEndPoint(self, request):
         r"""This API is used to create an endpoint.
 
@@ -234,7 +257,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DeletePrivateZoneRecord(self, request):
-        r"""This API is used to delete a DNS record for a private domain.
+        r"""This API is used to delete the private DNS records.
 
         :param request: Request instance for DeletePrivateZoneRecord.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneRecordRequest`
@@ -247,6 +270,29 @@ class PrivatednsClient(AbstractClient):
             body = self.call("DeletePrivateZoneRecord", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePrivateZoneRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSpecifyPrivateZoneVpc(self, request):
+        r"""This API is used to delete the VPC associated with the private domain.
+
+        :param request: Request instance for DeleteSpecifyPrivateZoneVpc.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeleteSpecifyPrivateZoneVpcRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeleteSpecifyPrivateZoneVpcResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSpecifyPrivateZoneVpc", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSpecifyPrivateZoneVpcResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -487,7 +533,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateZoneRecordList(self, request):
-        r"""This API is used to get the list of records for a private domain.
+        r"""This API is used to obtain the private domain record list.
 
         :param request: Request instance for DescribePrivateZoneRecordList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneRecordListRequest`
@@ -707,6 +753,29 @@ class PrivatednsClient(AbstractClient):
             body = self.call("ModifyRecordsStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRecordsStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryAsyncBindVpcStatus(self, request):
+        r"""This API is used to query the asynchronous VPC binding status.
+
+        :param request: Request instance for QueryAsyncBindVpcStatus.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.QueryAsyncBindVpcStatusRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.QueryAsyncBindVpcStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryAsyncBindVpcStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryAsyncBindVpcStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

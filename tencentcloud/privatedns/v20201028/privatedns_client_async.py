@@ -25,6 +25,24 @@ class PrivatednsClient(AbstractClient):
     _endpoint = 'privatedns.intl.tencentcloudapi.com'
     _service = 'privatedns'
 
+    async def AddSpecifyPrivateZoneVpc(
+            self,
+            request: models.AddSpecifyPrivateZoneVpcRequest,
+            opts: Dict = None,
+    ) -> models.AddSpecifyPrivateZoneVpcResponse:
+        """
+        This API is used to add the VPC associated with the private domain.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddSpecifyPrivateZoneVpc"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddSpecifyPrivateZoneVpcResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateEndPoint(
             self,
             request: models.CreateEndPointRequest,
@@ -193,13 +211,31 @@ class PrivatednsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeletePrivateZoneRecordResponse:
         """
-        This API is used to delete a DNS record for a private domain.
+        This API is used to delete the private DNS records.
         """
         
         kwargs = {}
         kwargs["action"] = "DeletePrivateZoneRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeletePrivateZoneRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSpecifyPrivateZoneVpc(
+            self,
+            request: models.DeleteSpecifyPrivateZoneVpcRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSpecifyPrivateZoneVpcResponse:
+        """
+        This API is used to delete the VPC associated with the private domain.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSpecifyPrivateZoneVpc"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSpecifyPrivateZoneVpcResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -391,7 +427,7 @@ class PrivatednsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePrivateZoneRecordListResponse:
         """
-        This API is used to get the list of records for a private domain.
+        This API is used to obtain the private domain record list.
         """
         
         kwargs = {}
@@ -560,6 +596,24 @@ class PrivatednsClient(AbstractClient):
         kwargs["action"] = "ModifyRecordsStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyRecordsStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryAsyncBindVpcStatus(
+            self,
+            request: models.QueryAsyncBindVpcStatusRequest,
+            opts: Dict = None,
+    ) -> models.QueryAsyncBindVpcStatusResponse:
+        """
+        This API is used to query the asynchronous VPC binding status.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryAsyncBindVpcStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryAsyncBindVpcStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

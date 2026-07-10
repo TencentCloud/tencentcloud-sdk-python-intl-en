@@ -143,6 +143,44 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeApiKey(
+            self,
+            request: models.DescribeApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApiKeyResponse:
+        """
+        This API is used to query API Key details based on API Key ID or key value, and return the plaintext key. At least one of ApiKeyId and ApiKey must be input, with priority given to ApiKeyId.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApiKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApiKeyList(
+            self,
+            request: models.DescribeApiKeyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApiKeyListResponse:
+        """
+        Query API key list.
+
+        Query the API key list of the current user with key values in masking display. Support pagination, filtering, and sorting.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApiKeyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApiKeyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeGlossaries(
             self,
             request: models.DescribeGlossariesRequest,

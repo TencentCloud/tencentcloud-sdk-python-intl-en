@@ -39,6 +39,11 @@ def test_import_antiddos_v20200309():
     from tencentcloud.antiddos.v20200309 import models
 
 
+def test_import_antiddos_v20250903():
+    from tencentcloud.antiddos.v20250903 import antiddos_client
+    from tencentcloud.antiddos.v20250903 import models
+
+
 def test_import_apigateway_v20180808():
     from tencentcloud.apigateway.v20180808 import apigateway_client
     from tencentcloud.apigateway.v20180808 import models

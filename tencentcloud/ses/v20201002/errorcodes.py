@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # The attachments are too large. Make sure they do not exceed the size limit for a single attachment and the overall limit for all attachments.
 FAILEDOPERATION_ATTACHCONTENTTOOLARGE = 'FailedOperation.AttachContentToolarge'
 
+# 
+FAILEDOPERATION_DKIMNOTAPPLIED = 'FailedOperation.DKIMNotApplied'
+
 # The email address is in the blocklist.
 FAILEDOPERATION_EMAILADDRINBLACKLIST = 'FailedOperation.EmailAddrInBlacklist'
 

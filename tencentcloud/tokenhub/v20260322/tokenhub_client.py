@@ -174,6 +174,54 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApiKey(self, request):
+        r"""This API is used to query API Key details based on API Key ID or key value, and return the plaintext key. At least one of ApiKeyId and ApiKey must be input, with priority given to ApiKeyId.
+
+        :param request: Request instance for DescribeApiKey.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeApiKeyRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApiKeyList(self, request):
+        r"""Query API key list.
+
+        Query the API key list of the current user with key values in masking display. Support pagination, filtering, and sorting.
+
+        :param request: Request instance for DescribeApiKeyList.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeApiKeyListRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeApiKeyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiKeyList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiKeyListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGlossaries(self, request):
         r"""Query the terminology repository list.
 
