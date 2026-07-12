@@ -177,7 +177,7 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateGrafanaInstanceResponse:
         """
-        This API is used to create a monthly subscribed TCMG instance of the Basic Edition, with auto-renewal enabled and vouchers not allowed by default.
+        This API is used to create a yearly/monthly subscribed TCMG instance of the Basic Edition, with auto-renewal enabled and vouchers not allowed by default.
         """
         
         kwargs = {}
@@ -578,7 +578,7 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteGrafanaInstanceResponse:
         """
-        This API is used to refund a monthly subscribed TCMG instance. Once it is called, the instance cannot be used and will be automatically terminated seven days later.
+        This API is used to refund a yearly/monthly subscribed TCMG instance. Once it is called, the instance cannot be used and will be automatically terminated seven days later.
         """
         
         kwargs = {}
@@ -2331,7 +2331,7 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResumeGrafanaInstanceResponse:
         """
-        This API is used to renew a monthly subscribed TCMG instance for a month without changing the instance edition. It doesn't apply to running instances.
+        This API is used to renew a yearly/monthly subscribed TCMG instance for a month without changing the instance edition. It doesn't apply to running instances.
         """
         
         kwargs = {}

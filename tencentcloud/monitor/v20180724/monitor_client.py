@@ -213,7 +213,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateGrafanaInstance(self, request):
-        r"""This API is used to create a monthly subscribed TCMG instance of the Basic Edition, with auto-renewal enabled and vouchers not allowed by default.
+        r"""This API is used to create a yearly/monthly subscribed TCMG instance of the Basic Edition, with auto-renewal enabled and vouchers not allowed by default.
 
         :param request: Request instance for CreateGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateGrafanaInstanceRequest`
@@ -724,7 +724,7 @@ class MonitorClient(AbstractClient):
 
 
     def DeleteGrafanaInstance(self, request):
-        r"""This API is used to refund a monthly subscribed TCMG instance. Once it is called, the instance cannot be used and will be automatically terminated seven days later.
+        r"""This API is used to refund a yearly/monthly subscribed TCMG instance. Once it is called, the instance cannot be used and will be automatically terminated seven days later.
 
         :param request: Request instance for DeleteGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteGrafanaInstanceRequest`
@@ -2957,7 +2957,7 @@ class MonitorClient(AbstractClient):
 
 
     def ResumeGrafanaInstance(self, request):
-        r"""This API is used to renew a monthly subscribed TCMG instance for a month without changing the instance edition. It doesn't apply to running instances.
+        r"""This API is used to renew a yearly/monthly subscribed TCMG instance for a month without changing the instance edition. It doesn't apply to running instances.
 
         :param request: Request instance for ResumeGrafanaInstance.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ResumeGrafanaInstanceRequest`

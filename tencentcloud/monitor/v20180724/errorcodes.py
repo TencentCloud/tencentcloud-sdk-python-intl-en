@@ -236,7 +236,7 @@ INTERNALERROR_TASKRESULTFORMAT = 'InternalError.TaskResultFormat'
 # InternalError.UnexpectedInternal
 INTERNALERROR_UNEXPECTEDINTERNAL = 'InternalError.UnexpectedInternal'
 
-# Invalid parameter.
+# Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
 # InvalidParameter.ClusterNotFound
@@ -325,6 +325,9 @@ RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 
+UNAUTHORIZEDOPERATION_CAMNOAUTH = 'UnauthorizedOperation.CamNoAuth'
 
 # Unknown parameter.
 UNKNOWNPARAMETER = 'UnknownParameter'

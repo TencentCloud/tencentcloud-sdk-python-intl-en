@@ -791,6 +791,8 @@ class CreateTaskFromActionRequest(AbstractModel):
         :type TaskActionCustomConfiguration: str
         :param _TaskPauseDuration: Automatic experiment pause time, in minutes. If this parameter is left blank, the default value 60 is used.
         :type TaskPauseDuration: int
+        :param _TaskTags: 
+        :type TaskTags: list of TagWithCreate
         """
         self._TaskActionId = None
         self._TaskInstances = None
@@ -799,6 +801,7 @@ class CreateTaskFromActionRequest(AbstractModel):
         self._TaskActionGeneralConfiguration = None
         self._TaskActionCustomConfiguration = None
         self._TaskPauseDuration = None
+        self._TaskTags = None
 
     @property
     def TaskActionId(self):
@@ -877,6 +880,17 @@ class CreateTaskFromActionRequest(AbstractModel):
     def TaskPauseDuration(self, TaskPauseDuration):
         self._TaskPauseDuration = TaskPauseDuration
 
+    @property
+    def TaskTags(self):
+        r"""
+        :rtype: list of TagWithCreate
+        """
+        return self._TaskTags
+
+    @TaskTags.setter
+    def TaskTags(self, TaskTags):
+        self._TaskTags = TaskTags
+
 
     def _deserialize(self, params):
         self._TaskActionId = params.get("TaskActionId")
@@ -886,6 +900,12 @@ class CreateTaskFromActionRequest(AbstractModel):
         self._TaskActionGeneralConfiguration = params.get("TaskActionGeneralConfiguration")
         self._TaskActionCustomConfiguration = params.get("TaskActionCustomConfiguration")
         self._TaskPauseDuration = params.get("TaskPauseDuration")
+        if params.get("TaskTags") is not None:
+            self._TaskTags = []
+            for item in params.get("TaskTags"):
+                obj = TagWithCreate()
+                obj._deserialize(item)
+                self._TaskTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1736,9 +1756,9 @@ class DescribeTaskListRequest(AbstractModel):
         :type ApplicationName: list of str
         :param _TaskStatusList: Task status for filtering, supporting multiple states (1001: not started; 1002: in progress; 1003: paused; 1004: ended)
         :type TaskStatusList: list of int non-negative
-        :param _ArchId: Architecture ID
+        :param _ArchId: 
         :type ArchId: str
-        :param _ArchName: Architecture Name
+        :param _ArchName: 
         :type ArchName: str
         """
         self._Limit = None
@@ -1914,7 +1934,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ArchId(self):
-        r"""Architecture ID
+        r"""
         :rtype: str
         """
         return self._ArchId
@@ -1925,7 +1945,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def ArchName(self):
-        r"""Architecture Name
+        r"""
         :rtype: str
         """
         return self._ArchName
@@ -2779,11 +2799,20 @@ class ModifyTaskRunStatusRequest(AbstractModel):
         :type IsExpect: bool
         :param _Summary: Experiment result (This field is required when the experiment status changes to Execution Ended.)
         :type Summary: str
+        :param _Issue: 
+        :type Issue: str
+        :param _Record: 
+        :type Record: str
+        :param _IncludeRecordInReport: 
+        :type IncludeRecordInReport: int
         """
         self._TaskId = None
         self._Status = None
         self._IsExpect = None
         self._Summary = None
+        self._Issue = None
+        self._Record = None
+        self._IncludeRecordInReport = None
 
     @property
     def TaskId(self):
@@ -2829,12 +2858,48 @@ class ModifyTaskRunStatusRequest(AbstractModel):
     def Summary(self, Summary):
         self._Summary = Summary
 
+    @property
+    def Issue(self):
+        r"""
+        :rtype: str
+        """
+        return self._Issue
+
+    @Issue.setter
+    def Issue(self, Issue):
+        self._Issue = Issue
+
+    @property
+    def Record(self):
+        r"""
+        :rtype: str
+        """
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
+    @property
+    def IncludeRecordInReport(self):
+        r"""
+        :rtype: int
+        """
+        return self._IncludeRecordInReport
+
+    @IncludeRecordInReport.setter
+    def IncludeRecordInReport(self, IncludeRecordInReport):
+        self._IncludeRecordInReport = IncludeRecordInReport
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._Status = params.get("Status")
         self._IsExpect = params.get("IsExpect")
         self._Summary = params.get("Summary")
+        self._Issue = params.get("Issue")
+        self._Record = params.get("Record")
+        self._IncludeRecordInReport = params.get("IncludeRecordInReport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

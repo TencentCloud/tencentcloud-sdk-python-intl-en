@@ -8976,6 +8976,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _FormattedAddress: Address
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FormattedAddress: str
+        :param _Authority: Issuing authority
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Authority: str
+        :param _ValidDate: Validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ValidDate: str
         """
         self._FullName = None
         self._Sex = None
@@ -8984,6 +8990,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Address = None
         self._LicenseNumber = None
         self._FormattedAddress = None
+        self._Authority = None
+        self._ValidDate = None
 
     @property
     def FullName(self):
@@ -9075,6 +9083,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def FormattedAddress(self, FormattedAddress):
         self._FormattedAddress = FormattedAddress
 
+    @property
+    def Authority(self):
+        r"""Issuing authority
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Authority
+
+    @Authority.setter
+    def Authority(self, Authority):
+        self._Authority = Authority
+
+    @property
+    def ValidDate(self):
+        r"""Validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ValidDate
+
+    @ValidDate.setter
+    def ValidDate(self, ValidDate):
+        self._ValidDate = ValidDate
+
 
     def _deserialize(self, params):
         self._FullName = params.get("FullName")
@@ -9084,6 +9116,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Address = params.get("Address")
         self._LicenseNumber = params.get("LicenseNumber")
         self._FormattedAddress = params.get("FormattedAddress")
+        self._Authority = params.get("Authority")
+        self._ValidDate = params.get("ValidDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11018,6 +11052,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _OriginalCardInfo: <p>Original document recognition information (the current field will be returned when CheckMode value is 4)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginalCardInfo: str
+        :param _HeadImageBase64: Base64 of the cropped portrait image extracted from the identity document</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HeadImageBase64: str
         """
         self._IsPass = None
         self._CardImageBase64 = None
@@ -11028,6 +11065,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CardBackCutImageBase64 = None
         self._WarnCardInfos = None
         self._OriginalCardInfo = None
+        self._HeadImageBase64 = None
 
     @property
     def IsPass(self):
@@ -11141,6 +11179,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def OriginalCardInfo(self, OriginalCardInfo):
         self._OriginalCardInfo = OriginalCardInfo
 
+    @property
+    def HeadImageBase64(self):
+        r"""Base64 of the cropped portrait image extracted from the identity document</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._HeadImageBase64
+
+    @HeadImageBase64.setter
+    def HeadImageBase64(self, HeadImageBase64):
+        self._HeadImageBase64 = HeadImageBase64
+
 
     def _deserialize(self, params):
         self._IsPass = params.get("IsPass")
@@ -11156,6 +11206,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CardBackCutImageBase64 = params.get("CardBackCutImageBase64")
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._OriginalCardInfo = params.get("OriginalCardInfo")
+        self._HeadImageBase64 = params.get("HeadImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
