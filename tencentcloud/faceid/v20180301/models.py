@@ -8953,33 +8953,31 @@ class MainlandIDCard(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FullName: Chinese name
+        :param _FullName: <p>name</p>
 Note: This field may return null, indicating that no valid values can be obtained.
-
         :type FullName: str
-        :param _Sex: Sex
+        :param _Sex: <p>Gender</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Sex: str
-        :param _Nation: Nation
+        :param _Nation: <p>Ethnicity</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Nation: str
-        :param _Birthday: Birthday
+        :param _Birthday: <p>Birthday</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Birthday: str
-        :param _Address: Address
+        :param _Address: <p>Address</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Address: str
-        :param _LicenseNumber: License number
+        :param _LicenseNumber: <p>Identity card number</p>
 Note: This field may return null, indicating that no valid values can be obtained.
-
         :type LicenseNumber: str
-        :param _FormattedAddress: Address
+        :param _FormattedAddress: <p>Address</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FormattedAddress: str
-        :param _Authority: Issuing authority
+        :param _Authority: <p>Issuing authority</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Authority: str
-        :param _ValidDate: Validity period
+        :param _ValidDate: <p>Validity period</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ValidDate: str
         """
@@ -8995,9 +8993,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
-        r"""Chinese name
+        r"""<p>name</p>
 Note: This field may return null, indicating that no valid values can be obtained.
-
         :rtype: str
         """
         return self._FullName
@@ -9008,7 +9005,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
-        r"""Sex
+        r"""<p>Gender</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9020,7 +9017,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nation(self):
-        r"""Nation
+        r"""<p>Ethnicity</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9032,7 +9029,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
-        r"""Birthday
+        r"""<p>Birthday</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9046,7 +9043,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Address(self):
         warnings.warn("parameter `Address` is deprecated", DeprecationWarning) 
 
-        r"""Address
+        r"""<p>Address</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9060,9 +9057,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
-        r"""License number
+        r"""<p>Identity card number</p>
 Note: This field may return null, indicating that no valid values can be obtained.
-
         :rtype: str
         """
         return self._LicenseNumber
@@ -9073,7 +9069,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormattedAddress(self):
-        r"""Address
+        r"""<p>Address</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9085,7 +9081,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Authority(self):
-        r"""Issuing authority
+        r"""<p>Issuing authority</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -9097,7 +9093,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ValidDate(self):
-        r"""Validity period
+        r"""<p>Validity period</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11028,7 +11024,7 @@ class OCRResult(AbstractModel):
         :param _IsPass: <p>Whether the identity authentication or OCR process is successful.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsPass: bool
-        :param _CardImageBase64: <p>Base64 of the ID image</p>
+        :param _CardImageBase64: <p>Base64 of the front side ID image</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CardImageBase64: str
         :param _CardInfo: <p>ID card recognition result</p>
@@ -11052,9 +11048,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _OriginalCardInfo: <p>Original document recognition information (the current field will be returned when CheckMode value is 4)</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginalCardInfo: str
-        :param _HeadImageBase64: Base64 of the cropped portrait image extracted from the identity document</p>
+        :param _HeadImageBase64: <p>Document portrait matting</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HeadImageBase64: str
+        :param _CardBackImageBase64: <p>Base64 of the back side ID image</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CardBackImageBase64: str
         """
         self._IsPass = None
         self._CardImageBase64 = None
@@ -11066,6 +11065,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._WarnCardInfos = None
         self._OriginalCardInfo = None
         self._HeadImageBase64 = None
+        self._CardBackImageBase64 = None
 
     @property
     def IsPass(self):
@@ -11081,7 +11081,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardImageBase64(self):
-        r"""<p>Base64 of the ID image</p>
+        r"""<p>Base64 of the front side ID image</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11181,7 +11181,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeadImageBase64(self):
-        r"""Base64 of the cropped portrait image extracted from the identity document</p>
+        r"""<p>Document portrait matting</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -11190,6 +11190,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @HeadImageBase64.setter
     def HeadImageBase64(self, HeadImageBase64):
         self._HeadImageBase64 = HeadImageBase64
+
+    @property
+    def CardBackImageBase64(self):
+        r"""<p>Base64 of the back side ID image</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CardBackImageBase64
+
+    @CardBackImageBase64.setter
+    def CardBackImageBase64(self, CardBackImageBase64):
+        self._CardBackImageBase64 = CardBackImageBase64
 
 
     def _deserialize(self, params):
@@ -11207,6 +11219,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._OriginalCardInfo = params.get("OriginalCardInfo")
         self._HeadImageBase64 = params.get("HeadImageBase64")
+        self._CardBackImageBase64 = params.get("CardBackImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

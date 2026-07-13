@@ -79,6 +79,24 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBudget(
+            self,
+            request: models.CreateBudgetRequest,
+            opts: Dict = None,
+    ) -> models.CreateBudgetResponse:
+        """
+        Create budget information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBudget"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBudgetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateGatherRule(
             self,
             request: models.CreateGatherRuleRequest,
@@ -165,6 +183,24 @@ class BillingClient(AbstractClient):
         kwargs["action"] = "DeleteAllocationUnit"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAllocationUnitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteBudget(
+            self,
+            request: models.DeleteBudgetRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBudgetResponse:
+        """
+        Delete the corresponding budget project based on the budget ID
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBudget"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBudgetResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -678,6 +714,60 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBudget(
+            self,
+            request: models.DescribeBudgetRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBudgetResponse:
+        """
+        Retrieve budget details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBudget"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBudgetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBudgetOperationLog(
+            self,
+            request: models.DescribeBudgetOperationLogRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBudgetOperationLogResponse:
+        """
+        Query budget modification records
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBudgetOperationLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBudgetOperationLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBudgetRemindRecordList(
+            self,
+            request: models.DescribeBudgetRemindRecordListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBudgetRemindRecordListResponse:
+        """
+        Return budget alert records, including budget period, detection time, notification time, reminder type, and content.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBudgetRemindRecordList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBudgetRemindRecordListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCPQBillingMapping(
             self,
             request: models.DescribeCPQBillingMappingRequest,
@@ -1002,6 +1092,24 @@ class BillingClient(AbstractClient):
         kwargs["action"] = "ModifyAllocationUnit"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAllocationUnitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBudget(
+            self,
+            request: models.ModifyBudgetRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBudgetResponse:
+        """
+        Refresh budget information
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBudget"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBudgetResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

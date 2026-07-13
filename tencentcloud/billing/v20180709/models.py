@@ -10378,6 +10378,1754 @@ class BillZoneId(AbstractModel):
         
 
 
+class BudgetConditionsForm(AbstractModel):
+    r"""Budget management custom fee range parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: <p>Product.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Business: list of str
+        :param _PayMode: <p>Billing mode</p><p>Enumeration value:</p><ul><li>prePay: Monthly Subscription</li><li>postPay: Pay-As-You-Go</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayMode: list of str
+        :param _ProductCodes: <p>Subproduct</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductCodes: list of str
+        :param _ComponentCodes: <p>Component code</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentCodes: list of str
+        :param _ZoneIds: <p>Region.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneIds: list of str
+        :param _RegionIds: <p>AZ.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionIds: list of str
+        :param _ProjectIds: <p>Project</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectIds: list of str
+        :param _ActionTypes: <p>Transaction type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ActionTypes: list of str
+        :param _ConsumptionTypes: <p>Consumption type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConsumptionTypes: list of str
+        :param _Tags: <p>Tag.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of TagsForm
+        :param _PayerUins: <p>Leaf-level cost allocation unit</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayerUins: list of str
+        :param _OwnerUins: <p>Primary user Uin</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerUins: list of str
+        :param _TreeNodeUniqKeys: <p>Unique key of the leaf-level cost allocation unit</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TreeNodeUniqKeys: list of str
+        """
+        self._Business = None
+        self._PayMode = None
+        self._ProductCodes = None
+        self._ComponentCodes = None
+        self._ZoneIds = None
+        self._RegionIds = None
+        self._ProjectIds = None
+        self._ActionTypes = None
+        self._ConsumptionTypes = None
+        self._Tags = None
+        self._PayerUins = None
+        self._OwnerUins = None
+        self._TreeNodeUniqKeys = None
+
+    @property
+    def Business(self):
+        r"""<p>Product.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def PayMode(self):
+        r"""<p>Billing mode</p><p>Enumeration value:</p><ul><li>prePay: Monthly Subscription</li><li>postPay: Pay-As-You-Go</li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ProductCodes(self):
+        r"""<p>Subproduct</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def ComponentCodes(self):
+        r"""<p>Component code</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ComponentCodes
+
+    @ComponentCodes.setter
+    def ComponentCodes(self, ComponentCodes):
+        self._ComponentCodes = ComponentCodes
+
+    @property
+    def ZoneIds(self):
+        r"""<p>Region.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def RegionIds(self):
+        r"""<p>AZ.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ProjectIds(self):
+        r"""<p>Project</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def ActionTypes(self):
+        r"""<p>Transaction type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ConsumptionTypes(self):
+        r"""<p>Consumption type</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ConsumptionTypes
+
+    @ConsumptionTypes.setter
+    def ConsumptionTypes(self, ConsumptionTypes):
+        self._ConsumptionTypes = ConsumptionTypes
+
+    @property
+    def Tags(self):
+        r"""<p>Tag.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TagsForm
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PayerUins(self):
+        r"""<p>Leaf-level cost allocation unit</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._PayerUins
+
+    @PayerUins.setter
+    def PayerUins(self, PayerUins):
+        self._PayerUins = PayerUins
+
+    @property
+    def OwnerUins(self):
+        r"""<p>Primary user Uin</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def TreeNodeUniqKeys(self):
+        r"""<p>Unique key of the leaf-level cost allocation unit</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+
+    def _deserialize(self, params):
+        self._Business = params.get("Business")
+        self._PayMode = params.get("PayMode")
+        self._ProductCodes = params.get("ProductCodes")
+        self._ComponentCodes = params.get("ComponentCodes")
+        self._ZoneIds = params.get("ZoneIds")
+        self._RegionIds = params.get("RegionIds")
+        self._ProjectIds = params.get("ProjectIds")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ConsumptionTypes = params.get("ConsumptionTypes")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagsForm()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._PayerUins = params.get("PayerUins")
+        self._OwnerUins = params.get("OwnerUins")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetExtend(AbstractModel):
+    r"""Query returns complete budget information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetName: Budget Name
+        :type BudgetName: str
+        :param _BudgetQuota: Budget limit
+        :type BudgetQuota: str
+        :param _CycleType: DAY, MONTH, QUARTER, YEAR
+        :type CycleType: str
+        :param _BillType: BILL System bill, CONSUMPTION Consumption bill
+        :type BillType: str
+        :param _FeeType: COST Original price, REAL_COST Actual fee, CASH Cash, INCENTIVE Free credit, VOUCHER Voucher, TRANSFER Allocated fees (royalty amount), TAX Tax, AMOUNT_BEFORE_TAX Cash payment (before tax)
+        :type FeeType: str
+        :param _PeriodBegin: Validity start time 2025-01-01
+        :type PeriodBegin: str
+        :param _PeriodEnd: Validity end time 2025-12-01
+        :type PeriodEnd: str
+        :param _Dimensions: COST,USAGE,RI,SP
+        :type Dimensions: str
+        :param _PlanType: FIX fixed value, CYCLE different value
+        :type PlanType: str
+        :param _WarnJson: threshold alert
+        :type WarnJson: list of BudgetWarn
+        :param _PayerUin: User UIN
+        :type PayerUin: int
+        :param _WaveThresholdJson: fluctuation alert
+        :type WaveThresholdJson: list of WaveThresholdForm
+        :param _BudgetNote: Budget remark
+        :type BudgetNote: str
+        :param _SendDetail: Custom sending object information
+        :type SendDetail: str
+        :param _DefaultMode: Default uin sent
+        :type DefaultMode: int
+        :param _TemplateType: CUS custom budget, ZERO_COST zero-cost budget template, BY_MONTH monthly cost budget template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TemplateType: str
+        :param _MoneyStatus: (1, "Not over budget")
+(2, "Overspend")
+        :type MoneyStatus: int
+        :param _RemindTimes: Reminder count
+        :type RemindTimes: int
+        :param _CreateTime: Creation time
+        :type CreateTime: str
+        :param _UpdateTime: Update budget time
+        :type UpdateTime: str
+        :param _BudgetId: Associated Id of the budget
+        :type BudgetId: str
+        :param _HasForecast: NO_FORECAST (Not set)
+FORECAST_NO_DATA (Set up prediction but no data)
+FORECAST_HAS_DATA (Set up prediction with predictive data)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HasForecast: str
+        :param _ForecastCost: predicted fee
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ForecastCost: str
+        :param _ForecastProgress: Projection progress
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ForecastProgress: str
+        :param _RealCost: actual fee
+        :type RealCost: str
+        :param _BudgetSendInfoForm: Custom send
+        :type BudgetSendInfoForm: list of BudgetSendInfoDto
+        :param _CurDateDesc: current cycle
+        :type CurDateDesc: str
+        :param _BudgetStatus: EXPIRED
+ACTIVE
+UNACTIVATED Invalid
+ACTIVATED To be effective
+        :type BudgetStatus: str
+        :param _DimensionsRange: Budget dimension range condition
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DimensionsRange: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        :param _BudgetProgress: Budget progress
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BudgetProgress: str
+        :param _BudgetQuotaJson: Budget Type is set to budget planning and returns the budget limit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BudgetQuotaJson: list of BudgetPlan
+        """
+        self._BudgetName = None
+        self._BudgetQuota = None
+        self._CycleType = None
+        self._BillType = None
+        self._FeeType = None
+        self._PeriodBegin = None
+        self._PeriodEnd = None
+        self._Dimensions = None
+        self._PlanType = None
+        self._WarnJson = None
+        self._PayerUin = None
+        self._WaveThresholdJson = None
+        self._BudgetNote = None
+        self._SendDetail = None
+        self._DefaultMode = None
+        self._TemplateType = None
+        self._MoneyStatus = None
+        self._RemindTimes = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._BudgetId = None
+        self._HasForecast = None
+        self._ForecastCost = None
+        self._ForecastProgress = None
+        self._RealCost = None
+        self._BudgetSendInfoForm = None
+        self._CurDateDesc = None
+        self._BudgetStatus = None
+        self._DimensionsRange = None
+        self._BudgetProgress = None
+        self._BudgetQuotaJson = None
+
+    @property
+    def BudgetName(self):
+        r"""Budget Name
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def BudgetQuota(self):
+        r"""Budget limit
+        :rtype: str
+        """
+        return self._BudgetQuota
+
+    @BudgetQuota.setter
+    def BudgetQuota(self, BudgetQuota):
+        self._BudgetQuota = BudgetQuota
+
+    @property
+    def CycleType(self):
+        r"""DAY, MONTH, QUARTER, YEAR
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def BillType(self):
+        r"""BILL System bill, CONSUMPTION Consumption bill
+        :rtype: str
+        """
+        return self._BillType
+
+    @BillType.setter
+    def BillType(self, BillType):
+        self._BillType = BillType
+
+    @property
+    def FeeType(self):
+        r"""COST Original price, REAL_COST Actual fee, CASH Cash, INCENTIVE Free credit, VOUCHER Voucher, TRANSFER Allocated fees (royalty amount), TAX Tax, AMOUNT_BEFORE_TAX Cash payment (before tax)
+        :rtype: str
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def PeriodBegin(self):
+        r"""Validity start time 2025-01-01
+        :rtype: str
+        """
+        return self._PeriodBegin
+
+    @PeriodBegin.setter
+    def PeriodBegin(self, PeriodBegin):
+        self._PeriodBegin = PeriodBegin
+
+    @property
+    def PeriodEnd(self):
+        r"""Validity end time 2025-12-01
+        :rtype: str
+        """
+        return self._PeriodEnd
+
+    @PeriodEnd.setter
+    def PeriodEnd(self, PeriodEnd):
+        self._PeriodEnd = PeriodEnd
+
+    @property
+    def Dimensions(self):
+        r"""COST,USAGE,RI,SP
+        :rtype: str
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
+    def PlanType(self):
+        r"""FIX fixed value, CYCLE different value
+        :rtype: str
+        """
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def WarnJson(self):
+        r"""threshold alert
+        :rtype: list of BudgetWarn
+        """
+        return self._WarnJson
+
+    @WarnJson.setter
+    def WarnJson(self, WarnJson):
+        self._WarnJson = WarnJson
+
+    @property
+    def PayerUin(self):
+        r"""User UIN
+        :rtype: int
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def WaveThresholdJson(self):
+        r"""fluctuation alert
+        :rtype: list of WaveThresholdForm
+        """
+        return self._WaveThresholdJson
+
+    @WaveThresholdJson.setter
+    def WaveThresholdJson(self, WaveThresholdJson):
+        self._WaveThresholdJson = WaveThresholdJson
+
+    @property
+    def BudgetNote(self):
+        r"""Budget remark
+        :rtype: str
+        """
+        return self._BudgetNote
+
+    @BudgetNote.setter
+    def BudgetNote(self, BudgetNote):
+        self._BudgetNote = BudgetNote
+
+    @property
+    def SendDetail(self):
+        r"""Custom sending object information
+        :rtype: str
+        """
+        return self._SendDetail
+
+    @SendDetail.setter
+    def SendDetail(self, SendDetail):
+        self._SendDetail = SendDetail
+
+    @property
+    def DefaultMode(self):
+        r"""Default uin sent
+        :rtype: int
+        """
+        return self._DefaultMode
+
+    @DefaultMode.setter
+    def DefaultMode(self, DefaultMode):
+        self._DefaultMode = DefaultMode
+
+    @property
+    def TemplateType(self):
+        r"""CUS custom budget, ZERO_COST zero-cost budget template, BY_MONTH monthly cost budget template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def MoneyStatus(self):
+        r"""(1, "Not over budget")
+(2, "Overspend")
+        :rtype: int
+        """
+        return self._MoneyStatus
+
+    @MoneyStatus.setter
+    def MoneyStatus(self, MoneyStatus):
+        self._MoneyStatus = MoneyStatus
+
+    @property
+    def RemindTimes(self):
+        r"""Reminder count
+        :rtype: int
+        """
+        return self._RemindTimes
+
+    @RemindTimes.setter
+    def RemindTimes(self, RemindTimes):
+        self._RemindTimes = RemindTimes
+
+    @property
+    def CreateTime(self):
+        r"""Creation time
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Update budget time
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def BudgetId(self):
+        r"""Associated Id of the budget
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def HasForecast(self):
+        r"""NO_FORECAST (Not set)
+FORECAST_NO_DATA (Set up prediction but no data)
+FORECAST_HAS_DATA (Set up prediction with predictive data)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._HasForecast
+
+    @HasForecast.setter
+    def HasForecast(self, HasForecast):
+        self._HasForecast = HasForecast
+
+    @property
+    def ForecastCost(self):
+        r"""predicted fee
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ForecastCost
+
+    @ForecastCost.setter
+    def ForecastCost(self, ForecastCost):
+        self._ForecastCost = ForecastCost
+
+    @property
+    def ForecastProgress(self):
+        r"""Projection progress
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ForecastProgress
+
+    @ForecastProgress.setter
+    def ForecastProgress(self, ForecastProgress):
+        self._ForecastProgress = ForecastProgress
+
+    @property
+    def RealCost(self):
+        r"""actual fee
+        :rtype: str
+        """
+        return self._RealCost
+
+    @RealCost.setter
+    def RealCost(self, RealCost):
+        self._RealCost = RealCost
+
+    @property
+    def BudgetSendInfoForm(self):
+        r"""Custom send
+        :rtype: list of BudgetSendInfoDto
+        """
+        return self._BudgetSendInfoForm
+
+    @BudgetSendInfoForm.setter
+    def BudgetSendInfoForm(self, BudgetSendInfoForm):
+        self._BudgetSendInfoForm = BudgetSendInfoForm
+
+    @property
+    def CurDateDesc(self):
+        r"""current cycle
+        :rtype: str
+        """
+        return self._CurDateDesc
+
+    @CurDateDesc.setter
+    def CurDateDesc(self, CurDateDesc):
+        self._CurDateDesc = CurDateDesc
+
+    @property
+    def BudgetStatus(self):
+        r"""EXPIRED
+ACTIVE
+UNACTIVATED Invalid
+ACTIVATED To be effective
+        :rtype: str
+        """
+        return self._BudgetStatus
+
+    @BudgetStatus.setter
+    def BudgetStatus(self, BudgetStatus):
+        self._BudgetStatus = BudgetStatus
+
+    @property
+    def DimensionsRange(self):
+        r"""Budget dimension range condition
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        """
+        return self._DimensionsRange
+
+    @DimensionsRange.setter
+    def DimensionsRange(self, DimensionsRange):
+        self._DimensionsRange = DimensionsRange
+
+    @property
+    def BudgetProgress(self):
+        r"""Budget progress
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._BudgetProgress
+
+    @BudgetProgress.setter
+    def BudgetProgress(self, BudgetProgress):
+        self._BudgetProgress = BudgetProgress
+
+    @property
+    def BudgetQuotaJson(self):
+        r"""Budget Type is set to budget planning and returns the budget limit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BudgetPlan
+        """
+        return self._BudgetQuotaJson
+
+    @BudgetQuotaJson.setter
+    def BudgetQuotaJson(self, BudgetQuotaJson):
+        self._BudgetQuotaJson = BudgetQuotaJson
+
+
+    def _deserialize(self, params):
+        self._BudgetName = params.get("BudgetName")
+        self._BudgetQuota = params.get("BudgetQuota")
+        self._CycleType = params.get("CycleType")
+        self._BillType = params.get("BillType")
+        self._FeeType = params.get("FeeType")
+        self._PeriodBegin = params.get("PeriodBegin")
+        self._PeriodEnd = params.get("PeriodEnd")
+        self._Dimensions = params.get("Dimensions")
+        self._PlanType = params.get("PlanType")
+        if params.get("WarnJson") is not None:
+            self._WarnJson = []
+            for item in params.get("WarnJson"):
+                obj = BudgetWarn()
+                obj._deserialize(item)
+                self._WarnJson.append(obj)
+        self._PayerUin = params.get("PayerUin")
+        if params.get("WaveThresholdJson") is not None:
+            self._WaveThresholdJson = []
+            for item in params.get("WaveThresholdJson"):
+                obj = WaveThresholdForm()
+                obj._deserialize(item)
+                self._WaveThresholdJson.append(obj)
+        self._BudgetNote = params.get("BudgetNote")
+        self._SendDetail = params.get("SendDetail")
+        self._DefaultMode = params.get("DefaultMode")
+        self._TemplateType = params.get("TemplateType")
+        self._MoneyStatus = params.get("MoneyStatus")
+        self._RemindTimes = params.get("RemindTimes")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._BudgetId = params.get("BudgetId")
+        self._HasForecast = params.get("HasForecast")
+        self._ForecastCost = params.get("ForecastCost")
+        self._ForecastProgress = params.get("ForecastProgress")
+        self._RealCost = params.get("RealCost")
+        if params.get("BudgetSendInfoForm") is not None:
+            self._BudgetSendInfoForm = []
+            for item in params.get("BudgetSendInfoForm"):
+                obj = BudgetSendInfoDto()
+                obj._deserialize(item)
+                self._BudgetSendInfoForm.append(obj)
+        self._CurDateDesc = params.get("CurDateDesc")
+        self._BudgetStatus = params.get("BudgetStatus")
+        if params.get("DimensionsRange") is not None:
+            self._DimensionsRange = BudgetConditionsForm()
+            self._DimensionsRange._deserialize(params.get("DimensionsRange"))
+        self._BudgetProgress = params.get("BudgetProgress")
+        if params.get("BudgetQuotaJson") is not None:
+            self._BudgetQuotaJson = []
+            for item in params.get("BudgetQuotaJson"):
+                obj = BudgetPlan()
+                obj._deserialize(item)
+                self._BudgetQuotaJson.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetInfoApiResponse(AbstractModel):
+    r"""Return information after the budget operation
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetId: Budget project id
+        :type BudgetId: str
+        :param _UpdateTime: Update budget time
+        :type UpdateTime: str
+        """
+        self._BudgetId = None
+        self._UpdateTime = None
+
+    @property
+    def BudgetId(self):
+        r"""Budget project id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def UpdateTime(self):
+        r"""Update budget time
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._BudgetId = params.get("BudgetId")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetInfoDiffEntity(AbstractModel):
+    r"""Record change information for budget project related fields
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Property: Modify properties
+        :type Property: str
+        :param _Before: Content before modification.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Before: str
+        :param _After: Content after modification.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type After: str
+        """
+        self._Property = None
+        self._Before = None
+        self._After = None
+
+    @property
+    def Property(self):
+        r"""Modify properties
+        :rtype: str
+        """
+        return self._Property
+
+    @Property.setter
+    def Property(self, Property):
+        self._Property = Property
+
+    @property
+    def Before(self):
+        r"""Content before modification.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Before
+
+    @Before.setter
+    def Before(self, Before):
+        self._Before = Before
+
+    @property
+    def After(self):
+        r"""Content after modification.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._After
+
+    @After.setter
+    def After(self, After):
+        self._After = After
+
+
+    def _deserialize(self, params):
+        self._Property = params.get("Property")
+        self._Before = params.get("Before")
+        self._After = params.get("After")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetOperationLogEntity(AbstractModel):
+    r"""Budget modification record info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayerUin: Payer Uin
+        :type PayerUin: int
+        :param _OwnerUin: User Uin
+
+        :type OwnerUin: int
+        :param _OperateUin: Operation user Uin
+        :type OperateUin: int
+        :param _BillDay: Date
+        :type BillDay: int
+        :param _BillMonth: month
+        :type BillMonth: str
+        :param _Action: Modify type: ADD (add new), UPDATE (update), DELETE (delete)
+        :type Action: str
+        :param _DiffValue: modification information
+        :type DiffValue: list of BudgetInfoDiffEntity
+        :param _CreateTime: Creation time.
+        :type CreateTime: str
+        :param _UpdateTime: Modification time.
+        :type UpdateTime: str
+        :param _OperationChannel: Modify channel: CONSOLE/API
+        :type OperationChannel: str
+        :param _BudgetId: Budget project id
+        :type BudgetId: str
+        """
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._BillDay = None
+        self._BillMonth = None
+        self._Action = None
+        self._DiffValue = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._OperationChannel = None
+        self._BudgetId = None
+
+    @property
+    def PayerUin(self):
+        r"""Payer Uin
+        :rtype: int
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        r"""User Uin
+
+        :rtype: int
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        r"""Operation user Uin
+        :rtype: int
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def BillDay(self):
+        r"""Date
+        :rtype: int
+        """
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
+    @property
+    def BillMonth(self):
+        r"""month
+        :rtype: str
+        """
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+    @property
+    def Action(self):
+        r"""Modify type: ADD (add new), UPDATE (update), DELETE (delete)
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def DiffValue(self):
+        r"""modification information
+        :rtype: list of BudgetInfoDiffEntity
+        """
+        return self._DiffValue
+
+    @DiffValue.setter
+    def DiffValue(self, DiffValue):
+        self._DiffValue = DiffValue
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Modification time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def OperationChannel(self):
+        r"""Modify channel: CONSOLE/API
+        :rtype: str
+        """
+        return self._OperationChannel
+
+    @OperationChannel.setter
+    def OperationChannel(self, OperationChannel):
+        self._OperationChannel = OperationChannel
+
+    @property
+    def BudgetId(self):
+        r"""Budget project id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+
+    def _deserialize(self, params):
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._BillDay = params.get("BillDay")
+        self._BillMonth = params.get("BillMonth")
+        self._Action = params.get("Action")
+        if params.get("DiffValue") is not None:
+            self._DiffValue = []
+            for item in params.get("DiffValue"):
+                obj = BudgetInfoDiffEntity()
+                obj._deserialize(item)
+                self._DiffValue.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._OperationChannel = params.get("OperationChannel")
+        self._BudgetId = params.get("BudgetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetPlan(AbstractModel):
+    r"""Budget computation for complex data type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DateDesc: Frontend page date display
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DateDesc: str
+        :param _Quota: Budget limit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Quota: str
+        """
+        self._DateDesc = None
+        self._Quota = None
+
+    @property
+    def DateDesc(self):
+        r"""Frontend page date display
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DateDesc
+
+    @DateDesc.setter
+    def DateDesc(self, DateDesc):
+        self._DateDesc = DateDesc
+
+    @property
+    def Quota(self):
+        r"""Budget limit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+
+    def _deserialize(self, params):
+        self._DateDesc = params.get("DateDesc")
+        self._Quota = params.get("Quota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetRemindRecordList(AbstractModel):
+    r"""Paginated data of budget management
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OptimizeCountSql: Optimize COUNT SQL automatically if encounter unresolved jSqlParser case, set the parameter to false
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OptimizeCountSql: bool
+        :param _Pages: Pagination
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Pages: int
+        :param _Orders: Sorting field information. When allowing frontend input, be aware of SQL injection issue. Use SqlInjectionUtils.check(...) to check the text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Orders: list of OrderDto
+        :param _CountId: The statementId for a custom count query in xml can also be set without specifying it. Just add _mpCount after the pagination statementId. For example, for the pagination selectPageById, set the count query statementId to selectPageById_mpCount. The SQL execution can then be found by default.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CountId: str
+        :param _Size: Pagination size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Size: int
+        :param _Total: total amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _MaxLimit: Number of items per page limit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxLimit: str
+        :param _Records: Querying the data list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Records: list of BudgetRemindRecords
+        :param _Current: Current Page
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Current: int
+        :param _SearchCount: Whether to perform a count query. If you only want to query the list and do not query the total record count, set the parameter to false.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SearchCount: bool
+        """
+        self._OptimizeCountSql = None
+        self._Pages = None
+        self._Orders = None
+        self._CountId = None
+        self._Size = None
+        self._Total = None
+        self._MaxLimit = None
+        self._Records = None
+        self._Current = None
+        self._SearchCount = None
+
+    @property
+    def OptimizeCountSql(self):
+        r"""Optimize COUNT SQL automatically if encounter unresolved jSqlParser case, set the parameter to false
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._OptimizeCountSql
+
+    @OptimizeCountSql.setter
+    def OptimizeCountSql(self, OptimizeCountSql):
+        self._OptimizeCountSql = OptimizeCountSql
+
+    @property
+    def Pages(self):
+        r"""Pagination
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Pages
+
+    @Pages.setter
+    def Pages(self, Pages):
+        self._Pages = Pages
+
+    @property
+    def Orders(self):
+        r"""Sorting field information. When allowing frontend input, be aware of SQL injection issue. Use SqlInjectionUtils.check(...) to check the text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of OrderDto
+        """
+        return self._Orders
+
+    @Orders.setter
+    def Orders(self, Orders):
+        self._Orders = Orders
+
+    @property
+    def CountId(self):
+        r"""The statementId for a custom count query in xml can also be set without specifying it. Just add _mpCount after the pagination statementId. For example, for the pagination selectPageById, set the count query statementId to selectPageById_mpCount. The SQL execution can then be found by default.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CountId
+
+    @CountId.setter
+    def CountId(self, CountId):
+        self._CountId = CountId
+
+    @property
+    def Size(self):
+        r"""Pagination size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Total(self):
+        r"""total amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def MaxLimit(self):
+        r"""Number of items per page limit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MaxLimit
+
+    @MaxLimit.setter
+    def MaxLimit(self, MaxLimit):
+        self._MaxLimit = MaxLimit
+
+    @property
+    def Records(self):
+        r"""Querying the data list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BudgetRemindRecords
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def Current(self):
+        r"""Current Page
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+    @property
+    def SearchCount(self):
+        r"""Whether to perform a count query. If you only want to query the list and do not query the total record count, set the parameter to false.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._SearchCount
+
+    @SearchCount.setter
+    def SearchCount(self, SearchCount):
+        self._SearchCount = SearchCount
+
+
+    def _deserialize(self, params):
+        self._OptimizeCountSql = params.get("OptimizeCountSql")
+        self._Pages = params.get("Pages")
+        if params.get("Orders") is not None:
+            self._Orders = []
+            for item in params.get("Orders"):
+                obj = OrderDto()
+                obj._deserialize(item)
+                self._Orders.append(obj)
+        self._CountId = params.get("CountId")
+        self._Size = params.get("Size")
+        self._Total = params.get("Total")
+        self._MaxLimit = params.get("MaxLimit")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = BudgetRemindRecords()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._Current = params.get("Current")
+        self._SearchCount = params.get("SearchCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetRemindRecords(AbstractModel):
+    r"""Budget History Details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DateDesc: budget period
+        :type DateDesc: str
+        :param _RealCost: actual fee
+        :type RealCost: str
+        :param _BudgetQuota: Budget amount limit
+        :type BudgetQuota: str
+        :param _AlarmType: Reminder type.
+Enumeration values:
+BUDGET reminder
+Fluctuation alert
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AlarmType: str
+        :param _MessageContent: message content
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MessageContent: str
+        :param _SendTime: Send time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SendTime: int
+        :param _CreateTime: Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: int
+        """
+        self._DateDesc = None
+        self._RealCost = None
+        self._BudgetQuota = None
+        self._AlarmType = None
+        self._MessageContent = None
+        self._SendTime = None
+        self._CreateTime = None
+
+    @property
+    def DateDesc(self):
+        r"""budget period
+        :rtype: str
+        """
+        return self._DateDesc
+
+    @DateDesc.setter
+    def DateDesc(self, DateDesc):
+        self._DateDesc = DateDesc
+
+    @property
+    def RealCost(self):
+        r"""actual fee
+        :rtype: str
+        """
+        return self._RealCost
+
+    @RealCost.setter
+    def RealCost(self, RealCost):
+        self._RealCost = RealCost
+
+    @property
+    def BudgetQuota(self):
+        r"""Budget amount limit
+        :rtype: str
+        """
+        return self._BudgetQuota
+
+    @BudgetQuota.setter
+    def BudgetQuota(self, BudgetQuota):
+        self._BudgetQuota = BudgetQuota
+
+    @property
+    def AlarmType(self):
+        r"""Reminder type.
+Enumeration values:
+BUDGET reminder
+Fluctuation alert
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AlarmType
+
+    @AlarmType.setter
+    def AlarmType(self, AlarmType):
+        self._AlarmType = AlarmType
+
+    @property
+    def MessageContent(self):
+        r"""message content
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MessageContent
+
+    @MessageContent.setter
+    def MessageContent(self, MessageContent):
+        self._MessageContent = MessageContent
+
+    @property
+    def SendTime(self):
+        r"""Send time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._SendTime
+
+    @SendTime.setter
+    def SendTime(self, SendTime):
+        self._SendTime = SendTime
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._DateDesc = params.get("DateDesc")
+        self._RealCost = params.get("RealCost")
+        self._BudgetQuota = params.get("BudgetQuota")
+        self._AlarmType = params.get("AlarmType")
+        self._MessageContent = params.get("MessageContent")
+        self._SendTime = params.get("SendTime")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetSendInfoDto(AbstractModel):
+    r"""Budget reminder
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WeekDays: Notification cycle, separated by commas.
+Enumeration values:
+Monday:1
+Tuesday:2
+Sunday: 7
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WeekDays: list of int non-negative
+        :param _ReceiverType: Reception type.
+Enumeration values:
+UIN default mode
+USER
+GROUP User group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReceiverType: str
+        :param _EndTime: Sending and receiving window HH:mm:ss
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        :param _BudgetId: Budget configuration id (budget name)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BudgetId: int
+        :param _NoticeWays: receiving channel, separated by commas
+Enumeration values:
+TITLE
+Message Center
+mail
+SMS
+WECHAT
+VOICE
+WeCom
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NoticeWays: list of str
+        :param _StartTime: Send start window HH:mm:ss
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param _Id: id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        :param _ReceiverIds: user id, user group id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReceiverIds: list of int non-negative
+        """
+        self._WeekDays = None
+        self._ReceiverType = None
+        self._EndTime = None
+        self._BudgetId = None
+        self._NoticeWays = None
+        self._StartTime = None
+        self._Id = None
+        self._ReceiverIds = None
+
+    @property
+    def WeekDays(self):
+        r"""Notification cycle, separated by commas.
+Enumeration values:
+Monday:1
+Tuesday:2
+Sunday: 7
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int non-negative
+        """
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def ReceiverType(self):
+        r"""Reception type.
+Enumeration values:
+UIN default mode
+USER
+GROUP User group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ReceiverType
+
+    @ReceiverType.setter
+    def ReceiverType(self, ReceiverType):
+        self._ReceiverType = ReceiverType
+
+    @property
+    def EndTime(self):
+        r"""Sending and receiving window HH:mm:ss
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def BudgetId(self):
+        r"""Budget configuration id (budget name)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def NoticeWays(self):
+        r"""receiving channel, separated by commas
+Enumeration values:
+TITLE
+Message Center
+mail
+SMS
+WECHAT
+VOICE
+WeCom
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._NoticeWays
+
+    @NoticeWays.setter
+    def NoticeWays(self, NoticeWays):
+        self._NoticeWays = NoticeWays
+
+    @property
+    def StartTime(self):
+        r"""Send start window HH:mm:ss
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Id(self):
+        r"""id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ReceiverIds(self):
+        r"""user id, user group id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int non-negative
+        """
+        return self._ReceiverIds
+
+    @ReceiverIds.setter
+    def ReceiverIds(self, ReceiverIds):
+        self._ReceiverIds = ReceiverIds
+
+
+    def _deserialize(self, params):
+        self._WeekDays = params.get("WeekDays")
+        self._ReceiverType = params.get("ReceiverType")
+        self._EndTime = params.get("EndTime")
+        self._BudgetId = params.get("BudgetId")
+        self._NoticeWays = params.get("NoticeWays")
+        self._StartTime = params.get("StartTime")
+        self._Id = params.get("Id")
+        self._ReceiverIds = params.get("ReceiverIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BudgetWarn(AbstractModel):
+    r"""Budget threshold notification
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WarnType: ACTUAL amount
+FORECAST Amount
+        :type WarnType: str
+        :param _CalType: PERCENTAGE Percentage of the budget amount, ABS Fixed value
+        :type CalType: str
+        :param _ThresholdValue: Threshold (greater than or equal to 0)
+        :type ThresholdValue: str
+        """
+        self._WarnType = None
+        self._CalType = None
+        self._ThresholdValue = None
+
+    @property
+    def WarnType(self):
+        r"""ACTUAL amount
+FORECAST Amount
+        :rtype: str
+        """
+        return self._WarnType
+
+    @WarnType.setter
+    def WarnType(self, WarnType):
+        self._WarnType = WarnType
+
+    @property
+    def CalType(self):
+        r"""PERCENTAGE Percentage of the budget amount, ABS Fixed value
+        :rtype: str
+        """
+        return self._CalType
+
+    @CalType.setter
+    def CalType(self, CalType):
+        self._CalType = CalType
+
+    @property
+    def ThresholdValue(self):
+        r"""Threshold (greater than or equal to 0)
+        :rtype: str
+        """
+        return self._ThresholdValue
+
+    @ThresholdValue.setter
+    def ThresholdValue(self, ThresholdValue):
+        self._ThresholdValue = ThresholdValue
+
+
+    def _deserialize(self, params):
+        self._WarnType = params.get("WarnType")
+        self._CalType = params.get("CalType")
+        self._ThresholdValue = params.get("ThresholdValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BusinessSummaryInfo(AbstractModel):
     r"""Detailed summary of products
 
@@ -13668,6 +15416,298 @@ class CreateAllocationUnitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBudgetRequest(AbstractModel):
+    r"""CreateBudget request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetName: Budget Name
+        :type BudgetName: str
+        :param _CycleType: DAY, MONTH, QUARTER, YEAR
+        :type CycleType: str
+        :param _PeriodBegin: Validity start time 2025-01-01 (Period: day) / 2025-01 (Period: month)
+        :type PeriodBegin: str
+        :param _PeriodEnd: Validity end time 2025-12-01 (Period: day) / 2025-12 (Cycle: month)
+        :type PeriodEnd: str
+        :param _PlanType: FIX Fixed Budget, CYCLE Budget Planning
+        :type PlanType: str
+        :param _BudgetQuota: Budget amount limit
+Pass a fixed value when the schedule type is FIX (fixed budget).
+When the schedule type is CYCLE (budget planning), pass [{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}].
+        :type BudgetQuota: str
+        :param _BillType: BILL System bill, CONSUMPTION Consumption bill
+        :type BillType: str
+        :param _FeeType: COST Original price, REAL_COST Actual fee, CASH Cash, INCENTIVE Free credit, VOUCHER Voucher, TRANSFER Allocated fees (royalty amount), TAX Tax, AMOUNT_BEFORE_TAX Cash payment (before tax)
+        :type FeeType: str
+        :param _WarnJson: Threshold alert
+        :type WarnJson: list of BudgetWarn
+        :param _BudgetNote: Budget remark
+        :type BudgetNote: str
+        :param _DimensionsRange: Budget Dimension Range Condition
+        :type DimensionsRange: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        :param _WaveThresholdJson: Fluctuation alert
+        :type WaveThresholdJson: list of WaveThresholdForm
+        """
+        self._BudgetName = None
+        self._CycleType = None
+        self._PeriodBegin = None
+        self._PeriodEnd = None
+        self._PlanType = None
+        self._BudgetQuota = None
+        self._BillType = None
+        self._FeeType = None
+        self._WarnJson = None
+        self._BudgetNote = None
+        self._DimensionsRange = None
+        self._WaveThresholdJson = None
+
+    @property
+    def BudgetName(self):
+        r"""Budget Name
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def CycleType(self):
+        r"""DAY, MONTH, QUARTER, YEAR
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def PeriodBegin(self):
+        r"""Validity start time 2025-01-01 (Period: day) / 2025-01 (Period: month)
+        :rtype: str
+        """
+        return self._PeriodBegin
+
+    @PeriodBegin.setter
+    def PeriodBegin(self, PeriodBegin):
+        self._PeriodBegin = PeriodBegin
+
+    @property
+    def PeriodEnd(self):
+        r"""Validity end time 2025-12-01 (Period: day) / 2025-12 (Cycle: month)
+        :rtype: str
+        """
+        return self._PeriodEnd
+
+    @PeriodEnd.setter
+    def PeriodEnd(self, PeriodEnd):
+        self._PeriodEnd = PeriodEnd
+
+    @property
+    def PlanType(self):
+        r"""FIX Fixed Budget, CYCLE Budget Planning
+        :rtype: str
+        """
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def BudgetQuota(self):
+        r"""Budget amount limit
+Pass a fixed value when the schedule type is FIX (fixed budget).
+When the schedule type is CYCLE (budget planning), pass [{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}].
+        :rtype: str
+        """
+        return self._BudgetQuota
+
+    @BudgetQuota.setter
+    def BudgetQuota(self, BudgetQuota):
+        self._BudgetQuota = BudgetQuota
+
+    @property
+    def BillType(self):
+        r"""BILL System bill, CONSUMPTION Consumption bill
+        :rtype: str
+        """
+        return self._BillType
+
+    @BillType.setter
+    def BillType(self, BillType):
+        self._BillType = BillType
+
+    @property
+    def FeeType(self):
+        r"""COST Original price, REAL_COST Actual fee, CASH Cash, INCENTIVE Free credit, VOUCHER Voucher, TRANSFER Allocated fees (royalty amount), TAX Tax, AMOUNT_BEFORE_TAX Cash payment (before tax)
+        :rtype: str
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def WarnJson(self):
+        r"""Threshold alert
+        :rtype: list of BudgetWarn
+        """
+        return self._WarnJson
+
+    @WarnJson.setter
+    def WarnJson(self, WarnJson):
+        self._WarnJson = WarnJson
+
+    @property
+    def BudgetNote(self):
+        r"""Budget remark
+        :rtype: str
+        """
+        return self._BudgetNote
+
+    @BudgetNote.setter
+    def BudgetNote(self, BudgetNote):
+        self._BudgetNote = BudgetNote
+
+    @property
+    def DimensionsRange(self):
+        r"""Budget Dimension Range Condition
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        """
+        return self._DimensionsRange
+
+    @DimensionsRange.setter
+    def DimensionsRange(self, DimensionsRange):
+        self._DimensionsRange = DimensionsRange
+
+    @property
+    def WaveThresholdJson(self):
+        r"""Fluctuation alert
+        :rtype: list of WaveThresholdForm
+        """
+        return self._WaveThresholdJson
+
+    @WaveThresholdJson.setter
+    def WaveThresholdJson(self, WaveThresholdJson):
+        self._WaveThresholdJson = WaveThresholdJson
+
+
+    def _deserialize(self, params):
+        self._BudgetName = params.get("BudgetName")
+        self._CycleType = params.get("CycleType")
+        self._PeriodBegin = params.get("PeriodBegin")
+        self._PeriodEnd = params.get("PeriodEnd")
+        self._PlanType = params.get("PlanType")
+        self._BudgetQuota = params.get("BudgetQuota")
+        self._BillType = params.get("BillType")
+        self._FeeType = params.get("FeeType")
+        if params.get("WarnJson") is not None:
+            self._WarnJson = []
+            for item in params.get("WarnJson"):
+                obj = BudgetWarn()
+                obj._deserialize(item)
+                self._WarnJson.append(obj)
+        self._BudgetNote = params.get("BudgetNote")
+        if params.get("DimensionsRange") is not None:
+            self._DimensionsRange = BudgetConditionsForm()
+            self._DimensionsRange._deserialize(params.get("DimensionsRange"))
+        if params.get("WaveThresholdJson") is not None:
+            self._WaveThresholdJson = []
+            for item in params.get("WaveThresholdJson"):
+                obj = WaveThresholdForm()
+                obj._deserialize(item)
+                self._WaveThresholdJson.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBudgetResponse(AbstractModel):
+    r"""CreateBudget response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Create budget return information
+        :type Data: :class:`tencentcloud.billing.v20180709.models.BudgetInfoApiResponse`
+        :param _Message: create success
+        :type Message: str
+        :param _Code: Return code
+        :type Code: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Create budget return information
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetInfoApiResponse`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""create success
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""Return code
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BudgetInfoApiResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGatherRuleRequest(AbstractModel):
     r"""CreateGatherRule request structure.
 
@@ -14044,6 +16084,212 @@ class CreateInstanceResponse(AbstractModel):
         self._OrderId = params.get("OrderId")
         self._InstanceIdList = params.get("InstanceIdList")
         self._RequestId = params.get("RequestId")
+
+
+class DataForBudgetInfoPage(AbstractModel):
+    r"""Paginated data of budget management basic information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Pages: Pagination
+        :type Pages: int
+        :param _Size: Pagination size.
+        :type Size: int
+        :param _Total: total amount
+        :type Total: int
+        :param _Records: Querying the data list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Records: list of BudgetExtend
+        :param _Current: Current Page
+        :type Current: int
+        """
+        self._Pages = None
+        self._Size = None
+        self._Total = None
+        self._Records = None
+        self._Current = None
+
+    @property
+    def Pages(self):
+        r"""Pagination
+        :rtype: int
+        """
+        return self._Pages
+
+    @Pages.setter
+    def Pages(self, Pages):
+        self._Pages = Pages
+
+    @property
+    def Size(self):
+        r"""Pagination size.
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Total(self):
+        r"""total amount
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Records(self):
+        r"""Querying the data list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BudgetExtend
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def Current(self):
+        r"""Current Page
+        :rtype: int
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+
+    def _deserialize(self, params):
+        self._Pages = params.get("Pages")
+        self._Size = params.get("Size")
+        self._Total = params.get("Total")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = BudgetExtend()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._Current = params.get("Current")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataForBudgetOperationLogPage(AbstractModel):
+    r"""Paginated data of budget modification records
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Pages: Pagination
+        :type Pages: int
+        :param _Size: Pagination size.
+        :type Size: int
+        :param _Total: Total amount
+        :type Total: int
+        :param _Records: Querying the data list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Records: list of BudgetOperationLogEntity
+        :param _Current: Current Page
+        :type Current: int
+        """
+        self._Pages = None
+        self._Size = None
+        self._Total = None
+        self._Records = None
+        self._Current = None
+
+    @property
+    def Pages(self):
+        r"""Pagination
+        :rtype: int
+        """
+        return self._Pages
+
+    @Pages.setter
+    def Pages(self, Pages):
+        self._Pages = Pages
+
+    @property
+    def Size(self):
+        r"""Pagination size.
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Total(self):
+        r"""Total amount
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Records(self):
+        r"""Querying the data list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BudgetOperationLogEntity
+        """
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def Current(self):
+        r"""Current Page
+        :rtype: int
+        """
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+
+    def _deserialize(self, params):
+        self._Pages = params.get("Pages")
+        self._Size = params.get("Size")
+        self._Total = params.get("Total")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = BudgetOperationLogEntity()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._Current = params.get("Current")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Deal(AbstractModel):
@@ -14722,6 +16968,115 @@ class DeleteAllocationUnitResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteBudgetRequest(AbstractModel):
+    r"""DeleteBudget request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetIds: Budget project id
+        :type BudgetIds: list of str
+        """
+        self._BudgetIds = None
+
+    @property
+    def BudgetIds(self):
+        r"""Budget project id
+        :rtype: list of str
+        """
+        return self._BudgetIds
+
+    @BudgetIds.setter
+    def BudgetIds(self, BudgetIds):
+        self._BudgetIds = BudgetIds
+
+
+    def _deserialize(self, params):
+        self._BudgetIds = params.get("BudgetIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBudgetResponse(AbstractModel):
+    r"""DeleteBudget response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Return the deleted budget project id
+        :type Data: list of str
+        :param _Message: Prompt
+        :type Message: str
+        :param _Code: Return code
+        :type Code: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Return the deleted budget project id
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""Prompt
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""Return code
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
         self._RequestId = params.get("RequestId")
 
 
@@ -21621,6 +23976,478 @@ class DescribeBillSummaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBudgetOperationLogRequest(AbstractModel):
+    r"""DescribeBudgetOperationLog request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNo: Page number
+        :type PageNo: int
+        :param _PageSize: Number of Items per Page
+        :type PageSize: int
+        :param _BudgetId: Budget project id
+        :type BudgetId: str
+        """
+        self._PageNo = None
+        self._PageSize = None
+        self._BudgetId = None
+
+    @property
+    def PageNo(self):
+        r"""Page number
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""Number of Items per Page
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def BudgetId(self):
+        r"""Budget project id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+
+    def _deserialize(self, params):
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._BudgetId = params.get("BudgetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBudgetOperationLogResponse(AbstractModel):
+    r"""DescribeBudgetOperationLog response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Budget modification record details
+        :type Data: :class:`tencentcloud.billing.v20180709.models.DataForBudgetOperationLogPage`
+        :param _Message: prompt
+        :type Message: str
+        :param _Code: Return code
+        :type Code: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Budget modification record details
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DataForBudgetOperationLogPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""prompt
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""Return code
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DataForBudgetOperationLogPage()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBudgetRemindRecordListRequest(AbstractModel):
+    r"""DescribeBudgetRemindRecordList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNo: Page number, int
+        :type PageNo: int
+        :param _PageSize: Number of items per page, integer
+        :type PageSize: int
+        :param _BudgetId: Budget base information association id
+        :type BudgetId: str
+        """
+        self._PageNo = None
+        self._PageSize = None
+        self._BudgetId = None
+
+    @property
+    def PageNo(self):
+        r"""Page number, int
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""Number of items per page, integer
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def BudgetId(self):
+        r"""Budget base information association id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+
+    def _deserialize(self, params):
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._BudgetId = params.get("BudgetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBudgetRemindRecordListResponse(AbstractModel):
+    r"""DescribeBudgetRemindRecordList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Budget configuration properties
+        :type Data: :class:`tencentcloud.billing.v20180709.models.BudgetRemindRecordList`
+        :param _Message: Error message prompt.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _Code: Error response code
+        :type Code: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Budget configuration properties
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetRemindRecordList`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""Error message prompt.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""Error response code
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BudgetRemindRecordList()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBudgetRequest(AbstractModel):
+    r"""DescribeBudget request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNo: Page number, int
+        :type PageNo: int
+        :param _PageSize: Number of items per page, integer
+        :type PageSize: int
+        :param _BudgetId: Budget project id
+        :type BudgetId: str
+        :param _BudgetName: Budget Name
+        :type BudgetName: str
+        :param _BudgetStatus: EXPIRED, ACTIVE, ACTIVATED pending activation
+        :type BudgetStatus: str
+        :param _CycleTypes: DAY day MONTH monthly QUARTER quarter YEAR annual
+        :type CycleTypes: list of str
+        """
+        self._PageNo = None
+        self._PageSize = None
+        self._BudgetId = None
+        self._BudgetName = None
+        self._BudgetStatus = None
+        self._CycleTypes = None
+
+    @property
+    def PageNo(self):
+        r"""Page number, int
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""Number of items per page, integer
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def BudgetId(self):
+        r"""Budget project id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def BudgetName(self):
+        r"""Budget Name
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def BudgetStatus(self):
+        r"""EXPIRED, ACTIVE, ACTIVATED pending activation
+        :rtype: str
+        """
+        return self._BudgetStatus
+
+    @BudgetStatus.setter
+    def BudgetStatus(self, BudgetStatus):
+        self._BudgetStatus = BudgetStatus
+
+    @property
+    def CycleTypes(self):
+        r"""DAY day MONTH monthly QUARTER quarter YEAR annual
+        :rtype: list of str
+        """
+        return self._CycleTypes
+
+    @CycleTypes.setter
+    def CycleTypes(self, CycleTypes):
+        self._CycleTypes = CycleTypes
+
+
+    def _deserialize(self, params):
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._BudgetId = params.get("BudgetId")
+        self._BudgetName = params.get("BudgetName")
+        self._BudgetStatus = params.get("BudgetStatus")
+        self._CycleTypes = params.get("CycleTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBudgetResponse(AbstractModel):
+    r"""DescribeBudget response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Budget project detail
+        :type Data: :class:`tencentcloud.billing.v20180709.models.DataForBudgetInfoPage`
+        :param _Message: prompt
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _Code: Return code
+        :type Code: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Budget project detail
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DataForBudgetInfoPage`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""prompt
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""Return code
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DataForBudgetInfoPage()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCPQBillingMappingRequest(AbstractModel):
     r"""DescribeCPQBillingMapping request structure.
 
@@ -26987,6 +29814,315 @@ class ModifyAllocationUnitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyBudgetRequest(AbstractModel):
+    r"""ModifyBudget request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BudgetId: Budget project id
+        :type BudgetId: str
+        :param _BudgetName: Budget Name
+        :type BudgetName: str
+        :param _CycleType: DAY, MONTH, QUARTER, YEAR
+        :type CycleType: str
+        :param _PeriodBegin: Validity start time 2025-01-01
+        :type PeriodBegin: str
+        :param _PeriodEnd: Validity End Time 2025-12-01
+        :type PeriodEnd: str
+        :param _PlanType: FIX fixed value, CYCLE different value
+        :type PlanType: str
+        :param _BudgetQuota: Budget amount limit 
+Set as a fixed value when the schedule type is fixed budget.
+When the schedule type is CYCLE (budget planning), pass [{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}].
+        :type BudgetQuota: str
+        :param _BillType: BILL System bill, CONSUMPTION Consumption bill
+        :type BillType: str
+        :param _FeeType: COST Original price, REAL_COST Actual fee, CASH Cash, INCENTIVE Free credit, VOUCHER Voucher, TRANSFER Allocated fees (royalty amount), TAX Tax, AMOUNT_BEFORE_TAX Cash payment (pre-tax)
+        :type FeeType: str
+        :param _WarnJson: threshold alert
+        :type WarnJson: list of BudgetWarn
+        :param _BudgetNote: Budget remark
+        :type BudgetNote: str
+        :param _DimensionsRange: Budget dimension range condition
+        :type DimensionsRange: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        :param _WaveThresholdJson: fluctuation alert
+        :type WaveThresholdJson: list of WaveThresholdForm
+        """
+        self._BudgetId = None
+        self._BudgetName = None
+        self._CycleType = None
+        self._PeriodBegin = None
+        self._PeriodEnd = None
+        self._PlanType = None
+        self._BudgetQuota = None
+        self._BillType = None
+        self._FeeType = None
+        self._WarnJson = None
+        self._BudgetNote = None
+        self._DimensionsRange = None
+        self._WaveThresholdJson = None
+
+    @property
+    def BudgetId(self):
+        r"""Budget project id
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def BudgetName(self):
+        r"""Budget Name
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def CycleType(self):
+        r"""DAY, MONTH, QUARTER, YEAR
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def PeriodBegin(self):
+        r"""Validity start time 2025-01-01
+        :rtype: str
+        """
+        return self._PeriodBegin
+
+    @PeriodBegin.setter
+    def PeriodBegin(self, PeriodBegin):
+        self._PeriodBegin = PeriodBegin
+
+    @property
+    def PeriodEnd(self):
+        r"""Validity End Time 2025-12-01
+        :rtype: str
+        """
+        return self._PeriodEnd
+
+    @PeriodEnd.setter
+    def PeriodEnd(self, PeriodEnd):
+        self._PeriodEnd = PeriodEnd
+
+    @property
+    def PlanType(self):
+        r"""FIX fixed value, CYCLE different value
+        :rtype: str
+        """
+        return self._PlanType
+
+    @PlanType.setter
+    def PlanType(self, PlanType):
+        self._PlanType = PlanType
+
+    @property
+    def BudgetQuota(self):
+        r"""Budget amount limit 
+Set as a fixed value when the schedule type is fixed budget.
+When the schedule type is CYCLE (budget planning), pass [{"dateDesc":"2025-07","quota":"1000"},{"dateDesc":"2025-08","quota":"2000"}].
+        :rtype: str
+        """
+        return self._BudgetQuota
+
+    @BudgetQuota.setter
+    def BudgetQuota(self, BudgetQuota):
+        self._BudgetQuota = BudgetQuota
+
+    @property
+    def BillType(self):
+        r"""BILL System bill, CONSUMPTION Consumption bill
+        :rtype: str
+        """
+        return self._BillType
+
+    @BillType.setter
+    def BillType(self, BillType):
+        self._BillType = BillType
+
+    @property
+    def FeeType(self):
+        r"""COST Original price, REAL_COST Actual fee, CASH Cash, INCENTIVE Free credit, VOUCHER Voucher, TRANSFER Allocated fees (royalty amount), TAX Tax, AMOUNT_BEFORE_TAX Cash payment (pre-tax)
+        :rtype: str
+        """
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def WarnJson(self):
+        r"""threshold alert
+        :rtype: list of BudgetWarn
+        """
+        return self._WarnJson
+
+    @WarnJson.setter
+    def WarnJson(self, WarnJson):
+        self._WarnJson = WarnJson
+
+    @property
+    def BudgetNote(self):
+        r"""Budget remark
+        :rtype: str
+        """
+        return self._BudgetNote
+
+    @BudgetNote.setter
+    def BudgetNote(self, BudgetNote):
+        self._BudgetNote = BudgetNote
+
+    @property
+    def DimensionsRange(self):
+        r"""Budget dimension range condition
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetConditionsForm`
+        """
+        return self._DimensionsRange
+
+    @DimensionsRange.setter
+    def DimensionsRange(self, DimensionsRange):
+        self._DimensionsRange = DimensionsRange
+
+    @property
+    def WaveThresholdJson(self):
+        r"""fluctuation alert
+        :rtype: list of WaveThresholdForm
+        """
+        return self._WaveThresholdJson
+
+    @WaveThresholdJson.setter
+    def WaveThresholdJson(self, WaveThresholdJson):
+        self._WaveThresholdJson = WaveThresholdJson
+
+
+    def _deserialize(self, params):
+        self._BudgetId = params.get("BudgetId")
+        self._BudgetName = params.get("BudgetName")
+        self._CycleType = params.get("CycleType")
+        self._PeriodBegin = params.get("PeriodBegin")
+        self._PeriodEnd = params.get("PeriodEnd")
+        self._PlanType = params.get("PlanType")
+        self._BudgetQuota = params.get("BudgetQuota")
+        self._BillType = params.get("BillType")
+        self._FeeType = params.get("FeeType")
+        if params.get("WarnJson") is not None:
+            self._WarnJson = []
+            for item in params.get("WarnJson"):
+                obj = BudgetWarn()
+                obj._deserialize(item)
+                self._WarnJson.append(obj)
+        self._BudgetNote = params.get("BudgetNote")
+        if params.get("DimensionsRange") is not None:
+            self._DimensionsRange = BudgetConditionsForm()
+            self._DimensionsRange._deserialize(params.get("DimensionsRange"))
+        if params.get("WaveThresholdJson") is not None:
+            self._WaveThresholdJson = []
+            for item in params.get("WaveThresholdJson"):
+                obj = WaveThresholdForm()
+                obj._deserialize(item)
+                self._WaveThresholdJson.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBudgetResponse(AbstractModel):
+    r"""ModifyBudget response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Refresh budget return information
+        :type Data: :class:`tencentcloud.billing.v20180709.models.BudgetInfoApiResponse`
+        :param _Message: update success
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _Code: Return code
+        :type Code: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""Refresh budget return information
+        :rtype: :class:`tencentcloud.billing.v20180709.models.BudgetInfoApiResponse`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""update success
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""Return code
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BudgetInfoApiResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyGatherRuleRequest(AbstractModel):
     r"""ModifyGatherRule request structure.
 
@@ -27145,6 +30281,61 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Code = params.get("Code")
         self._Message = params.get("Message")
         self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderDto(AbstractModel):
+    r"""Field sorting
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Column: Field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Column: str
+        :param _Asc: whether in ascending order
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Asc: bool
+        """
+        self._Column = None
+        self._Asc = None
+
+    @property
+    def Column(self):
+        r"""Field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Column
+
+    @Column.setter
+    def Column(self, Column):
+        self._Column = Column
+
+    @property
+    def Asc(self):
+        r"""whether in ascending order
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+
+    def _deserialize(self, params):
+        self._Column = params.get("Column")
+        self._Asc = params.get("Asc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29306,6 +32497,61 @@ class TagSummaryOverviewItem(AbstractModel):
         
 
 
+class TagsForm(AbstractModel):
+    r"""Budget management custom fee range, parameter tag
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagKey: str
+        :param _TagValue: value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagValue: list of str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UinTempAmountModel(AbstractModel):
     r"""Temporary limit details
 
@@ -29902,6 +33148,99 @@ class VoucherInfos(AbstractModel):
                 self._ExcludedProducts.append(obj)
         self._PolicyRemark = params.get("PolicyRemark")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WaveThresholdForm(AbstractModel):
+    r"""Threshold fluctuation warning information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WarnType: ACTUAL actual amount, FORECAST forecast amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WarnType: str
+        :param _Threshold: Fluctuation threshold (equal to or greater than 0)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Threshold: str
+        :param _MetaType: Alarm type: chain period-over-period, yoy year-over-year, fix fixed value
+Supported types: day-on-day comparison chain day, day-on-day comparison chain weekday, year-on-year comparison by month yoy day, daily fixed value fix day, month-on-month comparison chain month, fixed monthly value fix month
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MetaType: str
+        :param _PeriodType: Alarm dimension: day, month, weekday
+Supported types: day-on-day comparison chain day, day-on-day comparison chain weekday, year-on-year comparison by month yoy day, daily fixed value fix day, month-on-month comparison chain month, fixed monthly value fix month
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PeriodType: str
+        """
+        self._WarnType = None
+        self._Threshold = None
+        self._MetaType = None
+        self._PeriodType = None
+
+    @property
+    def WarnType(self):
+        r"""ACTUAL actual amount, FORECAST forecast amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WarnType
+
+    @WarnType.setter
+    def WarnType(self, WarnType):
+        self._WarnType = WarnType
+
+    @property
+    def Threshold(self):
+        r"""Fluctuation threshold (equal to or greater than 0)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def MetaType(self):
+        r"""Alarm type: chain period-over-period, yoy year-over-year, fix fixed value
+Supported types: day-on-day comparison chain day, day-on-day comparison chain weekday, year-on-year comparison by month yoy day, daily fixed value fix day, month-on-month comparison chain month, fixed monthly value fix month
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
+    @property
+    def PeriodType(self):
+        r"""Alarm dimension: day, month, weekday
+Supported types: day-on-day comparison chain day, day-on-day comparison chain weekday, year-on-year comparison by month yoy day, daily fixed value fix day, month-on-month comparison chain month, fixed monthly value fix month
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+
+    def _deserialize(self, params):
+        self._WarnType = params.get("WarnType")
+        self._Threshold = params.get("Threshold")
+        self._MetaType = params.get("MetaType")
+        self._PeriodType = params.get("PeriodType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
