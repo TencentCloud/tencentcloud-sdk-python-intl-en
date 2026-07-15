@@ -104,7 +104,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcAudioTaskResponse:
         """
-        This API is used to create AIGC audio generation tasks.
+        This API is used to create AI audio generation tasks.
         """
         
         kwargs = {}
@@ -1033,7 +1033,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAigcAudioTaskResponse:
         """
-        This API is used to query the progress of AIGC audio generation tasks and obtain the generation results.
+        This API is used to query the progress of AIGC video generation tasks and obtain the generation results.
         """
         
         kwargs = {}

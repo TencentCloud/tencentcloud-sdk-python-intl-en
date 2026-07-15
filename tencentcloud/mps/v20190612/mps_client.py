@@ -120,7 +120,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateAigcAudioTask(self, request):
-        r"""This API is used to create AIGC audio generation tasks.
+        r"""This API is used to create AI audio generation tasks.
 
         :param request: Request instance for CreateAigcAudioTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateAigcAudioTaskRequest`
@@ -1299,7 +1299,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeAigcAudioTask(self, request):
-        r"""This API is used to query the progress of AIGC audio generation tasks and obtain the generation results.
+        r"""This API is used to query the progress of AIGC video generation tasks and obtain the generation results.
 
         :param request: Request instance for DescribeAigcAudioTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcAudioTaskRequest`

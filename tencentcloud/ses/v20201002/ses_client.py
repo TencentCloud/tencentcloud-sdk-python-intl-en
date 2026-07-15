@@ -327,7 +327,8 @@ class SesClient(AbstractClient):
 
 
     def DeleteEmailIdentity(self, request):
-        r"""This API is used to delete a sender domain. After deleted, the sender domain can no longer be used to send emails.
+        r"""**The delete interface for sending domain names is only available to corporate users.**
+        Delete the sender domain name. Once deleted, that domain name cannot be used anymore to send email.
 
         :param request: Request instance for DeleteEmailIdentity.
         :type request: :class:`tencentcloud.ses.v20201002.models.DeleteEmailIdentityRequest`

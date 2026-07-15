@@ -25,31 +25,31 @@ class AbuseReport(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeliverTime: Send time.
+        :param _DeliverTime: <p>Send time</p>
         :type DeliverTime: str
-        :param _OriginalMailFrom: Sender address.
+        :param _OriginalMailFrom: <p>Sender address</p>
         :type OriginalMailFrom: str
-        :param _OriginalRcptTo: Receive email.
+        :param _OriginalRcptTo: <p>Receive email address</p>
         :type OriginalRcptTo: str
-        :param _FromDomain: Sender domain name.
+        :param _FromDomain: <p>Sender domain name</p>
         :type FromDomain: str
-        :param _ComplainTime: Complaint time.
+        :param _ComplainTime: <p>Complaint time</p>
         :type ComplainTime: str
-        :param _Mta: Recipient domain name.
+        :param _Mta: <p>Recipient domain name</p>
         :type Mta: str
-        :param _SourceIp: Source IP
+        :param _SourceIp: <p>Source ip</p>
         :type SourceIp: str
-        :param _InsertTime: Data time.
+        :param _InsertTime: <p>Data time</p>
         :type InsertTime: str
-        :param _TemplateId: Template ID
+        :param _TemplateId: <p>Template ID</p>
         :type TemplateId: str
-        :param _BulkId: bulkId
+        :param _BulkId: <p>bulkId</p>
         :type BulkId: str
-        :param _MessageId: Message-Id in mail.
+        :param _MessageId: <p>Message-Id of the mail</p>
         :type MessageId: str
-        :param _AbuseTime: Complaint time.
+        :param _AbuseTime: <p>Complaint time</p>
         :type AbuseTime: str
-        :param _Subject: Email subject.
+        :param _Subject: <p>Email Subject</p>
         :type Subject: str
         """
         self._DeliverTime = None
@@ -68,7 +68,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def DeliverTime(self):
-        r"""Send time.
+        r"""<p>Send time</p>
         :rtype: str
         """
         return self._DeliverTime
@@ -79,7 +79,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def OriginalMailFrom(self):
-        r"""Sender address.
+        r"""<p>Sender address</p>
         :rtype: str
         """
         return self._OriginalMailFrom
@@ -90,7 +90,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def OriginalRcptTo(self):
-        r"""Receive email.
+        r"""<p>Receive email address</p>
         :rtype: str
         """
         return self._OriginalRcptTo
@@ -101,7 +101,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def FromDomain(self):
-        r"""Sender domain name.
+        r"""<p>Sender domain name</p>
         :rtype: str
         """
         return self._FromDomain
@@ -112,7 +112,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def ComplainTime(self):
-        r"""Complaint time.
+        r"""<p>Complaint time</p>
         :rtype: str
         """
         return self._ComplainTime
@@ -123,7 +123,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def Mta(self):
-        r"""Recipient domain name.
+        r"""<p>Recipient domain name</p>
         :rtype: str
         """
         return self._Mta
@@ -134,7 +134,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def SourceIp(self):
-        r"""Source IP
+        r"""<p>Source ip</p>
         :rtype: str
         """
         return self._SourceIp
@@ -145,7 +145,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def InsertTime(self):
-        r"""Data time.
+        r"""<p>Data time</p>
         :rtype: str
         """
         return self._InsertTime
@@ -156,7 +156,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""Template ID
+        r"""<p>Template ID</p>
         :rtype: str
         """
         return self._TemplateId
@@ -167,7 +167,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def BulkId(self):
-        r"""bulkId
+        r"""<p>bulkId</p>
         :rtype: str
         """
         return self._BulkId
@@ -178,7 +178,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def MessageId(self):
-        r"""Message-Id in mail.
+        r"""<p>Message-Id of the mail</p>
         :rtype: str
         """
         return self._MessageId
@@ -189,7 +189,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def AbuseTime(self):
-        r"""Complaint time.
+        r"""<p>Complaint time</p>
         :rtype: str
         """
         return self._AbuseTime
@@ -200,7 +200,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def Subject(self):
-        r"""Email subject.
+        r"""<p>Email Subject</p>
         :rtype: str
         """
         return self._Subject
@@ -377,7 +377,7 @@ class BatchSendEmailRequest(AbstractModel):
         :type FromEmailAddress: str
         :param _ReceiverId: <p>Recipient list ID</p>
         :type ReceiverId: int
-        :param _Subject: <p>Email Subject</p>
+        :param _Subject: <p>Email Subject</p><p>When sending with templates, supports the use of template variable parameters for fill</p>
         :type Subject: str
         :param _TaskType: <p>Task type 1: Send now 2: Scheduled sending 3: Cycle (frequency) sending</p>
         :type TaskType: int
@@ -435,7 +435,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Subject(self):
-        r"""<p>Email Subject</p>
+        r"""<p>Email Subject</p><p>When sending with templates, supports the use of template variable parameters for fill</p>
         :rtype: str
         """
         return self._Subject
@@ -1123,11 +1123,11 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EmailIdentity: Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.
+        :param _EmailIdentity: <p>For your sender domain name, recommend using a level 3 or higher domain name. Example: mail.qcloud.com.</p>
         :type EmailIdentity: str
-        :param _DKIMOption: Generated dkim key length. valid values: 0 (1024), 1 (2048).
+        :param _DKIMOption: <p>Generated dkim key length. 0:1024, 1:2048</p>
         :type DKIMOption: int
-        :param _TagList: tag.
+        :param _TagList: <p>tag</p>
         :type TagList: list of TagList
         """
         self._EmailIdentity = None
@@ -1136,7 +1136,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        r"""Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.
+        r"""<p>For your sender domain name, recommend using a level 3 or higher domain name. Example: mail.qcloud.com.</p>
         :rtype: str
         """
         return self._EmailIdentity
@@ -1147,7 +1147,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def DKIMOption(self):
-        r"""Generated dkim key length. valid values: 0 (1024), 1 (2048).
+        r"""<p>Generated dkim key length. 0:1024, 1:2048</p>
         :rtype: int
         """
         return self._DKIMOption
@@ -1158,7 +1158,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""tag.
+        r"""<p>tag</p>
         :rtype: list of TagList
         """
         return self._TagList
@@ -1194,23 +1194,26 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityType: Verification type. The value is fixed to `DOMAIN`.
+        :param _IdentityType: <p>Validation type. Fixed value: DOMAIN</p>
         :type IdentityType: str
-        :param _VerifiedForSendingStatus: Verification passed or not.
+        :param _VerifiedForSendingStatus: <p>Whether verified</p>
         :type VerifiedForSendingStatus: bool
-        :param _Attributes: DNS information that needs to be configured.
+        :param _Attributes: <p>DNS information needs to be configured</p>
         :type Attributes: list of DNSAttributes
+        :param _DKIMOption: <p>dkim digits</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul>
+        :type DKIMOption: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IdentityType = None
         self._VerifiedForSendingStatus = None
         self._Attributes = None
+        self._DKIMOption = None
         self._RequestId = None
 
     @property
     def IdentityType(self):
-        r"""Verification type. The value is fixed to `DOMAIN`.
+        r"""<p>Validation type. Fixed value: DOMAIN</p>
         :rtype: str
         """
         return self._IdentityType
@@ -1221,7 +1224,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        r"""Verification passed or not.
+        r"""<p>Whether verified</p>
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -1232,7 +1235,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        r"""DNS information that needs to be configured.
+        r"""<p>DNS information needs to be configured</p>
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -1240,6 +1243,17 @@ class CreateEmailIdentityResponse(AbstractModel):
     @Attributes.setter
     def Attributes(self, Attributes):
         self._Attributes = Attributes
+
+    @property
+    def DKIMOption(self):
+        r"""<p>dkim digits</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul>
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
 
     @property
     def RequestId(self):
@@ -1262,6 +1276,7 @@ class CreateEmailIdentityResponse(AbstractModel):
                 obj = DNSAttributes()
                 obj._deserialize(item)
                 self._Attributes.append(obj)
+        self._DKIMOption = params.get("DKIMOption")
         self._RequestId = params.get("RequestId")
 
 
@@ -2385,20 +2400,22 @@ class EmailIdentity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityName: Sender domain.
+        :param _IdentityName: <p>Sender domain name</p>
         :type IdentityName: str
-        :param _IdentityType: Verification type. The value is fixed to `DOMAIN`.
+        :param _IdentityType: <p>Validation type, fixed as DOMAIN</p>
         :type IdentityType: str
-        :param _SendingEnabled: Verification passed or not.
+        :param _SendingEnabled: <p>Whether verified</p>
         :type SendingEnabled: bool
-        :param _CurrentReputationLevel: Current reputation level
+        :param _CurrentReputationLevel: <p>Current reputation level</p>
         :type CurrentReputationLevel: int
-        :param _DailyQuota: Maximum number of messages sent per day
+        :param _DailyQuota: <p>Maximum message sending capacity of the current day</p>
         :type DailyQuota: int
-        :param _SendIp: Independent ip for domain configuration.
+        :param _SendIp: <p>Independent ip for domain configuration</p>
         :type SendIp: list of str
-        :param _TagList: tag.
+        :param _TagList: <p>tag</p>
         :type TagList: list of TagList
+        :param _DKIMOption: <p>dkim bit number</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul><p>Default value: 0</p>
+        :type DKIMOption: int
         """
         self._IdentityName = None
         self._IdentityType = None
@@ -2407,10 +2424,11 @@ class EmailIdentity(AbstractModel):
         self._DailyQuota = None
         self._SendIp = None
         self._TagList = None
+        self._DKIMOption = None
 
     @property
     def IdentityName(self):
-        r"""Sender domain.
+        r"""<p>Sender domain name</p>
         :rtype: str
         """
         return self._IdentityName
@@ -2421,7 +2439,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def IdentityType(self):
-        r"""Verification type. The value is fixed to `DOMAIN`.
+        r"""<p>Validation type, fixed as DOMAIN</p>
         :rtype: str
         """
         return self._IdentityType
@@ -2432,7 +2450,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def SendingEnabled(self):
-        r"""Verification passed or not.
+        r"""<p>Whether verified</p>
         :rtype: bool
         """
         return self._SendingEnabled
@@ -2443,7 +2461,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def CurrentReputationLevel(self):
-        r"""Current reputation level
+        r"""<p>Current reputation level</p>
         :rtype: int
         """
         return self._CurrentReputationLevel
@@ -2454,7 +2472,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def DailyQuota(self):
-        r"""Maximum number of messages sent per day
+        r"""<p>Maximum message sending capacity of the current day</p>
         :rtype: int
         """
         return self._DailyQuota
@@ -2465,7 +2483,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def SendIp(self):
-        r"""Independent ip for domain configuration.
+        r"""<p>Independent ip for domain configuration</p>
         :rtype: list of str
         """
         return self._SendIp
@@ -2476,7 +2494,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def TagList(self):
-        r"""tag.
+        r"""<p>tag</p>
         :rtype: list of TagList
         """
         return self._TagList
@@ -2484,6 +2502,17 @@ class EmailIdentity(AbstractModel):
     @TagList.setter
     def TagList(self, TagList):
         self._TagList = TagList
+
+    @property
+    def DKIMOption(self):
+        r"""<p>dkim bit number</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul><p>Default value: 0</p>
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
 
 
     def _deserialize(self, params):
@@ -2499,6 +2528,7 @@ class EmailIdentity(AbstractModel):
                 obj = TagList()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        self._DKIMOption = params.get("DKIMOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2820,14 +2850,14 @@ class GetEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EmailIdentity: Sender domain.
+        :param _EmailIdentity: <p>Sender domain name</p>
         :type EmailIdentity: str
         """
         self._EmailIdentity = None
 
     @property
     def EmailIdentity(self):
-        r"""Sender domain.
+        r"""<p>Sender domain name</p>
         :rtype: str
         """
         return self._EmailIdentity
@@ -2856,23 +2886,29 @@ class GetEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityType: Verification type. The value is fixed to `DOMAIN`.
+        :param _IdentityType: <p>Validation type. Fixed value: DOMAIN</p>
         :type IdentityType: str
-        :param _VerifiedForSendingStatus: Verification passed or not.
+        :param _VerifiedForSendingStatus: <p>Whether verified</p>
         :type VerifiedForSendingStatus: bool
-        :param _Attributes: DNS configuration details.
+        :param _Attributes: <p>DNS configuration detail</p>
         :type Attributes: list of DNSAttributes
+        :param _DKIMOption: <p>dkim key length</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: both</li></ul>
+        :type DKIMOption: int
+        :param _TagList: <p>tag</p>
+        :type TagList: list of TagList
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._IdentityType = None
         self._VerifiedForSendingStatus = None
         self._Attributes = None
+        self._DKIMOption = None
+        self._TagList = None
         self._RequestId = None
 
     @property
     def IdentityType(self):
-        r"""Verification type. The value is fixed to `DOMAIN`.
+        r"""<p>Validation type. Fixed value: DOMAIN</p>
         :rtype: str
         """
         return self._IdentityType
@@ -2883,7 +2919,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        r"""Verification passed or not.
+        r"""<p>Whether verified</p>
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -2894,7 +2930,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        r"""DNS configuration details.
+        r"""<p>DNS configuration detail</p>
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -2902,6 +2938,28 @@ class GetEmailIdentityResponse(AbstractModel):
     @Attributes.setter
     def Attributes(self, Attributes):
         self._Attributes = Attributes
+
+    @property
+    def DKIMOption(self):
+        r"""<p>dkim key length</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: both</li></ul>
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
+
+    @property
+    def TagList(self):
+        r"""<p>tag</p>
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
 
     @property
     def RequestId(self):
@@ -2924,6 +2982,13 @@ class GetEmailIdentityResponse(AbstractModel):
                 obj = DNSAttributes()
                 obj._deserialize(item)
                 self._Attributes.append(obj)
+        self._DKIMOption = params.get("DKIMOption")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4917,7 +4982,7 @@ class SendEmailRequest(AbstractModel):
         r"""
         :param _FromEmailAddress: <p>Sender's email address. If no alias is used, enter the sender's email address directly, for example: noreply@mail.qcloud.com. To use a sender alias, follow this format (note that a space must be used between the alias and the email address): alias+space+&lt;email address&gt;. The alias cannot contain a colon (:).</p>
         :type FromEmailAddress: str
-        :param _Subject: <p>Email Subject</p>
+        :param _Subject: <p>Email Subject</p><p>When using templates to send, support using template variable parameters for population.</p>
         :type Subject: str
         :param _Destination: <p>Recipient email address, supports up to 50 recipients in mass sending. Note: The email content displays all recipient addresses. For non-mass sending, call the API multiple times to send.<br>At least one of the three parameters Destination/Cc/Bcc must exist.</p>
         :type Destination: list of str
@@ -4972,7 +5037,7 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Subject(self):
-        r"""<p>Email Subject</p>
+        r"""<p>Email Subject</p><p>When using templates to send, support using template variable parameters for population.</p>
         :rtype: str
         """
         return self._Subject
@@ -6275,11 +6340,11 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EmailIdentity: Domain to be verified.
+        :param _EmailIdentity: <p>Domain name for request verification</p>
         :type EmailIdentity: str
-        :param _NewAPI: The  DKIMOption parameter is effective or not
+        :param _NewAPI: <p>Match the new and old APIs in the console</p>
         :type NewAPI: bool
-        :param _DKIMOption: dkim option, 0: 1024, 1: 2048, 2: both
+        :param _DKIMOption: <p>dkim digits</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul>
         :type DKIMOption: int
         """
         self._EmailIdentity = None
@@ -6288,7 +6353,7 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        r"""Domain to be verified.
+        r"""<p>Domain name for request verification</p>
         :rtype: str
         """
         return self._EmailIdentity
@@ -6299,7 +6364,7 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     @property
     def NewAPI(self):
-        r"""The  DKIMOption parameter is effective or not
+        r"""<p>Match the new and old APIs in the console</p>
         :rtype: bool
         """
         return self._NewAPI
@@ -6310,7 +6375,7 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     @property
     def DKIMOption(self):
-        r"""dkim option, 0: 1024, 1: 2048, 2: both
+        r"""<p>dkim digits</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul>
         :rtype: int
         """
         return self._DKIMOption
@@ -6341,13 +6406,13 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityType: Verification type. The value is fixed to `DOMAIN`.
+        :param _IdentityType: <p>Validation type. Fixed value: DOMAIN</p>
         :type IdentityType: str
-        :param _VerifiedForSendingStatus: Verification passed or not.
+        :param _VerifiedForSendingStatus: <p>Whether verified</p>
         :type VerifiedForSendingStatus: bool
-        :param _Attributes: DNS information that needs to be configured.
+        :param _Attributes: <p>DNS information needs to be configured</p>
         :type Attributes: list of DNSAttributes
-        :param _DKIMOption: dkim option, 0: 1024, 1: 2048, 2: both
+        :param _DKIMOption: <p>dkim digits</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul>
         :type DKIMOption: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6360,7 +6425,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
-        r"""Verification type. The value is fixed to `DOMAIN`.
+        r"""<p>Validation type. Fixed value: DOMAIN</p>
         :rtype: str
         """
         return self._IdentityType
@@ -6371,7 +6436,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        r"""Verification passed or not.
+        r"""<p>Whether verified</p>
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -6382,7 +6447,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        r"""DNS information that needs to be configured.
+        r"""<p>DNS information needs to be configured</p>
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -6393,7 +6458,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def DKIMOption(self):
-        r"""dkim option, 0: 1024, 1: 2048, 2: both
+        r"""<p>dkim digits</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul>
         :rtype: int
         """
         return self._DKIMOption
@@ -6609,21 +6674,21 @@ class Volume(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SendDate: Date
+        :param _SendDate: <p>Date</p>
         :type SendDate: str
-        :param _RequestCount: Number of email requests.
+        :param _RequestCount: <p>Request quantity by email</p>
         :type RequestCount: int
-        :param _AcceptedCount: Number of email requests accepted by Tencent Cloud.
+        :param _AcceptedCount: <p>Tencent Cloud pass count</p>
         :type AcceptedCount: int
-        :param _DeliveredCount: Number of delivered emails.
+        :param _DeliveredCount: <p>Delivery quantity</p>
         :type DeliveredCount: int
-        :param _OpenedCount: Number of users (deduplicated) who opened emails.
+        :param _OpenedCount: <p>Total number of times emails were opened</p>
         :type OpenedCount: int
-        :param _ClickedCount: Number of recipients who clicked on links in emails.
+        :param _ClickedCount: <p>Number of users who clicked the link in the mail</p>
         :type ClickedCount: int
-        :param _BounceCount: Number of bounced emails.
+        :param _BounceCount: <p>Bounced count</p>
         :type BounceCount: int
-        :param _UnsubscribeCount: Number of users for unsubscription.
+        :param _UnsubscribeCount: <p>Number of users for unsubscription</p>
         :type UnsubscribeCount: int
         """
         self._SendDate = None
@@ -6637,7 +6702,7 @@ class Volume(AbstractModel):
 
     @property
     def SendDate(self):
-        r"""Date
+        r"""<p>Date</p>
         :rtype: str
         """
         return self._SendDate
@@ -6648,7 +6713,7 @@ class Volume(AbstractModel):
 
     @property
     def RequestCount(self):
-        r"""Number of email requests.
+        r"""<p>Request quantity by email</p>
         :rtype: int
         """
         return self._RequestCount
@@ -6659,7 +6724,7 @@ class Volume(AbstractModel):
 
     @property
     def AcceptedCount(self):
-        r"""Number of email requests accepted by Tencent Cloud.
+        r"""<p>Tencent Cloud pass count</p>
         :rtype: int
         """
         return self._AcceptedCount
@@ -6670,7 +6735,7 @@ class Volume(AbstractModel):
 
     @property
     def DeliveredCount(self):
-        r"""Number of delivered emails.
+        r"""<p>Delivery quantity</p>
         :rtype: int
         """
         return self._DeliveredCount
@@ -6681,7 +6746,7 @@ class Volume(AbstractModel):
 
     @property
     def OpenedCount(self):
-        r"""Number of users (deduplicated) who opened emails.
+        r"""<p>Total number of times emails were opened</p>
         :rtype: int
         """
         return self._OpenedCount
@@ -6692,7 +6757,7 @@ class Volume(AbstractModel):
 
     @property
     def ClickedCount(self):
-        r"""Number of recipients who clicked on links in emails.
+        r"""<p>Number of users who clicked the link in the mail</p>
         :rtype: int
         """
         return self._ClickedCount
@@ -6703,7 +6768,7 @@ class Volume(AbstractModel):
 
     @property
     def BounceCount(self):
-        r"""Number of bounced emails.
+        r"""<p>Bounced count</p>
         :rtype: int
         """
         return self._BounceCount
@@ -6714,7 +6779,7 @@ class Volume(AbstractModel):
 
     @property
     def UnsubscribeCount(self):
-        r"""Number of users for unsubscription.
+        r"""<p>Number of users for unsubscription</p>
         :rtype: int
         """
         return self._UnsubscribeCount

@@ -1229,47 +1229,40 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Adaptive dynamic streaming template ID.
+        :param _Definition: <p>Adaptive bitrate streaming template ID.</p>
         :type Definition: int
-        :param _WatermarkSet: Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
+        :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _BlindWatermark: Digital watermark parameter.	
+        :param _BlindWatermark: <p>Digital watermark parameter.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
-        :param _OutputStorage: Target storage for files after adaptive dynamic streaming. If left blank, it inherits the upper-level OutputStorage value.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _OutputStorage: <p>Target storage for files after adaptive bitrate streaming. If this is not specified, the upper-level OutputStorage value is used.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Output path for the manifest file after adaptive dynamic streaming. It can be either a relative path or an absolute path.
-If you need to define an output path, the path must end with `.{format}`. Refer to [Filename Variable Description](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1) for variable names.
-Example of relative path:
-<li>filename_{variable name}.{format}</li>
-<li>filename.{format}</li>
-Example of absolute path:
-<li>/custom path/filename_{variable name}.{format}</li>
-If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicStreaming_{definition}.{format}.
+        :param _OutputObjectPath: <p>Output path for the manifest file after adaptive bitrate streaming, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">Filename Variables</a>.<br>Relative path example:</p><li>Filename_{variable name}.{format}</li><li>Filename.{format}</li>Absolute path example:<li>/custom path/Filename_{variable name}.{format}</li>If this is not specified, the default relative path is {inputName}_adaptiveDynamicStreaming_{definition}.{format}.
         :type OutputObjectPath: str
-        :param _SubStreamObjectName: After adaptive dynamic streaming, the output path of substream files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.
+        :param _SubStreamObjectName: <p>Output path for substream files after adaptive bitrate streaming, which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}</code>.</p>
         :type SubStreamObjectName: str
-        :param _SegmentObjectName: After adaptive dynamic streaming (for HLS only), the output path of segment files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
+        :param _SegmentObjectName: <p>Output path for segment files after adaptive bitrate streaming (HLS only), which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}</code>.</p>
         :type SegmentObjectName: str
-        :param _AddOnSubtitles: External subtitle feature specifies the subtitle file to be inserted.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _AddOnSubtitles: <p>External subtitle feature. Specifies the subtitle file to be inserted.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
-        :param _DrmInfo: Specifies the Drm information.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _DrmInfo: <p>DRM information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
-        :param _DefinitionType: Adaptive transcoding template type.
-Common: audio/video type.
-PureAudio: audio-only.
+        :param _DefinitionType: <p>Adaptive bitrate streaming template type. Valid values:<br>Common: audio and video.<br>PureAudio: audio only.</p>
         :type DefinitionType: str
-        :param _SubtitleTemplate: Hard subtitle (suppression subtitle) feature, specify subtitles source, font size, position and other subtitle parameters.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SubtitleTemplate: <p>Hard subtitle (burned-in subtitle) feature. Specifies the subtitle source, font size, location, and other subtitle parameters.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
-        :param _StdExtInfo: Transcoding parameter extension field.
+        :param _StdExtInfo: <p>Extended transcoding parameter field.</p>
         :type StdExtInfo: str
-        :param _KeyPTSList: Specifies the frame at the given pts time as a key frame and segments it. unit: milliseconds (relative deviation <=1ms is allowed). when gop and segment duration are specified simultaneously, they function together. note: enable RawPts, keep the frame rate as source, and ensure the passed-in pts time corresponds to a frame in the source.
+        :param _KeyPTSList: <p>Specifies frames at specified PTS times as keyframes and splits segments. Unit: milliseconds (relative deviation of up to 1 ms is allowed). When both GOP and segment duration are specified, they function together. Note that you need to enable RawPts, keep the frame rate as that of the source, and ensure the specified PTS time corresponds to a frame in the source.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type KeyPTSList: list of int
+        :param _AddOnAudios: <p>External audio feature. Specifies the audio files to be inserted.</p>
+        :type AddOnAudios: list of AddOnAudio
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1284,10 +1277,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SubtitleTemplate = None
         self._StdExtInfo = None
         self._KeyPTSList = None
+        self._AddOnAudios = None
 
     @property
     def Definition(self):
-        r"""Adaptive dynamic streaming template ID.
+        r"""<p>Adaptive bitrate streaming template ID.</p>
         :rtype: int
         """
         return self._Definition
@@ -1298,7 +1292,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WatermarkSet(self):
-        r"""Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
+        r"""<p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :rtype: list of WatermarkInput
         """
         return self._WatermarkSet
@@ -1309,7 +1303,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BlindWatermark(self):
-        r"""Digital watermark parameter.	
+        r"""<p>Digital watermark parameter.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         """
@@ -1321,8 +1315,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""Target storage for files after adaptive dynamic streaming. If left blank, it inherits the upper-level OutputStorage value.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Target storage for files after adaptive bitrate streaming. If this is not specified, the upper-level OutputStorage value is used.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -1333,14 +1327,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OutputObjectPath(self):
-        r"""Output path for the manifest file after adaptive dynamic streaming. It can be either a relative path or an absolute path.
-If you need to define an output path, the path must end with `.{format}`. Refer to [Filename Variable Description](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1) for variable names.
-Example of relative path:
-<li>filename_{variable name}.{format}</li>
-<li>filename.{format}</li>
-Example of absolute path:
-<li>/custom path/filename_{variable name}.{format}</li>
-If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicStreaming_{definition}.{format}.
+        r"""<p>Output path for the manifest file after adaptive bitrate streaming, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">Filename Variables</a>.<br>Relative path example:</p><li>Filename_{variable name}.{format}</li><li>Filename.{format}</li>Absolute path example:<li>/custom path/Filename_{variable name}.{format}</li>If this is not specified, the default relative path is {inputName}_adaptiveDynamicStreaming_{definition}.{format}.
         :rtype: str
         """
         return self._OutputObjectPath
@@ -1351,7 +1338,7 @@ If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicS
 
     @property
     def SubStreamObjectName(self):
-        r"""After adaptive dynamic streaming, the output path of substream files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.
+        r"""<p>Output path for substream files after adaptive bitrate streaming, which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}</code>.</p>
         :rtype: str
         """
         return self._SubStreamObjectName
@@ -1362,7 +1349,7 @@ If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicS
 
     @property
     def SegmentObjectName(self):
-        r"""After adaptive dynamic streaming (for HLS only), the output path of segment files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
+        r"""<p>Output path for segment files after adaptive bitrate streaming (HLS only), which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}</code>.</p>
         :rtype: str
         """
         return self._SegmentObjectName
@@ -1373,8 +1360,8 @@ If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicS
 
     @property
     def AddOnSubtitles(self):
-        r"""External subtitle feature specifies the subtitle file to be inserted.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>External subtitle feature. Specifies the subtitle file to be inserted.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AddOnSubtitle
         """
         return self._AddOnSubtitles
@@ -1385,8 +1372,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DrmInfo(self):
-        r"""Specifies the Drm information.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>DRM information.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         return self._DrmInfo
@@ -1397,9 +1384,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DefinitionType(self):
-        r"""Adaptive transcoding template type.
-Common: audio/video type.
-PureAudio: audio-only.
+        r"""<p>Adaptive bitrate streaming template type. Valid values:<br>Common: audio and video.<br>PureAudio: audio only.</p>
         :rtype: str
         """
         return self._DefinitionType
@@ -1410,8 +1395,8 @@ PureAudio: audio-only.
 
     @property
     def SubtitleTemplate(self):
-        r"""Hard subtitle (suppression subtitle) feature, specify subtitles source, font size, position and other subtitle parameters.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Hard subtitle (burned-in subtitle) feature. Specifies the subtitle source, font size, location, and other subtitle parameters.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         return self._SubtitleTemplate
@@ -1422,7 +1407,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StdExtInfo(self):
-        r"""Transcoding parameter extension field.
+        r"""<p>Extended transcoding parameter field.</p>
         :rtype: str
         """
         return self._StdExtInfo
@@ -1433,7 +1418,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def KeyPTSList(self):
-        r"""Specifies the frame at the given pts time as a key frame and segments it. unit: milliseconds (relative deviation <=1ms is allowed). when gop and segment duration are specified simultaneously, they function together. note: enable RawPts, keep the frame rate as source, and ensure the passed-in pts time corresponds to a frame in the source.
+        r"""<p>Specifies frames at specified PTS times as keyframes and splits segments. Unit: milliseconds (relative deviation of up to 1 ms is allowed). When both GOP and segment duration are specified, they function together. Note that you need to enable RawPts, keep the frame rate as that of the source, and ensure the specified PTS time corresponds to a frame in the source.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
@@ -1442,6 +1427,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @KeyPTSList.setter
     def KeyPTSList(self, KeyPTSList):
         self._KeyPTSList = KeyPTSList
+
+    @property
+    def AddOnAudios(self):
+        r"""<p>External audio feature. Specifies the audio files to be inserted.</p>
+        :rtype: list of AddOnAudio
+        """
+        return self._AddOnAudios
+
+    @AddOnAudios.setter
+    def AddOnAudios(self, AddOnAudios):
+        self._AddOnAudios = AddOnAudios
 
 
     def _deserialize(self, params):
@@ -1476,6 +1472,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
         self._StdExtInfo = params.get("StdExtInfo")
         self._KeyPTSList = params.get("KeyPTSList")
+        if params.get("AddOnAudios") is not None:
+            self._AddOnAudios = []
+            for item in params.get("AddOnAudios"):
+                obj = AddOnAudio()
+                obj._deserialize(item)
+                self._AddOnAudios.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1845,6 +1847,89 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class AddOnAudio(AbstractModel):
+    r"""External audio.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: <p>Audio file input information. Note: (1) Supported audio stream encoding formats: AAC, AC3, EAC3, FLAC, Opus, and MP3. (2) If the segment type set in the adaptive bitrate streaming template is TS, the audio stream encoding format cannot be FLAC.</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _AudioName: <p>Audio track name, such as Chinese or English. Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>
+        :type AudioName: str
+        :param _AudioLanguage: <p>Audio track language, such as chi or eng. This follows the ISO 639-2 standard.</p>
+        :type AudioLanguage: str
+        :param _DefaultTrack: <p>Default audio track. When set to true, the current audio is designated as the default audio track. A maximum of 1 default audio track can be specified.</p><p>Default value: false.</p>
+        :type DefaultTrack: bool
+        """
+        self._InputInfo = None
+        self._AudioName = None
+        self._AudioLanguage = None
+        self._DefaultTrack = None
+
+    @property
+    def InputInfo(self):
+        r"""<p>Audio file input information. Note: (1) Supported audio stream encoding formats: AAC, AC3, EAC3, FLAC, Opus, and MP3. (2) If the segment type set in the adaptive bitrate streaming template is TS, the audio stream encoding format cannot be FLAC.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def AudioName(self):
+        r"""<p>Audio track name, such as Chinese or English. Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>
+        :rtype: str
+        """
+        return self._AudioName
+
+    @AudioName.setter
+    def AudioName(self, AudioName):
+        self._AudioName = AudioName
+
+    @property
+    def AudioLanguage(self):
+        r"""<p>Audio track language, such as chi or eng. This follows the ISO 639-2 standard.</p>
+        :rtype: str
+        """
+        return self._AudioLanguage
+
+    @AudioLanguage.setter
+    def AudioLanguage(self, AudioLanguage):
+        self._AudioLanguage = AudioLanguage
+
+    @property
+    def DefaultTrack(self):
+        r"""<p>Default audio track. When set to true, the current audio is designated as the default audio track. A maximum of 1 default audio track can be specified.</p><p>Default value: false.</p>
+        :rtype: bool
+        """
+        return self._DefaultTrack
+
+    @DefaultTrack.setter
+    def DefaultTrack(self, DefaultTrack):
+        self._DefaultTrack = DefaultTrack
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._AudioName = params.get("AudioName")
+        self._AudioLanguage = params.get("AudioLanguage")
+        self._DefaultTrack = params.get("DefaultTrack")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddOnSubtitle(AbstractModel):
     r"""The information of the subtitles to add.
 
@@ -1852,38 +1937,32 @@ class AddOnSubtitle(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: The mode. Valid values:
-<li>`subtitle-stream`: Add a subtitle track.</li>
-<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>
-<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>
+        :param _Type: <p>Insertion method. Valid values:</p><li>subtitle-stream: Inserts a subtitle track.</li><li>close-caption-708: Encodes CEA-708 subtitles into SEI frames.</li><li>close-caption-608: Encodes CEA-608 subtitles into SEI frames.</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
-        :param _Subtitle: The subtitle file.
+        :param _Subtitle: <p>Subtitle file.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Subtitle: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _SubtitleName: Subtitle name.
-Note: supports Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and parentheses. Max 64 characters.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SubtitleName: <p>Subtitle name.<br>Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleName: str
-        :param _OutputFormat: Output format of the subtitle. valid values: "WebVTT", "TTML".
-Default value: "WebVTT".
+        :param _SubtitleLanguage: <p>Subtitle language, such as eng.</p>
+        :type SubtitleLanguage: str
+        :param _OutputFormat: <p>Subtitle output format. Valid values: {&quot;WebVTT&quot;,&quot;TTML&quot;}.<br>Default value: &quot;WebVTT&quot;.</p>
         :type OutputFormat: str
-        :param _DefaultTrack: Default subtitle track. specifies the current subtitle as the default track when true. a maximum of 1 default subtitle track can be specified.
-Default value: `false`.
+        :param _DefaultTrack: <p>Default subtitle track. When set to true, the current subtitle is designated as the default subtitle track. A maximum of 1 default subtitle track can be specified.<br>Default value: false.</p>
         :type DefaultTrack: bool
         """
         self._Type = None
         self._Subtitle = None
         self._SubtitleName = None
+        self._SubtitleLanguage = None
         self._OutputFormat = None
         self._DefaultTrack = None
 
     @property
     def Type(self):
-        r"""The mode. Valid values:
-<li>`subtitle-stream`: Add a subtitle track.</li>
-<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>
-<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>
+        r"""<p>Insertion method. Valid values:</p><li>subtitle-stream: Inserts a subtitle track.</li><li>close-caption-708: Encodes CEA-708 subtitles into SEI frames.</li><li>close-caption-608: Encodes CEA-608 subtitles into SEI frames.</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1895,7 +1974,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Subtitle(self):
-        r"""The subtitle file.
+        r"""<p>Subtitle file.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
@@ -1907,9 +1986,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubtitleName(self):
-        r"""Subtitle name.
-Note: supports Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and parentheses. Max 64 characters.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Subtitle name.<br>Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SubtitleName
@@ -1919,9 +1997,19 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._SubtitleName = SubtitleName
 
     @property
+    def SubtitleLanguage(self):
+        r"""<p>Subtitle language, such as eng.</p>
+        :rtype: str
+        """
+        return self._SubtitleLanguage
+
+    @SubtitleLanguage.setter
+    def SubtitleLanguage(self, SubtitleLanguage):
+        self._SubtitleLanguage = SubtitleLanguage
+
+    @property
     def OutputFormat(self):
-        r"""Output format of the subtitle. valid values: "WebVTT", "TTML".
-Default value: "WebVTT".
+        r"""<p>Subtitle output format. Valid values: {&quot;WebVTT&quot;,&quot;TTML&quot;}.<br>Default value: &quot;WebVTT&quot;.</p>
         :rtype: str
         """
         return self._OutputFormat
@@ -1932,8 +2020,7 @@ Default value: "WebVTT".
 
     @property
     def DefaultTrack(self):
-        r"""Default subtitle track. specifies the current subtitle as the default track when true. a maximum of 1 default subtitle track can be specified.
-Default value: `false`.
+        r"""<p>Default subtitle track. When set to true, the current subtitle is designated as the default subtitle track. A maximum of 1 default subtitle track can be specified.<br>Default value: false.</p>
         :rtype: bool
         """
         return self._DefaultTrack
@@ -1949,6 +2036,7 @@ Default value: `false`.
             self._Subtitle = MediaInputInfo()
             self._Subtitle._deserialize(params.get("Subtitle"))
         self._SubtitleName = params.get("SubtitleName")
+        self._SubtitleLanguage = params.get("SubtitleLanguage")
         self._OutputFormat = params.get("OutputFormat")
         self._DefaultTrack = params.get("DefaultTrack")
         memeber_set = set(params.keys())
@@ -6389,27 +6477,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class AiPosterSuiteConfig(AbstractModel):
-    r"""
+    r"""Intelligent image set configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Mode: 
+        :param _Mode: <p>Image output mode.</p><p>Enumeration values:</p><ul><li>auto: fully automatic mode. CustomVariables can be passed in this mode.</li><li>modify: modification mode. The corresponding description needs to be provided in the AddOnParameter.ExtPrompt field in this mode. CustomVariables cannot be passed in this mode.</li></ul><p>Default value: auto.</p>
         :type Mode: str
-        :param _Definition: 
+        :param _Definition: <p>Ecommerce platform visual template ID.</p><p>If you need a personalized visual template, submit a ticket.</p>
         :type Definition: int
-        :param _Recipe: 
+        :param _Recipe: <p>Sub-image configuration.</p>
         :type Recipe: list of RecipeItem
-        :param _Language: 
+        :param _Language: <p>Sub-image text language.</p><p>Enumeration values:</p><ul><li>zh-CN: Simplified Chinese.</li><li>en-US: American English.</li></ul><p>Default value: zh-CN.</p><p>If you need more languages, submit a ticket.</p>
         :type Language: str
-        :param _PanelRatio: 
+        :param _PanelRatio: <p>Sub-image aspect ratio.</p><p>Enumeration values:</p><ul><li>1:1: 1:1.</li><li>3:4: 3:4.</li><li>4:3: 4:3.</li><li>9:16: 9:16.</li><li>16:9: 16:9.</li></ul><p>Default value: 1:1.</p>
         :type PanelRatio: str
-        :param _PanelResolution: 
+        :param _PanelResolution: <p>Sub-image resolution.</p><p>Enumeration values:</p><ul><li>720: 720.</li><li>1K: 1K.</li><li>2K: 2K.</li><li>4K: 4K.</li></ul><p>Default value: 1K.</p>
         :type PanelResolution: str
-        :param _CustomVariables: 
+        :param _CustomVariables: <p>User-defined variable.</p>
         :type CustomVariables: list of CustomVariable
-        :param _Model: 
+        :param _Model: <p>Model name.</p><p>Enumeration value:</p><ul><li>WAND-suite-1.0-flash: WAND-suite-1.0-flash.</li></ul>
         :type Model: str
         """
         self._Mode = None
@@ -6423,7 +6511,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def Mode(self):
-        r"""
+        r"""<p>Image output mode.</p><p>Enumeration values:</p><ul><li>auto: fully automatic mode. CustomVariables can be passed in this mode.</li><li>modify: modification mode. The corresponding description needs to be provided in the AddOnParameter.ExtPrompt field in this mode. CustomVariables cannot be passed in this mode.</li></ul><p>Default value: auto.</p>
         :rtype: str
         """
         return self._Mode
@@ -6434,7 +6522,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def Definition(self):
-        r"""
+        r"""<p>Ecommerce platform visual template ID.</p><p>If you need a personalized visual template, submit a ticket.</p>
         :rtype: int
         """
         return self._Definition
@@ -6445,7 +6533,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def Recipe(self):
-        r"""
+        r"""<p>Sub-image configuration.</p>
         :rtype: list of RecipeItem
         """
         return self._Recipe
@@ -6456,7 +6544,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def Language(self):
-        r"""
+        r"""<p>Sub-image text language.</p><p>Enumeration values:</p><ul><li>zh-CN: Simplified Chinese.</li><li>en-US: American English.</li></ul><p>Default value: zh-CN.</p><p>If you need more languages, submit a ticket.</p>
         :rtype: str
         """
         return self._Language
@@ -6467,7 +6555,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def PanelRatio(self):
-        r"""
+        r"""<p>Sub-image aspect ratio.</p><p>Enumeration values:</p><ul><li>1:1: 1:1.</li><li>3:4: 3:4.</li><li>4:3: 4:3.</li><li>9:16: 9:16.</li><li>16:9: 16:9.</li></ul><p>Default value: 1:1.</p>
         :rtype: str
         """
         return self._PanelRatio
@@ -6478,7 +6566,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def PanelResolution(self):
-        r"""
+        r"""<p>Sub-image resolution.</p><p>Enumeration values:</p><ul><li>720: 720.</li><li>1K: 1K.</li><li>2K: 2K.</li><li>4K: 4K.</li></ul><p>Default value: 1K.</p>
         :rtype: str
         """
         return self._PanelResolution
@@ -6489,7 +6577,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def CustomVariables(self):
-        r"""
+        r"""<p>User-defined variable.</p>
         :rtype: list of CustomVariable
         """
         return self._CustomVariables
@@ -6500,7 +6588,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def Model(self):
-        r"""
+        r"""<p>Model name.</p><p>Enumeration value:</p><ul><li>WAND-suite-1.0-flash: WAND-suite-1.0-flash.</li></ul>
         :rtype: str
         """
         return self._Model
@@ -12287,20 +12375,20 @@ class AiSampleWordInfo(AbstractModel):
 
 
 class AigcAudioExtraParam(AbstractModel):
-    r"""
+    r"""Extended parameters for AIGC audio generation.
 
     """
 
     def __init__(self):
         r"""
-        :param _ResourceId: 
+        :param _ResourceId: <p>Resource ID. Specify this based on your needs.</p>
         :type ResourceId: str
         """
         self._ResourceId = None
 
     @property
     def ResourceId(self):
-        r"""
+        r"""<p>Resource ID. Specify this based on your needs.</p>
         :rtype: str
         """
         return self._ResourceId
@@ -12323,15 +12411,15 @@ class AigcAudioExtraParam(AbstractModel):
 
 
 class AigcAudioOutputAudioInfo(AbstractModel):
-    r"""
+    r"""Output audio information of the AIGC audio generation task.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: <p>Audio URL.</p>
         :type Url: str
-        :param _Duration: 
+        :param _Duration: <p>Audio duration.</p>
         :type Duration: int
         """
         self._Url = None
@@ -12339,7 +12427,7 @@ class AigcAudioOutputAudioInfo(AbstractModel):
 
     @property
     def Url(self):
-        r"""
+        r"""<p>Audio URL.</p>
         :rtype: str
         """
         return self._Url
@@ -12350,7 +12438,7 @@ class AigcAudioOutputAudioInfo(AbstractModel):
 
     @property
     def Duration(self):
-        r"""
+        r"""<p>Audio duration.</p>
         :rtype: int
         """
         return self._Duration
@@ -12374,15 +12462,15 @@ class AigcAudioOutputAudioInfo(AbstractModel):
 
 
 class AigcAudioOutputVideoInfo(AbstractModel):
-    r"""
+    r"""Output video information of the AIGC audio generation task.
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: <p>Video URL.</p>
         :type Url: str
-        :param _Duration: 
+        :param _Duration: <p>Video duration.</p>
         :type Duration: int
         """
         self._Url = None
@@ -12390,7 +12478,7 @@ class AigcAudioOutputVideoInfo(AbstractModel):
 
     @property
     def Url(self):
-        r"""
+        r"""<p>Video URL.</p>
         :rtype: str
         """
         return self._Url
@@ -12401,7 +12489,7 @@ class AigcAudioOutputVideoInfo(AbstractModel):
 
     @property
     def Duration(self):
-        r"""
+        r"""<p>Video duration.</p>
         :rtype: int
         """
         return self._Duration
@@ -12425,20 +12513,20 @@ class AigcAudioOutputVideoInfo(AbstractModel):
 
 
 class AigcAudioReferenceAudioInfo(AbstractModel):
-    r"""
+    r"""Reference audio information.
 
     """
 
     def __init__(self):
         r"""
-        :param _AudioUrl: 
+        :param _AudioUrl: <p>Reference audio URL, which must be accessible from the public network.</p>
         :type AudioUrl: str
         """
         self._AudioUrl = None
 
     @property
     def AudioUrl(self):
-        r"""
+        r"""<p>Reference audio URL, which must be accessible from the public network.</p>
         :rtype: str
         """
         return self._AudioUrl
@@ -12461,20 +12549,20 @@ class AigcAudioReferenceAudioInfo(AbstractModel):
 
 
 class AigcAudioReferenceVideoInfo(AbstractModel):
-    r"""
+    r"""Reference video asset for AIGC video generation.
 
     """
 
     def __init__(self):
         r"""
-        :param _VideoUrl: 
+        :param _VideoUrl: <p>Reference video URL, which must be accessible from the public network.</p>
         :type VideoUrl: str
         """
         self._VideoUrl = None
 
     @property
     def VideoUrl(self):
-        r"""
+        r"""<p>Reference video URL, which must be accessible from the public network.</p>
         :rtype: str
         """
         return self._VideoUrl
@@ -14171,12 +14259,21 @@ class AudioTemplateInfo(AbstractModel):
         :param _TrackChannelInfo: <p>Audio track merging information.<br>Note: This field only takes effect for adaptive transcoding.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TrackChannelInfo: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
+        :param _AudioLanguage: <p>Audio track language, such as chi or eng. Note: (1) This follows the ISO 639-2 standard. (2) This applies only to adaptive bitrate streaming templates. (3) The value "source" means that the source language is used.</p>
+        :type AudioLanguage: str
+        :param _AudioName: <p>Audio track name, such as Chinese or English. Note: (1) Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters. (2) This applies only to adaptive bitrate streaming templates. (3) The value "source" means that the source name is used.</p>
+        :type AudioName: str
+        :param _DefaultTrack: <p>Default audio track. When set to true, the current audio track is designated as the default audio track. A maximum of 1 default audio track can be specified.</p><p>Default value: false.</p>
+        :type DefaultTrack: bool
         """
         self._Codec = None
         self._Bitrate = None
         self._SampleRate = None
         self._AudioChannel = None
         self._TrackChannelInfo = None
+        self._AudioLanguage = None
+        self._AudioName = None
+        self._DefaultTrack = None
 
     @property
     def Codec(self):
@@ -14234,6 +14331,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TrackChannelInfo(self, TrackChannelInfo):
         self._TrackChannelInfo = TrackChannelInfo
 
+    @property
+    def AudioLanguage(self):
+        r"""<p>Audio track language, such as chi or eng. Note: (1) This follows the ISO 639-2 standard. (2) This applies only to adaptive bitrate streaming templates. (3) The value "source" means that the source language is used.</p>
+        :rtype: str
+        """
+        return self._AudioLanguage
+
+    @AudioLanguage.setter
+    def AudioLanguage(self, AudioLanguage):
+        self._AudioLanguage = AudioLanguage
+
+    @property
+    def AudioName(self):
+        r"""<p>Audio track name, such as Chinese or English. Note: (1) Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters. (2) This applies only to adaptive bitrate streaming templates. (3) The value "source" means that the source name is used.</p>
+        :rtype: str
+        """
+        return self._AudioName
+
+    @AudioName.setter
+    def AudioName(self, AudioName):
+        self._AudioName = AudioName
+
+    @property
+    def DefaultTrack(self):
+        r"""<p>Default audio track. When set to true, the current audio track is designated as the default audio track. A maximum of 1 default audio track can be specified.</p><p>Default value: false.</p>
+        :rtype: bool
+        """
+        return self._DefaultTrack
+
+    @DefaultTrack.setter
+    def DefaultTrack(self, DefaultTrack):
+        self._DefaultTrack = DefaultTrack
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -14243,6 +14373,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("TrackChannelInfo") is not None:
             self._TrackChannelInfo = AudioTrackChannelInfo()
             self._TrackChannelInfo._deserialize(params.get("TrackChannelInfo"))
+        self._AudioLanguage = params.get("AudioLanguage")
+        self._AudioName = params.get("AudioName")
+        self._DefaultTrack = params.get("DefaultTrack")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18709,27 +18842,27 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: Model name. Currently supported models for music generation: GL, MinimaxMusic.Example value: MiniMaxMusic
+        :param _ModelName: <p>Model name. Supported models for music generation: GL and MiniMaxMusic.</p>
         :type ModelName: str
-        :param _ModelVersion: Specifies the model version. By default, the system uses the supported stable version of the model.Supported versions for GL: 2.0, 3.0-clip, 3.0-pro.Supported versions for MinimaxMusic: 2.0, 2.5, 2.6.Example value: 2.0
+        :param _ModelVersion: <p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MinimaxMusic: 2.0, 2.5, and 2.6.</p>
         :type ModelVersion: str
-        :param _SceneType: Specifies the audio generation scene. Music: music.Example value: music
+        :param _SceneType: <p>Specifies the scenario for audio generation. Music: music.</p>
         :type SceneType: str
-        :param _Prompt: Description of the generated audio. (Note: Supports up to 2000 characters.) This parameter is required when no reference image is passed in.Example value: generate a piece of music
+        :param _Prompt: <p>Description of the generated video. (Note: A maximum of 2000 characters is supported.) This parameter is required when no reference image is specified.</p>
         :type Prompt: str
-        :param _VideoInfos: Reference video information. Only supported by certain models.
+        :param _VideoInfos: <p>Reference video information, which is supported by some models.</p>
         :type VideoInfos: list of AigcAudioReferenceVideoInfo
-        :param _AudioInfos: Reference audio information.For example, this parameter is required when generating music from a reference audio.
+        :param _AudioInfos: <p>Specify the reference audio information.</p><p>For example, this is required for music generation.</p>
         :type AudioInfos: list of AigcAudioReferenceAudioInfo
-        :param _OutputAudioFormat: Output audio format. Empty by default. Supported values: mp3, wav.Example value: wav
+        :param _OutputAudioFormat: <p>Output audio format. By default, this is not specified. Valid values: mp3 and wav.</p>
         :type OutputAudioFormat: str
-        :param _StoreCosParam: COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
+        :param _StoreCosParam: <p>COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.</p>
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
-        :param _ExtraParameters: Additional parameters required for the model.
+        :param _ExtraParameters: <p>Additional parameters required.</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
-        :param _AdditionalParameters: Used to input some special scene parameters required by the model, serialized into a string in JSON format.Example: when passing lyrics to the MinimaxMusic model:{"lyric":{"The pony runs happily, flowers are blooming"}}Example value: {"sequential_image_generation":"auto"}
+        :param _AdditionalParameters: <p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{"lyric":{"The pony is running with joy. The flowers are blooming."}}</p>
         :type AdditionalParameters: str
-        :param _Operator: API operator name.Example value: admin
+        :param _Operator: <p>API operator name.</p>
         :type Operator: str
         """
         self._ModelName = None
@@ -18746,7 +18879,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""Model name. Currently supported models for music generation: GL, MinimaxMusic.Example value: MiniMaxMusic
+        r"""<p>Model name. Supported models for music generation: GL and MiniMaxMusic.</p>
         :rtype: str
         """
         return self._ModelName
@@ -18757,7 +18890,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""Specifies the model version. By default, the system uses the supported stable version of the model.Supported versions for GL: 2.0, 3.0-clip, 3.0-pro.Supported versions for MinimaxMusic: 2.0, 2.5, 2.6.Example value: 2.0
+        r"""<p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MinimaxMusic: 2.0, 2.5, and 2.6.</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -18768,7 +18901,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""Specifies the audio generation scene. Music: music.Example value: music
+        r"""<p>Specifies the scenario for audio generation. Music: music.</p>
         :rtype: str
         """
         return self._SceneType
@@ -18779,7 +18912,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""Description of the generated audio. (Note: Supports up to 2000 characters.) This parameter is required when no reference image is passed in.Example value: generate a piece of music
+        r"""<p>Description of the generated video. (Note: A maximum of 2000 characters is supported.) This parameter is required when no reference image is specified.</p>
         :rtype: str
         """
         return self._Prompt
@@ -18790,7 +18923,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def VideoInfos(self):
-        r"""Reference video information. Only supported by certain models.
+        r"""<p>Reference video information, which is supported by some models.</p>
         :rtype: list of AigcAudioReferenceVideoInfo
         """
         return self._VideoInfos
@@ -18801,7 +18934,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def AudioInfos(self):
-        r"""Reference audio information.For example, this parameter is required when generating music from a reference audio.
+        r"""<p>Specify the reference audio information.</p><p>For example, this is required for music generation.</p>
         :rtype: list of AigcAudioReferenceAudioInfo
         """
         return self._AudioInfos
@@ -18812,7 +18945,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def OutputAudioFormat(self):
-        r"""Output audio format. Empty by default. Supported values: mp3, wav.Example value: wav
+        r"""<p>Output audio format. By default, this is not specified. Valid values: mp3 and wav.</p>
         :rtype: str
         """
         return self._OutputAudioFormat
@@ -18823,7 +18956,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def StoreCosParam(self):
-        r"""COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.
+        r"""<p>COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         """
         return self._StoreCosParam
@@ -18834,7 +18967,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def ExtraParameters(self):
-        r"""Additional parameters required for the model.
+        r"""<p>Additional parameters required.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
         """
         return self._ExtraParameters
@@ -18845,7 +18978,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def AdditionalParameters(self):
-        r"""Used to input some special scene parameters required by the model, serialized into a string in JSON format.Example: when passing lyrics to the MinimaxMusic model:{"lyric":{"The pony runs happily, flowers are blooming"}}Example value: {"sequential_image_generation":"auto"}
+        r"""<p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{"lyric":{"The pony is running with joy. The flowers are blooming."}}</p>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -18856,7 +18989,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""API operator name.Example value: admin
+        r"""<p>API operator name.</p>
         :rtype: str
         """
         return self._Operator
@@ -18909,7 +19042,7 @@ class CreateAigcAudioTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The task ID returned after the task is created successfully.Call the query API to poll for task progress and the generation result.Example value: 24*******AigcAudio-6a38**3a9f51468da5bfc25****9a462
+        :param _TaskId: <p>Returned task ID after the task is created successfully.<br>The task progress and generation results can be obtained by calling the query API.</p>
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18919,7 +19052,7 @@ class CreateAigcAudioTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""The task ID returned after the task is created successfully.Call the query API to poll for task progress and the generation result.Example value: 24*******AigcAudio-6a38**3a9f51468da5bfc25****9a462
+        r"""<p>Returned task ID after the task is created successfully.<br>The task progress and generation results can be obtained by calling the query API.</p>
         :rtype: str
         """
         return self._TaskId
@@ -18966,7 +19099,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type EnhancePrompt: bool
         :param _ImageInfos: <p>Reference resource images. By default, one image can be specified.</p><p>Models supporting multiple images:</p><ol><li>Kling 2.1 supports up to 4 images as resource image input.</li><li>Kling 3.0-Omni supports up to 10 images as resource image input.</li><li>Kling O1 supports up to 10 images as resource image input.</li><li>Vidu q2 supports up to 7 images as resource image input.</li><li>Hunyuan 3.0 supports up to 3 images as resource image input.</li><li>MJ v7 supports up to 3 images as resource image input.</li></ol><p>Note:</p><ol><li>The recommended image size is less than 7 MB. Different models have different limits.</li><li>Supported image formats: JPEG, PNG, and WebP.</li></ol>
         :type ImageInfos: list of AigcImageInfo
-        :param _OutputImageCount: 
+        :param _OutputImageCount: <p>Specifies the number of output images. One image is supported by default.</p>
         :type OutputImageCount: int
         :param _ExtraParameters: <p>Additional parameters required for the model.</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
@@ -19069,7 +19202,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def OutputImageCount(self):
-        r"""
+        r"""<p>Specifies the number of output images. One image is supported by default.</p>
         :rtype: int
         """
         return self._OutputImageCount
@@ -23094,15 +23227,15 @@ class CreateWorkflowResponse(AbstractModel):
 
 
 class CustomVariable(AbstractModel):
-    r"""
+    r"""Custom description variable.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: <p>User-defined variable type.</p><p>Parameter format: PascalCase format.</p><p>This cannot be UserPrompt. The default platform template is not adapted for custom content. Submit a ticket if needed.</p>
         :type Type: str
-        :param _Description: 
+        :param _Description: <p>Custom variable description.</p>
         :type Description: str
         """
         self._Type = None
@@ -23110,7 +23243,7 @@ class CustomVariable(AbstractModel):
 
     @property
     def Type(self):
-        r"""
+        r"""<p>User-defined variable type.</p><p>Parameter format: PascalCase format.</p><p>This cannot be UserPrompt. The default platform template is not adapted for custom content. Submit a ticket if needed.</p>
         :rtype: str
         """
         return self._Type
@@ -23121,7 +23254,7 @@ class CustomVariable(AbstractModel):
 
     @property
     def Description(self):
-        r"""
+        r"""<p>Custom variable description.</p>
         :rtype: str
         """
         return self._Description
@@ -25240,14 +25373,14 @@ class DescribeAigcAudioTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The task ID returned when creating the AIGC audio generation task.Example value: 24000145-****d**-cb46b8040b684b539bbd46****e*e2fd
+        :param _TaskId: <p>Task ID returned when the AIGC video generation task is created.</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""The task ID returned when creating the AIGC audio generation task.Example value: 24000145-****d**-cb46b8040b684b539bbd46****e*e2fd
+        r"""<p>Task ID returned when the AIGC video generation task is created.</p>
         :rtype: str
         """
         return self._TaskId
@@ -25276,13 +25409,13 @@ class DescribeAigcAudioTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.Example value: DONE
+        :param _Status: <p>Current task status. WAIT: waiting. RUN: running. FAIL: failed. DONE: successful.</p>
         :type Status: str
-        :param _Message: When the task status is FAIL, the failure information is returned.
+        :param _Message: <p>If the task status is FAIL, the failure information is returned.</p>
         :type Message: str
-        :param _AudioInfos: Output audio information.
+        :param _AudioInfos: <p>Output audio information.</p>
         :type AudioInfos: list of AigcAudioOutputAudioInfo
-        :param _VideoInfos: Output video information. Only returned for scenarios such as video dubbing.
+        :param _VideoInfos: <p>Output video information, which is only available for scenarios such as video dubbing.</p>
         :type VideoInfos: list of AigcAudioOutputVideoInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -25295,7 +25428,7 @@ class DescribeAigcAudioTaskResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.Example value: DONE
+        r"""<p>Current task status. WAIT: waiting. RUN: running. FAIL: failed. DONE: successful.</p>
         :rtype: str
         """
         return self._Status
@@ -25306,7 +25439,7 @@ class DescribeAigcAudioTaskResponse(AbstractModel):
 
     @property
     def Message(self):
-        r"""When the task status is FAIL, the failure information is returned.
+        r"""<p>If the task status is FAIL, the failure information is returned.</p>
         :rtype: str
         """
         return self._Message
@@ -25317,7 +25450,7 @@ class DescribeAigcAudioTaskResponse(AbstractModel):
 
     @property
     def AudioInfos(self):
-        r"""Output audio information.
+        r"""<p>Output audio information.</p>
         :rtype: list of AigcAudioOutputAudioInfo
         """
         return self._AudioInfos
@@ -25328,7 +25461,7 @@ class DescribeAigcAudioTaskResponse(AbstractModel):
 
     @property
     def VideoInfos(self):
-        r"""Output video information. Only returned for scenarios such as video dubbing.
+        r"""<p>Output video information, which is only available for scenarios such as video dubbing.</p>
         :rtype: list of AigcAudioOutputVideoInfo
         """
         return self._VideoInfos
@@ -35785,7 +35918,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _EraseConfig: <p>Image erasing configuration.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EraseConfig: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
-        :param _AiPosterSuiteConfig: 
+        :param _AiPosterSuiteConfig: <p>AI image set configuration.</p>
         :type AiPosterSuiteConfig: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
         """
         self._EncodeConfig = None
@@ -35831,7 +35964,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiPosterSuiteConfig(self):
-        r"""
+        r"""<p>AI image set configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
         """
         return self._AiPosterSuiteConfig
@@ -53873,15 +54006,15 @@ Default value: 0 px.
 
 
 class RecipeItem(AbstractModel):
-    r"""
+    r"""Image set information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Theme: 
+        :param _Theme: <p>Sub-image type.</p><p>Enumeration values:</p><ul><li>hero: product hero image.</li><li>detail: product details image.</li><li>selling: core selling point image.</li><li>atmosphere: scene atmosphere image.</li><li>angles: multiple-angle image.</li><li>scene: usage scenario image.</li></ul>
         :type Theme: str
-        :param _Num: 
+        :param _Num: <p>Number of corresponding sub-images.</p><p>Value range: 1 to 4.</p><p>Unit: image.</p><p>Each type can have up to 4 sub-images. The total number of sub-images must be within the range of 4 to 12.</p>
         :type Num: int
         """
         self._Theme = None
@@ -53889,7 +54022,7 @@ class RecipeItem(AbstractModel):
 
     @property
     def Theme(self):
-        r"""
+        r"""<p>Sub-image type.</p><p>Enumeration values:</p><ul><li>hero: product hero image.</li><li>detail: product details image.</li><li>selling: core selling point image.</li><li>atmosphere: scene atmosphere image.</li><li>angles: multiple-angle image.</li><li>scene: usage scenario image.</li></ul>
         :rtype: str
         """
         return self._Theme
@@ -53900,7 +54033,7 @@ class RecipeItem(AbstractModel):
 
     @property
     def Num(self):
-        r"""
+        r"""<p>Number of corresponding sub-images.</p><p>Value range: 1 to 4.</p><p>Unit: image.</p><p>Each type can have up to 4 sub-images. The total number of sub-images must be within the range of 4 to 12.</p>
         :rtype: int
         """
         return self._Num
@@ -58438,6 +58571,117 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class SmartSubtitleTaskFullTextSegmentItem(AbstractModel):
+    r"""Smart subtitle recognition segment.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: <p>Confidence of the recognized segment. Value range: 0–100.</p>
+        :type Confidence: float
+        :param _StartTimeOffset: <p>Start time offset of the recognized segment, in seconds.</p>
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: <p>End time offset of the recognized segment, in seconds.</p>
+        :type EndTimeOffset: float
+        :param _Text: <p>Recognized text.</p>
+        :type Text: str
+        :param _Trans: <p>Translated text.</p>
+        :type Trans: str
+        :param _SpeakerId: <p>Speaker ID.</p>
+        :type SpeakerId: str
+        """
+        self._Confidence = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Text = None
+        self._Trans = None
+        self._SpeakerId = None
+
+    @property
+    def Confidence(self):
+        r"""<p>Confidence of the recognized segment. Value range: 0–100.</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeOffset(self):
+        r"""<p>Start time offset of the recognized segment, in seconds.</p>
+        :rtype: float
+        """
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        r"""<p>End time offset of the recognized segment, in seconds.</p>
+        :rtype: float
+        """
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Text(self):
+        r"""<p>Recognized text.</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Trans(self):
+        r"""<p>Translated text.</p>
+        :rtype: str
+        """
+        return self._Trans
+
+    @Trans.setter
+    def Trans(self, Trans):
+        self._Trans = Trans
+
+    @property
+    def SpeakerId(self):
+        r"""<p>Speaker ID.</p>
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Text = params.get("Text")
+        self._Trans = params.get("Trans")
+        self._SpeakerId = params.get("SpeakerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmartSubtitleTaskResultInput(AbstractModel):
     r"""Smart subtitle translation input.
 
@@ -58515,6 +58759,9 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SegmentSet: <p>List of segments for smart subtitle recognition.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SegmentSet: list of SmartSubtitleTaskFullTextSegmentItem
         :param _RecognizeSubtitleResult: <p>Subtitle recognition result</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RecognizeSubtitleResult: list of SubtitleResult
@@ -58525,9 +58772,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
+        self._SegmentSet = None
         self._RecognizeSubtitleResult = None
         self._TransSubtitleResult = None
         self._OutputStorage = None
+
+    @property
+    def SegmentSet(self):
+        r"""<p>List of segments for smart subtitle recognition.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SmartSubtitleTaskFullTextSegmentItem
+        """
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
 
     @property
     def RecognizeSubtitleResult(self):
@@ -58567,6 +58827,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
     def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = SmartSubtitleTaskFullTextSegmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
         if params.get("RecognizeSubtitleResult") is not None:
             self._RecognizeSubtitleResult = []
             for item in params.get("RecognizeSubtitleResult"):
