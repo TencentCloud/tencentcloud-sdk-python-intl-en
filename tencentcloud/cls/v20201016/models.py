@@ -3740,20 +3740,24 @@ class CloudProductLogTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClsRegion: Service region
+        :param _ClsRegion: <p>Log service region</p>
         :type ClsRegion: str
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _LogsetId: Logset ID
+        :param _LogsetId: <p>Logset ID</p>
         :type LogsetId: str
-        :param _TopicId: Log topic ID
+        :param _TopicId: <p>Log topic ID.</p>
         :type TopicId: str
-        :param _Extend: Log configuration extended information, generally used for storage of additional log delivery configuration
+        :param _Extend: <p>Extended information for logging configuration, generally used to store additional log delivery configuration</p>
         :type Extend: str
-        :param _LogType: Log type, support enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS
+        :param _LogType: <p>Log type, supports enumeration: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</p>
         :type LogType: str
-        :param _Status: Task status: 0 Creating, 1 Creation completed, 2 Deleting
+        :param _Status: <p>Task status: 0 creating, 1 creation completed, 2 deleting</p>
         :type Status: int
+        :param _TopicTags: <p>Tag information of the topic associated with the delivery task</p>
+        :type TopicTags: list of Tag
+        :param _LogsetTags: <p>Tag information of the logset associated with the delivery task</p>
+        :type LogsetTags: list of Tag
         """
         self._ClsRegion = None
         self._InstanceId = None
@@ -3762,10 +3766,12 @@ class CloudProductLogTaskInfo(AbstractModel):
         self._Extend = None
         self._LogType = None
         self._Status = None
+        self._TopicTags = None
+        self._LogsetTags = None
 
     @property
     def ClsRegion(self):
-        r"""Service region
+        r"""<p>Log service region</p>
         :rtype: str
         """
         return self._ClsRegion
@@ -3776,7 +3782,7 @@ class CloudProductLogTaskInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3787,7 +3793,7 @@ class CloudProductLogTaskInfo(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""Logset ID
+        r"""<p>Logset ID</p>
         :rtype: str
         """
         return self._LogsetId
@@ -3798,7 +3804,7 @@ class CloudProductLogTaskInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""Log topic ID
+        r"""<p>Log topic ID.</p>
         :rtype: str
         """
         return self._TopicId
@@ -3809,7 +3815,7 @@ class CloudProductLogTaskInfo(AbstractModel):
 
     @property
     def Extend(self):
-        r"""Log configuration extended information, generally used for storage of additional log delivery configuration
+        r"""<p>Extended information for logging configuration, generally used to store additional log delivery configuration</p>
         :rtype: str
         """
         return self._Extend
@@ -3820,7 +3826,7 @@ class CloudProductLogTaskInfo(AbstractModel):
 
     @property
     def LogType(self):
-        r"""Log type, support enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS
+        r"""<p>Log type, supports enumeration: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</p>
         :rtype: str
         """
         return self._LogType
@@ -3831,7 +3837,7 @@ class CloudProductLogTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task status: 0 Creating, 1 Creation completed, 2 Deleting
+        r"""<p>Task status: 0 creating, 1 creation completed, 2 deleting</p>
         :rtype: int
         """
         return self._Status
@@ -3839,6 +3845,28 @@ class CloudProductLogTaskInfo(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def TopicTags(self):
+        r"""<p>Tag information of the topic associated with the delivery task</p>
+        :rtype: list of Tag
+        """
+        return self._TopicTags
+
+    @TopicTags.setter
+    def TopicTags(self, TopicTags):
+        self._TopicTags = TopicTags
+
+    @property
+    def LogsetTags(self):
+        r"""<p>Tag information of the logset associated with the delivery task</p>
+        :rtype: list of Tag
+        """
+        return self._LogsetTags
+
+    @LogsetTags.setter
+    def LogsetTags(self, LogsetTags):
+        self._LogsetTags = LogsetTags
 
 
     def _deserialize(self, params):
@@ -3849,6 +3877,18 @@ class CloudProductLogTaskInfo(AbstractModel):
         self._Extend = params.get("Extend")
         self._LogType = params.get("LogType")
         self._Status = params.get("Status")
+        if params.get("TopicTags") is not None:
+            self._TopicTags = []
+            for item in params.get("TopicTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TopicTags.append(obj)
+        if params.get("LogsetTags") is not None:
+            self._LogsetTags = []
+            for item in params.get("LogsetTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._LogsetTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6525,11 +6565,11 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>Instance ID</p><ul><li>Obtained through official documentation of connected cloud services</li></ul>
         :type InstanceId: str
-        :param _AssumerName: <p>Cloud product identifier, support enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS</p>
+        :param _AssumerName: <p>Cloud product identifier. Support the following products</p><ul><li>APIS</li><li>BH</li><li>CDB</li><li>CDS</li><li>CFS</li><li>CLB</li><li>CSIP</li><li>CWP</li><li>DCDB</li><li>DNSPod</li><li>EMR</li><li>HTTPDNS</li><li>KHL</li><li>llmsgw</li><li>MariaDB</li><li>MDP</li><li>MongoDB</li><li>PostgreSQL</li><li>TCSS</li><li>TDSQL-C</li><li>TDStore</li><li>TencentDB-Redis</li><li>TEO</li><li>TokenHub</li><li>TSE</li></ul>
         :type AssumerName: str
-        :param _LogType: <p>Log type, supports enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</p>
+        :param _LogType: <p>Log types supported by each cloud product are as follows:</p><table><thead><tr><th>assumer_name</th><th>Supported log_type</th></tr></thead><tbody><tr><td>APIS</td><td>APIS-ACCESS</td></tr><tr><td>BH</td><td>BH-COMMANDLOG, BH-FILELOG</td></tr><tr><td>CDB</td><td>CDB-AUDIT</td></tr><tr><td>CDS</td><td>CDS-AUDIT, CDS-RISK</td></tr><tr><td>CFS</td><td>CFS-AUDIT</td></tr><tr><td>CLB</td><td>CMR-SPEND</td></tr><tr><td>CSIP</td><td>CSIP</td></tr><tr><td>CWP</td><td>CWP</td></tr><tr><td>DCDB</td><td>DCDB-AUDIT, DCDB-ERROR, DCDB-SLOW</td></tr><tr><td>DNSPod</td><td>DNSPod-RESOLVELOG</td></tr><tr><td>EMR</td><td>EMR-OPERATION</td></tr><tr><td>HTTPDNS</td><td>HTTPDNS-RESOLVELOG</td></tr><tr><td>MariaDB</td><td>MariaDB-AUDIT, MariaDB-ERROR, MariaDB-SLOW</td></tr><tr><td>MDP</td><td>MDP-SSAI</td></tr><tr><td>MongoDB</td><td>MongoDB-AUDIT, MongoDB-ErrorLog, MongoDB-OperationLog, MongoDB-SlowLog</td></tr><tr><td>PostgreSQL</td><td>PostgreSQL-AUDIT, PostgreSQL-ERROR, PostgreSQL-SLOW</td></tr><tr><td>TCSS</td><td>TCSS</td></tr><tr><td>TDSQL-C</td><td>TDSQL-C-AUDIT</td></tr><tr><td>TDStore</td><td>TDMYSQL-SLOW</td></tr><tr><td>TencentDB-Redis</td><td>Redis-AUDIT, Redis-ERROR, Redis-SLOW</td></tr><tr><td>TEO</td><td>TEO-INEFERENCE</td></tr><tr><td>llmsgw</td><td>llmsgw-mcp-security-alarm</td></tr></tbody></table>
         :type LogType: str
-        :param _CloudProductRegion: <p>Product region. The input parameter format for regions varies by log type (LogType). Refer to the following example:</p><ul><li>All CDS log types: ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog: ap-guangzhou</li><li>MongoDB-ErrorLog: ap-guangzhou</li><li>TDMYSQL-SLOW: gz</li><li>All DCDB log types: gz</li><li>All MariaDB log types: gz</li><li>All PostgreSQL log types: gz</li><li>All BH log types: overseas-polaris (Hong Kong (China) and other)/fsi-polaris (financial district)/general-polaris (general zone)/intl-sg-prod (international site)</li><li>All APIS log types: gz</li></ul>
+        :param _CloudProductRegion: <p>Product region. Different LogTypes have different input parameter formats:</p><p><strong>Format A: Short region code</strong> (gz / sh / bj …)</p><ul><li>All APIS log types: for example, <code>gz</code></li><li>CDB-AUDIT</li><li>TDSQL-C-AUDIT</li><li>TDMYSQL-SLOW</li><li>All DCDB log types</li><li>All MariaDB log types</li><li>All PostgreSQL log types</li><li>MongoDB-AUDIT (<strong>Note that this is different from SlowLog/ErrorLog/OperationLog</strong>)</li><li>All TencentDB-Redis log types</li><li>EMR-OPERATION</li></ul><p><strong>Format B: Long region code</strong> (ap-guangzhou / ap-shanghai / ap-singapore …)</p><ul><li>All CDS log types: for example, <code>ap-guangzhou</code></li><li>MongoDB-SlowLog / MongoDB-ErrorLog / MongoDB-OperationLog</li><li>DNSPod-RESOLVELOG</li><li>HTTPDNS-RESOLVELOG</li><li>MDP-SSAI</li><li>CFS-AUDIT</li><li>TEO-INEFERENCE</li><li>TokenHub-ActivityLog / TokenHub-AuditLog</li><li>llmsgw-mcp-security-alarm</li><li>CSIP / TCSS / TSE / CWP / KHL and others</li></ul><p><strong>Format C: Dedicated BH Polaris name</strong></p><ul><li>All BH log types: <code>overseas-polaris</code> (Hong Kong (China) and other overseas) / <code>fsi-polaris</code> (financial district) / <code>general-polaris</code> (general zone) / <code>intl-sg-prod</code> (international website)</li></ul>
         :type CloudProductRegion: str
         :param _ClsRegion: <p>CLS target region</p><ul><li>Supported regions: see <a href="https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">region list</a> document</li></ul>
         :type ClsRegion: str
@@ -6571,7 +6611,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def AssumerName(self):
-        r"""<p>Cloud product identifier, support enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS</p>
+        r"""<p>Cloud product identifier. Support the following products</p><ul><li>APIS</li><li>BH</li><li>CDB</li><li>CDS</li><li>CFS</li><li>CLB</li><li>CSIP</li><li>CWP</li><li>DCDB</li><li>DNSPod</li><li>EMR</li><li>HTTPDNS</li><li>KHL</li><li>llmsgw</li><li>MariaDB</li><li>MDP</li><li>MongoDB</li><li>PostgreSQL</li><li>TCSS</li><li>TDSQL-C</li><li>TDStore</li><li>TencentDB-Redis</li><li>TEO</li><li>TokenHub</li><li>TSE</li></ul>
         :rtype: str
         """
         return self._AssumerName
@@ -6582,7 +6622,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""<p>Log type, supports enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</p>
+        r"""<p>Log types supported by each cloud product are as follows:</p><table><thead><tr><th>assumer_name</th><th>Supported log_type</th></tr></thead><tbody><tr><td>APIS</td><td>APIS-ACCESS</td></tr><tr><td>BH</td><td>BH-COMMANDLOG, BH-FILELOG</td></tr><tr><td>CDB</td><td>CDB-AUDIT</td></tr><tr><td>CDS</td><td>CDS-AUDIT, CDS-RISK</td></tr><tr><td>CFS</td><td>CFS-AUDIT</td></tr><tr><td>CLB</td><td>CMR-SPEND</td></tr><tr><td>CSIP</td><td>CSIP</td></tr><tr><td>CWP</td><td>CWP</td></tr><tr><td>DCDB</td><td>DCDB-AUDIT, DCDB-ERROR, DCDB-SLOW</td></tr><tr><td>DNSPod</td><td>DNSPod-RESOLVELOG</td></tr><tr><td>EMR</td><td>EMR-OPERATION</td></tr><tr><td>HTTPDNS</td><td>HTTPDNS-RESOLVELOG</td></tr><tr><td>MariaDB</td><td>MariaDB-AUDIT, MariaDB-ERROR, MariaDB-SLOW</td></tr><tr><td>MDP</td><td>MDP-SSAI</td></tr><tr><td>MongoDB</td><td>MongoDB-AUDIT, MongoDB-ErrorLog, MongoDB-OperationLog, MongoDB-SlowLog</td></tr><tr><td>PostgreSQL</td><td>PostgreSQL-AUDIT, PostgreSQL-ERROR, PostgreSQL-SLOW</td></tr><tr><td>TCSS</td><td>TCSS</td></tr><tr><td>TDSQL-C</td><td>TDSQL-C-AUDIT</td></tr><tr><td>TDStore</td><td>TDMYSQL-SLOW</td></tr><tr><td>TencentDB-Redis</td><td>Redis-AUDIT, Redis-ERROR, Redis-SLOW</td></tr><tr><td>TEO</td><td>TEO-INEFERENCE</td></tr><tr><td>llmsgw</td><td>llmsgw-mcp-security-alarm</td></tr></tbody></table>
         :rtype: str
         """
         return self._LogType
@@ -6593,7 +6633,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def CloudProductRegion(self):
-        r"""<p>Product region. The input parameter format for regions varies by log type (LogType). Refer to the following example:</p><ul><li>All CDS log types: ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog: ap-guangzhou</li><li>MongoDB-ErrorLog: ap-guangzhou</li><li>TDMYSQL-SLOW: gz</li><li>All DCDB log types: gz</li><li>All MariaDB log types: gz</li><li>All PostgreSQL log types: gz</li><li>All BH log types: overseas-polaris (Hong Kong (China) and other)/fsi-polaris (financial district)/general-polaris (general zone)/intl-sg-prod (international site)</li><li>All APIS log types: gz</li></ul>
+        r"""<p>Product region. Different LogTypes have different input parameter formats:</p><p><strong>Format A: Short region code</strong> (gz / sh / bj …)</p><ul><li>All APIS log types: for example, <code>gz</code></li><li>CDB-AUDIT</li><li>TDSQL-C-AUDIT</li><li>TDMYSQL-SLOW</li><li>All DCDB log types</li><li>All MariaDB log types</li><li>All PostgreSQL log types</li><li>MongoDB-AUDIT (<strong>Note that this is different from SlowLog/ErrorLog/OperationLog</strong>)</li><li>All TencentDB-Redis log types</li><li>EMR-OPERATION</li></ul><p><strong>Format B: Long region code</strong> (ap-guangzhou / ap-shanghai / ap-singapore …)</p><ul><li>All CDS log types: for example, <code>ap-guangzhou</code></li><li>MongoDB-SlowLog / MongoDB-ErrorLog / MongoDB-OperationLog</li><li>DNSPod-RESOLVELOG</li><li>HTTPDNS-RESOLVELOG</li><li>MDP-SSAI</li><li>CFS-AUDIT</li><li>TEO-INEFERENCE</li><li>TokenHub-ActivityLog / TokenHub-AuditLog</li><li>llmsgw-mcp-security-alarm</li><li>CSIP / TCSS / TSE / CWP / KHL and others</li></ul><p><strong>Format C: Dedicated BH Polaris name</strong></p><ul><li>All BH log types: <code>overseas-polaris</code> (Hong Kong (China) and other overseas) / <code>fsi-polaris</code> (financial district) / <code>general-polaris</code> (general zone) / <code>intl-sg-prod</code> (international website)</li></ul>
         :rtype: str
         """
         return self._CloudProductRegion
@@ -8716,6 +8756,12 @@ class CreateDlcDeliverRequest(AbstractModel):
         :type EndTime: int
         :param _HasServicesLog: <p>Whether to enable delivery service log. Valid values: 1: disable; 2: enable. Enabled by default.</p>
         :type HasServicesLog: int
+        :param _AutoCreateField: <p>Auto-create dlc field</p><p>Default value: false</p><p>When there are additional fields in your log, the system will automatically ship them to DLC.</p>
+        :type AutoCreateField: bool
+        :param _DlcFailHandle: <p>Store delivery failure logs in DLC tables</p>
+        :type DlcFailHandle: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        :param _DSLFilter: <p>Log pre-filtering - Perform pre-filtering on original data for data ingestion into Splunk</p>
+        :type DSLFilter: str
         """
         self._TopicId = None
         self._Name = None
@@ -8726,6 +8772,9 @@ class CreateDlcDeliverRequest(AbstractModel):
         self._Interval = None
         self._EndTime = None
         self._HasServicesLog = None
+        self._AutoCreateField = None
+        self._DlcFailHandle = None
+        self._DSLFilter = None
 
     @property
     def TopicId(self):
@@ -8826,6 +8875,39 @@ class CreateDlcDeliverRequest(AbstractModel):
     def HasServicesLog(self, HasServicesLog):
         self._HasServicesLog = HasServicesLog
 
+    @property
+    def AutoCreateField(self):
+        r"""<p>Auto-create dlc field</p><p>Default value: false</p><p>When there are additional fields in your log, the system will automatically ship them to DLC.</p>
+        :rtype: bool
+        """
+        return self._AutoCreateField
+
+    @AutoCreateField.setter
+    def AutoCreateField(self, AutoCreateField):
+        self._AutoCreateField = AutoCreateField
+
+    @property
+    def DlcFailHandle(self):
+        r"""<p>Store delivery failure logs in DLC tables</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        """
+        return self._DlcFailHandle
+
+    @DlcFailHandle.setter
+    def DlcFailHandle(self, DlcFailHandle):
+        self._DlcFailHandle = DlcFailHandle
+
+    @property
+    def DSLFilter(self):
+        r"""<p>Log pre-filtering - Perform pre-filtering on original data for data ingestion into Splunk</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -8839,6 +8921,11 @@ class CreateDlcDeliverRequest(AbstractModel):
         self._Interval = params.get("Interval")
         self._EndTime = params.get("EndTime")
         self._HasServicesLog = params.get("HasServicesLog")
+        self._AutoCreateField = params.get("AutoCreateField")
+        if params.get("DlcFailHandle") is not None:
+            self._DlcFailHandle = DlcFailHandle()
+            self._DlcFailHandle._deserialize(params.get("DlcFailHandle"))
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11466,6 +11553,219 @@ class CreateRecordingRuleYamlTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRemoteWriteTaskRequest(AbstractModel):
+    r"""CreateRemoteWriteTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: Log topic ID
+        :type TopicId: str
+        :param _Name: Task Name
+        :type Name: str
+        :param _Target: Target service name.
+        :type Target: str
+        :param _RemoteWriteURL: Destination address
+        :type RemoteWriteURL: str
+        :param _AuthType: Authentication type
+- 0: No authentication
+1: basic_auth 
+2: token
+        :type AuthType: int
+        :param _NetType: Network type. Valid values: 1 private network; 2: public network.
+        :type NetType: int
+        :param _VpcId: VPC id
+        :type VpcId: str
+        :param _AuthInfo: Authentication information
+        :type AuthInfo: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        :param _VirtualGatewayType: Backend service type
+0 CVM
+1025 CLB
+        :type VirtualGatewayType: int
+        """
+        self._TopicId = None
+        self._Name = None
+        self._Target = None
+        self._RemoteWriteURL = None
+        self._AuthType = None
+        self._NetType = None
+        self._VpcId = None
+        self._AuthInfo = None
+        self._VirtualGatewayType = None
+
+    @property
+    def TopicId(self):
+        r"""Log topic ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""Task Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Target(self):
+        r"""Target service name.
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def RemoteWriteURL(self):
+        r"""Destination address
+        :rtype: str
+        """
+        return self._RemoteWriteURL
+
+    @RemoteWriteURL.setter
+    def RemoteWriteURL(self, RemoteWriteURL):
+        self._RemoteWriteURL = RemoteWriteURL
+
+    @property
+    def AuthType(self):
+        r"""Authentication type
+- 0: No authentication
+1: basic_auth 
+2: token
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def NetType(self):
+        r"""Network type. Valid values: 1 private network; 2: public network.
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        r"""VPC id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def AuthInfo(self):
+        r"""Authentication information
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        """
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
+
+    @property
+    def VirtualGatewayType(self):
+        r"""Backend service type
+0 CVM
+1025 CLB
+        :rtype: int
+        """
+        return self._VirtualGatewayType
+
+    @VirtualGatewayType.setter
+    def VirtualGatewayType(self, VirtualGatewayType):
+        self._VirtualGatewayType = VirtualGatewayType
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._Target = params.get("Target")
+        self._RemoteWriteURL = params.get("RemoteWriteURL")
+        self._AuthType = params.get("AuthType")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        if params.get("AuthInfo") is not None:
+            self._AuthInfo = RemoteWriteAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
+        self._VirtualGatewayType = params.get("VirtualGatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRemoteWriteTaskResponse(AbstractModel):
+    r"""CreateRemoteWriteTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: RemoteWrite task ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""RemoteWrite task ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateScheduledSqlRequest(AbstractModel):
     r"""CreateScheduledSql request structure.
 
@@ -11473,32 +11773,38 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SrcTopicId: Source log topic ID. Obtain the log topic Id through [Get Log Topic List](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1).
+        :param _SrcTopicId: <p>Source log topic ID - Obtain the log topic ID by <a href="https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1">searching the log topic list</a>.</p>
         :type SrcTopicId: str
-        :param _Name: Task name, 0-255 characters
+        :param _Name: <p>Task name, 0-255 characters</p>
         :type Name: str
-        :param _EnableFlag: Task start status. 1: Enabled, 2: Disabled
+        :param _EnableFlag: <p>Task start status. 1: Enabled, 2: Disabled</p>
         :type EnableFlag: int
-        :param _DstResource: Target log topic for scheduled SQL analysis
+        :param _DstResource: <p>Target log topic for scheduled SQL analysis</p>
         :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
-        :param _ScheduledSqlContent: Query statement
+        :param _ScheduledSqlContent: <p>Query statement</p>
         :type ScheduledSqlContent: str
-        :param _ProcessStartTime: Schedule start time, Unix timestamp, in milliseconds
+        :param _ProcessStartTime: <p>Schedule start time, Unix timestamp, in milliseconds</p>
         :type ProcessStartTime: int
-        :param _ProcessType: Schedule type: 1: Continuous running; 2: Specified time range
+        :param _ProcessType: <p>Schedule Type: 1 Continuous Running 2 Specified Time Range</p>
         :type ProcessType: int
-        :param _ProcessPeriod: Scheduling Interval (Minutes), 1-1440 minutes
+        :param _ProcessPeriod: <p>Scheduling Interval (Minutes), 1-1440 minutes</p>
         :type ProcessPeriod: int
-        :param _ProcessTimeWindow: Time window for a single query. If your target topic is a metric topic, it is recommended that the size of this parameter not exceed 30 minutes, otherwise, metric conversion may fail.
+        :param _ProcessTimeWindow: <p>Time window for a single query. If your target topic is a metric topic, it is recommended that the size of this parameter not exceed 30 minutes, otherwise, metric conversion may fail.</p>
         :type ProcessTimeWindow: str
-        :param _ProcessDelay: Execution Delay (Seconds), 0-120 seconds, default 60 seconds
+        :param _ProcessDelay: <p>Execution delay (seconds), 0-120 seconds, default 60 seconds</p>
         :type ProcessDelay: int
-        :param _SrcTopicRegion: Regional information of the source topicId. For supported regions, see the region list (https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) document.
+        :param _SrcTopicRegion: <p>Regional information of the source topicId. For supported regions, see the <a href="https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">region list</a> document.</p>
         :type SrcTopicRegion: str
-        :param _ProcessEndTime: Schedule end time. Required field when ProcessType=2, Unix timestamp, in milliseconds
+        :param _ProcessPeriodUnit: <p>Scheduling Time Unit</p><p>Value ranges from 1 to 2</p><p>Default value: 1</p><p>The default value is 1 (minute), and the additional value is 2 (second).</p>
+        :type ProcessPeriodUnit: int
+        :param _ProcessEndTime: <p>Schedule End Time, required when ProcessType=2, Unix timestamp, in milliseconds</p>
         :type ProcessEndTime: int
-        :param _SyntaxRule: Query syntax rules. Default value is 0. 0: Lucene syntax, 1: CQL syntax
+        :param _SyntaxRule: <p>Query syntax rules. Default value: 0. 0: Lucene syntax, 1: CQL syntax</p>
         :type SyntaxRule: int
+        :param _HasServicesLog: <p>Whether to enable delivery service log. 1: Disabled, 2: Enabled.</p>
+        :type HasServicesLog: int
+        :param _FullQuery: <p>Full-text search tag. 1: Off, 2: On. Default: 1</p>
+        :type FullQuery: int
         """
         self._SrcTopicId = None
         self._Name = None
@@ -11511,12 +11817,15 @@ class CreateScheduledSqlRequest(AbstractModel):
         self._ProcessTimeWindow = None
         self._ProcessDelay = None
         self._SrcTopicRegion = None
+        self._ProcessPeriodUnit = None
         self._ProcessEndTime = None
         self._SyntaxRule = None
+        self._HasServicesLog = None
+        self._FullQuery = None
 
     @property
     def SrcTopicId(self):
-        r"""Source log topic ID. Obtain the log topic Id through [Get Log Topic List](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1).
+        r"""<p>Source log topic ID - Obtain the log topic ID by <a href="https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1">searching the log topic list</a>.</p>
         :rtype: str
         """
         return self._SrcTopicId
@@ -11527,7 +11836,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Task name, 0-255 characters
+        r"""<p>Task name, 0-255 characters</p>
         :rtype: str
         """
         return self._Name
@@ -11538,7 +11847,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def EnableFlag(self):
-        r"""Task start status. 1: Enabled, 2: Disabled
+        r"""<p>Task start status. 1: Enabled, 2: Disabled</p>
         :rtype: int
         """
         return self._EnableFlag
@@ -11549,7 +11858,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def DstResource(self):
-        r"""Target log topic for scheduled SQL analysis
+        r"""<p>Target log topic for scheduled SQL analysis</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
         """
         return self._DstResource
@@ -11560,7 +11869,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ScheduledSqlContent(self):
-        r"""Query statement
+        r"""<p>Query statement</p>
         :rtype: str
         """
         return self._ScheduledSqlContent
@@ -11571,7 +11880,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessStartTime(self):
-        r"""Schedule start time, Unix timestamp, in milliseconds
+        r"""<p>Schedule start time, Unix timestamp, in milliseconds</p>
         :rtype: int
         """
         return self._ProcessStartTime
@@ -11582,7 +11891,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessType(self):
-        r"""Schedule type: 1: Continuous running; 2: Specified time range
+        r"""<p>Schedule Type: 1 Continuous Running 2 Specified Time Range</p>
         :rtype: int
         """
         return self._ProcessType
@@ -11593,7 +11902,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessPeriod(self):
-        r"""Scheduling Interval (Minutes), 1-1440 minutes
+        r"""<p>Scheduling Interval (Minutes), 1-1440 minutes</p>
         :rtype: int
         """
         return self._ProcessPeriod
@@ -11604,7 +11913,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessTimeWindow(self):
-        r"""Time window for a single query. If your target topic is a metric topic, it is recommended that the size of this parameter not exceed 30 minutes, otherwise, metric conversion may fail.
+        r"""<p>Time window for a single query. If your target topic is a metric topic, it is recommended that the size of this parameter not exceed 30 minutes, otherwise, metric conversion may fail.</p>
         :rtype: str
         """
         return self._ProcessTimeWindow
@@ -11615,7 +11924,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessDelay(self):
-        r"""Execution Delay (Seconds), 0-120 seconds, default 60 seconds
+        r"""<p>Execution delay (seconds), 0-120 seconds, default 60 seconds</p>
         :rtype: int
         """
         return self._ProcessDelay
@@ -11626,7 +11935,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
-        r"""Regional information of the source topicId. For supported regions, see the region list (https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) document.
+        r"""<p>Regional information of the source topicId. For supported regions, see the <a href="https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">region list</a> document.</p>
         :rtype: str
         """
         return self._SrcTopicRegion
@@ -11636,8 +11945,19 @@ class CreateScheduledSqlRequest(AbstractModel):
         self._SrcTopicRegion = SrcTopicRegion
 
     @property
+    def ProcessPeriodUnit(self):
+        r"""<p>Scheduling Time Unit</p><p>Value ranges from 1 to 2</p><p>Default value: 1</p><p>The default value is 1 (minute), and the additional value is 2 (second).</p>
+        :rtype: int
+        """
+        return self._ProcessPeriodUnit
+
+    @ProcessPeriodUnit.setter
+    def ProcessPeriodUnit(self, ProcessPeriodUnit):
+        self._ProcessPeriodUnit = ProcessPeriodUnit
+
+    @property
     def ProcessEndTime(self):
-        r"""Schedule end time. Required field when ProcessType=2, Unix timestamp, in milliseconds
+        r"""<p>Schedule End Time, required when ProcessType=2, Unix timestamp, in milliseconds</p>
         :rtype: int
         """
         return self._ProcessEndTime
@@ -11648,7 +11968,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
-        r"""Query syntax rules. Default value is 0. 0: Lucene syntax, 1: CQL syntax
+        r"""<p>Query syntax rules. Default value: 0. 0: Lucene syntax, 1: CQL syntax</p>
         :rtype: int
         """
         return self._SyntaxRule
@@ -11656,6 +11976,28 @@ class CreateScheduledSqlRequest(AbstractModel):
     @SyntaxRule.setter
     def SyntaxRule(self, SyntaxRule):
         self._SyntaxRule = SyntaxRule
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>Whether to enable delivery service log. 1: Disabled, 2: Enabled.</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def FullQuery(self):
+        r"""<p>Full-text search tag. 1: Off, 2: On. Default: 1</p>
+        :rtype: int
+        """
+        return self._FullQuery
+
+    @FullQuery.setter
+    def FullQuery(self, FullQuery):
+        self._FullQuery = FullQuery
 
 
     def _deserialize(self, params):
@@ -11672,8 +12014,11 @@ class CreateScheduledSqlRequest(AbstractModel):
         self._ProcessTimeWindow = params.get("ProcessTimeWindow")
         self._ProcessDelay = params.get("ProcessDelay")
         self._SrcTopicRegion = params.get("SrcTopicRegion")
+        self._ProcessPeriodUnit = params.get("ProcessPeriodUnit")
         self._ProcessEndTime = params.get("ProcessEndTime")
         self._SyntaxRule = params.get("SyntaxRule")
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._FullQuery = params.get("FullQuery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11691,7 +12036,7 @@ class CreateScheduledSqlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Task ID
+        :param _TaskId: <p>Task ID.</p>
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11701,7 +12046,7 @@ class CreateScheduledSqlResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Task ID
+        r"""<p>Task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -16510,6 +16855,85 @@ class DeleteRecordingRuleYamlTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRemoteWriteTaskRequest(AbstractModel):
+    r"""DeleteRemoteWriteTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: RemoteWrite import task ID
+        :type TaskId: str
+        :param _TopicId: Log topic ID
+        :type TopicId: str
+        """
+        self._TaskId = None
+        self._TopicId = None
+
+    @property
+    def TaskId(self):
+        r"""RemoteWrite import task ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""Log topic ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRemoteWriteTaskResponse(AbstractModel):
+    r"""DeleteRemoteWriteTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteScheduledSqlRequest(AbstractModel):
     r"""DeleteScheduledSql request structure.
 
@@ -17835,10 +18259,13 @@ class DescribeCloudProductLogTasksRequest(AbstractModel):
         :type Limit: int
         :param _Filters: <ul><li>assumerName<ul><li>Filter by [cloud product identifier].</li><li>Type: String</li><li>Required: No</li><li>Enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS</li></ul></li><li>logType<ul><li>Filter by [log type].</li><li>Type: String</li><li>Required: No</li><li>Enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</li></ul></li><li>instanceId<ul><li>Filter by [instance ID].</li><li>Type: String</li><li>Required: No</li></ul></li></ul>
         :type Filters: list of Filter
+        :param _WithTags: <p>Whether to carry tag information of the topic and logset</p>
+        :type WithTags: bool
         """
         self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._WithTags = None
 
     @property
     def Offset(self):
@@ -17873,6 +18300,17 @@ class DescribeCloudProductLogTasksRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def WithTags(self):
+        r"""<p>Whether to carry tag information of the topic and logset</p>
+        :rtype: bool
+        """
+        return self._WithTags
+
+    @WithTags.setter
+    def WithTags(self, WithTags):
+        self._WithTags = WithTags
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -17883,6 +18321,7 @@ class DescribeCloudProductLogTasksRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._WithTags = params.get("WithTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17904,11 +18343,14 @@ class DescribeCloudProductLogTasksResponse(AbstractModel):
         :type Tasks: list of CloudProductLogTaskInfo
         :param _TotalCount: <p>Total configuration count of logs</p>
         :type TotalCount: int
+        :param _Message: <p>Additional information. For example, error in querying topic or logset tag information.</p>
+        :type Message: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Tasks = None
         self._TotalCount = None
+        self._Message = None
         self._RequestId = None
 
     @property
@@ -17934,6 +18376,17 @@ class DescribeCloudProductLogTasksResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def Message(self):
+        r"""<p>Additional information. For example, error in querying topic or logset tag information.</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -17953,6 +18406,7 @@ class DescribeCloudProductLogTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Tasks.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 
@@ -23930,6 +24384,182 @@ class DescribeRecordingRuleYamlTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRemoteWriteTasksRequest(AbstractModel):
+    r"""DescribeRemoteWriteTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: - taskId
+Filter by [task ID].
+Type: String
+Required: No
+
+- topicId
+Filter by [Log topic].
+Type: String
+Required: No
+
+- taskStatus
+Filter by [task running status]. Supports `1`: running, `2`: stop, `3`: exception.
+Type: String
+Required: No
+
+- name
+Filter by [task name] using fuzzy filtering. 
+Type: String
+Required: No
+
+
+Each request can have up to 10 Filters. The maximum of Filter.Values is 10.
+        :type Filters: list of Filter
+        :param _Offset: Page offset. Default value: 0
+        :type Offset: int
+        :param _Limit: Maximum number of entries per page. Default value: 20. Maximum value: 100.	
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""- taskId
+Filter by [task ID].
+Type: String
+Required: No
+
+- topicId
+Filter by [Log topic].
+Type: String
+Required: No
+
+- taskStatus
+Filter by [task running status]. Supports `1`: running, `2`: stop, `3`: exception.
+Type: String
+Required: No
+
+- name
+Filter by [task name] using fuzzy filtering. 
+Type: String
+Required: No
+
+
+Each request can have up to 10 Filters. The maximum of Filter.Values is 10.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""Page offset. Default value: 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Maximum number of entries per page. Default value: 20. Maximum value: 100.	
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRemoteWriteTasksResponse(AbstractModel):
+    r"""DescribeRemoteWriteTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: RemoteWrite information list.
+        :type Infos: list of RemoteWriteInfo
+        :param _TotalCount: Total number of RemoteWrite tasks.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""RemoteWrite information list.
+        :rtype: list of RemoteWriteInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def TotalCount(self):
+        r"""Total number of RemoteWrite tasks.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = RemoteWriteInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeScheduledSqlInfoRequest(AbstractModel):
     r"""DescribeScheduledSqlInfo request structure.
 
@@ -25550,38 +26180,44 @@ class DlcDeliverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Task ID.
+        :param _TaskId: <p>Task id.</p>
         :type TaskId: str
-        :param _Uin: Account id.
+        :param _Uin: <p>Account id.</p>
         :type Uin: int
-        :param _TopicId: Log topic ID.
+        :param _TopicId: <p>Log topic id.</p>
         :type TopicId: str
-        :param _Name: Task name.
+        :param _Name: <p>Task name.</p>
         :type Name: str
-        :param _DeliverType: Delivery Type. Valid values: 0: real-time delivery; 1: historic delivery.
+        :param _DeliverType: <p>Delivery Type, 0: real-time delivery, 1: history delivery</p>
         :type DeliverType: int
-        :param _MaxSize: Delivery file size in MB
+        :param _MaxSize: <p>Delivery file size, in MB.</p>
         :type MaxSize: int
-        :param _Interval: Delivery interval in seconds
+        :param _Interval: <p>Delivery interval in seconds</p>
         :type Interval: int
-        :param _StartTime: Start time of the delivery time range
+        :param _StartTime: <p>Start time of the delivery time range</p>
         :type StartTime: int
-        :param _EndTime: End time of the delivery time range
+        :param _EndTime: <p>End time of the delivery time range</p>
         :type EndTime: int
-        :param _DlcInfo: dlc configuration message
+        :param _DlcInfo: <p>dlc configuration message</p>
         :type DlcInfo: :class:`tencentcloud.cls.v20201016.models.DlcInfo`
-        :param _HasServicesLog: Whether to enable delivery service log. 1 for disabled, 2 for enabled
+        :param _HasServicesLog: <p>Whether to enable delivery service log. 1 Disabled, 2 Enabled</p>
         :type HasServicesLog: int
-        :param _Status: Task status.
+        :param _Status: <p>Task status.</p>
         :type Status: int
-        :param _Progress: Task progress. Historic delivery tasks take effect.
+        :param _Progress: <p>Task progress. Historic delivery tasks take effect.</p>
         :type Progress: int
-        :param _BizType: Topic type of logs. 0: standard topic; 1: metric topic.
+        :param _BizType: <p>Log topic type. 0: Standard topic, 1: Metric topic</p>
         :type BizType: int
-        :param _CreateTime: Task creation time.
+        :param _CreateTime: <p>Task creation time.</p>
         :type CreateTime: int
-        :param _UpdateTime: Task modification time.
+        :param _UpdateTime: <p>Task last modified.</p>
         :type UpdateTime: int
+        :param _AutoCreateField: <p>Auto-create dlc field</p><p>Default value: false</p><p>When there are additional fields in your log, the system will automatically ship them to DLC.</p>
+        :type AutoCreateField: bool
+        :param _DlcFailHandle: <p>Store logs with delivery failure in a DLC table</p>
+        :type DlcFailHandle: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        :param _DSLFilter: <p>Log pre-filtering - Perform pre-filtering process on the original data for data ingestion into Splunk.</p>
+        :type DSLFilter: str
         """
         self._TaskId = None
         self._Uin = None
@@ -25599,10 +26235,13 @@ class DlcDeliverInfo(AbstractModel):
         self._BizType = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._AutoCreateField = None
+        self._DlcFailHandle = None
+        self._DSLFilter = None
 
     @property
     def TaskId(self):
-        r"""Task ID.
+        r"""<p>Task id.</p>
         :rtype: str
         """
         return self._TaskId
@@ -25613,7 +26252,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""Account id.
+        r"""<p>Account id.</p>
         :rtype: int
         """
         return self._Uin
@@ -25624,7 +26263,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""Log topic ID.
+        r"""<p>Log topic id.</p>
         :rtype: str
         """
         return self._TopicId
@@ -25635,7 +26274,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""Task name.
+        r"""<p>Task name.</p>
         :rtype: str
         """
         return self._Name
@@ -25646,7 +26285,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def DeliverType(self):
-        r"""Delivery Type. Valid values: 0: real-time delivery; 1: historic delivery.
+        r"""<p>Delivery Type, 0: real-time delivery, 1: history delivery</p>
         :rtype: int
         """
         return self._DeliverType
@@ -25657,7 +26296,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def MaxSize(self):
-        r"""Delivery file size in MB
+        r"""<p>Delivery file size, in MB.</p>
         :rtype: int
         """
         return self._MaxSize
@@ -25668,7 +26307,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def Interval(self):
-        r"""Delivery interval in seconds
+        r"""<p>Delivery interval in seconds</p>
         :rtype: int
         """
         return self._Interval
@@ -25679,7 +26318,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start time of the delivery time range
+        r"""<p>Start time of the delivery time range</p>
         :rtype: int
         """
         return self._StartTime
@@ -25690,7 +26329,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End time of the delivery time range
+        r"""<p>End time of the delivery time range</p>
         :rtype: int
         """
         return self._EndTime
@@ -25701,7 +26340,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def DlcInfo(self):
-        r"""dlc configuration message
+        r"""<p>dlc configuration message</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.DlcInfo`
         """
         return self._DlcInfo
@@ -25712,7 +26351,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def HasServicesLog(self):
-        r"""Whether to enable delivery service log. 1 for disabled, 2 for enabled
+        r"""<p>Whether to enable delivery service log. 1 Disabled, 2 Enabled</p>
         :rtype: int
         """
         return self._HasServicesLog
@@ -25723,7 +26362,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task status.
+        r"""<p>Task status.</p>
         :rtype: int
         """
         return self._Status
@@ -25734,7 +26373,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def Progress(self):
-        r"""Task progress. Historic delivery tasks take effect.
+        r"""<p>Task progress. Historic delivery tasks take effect.</p>
         :rtype: int
         """
         return self._Progress
@@ -25745,7 +26384,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def BizType(self):
-        r"""Topic type of logs. 0: standard topic; 1: metric topic.
+        r"""<p>Log topic type. 0: Standard topic, 1: Metric topic</p>
         :rtype: int
         """
         return self._BizType
@@ -25756,7 +26395,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Task creation time.
+        r"""<p>Task creation time.</p>
         :rtype: int
         """
         return self._CreateTime
@@ -25767,7 +26406,7 @@ class DlcDeliverInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Task modification time.
+        r"""<p>Task last modified.</p>
         :rtype: int
         """
         return self._UpdateTime
@@ -25775,6 +26414,39 @@ class DlcDeliverInfo(AbstractModel):
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def AutoCreateField(self):
+        r"""<p>Auto-create dlc field</p><p>Default value: false</p><p>When there are additional fields in your log, the system will automatically ship them to DLC.</p>
+        :rtype: bool
+        """
+        return self._AutoCreateField
+
+    @AutoCreateField.setter
+    def AutoCreateField(self, AutoCreateField):
+        self._AutoCreateField = AutoCreateField
+
+    @property
+    def DlcFailHandle(self):
+        r"""<p>Store logs with delivery failure in a DLC table</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        """
+        return self._DlcFailHandle
+
+    @DlcFailHandle.setter
+    def DlcFailHandle(self, DlcFailHandle):
+        self._DlcFailHandle = DlcFailHandle
+
+    @property
+    def DSLFilter(self):
+        r"""<p>Log pre-filtering - Perform pre-filtering process on the original data for data ingestion into Splunk.</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
 
 
     def _deserialize(self, params):
@@ -25796,6 +26468,115 @@ class DlcDeliverInfo(AbstractModel):
         self._BizType = params.get("BizType")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._AutoCreateField = params.get("AutoCreateField")
+        if params.get("DlcFailHandle") is not None:
+            self._DlcFailHandle = DlcFailHandle()
+            self._DlcFailHandle._deserialize(params.get("DlcFailHandle"))
+        self._DSLFilter = params.get("DSLFilter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DlcFailHandle(AbstractModel):
+    r"""dlc delivery failure handling message
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StoreToDlc: <p>Whether to store in DLC</p><p>Default value: false</p><p>Controls whether to enable storing delivery failure logs in DLC tables</p>
+        :type StoreToDlc: bool
+        :param _DlcFailTableInfo: <p>DLC table information</p>
+        :type DlcFailTableInfo: :class:`tencentcloud.cls.v20201016.models.DlcFailTableInfo`
+        """
+        self._StoreToDlc = None
+        self._DlcFailTableInfo = None
+
+    @property
+    def StoreToDlc(self):
+        r"""<p>Whether to store in DLC</p><p>Default value: false</p><p>Controls whether to enable storing delivery failure logs in DLC tables</p>
+        :rtype: bool
+        """
+        return self._StoreToDlc
+
+    @StoreToDlc.setter
+    def StoreToDlc(self, StoreToDlc):
+        self._StoreToDlc = StoreToDlc
+
+    @property
+    def DlcFailTableInfo(self):
+        r"""<p>DLC table information</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DlcFailTableInfo`
+        """
+        return self._DlcFailTableInfo
+
+    @DlcFailTableInfo.setter
+    def DlcFailTableInfo(self, DlcFailTableInfo):
+        self._DlcFailTableInfo = DlcFailTableInfo
+
+
+    def _deserialize(self, params):
+        self._StoreToDlc = params.get("StoreToDlc")
+        if params.get("DlcFailTableInfo") is not None:
+            self._DlcFailTableInfo = DlcFailTableInfo()
+            self._DlcFailTableInfo._deserialize(params.get("DlcFailTableInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DlcFailTableInfo(AbstractModel):
+    r"""dlc failure log storage table information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: <p>DLC table name</p>
+        :type TableName: str
+        :param _FieldName: <p>Field name in the table</p><p>Field type must be String type</p>
+        :type FieldName: str
+        """
+        self._TableName = None
+        self._FieldName = None
+
+    @property
+    def TableName(self):
+        r"""<p>DLC table name</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def FieldName(self):
+        r"""<p>Field name in the table</p><p>Field type must be String type</p>
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._FieldName = params.get("FieldName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29357,6 +30138,105 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class JsonExpandInfo(AbstractModel):
+    r"""**JsonExpandInfo data structure description**:
+    ```
+    JSON nest unfold configuration
+    ```
+
+    **Field description**:
+
+    | Field | Description |
+    |------|------|
+    Switch | Whether JSON nested unfold is enabled
+    Fields | Field list of JSON to unfold, 1-3
+    DropOriginal | Whether to drop the raw field after unfolding, default true
+    | ConflictPolicy | Field conflict policy. keep_outer: Keep the outer layer (default). keep_inner: Keep the inner-layer. |
+
+    **LogRechargeRuleInfo add field**:
+
+    | Field | Description |
+    |------|------|
+    JsonExpand | JSON nest unfold configuration. This parameter is valid only when RechargeType is json_log.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Whether to enable the JSON nested unfold functionality. Once enabled, it will flatten and process the specified JSON field.</p><p>Default value: None (Required parameter)</p>
+        :type Switch: bool
+        :param _Fields: <p>List of JSON field names to be unfolded, supporting 1 to 3 fields. Field names cannot be empty strings and cannot be repeated.</p><p>Input parameter limits: 1. Number of fields: 1 to 3. 2. Length of each field name not exceeding 128 characters. 3. Field names cannot be empty strings. 4. Field names cannot be repeated.</p><p>Default value: None (required parameter)</p><p>Value for reference: Value: message; Description: Example field name</p><p>Example: ["message", "data", "content"]</p>
+        :type Fields: list of str
+        :param _DropOriginal: <p>Whether to discard the original nested field after unfolding. true: discard the original field and keep only the flattened field after unfolding; false: keep the original field and add the flattened field after unfolding.</p><p>Enumeration value:</p><ul><li>true / false: discard the original field / keep the original field</li></ul><p>Default value: true</p><p>Optional. Default is true if not provided.</p>
+        :type DropOriginal: bool
+        :param _ConflictPolicy: <p>Processing policy when the unfolded field conflicts with an existing field</p><p>Enumeration value:</p><ul><li>keep_outer / keep_inner: Keep the outer (existing) field / Keep the inner (newly unfolded) field</li></ul><p>Default value: keep_outer</p><p>Optional. Defaults to keep_outer if not passed.</p>
+        :type ConflictPolicy: str
+        """
+        self._Switch = None
+        self._Fields = None
+        self._DropOriginal = None
+        self._ConflictPolicy = None
+
+    @property
+    def Switch(self):
+        r"""<p>Whether to enable the JSON nested unfold functionality. Once enabled, it will flatten and process the specified JSON field.</p><p>Default value: None (Required parameter)</p>
+        :rtype: bool
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Fields(self):
+        r"""<p>List of JSON field names to be unfolded, supporting 1 to 3 fields. Field names cannot be empty strings and cannot be repeated.</p><p>Input parameter limits: 1. Number of fields: 1 to 3. 2. Length of each field name not exceeding 128 characters. 3. Field names cannot be empty strings. 4. Field names cannot be repeated.</p><p>Default value: None (required parameter)</p><p>Value for reference: Value: message; Description: Example field name</p><p>Example: ["message", "data", "content"]</p>
+        :rtype: list of str
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def DropOriginal(self):
+        r"""<p>Whether to discard the original nested field after unfolding. true: discard the original field and keep only the flattened field after unfolding; false: keep the original field and add the flattened field after unfolding.</p><p>Enumeration value:</p><ul><li>true / false: discard the original field / keep the original field</li></ul><p>Default value: true</p><p>Optional. Default is true if not provided.</p>
+        :rtype: bool
+        """
+        return self._DropOriginal
+
+    @DropOriginal.setter
+    def DropOriginal(self, DropOriginal):
+        self._DropOriginal = DropOriginal
+
+    @property
+    def ConflictPolicy(self):
+        r"""<p>Processing policy when the unfolded field conflicts with an existing field</p><p>Enumeration value:</p><ul><li>keep_outer / keep_inner: Keep the outer (existing) field / Keep the inner (newly unfolded) field</li></ul><p>Default value: keep_outer</p><p>Optional. Defaults to keep_outer if not passed.</p>
+        :rtype: str
+        """
+        return self._ConflictPolicy
+
+    @ConflictPolicy.setter
+    def ConflictPolicy(self, ConflictPolicy):
+        self._ConflictPolicy = ConflictPolicy
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Fields = params.get("Fields")
+        self._DropOriginal = params.get("DropOriginal")
+        self._ConflictPolicy = params.get("ConflictPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JsonInfo(AbstractModel):
     r"""JSON type description
 
@@ -30630,127 +31510,40 @@ class LogRechargeRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RechargeType: Import type. Valid values: `json_log` (JSON logs), `minimalist_log` (single-line full text), and fullregex_log (single-line full regex)
+        :param _RechargeType: <p>Import type, support json_log: JSON logs, minimalist_log: single-line full-text log, fullregex_log: single-line full regular expression</p>
         :type RechargeType: str
-        :param _EncodingFormat: Encoding format. Valid values: 0 (default, UTF-8) and 1 GBK).
+        :param _EncodingFormat: <p>Parse encoding format. 0: UTF-8 (default value), 1: GBK</p>
         :type EncodingFormat: int
-        :param _DefaultTimeSwitch: Use default time status. true: when enabled, current system time or Kafka message timestamp will be used as log timestamp. false: when disabled, time field in the log will be used as log timestamp. Default: true.
+        :param _DefaultTimeSwitch: <p>Use default time status. true: once enabled, current system time or Kafka message timestamp will be used as log timestamp; false: when turned off, time field in the log will be used as log timestamp. Default: true</p>
         :type DefaultTimeSwitch: bool
-        :param _LogRegex: Full log matching rule. It is valid only when RechargeType is fullregex_log.
+        :param _LogRegex: <p>The whole log matching rule is valid only when RechargeType is fullregex_log.</p>
         :type LogRegex: str
-        :param _UnMatchLogSwitch: Whether to upload the logs that failed to be parsed. Valid values: `true` and `false`.
+        :param _UnMatchLogSwitch: <p>Whether to upload logs that failed to be parsed. true for upload, false for not uploading.</p>
         :type UnMatchLogSwitch: bool
-        :param _UnMatchLogKey: key name of parsing-failed logs
+        :param _UnMatchLogKey: <p>Key name of parsing-failed logs</p>
         :type UnMatchLogKey: str
-        :param _UnMatchLogTimeSrc: Time source for parsing failure logs. 0: current time of the system; 1: Kafka message timestamp.
+        :param _UnMatchLogTimeSrc: <p>Parsing failure log time source. 0: Current system time. 1: Kafka message timestamp.</p>
         :type UnMatchLogTimeSrc: int
-        :param _DefaultTimeSrc: Default time source. 0: Current system time; 1: Kafka message timestamp.
+        :param _DefaultTimeSrc: <p>Default time source. 0: Current system time, 1: Kafka message timestamp</p>
         :type DefaultTimeSrc: int
-        :param _TimeKey: Time field. Field name representing time in logs.
-
--When DefaultTimeSwitch is false and RechargeType data extraction mode is `json_log` JSON file log or `fullregex_log` single-line full regex file log, TimeKey cannot be empty.
+        :param _TimeKey: <p>Time field. Field name that represents time in logs.</p><ul><li>When DefaultTimeSwitch is false and the RechargeType data extraction mode is <code>json_log</code> JSON-file log or <code>fullregex_log</code> single-line full regex-file log, the TimeKey cannot be empty.</li></ul>
         :type TimeKey: str
-        :param _TimeRegex: Time extraction regular expression.
--When DefaultTimeSwitch is false and the data extraction mode of RechargeType is `minimalist_log` (single-line full text - file log), TimeRegex cannot be empty.
--Only need to input the regular expression representing the time field in logs. If multiple fields are matched to, the first will be used.
-Example: The original log is "message with time 2022-08-08 14:20:20". You can set the retrieval time regex to \d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d.
-
+        :param _TimeRegex: <p>Time extraction regular expression.</p><ul><li>When DefaultTimeSwitch is false and the RechargeType data extraction mode is <code>minimalist_log</code> single-line full text - file log, the TimeRegex cannot be empty.</li><li>Only need to input the regular expression for the field representing time in logs. If multiple fields are matched to, the first one will be used.<br> For example: If the original log is: message with time 2022-08-08 14:20:20, you can set the retrieval time regular expression to \d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d</li></ul>
         :type TimeRegex: str
-        :param _TimeFormat: Time field format.
--When DefaultTimeSwitch is false, TimeFormat cannot be empty.
+        :param _TimeFormat: <p>Time field format.</p><ul><li>When DefaultTimeSwitch is false, TimeFormat cannot be empty.</li></ul>
         :type TimeFormat: str
-        :param _TimeZone: Time field time zone.
--When DefaultTimeSwitch is false, TimeZone cannot be empty.
--Time zone format rule
-Prefix: Use GMT or UTC as the time zone benchmark.
-Offset:
--`-` indicates a western time zone (later than the benchmark time).
--`+` means the east time zone (earlier than the benchmark time).
--Format ±HH:MM (hr:min)
-
--Currently supported:
-```
-"GMT-12:00" 
-"GMT-11:00" 
-"GMT-10:00" 
-"GMT-09:30" 
-"GMT-09:00" 
-"GMT-08:00" 
-"GMT-07:00" 
-"GMT-06:00" 
-"GMT-05:00" 
-"GMT-04:00" 
-"GMT-03:30" 
-"GMT-03:00" 
-"GMT-02:00" 
-"GMT-01:00" 
-"GMT+00:00"
-"GMT+01:00"
-"GMT+02:00"
-"GMT+03:30"
-"GMT+04:00"
-"GMT+04:30"
-"GMT+05:00"
-"GMT+05:30"
-"GMT+05:45"
-"GMT+06:00"
-"GMT+06:30"
-"GMT+07:00"
-"GMT+08:00"
-"GMT+09:00"
-"GMT+09:30"
-"GMT+10:00"
-"GMT+10:30"
-"GMT+11:00"
-"GMT+11:30"
-"GMT+12:00"
-"GMT+12:45"
-"GMT+13:00"
-"GMT+14:00"
-"UTC-11:00"
-"UTC-10:00"
-"UTC-09:00"
-"UTC-08:00"
-"UTC-12:00"
-"UTC-07:00"
-"UTC-06:00"
-"UTC-05:00"
-"UTC-04:30"
-"UTC-04:00"
-"UTC-03:30"
-"UTC-03:00"
-"UTC-02:00"
-"UTC-01:00"
-"UTC+00:00"
-"UTC+01:00"
-"UTC+02:00"
-"UTC+03:00"
-"UTC+03:30"
-"UTC+04:00"
-"UTC+04:30"
-"UTC+05:00"
-"UTC+05:45"
-"UTC+06:00"
-"UTC+06:30"
-"UTC+07:00"
-"UTC+08:00"
-"UTC+09:00"
-"UTC+09:30"
-"UTC+10:00"
-"UTC+11:00"
-"UTC+12:00"
-"UTC+13:00"
-```
+        :param _TimeZone: <p>Time field time zone.</p><ul><li><p>When DefaultTimeSwitch is false, TimeZone cannot be empty.</p></li><li><p>Time zone format rule<br>Prefix: Use GMT or UTC as the time zone benchmark<br>Offset:</p><ul><li><code>-</code> indicates a western time zone (later than the benchmark time)</li><li><code>+</code> indicates an eastern time zone (earlier than the benchmark time)</li><li>Format is ±HH:MM (hour:minute)</li></ul></li><li><p>Currently supported:<br><pre><code>&quot;GMT-12:00&quot; &quot;GMT-11:00&quot; &quot;GMT-10:00&quot; &quot;GMT-09:30&quot; &quot;GMT-09:00&quot; &quot;GMT-08:00&quot; &quot;GMT-07:00&quot; &quot;GMT-06:00&quot; &quot;GMT-05:00&quot; &quot;GMT-04:00&quot; &quot;GMT-03:30&quot; &quot;GMT-03:00&quot; &quot;GMT-02:00&quot; &quot;GMT-01:00&quot; &quot;GMT+00:00&quot;&quot;GMT+01:00&quot;&quot;GMT+02:00&quot;&quot;GMT+03:30&quot;&quot;GMT+04:00&quot;&quot;GMT+04:30&quot;&quot;GMT+05:00&quot;&quot;GMT+05:30&quot;&quot;GMT+05:45&quot;&quot;GMT+06:00&quot;&quot;GMT+06:30&quot;&quot;GMT+07:00&quot;&quot;GMT+08:00&quot;&quot;GMT+09:00&quot;&quot;GMT+09:30&quot;&quot;GMT+10:00&quot;&quot;GMT+10:30&quot;&quot;GMT+11:00&quot;&quot;GMT+11:30&quot;&quot;GMT+12:00&quot;&quot;GMT+12:45&quot;&quot;GMT+13:00&quot;&quot;GMT+14:00&quot;&quot;UTC-11:00&quot;&quot;UTC-10:00&quot;&quot;UTC-09:00&quot;&quot;UTC-08:00&quot;&quot;UTC-12:00&quot;&quot;UTC-07:00&quot;&quot;UTC-06:00&quot;&quot;UTC-05:00&quot;&quot;UTC-04:30&quot;&quot;UTC-04:00&quot;&quot;UTC-03:30&quot;&quot;UTC-03:00&quot;&quot;UTC-02:00&quot;&quot;UTC-01:00&quot;&quot;UTC+00:00&quot;&quot;UTC+01:00&quot;&quot;UTC+02:00&quot;&quot;UTC+03:00&quot;&quot;UTC+03:30&quot;&quot;UTC+04:00&quot;&quot;UTC+04:30&quot;&quot;UTC+05:00&quot;&quot;UTC+05:45&quot;&quot;UTC+06:00&quot;&quot;UTC+06:30&quot;&quot;UTC+07:00&quot;&quot;UTC+08:00&quot;&quot;UTC+09:00&quot;&quot;UTC+09:30&quot;&quot;UTC+10:00&quot;&quot;UTC+11:00&quot;&quot;UTC+12:00&quot;&quot;UTC+13:00&quot;</code></pre></p></li></ul>
         :type TimeZone: str
-        :param _Metadata: Metadata information. Kafka import supports kafka_topic, kafka_partition, kafka_offset, and kafka_timestamp.
+        :param _Metadata: <p>Metadata information, Kafka import supports kafka_topic, kafka_partition, kafka_offset, kafka_timestamp</p>
         :type Metadata: list of str
-        :param _Keys: log Key list. It is required when RechargeType is full_regex_log or delimiter_log.
+        :param _Keys: <p>log Key list, required when RechargeType is full_regex_log or delimiter_log.</p>
         :type Keys: list of str
-        :param _ParseArray: JSON parsing mode. The first-level data parsing is enabled.
+        :param _ParseArray: <p>json parsing mode, enable first level data parsing</p>
         :type ParseArray: bool
-        :param _Delimiter: Delimiter parsing mode - Separator
-This field is required when the parsing format is delimiter extraction.
+        :param _Delimiter: <p>Delimiter parsing mode - Separator<br>This field is required when the parsing format is delimiter extraction.</p>
         :type Delimiter: str
+        :param _JsonExpand: <p>JSON nest unfold configuration. This parameter is valid only when RechargeType is json_log. If it is not passed, it is disabled.</p>
+        :type JsonExpand: :class:`tencentcloud.cls.v20201016.models.JsonExpandInfo`
         """
         self._RechargeType = None
         self._EncodingFormat = None
@@ -30768,10 +31561,11 @@ This field is required when the parsing format is delimiter extraction.
         self._Keys = None
         self._ParseArray = None
         self._Delimiter = None
+        self._JsonExpand = None
 
     @property
     def RechargeType(self):
-        r"""Import type. Valid values: `json_log` (JSON logs), `minimalist_log` (single-line full text), and fullregex_log (single-line full regex)
+        r"""<p>Import type, support json_log: JSON logs, minimalist_log: single-line full-text log, fullregex_log: single-line full regular expression</p>
         :rtype: str
         """
         return self._RechargeType
@@ -30782,7 +31576,7 @@ This field is required when the parsing format is delimiter extraction.
 
     @property
     def EncodingFormat(self):
-        r"""Encoding format. Valid values: 0 (default, UTF-8) and 1 GBK).
+        r"""<p>Parse encoding format. 0: UTF-8 (default value), 1: GBK</p>
         :rtype: int
         """
         return self._EncodingFormat
@@ -30793,7 +31587,7 @@ This field is required when the parsing format is delimiter extraction.
 
     @property
     def DefaultTimeSwitch(self):
-        r"""Use default time status. true: when enabled, current system time or Kafka message timestamp will be used as log timestamp. false: when disabled, time field in the log will be used as log timestamp. Default: true.
+        r"""<p>Use default time status. true: once enabled, current system time or Kafka message timestamp will be used as log timestamp; false: when turned off, time field in the log will be used as log timestamp. Default: true</p>
         :rtype: bool
         """
         return self._DefaultTimeSwitch
@@ -30804,7 +31598,7 @@ This field is required when the parsing format is delimiter extraction.
 
     @property
     def LogRegex(self):
-        r"""Full log matching rule. It is valid only when RechargeType is fullregex_log.
+        r"""<p>The whole log matching rule is valid only when RechargeType is fullregex_log.</p>
         :rtype: str
         """
         return self._LogRegex
@@ -30815,7 +31609,7 @@ This field is required when the parsing format is delimiter extraction.
 
     @property
     def UnMatchLogSwitch(self):
-        r"""Whether to upload the logs that failed to be parsed. Valid values: `true` and `false`.
+        r"""<p>Whether to upload logs that failed to be parsed. true for upload, false for not uploading.</p>
         :rtype: bool
         """
         return self._UnMatchLogSwitch
@@ -30826,7 +31620,7 @@ This field is required when the parsing format is delimiter extraction.
 
     @property
     def UnMatchLogKey(self):
-        r"""key name of parsing-failed logs
+        r"""<p>Key name of parsing-failed logs</p>
         :rtype: str
         """
         return self._UnMatchLogKey
@@ -30837,7 +31631,7 @@ This field is required when the parsing format is delimiter extraction.
 
     @property
     def UnMatchLogTimeSrc(self):
-        r"""Time source for parsing failure logs. 0: current time of the system; 1: Kafka message timestamp.
+        r"""<p>Parsing failure log time source. 0: Current system time. 1: Kafka message timestamp.</p>
         :rtype: int
         """
         return self._UnMatchLogTimeSrc
@@ -30848,7 +31642,7 @@ This field is required when the parsing format is delimiter extraction.
 
     @property
     def DefaultTimeSrc(self):
-        r"""Default time source. 0: Current system time; 1: Kafka message timestamp.
+        r"""<p>Default time source. 0: Current system time, 1: Kafka message timestamp</p>
         :rtype: int
         """
         return self._DefaultTimeSrc
@@ -30859,9 +31653,7 @@ This field is required when the parsing format is delimiter extraction.
 
     @property
     def TimeKey(self):
-        r"""Time field. Field name representing time in logs.
-
--When DefaultTimeSwitch is false and RechargeType data extraction mode is `json_log` JSON file log or `fullregex_log` single-line full regex file log, TimeKey cannot be empty.
+        r"""<p>Time field. Field name that represents time in logs.</p><ul><li>When DefaultTimeSwitch is false and the RechargeType data extraction mode is <code>json_log</code> JSON-file log or <code>fullregex_log</code> single-line full regex-file log, the TimeKey cannot be empty.</li></ul>
         :rtype: str
         """
         return self._TimeKey
@@ -30872,11 +31664,7 @@ This field is required when the parsing format is delimiter extraction.
 
     @property
     def TimeRegex(self):
-        r"""Time extraction regular expression.
--When DefaultTimeSwitch is false and the data extraction mode of RechargeType is `minimalist_log` (single-line full text - file log), TimeRegex cannot be empty.
--Only need to input the regular expression representing the time field in logs. If multiple fields are matched to, the first will be used.
-Example: The original log is "message with time 2022-08-08 14:20:20". You can set the retrieval time regex to \d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d.
-
+        r"""<p>Time extraction regular expression.</p><ul><li>When DefaultTimeSwitch is false and the RechargeType data extraction mode is <code>minimalist_log</code> single-line full text - file log, the TimeRegex cannot be empty.</li><li>Only need to input the regular expression for the field representing time in logs. If multiple fields are matched to, the first one will be used.<br> For example: If the original log is: message with time 2022-08-08 14:20:20, you can set the retrieval time regular expression to \d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d</li></ul>
         :rtype: str
         """
         return self._TimeRegex
@@ -30887,8 +31675,7 @@ Example: The original log is "message with time 2022-08-08 14:20:20". You can se
 
     @property
     def TimeFormat(self):
-        r"""Time field format.
--When DefaultTimeSwitch is false, TimeFormat cannot be empty.
+        r"""<p>Time field format.</p><ul><li>When DefaultTimeSwitch is false, TimeFormat cannot be empty.</li></ul>
         :rtype: str
         """
         return self._TimeFormat
@@ -30899,88 +31686,7 @@ Example: The original log is "message with time 2022-08-08 14:20:20". You can se
 
     @property
     def TimeZone(self):
-        r"""Time field time zone.
--When DefaultTimeSwitch is false, TimeZone cannot be empty.
--Time zone format rule
-Prefix: Use GMT or UTC as the time zone benchmark.
-Offset:
--`-` indicates a western time zone (later than the benchmark time).
--`+` means the east time zone (earlier than the benchmark time).
--Format ±HH:MM (hr:min)
-
--Currently supported:
-```
-"GMT-12:00" 
-"GMT-11:00" 
-"GMT-10:00" 
-"GMT-09:30" 
-"GMT-09:00" 
-"GMT-08:00" 
-"GMT-07:00" 
-"GMT-06:00" 
-"GMT-05:00" 
-"GMT-04:00" 
-"GMT-03:30" 
-"GMT-03:00" 
-"GMT-02:00" 
-"GMT-01:00" 
-"GMT+00:00"
-"GMT+01:00"
-"GMT+02:00"
-"GMT+03:30"
-"GMT+04:00"
-"GMT+04:30"
-"GMT+05:00"
-"GMT+05:30"
-"GMT+05:45"
-"GMT+06:00"
-"GMT+06:30"
-"GMT+07:00"
-"GMT+08:00"
-"GMT+09:00"
-"GMT+09:30"
-"GMT+10:00"
-"GMT+10:30"
-"GMT+11:00"
-"GMT+11:30"
-"GMT+12:00"
-"GMT+12:45"
-"GMT+13:00"
-"GMT+14:00"
-"UTC-11:00"
-"UTC-10:00"
-"UTC-09:00"
-"UTC-08:00"
-"UTC-12:00"
-"UTC-07:00"
-"UTC-06:00"
-"UTC-05:00"
-"UTC-04:30"
-"UTC-04:00"
-"UTC-03:30"
-"UTC-03:00"
-"UTC-02:00"
-"UTC-01:00"
-"UTC+00:00"
-"UTC+01:00"
-"UTC+02:00"
-"UTC+03:00"
-"UTC+03:30"
-"UTC+04:00"
-"UTC+04:30"
-"UTC+05:00"
-"UTC+05:45"
-"UTC+06:00"
-"UTC+06:30"
-"UTC+07:00"
-"UTC+08:00"
-"UTC+09:00"
-"UTC+09:30"
-"UTC+10:00"
-"UTC+11:00"
-"UTC+12:00"
-"UTC+13:00"
-```
+        r"""<p>Time field time zone.</p><ul><li><p>When DefaultTimeSwitch is false, TimeZone cannot be empty.</p></li><li><p>Time zone format rule<br>Prefix: Use GMT or UTC as the time zone benchmark<br>Offset:</p><ul><li><code>-</code> indicates a western time zone (later than the benchmark time)</li><li><code>+</code> indicates an eastern time zone (earlier than the benchmark time)</li><li>Format is ±HH:MM (hour:minute)</li></ul></li><li><p>Currently supported:<br><pre><code>&quot;GMT-12:00&quot; &quot;GMT-11:00&quot; &quot;GMT-10:00&quot; &quot;GMT-09:30&quot; &quot;GMT-09:00&quot; &quot;GMT-08:00&quot; &quot;GMT-07:00&quot; &quot;GMT-06:00&quot; &quot;GMT-05:00&quot; &quot;GMT-04:00&quot; &quot;GMT-03:30&quot; &quot;GMT-03:00&quot; &quot;GMT-02:00&quot; &quot;GMT-01:00&quot; &quot;GMT+00:00&quot;&quot;GMT+01:00&quot;&quot;GMT+02:00&quot;&quot;GMT+03:30&quot;&quot;GMT+04:00&quot;&quot;GMT+04:30&quot;&quot;GMT+05:00&quot;&quot;GMT+05:30&quot;&quot;GMT+05:45&quot;&quot;GMT+06:00&quot;&quot;GMT+06:30&quot;&quot;GMT+07:00&quot;&quot;GMT+08:00&quot;&quot;GMT+09:00&quot;&quot;GMT+09:30&quot;&quot;GMT+10:00&quot;&quot;GMT+10:30&quot;&quot;GMT+11:00&quot;&quot;GMT+11:30&quot;&quot;GMT+12:00&quot;&quot;GMT+12:45&quot;&quot;GMT+13:00&quot;&quot;GMT+14:00&quot;&quot;UTC-11:00&quot;&quot;UTC-10:00&quot;&quot;UTC-09:00&quot;&quot;UTC-08:00&quot;&quot;UTC-12:00&quot;&quot;UTC-07:00&quot;&quot;UTC-06:00&quot;&quot;UTC-05:00&quot;&quot;UTC-04:30&quot;&quot;UTC-04:00&quot;&quot;UTC-03:30&quot;&quot;UTC-03:00&quot;&quot;UTC-02:00&quot;&quot;UTC-01:00&quot;&quot;UTC+00:00&quot;&quot;UTC+01:00&quot;&quot;UTC+02:00&quot;&quot;UTC+03:00&quot;&quot;UTC+03:30&quot;&quot;UTC+04:00&quot;&quot;UTC+04:30&quot;&quot;UTC+05:00&quot;&quot;UTC+05:45&quot;&quot;UTC+06:00&quot;&quot;UTC+06:30&quot;&quot;UTC+07:00&quot;&quot;UTC+08:00&quot;&quot;UTC+09:00&quot;&quot;UTC+09:30&quot;&quot;UTC+10:00&quot;&quot;UTC+11:00&quot;&quot;UTC+12:00&quot;&quot;UTC+13:00&quot;</code></pre></p></li></ul>
         :rtype: str
         """
         return self._TimeZone
@@ -30991,7 +31697,7 @@ Offset:
 
     @property
     def Metadata(self):
-        r"""Metadata information. Kafka import supports kafka_topic, kafka_partition, kafka_offset, and kafka_timestamp.
+        r"""<p>Metadata information, Kafka import supports kafka_topic, kafka_partition, kafka_offset, kafka_timestamp</p>
         :rtype: list of str
         """
         return self._Metadata
@@ -31002,7 +31708,7 @@ Offset:
 
     @property
     def Keys(self):
-        r"""log Key list. It is required when RechargeType is full_regex_log or delimiter_log.
+        r"""<p>log Key list, required when RechargeType is full_regex_log or delimiter_log.</p>
         :rtype: list of str
         """
         return self._Keys
@@ -31013,7 +31719,7 @@ Offset:
 
     @property
     def ParseArray(self):
-        r"""JSON parsing mode. The first-level data parsing is enabled.
+        r"""<p>json parsing mode, enable first level data parsing</p>
         :rtype: bool
         """
         return self._ParseArray
@@ -31024,8 +31730,7 @@ Offset:
 
     @property
     def Delimiter(self):
-        r"""Delimiter parsing mode - Separator
-This field is required when the parsing format is delimiter extraction.
+        r"""<p>Delimiter parsing mode - Separator<br>This field is required when the parsing format is delimiter extraction.</p>
         :rtype: str
         """
         return self._Delimiter
@@ -31033,6 +31738,17 @@ This field is required when the parsing format is delimiter extraction.
     @Delimiter.setter
     def Delimiter(self, Delimiter):
         self._Delimiter = Delimiter
+
+    @property
+    def JsonExpand(self):
+        r"""<p>JSON nest unfold configuration. This parameter is valid only when RechargeType is json_log. If it is not passed, it is disabled.</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.JsonExpandInfo`
+        """
+        return self._JsonExpand
+
+    @JsonExpand.setter
+    def JsonExpand(self, JsonExpand):
+        self._JsonExpand = JsonExpand
 
 
     def _deserialize(self, params):
@@ -31052,6 +31768,9 @@ This field is required when the parsing format is delimiter extraction.
         self._Keys = params.get("Keys")
         self._ParseArray = params.get("ParseArray")
         self._Delimiter = params.get("Delimiter")
+        if params.get("JsonExpand") is not None:
+            self._JsonExpand = JsonExpandInfo()
+            self._JsonExpand._deserialize(params.get("JsonExpand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33831,38 +34550,29 @@ class ModifyCloudProductLogCollectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _AssumerName: Cloud product identifier, support enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS.
+        :param _AssumerName: <p>Cloud product identifier, supports enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS</p>
         :type AssumerName: str
-        :param _LogType: Log type, support enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS
+        :param _LogType: <p>Log type. Supports enumeration: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB  ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</p>
         :type LogType: str
-        :param _CloudProductRegion: Cloud product region. Data discrepancies exist in the format of region input parameters for different log types (LogType). Refer to the following example:
--All log types of CDS: ap-guangzhou
-- CDB-AUDIT: gz
-- TDSQL-C-AUDIT: gz
-- MongoDB-AUDIT: gz
-- MongoDB-SlowLog:ap-guangzhou
-- MongoDB-ErrorLog:ap-guangzhou
-- TDMYSQL-SLOW:gz
--All log types of DCDB: gz
--All log types of MariaDB: gz
--PostgreSQL all log types: gz
--BH all log types: overseas-polaris (Hong Kong (China) and other)/fsi-polaris (financial district)/general-polaris (general zone)/intl-sg-prod (international site)
--All log types of APIS: gz
+        :param _CloudProductRegion: <p>Product region. Different log types have different region input formats. Refer to the following example:</p><ul><li>All CDS log types: ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog: ap-guangzhou</li><li>MongoDB-ErrorLog: ap-guangzhou</li><li>TDMYSQL-SLOW: gz</li><li>All DCDB log types: gz</li><li>All MariaDB log types: gz</li><li>All PostgreSQL log types: gz</li><li>All BH log types: overseas-polaris(Hong Kong (China) and other)/fsi-polaris(financial district)/general-polaris(general zone)/intl-sg-prod(international site)</li><li>All APIS log types: gz</li></ul>
         :type CloudProductRegion: str
-        :param _Extend: Logging configuration extended information, normally used to store additional log shipping configuration
+        :param _Extend: <p>Logging configuration extended information, generally used to store additional log delivery configuration</p>
         :type Extend: str
+        :param _Tags: <p>Description list of tags. By specifying this parameter, you can simultaneously bind tags to the appropriate logset and topic. Supports a maximum of 10 tag key-value pairs. The same resource can only be bound to the same tag key.</p>
+        :type Tags: list of Tag
         """
         self._InstanceId = None
         self._AssumerName = None
         self._LogType = None
         self._CloudProductRegion = None
         self._Extend = None
+        self._Tags = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -33873,7 +34583,7 @@ class ModifyCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def AssumerName(self):
-        r"""Cloud product identifier, support enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS.
+        r"""<p>Cloud product identifier, supports enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS</p>
         :rtype: str
         """
         return self._AssumerName
@@ -33884,7 +34594,7 @@ class ModifyCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""Log type, support enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS
+        r"""<p>Log type. Supports enumeration: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB  ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</p>
         :rtype: str
         """
         return self._LogType
@@ -33895,19 +34605,7 @@ class ModifyCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def CloudProductRegion(self):
-        r"""Cloud product region. Data discrepancies exist in the format of region input parameters for different log types (LogType). Refer to the following example:
--All log types of CDS: ap-guangzhou
-- CDB-AUDIT: gz
-- TDSQL-C-AUDIT: gz
-- MongoDB-AUDIT: gz
-- MongoDB-SlowLog:ap-guangzhou
-- MongoDB-ErrorLog:ap-guangzhou
-- TDMYSQL-SLOW:gz
--All log types of DCDB: gz
--All log types of MariaDB: gz
--PostgreSQL all log types: gz
--BH all log types: overseas-polaris (Hong Kong (China) and other)/fsi-polaris (financial district)/general-polaris (general zone)/intl-sg-prod (international site)
--All log types of APIS: gz
+        r"""<p>Product region. Different log types have different region input formats. Refer to the following example:</p><ul><li>All CDS log types: ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog: ap-guangzhou</li><li>MongoDB-ErrorLog: ap-guangzhou</li><li>TDMYSQL-SLOW: gz</li><li>All DCDB log types: gz</li><li>All MariaDB log types: gz</li><li>All PostgreSQL log types: gz</li><li>All BH log types: overseas-polaris(Hong Kong (China) and other)/fsi-polaris(financial district)/general-polaris(general zone)/intl-sg-prod(international site)</li><li>All APIS log types: gz</li></ul>
         :rtype: str
         """
         return self._CloudProductRegion
@@ -33918,7 +34616,7 @@ class ModifyCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def Extend(self):
-        r"""Logging configuration extended information, normally used to store additional log shipping configuration
+        r"""<p>Logging configuration extended information, generally used to store additional log delivery configuration</p>
         :rtype: str
         """
         return self._Extend
@@ -33927,6 +34625,17 @@ class ModifyCloudProductLogCollectionRequest(AbstractModel):
     def Extend(self, Extend):
         self._Extend = Extend
 
+    @property
+    def Tags(self):
+        r"""<p>Description list of tags. By specifying this parameter, you can simultaneously bind tags to the appropriate logset and topic. Supports a maximum of 10 tag key-value pairs. The same resource can only be bound to the same tag key.</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -33934,6 +34643,12 @@ class ModifyCloudProductLogCollectionRequest(AbstractModel):
         self._LogType = params.get("LogType")
         self._CloudProductRegion = params.get("CloudProductRegion")
         self._Extend = params.get("Extend")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33951,10 +34666,24 @@ class ModifyCloudProductLogCollectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Message: <p>Additional information. For example, failed to modify the topic or logset tag.</p>
+        :type Message: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._Message = None
         self._RequestId = None
+
+    @property
+    def Message(self):
+        r"""<p>Additional information. For example, failed to modify the topic or logset tag.</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
     @property
     def RequestId(self):
@@ -33969,6 +34698,7 @@ class ModifyCloudProductLogCollectionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 
@@ -35574,6 +36304,12 @@ class ModifyDlcDeliverRequest(AbstractModel):
         :type HasServicesLog: int
         :param _Status: <p>Task status.</p><p>Enumeration values: </p><ul><li>1: Running, </li><li>2: Stop.</li></ul>
         :type Status: int
+        :param _AutoCreateField: <p>Auto-create dlc field</p><p>Default value: false</p><p>When there are additional fields in your log, the system will automatically ship them to DLC.</p>
+        :type AutoCreateField: bool
+        :param _DlcFailHandle: <p>Store logs with delivery failure in a DLC table</p>
+        :type DlcFailHandle: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        :param _DSLFilter: <p>Log pre-filtering - Perform pre-filtering process on the original data for data ingestion into Splunk.</p>
+        :type DSLFilter: str
         """
         self._TopicId = None
         self._TaskId = None
@@ -35586,6 +36322,9 @@ class ModifyDlcDeliverRequest(AbstractModel):
         self._DlcInfo = None
         self._HasServicesLog = None
         self._Status = None
+        self._AutoCreateField = None
+        self._DlcFailHandle = None
+        self._DSLFilter = None
 
     @property
     def TopicId(self):
@@ -35708,6 +36447,39 @@ class ModifyDlcDeliverRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def AutoCreateField(self):
+        r"""<p>Auto-create dlc field</p><p>Default value: false</p><p>When there are additional fields in your log, the system will automatically ship them to DLC.</p>
+        :rtype: bool
+        """
+        return self._AutoCreateField
+
+    @AutoCreateField.setter
+    def AutoCreateField(self, AutoCreateField):
+        self._AutoCreateField = AutoCreateField
+
+    @property
+    def DlcFailHandle(self):
+        r"""<p>Store logs with delivery failure in a DLC table</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        """
+        return self._DlcFailHandle
+
+    @DlcFailHandle.setter
+    def DlcFailHandle(self, DlcFailHandle):
+        self._DlcFailHandle = DlcFailHandle
+
+    @property
+    def DSLFilter(self):
+        r"""<p>Log pre-filtering - Perform pre-filtering process on the original data for data ingestion into Splunk.</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -35723,6 +36495,11 @@ class ModifyDlcDeliverRequest(AbstractModel):
             self._DlcInfo._deserialize(params.get("DlcInfo"))
         self._HasServicesLog = params.get("HasServicesLog")
         self._Status = params.get("Status")
+        self._AutoCreateField = params.get("AutoCreateField")
+        if params.get("DlcFailHandle") is not None:
+            self._DlcFailHandle = DlcFailHandle()
+            self._DlcFailHandle._deserialize(params.get("DlcFailHandle"))
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38141,6 +38918,230 @@ class ModifyRecordingRuleYamlTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRemoteWriteTaskRequest(AbstractModel):
+    r"""ModifyRemoteWriteTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID
+        :type TaskId: str
+        :param _TopicId: Log topic id
+        :type TopicId: str
+        :param _Enable: Task status.
+0: disabled, 1: enabled.
+        :type Enable: int
+        :param _Name: RemoteWrite task name.
+        :type Name: str
+        :param _NetType: Valid values: 1: private network; 2: public network.
+        :type NetType: int
+        :param _VpcId: VPC id
+        :type VpcId: str
+        :param _Target: Target service name.
+        :type Target: str
+        :param _RemoteWriteURL: Destination address
+        :type RemoteWriteURL: str
+        :param _AuthType: Valid values: 0: no authentication; 1: basic_auth; 2: token.	
+        :type AuthType: int
+        :param _AuthInfo: Authentication information
+        :type AuthInfo: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        :param _VirtualGatewayType: Backend service type
+-1 No
+0 CVM
+1025 CLB
+        :type VirtualGatewayType: int
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._Enable = None
+        self._Name = None
+        self._NetType = None
+        self._VpcId = None
+        self._Target = None
+        self._RemoteWriteURL = None
+        self._AuthType = None
+        self._AuthInfo = None
+        self._VirtualGatewayType = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""Log topic id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Enable(self):
+        r"""Task status.
+0: disabled, 1: enabled.
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Name(self):
+        r"""RemoteWrite task name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NetType(self):
+        r"""Valid values: 1: private network; 2: public network.
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        r"""VPC id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Target(self):
+        r"""Target service name.
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def RemoteWriteURL(self):
+        r"""Destination address
+        :rtype: str
+        """
+        return self._RemoteWriteURL
+
+    @RemoteWriteURL.setter
+    def RemoteWriteURL(self, RemoteWriteURL):
+        self._RemoteWriteURL = RemoteWriteURL
+
+    @property
+    def AuthType(self):
+        r"""Valid values: 0: no authentication; 1: basic_auth; 2: token.	
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AuthInfo(self):
+        r"""Authentication information
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        """
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
+
+    @property
+    def VirtualGatewayType(self):
+        r"""Backend service type
+-1 No
+0 CVM
+1025 CLB
+        :rtype: int
+        """
+        return self._VirtualGatewayType
+
+    @VirtualGatewayType.setter
+    def VirtualGatewayType(self, VirtualGatewayType):
+        self._VirtualGatewayType = VirtualGatewayType
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._Enable = params.get("Enable")
+        self._Name = params.get("Name")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        self._Target = params.get("Target")
+        self._RemoteWriteURL = params.get("RemoteWriteURL")
+        self._AuthType = params.get("AuthType")
+        if params.get("AuthInfo") is not None:
+            self._AuthInfo = RemoteWriteAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
+        self._VirtualGatewayType = params.get("VirtualGatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRemoteWriteTaskResponse(AbstractModel):
+    r"""ModifyRemoteWriteTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyScheduledSqlRequest(AbstractModel):
     r"""ModifyScheduledSql request structure.
 
@@ -38148,28 +39149,34 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Task ID, which can be obtained through [scheduled SQL analysis task list](https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1).
+        :param _TaskId: <p>Task ID, obtained by <a href="https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1">searching the scheduled SQL analysis task list</a>.</p>
         :type TaskId: str
-        :param _SrcTopicId: Source log topic. Search the [scheduled SQL analysis task list](https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1) to obtain it.
+        :param _SrcTopicId: <p>Source log topic, obtained via <a href="https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1">search scheduled SQL analysis task list</a></p>
         :type SrcTopicId: str
-        :param _EnableFlag: Task start status. 1: Enabled, 2: Disabled
+        :param _EnableFlag: <p>Task start status. 1: Enabled, 2: Disabled</p>
         :type EnableFlag: int
-        :param _DstResource: Target log topic for scheduled SQL analysis
+        :param _DstResource: <p>Target log topic for scheduled SQL analysis</p>
         :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
-        :param _ScheduledSqlContent: Queries statements
+        :param _ScheduledSqlContent: <p>Query statement</p>
         :type ScheduledSqlContent: str
-        :param _ProcessPeriod: Scheduling cycle (minutes), 1-1440 minutes
+        :param _ProcessPeriod: <p>Scheduling Interval (Minutes), 1-1440 minutes</p>
         :type ProcessPeriod: int
-        :param _ProcessTimeWindow: Time window for a single query. Example: last 15 minutes
+        :param _ProcessTimeWindow: <p>Time window for a single query. Example: last 15 minutes</p>
         :type ProcessTimeWindow: str
-        :param _ProcessDelay: Execution delay (seconds), 0-120 seconds, default 60
+        :param _ProcessDelay: <p>Execution delay (seconds), 0-120 seconds, default 60 seconds</p>
         :type ProcessDelay: int
-        :param _SrcTopicRegion: Regional information of the source topicId. Supported regions are listed in the region list document (https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
+        :param _SrcTopicRegion: <p>Regional information of the source topicId. For supported regions, see the <a href="https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">region list</a> document.</p>
         :type SrcTopicRegion: str
-        :param _Name: Task name, 0-255 characters
+        :param _Name: <p>Task name, 0-255 characters</p>
         :type Name: str
-        :param _SyntaxRule: Syntax rules. Default value: 0. 0: Lucene syntax, 1: CQL syntax
+        :param _SyntaxRule: <p>Syntax rules. Default value: 0. 0: Lucene syntax, 1: CQL syntax</p>
         :type SyntaxRule: int
+        :param _HasServicesLog: <p>Whether to enable delivery service log. 1: Disabled, 2: Enabled.</p>
+        :type HasServicesLog: int
+        :param _FullQuery: <p>Full-text search query tag. 1: Off, 2: On.</p>
+        :type FullQuery: int
+        :param _ProcessPeriodUnit: <p>Scheduling period unit</p><p>Value ranges from 1 to 2</p><p>Default value: 1</p><p>Default value 1 (minute), other value 2 (second)</p>
+        :type ProcessPeriodUnit: int
         """
         self._TaskId = None
         self._SrcTopicId = None
@@ -38182,10 +39189,13 @@ class ModifyScheduledSqlRequest(AbstractModel):
         self._SrcTopicRegion = None
         self._Name = None
         self._SyntaxRule = None
+        self._HasServicesLog = None
+        self._FullQuery = None
+        self._ProcessPeriodUnit = None
 
     @property
     def TaskId(self):
-        r"""Task ID, which can be obtained through [scheduled SQL analysis task list](https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1).
+        r"""<p>Task ID, obtained by <a href="https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1">searching the scheduled SQL analysis task list</a>.</p>
         :rtype: str
         """
         return self._TaskId
@@ -38196,7 +39206,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
-        r"""Source log topic. Search the [scheduled SQL analysis task list](https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1) to obtain it.
+        r"""<p>Source log topic, obtained via <a href="https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1">search scheduled SQL analysis task list</a></p>
         :rtype: str
         """
         return self._SrcTopicId
@@ -38207,7 +39217,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def EnableFlag(self):
-        r"""Task start status. 1: Enabled, 2: Disabled
+        r"""<p>Task start status. 1: Enabled, 2: Disabled</p>
         :rtype: int
         """
         return self._EnableFlag
@@ -38218,7 +39228,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def DstResource(self):
-        r"""Target log topic for scheduled SQL analysis
+        r"""<p>Target log topic for scheduled SQL analysis</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
         """
         return self._DstResource
@@ -38229,7 +39239,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ScheduledSqlContent(self):
-        r"""Queries statements
+        r"""<p>Query statement</p>
         :rtype: str
         """
         return self._ScheduledSqlContent
@@ -38240,7 +39250,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessPeriod(self):
-        r"""Scheduling cycle (minutes), 1-1440 minutes
+        r"""<p>Scheduling Interval (Minutes), 1-1440 minutes</p>
         :rtype: int
         """
         return self._ProcessPeriod
@@ -38251,7 +39261,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessTimeWindow(self):
-        r"""Time window for a single query. Example: last 15 minutes
+        r"""<p>Time window for a single query. Example: last 15 minutes</p>
         :rtype: str
         """
         return self._ProcessTimeWindow
@@ -38262,7 +39272,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessDelay(self):
-        r"""Execution delay (seconds), 0-120 seconds, default 60
+        r"""<p>Execution delay (seconds), 0-120 seconds, default 60 seconds</p>
         :rtype: int
         """
         return self._ProcessDelay
@@ -38273,7 +39283,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
-        r"""Regional information of the source topicId. Supported regions are listed in the region list document (https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
+        r"""<p>Regional information of the source topicId. For supported regions, see the <a href="https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">region list</a> document.</p>
         :rtype: str
         """
         return self._SrcTopicRegion
@@ -38284,7 +39294,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Task name, 0-255 characters
+        r"""<p>Task name, 0-255 characters</p>
         :rtype: str
         """
         return self._Name
@@ -38295,7 +39305,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
-        r"""Syntax rules. Default value: 0. 0: Lucene syntax, 1: CQL syntax
+        r"""<p>Syntax rules. Default value: 0. 0: Lucene syntax, 1: CQL syntax</p>
         :rtype: int
         """
         return self._SyntaxRule
@@ -38303,6 +39313,39 @@ class ModifyScheduledSqlRequest(AbstractModel):
     @SyntaxRule.setter
     def SyntaxRule(self, SyntaxRule):
         self._SyntaxRule = SyntaxRule
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>Whether to enable delivery service log. 1: Disabled, 2: Enabled.</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def FullQuery(self):
+        r"""<p>Full-text search query tag. 1: Off, 2: On.</p>
+        :rtype: int
+        """
+        return self._FullQuery
+
+    @FullQuery.setter
+    def FullQuery(self, FullQuery):
+        self._FullQuery = FullQuery
+
+    @property
+    def ProcessPeriodUnit(self):
+        r"""<p>Scheduling period unit</p><p>Value ranges from 1 to 2</p><p>Default value: 1</p><p>Default value 1 (minute), other value 2 (second)</p>
+        :rtype: int
+        """
+        return self._ProcessPeriodUnit
+
+    @ProcessPeriodUnit.setter
+    def ProcessPeriodUnit(self, ProcessPeriodUnit):
+        self._ProcessPeriodUnit = ProcessPeriodUnit
 
 
     def _deserialize(self, params):
@@ -38319,6 +39362,9 @@ class ModifyScheduledSqlRequest(AbstractModel):
         self._SrcTopicRegion = params.get("SrcTopicRegion")
         self._Name = params.get("Name")
         self._SyntaxRule = params.get("SyntaxRule")
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._FullQuery = params.get("FullQuery")
+        self._ProcessPeriodUnit = params.get("ProcessPeriodUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43272,6 +44318,368 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class RemoteWriteAuthInfo(AbstractModel):
+    r"""RemoteWrite authentication information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Username: basic auth username
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Username: str
+        :param _Password: basic auth password
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Password: str
+        :param _Token: basic auth token
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Token: str
+        """
+        self._Username = None
+        self._Password = None
+        self._Token = None
+
+    @property
+    def Username(self):
+        r"""basic auth username
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""basic auth password
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Token(self):
+        r"""basic auth token
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+
+    def _deserialize(self, params):
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoteWriteInfo(AbstractModel):
+    r"""RemoteWrite configuration information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param _TopicId: Log topic ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TopicId: str
+        :param _Name: RemoteWrite task name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _NetType: Network type.
+Valid values: 1: private network
+2: Public network
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NetType: int
+        :param _VpcId: VPC id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param _Status: Task running status
+1: Running
+2: Suspend
+3: Failure
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param _CreateTime: Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _UpdateTime: Update time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param _Target: Target service name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Target: str
+        :param _RemoteWriteURL: Destination address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RemoteWriteURL: str
+        :param _AuthType: Authentication type
+Valid values: 0: no authentication; 1: basic_auth; 2: token.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuthType: int
+        :param _AuthInfo: Authentication information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuthInfo: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        :param _LogsetId: Logset
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogsetId: str
+        :param _Enable: Task status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Enable: int
+        :param _VirtualGatewayType: Backend service type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VirtualGatewayType: int
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._Name = None
+        self._NetType = None
+        self._VpcId = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Target = None
+        self._RemoteWriteURL = None
+        self._AuthType = None
+        self._AuthInfo = None
+        self._LogsetId = None
+        self._Enable = None
+        self._VirtualGatewayType = None
+
+    @property
+    def TaskId(self):
+        r"""Task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""Log topic ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""RemoteWrite task name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NetType(self):
+        r"""Network type.
+Valid values: 1: private network
+2: Public network
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        r"""VPC id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Status(self):
+        r"""Task running status
+1: Running
+2: Suspend
+3: Failure
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""Update time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Target(self):
+        r"""Target service name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def RemoteWriteURL(self):
+        r"""Destination address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RemoteWriteURL
+
+    @RemoteWriteURL.setter
+    def RemoteWriteURL(self, RemoteWriteURL):
+        self._RemoteWriteURL = RemoteWriteURL
+
+    @property
+    def AuthType(self):
+        r"""Authentication type
+Valid values: 0: no authentication; 1: basic_auth; 2: token.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AuthInfo(self):
+        r"""Authentication information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        """
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
+
+    @property
+    def LogsetId(self):
+        r"""Logset
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Enable(self):
+        r"""Task status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def VirtualGatewayType(self):
+        r"""Backend service type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._VirtualGatewayType
+
+    @VirtualGatewayType.setter
+    def VirtualGatewayType(self, VirtualGatewayType):
+        self._VirtualGatewayType = VirtualGatewayType
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Target = params.get("Target")
+        self._RemoteWriteURL = params.get("RemoteWriteURL")
+        self._AuthType = params.get("AuthType")
+        if params.get("AuthInfo") is not None:
+            self._AuthInfo = RemoteWriteAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
+        self._LogsetId = params.get("LogsetId")
+        self._Enable = params.get("Enable")
+        self._VirtualGatewayType = params.get("VirtualGatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RetryShipperTaskRequest(AbstractModel):
     r"""RetryShipperTask request structure.
 
@@ -43723,46 +45131,48 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: ScheduledSql task id
+        :param _TaskId: <p>ScheduledSql task id</p>
         :type TaskId: str
-        :param _Name: ScheduledSql task name
+        :param _Name: <p>ScheduledSql task name</p>
         :type Name: str
-        :param _SrcTopicId: Source Log Topic ID
+        :param _SrcTopicId: <p>Source log topic id.</p>
         :type SrcTopicId: str
-        :param _SrcTopicName: Source Log Topic Name
+        :param _SrcTopicName: <p>source log topic name</p>
         :type SrcTopicName: str
-        :param _DstResource: Scheduled SQL analysis of target topic
+        :param _DstResource: <p>Scheduled SQL analysis target topic</p>
         :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
-        :param _CreateTime: Task creation time. Format: yyyy-MM-dd HH:mm:ss
+        :param _CreateTime: <p>Task creation time. Format: yyyy-MM-dd HH:mm:ss</p>
         :type CreateTime: str
-        :param _UpdateTime: Task update time. Format: yyyy-MM-dd HH:mm:ss
+        :param _UpdateTime: <p>Task update time. Format: yyyy-MM-dd HH:mm:ss</p>
         :type UpdateTime: str
-        :param _Status: Task status: 1: Running 2: Stop 3: Exception - Source log topic not found 4: Exception - target topic not found5: Access permission issue 6: Internal failure 7: Other faults
+        :param _Status: <p>Task status, 1: Running 2: Stopped 3: Exception - Source log topic not found 4: Exception - Target topic not found</p><p>5: Access permission issue 6: Internal fault 7: Other faults</p>
         :type Status: int
-        :param _EnableFlag: Task status: 1 Enabled, 2 Disabled
+        :param _EnableFlag: <p>Task status: 1 Enabled, 2 Disabled</p>
         :type EnableFlag: int
-        :param _ScheduledSqlContent: Queries statements
+        :param _ScheduledSqlContent: <p>Query statement</p>
         :type ScheduledSqlContent: str
-        :param _ProcessStartTime: Schedule start time. Format: yyyy-MM-dd HH:mm:ss
+        :param _ProcessStartTime: <p>Schedule start time. Format: yyyy-MM-dd HH:mm:ss</p>
         :type ProcessStartTime: str
-        :param _ProcessType: Schedule Type: 1 Continuous Running 2 Specified Time Range
+        :param _ProcessType: <p>Schedule Type: 1 Continuous Running 2 Specified Time Range</p>
         :type ProcessType: int
-        :param _ProcessEndTime: Schedule End Time, format: yyyy-MM-dd HH:mm:ss, required when process_type=2
+        :param _ProcessEndTime: <p>Schedule End Time, format: yyyy-MM-dd HH:mm:ss, required when process_type=2</p>
         :type ProcessEndTime: str
-        :param _ProcessPeriod: Scheduling cycle (minutes), 1-1440 minutes
+        :param _ProcessPeriod: <p>Scheduling Interval (Minutes), 1-1440 minutes</p>
         :type ProcessPeriod: int
-        :param _ProcessTimeWindow: Query Time Window. @m-15m, @m, meaning the last 15 minutes
+        :param _ProcessTimeWindow: <p>Query Time Window. @m-15m, @m, meaning the last 15 minutes</p>
         :type ProcessTimeWindow: str
-        :param _ProcessDelay: Execution delay (seconds), 0-120 seconds, default 60
+        :param _ProcessDelay: <p>Execution delay (seconds), 0-120 seconds, default 60 seconds</p>
         :type ProcessDelay: int
-        :param _SrcTopicRegion: Regional information of the source topicId. Supported regions are listed in the region list document (https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
+        :param _SrcTopicRegion: <p>Regional information of the source topicId. For supported regions, see the <a href="https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">region list</a> document.</p>
         :type SrcTopicRegion: str
-        :param _SyntaxRule: Syntax rules. 0: Lucene syntax; 1: CQL syntax.
+        :param _SyntaxRule: <p>Syntax rules. 0: Lucene syntax, 1: CQL syntax</p>
         :type SyntaxRule: int
-        :param _HasServicesLog: Whether to enable service log shipping. Valid values: 1: disable; 2: enable.
+        :param _HasServicesLog: <p>Whether the delivery service log is enabled. 1: Turn off, 2: Turn on.</p>
         :type HasServicesLog: int
-        :param _FullQuery: Full-text search tag. 1: Off, 2: On.
+        :param _FullQuery: <p>Full-text search tag. 1: Off, 2: On.</p>
         :type FullQuery: int
+        :param _ProcessPeriodUnit: <p>Scheduling cycle time unit</p><p>Value ranges from 1 to 2</p><p>Default value: 1</p><p>Default value 1 (minute), other value 2 (second)</p>
+        :type ProcessPeriodUnit: int
         """
         self._TaskId = None
         self._Name = None
@@ -43784,10 +45194,11 @@ class ScheduledSqlTaskInfo(AbstractModel):
         self._SyntaxRule = None
         self._HasServicesLog = None
         self._FullQuery = None
+        self._ProcessPeriodUnit = None
 
     @property
     def TaskId(self):
-        r"""ScheduledSql task id
+        r"""<p>ScheduledSql task id</p>
         :rtype: str
         """
         return self._TaskId
@@ -43798,7 +45209,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""ScheduledSql task name
+        r"""<p>ScheduledSql task name</p>
         :rtype: str
         """
         return self._Name
@@ -43809,7 +45220,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def SrcTopicId(self):
-        r"""Source Log Topic ID
+        r"""<p>Source log topic id.</p>
         :rtype: str
         """
         return self._SrcTopicId
@@ -43820,7 +45231,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def SrcTopicName(self):
-        r"""Source Log Topic Name
+        r"""<p>source log topic name</p>
         :rtype: str
         """
         return self._SrcTopicName
@@ -43831,7 +45242,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def DstResource(self):
-        r"""Scheduled SQL analysis of target topic
+        r"""<p>Scheduled SQL analysis target topic</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
         """
         return self._DstResource
@@ -43842,7 +45253,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Task creation time. Format: yyyy-MM-dd HH:mm:ss
+        r"""<p>Task creation time. Format: yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._CreateTime
@@ -43853,7 +45264,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Task update time. Format: yyyy-MM-dd HH:mm:ss
+        r"""<p>Task update time. Format: yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -43864,7 +45275,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Task status: 1: Running 2: Stop 3: Exception - Source log topic not found 4: Exception - target topic not found5: Access permission issue 6: Internal failure 7: Other faults
+        r"""<p>Task status, 1: Running 2: Stopped 3: Exception - Source log topic not found 4: Exception - Target topic not found</p><p>5: Access permission issue 6: Internal fault 7: Other faults</p>
         :rtype: int
         """
         return self._Status
@@ -43875,7 +45286,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def EnableFlag(self):
-        r"""Task status: 1 Enabled, 2 Disabled
+        r"""<p>Task status: 1 Enabled, 2 Disabled</p>
         :rtype: int
         """
         return self._EnableFlag
@@ -43886,7 +45297,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ScheduledSqlContent(self):
-        r"""Queries statements
+        r"""<p>Query statement</p>
         :rtype: str
         """
         return self._ScheduledSqlContent
@@ -43897,7 +45308,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessStartTime(self):
-        r"""Schedule start time. Format: yyyy-MM-dd HH:mm:ss
+        r"""<p>Schedule start time. Format: yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._ProcessStartTime
@@ -43908,7 +45319,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessType(self):
-        r"""Schedule Type: 1 Continuous Running 2 Specified Time Range
+        r"""<p>Schedule Type: 1 Continuous Running 2 Specified Time Range</p>
         :rtype: int
         """
         return self._ProcessType
@@ -43919,7 +45330,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessEndTime(self):
-        r"""Schedule End Time, format: yyyy-MM-dd HH:mm:ss, required when process_type=2
+        r"""<p>Schedule End Time, format: yyyy-MM-dd HH:mm:ss, required when process_type=2</p>
         :rtype: str
         """
         return self._ProcessEndTime
@@ -43930,7 +45341,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessPeriod(self):
-        r"""Scheduling cycle (minutes), 1-1440 minutes
+        r"""<p>Scheduling Interval (Minutes), 1-1440 minutes</p>
         :rtype: int
         """
         return self._ProcessPeriod
@@ -43941,7 +45352,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessTimeWindow(self):
-        r"""Query Time Window. @m-15m, @m, meaning the last 15 minutes
+        r"""<p>Query Time Window. @m-15m, @m, meaning the last 15 minutes</p>
         :rtype: str
         """
         return self._ProcessTimeWindow
@@ -43952,7 +45363,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def ProcessDelay(self):
-        r"""Execution delay (seconds), 0-120 seconds, default 60
+        r"""<p>Execution delay (seconds), 0-120 seconds, default 60 seconds</p>
         :rtype: int
         """
         return self._ProcessDelay
@@ -43963,7 +45374,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
-        r"""Regional information of the source topicId. Supported regions are listed in the region list document (https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).
+        r"""<p>Regional information of the source topicId. For supported regions, see the <a href="https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">region list</a> document.</p>
         :rtype: str
         """
         return self._SrcTopicRegion
@@ -43974,7 +45385,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def SyntaxRule(self):
-        r"""Syntax rules. 0: Lucene syntax; 1: CQL syntax.
+        r"""<p>Syntax rules. 0: Lucene syntax, 1: CQL syntax</p>
         :rtype: int
         """
         return self._SyntaxRule
@@ -43985,7 +45396,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def HasServicesLog(self):
-        r"""Whether to enable service log shipping. Valid values: 1: disable; 2: enable.
+        r"""<p>Whether the delivery service log is enabled. 1: Turn off, 2: Turn on.</p>
         :rtype: int
         """
         return self._HasServicesLog
@@ -43996,7 +45407,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
 
     @property
     def FullQuery(self):
-        r"""Full-text search tag. 1: Off, 2: On.
+        r"""<p>Full-text search tag. 1: Off, 2: On.</p>
         :rtype: int
         """
         return self._FullQuery
@@ -44004,6 +45415,17 @@ class ScheduledSqlTaskInfo(AbstractModel):
     @FullQuery.setter
     def FullQuery(self, FullQuery):
         self._FullQuery = FullQuery
+
+    @property
+    def ProcessPeriodUnit(self):
+        r"""<p>Scheduling cycle time unit</p><p>Value ranges from 1 to 2</p><p>Default value: 1</p><p>Default value 1 (minute), other value 2 (second)</p>
+        :rtype: int
+        """
+        return self._ProcessPeriodUnit
+
+    @ProcessPeriodUnit.setter
+    def ProcessPeriodUnit(self, ProcessPeriodUnit):
+        self._ProcessPeriodUnit = ProcessPeriodUnit
 
 
     def _deserialize(self, params):
@@ -44029,6 +45451,7 @@ class ScheduledSqlTaskInfo(AbstractModel):
         self._SyntaxRule = params.get("SyntaxRule")
         self._HasServicesLog = params.get("HasServicesLog")
         self._FullQuery = params.get("FullQuery")
+        self._ProcessPeriodUnit = params.get("ProcessPeriodUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

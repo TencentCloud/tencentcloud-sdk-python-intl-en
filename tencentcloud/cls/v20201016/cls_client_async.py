@@ -688,6 +688,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRemoteWriteTask(
+            self,
+            request: models.CreateRemoteWriteTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRemoteWriteTaskResponse:
+        """
+        This API is used to create a remote write delivery task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRemoteWriteTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRemoteWriteTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateScheduledSql(
             self,
             request: models.CreateScheduledSqlRequest,
@@ -1295,6 +1313,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteRecordingRuleYamlTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRecordingRuleYamlTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRemoteWriteTask(
+            self,
+            request: models.DeleteRemoteWriteTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRemoteWriteTaskResponse:
+        """
+        This API is used to delete a RemoteWrite task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRemoteWriteTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRemoteWriteTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2236,6 +2272,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRemoteWriteTasks(
+            self,
+            request: models.DescribeRemoteWriteTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRemoteWriteTasksResponse:
+        """
+        This API is used to obtain the list of RemoteWrite delivery tasks.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRemoteWriteTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRemoteWriteTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeScheduledSqlInfo(
             self,
             request: models.DescribeScheduledSqlInfoRequest,
@@ -2989,6 +3043,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyRecordingRuleYamlTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyRecordingRuleYamlTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRemoteWriteTask(
+            self,
+            request: models.ModifyRemoteWriteTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRemoteWriteTaskResponse:
+        """
+        This API is used to modify a RemoteWrite task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRemoteWriteTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRemoteWriteTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

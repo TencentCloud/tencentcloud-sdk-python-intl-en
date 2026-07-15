@@ -864,6 +864,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRemoteWriteTask(self, request):
+        r"""This API is used to create a remote write delivery task.
+
+        :param request: Request instance for CreateRemoteWriteTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateRemoteWriteTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateRemoteWriteTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRemoteWriteTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRemoteWriteTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateScheduledSql(self, request):
         r"""This API is used to create a scheduled SQL analysis task.
 
@@ -1637,6 +1660,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteRecordingRuleYamlTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRecordingRuleYamlTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRemoteWriteTask(self, request):
+        r"""This API is used to delete a RemoteWrite task.
+
+        :param request: Request instance for DeleteRemoteWriteTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteRemoteWriteTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteRemoteWriteTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRemoteWriteTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRemoteWriteTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2842,6 +2888,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRemoteWriteTasks(self, request):
+        r"""This API is used to obtain the list of RemoteWrite delivery tasks.
+
+        :param request: Request instance for DescribeRemoteWriteTasks.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeRemoteWriteTasksRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeRemoteWriteTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRemoteWriteTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRemoteWriteTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeScheduledSqlInfo(self, request):
         r"""This API is used to access the scheduled SQL analysis task list.
 
@@ -3801,6 +3870,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyRecordingRuleYamlTask", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRecordingRuleYamlTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRemoteWriteTask(self, request):
+        r"""This API is used to modify a RemoteWrite task.
+
+        :param request: Request instance for ModifyRemoteWriteTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyRemoteWriteTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyRemoteWriteTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRemoteWriteTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRemoteWriteTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
