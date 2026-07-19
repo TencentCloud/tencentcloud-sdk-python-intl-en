@@ -43,6 +43,60 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ApproveMNPPaymentEnable(
+            self,
+            request: models.ApproveMNPPaymentEnableRequest,
+            opts: Dict = None,
+    ) -> models.ApproveMNPPaymentEnableResponse:
+        """
+        This API is used to allow the superapp to approve the activation of mini program payment.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ApproveMNPPaymentEnable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ApproveMNPPaymentEnableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ApprovePaymentMerchantBinding(
+            self,
+            request: models.ApprovePaymentMerchantBindingRequest,
+            opts: Dict = None,
+    ) -> models.ApprovePaymentMerchantBindingResponse:
+        """
+        This API is used to allow the superapp to approve the payment merchant binding request of a mini program team.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ApprovePaymentMerchantBinding"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ApprovePaymentMerchantBindingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ChangePaymentBoundMerchant(
+            self,
+            request: models.ChangePaymentBoundMerchantRequest,
+            opts: Dict = None,
+    ) -> models.ChangePaymentBoundMerchantResponse:
+        """
+        This API is used to change the bound payment merchant.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ChangePaymentBoundMerchant"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ChangePaymentBoundMerchantResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ConfigureMNGPreview(
             self,
             request: models.ConfigureMNGPreviewRequest,
@@ -1717,6 +1771,24 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMNPPaymentApprovalInfo(
+            self,
+            request: models.DescribeMNPPaymentApprovalInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPPaymentApprovalInfoResponse:
+        """
+        This API is used to query the mini program payment approval information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPPaymentApprovalInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPPaymentApprovalInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMNPPreview(
             self,
             request: models.DescribeMNPPreviewRequest,
@@ -2149,6 +2221,24 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DisableMNPPayment(
+            self,
+            request: models.DisableMNPPaymentRequest,
+            opts: Dict = None,
+    ) -> models.DisableMNPPaymentResponse:
+        """
+        This API is used to allow the superapp to actively disable mini program payment.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisableMNPPayment"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisableMNPPaymentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableApplicationSensitiveAPI(
             self,
             request: models.EnableApplicationSensitiveAPIRequest,
@@ -2419,6 +2509,24 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryMNPMerchantInfo(
+            self,
+            request: models.QueryMNPMerchantInfoRequest,
+            opts: Dict = None,
+    ) -> models.QueryMNPMerchantInfoResponse:
+        """
+        This API is used to query the merchant information of a mini program.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryMNPMerchantInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryMNPMerchantInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReleaseMNGVersion(
             self,
             request: models.ReleaseMNGVersionRequest,
@@ -2491,6 +2599,42 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RequestPaymentEnable(
+            self,
+            request: models.RequestPaymentEnableRequest,
+            opts: Dict = None,
+    ) -> models.RequestPaymentEnableResponse:
+        """
+        This API is used to request the activation of mini program payment.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RequestPaymentEnable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RequestPaymentEnableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RequestPaymentMerchantBinding(
+            self,
+            request: models.RequestPaymentMerchantBindingRequest,
+            opts: Dict = None,
+    ) -> models.RequestPaymentMerchantBindingResponse:
+        """
+        This API is used to request the binding of a payment merchant to a team.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RequestPaymentMerchantBinding"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RequestPaymentMerchantBindingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ResetMNGAppSecret(
             self,
             request: models.ResetMNGAppSecretRequest,
@@ -2558,6 +2702,42 @@ class TcsasClient(AbstractClient):
         kwargs["action"] = "RollbackMNPVersion"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RollbackMNPVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnbindMNPPaymentMerchant(
+            self,
+            request: models.UnbindMNPPaymentMerchantRequest,
+            opts: Dict = None,
+    ) -> models.UnbindMNPPaymentMerchantResponse:
+        """
+        This API is used to allow a mini program team to actively unbind the payment merchant.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnbindMNPPaymentMerchant"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnbindMNPPaymentMerchantResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnbindPaymentMerchant(
+            self,
+            request: models.UnbindPaymentMerchantRequest,
+            opts: Dict = None,
+    ) -> models.UnbindPaymentMerchantResponse:
+        """
+        This API is used to allow the superapp to actively unbind the payment merchant.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnbindPaymentMerchant"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnbindPaymentMerchantResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

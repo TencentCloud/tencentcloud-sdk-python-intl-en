@@ -49,6 +49,75 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ApproveMNPPaymentEnable(self, request):
+        r"""This API is used to allow the superapp to approve the activation of mini program payment.
+
+        :param request: Request instance for ApproveMNPPaymentEnable.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.ApproveMNPPaymentEnableRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ApproveMNPPaymentEnableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApproveMNPPaymentEnable", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApproveMNPPaymentEnableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ApprovePaymentMerchantBinding(self, request):
+        r"""This API is used to allow the superapp to approve the payment merchant binding request of a mini program team.
+
+        :param request: Request instance for ApprovePaymentMerchantBinding.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.ApprovePaymentMerchantBindingRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ApprovePaymentMerchantBindingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApprovePaymentMerchantBinding", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApprovePaymentMerchantBindingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ChangePaymentBoundMerchant(self, request):
+        r"""This API is used to change the bound payment merchant.
+
+        :param request: Request instance for ChangePaymentBoundMerchant.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.ChangePaymentBoundMerchantRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ChangePaymentBoundMerchantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangePaymentBoundMerchant", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChangePaymentBoundMerchantResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ConfigureMNGPreview(self, request):
         r"""This API is used to configure the preview of a mini game.
 
@@ -2188,6 +2257,29 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMNPPaymentApprovalInfo(self, request):
+        r"""This API is used to query the mini program payment approval information.
+
+        :param request: Request instance for DescribeMNPPaymentApprovalInfo.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPPaymentApprovalInfoRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPPaymentApprovalInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPPaymentApprovalInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPPaymentApprovalInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMNPPreview(self, request):
         r"""This API is used to query the mini program preview details.
 
@@ -2740,6 +2832,29 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableMNPPayment(self, request):
+        r"""This API is used to allow the superapp to actively disable mini program payment.
+
+        :param request: Request instance for DisableMNPPayment.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DisableMNPPaymentRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DisableMNPPaymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableMNPPayment", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableMNPPaymentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableApplicationSensitiveAPI(self, request):
         r"""This API is used to enable a superapp sensitive API.
 
@@ -3085,6 +3200,29 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryMNPMerchantInfo(self, request):
+        r"""This API is used to query the merchant information of a mini program.
+
+        :param request: Request instance for QueryMNPMerchantInfo.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.QueryMNPMerchantInfoRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.QueryMNPMerchantInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryMNPMerchantInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryMNPMerchantInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReleaseMNGVersion(self, request):
         r"""This API is used to release a mini game version.
 
@@ -3177,6 +3315,52 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RequestPaymentEnable(self, request):
+        r"""This API is used to request the activation of mini program payment.
+
+        :param request: Request instance for RequestPaymentEnable.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.RequestPaymentEnableRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.RequestPaymentEnableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RequestPaymentEnable", params, headers=headers)
+            response = json.loads(body)
+            model = models.RequestPaymentEnableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RequestPaymentMerchantBinding(self, request):
+        r"""This API is used to request the binding of a payment merchant to a team.
+
+        :param request: Request instance for RequestPaymentMerchantBinding.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.RequestPaymentMerchantBindingRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.RequestPaymentMerchantBindingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RequestPaymentMerchantBinding", params, headers=headers)
+            response = json.loads(body)
+            model = models.RequestPaymentMerchantBindingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResetMNGAppSecret(self, request):
         r"""This API is used to reset a mini game secret key.
 
@@ -3260,6 +3444,52 @@ class TcsasClient(AbstractClient):
             body = self.call("RollbackMNPVersion", params, headers=headers)
             response = json.loads(body)
             model = models.RollbackMNPVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindMNPPaymentMerchant(self, request):
+        r"""This API is used to allow a mini program team to actively unbind the payment merchant.
+
+        :param request: Request instance for UnbindMNPPaymentMerchant.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.UnbindMNPPaymentMerchantRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.UnbindMNPPaymentMerchantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindMNPPaymentMerchant", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindMNPPaymentMerchantResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindPaymentMerchant(self, request):
+        r"""This API is used to allow the superapp to actively unbind the payment merchant.
+
+        :param request: Request instance for UnbindPaymentMerchant.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.UnbindPaymentMerchantRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.UnbindPaymentMerchantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindPaymentMerchant", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindPaymentMerchantResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -945,6 +945,123 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class AgeRatingItem(AbstractModel):
+    r"""Age rating information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StandardId: <p>Age rating standard.</p><p>Valid values:</p><ul><li>apple: Apple</li><li>iarc: Android.</li></ul>
+        :type StandardId: str
+        :param _AgeRating: <p>Applicable age for age rating.</p>
+        :type AgeRating: int
+        :param _Label: <p>Age rating label.</p>
+        :type Label: str
+        """
+        self._StandardId = None
+        self._AgeRating = None
+        self._Label = None
+
+    @property
+    def StandardId(self):
+        r"""<p>Age rating standard.</p><p>Valid values:</p><ul><li>apple: Apple</li><li>iarc: Android.</li></ul>
+        :rtype: str
+        """
+        return self._StandardId
+
+    @StandardId.setter
+    def StandardId(self, StandardId):
+        self._StandardId = StandardId
+
+    @property
+    def AgeRating(self):
+        r"""<p>Applicable age for age rating.</p>
+        :rtype: int
+        """
+        return self._AgeRating
+
+    @AgeRating.setter
+    def AgeRating(self, AgeRating):
+        self._AgeRating = AgeRating
+
+    @property
+    def Label(self):
+        r"""<p>Age rating label.</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._StandardId = params.get("StandardId")
+        self._AgeRating = params.get("AgeRating")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgeRatingItemReq(AbstractModel):
+    r"""Age rating request.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StandardId: <p>Age rating standard.</p><p>Valid values:</p><ul><li>apple: Apple</li><li>iarc: Android.</li></ul>
+        :type StandardId: str
+        :param _AgeRating: <p>Applicable age for age rating.</p>
+        :type AgeRating: int
+        """
+        self._StandardId = None
+        self._AgeRating = None
+
+    @property
+    def StandardId(self):
+        r"""<p>Age rating standard.</p><p>Valid values:</p><ul><li>apple: Apple</li><li>iarc: Android.</li></ul>
+        :rtype: str
+        """
+        return self._StandardId
+
+    @StandardId.setter
+    def StandardId(self, StandardId):
+        self._StandardId = StandardId
+
+    @property
+    def AgeRating(self):
+        r"""<p>Applicable age for age rating.</p>
+        :rtype: int
+        """
+        return self._AgeRating
+
+    @AgeRating.setter
+    def AgeRating(self, AgeRating):
+        self._AgeRating = AgeRating
+
+
+    def _deserialize(self, params):
+        self._StandardId = params.get("StandardId")
+        self._AgeRating = params.get("AgeRating")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnalysisAdvertOverview(AbstractModel):
     r"""Ad analysis data overview.
 
@@ -1117,6 +1234,117 @@ class ApplicationConfigInfo(AbstractModel):
         
 
 
+class ApplyPaymentOpenDetailRes(AbstractModel):
+    r"""Queries mini program payment approval status.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApprovalStatus: <p>Approval status. Valid values: 0: In progress; 10: Approved; 20: Rejected.</p>
+        :type ApprovalStatus: int
+        :param _ApplyTime: <p>Application time.</p><p>Unit: Milliseconds.</p>
+        :type ApplyTime: int
+        :param _ApprovalTime: <p>Approval time.</p><p>Unit: milliseconds.</p>
+        :type ApprovalTime: int
+        :param _ApprovalNote: <p>Approval note.</p>
+        :type ApprovalNote: str
+        :param _ApprovalShow: <p>Specifies whether to display the approval records. Valid values: 0: No; 1: Yes.</p>
+        :type ApprovalShow: int
+        :param _ApplyShow: <p>Specifies whether the activation of mini program payment can be requested again. Valid values: 0: No; 1: Yes.</p>
+        :type ApplyShow: int
+        """
+        self._ApprovalStatus = None
+        self._ApplyTime = None
+        self._ApprovalTime = None
+        self._ApprovalNote = None
+        self._ApprovalShow = None
+        self._ApplyShow = None
+
+    @property
+    def ApprovalStatus(self):
+        r"""<p>Approval status. Valid values: 0: In progress; 10: Approved; 20: Rejected.</p>
+        :rtype: int
+        """
+        return self._ApprovalStatus
+
+    @ApprovalStatus.setter
+    def ApprovalStatus(self, ApprovalStatus):
+        self._ApprovalStatus = ApprovalStatus
+
+    @property
+    def ApplyTime(self):
+        r"""<p>Application time.</p><p>Unit: Milliseconds.</p>
+        :rtype: int
+        """
+        return self._ApplyTime
+
+    @ApplyTime.setter
+    def ApplyTime(self, ApplyTime):
+        self._ApplyTime = ApplyTime
+
+    @property
+    def ApprovalTime(self):
+        r"""<p>Approval time.</p><p>Unit: milliseconds.</p>
+        :rtype: int
+        """
+        return self._ApprovalTime
+
+    @ApprovalTime.setter
+    def ApprovalTime(self, ApprovalTime):
+        self._ApprovalTime = ApprovalTime
+
+    @property
+    def ApprovalNote(self):
+        r"""<p>Approval note.</p>
+        :rtype: str
+        """
+        return self._ApprovalNote
+
+    @ApprovalNote.setter
+    def ApprovalNote(self, ApprovalNote):
+        self._ApprovalNote = ApprovalNote
+
+    @property
+    def ApprovalShow(self):
+        r"""<p>Specifies whether to display the approval records. Valid values: 0: No; 1: Yes.</p>
+        :rtype: int
+        """
+        return self._ApprovalShow
+
+    @ApprovalShow.setter
+    def ApprovalShow(self, ApprovalShow):
+        self._ApprovalShow = ApprovalShow
+
+    @property
+    def ApplyShow(self):
+        r"""<p>Specifies whether the activation of mini program payment can be requested again. Valid values: 0: No; 1: Yes.</p>
+        :rtype: int
+        """
+        return self._ApplyShow
+
+    @ApplyShow.setter
+    def ApplyShow(self, ApplyShow):
+        self._ApplyShow = ApplyShow
+
+
+    def _deserialize(self, params):
+        self._ApprovalStatus = params.get("ApprovalStatus")
+        self._ApplyTime = params.get("ApplyTime")
+        self._ApprovalTime = params.get("ApprovalTime")
+        self._ApprovalNote = params.get("ApprovalNote")
+        self._ApprovalShow = params.get("ApprovalShow")
+        self._ApplyShow = params.get("ApplyShow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApprovalItem(AbstractModel):
     r"""Mini program approval processing details.
 
@@ -1181,6 +1409,390 @@ class ApprovalItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ApprovalPaymentV2MerchantBindRes(AbstractModel):
+    r"""Response parameters structure for the superapp approving the merchant binding of a mini program team.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>API response result. A value of true indicates that the operation succeeded.</p>
+        :type Result: bool
+        :param _ID: <p>The unique merchant binding ID of the mini program team, used for the superapp to unbind the merchant.</p>
+        :type ID: int
+        """
+        self._Result = None
+        self._ID = None
+
+    @property
+    def Result(self):
+        r"""<p>API response result. A value of true indicates that the operation succeeded.</p>
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ID(self):
+        r"""<p>The unique merchant binding ID of the mini program team, used for the superapp to unbind the merchant.</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApproveMNPPaymentEnableRequest(AbstractModel):
+    r"""ApproveMNPPaymentEnable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _ApplicationId: <p>Superapp ID.</p>
+        :type ApplicationId: str
+        :param _ApprovalNo: <p>Approval number.</p>
+        :type ApprovalNo: str
+        :param _ApprovalType: <p>Approval status. Valid values: 10: Approved; 20: Rejected.</p>
+        :type ApprovalType: int
+        :param _ApprovalNote: <p>Approval note.</p>
+        :type ApprovalNote: str
+        """
+        self._PlatformId = None
+        self._ApplicationId = None
+        self._ApprovalNo = None
+        self._ApprovalType = None
+        self._ApprovalNote = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def ApplicationId(self):
+        r"""<p>Superapp ID.</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApprovalNo(self):
+        r"""<p>Approval number.</p>
+        :rtype: str
+        """
+        return self._ApprovalNo
+
+    @ApprovalNo.setter
+    def ApprovalNo(self, ApprovalNo):
+        self._ApprovalNo = ApprovalNo
+
+    @property
+    def ApprovalType(self):
+        r"""<p>Approval status. Valid values: 10: Approved; 20: Rejected.</p>
+        :rtype: int
+        """
+        return self._ApprovalType
+
+    @ApprovalType.setter
+    def ApprovalType(self, ApprovalType):
+        self._ApprovalType = ApprovalType
+
+    @property
+    def ApprovalNote(self):
+        r"""<p>Approval note.</p>
+        :rtype: str
+        """
+        return self._ApprovalNote
+
+    @ApprovalNote.setter
+    def ApprovalNote(self, ApprovalNote):
+        self._ApprovalNote = ApprovalNote
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApprovalNo = params.get("ApprovalNo")
+        self._ApprovalType = params.get("ApprovalType")
+        self._ApprovalNote = params.get("ApprovalNote")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApproveMNPPaymentEnableResponse(AbstractModel):
+    r"""ApproveMNPPaymentEnable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Approval result.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.ApproveMNPPaymentOpenRes`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Approval result.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ApproveMNPPaymentOpenRes`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ApproveMNPPaymentOpenRes()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ApproveMNPPaymentOpenRes(AbstractModel):
+    r"""Response parameters structure for the superapp approving the activation of mini program payment.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>Execution result of the API operation. Valid values: true: Operation succeeded; false: Operation failed.</p>
+        :type Result: bool
+        :param _ID: <p>The unique ID of the mini program payment activation. Used for the API where the superapp actively disables mini program payment.</p>
+        :type ID: int
+        """
+        self._Result = None
+        self._ID = None
+
+    @property
+    def Result(self):
+        r"""<p>Execution result of the API operation. Valid values: true: Operation succeeded; false: Operation failed.</p>
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ID(self):
+        r"""<p>The unique ID of the mini program payment activation. Used for the API where the superapp actively disables mini program payment.</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApprovePaymentMerchantBindingRequest(AbstractModel):
+    r"""ApprovePaymentMerchantBinding request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _ApplicationId: <p>Superapp ID.</p>
+        :type ApplicationId: str
+        :param _ApprovalNo: <p>Approval number.</p>
+        :type ApprovalNo: str
+        :param _ApprovalType: <p>Approval status. Valid values: 10: Approved; 20: Rejected.</p>
+        :type ApprovalType: int
+        :param _ApprovalNote: <p>Approval note.</p>
+        :type ApprovalNote: str
+        """
+        self._PlatformId = None
+        self._ApplicationId = None
+        self._ApprovalNo = None
+        self._ApprovalType = None
+        self._ApprovalNote = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def ApplicationId(self):
+        r"""<p>Superapp ID.</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApprovalNo(self):
+        r"""<p>Approval number.</p>
+        :rtype: str
+        """
+        return self._ApprovalNo
+
+    @ApprovalNo.setter
+    def ApprovalNo(self, ApprovalNo):
+        self._ApprovalNo = ApprovalNo
+
+    @property
+    def ApprovalType(self):
+        r"""<p>Approval status. Valid values: 10: Approved; 20: Rejected.</p>
+        :rtype: int
+        """
+        return self._ApprovalType
+
+    @ApprovalType.setter
+    def ApprovalType(self, ApprovalType):
+        self._ApprovalType = ApprovalType
+
+    @property
+    def ApprovalNote(self):
+        r"""<p>Approval note.</p>
+        :rtype: str
+        """
+        return self._ApprovalNote
+
+    @ApprovalNote.setter
+    def ApprovalNote(self, ApprovalNote):
+        self._ApprovalNote = ApprovalNote
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApprovalNo = params.get("ApprovalNo")
+        self._ApprovalType = params.get("ApprovalType")
+        self._ApprovalNote = params.get("ApprovalNote")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApprovePaymentMerchantBindingResponse(AbstractModel):
+    r"""ApprovePaymentMerchantBinding response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Approval result.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.ApprovalPaymentV2MerchantBindRes`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Approval result.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ApprovalPaymentV2MerchantBindRes`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ApprovalPaymentV2MerchantBindRes()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class BooleanInfo(AbstractModel):
@@ -1333,6 +1945,183 @@ class CategoryItem(AbstractModel):
     def _deserialize(self, params):
         self._ID = params.get("ID")
         self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangePaymentBoundMerchantRequest(AbstractModel):
+    r"""ChangePaymentBoundMerchant request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _TeamId: <p>Mini program appid.</p>
+        :type TeamId: str
+        :param _MerchantID: <p>Merchant ID.</p>
+        :type MerchantID: str
+        :param _MerchantName: <p>Merchant name.</p>
+        :type MerchantName: str
+        """
+        self._PlatformId = None
+        self._TeamId = None
+        self._MerchantID = None
+        self._MerchantName = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def TeamId(self):
+        r"""<p>Mini program appid.</p>
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def MerchantID(self):
+        r"""<p>Merchant ID.</p>
+        :rtype: str
+        """
+        return self._MerchantID
+
+    @MerchantID.setter
+    def MerchantID(self, MerchantID):
+        self._MerchantID = MerchantID
+
+    @property
+    def MerchantName(self):
+        r"""<p>Merchant name.</p>
+        :rtype: str
+        """
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._TeamId = params.get("TeamId")
+        self._MerchantID = params.get("MerchantID")
+        self._MerchantName = params.get("MerchantName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangePaymentBoundMerchantResponse(AbstractModel):
+    r"""ChangePaymentBoundMerchant response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Response parameters structure for changing the bound payment merchant. The returned approval number is required when calling the approval API.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.ChangePaymentV2BindMerchantRes`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Response parameters structure for changing the bound payment merchant. The returned approval number is required when calling the approval API.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ChangePaymentV2BindMerchantRes`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ChangePaymentV2BindMerchantRes()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ChangePaymentV2BindMerchantRes(AbstractModel):
+    r"""Response parameters structure for changing the bound payment merchant.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>API response result. Valid values: true: Operation succeeded; false: Operation failed.</p>
+        :type Result: bool
+        :param _ApprovalNo: <p>Approval number. Used for the API where the superapp approves the merchant binding of a mini program team.</p>
+        :type ApprovalNo: str
+        """
+        self._Result = None
+        self._ApprovalNo = None
+
+    @property
+    def Result(self):
+        r"""<p>API response result. Valid values: true: Operation succeeded; false: Operation failed.</p>
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ApprovalNo(self):
+        r"""<p>Approval number. Used for the API where the superapp approves the merchant binding of a mini program team.</p>
+        :rtype: str
+        """
+        return self._ApprovalNo
+
+    @ApprovalNo.setter
+    def ApprovalNo(self, ApprovalNo):
+        self._ApprovalNo = ApprovalNo
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ApprovalNo = params.get("ApprovalNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2890,6 +3679,8 @@ class CreateMNGRequest(AbstractModel):
         :type TeamId: str
         :param _I18nList: <p>Mini game name and introduction in multiple languages.</p>
         :type I18nList: list of MNPI18NSyncDto
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItemReq
         """
         self._MNPType = None
         self._MNPName = None
@@ -2899,6 +3690,7 @@ class CreateMNGRequest(AbstractModel):
         self._PlatformId = None
         self._TeamId = None
         self._I18nList = None
+        self._AgeRatings = None
 
     @property
     def MNPType(self):
@@ -2988,6 +3780,17 @@ class CreateMNGRequest(AbstractModel):
     def I18nList(self, I18nList):
         self._I18nList = I18nList
 
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItemReq
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
+
 
     def _deserialize(self, params):
         self._MNPType = params.get("MNPType")
@@ -3003,6 +3806,12 @@ class CreateMNGRequest(AbstractModel):
                 obj = MNPI18NSyncDto()
                 obj._deserialize(item)
                 self._I18nList.append(obj)
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItemReq()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3344,13 +4153,13 @@ class CreateMNGVersionRequest(AbstractModel):
         :type PlatformId: str
         :param _MNPVersionIntro: <p>Version description.</p>
         :type MNPVersionIntro: str
-        :param _VersionType: <p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>
+        :param _VersionType: <p>Version type. Valid values: 1: Debug version; 2: Development version.</p> Default value: 2.</p>
         :type VersionType: int
-        :param _CompileCondition: <p>Compilation condition.</p>
+        :param _CompileCondition: <p>Compilation conditions.</p>
         :type CompileCondition: str
         :param _CompileConfig: <p>Compilation configuration.</p>
         :type CompileConfig: str
-        :param _PipelineId: <p>CI/CD key ID.</p>
+        :param _PipelineId: <p>CICD ID</p>
         :type PipelineId: str
         :param _FileInnerUrl: <p>Internal file URL.</p>
         :type FileInnerUrl: str
@@ -3423,7 +4232,7 @@ class CreateMNGVersionRequest(AbstractModel):
 
     @property
     def VersionType(self):
-        r"""<p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>
+        r"""<p>Version type. Valid values: 1: Debug version; 2: Development version.</p> Default value: 2.</p>
         :rtype: int
         """
         return self._VersionType
@@ -3434,7 +4243,7 @@ class CreateMNGVersionRequest(AbstractModel):
 
     @property
     def CompileCondition(self):
-        r"""<p>Compilation condition.</p>
+        r"""<p>Compilation conditions.</p>
         :rtype: str
         """
         return self._CompileCondition
@@ -3456,7 +4265,7 @@ class CreateMNGVersionRequest(AbstractModel):
 
     @property
     def PipelineId(self):
-        r"""<p>CI/CD key ID.</p>
+        r"""<p>CICD ID</p>
         :rtype: str
         """
         return self._PipelineId
@@ -4014,6 +4823,8 @@ class CreateMNPRequest(AbstractModel):
         :type TeamId: str
         :param _I18nList: <p>Mini program name and introduction in multiple languages.</p>
         :type I18nList: list of MNPI18NSyncDto
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItemReq
         """
         self._MNPType = None
         self._MNPName = None
@@ -4023,6 +4834,7 @@ class CreateMNPRequest(AbstractModel):
         self._PlatformId = None
         self._TeamId = None
         self._I18nList = None
+        self._AgeRatings = None
 
     @property
     def MNPType(self):
@@ -4112,6 +4924,17 @@ class CreateMNPRequest(AbstractModel):
     def I18nList(self, I18nList):
         self._I18nList = I18nList
 
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItemReq
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
+
 
     def _deserialize(self, params):
         self._MNPType = params.get("MNPType")
@@ -4127,6 +4950,12 @@ class CreateMNPRequest(AbstractModel):
                 obj = MNPI18NSyncDto()
                 obj._deserialize(item)
                 self._I18nList.append(obj)
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItemReq()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4191,9 +5020,9 @@ class CreateMNPSecretKeyRequest(AbstractModel):
         r"""
         :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _MNPId: <p>Mini program appid.</p>
+        :param _MNPId: <p>Mini program or mini game appid.</p>
         :type MNPId: str
-        :param _PipelineId: <p>CI/CD key ID.</p>
+        :param _PipelineId: <p>CICD ID</p>
         :type PipelineId: str
         """
         self._PlatformId = None
@@ -4213,7 +5042,7 @@ class CreateMNPSecretKeyRequest(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""<p>Mini program appid.</p>
+        r"""<p>Mini program or mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -4224,7 +5053,7 @@ class CreateMNPSecretKeyRequest(AbstractModel):
 
     @property
     def PipelineId(self):
-        r"""<p>CI/CD key ID.</p>
+        r"""<p>CICD ID</p>
         :rtype: str
         """
         return self._PipelineId
@@ -4630,13 +5459,13 @@ class CreateMNPVersionRequest(AbstractModel):
         :type PlatformId: str
         :param _MNPVersionIntro: <p>Version description.</p>
         :type MNPVersionIntro: str
-        :param _VersionType: <p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>
+        :param _VersionType: <p>Version type. Valid values: 1: Debug version; 2: Development version. Default value: 2.</p>
         :type VersionType: int
-        :param _CompileCondition: <p>Compilation condition.</p>
+        :param _CompileCondition: <p>Compilation conditions.</p>
         :type CompileCondition: str
         :param _CompileConfig: <p>Compilation configuration.</p>
         :type CompileConfig: str
-        :param _PipelineId: <p>CI/CD key ID.</p>
+        :param _PipelineId: <p>CICD ID</p>
         :type PipelineId: str
         :param _FileInnerUrl: <p>Internal file URL.</p>
         :type FileInnerUrl: str
@@ -4709,7 +5538,7 @@ class CreateMNPVersionRequest(AbstractModel):
 
     @property
     def VersionType(self):
-        r"""<p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>
+        r"""<p>Version type. Valid values: 1: Debug version; 2: Development version. Default value: 2.</p>
         :rtype: int
         """
         return self._VersionType
@@ -4720,7 +5549,7 @@ class CreateMNPVersionRequest(AbstractModel):
 
     @property
     def CompileCondition(self):
-        r"""<p>Compilation condition.</p>
+        r"""<p>Compilation conditions.</p>
         :rtype: str
         """
         return self._CompileCondition
@@ -4742,7 +5571,7 @@ class CreateMNPVersionRequest(AbstractModel):
 
     @property
     def PipelineId(self):
-        r"""<p>CI/CD key ID.</p>
+        r"""<p>CICD ID</p>
         :rtype: str
         """
         return self._PipelineId
@@ -7629,34 +8458,36 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program or mini game appid.
+        :param _MNPId: <p>Mini program or mini game appid.</p>
         :type MNPId: str
-        :param _MNPIcon: Mini program or mini game icon.
+        :param _MNPIcon: <p>Mini program or mini game icon.</p>
         :type MNPIcon: str
-        :param _MNPName: Mini program or mini game name.
+        :param _MNPName: <p>Mini program or mini game name.</p>
         :type MNPName: str
-        :param _MNPIntro: Mini program or mini game information.
+        :param _MNPIntro: <p>Mini program or mini game introduction.</p>
         :type MNPIntro: str
-        :param _CreateUser: Creator.
+        :param _CreateUser: <p>Creator.</p>
         :type CreateUser: str
-        :param _CreateTime: Creation time.
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _UpdateUser: Last modifier.
+        :param _UpdateUser: <p>Last modifier.</p>
         :type UpdateUser: str
-        :param _UpdateTime: Last modified time.
+        :param _UpdateTime: <p>Last modified time.</p>
         :type UpdateTime: str
-        :param _OnlineStatus: Available status. Valid value: 0: Not available; 1 Available; 2: In canary release.
+        :param _OnlineStatus: <p>Available status. Valid value: 0: Not available; 1 Available; 2: In canary release.</p>
         :type OnlineStatus: int
-        :param _EngineType: Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.
+        :param _EngineType: <p>Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.</p>
         :type EngineType: int
-        :param _CategoryList: Category information.
+        :param _CategoryList: <p>Category information.</p>
         :type CategoryList: list of CategoryInfo
-        :param _TeamId: Team ID.
+        :param _TeamId: <p>Team ID.</p>
         :type TeamId: str
-        :param _TeamName: Team name.
+        :param _TeamName: <p>Team name.</p>
         :type TeamName: str
-        :param _TeamTypeId: Team type ID.
+        :param _TeamTypeId: <p>Team type ID.</p>
         :type TeamTypeId: int
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItem
         """
         self._MNPId = None
         self._MNPIcon = None
@@ -7672,10 +8503,11 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
         self._TeamId = None
         self._TeamName = None
         self._TeamTypeId = None
+        self._AgeRatings = None
 
     @property
     def MNPId(self):
-        r"""Mini program or mini game appid.
+        r"""<p>Mini program or mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -7686,7 +8518,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini program or mini game icon.
+        r"""<p>Mini program or mini game icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -7697,7 +8529,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program or mini game name.
+        r"""<p>Mini program or mini game name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -7708,7 +8540,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""Mini program or mini game information.
+        r"""<p>Mini program or mini game introduction.</p>
         :rtype: str
         """
         return self._MNPIntro
@@ -7719,7 +8551,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator.
+        r"""<p>Creator.</p>
         :rtype: str
         """
         return self._CreateUser
@@ -7730,7 +8562,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time.
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -7741,7 +8573,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""Last modifier.
+        r"""<p>Last modifier.</p>
         :rtype: str
         """
         return self._UpdateUser
@@ -7752,7 +8584,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Last modified time.
+        r"""<p>Last modified time.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -7763,7 +8595,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        r"""Available status. Valid value: 0: Not available; 1 Available; 2: In canary release.
+        r"""<p>Available status. Valid value: 0: Not available; 1 Available; 2: In canary release.</p>
         :rtype: int
         """
         return self._OnlineStatus
@@ -7774,7 +8606,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.
+        r"""<p>Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.</p>
         :rtype: int
         """
         return self._EngineType
@@ -7785,7 +8617,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def CategoryList(self):
-        r"""Category information.
+        r"""<p>Category information.</p>
         :rtype: list of CategoryInfo
         """
         return self._CategoryList
@@ -7796,7 +8628,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID.
+        r"""<p>Team ID.</p>
         :rtype: str
         """
         return self._TeamId
@@ -7807,7 +8639,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name.
+        r"""<p>Team name.</p>
         :rtype: str
         """
         return self._TeamName
@@ -7818,7 +8650,7 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
 
     @property
     def TeamTypeId(self):
-        r"""Team type ID.
+        r"""<p>Team type ID.</p>
         :rtype: int
         """
         return self._TeamTypeId
@@ -7826,6 +8658,17 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
     @TeamTypeId.setter
     def TeamTypeId(self, TeamTypeId):
         self._TeamTypeId = TeamTypeId
+
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItem
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
 
 
     def _deserialize(self, params):
@@ -7848,6 +8691,12 @@ class DescribeApplicationMNPInfoResp(AbstractModel):
         self._TeamId = params.get("TeamId")
         self._TeamName = params.get("TeamName")
         self._TeamTypeId = params.get("TeamTypeId")
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItem()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10776,6 +11625,8 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
         :type Status: int
         :param _VersionCurrentStatus: <p>Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :type VersionCurrentStatus: int
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItem
         """
         self._MNPId = None
         self._MNPVersionId = None
@@ -10795,6 +11646,7 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
         self._RollbackVersion = None
         self._Status = None
         self._VersionCurrentStatus = None
+        self._AgeRatings = None
 
     @property
     def MNPId(self):
@@ -10994,6 +11846,17 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
     def VersionCurrentStatus(self, VersionCurrentStatus):
         self._VersionCurrentStatus = VersionCurrentStatus
 
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItem
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
+
 
     def _deserialize(self, params):
         self._MNPId = params.get("MNPId")
@@ -11014,6 +11877,12 @@ class DescribeMNGAllStageVersionsResp(AbstractModel):
         self._RollbackVersion = params.get("RollbackVersion")
         self._Status = params.get("Status")
         self._VersionCurrentStatus = params.get("VersionCurrentStatus")
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItem()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11492,10 +12361,12 @@ class DescribeMNGListData(AbstractModel):
         :type EffectMNPVersionId: int
         :param _EffectMNPVersion: <p>Effective mini game version number bound to the superapp. </p>
         :type EffectMNPVersion: str
-        :param _TeamId: Team ID.
+        :param _TeamId: <p>Team ID.</p>
         :type TeamId: str
-        :param _TeamTypeId: Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :param _TeamTypeId: <p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>
         :type TeamTypeId: int
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItem
         """
         self._MNPId = None
         self._MNPIcon = None
@@ -11514,6 +12385,7 @@ class DescribeMNGListData(AbstractModel):
         self._EffectMNPVersion = None
         self._TeamId = None
         self._TeamTypeId = None
+        self._AgeRatings = None
 
     @property
     def MNPId(self):
@@ -11682,7 +12554,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID.
+        r"""<p>Team ID.</p>
         :rtype: str
         """
         return self._TeamId
@@ -11693,7 +12565,7 @@ class DescribeMNGListData(AbstractModel):
 
     @property
     def TeamTypeId(self):
-        r"""Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        r"""<p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>
         :rtype: int
         """
         return self._TeamTypeId
@@ -11701,6 +12573,17 @@ class DescribeMNGListData(AbstractModel):
     @TeamTypeId.setter
     def TeamTypeId(self, TeamTypeId):
         self._TeamTypeId = TeamTypeId
+
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItem
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
 
 
     def _deserialize(self, params):
@@ -11721,6 +12604,12 @@ class DescribeMNGListData(AbstractModel):
         self._EffectMNPVersion = params.get("EffectMNPVersion")
         self._TeamId = params.get("TeamId")
         self._TeamTypeId = params.get("TeamTypeId")
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItem()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12439,8 +13328,12 @@ class DescribeMNGManagerDetailData(AbstractModel):
         :type Status: int
         :param _I18nList: <p>Mini game information in multiple languages.</p>
         :type I18nList: list of MNPDetailI18nVO
-        :param _TeamTypeId: Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :param _TeamTypeId: <p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>
         :type TeamTypeId: int
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItem
+        :param _MerchantId: <p>Merchant ID information bound to the team to which this mini program belongs.</p>
+        :type MerchantId: str
         """
         self._MNPType = None
         self._MNPId = None
@@ -12456,6 +13349,8 @@ class DescribeMNGManagerDetailData(AbstractModel):
         self._Status = None
         self._I18nList = None
         self._TeamTypeId = None
+        self._AgeRatings = None
+        self._MerchantId = None
 
     @property
     def MNPType(self):
@@ -12602,7 +13497,7 @@ class DescribeMNGManagerDetailData(AbstractModel):
 
     @property
     def TeamTypeId(self):
-        r"""Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        r"""<p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>
         :rtype: int
         """
         return self._TeamTypeId
@@ -12610,6 +13505,28 @@ class DescribeMNGManagerDetailData(AbstractModel):
     @TeamTypeId.setter
     def TeamTypeId(self, TeamTypeId):
         self._TeamTypeId = TeamTypeId
+
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItem
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
+
+    @property
+    def MerchantId(self):
+        r"""<p>Merchant ID information bound to the team to which this mini program belongs.</p>
+        :rtype: str
+        """
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
 
 
     def _deserialize(self, params):
@@ -12632,6 +13549,13 @@ class DescribeMNGManagerDetailData(AbstractModel):
                 obj._deserialize(item)
                 self._I18nList.append(obj)
         self._TeamTypeId = params.get("TeamTypeId")
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItem()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
+        self._MerchantId = params.get("MerchantId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16138,7 +17062,7 @@ class DescribeMNGVersionRequest(AbstractModel):
         :type BusinessId: str
         :param _PlatformId: <p>Platform ID.</p>
         :type PlatformId: str
-        :param _PipelineId: <p>CI/CD key ID.</p>
+        :param _PipelineId: <p>CICD ID</p>
         :type PipelineId: str
         """
         self._BusinessId = None
@@ -16169,7 +17093,7 @@ class DescribeMNGVersionRequest(AbstractModel):
 
     @property
     def PipelineId(self):
-        r"""<p>CI/CD key ID.</p>
+        r"""<p>CICD ID</p>
         :rtype: str
         """
         return self._PipelineId
@@ -17106,44 +18030,46 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApprovalNo: Approval number.
+        :param _ApprovalNo: <p>Approval number.</p>
         :type ApprovalNo: str
-        :param _ApplicationId: Superapp ID.
+        :param _ApplicationId: <p>Superapp ID.</p>
         :type ApplicationId: str
-        :param _ApprovalStatus: Approval status. Valid values: 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
+        :param _ApprovalStatus: <p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :type ApprovalStatus: int
-        :param _MNPId: Mini program appid.
+        :param _MNPId: <p>Mini program appid.</p>
         :type MNPId: str
-        :param _MNPVersion: Mini program version.
+        :param _MNPVersion: <p>Mini program version.</p>
         :type MNPVersion: str
-        :param _MNPVersionId: Mini program version ID.
+        :param _MNPVersionId: <p>Mini program version ID.</p>
         :type MNPVersionId: int
-        :param _ApplyUser: Applicant.
+        :param _ApplyUser: <p>Applicant.</p>
         :type ApplyUser: str
-        :param _ApplyTime: Application time.
+        :param _ApplyTime: <p>Application time.</p>
         :type ApplyTime: str
-        :param _MNPName: Mini program name.
+        :param _MNPName: <p>Mini program name.</p>
         :type MNPName: str
-        :param _MNPIcon: Mini program icon.
+        :param _MNPIcon: <p>Mini program icon.</p>
         :type MNPIcon: str
-        :param _ApplicationName: Superapp name.
+        :param _ApplicationName: <p>Superapp name.</p>
         :type ApplicationName: str
-        :param _ApplicationLogo: Superapp icon.
+        :param _ApplicationLogo: <p>Superapp icon.</p>
         :type ApplicationLogo: str
-        :param _TeamId: Team ID.
+        :param _TeamId: <p>Team ID.</p>
         :type TeamId: str
-        :param _TeamName: Team name.
+        :param _TeamName: <p>Team name.</p>
         :type TeamName: str
-        :param _MNPQrCodeUrl: Mini program approval QR code URL.
+        :param _MNPQrCodeUrl: <p>Mini program approval QR code URL.</p>
         :type MNPQrCodeUrl: str
-        :param _MNPType: Mini program category.
+        :param _MNPType: <p>Mini program category.</p>
         :type MNPType: str
-        :param _ApprovalUser: Approver.
+        :param _ApprovalUser: <p>Approver.</p>
         :type ApprovalUser: str
-        :param _ApprovalTime: Approval time.
+        :param _ApprovalTime: <p>Approval time.</p>
         :type ApprovalTime: str
-        :param _ApprovalNote: Approval note.
+        :param _ApprovalNote: <p>Approval note.</p>
         :type ApprovalNote: str
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItem
         """
         self._ApprovalNo = None
         self._ApplicationId = None
@@ -17164,10 +18090,11 @@ class DescribeMNPApprovalListData(AbstractModel):
         self._ApprovalUser = None
         self._ApprovalTime = None
         self._ApprovalNote = None
+        self._AgeRatings = None
 
     @property
     def ApprovalNo(self):
-        r"""Approval number.
+        r"""<p>Approval number.</p>
         :rtype: str
         """
         return self._ApprovalNo
@@ -17178,7 +18105,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""Superapp ID.
+        r"""<p>Superapp ID.</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -17189,7 +18116,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApprovalStatus(self):
-        r"""Approval status. Valid values: 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
+        r"""<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :rtype: int
         """
         return self._ApprovalStatus
@@ -17200,7 +18127,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPId(self):
-        r"""Mini program appid.
+        r"""<p>Mini program appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -17211,7 +18138,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""Mini program version.
+        r"""<p>Mini program version.</p>
         :rtype: str
         """
         return self._MNPVersion
@@ -17222,7 +18149,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""Mini program version ID.
+        r"""<p>Mini program version ID.</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -17233,7 +18160,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplyUser(self):
-        r"""Applicant.
+        r"""<p>Applicant.</p>
         :rtype: str
         """
         return self._ApplyUser
@@ -17244,7 +18171,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplyTime(self):
-        r"""Application time.
+        r"""<p>Application time.</p>
         :rtype: str
         """
         return self._ApplyTime
@@ -17255,7 +18182,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name.
+        r"""<p>Mini program name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -17266,7 +18193,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini program icon.
+        r"""<p>Mini program icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -17277,7 +18204,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Superapp name.
+        r"""<p>Superapp name.</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -17288,7 +18215,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApplicationLogo(self):
-        r"""Superapp icon.
+        r"""<p>Superapp icon.</p>
         :rtype: str
         """
         return self._ApplicationLogo
@@ -17299,7 +18226,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID.
+        r"""<p>Team ID.</p>
         :rtype: str
         """
         return self._TeamId
@@ -17310,7 +18237,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name.
+        r"""<p>Team name.</p>
         :rtype: str
         """
         return self._TeamName
@@ -17321,7 +18248,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPQrCodeUrl(self):
-        r"""Mini program approval QR code URL.
+        r"""<p>Mini program approval QR code URL.</p>
         :rtype: str
         """
         return self._MNPQrCodeUrl
@@ -17332,7 +18259,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def MNPType(self):
-        r"""Mini program category.
+        r"""<p>Mini program category.</p>
         :rtype: str
         """
         return self._MNPType
@@ -17343,7 +18270,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApprovalUser(self):
-        r"""Approver.
+        r"""<p>Approver.</p>
         :rtype: str
         """
         return self._ApprovalUser
@@ -17354,7 +18281,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApprovalTime(self):
-        r"""Approval time.
+        r"""<p>Approval time.</p>
         :rtype: str
         """
         return self._ApprovalTime
@@ -17365,7 +18292,7 @@ class DescribeMNPApprovalListData(AbstractModel):
 
     @property
     def ApprovalNote(self):
-        r"""Approval note.
+        r"""<p>Approval note.</p>
         :rtype: str
         """
         return self._ApprovalNote
@@ -17373,6 +18300,17 @@ class DescribeMNPApprovalListData(AbstractModel):
     @ApprovalNote.setter
     def ApprovalNote(self, ApprovalNote):
         self._ApprovalNote = ApprovalNote
+
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItem
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
 
 
     def _deserialize(self, params):
@@ -17395,6 +18333,12 @@ class DescribeMNPApprovalListData(AbstractModel):
         self._ApprovalUser = params.get("ApprovalUser")
         self._ApprovalTime = params.get("ApprovalTime")
         self._ApprovalNote = params.get("ApprovalNote")
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItem()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17824,40 +18768,42 @@ class DescribeMNPListData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program appid.
+        :param _MNPId: <p>Mini game appid.</p>
         :type MNPId: str
-        :param _MNPIcon: Mini program icon.
+        :param _MNPIcon: <p>Mini game icon.</p>
         :type MNPIcon: str
-        :param _MNPName: Mini program name.
+        :param _MNPName: <p>Mini game name.</p>
         :type MNPName: str
-        :param _TeamName: Team name. 
+        :param _TeamName: <p>Team name.</p>
         :type TeamName: str
-        :param _MNPType: Mini program category.
+        :param _MNPType: <p>Mini game category.</p>
         :type MNPType: str
-        :param _Status: Mini program available status. Valid values: 1: Available; 2: Removed.
+        :param _Status: <p>Mini game available status. Valid values: 1: Available; 2: Not available.</p>
         :type Status: int
-        :param _MNPIntro: Mini program introduction.
+        :param _MNPIntro: <p>Mini game introduction.</p>
         :type MNPIntro: str
-        :param _CreateUser: Creator.
+        :param _CreateUser: <p>Creator.</p>
         :type CreateUser: str
-        :param _CreateTime: Creation time.
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _UpdateUser: Last modifier.
+        :param _UpdateUser: <p>Last modifier.</p>
         :type UpdateUser: str
-        :param _UpdateTime: Last modified time.
+        :param _UpdateTime: <p>Last modified time.</p>
         :type UpdateTime: str
-        :param _ApplicationName: Superapp name.
+        :param _ApplicationName: <p>Superapp name.</p>
         :type ApplicationName: str
-        :param _EffectStatus: Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.
+        :param _EffectStatus: <p>Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.</p>
         :type EffectStatus: int
-        :param _EffectMNPVersionId: Effective mini program version ID bound to the superapp. 
+        :param _EffectMNPVersionId: <p>Effective mini program version ID bound to the superapp.</p>
         :type EffectMNPVersionId: int
-        :param _EffectMNPVersion: Effective mini program version number bound to the superapp. 
+        :param _EffectMNPVersion: <p>Effective mini program version number bound to the superapp.</p>
         :type EffectMNPVersion: str
-        :param _TeamId: Team ID.
+        :param _TeamId: <p>Team ID.</p>
         :type TeamId: str
-        :param _TeamTypeId: Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :param _TeamTypeId: <p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>
         :type TeamTypeId: int
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItem
         """
         self._MNPId = None
         self._MNPIcon = None
@@ -17876,10 +18822,11 @@ class DescribeMNPListData(AbstractModel):
         self._EffectMNPVersion = None
         self._TeamId = None
         self._TeamTypeId = None
+        self._AgeRatings = None
 
     @property
     def MNPId(self):
-        r"""Mini program appid.
+        r"""<p>Mini game appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -17890,7 +18837,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini program icon.
+        r"""<p>Mini game icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -17901,7 +18848,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name.
+        r"""<p>Mini game name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -17912,7 +18859,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""Team name. 
+        r"""<p>Team name.</p>
         :rtype: str
         """
         return self._TeamName
@@ -17923,7 +18870,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def MNPType(self):
-        r"""Mini program category.
+        r"""<p>Mini game category.</p>
         :rtype: str
         """
         return self._MNPType
@@ -17934,7 +18881,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def Status(self):
-        r"""Mini program available status. Valid values: 1: Available; 2: Removed.
+        r"""<p>Mini game available status. Valid values: 1: Available; 2: Not available.</p>
         :rtype: int
         """
         return self._Status
@@ -17945,7 +18892,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""Mini program introduction.
+        r"""<p>Mini game introduction.</p>
         :rtype: str
         """
         return self._MNPIntro
@@ -17956,7 +18903,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator.
+        r"""<p>Creator.</p>
         :rtype: str
         """
         return self._CreateUser
@@ -17967,7 +18914,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time.
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -17978,7 +18925,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""Last modifier.
+        r"""<p>Last modifier.</p>
         :rtype: str
         """
         return self._UpdateUser
@@ -17989,7 +18936,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Last modified time.
+        r"""<p>Last modified time.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -18000,7 +18947,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""Superapp name.
+        r"""<p>Superapp name.</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -18011,7 +18958,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def EffectStatus(self):
-        r"""Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.
+        r"""<p>Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.</p>
         :rtype: int
         """
         return self._EffectStatus
@@ -18022,7 +18969,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def EffectMNPVersionId(self):
-        r"""Effective mini program version ID bound to the superapp. 
+        r"""<p>Effective mini program version ID bound to the superapp.</p>
         :rtype: int
         """
         return self._EffectMNPVersionId
@@ -18033,7 +18980,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def EffectMNPVersion(self):
-        r"""Effective mini program version number bound to the superapp. 
+        r"""<p>Effective mini program version number bound to the superapp.</p>
         :rtype: str
         """
         return self._EffectMNPVersion
@@ -18044,7 +18991,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""Team ID.
+        r"""<p>Team ID.</p>
         :rtype: str
         """
         return self._TeamId
@@ -18055,7 +19002,7 @@ class DescribeMNPListData(AbstractModel):
 
     @property
     def TeamTypeId(self):
-        r"""Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        r"""<p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>
         :rtype: int
         """
         return self._TeamTypeId
@@ -18063,6 +19010,17 @@ class DescribeMNPListData(AbstractModel):
     @TeamTypeId.setter
     def TeamTypeId(self, TeamTypeId):
         self._TeamTypeId = TeamTypeId
+
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItem
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
 
 
     def _deserialize(self, params):
@@ -18083,6 +19041,12 @@ class DescribeMNPListData(AbstractModel):
         self._EffectMNPVersion = params.get("EffectMNPVersion")
         self._TeamId = params.get("TeamId")
         self._TeamTypeId = params.get("TeamTypeId")
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItem()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18801,8 +19765,13 @@ class DescribeMNPManagerDetailData(AbstractModel):
         :type Status: int
         :param _I18nList: <p>The mini program name and description in multiple languages.</p>
         :type I18nList: list of MNPDetailI18nVO
-        :param _TeamTypeId: Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        :param _TeamTypeId: <p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>
         :type TeamTypeId: int
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItem
+        :param _MerchantId: <p>Merchant ID bound to the team to which the mini program belongs.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MerchantId: str
         """
         self._MNPType = None
         self._MNPId = None
@@ -18818,6 +19787,8 @@ class DescribeMNPManagerDetailData(AbstractModel):
         self._Status = None
         self._I18nList = None
         self._TeamTypeId = None
+        self._AgeRatings = None
+        self._MerchantId = None
 
     @property
     def MNPType(self):
@@ -18964,7 +19935,7 @@ class DescribeMNPManagerDetailData(AbstractModel):
 
     @property
     def TeamTypeId(self):
-        r"""Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.
+        r"""<p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>
         :rtype: int
         """
         return self._TeamTypeId
@@ -18972,6 +19943,29 @@ class DescribeMNPManagerDetailData(AbstractModel):
     @TeamTypeId.setter
     def TeamTypeId(self, TeamTypeId):
         self._TeamTypeId = TeamTypeId
+
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItem
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
+
+    @property
+    def MerchantId(self):
+        r"""<p>Merchant ID bound to the team to which the mini program belongs.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
 
 
     def _deserialize(self, params):
@@ -18994,6 +19988,13 @@ class DescribeMNPManagerDetailData(AbstractModel):
                 obj._deserialize(item)
                 self._I18nList.append(obj)
         self._TeamTypeId = params.get("TeamTypeId")
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItem()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
+        self._MerchantId = params.get("MerchantId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19258,6 +20259,102 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = VisitData()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMNPPaymentApprovalInfoRequest(AbstractModel):
+    r"""DescribeMNPPaymentApprovalInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _MNPId: <p>Mini program appid.</p>
+        :type MNPId: str
+        """
+        self._PlatformId = None
+        self._MNPId = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def MNPId(self):
+        r"""<p>Mini program appid.</p>
+        :rtype: str
+        """
+        return self._MNPId
+
+    @MNPId.setter
+    def MNPId(self, MNPId):
+        self._MNPId = MNPId
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._MNPId = params.get("MNPId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMNPPaymentApprovalInfoResponse(AbstractModel):
+    r"""DescribeMNPPaymentApprovalInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Queries the approval status of mini program payment activation.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.ApplyPaymentOpenDetailRes`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Queries the approval status of mini program payment activation.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ApplyPaymentOpenDetailRes`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ApplyPaymentOpenDetailRes()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -22163,6 +23260,87 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMNPTeamMerchantInfoRes(AbstractModel):
+    r"""Response parameters structure for querying bound merchant accounts of a mini program team.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MerchantID: <p>Merchant ID.</p>
+        :type MerchantID: str
+        :param _ApprovalStatus: <p>Approval status. Valid values: 0: In progress; 10: Approved; 20: Rejected.</p>
+        :type ApprovalStatus: int
+        :param _ID: <p>Merchant binding ID of the mini program team, used to unbind the merchant.</p>
+        :type ID: str
+        :param _MerchantName: <p>Merchant name.</p>
+        :type MerchantName: str
+        """
+        self._MerchantID = None
+        self._ApprovalStatus = None
+        self._ID = None
+        self._MerchantName = None
+
+    @property
+    def MerchantID(self):
+        r"""<p>Merchant ID.</p>
+        :rtype: str
+        """
+        return self._MerchantID
+
+    @MerchantID.setter
+    def MerchantID(self, MerchantID):
+        self._MerchantID = MerchantID
+
+    @property
+    def ApprovalStatus(self):
+        r"""<p>Approval status. Valid values: 0: In progress; 10: Approved; 20: Rejected.</p>
+        :rtype: int
+        """
+        return self._ApprovalStatus
+
+    @ApprovalStatus.setter
+    def ApprovalStatus(self, ApprovalStatus):
+        self._ApprovalStatus = ApprovalStatus
+
+    @property
+    def ID(self):
+        r"""<p>Merchant binding ID of the mini program team, used to unbind the merchant.</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def MerchantName(self):
+        r"""<p>Merchant name.</p>
+        :rtype: str
+        """
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
+
+
+    def _deserialize(self, params):
+        self._MerchantID = params.get("MerchantID")
+        self._ApprovalStatus = params.get("ApprovalStatus")
+        self._ID = params.get("ID")
+        self._MerchantName = params.get("MerchantName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeMNPVersionRequest(AbstractModel):
     r"""DescribeMNPVersion request structure.
 
@@ -22427,42 +23605,44 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MNPId: Mini program appid.
+        :param _MNPId: <p>Mini program appid.</p>
         :type MNPId: str
-        :param _MNPVersionId: Mini program version primary key ID.
+        :param _MNPVersionId: <p>Mini program version primary key ID.</p>
         :type MNPVersionId: int
-        :param _MNPName: Mini program name.
+        :param _MNPName: <p>Mini program name.</p>
         :type MNPName: str
-        :param _MNPIcon: Mini program icon.
+        :param _MNPIcon: <p>Mini program icon.</p>
         :type MNPIcon: str
-        :param _MNPType: Mini program category.
+        :param _MNPType: <p>Mini program category.</p>
         :type MNPType: str
-        :param _MNPIntro: Mini program introduction.
+        :param _MNPIntro: <p>Mini program introduction.</p>
         :type MNPIntro: str
-        :param _MNPDesc: Mini program description.
+        :param _MNPDesc: <p>Mini program description.</p>
         :type MNPDesc: str
-        :param _CreateUser: Creator.
+        :param _CreateUser: <p>Creator.</p>
         :type CreateUser: str
-        :param _CreateTime: Creation time.
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _MNPVersion: Mini program version number.
+        :param _MNPVersion: <p>Mini program version.</p>
         :type MNPVersion: str
-        :param _MNPVersionIntro: Version introduction.
+        :param _MNPVersionIntro: <p>Version introduction.</p>
         :type MNPVersionIntro: str
-        :param _Phase: Phase: Valid values: Develop; Platform; Online.
+        :param _Phase: <p>Phase:  Valid values: Develop; Platform; Online.</p>
         :type Phase: str
-        :param _ApprovalStatus: Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
+        :param _ApprovalStatus: <p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :type ApprovalStatus: int
-        :param _ApprovalNo: Approval number.
+        :param _ApprovalNo: <p>Approval number.</p>
         :type ApprovalNo: str
-        :param _ShowCase: Whether this is a preview. Valid values: 0: No; 1: Yes.
+        :param _ShowCase: <p>Whether this is a preview. Valid values: 0: No; 1: Yes.</p>
         :type ShowCase: int
-        :param _RollbackVersion: Rollback version number.
+        :param _RollbackVersion: <p>Rollback version number.</p>
         :type RollbackVersion: int
-        :param _Status: Available status. Valid value: 0: All; 1 Available; 2: In canary release.
+        :param _Status: <p>Available status. Valid value: 0: All; 1 Available; 2: In canary release.</p>
         :type Status: int
-        :param _VersionCurrentStatus: Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
+        :param _VersionCurrentStatus: <p>Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :type VersionCurrentStatus: int
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItem
         """
         self._MNPId = None
         self._MNPVersionId = None
@@ -22482,10 +23662,11 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
         self._RollbackVersion = None
         self._Status = None
         self._VersionCurrentStatus = None
+        self._AgeRatings = None
 
     @property
     def MNPId(self):
-        r"""Mini program appid.
+        r"""<p>Mini program appid.</p>
         :rtype: str
         """
         return self._MNPId
@@ -22496,7 +23677,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPVersionId(self):
-        r"""Mini program version primary key ID.
+        r"""<p>Mini program version primary key ID.</p>
         :rtype: int
         """
         return self._MNPVersionId
@@ -22507,7 +23688,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPName(self):
-        r"""Mini program name.
+        r"""<p>Mini program name.</p>
         :rtype: str
         """
         return self._MNPName
@@ -22518,7 +23699,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPIcon(self):
-        r"""Mini program icon.
+        r"""<p>Mini program icon.</p>
         :rtype: str
         """
         return self._MNPIcon
@@ -22529,7 +23710,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPType(self):
-        r"""Mini program category.
+        r"""<p>Mini program category.</p>
         :rtype: str
         """
         return self._MNPType
@@ -22540,7 +23721,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPIntro(self):
-        r"""Mini program introduction.
+        r"""<p>Mini program introduction.</p>
         :rtype: str
         """
         return self._MNPIntro
@@ -22551,7 +23732,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPDesc(self):
-        r"""Mini program description.
+        r"""<p>Mini program description.</p>
         :rtype: str
         """
         return self._MNPDesc
@@ -22562,7 +23743,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""Creator.
+        r"""<p>Creator.</p>
         :rtype: str
         """
         return self._CreateUser
@@ -22573,7 +23754,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time.
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -22584,7 +23765,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPVersion(self):
-        r"""Mini program version number.
+        r"""<p>Mini program version.</p>
         :rtype: str
         """
         return self._MNPVersion
@@ -22595,7 +23776,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def MNPVersionIntro(self):
-        r"""Version introduction.
+        r"""<p>Version introduction.</p>
         :rtype: str
         """
         return self._MNPVersionIntro
@@ -22606,7 +23787,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def Phase(self):
-        r"""Phase: Valid values: Develop; Platform; Online.
+        r"""<p>Phase:  Valid values: Develop; Platform; Online.</p>
         :rtype: str
         """
         return self._Phase
@@ -22617,7 +23798,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def ApprovalStatus(self):
-        r"""Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
+        r"""<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :rtype: int
         """
         return self._ApprovalStatus
@@ -22628,7 +23809,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def ApprovalNo(self):
-        r"""Approval number.
+        r"""<p>Approval number.</p>
         :rtype: str
         """
         return self._ApprovalNo
@@ -22639,7 +23820,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def ShowCase(self):
-        r"""Whether this is a preview. Valid values: 0: No; 1: Yes.
+        r"""<p>Whether this is a preview. Valid values: 0: No; 1: Yes.</p>
         :rtype: int
         """
         return self._ShowCase
@@ -22650,7 +23831,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def RollbackVersion(self):
-        r"""Rollback version number.
+        r"""<p>Rollback version number.</p>
         :rtype: int
         """
         return self._RollbackVersion
@@ -22661,7 +23842,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def Status(self):
-        r"""Available status. Valid value: 0: All; 1 Available; 2: In canary release.
+        r"""<p>Available status. Valid value: 0: All; 1 Available; 2: In canary release.</p>
         :rtype: int
         """
         return self._Status
@@ -22672,7 +23853,7 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
 
     @property
     def VersionCurrentStatus(self):
-        r"""Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.
+        r"""<p>Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>
         :rtype: int
         """
         return self._VersionCurrentStatus
@@ -22680,6 +23861,17 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
     @VersionCurrentStatus.setter
     def VersionCurrentStatus(self, VersionCurrentStatus):
         self._VersionCurrentStatus = VersionCurrentStatus
+
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItem
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
 
 
     def _deserialize(self, params):
@@ -22701,6 +23893,12 @@ class DescribeMPAllStageVersionsResp(AbstractModel):
         self._RollbackVersion = params.get("RollbackVersion")
         self._Status = params.get("Status")
         self._VersionCurrentStatus = params.get("VersionCurrentStatus")
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItem()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25889,6 +27087,117 @@ class DisableApplicationSensitiveAPIResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisableMNPPaymentRequest(AbstractModel):
+    r"""DisableMNPPayment request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _ApplicationId: <p>Superapp ID.</p>
+        :type ApplicationId: str
+        :param _ID: <p>Primary key ID, obtained from the API response of approving mini program payment activation.</p>
+        :type ID: int
+        """
+        self._PlatformId = None
+        self._ApplicationId = None
+        self._ID = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def ApplicationId(self):
+        r"""<p>Superapp ID.</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ID(self):
+        r"""<p>Primary key ID, obtained from the API response of approving mini program payment activation.</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableMNPPaymentResponse(AbstractModel):
+    r"""DisableMNPPayment response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Response parameters structure for disabling mini program payment.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Response parameters structure for disabling mini program payment.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BooleanInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DownloadApplicationConfigResp(AbstractModel):
     r"""Superapp configuration information.
 
@@ -27933,9 +29242,9 @@ class MNPVersionSubPackageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Package name.
+        :param _Name: <p>Package name.</p>
         :type Name: str
-        :param _Size: Package size. 
+        :param _Size: <p>Package size.</p>
         :type Size: int
         """
         self._Name = None
@@ -27943,7 +29252,7 @@ class MNPVersionSubPackageInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""Package name.
+        r"""<p>Package name.</p>
         :rtype: str
         """
         return self._Name
@@ -27954,7 +29263,7 @@ class MNPVersionSubPackageInfo(AbstractModel):
 
     @property
     def Size(self):
-        r"""Package size. 
+        r"""<p>Package size.</p>
         :rtype: int
         """
         return self._Size
@@ -27967,6 +29276,57 @@ class MNPVersionSubPackageInfo(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MerchantBindApprovalResp(AbstractModel):
+    r"""Response parameters structure for requesting payment merchant binding.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApprovalResult: <p>Operation response result. A value of true indicates that the operation succeeded.</p>
+        :type ApprovalResult: bool
+        :param _ResourceId: <p>Approval number. Required as an input parameter when calling the API to approve merchant binding.</p>
+        :type ResourceId: str
+        """
+        self._ApprovalResult = None
+        self._ResourceId = None
+
+    @property
+    def ApprovalResult(self):
+        r"""<p>Operation response result. A value of true indicates that the operation succeeded.</p>
+        :rtype: bool
+        """
+        return self._ApprovalResult
+
+    @ApprovalResult.setter
+    def ApprovalResult(self, ApprovalResult):
+        self._ApprovalResult = ApprovalResult
+
+    @property
+    def ResourceId(self):
+        r"""<p>Approval number. Required as an input parameter when calling the API to approve merchant binding.</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ApprovalResult = params.get("ApprovalResult")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28730,6 +30090,8 @@ class ModifyMNGRequest(AbstractModel):
         :type MNPIcon: str
         :param _I18nList: <p>Mini game name and introduction in multiple languages.</p>
         :type I18nList: list of MNPI18NSyncDto
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItemReq
         """
         self._MNPType = None
         self._MNPName = None
@@ -28739,6 +30101,7 @@ class ModifyMNGRequest(AbstractModel):
         self._PlatformId = None
         self._MNPIcon = None
         self._I18nList = None
+        self._AgeRatings = None
 
     @property
     def MNPType(self):
@@ -28828,6 +30191,17 @@ class ModifyMNGRequest(AbstractModel):
     def I18nList(self, I18nList):
         self._I18nList = I18nList
 
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItemReq
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
+
 
     def _deserialize(self, params):
         self._MNPType = params.get("MNPType")
@@ -28843,6 +30217,12 @@ class ModifyMNGRequest(AbstractModel):
                 obj = MNPI18NSyncDto()
                 obj._deserialize(item)
                 self._I18nList.append(obj)
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItemReq()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29186,6 +30566,8 @@ class ModifyMNPRequest(AbstractModel):
         :type MNPIcon: str
         :param _I18nList: <p>Mini program name and introduction in multiple languages.</p>
         :type I18nList: list of MNPI18NSyncDto
+        :param _AgeRatings: <p>Age rating information.</p>
+        :type AgeRatings: list of AgeRatingItemReq
         """
         self._MNPType = None
         self._MNPName = None
@@ -29195,6 +30577,7 @@ class ModifyMNPRequest(AbstractModel):
         self._PlatformId = None
         self._MNPIcon = None
         self._I18nList = None
+        self._AgeRatings = None
 
     @property
     def MNPType(self):
@@ -29284,6 +30667,17 @@ class ModifyMNPRequest(AbstractModel):
     def I18nList(self, I18nList):
         self._I18nList = I18nList
 
+    @property
+    def AgeRatings(self):
+        r"""<p>Age rating information.</p>
+        :rtype: list of AgeRatingItemReq
+        """
+        return self._AgeRatings
+
+    @AgeRatings.setter
+    def AgeRatings(self, AgeRatings):
+        self._AgeRatings = AgeRatings
+
 
     def _deserialize(self, params):
         self._MNPType = params.get("MNPType")
@@ -29299,6 +30693,12 @@ class ModifyMNPRequest(AbstractModel):
                 obj = MNPI18NSyncDto()
                 obj._deserialize(item)
                 self._I18nList.append(obj)
+        if params.get("AgeRatings") is not None:
+            self._AgeRatings = []
+            for item in params.get("AgeRatings"):
+                obj = AgeRatingItemReq()
+                obj._deserialize(item)
+                self._AgeRatings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30790,6 +32190,102 @@ class QueryMNGOnlineVersionResp(AbstractModel):
         
 
 
+class QueryMNPMerchantInfoRequest(AbstractModel):
+    r"""QueryMNPMerchantInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _QueryTeamID: <p>Mini program appid.</p>
+        :type QueryTeamID: str
+        """
+        self._PlatformId = None
+        self._QueryTeamID = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def QueryTeamID(self):
+        r"""<p>Mini program appid.</p>
+        :rtype: str
+        """
+        return self._QueryTeamID
+
+    @QueryTeamID.setter
+    def QueryTeamID(self, QueryTeamID):
+        self._QueryTeamID = QueryTeamID
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._QueryTeamID = params.get("QueryTeamID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMNPMerchantInfoResponse(AbstractModel):
+    r"""QueryMNPMerchantInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Response parameters structure for querying the merchant approval status of a mini program team.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPTeamMerchantInfoRes`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Response parameters structure for querying the merchant approval status of a mini program team.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPTeamMerchantInfoRes`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeMNPTeamMerchantInfoRes()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class QueryOnlineVersionResp(AbstractModel):
     r"""Response for querying mini program released version IDs.
 
@@ -31355,6 +32851,243 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RequestPaymentEnableRequest(AbstractModel):
+    r"""RequestPaymentEnable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _MNPId: <p>Mini program appid.</p>
+        :type MNPId: str
+        :param _ApplyNote: <p>Note for requesting payment activation.</p>
+        :type ApplyNote: str
+        """
+        self._PlatformId = None
+        self._MNPId = None
+        self._ApplyNote = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def MNPId(self):
+        r"""<p>Mini program appid.</p>
+        :rtype: str
+        """
+        return self._MNPId
+
+    @MNPId.setter
+    def MNPId(self, MNPId):
+        self._MNPId = MNPId
+
+    @property
+    def ApplyNote(self):
+        r"""<p>Note for requesting payment activation.</p>
+        :rtype: str
+        """
+        return self._ApplyNote
+
+    @ApplyNote.setter
+    def ApplyNote(self, ApplyNote):
+        self._ApplyNote = ApplyNote
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._MNPId = params.get("MNPId")
+        self._ApplyNote = params.get("ApplyNote")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RequestPaymentEnableResponse(AbstractModel):
+    r"""RequestPaymentEnable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Response parameters structure for mini program payment activation. The returned approval number is required when calling the API to approve payment activation.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.ChangePaymentV2BindMerchantRes`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Response parameters structure for mini program payment activation. The returned approval number is required when calling the API to approve payment activation.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.ChangePaymentV2BindMerchantRes`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ChangePaymentV2BindMerchantRes()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class RequestPaymentMerchantBindingRequest(AbstractModel):
+    r"""RequestPaymentMerchantBinding request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _TeamId: <p>Mini program appid.</p>
+        :type TeamId: str
+        :param _MerchantID: <p>Merchant ID.</p>
+        :type MerchantID: str
+        :param _MerchantName: <p>Merchant name.</p>
+        :type MerchantName: str
+        """
+        self._PlatformId = None
+        self._TeamId = None
+        self._MerchantID = None
+        self._MerchantName = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def TeamId(self):
+        r"""<p>Mini program appid.</p>
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def MerchantID(self):
+        r"""<p>Merchant ID.</p>
+        :rtype: str
+        """
+        return self._MerchantID
+
+    @MerchantID.setter
+    def MerchantID(self, MerchantID):
+        self._MerchantID = MerchantID
+
+    @property
+    def MerchantName(self):
+        r"""<p>Merchant name.</p>
+        :rtype: str
+        """
+        return self._MerchantName
+
+    @MerchantName.setter
+    def MerchantName(self, MerchantName):
+        self._MerchantName = MerchantName
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._TeamId = params.get("TeamId")
+        self._MerchantID = params.get("MerchantID")
+        self._MerchantName = params.get("MerchantName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RequestPaymentMerchantBindingResponse(AbstractModel):
+    r"""RequestPaymentMerchantBinding response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Response parameters structure for the application of a mini program team to bind a merchant ID.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.MerchantBindApprovalResp`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Response parameters structure for the application of a mini program team to bind a merchant ID.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.MerchantBindApprovalResp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = MerchantBindApprovalResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class ResetMNGAppSecretRequest(AbstractModel):
@@ -32362,6 +34095,228 @@ class SubscribeMessageTemplateLibraryKeywordI18nInfoResp(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindMNPPaymentMerchantRequest(AbstractModel):
+    r"""UnbindMNPPaymentMerchant request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _TeamId: <p>Mini program team ID.</p>
+        :type TeamId: str
+        :param _ID: <p>Primary key ID, obtained from the API response of approving the merchant binding of a mini program team.</p>
+        :type ID: str
+        """
+        self._PlatformId = None
+        self._TeamId = None
+        self._ID = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def TeamId(self):
+        r"""<p>Mini program team ID.</p>
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def ID(self):
+        r"""<p>Primary key ID, obtained from the API response of approving the merchant binding of a mini program team.</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._TeamId = params.get("TeamId")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindMNPPaymentMerchantResponse(AbstractModel):
+    r"""UnbindMNPPaymentMerchant response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Response parameters structure for the mini program team actively unbinding the merchant account.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Response parameters structure for the mini program team actively unbinding the merchant account.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BooleanInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UnbindPaymentMerchantRequest(AbstractModel):
+    r"""UnbindPaymentMerchant request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>Platform ID.</p>
+        :type PlatformId: str
+        :param _ApplicationId: <p>Superapp ID.</p>
+        :type ApplicationId: str
+        :param _ID: <p>Primary key ID, obtained from the API response of approving the merchant binding of a mini program team.</p>
+        :type ID: int
+        """
+        self._PlatformId = None
+        self._ApplicationId = None
+        self._ID = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>Platform ID.</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def ApplicationId(self):
+        r"""<p>Superapp ID.</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ID(self):
+        r"""<p>Primary key ID, obtained from the API response of approving the merchant binding of a mini program team.</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindPaymentMerchantResponse(AbstractModel):
+    r"""UnbindPaymentMerchant response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Response parameters structure for the superapp actively unbinding the merchant account of a mini program team.</p>
+        :type Data: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Response parameters structure for the superapp actively unbinding the merchant account of a mini program team.</p>
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.BooleanInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BooleanInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class UploadFileTempSecret(AbstractModel):
