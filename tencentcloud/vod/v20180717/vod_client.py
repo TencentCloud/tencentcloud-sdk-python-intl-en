@@ -459,7 +459,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAigcVideoRedrawTask(self, request):
-        r"""This API is used to generate AIGC videos. API calls will occur actual fee. Refer to the video-on-demand [AIGC video generation billing documentation](https://www.tencentcloud.com/zh/document/product/266/14666#96b3b59a-f9e1-49e9-966a-bedb70a4bf12). The feature settlement mode is [pay-as-you-go](https://www.tencentcloud.com/document/product/266/2838?from_cn_redirect=1). Daily billing customers will be charged on the second day for usage on the day, while monthly billing customers will be billed on the 1st of the next month for usage in the previous month.
+        r"""This API is used to generate AIGC videos. API calls incur actual fees. Refer to the video-on-demand (VOD) AIGC video generation billing documentation. The feature settlement mode is pay-as-you-go. Daily billing customers will be billed on the second day for usage on the day. Monthly billing customers will be billed on the 1st of the next month for usage in the previous month.
 
         :param request: Request instance for CreateAigcVideoRedrawTask.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcVideoRedrawTaskRequest`
@@ -1084,7 +1084,7 @@ class VodClient(AbstractClient):
 
 
     def CreateSceneAigcImageTask(self, request):
-        r"""This API is used to generate scenario-based AIGC images. <b>This interface is in beta. If you need to use it, please contact us. API calls will incur actual fees.</b>
+        r"""This API is used to generate scenario-based AIGC images. API calls will incur actual fees. Refer to the on-demand video AIGC image generation billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#9c4dc6ff-4b3f-4b25-bf2d-393889dfb9ac). The feature's settlement mode is postpaid (https://www.tencentcloud.com/document/product/266/2838?from_cn_redirect=1). For daily billing customers, usage on the day will be billed on the second day. For monthly billing customers, usage fees from the previous month will be unified and billed on the 1st of the next month.
 
         :param request: Request instance for CreateSceneAigcImageTask.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateSceneAigcImageTaskRequest`
@@ -5413,6 +5413,29 @@ class VodClient(AbstractClient):
             body = self.call("StartCDNDomain", params, headers=headers)
             response = json.loads(body)
             model = models.StartCDNDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAigcApiToken(self, request):
+        r"""This API is used to create a Token for invoking the AIGC API. After creation, data sync has a delay. It becomes queryable or deletable after about 30 seconds.
+
+        :param request: Request instance for UpdateAigcApiToken.
+        :type request: :class:`tencentcloud.vod.v20180717.models.UpdateAigcApiTokenRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.UpdateAigcApiTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAigcApiToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAigcApiTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

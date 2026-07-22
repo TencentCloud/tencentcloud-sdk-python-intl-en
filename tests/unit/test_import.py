@@ -324,6 +324,11 @@ def test_import_es_v20180416():
     from tencentcloud.es.v20180416 import models
 
 
+def test_import_es_v20250101():
+    from tencentcloud.es.v20250101 import es_client
+    from tencentcloud.es.v20250101 import models
+
+
 def test_import_facefusion_v20220927():
     from tencentcloud.facefusion.v20220927 import facefusion_client
     from tencentcloud.facefusion.v20220927 import models

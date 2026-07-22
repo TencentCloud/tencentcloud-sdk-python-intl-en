@@ -10735,6 +10735,77 @@ class AiSampleWordInfo(AbstractModel):
         
 
 
+class AiTryOnConfig(AbstractModel):
+    r"""AI dress up configuration message.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>Dress up model.</p><p>Enumeration value:</p><ul><li>WAND-tryon-1.0-lite: Lightweight tier, prioritizing speed.</li><li>WAND-tryon-1.0-flash: Balanced tier, taking into account effect and latency.</li><li>WAND-tryon-1.0-pro: High-quality tier, prioritizing effect.</li></ul>
+        :type Model: str
+        :param _ClothesFileInfos: <p>Input the image list of clothing that needs to be replaced. 1-4 images are supported.</p>
+        :type ClothesFileInfos: list of SceneAigcImageTaskInputFileInfo
+        :param _Prompt: <p>Dress up command Prompt.</p>
+        :type Prompt: str
+        """
+        self._Model = None
+        self._ClothesFileInfos = None
+        self._Prompt = None
+
+    @property
+    def Model(self):
+        r"""<p>Dress up model.</p><p>Enumeration value:</p><ul><li>WAND-tryon-1.0-lite: Lightweight tier, prioritizing speed.</li><li>WAND-tryon-1.0-flash: Balanced tier, taking into account effect and latency.</li><li>WAND-tryon-1.0-pro: High-quality tier, prioritizing effect.</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def ClothesFileInfos(self):
+        r"""<p>Input the image list of clothing that needs to be replaced. 1-4 images are supported.</p>
+        :rtype: list of SceneAigcImageTaskInputFileInfo
+        """
+        return self._ClothesFileInfos
+
+    @ClothesFileInfos.setter
+    def ClothesFileInfos(self, ClothesFileInfos):
+        self._ClothesFileInfos = ClothesFileInfos
+
+    @property
+    def Prompt(self):
+        r"""<p>Dress up command Prompt.</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("ClothesFileInfos") is not None:
+            self._ClothesFileInfos = []
+            for item in params.get("ClothesFileInfos"):
+                obj = SceneAigcImageTaskInputFileInfo()
+                obj._deserialize(item)
+                self._ClothesFileInfos.append(obj)
+        self._Prompt = params.get("Prompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcAdvancedCustomElementInfo(AbstractModel):
     r"""Advanced AIGC Custom Entity Information
 
@@ -12064,20 +12135,23 @@ class AigcImageSceneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: <p>AI image generation scenario type. Available values:</p><ul><li>change_clothes: Change clothes in regular scenes.</li><li>change_clothes_under: Change clothes in special scenarios.</li><li>change_clothes_top_wear: Change upper body clothes.</li><li>change_clothes_bottom_wear: Change lower body clothes.</li><li>change_clothes_full_wear: Change full body clothes.</li><li>product_image: AI-generated product image.</li><li>outpainting: AI image outpainting.</li></ul>
+        :param _Type: <p>AI image generation scenario type, available values:</p><ul><li><code>ai_try_on</code>: AI dress up.</li><li><code>product_image</code>: AI product image.</li><li><code>outpainting</code>: AI outpainting.</li></ul><p>The following <code>Type</code> are abandoned and no longer updated subsequently:</p><ul><li><code>change_clothes</code></li><li><code>change_clothes_under</code></li><li><code>change_clothes_top_wear</code></li><li><code>change_clothes_bottom_wear</code></li><li><code>change_clothes_full_wear</code></li></ul>
         :type Type: str
-        :param _ChangeClothesConfig: <p>When the Type is one of the following column types, this item is required and represents the AI clothing change image generation config:</p><ul><li>change_clothes</li><li>change_clothes_under</li><li>change_clothes_full_wear</li><li>change_clothes_top_wear</li><li>change_clothes_bottom_wear</li></ul>
+        :param _AiTryOnConfig: <p>Required when Type is ai_try_on. Represents AI dress up config.</p>
+        :type AiTryOnConfig: :class:`tencentcloud.vod.v20180717.models.AiTryOnConfig`
+        :param _ChangeClothesConfig: <p><strong>Abandoned, please use AiTryOnConfig.</strong> When Type is one of the following column types, this item is required and represents AI try-on image generation configuration parameters:</p><ul><li>change_clothes</li><li>change_clothes_under</li></ul>
         :type ChangeClothesConfig: :class:`tencentcloud.vod.v20180717.models.ChangeClothesConfig`
-        :param _ProductImageConfig: <p>Valid when Type is product_image, indicating AI-generated product image config.</p>
+        :param _ProductImageConfig: <p>Required when Type is product_image. It represents the AI product image config.</p>
         :type ProductImageConfig: :class:`tencentcloud.vod.v20180717.models.ProductImageConfig`
         """
         self._Type = None
+        self._AiTryOnConfig = None
         self._ChangeClothesConfig = None
         self._ProductImageConfig = None
 
     @property
     def Type(self):
-        r"""<p>AI image generation scenario type. Available values:</p><ul><li>change_clothes: Change clothes in regular scenes.</li><li>change_clothes_under: Change clothes in special scenarios.</li><li>change_clothes_top_wear: Change upper body clothes.</li><li>change_clothes_bottom_wear: Change lower body clothes.</li><li>change_clothes_full_wear: Change full body clothes.</li><li>product_image: AI-generated product image.</li><li>outpainting: AI image outpainting.</li></ul>
+        r"""<p>AI image generation scenario type, available values:</p><ul><li><code>ai_try_on</code>: AI dress up.</li><li><code>product_image</code>: AI product image.</li><li><code>outpainting</code>: AI outpainting.</li></ul><p>The following <code>Type</code> are abandoned and no longer updated subsequently:</p><ul><li><code>change_clothes</code></li><li><code>change_clothes_under</code></li><li><code>change_clothes_top_wear</code></li><li><code>change_clothes_bottom_wear</code></li><li><code>change_clothes_full_wear</code></li></ul>
         :rtype: str
         """
         return self._Type
@@ -12087,8 +12161,19 @@ class AigcImageSceneInfo(AbstractModel):
         self._Type = Type
 
     @property
+    def AiTryOnConfig(self):
+        r"""<p>Required when Type is ai_try_on. Represents AI dress up config.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AiTryOnConfig`
+        """
+        return self._AiTryOnConfig
+
+    @AiTryOnConfig.setter
+    def AiTryOnConfig(self, AiTryOnConfig):
+        self._AiTryOnConfig = AiTryOnConfig
+
+    @property
     def ChangeClothesConfig(self):
-        r"""<p>When the Type is one of the following column types, this item is required and represents the AI clothing change image generation config:</p><ul><li>change_clothes</li><li>change_clothes_under</li><li>change_clothes_full_wear</li><li>change_clothes_top_wear</li><li>change_clothes_bottom_wear</li></ul>
+        r"""<p><strong>Abandoned, please use AiTryOnConfig.</strong> When Type is one of the following column types, this item is required and represents AI try-on image generation configuration parameters:</p><ul><li>change_clothes</li><li>change_clothes_under</li></ul>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ChangeClothesConfig`
         """
         return self._ChangeClothesConfig
@@ -12099,7 +12184,7 @@ class AigcImageSceneInfo(AbstractModel):
 
     @property
     def ProductImageConfig(self):
-        r"""<p>Valid when Type is product_image, indicating AI-generated product image config.</p>
+        r"""<p>Required when Type is product_image. It represents the AI product image config.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProductImageConfig`
         """
         return self._ProductImageConfig
@@ -12111,6 +12196,9 @@ class AigcImageSceneInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
+        if params.get("AiTryOnConfig") is not None:
+            self._AiTryOnConfig = AiTryOnConfig()
+            self._AiTryOnConfig._deserialize(params.get("AiTryOnConfig"))
         if params.get("ChangeClothesConfig") is not None:
             self._ChangeClothesConfig = ChangeClothesConfig()
             self._ChangeClothesConfig._deserialize(params.get("ChangeClothesConfig"))
@@ -12856,6 +12944,338 @@ class AigcQuotaItem(AbstractModel):
         
 
 
+class AigcTextDetail(AbstractModel):
+    r"""AIGC Text Detail
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: <p>Entries per page</p>
+        :type PageSize: int
+        :param _ScrollToken: <p>The scroll_token returned in response on the previous page is used to turn to the next page</p>
+        :type ScrollToken: str
+        :param _Data: <p>Raw data details</p>
+        :type Data: list of AigcTextDetailData
+        """
+        self._PageSize = None
+        self._ScrollToken = None
+        self._Data = None
+
+    @property
+    def PageSize(self):
+        r"""<p>Entries per page</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ScrollToken(self):
+        r"""<p>The scroll_token returned in response on the previous page is used to turn to the next page</p>
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def Data(self):
+        r"""<p>Raw data details</p>
+        :rtype: list of AigcTextDetailData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._ScrollToken = params.get("ScrollToken")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AigcTextDetailData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcTextDetailData(AbstractModel):
+    r"""Aigc Text Detail Data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>Request start time (RFC3339)</p>
+        :type Timestamp: str
+        :param _ReqId: <p>Gateway layer request ID</p>
+        :type ReqId: str
+        :param _ChatId: <p>Dialogue ID returned by the backend model</p>
+        :type ChatId: str
+        :param _StatusCode: <p>HTTP status code returned to client</p>
+        :type StatusCode: int
+        :param _Model: <p>Model name</p>
+        :type Model: str
+        :param _SubAppId: <p>Application ID</p>
+        :type SubAppId: int
+        :param _ApiKey: <p>api_key after masking: first 8 digits + **** (return without modification when length ≤ 8)</p>
+        :type ApiKey: str
+        :param _Stream: <p>Whether to return in streaming mode</p>
+        :type Stream: bool
+        :param _InputTokens: <p>Number of input tokens</p>
+        :type InputTokens: int
+        :param _OutputTokens: <p>Number of output tokens</p>
+        :type OutputTokens: int
+        :param _CacheInputTokens: <p>Number of tokens with prompt cache hit</p>
+        :type CacheInputTokens: int
+        :param _TotalTokens: <p>Total tokens</p>
+        :type TotalTokens: int
+        :param _TPS: <p>tokens per second in the generation stage</p>
+        :type TPS: float
+        :param _TTFT: <p>Time To First Token</p><p>Measurement unit: seconds</p>
+        :type TTFT: float
+        :param _Total: <p>End-to-end total time</p><p>Unit: seconds</p>
+        :type Total: float
+        :param _ApiType: <p>Entry protocol:completions / responses / anthropic</p>
+        :type ApiType: str
+        """
+        self._Timestamp = None
+        self._ReqId = None
+        self._ChatId = None
+        self._StatusCode = None
+        self._Model = None
+        self._SubAppId = None
+        self._ApiKey = None
+        self._Stream = None
+        self._InputTokens = None
+        self._OutputTokens = None
+        self._CacheInputTokens = None
+        self._TotalTokens = None
+        self._TPS = None
+        self._TTFT = None
+        self._Total = None
+        self._ApiType = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>Request start time (RFC3339)</p>
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def ReqId(self):
+        r"""<p>Gateway layer request ID</p>
+        :rtype: str
+        """
+        return self._ReqId
+
+    @ReqId.setter
+    def ReqId(self, ReqId):
+        self._ReqId = ReqId
+
+    @property
+    def ChatId(self):
+        r"""<p>Dialogue ID returned by the backend model</p>
+        :rtype: str
+        """
+        return self._ChatId
+
+    @ChatId.setter
+    def ChatId(self, ChatId):
+        self._ChatId = ChatId
+
+    @property
+    def StatusCode(self):
+        r"""<p>HTTP status code returned to client</p>
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def Model(self):
+        r"""<p>Model name</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def SubAppId(self):
+        r"""<p>Application ID</p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ApiKey(self):
+        r"""<p>api_key after masking: first 8 digits + **** (return without modification when length ≤ 8)</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def Stream(self):
+        r"""<p>Whether to return in streaming mode</p>
+        :rtype: bool
+        """
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+    @property
+    def InputTokens(self):
+        r"""<p>Number of input tokens</p>
+        :rtype: int
+        """
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def OutputTokens(self):
+        r"""<p>Number of output tokens</p>
+        :rtype: int
+        """
+        return self._OutputTokens
+
+    @OutputTokens.setter
+    def OutputTokens(self, OutputTokens):
+        self._OutputTokens = OutputTokens
+
+    @property
+    def CacheInputTokens(self):
+        r"""<p>Number of tokens with prompt cache hit</p>
+        :rtype: int
+        """
+        return self._CacheInputTokens
+
+    @CacheInputTokens.setter
+    def CacheInputTokens(self, CacheInputTokens):
+        self._CacheInputTokens = CacheInputTokens
+
+    @property
+    def TotalTokens(self):
+        r"""<p>Total tokens</p>
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def TPS(self):
+        r"""<p>tokens per second in the generation stage</p>
+        :rtype: float
+        """
+        return self._TPS
+
+    @TPS.setter
+    def TPS(self, TPS):
+        self._TPS = TPS
+
+    @property
+    def TTFT(self):
+        r"""<p>Time To First Token</p><p>Measurement unit: seconds</p>
+        :rtype: float
+        """
+        return self._TTFT
+
+    @TTFT.setter
+    def TTFT(self, TTFT):
+        self._TTFT = TTFT
+
+    @property
+    def Total(self):
+        r"""<p>End-to-end total time</p><p>Unit: seconds</p>
+        :rtype: float
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ApiType(self):
+        r"""<p>Entry protocol:completions / responses / anthropic</p>
+        :rtype: str
+        """
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._ReqId = params.get("ReqId")
+        self._ChatId = params.get("ChatId")
+        self._StatusCode = params.get("StatusCode")
+        self._Model = params.get("Model")
+        self._SubAppId = params.get("SubAppId")
+        self._ApiKey = params.get("ApiKey")
+        self._Stream = params.get("Stream")
+        self._InputTokens = params.get("InputTokens")
+        self._OutputTokens = params.get("OutputTokens")
+        self._CacheInputTokens = params.get("CacheInputTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        self._TPS = params.get("TPS")
+        self._TTFT = params.get("TTFT")
+        self._Total = params.get("Total")
+        self._ApiType = params.get("ApiType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcUsageDataItem(AbstractModel):
     r"""AIGC stats
 
@@ -13572,6 +13992,42 @@ class AigcVideoRedrawTask(AbstractModel):
         
 
 
+class AigcVideoRedrawTaskInfo(AbstractModel):
+    r"""AIGC video conversion figure parameter information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Style: <p>For description of style. Limited to 50 characters.</p>
+        :type Style: str
+        """
+        self._Style = None
+
+    @property
+    def Style(self):
+        r"""<p>For description of style. Limited to 50 characters.</p>
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+
+    def _deserialize(self, params):
+        self._Style = params.get("Style")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcVideoRedrawTaskInput(AbstractModel):
     r"""Input of the AIGC video conversion task.
 
@@ -13581,10 +14037,13 @@ class AigcVideoRedrawTaskInput(AbstractModel):
         r"""
         :param _FileInfo: <p>Input info of the AIGC video conversion task.</p>
         :type FileInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
+        :param _TaskInfo: <p>AIGC video conversion task parameter information.</p>
+        :type TaskInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInfo`
         :param _OutputConfig: <p>AIGC video conversion output configuration.</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawOutputConfig`
         """
         self._FileInfo = None
+        self._TaskInfo = None
         self._OutputConfig = None
 
     @property
@@ -13597,6 +14056,17 @@ class AigcVideoRedrawTaskInput(AbstractModel):
     @FileInfo.setter
     def FileInfo(self, FileInfo):
         self._FileInfo = FileInfo
+
+    @property
+    def TaskInfo(self):
+        r"""<p>AIGC video conversion task parameter information.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
 
     @property
     def OutputConfig(self):
@@ -13614,6 +14084,9 @@ class AigcVideoRedrawTaskInput(AbstractModel):
         if params.get("FileInfo") is not None:
             self._FileInfo = AigcVideoRedrawTaskInputFileInfo()
             self._FileInfo._deserialize(params.get("FileInfo"))
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = AigcVideoRedrawTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
         if params.get("OutputConfig") is not None:
             self._OutputConfig = AigcVideoRedrawOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
@@ -14497,9 +14970,12 @@ class AigcVideoTaskOutput(AbstractModel):
         :type FileInfos: list of AigcVideoTaskOutputFileInfo
         :param _ProcedureTaskIds: <p>The task ID of the task type Procedure. If a task flow template (Procedure) is specified when initiating <a href="https://www.tencentcloud.com/document/product/266/126239?from_cn_redirect=1">AIGC video task creation</a>, the task is initiated when the task flow template specifies one or more of MediaProcessTask, AiAnalysisTask, or AiRecognitionTask.</p>
         :type ProcedureTaskIds: list of str
+        :param _Usage: <p>Usage information for AIGC video tasks.</p>
+        :type Usage: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskUsage`
         """
         self._FileInfos = None
         self._ProcedureTaskIds = None
+        self._Usage = None
 
     @property
     def FileInfos(self):
@@ -14523,6 +14999,17 @@ class AigcVideoTaskOutput(AbstractModel):
     def ProcedureTaskIds(self, ProcedureTaskIds):
         self._ProcedureTaskIds = ProcedureTaskIds
 
+    @property
+    def Usage(self):
+        r"""<p>Usage information for AIGC video tasks.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
 
     def _deserialize(self, params):
         if params.get("FileInfos") is not None:
@@ -14532,6 +15019,9 @@ class AigcVideoTaskOutput(AbstractModel):
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
         self._ProcedureTaskIds = params.get("ProcedureTaskIds")
+        if params.get("Usage") is not None:
+            self._Usage = AigcVideoTaskUsage()
+            self._Usage._deserialize(params.get("Usage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14705,6 +15195,57 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
             self._MetaData = MediaMetaData()
             self._MetaData._deserialize(params.get("MetaData"))
         self._UsageType = params.get("UsageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcVideoTaskUsage(AbstractModel):
+    r"""Usage amount for AIGC video tasks.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputTokens: <p>Manually input the number of tokens.</p>
+        :type InputTokens: int
+        :param _ThoughtTokens: <p>Number of tokens generated by thinking.</p>
+        :type ThoughtTokens: int
+        """
+        self._InputTokens = None
+        self._ThoughtTokens = None
+
+    @property
+    def InputTokens(self):
+        r"""<p>Manually input the number of tokens.</p>
+        :rtype: int
+        """
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def ThoughtTokens(self):
+        r"""<p>Number of tokens generated by thinking.</p>
+        :rtype: int
+        """
+        return self._ThoughtTokens
+
+    @ThoughtTokens.setter
+    def ThoughtTokens(self, ThoughtTokens):
+        self._ThoughtTokens = ThoughtTokens
+
+
+    def _deserialize(self, params):
+        self._InputTokens = params.get("InputTokens")
+        self._ThoughtTokens = params.get("ThoughtTokens")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16953,68 +17494,26 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: The audio codec.
-If `Container` is `mp3`, the valid value is:
-<li>`libmp3lame`</li>
-If `Container` is `ogg` or `flac`, the valid value is:
-<li>`flac`</li>
-If `Container` is `m4a`, the valid values are:
-<li>`libfdk_aac`</li>
-<li>`libmp3lame`</li>
-<li>`ac3`</li>
-If `Container` is `mp4` or `flv`, the valid values are:
-<li>`libfdk_aac` (Recommended for MP4)</li>
-<li>`libmp3lame` (Recommended for FLV)</li>
-<li>`mp2`</li>
-If `Container` is `hls`, the valid value is:
-<li>`libfdk_aac`</li>
-If `Format` is `HLS` or `MPEG-DASH`, the valid value is:
-<li>`libfdk_aac`</li>
-If `Container` is `wav`, the valid value is:
-<li>`pcm16`</li>
+        :param _Codec: <p>Audio stream encoding format.<br>When the outer parameter Container is mp3, the valid value is:</p><li>libmp3lame.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>libfdk_aac;</li><li>libmp3lame;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>libfdk_aac: suitable for mp4.</li><li>libmp3lame: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid value is:<li>libfdk_aac.</li>When the outer parameter Format is HLS or MPEG-DASH, the valid value is:<li>libfdk_aac.</li>When the outer parameter Container is wav, the valid value is:<li>pcm16.</li>
         :type Codec: str
-        :param _Bitrate: Bitrate of the audio stream, value ranges from 0 to [26, 256], measurement unit: kbps. When value is 0, it means VOD automatically sets bitrate.
+        :param _Bitrate: <p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means the bitrate is set automatically by VOD.</p>
         :type Bitrate: int
-        :param _SampleRate: The audio sample rate. Valid values:
-<li>`16000` (valid only if `Codec` is `pcm16`)</li>
-<li>`32000`</li>
-<li>`44100`</li>
-<li>`48000`</li>
-Unit: Hz.
+        :param _SampleRate: <p>Sampling rate of the audio stream. Available values:</p><li>16000. Available only when Codec is pcm16.</li><li>32000</li><li>44100</li><li>48000</li>Unit: Hz.
         :type SampleRate: int
-        :param _AudioChannel: Audio channel system. Valid values:
-<li>1: mono-channel</li>
-<li>2: dual-channel</li>
-<li>6: stereo</li>
-You cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).
+        :param _AudioChannel: <p>Audio channel. Available values:</p><li>1: Single channel.</li><li>2: Two channels.</li><li>6: Stereo.</li><li>0: The number of audio channels remains the same as the original audio.</li>When the media container format is an audio format (flac, ogg, mp3, m4a), the number of audio channels cannot be set to stereo.
         :type AudioChannel: int
+        :param _StreamSelects: <p>Specifies the retained audio tracks for output. All source tracks are retained. </p><p>This parameter is valid only when specified in the OverrideParameter parameter and is disabled in other cases.</p>
+        :type StreamSelects: list of int
         """
         self._Codec = None
         self._Bitrate = None
         self._SampleRate = None
         self._AudioChannel = None
+        self._StreamSelects = None
 
     @property
     def Codec(self):
-        r"""The audio codec.
-If `Container` is `mp3`, the valid value is:
-<li>`libmp3lame`</li>
-If `Container` is `ogg` or `flac`, the valid value is:
-<li>`flac`</li>
-If `Container` is `m4a`, the valid values are:
-<li>`libfdk_aac`</li>
-<li>`libmp3lame`</li>
-<li>`ac3`</li>
-If `Container` is `mp4` or `flv`, the valid values are:
-<li>`libfdk_aac` (Recommended for MP4)</li>
-<li>`libmp3lame` (Recommended for FLV)</li>
-<li>`mp2`</li>
-If `Container` is `hls`, the valid value is:
-<li>`libfdk_aac`</li>
-If `Format` is `HLS` or `MPEG-DASH`, the valid value is:
-<li>`libfdk_aac`</li>
-If `Container` is `wav`, the valid value is:
-<li>`pcm16`</li>
+        r"""<p>Audio stream encoding format.<br>When the outer parameter Container is mp3, the valid value is:</p><li>libmp3lame.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>libfdk_aac;</li><li>libmp3lame;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>libfdk_aac: suitable for mp4.</li><li>libmp3lame: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid value is:<li>libfdk_aac.</li>When the outer parameter Format is HLS or MPEG-DASH, the valid value is:<li>libfdk_aac.</li>When the outer parameter Container is wav, the valid value is:<li>pcm16.</li>
         :rtype: str
         """
         return self._Codec
@@ -17025,7 +17524,7 @@ If `Container` is `wav`, the valid value is:
 
     @property
     def Bitrate(self):
-        r"""Bitrate of the audio stream, value ranges from 0 to [26, 256], measurement unit: kbps. When value is 0, it means VOD automatically sets bitrate.
+        r"""<p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means the bitrate is set automatically by VOD.</p>
         :rtype: int
         """
         return self._Bitrate
@@ -17036,12 +17535,7 @@ If `Container` is `wav`, the valid value is:
 
     @property
     def SampleRate(self):
-        r"""The audio sample rate. Valid values:
-<li>`16000` (valid only if `Codec` is `pcm16`)</li>
-<li>`32000`</li>
-<li>`44100`</li>
-<li>`48000`</li>
-Unit: Hz.
+        r"""<p>Sampling rate of the audio stream. Available values:</p><li>16000. Available only when Codec is pcm16.</li><li>32000</li><li>44100</li><li>48000</li>Unit: Hz.
         :rtype: int
         """
         return self._SampleRate
@@ -17052,11 +17546,7 @@ Unit: Hz.
 
     @property
     def AudioChannel(self):
-        r"""Audio channel system. Valid values:
-<li>1: mono-channel</li>
-<li>2: dual-channel</li>
-<li>6: stereo</li>
-You cannot set the sound channel as stereo for media files in container formats for audios (FLAC, OGG, MP3, M4A).
+        r"""<p>Audio channel. Available values:</p><li>1: Single channel.</li><li>2: Two channels.</li><li>6: Stereo.</li><li>0: The number of audio channels remains the same as the original audio.</li>When the media container format is an audio format (flac, ogg, mp3, m4a), the number of audio channels cannot be set to stereo.
         :rtype: int
         """
         return self._AudioChannel
@@ -17065,12 +17555,24 @@ You cannot set the sound channel as stereo for media files in container formats 
     def AudioChannel(self, AudioChannel):
         self._AudioChannel = AudioChannel
 
+    @property
+    def StreamSelects(self):
+        r"""<p>Specifies the retained audio tracks for output. All source tracks are retained. </p><p>This parameter is valid only when specified in the OverrideParameter parameter and is disabled in other cases.</p>
+        :rtype: list of int
+        """
+        return self._StreamSelects
+
+    @StreamSelects.setter
+    def StreamSelects(self, StreamSelects):
+        self._StreamSelects = StreamSelects
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
         self._Bitrate = params.get("Bitrate")
         self._SampleRate = params.get("SampleRate")
         self._AudioChannel = params.get("AudioChannel")
+        self._StreamSelects = params.get("StreamSelects")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18024,6 +18526,168 @@ class AwsPrivateAccess(AbstractModel):
         self._SecretKey = params.get("SecretKey")
         self._Region = params.get("Region")
         self._Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BeautyEffectItem(AbstractModel):
+    r"""Image beauty effect item.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Whether to enable beauty effects.</p><p>Enumeration value:</p><ul><li>ON: On</li><li>OFF: Off</li></ul>
+        :type Switch: str
+        :param _Type: <p>Beauty option.</p>
+        :type Type: str
+        :param _Value: <p>Intensity of beauty effects.</p>
+        :type Value: int
+        :param _ResourcePath: <p>Attach the resource path.</p>
+        :type ResourcePath: str
+        :param _ExtInfo: <p>Additional information.</p>
+        :type ExtInfo: str
+        """
+        self._Switch = None
+        self._Type = None
+        self._Value = None
+        self._ResourcePath = None
+        self._ExtInfo = None
+
+    @property
+    def Switch(self):
+        r"""<p>Whether to enable beauty effects.</p><p>Enumeration value:</p><ul><li>ON: On</li><li>OFF: Off</li></ul>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>Beauty option.</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""<p>Intensity of beauty effects.</p>
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ResourcePath(self):
+        r"""<p>Attach the resource path.</p>
+        :rtype: str
+        """
+        return self._ResourcePath
+
+    @ResourcePath.setter
+    def ResourcePath(self, ResourcePath):
+        self._ResourcePath = ResourcePath
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Additional information.</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._ResourcePath = params.get("ResourcePath")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BeautyFilterItem(AbstractModel):
+    r"""Beauty filter item.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Whether to enable filters.</p><p>Enumeration value:</p><ul><li>ON: On</li><li>OFF: Off</li></ul>
+        :type Switch: str
+        :param _Type: <p>Filter item.</p>
+        :type Type: str
+        :param _Value: <p>Filter strength.</p>
+        :type Value: int
+        """
+        self._Switch = None
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Switch(self):
+        r"""<p>Whether to enable filters.</p><p>Enumeration value:</p><ul><li>ON: On</li><li>OFF: Off</li></ul>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>Filter item.</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""<p>Filter strength.</p>
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26354,7 +27018,7 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
         r"""
         :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).</b></p>
         :type SubAppId: int
-        :param _FileInfo: <p>Input video file information for the AIGC video conversion task.</p>
+        :param _FileInfo: <p>File information of the input video for the AIGC video conversion task. The input video duration should be less than 90 seconds, and the size should be within 2GB.</p>
         :type FileInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
         :param _OutputConfig: <p>Output media file configuration for the AIGC video conversion task.</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawOutputConfig`
@@ -26388,7 +27052,7 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
 
     @property
     def FileInfo(self):
-        r"""<p>Input video file information for the AIGC video conversion task.</p>
+        r"""<p>File information of the input video for the AIGC video conversion task. The input video duration should be less than 90 seconds, and the size should be within 2GB.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
         """
         return self._FileInfo
@@ -36578,14 +37242,14 @@ class DescribeAigcApiTokensRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. customers who activate vod services after december 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (whether default or newly created).</b>.
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, to access resources in on-demand applications (whether the default application or a newly created application), you must fill this <b>field</b> with the application ID.</b></p>
         :type SubAppId: int
         """
         self._SubAppId = None
 
     @property
     def SubAppId(self):
-        r"""<b>The VOD [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. customers who activate vod services after december 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (whether default or newly created).</b>.
+        r"""<p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, to access resources in on-demand applications (whether the default application or a newly created application), you must fill this <b>field</b> with the application ID.</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -36614,17 +37278,20 @@ class DescribeAigcApiTokensResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApiTokens: API Token list.
+        :param _ApiTokens: <p>API Token list</p>
         :type ApiTokens: list of str
+        :param _ExtInfos: <p>ExtInfo info, which corresponds one-to-one to the API Token list</p>
+        :type ExtInfos: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ApiTokens = None
+        self._ExtInfos = None
         self._RequestId = None
 
     @property
     def ApiTokens(self):
-        r"""API Token list.
+        r"""<p>API Token list</p>
         :rtype: list of str
         """
         return self._ApiTokens
@@ -36632,6 +37299,17 @@ class DescribeAigcApiTokensResponse(AbstractModel):
     @ApiTokens.setter
     def ApiTokens(self, ApiTokens):
         self._ApiTokens = ApiTokens
+
+    @property
+    def ExtInfos(self):
+        r"""<p>ExtInfo info, which corresponds one-to-one to the API Token list</p>
+        :rtype: list of str
+        """
+        return self._ExtInfos
+
+    @ExtInfos.setter
+    def ExtInfos(self, ExtInfos):
+        self._ExtInfos = ExtInfos
 
     @property
     def RequestId(self):
@@ -36647,6 +37325,7 @@ class DescribeAigcApiTokensResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ApiTokens = params.get("ApiTokens")
+        self._ExtInfos = params.get("ExtInfos")
         self._RequestId = params.get("RequestId")
 
 
@@ -37325,7 +38004,7 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: <p>End date, which must be greater than or equal to the start date. Use the <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#52">ISO date format</a>.</p>
         :type EndTime: str
-        :param _AigcType: <p>AIGC type.</p><p>Enumeration value:</p><ul><li>Video: video</li><li>Image: image</li><li>Text: text</li><li>Audio: audio</li><li>SceneAigcVideo: scenario-based video processing</li><li>SceneAigcImage: scenario-based image processing</li><li>SceneAigcTime: scenario-based processing times</li></ul>
+        :param _AigcType: <p>AIGC type.</p><p>Enumeration values:</p><ul><li>Video: Video</li><li>Image: Image</li><li>Text: Text</li><li>Audio: Audio</li><li>SceneAigcVideo: Scenario-based video processing</li><li>SceneAigcImage: Scenario-based image processing</li><li>SceneAigcTime: Scenario-based processing times</li><li>TextDetail: Text detailed record</li></ul>
         :type AigcType: str
         :param _SubAppId: <p><b>VOD <a href="/document/product/266/14574?from_cn_redirect=1">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :type SubAppId: int
@@ -37333,6 +38012,12 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         :type APIKey: str
         :param _APIKeys: <p>API Key</p>
         :type APIKeys: list of str
+        :param _ScrollToken: <p>Query cursor</p>
+        :type ScrollToken: str
+        :param _PageSize: <p>Size per page, maximum 200, it will be truncated to 200</p>
+        :type PageSize: int
+        :param _ReqId: <p>RequestId of the raw text. Valid at that time when AigcType is TextDetail.</p>
+        :type ReqId: str
         """
         self._StartTime = None
         self._EndTime = None
@@ -37340,6 +38025,9 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         self._SubAppId = None
         self._APIKey = None
         self._APIKeys = None
+        self._ScrollToken = None
+        self._PageSize = None
+        self._ReqId = None
 
     @property
     def StartTime(self):
@@ -37365,7 +38053,7 @@ class DescribeAigcUsageDataRequest(AbstractModel):
 
     @property
     def AigcType(self):
-        r"""<p>AIGC type.</p><p>Enumeration value:</p><ul><li>Video: video</li><li>Image: image</li><li>Text: text</li><li>Audio: audio</li><li>SceneAigcVideo: scenario-based video processing</li><li>SceneAigcImage: scenario-based image processing</li><li>SceneAigcTime: scenario-based processing times</li></ul>
+        r"""<p>AIGC type.</p><p>Enumeration values:</p><ul><li>Video: Video</li><li>Image: Image</li><li>Text: Text</li><li>Audio: Audio</li><li>SceneAigcVideo: Scenario-based video processing</li><li>SceneAigcImage: Scenario-based image processing</li><li>SceneAigcTime: Scenario-based processing times</li><li>TextDetail: Text detailed record</li></ul>
         :rtype: str
         """
         return self._AigcType
@@ -37407,6 +38095,39 @@ class DescribeAigcUsageDataRequest(AbstractModel):
     def APIKeys(self, APIKeys):
         self._APIKeys = APIKeys
 
+    @property
+    def ScrollToken(self):
+        r"""<p>Query cursor</p>
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def PageSize(self):
+        r"""<p>Size per page, maximum 200, it will be truncated to 200</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ReqId(self):
+        r"""<p>RequestId of the raw text. Valid at that time when AigcType is TextDetail.</p>
+        :rtype: str
+        """
+        return self._ReqId
+
+    @ReqId.setter
+    def ReqId(self, ReqId):
+        self._ReqId = ReqId
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -37415,6 +38136,9 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         self._SubAppId = params.get("SubAppId")
         self._APIKey = params.get("APIKey")
         self._APIKeys = params.get("APIKeys")
+        self._ScrollToken = params.get("ScrollToken")
+        self._PageSize = params.get("PageSize")
+        self._ReqId = params.get("ReqId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37434,10 +38158,14 @@ class DescribeAigcUsageDataResponse(AbstractModel):
         r"""
         :param _AigcUsageDataSet: <p>AIGC stats.</p>
         :type AigcUsageDataSet: list of AigcUsageDataItem
+        :param _AigcTextDetails: <p>Detailed log</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AigcTextDetails: :class:`tencentcloud.vod.v20180717.models.AigcTextDetail`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._AigcUsageDataSet = None
+        self._AigcTextDetails = None
         self._RequestId = None
 
     @property
@@ -37450,6 +38178,18 @@ class DescribeAigcUsageDataResponse(AbstractModel):
     @AigcUsageDataSet.setter
     def AigcUsageDataSet(self, AigcUsageDataSet):
         self._AigcUsageDataSet = AigcUsageDataSet
+
+    @property
+    def AigcTextDetails(self):
+        r"""<p>Detailed log</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcTextDetail`
+        """
+        return self._AigcTextDetails
+
+    @AigcTextDetails.setter
+    def AigcTextDetails(self, AigcTextDetails):
+        self._AigcTextDetails = AigcTextDetails
 
     @property
     def RequestId(self):
@@ -37470,6 +38210,9 @@ class DescribeAigcUsageDataResponse(AbstractModel):
                 obj = AigcUsageDataItem()
                 obj._deserialize(item)
                 self._AigcUsageDataSet.append(obj)
+        if params.get("AigcTextDetails") is not None:
+            self._AigcTextDetails = AigcTextDetail()
+            self._AigcTextDetails._deserialize(params.get("AigcTextDetails"))
         self._RequestId = params.get("RequestId")
 
 
@@ -48663,131 +49406,109 @@ class EventContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventHandle: Event handler. The caller must call ConfirmEvents to acknowledge the message has been received. Confirmed Valid Time is 30 seconds. After expiration, the event can be retrieved again.
+        :param _EventHandle: <p>Event handler. The caller must call ConfirmEvents to acknowledge the message has been received. Confirmed Valid Time is 30 seconds. After expiration, the event can be retrieved again.</p>
         :type EventHandle: str
-        :param _EventType: <b>Supported event types:</b>
-<li>NewFileUpload: Video upload completed;</li>
-<li>ProcedureStateChanged: Task flow status change.</li>
-<li>FileDeleted: Video deletion completed;</li>
-<li>RestoreMediaComplete: Video retrieval completion;</li>
-<li>PullComplete: Video conversion pull completed.</li>
-<li>EditMediaComplete: Video editing completed;</li>
-<li>SplitMediaComplete: Video splitting completed;</li>
-<li>ComposeMediaComplete: Media file creation completion;</li>
-<li>WechatMiniProgramPublishComplete: WeChat Mini Program Publishing Completed.</li>
-<li>RemoveWatermark: Intelligent watermark removal completion.</li>
-<li>RebuildMediaComplete: Audio and video quality rebirth completion event (This is not recommended).</li>
-<li>ReviewAudioVideoComplete: Audio/video moderation completed;</li>
-<li>ExtractTraceWatermarkComplete: Traceability watermark extraction completed;</li>
-<li>ExtractCopyRightWatermarkComplete: Extracting copyright watermark completion.</li>
-<li>DescribeFileAttributesComplete: File attribute acquisition completion.</li>
-<li>QualityInspectComplete: Audio and video quality inspection completed;</li>
-<li>QualityEnhanceComplete: Audio and video quality rebirth task completion;</li>
-<li>PersistenceComplete: Edit completed.</li>
-<li>ComplexAdaptiveDynamicStreamingComplete: complex adaptive bitstream task completed.</li>
-<li>ProcessMediaByMPSComplete: MPS video processing is completed.</li>
-<li>AigcImageTaskComplete: AIGC image generation task complete.</li>
-<li>AigcVideoTaskComplete: AIGC video generation task completed.</li>
-<b>Event types compatible with the 2017 version:</b>
-<li>TranscodeComplete: video transcoding completion;</li>
-<li>ConcatComplete: Video splicing completion.</li>
-<li>ClipComplete: Video editing completed;</li>
-<li>CreateImageSpriteComplete: Video thumbnail capture completion.</li>
-<li>CreateSnapshotByTimeOffsetComplete: Video screenshot by time point.</li>
+        :param _EventType: <p><b>Supported event types:</b></p><li>NewFileUpload: Video upload complete;</li><li>ProcedureStateChanged: Task flow status change;</li><li>FileDeleted: Video deletion completed;</li><li>RestoreMediaComplete: Video retrieval completion;</li><li>PullComplete: Video conversion completed;</li><li>EditMediaComplete: Video editing completed;</li><li>SplitMediaComplete: Video splitting completed;</li><li>ComposeMediaComplete: Media file creation completion;</li><li>WechatMiniProgramPublishComplete: WeChat Mini Program Publishing Completed.</li><li>RemoveWatermark: Intelligent watermark removal completion.</li><li>RebuildMediaComplete: Audio and video quality rebirth completion event (not recommended).</li><li>ReviewAudioVideoComplete: Audio/video moderation completed;</li><li>ExtractTraceWatermarkComplete: Traceability watermark extraction completed;</li><li>ExtractCopyRightWatermarkComplete: Extracting copyright watermark completion;</li><li>DescribeFileAttributesComplete: File attribute acquisition completion;</li><li>QualityInspectComplete: Audio and video quality inspection completed;</li><li>QualityEnhanceComplete: Audio and video quality rebirth task completion;</li><li>PersistenceComplete: Edit persistence completed;</li><li>ComplexAdaptiveDynamicStreamingComplete: Complex adaptive bitstream task completion.</li><li>ProcessMediaByMPSComplete: MPS video processing completed.</li><li>AigcImageTaskComplete: AIGC image generation task completed.</li><li>AigcVideoTaskComplete: AIGC video generation task completed.</li><li>DescribeAigcFaceInfoAsyncComplete: Asynchronously fetch AIGC human face information task completed.</li><b>Event types compatible with the 2017 version:</b><li>TranscodeComplete: Video transcoding completion;</li><li>ConcatComplete: Video splicing completion;</li><li>ClipComplete: Video editing completed;</li><li>CreateImageSpriteComplete: Video thumbnail capture completion;</li><li>CreateSnapshotByTimeOffsetComplete: Video screenshot by time point.</li>
         :type EventType: str
-        :param _FileUploadEvent: Video upload completion event. Valid when the event type is NewFileUpload.
+        :param _FileUploadEvent: <p>Video upload completion event. Valid when the event type is NewFileUpload.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FileUploadEvent: :class:`tencentcloud.vod.v20180717.models.FileUploadTask`
-        :param _ProcedureStateChangeEvent: Task flow status change event. Valid when the event type is ProcedureStateChanged.
+        :param _ProcedureStateChangeEvent: <p>Task flow status change event. Valid when the event type is ProcedureStateChanged.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ProcedureStateChangeEvent: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`
-        :param _FileDeleteEvent: File deletion event. Valid when the event type is FileDeleted.
+        :param _FileDeleteEvent: <p>File deletion event. Valid when the event type is FileDeleted.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FileDeleteEvent: :class:`tencentcloud.vod.v20180717.models.FileDeleteTask`
-        :param _PullCompleteEvent: Video pull completion event. Valid when the event type is PullComplete.
+        :param _PullCompleteEvent: <p>Video pull completion event. Valid when the event type is PullComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PullCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
-        :param _EditMediaCompleteEvent: Video editing completion event. Valid when the event type is EditMediaComplete.
+        :param _EditMediaCompleteEvent: <p>Video editing completion event. Valid when the event type is EditMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
-        :param _SplitMediaCompleteEvent: Video splitting completion event. Valid when the event type is SplitMediaComplete.
+        :param _SplitMediaCompleteEvent: <p>Video splitting completion event. Valid when the event type is SplitMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SplitMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
-        :param _ComposeMediaCompleteEvent: Media file creation task completion event. Valid when the event type is ComposeMediaComplete.
+        :param _ComposeMediaCompleteEvent: <p>Media file creation task completion event. Valid when the event type is ComposeMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
-        :param _ClipCompleteEvent: Video editing completion event. Valid when the event type is ClipComplete.
+        :param _ClipCompleteEvent: <p>Video editing completion event. Valid when the event type is ClipComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClipCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
-        :param _TranscodeCompleteEvent: Video transcoding completion event, valid when the event type is TranscodeComplete.
+        :param _TranscodeCompleteEvent: <p>Video transcoding completion event. Valid when the event type is TranscodeComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
-        :param _CreateImageSpriteCompleteEvent: Video thumbnail capture completion event. Valid when the event type is CreateImageSpriteComplete.
+        :param _CreateImageSpriteCompleteEvent: <p>Video thumbnail capture completion event. Valid when the event type is CreateImageSpriteComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateImageSpriteCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
-        :param _ConcatCompleteEvent: Video splicing completion event. Valid when the event type is ConcatComplete.
+        :param _ConcatCompleteEvent: <p>Video splicing completion event. Valid when the event type is ConcatComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ConcatCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
-        :param _SnapshotByTimeOffsetCompleteEvent: Video screenshot by time point completion event. Valid when the event type is CreateSnapshotByTimeOffsetComplete.
+        :param _SnapshotByTimeOffsetCompleteEvent: <p>Video screenshot by time point completion event. Valid when the event type is CreateSnapshotByTimeOffsetComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
-        :param _WechatPublishCompleteEvent: WeChat Publishing Completion Event. Valid when the event type is WechatPublishComplete.
+        :param _WechatPublishCompleteEvent: <p>WeChat Publishing Completion Event. Valid when the event type is WechatPublishComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WechatPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
-        :param _WechatMiniProgramPublishCompleteEvent: WeChat Mini Program Publishing Task Completion Event. Valid when the event type is WechatMiniProgramPublishComplete.
+        :param _WechatMiniProgramPublishCompleteEvent: <p>WeChat Mini Program Publishing Task Completion Event. Valid when the event type is WechatMiniProgramPublishComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
-        :param _RemoveWatermarkCompleteEvent: Intelligent Watermark Removal Completion Event is valid when the event type is RemoveWatermark.
+        :param _RemoveWatermarkCompleteEvent: <p>Intelligent Watermark Removal Completion Event. Valid when the event type is RemoveWatermark.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RemoveWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
-        :param _RestoreMediaCompleteEvent: Video retrieval completion event. Valid when the event type is RestoreMediaComplete.
+        :param _RestoreMediaCompleteEvent: <p>Video retrieval completion event. Valid when the event type is RestoreMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
-        :param _RebuildMediaCompleteEvent: Audio and video quality rebirth completion event. Valid when the event type is RebuildMediaComplete.
+        :param _RebuildMediaCompleteEvent: <p>Audio and video quality rebirth completion event. Valid when the event type is RebuildMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RebuildMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTask`
-        :param _ExtractTraceWatermarkCompleteEvent: Traceability watermark extraction completion event. Valid when the event type is ExtractTraceWatermarkComplete.
+        :param _ExtractTraceWatermarkCompleteEvent: <p>Traceability watermark extraction completion event. Valid when the event type is ExtractTraceWatermarkComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtractTraceWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
-        :param _ExtractCopyRightWatermarkCompleteEvent: Copyright watermark extraction completion event. Valid when the event type is ExtractCopyRightWatermarkComplete.
+        :param _ExtractCopyRightWatermarkCompleteEvent: <p>Copyright watermark extraction completion event. Valid when the event type is ExtractCopyRightWatermarkComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtractCopyRightWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTask`
-        :param _ReviewAudioVideoCompleteEvent: Audio/video moderation completed event. Valid when the event type is ReviewAudioVideoComplete.
+        :param _ReviewAudioVideoCompleteEvent: <p>Audio/video moderation completed event. Valid when the event type is ReviewAudioVideoComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReviewAudioVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
-        :param _ReduceMediaBitrateCompleteEvent: This field is invalid.
+        :param _ReduceMediaBitrateCompleteEvent: <p>This field is invalid.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReduceMediaBitrateCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
-        :param _DescribeFileAttributesCompleteEvent: File attribute acquisition completion event. Valid when the event type is DescribeFileAttributesComplete.
+        :param _DescribeFileAttributesCompleteEvent: <p>File attribute acquisition completion event. Valid when the event type is DescribeFileAttributesComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DescribeFileAttributesCompleteEvent: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
-        :param _QualityInspectCompleteEvent: Audio and video quality detection completion event. Valid when the event type is QualityInspectComplete.
+        :param _QualityInspectCompleteEvent: <p>Audio and video quality detection completion event. Valid when the event type is QualityInspectComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityInspectCompleteEvent: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
-        :param _QualityEnhanceCompleteEvent: Audio and video quality rebirth completion event. Valid when the event type is QualityEnhanceComplete.
+        :param _QualityEnhanceCompleteEvent: <p>Audio and video quality rebirth completion event. Valid when the event type is QualityEnhanceComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityEnhanceCompleteEvent: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
-        :param _MediaCastStatusChangedEvent: MediaCastStatus changed event, valid when the event type is MediaCastStatusChanged.
-Pay attention to: this field may return null, indicating that no valid value can be obtained.
+        :param _MediaCastStatusChangedEvent: <p>Media forwarding status change event. Valid when the event type is MediaCastStatusChanged.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MediaCastStatusChangedEvent: :class:`tencentcloud.vod.v20180717.models.MediaCastEvent`
-        :param _PersistenceCompleteEvent: Editing solidification completion event. Valid when the event type is PersistenceComplete.
+        :param _PersistenceCompleteEvent: <p>Editing solidification completion event. Valid when the event type is PersistenceComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PersistenceCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PersistenceCompleteTask`
-        :param _ComplexAdaptiveDynamicStreamingCompleteEvent: Adaptive bitrate task information, valid only when EventType is ComplexAdaptiveDynamicStreamingComplete.
+        :param _ComplexAdaptiveDynamicStreamingCompleteEvent: <p>Adaptive bitrate task information. Valid only when EventType is ComplexAdaptiveDynamicStreamingComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComplexAdaptiveDynamicStreamingCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTask`
-        :param _ProcessMediaByMPSCompleteEvent: MPS video processing task information. Valid only when EventType is ProcessMediaByMPSComplete.
+        :param _ProcessMediaByMPSCompleteEvent: <p>MPS video processing task information. Valid only when EventType is ProcessMediaByMPSComplete.</p>
         :type ProcessMediaByMPSCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
-        :param _AigcImageCompleteEvent: AIGC image generation task info. Valid only when EventType is AigcImageTaskComplete.
+        :param _AigcImageCompleteEvent: <p>AIGC image generation task info, valid only when EventType is AigcImageTaskComplete.</p>
         :type AigcImageCompleteEvent: :class:`tencentcloud.vod.v20180717.models.AigcImageTask`
-        :param _AigcVideoCompleteEvent: AIGC video task info. Valid only when EventType is AigcVideoTaskComplete.
+        :param _AigcVideoCompleteEvent: <p>AIGC video task info, valid only when EventType is AigcVideoTaskComplete.</p>
         :type AigcVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.AigcVideoTask`
-        :param _ExtractBlindWatermarkComplete: Extract digital watermark information. Valid at that time only when EventType is ExtractBlindWatermarkComplete.
+        :param _ExtractBlindWatermarkComplete: <p>Extract digital watermark info, valid only when EventType is ExtractBlindWatermarkComplete.</p>
         :type ExtractBlindWatermarkComplete: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTask`
-        :param _SceneAigcImageCompleteEvent: AIGC scenario-based image generation task info, valid only when EventType is SceneAigcImageCompleteEvent.
+        :param _SceneAigcImageCompleteEvent: <p>Scenario-based AIGC image generation task info. Valid only when EventType is SceneAigcImageCompleteEvent.</p>
         :type SceneAigcImageCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SceneAigcImageTask`
-        :param _ProcessImageAsyncCompleteEvent: Image asynchronous task processing info, valid only when EventType is ProcessImageAsyncCompleteEvent.
+        :param _ProcessImageAsyncCompleteEvent: <p>Image asynchronous task processing information. Valid only when EventType is ProcessImageAsyncCompleteEvent.</p>
         :type ProcessImageAsyncCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
+        :param _CreateAigcAdvancedCustomElementCompleteEvent: <p>AIGC custom entity information, valid only when EventType is CreateAigcAdvancedCustomElementCompleteEvent and this field has a value.</p>
+        :type CreateAigcAdvancedCustomElementCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateAigcAdvancedCustomElementTask`
+        :param _CreateAigcCustomVoiceCompleteEvent: <p>AIGC custom tone information. This field has a value only when EventType is CreateAigcCustomVoiceCompleteEvent.</p>
+        :type CreateAigcCustomVoiceCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateAigcCustomVoiceTask`
+        :param _DescribeAigcFaceInfoAsyncCompleteEvent: <p>Asynchronously fetch AIGC face information. This field has a value only when EventType is DescribeAigcFaceInfoAsyncComplete.</p>
+        :type DescribeAigcFaceInfoAsyncCompleteEvent: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncTask`
         """
         self._EventHandle = None
         self._EventType = None
@@ -48824,10 +49545,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ExtractBlindWatermarkComplete = None
         self._SceneAigcImageCompleteEvent = None
         self._ProcessImageAsyncCompleteEvent = None
+        self._CreateAigcAdvancedCustomElementCompleteEvent = None
+        self._CreateAigcCustomVoiceCompleteEvent = None
+        self._DescribeAigcFaceInfoAsyncCompleteEvent = None
 
     @property
     def EventHandle(self):
-        r"""Event handler. The caller must call ConfirmEvents to acknowledge the message has been received. Confirmed Valid Time is 30 seconds. After expiration, the event can be retrieved again.
+        r"""<p>Event handler. The caller must call ConfirmEvents to acknowledge the message has been received. Confirmed Valid Time is 30 seconds. After expiration, the event can be retrieved again.</p>
         :rtype: str
         """
         return self._EventHandle
@@ -48838,35 +49562,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventType(self):
-        r"""<b>Supported event types:</b>
-<li>NewFileUpload: Video upload completed;</li>
-<li>ProcedureStateChanged: Task flow status change.</li>
-<li>FileDeleted: Video deletion completed;</li>
-<li>RestoreMediaComplete: Video retrieval completion;</li>
-<li>PullComplete: Video conversion pull completed.</li>
-<li>EditMediaComplete: Video editing completed;</li>
-<li>SplitMediaComplete: Video splitting completed;</li>
-<li>ComposeMediaComplete: Media file creation completion;</li>
-<li>WechatMiniProgramPublishComplete: WeChat Mini Program Publishing Completed.</li>
-<li>RemoveWatermark: Intelligent watermark removal completion.</li>
-<li>RebuildMediaComplete: Audio and video quality rebirth completion event (This is not recommended).</li>
-<li>ReviewAudioVideoComplete: Audio/video moderation completed;</li>
-<li>ExtractTraceWatermarkComplete: Traceability watermark extraction completed;</li>
-<li>ExtractCopyRightWatermarkComplete: Extracting copyright watermark completion.</li>
-<li>DescribeFileAttributesComplete: File attribute acquisition completion.</li>
-<li>QualityInspectComplete: Audio and video quality inspection completed;</li>
-<li>QualityEnhanceComplete: Audio and video quality rebirth task completion;</li>
-<li>PersistenceComplete: Edit completed.</li>
-<li>ComplexAdaptiveDynamicStreamingComplete: complex adaptive bitstream task completed.</li>
-<li>ProcessMediaByMPSComplete: MPS video processing is completed.</li>
-<li>AigcImageTaskComplete: AIGC image generation task complete.</li>
-<li>AigcVideoTaskComplete: AIGC video generation task completed.</li>
-<b>Event types compatible with the 2017 version:</b>
-<li>TranscodeComplete: video transcoding completion;</li>
-<li>ConcatComplete: Video splicing completion.</li>
-<li>ClipComplete: Video editing completed;</li>
-<li>CreateImageSpriteComplete: Video thumbnail capture completion.</li>
-<li>CreateSnapshotByTimeOffsetComplete: Video screenshot by time point.</li>
+        r"""<p><b>Supported event types:</b></p><li>NewFileUpload: Video upload complete;</li><li>ProcedureStateChanged: Task flow status change;</li><li>FileDeleted: Video deletion completed;</li><li>RestoreMediaComplete: Video retrieval completion;</li><li>PullComplete: Video conversion completed;</li><li>EditMediaComplete: Video editing completed;</li><li>SplitMediaComplete: Video splitting completed;</li><li>ComposeMediaComplete: Media file creation completion;</li><li>WechatMiniProgramPublishComplete: WeChat Mini Program Publishing Completed.</li><li>RemoveWatermark: Intelligent watermark removal completion.</li><li>RebuildMediaComplete: Audio and video quality rebirth completion event (not recommended).</li><li>ReviewAudioVideoComplete: Audio/video moderation completed;</li><li>ExtractTraceWatermarkComplete: Traceability watermark extraction completed;</li><li>ExtractCopyRightWatermarkComplete: Extracting copyright watermark completion;</li><li>DescribeFileAttributesComplete: File attribute acquisition completion;</li><li>QualityInspectComplete: Audio and video quality inspection completed;</li><li>QualityEnhanceComplete: Audio and video quality rebirth task completion;</li><li>PersistenceComplete: Edit persistence completed;</li><li>ComplexAdaptiveDynamicStreamingComplete: Complex adaptive bitstream task completion.</li><li>ProcessMediaByMPSComplete: MPS video processing completed.</li><li>AigcImageTaskComplete: AIGC image generation task completed.</li><li>AigcVideoTaskComplete: AIGC video generation task completed.</li><li>DescribeAigcFaceInfoAsyncComplete: Asynchronously fetch AIGC human face information task completed.</li><b>Event types compatible with the 2017 version:</b><li>TranscodeComplete: Video transcoding completion;</li><li>ConcatComplete: Video splicing completion;</li><li>ClipComplete: Video editing completed;</li><li>CreateImageSpriteComplete: Video thumbnail capture completion;</li><li>CreateSnapshotByTimeOffsetComplete: Video screenshot by time point.</li>
         :rtype: str
         """
         return self._EventType
@@ -48877,7 +49573,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileUploadEvent(self):
-        r"""Video upload completion event. Valid when the event type is NewFileUpload.
+        r"""<p>Video upload completion event. Valid when the event type is NewFileUpload.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.FileUploadTask`
         """
@@ -48889,7 +49585,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcedureStateChangeEvent(self):
-        r"""Task flow status change event. Valid when the event type is ProcedureStateChanged.
+        r"""<p>Task flow status change event. Valid when the event type is ProcedureStateChanged.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`
         """
@@ -48901,7 +49597,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileDeleteEvent(self):
-        r"""File deletion event. Valid when the event type is FileDeleted.
+        r"""<p>File deletion event. Valid when the event type is FileDeleted.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.FileDeleteTask`
         """
@@ -48913,7 +49609,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PullCompleteEvent(self):
-        r"""Video pull completion event. Valid when the event type is PullComplete.
+        r"""<p>Video pull completion event. Valid when the event type is PullComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
         """
@@ -48925,7 +49621,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EditMediaCompleteEvent(self):
-        r"""Video editing completion event. Valid when the event type is EditMediaComplete.
+        r"""<p>Video editing completion event. Valid when the event type is EditMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
         """
@@ -48937,7 +49633,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SplitMediaCompleteEvent(self):
-        r"""Video splitting completion event. Valid when the event type is SplitMediaComplete.
+        r"""<p>Video splitting completion event. Valid when the event type is SplitMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
         """
@@ -48949,7 +49645,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComposeMediaCompleteEvent(self):
-        r"""Media file creation task completion event. Valid when the event type is ComposeMediaComplete.
+        r"""<p>Media file creation task completion event. Valid when the event type is ComposeMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
         """
@@ -48961,7 +49657,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClipCompleteEvent(self):
-        r"""Video editing completion event. Valid when the event type is ClipComplete.
+        r"""<p>Video editing completion event. Valid when the event type is ClipComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
         """
@@ -48973,7 +49669,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TranscodeCompleteEvent(self):
-        r"""Video transcoding completion event, valid when the event type is TranscodeComplete.
+        r"""<p>Video transcoding completion event. Valid when the event type is TranscodeComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
         """
@@ -48985,7 +49681,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateImageSpriteCompleteEvent(self):
-        r"""Video thumbnail capture completion event. Valid when the event type is CreateImageSpriteComplete.
+        r"""<p>Video thumbnail capture completion event. Valid when the event type is CreateImageSpriteComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
         """
@@ -48997,7 +49693,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConcatCompleteEvent(self):
-        r"""Video splicing completion event. Valid when the event type is ConcatComplete.
+        r"""<p>Video splicing completion event. Valid when the event type is ConcatComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
         """
@@ -49009,7 +49705,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotByTimeOffsetCompleteEvent(self):
-        r"""Video screenshot by time point completion event. Valid when the event type is CreateSnapshotByTimeOffsetComplete.
+        r"""<p>Video screenshot by time point completion event. Valid when the event type is CreateSnapshotByTimeOffsetComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
         """
@@ -49021,7 +49717,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WechatPublishCompleteEvent(self):
-        r"""WeChat Publishing Completion Event. Valid when the event type is WechatPublishComplete.
+        r"""<p>WeChat Publishing Completion Event. Valid when the event type is WechatPublishComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
         """
@@ -49033,7 +49729,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WechatMiniProgramPublishCompleteEvent(self):
-        r"""WeChat Mini Program Publishing Task Completion Event. Valid when the event type is WechatMiniProgramPublishComplete.
+        r"""<p>WeChat Mini Program Publishing Task Completion Event. Valid when the event type is WechatMiniProgramPublishComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
         """
@@ -49045,7 +49741,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RemoveWatermarkCompleteEvent(self):
-        r"""Intelligent Watermark Removal Completion Event is valid when the event type is RemoveWatermark.
+        r"""<p>Intelligent Watermark Removal Completion Event. Valid when the event type is RemoveWatermark.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
         """
@@ -49057,7 +49753,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RestoreMediaCompleteEvent(self):
-        r"""Video retrieval completion event. Valid when the event type is RestoreMediaComplete.
+        r"""<p>Video retrieval completion event. Valid when the event type is RestoreMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
         """
@@ -49069,7 +49765,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RebuildMediaCompleteEvent(self):
-        r"""Audio and video quality rebirth completion event. Valid when the event type is RebuildMediaComplete.
+        r"""<p>Audio and video quality rebirth completion event. Valid when the event type is RebuildMediaComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTask`
         """
@@ -49081,7 +49777,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtractTraceWatermarkCompleteEvent(self):
-        r"""Traceability watermark extraction completion event. Valid when the event type is ExtractTraceWatermarkComplete.
+        r"""<p>Traceability watermark extraction completion event. Valid when the event type is ExtractTraceWatermarkComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
         """
@@ -49093,7 +49789,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtractCopyRightWatermarkCompleteEvent(self):
-        r"""Copyright watermark extraction completion event. Valid when the event type is ExtractCopyRightWatermarkComplete.
+        r"""<p>Copyright watermark extraction completion event. Valid when the event type is ExtractCopyRightWatermarkComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTask`
         """
@@ -49105,7 +49801,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReviewAudioVideoCompleteEvent(self):
-        r"""Audio/video moderation completed event. Valid when the event type is ReviewAudioVideoComplete.
+        r"""<p>Audio/video moderation completed event. Valid when the event type is ReviewAudioVideoComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
         """
@@ -49117,7 +49813,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReduceMediaBitrateCompleteEvent(self):
-        r"""This field is invalid.
+        r"""<p>This field is invalid.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
         """
@@ -49129,7 +49825,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DescribeFileAttributesCompleteEvent(self):
-        r"""File attribute acquisition completion event. Valid when the event type is DescribeFileAttributesComplete.
+        r"""<p>File attribute acquisition completion event. Valid when the event type is DescribeFileAttributesComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
         """
@@ -49141,7 +49837,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityInspectCompleteEvent(self):
-        r"""Audio and video quality detection completion event. Valid when the event type is QualityInspectComplete.
+        r"""<p>Audio and video quality detection completion event. Valid when the event type is QualityInspectComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
         """
@@ -49153,7 +49849,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityEnhanceCompleteEvent(self):
-        r"""Audio and video quality rebirth completion event. Valid when the event type is QualityEnhanceComplete.
+        r"""<p>Audio and video quality rebirth completion event. Valid when the event type is QualityEnhanceComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
         """
@@ -49165,8 +49861,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MediaCastStatusChangedEvent(self):
-        r"""MediaCastStatus changed event, valid when the event type is MediaCastStatusChanged.
-Pay attention to: this field may return null, indicating that no valid value can be obtained.
+        r"""<p>Media forwarding status change event. Valid when the event type is MediaCastStatusChanged.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaCastEvent`
         """
         return self._MediaCastStatusChangedEvent
@@ -49177,7 +49873,7 @@ Pay attention to: this field may return null, indicating that no valid value can
 
     @property
     def PersistenceCompleteEvent(self):
-        r"""Editing solidification completion event. Valid when the event type is PersistenceComplete.
+        r"""<p>Editing solidification completion event. Valid when the event type is PersistenceComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.PersistenceCompleteTask`
         """
@@ -49189,7 +49885,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComplexAdaptiveDynamicStreamingCompleteEvent(self):
-        r"""Adaptive bitrate task information, valid only when EventType is ComplexAdaptiveDynamicStreamingComplete.
+        r"""<p>Adaptive bitrate task information. Valid only when EventType is ComplexAdaptiveDynamicStreamingComplete.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTask`
         """
@@ -49201,7 +49897,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcessMediaByMPSCompleteEvent(self):
-        r"""MPS video processing task information. Valid only when EventType is ProcessMediaByMPSComplete.
+        r"""<p>MPS video processing task information. Valid only when EventType is ProcessMediaByMPSComplete.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaByMPS`
         """
         return self._ProcessMediaByMPSCompleteEvent
@@ -49212,7 +49908,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AigcImageCompleteEvent(self):
-        r"""AIGC image generation task info. Valid only when EventType is AigcImageTaskComplete.
+        r"""<p>AIGC image generation task info, valid only when EventType is AigcImageTaskComplete.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcImageTask`
         """
         return self._AigcImageCompleteEvent
@@ -49223,7 +49919,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AigcVideoCompleteEvent(self):
-        r"""AIGC video task info. Valid only when EventType is AigcVideoTaskComplete.
+        r"""<p>AIGC video task info, valid only when EventType is AigcVideoTaskComplete.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoTask`
         """
         return self._AigcVideoCompleteEvent
@@ -49234,7 +49930,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtractBlindWatermarkComplete(self):
-        r"""Extract digital watermark information. Valid at that time only when EventType is ExtractBlindWatermarkComplete.
+        r"""<p>Extract digital watermark info, valid only when EventType is ExtractBlindWatermarkComplete.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractBlindWatermarkTask`
         """
         return self._ExtractBlindWatermarkComplete
@@ -49245,7 +49941,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SceneAigcImageCompleteEvent(self):
-        r"""AIGC scenario-based image generation task info, valid only when EventType is SceneAigcImageCompleteEvent.
+        r"""<p>Scenario-based AIGC image generation task info. Valid only when EventType is SceneAigcImageCompleteEvent.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.SceneAigcImageTask`
         """
         return self._SceneAigcImageCompleteEvent
@@ -49256,7 +49952,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcessImageAsyncCompleteEvent(self):
-        r"""Image asynchronous task processing info, valid only when EventType is ProcessImageAsyncCompleteEvent.
+        r"""<p>Image asynchronous task processing information. Valid only when EventType is ProcessImageAsyncCompleteEvent.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTask`
         """
         return self._ProcessImageAsyncCompleteEvent
@@ -49264,6 +49960,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ProcessImageAsyncCompleteEvent.setter
     def ProcessImageAsyncCompleteEvent(self, ProcessImageAsyncCompleteEvent):
         self._ProcessImageAsyncCompleteEvent = ProcessImageAsyncCompleteEvent
+
+    @property
+    def CreateAigcAdvancedCustomElementCompleteEvent(self):
+        r"""<p>AIGC custom entity information, valid only when EventType is CreateAigcAdvancedCustomElementCompleteEvent and this field has a value.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcAdvancedCustomElementTask`
+        """
+        return self._CreateAigcAdvancedCustomElementCompleteEvent
+
+    @CreateAigcAdvancedCustomElementCompleteEvent.setter
+    def CreateAigcAdvancedCustomElementCompleteEvent(self, CreateAigcAdvancedCustomElementCompleteEvent):
+        self._CreateAigcAdvancedCustomElementCompleteEvent = CreateAigcAdvancedCustomElementCompleteEvent
+
+    @property
+    def CreateAigcCustomVoiceCompleteEvent(self):
+        r"""<p>AIGC custom tone information. This field has a value only when EventType is CreateAigcCustomVoiceCompleteEvent.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcCustomVoiceTask`
+        """
+        return self._CreateAigcCustomVoiceCompleteEvent
+
+    @CreateAigcCustomVoiceCompleteEvent.setter
+    def CreateAigcCustomVoiceCompleteEvent(self, CreateAigcCustomVoiceCompleteEvent):
+        self._CreateAigcCustomVoiceCompleteEvent = CreateAigcCustomVoiceCompleteEvent
+
+    @property
+    def DescribeAigcFaceInfoAsyncCompleteEvent(self):
+        r"""<p>Asynchronously fetch AIGC face information. This field has a value only when EventType is DescribeAigcFaceInfoAsyncComplete.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncTask`
+        """
+        return self._DescribeAigcFaceInfoAsyncCompleteEvent
+
+    @DescribeAigcFaceInfoAsyncCompleteEvent.setter
+    def DescribeAigcFaceInfoAsyncCompleteEvent(self, DescribeAigcFaceInfoAsyncCompleteEvent):
+        self._DescribeAigcFaceInfoAsyncCompleteEvent = DescribeAigcFaceInfoAsyncCompleteEvent
 
 
     def _deserialize(self, params):
@@ -49368,6 +50097,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ProcessImageAsyncCompleteEvent") is not None:
             self._ProcessImageAsyncCompleteEvent = ProcessImageAsyncTask()
             self._ProcessImageAsyncCompleteEvent._deserialize(params.get("ProcessImageAsyncCompleteEvent"))
+        if params.get("CreateAigcAdvancedCustomElementCompleteEvent") is not None:
+            self._CreateAigcAdvancedCustomElementCompleteEvent = CreateAigcAdvancedCustomElementTask()
+            self._CreateAigcAdvancedCustomElementCompleteEvent._deserialize(params.get("CreateAigcAdvancedCustomElementCompleteEvent"))
+        if params.get("CreateAigcCustomVoiceCompleteEvent") is not None:
+            self._CreateAigcCustomVoiceCompleteEvent = CreateAigcCustomVoiceTask()
+            self._CreateAigcCustomVoiceCompleteEvent._deserialize(params.get("CreateAigcCustomVoiceCompleteEvent"))
+        if params.get("DescribeAigcFaceInfoAsyncCompleteEvent") is not None:
+            self._DescribeAigcFaceInfoAsyncCompleteEvent = DescribeAigcFaceInfoAsyncTask()
+            self._DescribeAigcFaceInfoAsyncCompleteEvent._deserialize(params.get("DescribeAigcFaceInfoAsyncCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53542,6 +54280,67 @@ class IPFilterPolicy(AbstractModel):
         
 
 
+class ImageBeautyConfig(AbstractModel):
+    r"""Image beauty effect configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeautyEffectItems: <p>Beauty effect item.</p>
+        :type BeautyEffectItems: list of BeautyEffectItem
+        :param _BeautyFilterItems: <p>Beauty filter item.</p>
+        :type BeautyFilterItems: list of BeautyFilterItem
+        """
+        self._BeautyEffectItems = None
+        self._BeautyFilterItems = None
+
+    @property
+    def BeautyEffectItems(self):
+        r"""<p>Beauty effect item.</p>
+        :rtype: list of BeautyEffectItem
+        """
+        return self._BeautyEffectItems
+
+    @BeautyEffectItems.setter
+    def BeautyEffectItems(self, BeautyEffectItems):
+        self._BeautyEffectItems = BeautyEffectItems
+
+    @property
+    def BeautyFilterItems(self):
+        r"""<p>Beauty filter item.</p>
+        :rtype: list of BeautyFilterItem
+        """
+        return self._BeautyFilterItems
+
+    @BeautyFilterItems.setter
+    def BeautyFilterItems(self, BeautyFilterItems):
+        self._BeautyFilterItems = BeautyFilterItems
+
+
+    def _deserialize(self, params):
+        if params.get("BeautyEffectItems") is not None:
+            self._BeautyEffectItems = []
+            for item in params.get("BeautyEffectItems"):
+                obj = BeautyEffectItem()
+                obj._deserialize(item)
+                self._BeautyEffectItems.append(obj)
+        if params.get("BeautyFilterItems") is not None:
+            self._BeautyFilterItems = []
+            for item in params.get("BeautyFilterItems"):
+                obj = BeautyFilterItem()
+                obj._deserialize(item)
+                self._BeautyFilterItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageBlur(AbstractModel):
     r"""Image blurring parameters.
 
@@ -56060,6 +56859,115 @@ class JustInTimeTranscodeTemplate(AbstractModel):
         
 
 
+class KnowledgeAnalysisInfo(AbstractModel):
+    r"""Knowledge base media analysis information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>Large model parsing template ID</p>
+        :type Definition: int
+        :param _AnalysisResults: <p>Parsing result of large model</p>
+        :type AnalysisResults: list of KnowledgeAnalysisResult
+        """
+        self._Definition = None
+        self._AnalysisResults = None
+
+    @property
+    def Definition(self):
+        r"""<p>Large model parsing template ID</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def AnalysisResults(self):
+        r"""<p>Parsing result of large model</p>
+        :rtype: list of KnowledgeAnalysisResult
+        """
+        return self._AnalysisResults
+
+    @AnalysisResults.setter
+    def AnalysisResults(self, AnalysisResults):
+        self._AnalysisResults = AnalysisResults
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("AnalysisResults") is not None:
+            self._AnalysisResults = []
+            for item in params.get("AnalysisResults"):
+                obj = KnowledgeAnalysisResult()
+                obj._deserialize(item)
+                self._AnalysisResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeAnalysisResult(AbstractModel):
+    r"""Knowledge base media analysis result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: <p>Process task type</p><p>Enumeration value:</p><ul><li>AiAnalysis.DescriptionTask: Intelligent summary task</li><li>AiAnalysis.VideoComprehensionTask: Video understanding task</li><li>SmartSubtitle.AsrFullTextTask: Intelligent speech full-text recognition task</li></ul>
+        :type TaskType: str
+        :param _File: <p>Task output file collection</p>
+        :type File: :class:`tencentcloud.vod.v20180717.models.MPSOutputFileInfo`
+        """
+        self._TaskType = None
+        self._File = None
+
+    @property
+    def TaskType(self):
+        r"""<p>Process task type</p><p>Enumeration value:</p><ul><li>AiAnalysis.DescriptionTask: Intelligent summary task</li><li>AiAnalysis.VideoComprehensionTask: Video understanding task</li><li>SmartSubtitle.AsrFullTextTask: Intelligent speech full-text recognition task</li></ul>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def File(self):
+        r"""<p>Task output file collection</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSOutputFileInfo`
+        """
+        return self._File
+
+    @File.setter
+    def File(self, File):
+        self._File = File
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        if params.get("File") is not None:
+            self._File = MPSOutputFileInfo()
+            self._File._deserialize(params.get("File"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KnowledgeBasesInfo(AbstractModel):
     r"""Intelligent knowledge base info for media assets
 
@@ -56069,8 +56977,11 @@ class KnowledgeBasesInfo(AbstractModel):
         r"""
         :param _Bases: <p>Current library list of media assets to import</p>
         :type Bases: list of str
+        :param _KnowledgeAnalysisInfos: <p>Media analysis information in the knowledge base</p>
+        :type KnowledgeAnalysisInfos: list of KnowledgeAnalysisInfo
         """
         self._Bases = None
+        self._KnowledgeAnalysisInfos = None
 
     @property
     def Bases(self):
@@ -56083,9 +56994,26 @@ class KnowledgeBasesInfo(AbstractModel):
     def Bases(self, Bases):
         self._Bases = Bases
 
+    @property
+    def KnowledgeAnalysisInfos(self):
+        r"""<p>Media analysis information in the knowledge base</p>
+        :rtype: list of KnowledgeAnalysisInfo
+        """
+        return self._KnowledgeAnalysisInfos
+
+    @KnowledgeAnalysisInfos.setter
+    def KnowledgeAnalysisInfos(self, KnowledgeAnalysisInfos):
+        self._KnowledgeAnalysisInfos = KnowledgeAnalysisInfos
+
 
     def _deserialize(self, params):
         self._Bases = params.get("Bases")
+        if params.get("KnowledgeAnalysisInfos") is not None:
+            self._KnowledgeAnalysisInfos = []
+            for item in params.get("KnowledgeAnalysisInfos"):
+                obj = KnowledgeAnalysisInfo()
+                obj._deserialize(item)
+                self._KnowledgeAnalysisInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56953,37 +57881,33 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StreamId: Push stream live code.
+        :param _StreamId: <p>Push stream live code.</p>
         :type StreamId: str
-        :param _StartTime: Start time of stream clipping. Format reference [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        :param _StartTime: <p>Start time of stream clipping. Format reference: <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :type StartTime: str
-        :param _EndTime: End time of stream clipping. Format reference [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        :param _EndTime: <p>The end time of stream clipping. Format reference <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :type EndTime: str
-        :param _SubAppId: <b>VOD [app](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who have enabled VOD since December 25, 2023, to access resources in an VOD application (whether it is a default application or a newly created application), this field must be filled in as the application ID. </b>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b></p>
         :type SubAppId: int
-        :param _IsPersistence: Whether solidified. 0 not solidified, 1 solidified. Default non-permanent.
+        :param _IsPersistence: <p>Whether solidified. 0 for default non-permanent, 1 for solidified. Default non-permanent.</p>
         :type IsPersistence: int
-        :param _ExpireTime: Video storage expiry time after editing solidification. Format reference [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I). Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding result, sprites) will be permanently deleted. Valid at that time only when IsPersistence is 1. The default video editing never expires.
+        :param _ExpireTime: <p>Video storage expiry time after editing solidification. Format reference <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>. Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding result, sprites) will be permanently deleted. Valid at that time only when IsPersistence is 1. The default video editing never expires.</p>
         :type ExpireTime: str
-        :param _Procedure: Post-editing Solidified Video On-demand Task Flow Processing. For details, see [upload specified task flow](https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1). Valid only when IsPersistence is 1.
+        :param _Procedure: <p>Post-editing Solidified Video On-demand Task Flow Processing. For details, see <a href="https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1">upload specified task flow</a>. Valid when IsPersistence is 1.</p>
         :type Procedure: str
-        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [Create Category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
-<li>Default value: 0, indicating other categories.</li>
-Valid when IsPersistence is 1.
+        :param _ClassId: <p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href="/document/product/266/31772">Create Category</a> API.</p><li>Default value: 0, indicating other categories.</li>Valid at that time only when IsPersistence is 1.
         :type ClassId: int
-        :param _SourceContext: Source context, used for passing through user request information. The [callback on upload completion](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) will return the value of this field, up to 250 characters. Valid only when IsPersistence is 1.
+        :param _SourceContext: <p>Source context. This is used to pass user request information. The <a href="/document/product/266/7830">upload completion callback</a> returns the value of this field. The maximum length is 250 characters. Valid only when IsPersistence is 1.</p>
         :type SourceContext: str
-        :param _SessionContext: Session context, used to pass through user request information. When specifying the Procedure parameter, the [task flow status change callback](https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1) will return the value of this field, up to 1000 characters. Valid at that time only when IsPersistence is 1.
+        :param _SessionContext: <p>Session context. This is used to pass through user request information. When specifying the Procedure parameter, the <a href="/document/product/266/9636">task flow status change callback</a> returns the value of this field. The maximum length is 1000 characters. Valid only when IsPersistence is 1.</p>
         :type SessionContext: str
-        :param _MetaDataRequired: Whether to return edited video metadata. 0: not required, 1: required. By default, does not need.
+        :param _MetaDataRequired: <p>Whether to return edited video metadata. 0: not required, 1: required. By default, does not need.</p>
         :type MetaDataRequired: int
-        :param _Host: The domain name added in VOD for time shift playback must be associated with a recording template and have the time-shift service enabled in Cloud Streaming Services (https://www.tencentcloud.com/document/product/266/52220?from_cn_redirect=1#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E). **If the first call time of this interface is after 2021-01-01T00:00:00Z, this field is a required field.**
+        :param _Host: <p>The domain name added in VOD for time-shifting playback must have <a href="https://www.tencentcloud.com/document/product/266/52220?from_cn_redirect=1#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">recording template binding and time-shift service enabled</a> in Cloud Streaming Services. <strong>If the first call time of this interface is after 2021-01-01T00:00:00Z, this field is a required field.</strong></p>
         :type Host: str
-        :param _StreamInfo: Edited live stream information
-<li>Default video editing for the original stream.</li>
-<li>When the Type specified in StreamInfo is Transcoding, edit the live streaming transcoding stream corresponding to TemplateId.</li>
+        :param _StreamInfo: <p>Live stream information for editing:</p><li>Edit the original stream by default.</li><li>When the Type specified in StreamInfo is Transcoding, edit the live streaming transcoding corresponding to TemplateId.</li>
         :type StreamInfo: :class:`tencentcloud.vod.v20180717.models.LiveRealTimeClipStreamInfo`
-        :param _ExtInfo: System reserved field. Do not fill in.
+        :param _ExtInfo: <p>System reserved field. Do not fill in.</p>
         :type ExtInfo: str
         """
         self._StreamId = None
@@ -57003,7 +57927,7 @@ Valid when IsPersistence is 1.
 
     @property
     def StreamId(self):
-        r"""Push stream live code.
+        r"""<p>Push stream live code.</p>
         :rtype: str
         """
         return self._StreamId
@@ -57014,7 +57938,7 @@ Valid when IsPersistence is 1.
 
     @property
     def StartTime(self):
-        r"""Start time of stream clipping. Format reference [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        r"""<p>Start time of stream clipping. Format reference: <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :rtype: str
         """
         return self._StartTime
@@ -57025,7 +57949,7 @@ Valid when IsPersistence is 1.
 
     @property
     def EndTime(self):
-        r"""End time of stream clipping. Format reference [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        r"""<p>The end time of stream clipping. Format reference <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :rtype: str
         """
         return self._EndTime
@@ -57036,7 +57960,7 @@ Valid when IsPersistence is 1.
 
     @property
     def SubAppId(self):
-        r"""<b>VOD [app](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who have enabled VOD since December 25, 2023, to access resources in an VOD application (whether it is a default application or a newly created application), this field must be filled in as the application ID. </b>
+        r"""<p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -57047,7 +57971,7 @@ Valid when IsPersistence is 1.
 
     @property
     def IsPersistence(self):
-        r"""Whether solidified. 0 not solidified, 1 solidified. Default non-permanent.
+        r"""<p>Whether solidified. 0 for default non-permanent, 1 for solidified. Default non-permanent.</p>
         :rtype: int
         """
         return self._IsPersistence
@@ -57058,7 +57982,7 @@ Valid when IsPersistence is 1.
 
     @property
     def ExpireTime(self):
-        r"""Video storage expiry time after editing solidification. Format reference [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I). Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding result, sprites) will be permanently deleted. Valid at that time only when IsPersistence is 1. The default video editing never expires.
+        r"""<p>Video storage expiry time after editing solidification. Format reference <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>. Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding result, sprites) will be permanently deleted. Valid at that time only when IsPersistence is 1. The default video editing never expires.</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -57069,7 +57993,7 @@ Valid when IsPersistence is 1.
 
     @property
     def Procedure(self):
-        r"""Post-editing Solidified Video On-demand Task Flow Processing. For details, see [upload specified task flow](https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1). Valid only when IsPersistence is 1.
+        r"""<p>Post-editing Solidified Video On-demand Task Flow Processing. For details, see <a href="https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1">upload specified task flow</a>. Valid when IsPersistence is 1.</p>
         :rtype: str
         """
         return self._Procedure
@@ -57080,9 +58004,7 @@ Valid when IsPersistence is 1.
 
     @property
     def ClassId(self):
-        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [Create Category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
-<li>Default value: 0, indicating other categories.</li>
-Valid when IsPersistence is 1.
+        r"""<p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href="/document/product/266/31772">Create Category</a> API.</p><li>Default value: 0, indicating other categories.</li>Valid at that time only when IsPersistence is 1.
         :rtype: int
         """
         return self._ClassId
@@ -57093,7 +58015,7 @@ Valid when IsPersistence is 1.
 
     @property
     def SourceContext(self):
-        r"""Source context, used for passing through user request information. The [callback on upload completion](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) will return the value of this field, up to 250 characters. Valid only when IsPersistence is 1.
+        r"""<p>Source context. This is used to pass user request information. The <a href="/document/product/266/7830">upload completion callback</a> returns the value of this field. The maximum length is 250 characters. Valid only when IsPersistence is 1.</p>
         :rtype: str
         """
         return self._SourceContext
@@ -57104,7 +58026,7 @@ Valid when IsPersistence is 1.
 
     @property
     def SessionContext(self):
-        r"""Session context, used to pass through user request information. When specifying the Procedure parameter, the [task flow status change callback](https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1) will return the value of this field, up to 1000 characters. Valid at that time only when IsPersistence is 1.
+        r"""<p>Session context. This is used to pass through user request information. When specifying the Procedure parameter, the <a href="/document/product/266/9636">task flow status change callback</a> returns the value of this field. The maximum length is 1000 characters. Valid only when IsPersistence is 1.</p>
         :rtype: str
         """
         return self._SessionContext
@@ -57115,7 +58037,7 @@ Valid when IsPersistence is 1.
 
     @property
     def MetaDataRequired(self):
-        r"""Whether to return edited video metadata. 0: not required, 1: required. By default, does not need.
+        r"""<p>Whether to return edited video metadata. 0: not required, 1: required. By default, does not need.</p>
         :rtype: int
         """
         return self._MetaDataRequired
@@ -57126,7 +58048,7 @@ Valid when IsPersistence is 1.
 
     @property
     def Host(self):
-        r"""The domain name added in VOD for time shift playback must be associated with a recording template and have the time-shift service enabled in Cloud Streaming Services (https://www.tencentcloud.com/document/product/266/52220?from_cn_redirect=1#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E). **If the first call time of this interface is after 2021-01-01T00:00:00Z, this field is a required field.**
+        r"""<p>The domain name added in VOD for time-shifting playback must have <a href="https://www.tencentcloud.com/document/product/266/52220?from_cn_redirect=1#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">recording template binding and time-shift service enabled</a> in Cloud Streaming Services. <strong>If the first call time of this interface is after 2021-01-01T00:00:00Z, this field is a required field.</strong></p>
         :rtype: str
         """
         return self._Host
@@ -57137,9 +58059,7 @@ Valid when IsPersistence is 1.
 
     @property
     def StreamInfo(self):
-        r"""Edited live stream information
-<li>Default video editing for the original stream.</li>
-<li>When the Type specified in StreamInfo is Transcoding, edit the live streaming transcoding stream corresponding to TemplateId.</li>
+        r"""<p>Live stream information for editing:</p><li>Edit the original stream by default.</li><li>When the Type specified in StreamInfo is Transcoding, edit the live streaming transcoding corresponding to TemplateId.</li>
         :rtype: :class:`tencentcloud.vod.v20180717.models.LiveRealTimeClipStreamInfo`
         """
         return self._StreamInfo
@@ -57150,7 +58070,7 @@ Valid when IsPersistence is 1.
 
     @property
     def ExtInfo(self):
-        r"""System reserved field. Do not fill in.
+        r"""<p>System reserved field. Do not fill in.</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -57194,16 +58114,16 @@ class LiveRealTimeClipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: Edited Video Playback URL
+        :param _Url: <p>Edited Video Playback URL.</p>
         :type Url: str
-        :param _FileId: Unique identifier of media file for post-editing solidified video.
+        :param _FileId: <p>Unique identifier of media file for post-editing solidified video.</p>
         :type FileId: str
-        :param _VodTaskId: Edited video task flow ID after solidification.
+        :param _VodTaskId: <p>ID of the edited video task flow after solidification.</p>
         :type VodTaskId: str
-        :param _MetaData: Edited Video Metadata
+        :param _MetaData: <p>Edited video metadata.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param _SegmentSet: <span id="p_segmentset">Edited video clip information.</span>
+        :param _SegmentSet: <p><span id="p_segmentset">Edited video clip information.</span></p>
         :type SegmentSet: list of LiveRealTimeClipMediaSegmentInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -57217,7 +58137,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Url(self):
-        r"""Edited Video Playback URL
+        r"""<p>Edited Video Playback URL.</p>
         :rtype: str
         """
         return self._Url
@@ -57228,7 +58148,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileId(self):
-        r"""Unique identifier of media file for post-editing solidified video.
+        r"""<p>Unique identifier of media file for post-editing solidified video.</p>
         :rtype: str
         """
         return self._FileId
@@ -57239,7 +58159,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VodTaskId(self):
-        r"""Edited video task flow ID after solidification.
+        r"""<p>ID of the edited video task flow after solidification.</p>
         :rtype: str
         """
         return self._VodTaskId
@@ -57250,7 +58170,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetaData(self):
-        r"""Edited Video Metadata
+        r"""<p>Edited video metadata.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
@@ -57262,7 +58182,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentSet(self):
-        r"""<span id="p_segmentset">Edited video clip information.</span>
+        r"""<p><span id="p_segmentset">Edited video clip information.</span></p>
         :rtype: list of LiveRealTimeClipMediaSegmentInfo
         """
         return self._SegmentSet
@@ -74606,6 +75526,137 @@ Default value: 0, which means that the value is the same as the video frame rate
         
 
 
+class OverrideTranscodeParameter(AbstractModel):
+    r"""Custom video transcoding parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, m4a, and wav. Among them, mp3, flac, ogg, m4a, and wav are for audio-only files.
+        :type Container: str
+        :param _RemoveVideo: Indicates whether to remove video data. Valid values:
+<li>`0`: reserved;</li>
+<li>1: Remove.</li>
+        :type RemoveVideo: int
+        :param _RemoveAudio: Indicates whether to remove audio data. Valid values:
+<li>`0`: reserved;</li>
+<li>1: Remove.</li>
+        :type RemoveAudio: int
+        :param _VideoTemplate: Video stream configuration parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`
+        :param _AudioTemplate: Audio stream configuration parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
+        :param _TEHDConfig: Top Speed Codec transcoding configuration parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
+        """
+        self._Container = None
+        self._RemoveVideo = None
+        self._RemoveAudio = None
+        self._VideoTemplate = None
+        self._AudioTemplate = None
+        self._TEHDConfig = None
+
+    @property
+    def Container(self):
+        r"""Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, m4a, and wav. Among them, mp3, flac, ogg, m4a, and wav are for audio-only files.
+        :rtype: str
+        """
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+    @property
+    def RemoveVideo(self):
+        r"""Indicates whether to remove video data. Valid values:
+<li>`0`: reserved;</li>
+<li>1: Remove.</li>
+        :rtype: int
+        """
+        return self._RemoveVideo
+
+    @RemoveVideo.setter
+    def RemoveVideo(self, RemoveVideo):
+        self._RemoveVideo = RemoveVideo
+
+    @property
+    def RemoveAudio(self):
+        r"""Indicates whether to remove audio data. Valid values:
+<li>`0`: reserved;</li>
+<li>1: Remove.</li>
+        :rtype: int
+        """
+        return self._RemoveAudio
+
+    @RemoveAudio.setter
+    def RemoveAudio(self, RemoveAudio):
+        self._RemoveAudio = RemoveAudio
+
+    @property
+    def VideoTemplate(self):
+        r"""Video stream configuration parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`
+        """
+        return self._VideoTemplate
+
+    @VideoTemplate.setter
+    def VideoTemplate(self, VideoTemplate):
+        self._VideoTemplate = VideoTemplate
+
+    @property
+    def AudioTemplate(self):
+        r"""Audio stream configuration parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
+        """
+        return self._AudioTemplate
+
+    @AudioTemplate.setter
+    def AudioTemplate(self, AudioTemplate):
+        self._AudioTemplate = AudioTemplate
+
+    @property
+    def TEHDConfig(self):
+        r"""Top Speed Codec transcoding configuration parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
+        """
+        return self._TEHDConfig
+
+    @TEHDConfig.setter
+    def TEHDConfig(self, TEHDConfig):
+        self._TEHDConfig = TEHDConfig
+
+
+    def _deserialize(self, params):
+        self._Container = params.get("Container")
+        self._RemoveVideo = params.get("RemoveVideo")
+        self._RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoTemplate") is not None:
+            self._VideoTemplate = VideoTemplateInfoForUpdate()
+            self._VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self._AudioTemplate = AudioTemplateInfoForUpdate()
+            self._AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self._TEHDConfig = TEHDConfigForUpdate()
+            self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ParseStreamingManifestRequest(AbstractModel):
     r"""ParseStreamingManifest request structure.
 
@@ -77393,20 +78444,23 @@ class ProcessImageAsyncInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: FileId for image processing.
+        :param _FileId: <p>FileId of image processing.</p>
         :type FileId: str
-        :param _ImageTaskInput: Image processing parameter.
+        :param _Url: <p>Image URL.</p>
+        :type Url: str
+        :param _ImageTaskInput: <p>Image processing parameter.</p>
         :type ImageTaskInput: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
-        :param _OutputConfig: Output media file configuration for image processing tasks.
+        :param _OutputConfig: <p>Output media file configuration for the image processing task.</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
         """
         self._FileId = None
+        self._Url = None
         self._ImageTaskInput = None
         self._OutputConfig = None
 
     @property
     def FileId(self):
-        r"""FileId for image processing.
+        r"""<p>FileId of image processing.</p>
         :rtype: str
         """
         return self._FileId
@@ -77416,8 +78470,19 @@ class ProcessImageAsyncInput(AbstractModel):
         self._FileId = FileId
 
     @property
+    def Url(self):
+        r"""<p>Image URL.</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
     def ImageTaskInput(self):
-        r"""Image processing parameter.
+        r"""<p>Image processing parameter.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
         """
         return self._ImageTaskInput
@@ -77428,7 +78493,7 @@ class ProcessImageAsyncInput(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""Output media file configuration for image processing tasks.
+        r"""<p>Output media file configuration for the image processing task.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
         """
         return self._OutputConfig
@@ -77440,6 +78505,7 @@ class ProcessImageAsyncInput(AbstractModel):
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
         if params.get("ImageTaskInput") is not None:
             self._ImageTaskInput = ProcessImageAsyncTaskInput()
             self._ImageTaskInput._deserialize(params.get("ImageTaskInput"))
@@ -77962,25 +79028,29 @@ class ProcessImageAsyncResponse(AbstractModel):
 
 
 class ProcessImageAsyncTask(AbstractModel):
-    r"""Image async processing configuration
+    r"""Image async processing configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _EncodeConfig: Image transcoding output configuration.
+        :param _EncodeConfig: <p>Image transcoding output configuration.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EncodeConfig: :class:`tencentcloud.vod.v20180717.models.ImageEncodeConfig`
-        :param _EnhanceConfig: Image enhancement configuration.
+        :param _EnhanceConfig: <p>Image enhancement configuration.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.ImageEnhanceConfig`
+        :param _BeautyConfig: <p>Image beauty effect configuration.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BeautyConfig: :class:`tencentcloud.vod.v20180717.models.ImageBeautyConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
+        self._BeautyConfig = None
 
     @property
     def EncodeConfig(self):
-        r"""Image transcoding output configuration.
+        r"""<p>Image transcoding output configuration.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ImageEncodeConfig`
         """
@@ -77992,7 +79062,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnhanceConfig(self):
-        r"""Image enhancement configuration.
+        r"""<p>Image enhancement configuration.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.vod.v20180717.models.ImageEnhanceConfig`
         """
@@ -78002,6 +79072,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def BeautyConfig(self):
+        r"""<p>Image beauty effect configuration.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageBeautyConfig`
+        """
+        return self._BeautyConfig
+
+    @BeautyConfig.setter
+    def BeautyConfig(self, BeautyConfig):
+        self._BeautyConfig = BeautyConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -78010,6 +79092,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = ImageEnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        if params.get("BeautyConfig") is not None:
+            self._BeautyConfig = ImageBeautyConfig()
+            self._BeautyConfig._deserialize(params.get("BeautyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79835,40 +80920,35 @@ class PullUploadRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MediaUrl: Media URL to be pulled. Temporary not support pull Dash format (support HLS).
-Supported extensions are listed in [Media type](https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B). Please ensure the media URL can access.
+        :param _MediaUrl: <p>Media URL to be pulled. Dash format is not currently supported (HLS is supported).<br>For supported extensions, see <a href="https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">media type</a>. Please ensure the media URL can be accessed.</p>
         :type MediaUrl: str
-        :param _MediaType: Media type (extension). Supported types are detailed in [media type](https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).
-If MediaType is not filled in or takes an empty string, the file type will be automatically obtained based on MediaUrl.
+        :param _MediaType: <p>Media type (extension). For supported types, see <a href="https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">media type</a>.<br>If MediaType is not specified or set to an empty string, the file type will be obtained automatically based on MediaUrl.</p>
         :type MediaType: str
-        :param _SubAppId: <b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. Customers who activate on-demand services after December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :type SubAppId: int
-        :param _MediaName: Media name.
+        :param _MediaName: <p>Media name.</p>
         :type MediaName: str
-        :param _CoverUrl: Video cover URL to pull. Supported file formats: gif, jpeg (jpg), png.
+        :param _CoverUrl: <p>Video cover URL to pull. Supported file formats: gif, jpeg (jpg), png.</p>
         :type CoverUrl: str
-        :param _Procedure: Media subsequent task operation. For details, see [Upload Specified Task Flow](https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1).
+        :param _Procedure: <p>For media subsequent task operation, see <a href="https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1">upload specified task flow</a>.</p>
         :type Procedure: str
-        :param _ExpireTime: The media file expiry time, format according to ISO 8601. For details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        :param _ExpireTime: <p>Media file expiry time, format according to ISO 8601 standard representation. For details, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :type ExpireTime: str
-        :param _StorageRegion: Designate the upload park, applicable only to the user with special requirement for upload target region.
-<li>If left blank, files will be uploaded to your [default region](https://www.tencentcloud.com/zh/document/product/266/18874?has_map=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) by default.</li>
-<li>If a designated upload park is specified, please confirm the [upload storage settings](https://www.tencentcloud.com/zh/document/product/266/18874) have already enabled corresponding storage regions.</li>
+        :param _StorageRegion: <p>Designated upload park, applicable only to the user with special requirement for upload target region:</p><li>By default if left blank, upload to your [default region](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4).</li><li>If you designate an upload park, please confirm the [upload storage settings](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) have already enabled corresponding storage regions.</li>
         :type StorageRegion: str
-        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
+        :param _ClassId: <p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href="https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1">Create Category</a> API.</p>
         :type ClassId: int
-        :param _TasksPriority: Task priority. The higher the value, the higher the priority. The value ranges from -10 to 10. If left blank, the default value is 0.
+        :param _TasksPriority: <p>Task priority. The higher the value, the higher the priority. The value ranges from -10 to 10. If this is not specified, the default value is 0.</p>
         :type TasksPriority: int
-        :param _SessionContext: Source context, used for passing through user request information. When specifying a Procedure task, the task flow status change callback will return the value of this field, up to 1000 characters.
+        :param _SessionContext: <p>Source context. This is used to pass through user request information. When specifying a Procedure task, the task flow status change callback returns the value of this field. The maximum length is 1000 characters.</p>
         :type SessionContext: str
-        :param _SessionId: Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.
+        :param _SessionId: <p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
         :type SessionId: str
-        :param _ExtInfo: Reserved field, used when special purpose.
+        :param _ExtInfo: <p>Reserved field, used for special purpose.</p>
         :type ExtInfo: str
-        :param _SourceContext: Source context, used to pass through user request information. The [callback on upload completion](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) will return the value of this field, up to 250 characters.
+        :param _SourceContext: <p>Source context. This is used to pass through user request information. The <a href="/document/product/266/7830">upload completion callback</a> returns the value of this field. The maximum length is 250 characters.</p>
         :type SourceContext: str
-        :param _MediaStoragePath: Media storage path, starting with /.
-Only sub-apps in [FileID + Path mode](https://www.tencentcloud.com/document/product/266/126825?from_cn_redirect=1) can specify the storage path.
+        :param _MediaStoragePath: <p>Media storage path, starting with /. <br>Only sub-apps in <a href="https://www.tencentcloud.com/document/product/266/126825?from_cn_redirect=1">FileID + Path mode</a> can specify the storage path.</p>
         :type MediaStoragePath: str
         """
         self._MediaUrl = None
@@ -79889,8 +80969,7 @@ Only sub-apps in [FileID + Path mode](https://www.tencentcloud.com/document/prod
 
     @property
     def MediaUrl(self):
-        r"""Media URL to be pulled. Temporary not support pull Dash format (support HLS).
-Supported extensions are listed in [Media type](https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B). Please ensure the media URL can access.
+        r"""<p>Media URL to be pulled. Dash format is not currently supported (HLS is supported).<br>For supported extensions, see <a href="https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">media type</a>. Please ensure the media URL can be accessed.</p>
         :rtype: str
         """
         return self._MediaUrl
@@ -79901,8 +80980,7 @@ Supported extensions are listed in [Media type](https://www.tencentcloud.com/doc
 
     @property
     def MediaType(self):
-        r"""Media type (extension). Supported types are detailed in [media type](https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).
-If MediaType is not filled in or takes an empty string, the file type will be automatically obtained based on MediaUrl.
+        r"""<p>Media type (extension). For supported types, see <a href="https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">media type</a>.<br>If MediaType is not specified or set to an empty string, the file type will be obtained automatically based on MediaUrl.</p>
         :rtype: str
         """
         return self._MediaType
@@ -79913,7 +80991,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def SubAppId(self):
-        r"""<b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b>
+        r"""<p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. Customers who activate on-demand services after December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -79924,7 +81002,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def MediaName(self):
-        r"""Media name.
+        r"""<p>Media name.</p>
         :rtype: str
         """
         return self._MediaName
@@ -79935,7 +81013,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def CoverUrl(self):
-        r"""Video cover URL to pull. Supported file formats: gif, jpeg (jpg), png.
+        r"""<p>Video cover URL to pull. Supported file formats: gif, jpeg (jpg), png.</p>
         :rtype: str
         """
         return self._CoverUrl
@@ -79946,7 +81024,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def Procedure(self):
-        r"""Media subsequent task operation. For details, see [Upload Specified Task Flow](https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1).
+        r"""<p>For media subsequent task operation, see <a href="https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1">upload specified task flow</a>.</p>
         :rtype: str
         """
         return self._Procedure
@@ -79957,7 +81035,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def ExpireTime(self):
-        r"""The media file expiry time, format according to ISO 8601. For details, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        r"""<p>Media file expiry time, format according to ISO 8601 standard representation. For details, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -79968,9 +81046,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def StorageRegion(self):
-        r"""Designate the upload park, applicable only to the user with special requirement for upload target region.
-<li>If left blank, files will be uploaded to your [default region](https://www.tencentcloud.com/zh/document/product/266/18874?has_map=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) by default.</li>
-<li>If a designated upload park is specified, please confirm the [upload storage settings](https://www.tencentcloud.com/zh/document/product/266/18874) have already enabled corresponding storage regions.</li>
+        r"""<p>Designated upload park, applicable only to the user with special requirement for upload target region:</p><li>By default if left blank, upload to your [default region](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4).</li><li>If you designate an upload park, please confirm the [upload storage settings](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) have already enabled corresponding storage regions.</li>
         :rtype: str
         """
         return self._StorageRegion
@@ -79981,7 +81057,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def ClassId(self):
-        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
+        r"""<p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href="https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1">Create Category</a> API.</p>
         :rtype: int
         """
         return self._ClassId
@@ -79992,7 +81068,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def TasksPriority(self):
-        r"""Task priority. The higher the value, the higher the priority. The value ranges from -10 to 10. If left blank, the default value is 0.
+        r"""<p>Task priority. The higher the value, the higher the priority. The value ranges from -10 to 10. If this is not specified, the default value is 0.</p>
         :rtype: int
         """
         return self._TasksPriority
@@ -80003,7 +81079,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def SessionContext(self):
-        r"""Source context, used for passing through user request information. When specifying a Procedure task, the task flow status change callback will return the value of this field, up to 1000 characters.
+        r"""<p>Source context. This is used to pass through user request information. When specifying a Procedure task, the task flow status change callback returns the value of this field. The maximum length is 1000 characters.</p>
         :rtype: str
         """
         return self._SessionContext
@@ -80014,7 +81090,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def SessionId(self):
-        r"""Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.
+        r"""<p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
         :rtype: str
         """
         return self._SessionId
@@ -80025,7 +81101,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def ExtInfo(self):
-        r"""Reserved field, used when special purpose.
+        r"""<p>Reserved field, used for special purpose.</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -80036,7 +81112,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def SourceContext(self):
-        r"""Source context, used to pass through user request information. The [callback on upload completion](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) will return the value of this field, up to 250 characters.
+        r"""<p>Source context. This is used to pass through user request information. The <a href="/document/product/266/7830">upload completion callback</a> returns the value of this field. The maximum length is 250 characters.</p>
         :rtype: str
         """
         return self._SourceContext
@@ -80047,8 +81123,7 @@ If MediaType is not filled in or takes an empty string, the file type will be au
 
     @property
     def MediaStoragePath(self):
-        r"""Media storage path, starting with /.
-Only sub-apps in [FileID + Path mode](https://www.tencentcloud.com/document/product/266/126825?from_cn_redirect=1) can specify the storage path.
+        r"""<p>Media storage path, starting with /. <br>Only sub-apps in <a href="https://www.tencentcloud.com/document/product/266/126825?from_cn_redirect=1">FileID + Path mode</a> can specify the storage path.</p>
         :rtype: str
         """
         return self._MediaStoragePath
@@ -80091,7 +81166,7 @@ class PullUploadResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Pull Upload Task ID. The status of the pull upload task can be queried through this ID.
+        :param _TaskId: <p>Pull upload video task ID. This can be used to query the task status.</p>
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -80101,7 +81176,7 @@ class PullUploadResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Pull Upload Task ID. The status of the pull upload task can be queried through this ID.
+        r"""<p>Pull upload video task ID. This can be used to query the task status.</p>
         :rtype: str
         """
         return self._TaskId
@@ -88794,13 +89869,13 @@ class SceneAigcImageOutputConfig(AbstractModel):
         :type ExpireTime: str
         :param _AspectRatio: <p>Specify the aspect ratio of the generated image. The input format is W:H.<br>This field is valid in the following scenarios:</p><ul><li>Product image generation scenario. Available values are: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 16:9, 9:16, 21:9.</li><li>AI image expansion scenario. Available values are: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9. It can be used in conjunction with ImageWidth and ImageHeight. The rules are as follows: <ol><li>When only AspectRatio is specified, adaptively adjust based on the original image input.</li><li>When AspectRatio and ImageWidth are specified, ImageHeight is calculated based on both, and vice versa.</li><li>When AspectRatio, ImageWidth, and ImageHeight are specified simultaneously, prioritize using ImageWidth and ImageHeight.</li></ol></li></ul>
         :type AspectRatio: str
-        :param _EncodeConfig: <p>Output image encoding format parameters. <strong>Valid only for AI clothing change scenarios.</strong></p>
+        :param _EncodeConfig: <p>Output image encoding format parameters.</p>
         :type EncodeConfig: :class:`tencentcloud.vod.v20180717.models.ImageSceneAigcEncodeConfig`
         :param _ImageWidth: <p>Output image width. <strong>Valid only for AI image expansion scenarios.</strong></p>
         :type ImageWidth: int
         :param _ImageHeight: <p>Output image height, <strong>valid only for AI image expansion scenarios</strong>.</p>
         :type ImageHeight: int
-        :param _Resolution: <p>Output resolution. Only valid for change_clothes and change_clothes_under scenarios. Available values: 1K, 2K, 4K.</p>
+        :param _Resolution: <p>Output resolution. Only valid for <code>ai_try_on</code> scenarios. Value range: 1K, 2K, 4K.</p>
         :type Resolution: str
         """
         self._StorageMode = None
@@ -88870,7 +89945,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def EncodeConfig(self):
-        r"""<p>Output image encoding format parameters. <strong>Valid only for AI clothing change scenarios.</strong></p>
+        r"""<p>Output image encoding format parameters.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ImageSceneAigcEncodeConfig`
         """
         return self._EncodeConfig
@@ -88903,7 +89978,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""<p>Output resolution. Only valid for change_clothes and change_clothes_under scenarios. Available values: 1K, 2K, 4K.</p>
+        r"""<p>Output resolution. Only valid for <code>ai_try_on</code> scenarios. Value range: 1K, 2K, 4K.</p>
         :rtype: str
         """
         return self._Resolution
@@ -91146,33 +92221,31 @@ class SimpleHlsClipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: Tencent Cloud VOD HLS video URL that needs to be cropped.
+        :param _Url: <p>Tencent Cloud Video on Demand (VOD) HLS video URL that needs to crop.</p>
         :type Url: str
-        :param _SubAppId: <b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b></p>
         :type SubAppId: int
-        :param _StartTimeOffset: Crop start offset time, in seconds. Default 0, crop from the beginning of the video. Negative numbers indicate how many seconds from the end of the video to start cropping. For example, -10 means start trimming from 10 seconds before the end.
+        :param _StartTimeOffset: <p>Crop start offset time in seconds. Default is 0, crop from the beginning of the video. Negative numbers indicate how many seconds from the end of the video to start cropping. For example, -10 means start trimming from 10 seconds before the end.</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: Crop end offset time in seconds. Default is 0, which means crop to the end of the video. Negative numbers indicate how many seconds from the end of the video to end cropping. For example, -10 means end cropping at 10 seconds before the end.
+        :param _EndTimeOffset: <p>Crop end offset time in seconds. Default is 0, which means crop to the end of the video. Negative numbers indicate how many seconds from the end of the video to end trimming. For example, -10 means end trimming at 10 seconds before the end.</p>
         :type EndTimeOffset: float
-        :param _IsPersistence: Whether solidified. 0: not solidified, 1: solidified. Default non-permanent.
+        :param _IsPersistence: <p>Whether solidified. 0 for default non-permanent, 1 for solidified. Default non-permanent.</p>
         :type IsPersistence: int
-        :param _ExpireTime: Video storage expiry time after editing solidification. Format reference [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I). Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding result, sprites) will be permanently deleted. Valid at that time only when IsPersistence is 1. The default video editing never expires.
+        :param _ExpireTime: <p>Video storage expiry time after editing solidification. Format reference <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>. Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding result, sprites) will be permanently deleted. Valid at that time only when IsPersistence is 1. The default video editing never expires.</p>
         :type ExpireTime: str
-        :param _Procedure: Post-editing Solidified Video On-demand Task Flow Processing. For details, see upload specified task flow (https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1). Valid only when IsPersistence is 1.
+        :param _Procedure: <p>Post-editing Solidified Video On-demand Task Flow Processing. For details, see <a href="https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1">upload specified task flow</a>. Valid only when IsPersistence is 1.</p>
         :type Procedure: str
-        :param _ClassId: Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
-<li>Default value: 0, indicating other categories.</li>
-Valid when IsPersistence is 1.
+        :param _ClassId: <p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href="/document/product/266/31772">create category</a> API.</p><li>Default value: 0, indicating other categories.</li>Valid only when IsPersistence is 1.
         :type ClassId: int
-        :param _SourceContext: Source context, used to pass through user request information. The [callback on upload completion](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) will return the value of this field, up to 250 characters. Valid when IsPersistence is 1.
+        :param _SourceContext: <p>Source context. This is used to pass through user request information. The <a href="/document/product/266/7830">upload completion callback</a> returns the value of this field. The maximum length is 250 characters. Valid when IsPersistence is 1.</p>
         :type SourceContext: str
-        :param _SessionContext: Session context, used to pass through user request information. When specifying the Procedure parameter, the [task flow status change callback](https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1) will return the value of this field, up to 1000 characters. Valid only when IsPersistence is 1.
+        :param _SessionContext: <p>Session context. This is used to pass through user request information. When specifying the Procedure parameter, the <a href="/document/product/266/9636">task flow status change callback</a> returns the value of this field. The maximum length is 1000 characters. Valid only when IsPersistence is 1.</p>
         :type SessionContext: str
-        :param _Precision: Deprecated.
+        :param _Precision: <p>Deprecated.</p>
         :type Precision: str
-        :param _OutputMediaType: Output video type. Valid values: <li>hls: Output hls file.</li>Default value hls.
+        :param _OutputMediaType: <p>Output video type. Valid values: <li>hls: Output hls file.</li>Default value hls.</p>
         :type OutputMediaType: str
-        :param _ExtInfo: Reserved field, used when special purpose. Example value: ""
+        :param _ExtInfo: <p>Reserved field, used for special purpose. Example value: ""</p>
         :type ExtInfo: str
         """
         self._Url = None
@@ -91191,7 +92264,7 @@ Valid when IsPersistence is 1.
 
     @property
     def Url(self):
-        r"""Tencent Cloud VOD HLS video URL that needs to be cropped.
+        r"""<p>Tencent Cloud Video on Demand (VOD) HLS video URL that needs to crop.</p>
         :rtype: str
         """
         return self._Url
@@ -91202,7 +92275,7 @@ Valid when IsPersistence is 1.
 
     @property
     def SubAppId(self):
-        r"""<b>On-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created).</b>
+        r"""<p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -91213,7 +92286,7 @@ Valid when IsPersistence is 1.
 
     @property
     def StartTimeOffset(self):
-        r"""Crop start offset time, in seconds. Default 0, crop from the beginning of the video. Negative numbers indicate how many seconds from the end of the video to start cropping. For example, -10 means start trimming from 10 seconds before the end.
+        r"""<p>Crop start offset time in seconds. Default is 0, crop from the beginning of the video. Negative numbers indicate how many seconds from the end of the video to start cropping. For example, -10 means start trimming from 10 seconds before the end.</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -91224,7 +92297,7 @@ Valid when IsPersistence is 1.
 
     @property
     def EndTimeOffset(self):
-        r"""Crop end offset time in seconds. Default is 0, which means crop to the end of the video. Negative numbers indicate how many seconds from the end of the video to end cropping. For example, -10 means end cropping at 10 seconds before the end.
+        r"""<p>Crop end offset time in seconds. Default is 0, which means crop to the end of the video. Negative numbers indicate how many seconds from the end of the video to end trimming. For example, -10 means end trimming at 10 seconds before the end.</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -91235,7 +92308,7 @@ Valid when IsPersistence is 1.
 
     @property
     def IsPersistence(self):
-        r"""Whether solidified. 0: not solidified, 1: solidified. Default non-permanent.
+        r"""<p>Whether solidified. 0 for default non-permanent, 1 for solidified. Default non-permanent.</p>
         :rtype: int
         """
         return self._IsPersistence
@@ -91246,7 +92319,7 @@ Valid when IsPersistence is 1.
 
     @property
     def ExpireTime(self):
-        r"""Video storage expiry time after editing solidification. Format reference [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I). Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding result, sprites) will be permanently deleted. Valid at that time only when IsPersistence is 1. The default video editing never expires.
+        r"""<p>Video storage expiry time after editing solidification. Format reference <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>. Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding result, sprites) will be permanently deleted. Valid at that time only when IsPersistence is 1. The default video editing never expires.</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -91257,7 +92330,7 @@ Valid when IsPersistence is 1.
 
     @property
     def Procedure(self):
-        r"""Post-editing Solidified Video On-demand Task Flow Processing. For details, see upload specified task flow (https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1). Valid only when IsPersistence is 1.
+        r"""<p>Post-editing Solidified Video On-demand Task Flow Processing. For details, see <a href="https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1">upload specified task flow</a>. Valid only when IsPersistence is 1.</p>
         :rtype: str
         """
         return self._Procedure
@@ -91268,9 +92341,7 @@ Valid when IsPersistence is 1.
 
     @property
     def ClassId(self):
-        r"""Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.
-<li>Default value: 0, indicating other categories.</li>
-Valid when IsPersistence is 1.
+        r"""<p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href="/document/product/266/31772">create category</a> API.</p><li>Default value: 0, indicating other categories.</li>Valid only when IsPersistence is 1.
         :rtype: int
         """
         return self._ClassId
@@ -91281,7 +92352,7 @@ Valid when IsPersistence is 1.
 
     @property
     def SourceContext(self):
-        r"""Source context, used to pass through user request information. The [callback on upload completion](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) will return the value of this field, up to 250 characters. Valid when IsPersistence is 1.
+        r"""<p>Source context. This is used to pass through user request information. The <a href="/document/product/266/7830">upload completion callback</a> returns the value of this field. The maximum length is 250 characters. Valid when IsPersistence is 1.</p>
         :rtype: str
         """
         return self._SourceContext
@@ -91292,7 +92363,7 @@ Valid when IsPersistence is 1.
 
     @property
     def SessionContext(self):
-        r"""Session context, used to pass through user request information. When specifying the Procedure parameter, the [task flow status change callback](https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1) will return the value of this field, up to 1000 characters. Valid only when IsPersistence is 1.
+        r"""<p>Session context. This is used to pass through user request information. When specifying the Procedure parameter, the <a href="/document/product/266/9636">task flow status change callback</a> returns the value of this field. The maximum length is 1000 characters. Valid only when IsPersistence is 1.</p>
         :rtype: str
         """
         return self._SessionContext
@@ -91305,7 +92376,7 @@ Valid when IsPersistence is 1.
     def Precision(self):
         warnings.warn("parameter `Precision` is deprecated", DeprecationWarning) 
 
-        r"""Deprecated.
+        r"""<p>Deprecated.</p>
         :rtype: str
         """
         return self._Precision
@@ -91318,7 +92389,7 @@ Valid when IsPersistence is 1.
 
     @property
     def OutputMediaType(self):
-        r"""Output video type. Valid values: <li>hls: Output hls file.</li>Default value hls.
+        r"""<p>Output video type. Valid values: <li>hls: Output hls file.</li>Default value hls.</p>
         :rtype: str
         """
         return self._OutputMediaType
@@ -91329,7 +92400,7 @@ Valid when IsPersistence is 1.
 
     @property
     def ExtInfo(self):
-        r"""Reserved field, used when special purpose. Example value: ""
+        r"""<p>Reserved field, used for special purpose. Example value: ""</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -91370,13 +92441,13 @@ class SimpleHlsClipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: Trimmed video address
+        :param _Url: <p>Trimmed video address.</p>
         :type Url: str
-        :param _MetaData: Cropped video metadata. Currently, the `Size`, `Rotate`, `VideoDuration`, and `AudioDuration` fields are temporarily default with no real data.
+        :param _MetaData: <p>Cropped video metadata. Currently, the <code>Size</code>, <code>Rotate</code>, <code>VideoDuration</code>, and <code>AudioDuration</code> fields are temporarily default with no real data.</p>
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param _FileId: Unique identifier of the media file for post-editing solidified video.
+        :param _FileId: <p>Unique identifier of media file for post-editing solidified video.</p>
         :type FileId: str
-        :param _TaskId: Edited video task flow ID after solidification.
+        :param _TaskId: <p>ID of the edited video task flow after solidification.</p>
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -91389,7 +92460,7 @@ class SimpleHlsClipResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""Trimmed video address
+        r"""<p>Trimmed video address.</p>
         :rtype: str
         """
         return self._Url
@@ -91400,7 +92471,7 @@ class SimpleHlsClipResponse(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""Cropped video metadata. Currently, the `Size`, `Rotate`, `VideoDuration`, and `AudioDuration` fields are temporarily default with no real data.
+        r"""<p>Cropped video metadata. Currently, the <code>Size</code>, <code>Rotate</code>, <code>VideoDuration</code>, and <code>AudioDuration</code> fields are temporarily default with no real data.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -91411,7 +92482,7 @@ class SimpleHlsClipResponse(AbstractModel):
 
     @property
     def FileId(self):
-        r"""Unique identifier of the media file for post-editing solidified video.
+        r"""<p>Unique identifier of media file for post-editing solidified video.</p>
         :rtype: str
         """
         return self._FileId
@@ -91422,7 +92493,7 @@ class SimpleHlsClipResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Edited video task flow ID after solidification.
+        r"""<p>ID of the edited video task flow after solidification.</p>
         :rtype: str
         """
         return self._TaskId
@@ -96115,6 +97186,8 @@ class TranscodeTaskInput(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: <p>Offset of the termination time of the transcoded video, unit: second.</p><li>Leave it blank or enter 0 means the transcoded video lasts until the end of the original video.</li><li>When the value is greater than 0 (assume it is n), it means the transcoded video lasts until the nth second of the original video.</li><li>When the value is less than 0 (assume it is -n), it means the transcoded video lasts until n seconds before the end of the original video.</li>
         :type EndTimeOffset: float
+        :param _OverrideParameter: <p>Custom video transcoding parameters.</p>
+        :type OverrideParameter: :class:`tencentcloud.vod.v20180717.models.OverrideTranscodeParameter`
         :param _SubtitleInfoSet: <p>List of subtitle suppression information. Up to 2 are supported.</p>
         :type SubtitleInfoSet: list of SubtitleInfoInput
         """
@@ -96127,6 +97200,7 @@ class TranscodeTaskInput(AbstractModel):
         self._HeadTailSet = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
+        self._OverrideParameter = None
         self._SubtitleInfoSet = None
 
     @property
@@ -96229,6 +97303,17 @@ class TranscodeTaskInput(AbstractModel):
         self._EndTimeOffset = EndTimeOffset
 
     @property
+    def OverrideParameter(self):
+        r"""<p>Custom video transcoding parameters.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.OverrideTranscodeParameter`
+        """
+        return self._OverrideParameter
+
+    @OverrideParameter.setter
+    def OverrideParameter(self, OverrideParameter):
+        self._OverrideParameter = OverrideParameter
+
+    @property
     def SubtitleInfoSet(self):
         r"""<p>List of subtitle suppression information. Up to 2 are supported.</p>
         :rtype: list of SubtitleInfoInput
@@ -96271,6 +97356,9 @@ class TranscodeTaskInput(AbstractModel):
                 self._HeadTailSet.append(obj)
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("OverrideParameter") is not None:
+            self._OverrideParameter = OverrideTranscodeParameter()
+            self._OverrideParameter._deserialize(params.get("OverrideParameter"))
         if params.get("SubtitleInfoSet") is not None:
             self._SubtitleInfoSet = []
             for item in params.get("SubtitleInfoSet"):
@@ -96895,6 +97983,115 @@ class TrtcRecordInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAigcApiTokenRequest(AbstractModel):
+    r"""UpdateAigcApiToken request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, to access resources in on-demand applications (whether it is the default application or a newly created application), you must fill in this field with the application ID.</b></p>
+        :type SubAppId: int
+        :param _ApiToken: <p>To refresh the Api Key</p>
+        :type ApiToken: str
+        :param _ActionType: <p>Merge (default, merges ExtInfo JSON by top-level key), Overwrite (directly overwrite)</p>
+        :type ActionType: str
+        :param _ExtInfo: <p>Extended information of the token</p>
+        :type ExtInfo: str
+        """
+        self._SubAppId = None
+        self._ApiToken = None
+        self._ActionType = None
+        self._ExtInfo = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>Video-on-demand (VOD) <a href="/document/product/266/14574">application</a> ID. For customers who activate on-demand services from December 25, 2023, to access resources in on-demand applications (whether it is the default application or a newly created application), you must fill in this field with the application ID.</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ApiToken(self):
+        r"""<p>To refresh the Api Key</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+    @property
+    def ActionType(self):
+        r"""<p>Merge (default, merges ExtInfo JSON by top-level key), Overwrite (directly overwrite)</p>
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Extended information of the token</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._ApiToken = params.get("ApiToken")
+        self._ActionType = params.get("ActionType")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAigcApiTokenResponse(AbstractModel):
+    r"""UpdateAigcApiToken response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UrlSignatureAuthPolicy(AbstractModel):
