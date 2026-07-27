@@ -233,6 +233,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterMachine(self, request):
+        r"""This API is used to modify a native node.
+
+        :param request: Request instance for ModifyClusterMachine.
+        :type request: :class:`tencentcloud.tke.v20220501.models.ModifyClusterMachineRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.ModifyClusterMachineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterMachine", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterMachineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyHealthCheckPolicy(self, request):
         r"""This API is used to modify a health check policy.
 

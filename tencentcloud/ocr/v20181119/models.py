@@ -4720,13 +4720,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Type: str
         :param _PassportRecognizeInfos: Document content in the visual zone
         :type PassportRecognizeInfos: :class:`tencentcloud.ocr.v20181119.models.PassportRecognizeInfos`
-        :param _WarnCardInfos: Warning information for the document. This field applies only to international site requests and will return an empty array for domestic site requests. Valid warning codes: 
--9101 (incomplete card border), 
--9102 (photocopied document), 
--9103 (re-photographed document), -9104 (PS-altered document), 
--9107 (reflective document), 
--9108 (blurry image), 
--9109 (warning capability not enabled).
+        :param _WarnCardInfos: Card Warning Information
+
+-9101 Alarm for covered certificate
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9107 Alarm for reflective certificate
+-9108 Alarm for blurry certificate 
+-9109 This capability is not enabled. Please contact customer support to activate the alert service.
         :type WarnCardInfos: list of int
         :param _CardCount: The number of cards detected in the input image.(Currently supported only in ap-bangkok region)
         :type CardCount: int
@@ -4944,13 +4946,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WarnCardInfos(self):
-        r"""Warning information for the document. This field applies only to international site requests and will return an empty array for domestic site requests. Valid warning codes: 
--9101 (incomplete card border), 
--9102 (photocopied document), 
--9103 (re-photographed document), -9104 (PS-altered document), 
--9107 (reflective document), 
--9108 (blurry image), 
--9109 (warning capability not enabled).
+        r"""Card Warning Information
+
+-9101 Alarm for covered certificate
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9107 Alarm for reflective certificate
+-9108 Alarm for blurry certificate 
+-9109 This capability is not enabled. Please contact customer support to activate the alert service.
         :rtype: list of int
         """
         return self._WarnCardInfos
@@ -5625,42 +5629,58 @@ class PODAuditAIResponse(AbstractModel):
 
 
 class PassportRecognizeInfos(AbstractModel):
-    r"""
+    r"""Passport Information Page Content
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Document type, obtained from passport visual zone
         :type Type: str
-        :param _IssuingCountry: 
+        :param _IssuingCountry: Issuing country, obtained from passport visual zone
         :type IssuingCountry: str
-        :param _PassportID: 
+        :param _PassportID: Unique serial number / identification number of the passport, obtained from passport visual zone
         :type PassportID: str
-        :param _Surname: 
+        :param _Surname: Last name, obtained from passport visual zone
         :type Surname: str
-        :param _GivenName: 
+        :param _GivenName: First name, obtained from passport visual zone
         :type GivenName: str
-        :param _Name: 
+        :param _Name: Full name, obtained from passport visual zone
         :type Name: str
-        :param _Nationality: 
+        :param _Nationality: Nationality, obtained from passport visual zone
         :type Nationality: str
-        :param _DateOfBirth: 
+        :param _DateOfBirth: Date of birth, obtained from passport visual zone
         :type DateOfBirth: str
-        :param _Sex: 
+        :param _Sex: Gender, obtained from passport visual zone
         :type Sex: str
-        :param _DateOfIssuance: 
+        :param _DateOfIssuance: Date of issue, obtained from passport visual zone
         :type DateOfIssuance: str
-        :param _DateOfExpiration: 
+        :param _DateOfExpiration: Passport expiry date, obtained from passport visual zone
         :type DateOfExpiration: str
-        :param _Signature: 
+        :param _Signature: Holder's signature, obtained from passport visual zone
+(Note: Only returned for PRC passport)
         :type Signature: str
-        :param _IssuePlace: 
+        :param _IssuePlace: Place of issue, obtained from passport visual zone
+(Note: Only returned for PRC passport)
         :type IssuePlace: str
-        :param _IssuingAuthority: 
+        :param _IssuingAuthority: Issuing Authority, obtained from passport visual zone
+(Note: Only returned for PRC passport)
+
         :type IssuingAuthority: str
-        :param _BirthPlace: 
+        :param _BirthPlace: Place of birth, obtained from passport visual zone
         :type BirthPlace: str
+        :param _PassportFlag: Passport flag, obtained from passport visual zone
+        :type PassportFlag: str
+        :param _MiddleName: Middle name, obtained from passport visual zone
+        :type MiddleName: str
+        :param _FatherName: Father's name, obtained from passport visual zone
+        :type FatherName: str
+        :param _MotherName: Mother's name, obtained from passport visual zone
+        :type MotherName: str
+        :param _Title: Title, obtained from passport visual zone
+        :type Title: str
+        :param _Postname: Name suffix, obtained from passport visual zone
+        :type Postname: str
         """
         self._Type = None
         self._IssuingCountry = None
@@ -5677,10 +5697,16 @@ class PassportRecognizeInfos(AbstractModel):
         self._IssuePlace = None
         self._IssuingAuthority = None
         self._BirthPlace = None
+        self._PassportFlag = None
+        self._MiddleName = None
+        self._FatherName = None
+        self._MotherName = None
+        self._Title = None
+        self._Postname = None
 
     @property
     def Type(self):
-        r"""
+        r"""Document type, obtained from passport visual zone
         :rtype: str
         """
         return self._Type
@@ -5691,7 +5717,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingCountry(self):
-        r"""
+        r"""Issuing country, obtained from passport visual zone
         :rtype: str
         """
         return self._IssuingCountry
@@ -5702,7 +5728,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def PassportID(self):
-        r"""
+        r"""Unique serial number / identification number of the passport, obtained from passport visual zone
         :rtype: str
         """
         return self._PassportID
@@ -5713,7 +5739,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Surname(self):
-        r"""
+        r"""Last name, obtained from passport visual zone
         :rtype: str
         """
         return self._Surname
@@ -5724,7 +5750,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def GivenName(self):
-        r"""
+        r"""First name, obtained from passport visual zone
         :rtype: str
         """
         return self._GivenName
@@ -5735,7 +5761,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Name(self):
-        r"""
+        r"""Full name, obtained from passport visual zone
         :rtype: str
         """
         return self._Name
@@ -5746,7 +5772,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Nationality(self):
-        r"""
+        r"""Nationality, obtained from passport visual zone
         :rtype: str
         """
         return self._Nationality
@@ -5757,7 +5783,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfBirth(self):
-        r"""
+        r"""Date of birth, obtained from passport visual zone
         :rtype: str
         """
         return self._DateOfBirth
@@ -5768,7 +5794,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Sex(self):
-        r"""
+        r"""Gender, obtained from passport visual zone
         :rtype: str
         """
         return self._Sex
@@ -5779,7 +5805,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfIssuance(self):
-        r"""
+        r"""Date of issue, obtained from passport visual zone
         :rtype: str
         """
         return self._DateOfIssuance
@@ -5790,7 +5816,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfExpiration(self):
-        r"""
+        r"""Passport expiry date, obtained from passport visual zone
         :rtype: str
         """
         return self._DateOfExpiration
@@ -5801,7 +5827,8 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Signature(self):
-        r"""
+        r"""Holder's signature, obtained from passport visual zone
+(Note: Only returned for PRC passport)
         :rtype: str
         """
         return self._Signature
@@ -5812,7 +5839,8 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuePlace(self):
-        r"""
+        r"""Place of issue, obtained from passport visual zone
+(Note: Only returned for PRC passport)
         :rtype: str
         """
         return self._IssuePlace
@@ -5823,7 +5851,9 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingAuthority(self):
-        r"""
+        r"""Issuing Authority, obtained from passport visual zone
+(Note: Only returned for PRC passport)
+
         :rtype: str
         """
         return self._IssuingAuthority
@@ -5834,7 +5864,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def BirthPlace(self):
-        r"""
+        r"""Place of birth, obtained from passport visual zone
         :rtype: str
         """
         return self._BirthPlace
@@ -5842,6 +5872,72 @@ class PassportRecognizeInfos(AbstractModel):
     @BirthPlace.setter
     def BirthPlace(self, BirthPlace):
         self._BirthPlace = BirthPlace
+
+    @property
+    def PassportFlag(self):
+        r"""Passport flag, obtained from passport visual zone
+        :rtype: str
+        """
+        return self._PassportFlag
+
+    @PassportFlag.setter
+    def PassportFlag(self, PassportFlag):
+        self._PassportFlag = PassportFlag
+
+    @property
+    def MiddleName(self):
+        r"""Middle name, obtained from passport visual zone
+        :rtype: str
+        """
+        return self._MiddleName
+
+    @MiddleName.setter
+    def MiddleName(self, MiddleName):
+        self._MiddleName = MiddleName
+
+    @property
+    def FatherName(self):
+        r"""Father's name, obtained from passport visual zone
+        :rtype: str
+        """
+        return self._FatherName
+
+    @FatherName.setter
+    def FatherName(self, FatherName):
+        self._FatherName = FatherName
+
+    @property
+    def MotherName(self):
+        r"""Mother's name, obtained from passport visual zone
+        :rtype: str
+        """
+        return self._MotherName
+
+    @MotherName.setter
+    def MotherName(self, MotherName):
+        self._MotherName = MotherName
+
+    @property
+    def Title(self):
+        r"""Title, obtained from passport visual zone
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Postname(self):
+        r"""Name suffix, obtained from passport visual zone
+        :rtype: str
+        """
+        return self._Postname
+
+    @Postname.setter
+    def Postname(self, Postname):
+        self._Postname = Postname
 
 
     def _deserialize(self, params):
@@ -5860,6 +5956,12 @@ class PassportRecognizeInfos(AbstractModel):
         self._IssuePlace = params.get("IssuePlace")
         self._IssuingAuthority = params.get("IssuingAuthority")
         self._BirthPlace = params.get("BirthPlace")
+        self._PassportFlag = params.get("PassportFlag")
+        self._MiddleName = params.get("MiddleName")
+        self._FatherName = params.get("FatherName")
+        self._MotherName = params.get("MotherName")
+        self._Title = params.get("Title")
+        self._Postname = params.get("Postname")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

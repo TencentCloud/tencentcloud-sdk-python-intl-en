@@ -2030,7 +2030,7 @@ class Disk(AbstractModel):
         r"""
         :param _DiskType: Cloud disk type
         :type DiskType: str
-        :param _DiskSize: Cloud disk size (GB)
+        :param _DiskSize: Cloud disk size (G)
         :type DiskSize: int
         :param _AutoFormatAndMount: Whether to automatically format and mount disks.
         :type AutoFormatAndMount: bool
@@ -2038,12 +2038,24 @@ class Disk(AbstractModel):
         :type FileSystem: str
         :param _MountTarget: Mounting directory
         :type MountTarget: str
+        :param _DiskId: Cloud disk ID
+Note: This field may return "null", indicating that no valid value can be obtained.
+        :type DiskId: str
+        :param _Encrypt: Encrypt the system disk
+Note: This field may return "null", indicating that no valid value can be obtained.
+        :type Encrypt: str
+        :param _KmsKeyId: Custom KMS ID
+Note: This field may return "null", indicating that no valid value can be obtained.
+        :type KmsKeyId: str
         """
         self._DiskType = None
         self._DiskSize = None
         self._AutoFormatAndMount = None
         self._FileSystem = None
         self._MountTarget = None
+        self._DiskId = None
+        self._Encrypt = None
+        self._KmsKeyId = None
 
     @property
     def DiskType(self):
@@ -2058,7 +2070,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Cloud disk size (GB)
+        r"""Cloud disk size (G)
         :rtype: int
         """
         return self._DiskSize
@@ -2100,6 +2112,42 @@ class Disk(AbstractModel):
     def MountTarget(self, MountTarget):
         self._MountTarget = MountTarget
 
+    @property
+    def DiskId(self):
+        r"""Cloud disk ID
+Note: This field may return "null", indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def Encrypt(self):
+        r"""Encrypt the system disk
+Note: This field may return "null", indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        r"""Custom KMS ID
+Note: This field may return "null", indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
@@ -2107,6 +2155,9 @@ class Disk(AbstractModel):
         self._AutoFormatAndMount = params.get("AutoFormatAndMount")
         self._FileSystem = params.get("FileSystem")
         self._MountTarget = params.get("MountTarget")
+        self._DiskId = params.get("DiskId")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3041,11 +3092,11 @@ class InstanceChargePrepaid(AbstractModel):
     def __init__(self):
         r"""
         :param _Period: Billing cycle of the pay-as-you-go mode (unit: month):
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60
+1,2,3,4,5,6,7, 8,9,10,11,12,24,36,48,60
         :type Period: int
         :param _RenewFlag: Renewal method of the prepayment mode:
-- NOTIFY_AND_AUTO_RENEW: Notify the user of expiration and auto-renew (default)
-- NOTIFY_AND_MANUAL_RENEW: Notify the user of expiration but do not auto-renew
+- NOTIFY_AND_AUTO_RENEW: Notify the user of expiration and auto-renew 
+- NOTIFY_AND_MANUAL_RENEW: Notify the user of expiration but auto-renewal is not performed (default)
 - DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify the user of expiration and do not auto-renew
 
         :type RenewFlag: str
@@ -3056,7 +3107,7 @@ class InstanceChargePrepaid(AbstractModel):
     @property
     def Period(self):
         r"""Billing cycle of the pay-as-you-go mode (unit: month):
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60
+1,2,3,4,5,6,7, 8,9,10,11,12,24,36,48,60
         :rtype: int
         """
         return self._Period
@@ -3068,8 +3119,8 @@ class InstanceChargePrepaid(AbstractModel):
     @property
     def RenewFlag(self):
         r"""Renewal method of the prepayment mode:
-- NOTIFY_AND_AUTO_RENEW: Notify the user of expiration and auto-renew (default)
-- NOTIFY_AND_MANUAL_RENEW: Notify the user of expiration but do not auto-renew
+- NOTIFY_AND_AUTO_RENEW: Notify the user of expiration and auto-renew 
+- NOTIFY_AND_MANUAL_RENEW: Notify the user of expiration but auto-renewal is not performed (default)
 - DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify the user of expiration and do not auto-renew
 
         :rtype: str
@@ -3692,6 +3743,179 @@ class ManuallyAdded(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyClusterMachineRequest(AbstractModel):
+    r"""ModifyClusterMachine request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID</p>
+        :type ClusterId: str
+        :param _MachineNames: <p>Node name list.</p>
+        :type MachineNames: list of str
+        :param _DisplayName: <p>display name of the machine</p>
+        :type DisplayName: str
+        :param _SystemDisk: <p>System disk C</p>
+        :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
+        :param _SecurityGroupIDs: <p>Security group list</p>
+        :type SecurityGroupIDs: list of str
+        :param _InstanceChargePrepaid: <p>Node prepayment information.</p>
+        :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
+        :param _InstanceChargeType: <p>Change node billing type</p><p>Enumeration value:</p><ul><li>POSTPAID_BY_HOUR: The targeted billing type is pay-as-you-go.</li><li>PREPAID: The targeted billing type is annual and monthly subscription.</li></ul>
+        :type InstanceChargeType: str
+        :param _ModifyPortableDataDisk: <p>Whether to switch the billing mode of the elastic data cloud disk simultaneously. Value ranges from true to false: true indicates switching the billing mode of the elastic data cloud disk, false indicates not switching the billing mode of the elastic data cloud disk. Default value: true.</p><p>Default value: true</p>
+        :type ModifyPortableDataDisk: bool
+        """
+        self._ClusterId = None
+        self._MachineNames = None
+        self._DisplayName = None
+        self._SystemDisk = None
+        self._SecurityGroupIDs = None
+        self._InstanceChargePrepaid = None
+        self._InstanceChargeType = None
+        self._ModifyPortableDataDisk = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MachineNames(self):
+        r"""<p>Node name list.</p>
+        :rtype: list of str
+        """
+        return self._MachineNames
+
+    @MachineNames.setter
+    def MachineNames(self, MachineNames):
+        self._MachineNames = MachineNames
+
+    @property
+    def DisplayName(self):
+        r"""<p>display name of the machine</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def SystemDisk(self):
+        r"""<p>System disk C</p>
+        :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
+        """
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def SecurityGroupIDs(self):
+        r"""<p>Security group list</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIDs
+
+    @SecurityGroupIDs.setter
+    def SecurityGroupIDs(self, SecurityGroupIDs):
+        self._SecurityGroupIDs = SecurityGroupIDs
+
+    @property
+    def InstanceChargePrepaid(self):
+        r"""<p>Node prepayment information.</p>
+        :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def InstanceChargeType(self):
+        r"""<p>Change node billing type</p><p>Enumeration value:</p><ul><li>POSTPAID_BY_HOUR: The targeted billing type is pay-as-you-go.</li><li>PREPAID: The targeted billing type is annual and monthly subscription.</li></ul>
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def ModifyPortableDataDisk(self):
+        r"""<p>Whether to switch the billing mode of the elastic data cloud disk simultaneously. Value ranges from true to false: true indicates switching the billing mode of the elastic data cloud disk, false indicates not switching the billing mode of the elastic data cloud disk. Default value: true.</p><p>Default value: true</p>
+        :rtype: bool
+        """
+        return self._ModifyPortableDataDisk
+
+    @ModifyPortableDataDisk.setter
+    def ModifyPortableDataDisk(self, ModifyPortableDataDisk):
+        self._ModifyPortableDataDisk = ModifyPortableDataDisk
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._MachineNames = params.get("MachineNames")
+        self._DisplayName = params.get("DisplayName")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = Disk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        self._SecurityGroupIDs = params.get("SecurityGroupIDs")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._ModifyPortableDataDisk = params.get("ModifyPortableDataDisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterMachineResponse(AbstractModel):
+    r"""ModifyClusterMachine response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyHealthCheckPolicyRequest(AbstractModel):
