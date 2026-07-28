@@ -6291,8 +6291,8 @@ class AnalyseConditions(AbstractModel):
 cashPayAmount: Cash 
 incentivePayAmount: Bonus 
 voucherPayAmount: Coupon 
-tax: tax. 
-costBeforeTax: pre-tax price
+tax: tax
+amountBeforeTax: pre-tax price
         :type FeeType: str
         :param _PayerUins: User UIN for querying cost analysis data
         :type PayerUins: str
@@ -6420,8 +6420,8 @@ costBeforeTax: pre-tax price
 cashPayAmount: Cash 
 incentivePayAmount: Bonus 
 voucherPayAmount: Coupon 
-tax: tax. 
-costBeforeTax: pre-tax price
+tax: tax
+amountBeforeTax: pre-tax price
         :rtype: str
         """
         return self._FeeType

@@ -27020,6 +27020,8 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
         :type SubAppId: int
         :param _FileInfo: <p>File information of the input video for the AIGC video conversion task. The input video duration should be less than 90 seconds, and the size should be within 2GB.</p>
         :type FileInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
+        :param _TaskInfo: <p>Parameters for the AIGC video conversion task.</p>
+        :type TaskInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInfo`
         :param _OutputConfig: <p>Output media file configuration for the AIGC video conversion task.</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawOutputConfig`
         :param _SessionId: <p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
@@ -27033,6 +27035,7 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
         """
         self._SubAppId = None
         self._FileInfo = None
+        self._TaskInfo = None
         self._OutputConfig = None
         self._SessionId = None
         self._SessionContext = None
@@ -27060,6 +27063,17 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
     @FileInfo.setter
     def FileInfo(self, FileInfo):
         self._FileInfo = FileInfo
+
+    @property
+    def TaskInfo(self):
+        r"""<p>Parameters for the AIGC video conversion task.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
 
     @property
     def OutputConfig(self):
@@ -27122,6 +27136,9 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
         if params.get("FileInfo") is not None:
             self._FileInfo = AigcVideoRedrawTaskInputFileInfo()
             self._FileInfo._deserialize(params.get("FileInfo"))
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = AigcVideoRedrawTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
         if params.get("OutputConfig") is not None:
             self._OutputConfig = AigcVideoRedrawOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
