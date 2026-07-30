@@ -952,6 +952,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID(
+            self,
+            request: models.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse:
+        """
+        This API is used to query the user information configured in the notification template.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAlarmNotices(
             self,
             request: models.DescribeAlarmNoticesRequest,

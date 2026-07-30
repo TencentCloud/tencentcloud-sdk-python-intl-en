@@ -1208,6 +1208,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID(self, request):
+        r"""This API is used to query the user information configured in the notification template.
+
+        :param request: Request instance for DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAlarmNotices(self, request):
         r"""This API is used to query the list of notification templates.
 
