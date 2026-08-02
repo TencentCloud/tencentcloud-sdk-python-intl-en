@@ -32,6 +32,9 @@ FAILEDOPERATION_CAMCHECKRESOURCEERROR = 'FailedOperation.CamCheckResourceError'
 # Authentication failed. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_CAMSIGANDAUTHERROR = 'FailedOperation.CamSigAndAuthError'
 
+# 
+FAILEDOPERATION_CREATEAUDITFAILERROR = 'FailedOperation.CreateAuditFailError'
+
 # Failed to create the order and make a payment.
 FAILEDOPERATION_CREATEORDER = 'FailedOperation.CreateOrder'
 
@@ -421,3 +424,6 @@ UNAUTHORIZEDOPERATION_NOTREALNAMEACCOUNT = 'UnauthorizedOperation.NotRealNameAcc
 
 # CAM authentication failed.
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
+
+# 
+UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = 'UnauthorizedOperation.RoleUnauthorized'

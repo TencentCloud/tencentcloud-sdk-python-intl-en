@@ -4415,7 +4415,8 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: File system ID. obtain it by querying the file system interface (https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1).
+        :param _FileSystemId: File system ID. obtain it by querying the file system interface [DescribeCfsFileSystems
+](https://www.tencentcloud.com/zh/document/product/582/34514)
         :type FileSystemId: str
         :param _Offset: Offset paging number, defaults to 0.
         :type Offset: int
@@ -4428,7 +4429,8 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""File system ID. obtain it by querying the file system interface (https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1).
+        r"""File system ID. obtain it by querying the file system interface [DescribeCfsFileSystems
+](https://www.tencentcloud.com/zh/document/product/582/34514)
         :rtype: str
         """
         return self._FileSystemId
@@ -6412,7 +6414,8 @@ class FileSystemClient(AbstractModel):
         :type ClientIp: str
         :param _VpcId: File system VPCID
         :type VpcId: str
-        :param _Zone: Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description document (https://www.tencentcloud.com/document/api/582/38144?from_cn_redirect=1).
+        :param _Zone: Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description [Introduction
+](https://www.tencentcloud.com/zh/document/product/582/50830)
         :type Zone: str
         :param _ZoneName: AZ name
         :type ZoneName: str
@@ -6461,7 +6464,8 @@ class FileSystemClient(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description document (https://www.tencentcloud.com/document/api/582/38144?from_cn_redirect=1).
+        r"""Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description [Introduction
+](https://www.tencentcloud.com/zh/document/product/582/50830)
         :rtype: str
         """
         return self._Zone
@@ -10241,7 +10245,8 @@ class UpdateCfsFileSystemNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: File system ID. obtain it by querying the file system interface (https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1).
+        :param _FileSystemId: File system ID. obtain it by querying the file system interface [DescribeCfsFileSystems
+](https://www.tencentcloud.com/zh/document/product/582/34514)
         :type FileSystemId: str
         :param _FsName: User-Defined file system name, alphanumeric chinese characters or _,- within 64 bytes. at least one of them or CreationToken must be provided.
         :type FsName: str
@@ -10251,7 +10256,8 @@ class UpdateCfsFileSystemNameRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""File system ID. obtain it by querying the file system interface (https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1).
+        r"""File system ID. obtain it by querying the file system interface [DescribeCfsFileSystems
+](https://www.tencentcloud.com/zh/document/product/582/34514)
         :rtype: str
         """
         return self._FileSystemId
@@ -10367,7 +10373,8 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
         r"""
         :param _PGroupId: Permission group ID, which can be obtained through the api [DescribeCfsPGroups](https://www.tencentcloud.com/document/api/582/38157?from_cn_redirect=1).
         :type PGroupId: str
-        :param _FileSystemId: File system ID. obtain it by querying the file system interface (https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1).
+        :param _FileSystemId: File system ID. obtain it by querying the file system interface [DescribeCfsFileSystems
+](https://www.tencentcloud.com/zh/document/product/582/34514)
         :type FileSystemId: str
         """
         self._PGroupId = None
@@ -10386,7 +10393,8 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""File system ID. obtain it by querying the file system interface (https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1).
+        r"""File system ID. obtain it by querying the file system interface [DescribeCfsFileSystems
+](https://www.tencentcloud.com/zh/document/product/582/34514)
         :rtype: str
         """
         return self._FileSystemId

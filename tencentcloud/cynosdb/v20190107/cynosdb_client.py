@@ -1314,6 +1314,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupOverview(self, request):
+        r"""This API is used to query the backup usage overview.
+
+        :param request: Request instance for DescribeBackupOverview.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupOverviewRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBinlogConfig(self, request):
         r"""This API is used to query binlog configurations.
 
@@ -4925,6 +4948,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TransferClusterPrepayToPostpay(self, request):
+        r"""This API is used to convert a Prepaid Cluster to a postpaid cluster.
+
+        :param request: Request instance for TransferClusterPrepayToPostpay.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.TransferClusterPrepayToPostpayRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TransferClusterPrepayToPostpayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransferClusterPrepayToPostpay", params, headers=headers)
+            response = json.loads(body)
+            model = models.TransferClusterPrepayToPostpayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TransferClusterZone(self, request):
         r"""This API is used to trigger cross-AZ migration.
 
@@ -4939,6 +4985,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("TransferClusterZone", params, headers=headers)
             response = json.loads(body)
             model = models.TransferClusterZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TransferStoragePrepayToPostpay(self, request):
+        r"""This API is used to convert prepaid storage to postpaid storage.
+
+        :param request: Request instance for TransferStoragePrepayToPostpay.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.TransferStoragePrepayToPostpayRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TransferStoragePrepayToPostpayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransferStoragePrepayToPostpay", params, headers=headers)
+            response = json.loads(body)
+            model = models.TransferStoragePrepayToPostpayResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

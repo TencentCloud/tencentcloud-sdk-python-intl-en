@@ -364,6 +364,8 @@ If set to true, the image constraints are:
 - Minimum pixel width/height: 64.
 - Supported formats: PNG, JPG, JPEG, BMP (GIF not supported).
         :type ReturnHeadImage: bool
+        :param _WebhookUrl: Verification status callback URL. When set, this endpoint will be actively notified with the final verification result upon process completion. Leave blank to disable callbacks. Since callbacks are not fully reliable, a polling mechanism is advised to guarantee retrieval of the final status.
+        :type WebhookUrl: str
         """
         self._Nationality = None
         self._CardType = None
@@ -372,6 +374,7 @@ If set to true, the image constraints are:
         self._ImageUrlFront = None
         self._ImageUrlBack = None
         self._ReturnHeadImage = None
+        self._WebhookUrl = None
 
     @property
     def Nationality(self):
@@ -469,6 +472,17 @@ If set to true, the image constraints are:
     def ReturnHeadImage(self, ReturnHeadImage):
         self._ReturnHeadImage = ReturnHeadImage
 
+    @property
+    def WebhookUrl(self):
+        r"""Verification status callback URL. When set, this endpoint will be actively notified with the final verification result upon process completion. Leave blank to disable callbacks. Since callbacks are not fully reliable, a polling mechanism is advised to guarantee retrieval of the final status.
+        :rtype: str
+        """
+        return self._WebhookUrl
+
+    @WebhookUrl.setter
+    def WebhookUrl(self, WebhookUrl):
+        self._WebhookUrl = WebhookUrl
+
 
     def _deserialize(self, params):
         self._Nationality = params.get("Nationality")
@@ -478,6 +492,7 @@ If set to true, the image constraints are:
         self._ImageUrlFront = params.get("ImageUrlFront")
         self._ImageUrlBack = params.get("ImageUrlBack")
         self._ReturnHeadImage = params.get("ReturnHeadImage")
+        self._WebhookUrl = params.get("WebhookUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

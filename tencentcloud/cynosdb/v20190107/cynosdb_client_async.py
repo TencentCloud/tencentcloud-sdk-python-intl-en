@@ -1033,6 +1033,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBackupOverview(
+            self,
+            request: models.DescribeBackupOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackupOverviewResponse:
+        """
+        This API is used to query the backup usage overview.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackupOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackupOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBinlogConfig(
             self,
             request: models.DescribeBinlogConfigRequest,
@@ -3859,6 +3877,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def TransferClusterPrepayToPostpay(
+            self,
+            request: models.TransferClusterPrepayToPostpayRequest,
+            opts: Dict = None,
+    ) -> models.TransferClusterPrepayToPostpayResponse:
+        """
+        This API is used to convert a Prepaid Cluster to a postpaid cluster.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TransferClusterPrepayToPostpay"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TransferClusterPrepayToPostpayResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def TransferClusterZone(
             self,
             request: models.TransferClusterZoneRequest,
@@ -3872,6 +3908,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "TransferClusterZone"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TransferClusterZoneResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TransferStoragePrepayToPostpay(
+            self,
+            request: models.TransferStoragePrepayToPostpayRequest,
+            opts: Dict = None,
+    ) -> models.TransferStoragePrepayToPostpayResponse:
+        """
+        This API is used to convert prepaid storage to postpaid storage.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TransferStoragePrepayToPostpay"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TransferStoragePrepayToPostpayResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

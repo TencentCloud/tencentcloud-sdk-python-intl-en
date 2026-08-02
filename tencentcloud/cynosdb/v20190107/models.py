@@ -2110,6 +2110,8 @@ Description: To get the instance group ID of a cluster, perform [query cluster i
 
     @property
     def Zone(self):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         r"""Availability zone
         :rtype: str
         """
@@ -2117,6 +2119,8 @@ Description: To get the instance group ID of a cluster, perform [query cluster i
 
     @Zone.setter
     def Zone(self, Zone):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         self._Zone = Zone
 
 
@@ -2685,29 +2689,29 @@ class BackupConfigInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupCustomAutoTime: System automation time.
+        :param _BackupCustomAutoTime: <p>System automation time</p>
         :type BackupCustomAutoTime: bool
-        :param _BackupTimeBeg: Indicates the full backup start time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :param _BackupTimeBeg: <p>Indicates the full backup start time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :type BackupTimeBeg: int
-        :param _BackupTimeEnd: Indicates the full backup end time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        :param _BackupTimeEnd: <p>Indicates the full backup end time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :type BackupTimeEnd: int
-        :param _BackupWeekDays: Currently this parameter cannot be modified. no need to specify. backup frequency is an array of length 7, corresponding to the backup method from sunday to saturday, full for full backup and increment for incremental backup.
+        :param _BackupWeekDays: <p>This parameter currently does not support modification and is not required. Backup frequency is an array of length 7, corresponding to the backup method from Sunday to Saturday, full-full backup, increment-incremental backup.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BackupWeekDays: list of str
-        :param _BackupIntervalTime: Interval.
+        :param _BackupIntervalTime: <p>Interval</p>
         :type BackupIntervalTime: int
-        :param _ReserveDuration: Indicates the backup retention period in seconds. data will be cleaned up longer than this time. 7 days means 3600247=604800. the maximum is 158112000.
+        :param _ReserveDuration: <p>Indicates the backup retention period in seconds. Backups will be cleaned up longer than this time. 7 days means 3600*24*7=604800. The maximum value is 158112000.</p>
         :type ReserveDuration: int
-        :param _CrossRegionsEnable: Enable cross-region backup.
-Enable.
-0: disabled.
+        :param _CrossRegionsEnable: <p>Cross-region backup enabled<br>yes-Enable<br>no-Disable</p>
         :type CrossRegionsEnable: str
-        :param _CrossRegions: Cross-Regional backup region.
+        :param _CrossRegions: <p>Cross-regional backup region</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CrossRegions: list of str
-        :param _BackupTriggerStrategy: Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high-frequency backup
+        :param _CrossRegionSaveDays: <p>Cross-region backup retention period</p><p>Unit: Day</p>
+        :type CrossRegionSaveDays: int
+        :param _BackupTriggerStrategy: <p>Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high frequency backup</p>
         :type BackupTriggerStrategy: str
-        :param _AutoCopyVaults: Backup delivery relationship
+        :param _AutoCopyVaults: <p>Backup delivery relationship</p>
         :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._BackupCustomAutoTime = None
@@ -2718,12 +2722,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ReserveDuration = None
         self._CrossRegionsEnable = None
         self._CrossRegions = None
+        self._CrossRegionSaveDays = None
         self._BackupTriggerStrategy = None
         self._AutoCopyVaults = None
 
     @property
     def BackupCustomAutoTime(self):
-        r"""System automation time.
+        r"""<p>System automation time</p>
         :rtype: bool
         """
         return self._BackupCustomAutoTime
@@ -2734,7 +2739,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupTimeBeg(self):
-        r"""Indicates the full backup start time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        r"""<p>Indicates the full backup start time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :rtype: int
         """
         return self._BackupTimeBeg
@@ -2745,7 +2750,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupTimeEnd(self):
-        r"""Indicates the full backup end time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.
+        r"""<p>Indicates the full backup end time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>
         :rtype: int
         """
         return self._BackupTimeEnd
@@ -2756,7 +2761,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupWeekDays(self):
-        r"""Currently this parameter cannot be modified. no need to specify. backup frequency is an array of length 7, corresponding to the backup method from sunday to saturday, full for full backup and increment for incremental backup.
+        r"""<p>This parameter currently does not support modification and is not required. Backup frequency is an array of length 7, corresponding to the backup method from Sunday to Saturday, full-full backup, increment-incremental backup.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -2768,7 +2773,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupIntervalTime(self):
-        r"""Interval.
+        r"""<p>Interval</p>
         :rtype: int
         """
         return self._BackupIntervalTime
@@ -2779,7 +2784,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReserveDuration(self):
-        r"""Indicates the backup retention period in seconds. data will be cleaned up longer than this time. 7 days means 3600247=604800. the maximum is 158112000.
+        r"""<p>Indicates the backup retention period in seconds. Backups will be cleaned up longer than this time. 7 days means 3600*24*7=604800. The maximum value is 158112000.</p>
         :rtype: int
         """
         return self._ReserveDuration
@@ -2790,9 +2795,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CrossRegionsEnable(self):
-        r"""Enable cross-region backup.
-Enable.
-0: disabled.
+        r"""<p>Cross-region backup enabled<br>yes-Enable<br>no-Disable</p>
         :rtype: str
         """
         return self._CrossRegionsEnable
@@ -2803,7 +2806,7 @@ Enable.
 
     @property
     def CrossRegions(self):
-        r"""Cross-Regional backup region.
+        r"""<p>Cross-regional backup region</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -2814,8 +2817,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CrossRegions = CrossRegions
 
     @property
+    def CrossRegionSaveDays(self):
+        r"""<p>Cross-region backup retention period</p><p>Unit: Day</p>
+        :rtype: int
+        """
+        return self._CrossRegionSaveDays
+
+    @CrossRegionSaveDays.setter
+    def CrossRegionSaveDays(self, CrossRegionSaveDays):
+        self._CrossRegionSaveDays = CrossRegionSaveDays
+
+    @property
     def BackupTriggerStrategy(self):
-        r"""Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high-frequency backup
+        r"""<p>Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high frequency backup</p>
         :rtype: str
         """
         return self._BackupTriggerStrategy
@@ -2826,7 +2840,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoCopyVaults(self):
-        r"""Backup delivery relationship
+        r"""<p>Backup delivery relationship</p>
         :rtype: list of CreateBackupVaultItem
         """
         return self._AutoCopyVaults
@@ -2845,6 +2859,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ReserveDuration = params.get("ReserveDuration")
         self._CrossRegionsEnable = params.get("CrossRegionsEnable")
         self._CrossRegions = params.get("CrossRegions")
+        self._CrossRegionSaveDays = params.get("CrossRegionSaveDays")
         self._BackupTriggerStrategy = params.get("BackupTriggerStrategy")
         if params.get("AutoCopyVaults") is not None:
             self._AutoCopyVaults = []
@@ -3403,6 +3418,72 @@ class BackupRegionAndIds(AbstractModel):
         
 
 
+class BackupVolumeInfo(AbstractModel):
+    r"""Backup Usage Info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupVolume: Backup usage
+        :type BackupVolume: float
+        :param _BackupType: Backup type
+        :type BackupType: str
+        :param _BackupMethod: Backup method
+        :type BackupMethod: str
+        """
+        self._BackupVolume = None
+        self._BackupType = None
+        self._BackupMethod = None
+
+    @property
+    def BackupVolume(self):
+        r"""Backup usage
+        :rtype: float
+        """
+        return self._BackupVolume
+
+    @BackupVolume.setter
+    def BackupVolume(self, BackupVolume):
+        self._BackupVolume = BackupVolume
+
+    @property
+    def BackupType(self):
+        r"""Backup type
+        :rtype: str
+        """
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def BackupMethod(self):
+        r"""Backup method
+        :rtype: str
+        """
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
+
+    def _deserialize(self, params):
+        self._BackupVolume = params.get("BackupVolume")
+        self._BackupType = params.get("BackupType")
+        self._BackupMethod = params.get("BackupMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillingResourceInfo(AbstractModel):
     r"""Billable resource information
 
@@ -3636,24 +3717,27 @@ class BinlogConfigInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BinlogSaveDays: Specifies the retention time of binlogs.
+        :param _BinlogSaveDays: <p>binlog retention time</p>
         :type BinlogSaveDays: int
-        :param _BinlogCrossRegionsEnable: Whether binlog cross-region backup is enabled.
+        :param _BinlogCrossRegionsEnable: <p>Whether cross-region backup of binlog is enabled</p>
         :type BinlogCrossRegionsEnable: str
-        :param _BinlogCrossRegions: binlog in a different region.
+        :param _BinlogCrossRegions: <p>binlog cross-region</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BinlogCrossRegions: list of str
-        :param _AutoCopyVaults: Safe info
+        :param _BinlogCrossRegionSaveDays: <p>Cross-region backup retention period</p><p>Unit: Day</p>
+        :type BinlogCrossRegionSaveDays: int
+        :param _AutoCopyVaults: <p>Safe info</p>
         :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._BinlogSaveDays = None
         self._BinlogCrossRegionsEnable = None
         self._BinlogCrossRegions = None
+        self._BinlogCrossRegionSaveDays = None
         self._AutoCopyVaults = None
 
     @property
     def BinlogSaveDays(self):
-        r"""Specifies the retention time of binlogs.
+        r"""<p>binlog retention time</p>
         :rtype: int
         """
         return self._BinlogSaveDays
@@ -3664,7 +3748,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BinlogCrossRegionsEnable(self):
-        r"""Whether binlog cross-region backup is enabled.
+        r"""<p>Whether cross-region backup of binlog is enabled</p>
         :rtype: str
         """
         return self._BinlogCrossRegionsEnable
@@ -3675,7 +3759,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BinlogCrossRegions(self):
-        r"""binlog in a different region.
+        r"""<p>binlog cross-region</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
@@ -3686,8 +3770,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BinlogCrossRegions = BinlogCrossRegions
 
     @property
+    def BinlogCrossRegionSaveDays(self):
+        r"""<p>Cross-region backup retention period</p><p>Unit: Day</p>
+        :rtype: int
+        """
+        return self._BinlogCrossRegionSaveDays
+
+    @BinlogCrossRegionSaveDays.setter
+    def BinlogCrossRegionSaveDays(self, BinlogCrossRegionSaveDays):
+        self._BinlogCrossRegionSaveDays = BinlogCrossRegionSaveDays
+
+    @property
     def AutoCopyVaults(self):
-        r"""Safe info
+        r"""<p>Safe info</p>
         :rtype: list of CreateBackupVaultItem
         """
         return self._AutoCopyVaults
@@ -3701,6 +3796,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BinlogSaveDays = params.get("BinlogSaveDays")
         self._BinlogCrossRegionsEnable = params.get("BinlogCrossRegionsEnable")
         self._BinlogCrossRegions = params.get("BinlogCrossRegions")
+        self._BinlogCrossRegionSaveDays = params.get("BinlogCrossRegionSaveDays")
         if params.get("AutoCopyVaults") is not None:
             self._AutoCopyVaults = []
             for item in params.get("AutoCopyVaults"):
@@ -3724,26 +3820,28 @@ class BinlogItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileName: Binlog filename
+        :param _FileName: <p>Binlog filename</p>
         :type FileName: str
-        :param _FileSize: File size in bytes
+        :param _FileSize: <p>File size, measurement unit: byte</p>
         :type FileSize: int
-        :param _StartTime: Transaction start time
+        :param _StartTime: <p>Earliest transaction time</p>
         :type StartTime: str
-        :param _FinishTime: Transaction end time
+        :param _FinishTime: <p>Latest transaction time</p>
         :type FinishTime: str
-        :param _BinlogId: Binlog file ID
+        :param _BinlogId: <p>Binlog file ID</p>
         :type BinlogId: int
-        :param _CrossRegions: binlog cross-region coverage
+        :param _CrossRegions: <p>Cross-regional binlog</p>
         :type CrossRegions: list of str
-        :param _CopyStatus: Backup delivery status
+        :param _CopyStatus: <p>Backup delivery status</p>
         :type CopyStatus: str
-        :param _VaultInfos: Safe info
+        :param _VaultInfos: <p>Safe information</p>
         :type VaultInfos: list of VaultInfo
-        :param _EncryptKeyId: Encryption key
+        :param _EncryptKeyId: <p>Encryption key</p>
         :type EncryptKeyId: str
-        :param _EncryptRegion: Encrypt key region
+        :param _EncryptRegion: <p>Key region for encryption</p>
         :type EncryptRegion: str
+        :param _ExistRegions: <p>Geographical distribution of backups</p>
+        :type ExistRegions: list of BinlogRegionInfo
         """
         self._FileName = None
         self._FileSize = None
@@ -3755,10 +3853,11 @@ class BinlogItem(AbstractModel):
         self._VaultInfos = None
         self._EncryptKeyId = None
         self._EncryptRegion = None
+        self._ExistRegions = None
 
     @property
     def FileName(self):
-        r"""Binlog filename
+        r"""<p>Binlog filename</p>
         :rtype: str
         """
         return self._FileName
@@ -3769,7 +3868,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""File size in bytes
+        r"""<p>File size, measurement unit: byte</p>
         :rtype: int
         """
         return self._FileSize
@@ -3780,7 +3879,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Transaction start time
+        r"""<p>Earliest transaction time</p>
         :rtype: str
         """
         return self._StartTime
@@ -3791,7 +3890,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""Transaction end time
+        r"""<p>Latest transaction time</p>
         :rtype: str
         """
         return self._FinishTime
@@ -3802,7 +3901,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def BinlogId(self):
-        r"""Binlog file ID
+        r"""<p>Binlog file ID</p>
         :rtype: int
         """
         return self._BinlogId
@@ -3813,7 +3912,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def CrossRegions(self):
-        r"""binlog cross-region coverage
+        r"""<p>Cross-regional binlog</p>
         :rtype: list of str
         """
         return self._CrossRegions
@@ -3824,7 +3923,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def CopyStatus(self):
-        r"""Backup delivery status
+        r"""<p>Backup delivery status</p>
         :rtype: str
         """
         return self._CopyStatus
@@ -3835,7 +3934,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def VaultInfos(self):
-        r"""Safe info
+        r"""<p>Safe information</p>
         :rtype: list of VaultInfo
         """
         return self._VaultInfos
@@ -3846,7 +3945,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def EncryptKeyId(self):
-        r"""Encryption key
+        r"""<p>Encryption key</p>
         :rtype: str
         """
         return self._EncryptKeyId
@@ -3857,7 +3956,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def EncryptRegion(self):
-        r"""Encrypt key region
+        r"""<p>Key region for encryption</p>
         :rtype: str
         """
         return self._EncryptRegion
@@ -3865,6 +3964,17 @@ class BinlogItem(AbstractModel):
     @EncryptRegion.setter
     def EncryptRegion(self, EncryptRegion):
         self._EncryptRegion = EncryptRegion
+
+    @property
+    def ExistRegions(self):
+        r"""<p>Geographical distribution of backups</p>
+        :rtype: list of BinlogRegionInfo
+        """
+        return self._ExistRegions
+
+    @ExistRegions.setter
+    def ExistRegions(self, ExistRegions):
+        self._ExistRegions = ExistRegions
 
 
     def _deserialize(self, params):
@@ -3883,6 +3993,63 @@ class BinlogItem(AbstractModel):
                 self._VaultInfos.append(obj)
         self._EncryptKeyId = params.get("EncryptKeyId")
         self._EncryptRegion = params.get("EncryptRegion")
+        if params.get("ExistRegions") is not None:
+            self._ExistRegions = []
+            for item in params.get("ExistRegions"):
+                obj = BinlogRegionInfo()
+                obj._deserialize(item)
+                self._ExistRegions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BinlogRegionInfo(AbstractModel):
+    r"""binlog retention info for each region
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupRegion: <p>Backup region</p>
+        :type BackupRegion: str
+        :param _BackupId: <p>Backup ID</p>
+        :type BackupId: int
+        """
+        self._BackupRegion = None
+        self._BackupId = None
+
+    @property
+    def BackupRegion(self):
+        r"""<p>Backup region</p>
+        :rtype: str
+        """
+        return self._BackupRegion
+
+    @BackupRegion.setter
+    def BackupRegion(self, BackupRegion):
+        self._BackupRegion = BackupRegion
+
+    @property
+    def BackupId(self):
+        r"""<p>Backup ID</p>
+        :rtype: int
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+
+    def _deserialize(self, params):
+        self._BackupRegion = params.get("BackupRegion")
+        self._BackupId = params.get("BackupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18195,6 +18362,260 @@ class DescribeBackupListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupOverviewRequest(AbstractModel):
+    r"""DescribeBackupOverview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID.
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""Cluster ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupOverviewResponse(AbstractModel):
+    r"""DescribeBackupOverview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupTotalVolume: Total Backup Capacity
+        :type BackupTotalVolume: float
+        :param _BackupSnapshotVolume: Backup snapshot capacity
+        :type BackupSnapshotVolume: float
+        :param _BackupLogicVolume: Backup logical capacity
+        :type BackupLogicVolume: float
+        :param _LogTotalVolume: Total Log Capacity
+        :type LogTotalVolume: float
+        :param _LogBinlogVolume: binlog capacity
+        :type LogBinlogVolume: float
+        :param _LogRedoLogVolume: Redo log capacity
+        :type LogRedoLogVolume: float
+        :param _CrossTotalVolume: Total Cross-Region Backup Capacity
+        :type CrossTotalVolume: float
+        :param _CrossRegionBackupVolume: Cross-Region Backup Capacity
+        :type CrossRegionBackupVolume: float
+        :param _CrossRegionLogVolume: Cross-regional log capacity
+        :type CrossRegionLogVolume: float
+        :param _BackupVolumeInfos: Backup capacity details
+        :type BackupVolumeInfos: list of BackupVolumeInfo
+        :param _CrossRegionBackupVolumeInfos: Cross-region backup capacity details
+        :type CrossRegionBackupVolumeInfos: list of BackupVolumeInfo
+        :param _CrossRegions: Cross-region information
+        :type CrossRegions: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BackupTotalVolume = None
+        self._BackupSnapshotVolume = None
+        self._BackupLogicVolume = None
+        self._LogTotalVolume = None
+        self._LogBinlogVolume = None
+        self._LogRedoLogVolume = None
+        self._CrossTotalVolume = None
+        self._CrossRegionBackupVolume = None
+        self._CrossRegionLogVolume = None
+        self._BackupVolumeInfos = None
+        self._CrossRegionBackupVolumeInfos = None
+        self._CrossRegions = None
+        self._RequestId = None
+
+    @property
+    def BackupTotalVolume(self):
+        r"""Total Backup Capacity
+        :rtype: float
+        """
+        return self._BackupTotalVolume
+
+    @BackupTotalVolume.setter
+    def BackupTotalVolume(self, BackupTotalVolume):
+        self._BackupTotalVolume = BackupTotalVolume
+
+    @property
+    def BackupSnapshotVolume(self):
+        r"""Backup snapshot capacity
+        :rtype: float
+        """
+        return self._BackupSnapshotVolume
+
+    @BackupSnapshotVolume.setter
+    def BackupSnapshotVolume(self, BackupSnapshotVolume):
+        self._BackupSnapshotVolume = BackupSnapshotVolume
+
+    @property
+    def BackupLogicVolume(self):
+        r"""Backup logical capacity
+        :rtype: float
+        """
+        return self._BackupLogicVolume
+
+    @BackupLogicVolume.setter
+    def BackupLogicVolume(self, BackupLogicVolume):
+        self._BackupLogicVolume = BackupLogicVolume
+
+    @property
+    def LogTotalVolume(self):
+        r"""Total Log Capacity
+        :rtype: float
+        """
+        return self._LogTotalVolume
+
+    @LogTotalVolume.setter
+    def LogTotalVolume(self, LogTotalVolume):
+        self._LogTotalVolume = LogTotalVolume
+
+    @property
+    def LogBinlogVolume(self):
+        r"""binlog capacity
+        :rtype: float
+        """
+        return self._LogBinlogVolume
+
+    @LogBinlogVolume.setter
+    def LogBinlogVolume(self, LogBinlogVolume):
+        self._LogBinlogVolume = LogBinlogVolume
+
+    @property
+    def LogRedoLogVolume(self):
+        r"""Redo log capacity
+        :rtype: float
+        """
+        return self._LogRedoLogVolume
+
+    @LogRedoLogVolume.setter
+    def LogRedoLogVolume(self, LogRedoLogVolume):
+        self._LogRedoLogVolume = LogRedoLogVolume
+
+    @property
+    def CrossTotalVolume(self):
+        r"""Total Cross-Region Backup Capacity
+        :rtype: float
+        """
+        return self._CrossTotalVolume
+
+    @CrossTotalVolume.setter
+    def CrossTotalVolume(self, CrossTotalVolume):
+        self._CrossTotalVolume = CrossTotalVolume
+
+    @property
+    def CrossRegionBackupVolume(self):
+        r"""Cross-Region Backup Capacity
+        :rtype: float
+        """
+        return self._CrossRegionBackupVolume
+
+    @CrossRegionBackupVolume.setter
+    def CrossRegionBackupVolume(self, CrossRegionBackupVolume):
+        self._CrossRegionBackupVolume = CrossRegionBackupVolume
+
+    @property
+    def CrossRegionLogVolume(self):
+        r"""Cross-regional log capacity
+        :rtype: float
+        """
+        return self._CrossRegionLogVolume
+
+    @CrossRegionLogVolume.setter
+    def CrossRegionLogVolume(self, CrossRegionLogVolume):
+        self._CrossRegionLogVolume = CrossRegionLogVolume
+
+    @property
+    def BackupVolumeInfos(self):
+        r"""Backup capacity details
+        :rtype: list of BackupVolumeInfo
+        """
+        return self._BackupVolumeInfos
+
+    @BackupVolumeInfos.setter
+    def BackupVolumeInfos(self, BackupVolumeInfos):
+        self._BackupVolumeInfos = BackupVolumeInfos
+
+    @property
+    def CrossRegionBackupVolumeInfos(self):
+        r"""Cross-region backup capacity details
+        :rtype: list of BackupVolumeInfo
+        """
+        return self._CrossRegionBackupVolumeInfos
+
+    @CrossRegionBackupVolumeInfos.setter
+    def CrossRegionBackupVolumeInfos(self, CrossRegionBackupVolumeInfos):
+        self._CrossRegionBackupVolumeInfos = CrossRegionBackupVolumeInfos
+
+    @property
+    def CrossRegions(self):
+        r"""Cross-region information
+        :rtype: list of str
+        """
+        return self._CrossRegions
+
+    @CrossRegions.setter
+    def CrossRegions(self, CrossRegions):
+        self._CrossRegions = CrossRegions
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupTotalVolume = params.get("BackupTotalVolume")
+        self._BackupSnapshotVolume = params.get("BackupSnapshotVolume")
+        self._BackupLogicVolume = params.get("BackupLogicVolume")
+        self._LogTotalVolume = params.get("LogTotalVolume")
+        self._LogBinlogVolume = params.get("LogBinlogVolume")
+        self._LogRedoLogVolume = params.get("LogRedoLogVolume")
+        self._CrossTotalVolume = params.get("CrossTotalVolume")
+        self._CrossRegionBackupVolume = params.get("CrossRegionBackupVolume")
+        self._CrossRegionLogVolume = params.get("CrossRegionLogVolume")
+        if params.get("BackupVolumeInfos") is not None:
+            self._BackupVolumeInfos = []
+            for item in params.get("BackupVolumeInfos"):
+                obj = BackupVolumeInfo()
+                obj._deserialize(item)
+                self._BackupVolumeInfos.append(obj)
+        if params.get("CrossRegionBackupVolumeInfos") is not None:
+            self._CrossRegionBackupVolumeInfos = []
+            for item in params.get("CrossRegionBackupVolumeInfos"):
+                obj = BackupVolumeInfo()
+                obj._deserialize(item)
+                self._CrossRegionBackupVolumeInfos.append(obj)
+        self._CrossRegions = params.get("CrossRegions")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBinlogConfigRequest(AbstractModel):
     r"""DescribeBinlogConfig request structure.
 
@@ -28868,6 +29289,8 @@ Description: To get the instance group ID of a cluster, perform [query cluster i
 
     @property
     def Zone(self):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         r"""Availability zone.
 Description: Please enter the primary AZ of the cluster location correctly. If you enter a non-primary AZ of the cluster location, the call may display success but the actual execution will fail.
         :rtype: str
@@ -28876,6 +29299,8 @@ Description: Please enter the primary AZ of the cluster location correctly. If y
 
     @Zone.setter
     def Zone(self, Zone):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         self._Zone = Zone
 
 
@@ -30987,30 +31412,32 @@ class InquirePriceCreateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: AZ
+        :param _Zone: <p>Availability zone, each region provision best practice</p>
         :type Zone: str
-        :param _GoodsNum: Number of compute node to purchase
+        :param _GoodsNum: <p>Number of compute nodes to purchase</p>
         :type GoodsNum: int
-        :param _InstancePayMode: Instance type for purchase. Valid values: `PREPAID`, `POSTPAID`, `SERVERLESS`.
+        :param _InstancePayMode: <p>Instance purchase type, optional values: PREPAID, POSTPAID, SERVERLESS</p>
         :type InstancePayMode: str
-        :param _StoragePayMode: Storage type for purchase. Valid values: `PREPAID`, `POSTPAID`.
+        :param _StoragePayMode: <p>Storage purchase type, optional values: PREPAID, POSTPAID</p>
         :type StoragePayMode: str
-        :param _DeviceType: Instance device type. Supported values are as follows:
-- common: indicates the general type
-- exclusive: indicates the exclusive type.
+        :param _DeviceType: <p>Instance device type. Supported values are as follows:</p><ul><li>common: refers to universal type</li><li>exclusive: refers to dedicated type</li></ul>
         :type DeviceType: str
-        :param _Cpu: Number of CPU cores, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.
+        :param _Cpu: <p>Number of CPU cores. Required for PREPAID and POSTPAID instance types.</p>
         :type Cpu: int
-        :param _Memory: Memory size in GB, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.
+        :param _Memory: <p>Memory size in GB. Required for PREPAID and POSTPAID instance types.</p>
         :type Memory: int
-        :param _Ccu: CCU size, which is required when `InstancePayMode` is `SERVERLESS`.
+        :param _Ccu: <p>Ccu size. Required for the serverless type.</p>
         :type Ccu: float
-        :param _StorageLimit: Storage size, which is required when `StoragePayMode` is `PREPAID`.
+        :param _StorageLimit: <p>Storage size. Required for PREPAID storage type</p>
         :type StorageLimit: int
-        :param _TimeSpan: Validity period, which is required when `InstancePayMode` is `PREPAID`.
+        :param _TimeSpan: <p>Purchase period, required for PREPAID purchase type</p>
         :type TimeSpan: int
-        :param _TimeUnit: Duration unit, which is required when `InstancePayMode` is `PREPAID`. Valid values: `m` (month), `d` (day).
+        :param _TimeUnit: <p>Duration unit. Optional values: m, d. Required for PREPAID purchase type.</p>
         :type TimeUnit: str
+        :param _StorageVersion: <p>Storage architecture type. Enumeration value: 1.0/2.0 Default value: 1.0</p>
+        :type StorageVersion: str
+        :param _IsMultiAz: <p>Whether storage spans AZs. Valid for storage architecture 2.0</p>
+        :type IsMultiAz: bool
         """
         self._Zone = None
         self._GoodsNum = None
@@ -31023,10 +31450,12 @@ class InquirePriceCreateRequest(AbstractModel):
         self._StorageLimit = None
         self._TimeSpan = None
         self._TimeUnit = None
+        self._StorageVersion = None
+        self._IsMultiAz = None
 
     @property
     def Zone(self):
-        r"""AZ
+        r"""<p>Availability zone, each region provision best practice</p>
         :rtype: str
         """
         return self._Zone
@@ -31037,7 +31466,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""Number of compute node to purchase
+        r"""<p>Number of compute nodes to purchase</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -31048,7 +31477,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def InstancePayMode(self):
-        r"""Instance type for purchase. Valid values: `PREPAID`, `POSTPAID`, `SERVERLESS`.
+        r"""<p>Instance purchase type, optional values: PREPAID, POSTPAID, SERVERLESS</p>
         :rtype: str
         """
         return self._InstancePayMode
@@ -31059,7 +31488,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def StoragePayMode(self):
-        r"""Storage type for purchase. Valid values: `PREPAID`, `POSTPAID`.
+        r"""<p>Storage purchase type, optional values: PREPAID, POSTPAID</p>
         :rtype: str
         """
         return self._StoragePayMode
@@ -31070,9 +31499,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""Instance device type. Supported values are as follows:
-- common: indicates the general type
-- exclusive: indicates the exclusive type.
+        r"""<p>Instance device type. Supported values are as follows:</p><ul><li>common: refers to universal type</li><li>exclusive: refers to dedicated type</li></ul>
         :rtype: str
         """
         return self._DeviceType
@@ -31083,7 +31510,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Number of CPU cores, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.
+        r"""<p>Number of CPU cores. Required for PREPAID and POSTPAID instance types.</p>
         :rtype: int
         """
         return self._Cpu
@@ -31094,7 +31521,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""Memory size in GB, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.
+        r"""<p>Memory size in GB. Required for PREPAID and POSTPAID instance types.</p>
         :rtype: int
         """
         return self._Memory
@@ -31105,7 +31532,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def Ccu(self):
-        r"""CCU size, which is required when `InstancePayMode` is `SERVERLESS`.
+        r"""<p>Ccu size. Required for the serverless type.</p>
         :rtype: float
         """
         return self._Ccu
@@ -31116,7 +31543,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def StorageLimit(self):
-        r"""Storage size, which is required when `StoragePayMode` is `PREPAID`.
+        r"""<p>Storage size. Required for PREPAID storage type</p>
         :rtype: int
         """
         return self._StorageLimit
@@ -31127,7 +31554,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""Validity period, which is required when `InstancePayMode` is `PREPAID`.
+        r"""<p>Purchase period, required for PREPAID purchase type</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -31138,7 +31565,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""Duration unit, which is required when `InstancePayMode` is `PREPAID`. Valid values: `m` (month), `d` (day).
+        r"""<p>Duration unit. Optional values: m, d. Required for PREPAID purchase type.</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -31146,6 +31573,28 @@ class InquirePriceCreateRequest(AbstractModel):
     @TimeUnit.setter
     def TimeUnit(self, TimeUnit):
         self._TimeUnit = TimeUnit
+
+    @property
+    def StorageVersion(self):
+        r"""<p>Storage architecture type. Enumeration value: 1.0/2.0 Default value: 1.0</p>
+        :rtype: str
+        """
+        return self._StorageVersion
+
+    @StorageVersion.setter
+    def StorageVersion(self, StorageVersion):
+        self._StorageVersion = StorageVersion
+
+    @property
+    def IsMultiAz(self):
+        r"""<p>Whether storage spans AZs. Valid for storage architecture 2.0</p>
+        :rtype: bool
+        """
+        return self._IsMultiAz
+
+    @IsMultiAz.setter
+    def IsMultiAz(self, IsMultiAz):
+        self._IsMultiAz = IsMultiAz
 
 
     def _deserialize(self, params):
@@ -31160,6 +31609,8 @@ class InquirePriceCreateRequest(AbstractModel):
         self._StorageLimit = params.get("StorageLimit")
         self._TimeSpan = params.get("TimeSpan")
         self._TimeUnit = params.get("TimeUnit")
+        self._StorageVersion = params.get("StorageVersion")
+        self._IsMultiAz = params.get("IsMultiAz")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31177,9 +31628,9 @@ class InquirePriceCreateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstancePrice: Instance price
+        :param _InstancePrice: <p>Instance price</p>
         :type InstancePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
-        :param _StoragePrice: Storage price
+        :param _StoragePrice: <p>Storage price</p>
         :type StoragePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -31190,7 +31641,7 @@ class InquirePriceCreateResponse(AbstractModel):
 
     @property
     def InstancePrice(self):
-        r"""Instance price
+        r"""<p>Instance price</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         """
         return self._InstancePrice
@@ -31201,7 +31652,7 @@ class InquirePriceCreateResponse(AbstractModel):
 
     @property
     def StoragePrice(self):
-        r"""Storage price
+        r"""<p>Storage price</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         """
         return self._StoragePrice
@@ -36314,22 +36765,23 @@ class LogicBackupConfigInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogicBackupEnable: Whether automatic logical backup is enabled.
+        :param _LogicBackupEnable: <p>Whether automatic logical backup is enabled</p>
         :type LogicBackupEnable: str
-        :param _LogicBackupTimeBeg: Specifies the automatic logic backup start time.
+        :param _LogicBackupTimeBeg: <p>Automatic logic backup start time</p>
         :type LogicBackupTimeBeg: int
-        :param _LogicBackupTimeEnd: Specifies the termination time of automatic logical backup.
+        :param _LogicBackupTimeEnd: <p>Automated logic backup end time</p>
         :type LogicBackupTimeEnd: int
-        :param _LogicReserveDuration: Automatic logical backup retention time.
-Unit: seconds.
+        :param _LogicReserveDuration: <p>Automatic logical backup retention time<br>Unit: second</p>
         :type LogicReserveDuration: int
-        :param _LogicCrossRegionsEnable: Is cross-regional logical backup enabled?.
-Valid values: ON/OFF.
+        :param _LogicCrossRegionsEnable: <p>Whether cross-regional logical backup is enabled<br>Available values: ON/OFF</p>
         :type LogicCrossRegionsEnable: str
-        :param _LogicCrossRegions: Regions covered by logical backup.
+        :param _LogicCrossRegions: <p>Cross-regional logic backup</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LogicCrossRegions: list of str
-        :param _AutoCopyVaults: Backup delivery relationship
+        :param _AutoCopyVaults: <p>Backup delivery relationship</p>
         :type AutoCopyVaults: list of CreateBackupVaultItem
+        :param _LogicCrossRegionSaveDays: <p>Day</p><p>Unit: Cross-regional logical backup retention time</p>
+        :type LogicCrossRegionSaveDays: int
         """
         self._LogicBackupEnable = None
         self._LogicBackupTimeBeg = None
@@ -36338,10 +36790,11 @@ Valid values: ON/OFF.
         self._LogicCrossRegionsEnable = None
         self._LogicCrossRegions = None
         self._AutoCopyVaults = None
+        self._LogicCrossRegionSaveDays = None
 
     @property
     def LogicBackupEnable(self):
-        r"""Whether automatic logical backup is enabled.
+        r"""<p>Whether automatic logical backup is enabled</p>
         :rtype: str
         """
         return self._LogicBackupEnable
@@ -36352,7 +36805,7 @@ Valid values: ON/OFF.
 
     @property
     def LogicBackupTimeBeg(self):
-        r"""Specifies the automatic logic backup start time.
+        r"""<p>Automatic logic backup start time</p>
         :rtype: int
         """
         return self._LogicBackupTimeBeg
@@ -36363,7 +36816,7 @@ Valid values: ON/OFF.
 
     @property
     def LogicBackupTimeEnd(self):
-        r"""Specifies the termination time of automatic logical backup.
+        r"""<p>Automated logic backup end time</p>
         :rtype: int
         """
         return self._LogicBackupTimeEnd
@@ -36374,8 +36827,7 @@ Valid values: ON/OFF.
 
     @property
     def LogicReserveDuration(self):
-        r"""Automatic logical backup retention time.
-Unit: seconds.
+        r"""<p>Automatic logical backup retention time<br>Unit: second</p>
         :rtype: int
         """
         return self._LogicReserveDuration
@@ -36386,8 +36838,7 @@ Unit: seconds.
 
     @property
     def LogicCrossRegionsEnable(self):
-        r"""Is cross-regional logical backup enabled?.
-Valid values: ON/OFF.
+        r"""<p>Whether cross-regional logical backup is enabled<br>Available values: ON/OFF</p>
         :rtype: str
         """
         return self._LogicCrossRegionsEnable
@@ -36398,7 +36849,8 @@ Valid values: ON/OFF.
 
     @property
     def LogicCrossRegions(self):
-        r"""Regions covered by logical backup.
+        r"""<p>Cross-regional logic backup</p>
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._LogicCrossRegions
@@ -36409,7 +36861,7 @@ Valid values: ON/OFF.
 
     @property
     def AutoCopyVaults(self):
-        r"""Backup delivery relationship
+        r"""<p>Backup delivery relationship</p>
         :rtype: list of CreateBackupVaultItem
         """
         return self._AutoCopyVaults
@@ -36417,6 +36869,17 @@ Valid values: ON/OFF.
     @AutoCopyVaults.setter
     def AutoCopyVaults(self, AutoCopyVaults):
         self._AutoCopyVaults = AutoCopyVaults
+
+    @property
+    def LogicCrossRegionSaveDays(self):
+        r"""<p>Day</p><p>Unit: Cross-regional logical backup retention time</p>
+        :rtype: int
+        """
+        return self._LogicCrossRegionSaveDays
+
+    @LogicCrossRegionSaveDays.setter
+    def LogicCrossRegionSaveDays(self, LogicCrossRegionSaveDays):
+        self._LogicCrossRegionSaveDays = LogicCrossRegionSaveDays
 
 
     def _deserialize(self, params):
@@ -36432,6 +36895,7 @@ Valid values: ON/OFF.
                 obj = CreateBackupVaultItem()
                 obj._deserialize(item)
                 self._AutoCopyVaults.append(obj)
+        self._LogicCrossRegionSaveDays = params.get("LogicCrossRegionSaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38068,17 +38532,20 @@ class ModifyBinlogSaveDaysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _BinlogSaveDays: Binlog retention period in days
+        :param _BinlogSaveDays: <p>Binlog retention days</p>
         :type BinlogSaveDays: int
+        :param _BinlogCrossRegionSaveDays: <p>Cross-region backup retention period</p><p>Unit: Day</p>
+        :type BinlogCrossRegionSaveDays: int
         """
         self._ClusterId = None
         self._BinlogSaveDays = None
+        self._BinlogCrossRegionSaveDays = None
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -38089,7 +38556,7 @@ class ModifyBinlogSaveDaysRequest(AbstractModel):
 
     @property
     def BinlogSaveDays(self):
-        r"""Binlog retention period in days
+        r"""<p>Binlog retention days</p>
         :rtype: int
         """
         return self._BinlogSaveDays
@@ -38098,10 +38565,22 @@ class ModifyBinlogSaveDaysRequest(AbstractModel):
     def BinlogSaveDays(self, BinlogSaveDays):
         self._BinlogSaveDays = BinlogSaveDays
 
+    @property
+    def BinlogCrossRegionSaveDays(self):
+        r"""<p>Cross-region backup retention period</p><p>Unit: Day</p>
+        :rtype: int
+        """
+        return self._BinlogCrossRegionSaveDays
+
+    @BinlogCrossRegionSaveDays.setter
+    def BinlogCrossRegionSaveDays(self, BinlogCrossRegionSaveDays):
+        self._BinlogCrossRegionSaveDays = BinlogCrossRegionSaveDays
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._BinlogSaveDays = params.get("BinlogSaveDays")
+        self._BinlogCrossRegionSaveDays = params.get("BinlogCrossRegionSaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42084,20 +42563,23 @@ class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _CrossRegionsEnable: Whether cross-region snapshot backup is enabled.
+        :param _CrossRegionsEnable: <p>Whether cross-region snapshot backup is enabled ON/OFF</p>
         :type CrossRegionsEnable: str
-        :param _CrossRegions: Cross-Regional snapshot backup.
+        :param _CrossRegions: <p>Cross-regional snapshot backup</p>
         :type CrossRegions: list of str
+        :param _CrossRegionSaveDays: <p>Cross-region backup retention period</p><p>Unit: day</p>
+        :type CrossRegionSaveDays: int
         """
         self._ClusterId = None
         self._CrossRegionsEnable = None
         self._CrossRegions = None
+        self._CrossRegionSaveDays = None
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -42108,7 +42590,7 @@ class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
 
     @property
     def CrossRegionsEnable(self):
-        r"""Whether cross-region snapshot backup is enabled.
+        r"""<p>Whether cross-region snapshot backup is enabled ON/OFF</p>
         :rtype: str
         """
         return self._CrossRegionsEnable
@@ -42119,7 +42601,7 @@ class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
 
     @property
     def CrossRegions(self):
-        r"""Cross-Regional snapshot backup.
+        r"""<p>Cross-regional snapshot backup</p>
         :rtype: list of str
         """
         return self._CrossRegions
@@ -42128,11 +42610,23 @@ class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
     def CrossRegions(self, CrossRegions):
         self._CrossRegions = CrossRegions
 
+    @property
+    def CrossRegionSaveDays(self):
+        r"""<p>Cross-region backup retention period</p><p>Unit: day</p>
+        :rtype: int
+        """
+        return self._CrossRegionSaveDays
+
+    @CrossRegionSaveDays.setter
+    def CrossRegionSaveDays(self, CrossRegionSaveDays):
+        self._CrossRegionSaveDays = CrossRegionSaveDays
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._CrossRegionsEnable = params.get("CrossRegionsEnable")
         self._CrossRegions = params.get("CrossRegions")
+        self._CrossRegionSaveDays = params.get("CrossRegionSaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42150,7 +42644,7 @@ class ModifySnapBackupCrossRegionConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Task ID.
+        :param _TaskId: <p>Task ID.</p>
         :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -42160,7 +42654,7 @@ class ModifySnapBackupCrossRegionConfigResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""Task ID.
+        r"""<p>Task ID.</p>
         :rtype: int
         """
         return self._TaskId
@@ -46578,24 +47072,28 @@ class ProxyGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyGroupId: Database proxy group ID
+        :param _ProxyGroupId: <p>Database Proxy Group ID.</p>
         :type ProxyGroupId: str
-        :param _ProxyNodeCount: Number of nodes in the proxy group
+        :param _ProxyNodeCount: <p>Number of database proxy group nodes</p>
         :type ProxyNodeCount: int
-        :param _Status: Database proxy group status
+        :param _Status: <p>Database Proxy Group status</p>
         :type Status: str
-        :param _Region: Region
+        :param _Region: <p>Region.</p>
         :type Region: str
-        :param _Zone: AZ
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _CurrentProxyVersion: Current proxy version
+        :param _CurrentProxyVersion: <p>Current proxy version</p>
         :type CurrentProxyVersion: str
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _AppId: User AppId
+        :param _AppId: <p>User AppId</p>
         :type AppId: int
-        :param _OpenRw: Specifies that a read-write node activates the database proxy.
+        :param _OpenRw: <p>Activate database proxy for RWNode</p>
         :type OpenRw: str
+        :param _CreateTime: <p>Creation time.</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>Update time.</p>
+        :type UpdateTime: str
         """
         self._ProxyGroupId = None
         self._ProxyNodeCount = None
@@ -46606,10 +47104,12 @@ class ProxyGroup(AbstractModel):
         self._ClusterId = None
         self._AppId = None
         self._OpenRw = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def ProxyGroupId(self):
-        r"""Database proxy group ID
+        r"""<p>Database Proxy Group ID.</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -46620,7 +47120,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def ProxyNodeCount(self):
-        r"""Number of nodes in the proxy group
+        r"""<p>Number of database proxy group nodes</p>
         :rtype: int
         """
         return self._ProxyNodeCount
@@ -46631,7 +47131,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def Status(self):
-        r"""Database proxy group status
+        r"""<p>Database Proxy Group status</p>
         :rtype: str
         """
         return self._Status
@@ -46642,7 +47142,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def Region(self):
-        r"""Region
+        r"""<p>Region.</p>
         :rtype: str
         """
         return self._Region
@@ -46653,7 +47153,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -46664,7 +47164,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def CurrentProxyVersion(self):
-        r"""Current proxy version
+        r"""<p>Current proxy version</p>
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -46675,7 +47175,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -46686,7 +47186,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def AppId(self):
-        r"""User AppId
+        r"""<p>User AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -46697,7 +47197,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def OpenRw(self):
-        r"""Specifies that a read-write node activates the database proxy.
+        r"""<p>Activate database proxy for RWNode</p>
         :rtype: str
         """
         return self._OpenRw
@@ -46705,6 +47205,28 @@ class ProxyGroup(AbstractModel):
     @OpenRw.setter
     def OpenRw(self, OpenRw):
         self._OpenRw = OpenRw
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time.</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>Update time.</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
@@ -46717,6 +47239,8 @@ class ProxyGroup(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._AppId = params.get("AppId")
         self._OpenRw = params.get("OpenRw")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47142,28 +47666,32 @@ class ProxyNodeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyNodeId: Database proxy node ID.
+        :param _ProxyNodeId: <p>Database Proxy Node ID</p>
         :type ProxyNodeId: str
-        :param _ProxyNodeConnections: Current node connections, which is not returned by the `DescribeProxyNodes` API.
+        :param _ProxyNodeConnections: <p>Current connection number of nodes. This field value does not return in the DescribeProxyNodes API.</p>
         :type ProxyNodeConnections: int
-        :param _Cpu: CPU of the database proxy node.
+        :param _Cpu: <p>Database proxy node cpu</p>
         :type Cpu: int
-        :param _Mem: Memory of the database proxy node.
+        :param _Mem: <p>Database proxy node memory</p>
         :type Mem: int
-        :param _Status: Status of the database proxy node.
+        :param _Status: <p>Database Proxy Node Status</p>
         :type Status: str
-        :param _ProxyGroupId: Database proxy group ID.
+        :param _ProxyGroupId: <p>Database Proxy Group ID</p>
         :type ProxyGroupId: str
-        :param _ClusterId: Cluster ID.
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _AppId: User AppID.
+        :param _AppId: <p>User AppID</p>
         :type AppId: int
-        :param _Region: Region.
+        :param _Region: <p>Region.</p>
         :type Region: str
-        :param _Zone: AZ.
+        :param _Zone: <p>AZ.</p>
         :type Zone: str
-        :param _OssProxyNodeName: Database proxy node name.
+        :param _OssProxyNodeName: <p>Database Proxy Node Name</p>
         :type OssProxyNodeName: str
+        :param _CreateTime: <p>Creation time.</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>Update time.</p>
+        :type UpdateTime: str
         """
         self._ProxyNodeId = None
         self._ProxyNodeConnections = None
@@ -47176,10 +47704,12 @@ class ProxyNodeInfo(AbstractModel):
         self._Region = None
         self._Zone = None
         self._OssProxyNodeName = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def ProxyNodeId(self):
-        r"""Database proxy node ID.
+        r"""<p>Database Proxy Node ID</p>
         :rtype: str
         """
         return self._ProxyNodeId
@@ -47190,7 +47720,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def ProxyNodeConnections(self):
-        r"""Current node connections, which is not returned by the `DescribeProxyNodes` API.
+        r"""<p>Current connection number of nodes. This field value does not return in the DescribeProxyNodes API.</p>
         :rtype: int
         """
         return self._ProxyNodeConnections
@@ -47201,7 +47731,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""CPU of the database proxy node.
+        r"""<p>Database proxy node cpu</p>
         :rtype: int
         """
         return self._Cpu
@@ -47212,7 +47742,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Mem(self):
-        r"""Memory of the database proxy node.
+        r"""<p>Database proxy node memory</p>
         :rtype: int
         """
         return self._Mem
@@ -47223,7 +47753,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""Status of the database proxy node.
+        r"""<p>Database Proxy Node Status</p>
         :rtype: str
         """
         return self._Status
@@ -47234,7 +47764,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""Database proxy group ID.
+        r"""<p>Database Proxy Group ID</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -47245,7 +47775,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Cluster ID.
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -47256,7 +47786,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""User AppID.
+        r"""<p>User AppID</p>
         :rtype: int
         """
         return self._AppId
@@ -47267,7 +47797,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""Region.
+        r"""<p>Region.</p>
         :rtype: str
         """
         return self._Region
@@ -47278,7 +47808,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""AZ.
+        r"""<p>AZ.</p>
         :rtype: str
         """
         return self._Zone
@@ -47289,7 +47819,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def OssProxyNodeName(self):
-        r"""Database proxy node name.
+        r"""<p>Database Proxy Node Name</p>
         :rtype: str
         """
         return self._OssProxyNodeName
@@ -47297,6 +47827,28 @@ class ProxyNodeInfo(AbstractModel):
     @OssProxyNodeName.setter
     def OssProxyNodeName(self, OssProxyNodeName):
         self._OssProxyNodeName = OssProxyNodeName
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time.</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>Update time.</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
@@ -47311,6 +47863,8 @@ class ProxyNodeInfo(AbstractModel):
         self._Region = params.get("Region")
         self._Zone = params.get("Zone")
         self._OssProxyNodeName = params.get("OssProxyNodeName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55182,6 +55736,40 @@ class TradePrice(AbstractModel):
         
 
 
+class TransferClusterPrepayToPostpayRequest(AbstractModel):
+    r"""TransferClusterPrepayToPostpay request structure.
+
+    """
+
+
+class TransferClusterPrepayToPostpayResponse(AbstractModel):
+    r"""TransferClusterPrepayToPostpay response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class TransferClusterZoneRequest(AbstractModel):
     r"""TransferClusterZone request structure.
 
@@ -55338,6 +55926,40 @@ class TransferClusterZoneResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class TransferStoragePrepayToPostpayRequest(AbstractModel):
+    r"""TransferStoragePrepayToPostpay request structure.
+
+    """
+
+
+class TransferStoragePrepayToPostpayResponse(AbstractModel):
+    r"""TransferStoragePrepayToPostpay response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
