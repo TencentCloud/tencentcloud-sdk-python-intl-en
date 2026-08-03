@@ -439,24 +439,6 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DeleteTopicIpWhiteList(
-            self,
-            request: models.DeleteTopicIpWhiteListRequest,
-            opts: Dict = None,
-    ) -> models.DeleteTopicIpWhiteListResponse:
-        """
-        This API is used to delete a topic IP allowlist.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteTopicIpWhiteList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteTopicIpWhiteListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteUser(
             self,
             request: models.DeleteUserRequest,
@@ -488,6 +470,24 @@ class CkafkaClient(AbstractClient):
         kwargs["action"] = "DescribeACL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeACLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAccessPolicy(
+            self,
+            request: models.DescribeAccessPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccessPolicyResponse:
+        """
+        This API is used to query the public IP allowlist of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccessPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccessPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1047,6 +1047,42 @@ class CkafkaClient(AbstractClient):
         kwargs["action"] = "InstanceScalingDown"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.InstanceScalingDownResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def IsolatedInstancePre(
+            self,
+            request: models.IsolatedInstancePreRequest,
+            opts: Dict = None,
+    ) -> models.IsolatedInstancePreResponse:
+        """
+        Isolate a prepaid instance. This API is used to perform isolation on the instance. After successful execution, the instance is isolated.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IsolatedInstancePre"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IsolatedInstancePreResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAccessPolicy(
+            self,
+            request: models.ModifyAccessPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAccessPolicyResponse:
+        """
+        This API is used to modify the public IP allowlist of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAccessPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAccessPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

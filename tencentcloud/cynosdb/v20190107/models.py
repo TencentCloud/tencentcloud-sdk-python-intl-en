@@ -127,29 +127,29 @@ class Ability(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsSupportSlaveZone: Whether secondary AZ is supported
+        :param _IsSupportSlaveZone: <p>Whether support from availability zone is supported</p>
         :type IsSupportSlaveZone: str
-        :param _NonsupportSlaveZoneReason: The causes for no support from an availability zone.
+        :param _NonsupportSlaveZoneReason: <p>The causes for no support from availability zone</p>
         :type NonsupportSlaveZoneReason: str
-        :param _IsSupportRo: Whether read-only instance is supported
+        :param _IsSupportRo: <p>Whether RO instance is supported</p>
         :type IsSupportRo: str
-        :param _NonsupportRoReason: Reasons why RO instances are not supported.
+        :param _NonsupportRoReason: <p>Reason for unsupported RO instance</p>
         :type NonsupportRoReason: str
-        :param _IsSupportManualSnapshot: Whether manual snapshot backup initiation is supported.
+        :param _IsSupportManualSnapshot: <p>Whether manual snapshot backup initiation is supported</p>
         :type IsSupportManualSnapshot: str
-        :param _IsSupportTransparentDataEncryption: Whether transparent data encryption is supported.
+        :param _IsSupportTransparentDataEncryption: <p>Whether transparent data encryption is supported</p>
         :type IsSupportTransparentDataEncryption: str
-        :param _NoSupportTransparentDataEncryptionReason: Reasons for no support of transparent data encryption.
+        :param _NoSupportTransparentDataEncryptionReason: <p>The causes for unsupported transparent data encryption</p>
         :type NoSupportTransparentDataEncryptionReason: str
-        :param _IsSupportManualLogic: Whether manual initiation of logical backup is supported.
+        :param _IsSupportManualLogic: <p>Whether manual initiation of logical backup is supported</p>
         :type IsSupportManualLogic: str
-        :param _IsSupportGlobalEncryption: Enable global encryption.
+        :param _IsSupportGlobalEncryption: <p>Whether global encryption can be enabled</p>
         :type IsSupportGlobalEncryption: str
-        :param _NoSupportGlobalEncryptionReason: The causes for unsupported global encryption.
+        :param _NoSupportGlobalEncryptionReason: <p>The causes for unsupported global encryption</p>
         :type NoSupportGlobalEncryptionReason: str
-        :param _NoSupportTransparentDataEncryptionReasonCode: Status code for unsupported tde reason.
+        :param _NoSupportTransparentDataEncryptionReasonCode: <p>Status code for unsupported transparent encryption reason</p>
         :type NoSupportTransparentDataEncryptionReasonCode: str
-        :param _NoSupportGlobalEncryptionReasonCode: Status code for unsupported global encryption.
+        :param _NoSupportGlobalEncryptionReasonCode: <p>Status code for unsupported global encryption reason</p>
         :type NoSupportGlobalEncryptionReasonCode: str
         """
         self._IsSupportSlaveZone = None
@@ -167,7 +167,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportSlaveZone(self):
-        r"""Whether secondary AZ is supported
+        r"""<p>Whether support from availability zone is supported</p>
         :rtype: str
         """
         return self._IsSupportSlaveZone
@@ -178,7 +178,7 @@ class Ability(AbstractModel):
 
     @property
     def NonsupportSlaveZoneReason(self):
-        r"""The causes for no support from an availability zone.
+        r"""<p>The causes for no support from availability zone</p>
         :rtype: str
         """
         return self._NonsupportSlaveZoneReason
@@ -189,7 +189,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportRo(self):
-        r"""Whether read-only instance is supported
+        r"""<p>Whether RO instance is supported</p>
         :rtype: str
         """
         return self._IsSupportRo
@@ -200,7 +200,7 @@ class Ability(AbstractModel):
 
     @property
     def NonsupportRoReason(self):
-        r"""Reasons why RO instances are not supported.
+        r"""<p>Reason for unsupported RO instance</p>
         :rtype: str
         """
         return self._NonsupportRoReason
@@ -211,7 +211,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportManualSnapshot(self):
-        r"""Whether manual snapshot backup initiation is supported.
+        r"""<p>Whether manual snapshot backup initiation is supported</p>
         :rtype: str
         """
         return self._IsSupportManualSnapshot
@@ -222,7 +222,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportTransparentDataEncryption(self):
-        r"""Whether transparent data encryption is supported.
+        r"""<p>Whether transparent data encryption is supported</p>
         :rtype: str
         """
         return self._IsSupportTransparentDataEncryption
@@ -233,7 +233,7 @@ class Ability(AbstractModel):
 
     @property
     def NoSupportTransparentDataEncryptionReason(self):
-        r"""Reasons for no support of transparent data encryption.
+        r"""<p>The causes for unsupported transparent data encryption</p>
         :rtype: str
         """
         return self._NoSupportTransparentDataEncryptionReason
@@ -244,7 +244,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportManualLogic(self):
-        r"""Whether manual initiation of logical backup is supported.
+        r"""<p>Whether manual initiation of logical backup is supported</p>
         :rtype: str
         """
         return self._IsSupportManualLogic
@@ -255,7 +255,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportGlobalEncryption(self):
-        r"""Enable global encryption.
+        r"""<p>Whether global encryption can be enabled</p>
         :rtype: str
         """
         return self._IsSupportGlobalEncryption
@@ -266,7 +266,7 @@ class Ability(AbstractModel):
 
     @property
     def NoSupportGlobalEncryptionReason(self):
-        r"""The causes for unsupported global encryption.
+        r"""<p>The causes for unsupported global encryption</p>
         :rtype: str
         """
         return self._NoSupportGlobalEncryptionReason
@@ -277,7 +277,7 @@ class Ability(AbstractModel):
 
     @property
     def NoSupportTransparentDataEncryptionReasonCode(self):
-        r"""Status code for unsupported tde reason.
+        r"""<p>Status code for unsupported transparent encryption reason</p>
         :rtype: str
         """
         return self._NoSupportTransparentDataEncryptionReasonCode
@@ -288,7 +288,7 @@ class Ability(AbstractModel):
 
     @property
     def NoSupportGlobalEncryptionReasonCode(self):
-        r"""Status code for unsupported global encryption.
+        r"""<p>Status code for unsupported global encryption reason</p>
         :rtype: str
         """
         return self._NoSupportGlobalEncryptionReasonCode
@@ -328,19 +328,19 @@ class Account(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountName: Database account name
+        :param _AccountName: <p>Database account name.</p>
         :type AccountName: str
-        :param _Host: Host
+        :param _Host: <p>host</p>
         :type Host: str
-        :param _Description: Database account description
+        :param _Description: <p>Database account description.</p>
         :type Description: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: <p>Creation time.</p>
         :type CreateTime: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: <p>Update time.</p>
         :type UpdateTime: str
-        :param _MaxUserConnections: The max connections
+        :param _MaxUserConnections: <p>Maximum user connections</p>
         :type MaxUserConnections: int
-        :param _PasswordRotation: Whether password rotation is enabled (0: turn off; 1: turn on)
+        :param _PasswordRotation: <p>Whether password rotation is enabled (0: turn off; 1: turn on)</p>
         :type PasswordRotation: int
         """
         self._AccountName = None
@@ -353,7 +353,7 @@ class Account(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""Database account name
+        r"""<p>Database account name.</p>
         :rtype: str
         """
         return self._AccountName
@@ -364,7 +364,7 @@ class Account(AbstractModel):
 
     @property
     def Host(self):
-        r"""Host
+        r"""<p>host</p>
         :rtype: str
         """
         return self._Host
@@ -375,7 +375,7 @@ class Account(AbstractModel):
 
     @property
     def Description(self):
-        r"""Database account description
+        r"""<p>Database account description.</p>
         :rtype: str
         """
         return self._Description
@@ -386,7 +386,7 @@ class Account(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Creation time
+        r"""<p>Creation time.</p>
         :rtype: str
         """
         return self._CreateTime
@@ -397,7 +397,7 @@ class Account(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Update time
+        r"""<p>Update time.</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -408,7 +408,7 @@ class Account(AbstractModel):
 
     @property
     def MaxUserConnections(self):
-        r"""The max connections
+        r"""<p>Maximum user connections</p>
         :rtype: int
         """
         return self._MaxUserConnections
@@ -419,7 +419,7 @@ class Account(AbstractModel):
 
     @property
     def PasswordRotation(self):
-        r"""Whether password rotation is enabled (0: turn off; 1: turn on)
+        r"""<p>Whether password rotation is enabled (0: turn off; 1: turn on)</p>
         :rtype: int
         """
         return self._PasswordRotation
@@ -6895,9 +6895,9 @@ class CreateAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _Accounts: List of new accounts
+        :param _Accounts: <p>New account list</p>
         :type Accounts: list of NewAccount
         """
         self._ClusterId = None
@@ -6905,7 +6905,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -6916,7 +6916,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""List of new accounts
+        r"""<p>New account list</p>
         :rtype: list of NewAccount
         """
         return self._Accounts
@@ -7745,6 +7745,10 @@ class CreateClustersRequest(AbstractModel):
         :type ClusterLevel: str
         :param _CynosVersion: <p>Kernel minor version</p>
         :type CynosVersion: str
+        :param _SyncWay: <p>Synchronization method. Value range: async, semisync, sync.</p>
+        :type SyncWay: str
+        :param _SemiSyncTimeout: <p>Semi-sync timeout period, in milliseconds. To ensure business stability, semi-synchronous replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction, if the timeout period is exceeded, the replication method will degrade to asynchronous replication.</p><p>Value ranges from 1000 to 4294967295.</p><p>Unit: ms</p><p>Default value: 10000</p>
+        :type SemiSyncTimeout: int
         """
         self._Zone = None
         self._VpcId = None
@@ -7793,6 +7797,8 @@ class CreateClustersRequest(AbstractModel):
         self._AutoArchiveDelayHours = None
         self._ClusterLevel = None
         self._CynosVersion = None
+        self._SyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def Zone(self):
@@ -8311,6 +8317,28 @@ class CreateClustersRequest(AbstractModel):
     def CynosVersion(self, CynosVersion):
         self._CynosVersion = CynosVersion
 
+    @property
+    def SyncWay(self):
+        r"""<p>Synchronization method. Value range: async, semisync, sync.</p>
+        :rtype: str
+        """
+        return self._SyncWay
+
+    @SyncWay.setter
+    def SyncWay(self, SyncWay):
+        self._SyncWay = SyncWay
+
+    @property
+    def SemiSyncTimeout(self):
+        r"""<p>Semi-sync timeout period, in milliseconds. To ensure business stability, semi-synchronous replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction, if the timeout period is exceeded, the replication method will degrade to asynchronous replication.</p><p>Value ranges from 1000 to 4294967295.</p><p>Unit: ms</p><p>Default value: 10000</p>
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -8377,6 +8405,8 @@ class CreateClustersRequest(AbstractModel):
         self._AutoArchiveDelayHours = params.get("AutoArchiveDelayHours")
         self._ClusterLevel = params.get("ClusterLevel")
         self._CynosVersion = params.get("CynosVersion")
+        self._SyncWay = params.get("SyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15359,9 +15389,9 @@ class DeleteAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _Accounts: Accounts in array, which contains `account` and `host`.
+        :param _Accounts: <p>Account array, including account and host.</p>
         :type Accounts: list of InputAccount
         """
         self._ClusterId = None
@@ -15369,7 +15399,7 @@ class DeleteAccountsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -15380,7 +15410,7 @@ class DeleteAccountsRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""Accounts in array, which contains `account` and `host`.
+        r"""<p>Account array, including account and host.</p>
         :rtype: list of InputAccount
         """
         return self._Accounts
@@ -43349,17 +43379,17 @@ class NewAccount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountName: Account name, which can contain 1-16 letters, digits, and underscores. It must begin with a letter and end with a letter or digit.
+        :param _AccountName: <p>Account name, containing letters, digits, and underscores, starting with a letter, ending with a letter or digit, length 1-30</p>
         :type AccountName: str
-        :param _Host: Host
+        :param _Host: <p>host (% or ipv4 address)</p>
         :type Host: str
-        :param _AccountPassword: Password, which can contain 8-64 characters.
+        :param _AccountPassword: <p>Password. The length range is 8 to 64 characters.</p>
         :type AccountPassword: str
-        :param _PasswordRotation: Whether password rotation is enabled (0: turn off; 1: turn on)
+        :param _PasswordRotation: <p>Whether password rotation is enabled (0: turn off; 1: turn on)</p>
         :type PasswordRotation: int
-        :param _Description: Description
+        :param _Description: <p>Description.</p>
         :type Description: str
-        :param _MaxUserConnections: Maximum number of user connections, which cannot be above 10,240.
+        :param _MaxUserConnections: <p>Maximum user connections cannot be greater than 10240</p>
         :type MaxUserConnections: int
         """
         self._AccountName = None
@@ -43371,7 +43401,7 @@ class NewAccount(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""Account name, which can contain 1-16 letters, digits, and underscores. It must begin with a letter and end with a letter or digit.
+        r"""<p>Account name, containing letters, digits, and underscores, starting with a letter, ending with a letter or digit, length 1-30</p>
         :rtype: str
         """
         return self._AccountName
@@ -43382,7 +43412,7 @@ class NewAccount(AbstractModel):
 
     @property
     def Host(self):
-        r"""Host
+        r"""<p>host (% or ipv4 address)</p>
         :rtype: str
         """
         return self._Host
@@ -43393,7 +43423,7 @@ class NewAccount(AbstractModel):
 
     @property
     def AccountPassword(self):
-        r"""Password, which can contain 8-64 characters.
+        r"""<p>Password. The length range is 8 to 64 characters.</p>
         :rtype: str
         """
         return self._AccountPassword
@@ -43404,7 +43434,7 @@ class NewAccount(AbstractModel):
 
     @property
     def PasswordRotation(self):
-        r"""Whether password rotation is enabled (0: turn off; 1: turn on)
+        r"""<p>Whether password rotation is enabled (0: turn off; 1: turn on)</p>
         :rtype: int
         """
         return self._PasswordRotation
@@ -43415,7 +43445,7 @@ class NewAccount(AbstractModel):
 
     @property
     def Description(self):
-        r"""Description
+        r"""<p>Description.</p>
         :rtype: str
         """
         return self._Description
@@ -43426,7 +43456,7 @@ class NewAccount(AbstractModel):
 
     @property
     def MaxUserConnections(self):
-        r"""Maximum number of user connections, which cannot be above 10,240.
+        r"""<p>Maximum user connections cannot be greater than 10240</p>
         :rtype: int
         """
         return self._MaxUserConnections
@@ -51361,6 +51391,12 @@ class RollbackToNewClusterRequest(AbstractModel):
         :type AutoArchive: str
         :param _FromSaveBackup: <p>Whether to restore from the saved backup</p>
         :type FromSaveBackup: bool
+        :param _SyncWay: <p>Synchronization method. Available values: async, semisync, sync. Async as a default.</p>
+        :type SyncWay: str
+        :param _SemiSyncTimeout: <p>Semi-synchronous timeout period, in milliseconds. To ensure business stability, semi-synchronous replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction, if the timeout period is exceeded, the replication method will degrade to asynchronous replication.</p><p>Value ranges from 1000 to 4294967295.</p><p>Unit: ms</p><p>Default value: 10000</p>
+        :type SemiSyncTimeout: int
+        :param _SlaveZone: <p>Standby availability zone</p>
+        :type SlaveZone: str
         """
         self._Zone = None
         self._OriginalClusterId = None
@@ -51391,6 +51427,9 @@ class RollbackToNewClusterRequest(AbstractModel):
         self._ProjectId = None
         self._AutoArchive = None
         self._FromSaveBackup = None
+        self._SyncWay = None
+        self._SemiSyncTimeout = None
+        self._SlaveZone = None
 
     @property
     def Zone(self):
@@ -51711,6 +51750,39 @@ class RollbackToNewClusterRequest(AbstractModel):
     def FromSaveBackup(self, FromSaveBackup):
         self._FromSaveBackup = FromSaveBackup
 
+    @property
+    def SyncWay(self):
+        r"""<p>Synchronization method. Available values: async, semisync, sync. Async as a default.</p>
+        :rtype: str
+        """
+        return self._SyncWay
+
+    @SyncWay.setter
+    def SyncWay(self, SyncWay):
+        self._SyncWay = SyncWay
+
+    @property
+    def SemiSyncTimeout(self):
+        r"""<p>Semi-synchronous timeout period, in milliseconds. To ensure business stability, semi-synchronous replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction, if the timeout period is exceeded, the replication method will degrade to asynchronous replication.</p><p>Value ranges from 1000 to 4294967295.</p><p>Unit: ms</p><p>Default value: 10000</p>
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
+    @property
+    def SlaveZone(self):
+        r"""<p>Standby availability zone</p>
+        :rtype: str
+        """
+        return self._SlaveZone
+
+    @SlaveZone.setter
+    def SlaveZone(self, SlaveZone):
+        self._SlaveZone = SlaveZone
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -51767,6 +51839,9 @@ class RollbackToNewClusterRequest(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._AutoArchive = params.get("AutoArchive")
         self._FromSaveBackup = params.get("FromSaveBackup")
+        self._SyncWay = params.get("SyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
+        self._SlaveZone = params.get("SlaveZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

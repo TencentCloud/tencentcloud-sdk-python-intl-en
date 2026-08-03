@@ -49,6 +49,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddAclRule(self, request):
+        r"""Add one or more Internet Boundary Access Control Rules.
+
+        :param request: Request instance for AddAclRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.AddAclRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.AddAclRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddAclRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddAclRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddEnterpriseSecurityGroupRules(self, request):
         r"""This API is used to create enterprise security group rules (new).
 
@@ -408,6 +431,52 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeBlockStaticList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBlockStaticListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCfwLogs(self, request):
+        r"""This API is used to query the firewall log of the current tenant. Only use HasMore/NextToken in Response.Data to paginate.
+
+        :param request: Request instance for DescribeCfwLogs.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwLogsRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCfwLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCfwLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCfwStatusMonitor(self, request):
+        r"""Query status monitoring scenario. Op=describe_scene is used to detect available scenarios, metrics, perspectives, and secondary dropdown available_options. Op=fetch_scene is used to pull specific scenario snapshots, with results in the JSON string of Response.Data.
+
+        :param request: Request instance for DescribeCfwStatusMonitor.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwStatusMonitorRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwStatusMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCfwStatusMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCfwStatusMonitorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

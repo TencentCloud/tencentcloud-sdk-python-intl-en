@@ -514,8 +514,6 @@ class OcrClient(AbstractClient):
     def HKIDCardOCR(self, request):
         r"""This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute.
 
-        This API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).
-
         :param request: Request instance for HKIDCardOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.HKIDCardOCRRequest`
         :rtype: :class:`tencentcloud.ocr.v20181119.models.HKIDCardOCRResponse`
@@ -825,8 +823,6 @@ class OcrClient(AbstractClient):
 
     def RecognizeMacaoIDCardOCR(self, request):
         r"""This API is used to recognize key fields on the photo side of a Macao (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute.
-
-        This API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).
 
         :param request: Request instance for RecognizeMacaoIDCardOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeMacaoIDCardOCRRequest`

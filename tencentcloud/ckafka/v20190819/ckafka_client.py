@@ -555,29 +555,6 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteTopicIpWhiteList(self, request):
-        r"""This API is used to delete a topic IP allowlist.
-
-        :param request: Request instance for DeleteTopicIpWhiteList.
-        :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteTopicIpWhiteListRequest`
-        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DeleteTopicIpWhiteListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteTopicIpWhiteList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteTopicIpWhiteListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteUser(self, request):
         r"""This API is used to delete a user.
 
@@ -615,6 +592,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("DescribeACL", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessPolicy(self, request):
+        r"""This API is used to query the public IP allowlist of an instance.
+
+        :param request: Request instance for DescribeAccessPolicy.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeAccessPolicyRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeAccessPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1329,6 +1329,52 @@ class CkafkaClient(AbstractClient):
             body = self.call("InstanceScalingDown", params, headers=headers)
             response = json.loads(body)
             model = models.InstanceScalingDownResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def IsolatedInstancePre(self, request):
+        r"""Isolate a prepaid instance. This API is used to perform isolation on the instance. After successful execution, the instance is isolated.
+
+        :param request: Request instance for IsolatedInstancePre.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.IsolatedInstancePreRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.IsolatedInstancePreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolatedInstancePre", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsolatedInstancePreResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAccessPolicy(self, request):
+        r"""This API is used to modify the public IP allowlist of an instance.
+
+        :param request: Request instance for ModifyAccessPolicy.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyAccessPolicyRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyAccessPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccessPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccessPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

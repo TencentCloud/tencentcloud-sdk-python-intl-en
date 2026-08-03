@@ -43,6 +43,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddAclRule(
+            self,
+            request: models.AddAclRuleRequest,
+            opts: Dict = None,
+    ) -> models.AddAclRuleResponse:
+        """
+        Add one or more Internet Boundary Access Control Rules.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddAclRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddAclRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddEnterpriseSecurityGroupRules(
             self,
             request: models.AddEnterpriseSecurityGroupRulesRequest,
@@ -326,6 +344,42 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeBlockStaticList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBlockStaticListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwLogs(
+            self,
+            request: models.DescribeCfwLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwLogsResponse:
+        """
+        This API is used to query the firewall log of the current tenant. Only use HasMore/NextToken in Response.Data to paginate.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwStatusMonitor(
+            self,
+            request: models.DescribeCfwStatusMonitorRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwStatusMonitorResponse:
+        """
+        Query status monitoring scenario. Op=describe_scene is used to detect available scenarios, metrics, perspectives, and secondary dropdown available_options. Op=fetch_scene is used to pull specific scenario snapshots, with results in the JSON string of Response.Data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwStatusMonitor"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwStatusMonitorResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
