@@ -418,6 +418,42 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateInferenceAPIToken(
+            self,
+            request: models.CreateInferenceAPITokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateInferenceAPITokenResponse:
+        """
+        Create an inference API Token for authenticating access to the inference service. The Token content is returned only once when creating. Each site can create up to 100 tokens.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInferenceAPIToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInferenceAPITokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateInferenceService(
+            self,
+            request: models.CreateInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.CreateInferenceServiceResponse:
+        """
+        This API is used to create an inference service. It allows setting the service name, listening port, container image configuration, and resource configuration. Once created successfully, an inference access address is provided.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInferenceServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateJustInTimeTranscodeTemplate(
             self,
             request: models.CreateJustInTimeTranscodeTemplateRequest,
@@ -1040,6 +1076,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DeleteFunctionRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteFunctionRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteInferenceAPIToken(
+            self,
+            request: models.DeleteInferenceAPITokenRequest,
+            opts: Dict = None,
+    ) -> models.DeleteInferenceAPITokenResponse:
+        """
+        This API is used to delete an inference API Token. Once deleted, the Token will expire immediately, and requests for accessing the inference service using it will no longer be accessible.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteInferenceAPIToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteInferenceAPITokenResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1869,6 +1923,114 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeIdentifications"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeIdentificationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceAPITokens(
+            self,
+            request: models.DescribeInferenceAPITokensRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceAPITokensResponse:
+        """
+        This API is used to query the list of reasoning API Tokens, return the ID, name, content, and creation time of the Tokens, and support paging query.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceAPITokens"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceAPITokensResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceHardwareSpecifications(
+            self,
+            request: models.DescribeInferenceHardwareSpecificationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceHardwareSpecificationsResponse:
+        """
+        This API is used to query the reasoning hardware specification list, returning configurations such as CPU, memory, GPU, and memory for each specification. You can select the required specification during service creation.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceHardwareSpecifications"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceHardwareSpecificationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceServiceDeploymentLogs(
+            self,
+            request: models.DescribeInferenceServiceDeploymentLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceServiceDeploymentLogsResponse:
+        """
+        This API is used to query the logs of a designated deployment of an inference service, return log content and generation time, and support time-based range search, pagination, and sorting.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceServiceDeploymentLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceServiceDeploymentLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceServiceDeploymentRecords(
+            self,
+            request: models.DescribeInferenceServiceDeploymentRecordsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceServiceDeploymentRecordsResponse:
+        """
+        This API is used to query the deployment history list of inference services, returning the operation type, status, duration, configuration snapshot, and whether it is the currently effective configuration for each deployment, with support for pagination and sorting.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceServiceDeploymentRecords"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceServiceDeploymentRecordsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceServiceMonitorData(
+            self,
+            request: models.DescribeInferenceServiceMonitorDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceServiceMonitorDataResponse:
+        """
+        This API is used to query service monitoring data for reasoning, supporting indicators such as CPU, memory, GPU, video memory utilization, and instance count. You can specify the time range and aggregation granularity, and query data for up to the most recent 30 days.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceServiceMonitorData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceServiceMonitorDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceServices(
+            self,
+            request: models.DescribeInferenceServicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceServicesResponse:
+        """
+        This API is used to query the service list for reasoning, supporting filtering by service name, service ID, and status. It returns information such as service configuration, running state, number of instances, and reasoning access address.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceServices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceServicesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3327,6 +3489,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInferenceService(
+            self,
+            request: models.ModifyInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInferenceServiceResponse:
+        """
+        This API is used to modify the inference service, supporting updates to the listening port, request path, container image, resource configuration, and description. Only the passed parameters are modified, while others remain unchanged.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInferenceServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyL4Proxy(
             self,
             request: models.ModifyL4ProxyRequest,
@@ -3864,6 +4044,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyZoneWorkMode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyZoneWorkModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OperateInferenceService(
+            self,
+            request: models.OperateInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.OperateInferenceServiceResponse:
+        """
+        This API is used to operate an inference service, support stopping, starting up, and deleting the inference service. Once deleted, resources cannot be recovered.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OperateInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OperateInferenceServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

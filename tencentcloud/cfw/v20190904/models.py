@@ -1673,6 +1673,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class Column(AbstractModel):
+    r"""Log Analysis Column Attributes
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Column name
+        :type Name: str
+        :param _Type: Column attribute
+        :type Type: str
+        """
+        self._Name = None
+        self._Type = None
+
+    @property
+    def Name(self):
+        r"""Column name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""Column attribute
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommonFilter(AbstractModel):
     r"""Common filters for search
 
@@ -9274,6 +9325,292 @@ class IpStatic(AbstractModel):
         
 
 
+class LogInfo(AbstractModel):
+    r"""Log result information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: Log time, in milliseconds
+        :type Time: int
+        :param _TopicId: Log topic ID
+        :type TopicId: str
+        :param _TopicName: Log topic name
+        :type TopicName: str
+        :param _Source: Log source IP address
+        :type Source: str
+        :param _FileName: Log file name
+        :type FileName: str
+        :param _PkgId: ID of Log Upload Request Packet
+        :type PkgId: str
+        :param _PkgLogId: Log ID in Request Packet
+        :type PkgLogId: str
+        :param _LogJson: JSON serialized string of the log content
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogJson: str
+        :param _HostName: Log source host name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HostName: str
+        :param _RawLog: Raw log (only available when there is an error in creating the log index).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RawLog: str
+        :param _IndexStatus: Cause for log index creation exception. It has a value only when a log index creation exception occurs.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IndexStatus: str
+        """
+        self._Time = None
+        self._TopicId = None
+        self._TopicName = None
+        self._Source = None
+        self._FileName = None
+        self._PkgId = None
+        self._PkgLogId = None
+        self._LogJson = None
+        self._HostName = None
+        self._RawLog = None
+        self._IndexStatus = None
+
+    @property
+    def Time(self):
+        r"""Log time, in milliseconds
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def TopicId(self):
+        r"""Log topic ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""Log topic name
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Source(self):
+        r"""Log source IP address
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def FileName(self):
+        r"""Log file name
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def PkgId(self):
+        r"""ID of Log Upload Request Packet
+        :rtype: str
+        """
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def PkgLogId(self):
+        r"""Log ID in Request Packet
+        :rtype: str
+        """
+        return self._PkgLogId
+
+    @PkgLogId.setter
+    def PkgLogId(self, PkgLogId):
+        self._PkgLogId = PkgLogId
+
+    @property
+    def LogJson(self):
+        r"""JSON serialized string of the log content
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LogJson
+
+    @LogJson.setter
+    def LogJson(self, LogJson):
+        self._LogJson = LogJson
+
+    @property
+    def HostName(self):
+        r"""Log source host name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def RawLog(self):
+        r"""Raw log (only available when there is an error in creating the log index).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RawLog
+
+    @RawLog.setter
+    def RawLog(self, RawLog):
+        self._RawLog = RawLog
+
+    @property
+    def IndexStatus(self):
+        r"""Cause for log index creation exception. It has a value only when a log index creation exception occurs.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IndexStatus
+
+    @IndexStatus.setter
+    def IndexStatus(self, IndexStatus):
+        self._IndexStatus = IndexStatus
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._Source = params.get("Source")
+        self._FileName = params.get("FileName")
+        self._PkgId = params.get("PkgId")
+        self._PkgLogId = params.get("PkgLogId")
+        self._LogJson = params.get("LogJson")
+        self._HostName = params.get("HostName")
+        self._RawLog = params.get("RawLog")
+        self._IndexStatus = params.get("IndexStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogItem(AbstractModel):
+    r"""KV pairs in logs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Log key
+        :type Key: str
+        :param _Value: Log Value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""Log key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""Log Value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogItems(AbstractModel):
+    r"""LogItem array
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Key-Value Data Pair returned from analysis results
+        :type Data: list of LogItem
+        """
+        self._Data = None
+
+    @property
+    def Data(self):
+        r"""Key-Value Data Pair returned from analysis results
+        :rtype: list of LogItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = LogItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAcRuleRequest(AbstractModel):
     r"""ModifyAcRule request structure.
 
@@ -11673,6 +12010,57 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._RequestId = params.get("RequestId")
 
 
+class MultiTopicSearchInformation(AbstractModel):
+    r"""Multi-log topic retrieval related information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: ID of the log topic to be searched and analyzed
+        :type TopicId: str
+        :param _Context: Pass the Context value returned by the last API call to retrieve more subsequent logs. A total of up to 10,000 raw logs can be obtained, with a validity period of 1 hour.
+        :type Context: str
+        """
+        self._TopicId = None
+        self._Context = None
+
+    @property
+    def TopicId(self):
+        r"""ID of the log topic to be searched and analyzed
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Context(self):
+        r"""Pass the Context value returned by the last API call to retrieve more subsequent logs. A total of up to 10,000 raw logs can be obtained, with a validity period of 1 hour.
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NatFwFilter(AbstractModel):
     r"""The filter list displayed by the NAT firewall instance
 
@@ -13052,6 +13440,626 @@ class ScanResultInfo(AbstractModel):
         self._IPStatus = params.get("IPStatus")
         self._IdpStatus = params.get("IdpStatus")
         self._BanStatus = params.get("BanStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogErrors(AbstractModel):
+    r"""Error information for multi-log topic search
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: Log topic ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TopicId: str
+        :param _ErrorMsg: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param _ErrorCodeStr: Error code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorCodeStr: str
+        """
+        self._TopicId = None
+        self._ErrorMsg = None
+        self._ErrorCodeStr = None
+
+    @property
+    def TopicId(self):
+        r"""Log topic ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def ErrorMsg(self):
+        r"""Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def ErrorCodeStr(self):
+        r"""Error code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ErrorCodeStr
+
+    @ErrorCodeStr.setter
+    def ErrorCodeStr(self, ErrorCodeStr):
+        self._ErrorCodeStr = ErrorCodeStr
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._ErrorCodeStr = params.get("ErrorCodeStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogInfos(AbstractModel):
+    r"""Multiple log topic search for topic information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: Log topic ID
+        :type TopicId: str
+        :param _Period: Log storage lifetime
+        :type Period: int
+        :param _Context: Pass through the Context value returned by this API, which can access more logs later, with an expiration time of 1 hour.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Context: str
+        """
+        self._TopicId = None
+        self._Period = None
+        self._Context = None
+
+    @property
+    def TopicId(self):
+        r"""Log topic ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Period(self):
+        r"""Log storage lifetime
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Context(self):
+        r"""Pass through the Context value returned by this API, which can access more logs later, with an expiration time of 1 hour.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Period = params.get("Period")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogRequest(AbstractModel):
+    r"""SearchLog request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _From: <p>Start time for logs to be searched and analyzed, which is a Unix timestamp in milliseconds</p>
+        :type From: int
+        :param _To: <p>End time for logs to be searched and analyzed, which is a Unix timestamp in milliseconds</p>
+        :type To: int
+        :param _Query: <p>The retrieval and analysis statement has a maximum length of 12 KB.<br>The statement consists of <a href="https://www.tencentcloud.com/document/product/614/47044?from_cn_redirect=1" target="_blank">[retrieval condition]</a> | <a href="https://www.tencentcloud.com/document/product/614/44061?from_cn_redirect=1" target="_blank">[SQL statement]</a>. When there is no need to perform statistical analysis on logs, the pipe character <code> | </code> and the SQL statement can be omitted.<br>Use * or an empty string to search all logs.</p>
+        :type Query: str
+        :param _SyntaxRule: <p>Search syntax rules. Default value is 0. Recommended for use is 1.</p><ul><li>0: Lucene syntax</li><li>1: CQL syntax (dedicated retrieval syntax for CLS, also the default syntax rule used in the console).</li></ul><p>For details, see <a href="https://www.tencentcloud.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules" target="_blank">Retrieval condition syntax rules</a></p>
+        :type SyntaxRule: int
+        :param _TopicId: <ul><li>Log topic ID to be retrieved and analyzed. Only one log topic can be specified.</li><li>If needed, use the Topics parameter to retrieve multiple log topics.</li><li>The TopicId and Topics parameters cannot be used simultaneously. Only one can be selected in a single request.<br>The log topic IDs are as follows:<br>Access control - Internet boundary: cfw_rule_acl<br>Access control - NAT boundary: cfw_rule_nat_acl<br>Access control - VPC boundary: cfw_rule_vpc_acl<br>Access control - DNS switch: cfw_rule_dns_acl<br>Intrusion defense: cfw_rule_threatinfo<br>Full traffic detection and response logs - Traffic analysis: cfw_netflow_nta<br>Full traffic detection and response logs - Traffic alarm: cfw_rule_ndr_threatinfo<br>Zero trust operations and maintenance - Database logon: cfw_operate_db<br>Zero trust operations and maintenance - Server access: operate_remote_om<br>Zero trust operations and maintenance - Web service access: operate_web_access<br>Zero trust operations and maintenance - Behavioral audit: remoteom_commands<br>Traffic log - Internet boundary: cfw_netflow_border<br>Traffic log - NAT boundary: cfw_netflow_nat<br>Traffic log - VPC boundary: cfw_netflow_vpc<br>Traffic log - DNS switch: cfw_netflow_dns<br>Traffic log - Private network traffic: cfw_netflow_fl<br>Operation log: operate_log_all</li></ul>
+        :type TopicId: str
+        :param _Topics: <ul><li>Log topic list for retrieval and analysis, supports a maximum of 50 log topics.</li><li>Use TopicId to retrieve a single log topic.</li><li>TopicId and Topics cannot be used simultaneously. Only select one in a single request.</li></ul>
+        :type Topics: list of MultiTopicSearchInformation
+        :param _Sort: <p>Whether raw logs are returned in time sequence; value range: asc (ascending), desc (descending), default is desc<br>Note:</p><ul><li>Valid only when the search and analysis statement (Query) does not contain SQL</li><li>For SQL result sorting, refer to <a href="https://www.tencentcloud.com/document/product/614/58978?from_cn_redirect=1" target="_blank">SQL ORDER BY syntax</a></li></ul>
+        :type Sort: str
+        :param _Limit: <p>Number of raw logs returned in a single query. Default value: 100. Maximum value: 1000.<br>Note:</p><ul><li>This parameter is valid only when the search and analysis statement (Query) does not contain SQL.</li><li>For the method for specifying SQL result count, see <a href="https://www.tencentcloud.com/document/product/614/58977?from_cn_redirect=1" target="_blank">SQL LIMIT syntax</a>.</li></ul><p>You can retrieve more logs in two ways:</p><ul><li>Context: Pass the Context value returned by the last API call to retrieve more logs. You can retrieve up to 10,000 entries of raw logs in total.</li><li>Offset: The offset indicates the line number from which to start returning raw logs. There is no log entry limit.</li></ul>
+        :type Limit: int
+        :param _Offset: <p>Query the offset of raw logs, indicating the line number from which to start returning raw logs. Default value is 0.<br>Note:</p><ul><li>Applicable only when the retrieval and analysis statement (Query) does not contain SQL.</li><li>Cannot be used with the Context parameter.</li><li>Applicable only for single log topic retrieval.</li></ul>
+        :type Offset: int
+        :param _Context: <p>Pass the Context value returned by the last API call to obtain more logs later. The total number of raw logs that can be obtained is up to 10,000 entries. The expiration time is 1 hour.<br>Note:</p><ul><li>When passing this parameter, do not modify other parameters.</li><li>Applicable only for single log topic retrieval. To retrieve multiple log topics, use the Context in Topics.</li><li>This is valid only when the search and analysis statement (Query) does not contain SQL. For obtaining subsequent results with SQL, refer to <a href="https://www.tencentcloud.com/document/product/614/58977?from_cn_redirect=1" target="_blank">SQL LIMIT syntax</a>.</li></ul>
+        :type Context: str
+        :param _SamplingRate: <p>When performing statistical analysis (SQL included in Query), whether to sample raw logs first and then perform statistical analysis.<br>0: Automatic sampling;<br>0–1: Sample at the specified sampling rate, for example 0.02;<br>1: Indicates no sampling, that is, precision analysis.<br>Default value: 1</p>
+        :type SamplingRate: float
+        :param _UseNewAnalysis: <p>true means using the new retrieval result return method, and output parameters AnalysisRecords and Columns are valid.<br>false means using the old retrieval result return method, and output parameters AnalysisResults and ColNames are valid.<br>The two return methods have a slight difference in encoding format. It is recommended to use true.</p>
+        :type UseNewAnalysis: bool
+        """
+        self._From = None
+        self._To = None
+        self._Query = None
+        self._SyntaxRule = None
+        self._TopicId = None
+        self._Topics = None
+        self._Sort = None
+        self._Limit = None
+        self._Offset = None
+        self._Context = None
+        self._SamplingRate = None
+        self._UseNewAnalysis = None
+
+    @property
+    def From(self):
+        r"""<p>Start time for logs to be searched and analyzed, which is a Unix timestamp in milliseconds</p>
+        :rtype: int
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        r"""<p>End time for logs to be searched and analyzed, which is a Unix timestamp in milliseconds</p>
+        :rtype: int
+        """
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
+    @property
+    def Query(self):
+        r"""<p>The retrieval and analysis statement has a maximum length of 12 KB.<br>The statement consists of <a href="https://www.tencentcloud.com/document/product/614/47044?from_cn_redirect=1" target="_blank">[retrieval condition]</a> | <a href="https://www.tencentcloud.com/document/product/614/44061?from_cn_redirect=1" target="_blank">[SQL statement]</a>. When there is no need to perform statistical analysis on logs, the pipe character <code> | </code> and the SQL statement can be omitted.<br>Use * or an empty string to search all logs.</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SyntaxRule(self):
+        r"""<p>Search syntax rules. Default value is 0. Recommended for use is 1.</p><ul><li>0: Lucene syntax</li><li>1: CQL syntax (dedicated retrieval syntax for CLS, also the default syntax rule used in the console).</li></ul><p>For details, see <a href="https://www.tencentcloud.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules" target="_blank">Retrieval condition syntax rules</a></p>
+        :rtype: int
+        """
+        return self._SyntaxRule
+
+    @SyntaxRule.setter
+    def SyntaxRule(self, SyntaxRule):
+        self._SyntaxRule = SyntaxRule
+
+    @property
+    def TopicId(self):
+        r"""<ul><li>Log topic ID to be retrieved and analyzed. Only one log topic can be specified.</li><li>If needed, use the Topics parameter to retrieve multiple log topics.</li><li>The TopicId and Topics parameters cannot be used simultaneously. Only one can be selected in a single request.<br>The log topic IDs are as follows:<br>Access control - Internet boundary: cfw_rule_acl<br>Access control - NAT boundary: cfw_rule_nat_acl<br>Access control - VPC boundary: cfw_rule_vpc_acl<br>Access control - DNS switch: cfw_rule_dns_acl<br>Intrusion defense: cfw_rule_threatinfo<br>Full traffic detection and response logs - Traffic analysis: cfw_netflow_nta<br>Full traffic detection and response logs - Traffic alarm: cfw_rule_ndr_threatinfo<br>Zero trust operations and maintenance - Database logon: cfw_operate_db<br>Zero trust operations and maintenance - Server access: operate_remote_om<br>Zero trust operations and maintenance - Web service access: operate_web_access<br>Zero trust operations and maintenance - Behavioral audit: remoteom_commands<br>Traffic log - Internet boundary: cfw_netflow_border<br>Traffic log - NAT boundary: cfw_netflow_nat<br>Traffic log - VPC boundary: cfw_netflow_vpc<br>Traffic log - DNS switch: cfw_netflow_dns<br>Traffic log - Private network traffic: cfw_netflow_fl<br>Operation log: operate_log_all</li></ul>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Topics(self):
+        r"""<ul><li>Log topic list for retrieval and analysis, supports a maximum of 50 log topics.</li><li>Use TopicId to retrieve a single log topic.</li><li>TopicId and Topics cannot be used simultaneously. Only select one in a single request.</li></ul>
+        :rtype: list of MultiTopicSearchInformation
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def Sort(self):
+        r"""<p>Whether raw logs are returned in time sequence; value range: asc (ascending), desc (descending), default is desc<br>Note:</p><ul><li>Valid only when the search and analysis statement (Query) does not contain SQL</li><li>For SQL result sorting, refer to <a href="https://www.tencentcloud.com/document/product/614/58978?from_cn_redirect=1" target="_blank">SQL ORDER BY syntax</a></li></ul>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Limit(self):
+        r"""<p>Number of raw logs returned in a single query. Default value: 100. Maximum value: 1000.<br>Note:</p><ul><li>This parameter is valid only when the search and analysis statement (Query) does not contain SQL.</li><li>For the method for specifying SQL result count, see <a href="https://www.tencentcloud.com/document/product/614/58977?from_cn_redirect=1" target="_blank">SQL LIMIT syntax</a>.</li></ul><p>You can retrieve more logs in two ways:</p><ul><li>Context: Pass the Context value returned by the last API call to retrieve more logs. You can retrieve up to 10,000 entries of raw logs in total.</li><li>Offset: The offset indicates the line number from which to start returning raw logs. There is no log entry limit.</li></ul>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>Query the offset of raw logs, indicating the line number from which to start returning raw logs. Default value is 0.<br>Note:</p><ul><li>Applicable only when the retrieval and analysis statement (Query) does not contain SQL.</li><li>Cannot be used with the Context parameter.</li><li>Applicable only for single log topic retrieval.</li></ul>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Context(self):
+        r"""<p>Pass the Context value returned by the last API call to obtain more logs later. The total number of raw logs that can be obtained is up to 10,000 entries. The expiration time is 1 hour.<br>Note:</p><ul><li>When passing this parameter, do not modify other parameters.</li><li>Applicable only for single log topic retrieval. To retrieve multiple log topics, use the Context in Topics.</li><li>This is valid only when the search and analysis statement (Query) does not contain SQL. For obtaining subsequent results with SQL, refer to <a href="https://www.tencentcloud.com/document/product/614/58977?from_cn_redirect=1" target="_blank">SQL LIMIT syntax</a>.</li></ul>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def SamplingRate(self):
+        r"""<p>When performing statistical analysis (SQL included in Query), whether to sample raw logs first and then perform statistical analysis.<br>0: Automatic sampling;<br>0–1: Sample at the specified sampling rate, for example 0.02;<br>1: Indicates no sampling, that is, precision analysis.<br>Default value: 1</p>
+        :rtype: float
+        """
+        return self._SamplingRate
+
+    @SamplingRate.setter
+    def SamplingRate(self, SamplingRate):
+        self._SamplingRate = SamplingRate
+
+    @property
+    def UseNewAnalysis(self):
+        r"""<p>true means using the new retrieval result return method, and output parameters AnalysisRecords and Columns are valid.<br>false means using the old retrieval result return method, and output parameters AnalysisResults and ColNames are valid.<br>The two return methods have a slight difference in encoding format. It is recommended to use true.</p>
+        :rtype: bool
+        """
+        return self._UseNewAnalysis
+
+    @UseNewAnalysis.setter
+    def UseNewAnalysis(self, UseNewAnalysis):
+        self._UseNewAnalysis = UseNewAnalysis
+
+
+    def _deserialize(self, params):
+        self._From = params.get("From")
+        self._To = params.get("To")
+        self._Query = params.get("Query")
+        self._SyntaxRule = params.get("SyntaxRule")
+        self._TopicId = params.get("TopicId")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = MultiTopicSearchInformation()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        self._Sort = params.get("Sort")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Context = params.get("Context")
+        self._SamplingRate = params.get("SamplingRate")
+        self._UseNewAnalysis = params.get("UseNewAnalysis")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogResponse(AbstractModel):
+    r"""SearchLog response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Context: <p>Pass through the Context value returned by this API to obtain more logs later. The expiration time is 1 hour.<br>Note:</p><ul><li>Applicable only for single log topic retrieval. To retrieve multiple log topics, use the Context in Topics.</li></ul>
+        :type Context: str
+        :param _ListOver: <p>Whether all logs meeting the retrieval criteria have been returned. If not, use Context parameter to retrieve more logs.<br>  <br>Note: This is only valid when the search and analysis statement (Query) does not contain SQL.</p>
+        :type ListOver: bool
+        :param _Analysis: <p>Whether the returned data is the SQL analysis result</p>
+        :type Analysis: bool
+        :param _Results: <p>Raw logs matching the retrieval criteria</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Results: list of LogInfo
+        :param _ColNames: <p>Column names of log statistics analysis results<br>This parameter is valid only when UseNewAnalysis is false.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ColNames: list of str
+        :param _AnalysisResults: <p>Log statistics and analysis results<br>This parameter is valid only when UseNewAnalysis is false.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnalysisResults: list of LogItems
+        :param _AnalysisRecords: <p>Log statistics and analysis results<br>This parameter is valid only when UseNewAnalysis is true.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnalysisRecords: list of str
+        :param _Columns: <p>Column attribute of the statistical analysis result<br>This parameter is valid only when UseNewAnalysis is true.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Columns: list of Column
+        :param _SamplingRate: <p>Sampling rate used for this statistical analysis</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SamplingRate: float
+        :param _Topics: <p>When multiple log topics are used for retrieval, basic information of each log topic, such as error message.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Topics: :class:`tencentcloud.cfw.v20190904.models.SearchLogTopics`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Context = None
+        self._ListOver = None
+        self._Analysis = None
+        self._Results = None
+        self._ColNames = None
+        self._AnalysisResults = None
+        self._AnalysisRecords = None
+        self._Columns = None
+        self._SamplingRate = None
+        self._Topics = None
+        self._RequestId = None
+
+    @property
+    def Context(self):
+        r"""<p>Pass through the Context value returned by this API to obtain more logs later. The expiration time is 1 hour.<br>Note:</p><ul><li>Applicable only for single log topic retrieval. To retrieve multiple log topics, use the Context in Topics.</li></ul>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ListOver(self):
+        r"""<p>Whether all logs meeting the retrieval criteria have been returned. If not, use Context parameter to retrieve more logs.<br>  <br>Note: This is only valid when the search and analysis statement (Query) does not contain SQL.</p>
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def Analysis(self):
+        r"""<p>Whether the returned data is the SQL analysis result</p>
+        :rtype: bool
+        """
+        return self._Analysis
+
+    @Analysis.setter
+    def Analysis(self, Analysis):
+        self._Analysis = Analysis
+
+    @property
+    def Results(self):
+        r"""<p>Raw logs matching the retrieval criteria</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of LogInfo
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def ColNames(self):
+        r"""<p>Column names of log statistics analysis results<br>This parameter is valid only when UseNewAnalysis is false.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ColNames
+
+    @ColNames.setter
+    def ColNames(self, ColNames):
+        self._ColNames = ColNames
+
+    @property
+    def AnalysisResults(self):
+        r"""<p>Log statistics and analysis results<br>This parameter is valid only when UseNewAnalysis is false.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of LogItems
+        """
+        return self._AnalysisResults
+
+    @AnalysisResults.setter
+    def AnalysisResults(self, AnalysisResults):
+        self._AnalysisResults = AnalysisResults
+
+    @property
+    def AnalysisRecords(self):
+        r"""<p>Log statistics and analysis results<br>This parameter is valid only when UseNewAnalysis is true.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._AnalysisRecords
+
+    @AnalysisRecords.setter
+    def AnalysisRecords(self, AnalysisRecords):
+        self._AnalysisRecords = AnalysisRecords
+
+    @property
+    def Columns(self):
+        r"""<p>Column attribute of the statistical analysis result<br>This parameter is valid only when UseNewAnalysis is true.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Column
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def SamplingRate(self):
+        r"""<p>Sampling rate used for this statistical analysis</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._SamplingRate
+
+    @SamplingRate.setter
+    def SamplingRate(self, SamplingRate):
+        self._SamplingRate = SamplingRate
+
+    @property
+    def Topics(self):
+        r"""<p>When multiple log topics are used for retrieval, basic information of each log topic, such as error message.</p>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.SearchLogTopics`
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._ListOver = params.get("ListOver")
+        self._Analysis = params.get("Analysis")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = LogInfo()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._ColNames = params.get("ColNames")
+        if params.get("AnalysisResults") is not None:
+            self._AnalysisResults = []
+            for item in params.get("AnalysisResults"):
+                obj = LogItems()
+                obj._deserialize(item)
+                self._AnalysisResults.append(obj)
+        self._AnalysisRecords = params.get("AnalysisRecords")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = Column()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        self._SamplingRate = params.get("SamplingRate")
+        if params.get("Topics") is not None:
+            self._Topics = SearchLogTopics()
+            self._Topics._deserialize(params.get("Topics"))
+        self._RequestId = params.get("RequestId")
+
+
+class SearchLogTopics(AbstractModel):
+    r"""Multi-topic search return information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Errors: Error information corresponding to multi-log topic retrieval
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Errors: list of SearchLogErrors
+        :param _Infos: Information for each log topic during multi-log topic retrieval
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Infos: list of SearchLogInfos
+        """
+        self._Errors = None
+        self._Infos = None
+
+    @property
+    def Errors(self):
+        r"""Error information corresponding to multi-log topic retrieval
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SearchLogErrors
+        """
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def Infos(self):
+        r"""Information for each log topic during multi-log topic retrieval
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SearchLogInfos
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+
+    def _deserialize(self, params):
+        if params.get("Errors") is not None:
+            self._Errors = []
+            for item in params.get("Errors"):
+                obj = SearchLogErrors()
+                obj._deserialize(item)
+                self._Errors.append(obj)
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SearchLogInfos()
+                obj._deserialize(item)
+                self._Infos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

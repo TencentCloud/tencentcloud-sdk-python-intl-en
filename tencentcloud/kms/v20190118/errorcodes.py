@@ -32,6 +32,9 @@ FAILEDOPERATION_DECRYPTERROR = 'FailedOperation.DecryptError'
 # Encryption failed.
 FAILEDOPERATION_ENCRYPTIONERROR = 'FailedOperation.EncryptionError'
 
+# Existing ongoing rotation tasks
+FAILEDOPERATION_ROTATETASKRUNNING = 'FailedOperation.RotateTaskRunning'
+
 # Tagging error.
 FAILEDOPERATION_TAGGINGERROR = 'FailedOperation.TaggingError'
 
@@ -116,6 +119,9 @@ LIMITEXCEEDED_KEYLIMITEXCEEDED = 'LimitExceeded.KeyLimitExceeded'
 # Missing parameters. Please check and try again.
 MISSINGPARAMETER = 'MissingParameter'
 
+# Rotation operation triggers frequency limit, default can only rotate once within 24 hours.
+REQUESTLIMITEXCEEDED_ROTATERATELIMITED = 'RequestLimitExceeded.RotateRateLimited'
+
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
@@ -184,6 +190,9 @@ UNSUPPORTEDOPERATION_NOTROLEOPERATION = 'UnsupportedOperation.NotRoleOperation'
 
 # You can only update the CMKs created by you.
 UNSUPPORTEDOPERATION_NOTUSERCREATEDCMK = 'UnsupportedOperation.NotUserCreatedCmk'
+
+# Rotation not supported (rotation not enabled, external key, replica key)
+UNSUPPORTEDOPERATION_ROTATENOTSUPPORTED = 'UnsupportedOperation.RotateNotSupported'
 
 # The service is temporarily unavailable.
 UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = 'UnsupportedOperation.ServiceTemporaryUnavailable'

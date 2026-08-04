@@ -1261,54 +1261,56 @@ class DataKeyMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataKeyId: DataKey globally unique id.
+        :param _DataKeyId: <p>Globally unique ID of the DataKey</p>
         :type DataKeyId: str
-        :param _KeyId: Globally unique id of the CMK.
+        :param _KeyId: <p>Globally unique ID of the CMK.</p>
         :type KeyId: str
-        :param _KeyName: CMK name.
+        :param _KeyName: <p>CMK name</p>
         :type KeyName: str
-        :param _DataKeyName: Key name as a more recognizable and understandable data key.
+        :param _DataKeyName: <p>Data key name that is easier to identify and understand as a key</p>
         :type DataKeyName: str
-        :param _NumberOfBytes: Specifies the length of the data key in bytes.
+        :param _NumberOfBytes: <p>Length of the data key, in bytes</p>
         :type NumberOfBytes: int
-        :param _CreateTime: Key key creation time.
+        :param _CreateTime: <p>Key creation time</p>
         :type CreateTime: int
-        :param _Description: DataKey description.
+        :param _Description: <p>Description of DataKey</p>
         :type Description: str
-        :param _KeyState: DataKey status. valid values: Enabled, Disabled, PendingDelete.
+        :param _KeyState: <p>DataKey state, value: Enabled | Disabled | PendingDelete</p>
         :type KeyState: str
-        :param _CreatorUin: Creator.
+        :param _CreatorUin: <p>Creator.</p>
         :type CreatorUin: int
-        :param _Owner: Specifies the creator of the data key. valid values: user (user-created) or product name (auto-created by authorized cloud services).
+        :param _Owner: <p>Creator of the data key. For user-created keys, it is user; for keys automatically created by authorized cloud services, it is the corresponding product name.</p>
         :type Owner: str
-        :param _DeletionDate: The time when schedule deletion.
+        :param _DeletionDate: <p>Schedule deletion time</p>
         :type DeletionDate: int
-        :param _Origin: Specifies the key material type of DataKey. valid values: TENCENT_KMS (created by KMS), EXTERNAL (user import).
+        :param _Origin: <p>DataKey key material type. For keys created by KMS: TENCENT_KMS. For keys of user import type: EXTERNAL.</p>
         :type Origin: str
-        :param _HsmClusterId: HSM cluster ID (only applicable to KMS exclusive/managed service instance).
+        :param _HsmClusterId: <p>HSM Cluster ID (only applicable to KMS exclusive edition/managed version service instances)</p>
         :type HsmClusterId: str
-        :param _ResourceId: Resource ID in the format of `creatorUin/$creatorUin/$dataKeyId`.
+        :param _ResourceId: <p>Resource ID, format: creatorUin/$creatorUin/$dataKeyId</p>
         :type ResourceId: str
-        :param _IsSyncReplica: Whether the key is a primary replica. valid values: `0` (primary), `1` (synced replica).
+        :param _IsSyncReplica: <p>Whether the key is a primary replica. 0: primary replica, 1: synced replica.</p>
         :type IsSyncReplica: int
-        :param _SourceRegion: Synchronous original region.
+        :param _SourceRegion: <p>Synchronous original region</p>
         :type SourceRegion: str
-        :param _SyncStatus: The state of key synchronization. valid values: 0 (unsynced), 1 (synchronization successful), 2 (synchronization failed), 3 (synchronizing).
+        :param _SyncStatus: <p>Key synchronization status. 0: unsynced, 1: synchronization successful, 2: synchronization failure, 3: syncing.</p>
         :type SyncStatus: int
-        :param _SyncMessages: Sresult description}.
+        :param _SyncMessages: <p>Synchronous result description</p>
         :type SyncMessages: str
-        :param _SyncStartTime: Start time of synchronization.
+        :param _SyncStartTime: <p>Start time of synchronization</p>
         :type SyncStartTime: int
-        :param _SyncEndTime: Specifies the synchronous end time.
+        :param _SyncEndTime: <p>Synchronous end time</p>
         :type SyncEndTime: int
-        :param _SourceHsmClusterId: Synchronous original cluster. if empty, it is a public cloud public cluster.
+        :param _SourceHsmClusterId: <p>Synchronous primitive cluster. If empty, it is a public cloud public cluster.</p>
         :type SourceHsmClusterId: str
-        :param _AccountAppId: Member account appId.
+        :param _AccountAppId: <p>Member account appId</p>
         :type AccountAppId: int
-        :param _AccountUin: Member account UIN
+        :param _AccountUin: <p>member account uin</p>
         :type AccountUin: int
-        :param _AccountName: Member account name.
+        :param _AccountName: <p>Enter the member account name.</p>
         :type AccountName: str
+        :param _CreatorUinString: <p>Creator UIN</p>
+        :type CreatorUinString: str
         """
         self._DataKeyId = None
         self._KeyId = None
@@ -1334,10 +1336,11 @@ class DataKeyMetadata(AbstractModel):
         self._AccountAppId = None
         self._AccountUin = None
         self._AccountName = None
+        self._CreatorUinString = None
 
     @property
     def DataKeyId(self):
-        r"""DataKey globally unique id.
+        r"""<p>Globally unique ID of the DataKey</p>
         :rtype: str
         """
         return self._DataKeyId
@@ -1348,7 +1351,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""Globally unique id of the CMK.
+        r"""<p>Globally unique ID of the CMK.</p>
         :rtype: str
         """
         return self._KeyId
@@ -1359,7 +1362,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def KeyName(self):
-        r"""CMK name.
+        r"""<p>CMK name</p>
         :rtype: str
         """
         return self._KeyName
@@ -1370,7 +1373,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def DataKeyName(self):
-        r"""Key name as a more recognizable and understandable data key.
+        r"""<p>Data key name that is easier to identify and understand as a key</p>
         :rtype: str
         """
         return self._DataKeyName
@@ -1381,7 +1384,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def NumberOfBytes(self):
-        r"""Specifies the length of the data key in bytes.
+        r"""<p>Length of the data key, in bytes</p>
         :rtype: int
         """
         return self._NumberOfBytes
@@ -1392,7 +1395,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Key key creation time.
+        r"""<p>Key creation time</p>
         :rtype: int
         """
         return self._CreateTime
@@ -1403,7 +1406,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def Description(self):
-        r"""DataKey description.
+        r"""<p>Description of DataKey</p>
         :rtype: str
         """
         return self._Description
@@ -1414,7 +1417,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def KeyState(self):
-        r"""DataKey status. valid values: Enabled, Disabled, PendingDelete.
+        r"""<p>DataKey state, value: Enabled | Disabled | PendingDelete</p>
         :rtype: str
         """
         return self._KeyState
@@ -1425,7 +1428,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""Creator.
+        r"""<p>Creator.</p>
         :rtype: int
         """
         return self._CreatorUin
@@ -1436,7 +1439,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def Owner(self):
-        r"""Specifies the creator of the data key. valid values: user (user-created) or product name (auto-created by authorized cloud services).
+        r"""<p>Creator of the data key. For user-created keys, it is user; for keys automatically created by authorized cloud services, it is the corresponding product name.</p>
         :rtype: str
         """
         return self._Owner
@@ -1447,7 +1450,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def DeletionDate(self):
-        r"""The time when schedule deletion.
+        r"""<p>Schedule deletion time</p>
         :rtype: int
         """
         return self._DeletionDate
@@ -1458,7 +1461,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def Origin(self):
-        r"""Specifies the key material type of DataKey. valid values: TENCENT_KMS (created by KMS), EXTERNAL (user import).
+        r"""<p>DataKey key material type. For keys created by KMS: TENCENT_KMS. For keys of user import type: EXTERNAL.</p>
         :rtype: str
         """
         return self._Origin
@@ -1469,7 +1472,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def HsmClusterId(self):
-        r"""HSM cluster ID (only applicable to KMS exclusive/managed service instance).
+        r"""<p>HSM Cluster ID (only applicable to KMS exclusive edition/managed version service instances)</p>
         :rtype: str
         """
         return self._HsmClusterId
@@ -1480,7 +1483,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""Resource ID in the format of `creatorUin/$creatorUin/$dataKeyId`.
+        r"""<p>Resource ID, format: creatorUin/$creatorUin/$dataKeyId</p>
         :rtype: str
         """
         return self._ResourceId
@@ -1491,7 +1494,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def IsSyncReplica(self):
-        r"""Whether the key is a primary replica. valid values: `0` (primary), `1` (synced replica).
+        r"""<p>Whether the key is a primary replica. 0: primary replica, 1: synced replica.</p>
         :rtype: int
         """
         return self._IsSyncReplica
@@ -1502,7 +1505,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SourceRegion(self):
-        r"""Synchronous original region.
+        r"""<p>Synchronous original region</p>
         :rtype: str
         """
         return self._SourceRegion
@@ -1513,7 +1516,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SyncStatus(self):
-        r"""The state of key synchronization. valid values: 0 (unsynced), 1 (synchronization successful), 2 (synchronization failed), 3 (synchronizing).
+        r"""<p>Key synchronization status. 0: unsynced, 1: synchronization successful, 2: synchronization failure, 3: syncing.</p>
         :rtype: int
         """
         return self._SyncStatus
@@ -1524,7 +1527,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SyncMessages(self):
-        r"""Sresult description}.
+        r"""<p>Synchronous result description</p>
         :rtype: str
         """
         return self._SyncMessages
@@ -1535,7 +1538,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SyncStartTime(self):
-        r"""Start time of synchronization.
+        r"""<p>Start time of synchronization</p>
         :rtype: int
         """
         return self._SyncStartTime
@@ -1546,7 +1549,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SyncEndTime(self):
-        r"""Specifies the synchronous end time.
+        r"""<p>Synchronous end time</p>
         :rtype: int
         """
         return self._SyncEndTime
@@ -1557,7 +1560,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SourceHsmClusterId(self):
-        r"""Synchronous original cluster. if empty, it is a public cloud public cluster.
+        r"""<p>Synchronous primitive cluster. If empty, it is a public cloud public cluster.</p>
         :rtype: str
         """
         return self._SourceHsmClusterId
@@ -1568,7 +1571,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def AccountAppId(self):
-        r"""Member account appId.
+        r"""<p>Member account appId</p>
         :rtype: int
         """
         return self._AccountAppId
@@ -1579,7 +1582,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def AccountUin(self):
-        r"""Member account UIN
+        r"""<p>member account uin</p>
         :rtype: int
         """
         return self._AccountUin
@@ -1590,7 +1593,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""Member account name.
+        r"""<p>Enter the member account name.</p>
         :rtype: str
         """
         return self._AccountName
@@ -1598,6 +1601,17 @@ class DataKeyMetadata(AbstractModel):
     @AccountName.setter
     def AccountName(self, AccountName):
         self._AccountName = AccountName
+
+    @property
+    def CreatorUinString(self):
+        r"""<p>Creator UIN</p>
+        :rtype: str
+        """
+        return self._CreatorUinString
+
+    @CreatorUinString.setter
+    def CreatorUinString(self, CreatorUinString):
+        self._CreatorUinString = CreatorUinString
 
 
     def _deserialize(self, params):
@@ -1625,6 +1639,7 @@ class DataKeyMetadata(AbstractModel):
         self._AccountAppId = params.get("AccountAppId")
         self._AccountUin = params.get("AccountUin")
         self._AccountName = params.get("AccountName")
+        self._CreatorUinString = params.get("CreatorUinString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5284,6 +5299,10 @@ class GetServiceStatusResponse(AbstractModel):
         :type QpsTotalLimit: int
         :param _RegionsQps: <p>QPS in the region</p>
         :type RegionsQps: list of RegionQps
+        :param _ResourceZone: <p>Regional information of the resource</p>
+        :type ResourceZone: int
+        :param _ResourceRegion: <p>Regional availability zone info of the resource</p>
+        :type ResourceRegion: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -5308,6 +5327,8 @@ class GetServiceStatusResponse(AbstractModel):
         self._QpsLimit = None
         self._QpsTotalLimit = None
         self._RegionsQps = None
+        self._ResourceZone = None
+        self._ResourceRegion = None
         self._RequestId = None
 
     @property
@@ -5542,6 +5563,28 @@ class GetServiceStatusResponse(AbstractModel):
         self._RegionsQps = RegionsQps
 
     @property
+    def ResourceZone(self):
+        r"""<p>Regional information of the resource</p>
+        :rtype: int
+        """
+        return self._ResourceZone
+
+    @ResourceZone.setter
+    def ResourceZone(self, ResourceZone):
+        self._ResourceZone = ResourceZone
+
+    @property
+    def ResourceRegion(self):
+        r"""<p>Regional availability zone info of the resource</p>
+        :rtype: int
+        """
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
     def RequestId(self):
         r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -5590,6 +5633,8 @@ class GetServiceStatusResponse(AbstractModel):
                 obj = RegionQps()
                 obj._deserialize(item)
                 self._RegionsQps.append(obj)
+        self._ResourceZone = params.get("ResourceZone")
+        self._ResourceRegion = params.get("ResourceRegion")
         self._RequestId = params.get("RequestId")
 
 
@@ -6022,6 +6067,8 @@ class KeyMetadata(AbstractModel):
         :type AccountUin: int
         :param _AccountName: <p>Member account name</p>
         :type AccountName: str
+        :param _CreatorUinString: <p>Creator UIN</p>
+        :type CreatorUinString: str
         """
         self._KeyId = None
         self._Alias = None
@@ -6051,6 +6098,7 @@ class KeyMetadata(AbstractModel):
         self._AccountAppId = None
         self._AccountUin = None
         self._AccountName = None
+        self._CreatorUinString = None
 
     @property
     def KeyId(self):
@@ -6360,6 +6408,17 @@ class KeyMetadata(AbstractModel):
     def AccountName(self, AccountName):
         self._AccountName = AccountName
 
+    @property
+    def CreatorUinString(self):
+        r"""<p>Creator UIN</p>
+        :rtype: str
+        """
+        return self._CreatorUinString
+
+    @CreatorUinString.setter
+    def CreatorUinString(self, CreatorUinString):
+        self._CreatorUinString = CreatorUinString
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -6390,6 +6449,7 @@ class KeyMetadata(AbstractModel):
         self._AccountAppId = params.get("AccountAppId")
         self._AccountUin = params.get("AccountUin")
         self._AccountName = params.get("AccountName")
+        self._CreatorUinString = params.get("CreatorUinString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8108,6 +8168,102 @@ class RegionQps(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RotateKeyRequest(AbstractModel):
+    r"""RotateKey request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: <p>Globally unique ID of the CMK.</p>
+        :type KeyId: str
+        :param _MemberAccount: <p>Member account information for multi-account scenarios</p>
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        self._KeyId = None
+        self._MemberAccount = None
+
+    @property
+    def KeyId(self):
+        r"""<p>Globally unique ID of the CMK.</p>
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def MemberAccount(self):
+        r"""<p>Member account information for multi-account scenarios</p>
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RotateKeyResponse(AbstractModel):
+    r"""RotateKey response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID used to identify this rotation. You can call DescribeKey to return the last rotation time and next rotation time, and determine whether the rotation is successful.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID used to identify this rotation. You can call DescribeKey to return the last rotation time and next rotation time, and determine whether the rotation is successful.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ScheduleDataKeyDeletionRequest(AbstractModel):

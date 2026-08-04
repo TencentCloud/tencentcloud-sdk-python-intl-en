@@ -1088,6 +1088,24 @@ class KmsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RotateKey(
+            self,
+            request: models.RotateKeyRequest,
+            opts: Dict = None,
+    ) -> models.RotateKeyResponse:
+        """
+        Rotate the designated customer master key immediately. You can call DescribeKey to return the last rotation time and the next rotation time, and determine whether the rotation is successful.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RotateKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RotateKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ScheduleDataKeyDeletion(
             self,
             request: models.ScheduleDataKeyDeletionRequest,

@@ -1548,6 +1548,32 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SearchLog(self, request):
+        r"""This API is used to retrieve and analyze logs. Please note the following matters when using this API.
+        1. Besides being subject to the default API request rate limit, for a single log topic, the number of concurrent queries must not exceed 15.
+        2. For search syntax, it's recommended to use the dedicated CQL syntax rule for log service. Please use the SyntaxRule parameter and set its value to 1. The console uses this syntax rule by default.
+        3. The API's return data packet maximum is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).
+
+        :param request: Request instance for SearchLog.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.SearchLogRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.SearchLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetNatFwDnatRule(self, request):
         r"""This API is used to configure firewall DNAT rules.
 

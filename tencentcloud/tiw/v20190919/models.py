@@ -2018,7 +2018,9 @@ class DescribeOnlineRecordResponse(AbstractModel):
         :type OmittedDurations: list of OmittedDuration
         :param _VideoInfos: List of recorded videos
         :type VideoInfos: list of VideoInfo
-        :param _ReplayUrl: 
+        :param _ReplayUrl: Playback URL, must be used with a signaling player. This field is only applicable to video generation mode
+Note: This field may return null, indicating that no valid value can be retrieved.
+Example value: http://replayurl
         :type ReplayUrl: str
         :param _Interrupts: Number of video stream interruptions during recording.
 Note: This parameter may return null, indicating that no valid values can be obtained.
@@ -2185,7 +2187,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ReplayUrl(self):
-        r"""
+        r"""Playback URL, must be used with a signaling player. This field is only applicable to video generation mode
+Note: This field may return null, indicating that no valid value can be retrieved.
+Example value: http://replayurl
         :rtype: str
         """
         return self._ReplayUrl

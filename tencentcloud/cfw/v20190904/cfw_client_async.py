@@ -1217,6 +1217,27 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SearchLog(
+            self,
+            request: models.SearchLogRequest,
+            opts: Dict = None,
+    ) -> models.SearchLogResponse:
+        """
+        This API is used to retrieve and analyze logs. Please note the following matters when using this API.
+        1. Besides being subject to the default API request rate limit, for a single log topic, the number of concurrent queries must not exceed 15.
+        2. For search syntax, it's recommended to use the dedicated CQL syntax rule for log service. Please use the SyntaxRule parameter and set its value to 1. The console uses this syntax rule by default.
+        3. The API's return data packet maximum is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SetNatFwDnatRule(
             self,
             request: models.SetNatFwDnatRuleRequest,

@@ -524,6 +524,52 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInferenceAPIToken(self, request):
+        r"""Create an inference API Token for authenticating access to the inference service. The Token content is returned only once when creating. Each site can create up to 100 tokens.
+
+        :param request: Request instance for CreateInferenceAPIToken.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateInferenceAPITokenRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateInferenceAPITokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInferenceAPIToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInferenceAPITokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateInferenceService(self, request):
+        r"""This API is used to create an inference service. It allows setting the service name, listening port, container image configuration, and resource configuration. Once created successfully, an inference access address is provided.
+
+        :param request: Request instance for CreateInferenceService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInferenceServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateJustInTimeTranscodeTemplate(self, request):
         r"""JIT transcoding already provides preset transcoding templates to meet most needs. If there are personalized transcoding requirements, you can create custom transcoding templates through this API, with up to 100 custom transcoding templates allowed.
         This API is used to ensure the consistency of JIT transcoding effect, avoid video output exceptions caused by EO cache or M3U8 sharding template changes during the process, and templates cannot be modified after creation.
@@ -1312,6 +1358,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteFunctionRules", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteFunctionRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteInferenceAPIToken(self, request):
+        r"""This API is used to delete an inference API Token. Once deleted, the Token will expire immediately, and requests for accessing the inference service using it will no longer be accessible.
+
+        :param request: Request instance for DeleteInferenceAPIToken.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteInferenceAPITokenRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteInferenceAPITokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInferenceAPIToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInferenceAPITokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2371,6 +2440,144 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeIdentifications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIdentificationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceAPITokens(self, request):
+        r"""This API is used to query the list of reasoning API Tokens, return the ID, name, content, and creation time of the Tokens, and support paging query.
+
+        :param request: Request instance for DescribeInferenceAPITokens.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceAPITokensRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceAPITokensResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceAPITokens", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceAPITokensResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceHardwareSpecifications(self, request):
+        r"""This API is used to query the reasoning hardware specification list, returning configurations such as CPU, memory, GPU, and memory for each specification. You can select the required specification during service creation.
+
+        :param request: Request instance for DescribeInferenceHardwareSpecifications.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceHardwareSpecificationsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceHardwareSpecificationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceHardwareSpecifications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceHardwareSpecificationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceServiceDeploymentLogs(self, request):
+        r"""This API is used to query the logs of a designated deployment of an inference service, return log content and generation time, and support time-based range search, pagination, and sorting.
+
+        :param request: Request instance for DescribeInferenceServiceDeploymentLogs.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentLogsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceServiceDeploymentLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceServiceDeploymentLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceServiceDeploymentRecords(self, request):
+        r"""This API is used to query the deployment history list of inference services, returning the operation type, status, duration, configuration snapshot, and whether it is the currently effective configuration for each deployment, with support for pagination and sorting.
+
+        :param request: Request instance for DescribeInferenceServiceDeploymentRecords.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentRecordsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceServiceDeploymentRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceServiceDeploymentRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceServiceMonitorData(self, request):
+        r"""This API is used to query service monitoring data for reasoning, supporting indicators such as CPU, memory, GPU, video memory utilization, and instance count. You can specify the time range and aggregation granularity, and query data for up to the most recent 30 days.
+
+        :param request: Request instance for DescribeInferenceServiceMonitorData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceMonitorDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceMonitorDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceServiceMonitorData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceServiceMonitorDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceServices(self, request):
+        r"""This API is used to query the service list for reasoning, supporting filtering by service name, service ID, and status. It returns information such as service configuration, running state, number of instances, and reasoning access address.
+
+        :param request: Request instance for DescribeInferenceServices.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServicesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4228,6 +4435,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInferenceService(self, request):
+        r"""This API is used to modify the inference service, supporting updates to the listening port, request path, container image, resource configuration, and description. Only the passed parameters are modified, while others remain unchanged.
+
+        :param request: Request instance for ModifyInferenceService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInferenceServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyL4Proxy(self, request):
         r"""This API is used to modify the configuration of a Layer 4 proxy instance.
 
@@ -4911,6 +5141,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyZoneWorkMode", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyZoneWorkModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OperateInferenceService(self, request):
+        r"""This API is used to operate an inference service, support stopping, starting up, and deleting the inference service. Once deleted, resources cannot be recovered.
+
+        :param request: Request instance for OperateInferenceService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.OperateInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OperateInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OperateInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OperateInferenceServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

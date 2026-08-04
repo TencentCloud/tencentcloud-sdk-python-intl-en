@@ -23,11 +23,38 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# FailedOperation.InvalidContext
+FAILEDOPERATION_INVALIDCONTEXT = 'FailedOperation.InvalidContext'
+
+# FailedOperation.QueryError
+FAILEDOPERATION_QUERYERROR = 'FailedOperation.QueryError'
+
 # FailedOperation.ResponseTooLarge
 FAILEDOPERATION_RESPONSETOOLARGE = 'FailedOperation.ResponseTooLarge'
 
+# FailedOperation.SearchTimeout
+FAILEDOPERATION_SEARCHTIMEOUT = 'FailedOperation.SearchTimeout'
+
+# FailedOperation.SyntaxError
+FAILEDOPERATION_SYNTAXERROR = 'FailedOperation.SyntaxError'
+
+# FailedOperation.Timeout
+FAILEDOPERATION_TIMEOUT = 'FailedOperation.Timeout'
+
+# FailedOperation.TopicIsolated
+FAILEDOPERATION_TOPICISOLATED = 'FailedOperation.TopicIsolated'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
+
+# InternalError.SearchError
+INTERNALERROR_SEARCHERROR = 'InternalError.SearchError'
+
+# InternalError.SearchFailed
+INTERNALERROR_SEARCHFAILED = 'InternalError.SearchFailed'
+
+# InternalError.ServerBusy
+INTERNALERROR_SERVERBUSY = 'InternalError.ServerBusy'
 
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
@@ -38,11 +65,35 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # The quota limit has been reached.
 LIMITEXCEEDED = 'LimitExceeded'
 
+# LimitExceeded.LogSearch
+LIMITEXCEEDED_LOGSEARCH = 'LimitExceeded.LogSearch'
+
+# LimitExceeded.SearchResources
+LIMITEXCEEDED_SEARCHRESOURCES = 'LimitExceeded.SearchResources'
+
+# LimitExceeded.SearchResultTooLarge
+LIMITEXCEEDED_SEARCHRESULTTOOLARGE = 'LimitExceeded.SearchResultTooLarge'
+
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
+
+# OperationDenied.AccountDestroy
+OPERATIONDENIED_ACCOUNTDESTROY = 'OperationDenied.AccountDestroy'
+
+# OperationDenied.AccountIsolate
+OPERATIONDENIED_ACCOUNTISOLATE = 'OperationDenied.AccountIsolate'
+
+# OperationDenied.AccountNotExists
+OPERATIONDENIED_ACCOUNTNOTEXISTS = 'OperationDenied.AccountNotExists'
+
+# OperationDenied.NewSyntaxNotSupported
+OPERATIONDENIED_NEWSYNTAXNOTSUPPORTED = 'OperationDenied.NewSyntaxNotSupported'
+
+# OperationDenied.OperationNotSupportInSearchLow
+OPERATIONDENIED_OPERATIONNOTSUPPORTINSEARCHLOW = 'OperationDenied.OperationNotSupportInSearchLow'
 
 # The number of requests exceeds the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
@@ -55,6 +106,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# ResourceNotFound.TopicNotExist
+RESOURCENOTFOUND_TOPICNOTEXIST = 'ResourceNotFound.TopicNotExist'
 
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'

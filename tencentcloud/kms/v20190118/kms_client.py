@@ -1384,6 +1384,29 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RotateKey(self, request):
+        r"""Rotate the designated customer master key immediately. You can call DescribeKey to return the last rotation time and the next rotation time, and determine whether the rotation is successful.
+
+        :param request: Request instance for RotateKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.RotateKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.RotateKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RotateKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.RotateKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScheduleDataKeyDeletion(self, request):
         r"""Schedule deletion for a data key.
 
