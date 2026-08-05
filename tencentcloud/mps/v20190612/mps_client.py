@@ -50,6 +50,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloneViral(self, request):
+        r"""Clone a hit product. Input a reference video of a hit product and a product image to generate a video with aligned style and pace.
+
+        :param request: Request instance for CloneViral.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CloneViralRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneViral", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneViralResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAIAnalysisTemplate(self, request):
         r"""This API is used to create a custom content analysis template. Up to 50 templates can be created.
 
@@ -110,6 +133,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreateAdaptiveDynamicStreamingTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAdaptiveDynamicStreamingTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAiDramaTask(self, request):
+        r"""AI comic workflow, input a playbook, automatically split scenes, generate an AI comic
+
+        :param request: Request instance for CreateAiDramaTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAiDramaTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAiDramaTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAiDramaTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAiDramaTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -271,6 +317,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreateContentReviewTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateContentReviewTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDocToVideoTask(self, request):
+        r"""Creates an AIGC document-to-video task
+
+        :param request: Request instance for CreateDocToVideoTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateDocToVideoTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateDocToVideoTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDocToVideoTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDocToVideoTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -586,6 +655,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreateTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVideoRedrawTask(self, request):
+        r"""Creates an AIGC redrawing task
+
+        :param request: Request instance for CreateVideoRedrawTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateVideoRedrawTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateVideoRedrawTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoRedrawTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoRedrawTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1344,6 +1436,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAigcTaskStatus(self, request):
+        r"""Queries AIGC scenario task APIs
+
+        :param request: Request instance for DescribeAigcTaskStatus.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcTaskStatusRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAigcTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAigcVideoTask(self, request):
         r"""This API is used to query the progress of AIGC video generation tasks and obtain the generation results.
 
@@ -1482,6 +1597,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloneViralTask(self, request):
+        r"""Queries the results of a hit product clone task
+
+        :param request: Request instance for DescribeCloneViralTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeCloneViralTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeCloneViralTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloneViralTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloneViralTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContentReviewTemplates(self, request):
         r"""This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.
 
@@ -1565,6 +1703,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeImageTaskDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeImageTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageTasks(self, request):
+        r"""Image processing task query API.
+
+        :param request: Request instance for DescribeImageTasks.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeImageTasksRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeImageTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2202,6 +2363,29 @@ class MpsClient(AbstractClient):
             body = self.call("EditMedia", params, headers=headers)
             response = json.loads(body)
             model = models.EditMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EmbeddingData(self, request):
+        r"""Model embedding API
+
+        :param request: Request instance for EmbeddingData.
+        :type request: :class:`tencentcloud.mps.v20190612.models.EmbeddingDataRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EmbeddingDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EmbeddingData", params, headers=headers)
+            response = json.loads(body)
+            model = models.EmbeddingDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2860,10 +3044,11 @@ class MpsClient(AbstractClient):
 
 
     def ProcessImage(self, request):
-        r"""This API is used to initiate image processing, with features including:
-        1. Format conversion.
-        2. Image enhancement.
-        3. Image erasure.
+        r"""This API is used to initiate image processing. Its features include:
+        1. Format conversion;
+        2. Image enhancement;
+        3. Image erasure;4. Digital watermark;
+        5. Beauty filter;
 
         :param request: Request instance for ProcessImage.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessImageRequest`

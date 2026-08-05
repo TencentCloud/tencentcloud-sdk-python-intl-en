@@ -1263,6 +1263,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type KeyPTSList: list of int
         :param _AddOnAudios: <p>External audio feature. Specifies the audio files to be inserted.</p>
         :type AddOnAudios: list of AddOnAudio
+        :param _StdExtStreamInfos: <p>When not empty, directly replace the StreamInfos field of the template. The field format is the same as the StreamInfos when creating an adaptive template.</p>
+        :type StdExtStreamInfos: list of AdaptiveStreamTemplate
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1278,6 +1280,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._StdExtInfo = None
         self._KeyPTSList = None
         self._AddOnAudios = None
+        self._StdExtStreamInfos = None
 
     @property
     def Definition(self):
@@ -1439,6 +1442,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AddOnAudios(self, AddOnAudios):
         self._AddOnAudios = AddOnAudios
 
+    @property
+    def StdExtStreamInfos(self):
+        r"""<p>When not empty, directly replace the StreamInfos field of the template. The field format is the same as the StreamInfos when creating an adaptive template.</p>
+        :rtype: list of AdaptiveStreamTemplate
+        """
+        return self._StdExtStreamInfos
+
+    @StdExtStreamInfos.setter
+    def StdExtStreamInfos(self, StdExtStreamInfos):
+        self._StdExtStreamInfos = StdExtStreamInfos
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1478,6 +1492,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = AddOnAudio()
                 obj._deserialize(item)
                 self._AddOnAudios.append(obj)
+        if params.get("StdExtStreamInfos") is not None:
+            self._StdExtStreamInfos = []
+            for item in params.get("StdExtStreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self._StdExtStreamInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3276,6 +3296,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _VoiceClonedMarkFile: <p>File address of the voice type clone annotation</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VoiceClonedMarkFile: str
+        :param _ErasedVideoPath: <p>Result path of a video for removal only</p>
+        :type ErasedVideoPath: str
+        :param _DubbingEditInfoUrl: <p>Voice cloning editing information</p><p>Editing information for secondary modifications of voice cloning</p>
+        :type DubbingEditInfoUrl: str
+        :param _FileId: <p>FileId of a file after removal.</p>
+        :type FileId: str
+        :param _OriginSubtitleFileId: <p>FileId of the subtitle file extracted from video.</p>
+        :type OriginSubtitleFileId: str
+        :param _TranslateSubtitleFileId: <p>FileId of a subtitle translation file extracted from a video.</p>
+        :type TranslateSubtitleFileId: str
         """
         self._Path = None
         self._OutputStorage = None
@@ -3284,6 +3314,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SubtitlePos = None
         self._VoiceClonedVideo = None
         self._VoiceClonedMarkFile = None
+        self._ErasedVideoPath = None
+        self._DubbingEditInfoUrl = None
+        self._FileId = None
+        self._OriginSubtitleFileId = None
+        self._TranslateSubtitleFileId = None
 
     @property
     def Path(self):
@@ -3365,6 +3400,61 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def VoiceClonedMarkFile(self, VoiceClonedMarkFile):
         self._VoiceClonedMarkFile = VoiceClonedMarkFile
 
+    @property
+    def ErasedVideoPath(self):
+        r"""<p>Result path of a video for removal only</p>
+        :rtype: str
+        """
+        return self._ErasedVideoPath
+
+    @ErasedVideoPath.setter
+    def ErasedVideoPath(self, ErasedVideoPath):
+        self._ErasedVideoPath = ErasedVideoPath
+
+    @property
+    def DubbingEditInfoUrl(self):
+        r"""<p>Voice cloning editing information</p><p>Editing information for secondary modifications of voice cloning</p>
+        :rtype: str
+        """
+        return self._DubbingEditInfoUrl
+
+    @DubbingEditInfoUrl.setter
+    def DubbingEditInfoUrl(self, DubbingEditInfoUrl):
+        self._DubbingEditInfoUrl = DubbingEditInfoUrl
+
+    @property
+    def FileId(self):
+        r"""<p>FileId of a file after removal.</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def OriginSubtitleFileId(self):
+        r"""<p>FileId of the subtitle file extracted from video.</p>
+        :rtype: str
+        """
+        return self._OriginSubtitleFileId
+
+    @OriginSubtitleFileId.setter
+    def OriginSubtitleFileId(self, OriginSubtitleFileId):
+        self._OriginSubtitleFileId = OriginSubtitleFileId
+
+    @property
+    def TranslateSubtitleFileId(self):
+        r"""<p>FileId of a subtitle translation file extracted from a video.</p>
+        :rtype: str
+        """
+        return self._TranslateSubtitleFileId
+
+    @TranslateSubtitleFileId.setter
+    def TranslateSubtitleFileId(self, TranslateSubtitleFileId):
+        self._TranslateSubtitleFileId = TranslateSubtitleFileId
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -3378,6 +3468,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._SubtitlePos._deserialize(params.get("SubtitlePos"))
         self._VoiceClonedVideo = params.get("VoiceClonedVideo")
         self._VoiceClonedMarkFile = params.get("VoiceClonedMarkFile")
+        self._ErasedVideoPath = params.get("ErasedVideoPath")
+        self._DubbingEditInfoUrl = params.get("DubbingEditInfoUrl")
+        self._FileId = params.get("FileId")
+        self._OriginSubtitleFileId = params.get("OriginSubtitleFileId")
+        self._TranslateSubtitleFileId = params.get("TranslateSubtitleFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3748,11 +3843,20 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
         :type VoiceId: str
         :param _OutputStorage: <p>Storage location of the dubbed video.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _ExtraOutput: <p>Additional results, currently including subtitle file result URLs</p>
+        :type ExtraOutput: str
+        :param _VideoFileId: <p>FileId of the dubbed video.</p>
+        :type VideoFileId: str
+        :param _SpeakerFileId: <p>FileId of the tag file.</p>
+        :type SpeakerFileId: str
         """
         self._VideoPath = None
         self._SpeakerPath = None
         self._VoiceId = None
         self._OutputStorage = None
+        self._ExtraOutput = None
+        self._VideoFileId = None
+        self._SpeakerFileId = None
 
     @property
     def VideoPath(self):
@@ -3798,6 +3902,39 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
     def OutputStorage(self, OutputStorage):
         self._OutputStorage = OutputStorage
 
+    @property
+    def ExtraOutput(self):
+        r"""<p>Additional results, currently including subtitle file result URLs</p>
+        :rtype: str
+        """
+        return self._ExtraOutput
+
+    @ExtraOutput.setter
+    def ExtraOutput(self, ExtraOutput):
+        self._ExtraOutput = ExtraOutput
+
+    @property
+    def VideoFileId(self):
+        r"""<p>FileId of the dubbed video.</p>
+        :rtype: str
+        """
+        return self._VideoFileId
+
+    @VideoFileId.setter
+    def VideoFileId(self, VideoFileId):
+        self._VideoFileId = VideoFileId
+
+    @property
+    def SpeakerFileId(self):
+        r"""<p>FileId of the tag file.</p>
+        :rtype: str
+        """
+        return self._SpeakerFileId
+
+    @SpeakerFileId.setter
+    def SpeakerFileId(self, SpeakerFileId):
+        self._SpeakerFileId = SpeakerFileId
+
 
     def _deserialize(self, params):
         self._VideoPath = params.get("VideoPath")
@@ -3806,6 +3943,9 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._ExtraOutput = params.get("ExtraOutput")
+        self._VideoFileId = params.get("VideoFileId")
+        self._SpeakerFileId = params.get("SpeakerFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6364,6 +6504,87 @@ class AiContentReviewTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiDramaInput(AbstractModel):
+    r"""AI‑generated comic input
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Script: <p>AI comic playbook.</p><p>Parameter format: None</p><p>Input parameter limitation: None</p>
+        :type Script: str
+        :param _Style: <p>AI comic style</p><p>Enumeration values: </p><ul><li>chinese_ink_wash: Chinese ink‑wash</li><li>fantasy_cyberpunk: fantasy cyberpunk</li><li>japanese_anime_2d: Japanese anime 2D</li></ul><p>Default value: chinese_ink_wash</p><p>Enumeration values: </p><ul><li>realistic_live_action: realistic live action</li><li>chinese_ink_wash: Chinese ink-wash</li><li>fantasy_cyberpunk: fantasy cyberpunk</li><li>japanese_anime_2d: Japanese anime 2D</li></ul><p>Default value: chinese_ink_wash</p>
+        :type Style: str
+        :param _Ratio: <p>Aspect ratio</p><p>Enumeration values: </p><ul><li>16:9: 16:9</li><li>9:16: 9:16</li></ul><p>Default value: 16:9</p>
+        :type Ratio: str
+        :param _Resolution: <p>Output video resolution</p><p>Enumeration values: </p><ul><li>720p: 720p</li><li>1080p: 1080p</li></ul><p>Default value: 720p</p>
+        :type Resolution: str
+        """
+        self._Script = None
+        self._Style = None
+        self._Ratio = None
+        self._Resolution = None
+
+    @property
+    def Script(self):
+        r"""<p>AI comic playbook.</p><p>Parameter format: None</p><p>Input parameter limitation: None</p>
+        :rtype: str
+        """
+        return self._Script
+
+    @Script.setter
+    def Script(self, Script):
+        self._Script = Script
+
+    @property
+    def Style(self):
+        r"""<p>AI comic style</p><p>Enumeration values: </p><ul><li>chinese_ink_wash: Chinese ink‑wash</li><li>fantasy_cyberpunk: fantasy cyberpunk</li><li>japanese_anime_2d: Japanese anime 2D</li></ul><p>Default value: chinese_ink_wash</p><p>Enumeration values: </p><ul><li>realistic_live_action: realistic live action</li><li>chinese_ink_wash: Chinese ink-wash</li><li>fantasy_cyberpunk: fantasy cyberpunk</li><li>japanese_anime_2d: Japanese anime 2D</li></ul><p>Default value: chinese_ink_wash</p>
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def Ratio(self):
+        r"""<p>Aspect ratio</p><p>Enumeration values: </p><ul><li>16:9: 16:9</li><li>9:16: 9:16</li></ul><p>Default value: 16:9</p>
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Resolution(self):
+        r"""<p>Output video resolution</p><p>Enumeration values: </p><ul><li>720p: 720p</li><li>1080p: 1080p</li></ul><p>Default value: 720p</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+
+    def _deserialize(self, params):
+        self._Script = params.get("Script")
+        self._Style = params.get("Style")
+        self._Ratio = params.get("Ratio")
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9424,6 +9645,59 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
                 obj = WordResult()
                 obj._deserialize(item)
                 self._Wordlist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRestorationConfig(AbstractModel):
+    r"""LLM repair
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        :type Switch: str
+        :param _Type: <p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul><p>Default value: normal</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""<p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul><p>Default value: normal</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12895,6 +13169,42 @@ class AigcVideoExtraParam(AbstractModel):
         
 
 
+class AigcVideoReferenceAudioInfo(AbstractModel):
+    r"""Reference audio information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioUrl: <p>Reference audio URL, which must be accessible from the public network.</p>
+        :type AudioUrl: str
+        """
+        self._AudioUrl = None
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Reference audio URL, which must be accessible from the public network.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+
+    def _deserialize(self, params):
+        self._AudioUrl = params.get("AudioUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcVideoReferenceImageInfo(AbstractModel):
     r"""Reference image information for AIGC video generation.
 
@@ -15446,6 +15756,492 @@ class ClassificationConfigureInfoForUpdate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CloneViralAIGC(AbstractModel):
+    r"""Hit product clone AIGC video parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: <p>Video duration</p><p>Range: [4, 15]</p>
+        :type Duration: int
+        :param _AspectRatio: <p>Aspect ratio. Options: 16:9/4:3/1:1/3:4/9:16/21:9/adaptive</p>
+        :type AspectRatio: str
+        :param _Resolution: <p>Resolution. Supports 720p (default)/1080p/2k/4k</p>
+        :type Resolution: str
+        :param _ModelTier: <p>Model tier. flagship (default), standard</p>
+        :type ModelTier: str
+        """
+        self._Duration = None
+        self._AspectRatio = None
+        self._Resolution = None
+        self._ModelTier = None
+
+    @property
+    def Duration(self):
+        r"""<p>Video duration</p><p>Range: [4, 15]</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def AspectRatio(self):
+        r"""<p>Aspect ratio. Options: 16:9/4:3/1:1/3:4/9:16/21:9/adaptive</p>
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+    @property
+    def Resolution(self):
+        r"""<p>Resolution. Supports 720p (default)/1080p/2k/4k</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def ModelTier(self):
+        r"""<p>Model tier. flagship (default), standard</p>
+        :rtype: str
+        """
+        return self._ModelTier
+
+    @ModelTier.setter
+    def ModelTier(self, ModelTier):
+        self._ModelTier = ModelTier
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        self._AspectRatio = params.get("AspectRatio")
+        self._Resolution = params.get("Resolution")
+        self._ModelTier = params.get("ModelTier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralContent(AbstractModel):
+    r"""Content/style parameters of hit product clone
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserPrompt: <p>Custom prompt describing requirements for video generation</p>
+        :type UserPrompt: str
+        :param _Language: <p>Target language for video generation. Default: not specified. Supported values: zh / en / ja / ko / es / pt / instrumental (pure music without voiceover)</p>
+        :type Language: str
+        :param _Market: <p>Target market. Default: not specified. Supported values: north_america / europe / china / japan / korea / sea / brazil</p>
+        :type Market: str
+        :param _FissionLevel: <p>Fission level. Values: exact/low/medium/high. Default: exact (1:1 clone)</p>
+        :type FissionLevel: str
+        """
+        self._UserPrompt = None
+        self._Language = None
+        self._Market = None
+        self._FissionLevel = None
+
+    @property
+    def UserPrompt(self):
+        r"""<p>Custom prompt describing requirements for video generation</p>
+        :rtype: str
+        """
+        return self._UserPrompt
+
+    @UserPrompt.setter
+    def UserPrompt(self, UserPrompt):
+        self._UserPrompt = UserPrompt
+
+    @property
+    def Language(self):
+        r"""<p>Target language for video generation. Default: not specified. Supported values: zh / en / ja / ko / es / pt / instrumental (pure music without voiceover)</p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Market(self):
+        r"""<p>Target market. Default: not specified. Supported values: north_america / europe / china / japan / korea / sea / brazil</p>
+        :rtype: str
+        """
+        return self._Market
+
+    @Market.setter
+    def Market(self, Market):
+        self._Market = Market
+
+    @property
+    def FissionLevel(self):
+        r"""<p>Fission level. Values: exact/low/medium/high. Default: exact (1:1 clone)</p>
+        :rtype: str
+        """
+        return self._FissionLevel
+
+    @FissionLevel.setter
+    def FissionLevel(self, FissionLevel):
+        self._FissionLevel = FissionLevel
+
+
+    def _deserialize(self, params):
+        self._UserPrompt = params.get("UserPrompt")
+        self._Language = params.get("Language")
+        self._Market = params.get("Market")
+        self._FissionLevel = params.get("FissionLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralPersona(AbstractModel):
+    r"""Model appearance of hit product clone
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Gender: <p>Model gender. Values: male/female/any</p>
+        :type Gender: str
+        :param _Age: <p>Age segment. Values: teenager/youth/middle_aged/senior</p>
+        :type Age: str
+        :param _Ethnicity: <p>Appearance feature. Values: caucasian/asian/latino/african/middle_eastern</p>
+        :type Ethnicity: str
+        :param _BodyType: <p>Body type. Values: slim / standard / athletic / chubby</p>
+        :type BodyType: str
+        """
+        self._Gender = None
+        self._Age = None
+        self._Ethnicity = None
+        self._BodyType = None
+
+    @property
+    def Gender(self):
+        r"""<p>Model gender. Values: male/female/any</p>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>Age segment. Values: teenager/youth/middle_aged/senior</p>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Ethnicity(self):
+        r"""<p>Appearance feature. Values: caucasian/asian/latino/african/middle_eastern</p>
+        :rtype: str
+        """
+        return self._Ethnicity
+
+    @Ethnicity.setter
+    def Ethnicity(self, Ethnicity):
+        self._Ethnicity = Ethnicity
+
+    @property
+    def BodyType(self):
+        r"""<p>Body type. Values: slim / standard / athletic / chubby</p>
+        :rtype: str
+        """
+        return self._BodyType
+
+    @BodyType.setter
+    def BodyType(self, BodyType):
+        self._BodyType = BodyType
+
+
+    def _deserialize(self, params):
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Ethnicity = params.get("Ethnicity")
+        self._BodyType = params.get("BodyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralProduct(AbstractModel):
+    r"""Product information of hit product clone
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Images: <p>Product image</p>
+        :type Images: list of str
+        :param _Name: <p>Product name</p>
+        :type Name: str
+        :param _Description: <p>Product description</p>
+        :type Description: str
+        """
+        self._Images = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def Images(self):
+        r"""<p>Product image</p>
+        :rtype: list of str
+        """
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
+    def Name(self):
+        r"""<p>Product name</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Product description</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Images = params.get("Images")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralRequest(AbstractModel):
+    r"""CloneViral request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoUrl: <p>Viral video Url</p>
+        :type VideoUrl: str
+        :param _Product: <p>Product information</p>
+        :type Product: :class:`tencentcloud.mps.v20190612.models.CloneViralProduct`
+        :param _AIGCParam: <p>AIGC video-related parameters</p>
+        :type AIGCParam: :class:`tencentcloud.mps.v20190612.models.CloneViralAIGC`
+        :param _ContentParam: <p>Content/style-related parameters</p>
+        :type ContentParam: :class:`tencentcloud.mps.v20190612.models.CloneViralContent`
+        :param _Persona: <p>Model appearance</p>
+        :type Persona: :class:`tencentcloud.mps.v20190612.models.CloneViralPersona`
+        """
+        self._VideoUrl = None
+        self._Product = None
+        self._AIGCParam = None
+        self._ContentParam = None
+        self._Persona = None
+
+    @property
+    def VideoUrl(self):
+        r"""<p>Viral video Url</p>
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def Product(self):
+        r"""<p>Product information</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralProduct`
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def AIGCParam(self):
+        r"""<p>AIGC video-related parameters</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralAIGC`
+        """
+        return self._AIGCParam
+
+    @AIGCParam.setter
+    def AIGCParam(self, AIGCParam):
+        self._AIGCParam = AIGCParam
+
+    @property
+    def ContentParam(self):
+        r"""<p>Content/style-related parameters</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralContent`
+        """
+        return self._ContentParam
+
+    @ContentParam.setter
+    def ContentParam(self, ContentParam):
+        self._ContentParam = ContentParam
+
+    @property
+    def Persona(self):
+        r"""<p>Model appearance</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralPersona`
+        """
+        return self._Persona
+
+    @Persona.setter
+    def Persona(self, Persona):
+        self._Persona = Persona
+
+
+    def _deserialize(self, params):
+        self._VideoUrl = params.get("VideoUrl")
+        if params.get("Product") is not None:
+            self._Product = CloneViralProduct()
+            self._Product._deserialize(params.get("Product"))
+        if params.get("AIGCParam") is not None:
+            self._AIGCParam = CloneViralAIGC()
+            self._AIGCParam._deserialize(params.get("AIGCParam"))
+        if params.get("ContentParam") is not None:
+            self._ContentParam = CloneViralContent()
+            self._ContentParam._deserialize(params.get("ContentParam"))
+        if params.get("Persona") is not None:
+            self._Persona = CloneViralPersona()
+            self._Persona._deserialize(params.get("Persona"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralResponse(AbstractModel):
+    r"""CloneViral response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Task status. FAIL is returned on failure.</p>
+        :type Status: str
+        :param _Message: <p>Error message is returned on failure</p>
+        :type Message: str
+        :param _TaskId: <p>Returned task ID after the task is created successfully. The task progress and generation results can be obtained by calling the query API.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>Task status. FAIL is returned on failure.</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""<p>Error message is returned on failure</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def TaskId(self):
+        r"""<p>Returned task ID after the task is created successfully. The task progress and generation results can be obtained by calling the query API.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ColorEnhanceConfig(AbstractModel):
@@ -18835,6 +19631,104 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAiDramaTaskRequest(AbstractModel):
+    r"""CreateAiDramaTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>ai comic input</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiDramaInput`
+        :param _CosInfo: <p>User cos information</p>
+        :type CosInfo: :class:`tencentcloud.mps.v20190612.models.VideoDramaCosInfo`
+        """
+        self._Input = None
+        self._CosInfo = None
+
+    @property
+    def Input(self):
+        r"""<p>ai comic input</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiDramaInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CosInfo(self):
+        r"""<p>User cos information</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDramaCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = AiDramaInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("CosInfo") is not None:
+            self._CosInfo = VideoDramaCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAiDramaTaskResponse(AbstractModel):
+    r"""CreateAiDramaTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcAudioTaskRequest(AbstractModel):
     r"""CreateAigcAudioTask request structure.
 
@@ -18844,7 +19738,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         r"""
         :param _ModelName: <p>Model name. Supported models for music generation: GL and MiniMaxMusic.</p>
         :type ModelName: str
-        :param _ModelVersion: <p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MinimaxMusic: 2.0, 2.5, and 2.6.</p>
+        :param _ModelVersion: <p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MiniMaxMusic: 2.0, 2.5, and 2.6.</p>
         :type ModelVersion: str
         :param _SceneType: <p>Specifies the scenario for audio generation. Music: music.</p>
         :type SceneType: str
@@ -18860,7 +19754,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         :param _ExtraParameters: <p>Additional parameters required.</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
-        :param _AdditionalParameters: <p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{"lyric":{"The pony is running with joy. The flowers are blooming."}}</p>
+        :param _AdditionalParameters: <p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{"lyric":{"The pony is running with joy. The flowers are blooming."}}</p><ol><li>Example for MiniMaxMusic instrumental music: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
         :type AdditionalParameters: str
         :param _Operator: <p>API operator name.</p>
         :type Operator: str
@@ -18890,7 +19784,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MinimaxMusic: 2.0, 2.5, and 2.6.</p>
+        r"""<p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MiniMaxMusic: 2.0, 2.5, and 2.6.</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -18978,7 +19872,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def AdditionalParameters(self):
-        r"""<p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{"lyric":{"The pony is running with joy. The flowers are blooming."}}</p>
+        r"""<p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{"lyric":{"The pony is running with joy. The flowers are blooming."}}</p><ol><li>Example for MiniMaxMusic instrumental music: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -19358,6 +20252,8 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type ImageInfos: list of AigcVideoReferenceImageInfo
         :param _VideoInfos: <p>Only Kling O1, Kling 3.0-Omni, Vidu q2-pro, and H2 1.0 support reference video information.</p><ol><li>For Kling O1 and 3.0-Omni, the reference video can be used as a feature reference video or a video for editing. The default type is video for editing. You can choose to keep the original sound of the video.</li><li>Vidu q2-pro supports video reference.</li><li>H2 1.0 supports video reference.</li></ol>
         :type VideoInfos: list of AigcVideoReferenceVideoInfo
+        :param _AudioInfos: <p>Some models support reference audio input via URL.</p>
+        :type AudioInfos: list of AigcVideoReferenceAudioInfo
         :param _Duration: <p>Duration of the generated video.<br>Note:</p><ol><li>Kling: default value: 5 seconds.<ul><li>O1 supports 3 to 10 seconds.</li><li>3.0-Omni supports 3 to 15 seconds, or 3 to 10 seconds when a video reference is used.</li><li>3.0 supports 3 to 15 seconds.</li><li>Other versions support 5 and 10 seconds.</li></ul></li><li>The std mode of Hailuo supports 6 and 10 seconds, and other modes support 6 seconds. Default value: 6 seconds.</li><li>Vidu: default value: 5 seconds.<ul><li>q3-pro, q3-turbo, q3, and q3-mix support 3 to 16 seconds.</li><li>q2-pro, q2-turbo, and q2 support 1 to 10 seconds.</li></ul></li><li>PixVerse: default value: 5 seconds.<ul><li>v5.6 supports 5, 8, and 10 seconds.</li><li>v6 and c1 support 1 to 15 seconds.</li></ul></li><li>H2 supports 3 to 15 seconds. Default value: 5 seconds.</li></ol>
         :type Duration: int
         :param _ExtraParameters: <p>Additional parameters required.</p>
@@ -19379,6 +20275,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._LastImageUrl = None
         self._ImageInfos = None
         self._VideoInfos = None
+        self._AudioInfos = None
         self._Duration = None
         self._ExtraParameters = None
         self._StoreCosParam = None
@@ -19496,6 +20393,17 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._VideoInfos = VideoInfos
 
     @property
+    def AudioInfos(self):
+        r"""<p>Some models support reference audio input via URL.</p>
+        :rtype: list of AigcVideoReferenceAudioInfo
+        """
+        return self._AudioInfos
+
+    @AudioInfos.setter
+    def AudioInfos(self, AudioInfos):
+        self._AudioInfos = AudioInfos
+
+    @property
     def Duration(self):
         r"""<p>Duration of the generated video.<br>Note:</p><ol><li>Kling: default value: 5 seconds.<ul><li>O1 supports 3 to 10 seconds.</li><li>3.0-Omni supports 3 to 15 seconds, or 3 to 10 seconds when a video reference is used.</li><li>3.0 supports 3 to 15 seconds.</li><li>Other versions support 5 and 10 seconds.</li></ul></li><li>The std mode of Hailuo supports 6 and 10 seconds, and other modes support 6 seconds. Default value: 6 seconds.</li><li>Vidu: default value: 5 seconds.<ul><li>q3-pro, q3-turbo, q3, and q3-mix support 3 to 16 seconds.</li><li>q2-pro, q2-turbo, and q2 support 1 to 10 seconds.</li></ul></li><li>PixVerse: default value: 5 seconds.<ul><li>v5.6 supports 5, 8, and 10 seconds.</li><li>v6 and c1 support 1 to 15 seconds.</li></ul></li><li>H2 supports 3 to 15 seconds. Default value: 5 seconds.</li></ol>
         :rtype: int
@@ -19572,6 +20480,12 @@ class CreateAigcVideoTaskRequest(AbstractModel):
                 obj = AigcVideoReferenceVideoInfo()
                 obj._deserialize(item)
                 self._VideoInfos.append(obj)
+        if params.get("AudioInfos") is not None:
+            self._AudioInfos = []
+            for item in params.get("AudioInfos"):
+                obj = AigcVideoReferenceAudioInfo()
+                obj._deserialize(item)
+                self._AudioInfos.append(obj)
         self._Duration = params.get("Duration")
         if params.get("ExtraParameters") is not None:
             self._ExtraParameters = AigcVideoExtraParam()
@@ -20314,6 +21228,104 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDocToVideoTaskRequest(AbstractModel):
+    r"""CreateDocToVideoTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>Input information for AIGC document‑to‑video generation</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.DocToVideoInput`
+        :param _CosInfo: <p>User cos information, used to store the generation result</p>
+        :type CosInfo: :class:`tencentcloud.mps.v20190612.models.DocToVideoCosInfo`
+        """
+        self._Input = None
+        self._CosInfo = None
+
+    @property
+    def Input(self):
+        r"""<p>Input information for AIGC document‑to‑video generation</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DocToVideoInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CosInfo(self):
+        r"""<p>User cos information, used to store the generation result</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DocToVideoCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = DocToVideoInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("CosInfo") is not None:
+            self._CosInfo = DocToVideoCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDocToVideoTaskResponse(AbstractModel):
+    r"""CreateDocToVideoTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -22645,6 +23657,121 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVideoRedrawTaskRequest(AbstractModel):
+    r"""CreateVideoRedrawTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>Input the url information of the video to be redrawn</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.VideoRedrawInput`
+        :param _CosInfo: <p>User cos information, used to store the generation result</p>
+        :type CosInfo: :class:`tencentcloud.mps.v20190612.models.VideoRedrawCosInfo`
+        :param _TaskInfo: <p>ai redrawing task information</p>
+        :type TaskInfo: :class:`tencentcloud.mps.v20190612.models.VideoRedrawTaskInfo`
+        """
+        self._Input = None
+        self._CosInfo = None
+        self._TaskInfo = None
+
+    @property
+    def Input(self):
+        r"""<p>Input the url information of the video to be redrawn</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoRedrawInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CosInfo(self):
+        r"""<p>User cos information, used to store the generation result</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoRedrawCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+    @property
+    def TaskInfo(self):
+        r"""<p>ai redrawing task information</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoRedrawTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = VideoRedrawInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("CosInfo") is not None:
+            self._CosInfo = VideoRedrawCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = VideoRedrawTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoRedrawTaskResponse(AbstractModel):
+    r"""CreateVideoRedrawTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -25609,6 +26736,222 @@ class DescribeAigcImageTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAigcTaskStatusRequest(AbstractModel):
+    r"""DescribeAigcTaskStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcTaskStatusResponse(AbstractModel):
+    r"""DescribeAigcTaskStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _TaskStatus: <p>Task status description</p><p>Enumeration values: </p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
+        :type TaskStatus: str
+        :param _OutputUrl: <p>Output url</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
+        :type OutputUrl: str
+        :param _CreateTime: <p>Task creation time</p>
+        :type CreateTime: str
+        :param _ScheduledTime: <p>Task scheduling time</p>
+        :type ScheduledTime: str
+        :param _FinishedTime: <p>Task completion time</p>
+        :type FinishedTime: str
+        :param _TaskResultCode: <p>Task error code</p>
+        :type TaskResultCode: int
+        :param _TaskResultMsg: <p>Task returned error message</p>
+        :type TaskResultMsg: str
+        :param _RequestBody: <p>Request structure</p>
+        :type RequestBody: str
+        :param _TaskType: <p>Task type</p>
+        :type TaskType: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskStatus = None
+        self._OutputUrl = None
+        self._CreateTime = None
+        self._ScheduledTime = None
+        self._FinishedTime = None
+        self._TaskResultCode = None
+        self._TaskResultMsg = None
+        self._RequestBody = None
+        self._TaskType = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskStatus(self):
+        r"""<p>Task status description</p><p>Enumeration values: </p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def OutputUrl(self):
+        r"""<p>Output url</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OutputUrl
+
+    @OutputUrl.setter
+    def OutputUrl(self, OutputUrl):
+        self._OutputUrl = OutputUrl
+
+    @property
+    def CreateTime(self):
+        r"""<p>Task creation time</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ScheduledTime(self):
+        r"""<p>Task scheduling time</p>
+        :rtype: str
+        """
+        return self._ScheduledTime
+
+    @ScheduledTime.setter
+    def ScheduledTime(self, ScheduledTime):
+        self._ScheduledTime = ScheduledTime
+
+    @property
+    def FinishedTime(self):
+        r"""<p>Task completion time</p>
+        :rtype: str
+        """
+        return self._FinishedTime
+
+    @FinishedTime.setter
+    def FinishedTime(self, FinishedTime):
+        self._FinishedTime = FinishedTime
+
+    @property
+    def TaskResultCode(self):
+        r"""<p>Task error code</p>
+        :rtype: int
+        """
+        return self._TaskResultCode
+
+    @TaskResultCode.setter
+    def TaskResultCode(self, TaskResultCode):
+        self._TaskResultCode = TaskResultCode
+
+    @property
+    def TaskResultMsg(self):
+        r"""<p>Task returned error message</p>
+        :rtype: str
+        """
+        return self._TaskResultMsg
+
+    @TaskResultMsg.setter
+    def TaskResultMsg(self, TaskResultMsg):
+        self._TaskResultMsg = TaskResultMsg
+
+    @property
+    def RequestBody(self):
+        r"""<p>Request structure</p>
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+    @property
+    def TaskType(self):
+        r"""<p>Task type</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._OutputUrl = params.get("OutputUrl")
+        self._CreateTime = params.get("CreateTime")
+        self._ScheduledTime = params.get("ScheduledTime")
+        self._FinishedTime = params.get("FinishedTime")
+        self._TaskResultCode = params.get("TaskResultCode")
+        self._TaskResultMsg = params.get("TaskResultMsg")
+        self._RequestBody = params.get("RequestBody")
+        self._TaskType = params.get("TaskType")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAigcVideoTaskRequest(AbstractModel):
     r"""DescribeAigcVideoTask request structure.
 
@@ -26904,6 +28247,115 @@ class DescribeBlindWatermarkTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloneViralTaskRequest(AbstractModel):
+    r"""DescribeCloneViralTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID returned from the hit product clone creation task request</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID returned from the hit product clone creation task request</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloneViralTaskResponse(AbstractModel):
+    r"""DescribeCloneViralTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Task status</p><p>Enumeration values: </p><ul><li>WAIT: Waiting</li><li>RUN: Executing</li><li>FAIL: Task failed</li><li>DONE: Task succeeded</li></ul>
+        :type Status: str
+        :param _Message: <p>Error message is returned on failure</p>
+        :type Message: str
+        :param _VideoUrls: <p>When the task status is DONE, the list of video URLs is returned. The videos are stored for 24 hours.</p>
+        :type VideoUrls: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._VideoUrls = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>Task status</p><p>Enumeration values: </p><ul><li>WAIT: Waiting</li><li>RUN: Executing</li><li>FAIL: Task failed</li><li>DONE: Task succeeded</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""<p>Error message is returned on failure</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def VideoUrls(self):
+        r"""<p>When the task status is DONE, the list of video URLs is returned. The videos are stored for 24 hours.</p>
+        :rtype: list of str
+        """
+        return self._VideoUrls
+
+    @VideoUrls.setter
+    def VideoUrls(self, VideoUrls):
+        self._VideoUrls = VideoUrls
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._VideoUrls = params.get("VideoUrls")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeContentReviewTemplatesRequest(AbstractModel):
     r"""DescribeContentReviewTemplates request structure.
 
@@ -27633,6 +29085,195 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("InputInfo") is not None:
             self._InputInfo = MediaInputInfo()
             self._InputInfo._deserialize(params.get("InputInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeImageTasksRequest(AbstractModel):
+    r"""DescribeImageTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>Task status filter condition.</p>
+        :type Status: str
+        :param _Limit: <p>Number of returned records.</p>
+        :type Limit: int
+        :param _ScrollToken: <p>Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.</p>
+        :type ScrollToken: str
+        :param _StartTime: <p>Task start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :type StartTime: str
+        :param _EndTime: <p>Task end time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :type EndTime: str
+        :param _SubTaskHasFailed: <p>Filter subtask status.</p>
+        :type SubTaskHasFailed: bool
+        """
+        self._Status = None
+        self._Limit = None
+        self._ScrollToken = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SubTaskHasFailed = None
+
+    @property
+    def Status(self):
+        r"""<p>Task status filter condition.</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Limit(self):
+        r"""<p>Number of returned records.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ScrollToken(self):
+        r"""<p>Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.</p>
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def StartTime(self):
+        r"""<p>Task start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>Task end time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SubTaskHasFailed(self):
+        r"""<p>Filter subtask status.</p>
+        :rtype: bool
+        """
+        return self._SubTaskHasFailed
+
+    @SubTaskHasFailed.setter
+    def SubTaskHasFailed(self, SubTaskHasFailed):
+        self._SubTaskHasFailed = SubTaskHasFailed
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Limit = params.get("Limit")
+        self._ScrollToken = params.get("ScrollToken")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SubTaskHasFailed = params.get("SubTaskHasFailed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageTasksResponse(AbstractModel):
+    r"""DescribeImageTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Total number of records that meet filter conditions.</p><p>Unit: entries</p>
+        :type TotalCount: int
+        :param _ScrollToken: <p>Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.</p>
+        :type ScrollToken: str
+        :param _TaskSet: <p>Image task summary list.</p>
+        :type TaskSet: list of ImageTaskInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ScrollToken = None
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of records that meet filter conditions.</p><p>Unit: entries</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ScrollToken(self):
+        r"""<p>Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.</p>
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def TaskSet(self):
+        r"""<p>Image task summary list.</p>
+        :rtype: list of ImageTaskInfo
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._ScrollToken = params.get("ScrollToken")
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = ImageTaskInfo()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -30878,6 +32519,8 @@ class DescribeVoicesResponse(AbstractModel):
         :type ErrorCode: int
         :param _Msg: <p>Error message. success is returned if the request is successful.</p>
         :type Msg: str
+        :param _TotalCount: <p>Total number of voices that meet the search criteria</p>
+        :type TotalCount: int
         :param _Voices: <p>Available voice list.</p>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Voices: list of VoiceInfo
@@ -30886,6 +32529,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """
         self._ErrorCode = None
         self._Msg = None
+        self._TotalCount = None
         self._Voices = None
         self._RequestId = None
 
@@ -30910,6 +32554,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Msg.setter
     def Msg(self, Msg):
         self._Msg = Msg
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of voices that meet the search criteria</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def Voices(self):
@@ -30938,6 +32593,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._ErrorCode = params.get("ErrorCode")
         self._Msg = params.get("Msg")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Voices") is not None:
             self._Voices = []
             for item in params.get("Voices"):
@@ -32287,6 +33943,228 @@ class DisableWorkflowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DocToVideoCosInfo(AbstractModel):
+    r"""cos information. Stores user‑provided cos information for saving results
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketRegion: <p>cos bucket region</p>
+        :type CosBucketRegion: str
+        :param _CosBucketName: <p>cos bucket name</p>
+        :type CosBucketName: str
+        :param _CosBucketPath: <p>cos bucket path</p>
+        :type CosBucketPath: str
+        """
+        self._CosBucketRegion = None
+        self._CosBucketName = None
+        self._CosBucketPath = None
+
+    @property
+    def CosBucketRegion(self):
+        r"""<p>cos bucket region</p>
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketName(self):
+        r"""<p>cos bucket name</p>
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketPath(self):
+        r"""<p>cos bucket path</p>
+        :rtype: str
+        """
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
+
+    def _deserialize(self, params):
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketPath = params.get("CosBucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocToVideoInput(AbstractModel):
+    r"""AIGC document‑to‑video input
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileUrl: <p>Document link for video generation.</p><p>Supported document types: pdf, pptx, docx, png, jpg<br>Document count limit: 3<br>Document size limit: 10MB<br>Document page limit: 100</p>
+        :type FileUrl: list of str
+        :param _Prompt: <p>Prompt information for video generation.</p><p>Prompt length limit: 2,000 characters.</p>
+        :type Prompt: str
+        :param _ModelName: <p>Document-to-video model name</p><p>Default value: Wand</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>Document-to-video model version number</p><p>Default value: 1.0</p>
+        :type ModelVersion: str
+        :param _Ratio: <p>Aspect ratio of the generated video.</p><p>Enumeration values: </p><ul><li>16:9: 16:9</li><li>9:16: 9:16</li><li>1:1: 1:1</li></ul><p>Default value: 16:9</p>
+        :type Ratio: str
+        :param _Language: <p>Language of the generated video.</p><p>Enumeration values: </p><ul><li>zh: Chinese</li><li>en: English</li><li>ja: Japanese</li><li>ko: Korean</li><li>ru: Russian</li><li>fr: French</li><li>es: Spanish</li><li>de: German</li></ul><p>Default value: zh</p>
+        :type Language: str
+        :param _ReferenceDuration: <p>Video duration for reference.</p><p>This is not an exact duration; it serves as a reference for the LLM only.</p><p>Range: [15, 1200]</p><p>Unit: second</p>
+        :type ReferenceDuration: int
+        :param _EnableTTS: <p>Whether the AI dubbing feature is enabled.</p><p>Default value: false</p>
+        :type EnableTTS: bool
+        :param _VoiceId: <p>Voice ID. Valid only when AI dubbing feature is enabled.</p>
+        :type VoiceId: str
+        """
+        self._FileUrl = None
+        self._Prompt = None
+        self._ModelName = None
+        self._ModelVersion = None
+        self._Ratio = None
+        self._Language = None
+        self._ReferenceDuration = None
+        self._EnableTTS = None
+        self._VoiceId = None
+
+    @property
+    def FileUrl(self):
+        r"""<p>Document link for video generation.</p><p>Supported document types: pdf, pptx, docx, png, jpg<br>Document count limit: 3<br>Document size limit: 10MB<br>Document page limit: 100</p>
+        :rtype: list of str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def Prompt(self):
+        r"""<p>Prompt information for video generation.</p><p>Prompt length limit: 2,000 characters.</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def ModelName(self):
+        r"""<p>Document-to-video model name</p><p>Default value: Wand</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>Document-to-video model version number</p><p>Default value: 1.0</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def Ratio(self):
+        r"""<p>Aspect ratio of the generated video.</p><p>Enumeration values: </p><ul><li>16:9: 16:9</li><li>9:16: 9:16</li><li>1:1: 1:1</li></ul><p>Default value: 16:9</p>
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Language(self):
+        r"""<p>Language of the generated video.</p><p>Enumeration values: </p><ul><li>zh: Chinese</li><li>en: English</li><li>ja: Japanese</li><li>ko: Korean</li><li>ru: Russian</li><li>fr: French</li><li>es: Spanish</li><li>de: German</li></ul><p>Default value: zh</p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def ReferenceDuration(self):
+        r"""<p>Video duration for reference.</p><p>This is not an exact duration; it serves as a reference for the LLM only.</p><p>Range: [15, 1200]</p><p>Unit: second</p>
+        :rtype: int
+        """
+        return self._ReferenceDuration
+
+    @ReferenceDuration.setter
+    def ReferenceDuration(self, ReferenceDuration):
+        self._ReferenceDuration = ReferenceDuration
+
+    @property
+    def EnableTTS(self):
+        r"""<p>Whether the AI dubbing feature is enabled.</p><p>Default value: false</p>
+        :rtype: bool
+        """
+        return self._EnableTTS
+
+    @EnableTTS.setter
+    def EnableTTS(self, EnableTTS):
+        self._EnableTTS = EnableTTS
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID. Valid only when AI dubbing feature is enabled.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+
+    def _deserialize(self, params):
+        self._FileUrl = params.get("FileUrl")
+        self._Prompt = params.get("Prompt")
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._Ratio = params.get("Ratio")
+        self._Language = params.get("Language")
+        self._ReferenceDuration = params.get("ReferenceDuration")
+        self._EnableTTS = params.get("EnableTTS")
+        self._VoiceId = params.get("VoiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DrmInfo(AbstractModel):
     r"""The DRM encryption details.
 
@@ -32997,6 +34875,230 @@ class EditMediaTaskOutput(AbstractModel):
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmbeddingData(AbstractModel):
+    r"""Embedding API input:
+    Type   Data type; currently only supports textData  Data content; currently only supports text strings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>Data type</p><p>Enumeration values:</p><ul><li>text: Text</li></ul>
+        :type Type: str
+        :param _Data: <p>Data content. When Type is text, it is a text string.</p>
+        :type Data: str
+        """
+        self._Type = None
+        self._Data = None
+
+    @property
+    def Type(self):
+        r"""<p>Data type</p><p>Enumeration values:</p><ul><li>text: Text</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Data(self):
+        r"""<p>Data content. When Type is text, it is a text string.</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmbeddingDataRequest(AbstractModel):
+    r"""EmbeddingData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>Embedding model; currently only supports text_embedding_v1</p><p>Enumeration values: </p><ul><li>text_embedding_v1: The text embedding model. Prompt can be filled.</li></ul>
+        :type Model: str
+        :param _Files: <p>Embedding input</p>
+        :type Files: list of EmbeddingData
+        :param _Prompt: <p>Prompt for embedding input</p>
+        :type Prompt: str
+        """
+        self._Model = None
+        self._Files = None
+        self._Prompt = None
+
+    @property
+    def Model(self):
+        r"""<p>Embedding model; currently only supports text_embedding_v1</p><p>Enumeration values: </p><ul><li>text_embedding_v1: The text embedding model. Prompt can be filled.</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Files(self):
+        r"""<p>Embedding input</p>
+        :rtype: list of EmbeddingData
+        """
+        return self._Files
+
+    @Files.setter
+    def Files(self, Files):
+        self._Files = Files
+
+    @property
+    def Prompt(self):
+        r"""<p>Prompt for embedding input</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("Files") is not None:
+            self._Files = []
+            for item in params.get("Files"):
+                obj = EmbeddingData()
+                obj._deserialize(item)
+                self._Files.append(obj)
+        self._Prompt = params.get("Prompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmbeddingDataResponse(AbstractModel):
+    r"""EmbeddingData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Embedding result</p>
+        :type Data: list of EmbeddingResultItem
+        :param _Usage: <p>Token usage of the embedding</p>
+        :type Usage: :class:`tencentcloud.mps.v20190612.models.TokensUsage`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Usage = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>Embedding result</p>
+        :rtype: list of EmbeddingResultItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Usage(self):
+        r"""<p>Token usage of the embedding</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TokensUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = EmbeddingResultItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("Usage") is not None:
+            self._Usage = TokensUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
+
+
+class EmbeddingResultItem(AbstractModel):
+    r"""Embedding result
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>Vector</p>
+        :type Result: list of float
+        """
+        self._Result = None
+
+    @property
+    def Result(self):
+        r"""<p>Vector</p>
+        :rtype: list of float
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35283,23 +37385,26 @@ class ImageProcessTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: Path of the output file.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Path: <p>Path of the output file.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :type Path: str
-        :param _OutputStorage: Storage location of the output file.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _OutputStorage: <p>Storage location of the output file.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _Content: Processing result of the image-to-text task.
+        :param _Content: <p>Processing result of the image-to-text task.</p>
         :type Content: str
+        :param _FileId: <p>VOD Standard Edition FileId</p>
+        :type FileId: str
         """
         self._Path = None
         self._OutputStorage = None
         self._Content = None
+        self._FileId = None
 
     @property
     def Path(self):
-        r"""Path of the output file.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Path of the output file.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Path
@@ -35310,8 +37415,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OutputStorage(self):
-        r"""Storage location of the output file.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""<p>Storage location of the output file.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -35322,7 +37427,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Content(self):
-        r"""Processing result of the image-to-text task.
+        r"""<p>Processing result of the image-to-text task.</p>
         :rtype: str
         """
         return self._Content
@@ -35331,6 +37436,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def FileId(self):
+        r"""<p>VOD Standard Edition FileId</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -35338,6 +37454,7 @@ Note: This field may return null, indicating that no valid value can be obtained
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._Content = params.get("Content")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35892,6 +38009,132 @@ Default value: black.
         self._FillType = params.get("FillType")
         self._Comment = params.get("Comment")
         self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageTaskInfo(AbstractModel):
+    r"""Task overview for image processing.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>TaskId of the image processing task.</p>
+        :type TaskId: str
+        :param _Status: <p>Task status.</p><p>Enumeration values: </p><ul><li>FINISH: Task completion</li><li>PROCESSING: Task processing</li></ul>
+        :type Status: str
+        :param _Input: <p>Input file.</p>
+        :type Input: str
+        :param _CreateTime: <p>Creation time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :type CreateTime: str
+        :param _BeginProcessTime: <p>Processing start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :type BeginProcessTime: str
+        :param _FinishTime: <p>End time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :type FinishTime: str
+        :param _SubTaskHasFailed: <p>Subtask failure identifier.</p>
+        :type SubTaskHasFailed: bool
+        """
+        self._TaskId = None
+        self._Status = None
+        self._Input = None
+        self._CreateTime = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+        self._SubTaskHasFailed = None
+
+    @property
+    def TaskId(self):
+        r"""<p>TaskId of the image processing task.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>Task status.</p><p>Enumeration values: </p><ul><li>FINISH: Task completion</li><li>PROCESSING: Task processing</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Input(self):
+        r"""<p>Input file.</p>
+        :rtype: str
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def BeginProcessTime(self):
+        r"""<p>Processing start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>End time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def SubTaskHasFailed(self):
+        r"""<p>Subtask failure identifier.</p>
+        :rtype: bool
+        """
+        return self._SubTaskHasFailed
+
+    @SubTaskHasFailed.setter
+    def SubTaskHasFailed(self, SubTaskHasFailed):
+        self._SubTaskHasFailed = SubTaskHasFailed
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._Input = params.get("Input")
+        self._CreateTime = params.get("CreateTime")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        self._SubTaskHasFailed = params.get("SubTaskHasFailed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61492,11 +63735,14 @@ class SubtitleResult(AbstractModel):
         :type Path: str
         :param _SubtitleEmbedPath: <p>Subtitle suppression video path.</p>
         :type SubtitleEmbedPath: str
+        :param _SubtitleFileId: <p>FileId of the subtitle file.</p>
+        :type SubtitleFileId: str
         """
         self._Language = None
         self._Status = None
         self._Path = None
         self._SubtitleEmbedPath = None
+        self._SubtitleFileId = None
 
     @property
     def Language(self):
@@ -61542,12 +63788,24 @@ class SubtitleResult(AbstractModel):
     def SubtitleEmbedPath(self, SubtitleEmbedPath):
         self._SubtitleEmbedPath = SubtitleEmbedPath
 
+    @property
+    def SubtitleFileId(self):
+        r"""<p>FileId of the subtitle file.</p>
+        :rtype: str
+        """
+        return self._SubtitleFileId
+
+    @SubtitleFileId.setter
+    def SubtitleFileId(self, SubtitleFileId):
+        self._SubtitleFileId = SubtitleFileId
+
 
     def _deserialize(self, params):
         self._Language = params.get("Language")
         self._Status = params.get("Status")
         self._Path = params.get("Path")
         self._SubtitleEmbedPath = params.get("SubtitleEmbedPath")
+        self._SubtitleFileId = params.get("SubtitleFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62335,12 +64593,15 @@ class SubtitleTransResultItem(AbstractModel):
         :type Path: str
         :param _SubtitleEmbedPath: <p>Subtitle translation suppression video path.</p>
         :type SubtitleEmbedPath: str
+        :param _SubtitleFileId: <p>FileId of the subtitle file.</p>
+        :type SubtitleFileId: str
         """
         self._Status = None
         self._TransSrc = None
         self._TransDst = None
         self._Path = None
         self._SubtitleEmbedPath = None
+        self._SubtitleFileId = None
 
     @property
     def Status(self):
@@ -62397,6 +64658,17 @@ class SubtitleTransResultItem(AbstractModel):
     def SubtitleEmbedPath(self, SubtitleEmbedPath):
         self._SubtitleEmbedPath = SubtitleEmbedPath
 
+    @property
+    def SubtitleFileId(self):
+        r"""<p>FileId of the subtitle file.</p>
+        :rtype: str
+        """
+        return self._SubtitleFileId
+
+    @SubtitleFileId.setter
+    def SubtitleFileId(self, SubtitleFileId):
+        self._SubtitleFileId = SubtitleFileId
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -62404,6 +64676,7 @@ class SubtitleTransResultItem(AbstractModel):
         self._TransDst = params.get("TransDst")
         self._Path = params.get("Path")
         self._SubtitleEmbedPath = params.get("SubtitleEmbedPath")
+        self._SubtitleFileId = params.get("SubtitleFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65067,6 +67340,72 @@ If the value is 0 or not specified, it indicates that loops are executed until t
         
 
 
+class TokensUsage(AbstractModel):
+    r"""token usage
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputTokens: <p>Input token count</p>
+        :type InputTokens: int
+        :param _OutputTokens: <p>Output token count</p>
+        :type OutputTokens: int
+        :param _TotalTokens: <p>Total token count, generally input + output</p>
+        :type TotalTokens: int
+        """
+        self._InputTokens = None
+        self._OutputTokens = None
+        self._TotalTokens = None
+
+    @property
+    def InputTokens(self):
+        r"""<p>Input token count</p>
+        :rtype: int
+        """
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def OutputTokens(self):
+        r"""<p>Output token count</p>
+        :rtype: int
+        """
+        return self._OutputTokens
+
+    @OutputTokens.setter
+    def OutputTokens(self, OutputTokens):
+        self._OutputTokens = OutputTokens
+
+    @property
+    def TotalTokens(self):
+        r"""<p>Total token count, generally input + output</p>
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._InputTokens = params.get("InputTokens")
+        self._OutputTokens = params.get("OutputTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TrackInfo(AbstractModel):
     r"""Audio track info.
 
@@ -67215,29 +69554,35 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
 
 class VODInputInfo(AbstractModel):
-    r"""VOD Pro object information for MPS.
+    r"""Media processing VOD object information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Bucket: Specifies the Bucket ID where the input file resides.
+        :param _Bucket: <p><em>Bucket ID</em> where the media processing object file resides</p>
         :type Bucket: str
-        :param _Region: Specifies the region where the input file's Bucket resides.
+        :param _Region: <p>Region of the Bucket where the media processing object file resides</p>
         :type Region: str
-        :param _Object: Path of the input file.
+        :param _Object: <p>Input path of the media processing object file</p>
         :type Object: str
-        :param _SubAppId: VOD Pro application Id.
+        :param _SubAppId: <p>VOD application ID.</p>
         :type SubAppId: int
+        :param _VodBasic: <p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>Use VOD Pro Edition</li><li>Use VOD Standard Edition, allowing tasks to be initiated with FileId</li></ul><p>Default value: 0</p>
+        :type VodBasic: int
+        :param _FileId: <p>VOD Standard Edition FileId</p>
+        :type FileId: str
         """
         self._Bucket = None
         self._Region = None
         self._Object = None
         self._SubAppId = None
+        self._VodBasic = None
+        self._FileId = None
 
     @property
     def Bucket(self):
-        r"""Specifies the Bucket ID where the input file resides.
+        r"""<p><em>Bucket ID</em> where the media processing object file resides</p>
         :rtype: str
         """
         return self._Bucket
@@ -67248,7 +69593,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""Specifies the region where the input file's Bucket resides.
+        r"""<p>Region of the Bucket where the media processing object file resides</p>
         :rtype: str
         """
         return self._Region
@@ -67259,7 +69604,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def Object(self):
-        r"""Path of the input file.
+        r"""<p>Input path of the media processing object file</p>
         :rtype: str
         """
         return self._Object
@@ -67270,7 +69615,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""VOD Pro application Id.
+        r"""<p>VOD application ID.</p>
         :rtype: int
         """
         return self._SubAppId
@@ -67279,12 +69624,36 @@ class VODInputInfo(AbstractModel):
     def SubAppId(self, SubAppId):
         self._SubAppId = SubAppId
 
+    @property
+    def VodBasic(self):
+        r"""<p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>Use VOD Pro Edition</li><li>Use VOD Standard Edition, allowing tasks to be initiated with FileId</li></ul><p>Default value: 0</p>
+        :rtype: int
+        """
+        return self._VodBasic
+
+    @VodBasic.setter
+    def VodBasic(self, VodBasic):
+        self._VodBasic = VodBasic
+
+    @property
+    def FileId(self):
+        r"""<p>VOD Standard Edition FileId</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
 
     def _deserialize(self, params):
         self._Bucket = params.get("Bucket")
         self._Region = params.get("Region")
         self._Object = params.get("Object")
         self._SubAppId = params.get("SubAppId")
+        self._VodBasic = params.get("VodBasic")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67296,26 +69665,29 @@ class VODInputInfo(AbstractModel):
 
 
 class VODOutputStorage(AbstractModel):
-    r"""VOD Pro output object information for MPS.
+    r"""Media processing VOD output object information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Bucket: Specifies the destination Bucket ID for the generated output file of MPS.
+        :param _Bucket: <p>Target <em>Bucket ID</em> for the output file generated by media processing</p>
         :type Bucket: str
-        :param _Region: Specifies the region of the target Bucket for the output.
+        :param _Region: <p>Region of the target Bucket for the output file generated by media processing</p>
         :type Region: str
-        :param _SubAppId: VOD Pro application Id.
+        :param _SubAppId: <p>VOD application ID</p>
         :type SubAppId: int
+        :param _VodBasic: <p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>0: Do not use VOD Standard Edition</li><li>1: Use VOD Standard Edition</li></ul>
+        :type VodBasic: int
         """
         self._Bucket = None
         self._Region = None
         self._SubAppId = None
+        self._VodBasic = None
 
     @property
     def Bucket(self):
-        r"""Specifies the destination Bucket ID for the generated output file of MPS.
+        r"""<p>Target <em>Bucket ID</em> for the output file generated by media processing</p>
         :rtype: str
         """
         return self._Bucket
@@ -67326,7 +69698,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def Region(self):
-        r"""Specifies the region of the target Bucket for the output.
+        r"""<p>Region of the target Bucket for the output file generated by media processing</p>
         :rtype: str
         """
         return self._Region
@@ -67337,7 +69709,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""VOD Pro application Id.
+        r"""<p>VOD application ID</p>
         :rtype: int
         """
         return self._SubAppId
@@ -67346,11 +69718,23 @@ class VODOutputStorage(AbstractModel):
     def SubAppId(self, SubAppId):
         self._SubAppId = SubAppId
 
+    @property
+    def VodBasic(self):
+        r"""<p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>0: Do not use VOD Standard Edition</li><li>1: Use VOD Standard Edition</li></ul>
+        :rtype: int
+        """
+        return self._VodBasic
+
+    @VodBasic.setter
+    def VodBasic(self, VodBasic):
+        self._VodBasic = VodBasic
+
 
     def _deserialize(self, params):
         self._Bucket = params.get("Bucket")
         self._Region = params.get("Region")
         self._SubAppId = params.get("SubAppId")
+        self._VodBasic = params.get("VodBasic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67524,6 +69908,72 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class VideoDramaCosInfo(AbstractModel):
+    r"""aigc cos information. Stores user‑provided cos information for saving results
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketRegion: <p>cos bucket region</p>
+        :type CosBucketRegion: str
+        :param _CosBucketName: <p>cos bucket name</p>
+        :type CosBucketName: str
+        :param _CosBucketPath: <p>cos bucket path</p>
+        :type CosBucketPath: str
+        """
+        self._CosBucketRegion = None
+        self._CosBucketName = None
+        self._CosBucketPath = None
+
+    @property
+    def CosBucketRegion(self):
+        r"""<p>cos bucket region</p>
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketName(self):
+        r"""<p>cos bucket name</p>
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketPath(self):
+        r"""<p>cos bucket path</p>
+        :rtype: str
+        """
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
+
+    def _deserialize(self, params):
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketPath = params.get("CosBucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoEnhanceConfig(AbstractModel):
     r"""Video enhancement configuration.
 
@@ -67531,51 +69981,39 @@ class VideoEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FrameRate: Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FrameRate: <p>Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :type FrameRate: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
-        :param _SuperResolution: Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with Large Model enhancement.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SuperResolution: <p>Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
-        :param _Hdr: HDR configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Hdr: <p>HDR configuration.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :type Hdr: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
-        :param _Denoise: Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Denoise: <p>Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
-        :param _ImageQualityEnhance: Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ImageQualityEnhance: <p>Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
-        :param _ColorEnhance: Color enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ColorEnhance: <p>Color enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
-        :param _LowLightEnhance: Low-light enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LowLightEnhance: <p>Low-light enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
-        :param _ScratchRepair: Banding removal configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ScratchRepair: <p>Scratch removal configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :type ScratchRepair: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
-        :param _ArtifactRepair: Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ArtifactRepair: <p>Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :type ArtifactRepair: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
-        :param _EnhanceSceneType: Enhancement scenario configuration. Valid values:
-<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
-<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
-<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
-<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
-<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
-<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
-<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
-<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
-<li>Input of a null string indicates that the enhancement scenario is not used.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EnhanceSceneType: <p>Enhancement scenario configuration. Valid values:</p><li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li><li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li><li>short_play (short dramas &amp; AI human-like dramas): enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li><li>ai_comic: enhance details in comic-style visuals.</li><li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li><li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li><li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li><li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li><li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li><li>Input of a null string indicates that the enhancement scenario is not used.</li>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :type EnhanceSceneType: str
-        :param _DiffusionEnhance: Large Model enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DiffusionEnhance: <p>LLM enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :type DiffusionEnhance: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
-        :param _FrameRateWithDen: New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FrameRateWithDen: <p>New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :type FrameRateWithDen: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
+        :param _AiRestoration: <p>LLM repair configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        :type AiRestoration: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
         """
         self._FrameRate = None
         self._SuperResolution = None
@@ -67589,11 +70027,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EnhanceSceneType = None
         self._DiffusionEnhance = None
         self._FrameRateWithDen = None
+        self._AiRestoration = None
 
     @property
     def FrameRate(self):
-        r"""Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
         """
         return self._FrameRate
@@ -67604,8 +70043,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SuperResolution(self):
-        r"""Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with Large Model enhancement.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         """
         return self._SuperResolution
@@ -67616,8 +70055,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Hdr(self):
-        r"""HDR configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>HDR configuration.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
         """
         return self._Hdr
@@ -67628,8 +70067,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Denoise(self):
-        r"""Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
         """
         return self._Denoise
@@ -67640,8 +70079,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageQualityEnhance(self):
-        r"""Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         """
         return self._ImageQualityEnhance
@@ -67652,8 +70091,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColorEnhance(self):
-        r"""Color enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Color enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
         """
         return self._ColorEnhance
@@ -67664,8 +70102,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LowLightEnhance(self):
-        r"""Low-light enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Low-light enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
         return self._LowLightEnhance
@@ -67676,8 +70113,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScratchRepair(self):
-        r"""Banding removal configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Scratch removal configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
         """
         return self._ScratchRepair
@@ -67688,8 +70124,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ArtifactRepair(self):
-        r"""Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
         """
         return self._ArtifactRepair
@@ -67700,17 +70136,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnhanceSceneType(self):
-        r"""Enhancement scenario configuration. Valid values:
-<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>
-<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>
-<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>
-<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>
-<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>
-<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>
-<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>
-<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>
-<li>Input of a null string indicates that the enhancement scenario is not used.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Enhancement scenario configuration. Valid values:</p><li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li><li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li><li>short_play (short dramas &amp; AI human-like dramas): enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li><li>ai_comic: enhance details in comic-style visuals.</li><li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li><li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li><li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li><li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li><li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li><li>Input of a null string indicates that the enhancement scenario is not used.</li>
+Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EnhanceSceneType
@@ -67721,8 +70148,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiffusionEnhance(self):
-        r"""Large Model enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>LLM enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
         """
         return self._DiffusionEnhance
@@ -67733,8 +70159,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FrameRateWithDen(self):
-        r"""New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
         """
         return self._FrameRateWithDen
@@ -67742,6 +70167,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @FrameRateWithDen.setter
     def FrameRateWithDen(self, FrameRateWithDen):
         self._FrameRateWithDen = FrameRateWithDen
+
+    @property
+    def AiRestoration(self):
+        r"""<p>LLM repair configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
+        """
+        return self._AiRestoration
+
+    @AiRestoration.setter
+    def AiRestoration(self, AiRestoration):
+        self._AiRestoration = AiRestoration
 
 
     def _deserialize(self, params):
@@ -67779,6 +70215,147 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("FrameRateWithDen") is not None:
             self._FrameRateWithDen = FrameRateWithDenConfig()
             self._FrameRateWithDen._deserialize(params.get("FrameRateWithDen"))
+        if params.get("AiRestoration") is not None:
+            self._AiRestoration = AiRestorationConfig()
+            self._AiRestoration._deserialize(params.get("AiRestoration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoRedrawCosInfo(AbstractModel):
+    r"""aigc cos information. Stores user‑provided cos information for saving results
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketRegion: <p>cos bucket region</p>
+        :type CosBucketRegion: str
+        :param _CosBucketName: <p>cos bucket name</p>
+        :type CosBucketName: str
+        :param _CosBucketPath: <p>cos bucket path</p>
+        :type CosBucketPath: str
+        """
+        self._CosBucketRegion = None
+        self._CosBucketName = None
+        self._CosBucketPath = None
+
+    @property
+    def CosBucketRegion(self):
+        r"""<p>cos bucket region</p>
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketName(self):
+        r"""<p>cos bucket name</p>
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketPath(self):
+        r"""<p>cos bucket path</p>
+        :rtype: str
+        """
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
+
+    def _deserialize(self, params):
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketPath = params.get("CosBucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoRedrawInput(AbstractModel):
+    r"""Input source for video redrawing
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>Input the video URL to be redrawn</p>
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        r"""<p>Input the video URL to be redrawn</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoRedrawTaskInfo(AbstractModel):
+    r"""AIGC redrawing and replacement task parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Style: <p>Convert the video style, such as anime, cyberpunk, and ink wash</p>
+        :type Style: str
+        """
+        self._Style = None
+
+    @property
+    def Style(self):
+        r"""<p>Convert the video style, such as anime, cyberpunk, and ink wash</p>
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+
+    def _deserialize(self, params):
+        self._Style = params.get("Style")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

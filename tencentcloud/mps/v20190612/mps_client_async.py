@@ -44,6 +44,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloneViral(
+            self,
+            request: models.CloneViralRequest,
+            opts: Dict = None,
+    ) -> models.CloneViralResponse:
+        """
+        Clone a hit product. Input a reference video of a hit product and a product image to generate a video with aligned style and pace.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloneViral"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloneViralResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAIAnalysisTemplate(
             self,
             request: models.CreateAIAnalysisTemplateRequest,
@@ -93,6 +111,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "CreateAdaptiveDynamicStreamingTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAdaptiveDynamicStreamingTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAiDramaTask(
+            self,
+            request: models.CreateAiDramaTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAiDramaTaskResponse:
+        """
+        AI comic workflow, input a playbook, automatically split scenes, generate an AI comic
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAiDramaTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAiDramaTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -219,6 +255,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "CreateContentReviewTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateContentReviewTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDocToVideoTask(
+            self,
+            request: models.CreateDocToVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateDocToVideoTaskResponse:
+        """
+        Creates an AIGC document-to-video task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDocToVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDocToVideoTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -469,6 +523,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "CreateTranscodeTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateTranscodeTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVideoRedrawTask(
+            self,
+            request: models.CreateVideoRedrawTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateVideoRedrawTaskResponse:
+        """
+        Creates an AIGC redrawing task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVideoRedrawTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVideoRedrawTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1063,6 +1135,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAigcTaskStatus(
+            self,
+            request: models.DescribeAigcTaskStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcTaskStatusResponse:
+        """
+        Queries AIGC scenario task APIs
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcTaskStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAigcVideoTask(
             self,
             request: models.DescribeAigcVideoTaskRequest,
@@ -1171,6 +1261,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloneViralTask(
+            self,
+            request: models.DescribeCloneViralTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloneViralTaskResponse:
+        """
+        Queries the results of a hit product clone task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloneViralTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloneViralTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeContentReviewTemplates(
             self,
             request: models.DescribeContentReviewTemplatesRequest,
@@ -1238,6 +1346,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeImageTaskDetail"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeImageTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageTasks(
+            self,
+            request: models.DescribeImageTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageTasksResponse:
+        """
+        Image processing task query API.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1740,6 +1866,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "EditMedia"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.EditMediaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EmbeddingData(
+            self,
+            request: models.EmbeddingDataRequest,
+            opts: Dict = None,
+    ) -> models.EmbeddingDataResponse:
+        """
+        Model embedding API
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EmbeddingData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EmbeddingDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2259,10 +2403,11 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ProcessImageResponse:
         """
-        This API is used to initiate image processing, with features including:
-        1. Format conversion.
-        2. Image enhancement.
-        3. Image erasure.
+        This API is used to initiate image processing. Its features include:
+        1. Format conversion;
+        2. Image enhancement;
+        3. Image erasure;4. Digital watermark;
+        5. Beauty filter;
         """
         
         kwargs = {}
