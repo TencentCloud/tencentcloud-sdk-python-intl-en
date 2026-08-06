@@ -951,6 +951,72 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
         
 
 
+class CreateOutputRistSettings(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 
+        :type Mode: str
+        :param _Profile: 
+        :type Profile: str
+        :param _Buffer: 
+        :type Buffer: int
+        """
+        self._Mode = None
+        self._Profile = None
+        self._Buffer = None
+
+    @property
+    def Mode(self):
+        r"""
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Profile(self):
+        r"""
+        :rtype: str
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Buffer(self):
+        r"""
+        :rtype: int
+        """
+        return self._Buffer
+
+    @Buffer.setter
+    def Buffer(self, Buffer):
+        self._Buffer = Buffer
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Profile = params.get("Profile")
+        self._Buffer = params.get("Buffer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateOutputRtmpSettingsDestinations(AbstractModel):
     r"""The RTMP destination address of the output to create.
 
@@ -6743,6 +6809,10 @@ class ModifyOutputInfo(AbstractModel):
         :type Description: str
         :param _Protocol: The output protocol. Valid values: SRT, RTP, RTMP.
         :type Protocol: str
+        :param _OutputType: Output Type: Internet/Tencent CSS/StreamLive
+        :type OutputType: str
+        :param _OutputKind: Output module types include Pinpoint (single-point output, supporting up to four concurrent outputs) and MultiMesh (multi-output, supporting concurrent outputs exceeding four, currently capable of reaching 200 channels). The default type is Pinpoint output. For a single Flow, only one MultiMesh output can be assigned per region.
+        :type OutputKind: str
         :param _SRTSettings: The SRT relay configuration.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
         :param _RTPSettings: The RTP relay configuration.
@@ -6755,17 +6825,31 @@ class ModifyOutputInfo(AbstractModel):
         :type MaxConcurrent: int
         :param _SecurityGroupIds: The bound security group IDs.
         :type SecurityGroupIds: list of str
+        :param _Zones: Availability Zone
+        :type Zones: list of str
+        :param _RISTSettings: Transfer the configuration of RIST.
+        :type RISTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRistSettings`
+        :param _PidSelector: For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :type PidSelector: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
+        :param _StreamSelector: For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :type StreamSelector: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
         """
         self._OutputId = None
         self._OutputName = None
         self._Description = None
         self._Protocol = None
+        self._OutputType = None
+        self._OutputKind = None
         self._SRTSettings = None
         self._RTPSettings = None
         self._RTMPSettings = None
         self._AllowIpList = None
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
+        self._Zones = None
+        self._RISTSettings = None
+        self._PidSelector = None
+        self._StreamSelector = None
 
     @property
     def OutputId(self):
@@ -6810,6 +6894,28 @@ class ModifyOutputInfo(AbstractModel):
     @Protocol.setter
     def Protocol(self, Protocol):
         self._Protocol = Protocol
+
+    @property
+    def OutputType(self):
+        r"""Output Type: Internet/Tencent CSS/StreamLive
+        :rtype: str
+        """
+        return self._OutputType
+
+    @OutputType.setter
+    def OutputType(self, OutputType):
+        self._OutputType = OutputType
+
+    @property
+    def OutputKind(self):
+        r"""Output module types include Pinpoint (single-point output, supporting up to four concurrent outputs) and MultiMesh (multi-output, supporting concurrent outputs exceeding four, currently capable of reaching 200 channels). The default type is Pinpoint output. For a single Flow, only one MultiMesh output can be assigned per region.
+        :rtype: str
+        """
+        return self._OutputKind
+
+    @OutputKind.setter
+    def OutputKind(self, OutputKind):
+        self._OutputKind = OutputKind
 
     @property
     def SRTSettings(self):
@@ -6877,12 +6983,62 @@ class ModifyOutputInfo(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        r"""Availability Zone
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def RISTSettings(self):
+        r"""Transfer the configuration of RIST.
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRistSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
+    @property
+    def PidSelector(self):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
+        r"""For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
+        """
+        return self._PidSelector
+
+    @PidSelector.setter
+    def PidSelector(self, PidSelector):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
+        self._PidSelector = PidSelector
+
+    @property
+    def StreamSelector(self):
+        r"""For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
+        """
+        return self._StreamSelector
+
+    @StreamSelector.setter
+    def StreamSelector(self, StreamSelector):
+        self._StreamSelector = StreamSelector
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
         self._OutputName = params.get("OutputName")
         self._Description = params.get("Description")
         self._Protocol = params.get("Protocol")
+        self._OutputType = params.get("OutputType")
+        self._OutputKind = params.get("OutputKind")
         if params.get("SRTSettings") is not None:
             self._SRTSettings = CreateOutputSrtSettings()
             self._SRTSettings._deserialize(params.get("SRTSettings"))
@@ -6895,6 +7051,16 @@ class ModifyOutputInfo(AbstractModel):
         self._AllowIpList = params.get("AllowIpList")
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = CreateOutputRistSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
+        if params.get("PidSelector") is not None:
+            self._PidSelector = PidSelector()
+            self._PidSelector._deserialize(params.get("PidSelector"))
+        if params.get("StreamSelector") is not None:
+            self._StreamSelector = StreamSelector()
+            self._StreamSelector._deserialize(params.get("StreamSelector"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7257,6 +7423,57 @@ class OutputSRTSourceAddressResp(AbstractModel):
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
         self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PidSelector(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioPID: 
+        :type AudioPID: list of int
+        :param _VideoPID: 
+        :type VideoPID: list of int
+        """
+        self._AudioPID = None
+        self._VideoPID = None
+
+    @property
+    def AudioPID(self):
+        r"""
+        :rtype: list of int
+        """
+        return self._AudioPID
+
+    @AudioPID.setter
+    def AudioPID(self, AudioPID):
+        self._AudioPID = AudioPID
+
+    @property
+    def VideoPID(self):
+        r"""
+        :rtype: list of int
+        """
+        return self._VideoPID
+
+    @VideoPID.setter
+    def VideoPID(self, VideoPID):
+        self._VideoPID = VideoPID
+
+
+    def _deserialize(self, params):
+        self._AudioPID = params.get("AudioPID")
+        self._VideoPID = params.get("VideoPID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7855,6 +8072,127 @@ class StreamLinkRegionInfo(AbstractModel):
                 obj = RegionInfo()
                 obj._deserialize(item)
                 self._Regions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StreamSelector(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SelectorType: 
+        :type SelectorType: str
+        :param _PidSelector: 
+        :type PidSelector: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
+        :param _TrackSelector: 
+        :type TrackSelector: :class:`tencentcloud.mdc.v20200828.models.TrackSelector`
+        """
+        self._SelectorType = None
+        self._PidSelector = None
+        self._TrackSelector = None
+
+    @property
+    def SelectorType(self):
+        r"""
+        :rtype: str
+        """
+        return self._SelectorType
+
+    @SelectorType.setter
+    def SelectorType(self, SelectorType):
+        self._SelectorType = SelectorType
+
+    @property
+    def PidSelector(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
+        """
+        return self._PidSelector
+
+    @PidSelector.setter
+    def PidSelector(self, PidSelector):
+        self._PidSelector = PidSelector
+
+    @property
+    def TrackSelector(self):
+        r"""
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.TrackSelector`
+        """
+        return self._TrackSelector
+
+    @TrackSelector.setter
+    def TrackSelector(self, TrackSelector):
+        self._TrackSelector = TrackSelector
+
+
+    def _deserialize(self, params):
+        self._SelectorType = params.get("SelectorType")
+        if params.get("PidSelector") is not None:
+            self._PidSelector = PidSelector()
+            self._PidSelector._deserialize(params.get("PidSelector"))
+        if params.get("TrackSelector") is not None:
+            self._TrackSelector = TrackSelector()
+            self._TrackSelector._deserialize(params.get("TrackSelector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrackSelector(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoIndex: 
+        :type VideoIndex: list of int
+        :param _AudioIndex: 
+        :type AudioIndex: list of int
+        """
+        self._VideoIndex = None
+        self._AudioIndex = None
+
+    @property
+    def VideoIndex(self):
+        r"""
+        :rtype: list of int
+        """
+        return self._VideoIndex
+
+    @VideoIndex.setter
+    def VideoIndex(self, VideoIndex):
+        self._VideoIndex = VideoIndex
+
+    @property
+    def AudioIndex(self):
+        r"""
+        :rtype: list of int
+        """
+        return self._AudioIndex
+
+    @AudioIndex.setter
+    def AudioIndex(self, AudioIndex):
+        self._AudioIndex = AudioIndex
+
+
+    def _deserialize(self, params):
+        self._VideoIndex = params.get("VideoIndex")
+        self._AudioIndex = params.get("AudioIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

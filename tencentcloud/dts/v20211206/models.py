@@ -4362,6 +4362,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _NewSchemaName: Name of the schema after migration or sync
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NewSchemaName: str
+        :param _SchemaMode: Table selection mode, which is required if `DBMode` is `Partial` for postgresql or sqlserver. Valid values: `All`, `Partial`. To sync an entire schema, set this parameter to `All`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SchemaMode: str
         :param _TableMode: Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TableMode: str
@@ -4386,13 +4389,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Procedures: This parameter is required if `ProcedureMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Procedures: list of str
-        :param _TriggerMode: Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “trigger” is not supported for data sync.
+        :param _TriggerMode: Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object "trigger" is not supported for data sync.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TriggerMode: str
         :param _Triggers: This parameter is used to specify the names of the triggers to be migrated when the value of `TriggerMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Triggers: list of str
-        :param _EventMode: Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “event” is not supported for data sync.
+        :param _EventMode: Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object "event" is not supported for data sync.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EventMode: str
         :param _Events: This parameter is used to specify the names of the events to be migrated when the value of `EventMode` is `partial`.
@@ -4404,6 +4407,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DbMode = None
         self._SchemaName = None
         self._NewSchemaName = None
+        self._SchemaMode = None
         self._TableMode = None
         self._Tables = None
         self._ViewMode = None
@@ -4476,6 +4480,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @NewSchemaName.setter
     def NewSchemaName(self, NewSchemaName):
         self._NewSchemaName = NewSchemaName
+
+    @property
+    def SchemaMode(self):
+        r"""Table selection mode, which is required if `DBMode` is `Partial` for postgresql or sqlserver. Valid values: `All`, `Partial`. To sync an entire schema, set this parameter to `All`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SchemaMode
+
+    @SchemaMode.setter
+    def SchemaMode(self, SchemaMode):
+        self._SchemaMode = SchemaMode
 
     @property
     def TableMode(self):
@@ -4575,7 +4591,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TriggerMode(self):
-        r"""Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “trigger” is not supported for data sync.
+        r"""Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object "trigger" is not supported for data sync.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4599,7 +4615,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventMode(self):
-        r"""Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “event” is not supported for data sync.
+        r"""Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object "event" is not supported for data sync.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4628,6 +4644,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DbMode = params.get("DbMode")
         self._SchemaName = params.get("SchemaName")
         self._NewSchemaName = params.get("NewSchemaName")
+        self._SchemaMode = params.get("SchemaMode")
         self._TableMode = params.get("TableMode")
         if params.get("Tables") is not None:
             self._Tables = []
@@ -13272,10 +13289,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Databases: list of Database
         :param _AdvancedObjects: Advanced object types, such as function and procedure. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration. When advanced objects need to be synchronized, the initialization type must include the structure initialization type, that is, the Options.InitType value of the task is Structure or Full.Note: This field may return null, indicating that no valid values can be obtained.
         :type AdvancedObjects: list of str
+        :param _OnlineDDL: A redundant field that specifies the online DDL type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         """
         self._Mode = None
         self._Databases = None
         self._AdvancedObjects = None
+        self._OnlineDDL = None
 
     @property
     def Mode(self):
@@ -13311,6 +13332,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AdvancedObjects(self, AdvancedObjects):
         self._AdvancedObjects = AdvancedObjects
 
+    @property
+    def OnlineDDL(self):
+        r"""A redundant field that specifies the online DDL type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
+        """
+        return self._OnlineDDL
+
+    @OnlineDDL.setter
+    def OnlineDDL(self, OnlineDDL):
+        self._OnlineDDL = OnlineDDL
+
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
@@ -13321,6 +13354,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._Databases.append(obj)
         self._AdvancedObjects = params.get("AdvancedObjects")
+        if params.get("OnlineDDL") is not None:
+            self._OnlineDDL = OnlineDDL()
+            self._OnlineDDL._deserialize(params.get("OnlineDDL"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13372,6 +13408,44 @@ class OffsetTimeMap(AbstractModel):
     def _deserialize(self, params):
         self._PartitionNo = params.get("PartitionNo")
         self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OnlineDDL(AbstractModel):
+    r"""Online DDL type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""Status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

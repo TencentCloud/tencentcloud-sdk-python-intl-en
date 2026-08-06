@@ -3851,3 +3851,26 @@ class CdbClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeRoGroup(self, request):
+        r"""This API is used to upgrade a read-only group to a pure network forwarding mode.
+
+        :param request: Request instance for UpgradeRoGroup.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeRoGroupRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeRoGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeRoGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeRoGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

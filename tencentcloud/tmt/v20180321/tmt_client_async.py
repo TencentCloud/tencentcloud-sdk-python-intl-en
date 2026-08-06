@@ -25,20 +25,24 @@ class TmtClient(AbstractClient):
     _endpoint = 'tmt.intl.tencentcloudapi.com'
     _service = 'tmt'
 
-    async def TextTranslate(
+    async def ImageTranslateLLM(
             self,
-            request: models.TextTranslateRequest,
+            request: models.ImageTranslateLLMRequest,
             opts: Dict = None,
-    ) -> models.TextTranslateResponse:
+    ) -> models.ImageTranslateLLMResponse:
         """
-        This API is used to translate text in multiple language pairs, such as Chinese-English.<br />
-        Note: We recommend that you simplify your development with the SDK integration mode. For how to use the SDK, see Section 5 "Developer Resources".
+        This API is used to provide translation service for images in 18 languages. It can automatically recognize text content in images and translate it into the target language. The recognized text is translated line by line, and a version that supports paragraph translation will be offered subsequently.
+
+        -Input image format: png, jpg, jpeg and other common image formats. gif animation is not supported.
+        -Output image format: jpg.
+
+        Notification: For general developers, we recommend prioritizing SDK integration to simplify development. For SDK usage introduction, directly view the 5. Developer Resources part.
         """
         
         kwargs = {}
-        kwargs["action"] = "TextTranslate"
+        kwargs["action"] = "ImageTranslateLLM"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.TextTranslateResponse
+        kwargs["resp_cls"] = models.ImageTranslateLLMResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

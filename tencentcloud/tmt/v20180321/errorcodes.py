@@ -14,7 +14,13 @@
 # limitations under the License.
 
 
-# The user region does not match the requested service region.
+# Image decoding failed
+FAILEDOPERATION_DECODEERR = 'FailedOperation.DecodeErr'
+
+# Image download error
+FAILEDOPERATION_DOWNLOADERR = 'FailedOperation.DownloadErr'
+
+# User region differs from requested service area.
 FAILEDOPERATION_ERRORUSERAREA = 'FailedOperation.ErrorUserArea'
 
 # Temporarily unable to recognize the language.
@@ -29,7 +35,7 @@ FAILEDOPERATION_REQUESTAILABERR = 'FailedOperation.RequestAiLabErr'
 # The service is suspended due to overdue payments. Top up your account first.
 FAILEDOPERATION_SERVICEISOLATE = 'FailedOperation.ServiceIsolate'
 
-# Account service has been suspended.
+# Services for the account has been stopped.
 FAILEDOPERATION_STOPUSING = 'FailedOperation.StopUsing'
 
 # The service is not activated. Activate it in the TMT console first.

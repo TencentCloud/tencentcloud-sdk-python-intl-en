@@ -26,21 +26,25 @@ class TmtClient(AbstractClient):
     _service = 'tmt'
 
 
-    def TextTranslate(self, request):
-        r"""This API is used to translate text in multiple language pairs, such as Chinese-English.<br />
-        Note: We recommend that you simplify your development with the SDK integration mode. For how to use the SDK, see Section 5 "Developer Resources".
+    def ImageTranslateLLM(self, request):
+        r"""This API is used to provide translation service for images in 18 languages. It can automatically recognize text content in images and translate it into the target language. The recognized text is translated line by line, and a version that supports paragraph translation will be offered subsequently.
 
-        :param request: Request instance for TextTranslate.
-        :type request: :class:`tencentcloud.tmt.v20180321.models.TextTranslateRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.TextTranslateResponse`
+        -Input image format: png, jpg, jpeg and other common image formats. gif animation is not supported.
+        -Output image format: jpg.
+
+        Notification: For general developers, we recommend prioritizing SDK integration to simplify development. For SDK usage introduction, directly view the 5. Developer Resources part.
+
+        :param request: Request instance for ImageTranslateLLM.
+        :type request: :class:`tencentcloud.tmt.v20180321.models.ImageTranslateLLMRequest`
+        :rtype: :class:`tencentcloud.tmt.v20180321.models.ImageTranslateLLMResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("TextTranslate", params, headers=headers)
+            body = self.call("ImageTranslateLLM", params, headers=headers)
             response = json.loads(body)
-            model = models.TextTranslateResponse()
+            model = models.ImageTranslateLLMResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

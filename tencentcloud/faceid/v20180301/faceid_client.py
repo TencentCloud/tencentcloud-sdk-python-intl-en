@@ -421,7 +421,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetNFCToken(self, request):
-        r"""NFC verification service, obtain Token information for the NFC identify request.
+        r"""NFC verification service, obtain Token information for the NFC identify request.This API supports NFC recognition and verification of ID cards (second-generation resident identity card, Residence Permit for Hong Kong (China) and Macao (China), Residence Permit for Taiwan (China), Permanent Residence Permit for Foreigners) as well as travel documents (exit-entry permit for travelling to and from Hong Kong (China) and Macao (China), Taiwan travel permit, Mainland Travel Permit for Taiwan Residents, Return Home Permit).
 
         :param request: Request instance for GetNFCToken.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetNFCTokenRequest`
