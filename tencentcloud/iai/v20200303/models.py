@@ -2393,37 +2393,15 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageA: A image base64 data.
- - The size after base64 encoding cannot exceed 5M. 
-- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
-- If the picture contains multiple faces, only the face with the highest confidence is selected. - Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
+        :param _ImageA: <p>A base64-encoded image.</p><ul><li>The size after base64 encoding must not exceed 5 MB.</li><li>For jpg format, the long side pixel must not exceed 4000. For other formats, the long side pixel must not exceed 2000. The short side pixel for all formats must be greater than or equal to 64.</li><li>If the image contains several faces, only the face with the highest confidence degree is selected.</li><li>Supports PNG, jpg, JPEG, and BMP formats. GIF images are not supported.</li></ul>
         :type ImageA: str
-        :param _ImageB: B image base64 data.
- - The size after base64 encoding cannot exceed 5M. 
-- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
-- If the picture contains multiple faces, only the face with the highest confidence is selected. - Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
+        :param _ImageB: <p>base64 data of image B.</p><ul><li>The size after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000. The short side pixel of images in all formats must not be less than 64.</li><li>If the image contains several faces, only the face with the highest confidence degree is selected.</li><li>Supports PNG, jpg, JPEG, and BMP. GIF images are not supported.</li></ul>
         :type ImageB: str
-        :param _UrlA: A URL for the image. 
-- The size of the corresponding image after base64 encoding cannot exceed 5M. 
-- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
-- A The URL and Image of the picture must be provided. If both are provided, only the Url will be used. 
-- Images stored in Tencent Cloud's Url can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. 
-- The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent. 
-- If the picture contains multiple faces, only the face with the largest face area is selected. 
-- Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
+        :param _UrlA: <p>Url of Image A.</p><ul><li>Size of the corresponding Image after base64 encoding must not exceed 5 MB.</li><li>For jpg format, the long side pixel must not exceed 4000. For other formats, the long side pixel cannot exceed 2000. The short side pixel for all formats must be not less than 64.</li><li>Either the Url or the Image of picture A must be provided. If both are provided, only the Url is used.</li><li>URLs of images stored in Tencent Cloud guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>Speed and stability of URLs not stored in Tencent Cloud may be impacted.</li><li>If the Image contains several faces, only the human face with the maximum area is selected.</li><li>Supports PNG, jpg, jpg, JPEG, BMP. GIF images are not supported.</li></ul>
         :type UrlA: str
-        :param _UrlB: B The URL of the image. 
-- The size of the corresponding image after base64 encoding cannot exceed 5M. 
-- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
-- B The URL and Image of the picture must be provided. If both are provided, only the Url will be used. 
-- Images stored in Tencent Cloud's Url can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. 
-- The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent. 
-- If the picture contains multiple faces, only the face with the largest face area is selected. 
-- Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
+        :param _UrlB: <p>Url of Image B.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5 MB.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000. For all formats, the short side pixel must be not less than 64.</li><li>Either the Url or the Image of picture B must be provided. If both are provided, only the Url is used.</li><li>URLs of images stored in Tencent Cloud guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain degree.</li><li>If the Image contains several faces, only the face with the maximum area is selected.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :type UrlB: str
-        :param _QualityControl: Image quality control. 
-- Value range: 0: No control; 1: Lower quality requirements, the image is very blurry, and the eyes, nose, and mouth cover at least one or more of them; 2: General quality requirements, the image is bright, Dark, blurry or generally blurred, eyebrows covered, cheeks covered, chin covered, at least three of them; 3: High quality requirements, the image may be brighter, darker, generally blurry, eyebrows blocked, cheeks blocked, chin blocked, one or two of them; 4: Very high quality requirements, all dimensions are the best or the most , there is a slight problem in one dimension; default is 0. 
-- If the image quality does not meet the requirements, the returned result will prompt that the image quality test does not meet the requirements.
+        :param _QualityControl: <p>Image quality control. </p><ul><li><p>Value ranges from 0 to 4:<br>0: No control;<br>1: Low quality requirement. The image has at least one of the following: super blurry, eye occlusion, nose occlusion, or mouth occlusion;<br>2: Normal quality requirement. The image has at least three of the following: too bright, dark, blurry, normal blur, eyebrow obstruction, cheek obstruction, or chin obstruction;<br>3: Relatively high quality requirement. The image has one or two of the following: too bright, dark, normal blur, eyebrow obstruction, cheek obstruction, or chin obstruction;<br>4: High quality requirement. All dimensions are the best or most, with a minor problem in one dimension;<br>Default is 0. </p></li><li><p>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</p></li></ul>
         :type QualityControl: int
         """
         self._ImageA = None
@@ -2434,10 +2412,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def ImageA(self):
-        r"""A image base64 data.
- - The size after base64 encoding cannot exceed 5M. 
-- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
-- If the picture contains multiple faces, only the face with the highest confidence is selected. - Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
+        r"""<p>A base64-encoded image.</p><ul><li>The size after base64 encoding must not exceed 5 MB.</li><li>For jpg format, the long side pixel must not exceed 4000. For other formats, the long side pixel must not exceed 2000. The short side pixel for all formats must be greater than or equal to 64.</li><li>If the image contains several faces, only the face with the highest confidence degree is selected.</li><li>Supports PNG, jpg, JPEG, and BMP formats. GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._ImageA
@@ -2448,10 +2423,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def ImageB(self):
-        r"""B image base64 data.
- - The size after base64 encoding cannot exceed 5M. 
-- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
-- If the picture contains multiple faces, only the face with the highest confidence is selected. - Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
+        r"""<p>base64 data of image B.</p><ul><li>The size after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000. The short side pixel of images in all formats must not be less than 64.</li><li>If the image contains several faces, only the face with the highest confidence degree is selected.</li><li>Supports PNG, jpg, JPEG, and BMP. GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._ImageB
@@ -2462,14 +2434,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def UrlA(self):
-        r"""A URL for the image. 
-- The size of the corresponding image after base64 encoding cannot exceed 5M. 
-- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
-- A The URL and Image of the picture must be provided. If both are provided, only the Url will be used. 
-- Images stored in Tencent Cloud's Url can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. 
-- The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent. 
-- If the picture contains multiple faces, only the face with the largest face area is selected. 
-- Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
+        r"""<p>Url of Image A.</p><ul><li>Size of the corresponding Image after base64 encoding must not exceed 5 MB.</li><li>For jpg format, the long side pixel must not exceed 4000. For other formats, the long side pixel cannot exceed 2000. The short side pixel for all formats must be not less than 64.</li><li>Either the Url or the Image of picture A must be provided. If both are provided, only the Url is used.</li><li>URLs of images stored in Tencent Cloud guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>Speed and stability of URLs not stored in Tencent Cloud may be impacted.</li><li>If the Image contains several faces, only the human face with the maximum area is selected.</li><li>Supports PNG, jpg, jpg, JPEG, BMP. GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._UrlA
@@ -2480,14 +2445,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def UrlB(self):
-        r"""B The URL of the image. 
-- The size of the corresponding image after base64 encoding cannot exceed 5M. 
-- The long side pixels of jpg format cannot exceed 4000, and the long side pixels of pictures in other formats cannot exceed 2000. The short side of images in all formats must be no less than 64 pixels. 
-- B The URL and Image of the picture must be provided. If both are provided, only the Url will be used. 
-- Images stored in Tencent Cloud's Url can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. 
-- The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent. 
-- If the picture contains multiple faces, only the face with the largest face area is selected. 
-- Supports PNG, JPG, JPEG, BMP, but does not support GIF images.
+        r"""<p>Url of Image B.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5 MB.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000. For all formats, the short side pixel must be not less than 64.</li><li>Either the Url or the Image of picture B must be provided. If both are provided, only the Url is used.</li><li>URLs of images stored in Tencent Cloud guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain degree.</li><li>If the Image contains several faces, only the face with the maximum area is selected.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>
         :rtype: str
         """
         return self._UrlB
@@ -2498,9 +2456,7 @@ class DetectFaceSimilarityRequest(AbstractModel):
 
     @property
     def QualityControl(self):
-        r"""Image quality control. 
-- Value range: 0: No control; 1: Lower quality requirements, the image is very blurry, and the eyes, nose, and mouth cover at least one or more of them; 2: General quality requirements, the image is bright, Dark, blurry or generally blurred, eyebrows covered, cheeks covered, chin covered, at least three of them; 3: High quality requirements, the image may be brighter, darker, generally blurry, eyebrows blocked, cheeks blocked, chin blocked, one or two of them; 4: Very high quality requirements, all dimensions are the best or the most , there is a slight problem in one dimension; default is 0. 
-- If the image quality does not meet the requirements, the returned result will prompt that the image quality test does not meet the requirements.
+        r"""<p>Image quality control. </p><ul><li><p>Value ranges from 0 to 4:<br>0: No control;<br>1: Low quality requirement. The image has at least one of the following: super blurry, eye occlusion, nose occlusion, or mouth occlusion;<br>2: Normal quality requirement. The image has at least three of the following: too bright, dark, blurry, normal blur, eyebrow obstruction, cheek obstruction, or chin obstruction;<br>3: Relatively high quality requirement. The image has one or two of the following: too bright, dark, normal blur, eyebrow obstruction, cheek obstruction, or chin obstruction;<br>4: High quality requirement. All dimensions are the best or most, with a minor problem in one dimension;<br>Default is 0. </p></li><li><p>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</p></li></ul>
         :rtype: int
         """
         return self._QualityControl
@@ -2533,7 +2489,7 @@ class DetectFaceSimilarityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Score: The value range is [0.00, 100.00]. It is recommended that when the similarity is greater than or equal to 70, the person can be judged to be the same person, and the threshold can be adjusted according to the specific scenario (the false pass rate for a threshold of 70 is one in 1,000, and the false pass rate for a threshold of 80 is one in 10,000).
+        :param _Score: <p>Value ranges from 0.00 to 100.00.<br>It is recommended to judge as the same person when the similarity is equal to or greater than 70 (a fixed threshold of 70 is used, with a false acceptance rate of 1 in 10,000, and the threshold cannot be adjusted).</p>
         :type Score: float
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2543,7 +2499,7 @@ class DetectFaceSimilarityResponse(AbstractModel):
 
     @property
     def Score(self):
-        r"""The value range is [0.00, 100.00]. It is recommended that when the similarity is greater than or equal to 70, the person can be judged to be the same person, and the threshold can be adjusted according to the specific scenario (the false pass rate for a threshold of 70 is one in 1,000, and the false pass rate for a threshold of 80 is one in 10,000).
+        r"""<p>Value ranges from 0.00 to 100.00.<br>It is recommended to judge as the same person when the similarity is equal to or greater than 70 (a fixed threshold of 70 is used, with a false acceptance rate of 1 in 10,000, and the threshold cannot be adjusted).</p>
         :rtype: float
         """
         return self._Score
@@ -2720,181 +2676,6 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
     def _deserialize(self, params):
         self._Score = params.get("Score")
         self._FaceModelVersion = params.get("FaceModelVersion")
-        self._RequestId = params.get("RequestId")
-
-
-class DetectLiveFaceRequest(AbstractModel):
-    r"""DetectLiveFace request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats (the aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless).
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-        :type Image: str
-        :param _Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
-(The aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless.) 
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-        :type Url: str
-        :param _FaceModelVersion: Algorithm model version used by the Face Recognition service.
-
-Currently, `2.0` and `3.0` are supported.
-
-This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.
-
-The parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.
-
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.
-        :type FaceModelVersion: str
-        """
-        self._Image = None
-        self._Url = None
-        self._FaceModelVersion = None
-
-    @property
-    def Image(self):
-        r"""Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats (the aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless).
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-        :rtype: str
-        """
-        return self._Image
-
-    @Image.setter
-    def Image(self, Image):
-        self._Image = Image
-
-    @property
-    def Url(self):
-        r"""Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
-(The aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless.) 
-We recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. 
-The download speed and stability of non-Tencent Cloud URLs may be low.
-PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
-        :rtype: str
-        """
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
-
-    @property
-    def FaceModelVersion(self):
-        r"""Algorithm model version used by the Face Recognition service.
-
-Currently, `2.0` and `3.0` are supported.
-
-This parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.
-
-The parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.
-
-Different algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.
-        :rtype: str
-        """
-        return self._FaceModelVersion
-
-    @FaceModelVersion.setter
-    def FaceModelVersion(self, FaceModelVersion):
-        self._FaceModelVersion = FaceModelVersion
-
-
-    def _deserialize(self, params):
-        self._Image = params.get("Image")
-        self._Url = params.get("Url")
-        self._FaceModelVersion = params.get("FaceModelVersion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DetectLiveFaceResponse(AbstractModel):
-    r"""DetectLiveFace response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Score: Liveness score. Value range: [0,100]. The score is generally between 80 and 100, but 0 is also a common value. As a recommendation, when the score is greater than 87, it can be judged that the person in the image is alive. You can adjust the threshold according to your specific scenario.
-This field is meaningful only if `FaceModelVersion` is 2.0.
-        :type Score: float
-        :param _FaceModelVersion: Algorithm model version used for face recognition.
-        :type FaceModelVersion: str
-        :param _IsLiveness: Whether liveness detection is passed.
-This field is meaningful only if `FaceModelVersion` is 3.0.
-        :type IsLiveness: bool
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Score = None
-        self._FaceModelVersion = None
-        self._IsLiveness = None
-        self._RequestId = None
-
-    @property
-    def Score(self):
-        r"""Liveness score. Value range: [0,100]. The score is generally between 80 and 100, but 0 is also a common value. As a recommendation, when the score is greater than 87, it can be judged that the person in the image is alive. You can adjust the threshold according to your specific scenario.
-This field is meaningful only if `FaceModelVersion` is 2.0.
-        :rtype: float
-        """
-        return self._Score
-
-    @Score.setter
-    def Score(self, Score):
-        self._Score = Score
-
-    @property
-    def FaceModelVersion(self):
-        r"""Algorithm model version used for face recognition.
-        :rtype: str
-        """
-        return self._FaceModelVersion
-
-    @FaceModelVersion.setter
-    def FaceModelVersion(self, FaceModelVersion):
-        self._FaceModelVersion = FaceModelVersion
-
-    @property
-    def IsLiveness(self):
-        r"""Whether liveness detection is passed.
-This field is meaningful only if `FaceModelVersion` is 3.0.
-        :rtype: bool
-        """
-        return self._IsLiveness
-
-    @IsLiveness.setter
-    def IsLiveness(self, IsLiveness):
-        self._IsLiveness = IsLiveness
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Score = params.get("Score")
-        self._FaceModelVersion = params.get("FaceModelVersion")
-        self._IsLiveness = params.get("IsLiveness")
         self._RequestId = params.get("RequestId")
 
 

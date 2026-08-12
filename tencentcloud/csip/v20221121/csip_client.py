@@ -49,6 +49,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddVulWhitelist(self, request):
+        r"""Add a vulnerability allowlist
+
+        :param request: Request instance for AddVulWhitelist.
+        :type request: :class:`tencentcloud.csip.v20221121.models.AddVulWhitelistRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AddVulWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddVulWhitelist", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddVulWhitelistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccessKeyCheckTask(self, request):
         r"""Detect AK async task.
 
@@ -109,6 +132,29 @@ class CsipClient(AbstractClient):
             body = self.call("CreateDomainAndIp", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDomainAndIpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateHostVulExportJob(self, request):
+        r"""This API is used to create a host vulnerability table export task.
+
+        :param request: Request instance for CreateHostVulExportJob.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateHostVulExportJobRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateHostVulExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHostVulExportJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateHostVulExportJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -233,6 +279,121 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVulFixRetryTask(self, request):
+        r"""Retry the vulnerability repair task that failed to fix, and redispatch the repair instruction only for the hosts of the original task that failed to fix. Retry is allowed only when the task status is partially or totally failed to fix.
+
+        :param request: Request instance for CreateVulFixRetryTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateVulFixRetryTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateVulFixRetryTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulFixRetryTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVulFixRetryTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVulFixTask(self, request):
+        r"""Users manually submit vulnerability repair tasks, specify the vulnerabilities and target hosts that need to be repaired, and the system creates fixing tasks and dispatches execution. It supports options such as specifying the repair timeout period and whether to create a snapshot. The FixItems array is used to precisely control which hosts each vulnerability or KB patch repairs.
+
+        :param request: Request instance for CreateVulFixTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateVulFixTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateVulFixTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulFixTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVulFixTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVulFixedExportJob(self, request):
+        r"""Create an export task for the list of fixed vulnerabilities. It supports the same filter criteria as DescribeVulFixedList. The export is implemented via an asynchronous task. After a JobID is returned, the frontend polls to query the export task status. The export fields include vulnerability ID, vulnerability name, vulnerability level, VPR rating, vulnerability type, CVE ID, host name, instance ID, associated component & path, and repair time.
+
+        :param request: Request instance for CreateVulFixedExportJob.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateVulFixedExportJobRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateVulFixedExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulFixedExportJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVulFixedExportJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVulReScan(self, request):
+        r"""This API is used to create a vulnerability rescan
+
+        :param request: Request instance for CreateVulReScan.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateVulReScanRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateVulReScanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulReScan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVulReScanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVulScanManual(self, request):
+        r"""This API is used to create a vulnerability scanning (one-click scan).
+
+        :param request: Request instance for CreateVulScanManual.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateVulScanManualRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateVulScanManualResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulScanManual", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVulScanManualResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDomainAndIp(self, request):
         r"""This API is used to delete assets.
 
@@ -316,6 +477,29 @@ class CsipClient(AbstractClient):
             body = self.call("DeleteRiskScanTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRiskScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVulWhitelist(self, request):
+        r"""This API is used to delete a vulnerability allowlist.
+
+        :param request: Request instance for DeleteVulWhitelist.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteVulWhitelistRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteVulWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVulWhitelist", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVulWhitelistResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1029,6 +1213,75 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeHighBaseLineRiskList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeHighBaseLineRiskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHostVulItemVPRInfo(self, request):
+        r"""This API is used to obtain host vulnerability VPR information.
+
+        :param request: Request instance for DescribeHostVulItemVPRInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeHostVulItemVPRInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeHostVulItemVPRInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostVulItemVPRInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostVulItemVPRInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHostVulOverview(self, request):
+        r"""This API is used to obtain the host vulnerability overview.
+
+        :param request: Request instance for DescribeHostVulOverview.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeHostVulOverviewRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeHostVulOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostVulOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostVulOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHostVulRiskList(self, request):
+        r"""This API is used to retrieve the host vulnerability risk list.
+
+        :param request: Request instance for DescribeHostVulRiskList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeHostVulRiskListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeHostVulRiskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostVulRiskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostVulRiskListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2050,6 +2303,236 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVulComponentRelateHost(self, request):
+        r"""This API is used to query the associated server of a vulnerable component.
+
+        :param request: Request instance for DescribeVulComponentRelateHost.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulComponentRelateHostRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulComponentRelateHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulComponentRelateHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulComponentRelateHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulFixTaskDetail(self, request):
+        r"""This API is used to query the details of a specified vulnerability repair task, including detailed data such as remediation status and snapshot status for each host, and supports pagination and filtering.
+
+        :param request: Request instance for DescribeVulFixTaskDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixTaskDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulFixTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulFixTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulFixTaskList(self, request):
+        r"""This API is used to query the vulnerability repair task record list with paging, support by conditional filtering such as remediation status and time range, and show summary information for each repair task.
+
+        :param request: Request instance for DescribeVulFixTaskList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixTaskListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulFixTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulFixTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulFixableMachineList(self, request):
+        r"""This API is used to query the host list where specified vulnerabilities can be repaired. Before a user submits a repair task, it is necessary to query which hosts support automatic fix, providing data support for users to select repair targets.
+
+        :param request: Request instance for DescribeVulFixableMachineList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixableMachineListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixableMachineListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulFixableMachineList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulFixableMachineListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulFixedHostDetail(self, request):
+        r"""This API is used to query the repair details of a certain fixed vulnerability on a specified host, including basic information about the vulnerability, repair host information, and a detailed list of associated components and paths (component name, version number hit, associated path, repair command).
+
+        :param request: Request instance for DescribeVulFixedHostDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixedHostDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixedHostDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulFixedHostDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulFixedHostDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulFixedList(self, request):
+        r"""This API is used to query the list of repaired vulnerabilities, show vulnerability information with successful fixes and statistics on repair conditions, helping users understand the repair results.
+
+        :param request: Request instance for DescribeVulFixedList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixedListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulFixedListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulFixedList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulFixedListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulHostRelateComponent(self, request):
+        r"""This API is used to query host-associated vulnerability components.
+
+        :param request: Request instance for DescribeVulHostRelateComponent.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulHostRelateComponentRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulHostRelateComponentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulHostRelateComponent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulHostRelateComponentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulIgnoreRuleList(self, request):
+        r"""This API is used to retrieve the vulnerability ignore list.
+
+        :param request: Request instance for DescribeVulIgnoreRuleList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulIgnoreRuleListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulIgnoreRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulIgnoreRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulIgnoreRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulItemList(self, request):
+        r"""This API is used to obtain vulnerability list
+
+        :param request: Request instance for DescribeVulItemList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulItemListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulItemListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulItemList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulItemListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulLabelList(self, request):
+        r"""Obtains the vulnerability tag list
+
+        :param request: Request instance for DescribeVulLabelList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulLabelListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulLabelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulLabelList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulLabelListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVulRiskList(self, request):
         r"""Query the list of vulnerabilities of host nodes under the exposed path in cloud boundary analysis.
 
@@ -2064,6 +2547,121 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeVulRiskList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVulRiskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulRiskRelateComponent(self, request):
+        r"""Retrieve the associated component of a vulnerability
+
+        :param request: Request instance for DescribeVulRiskRelateComponent.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulRiskRelateComponentRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulRiskRelateComponentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulRiskRelateComponent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulRiskRelateComponentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulRiskRelateHost(self, request):
+        r"""Search for hosts associated with vulnerabilities or KBs
+
+        :param request: Request instance for DescribeVulRiskRelateHost.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulRiskRelateHostRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulRiskRelateHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulRiskRelateHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulRiskRelateHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulScanPeriodic(self, request):
+        r"""This API is used to obtain vulnerability scanning (period scanning).
+
+        :param request: Request instance for DescribeVulScanPeriodic.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulScanPeriodicRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulScanPeriodicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulScanPeriodic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulScanPeriodicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulScanTaskDetail(self, request):
+        r"""This API is used to retrieve vulnerability scanning task detail
+
+        :param request: Request instance for DescribeVulScanTaskDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulScanTaskDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulScanTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulScanTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulScanTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVulScanTaskList(self, request):
+        r"""This API is used to search vulnerability scanning task history
+
+        :param request: Request instance for DescribeVulScanTaskList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVulScanTaskListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVulScanTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulScanTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulScanTaskListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2202,6 +2800,75 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyUebaRuleSwitch", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUebaRuleSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyVulScanPeriodic(self, request):
+        r"""This API is used to modify vulnerability scanning (period scanning).
+
+        :param request: Request instance for ModifyVulScanPeriodic.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyVulScanPeriodicRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyVulScanPeriodicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVulScanPeriodic", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVulScanPeriodicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyVulWhitelistConfig(self, request):
+        r"""This API is used to modify the vulnerability allowlist configuration.
+
+        :param request: Request instance for ModifyVulWhitelistConfig.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyVulWhitelistConfigRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyVulWhitelistConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVulWhitelistConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVulWhitelistConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyVulWhitelistSwitch(self, request):
+        r"""This API is used to modify the vulnerability allowlist switch.
+
+        :param request: Request instance for ModifyVulWhitelistSwitch.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyVulWhitelistSwitchRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyVulWhitelistSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVulWhitelistSwitch", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVulWhitelistSwitchResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

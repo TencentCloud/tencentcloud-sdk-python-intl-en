@@ -43,6 +43,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddVulWhitelist(
+            self,
+            request: models.AddVulWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.AddVulWhitelistResponse:
+        """
+        Add a vulnerability allowlist
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddVulWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAccessKeyCheckTask(
             self,
             request: models.CreateAccessKeyCheckTaskRequest,
@@ -92,6 +110,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateDomainAndIp"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateDomainAndIpResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateHostVulExportJob(
+            self,
+            request: models.CreateHostVulExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateHostVulExportJobResponse:
+        """
+        This API is used to create a host vulnerability table export task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateHostVulExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateHostVulExportJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -187,6 +223,96 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateVulFixRetryTask(
+            self,
+            request: models.CreateVulFixRetryTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulFixRetryTaskResponse:
+        """
+        Retry the vulnerability repair task that failed to fix, and redispatch the repair instruction only for the hosts of the original task that failed to fix. Retry is allowed only when the task status is partially or totally failed to fix.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulFixRetryTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulFixRetryTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVulFixTask(
+            self,
+            request: models.CreateVulFixTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulFixTaskResponse:
+        """
+        Users manually submit vulnerability repair tasks, specify the vulnerabilities and target hosts that need to be repaired, and the system creates fixing tasks and dispatches execution. It supports options such as specifying the repair timeout period and whether to create a snapshot. The FixItems array is used to precisely control which hosts each vulnerability or KB patch repairs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulFixTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulFixTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVulFixedExportJob(
+            self,
+            request: models.CreateVulFixedExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulFixedExportJobResponse:
+        """
+        Create an export task for the list of fixed vulnerabilities. It supports the same filter criteria as DescribeVulFixedList. The export is implemented via an asynchronous task. After a JobID is returned, the frontend polls to query the export task status. The export fields include vulnerability ID, vulnerability name, vulnerability level, VPR rating, vulnerability type, CVE ID, host name, instance ID, associated component & path, and repair time.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulFixedExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulFixedExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVulReScan(
+            self,
+            request: models.CreateVulReScanRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulReScanResponse:
+        """
+        This API is used to create a vulnerability rescan
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulReScan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulReScanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVulScanManual(
+            self,
+            request: models.CreateVulScanManualRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulScanManualResponse:
+        """
+        This API is used to create a vulnerability scanning (one-click scan).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulScanManual"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulScanManualResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDomainAndIp(
             self,
             request: models.DeleteDomainAndIpRequest,
@@ -254,6 +380,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteRiskScanTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRiskScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVulWhitelist(
+            self,
+            request: models.DeleteVulWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVulWhitelistResponse:
+        """
+        This API is used to delete a vulnerability allowlist.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVulWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVulWhitelistResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -812,6 +956,60 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeHighBaseLineRiskList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeHighBaseLineRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostVulItemVPRInfo(
+            self,
+            request: models.DescribeHostVulItemVPRInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulItemVPRInfoResponse:
+        """
+        This API is used to obtain host vulnerability VPR information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulItemVPRInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulItemVPRInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostVulOverview(
+            self,
+            request: models.DescribeHostVulOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulOverviewResponse:
+        """
+        This API is used to obtain the host vulnerability overview.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostVulRiskList(
+            self,
+            request: models.DescribeHostVulRiskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulRiskListResponse:
+        """
+        This API is used to retrieve the host vulnerability risk list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulRiskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulRiskListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1609,6 +1807,186 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVulComponentRelateHost(
+            self,
+            request: models.DescribeVulComponentRelateHostRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulComponentRelateHostResponse:
+        """
+        This API is used to query the associated server of a vulnerable component.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulComponentRelateHost"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulComponentRelateHostResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixTaskDetail(
+            self,
+            request: models.DescribeVulFixTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixTaskDetailResponse:
+        """
+        This API is used to query the details of a specified vulnerability repair task, including detailed data such as remediation status and snapshot status for each host, and supports pagination and filtering.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixTaskList(
+            self,
+            request: models.DescribeVulFixTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixTaskListResponse:
+        """
+        This API is used to query the vulnerability repair task record list with paging, support by conditional filtering such as remediation status and time range, and show summary information for each repair task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixableMachineList(
+            self,
+            request: models.DescribeVulFixableMachineListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixableMachineListResponse:
+        """
+        This API is used to query the host list where specified vulnerabilities can be repaired. Before a user submits a repair task, it is necessary to query which hosts support automatic fix, providing data support for users to select repair targets.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixableMachineList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixableMachineListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixedHostDetail(
+            self,
+            request: models.DescribeVulFixedHostDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixedHostDetailResponse:
+        """
+        This API is used to query the repair details of a certain fixed vulnerability on a specified host, including basic information about the vulnerability, repair host information, and a detailed list of associated components and paths (component name, version number hit, associated path, repair command).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixedHostDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixedHostDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixedList(
+            self,
+            request: models.DescribeVulFixedListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixedListResponse:
+        """
+        This API is used to query the list of repaired vulnerabilities, show vulnerability information with successful fixes and statistics on repair conditions, helping users understand the repair results.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixedList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixedListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulHostRelateComponent(
+            self,
+            request: models.DescribeVulHostRelateComponentRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulHostRelateComponentResponse:
+        """
+        This API is used to query host-associated vulnerability components.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulHostRelateComponent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulHostRelateComponentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulIgnoreRuleList(
+            self,
+            request: models.DescribeVulIgnoreRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulIgnoreRuleListResponse:
+        """
+        This API is used to retrieve the vulnerability ignore list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulIgnoreRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulIgnoreRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulItemList(
+            self,
+            request: models.DescribeVulItemListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulItemListResponse:
+        """
+        This API is used to obtain vulnerability list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulItemList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulItemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulLabelList(
+            self,
+            request: models.DescribeVulLabelListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulLabelListResponse:
+        """
+        Obtains the vulnerability tag list
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulLabelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulLabelListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVulRiskList(
             self,
             request: models.DescribeVulRiskListRequest,
@@ -1622,6 +2000,96 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeVulRiskList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVulRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulRiskRelateComponent(
+            self,
+            request: models.DescribeVulRiskRelateComponentRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulRiskRelateComponentResponse:
+        """
+        Retrieve the associated component of a vulnerability
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulRiskRelateComponent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulRiskRelateComponentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulRiskRelateHost(
+            self,
+            request: models.DescribeVulRiskRelateHostRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulRiskRelateHostResponse:
+        """
+        Search for hosts associated with vulnerabilities or KBs
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulRiskRelateHost"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulRiskRelateHostResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulScanPeriodic(
+            self,
+            request: models.DescribeVulScanPeriodicRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulScanPeriodicResponse:
+        """
+        This API is used to obtain vulnerability scanning (period scanning).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulScanPeriodic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulScanPeriodicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulScanTaskDetail(
+            self,
+            request: models.DescribeVulScanTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulScanTaskDetailResponse:
+        """
+        This API is used to retrieve vulnerability scanning task detail
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulScanTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulScanTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulScanTaskList(
+            self,
+            request: models.DescribeVulScanTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulScanTaskListResponse:
+        """
+        This API is used to search vulnerability scanning task history
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulScanTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulScanTaskListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1730,6 +2198,60 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyUebaRuleSwitch"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyUebaRuleSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVulScanPeriodic(
+            self,
+            request: models.ModifyVulScanPeriodicRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVulScanPeriodicResponse:
+        """
+        This API is used to modify vulnerability scanning (period scanning).
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVulScanPeriodic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVulScanPeriodicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVulWhitelistConfig(
+            self,
+            request: models.ModifyVulWhitelistConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVulWhitelistConfigResponse:
+        """
+        This API is used to modify the vulnerability allowlist configuration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVulWhitelistConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVulWhitelistConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVulWhitelistSwitch(
+            self,
+            request: models.ModifyVulWhitelistSwitchRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVulWhitelistSwitchResponse:
+        """
+        This API is used to modify the vulnerability allowlist switch.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVulWhitelistSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVulWhitelistSwitchResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

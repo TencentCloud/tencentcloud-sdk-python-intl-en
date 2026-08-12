@@ -355,8 +355,12 @@ class IaiClient(AbstractClient):
 
 
     def DetectFaceSimilarity(self, request):
-        r"""Compare the faces in the two pictures for similarity and return the face similarity score. If you need to determine "whether this person is someone", that is, to verify whether the person in a picture is someone with a known identity, such as a common face login scenario, it is recommended to use [VerifyFace](`https://www.tencentcloud.com/zh/document/product/1059/36972`) or [VerifyPerson](`https://www.tencentcloud.com/zh/document/product/1059/36971`) inferface.
-        Please use the V3 version for the signature method in the public parameters, that is, configure the SignatureMethod parameter to TC3-HMAC-SHA256
+        r"""This API is used to perform similarity comparison between human faces in two images and return the facial similarity score.
+
+        If you need to judge whether a person is a specific individual, that is, to verify whether a person in an image is a known identity, for example in common log in scenarios such as face verification, we recommend using the face verification (https://www.tencentcloud.com/document/product/867/44983?from_cn_redirect=1) or person verification (https://www.tencentcloud.com/document/product/867/44982?from_cn_redirect=1) api.
+
+        >
+        - Please use the V3 version for the signature method in the public parameters. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.
 
         :param request: Request instance for DetectFaceSimilarity.
         :type request: :class:`tencentcloud.iai.v20200303.models.DetectFaceSimilarityRequest`
@@ -369,40 +373,6 @@ class IaiClient(AbstractClient):
             body = self.call("DetectFaceSimilarity", params, headers=headers)
             response = json.loads(body)
             model = models.DetectFaceSimilarityResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DetectLiveFace(self, request):
-        r"""This API is used to detect the liveness of a face in a static image uploaded by a user. Compared with dynamic liveness detection, static liveness detection does not require moving lips, shaking head, or blinking for recognition.
-
-        Image-based liveness detection is suitable for scenarios where the image is a selfie or the requirement for attack defense is not high. If you have a higher security requirement for liveness detection, please use [FaceID](https://intl.cloud.tencent.com/product/faceid?from_cn_redirect=1).
-
-        >
-        - The aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless. This API is suitable for selfie scenarios, and the score returned in other scenarios will be meaningless.
-
-        >
-        - During the process, please directly face the camera and keep a suitable distance to completely display your face in the recognition frame. During the recognition, keep your device still and fully show your face. You are advised to perform the detection in an environment with appropriate light and without filters.
-
-        >
-        - Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the parameter `SignatureMethod` to `TC3-HMAC-SHA256`.
-
-        :param request: Request instance for DetectLiveFace.
-        :type request: :class:`tencentcloud.iai.v20200303.models.DetectLiveFaceRequest`
-        :rtype: :class:`tencentcloud.iai.v20200303.models.DetectLiveFaceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DetectLiveFace", params, headers=headers)
-            response = json.loads(body)
-            model = models.DetectLiveFaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

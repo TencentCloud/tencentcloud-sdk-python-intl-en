@@ -23,13 +23,13 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# An internal error occurs.
+# Internal error.
 INTERNALERROR = 'InternalError'
 
 # Invalid Filter
 INVALIDFILTER = 'InvalidFilter'
 
-# The parameter is incorrect.
+# Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
 # Decrypt error
