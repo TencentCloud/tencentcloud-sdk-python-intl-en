@@ -1234,10 +1234,8 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
         :param _BlindWatermark: <p>Digital watermark parameter.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
-        :param _OutputStorage: <p>Target storage for files after adaptive bitrate streaming. If this is not specified, the upper-level OutputStorage value is used.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OutputStorage: <p>Target storage for files after adaptive bitrate streaming. If left blank, it inherits the upper-level OutputStorage value.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path for the manifest file after adaptive bitrate streaming, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">Filename Variables</a>.<br>Relative path example:</p><li>Filename_{variable name}.{format}</li><li>Filename.{format}</li>Absolute path example:<li>/custom path/Filename_{variable name}.{format}</li>If this is not specified, the default relative path is {inputName}_adaptiveDynamicStreaming_{definition}.{format}.
         :type OutputObjectPath: str
@@ -1246,20 +1244,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SegmentObjectName: <p>Output path for segment files after adaptive bitrate streaming (HLS only), which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}</code>.</p>
         :type SegmentObjectName: str
         :param _AddOnSubtitles: <p>External subtitle feature. Specifies the subtitle file to be inserted.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
-        :param _DrmInfo: <p>DRM information.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DrmInfo: <p>Drm information.</p>
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         :param _DefinitionType: <p>Adaptive bitrate streaming template type. Valid values:<br>Common: audio and video.<br>PureAudio: audio only.</p>
         :type DefinitionType: str
         :param _SubtitleTemplate: <p>Hard subtitle (burned-in subtitle) feature. Specifies the subtitle source, font size, location, and other subtitle parameters.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         :param _StdExtInfo: <p>Extended transcoding parameter field.</p>
         :type StdExtInfo: str
-        :param _KeyPTSList: <p>Specifies frames at specified PTS times as keyframes and splits segments. Unit: milliseconds (relative deviation of up to 1 ms is allowed). When both GOP and segment duration are specified, they function together. Note that you need to enable RawPts, keep the frame rate as that of the source, and ensure the specified PTS time corresponds to a frame in the source.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _KeyPTSList: <p>Set the frame at the specified pts time as a key frame and segment it. Unit: milliseconds (relative deviation <=1ms is allowed). When both gop and segment duration are specified simultaneously, they function together. Note that RawPts must be enabled, keep the frame rate following the source, and ensure the passed-in pts time corresponds to a frame in the source.</p>
         :type KeyPTSList: list of int
         :param _AddOnAudios: <p>External audio feature. Specifies the audio files to be inserted.</p>
         :type AddOnAudios: list of AddOnAudio
@@ -1307,7 +1301,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def BlindWatermark(self):
         r"""<p>Digital watermark parameter.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         """
         return self._BlindWatermark
@@ -1318,8 +1311,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""<p>Target storage for files after adaptive bitrate streaming. If this is not specified, the upper-level OutputStorage value is used.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Target storage for files after adaptive bitrate streaming. If left blank, it inherits the upper-level OutputStorage value.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -1364,7 +1356,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def AddOnSubtitles(self):
         r"""<p>External subtitle feature. Specifies the subtitle file to be inserted.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AddOnSubtitle
         """
         return self._AddOnSubtitles
@@ -1375,8 +1366,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DrmInfo(self):
-        r"""<p>DRM information.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Drm information.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         return self._DrmInfo
@@ -1399,7 +1389,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def SubtitleTemplate(self):
         r"""<p>Hard subtitle (burned-in subtitle) feature. Specifies the subtitle source, font size, location, and other subtitle parameters.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         return self._SubtitleTemplate
@@ -1421,8 +1410,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyPTSList(self):
-        r"""<p>Specifies frames at specified PTS times as keyframes and splits segments. Unit: milliseconds (relative deviation of up to 1 ms is allowed). When both GOP and segment duration are specified, they function together. Note that you need to enable RawPts, keep the frame rate as that of the source, and ensure the specified PTS time corresponds to a frame in the source.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Set the frame at the specified pts time as a key frame and segment it. Unit: milliseconds (relative deviation <=1ms is allowed). When both gop and segment duration are specified simultaneously, they function together. Note that RawPts must be enabled, keep the frame rate following the source, and ensure the passed-in pts time corresponds to a frame in the source.</p>
         :rtype: list of int
         """
         return self._KeyPTSList
@@ -1768,9 +1756,7 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>1: yes.</li>
         :type RemoveVideo: int
         :param _AudioList: Audio parameter information list.
-The parameter is only used when merging multiple audio tracks in adaptive bitrate transcoding. the maximum length of the parameter array is 64.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This parameter is used when self-adaptive transcoding uses audio track merging for multiple audio tracks. The maximum length of the parameter array is 64.
         :type AudioList: list of AudioTemplateInfo
         """
         self._Audio = None
@@ -1830,9 +1816,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def AudioList(self):
         r"""Audio parameter information list.
-The parameter is only used when merging multiple audio tracks in adaptive bitrate transcoding. the maximum length of the parameter array is 64.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This parameter is used when self-adaptive transcoding uses audio track merging for multiple audio tracks. The maximum length of the parameter array is 64.
         :rtype: list of AudioTemplateInfo
         """
         return self._AudioList
@@ -1958,13 +1942,10 @@ class AddOnSubtitle(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: <p>Insertion method. Valid values:</p><li>subtitle-stream: Inserts a subtitle track.</li><li>close-caption-708: Encodes CEA-708 subtitles into SEI frames.</li><li>close-caption-608: Encodes CEA-608 subtitles into SEI frames.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         :param _Subtitle: <p>Subtitle file.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Subtitle: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _SubtitleName: <p>Subtitle name.<br>Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleName: str
         :param _SubtitleLanguage: <p>Subtitle language, such as eng.</p>
         :type SubtitleLanguage: str
@@ -1983,7 +1964,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Type(self):
         r"""<p>Insertion method. Valid values:</p><li>subtitle-stream: Inserts a subtitle track.</li><li>close-caption-708: Encodes CEA-708 subtitles into SEI frames.</li><li>close-caption-608: Encodes CEA-608 subtitles into SEI frames.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -1995,7 +1975,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Subtitle(self):
         r"""<p>Subtitle file.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._Subtitle
@@ -2007,7 +1986,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def SubtitleName(self):
         r"""<p>Subtitle name.<br>Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SubtitleName
@@ -2081,24 +2059,31 @@ class AdvancedSuperResolutionConfig(AbstractModel):
 <li>OFF: disabled.</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: Type. Valid values:<li>standard: standard super-resolution.</li><li>super: super advanced super-resolution.</li><li>ultra: ultra advanced super-resolution.</li>Default value: standard.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: Type, available values:
+<li>standard: Common super-resolution</li>
+<li>super: Advanced super-resolution.
+<li>ultra: Advanced super-resolution ultra edition.</li>
+Default value: standard.
         :type Type: str
         :param _Mode: Image output mode. The default value is percent.
-<li>aspect: obtain a larger rectangle with specified width and height through super-resolution.</li>
+<li>aspect: Obtain a larger rectangle with specified width and height through super-resolution.</li>
 <li>fixed: obtain images of fixed width and height through super-resolution, with forced scaling supported.</li>
-<li>percent: magnification factor of super-resolution, which can be a decimal.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+<li>percent: Super-resolution magnification factor, which can be a decimal.</li>
         :type Mode: str
-        :param _Percent: Scale factor of super-resolution, which can be a decimal.Note: This is used when Mode is percent.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Percent: Super-resolution multiplication rate, can be a decimal.
+Note: Used when Mode equals percent.
         :type Percent: float
-        :param _Width: Width of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Width: Image width must not exceed 4096.
+Note: When Mode equals aspect or fixed, preferentially use this configuration.
         :type Width: int
-        :param _Height: Height of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Height: Target image height must not exceed 4096.
+Note: When Mode equals aspect or fixed, preferentially use this configuration.
         :type Height: int
-        :param _LongSide: Long side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _LongSide: The long side length of the target image must not exceed 4096.
+Note: This configuration is used when Mode equals aspect or fixed and the Width and Height fields are unconfigured.
         :type LongSide: int
-        :param _ShortSide: Short side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ShortSide: The short side length of the target image must not exceed 4096.
+Note: This configuration is used when Mode equals aspect or fixed and the Width and Height fields are unconfigured.
         :type ShortSide: int
         """
         self._Switch = None
@@ -2126,8 +2111,11 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""Type. Valid values:<li>standard: standard super-resolution.</li><li>super: super advanced super-resolution.</li><li>ultra: ultra advanced super-resolution.</li>Default value: standard.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Type, available values:
+<li>standard: Common super-resolution</li>
+<li>super: Advanced super-resolution.
+<li>ultra: Advanced super-resolution ultra edition.</li>
+Default value: standard.
         :rtype: str
         """
         return self._Type
@@ -2139,10 +2127,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Mode(self):
         r"""Image output mode. The default value is percent.
-<li>aspect: obtain a larger rectangle with specified width and height through super-resolution.</li>
+<li>aspect: Obtain a larger rectangle with specified width and height through super-resolution.</li>
 <li>fixed: obtain images of fixed width and height through super-resolution, with forced scaling supported.</li>
-<li>percent: magnification factor of super-resolution, which can be a decimal.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+<li>percent: Super-resolution magnification factor, which can be a decimal.</li>
         :rtype: str
         """
         return self._Mode
@@ -2153,7 +2140,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Percent(self):
-        r"""Scale factor of super-resolution, which can be a decimal.Note: This is used when Mode is percent.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Super-resolution multiplication rate, can be a decimal.
+Note: Used when Mode equals percent.
         :rtype: float
         """
         return self._Percent
@@ -2164,7 +2152,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
-        r"""Width of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Image width must not exceed 4096.
+Note: When Mode equals aspect or fixed, preferentially use this configuration.
         :rtype: int
         """
         return self._Width
@@ -2175,7 +2164,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
-        r"""Height of the target image. The value cannot exceed 4096.Note: When Mode is aspect or fixed, this configuration takes priority.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Target image height must not exceed 4096.
+Note: When Mode equals aspect or fixed, preferentially use this configuration.
         :rtype: int
         """
         return self._Height
@@ -2186,7 +2176,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LongSide(self):
-        r"""Long side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The long side length of the target image must not exceed 4096.
+Note: This configuration is used when Mode equals aspect or fixed and the Width and Height fields are unconfigured.
         :rtype: int
         """
         return self._LongSide
@@ -2197,7 +2188,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ShortSide(self):
-        r"""Short side length of the target image. The value cannot exceed 4096.Note: This configuration is used when Mode is aspect or fixed and the Width and Height fields are not specified.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""The short side length of the target image must not exceed 4096.
+Note: This configuration is used when Mode equals aspect or fixed and the Width and Height fields are unconfigured.
         :rtype: int
         """
         return self._ShortSide
@@ -4936,13 +4928,12 @@ class AiAnalysisTaskInput(AbstractModel):
         r"""
         :param _Definition: Video content analysis template ID.
         :type Definition: int
-        :param _ExtendedParameter: Additional parameter. Its value is a serialized JSON string.
-Note: This parameter is used to meet customization requirements. References:
-[Smart Erase Tutorial]: https://intl.cloud.tencent.com/document/product/862/101530?from_cn_redirect=1
-[Video Splitting (Long Videos to Short Videos) Tutorial](https://intl.cloud.tencent.com/document/product/862/112098?from_cn_redirect=1)
-[Intelligent Highlights Tutorial](https://intl.cloud.tencent.com/document/product/862/107280?from_cn_redirect=1)
-[Horizontal-to-Vertical Video Transformation Tutorial](https://intl.cloud.tencent.com/document/product/862/112112?from_cn_redirect=1)
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ExtendedParameter: Additional parameters, whose value is a serialized json string.
+Note: This parameter is used to meet customization requirements. See the following:
+[Smart Erase Tutorial](https://www.tencentcloud.com/document/product/862/101530?from_cn_redirect=1)
+[Video Splitting (Long Videos to Short Videos) Tutorial](https://www.tencentcloud.com/document/product/862/112098?from_cn_redirect=1)
+[Intelligent Highlights Tutorial](https://www.tencentcloud.com/document/product/862/107280?from_cn_redirect=1)
+[Horizontal-to-Video Transformation](https://www.tencentcloud.com/document/product/862/112112?from_cn_redirect=1)
         :type ExtendedParameter: str
         """
         self._Definition = None
@@ -4961,13 +4952,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ExtendedParameter(self):
-        r"""Additional parameter. Its value is a serialized JSON string.
-Note: This parameter is used to meet customization requirements. References:
-[Smart Erase Tutorial]: https://intl.cloud.tencent.com/document/product/862/101530?from_cn_redirect=1
-[Video Splitting (Long Videos to Short Videos) Tutorial](https://intl.cloud.tencent.com/document/product/862/112098?from_cn_redirect=1)
-[Intelligent Highlights Tutorial](https://intl.cloud.tencent.com/document/product/862/107280?from_cn_redirect=1)
-[Horizontal-to-Vertical Video Transformation Tutorial](https://intl.cloud.tencent.com/document/product/862/112112?from_cn_redirect=1)
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Additional parameters, whose value is a serialized json string.
+Note: This parameter is used to meet customization requirements. See the following:
+[Smart Erase Tutorial](https://www.tencentcloud.com/document/product/862/101530?from_cn_redirect=1)
+[Video Splitting (Long Videos to Short Videos) Tutorial](https://www.tencentcloud.com/document/product/862/112098?from_cn_redirect=1)
+[Intelligent Highlights Tutorial](https://www.tencentcloud.com/document/product/862/107280?from_cn_redirect=1)
+[Horizontal-to-Video Transformation](https://www.tencentcloud.com/document/product/862/112112?from_cn_redirect=1)
         :rtype: str
         """
         return self._ExtendedParameter
@@ -6514,6 +6504,89 @@ class AiContentReviewTaskInput(AbstractModel):
         
 
 
+class AiCutoutConfig(AbstractModel):
+    r"""Intelligent image masking configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        :type Switch: str
+        :param _Type: <p>Target type: "foreground" (default) / "pattern"</p>
+        :type Type: str
+        :param _PatternConfig: <p>Pattern matting configuration. This parameter is valid only when Type is pattern.</p>
+        :type PatternConfig: :class:`tencentcloud.mps.v20190612.models.PatternConfig`
+        :param _Model: <p>Cutout model selection, optional.</p><p>Enumeration value:</p><ul><li>auto: Automatically choose appropriate model</li><li>WAND-cutout-1.0-lite: Standard version, fastest speed</li><li>WAND-cutout-2.0-lite: Enhanced, fastest speed</li><li>WAND-cutout-2.0-flash: Enhanced, quality-speed balance</li></ul>
+        :type Model: str
+        """
+        self._Switch = None
+        self._Type = None
+        self._PatternConfig = None
+        self._Model = None
+
+    @property
+    def Switch(self):
+        r"""<p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>Target type: "foreground" (default) / "pattern"</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PatternConfig(self):
+        r"""<p>Pattern matting configuration. This parameter is valid only when Type is pattern.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PatternConfig`
+        """
+        return self._PatternConfig
+
+    @PatternConfig.setter
+    def PatternConfig(self, PatternConfig):
+        self._PatternConfig = PatternConfig
+
+    @property
+    def Model(self):
+        r"""<p>Cutout model selection, optional.</p><p>Enumeration value:</p><ul><li>auto: Automatically choose appropriate model</li><li>WAND-cutout-1.0-lite: Standard version, fastest speed</li><li>WAND-cutout-2.0-lite: Enhanced, fastest speed</li><li>WAND-cutout-2.0-flash: Enhanced, quality-speed balance</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        if params.get("PatternConfig") is not None:
+            self._PatternConfig = PatternConfig()
+            self._PatternConfig._deserialize(params.get("PatternConfig"))
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiDramaInput(AbstractModel):
     r"""AI‑generated comic input
 
@@ -6585,6 +6658,138 @@ class AiDramaInput(AbstractModel):
         self._Style = params.get("Style")
         self._Ratio = params.get("Ratio")
         self._Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiExpansionConfig(AbstractModel):
+    r"""Intelligent image expansion configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        :type Switch: str
+        :param _AspectRatio: <p>Target ratio, for example "16:9"</p>
+        :type AspectRatio: str
+        :param _Width: <p>Target width (pixel)</p><p>Value ranges from 0 to 2048.</p>
+        :type Width: int
+        :param _Height: <p>Target height (pixel)</p><p>Value ranges from 0 to 2048.</p>
+        :type Height: int
+        """
+        self._Switch = None
+        self._AspectRatio = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def Switch(self):
+        r"""<p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def AspectRatio(self):
+        r"""<p>Target ratio, for example "16:9"</p>
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+    @property
+    def Width(self):
+        r"""<p>Target width (pixel)</p><p>Value ranges from 0 to 2048.</p>
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""<p>Target height (pixel)</p><p>Value ranges from 0 to 2048.</p>
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._AspectRatio = params.get("AspectRatio")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiFissionInput(AbstractModel):
+    r"""Video fission input
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrls: <p>Video fission reference image url</p>
+        :type ImageUrls: list of str
+        :param _Text: <p>Video fission product information reference copywriting</p>
+        :type Text: str
+        """
+        self._ImageUrls = None
+        self._Text = None
+
+    @property
+    def ImageUrls(self):
+        r"""<p>Video fission reference image url</p>
+        :rtype: list of str
+        """
+        return self._ImageUrls
+
+    @ImageUrls.setter
+    def ImageUrls(self, ImageUrls):
+        self._ImageUrls = ImageUrls
+
+    @property
+    def Text(self):
+        r"""<p>Video fission product information reference copywriting</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._ImageUrls = params.get("ImageUrls")
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9664,8 +9869,7 @@ class AiRestorationConfig(AbstractModel):
         r"""
         :param _Switch: <p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>
         :type Switch: str
-        :param _Type: <p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul><p>Default value: normal</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: <p>Strength type</p><p>Enumeration values:</p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul><p>Default value: normal</p>
         :type Type: str
         """
         self._Switch = None
@@ -9684,8 +9888,7 @@ Attention: This field may return null, indicating that no valid values can be ob
 
     @property
     def Type(self):
-        r"""<p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul><p>Default value: normal</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Strength type</p><p>Enumeration values:</p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul><p>Default value: normal</p>
         :rtype: str
         """
         return self._Type
@@ -12648,6 +12851,57 @@ class AiSampleWordInfo(AbstractModel):
         
 
 
+class AiStoryboardConfig(AbstractModel):
+    r"""Intelligent shot deconstruction configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        :type Switch: str
+        :param _ProcessIndex: <p>Specify the serial number of the storyboard to extract. Counting begins from 0. If not specified, return all storyboards.</p>
+        :type ProcessIndex: int
+        """
+        self._Switch = None
+        self._ProcessIndex = None
+
+    @property
+    def Switch(self):
+        r"""<p>Capability configuration switch, available values: ON: Enable; OFF: Disable. Default value: ON.</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ProcessIndex(self):
+        r"""<p>Specify the serial number of the storyboard to extract. Counting begins from 0. If not specified, return all storyboards.</p>
+        :rtype: int
+        """
+        return self._ProcessIndex
+
+    @ProcessIndex.setter
+    def ProcessIndex(self, ProcessIndex):
+        self._ProcessIndex = ProcessIndex
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ProcessIndex = params.get("ProcessIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcAudioExtraParam(AbstractModel):
     r"""Extended parameters for AIGC audio generation.
 
@@ -13058,6 +13312,207 @@ class AigcStoreCosParam(AbstractModel):
         
 
 
+class AigcTaskListItem(AbstractModel):
+    r"""Aigc task details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _TaskType: <p>Task type</p><p>Enumeration value:</p><ul><li>VideoRedraw: Video redraw task</li><li>AIDrama: AI drama task</li></ul>
+        :type TaskType: str
+        :param _TaskStatus: <p>Task status</p><p>Enumeration values:</p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
+        :type TaskStatus: str
+        :param _CreateTime: <p>Task creation time</p>
+        :type CreateTime: str
+        :param _ScheduledTime: <p>Task start scheduling time</p>
+        :type ScheduledTime: str
+        :param _FinishedTime: <p>Task end time</p>
+        :type FinishedTime: str
+        :param _Urls: <p>Task result Url.</p>
+        :type Urls: list of str
+        :param _TaskResultCode: <p>Task execution error code</p>
+        :type TaskResultCode: int
+        :param _TaskResultMsg: <p>Task execution error message</p>
+        :type TaskResultMsg: str
+        :param _Resolution: <p>Output video resolution</p>
+        :type Resolution: str
+        :param _Ratio: <p>Aspect ratio of the output video</p>
+        :type Ratio: str
+        :param _RequestBody: <p>Task request package</p>
+        :type RequestBody: str
+        """
+        self._TaskId = None
+        self._TaskType = None
+        self._TaskStatus = None
+        self._CreateTime = None
+        self._ScheduledTime = None
+        self._FinishedTime = None
+        self._Urls = None
+        self._TaskResultCode = None
+        self._TaskResultMsg = None
+        self._Resolution = None
+        self._Ratio = None
+        self._RequestBody = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""<p>Task type</p><p>Enumeration value:</p><ul><li>VideoRedraw: Video redraw task</li><li>AIDrama: AI drama task</li></ul>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskStatus(self):
+        r"""<p>Task status</p><p>Enumeration values:</p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def CreateTime(self):
+        r"""<p>Task creation time</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ScheduledTime(self):
+        r"""<p>Task start scheduling time</p>
+        :rtype: str
+        """
+        return self._ScheduledTime
+
+    @ScheduledTime.setter
+    def ScheduledTime(self, ScheduledTime):
+        self._ScheduledTime = ScheduledTime
+
+    @property
+    def FinishedTime(self):
+        r"""<p>Task end time</p>
+        :rtype: str
+        """
+        return self._FinishedTime
+
+    @FinishedTime.setter
+    def FinishedTime(self, FinishedTime):
+        self._FinishedTime = FinishedTime
+
+    @property
+    def Urls(self):
+        r"""<p>Task result Url.</p>
+        :rtype: list of str
+        """
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def TaskResultCode(self):
+        r"""<p>Task execution error code</p>
+        :rtype: int
+        """
+        return self._TaskResultCode
+
+    @TaskResultCode.setter
+    def TaskResultCode(self, TaskResultCode):
+        self._TaskResultCode = TaskResultCode
+
+    @property
+    def TaskResultMsg(self):
+        r"""<p>Task execution error message</p>
+        :rtype: str
+        """
+        return self._TaskResultMsg
+
+    @TaskResultMsg.setter
+    def TaskResultMsg(self, TaskResultMsg):
+        self._TaskResultMsg = TaskResultMsg
+
+    @property
+    def Resolution(self):
+        r"""<p>Output video resolution</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Ratio(self):
+        r"""<p>Aspect ratio of the output video</p>
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def RequestBody(self):
+        r"""<p>Task request package</p>
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._TaskStatus = params.get("TaskStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._ScheduledTime = params.get("ScheduledTime")
+        self._FinishedTime = params.get("FinishedTime")
+        self._Urls = params.get("Urls")
+        self._TaskResultCode = params.get("TaskResultCode")
+        self._TaskResultMsg = params.get("TaskResultMsg")
+        self._Resolution = params.get("Resolution")
+        self._Ratio = params.get("Ratio")
+        self._RequestBody = params.get("RequestBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcVideoExtraParam(AbstractModel):
     r"""Extended parameters used for AIGC video generation.
 
@@ -13343,8 +13798,7 @@ class AnimatedGraphicTaskInput(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: <p>End time of the GIF in the video, in seconds.</p>
         :type EndTimeOffset: float
-        :param _OutputStorage: <p>Target storage for the file after GIF conversion. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OutputStorage: <p>Target storage for the file after animated image conversion. If left blank, it inherits the upper-level OutputStorage value.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path of the file after GIF conversion, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_animatedGraphic_{definition}.{format}</code>.
         :type OutputObjectPath: str
@@ -13393,8 +13847,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""<p>Target storage for the file after GIF conversion. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Target storage for the file after animated image conversion. If left blank, it inherits the upper-level OutputStorage value.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -13688,11 +14141,10 @@ class ArtifactRepairConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: The strength. Valid values:
+        :param _Type: Type, available values:
 <li>weak</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
         self._Switch = None
@@ -13714,11 +14166,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""The strength. Valid values:
+        r"""Type, available values:
 <li>weak</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -14080,14 +14531,11 @@ class AsrHotwordsSetItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Hotword ID.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Id: Serial number of the hot word
         :type Id: int
-        :param _Text: Hotword text.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Text: Hotword text
         :type Text: str
-        :param _Weight: Hotword weight. The value can be 11 or 100 or be in the range of 1 to 10.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Weight: Hotword weight. The value can be 11 or 100 or be in the range of 1 to -10.
         :type Weight: int
         """
         self._Id = None
@@ -14096,8 +14544,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Id(self):
-        r"""Hotword ID.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Serial number of the hot word
         :rtype: int
         """
         return self._Id
@@ -14108,8 +14555,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Text(self):
-        r"""Hotword text.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Hotword text
         :rtype: str
         """
         return self._Text
@@ -14120,8 +14566,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Weight(self):
-        r"""Hotword weight. The value can be 11 or 100 or be in the range of 1 to 10.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Hotword weight. The value can be 11 or 100 or be in the range of 1 to -10.
         :rtype: int
         """
         return self._Weight
@@ -14271,11 +14716,10 @@ class AudioBeautifyConfig(AbstractModel):
 <li>`OFF` </li>
 Default value: `ON`.
         :type Switch: str
-        :param _Types: The audio improvement options. You can specify multiple options. Valid values:
-<li>`declick`: Noise removal.</li>
-<li>`deesser`: De-essing.</li>
-Default: `declick`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Types: Type. Multiple selections allowed. Valid values:
+<li>declick: noise removal</li>
+<li>deesser: Dental Click Suppression</li>
+Default value: declick.
         :type Types: list of str
         """
         self._Switch = None
@@ -14297,11 +14741,10 @@ Default value: `ON`.
 
     @property
     def Types(self):
-        r"""The audio improvement options. You can specify multiple options. Valid values:
-<li>`declick`: Noise removal.</li>
-<li>`deesser`: De-essing.</li>
-Default: `declick`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Type. Multiple selections allowed. Valid values:
+<li>declick: noise removal</li>
+<li>deesser: Dental Click Suppression</li>
+Default value: declick.
         :rtype: list of str
         """
         return self._Types
@@ -14373,17 +14816,13 @@ class AudioEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Denoise: The audio noise reduction configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Denoise: Audio noise reduction configuration.
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
-        :param _Separate: The audio separation configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Separate: Audio separation configuration.
         :type Separate: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
-        :param _VolumeBalance: The volume equalization configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _VolumeBalance: Volume equalization configuration.
         :type VolumeBalance: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
-        :param _Beautify: The audio improvement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Beautify: Audio beautification configuration.
         :type Beautify: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
         """
         self._Denoise = None
@@ -14393,8 +14832,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Denoise(self):
-        r"""The audio noise reduction configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Audio noise reduction configuration.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
         """
         return self._Denoise
@@ -14405,8 +14843,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Separate(self):
-        r"""The audio separation configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Audio separation configuration.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
         """
         return self._Separate
@@ -14417,8 +14854,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VolumeBalance(self):
-        r"""The volume equalization configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Volume equalization configuration.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
         """
         return self._VolumeBalance
@@ -14429,8 +14865,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Beautify(self):
-        r"""The audio improvement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Audio beautification configuration.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
         """
         return self._Beautify
@@ -14475,17 +14910,15 @@ class AudioSeparateConfig(AbstractModel):
 <li>`OFF` </li>
 Default value: `ON`.
         :type Switch: str
-        :param _Type: The scenario. Valid values:
-<li>`normal`: Separate voice and background audio.</li>
-<li>`music`: Separate vocals and instrumentals.</li>
-Default value: `normal`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: Scenario type. Valid values:
+<li>normal: Voice background audio scenario</li>
+<li>music: Singing accompaniment scenario</li>
+Default value: normal.
         :type Type: str
-        :param _Track: The output audio track. Valid values:
-<li>`vocal`: Voice.</li>
-<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>
-Default value: `vocal`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Track: Output audio track. Available values:
+<li>vocal: output voice.</li>
+<li>Background: Output background audio when the application scenario is normal, and output accompaniment when the application scenario is music.</li>
+Default value: vocal.
         :type Track: str
         """
         self._Switch = None
@@ -14508,11 +14941,10 @@ Default value: `ON`.
 
     @property
     def Type(self):
-        r"""The scenario. Valid values:
-<li>`normal`: Separate voice and background audio.</li>
-<li>`music`: Separate vocals and instrumentals.</li>
-Default value: `normal`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Scenario type. Valid values:
+<li>normal: Voice background audio scenario</li>
+<li>music: Singing accompaniment scenario</li>
+Default value: normal.
         :rtype: str
         """
         return self._Type
@@ -14523,11 +14955,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Track(self):
-        r"""The output audio track. Valid values:
-<li>`vocal`: Voice.</li>
-<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>
-Default value: `vocal`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Output audio track. Available values:
+<li>vocal: output voice.</li>
+<li>Background: Output background audio when the application scenario is normal, and output accompaniment when the application scenario is music.</li>
+Default value: vocal.
         :rtype: str
         """
         return self._Track
@@ -14567,7 +14998,6 @@ class AudioTemplateInfo(AbstractModel):
         :param _AudioChannel: <p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
         :type AudioChannel: int
         :param _TrackChannelInfo: <p>Audio track merging information.<br>Note: This field only takes effect for adaptive transcoding.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TrackChannelInfo: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         :param _AudioLanguage: <p>Audio track language, such as chi or eng. Note: (1) This follows the ISO 639-2 standard. (2) This applies only to adaptive bitrate streaming templates. (3) The value "source" means that the source language is used.</p>
         :type AudioLanguage: str
@@ -14632,7 +15062,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TrackChannelInfo(self):
         r"""<p>Audio track merging information.<br>Note: This field only takes effect for adaptive transcoding.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         """
         return self._TrackChannelInfo
@@ -14704,19 +15133,14 @@ class AudioTemplateInfoForUpdate(AbstractModel):
     def __init__(self):
         r"""
         :param _Codec: <p>Audio stream encoding format.<br>When audio transcoding is not needed, the valid value is:</p><li>copy.</li>When the outer parameter Container is mp3, the valid value is:<li>mp3.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>aac;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>aac: suitable for mp4.</li><li>mp3: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid values are:<li>aac.</li><li>mp3.</li>When the outer parameter Container is wav, the valid values are:<li>pcm16 and pcm24.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Codec: str
         :param _Bitrate: <p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means the audio bitrate remains consistent with that of the original audio.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Bitrate: int
         :param _SampleRate: <p>Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. Enter 0 to use the source audio sampling rate.<br>For details, see <a href="https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53">Audio Sampling Rate Range</a>.<br>Unit: Hz.<br>Note: Ensure the source audio stream sampling rate is within the supported range. Otherwise, transcoding may fail.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type SampleRate: int
         :param _AudioChannel: <p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type AudioChannel: int
         :param _StreamSelects: <p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type StreamSelects: list of int
         """
         self._Codec = None
@@ -14728,7 +15152,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Codec(self):
         r"""<p>Audio stream encoding format.<br>When audio transcoding is not needed, the valid value is:</p><li>copy.</li>When the outer parameter Container is mp3, the valid value is:<li>mp3.</li>When the outer parameter Container is ogg or flac, the valid value is:<li>flac.</li>When the outer parameter Container is m4a, the valid values are:<li>aac;</li><li>ac3.</li>When the outer parameter Container is mp4 or flv, the valid values are:<li>aac: suitable for mp4.</li><li>mp3: suitable for flv.</li><li>mp2.</li>When the outer parameter Container is hls, the valid values are:<li>aac.</li><li>mp3.</li>When the outer parameter Container is wav, the valid values are:<li>pcm16 and pcm24.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Codec
@@ -14740,7 +15163,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Bitrate(self):
         r"""<p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means the audio bitrate remains consistent with that of the original audio.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Bitrate
@@ -14752,7 +15174,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def SampleRate(self):
         r"""<p>Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. Enter 0 to use the source audio sampling rate.<br>For details, see <a href="https://www.tencentcloud.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53">Audio Sampling Rate Range</a>.<br>Unit: Hz.<br>Note: Ensure the source audio stream sampling rate is within the supported range. Otherwise, transcoding may fail.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._SampleRate
@@ -14764,7 +15185,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def AudioChannel(self):
         r"""<p>Audio channel mode. Valid values:</p><li>0: The number of audio channels follows that of the source.</li><li>1: Single channel.</li><li>2: Two channels.</li><li>6: 5.1 channels.</li>When the media container format is an audio format (mp3), the number of audio channels cannot be set to 5.1.<p>Default value: 2.<br>Note: If you set the audio channel to follow that of the source and the audio encoding format does not support the current audio channel, the transcoding task may fail.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._AudioChannel
@@ -14776,7 +15196,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def StreamSelects(self):
         r"""<p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of int
         """
         return self._StreamSelects
@@ -14809,24 +15228,18 @@ class AudioTrackChannelInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelsRemix: Whether to enable the feature of multi-audio track mixing. Valid values:
-<li>0: To disable the multi-audio track mixing feature.
-<li>1: To enable the multi-audio track mixing feature. 
-<li>Default value: 0.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ChannelsRemix: Whether audio mixing is enabled. Value range:
+0: Disable audio mixing
+1: Enable audio mixing
+Default value: 0
         :type ChannelsRemix: int
-        :param _SelectType: Set the selector type for the input audio track. Valid values:
-<li>track: indicates the usage of audio track id to identify the track to be used.
-<li>track_channel: indicates the usage of both the audio track id and sound channel id to identify the track and channel to be used.
-<li>Default value: track.
-If the original audio track has multiple sound channels, please use track_channel.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SelectType: Merge audio track input type, available values:
+track: Indicates usage of the audio track id.
+track_channel: Indicates usage of audio track id and sound channel id.
+Default: track.
+Note: If the original video is multichannel, recommend using track_channel.
         :type SelectType: str
-        :param _InputTrackInfo: Audio track information.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _InputTrackInfo: Audio track info
         :type InputTrackInfo: list of TrackInfo
         """
         self._ChannelsRemix = None
@@ -14835,12 +15248,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ChannelsRemix(self):
-        r"""Whether to enable the feature of multi-audio track mixing. Valid values:
-<li>0: To disable the multi-audio track mixing feature.
-<li>1: To enable the multi-audio track mixing feature. 
-<li>Default value: 0.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Whether audio mixing is enabled. Value range:
+0: Disable audio mixing
+1: Enable audio mixing
+Default value: 0
         :rtype: int
         """
         return self._ChannelsRemix
@@ -14851,13 +15262,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SelectType(self):
-        r"""Set the selector type for the input audio track. Valid values:
-<li>track: indicates the usage of audio track id to identify the track to be used.
-<li>track_channel: indicates the usage of both the audio track id and sound channel id to identify the track and channel to be used.
-<li>Default value: track.
-If the original audio track has multiple sound channels, please use track_channel.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Merge audio track input type, available values:
+track: Indicates usage of the audio track id.
+track_channel: Indicates usage of audio track id and sound channel id.
+Default: track.
+Note: If the original video is multichannel, recommend using track_channel.
         :rtype: str
         """
         return self._SelectType
@@ -14868,9 +15277,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InputTrackInfo(self):
-        r"""Audio track information.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Audio track info
         :rtype: list of TrackInfo
         """
         return self._InputTrackInfo
@@ -14914,15 +15321,12 @@ class AwsS3FileUploadTrigger(AbstractModel):
         :type Dir: str
         :param _Formats: The file formats that will trigger the scheme, such as ["mp4", "flv", "mov"]. If you do not specify this, the upload of files in any format will trigger the scheme.	
         :type Formats: list of str
-        :param _S3SecretId: The key ID of the AWS S3 bucket.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _S3SecretId: Secret key ID of the bound AWS S3 bucket.
         :type S3SecretId: str
-        :param _S3SecretKey: The key of the AWS S3 bucket.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _S3SecretKey: Secret Key of the bound AWS S3 bucket.
         :type S3SecretKey: str
-        :param _AwsSQS: The SQS queue of the AWS S3 bucket.
-Note: The queue must be in the same region as the bucket.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AwsSQS: SQS event queue bound to the AWS S3 bucket.
+Note: The queue and bucket need to be in the same region.
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         """
         self._S3Bucket = None
@@ -14979,8 +15383,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def S3SecretId(self):
-        r"""The key ID of the AWS S3 bucket.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Secret key ID of the bound AWS S3 bucket.
         :rtype: str
         """
         return self._S3SecretId
@@ -14991,8 +15394,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def S3SecretKey(self):
-        r"""The key of the AWS S3 bucket.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Secret Key of the bound AWS S3 bucket.
         :rtype: str
         """
         return self._S3SecretKey
@@ -15003,9 +15405,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AwsSQS(self):
-        r"""The SQS queue of the AWS S3 bucket.
-Note: The queue must be in the same region as the bucket.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""SQS event queue bound to the AWS S3 bucket.
+Note: The queue and bucket need to be in the same region.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         """
         return self._AwsSQS
@@ -15042,17 +15443,13 @@ class AwsSQS(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SQSRegion: The region of the SQS queue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SQSRegion: SQS queue area.
         :type SQSRegion: str
-        :param _SQSQueueName: The name of the SQS queue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SQSQueueName: SQS queue name.
         :type SQSQueueName: str
-        :param _S3SecretId: The key ID required to read from/write to the SQS queue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _S3SecretId: Secret id for read-write SQS.
         :type S3SecretId: str
-        :param _S3SecretKey: The key required to read from/write to the SQS queue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _S3SecretKey: Read-write SQS secret key.
         :type S3SecretKey: str
         """
         self._SQSRegion = None
@@ -15062,8 +15459,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SQSRegion(self):
-        r"""The region of the SQS queue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""SQS queue area.
         :rtype: str
         """
         return self._SQSRegion
@@ -15074,8 +15470,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SQSQueueName(self):
-        r"""The name of the SQS queue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""SQS queue name.
         :rtype: str
         """
         return self._SQSQueueName
@@ -15086,8 +15481,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def S3SecretId(self):
-        r"""The key ID required to read from/write to the SQS queue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Secret id for read-write SQS.
         :rtype: str
         """
         return self._S3SecretId
@@ -15098,8 +15492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def S3SecretKey(self):
-        r"""The key required to read from/write to the SQS queue.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Read-write SQS secret key.
         :rtype: str
         """
         return self._S3SecretKey
@@ -16244,6 +16637,254 @@ class CloneViralResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloneVoiceRequest(AbstractModel):
+    r"""CloneVoice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioData: <p>Clone audio base64 encoding</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>Cloning audio URL. Valid when AudioData is empty.</p>
+        :type AudioUrl: str
+        :param _AudioLang: <p>Cloning audio language. The default language is Chinese. Currently supported languages are the same as those for Text To Speech (TTS) TextLang.</p>
+        :type AudioLang: str
+        :param _VoiceProfile: <p>Voice attribute. Voice type querying and match usage.</p>
+        :type VoiceProfile: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        :param _Text: <p>Audition text</p>
+        :type Text: str
+        :param _TextLang: <p>Language of the audition text, by default if left blank, auto-detection. Current supported languages are the same as Text To Speech.</p>
+        :type TextLang: str
+        :param _Output: <p>Output parameters. Specifies the output audio format, etc. The default output audio format is base64.</p>
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p>
+        :type ExtParam: str
+        """
+        self._AudioData = None
+        self._AudioUrl = None
+        self._AudioLang = None
+        self._VoiceProfile = None
+        self._Text = None
+        self._TextLang = None
+        self._Output = None
+        self._ExtParam = None
+
+    @property
+    def AudioData(self):
+        r"""<p>Clone audio base64 encoding</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Cloning audio URL. Valid when AudioData is empty.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def AudioLang(self):
+        r"""<p>Cloning audio language. The default language is Chinese. Currently supported languages are the same as those for Text To Speech (TTS) TextLang.</p>
+        :rtype: str
+        """
+        return self._AudioLang
+
+    @AudioLang.setter
+    def AudioLang(self, AudioLang):
+        self._AudioLang = AudioLang
+
+    @property
+    def VoiceProfile(self):
+        r"""<p>Voice attribute. Voice type querying and match usage.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        """
+        return self._VoiceProfile
+
+    @VoiceProfile.setter
+    def VoiceProfile(self, VoiceProfile):
+        self._VoiceProfile = VoiceProfile
+
+    @property
+    def Text(self):
+        r"""<p>Audition text</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def TextLang(self):
+        r"""<p>Language of the audition text, by default if left blank, auto-detection. Current supported languages are the same as Text To Speech.</p>
+        :rtype: str
+        """
+        return self._TextLang
+
+    @TextLang.setter
+    def TextLang(self, TextLang):
+        self._TextLang = TextLang
+
+    @property
+    def Output(self):
+        r"""<p>Output parameters. Specifies the output audio format, etc. The default output audio format is base64.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters in the format of a JSON string.</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._AudioLang = params.get("AudioLang")
+        if params.get("VoiceProfile") is not None:
+            self._VoiceProfile = VoiceProfile()
+            self._VoiceProfile._deserialize(params.get("VoiceProfile"))
+        self._Text = params.get("Text")
+        self._TextLang = params.get("TextLang")
+        if params.get("Output") is not None:
+            self._Output = SyncDubbingOutputOption()
+            self._Output._deserialize(params.get("Output"))
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneVoiceResponse(AbstractModel):
+    r"""CloneVoice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
+        :type ErrorCode: int
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
+        :type Msg: str
+        :param _VoiceId: <p>Voice ID generated by cloning</p>
+        :type VoiceId: str
+        :param _AudioData: <p>base64 code of the synthetic audio</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>Synthetic audio Url, valid period 24 hours</p>
+        :type AudioUrl: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._VoiceId = None
+        self._AudioData = None
+        self._AudioUrl = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>Error message. success is returned if the request is successful.</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID generated by cloning</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def AudioData(self):
+        r"""<p>base64 code of the synthetic audio</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Synthetic audio Url, valid period 24 hours</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._VoiceId = params.get("VoiceId")
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class ColorEnhanceConfig(AbstractModel):
     r"""Color enhancement configuration.
 
@@ -16256,12 +16897,11 @@ class ColorEnhanceConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: The strength. Valid values:
+        :param _Type: Type, available values:
 <li>weak</li>
 <li>normal</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
         self._Switch = None
@@ -16283,12 +16923,11 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""The strength. Valid values:
+        r"""Type, available values:
 <li>weak</li>
 <li>normal</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -19729,6 +20368,121 @@ class CreateAiDramaTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAiFissionTaskRequest(AbstractModel):
+    r"""CreateAiFissionTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>ai video fission input information</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiFissionInput`
+        :param _CosInfo: <p>User cos information</p>
+        :type CosInfo: :class:`tencentcloud.mps.v20190612.models.VideoDramaCosInfo`
+        :param _TaskInfo: <p>ai video fission task info</p>
+        :type TaskInfo: :class:`tencentcloud.mps.v20190612.models.FissionTaskInfo`
+        """
+        self._Input = None
+        self._CosInfo = None
+        self._TaskInfo = None
+
+    @property
+    def Input(self):
+        r"""<p>ai video fission input information</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiFissionInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CosInfo(self):
+        r"""<p>User cos information</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDramaCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+    @property
+    def TaskInfo(self):
+        r"""<p>ai video fission task info</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FissionTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = AiFissionInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("CosInfo") is not None:
+            self._CosInfo = VideoDramaCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = FissionTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAiFissionTaskResponse(AbstractModel):
+    r"""CreateAiFissionTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcAudioTaskRequest(AbstractModel):
     r"""CreateAigcAudioTask request structure.
 
@@ -20771,7 +21525,7 @@ class CreateAsrHotwordsRequest(AbstractModel):
         :type Name: str
         :param _Content: Hotword lexicon text. This field is required if Type is set to 0.
         :type Content: str
-        :param _FileContent: Base64-encoded content of the hotword file. This field is required if Type is set to 1.
+        :param _FileContent: base64 content of the hot word library file, Type 1 required
 
 
         :type FileContent: str
@@ -20819,7 +21573,7 @@ class CreateAsrHotwordsRequest(AbstractModel):
 
     @property
     def FileContent(self):
-        r"""Base64-encoded content of the hotword file. This field is required if Type is set to 1.
+        r"""base64 content of the hot word library file, Type 1 required
 
 
         :rtype: str
@@ -21589,17 +22343,11 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
         :param _MP4Configure: MP4 configuration parameter. Either this parameter or HLSConfigure should be specified.
         :type MP4Configure: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
-        :param _Name: Recording template name. Length limit: 64 characters.
+        :param _Name: Recording template name. The length cannot exceed 64 characters.
         :type Name: str
         :param _Comment: Template description, with a length limit of 256 characters.
         :type Comment: str
-        :param _RecordType: Recording type. Valid values: 
-
-- video: audio and video recording; 
-- audio: audio recording; 
-- auto: automatic detection;
-
-If it is left blank, "video" will be used as the default value.
+        :param _RecordType: Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection. If it is left blank, the default value video is used.
         :type RecordType: str
         """
         self._HLSConfigure = None
@@ -21632,7 +22380,7 @@ If it is left blank, "video" will be used as the default value.
 
     @property
     def Name(self):
-        r"""Recording template name. Length limit: 64 characters.
+        r"""Recording template name. The length cannot exceed 64 characters.
         :rtype: str
         """
         return self._Name
@@ -21654,13 +22402,7 @@ If it is left blank, "video" will be used as the default value.
 
     @property
     def RecordType(self):
-        r"""Recording type. Valid values: 
-
-- video: audio and video recording; 
-- audio: audio recording; 
-- auto: automatic detection;
-
-If it is left blank, "video" will be used as the default value.
+        r"""Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection. If it is left blank, the default value video is used.
         :rtype: str
         """
         return self._RecordType
@@ -24353,6 +25095,87 @@ class CreateWorkflowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CustomModel(AbstractModel):
+    r"""Product fission model info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Gender: <p>Gender</p><p>Enumeration value:</p><ul><li>male: man</li><li>female: woman</li><li>any: unlimited</li></ul>
+        :type Gender: str
+        :param _Age: <p>Age range.</p><p>Enumeration values:</p><ul><li>teen: youth</li><li>young_adult: adulthood</li><li>middle_aged: middle-aged</li><li>mature: mature</li></ul>
+        :type Age: str
+        :param _Appearance: <p>Appearance</p><p>Enumeration value:</p><ul><li>caucasian: White</li><li>asian: Asian</li><li>latino: Latino</li><li>african: African</li><li>middle_eastern: Middle Eastern</li></ul>
+        :type Appearance: str
+        :param _BodyType: <p>Body shape</p><p>Enumeration value:</p><ul><li>slim: Slim</li><li>standard: Standard</li><li>athletic: Healthy</li><li>chubby: Chubby</li></ul>
+        :type BodyType: str
+        """
+        self._Gender = None
+        self._Age = None
+        self._Appearance = None
+        self._BodyType = None
+
+    @property
+    def Gender(self):
+        r"""<p>Gender</p><p>Enumeration value:</p><ul><li>male: man</li><li>female: woman</li><li>any: unlimited</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>Age range.</p><p>Enumeration values:</p><ul><li>teen: youth</li><li>young_adult: adulthood</li><li>middle_aged: middle-aged</li><li>mature: mature</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Appearance(self):
+        r"""<p>Appearance</p><p>Enumeration value:</p><ul><li>caucasian: White</li><li>asian: Asian</li><li>latino: Latino</li><li>african: African</li><li>middle_eastern: Middle Eastern</li></ul>
+        :rtype: str
+        """
+        return self._Appearance
+
+    @Appearance.setter
+    def Appearance(self, Appearance):
+        self._Appearance = Appearance
+
+    @property
+    def BodyType(self):
+        r"""<p>Body shape</p><p>Enumeration value:</p><ul><li>slim: Slim</li><li>standard: Standard</li><li>athletic: Healthy</li><li>chubby: Chubby</li></ul>
+        :rtype: str
+        """
+        return self._BodyType
+
+    @BodyType.setter
+    def BodyType(self, BodyType):
+        self._BodyType = BodyType
+
+
+    def _deserialize(self, params):
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Appearance = params.get("Appearance")
+        self._BodyType = params.get("BodyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomVariable(AbstractModel):
     r"""Custom description variable.
 
@@ -24603,14 +25426,14 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique ID of an animated image generating template.
+        :param _Definition: Unique identifier for rotation diagram template.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Unique ID of an animated image generating template.
+        r"""Unique identifier for rotation diagram template.
         :rtype: int
         """
         return self._Definition
@@ -24795,14 +25618,14 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: The unique ID of the content moderation template.
+        :param _Definition: Unique identifier of a content review template.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""The unique ID of the content moderation template.
+        r"""Unique identifier of a content review template.
         :rtype: int
         """
         return self._Definition
@@ -24859,14 +25682,14 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique ID of an image sprite generating template.
+        :param _Definition: Unique identifier of the sprite screenshot template.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Unique ID of an image sprite generating template.
+        r"""Unique identifier of the sprite screenshot template.
         :rtype: int
         """
         return self._Definition
@@ -25243,14 +26066,14 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique ID of a sampled screencapturing template.
+        :param _Definition: Unique identifier of the sampled screenshot template.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Unique ID of a sampled screencapturing template.
+        r"""Unique identifier of the sampled screenshot template.
         :rtype: int
         """
         return self._Definition
@@ -25307,14 +26130,14 @@ class DeleteScheduleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScheduleId: The scheme ID.
+        :param _ScheduleId: Orchestration unique identifier.
         :type ScheduleId: int
         """
         self._ScheduleId = None
 
     @property
     def ScheduleId(self):
-        r"""The scheme ID.
+        r"""Orchestration unique identifier.
         :rtype: int
         """
         return self._ScheduleId
@@ -25499,14 +26322,14 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique ID of a time point screencapturing template.
+        :param _Definition: Unique identifier of the time point screenshot template.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Unique ID of a time point screencapturing template.
+        r"""Unique identifier of the time point screenshot template.
         :rtype: int
         """
         return self._Definition
@@ -25800,14 +26623,14 @@ class DeleteWatermarkTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Unique ID of a watermarking template.
+        :param _Definition: Unique identifier of the watermark template.
         :type Definition: int
         """
         self._Definition = None
 
     @property
     def Definition(self):
-        r"""Unique ID of a watermarking template.
+        r"""Unique identifier of the watermark template.
         :rtype: int
         """
         return self._Definition
@@ -25864,14 +26687,14 @@ class DeleteWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keywords: Keyword. Array length limit: 100 words.
+        :param _Keywords: Keyword, array length limit: 100 words.
         :type Keywords: list of str
         """
         self._Keywords = None
 
     @property
     def Keywords(self):
-        r"""Keyword. Array length limit: 100 words.
+        r"""Keyword, array length limit: 100 words.
         :rtype: list of str
         """
         return self._Keywords
@@ -26736,6 +27559,167 @@ class DescribeAigcImageTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAigcTaskListRequest(AbstractModel):
+    r"""DescribeAigcTaskList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: <p>Query page started</p>
+        :type PageNum: int
+        :param _PageSize: <p>How many data to get on the current page</p>
+        :type PageSize: int
+        :param _QueryTaskFilter: <p>Query filter criteria</p>
+        :type QueryTaskFilter: :class:`tencentcloud.mps.v20190612.models.QueryTaskFilter`
+        """
+        self._PageNum = None
+        self._PageSize = None
+        self._QueryTaskFilter = None
+
+    @property
+    def PageNum(self):
+        r"""<p>Query page started</p>
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""<p>How many data to get on the current page</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def QueryTaskFilter(self):
+        r"""<p>Query filter criteria</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QueryTaskFilter`
+        """
+        return self._QueryTaskFilter
+
+    @QueryTaskFilter.setter
+    def QueryTaskFilter(self, QueryTaskFilter):
+        self._QueryTaskFilter = QueryTaskFilter
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        if params.get("QueryTaskFilter") is not None:
+            self._QueryTaskFilter = QueryTaskFilter()
+            self._QueryTaskFilter._deserialize(params.get("QueryTaskFilter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcTaskListResponse(AbstractModel):
+    r"""DescribeAigcTaskList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>Total return count of the current task</p>
+        :type Total: int
+        :param _PageNum: <p>Query page started</p>
+        :type PageNum: int
+        :param _PageSize: <p>Number of data entries to retrieve on the current page</p>
+        :type PageSize: int
+        :param _Tasks: <p>Task detail data</p>
+        :type Tasks: list of AigcTaskListItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._PageNum = None
+        self._PageSize = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>Total return count of the current task</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def PageNum(self):
+        r"""<p>Query page started</p>
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""<p>Number of data entries to retrieve on the current page</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Tasks(self):
+        r"""<p>Task detail data</p>
+        :rtype: list of AigcTaskListItem
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = AigcTaskListItem()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAigcTaskStatusRequest(AbstractModel):
     r"""DescribeAigcTaskStatus request structure.
 
@@ -27489,17 +28473,16 @@ class DescribeAsrHotwordsRequest(AbstractModel):
         :param _Name: Hotword lexicon name.
 **Note: Either HotwordsId or Name should be specified. If both are specified, HotwordsId has a higher priority than Name.**
         :type Name: str
-        :param _Offset: Paging offset. Default value: 0.
-
+        :param _Offset: Pagination offset. Default value: 0.
 
         :type Offset: int
         :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
         :param _OrderBy: Hotword sorting field. Valid values:
 
- - Default: Sort by the hotword upload sequence.
- - Weight: Sort by the weight.
- - Lexical: Sort by the first letter of hotwords.
+- Default: Sort by the order in the default file.
+- Weight: Sort by the weight.
+- Lexical: Sort by the first letter of hotwords.
         :type OrderBy: str
         :param _OrderType: Hotword sorting order. 0: ascending (default); 1: descending.
         :type OrderType: int
@@ -27537,8 +28520,7 @@ class DescribeAsrHotwordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Paging offset. Default value: 0.
-
+        r"""Pagination offset. Default value: 0.
 
         :rtype: int
         """
@@ -27563,9 +28545,9 @@ class DescribeAsrHotwordsRequest(AbstractModel):
     def OrderBy(self):
         r"""Hotword sorting field. Valid values:
 
- - Default: Sort by the hotword upload sequence.
- - Weight: Sort by the weight.
- - Lexical: Sort by the first letter of hotwords.
+- Default: Sort by the order in the default file.
+- Weight: Sort by the weight.
+- Lexical: Sort by the first letter of hotwords.
         :rtype: str
         """
         return self._OrderBy
@@ -27612,12 +28594,12 @@ class DescribeAsrHotwordsResponse(AbstractModel):
         r"""
         :param _HotwordsId: ID of the hotword lexicon to be queried.
         :type HotwordsId: str
-        :param _Status: Current hotword lexicon id status. a value of 0 indicates that no template is bound to this hotword lexicon at the query moment and it can be deleted.
+        :param _Status: Current hot lexicon id status. A value of 0 indicates that no template is bound to this hot lexicon at the query moment, and it can be deleted.
         :type Status: int
-        :param _Name: Name of the hot lexicon.
+        :param _Name: Hotword lexicon name
         :type Name: str
-        :param _Type: Specifies the value is 0 for a temporary hotword lexicon and returns the string provided during creation.
-Specifies the value is 1 for a file-based hotword lexicon, and returns the content of the file uploaded during creation.
+        :param _Type: The value is 0 for a temporary hotword lexicon, and the string provided during creation is returned.
+The value is 1 for a file-based hotword lexicon, and the content of the file uploaded during creation is returned.
 
 
         :type Type: int
@@ -27627,17 +28609,17 @@ Specifies the value is 1 for a file-based hotword lexicon, and returns the conte
         :type HotWords: list of AsrHotwordsSetItem
         :param _Content: Hotword text, which depends on the value of Type.
 If the value of Type is 0, the hotword string is returned.
-If the value of Type is 1, the base64-encoded content of the hotword file is returned.
+If the value of Type is 1, the base64-encoded content of the hotword lexicon file is returned.
         :type Content: str
-        :param _WordCount: Number of words contained in the hotword lexicon.
+        :param _WordCount: Number of words contained in the current hotword lexicon.
         :type WordCount: int
-        :param _Offset: Paging offset. Default value: 0.
+        :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param _CreateTime: Hot word lexicon createtime in ISOUTC format "2006-01-02T15:04:05Z".
+        :param _CreateTime: Creation time of the hot lexicon in ISOUTC format "2006-01-02T15:04:05Z"
         :type CreateTime: str
-        :param _UpdateTime: Hot lexicon last modified in ISOUTC format "2006-01-02T15:04:05Z".
+        :param _UpdateTime: Hot lexicon last modified ISOUTC format "2006-01-02T15:04:05Z"
         :type UpdateTime: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -27669,7 +28651,7 @@ If the value of Type is 1, the base64-encoded content of the hotword file is ret
 
     @property
     def Status(self):
-        r"""Current hotword lexicon id status. a value of 0 indicates that no template is bound to this hotword lexicon at the query moment and it can be deleted.
+        r"""Current hot lexicon id status. A value of 0 indicates that no template is bound to this hot lexicon at the query moment, and it can be deleted.
         :rtype: int
         """
         return self._Status
@@ -27680,7 +28662,7 @@ If the value of Type is 1, the base64-encoded content of the hotword file is ret
 
     @property
     def Name(self):
-        r"""Name of the hot lexicon.
+        r"""Hotword lexicon name
         :rtype: str
         """
         return self._Name
@@ -27691,8 +28673,8 @@ If the value of Type is 1, the base64-encoded content of the hotword file is ret
 
     @property
     def Type(self):
-        r"""Specifies the value is 0 for a temporary hotword lexicon and returns the string provided during creation.
-Specifies the value is 1 for a file-based hotword lexicon, and returns the content of the file uploaded during creation.
+        r"""The value is 0 for a temporary hotword lexicon, and the string provided during creation is returned.
+The value is 1 for a file-based hotword lexicon, and the content of the file uploaded during creation is returned.
 
 
         :rtype: int
@@ -27729,7 +28711,7 @@ Specifies the value is 1 for a file-based hotword lexicon, and returns the conte
     def Content(self):
         r"""Hotword text, which depends on the value of Type.
 If the value of Type is 0, the hotword string is returned.
-If the value of Type is 1, the base64-encoded content of the hotword file is returned.
+If the value of Type is 1, the base64-encoded content of the hotword lexicon file is returned.
         :rtype: str
         """
         return self._Content
@@ -27740,7 +28722,7 @@ If the value of Type is 1, the base64-encoded content of the hotword file is ret
 
     @property
     def WordCount(self):
-        r"""Number of words contained in the hotword lexicon.
+        r"""Number of words contained in the current hotword lexicon.
         :rtype: int
         """
         return self._WordCount
@@ -27751,7 +28733,7 @@ If the value of Type is 1, the base64-encoded content of the hotword file is ret
 
     @property
     def Offset(self):
-        r"""Paging offset. Default value: 0.
+        r"""Pagination offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -27773,7 +28755,7 @@ If the value of Type is 1, the base64-encoded content of the hotword file is ret
 
     @property
     def CreateTime(self):
-        r"""Hot word lexicon createtime in ISOUTC format "2006-01-02T15:04:05Z".
+        r"""Creation time of the hot lexicon in ISOUTC format "2006-01-02T15:04:05Z"
         :rtype: str
         """
         return self._CreateTime
@@ -27784,7 +28766,7 @@ If the value of Type is 1, the base64-encoded content of the hotword file is ret
 
     @property
     def UpdateTime(self):
-        r"""Hot lexicon last modified in ISOUTC format "2006-01-02T15:04:05Z".
+        r"""Hot lexicon last modified ISOUTC format "2006-01-02T15:04:05Z"
         :rtype: str
         """
         return self._UpdateTime
@@ -29447,14 +30429,14 @@ class DescribeMediaMetaDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputInfo: Input information of file for metadata getting.
+        :param _InputInfo: Input information of the file that needs to get meta information.
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         self._InputInfo = None
 
     @property
     def InputInfo(self):
-        r"""Input information of file for metadata getting.
+        r"""Input information of the file that needs to get meta information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._InputInfo
@@ -29716,7 +30698,7 @@ class DescribeProcessImageTemplatesRequest(AbstractModel):
         r"""
         :param _Definitions: Filtering condition for the unique identifier of the image processing template. The array length cannot exceed 100.
         :type Definitions: list of int
-        :param _Offset: Pagination offset. The default value is 0.
+        :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param _Limit: Number of returned entries. The default value is 10, and the maximum value is 100.
         :type Limit: int
@@ -29724,8 +30706,8 @@ class DescribeProcessImageTemplatesRequest(AbstractModel):
         :type Name: str
         :param _OrderType: Sorting method. It is valid after OrderBy is set. Valid values: 0: ascending; 1: descending. The default value is 0.
         :type OrderType: int
-        :param _OrderBy: Sorting field. Valid values:
-Definition: unique identifier of the template.
+        :param _OrderBy: Sorting field. Valid values:  
+Definition: Template Unique Identifier 
 Default value: creation time.
         :type OrderBy: str
         :param _Type: Filtering condition for the template type. Valid values: <li>Preset: system preset template;</li> <li>Custom: user-defined template.</li>
@@ -29752,7 +30734,7 @@ Default value: creation time.
 
     @property
     def Offset(self):
-        r"""Pagination offset. The default value is 0.
+        r"""Pagination offset. Default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -29796,8 +30778,8 @@ Default value: creation time.
 
     @property
     def OrderBy(self):
-        r"""Sorting field. Valid values:
-Definition: unique identifier of the template.
+        r"""Sorting field. Valid values:  
+Definition: Template Unique Identifier 
 Default value: creation time.
         :rtype: str
         """
@@ -33760,12 +34742,12 @@ ON: enabled.
 OFF: disabled.
 Default value: OFF.
         :type Switch: str
-        :param _Type: Strength type. Valid values:
+        :param _Type: Strength type, available values:
+
 weak
 normal
 strong
 Default value: normal.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
         self._Switch = None
@@ -33787,12 +34769,12 @@ Default value: OFF.
 
     @property
     def Type(self):
-        r"""Strength type. Valid values:
+        r"""Strength type, available values:
+
 weak
 normal
 strong
 Default value: normal.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -33822,14 +34804,14 @@ class DisableScheduleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScheduleId: The scheme ID.
+        :param _ScheduleId: Orchestration unique representation.
         :type ScheduleId: int
         """
         self._ScheduleId = None
 
     @property
     def ScheduleId(self):
-        r"""The scheme ID.
+        r"""Orchestration unique representation.
         :rtype: int
         """
         return self._ScheduleId
@@ -34201,8 +35183,7 @@ Applicable to HLS and MPEG-DASH. the format can only be mp4.
 HLS format can use slice mode or single file mode.
 Specifies that only singlefile mode can be used for MPEG-DASH.
         :type Type: str
-        :param _SimpleAesDrm: The AES-128 encryption details.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SimpleAesDrm: SimpleAes encrypted information.
         :type SimpleAesDrm: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
         :param _SpekeDrm: Information about FairPlay, WideVine, and PlayReady encryption.
         :type SpekeDrm: :class:`tencentcloud.mps.v20190612.models.SpekeDrm`
@@ -34251,8 +35232,7 @@ Specifies that only singlefile mode can be used for MPEG-DASH.
 
     @property
     def SimpleAesDrm(self):
-        r"""The AES-128 encryption details.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""SimpleAes encrypted information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
         """
         return self._SimpleAesDrm
@@ -35116,14 +36096,14 @@ class EnableScheduleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScheduleId: The scheme ID.
+        :param _ScheduleId: Orchestration unique identifier.
         :type ScheduleId: int
         """
         self._ScheduleId = None
 
     @property
     def ScheduleId(self):
-        r"""The scheme ID.
+        r"""Orchestration unique identifier.
         :rtype: int
         """
         return self._ScheduleId
@@ -35245,10 +36225,8 @@ class EnhanceConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _VideoEnhance: Video enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoEnhance: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
-        :param _AudioEnhance: The audio enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AudioEnhance: Audio enhancement configuration.
         :type AudioEnhance: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceConfig`
         """
         self._VideoEnhance = None
@@ -35257,7 +36235,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def VideoEnhance(self):
         r"""Video enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
         """
         return self._VideoEnhance
@@ -35268,8 +36245,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioEnhance(self):
-        r"""The audio enhancement configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Audio enhancement configuration.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceConfig`
         """
         return self._AudioEnhance
@@ -35571,9 +36547,9 @@ class ExecuteFunctionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FunctionName: Name of called backend API.
+        :param _FunctionName: Backend interface name invoked.
         :type FunctionName: str
-        :param _FunctionArg: API parameter. Parameter format will depend on the actual function definition.
+        :param _FunctionArg: API parameter, coordinate with the backend for the specific parameter format when calling.
         :type FunctionArg: str
         """
         self._FunctionName = None
@@ -35581,7 +36557,7 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        r"""Name of called backend API.
+        r"""Backend interface name invoked.
         :rtype: str
         """
         return self._FunctionName
@@ -35592,7 +36568,7 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
-        r"""API parameter. Parameter format will depend on the actual function definition.
+        r"""API parameter, coordinate with the backend for the specific parameter format when calling.
         :rtype: str
         """
         return self._FunctionArg
@@ -35622,7 +36598,7 @@ class ExecuteFunctionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Packed string, which will vary according to the custom API.
+        :param _Result: String after packaging, coordinate with the backend.
         :type Result: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -35632,7 +36608,7 @@ class ExecuteFunctionResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""Packed string, which will vary according to the custom API.
+        r"""String after packaging, coordinate with the backend.
         :rtype: str
         """
         return self._Result
@@ -35976,18 +36952,16 @@ class ExtractBlindWatermarkTaskConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentDuration: Valid when the watermark type is blind-abseq. specifies the segment duration of the input video. unit: ms.
-Segment duration is 5 seconds by default if left empty.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SegmentDuration: Valid when the digital watermark type is blind-abseq, used to specify the segment duration of the input video. Unit: ms.
+If left empty, the default segment duration is 5 seconds.
         :type SegmentDuration: int
         """
         self._SegmentDuration = None
 
     @property
     def SegmentDuration(self):
-        r"""Valid when the watermark type is blind-abseq. specifies the segment duration of the input video. unit: ms.
-Segment duration is 5 seconds by default if left empty.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Valid when the digital watermark type is blind-abseq, used to specify the segment duration of the input video. Unit: ms.
+If left empty, the default segment duration is 5 seconds.
         :rtype: int
         """
         return self._SegmentDuration
@@ -36251,9 +37225,8 @@ class FaceEnhanceConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Intensity: The strength. Value range: 0.0-1.0
-Default value: 0.0.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Intensity: Intensity, value ranges from 0.0 to 1.0.
+Default: 0.0.
         :type Intensity: float
         """
         self._Switch = None
@@ -36275,9 +37248,8 @@ Default value: ON.
 
     @property
     def Intensity(self):
-        r"""The strength. Value range: 0.0-1.0
-Default value: 0.0.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Intensity, value ranges from 0.0 to 1.0.
+Default: 0.0.
         :rtype: float
         """
         return self._Intensity
@@ -36300,6 +37272,164 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class FissionTaskInfo(AbstractModel):
+    r"""Product fission task info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: <p>Video output duration</p><p>Range: [1, 15]</p><p>Unit: seconds</p><p>Default value: 15</p>
+        :type Duration: int
+        :param _ModelTier: <p>Model gearbox</p><p>Enumeration value:</p><ul><li>standard: Standard version</li><li>flagship: Flagship edition</li></ul>
+        :type ModelTier: str
+        :param _Ratio: <p>Video image ratio</p><p>Enumeration values:</p><ul><li>9:16: 9:16</li><li>16:9: 16:9</li><li>1:1: -1:1</li><li>3:4: 3:4</li><li>4:3: 4:3</li></ul>
+        :type Ratio: str
+        :param _Resolution: <p>Output resolution</p><p>Enumeration values:</p><ul><li>720p: 720p</li><li>1080p: 1080p</li><li>2k: 2k</li><li>4k: 4k</li></ul>
+        :type Resolution: str
+        :param _Market: <p>Target market</p><p>Enumeration values:</p><ul><li>north_america: North America</li><li>europe: Europe</li><li>china: China</li><li>japan: Japan</li><li>korea: South Korea</li><li>southeast_asia: Southeast Asia</li><li>brazil: Brazil</li><li>global: Global</li><li>other: Other</li></ul><p>Impacts the default model ethnicity and localized style. When CustomModel is not specified, the ethnicity is automatically determined by the market.</p>
+        :type Market: str
+        :param _Language: <p>Voiceover/subtitle language</p><p>Enumeration value:</p><ul><li>english: English</li><li>chinese: Chinese</li><li>japanese: Japanese</li><li>korean: Korean</li><li>spanish: Spanish</li><li>portuguese: Portuguese</li><li>music_only: Music only, no voiceover</li></ul>
+        :type Language: str
+        :param _VideoType: <p>Video type</p><p>Enumeration value:</p><ul><li>ugc: UGC seeding</li><li>talk: Product talk</li><li>display: Product display (product only, no voice)</li><li>unboxing: Out-of-the-box sharing</li><li>reaction: Reaction show</li></ul>
+        :type VideoType: str
+        :param _SplitCount: <p>Fission count</p><p>Value ranges from 0 to 1</p><p>Unit: unit</p>
+        :type SplitCount: int
+        :param _CustomModel: <p>Customize an on-camera model</p>
+        :type CustomModel: :class:`tencentcloud.mps.v20190612.models.CustomModel`
+        """
+        self._Duration = None
+        self._ModelTier = None
+        self._Ratio = None
+        self._Resolution = None
+        self._Market = None
+        self._Language = None
+        self._VideoType = None
+        self._SplitCount = None
+        self._CustomModel = None
+
+    @property
+    def Duration(self):
+        r"""<p>Video output duration</p><p>Range: [1, 15]</p><p>Unit: seconds</p><p>Default value: 15</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ModelTier(self):
+        r"""<p>Model gearbox</p><p>Enumeration value:</p><ul><li>standard: Standard version</li><li>flagship: Flagship edition</li></ul>
+        :rtype: str
+        """
+        return self._ModelTier
+
+    @ModelTier.setter
+    def ModelTier(self, ModelTier):
+        self._ModelTier = ModelTier
+
+    @property
+    def Ratio(self):
+        r"""<p>Video image ratio</p><p>Enumeration values:</p><ul><li>9:16: 9:16</li><li>16:9: 16:9</li><li>1:1: -1:1</li><li>3:4: 3:4</li><li>4:3: 4:3</li></ul>
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Resolution(self):
+        r"""<p>Output resolution</p><p>Enumeration values:</p><ul><li>720p: 720p</li><li>1080p: 1080p</li><li>2k: 2k</li><li>4k: 4k</li></ul>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Market(self):
+        r"""<p>Target market</p><p>Enumeration values:</p><ul><li>north_america: North America</li><li>europe: Europe</li><li>china: China</li><li>japan: Japan</li><li>korea: South Korea</li><li>southeast_asia: Southeast Asia</li><li>brazil: Brazil</li><li>global: Global</li><li>other: Other</li></ul><p>Impacts the default model ethnicity and localized style. When CustomModel is not specified, the ethnicity is automatically determined by the market.</p>
+        :rtype: str
+        """
+        return self._Market
+
+    @Market.setter
+    def Market(self, Market):
+        self._Market = Market
+
+    @property
+    def Language(self):
+        r"""<p>Voiceover/subtitle language</p><p>Enumeration value:</p><ul><li>english: English</li><li>chinese: Chinese</li><li>japanese: Japanese</li><li>korean: Korean</li><li>spanish: Spanish</li><li>portuguese: Portuguese</li><li>music_only: Music only, no voiceover</li></ul>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def VideoType(self):
+        r"""<p>Video type</p><p>Enumeration value:</p><ul><li>ugc: UGC seeding</li><li>talk: Product talk</li><li>display: Product display (product only, no voice)</li><li>unboxing: Out-of-the-box sharing</li><li>reaction: Reaction show</li></ul>
+        :rtype: str
+        """
+        return self._VideoType
+
+    @VideoType.setter
+    def VideoType(self, VideoType):
+        self._VideoType = VideoType
+
+    @property
+    def SplitCount(self):
+        r"""<p>Fission count</p><p>Value ranges from 0 to 1</p><p>Unit: unit</p>
+        :rtype: int
+        """
+        return self._SplitCount
+
+    @SplitCount.setter
+    def SplitCount(self, SplitCount):
+        self._SplitCount = SplitCount
+
+    @property
+    def CustomModel(self):
+        r"""<p>Customize an on-camera model</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CustomModel`
+        """
+        return self._CustomModel
+
+    @CustomModel.setter
+    def CustomModel(self, CustomModel):
+        self._CustomModel = CustomModel
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        self._ModelTier = params.get("ModelTier")
+        self._Ratio = params.get("Ratio")
+        self._Resolution = params.get("Resolution")
+        self._Market = params.get("Market")
+        self._Language = params.get("Language")
+        self._VideoType = params.get("VideoType")
+        self._SplitCount = params.get("SplitCount")
+        if params.get("CustomModel") is not None:
+            self._CustomModel = CustomModel()
+            self._CustomModel._deserialize(params.get("CustomModel"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FrameRateConfig(AbstractModel):
     r"""Frame interpolation configuration.
 
@@ -36312,10 +37442,9 @@ class FrameRateConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Fps: The frame rate (Hz). Value range: [0, 100].
+        :param _Fps: Frame rate. Value ranges from 0 to 100. Measurement unit: Hz.
 Default value: 0.
-Note: For transcoding, this parameter will overwrite `Fps` of `VideoTemplate`.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: For transcode, this parameter overrides the internal Fps in VideoTemplate.
         :type Fps: int
         """
         self._Switch = None
@@ -36337,10 +37466,9 @@ Default value: ON.
 
     @property
     def Fps(self):
-        r"""The frame rate (Hz). Value range: [0, 100].
+        r"""Frame rate. Value ranges from 0 to 100. Measurement unit: Hz.
 Default value: 0.
-Note: For transcoding, this parameter will overwrite `Fps` of `VideoTemplate`.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: For transcode, this parameter overrides the internal Fps in VideoTemplate.
         :rtype: int
         """
         return self._Fps
@@ -36375,11 +37503,9 @@ class FrameRateWithDenConfig(AbstractModel):
 <li>OFF: disabled.</li>
 Default value: ON.
         :type Switch: str
-        :param _FpsNum: Frame rate numerator. Value range: non-negative number, which should be less than 120 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FpsNum: Frame rate numerator. Value range: non-negative number, less than 120 when divided by the denominator, in Hz. Default value is 0. Note: For transcoding, this parameter overrides the Fps in the VideoTemplate.
         :type FpsNum: int
-        :param _FpsDen: Frame rate denominator.Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will overwrite the FpsDenominator in the VideoTemplate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FpsDen: Frame rate denominator. Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will override the FpsDenominator in the VideoTemplate.
         :type FpsDen: int
         """
         self._Switch = None
@@ -36402,8 +37528,7 @@ Default value: ON.
 
     @property
     def FpsNum(self):
-        r"""Frame rate numerator. Value range: non-negative number, which should be less than 120 when divided by the denominator, and in the unit of Hz. The default value is 0. Note: For transcoding, this parameter will overwrite the Fps in the VideoTemplate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Frame rate numerator. Value range: non-negative number, less than 120 when divided by the denominator, in Hz. Default value is 0. Note: For transcoding, this parameter overrides the Fps in the VideoTemplate.
         :rtype: int
         """
         return self._FpsNum
@@ -36414,8 +37539,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FpsDen(self):
-        r"""Frame rate denominator.Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will overwrite the FpsDenominator in the VideoTemplate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Frame rate denominator. Value range: numbers equal to or greater than 1. The default value is 1. Note: For transcoding, this parameter will override the FpsDenominator in the VideoTemplate.
         :rtype: int
         """
         return self._FpsDen
@@ -36526,19 +37650,16 @@ class HLSConfigureInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ItemDuration: Duration of a single TS file in seconds. Value range: 5-30 seconds.
+        :param _ItemDuration: Duration of TS file, unit: second, value ranges from 5 to 30 seconds.
 
-If this parameter is left empty, 30 seconds will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+Leave it blank and it defaults to 30 seconds.
         :type ItemDuration: int
-        :param _Interval: Recording cycle in seconds. Value range: 10 minutes to 12 hours.
+        :param _Interval: Recording period, unit: second, value ranges from 10 minutes to 12 hr.
 
-If this parameter is left empty, 10 minutes (3600 seconds) will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+Leave it blank defaults to 10 minutes (3600 seconds).
         :type Interval: int
-        :param _ContinueTimeout: Resume recording waiting time, unit: seconds. Value range: 60-1800 seconds.
-If this parameter is left empty, 0 (resume recording not enabled) will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ContinueTimeout: Continuation waiting time, unit: second. Value range: 60 seconds to 1800 seconds.
+Leave blank defaults to 0 (recording continuation disabled).
         :type ContinueTimeout: int
         """
         self._ItemDuration = None
@@ -36547,10 +37668,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ItemDuration(self):
-        r"""Duration of a single TS file in seconds. Value range: 5-30 seconds.
+        r"""Duration of TS file, unit: second, value ranges from 5 to 30 seconds.
 
-If this parameter is left empty, 30 seconds will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+Leave it blank and it defaults to 30 seconds.
         :rtype: int
         """
         return self._ItemDuration
@@ -36561,10 +37681,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Interval(self):
-        r"""Recording cycle in seconds. Value range: 10 minutes to 12 hours.
+        r"""Recording period, unit: second, value ranges from 10 minutes to 12 hr.
 
-If this parameter is left empty, 10 minutes (3600 seconds) will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+Leave it blank defaults to 10 minutes (3600 seconds).
         :rtype: int
         """
         return self._Interval
@@ -36575,9 +37694,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ContinueTimeout(self):
-        r"""Resume recording waiting time, unit: seconds. Value range: 60-1800 seconds.
-If this parameter is left empty, 0 (resume recording not enabled) will be used by default.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Continuation waiting time, unit: second. Value range: 60 seconds to 1800 seconds.
+Leave blank defaults to 0 (recording continuation disabled).
         :rtype: int
         """
         return self._ContinueTimeout
@@ -36613,13 +37731,12 @@ class HdrConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: Type. Valid values:
+        :param _Type: Type, available values:
 <li>HDR10</li>
 <li>HLG</li>
-Default value: HDR10.
+Default Value: HDR10.
 Note: The video encoding method should be h264 or h265.
 Note: The video encoding bit depth is 10.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
         self._Switch = None
@@ -36641,13 +37758,12 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""Type. Valid values:
+        r"""Type, available values:
 <li>HDR10</li>
 <li>HLG</li>
-Default value: HDR10.
+Default Value: HDR10.
 Note: The video encoding method should be h264 or h265.
 Note: The video encoding bit depth is 10.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -36677,11 +37793,9 @@ class HeadTailParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeadSet: The opening segments.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HeadSet: Opening scene list.
         :type HeadSet: list of MediaInputInfo
-        :param _TailSet: The closing segments.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TailSet: Ending list.
         :type TailSet: list of MediaInputInfo
         """
         self._HeadSet = None
@@ -36689,8 +37803,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeadSet(self):
-        r"""The opening segments.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Opening scene list.
         :rtype: list of MediaInputInfo
         """
         return self._HeadSet
@@ -36701,8 +37814,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TailSet(self):
-        r"""The closing segments.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Ending list.
         :rtype: list of MediaInputInfo
         """
         return self._TailSet
@@ -36889,16 +38001,13 @@ class ImageAreaBoxInfo(AbstractModel):
 <li>logo: icon.</li>
 <li>Text: text.</li>
 Default value: logo.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Type: str
         :param _AreaCoordSet: Coordinates (pixel-level) of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. Note: The maximum value of this field is 4096.
-For example, [101, 85, 111, 95].
-Note: This field may return null, indicating that no valid values can be obtained.
+For example, [101, 85, 111, —].
         :type AreaCoordSet: list of int
-        :param _BoundingBox: Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. This field takes effect when AreaCoordSet is not specified. When it indicates the pixel, the maximum value of this field is 4096.
+        :param _BoundingBox: Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. This parameter is valid only when AreaCoordSet is not specified. When it indicates the pixel, the maximum value of this field is 4096.
 - [0.1, 0.1, 0.3, 0.3]: indicates the ratio (values are less than 1).
 - [50, 50, 350, 280]: indicates the pixel (values are greater than or equal to 1).
-Note: This field may return null, indicating that no valid values can be obtained.
         :type BoundingBox: list of float
         :param _BoundingBoxUnitType: BoundingBox field unit. When the value is set to 0, select the unit automatically according to the field rule. When it is set to 1, the unit is ratio. When it is set to 2, the unit is pixel.
         :type BoundingBoxUnitType: int
@@ -36914,7 +38023,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>logo: icon.</li>
 <li>Text: text.</li>
 Default value: logo.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Type
@@ -36926,8 +38034,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def AreaCoordSet(self):
         r"""Coordinates (pixel-level) of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. Note: The maximum value of this field is 4096.
-For example, [101, 85, 111, 95].
-Note: This field may return null, indicating that no valid values can be obtained.
+For example, [101, 85, 111, —].
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -36938,10 +38045,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BoundingBox(self):
-        r"""Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. This field takes effect when AreaCoordSet is not specified. When it indicates the pixel, the maximum value of this field is 4096.
+        r"""Coordinates of the box selection area in the image, in the format of [x1, y1, x2, y2]. It indicates the coordinates of the top left corner and the bottom right corner. This parameter is valid only when AreaCoordSet is not specified. When it indicates the pixel, the maximum value of this field is 4096.
 - [0.1, 0.1, 0.3, 0.3]: indicates the ratio (values are less than 1).
 - [50, 50, 350, 280]: indicates the pixel (values are greater than or equal to 1).
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of float
         """
         return self._BoundingBox
@@ -36989,11 +38095,10 @@ class ImageDenoiseConfig(AbstractModel):
 <li>OFF: disabled.</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: Type, with valid values including:
+        :param _Type: Type, available values:
 <li>weak</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Type: str
         """
         self._Switch = None
@@ -37015,11 +38120,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""Type, with valid values including:
+        r"""Type, available values:
 <li>weak</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Type
@@ -37050,10 +38154,8 @@ class ImageEncodeConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Format: Image format. Valid values: JPEG, PNG, BMP, and WebP. If it is not specified, the original image format is used. Animations are not supported.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Format: str
         :param _Quality: Relative image quality. Valid range: 1 - 100. The value is based on the original image quality, and the default is the original image quality.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Quality: int
         """
         self._Format = None
@@ -37062,7 +38164,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Format(self):
         r"""Image format. Valid values: JPEG, PNG, BMP, and WebP. If it is not specified, the original image format is used. Animations are not supported.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Format
@@ -37074,7 +38175,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Quality(self):
         r"""Relative image quality. Valid range: 1 - 100. The value is based on the original image quality, and the default is the original image quality.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Quality
@@ -37105,27 +38205,20 @@ class ImageEnhanceConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _SuperResolution: Super-resolution configuration.
-
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         :param _AdvancedSuperResolutionConfig: Advanced super-resolution configuration.
         :type AdvancedSuperResolutionConfig: :class:`tencentcloud.mps.v20190612.models.AdvancedSuperResolutionConfig`
         :param _Denoise: Denoising configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.ImageDenoiseConfig`
         :param _ImageQualityEnhance: Comprehensive enhancement configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         :param _ColorEnhance: Color enhancement configuration.
-
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
         :param _SharpEnhance: Detail enhancement configuration.
-
         :type SharpEnhance: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
         :param _FaceEnhance: Face enhancement configuration.
-
         :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
         :param _LowLightEnhance: Low-light enhancement configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
         self._SuperResolution = None
@@ -37140,7 +38233,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def SuperResolution(self):
         r"""Super-resolution configuration.
-
         :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         """
         return self._SuperResolution
@@ -37163,7 +38255,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Denoise(self):
         r"""Denoising configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageDenoiseConfig`
         """
         return self._Denoise
@@ -37175,7 +38266,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def ImageQualityEnhance(self):
         r"""Comprehensive enhancement configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         """
         return self._ImageQualityEnhance
@@ -37187,7 +38277,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def ColorEnhance(self):
         r"""Color enhancement configuration.
-
         :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
         """
         return self._ColorEnhance
@@ -37199,7 +38288,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def SharpEnhance(self):
         r"""Detail enhancement configuration.
-
         :rtype: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
         """
         return self._SharpEnhance
@@ -37211,7 +38299,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def FaceEnhance(self):
         r"""Face enhancement configuration.
-
         :rtype: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
         """
         return self._FaceEnhance
@@ -37223,7 +38310,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def LowLightEnhance(self):
         r"""Low-light enhancement configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
         return self._LowLightEnhance
@@ -37276,7 +38362,6 @@ class ImageEraseConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _ImageEraseLogo: Icon erasing configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type ImageEraseLogo: :class:`tencentcloud.mps.v20190612.models.ImageEraseLogoConfig`
         """
         self._ImageEraseLogo = None
@@ -37284,7 +38369,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def ImageEraseLogo(self):
         r"""Icon erasing configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEraseLogoConfig`
         """
         return self._ImageEraseLogo
@@ -37315,16 +38399,13 @@ class ImageEraseLogoConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Capability configuration enabling status. Valid values:
-<li>ON: enabled</li>
-<li>OFF: disabled</li>
+        :param _Switch: Capability configuration switch. Valid values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
 Default value: ON.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Switch: str
         :param _ImageAreaBoxes: Multiple box selection areas that need to be erased, with a maximum of 16 areas available.
-Note: This field may return null, indicating that no valid value can be obtained.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ImageAreaBoxes: list of ImageAreaBoxInfo
         """
         self._Switch = None
@@ -37332,11 +38413,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Switch(self):
-        r"""Capability configuration enabling status. Valid values:
-<li>ON: enabled</li>
-<li>OFF: disabled</li>
+        r"""Capability configuration switch. Valid values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
 Default value: ON.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Switch
@@ -37348,9 +38428,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def ImageAreaBoxes(self):
         r"""Multiple box selection areas that need to be erased, with a maximum of 16 areas available.
-Note: This field may return null, indicating that no valid value can be obtained.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of ImageAreaBoxInfo
         """
         return self._ImageAreaBoxes
@@ -37583,12 +38661,11 @@ class ImageQualityEnhanceConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: The strength. Valid values:
+        :param _Type: Type, available values:
 <li>weak</li>
 <li>normal</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
         self._Switch = None
@@ -37610,12 +38687,11 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""The strength. Valid values:
+        r"""Type, available values:
 <li>weak</li>
 <li>normal</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -37648,14 +38724,12 @@ class ImageSpriteTaskInput(AbstractModel):
         :param _Definition: <p>Sprite screenshot template ID.</p>
         :type Definition: int
         :param _OutputStorage: <p>Target storage for the file after the sprite screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path of the sprite screenshot image file after the sprite screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}_{number}.{format}</code>.
         :type OutputObjectPath: str
         :param _WebVttObjectName: <p>Output path of the Web VTT file after the sprite screenshot is taken, which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_imageSprite_{definition}.{format}</code>.</p>
         :type WebVttObjectName: str
         :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after the sprite screenshot is taken.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         :param _ExtInfo: <p>Extended parameter.</p>
         :type ExtInfo: str
@@ -37681,7 +38755,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def OutputStorage(self):
         r"""<p>Target storage for the file after the sprite screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -37715,7 +38788,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ObjectNumberFormat(self):
         r"""<p>Rule of the <code>{number}</code> variable in the output path after the sprite screenshot is taken.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         return self._ObjectNumberFormat
@@ -38153,26 +39225,34 @@ class ImageTaskInput(AbstractModel):
     def __init__(self):
         r"""
         :param _EncodeConfig: <p>Image encoding configuration.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type EncodeConfig: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
         :param _EnhanceConfig: <p>Image enhancement configuration.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
         :param _EraseConfig: <p>Image erasing configuration.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type EraseConfig: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
         :param _AiPosterSuiteConfig: <p>AI image set configuration.</p>
         :type AiPosterSuiteConfig: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
+        :param _AiCutoutConfig: <p>Ai image cutout configuration</p>
+        :type AiCutoutConfig: :class:`tencentcloud.mps.v20190612.models.AiCutoutConfig`
+        :param _AiExpansionConfig: <p>Ai Image Expansion Configuration</p>
+        :type AiExpansionConfig: :class:`tencentcloud.mps.v20190612.models.AiExpansionConfig`
+        :param _AiStoryboardConfig: <p>Ai storyboard deconstruction configuration</p>
+        :type AiStoryboardConfig: :class:`tencentcloud.mps.v20190612.models.AiStoryboardConfig`
+        :param _UnderstandImageConfig: <p>Image understanding configuration.</p>
+        :type UnderstandImageConfig: :class:`tencentcloud.mps.v20190612.models.UnderstandImageConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
         self._EraseConfig = None
         self._AiPosterSuiteConfig = None
+        self._AiCutoutConfig = None
+        self._AiExpansionConfig = None
+        self._AiStoryboardConfig = None
+        self._UnderstandImageConfig = None
 
     @property
     def EncodeConfig(self):
         r"""<p>Image encoding configuration.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
         """
         return self._EncodeConfig
@@ -38184,7 +39264,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def EnhanceConfig(self):
         r"""<p>Image enhancement configuration.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
         """
         return self._EnhanceConfig
@@ -38196,7 +39275,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def EraseConfig(self):
         r"""<p>Image erasing configuration.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
         """
         return self._EraseConfig
@@ -38216,6 +39294,50 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AiPosterSuiteConfig(self, AiPosterSuiteConfig):
         self._AiPosterSuiteConfig = AiPosterSuiteConfig
 
+    @property
+    def AiCutoutConfig(self):
+        r"""<p>Ai image cutout configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiCutoutConfig`
+        """
+        return self._AiCutoutConfig
+
+    @AiCutoutConfig.setter
+    def AiCutoutConfig(self, AiCutoutConfig):
+        self._AiCutoutConfig = AiCutoutConfig
+
+    @property
+    def AiExpansionConfig(self):
+        r"""<p>Ai Image Expansion Configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiExpansionConfig`
+        """
+        return self._AiExpansionConfig
+
+    @AiExpansionConfig.setter
+    def AiExpansionConfig(self, AiExpansionConfig):
+        self._AiExpansionConfig = AiExpansionConfig
+
+    @property
+    def AiStoryboardConfig(self):
+        r"""<p>Ai storyboard deconstruction configuration</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiStoryboardConfig`
+        """
+        return self._AiStoryboardConfig
+
+    @AiStoryboardConfig.setter
+    def AiStoryboardConfig(self, AiStoryboardConfig):
+        self._AiStoryboardConfig = AiStoryboardConfig
+
+    @property
+    def UnderstandImageConfig(self):
+        r"""<p>Image understanding configuration.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UnderstandImageConfig`
+        """
+        return self._UnderstandImageConfig
+
+    @UnderstandImageConfig.setter
+    def UnderstandImageConfig(self, UnderstandImageConfig):
+        self._UnderstandImageConfig = UnderstandImageConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -38230,6 +39352,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("AiPosterSuiteConfig") is not None:
             self._AiPosterSuiteConfig = AiPosterSuiteConfig()
             self._AiPosterSuiteConfig._deserialize(params.get("AiPosterSuiteConfig"))
+        if params.get("AiCutoutConfig") is not None:
+            self._AiCutoutConfig = AiCutoutConfig()
+            self._AiCutoutConfig._deserialize(params.get("AiCutoutConfig"))
+        if params.get("AiExpansionConfig") is not None:
+            self._AiExpansionConfig = AiExpansionConfig()
+            self._AiExpansionConfig._deserialize(params.get("AiExpansionConfig"))
+        if params.get("AiStoryboardConfig") is not None:
+            self._AiStoryboardConfig = AiStoryboardConfig()
+            self._AiStoryboardConfig._deserialize(params.get("AiStoryboardConfig"))
+        if params.get("UnderstandImageConfig") is not None:
+            self._UnderstandImageConfig = UnderstandImageConfig()
+            self._UnderstandImageConfig._deserialize(params.get("UnderstandImageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42570,10 +43704,9 @@ class LowLightEnhanceConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: The strength. Valid values:
+        :param _Type: Type. Valid values:
 <li>normal</li>
 Default value: normal.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
         self._Switch = None
@@ -42595,10 +43728,9 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""The strength. Valid values:
+        r"""Type. Valid values:
 <li>normal</li>
 Default value: normal.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -43557,14 +44689,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Codec: Audio stream codec, such as aac.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Codec: str
-        :param _Channel: Number of sound channels, e.g., 2
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _Channel: Number of audio channels, for example 2.
         :type Channel: int
+        :param _Codecs: Audio Codecs.
+        :type Codecs: str
+        :param _Loudness: Audio loudness.
+        :type Loudness: float
         """
         self._Bitrate = None
         self._SamplingRate = None
         self._Codec = None
         self._Channel = None
+        self._Codecs = None
+        self._Loudness = None
 
     @property
     def Bitrate(self):
@@ -43604,8 +44741,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Channel(self):
-        r"""Number of sound channels, e.g., 2
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Number of audio channels, for example 2.
         :rtype: int
         """
         return self._Channel
@@ -43614,12 +44750,36 @@ Note: this field may return `null`, indicating that no valid value was found.
     def Channel(self, Channel):
         self._Channel = Channel
 
+    @property
+    def Codecs(self):
+        r"""Audio Codecs.
+        :rtype: str
+        """
+        return self._Codecs
+
+    @Codecs.setter
+    def Codecs(self, Codecs):
+        self._Codecs = Codecs
+
+    @property
+    def Loudness(self):
+        r"""Audio loudness.
+        :rtype: float
+        """
+        return self._Loudness
+
+    @Loudness.setter
+    def Loudness(self, Loudness):
+        self._Loudness = Loudness
+
 
     def _deserialize(self, params):
         self._Bitrate = params.get("Bitrate")
         self._SamplingRate = params.get("SamplingRate")
         self._Codec = params.get("Codec")
         self._Channel = params.get("Channel")
+        self._Codecs = params.get("Codecs")
+        self._Loudness = params.get("Loudness")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44368,14 +45528,11 @@ class MediaInputInfo(AbstractModel):
         :type Type: str
         :param _CosInputInfo: The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
-        :param _UrlInputInfo: The URL of the object to process. This parameter is valid and required when `Type` is `URL`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _UrlInputInfo: Valid when Type is URL. This item is required and indicates the media processing URL object information.
         :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
-        :param _S3InputInfo: The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _S3InputInfo: Valid when Type is AWS-S3. This item is required and represents the AWS S3 object information for media processing.
         :type S3InputInfo: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
-        :param _VODInputInfo: The information of the VOD Pro object processed. This parameter is required if `Type` is `VOD`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _VODInputInfo: Valid at that time when Type is VOD. This item is required and represents the Media Processing Service (MPS) video-on-demand (VOD) pro edition object information.
         :type VODInputInfo: :class:`tencentcloud.mps.v20190612.models.VODInputInfo`
         """
         self._Type = None
@@ -44412,8 +45569,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UrlInputInfo(self):
-        r"""The URL of the object to process. This parameter is valid and required when `Type` is `URL`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Valid when Type is URL. This item is required and indicates the media processing URL object information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
         """
         return self._UrlInputInfo
@@ -44424,8 +45580,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def S3InputInfo(self):
-        r"""The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Valid when Type is AWS-S3. This item is required and represents the AWS S3 object information for media processing.
         :rtype: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
         """
         return self._S3InputInfo
@@ -44436,8 +45591,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VODInputInfo(self):
-        r"""The information of the VOD Pro object processed. This parameter is required if `Type` is `VOD`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Valid at that time when Type is VOD. This item is required and represents the Media Processing Service (MPS) video-on-demand (VOD) pro edition object information.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VODInputInfo`
         """
         return self._VODInputInfo
@@ -46341,25 +47495,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Fps: Frame rate in Hz.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Fps: int
-        :param _ColorPrimaries: Color primaries
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _ColorPrimaries: Colorspace.
         :type ColorPrimaries: str
-        :param _ColorSpace: Color space
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _ColorSpace: Colorspace.
         :type ColorSpace: str
-        :param _ColorTransfer: Color transfer
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _ColorTransfer: Colorspace.
         :type ColorTransfer: str
-        :param _HdrType: HDR type
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _HdrType: HDR type.
         :type HdrType: str
-        :param _Codecs: 
+        :param _Codecs: Video Codecs.
         :type Codecs: str
-        :param _FpsNumerator: Numerator of the frame rate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FpsNumerator: Numerator of the frame rate
         :type FpsNumerator: int
-        :param _FpsDenominator: Denominator of the frame rate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FpsDenominator: Denominator of the frame rate
         :type FpsDenominator: int
         """
         self._Bitrate = None
@@ -46437,8 +47585,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColorPrimaries(self):
-        r"""Color primaries
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Colorspace.
         :rtype: str
         """
         return self._ColorPrimaries
@@ -46449,8 +47596,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def ColorSpace(self):
-        r"""Color space
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Colorspace.
         :rtype: str
         """
         return self._ColorSpace
@@ -46461,8 +47607,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def ColorTransfer(self):
-        r"""Color transfer
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Colorspace.
         :rtype: str
         """
         return self._ColorTransfer
@@ -46473,8 +47618,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def HdrType(self):
-        r"""HDR type
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""HDR type.
         :rtype: str
         """
         return self._HdrType
@@ -46485,7 +47629,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Codecs(self):
-        r"""
+        r"""Video Codecs.
         :rtype: str
         """
         return self._Codecs
@@ -46496,8 +47640,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def FpsNumerator(self):
-        r"""Numerator of the frame rate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Numerator of the frame rate
         :rtype: int
         """
         return self._FpsNumerator
@@ -46508,8 +47651,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FpsDenominator(self):
-        r"""Denominator of the frame rate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Denominator of the frame rate
         :rtype: int
         """
         return self._FpsDenominator
@@ -47334,16 +48476,15 @@ class ModifyAsrHotwordsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _HotwordsId: Hotword lexicon ID. 
- 
-Either Name or Content should be specified if the hotword lexicon is a temporary hotword lexicon.
-Either Name, FileContent, or FileName should be specified if the hotword lexicon is a file-based hotword lexicon.
+Either Name or Content should be specified if the hotword lexicon is a temporary hotword lexicon. 
+Either Name, FileContent, or FileName should be specified if the hotword vocabulary is a file-based hotword lexicon. 
 
         :type HotwordsId: str
         :param _Name: Hotword lexicon name.
         :type Name: str
         :param _Content: Hotword lexicon text.
         :type Content: str
-        :param _FileContent: Base64-encoded content of the hotword file. This field is required if Type is set to 1.
+        :param _FileContent: base64 content of the hot word library file, Type 1 required
 
 
 
@@ -47360,9 +48501,8 @@ Either Name, FileContent, or FileName should be specified if the hotword lexicon
     @property
     def HotwordsId(self):
         r"""Hotword lexicon ID. 
- 
-Either Name or Content should be specified if the hotword lexicon is a temporary hotword lexicon.
-Either Name, FileContent, or FileName should be specified if the hotword lexicon is a file-based hotword lexicon.
+Either Name or Content should be specified if the hotword lexicon is a temporary hotword lexicon. 
+Either Name, FileContent, or FileName should be specified if the hotword vocabulary is a file-based hotword lexicon. 
 
         :rtype: str
         """
@@ -47396,7 +48536,7 @@ Either Name, FileContent, or FileName should be specified if the hotword lexicon
 
     @property
     def FileContent(self):
-        r"""Base64-encoded content of the hotword file. This field is required if Type is set to 1.
+        r"""base64 content of the hot word library file, Type 1 required
 
 
 
@@ -48035,13 +49175,13 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Specifies the recording template unique identifier.
+        :param _Definition: Unique identifier of the recording template.
         :type Definition: int
         :param _HLSConfigure: HLS configuration parameter. Either this parameter or MP4Configure should be specified.
         :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
         :param _MP4Configure: MP4 configuration parameter. Either this parameter or HLSConfigure should be specified.
         :type MP4Configure: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
-        :param _Name: Recording template name. Length limit: 64 characters.
+        :param _Name: Recording template name. The length cannot exceed 64 characters.
         :type Name: str
         :param _Comment: Template description, with a length limit of 256 characters.
         :type Comment: str
@@ -48057,7 +49197,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""Specifies the recording template unique identifier.
+        r"""Unique identifier of the recording template.
         :rtype: int
         """
         return self._Definition
@@ -48090,7 +49230,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Recording template name. Length limit: 64 characters.
+        r"""Recording template name. The length cannot exceed 64 characters.
         :rtype: str
         """
         return self._Name
@@ -50846,8 +51986,7 @@ class OverrideTranscodeParameter(AbstractModel):
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
         :param _AudioTemplate: Audio stream configuration parameter.
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
-        :param _TEHDConfig: The TSC transcoding parameters.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TEHDConfig: Top Speed Codec transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         :param _SubtitleTemplate: Subtitle stream configuration parameter.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
@@ -50930,8 +52069,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TEHDConfig(self):
-        r"""The TSC transcoding parameters.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Top Speed Codec transcoding parameter.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         """
         return self._TEHDConfig
@@ -51561,6 +52699,102 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask()
             self._ExtractBlindWatermarkTask._deserialize(params.get("ExtractBlindWatermarkTask"))
         self._RequestId = params.get("RequestId")
+
+
+class PatternConfig(AbstractModel):
+    r"""Stamp extraction configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransparencyThreshold: <p>Transparency threshold</p><p>Value ranges from 0 to 255.</p><p>Default value: 30</p>
+        :type TransparencyThreshold: int
+        :param _OpaqueThreshold: <p>Opaque threshold must be greater than TransparencyThreshold.</p><p>Value ranges from 0 to 255.</p><p>Default value: 127.</p>
+        :type OpaqueThreshold: int
+        :param _EdgeSamplingStep: <p>Edge sampling steps, default 5.</p><p>Value ranges from 1 to 10.</p>
+        :type EdgeSamplingStep: int
+        :param _EdgeExpansionStep: <p>Edge expansion steps. Default: 5</p>
+        :type EdgeExpansionStep: int
+        :param _EdgeBlendingIntensity: <p>Edge fusion strength, default 0.5</p><p>Value ranges from 0 to 1.0</p>
+        :type EdgeBlendingIntensity: float
+        """
+        self._TransparencyThreshold = None
+        self._OpaqueThreshold = None
+        self._EdgeSamplingStep = None
+        self._EdgeExpansionStep = None
+        self._EdgeBlendingIntensity = None
+
+    @property
+    def TransparencyThreshold(self):
+        r"""<p>Transparency threshold</p><p>Value ranges from 0 to 255.</p><p>Default value: 30</p>
+        :rtype: int
+        """
+        return self._TransparencyThreshold
+
+    @TransparencyThreshold.setter
+    def TransparencyThreshold(self, TransparencyThreshold):
+        self._TransparencyThreshold = TransparencyThreshold
+
+    @property
+    def OpaqueThreshold(self):
+        r"""<p>Opaque threshold must be greater than TransparencyThreshold.</p><p>Value ranges from 0 to 255.</p><p>Default value: 127.</p>
+        :rtype: int
+        """
+        return self._OpaqueThreshold
+
+    @OpaqueThreshold.setter
+    def OpaqueThreshold(self, OpaqueThreshold):
+        self._OpaqueThreshold = OpaqueThreshold
+
+    @property
+    def EdgeSamplingStep(self):
+        r"""<p>Edge sampling steps, default 5.</p><p>Value ranges from 1 to 10.</p>
+        :rtype: int
+        """
+        return self._EdgeSamplingStep
+
+    @EdgeSamplingStep.setter
+    def EdgeSamplingStep(self, EdgeSamplingStep):
+        self._EdgeSamplingStep = EdgeSamplingStep
+
+    @property
+    def EdgeExpansionStep(self):
+        r"""<p>Edge expansion steps. Default: 5</p>
+        :rtype: int
+        """
+        return self._EdgeExpansionStep
+
+    @EdgeExpansionStep.setter
+    def EdgeExpansionStep(self, EdgeExpansionStep):
+        self._EdgeExpansionStep = EdgeExpansionStep
+
+    @property
+    def EdgeBlendingIntensity(self):
+        r"""<p>Edge fusion strength, default 0.5</p><p>Value ranges from 0 to 1.0</p>
+        :rtype: float
+        """
+        return self._EdgeBlendingIntensity
+
+    @EdgeBlendingIntensity.setter
+    def EdgeBlendingIntensity(self, EdgeBlendingIntensity):
+        self._EdgeBlendingIntensity = EdgeBlendingIntensity
+
+
+    def _deserialize(self, params):
+        self._TransparencyThreshold = params.get("TransparencyThreshold")
+        self._OpaqueThreshold = params.get("OpaqueThreshold")
+        self._EdgeSamplingStep = params.get("EdgeSamplingStep")
+        self._EdgeExpansionStep = params.get("EdgeExpansionStep")
+        self._EdgeBlendingIntensity = params.get("EdgeBlendingIntensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PoliticalAsrReviewTemplateInfo(AbstractModel):
@@ -55488,6 +56722,102 @@ class QueryProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QueryTaskFilter(AbstractModel):
+    r"""Query the list filter criteria for AIGC tasks
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _TaskType: <p>Task type</p>
+        :type TaskType: str
+        :param _TaskStatus: <p>Task status.</p>
+        :type TaskStatus: str
+        :param _Resolution: <p>Resolution</p>
+        :type Resolution: str
+        :param _Ratio: <p>Aspect ratio.</p>
+        :type Ratio: str
+        """
+        self._TaskId = None
+        self._TaskType = None
+        self._TaskStatus = None
+        self._Resolution = None
+        self._Ratio = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""<p>Task type</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskStatus(self):
+        r"""<p>Task status.</p>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def Resolution(self):
+        r"""<p>Resolution</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Ratio(self):
+        r"""<p>Aspect ratio.</p>
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._TaskStatus = params.get("TaskStatus")
+        self._Resolution = params.get("Resolution")
+        self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RawImageWatermarkInput(AbstractModel):
     r"""Input parameter of image watermark template
 
@@ -55969,11 +57299,9 @@ Default value: 0.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         :param _StdExtInfo: Additional parameter, which is a serialized JSON string.
         :type StdExtInfo: str
-        :param _EnhanceConfig: Audio/Video enhancement configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _EnhanceConfig: Audio/Video enhancement configuration
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
-        :param _SubtitleTemplate: Subtitle parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SubtitleTemplate: Subtitle parameter
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         self._Container = None
@@ -56071,8 +57399,7 @@ Default value: 0.
 
     @property
     def EnhanceConfig(self):
-        r"""Audio/Video enhancement configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Audio/Video enhancement configuration
         :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         return self._EnhanceConfig
@@ -56083,8 +57410,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubtitleTemplate(self):
-        r"""Subtitle parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subtitle parameter
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         return self._SubtitleTemplate
@@ -56572,26 +57898,26 @@ class ResetWorkflowRequest(AbstractModel):
         r"""
         :param _WorkflowId: Workflow ID.
         :type WorkflowId: int
-        :param _WorkflowName: Workflow name of up to 128 characters, which must be unique for the same user.
+        :param _WorkflowName: Workflow name, up to 128 characters. The name is unique for the same user.
         :type WorkflowName: str
-        :param _Trigger: Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        :param _Trigger: The trigger rule bound to the workflow triggers the workflow when an uploaded video hits the rule for the object.
         :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
-        :param _OutputStorage: Output configuration of a video processing output file. If this parameter is left empty, the storage location in `Trigger` will be inherited.
+        :param _OutputStorage: Video processing output configuration. If left blank, it inherits the storage location from Trigger.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputDir: The target directory for the output files generated by video processing. It must start and end with a slash (/), such as `/movie/201907/`.
 If left empty, it is the same as the directory of the trigger file, that is, `{inputDir}`.
         :type OutputDir: str
-        :param _MediaProcessTask: Parameter of a video processing task.
+        :param _MediaProcessTask: Parameters for the video processing task.
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
-        :param _AiContentReviewTask: Type parameter of a video content audit task.
+        :param _AiContentReviewTask: Parameters for the video content review task.
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
-        :param _AiAnalysisTask: Video content analysis task parameter.
+        :param _AiAnalysisTask: Parameters for the video content analysis task.
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTask: Type parameter of a video content recognition task.
+        :param _AiRecognitionTask: Parameters for the video content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param _TaskPriority: Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :param _TaskPriority: Priority of the workflow. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.
         :type TaskPriority: int
-        :param _TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
+        :param _TaskNotifyConfig: Event notification information of the task. If it is left unspecified, it indicates that no event notification is obtained.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         """
         self._WorkflowId = None
@@ -56619,7 +57945,7 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def WorkflowName(self):
-        r"""Workflow name of up to 128 characters, which must be unique for the same user.
+        r"""Workflow name, up to 128 characters. The name is unique for the same user.
         :rtype: str
         """
         return self._WorkflowName
@@ -56630,7 +57956,7 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def Trigger(self):
-        r"""Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        r"""The trigger rule bound to the workflow triggers the workflow when an uploaded video hits the rule for the object.
         :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
         """
         return self._Trigger
@@ -56641,7 +57967,7 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def OutputStorage(self):
-        r"""Output configuration of a video processing output file. If this parameter is left empty, the storage location in `Trigger` will be inherited.
+        r"""Video processing output configuration. If left blank, it inherits the storage location from Trigger.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -56664,7 +57990,7 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def MediaProcessTask(self):
-        r"""Parameter of a video processing task.
+        r"""Parameters for the video processing task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         """
         return self._MediaProcessTask
@@ -56675,7 +58001,7 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def AiContentReviewTask(self):
-        r"""Type parameter of a video content audit task.
+        r"""Parameters for the video content review task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
         """
         return self._AiContentReviewTask
@@ -56686,7 +58012,7 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def AiAnalysisTask(self):
-        r"""Video content analysis task parameter.
+        r"""Parameters for the video content analysis task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         """
         return self._AiAnalysisTask
@@ -56697,7 +58023,7 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def AiRecognitionTask(self):
-        r"""Type parameter of a video content recognition task.
+        r"""Parameters for the video content recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
@@ -56708,7 +58034,7 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def TaskPriority(self):
-        r"""Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        r"""Priority of the workflow. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.
         :rtype: int
         """
         return self._TaskPriority
@@ -56719,7 +58045,7 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def TaskNotifyConfig(self):
-        r"""Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
+        r"""Event notification information of the task. If it is left unspecified, it indicates that no event notification is obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -56949,15 +58275,18 @@ class S3InputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _S3Bucket: The AWS S3 bucket.
+        :param _S3Bucket: S3 bucket.
         :type S3Bucket: str
-        :param _S3Region: The region of the AWS S3 bucket.
+        :param _S3Region: Region of the S3 bucket. Currently supports:  
+us-east-1  
+eu-west-3
+
         :type S3Region: str
-        :param _S3Object: The path of the AWS S3 object.
+        :param _S3Object: Resource path of the media in the S3 bucket.
         :type S3Object: str
-        :param _S3SecretId: The key ID required to access the AWS S3 object.
+        :param _S3SecretId: AWS private network access media resource secret key id.
         :type S3SecretId: str
-        :param _S3SecretKey: The key required to access the AWS S3 object.
+        :param _S3SecretKey: AWS private network access media content key.
         :type S3SecretKey: str
         """
         self._S3Bucket = None
@@ -56968,7 +58297,7 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3Bucket(self):
-        r"""The AWS S3 bucket.
+        r"""S3 bucket.
         :rtype: str
         """
         return self._S3Bucket
@@ -56979,7 +58308,10 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3Region(self):
-        r"""The region of the AWS S3 bucket.
+        r"""Region of the S3 bucket. Currently supports:  
+us-east-1  
+eu-west-3
+
         :rtype: str
         """
         return self._S3Region
@@ -56990,7 +58322,7 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3Object(self):
-        r"""The path of the AWS S3 object.
+        r"""Resource path of the media in the S3 bucket.
         :rtype: str
         """
         return self._S3Object
@@ -57001,7 +58333,7 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3SecretId(self):
-        r"""The key ID required to access the AWS S3 object.
+        r"""AWS private network access media resource secret key id.
         :rtype: str
         """
         return self._S3SecretId
@@ -57012,7 +58344,7 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3SecretKey(self):
-        r"""The key required to access the AWS S3 object.
+        r"""AWS private network access media content key.
         :rtype: str
         """
         return self._S3SecretKey
@@ -57045,13 +58377,13 @@ class S3OutputStorage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _S3Bucket: The AWS S3 bucket.
+        :param _S3Bucket: S3 bucket.
         :type S3Bucket: str
-        :param _S3Region: The region of the AWS S3 bucket.
+        :param _S3Region: Region of the S3 bucket.
         :type S3Region: str
-        :param _S3SecretId: The key ID required to upload files to the AWS S3 object.
+        :param _S3SecretId: Secret key id for uploading media content to the AWS private network.
         :type S3SecretId: str
-        :param _S3SecretKey: The key required to upload files to the AWS S3 object.
+        :param _S3SecretKey: Upload the secret key for media content on the AWS private network.
         :type S3SecretKey: str
         """
         self._S3Bucket = None
@@ -57061,7 +58393,7 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3Bucket(self):
-        r"""The AWS S3 bucket.
+        r"""S3 bucket.
         :rtype: str
         """
         return self._S3Bucket
@@ -57072,7 +58404,7 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3Region(self):
-        r"""The region of the AWS S3 bucket.
+        r"""Region of the S3 bucket.
         :rtype: str
         """
         return self._S3Region
@@ -57083,7 +58415,7 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3SecretId(self):
-        r"""The key ID required to upload files to the AWS S3 object.
+        r"""Secret key id for uploading media content to the AWS private network.
         :rtype: str
         """
         return self._S3SecretId
@@ -57094,7 +58426,7 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3SecretKey(self):
-        r"""The key required to upload files to the AWS S3 object.
+        r"""Upload the secret key for media content on the AWS private network.
         :rtype: str
         """
         return self._S3SecretKey
@@ -57131,12 +58463,10 @@ class SampleSnapshotTaskInput(AbstractModel):
         :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
         :param _OutputStorage: <p>Target storage for the file after the sampled screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path of the image file after the sampled screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_sampleSnapshot_{definition}_{number}.{format}</code>.
         :type OutputObjectPath: str
-        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after the sampled screenshot is taken.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after sampling screenshot taking.</p>
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         :param _ExtInfo: <p>Extended parameter.</p>
         :type ExtInfo: str
@@ -57173,7 +58503,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def OutputStorage(self):
         r"""<p>Target storage for the file after the sampled screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -57195,8 +58524,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectNumberFormat(self):
-        r"""<p>Rule of the <code>{number}</code> variable in the output path after the sampled screenshot is taken.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Rule of the <code>{number}</code> variable in the output path after sampling screenshot taking.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         return self._ObjectNumberFormat
@@ -58694,9 +60022,8 @@ class ScratchRepairConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Intensity: The strength. Value range: 0.0-1.0
-Default value: 0.0
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Intensity: Intensity, value ranges from 0.0 to 1.0.
+Default value: 0.0.
         :type Intensity: float
         """
         self._Switch = None
@@ -58718,9 +60045,8 @@ Default value: ON.
 
     @property
     def Intensity(self):
-        r"""The strength. Value range: 0.0-1.0
-Default value: 0.0
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Intensity, value ranges from 0.0 to 1.0.
+Default value: 0.0.
         :rtype: float
         """
         return self._Intensity
@@ -59052,16 +60378,13 @@ class SegmentSpecificInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Switch: Switch for segment duration at startup. Optional values:
-on: Turn on the switch
+on: Turn on
 off: Turn off the switch
 Default value: off
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Switch: str
         :param _FragmentTime: Segment duration at startup. Unit: second
-Note: This field may return null, indicating that no valid value can be obtained.
         :type FragmentTime: int
         :param _FragmentEndNum: Number of effective segments, indicating the first FragmentEndNum segments with FragmentTime. Value range: >=1
-Note: This field may return null, indicating that no valid value can be obtained.
         :type FragmentEndNum: int
         """
         self._Switch = None
@@ -59071,10 +60394,9 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Switch(self):
         r"""Switch for segment duration at startup. Optional values:
-on: Turn on the switch
+on: Turn on
 off: Turn off the switch
 Default value: off
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Switch
@@ -59086,7 +60408,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def FragmentTime(self):
         r"""Segment duration at startup. Unit: second
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._FragmentTime
@@ -59098,7 +60419,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def FragmentEndNum(self):
         r"""Number of effective segments, indicating the first FragmentEndNum segments with FragmentTime. Value range: >=1
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._FragmentEndNum
@@ -59205,9 +60525,8 @@ class SharpEnhanceConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Intensity: The strength. Value range: 0.0-1.0
-Default value: 0.0
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Intensity: Strength, value ranges from 0.0 to 1.0.
+Default: 0.0.
         :type Intensity: float
         """
         self._Switch = None
@@ -59229,9 +60548,8 @@ Default value: ON.
 
     @property
     def Intensity(self):
-        r"""The strength. Value range: 0.0-1.0
-Default value: 0.0
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Strength, value ranges from 0.0 to 1.0.
+Default: 0.0.
         :rtype: float
         """
         return self._Intensity
@@ -59261,14 +60579,11 @@ class SimpleAesDrm(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uri: The URI of decryption key.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Uri: Request decryption key uri address.
         :type Uri: str
         :param _Key: Encryption key (32-byte hexadecimal string).
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Key: str
-        :param _Vector: Initialization vector for encryption (32-byte hexadecimal string).
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Vector: Encryption initialization vector (32-byte hexadecimal string).
         :type Vector: str
         """
         self._Uri = None
@@ -59277,8 +60592,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Uri(self):
-        r"""The URI of decryption key.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Request decryption key uri address.
         :rtype: str
         """
         return self._Uri
@@ -59290,7 +60604,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Key(self):
         r"""Encryption key (32-byte hexadecimal string).
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Key
@@ -59301,8 +60614,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Vector(self):
-        r"""Initialization vector for encryption (32-byte hexadecimal string).
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Encryption initialization vector (32-byte hexadecimal string).
         :rtype: str
         """
         return self._Vector
@@ -62079,13 +63391,11 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
         :type TimeOffsetSet: list of float
         :param _WatermarkSet: <p>Watermark list. Up to 10 image or text watermarks are supported.</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _OutputStorage: <p>Target storage for the file after the time point screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OutputStorage: <p>Target storage for the file after time point screenshot taking. If not specified, it inherits the upper-level OutputStorage value.</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: <p>Output path of the image file after the time point screenshot is taken, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href="https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1">File Name Variable Description</a>.<br>Relative path example:</p><li>File name_{variable name}.{format}</li><li>File name.{format}</li>Absolute path example:<li>/custom path/file name_{variable name}.{format}</li>If this is not specified, the default relative path is <code>{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}</code>.
         :type OutputObjectPath: str
-        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after the time point screenshot is taken.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ObjectNumberFormat: <p>Rule of the <code>{number}</code> variable in the output path after time point screenshot taking.</p>
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         :param _ExtInfo: <p>Extended parameter.</p>
         :type ExtInfo: str
@@ -62145,8 +63455,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""<p>Target storage for the file after the time point screenshot is taken. If this is not specified, it inherits the value from the upper-level OutputStorage.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Target storage for the file after time point screenshot taking. If not specified, it inherits the upper-level OutputStorage value.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -62168,8 +63477,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectNumberFormat(self):
-        r"""<p>Rule of the <code>{number}</code> variable in the output path after the time point screenshot is taken.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Rule of the <code>{number}</code> variable in the output path after time point screenshot taking.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         return self._ObjectNumberFormat
@@ -63927,25 +65235,22 @@ class SubtitleTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: The URL of the subtitles to add to the video.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Path: Subtitle file URL to be suppressed in the video.
         :type Path: str
-        :param _StreamIndex: Specifies the subtitle track for embedding subtitles into the video. the Streamindex parameter takes value starting from 0, where 0 indicates usage of the first subtitle track in the source video. if Path is specified, use Path preferentially. either Path or Streamindex should be specified.
+        :param _StreamIndex: Specifies the subtitle track for embedding subtitles into the video. The Streamindex value starts from 0, where 0 indicates usage of the first subtitle track in the source video. If Path is specified, use Path preferentially. Specify at least one of Path or Streamindex.
 
--Note: StreamIndex must match the subtitle track index in the source file. for example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. otherwise, task processing failed.
+-Note: StreamIndex must be consistent with the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing may fail.
 
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :type StreamIndex: int
-        :param _SubtitleFileInput: Input information on the subtitle file to be embedded into the video. Currently, only subtitle files stored in COS are supported.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SubtitleFileInput: Input information on the subtitle file to be embedded in the video. Currently, only subtitle files stored in COS are supported.
         :type SubtitleFileInput: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _FontFileInput: Input information of the font file of the burned-in subtitle. URL and COS are supported. If both are specified, the URL information is used. If FontFileInput is specified, FontFileInput takes precedence over FontType.
 
         :type FontFileInput: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _FontType: Font type. Valid values:
 <li>hei.ttf: SimHei</li>
-<li>song.ttf: SimSun.</li>
+<li>song.ttf: Song Typeface.</li>
 <li>kai.ttf (recommend) or simkai.ttf: KaiTi.</li>
 <li>msyh.ttf: Microsoft YaHei.</li>
 <li>msyhbd.ttf: Microsoft YaHei Bold.</li>
@@ -63981,71 +65286,61 @@ Default value: hei.ttf.
 <li>kai.ttf is recommended for SimKai.</li>
 <li>FontFileInput takes precedence when specified.</li>
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FontType: str
-        :param _FontSize: Font size. If not specified, the font size of the subtitle file applies. Pixel and percentage formats are supported:
+        :param _FontSize: Font size. If not specified, the font size of the subtitle file applies. Pixel and percentage formats are supported.
 
-- Pixel: Npx. Value range of N: (0,4096].
+-.
 - Percentage: N%. Value range of N: (0,100]. For example, 10% means the subtitle font size is 10% of the source video height.
 
 The default size is 5% of the source video height if this parameter is not specified or the font size is not configured in the subtitle file.
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FontSize: str
         :param _FontColor: Font color. Format: 0xRRGGBB. Default value: 0xFFFFFF (white).
-Note: This field may return null, indicating that no valid value can be obtained.
         :type FontColor: str
-        :param _FontAlpha: The text transparency. Value range: 0-1.
-<li>`0`: Fully transparent.</li>
-<li>`1`: Fully opaque.</li>
+        :param _FontAlpha: Text opacity, value ranges from 0 to 1.
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
 Default value: 1.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FontAlpha: float
-        :param _YPos: Subtitle position on the Y-axis. If this parameter is specified, the built-in coordinates in the subtitle file will be ignored. The pixel and percentage formats are supported.
+        :param _YPos: Subtitle y-axis coordinate position. Specify this parameter to ignore the built-in coordinates of the subtitle file. Support pixel and percentage format.
 
- - Pixel: Npx. Value range of N: [0,4096].
- - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle position on the Y-axis is 10% of the video height.
+-.
+-Percentage: N%, N range: [0,100]; for example, 10% means subtitle y-coordinate = 10% * source video height.
 
 By default, the position is 4% of the source video height.
-Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, as shown in the figure below.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, see the following diagram.
 ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :type YPos: str
-        :param _BoardY: Subtitle background position on the Y-axis. Pixel and percentage formats are supported.
+        :param _BoardY: y-axis coordinate position of the subtitle background base plate; Support pixel and percentage format:
 
- - Pixel: Npx. Value range of N: [0,4096].
- - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle background position on the Y-axis is 10% of the video height.
+-.
+-Percentage: N%, N range: [0,100]; for example, 10% means the y-coordinate of the subtitle background base plate = 10% * video height.
 
 If this parameter is not specified, the subtitle background is disabled.
-Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference position of the subtitle background is at the bottom of the central axis of the source video, as shown in the figure below.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference point of the subtitle background base plate is at the bottom of its central axis. Refer to the figure below.
 ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :type BoardY: str
         :param _BoardWidth: Background width. The value should be a positive integer.
 - Value range for pixels: [0,4096].
 - Value range for percentages: [0, 100].
 If background is enabled and this parameter is not specified, the default width is 90% of the source video width.
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :type BoardWidth: int
         :param _BoardHeight: Background height. The value should be a positive integer.
 - Value range for pixels: [0,4096].
 - Value range for percentages: [0, 100].
 If background is enabled and this parameter is not specified, the default height is 15% of the source video height.
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :type BoardHeight: int
         :param _BoardColor: Board color. Format: 0xRRGGBB.
 Default value: 0x000000 (black).
-Note: This field may return null, indicating that no valid value can be obtained.
         :type BoardColor: str
         :param _BoardAlpha: Subtitle background transparency. Value range: [0, 1].
 <li>0: completely transparent.</li>
 <li>1: completely opaque.</li>
 Default value: 0.8.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type BoardAlpha: float
         :param _OutlineWidth: Stroke width. The value should be a floating-point number.
 - Value range for pixels: [0, 1000].
@@ -64125,8 +65420,7 @@ If this is not specified, no shadow is applied by default.
 
     @property
     def Path(self):
-        r"""The URL of the subtitles to add to the video.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Subtitle file URL to be suppressed in the video.
         :rtype: str
         """
         return self._Path
@@ -64137,12 +65431,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamIndex(self):
-        r"""Specifies the subtitle track for embedding subtitles into the video. the Streamindex parameter takes value starting from 0, where 0 indicates usage of the first subtitle track in the source video. if Path is specified, use Path preferentially. either Path or Streamindex should be specified.
+        r"""Specifies the subtitle track for embedding subtitles into the video. The Streamindex value starts from 0, where 0 indicates usage of the first subtitle track in the source video. If Path is specified, use Path preferentially. Specify at least one of Path or Streamindex.
 
--Note: StreamIndex must match the subtitle track index in the source file. for example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. otherwise, task processing failed.
+-Note: StreamIndex must be consistent with the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing may fail.
 
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._StreamIndex
@@ -64153,8 +65446,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubtitleFileInput(self):
-        r"""Input information on the subtitle file to be embedded into the video. Currently, only subtitle files stored in COS are supported.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Input information on the subtitle file to be embedded in the video. Currently, only subtitle files stored in COS are supported.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._SubtitleFileInput
@@ -64179,7 +65471,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def FontType(self):
         r"""Font type. Valid values:
 <li>hei.ttf: SimHei</li>
-<li>song.ttf: SimSun.</li>
+<li>song.ttf: Song Typeface.</li>
 <li>kai.ttf (recommend) or simkai.ttf: KaiTi.</li>
 <li>msyh.ttf: Microsoft YaHei.</li>
 <li>msyhbd.ttf: Microsoft YaHei Bold.</li>
@@ -64215,7 +65507,6 @@ Default value: hei.ttf.
 <li>kai.ttf is recommended for SimKai.</li>
 <li>FontFileInput takes precedence when specified.</li>
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FontType
@@ -64226,14 +65517,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FontSize(self):
-        r"""Font size. If not specified, the font size of the subtitle file applies. Pixel and percentage formats are supported:
+        r"""Font size. If not specified, the font size of the subtitle file applies. Pixel and percentage formats are supported.
 
-- Pixel: Npx. Value range of N: (0,4096].
+-.
 - Percentage: N%. Value range of N: (0,100]. For example, 10% means the subtitle font size is 10% of the source video height.
 
 The default size is 5% of the source video height if this parameter is not specified or the font size is not configured in the subtitle file.
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FontSize
@@ -64245,7 +65535,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def FontColor(self):
         r"""Font color. Format: 0xRRGGBB. Default value: 0xFFFFFF (white).
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._FontColor
@@ -64256,11 +65545,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FontAlpha(self):
-        r"""The text transparency. Value range: 0-1.
-<li>`0`: Fully transparent.</li>
-<li>`1`: Fully opaque.</li>
+        r"""Text opacity, value ranges from 0 to 1.
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
 Default value: 1.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
         return self._FontAlpha
@@ -64271,16 +65559,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def YPos(self):
-        r"""Subtitle position on the Y-axis. If this parameter is specified, the built-in coordinates in the subtitle file will be ignored. The pixel and percentage formats are supported.
+        r"""Subtitle y-axis coordinate position. Specify this parameter to ignore the built-in coordinates of the subtitle file. Support pixel and percentage format.
 
- - Pixel: Npx. Value range of N: [0,4096].
- - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle position on the Y-axis is 10% of the video height.
+-.
+-Percentage: N%, N range: [0,100]; for example, 10% means subtitle y-coordinate = 10% * source video height.
 
 By default, the position is 4% of the source video height.
-Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, as shown in the figure below.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, see the following diagram.
 ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._YPos
@@ -64291,16 +65578,15 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BoardY(self):
-        r"""Subtitle background position on the Y-axis. Pixel and percentage formats are supported.
+        r"""y-axis coordinate position of the subtitle background base plate; Support pixel and percentage format:
 
- - Pixel: Npx. Value range of N: [0,4096].
- - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle background position on the Y-axis is 10% of the video height.
+-.
+-Percentage: N%, N range: [0,100]; for example, 10% means the y-coordinate of the subtitle background base plate = 10% * video height.
 
 If this parameter is not specified, the subtitle background is disabled.
-Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference position of the subtitle background is at the bottom of the central axis of the source video, as shown in the figure below.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference point of the subtitle background base plate is at the bottom of its central axis. Refer to the figure below.
 ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._BoardY
@@ -64316,7 +65602,6 @@ Note: This field may return null, indicating that no valid value can be obtained
 - Value range for percentages: [0, 100].
 If background is enabled and this parameter is not specified, the default width is 90% of the source video width.
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._BoardWidth
@@ -64332,7 +65617,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
 - Value range for percentages: [0, 100].
 If background is enabled and this parameter is not specified, the default height is 15% of the source video height.
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._BoardHeight
@@ -64345,7 +65629,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def BoardColor(self):
         r"""Board color. Format: 0xRRGGBB.
 Default value: 0x000000 (black).
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._BoardColor
@@ -64360,7 +65643,6 @@ Note: This field may return null, indicating that no valid value can be obtained
 <li>0: completely transparent.</li>
 <li>1: completely opaque.</li>
 Default value: 0.8.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: float
         """
         return self._BoardAlpha
@@ -64699,16 +65981,14 @@ class SuperResolutionConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: The strength. Valid values:
-<li>lq: For low-resolution videos with obvious noise</li>
-<li>hq: For high-resolution videos</li>
+        :param _Type: Type, available values:
+<li>lq: Super-resolution for low-resolution videos with considerable noise;</li>
+<li>hq: Targeting high-resolution video super-resolution.</li>
 Default value: lq.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
-        :param _Size: The ratio of the target resolution to the original resolution. Valid values:
-<li>2</li>
+        :param _Size: Super-resolution multiple, optional value:
+<li>2: Currently only support 2x super resolution.</li>
 Default value: 2.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Size: int
         """
         self._Switch = None
@@ -64731,11 +66011,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""The strength. Valid values:
-<li>lq: For low-resolution videos with obvious noise</li>
-<li>hq: For high-resolution videos</li>
+        r"""Type, available values:
+<li>lq: Super-resolution for low-resolution videos with considerable noise;</li>
+<li>hq: Targeting high-resolution video super-resolution.</li>
 Default value: lq.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -64746,10 +66025,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Size(self):
-        r"""The ratio of the target resolution to the original resolution. Valid values:
-<li>2</li>
+        r"""Super-resolution multiple, optional value:
+<li>2: Currently only support 2x super resolution.</li>
 Default value: 2.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Size
@@ -65362,14 +66640,12 @@ class TEHDConfigForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: The TSC type. Valid values:
-<li>`TEHD-100`: TSC-100 (video TSC). </li>
-<li>`TEHD-200`: TSC-200 (audio TSC). </li>
-If this parameter is left blank, no modification will be made.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: Top Speed Codec type. Available values:
+<li>TEHD-100: Top Speed Codec-100 (video top speed codec).</li>
+<li>TEHD-200: Top Speed Codec-200 (TSC audio).</li>
+Leave it blank to keep it unchanged.
         :type Type: str
-        :param _MaxVideoBitrate: The maximum video bitrate. If this parameter is not specified, no modifications will be made.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MaxVideoBitrate: Upper limit of video bitrate. Leave blank to keep unchanged.
         :type MaxVideoBitrate: int
         """
         self._Type = None
@@ -65377,11 +66653,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        r"""The TSC type. Valid values:
-<li>`TEHD-100`: TSC-100 (video TSC). </li>
-<li>`TEHD-200`: TSC-200 (audio TSC). </li>
-If this parameter is left blank, no modification will be made.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Top Speed Codec type. Available values:
+<li>TEHD-100: Top Speed Codec-100 (video top speed codec).</li>
+<li>TEHD-200: Top Speed Codec-200 (TSC audio).</li>
+Leave it blank to keep it unchanged.
         :rtype: str
         """
         return self._Type
@@ -65392,8 +66667,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxVideoBitrate(self):
-        r"""The maximum video bitrate. If this parameter is not specified, no modifications will be made.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Upper limit of video bitrate. Leave blank to keep unchanged.
         :rtype: int
         """
         return self._MaxVideoBitrate
@@ -65518,7 +66792,6 @@ class TaskNotifyConfig(AbstractModel):
         :param _QueueName: <p>This field takes effect if the model is Queue. It indicates the queue name of the CMQ or TDMQ for CMQ for receiving event notifications.</p>
         :type QueueName: str
         :param _AwsSQS: <p>AWS SQS callback. This is required if NotifyType is AWS-SQS.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         :param _NotifyKey: <p>Key used to generate the callback signature.</p>
         :type NotifyKey: str
@@ -65613,7 +66886,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def AwsSQS(self):
         r"""<p>AWS SQS callback. This is required if NotifyType is AWS-SQS.</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         """
         return self._AwsSQS
@@ -65668,14 +66940,11 @@ class TaskOutputStorage(AbstractModel):
 <Li>AWS-S3: aws storage, suitable for aws tasks only and requires the same region.</li>.
 <Li>VOD: video-on-demand (vod) pro edition</li>.
         :type Type: str
-        :param _CosOutputStorage: The location to save the output object in COS. This parameter is valid and required when `Type` is COS.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CosOutputStorage: Valid when Type is COS. This item is required and indicates the Media Processing Service COS output location.
         :type CosOutputStorage: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
-        :param _S3OutputStorage: The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _S3OutputStorage: Valid when Type is AWS-S3. This item is required and indicates the AWS S3 output location for media processing.
         :type S3OutputStorage: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
-        :param _VODOutputStorage: The VOD Pro application and bucket to save the output file. This parameter is required if `Type` is `VOD`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _VODOutputStorage: Valid at that time when Type is VOD. This item is required and represents the Media Processing Service (MPS) video-on-demand (VOD) pro edition output location.
         :type VODOutputStorage: :class:`tencentcloud.mps.v20190612.models.VODOutputStorage`
         """
         self._Type = None
@@ -65699,8 +66968,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CosOutputStorage(self):
-        r"""The location to save the output object in COS. This parameter is valid and required when `Type` is COS.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Valid when Type is COS. This item is required and indicates the Media Processing Service COS output location.
         :rtype: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
         """
         return self._CosOutputStorage
@@ -65711,8 +66979,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def S3OutputStorage(self):
-        r"""The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Valid when Type is AWS-S3. This item is required and indicates the AWS S3 output location for media processing.
         :rtype: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
         """
         return self._S3OutputStorage
@@ -65723,8 +66990,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VODOutputStorage(self):
-        r"""The VOD Pro application and bucket to save the output file. This parameter is required if `Type` is `VOD`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Valid at that time when Type is VOD. This item is required and represents the Media Processing Service (MPS) video-on-demand (VOD) pro edition output location.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VODOutputStorage`
         """
         return self._VODOutputStorage
@@ -66869,6 +68135,207 @@ class TextToSpeechAsyncResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TextToSpeechRequest(AbstractModel):
+    r"""TextToSpeech request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>Text to convert to speech.</p>
+        :type Text: str
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _TextLang: <p>Text language. This defaults to auto-identification if left blank.<br>Supported languages:<br>zh    Chinese<br>en    English<br>ja    Japanese<br>de    German<br>fr    French<br>ko    Korean<br>ru    Russian<br>uk    Ukrainian<br>pt    Portuguese<br>it    Italian<br>es    Spanish<br>id    Indonesian<br>nl    Dutch<br>tr    Turkish<br>fil    Filipino<br>ms    Malay<br>el    Greek<br>fi    Finnish<br>hr    Croatian<br>sk    Slovak<br>pl    Polish<br>sv    Swedish<br>hi    Hindi<br>bg    Bulgarian<br>ro    Romanian<br>ar    Arabic<br>cs    Czech<br>da    Danish<br>ta    Tamil<br>hun    Hungarian<br>vi    Vietnamese<br>no    Norwegian<br>yue    Cantonese<br>th    Thai<br>he    Hebrew<br>ca    Catalan<br>nn    Nynorsk<br>af    Afrikaans<br>fa    Persian<br>sl    Slovenian</p>
+        :type TextLang: str
+        :param _Output: <p>Output parameters.</p>
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        :param _ExtParam: <p>Additional parameters, json string</p><p><strong>synExt</strong> Object Text To Speech extension parameters<br>   <strong>duration</strong> Float Synthetic audio duration in seconds. No throttling period by default. For example: 5.2<br>   <strong>format</strong> String Output audio format. Default is wav. Support wav and mp3.<br>   <strong>sampleRate</strong> Integer Synthetic audio sample rate. Default is 16000. Support [8000,16000,22050,24000,32000,44100]</p>
+        :type ExtParam: str
+        """
+        self._Text = None
+        self._VoiceId = None
+        self._TextLang = None
+        self._Output = None
+        self._ExtParam = None
+
+    @property
+    def Text(self):
+        r"""<p>Text to convert to speech.</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def TextLang(self):
+        r"""<p>Text language. This defaults to auto-identification if left blank.<br>Supported languages:<br>zh    Chinese<br>en    English<br>ja    Japanese<br>de    German<br>fr    French<br>ko    Korean<br>ru    Russian<br>uk    Ukrainian<br>pt    Portuguese<br>it    Italian<br>es    Spanish<br>id    Indonesian<br>nl    Dutch<br>tr    Turkish<br>fil    Filipino<br>ms    Malay<br>el    Greek<br>fi    Finnish<br>hr    Croatian<br>sk    Slovak<br>pl    Polish<br>sv    Swedish<br>hi    Hindi<br>bg    Bulgarian<br>ro    Romanian<br>ar    Arabic<br>cs    Czech<br>da    Danish<br>ta    Tamil<br>hun    Hungarian<br>vi    Vietnamese<br>no    Norwegian<br>yue    Cantonese<br>th    Thai<br>he    Hebrew<br>ca    Catalan<br>nn    Nynorsk<br>af    Afrikaans<br>fa    Persian<br>sl    Slovenian</p>
+        :rtype: str
+        """
+        return self._TextLang
+
+    @TextLang.setter
+    def TextLang(self, TextLang):
+        self._TextLang = TextLang
+
+    @property
+    def Output(self):
+        r"""<p>Output parameters.</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ExtParam(self):
+        r"""<p>Additional parameters, json string</p><p><strong>synExt</strong> Object Text To Speech extension parameters<br>   <strong>duration</strong> Float Synthetic audio duration in seconds. No throttling period by default. For example: 5.2<br>   <strong>format</strong> String Output audio format. Default is wav. Support wav and mp3.<br>   <strong>sampleRate</strong> Integer Synthetic audio sample rate. Default is 16000. Support [8000,16000,22050,24000,32000,44100]</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._VoiceId = params.get("VoiceId")
+        self._TextLang = params.get("TextLang")
+        if params.get("Output") is not None:
+            self._Output = SyncDubbingOutputOption()
+            self._Output._deserialize(params.get("Output"))
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechResponse(AbstractModel):
+    r"""TextToSpeech response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>Error code. 0 is returned if the request is successful.</p>
+        :type ErrorCode: int
+        :param _Msg: <p>Error message. success is returned if the request is successful.</p>
+        :type Msg: str
+        :param _AudioData: <p>base64 code of the synthetic audio in default wav format</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>Synthetic audio URL. It is valid for 24 hours.</p>
+        :type AudioUrl: str
+        :param _ExtInfo: <p>Extended information, json string  duration: Audio duration of the result, in seconds</p>
+        :type ExtInfo: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._AudioData = None
+        self._AudioUrl = None
+        self._ExtInfo = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>Error code. 0 is returned if the request is successful.</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>Error message. success is returned if the request is successful.</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def AudioData(self):
+        r"""<p>base64 code of the synthetic audio in default wav format</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Synthetic audio URL. It is valid for 24 hours.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Extended information, json string  duration: Audio duration of the result, in seconds</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._ExtInfo = params.get("ExtInfo")
+        self._RequestId = params.get("RequestId")
+
+
 class TextTranslationRequest(AbstractModel):
     r"""TextTranslation request structure.
 
@@ -67413,22 +68880,19 @@ class TrackInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrackNum: The serial number of the audio track and sound channel.
-<li>When the value of SelectType is track, this value is an integer, for example: 1.
-<li>When the value of SelectType is track_channel, this value is a decimal, for example: 1.0.
-<li>Default value: 1.0.
-The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index value of the audio track, which can be 0 or a positive integer. The decimal part supports up to 2 decimal places, and only 0 - 63 is supported. However, when the Codec is aac/eac3/ac3, only 0 - 15 is supported for the decimal part. For example: for an audio track with a stream index value of 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _TrackNum: Audio track and number of sound channels. Description:
+When SelectType is track, this value is an integer, for example: 1.
+When SelectType is track_channel, this value is of decimal type, for example: 1.0;
+Default value: 1.0.
+Note: The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index of the audio track, supporting input of 0 and positive integers. The decimal part supports up to 2 decimal places and is only allowed from 0 to 63. However, if the Codec is aac, eac3, or ac3, the decimal part only supports 0 to 15. For example, for an audio track with stream index 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
         :type TrackNum: str
-        :param _ChannelVolume: The volume of the sound channel.
-<li>When the value of AudioChannel is 1, the length of this array is 1. For example: [6].
-<li>When the value of AudioChannel is 2, the length of this array is 2. For example: [0,6].
-<li>When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16. For example: [-60,0,0,6].
+        :param _ChannelVolume: Sound channel volume, description:
+When AudioChannel is set to 1, the array length is 1, for example: [6].
+When AudioChannel is set to 2, the array length is 2, for example: [0,6];
+When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16, for example: [-60,0,0,6].
+The value array ranges from -60 to 6. Among them, -60 means mute, 0 means keep the original volume, and 6 means double the original volume. The default value is -60.
+Note: Supports 3 decimal places.
 
-Please specify the value array for this parameter. The value range is between -60 and 6, where -60 indicates mute, 0 maintains the original volume, and 6 doubles the original volume. The default value is -60. Please note: This field supports up to 3 decimal places.
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :type ChannelVolume: list of float
         """
         self._TrackNum = None
@@ -67436,13 +68900,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TrackNum(self):
-        r"""The serial number of the audio track and sound channel.
-<li>When the value of SelectType is track, this value is an integer, for example: 1.
-<li>When the value of SelectType is track_channel, this value is a decimal, for example: 1.0.
-<li>Default value: 1.0.
-The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index value of the audio track, which can be 0 or a positive integer. The decimal part supports up to 2 decimal places, and only 0 - 63 is supported. However, when the Codec is aac/eac3/ac3, only 0 - 15 is supported for the decimal part. For example: for an audio track with a stream index value of 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
-
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Audio track and number of sound channels. Description:
+When SelectType is track, this value is an integer, for example: 1.
+When SelectType is track_channel, this value is of decimal type, for example: 1.0;
+Default value: 1.0.
+Note: The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index of the audio track, supporting input of 0 and positive integers. The decimal part supports up to 2 decimal places and is only allowed from 0 to 63. However, if the Codec is aac, eac3, or ac3, the decimal part only supports 0 to 15. For example, for an audio track with stream index 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
         :rtype: str
         """
         return self._TrackNum
@@ -67453,14 +68915,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ChannelVolume(self):
-        r"""The volume of the sound channel.
-<li>When the value of AudioChannel is 1, the length of this array is 1. For example: [6].
-<li>When the value of AudioChannel is 2, the length of this array is 2. For example: [0,6].
-<li>When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16. For example: [-60,0,0,6].
+        r"""Sound channel volume, description:
+When AudioChannel is set to 1, the array length is 1, for example: [6].
+When AudioChannel is set to 2, the array length is 2, for example: [0,6];
+When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16, for example: [-60,0,0,6].
+The value array ranges from -60 to 6. Among them, -60 means mute, 0 means keep the original volume, and 6 means double the original volume. The default value is -60.
+Note: Supports 3 decimal places.
 
-Please specify the value array for this parameter. The value range is between -60 and 6, where -60 indicates mute, 0 maintains the original volume, and 6 doubles the original volume. The default value is -60. Please note: This field supports up to 3 decimal places.
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of float
         """
         return self._ChannelVolume
@@ -67495,15 +68956,13 @@ class TranscodeTaskInput(AbstractModel):
         :param _RawParameter: Custom video transcoding parameter. valid when Definition is set to 0.
 This parameter is used in high customization scenarios. it is recommended that you preferentially use Definition to specify transcoding parameters.
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
-        :param _OverrideParameter: Video transcoding custom parameter, which is valid when `Definition` is not 0.
-When any parameters in this structure are entered, they will be used to override corresponding parameters in templates.
-This parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _OverrideParameter: Custom video transcoding parameter. It takes effect when Definition is not set to 0.
+When you fill in some transcoding parameters in this structure, the filled parameters will be used to override the parameters in the transcoding template.
+This parameter is used in high customization scenarios. It is recommended that you use only Definition to specify transcoding parameters.
         :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
         :param _WatermarkSet: Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
         :type WatermarkSet: list of WatermarkInput
-        :param _BlindWatermark: Digital watermark parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BlindWatermark: Digital watermark parameters.
         :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         :param _MosaicSet: List of blurs. Up to 10 ones can be supported.
         :type MosaicSet: list of MosaicInput
@@ -67517,8 +68976,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>
 <li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>
         :type EndTimeOffset: float
-        :param _OutputStorage: Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _OutputStorage: Target storage for the transcoded file. If left blank, it inherits the upper-level OutputStorage value.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: Output path of the main file after transcoding, which can be a relative or absolute path.
 If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
@@ -67531,10 +68989,8 @@ If left empty, a relative path is used by default: `{inputName}_transcode_{defin
         :param _SegmentObjectName: Path to an output file part (the path to ts during transcoding to HLS), which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}_{number}.{format}`.
         :type SegmentObjectName: str
         :param _ObjectNumberFormat: Rule of the `{number}` variable in the output path after transcoding.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
-        :param _HeadTailParameter: Opening and closing credits parameters
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _HeadTailParameter: Video opening/closing credits parameter.
         :type HeadTailParameter: :class:`tencentcloud.mps.v20190612.models.HeadTailParameter`
         """
         self._Definition = None
@@ -67576,10 +69032,9 @@ This parameter is used in high customization scenarios. it is recommended that y
 
     @property
     def OverrideParameter(self):
-        r"""Video transcoding custom parameter, which is valid when `Definition` is not 0.
-When any parameters in this structure are entered, they will be used to override corresponding parameters in templates.
-This parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Custom video transcoding parameter. It takes effect when Definition is not set to 0.
+When you fill in some transcoding parameters in this structure, the filled parameters will be used to override the parameters in the transcoding template.
+This parameter is used in high customization scenarios. It is recommended that you use only Definition to specify transcoding parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
         """
         return self._OverrideParameter
@@ -67601,8 +69056,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def BlindWatermark(self):
-        r"""Digital watermark parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Digital watermark parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         """
         return self._BlindWatermark
@@ -67652,8 +69106,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
-        r"""Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Target storage for the transcoded file. If left blank, it inherits the upper-level OutputStorage value.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -67693,7 +69146,6 @@ If left empty, a relative path is used by default: `{inputName}_transcode_{defin
     @property
     def ObjectNumberFormat(self):
         r"""Rule of the `{number}` variable in the output path after transcoding.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
         """
         return self._ObjectNumberFormat
@@ -67704,8 +69156,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeadTailParameter(self):
-        r"""Opening and closing credits parameters
-Note: this field may return `null`, indicating that no valid value was found.
+        r"""Video opening/closing credits parameter.
         :rtype: :class:`tencentcloud.mps.v20190612.models.HeadTailParameter`
         """
         return self._HeadTailParameter
@@ -68126,6 +69577,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SourceLanguage = params.get("SourceLanguage")
         self._DestinationLanguage = params.get("DestinationLanguage")
         self._SubtitleFormat = params.get("SubtitleFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnderstandImageConfig(AbstractModel):
+    r"""Image understanding task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>Image understanding model</p><p>Enumeration value:</p><ul><li>WAND-understand-1.0-lite: Lightweight understanding model</li><li>WAND-understand-1.0-flash: Quality-speed balanced understanding model</li><li>WAND-understand-1.0-pro: High-quality understanding model</li></ul>
+        :type Model: str
+        :param _Prompt: <p>Image understanding directive</p>
+        :type Prompt: str
+        """
+        self._Model = None
+        self._Prompt = None
+
+    @property
+    def Model(self):
+        r"""<p>Image understanding model</p><p>Enumeration value:</p><ul><li>WAND-understand-1.0-lite: Lightweight understanding model</li><li>WAND-understand-1.0-flash: Quality-speed balanced understanding model</li><li>WAND-understand-1.0-pro: High-quality understanding model</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Prompt(self):
+        r"""<p>Image understanding directive</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Prompt = params.get("Prompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69855,11 +71357,10 @@ class VideoDenoiseConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: The strength. Valid values:
+        :param _Type: Type, available values:
 <li>weak</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
         self._Switch = None
@@ -69881,11 +71382,10 @@ Default value: ON.
 
     @property
     def Type(self):
-        r"""The strength. Valid values:
+        r"""Type, available values:
 <li>weak</li>
 <li>strong</li>
 Default value: weak.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -69982,37 +71482,30 @@ class VideoEnhanceConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _FrameRate: <p>Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :type FrameRate: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
         :param _SuperResolution: <p>Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         :param _Hdr: <p>HDR configuration.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :type Hdr: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
         :param _Denoise: <p>Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
         :param _ImageQualityEnhance: <p>Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
-        :param _ColorEnhance: <p>Color enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        :param _ColorEnhance: <p>Color enhancement configuration.</p>
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
-        :param _LowLightEnhance: <p>Low-light enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        :param _LowLightEnhance: <p>Low-light enhancement configuration.</p>
         :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
-        :param _ScratchRepair: <p>Scratch removal configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        :param _ScratchRepair: <p>Scratches removal configuration.</p>
         :type ScratchRepair: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
         :param _ArtifactRepair: <p>Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :type ArtifactRepair: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
-        :param _EnhanceSceneType: <p>Enhancement scenario configuration. Valid values:</p><li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li><li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li><li>short_play (short dramas &amp; AI human-like dramas): enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li><li>ai_comic: enhance details in comic-style visuals.</li><li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li><li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li><li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li><li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li><li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li><li>Input of a null string indicates that the enhancement scenario is not used.</li>
-Attention: This field may return null, indicating that no valid values can be obtained.
+        :param _EnhanceSceneType: <p>Enhanced scenario configuration, available values:</p><li>common (General), general enhancement parameter, suitable for various video types, foundation optimization parameters, enhance overall video quality.</li><li>AIGC, overall resolution enhancement, use AI technology to enhance video overall resolution, improve image definition.</li><li>short_play (Mini-drama & AI simulation drama), enhance face and subtitle details, highlight facial expression details and subtitle clarity, improve viewing experience.</li><li>AI_comic (AI comic drama), enhance comic style image detail.</li><li>short_video (short video), optimize complex and diverse image quality issues, target complex scenarios in short videos, optimize video quality, address multiple visual issues.</li><li>game (Gaming video), restore motion blur, enhance details, focus on enhancing the clarity of game details, restore motion blur areas, make the game screen content clearer and more various.</li><li>HD_movie_series (Ultra-high-definition TV shows and movies), obtain ultra-high-definition smooth effect, target the demand for broadcasting/OTT ultra-high-definition video, generate 4K 60fps HDR Ultra-High-Definition Standard video. Support broadcasting scenario format standards.</li><li>LQ_material (Low-quality material/Classic film restoration), overall resolution enhancement, target old video with insufficient resolution, blur distortion, scratch damage and color temperature issues due to older shooting era for specialized optimization.</li><li>lecture (Showroom/E-commerce/Conference/lecture), beautify and enhance face effect, target scenarios where people explain in showroom/e-commerce/conference/lecture, perform specialized optimization for face region, noise reduction, burr processing.</li><li>Fill-in string represents non-use of enhanced scenario.</li>
         :type EnhanceSceneType: str
-        :param _DiffusionEnhance: <p>LLM enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        :param _DiffusionEnhance: <p>LLM enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot intersect with super-resolution and noise reduction.</p>
         :type DiffusionEnhance: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
-        :param _FrameRateWithDen: <p>New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        :param _FrameRateWithDen: <p>The new frame interpolation frame rate configuration supports fractions. Note that you must choose between this and FrameRate. The capacity will not take effect when the source frame rate is equal to or greater than the target frame rate.</p>
         :type FrameRateWithDen: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
-        :param _AiRestoration: <p>LLM repair configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        :param _AiRestoration: <p>Large model repair configuration. Note that you can configure at most one of large model, comprehensive enhancement, and artifacts removal. It cannot intersect with super-resolution and noise reduction.</p>
         :type AiRestoration: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
         """
         self._FrameRate = None
@@ -70032,7 +71525,6 @@ Attention: This field may return null, indicating that no valid values can be ob
     @property
     def FrameRate(self):
         r"""<p>Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
         """
         return self._FrameRate
@@ -70044,7 +71536,6 @@ Attention: This field may return null, indicating that no valid values can be ob
     @property
     def SuperResolution(self):
         r"""<p>Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         """
         return self._SuperResolution
@@ -70056,7 +71547,6 @@ Attention: This field may return null, indicating that no valid values can be ob
     @property
     def Hdr(self):
         r"""<p>HDR configuration.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
         """
         return self._Hdr
@@ -70068,7 +71558,6 @@ Attention: This field may return null, indicating that no valid values can be ob
     @property
     def Denoise(self):
         r"""<p>Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
         """
         return self._Denoise
@@ -70080,7 +71569,6 @@ Attention: This field may return null, indicating that no valid values can be ob
     @property
     def ImageQualityEnhance(self):
         r"""<p>Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         """
         return self._ImageQualityEnhance
@@ -70091,7 +71579,7 @@ Attention: This field may return null, indicating that no valid values can be ob
 
     @property
     def ColorEnhance(self):
-        r"""<p>Color enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Color enhancement configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
         """
         return self._ColorEnhance
@@ -70102,7 +71590,7 @@ Attention: This field may return null, indicating that no valid values can be ob
 
     @property
     def LowLightEnhance(self):
-        r"""<p>Low-light enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Low-light enhancement configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
         return self._LowLightEnhance
@@ -70113,7 +71601,7 @@ Attention: This field may return null, indicating that no valid values can be ob
 
     @property
     def ScratchRepair(self):
-        r"""<p>Scratch removal configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Scratches removal configuration.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
         """
         return self._ScratchRepair
@@ -70125,7 +71613,6 @@ Attention: This field may return null, indicating that no valid values can be ob
     @property
     def ArtifactRepair(self):
         r"""<p>Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>
-Attention: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
         """
         return self._ArtifactRepair
@@ -70136,8 +71623,7 @@ Attention: This field may return null, indicating that no valid values can be ob
 
     @property
     def EnhanceSceneType(self):
-        r"""<p>Enhancement scenario configuration. Valid values:</p><li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li><li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li><li>short_play (short dramas &amp; AI human-like dramas): enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li><li>ai_comic: enhance details in comic-style visuals.</li><li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li><li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li><li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li><li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li><li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li><li>Input of a null string indicates that the enhancement scenario is not used.</li>
-Attention: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Enhanced scenario configuration, available values:</p><li>common (General), general enhancement parameter, suitable for various video types, foundation optimization parameters, enhance overall video quality.</li><li>AIGC, overall resolution enhancement, use AI technology to enhance video overall resolution, improve image definition.</li><li>short_play (Mini-drama & AI simulation drama), enhance face and subtitle details, highlight facial expression details and subtitle clarity, improve viewing experience.</li><li>AI_comic (AI comic drama), enhance comic style image detail.</li><li>short_video (short video), optimize complex and diverse image quality issues, target complex scenarios in short videos, optimize video quality, address multiple visual issues.</li><li>game (Gaming video), restore motion blur, enhance details, focus on enhancing the clarity of game details, restore motion blur areas, make the game screen content clearer and more various.</li><li>HD_movie_series (Ultra-high-definition TV shows and movies), obtain ultra-high-definition smooth effect, target the demand for broadcasting/OTT ultra-high-definition video, generate 4K 60fps HDR Ultra-High-Definition Standard video. Support broadcasting scenario format standards.</li><li>LQ_material (Low-quality material/Classic film restoration), overall resolution enhancement, target old video with insufficient resolution, blur distortion, scratch damage and color temperature issues due to older shooting era for specialized optimization.</li><li>lecture (Showroom/E-commerce/Conference/lecture), beautify and enhance face effect, target scenarios where people explain in showroom/e-commerce/conference/lecture, perform specialized optimization for face region, noise reduction, burr processing.</li><li>Fill-in string represents non-use of enhanced scenario.</li>
         :rtype: str
         """
         return self._EnhanceSceneType
@@ -70148,7 +71634,7 @@ Attention: This field may return null, indicating that no valid values can be ob
 
     @property
     def DiffusionEnhance(self):
-        r"""<p>LLM enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>LLM enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot intersect with super-resolution and noise reduction.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
         """
         return self._DiffusionEnhance
@@ -70159,7 +71645,7 @@ Attention: This field may return null, indicating that no valid values can be ob
 
     @property
     def FrameRateWithDen(self):
-        r"""<p>New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>The new frame interpolation frame rate configuration supports fractions. Note that you must choose between this and FrameRate. The capacity will not take effect when the source frame rate is equal to or greater than the target frame rate.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
         """
         return self._FrameRateWithDen
@@ -70170,7 +71656,7 @@ Attention: This field may return null, indicating that no valid values can be ob
 
     @property
     def AiRestoration(self):
-        r"""<p>LLM repair configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Large model repair configuration. Note that you can configure at most one of large model, comprehensive enhancement, and artifacts removal. It cannot intersect with super-resolution and noise reduction.</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
         """
         return self._AiRestoration
@@ -70421,11 +71907,10 @@ Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
         :param _Gop: Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
 If this parameter is 0 or left blank, the system will automatically set the GOP length.
         :type Gop: int
-        :param _GopUnit: GOP value unit. Optional values:
+        :param _GopUnit: Gop value unit, value range:
 frame: indicates frame
 second: indicates second
 Default value: frame
-Note: This field may return null, indicating that no valid value can be obtained.
         :type GopUnit: str
         :param _FillType: Padding method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the transcoding processing method is "padding". Optional filling method:
 <li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
@@ -70436,121 +71921,97 @@ Note: This field may return null, indicating that no valid value can be obtained
 <li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
 Default value: black.
         :type FillType: str
-        :param _Vcrf: Specifies the constant bitrate control factor for the video. Value range: [0, 51]. Leaving this parameter blank sets it to "Automatic". It is recommended not to specify this parameter unless necessary.
-If the Mode parameter is set to VBR and the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.
-If the Mode parameter is set to CRF, the Bitrate setting will be invalid, and encoding will be based on the Vcrf value.
-If the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Vcrf: Control factor for constant video bitrate. Value range: [0, 51]. If this parameter is not specified, it means "auto". If there are no special requirements, it is advisable not to specify this parameter.
+When the Mode parameter is set to VBR, if the Vcrf value is configured concurrently, MPS will process video in VBR mode, with consideration of both Vcrf and Bitrate parameter settings to balance video quality, bitrate, transcoding efficiency, and file size.
+When the Mode parameter is set to CRF, the Bitrate setting will become invalid, and encoding is performed based on the Vcrf value.
+When the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
         :type Vcrf: int
-        :param _HlsTime: Average shard duration. value range: (0-10], unit: second.
-Leaving it blank means auto, which automatically chooses the appropriate segment duration based on video features such as GOP.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HlsTime: Average shard duration. Range: (0-10], unit: second
+Leave it blank to auto, which automatically chooses the appropriate segment duration based on the video's GOP and other features.
         :type HlsTime: int
-        :param _SegmentType: HLS segment type. Valid values:
-<li>0: HLS+TS segment</li>
-<li>2: HLS+TS byte range</li>
-<li>7: HLS+MP4 segment</li>
-<li>5: HLS+MP4 byte range</li>
+        :param _SegmentType: hls fragment type, value range:
+<li>0: HLS+TS segment.</li>
+<li>2:HLS+TS byte range</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5:HLS+MP4 byte range</li>
 Default value: 0
-
-Note: This field is used for normal/TSC transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field is used for ordinary/TSC transcoding settings and does not take effect for adaptive bitrate streams. If you need to configure the sharding type for an adaptive bitrate stream, you can use the outer field.
         :type SegmentType: int
-        :param _FpsDenominator: Denominator of the frame rate.
+        :param _FpsDenominator: Denominator of the frame rate
 Note: The value must be greater than 0.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FpsDenominator: int
-        :param _Stereo3dType: 3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:
-<Li>side_by_side: the original video content is arranged in a left-right layout.</li>
-<li>top_bottom: vertical layout arrangement of original video content.</li>
-Submit the amount and cost based on the segmented resolution size.
-Default value: side_by_side.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Stereo3dType: 3D video splicing mode, only mv-hevc, 3D video takes effect, available values:
+<li>side_by_side: side-by-side layout of the original video content.</li>
+<li>top_bottom: top-bottom layout arrangement of the original video content.</li>
+Billing is based on the segmented resolution dimension for reporting usage and cost.
+Default value: side_by_side
         :type Stereo3dType: str
         :param _VideoProfile: Profile, suitable for different scenarios.
 baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos.
-main: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.
-high: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.
+Mainstream Profile, providing I-frames, P-frames, and B-frames, and supporting both interlaced and non-interlaced modes. It is primarily used in mainstream audio and video consumption products such as video players and streaming media transmission devices.
+high: The highest encoding level, adding 8X8  prediction to the Main Profile and supporting custom quantification. Widely used in Blu-ray storage and HDTV scenarios.
 default: automatic filling along with the original video.    
 
 This configuration appears only when the encoding standard is set to H264. baseline/main/high is supported. Default value: default
-Note: This field may return null, indicating that no valid value can be obtained.
         :type VideoProfile: str
         :param _VideoLevel: Encoder level. Default value: auto ("")
-If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, -2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.
 If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type VideoLevel: str
         :param _Bframes: Number of B-frames between reference frames. The default is auto, and a range of 0 - 16 is supported.
-Note: Leaving it blank means using the auto option.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: Leave it blank to indicate usage of auto.
         :type Bframes: int
         :param _Mode: Bitrate control mode. Optional values:
-VBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements.
-ABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained.
-CBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming.
-VCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired.
+VBR (Variable Bit Rate): Dynamic bitrate (VBR) adjusts the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.
+ABR (Average Bit Rate): Average bitrate. It aims to keep the average bitrate of the output video stable while allowing short-term bitrate fluctuation. This is suitable for scenarios where overall bitrate needs to be minimized while maintaining a certain image quality.
+CBR (Constant Bit Rate): Constant bitrate. In video encoding, it maintains a constant output bitrate regardless of image complexity changes. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.
+VCRF (Constant Rate Factor): Constant quality factor. It controls video quality by setting a Quality Factor, enabling constant quality encoding of videos. Bitrate adjustment is based on content complexity. This method is suitable for scenarios where maintaining a certain quality is desired.
 VBR is selected by default.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Mode: str
         :param _Sar: Display aspect ratio. Optional values: [1:1, 2:1, default]
 Default value: default
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Sar: str
-        :param _NoScenecut: Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values:
-0: Disable the adaptive I-frame decision 
+        :param _NoScenecut: Adaptive I-frame decision. Once enabled, Media Processing Service automatically identifies transition points between different scenarios in the video (usually visually distinct frames, such as switching from one shot to another) and adaptively inserts keyframes (I-frames) at these points to improve random accessibility and encoding efficiency. Optional values:
+0: Disable adaptive I-frame decision. 
 1: Enable the adaptive I-frame decision
 Default value: 0
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :type NoScenecut: int
         :param _BitDepth: Bit: 8/10 is supported. Default value: 8
-Note: This field may return null, indicating that no valid value can be obtained.
         :type BitDepth: int
-        :param _RawPts: Preservation of original timestamp. Optional values:
+        :param _RawPts: Preserve original timestamp. Optional values:
 0: Disabled
 1: Enabled
 Default value: Disabled
-Note: This field may return null, indicating that no valid value can be obtained.
         :type RawPts: int
-        :param _Compress: Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100
+        :param _Compress: Proportional compression bitrate. When enabled, the output video's bitrate is adjusted according to the specified ratio. After the compression ratio is entered, the system automatically calculates the target output bitrate based on the video source bitrate. Compression ratio range: 0-100.
 Leaving this value blank means it is not enabled by default.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Compress: int
-        :param _SegmentSpecificInfo: Segment duration at startup.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SegmentSpecificInfo: Segment Duration at Startup
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
-        :param _ScenarioBased: Whether the template enables scenario-based settings. 
-0: disable. 
+        :param _ScenarioBased: Whether to enable scenario-based settings for the template 
+0: disable 
 1: enable 
- 
 Default value: 0	
-	
-Note: The values of SceneType and CompressType fields only take effect when this field value is 1.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: SceneType and CompressType field values are effective only when this field value is 1.
         :type ScenarioBased: int
-        :param _SceneType: Video scenario. Valid values: 
-- normal: General transcoding scenario. General transcoding and compression scenario.
-- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
-- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
-- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
-- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
-- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
-
-Default value: normal.
-Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SceneType: Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario.
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality video and audio content is retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: During compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: Compression emphasizes clarity and readability of text and images to help students better understand content and ensure clear conveyance of teaching content. 
+Default value: normal
+Note: To use this value, ScenarioBased must be 1, otherwise it does not take effect.
         :type SceneType: str
-        :param _CompressType: Transcoding policy. Valid values: 
-- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
-
+        :param _CompressType: Transcoding policy. Optional values: 
+ultra_compress: Ultimate compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of the compressed file may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
 Default value: standard_compress. 
-Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
-Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: To watch videos on TV, the ultra_compress policy is not recommended. The billing standard for the ultra_compress policy is Top Speed Codec (TSC) transcoding + audio/video enhancement - artifacts removal.
+Note: To use this value, ScenarioBased must be 1, otherwise it does not take effect.
         :type CompressType: str
         """
         self._Codec = None
@@ -70694,11 +72155,10 @@ If this parameter is 0 or left blank, the system will automatically set the GOP 
 
     @property
     def GopUnit(self):
-        r"""GOP value unit. Optional values:
+        r"""Gop value unit, value range:
 frame: indicates frame
 second: indicates second
 Default value: frame
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._GopUnit
@@ -70727,11 +72187,10 @@ Default value: black.
 
     @property
     def Vcrf(self):
-        r"""Specifies the constant bitrate control factor for the video. Value range: [0, 51]. Leaving this parameter blank sets it to "Automatic". It is recommended not to specify this parameter unless necessary.
-If the Mode parameter is set to VBR and the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.
-If the Mode parameter is set to CRF, the Bitrate setting will be invalid, and encoding will be based on the Vcrf value.
-If the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Control factor for constant video bitrate. Value range: [0, 51]. If this parameter is not specified, it means "auto". If there are no special requirements, it is advisable not to specify this parameter.
+When the Mode parameter is set to VBR, if the Vcrf value is configured concurrently, MPS will process video in VBR mode, with consideration of both Vcrf and Bitrate parameter settings to balance video quality, bitrate, transcoding efficiency, and file size.
+When the Mode parameter is set to CRF, the Bitrate setting will become invalid, and encoding is performed based on the Vcrf value.
+When the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
         :rtype: int
         """
         return self._Vcrf
@@ -70742,9 +72201,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HlsTime(self):
-        r"""Average shard duration. value range: (0-10], unit: second.
-Leaving it blank means auto, which automatically chooses the appropriate segment duration based on video features such as GOP.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Average shard duration. Range: (0-10], unit: second
+Leave it blank to auto, which automatically chooses the appropriate segment duration based on the video's GOP and other features.
         :rtype: int
         """
         return self._HlsTime
@@ -70755,15 +72213,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentType(self):
-        r"""HLS segment type. Valid values:
-<li>0: HLS+TS segment</li>
-<li>2: HLS+TS byte range</li>
-<li>7: HLS+MP4 segment</li>
-<li>5: HLS+MP4 byte range</li>
+        r"""hls fragment type, value range:
+<li>0: HLS+TS segment.</li>
+<li>2:HLS+TS byte range</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5:HLS+MP4 byte range</li>
 Default value: 0
-
-Note: This field is used for normal/TSC transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field is used for ordinary/TSC transcoding settings and does not take effect for adaptive bitrate streams. If you need to configure the sharding type for an adaptive bitrate stream, you can use the outer field.
         :rtype: int
         """
         return self._SegmentType
@@ -70774,9 +72230,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FpsDenominator(self):
-        r"""Denominator of the frame rate.
+        r"""Denominator of the frame rate
 Note: The value must be greater than 0.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._FpsDenominator
@@ -70787,12 +72242,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stereo3dType(self):
-        r"""3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:
-<Li>side_by_side: the original video content is arranged in a left-right layout.</li>
-<li>top_bottom: vertical layout arrangement of original video content.</li>
-Submit the amount and cost based on the segmented resolution size.
-Default value: side_by_side.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""3D video splicing mode, only mv-hevc, 3D video takes effect, available values:
+<li>side_by_side: side-by-side layout of the original video content.</li>
+<li>top_bottom: top-bottom layout arrangement of the original video content.</li>
+Billing is based on the segmented resolution dimension for reporting usage and cost.
+Default value: side_by_side
         :rtype: str
         """
         return self._Stereo3dType
@@ -70805,12 +72259,11 @@ Note: This field may return null, indicating that no valid value can be obtained
     def VideoProfile(self):
         r"""Profile, suitable for different scenarios.
 baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos.
-main: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.
-high: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.
+Mainstream Profile, providing I-frames, P-frames, and B-frames, and supporting both interlaced and non-interlaced modes. It is primarily used in mainstream audio and video consumption products such as video players and streaming media transmission devices.
+high: The highest encoding level, adding 8X8  prediction to the Main Profile and supporting custom quantification. Widely used in Blu-ray storage and HDTV scenarios.
 default: automatic filling along with the original video.    
 
 This configuration appears only when the encoding standard is set to H264. baseline/main/high is supported. Default value: default
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._VideoProfile
@@ -70822,9 +72275,8 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def VideoLevel(self):
         r"""Encoder level. Default value: auto ("")
-If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, -2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.
 If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._VideoLevel
@@ -70836,8 +72288,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Bframes(self):
         r"""Number of B-frames between reference frames. The default is auto, and a range of 0 - 16 is supported.
-Note: Leaving it blank means using the auto option.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: Leave it blank to indicate usage of auto.
         :rtype: int
         """
         return self._Bframes
@@ -70849,12 +72300,11 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Mode(self):
         r"""Bitrate control mode. Optional values:
-VBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements.
-ABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained.
-CBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming.
-VCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired.
+VBR (Variable Bit Rate): Dynamic bitrate (VBR) adjusts the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.
+ABR (Average Bit Rate): Average bitrate. It aims to keep the average bitrate of the output video stable while allowing short-term bitrate fluctuation. This is suitable for scenarios where overall bitrate needs to be minimized while maintaining a certain image quality.
+CBR (Constant Bit Rate): Constant bitrate. In video encoding, it maintains a constant output bitrate regardless of image complexity changes. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.
+VCRF (Constant Rate Factor): Constant quality factor. It controls video quality by setting a Quality Factor, enabling constant quality encoding of videos. Bitrate adjustment is based on content complexity. This method is suitable for scenarios where maintaining a certain quality is desired.
 VBR is selected by default.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Mode
@@ -70867,7 +72317,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     def Sar(self):
         r"""Display aspect ratio. Optional values: [1:1, 2:1, default]
 Default value: default
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Sar
@@ -70878,12 +72327,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def NoScenecut(self):
-        r"""Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values:
-0: Disable the adaptive I-frame decision 
+        r"""Adaptive I-frame decision. Once enabled, Media Processing Service automatically identifies transition points between different scenarios in the video (usually visually distinct frames, such as switching from one shot to another) and adaptively inserts keyframes (I-frames) at these points to improve random accessibility and encoding efficiency. Optional values:
+0: Disable adaptive I-frame decision. 
 1: Enable the adaptive I-frame decision
 Default value: 0
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._NoScenecut
@@ -70895,7 +72342,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def BitDepth(self):
         r"""Bit: 8/10 is supported. Default value: 8
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._BitDepth
@@ -70906,11 +72352,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RawPts(self):
-        r"""Preservation of original timestamp. Optional values:
+        r"""Preserve original timestamp. Optional values:
 0: Disabled
 1: Enabled
 Default value: Disabled
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._RawPts
@@ -70921,9 +72366,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Compress(self):
-        r"""Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100
+        r"""Proportional compression bitrate. When enabled, the output video's bitrate is adjusted according to the specified ratio. After the compression ratio is entered, the system automatically calculates the target output bitrate based on the video source bitrate. Compression ratio range: 0-100.
 Leaving this value blank means it is not enabled by default.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Compress
@@ -70934,8 +72378,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentSpecificInfo(self):
-        r"""Segment duration at startup.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Segment Duration at Startup
         :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
         return self._SegmentSpecificInfo
@@ -70946,14 +72389,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ScenarioBased(self):
-        r"""Whether the template enables scenario-based settings. 
-0: disable. 
+        r"""Whether to enable scenario-based settings for the template 
+0: disable 
 1: enable 
- 
 Default value: 0	
-	
-Note: The values of SceneType and CompressType fields only take effect when this field value is 1.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: SceneType and CompressType field values are effective only when this field value is 1.
         :rtype: int
         """
         return self._ScenarioBased
@@ -70964,17 +72404,15 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SceneType(self):
-        r"""Video scenario. Valid values: 
-- normal: General transcoding scenario. General transcoding and compression scenario.
-- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
-- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
-- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
-- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
-- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
-
-Default value: normal.
-Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario.
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality video and audio content is retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: During compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: Compression emphasizes clarity and readability of text and images to help students better understand content and ensure clear conveyance of teaching content. 
+Default value: normal
+Note: To use this value, ScenarioBased must be 1, otherwise it does not take effect.
         :rtype: str
         """
         return self._SceneType
@@ -70985,16 +72423,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CompressType(self):
-        r"""Transcoding policy. Valid values: 
-- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
-
+        r"""Transcoding policy. Optional values: 
+ultra_compress: Ultimate compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of the compressed file may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
 Default value: standard_compress. 
-Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
-Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: To watch videos on TV, the ultra_compress policy is not recommended. The billing standard for the ultra_compress policy is Top Speed Codec (TSC) transcoding + audio/video enhancement - artifacts removal.
+Note: To use this value, ScenarioBased must be 1, otherwise it does not take effect.
         :rtype: str
         """
         return self._CompressType
@@ -71051,35 +72487,35 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Encoding format for video streams. valid values:.
-<Li>H264: h.264 encoding.</li>.
-<Li>H265: h.265 encoding.</li>.
-<Li>H266: h.266 encoding.</li>.
-<li>av1: AOMedia Video 1 encoding</li>.
-<li>vp8: vp8 encoding.</li>.
-<li>vp9: vp9 encoding.</li>.
-<li>mpeg2: mpeg2 encoding.</li>.
-<li>dnxhd: specifies dnxhd encoding.</li>.
-<li>mv-hevc: mv-hevc encoding.</li>.
+        :param _Codec: Encoding format for video streams. Optional values:
+<li>h264: H.264 encoding.</li>
+<li>h265: H.265 encoding.</li>
+<li>h266: H.266 encoding.</li>
+<li>av1: AOMedia Video 1 encoding</li>
+<li>vp8: VP8 encoding.</li>
+<li>vp9: VP9 encoding.</li>
+<li>mpeg2: MPEG2 encoding.</li>
+<li>dnxhd: DNxHD encoding.</li>
+<li>mv-hevc: MV-HEVC encoding.</li>
 
-Note: the av1 encoding container currently only supports mp4, webm, and mkv.
-Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: The av1 encoding container currently only supports mp4, webm, and mkv.
+Note: H.266 encoding containers only support mp4, hls, ts, and mov.
 Note: VP8 and VP9 encoding containers currently only support webm and mkv.
 Note: MPEG2 and dnxhd encoding containers currently only support mxf.
-Note: MV-HEVC encoding containers currently only support mp4, hls, and mov. among them, the hls format supports only mp4 segmentation format and requires the input source to be a panoramic video (with multi-perspective).
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: The MV-HEVC codec currently only supports mp4, hls, and mov. Among them, the HLS format only supports the MP4 segmented format and requires the input source to be a panoramic video (with multiple views).
         :type Codec: str
         :param _Fps: Video frame rate. Value range:
 When FpsDenominator is empty, the range is [0, 120], in Hz.
 When FpsDenominator is not empty, the Fps/FpsDenominator range is [0, 120].
-If the value is 0, the frame rate will be the same as that of the source video.Note: This field may return null, indicating that no valid values can be obtained.
+If the value is 0, the frame rate will be the same as that of the source video.
         :type Fps: int
-        :param _Bitrate: Bitrate of a video stream, in kbps. Value range: 0 and [128, 100000].If the value is 0, the bitrate of the video will be the same as that of the source video.Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Bitrate: Bitrate of video stream, value ranges from 0 to [128, 100000], measurement unit: kbps.
+If the value is 0, the bitrate of the video will be the same as that of the source video.
         :type Bitrate: int
-        :param _ResolutionAdaptive: Resolution adaption. Valid values:
-<li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>
-<li>close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>
-Note: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.
+        :param _ResolutionAdaptive: Resolution adaptation, available values:
+<li>open: Turn on. At this point, Width represents the long side of the video, and Height indicates the short side of the video;</li>
+<li>close: Close. At this point, Width represents the video width, and Height indicates the video height.</li>
+Note: In self-adaptation mode, Width cannot be less than Height.
         :type ResolutionAdaptive: str
         :param _Width: Maximum value of the video stream width (or long edge) in px. Value range: 0 and [128, 4096].
 <li>If both Width and Height are 0, the resolution is the same as the source.</li>
@@ -71087,158 +72523,125 @@ Note: When resolution adaption is enabled, `Width` cannot be smaller than `Heigh
 <li>If Width is not 0 but Height is 0, the height will be proportionally scaled.</li>
 <li>If both Width and Height are not 0, the resolution is as specified by the user.</li>
 Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Width: int
-        :param _Height: Maximum value of the video stream height (or short edge) in px. Value range: 0 and [128, 4,096].
+        :param _Height: Maximum value of video stream height (or short side). Value ranges from 0 to [128, 4096]. Measurement unit: px.
 Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Height: int
-        :param _Gop: Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
-If this parameter is 0, the system will automatically set the GOP length.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Gop: Interval between I-frames, customizable by frame or second. GOP length value ranges from 0 to [1, 100000].
+When set to 0, the system will automatically set the gop length.
         :type Gop: int
-        :param _GopUnit: GOP value unit. Optional values: 
+        :param _GopUnit: Gop value unit, value range: 
 frame: indicates frame 
 second: indicates second
 Default value: frame
-Note: This field may return null, indicating that no valid value can be obtained.
         :type GopUnit: str
-        :param _FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. Valid values:
- <li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
-<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>
-<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
-<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
-
-<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
+        :param _FillType: Filling method, when video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is "padding". Optional filling mode:
+<li> stretch: Stretch, stretch each frame to fill the entire screen, possibly causing the transcoded video to be "squashed" or "stretched";</li>
+<li>black: Keep black, maintain video aspect ratio, edges filled with black.</li>
+<li>White: Leave blank, maintain video aspect ratio, edge remainder filled with white.</li>
+<li>gauss: Gaussian blur, maintain video aspect ratio, Gaussian blur filling for the rest of the edges.</li>
+<li>smarttailor: intelligent cropping. It smartly selects video images to ensure proportional image cropping.</li>
 Default value: black.
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :type FillType: str
-        :param _Vcrf: The control factor of video constant bitrate. Value range: [0, 51]. If not specified, it means "auto". It is recommended not to specify this parameter unless necessary.
-When the Mode parameter is set to VBR, if the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.
-When the Mode parameter is set to CRF, the Bitrate setting will be invalid, and the encoding will be based on the Vcrf value.
-When the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
+        :param _Vcrf: Control factor for constant video bitrate. Value range: [0, 51]. If this parameter is not specified, it means "auto". If there are no special requirements, it is advisable not to specify this parameter.
+When the Mode parameter is set to VBR, if the Vcrf value is configured at the same time, MPS processes video in VBR mode with consideration of both Vcrf and Bitrate parameter settings to balance video quality, bitrate, transcoding efficiency, and file size.
+When the Mode parameter is set to CRF, the Bitrate setting will become invalid, and encoding is performed based on the Vcrf value.
+When the Mode parameter is set to ABR or CBR, the Vcrf value requires no configuration.
 Note: When you need to set it to auto, fill in 100.
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Vcrf: int
-        :param _ContentAdaptStream: Whether to enable adaptive encoding. Valid values:
-<li>0: Disable</li>
-<li>1: Enable</li>
-Default value: 0. If this parameter is set to `1`, multiple streams with different resolutions and bitrates will be generated automatically. The highest resolution, bitrate, and quality of the streams are determined by the values of `width` and `height`, `Bitrate`, and `Vcrf` in `VideoTemplate` respectively. If these parameters are not set in `VideoTemplate`, the highest resolution generated will be the same as that of the source video, and the highest video quality will be close to VMAF 95. To use this parameter or learn about the billing details of adaptive encoding, please contact your sales rep.
+        :param _ContentAdaptStream: Adaptive coding. Available values:
+<li>0: Not enabled</li>
+<li>1: Turn on</li>
+Default value: 0. When this parameter is enabled, multiple streams with different resolutions and bitrates will be self-adaptively generated. Among them, the width and height in VideoTemplate are the maximum resolution among the multiple streams, the bitrate in VideoTemplate is the highest bitrate among the multiple streams, and the vcrf in VideoTemplate is the highest quality among the multiple streams. When resolution, bitrate, and vcrf are not set, the highest resolution generated by the ContentAdaptStream parameter is the resolution of the video source, and the video quality is close to vmaf95. To enable this parameter or learn about billing details, contact your Tencent Cloud business.
         :type ContentAdaptStream: int
-        :param _HlsTime: Average segment duration. Value range: (0-10], unit: second
+        :param _HlsTime: Average shard duration. Value range: (0-10], unit: second
 Default value: 10
-Note: It is used only in the format of HLS.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: It is used only in the HLS format.
         :type HlsTime: int
-        :param _SegmentType: HLS segment type. Valid values:
-<li>0: HLS+TS segment</li>
-<li>2: HLS+TS byte range</li>
-<li>7: HLS+MP4 segment</li>
-<li>5: HLS+MP4 byte range</li>
+        :param _SegmentType: hls fragment type, available values:
+<li>0: HLS+TS segment.</li>
+<li>2:HLS+TS byte range</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5:HLS+MP4 byte range</li>
 Default value: 0
-
-Note: This field is used for normal/Top Speed Codec transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field is used for ordinary/TSC transcoding settings and does not take effect for adaptive bitrate streams. If needed, you can use the outer field to configure the shard type for adaptive bitrate streams.
         :type SegmentType: int
-        :param _FpsDenominator: Denominator of the frame rate.
+        :param _FpsDenominator: Denominator of the frame rate
 Note: The value must be greater than 0.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FpsDenominator: int
-        :param _Stereo3dType: 3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:
-<Li>side_by_side: the original video content is arranged in a left-right layout.</li>
-<Li>top_bottom: layout arrangement of the original video content from top to bottom.</li>
-The usage and charges will be reported based on the segmented resolution dimensions.
-Default value: side_by_side.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Stereo3dType: 3D video splicing mode, only mv-hevc, takes effect for 3D video, available values:
+<li>side_by_side: side-by-side layout of the original video content.</li>
+<li>top_bottom: top-bottom layout arrangement of the original video content.</li>
+Billing is based on the segmented resolution dimension to report usage amount and cost.
+Default value: side_by_side
         :type Stereo3dType: str
         :param _VideoProfile: Profile, suitable for different scenarios. 
 baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos. 
-main: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices. 
-high: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.
+Mainstream Profile, providing I-frames, P-frames, and B-frames, and supporting both interlaced and non-interlaced modes. It is primarily used in mainstream audio and video consumption products such as video players and streaming media transmission devices. 
+high: The highest encoding level, adding 8X8 prediction to the Main Profile and supporting custom quantification. Widely used in Blu-ray storage and HDTV scenarios.
 default: automatic filling along with the original video
 
-This configuration appears only when the encoding standard is set to H264. Default value: default
-Note: This field may return null, indicating that no valid value can be obtained.
+This configuration appears only when the encoding standard is set to H264. Default: default
         :type VideoProfile: str
         :param _VideoLevel: Encoder level. Default value: auto ("")
-If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1. 
-If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
-Note: This field may return null, indicating that no valid value can be obtained.
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, -1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1. 
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, -5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
         :type VideoLevel: str
         :param _Bframes: Maximum number of consecutive B-frames. The default is auto, and 0 - 16 and -1 are supported.
 Note:
-
 -1 indicates auto.	
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Bframes: int
         :param _Mode: Bitrate control mode. Optional values: 
-VBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements. 
-ABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained. 
-CBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming. 
-VCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired. 
+VBR (Variable Bit Rate): Dynamic bitrate adjusts the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements. 
+ABR (Average Bit Rate): Average bitrate. It aims to keep the average bitrate of the output video stable as much as possible, but allows short-term bitrate fluctuation. It is suitable for scenarios where you need to minimize overall bitrate while maintaining a certain image quality. 
+CBR (Constant Bit Rate): Constant bit rate. In video encoding, it maintains a constant output bitrate regardless of image complexity changes. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming. 
+VCRF (Constant Rate Factor): Constant quality factor. It controls video quality by setting a quality factor to achieve constant quality encoding of videos. Bitrate adjustment based on content complexity. Suitable for scenarios where maintaining a certain quality is desired. 
 VBR is selected by default.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Mode: str
         :param _Sar: Display aspect ratio. Optional values: [1:1, 2:1, default]
 Default value: default
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Sar: str
-        :param _NoScenecut: Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values: 
-0: Disable the adaptive I-frame decision 
+        :param _NoScenecut: Adaptive I-frame decision. When enabled, Media Processing Service automatically identifies transition points between different scenarios in the video (usually visually distinct frames, such as those of switching from one shot to another) and adaptively inserts keyframes (I-frames) at these points to improve the video's random accessibility and encoding efficiency. Optional values: 
+0: Disable adaptive I-frame decision 
 1: Enable the adaptive I-frame decision 
 Default value: 0	
-	
-Note: This field may return null, indicating that no valid value can be obtained.
         :type NoScenecut: int
-        :param _BitDepth: Bit: 8/10 is supported. Default value: 8	
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _BitDepth: Bit: 8/10 is supported. Default value: -	
         :type BitDepth: int
-        :param _RawPts: Preservation of original timestamp. Optional values: 
+        :param _RawPts: Preserve original timestamp. Optional values: 
 0: Disabled 
 1: Enabled 
 Default value: Disabled	
-Note: This field may return null, indicating that no valid value can be obtained.
         :type RawPts: int
-        :param _Compress: Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100, optional values: [0-100] and -1 
+        :param _Compress: Proportional compression bitrate. When enabled, the output video's bitrate is adjusted according to the specified ratio. After the compression ratio is entered, the system automatically calculates the target output bitrate based on the video source bitrate. Compression ratio range: 0-100, optional values: [0-100] and -1. 
 Note: -1 indicates auto.	
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Compress: int
-        :param _SegmentSpecificInfo: Segment duration at startup.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SegmentSpecificInfo: Segment Duration at Startup
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
-        :param _ScenarioBased: Indicates whether to enable scenario-based settings for the template. 
-0: Disable. 
+        :param _ScenarioBased: Whether to enable scenario-based settings for the template 
+0: disable 
 1: enable 
- 
 Default value: 0	
-	
-Note: This value takes effect only when the value of this field is 1.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: SceneType and CompressType field values are effective only when this field value is 1.
         :type ScenarioBased: int
-        :param _SceneType: Video scenario. Valid values: 
-- normal: General transcoding scenario. General transcoding and compression scenario.
-- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
-- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
-- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
-- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
-- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
-
+        :param _SceneType: Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario. pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: Suitable for a wide range of UGC/short video scenarios, with optimized encoding bitrate for short video characteristics, image quality improvement, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: During compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: Compression emphasizes clarity and readability of text and images to help students better understand content and ensure clear conveyance of teaching content.
 Default value: normal.
-Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: To use this value, ScenarioBased must be 1, otherwise it does not take effect.
         :type SceneType: str
-        :param _CompressType: Transcoding policy. Valid values: 
-- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
-
+        :param _CompressType: Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for the policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of the compressed file may be relatively large. Only audio and video Top Speed Codec transcoding fees are charged for this policy. 
 Default value: standard_compress. 
-Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
-Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: To watch videos on TV, the ultra_compress policy is not recommended. The billing standard for the ultra_compress policy is TSC transcoding + audio/video enhancement - artifacts removal.
+Note: To use this value, ScenarioBased must be 1, otherwise it does not take effect.
         :type CompressType: str
         """
         self._Codec = None
@@ -71272,23 +72675,22 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Codec(self):
-        r"""Encoding format for video streams. valid values:.
-<Li>H264: h.264 encoding.</li>.
-<Li>H265: h.265 encoding.</li>.
-<Li>H266: h.266 encoding.</li>.
-<li>av1: AOMedia Video 1 encoding</li>.
-<li>vp8: vp8 encoding.</li>.
-<li>vp9: vp9 encoding.</li>.
-<li>mpeg2: mpeg2 encoding.</li>.
-<li>dnxhd: specifies dnxhd encoding.</li>.
-<li>mv-hevc: mv-hevc encoding.</li>.
+        r"""Encoding format for video streams. Optional values:
+<li>h264: H.264 encoding.</li>
+<li>h265: H.265 encoding.</li>
+<li>h266: H.266 encoding.</li>
+<li>av1: AOMedia Video 1 encoding</li>
+<li>vp8: VP8 encoding.</li>
+<li>vp9: VP9 encoding.</li>
+<li>mpeg2: MPEG2 encoding.</li>
+<li>dnxhd: DNxHD encoding.</li>
+<li>mv-hevc: MV-HEVC encoding.</li>
 
-Note: the av1 encoding container currently only supports mp4, webm, and mkv.
-Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: The av1 encoding container currently only supports mp4, webm, and mkv.
+Note: H.266 encoding containers only support mp4, hls, ts, and mov.
 Note: VP8 and VP9 encoding containers currently only support webm and mkv.
 Note: MPEG2 and dnxhd encoding containers currently only support mxf.
-Note: MV-HEVC encoding containers currently only support mp4, hls, and mov. among them, the hls format supports only mp4 segmentation format and requires the input source to be a panoramic video (with multi-perspective).
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: The MV-HEVC codec currently only supports mp4, hls, and mov. Among them, the HLS format only supports the MP4 segmented format and requires the input source to be a panoramic video (with multiple views).
         :rtype: str
         """
         return self._Codec
@@ -71302,7 +72704,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         r"""Video frame rate. Value range:
 When FpsDenominator is empty, the range is [0, 120], in Hz.
 When FpsDenominator is not empty, the Fps/FpsDenominator range is [0, 120].
-If the value is 0, the frame rate will be the same as that of the source video.Note: This field may return null, indicating that no valid values can be obtained.
+If the value is 0, the frame rate will be the same as that of the source video.
         :rtype: int
         """
         return self._Fps
@@ -71313,7 +72715,8 @@ If the value is 0, the frame rate will be the same as that of the source video.N
 
     @property
     def Bitrate(self):
-        r"""Bitrate of a video stream, in kbps. Value range: 0 and [128, 100000].If the value is 0, the bitrate of the video will be the same as that of the source video.Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Bitrate of video stream, value ranges from 0 to [128, 100000], measurement unit: kbps.
+If the value is 0, the bitrate of the video will be the same as that of the source video.
         :rtype: int
         """
         return self._Bitrate
@@ -71324,10 +72727,10 @@ If the value is 0, the frame rate will be the same as that of the source video.N
 
     @property
     def ResolutionAdaptive(self):
-        r"""Resolution adaption. Valid values:
-<li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>
-<li>close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>
-Note: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.
+        r"""Resolution adaptation, available values:
+<li>open: Turn on. At this point, Width represents the long side of the video, and Height indicates the short side of the video;</li>
+<li>close: Close. At this point, Width represents the video width, and Height indicates the video height.</li>
+Note: In self-adaptation mode, Width cannot be less than Height.
         :rtype: str
         """
         return self._ResolutionAdaptive
@@ -71344,7 +72747,6 @@ Note: When resolution adaption is enabled, `Width` cannot be smaller than `Heigh
 <li>If Width is not 0 but Height is 0, the height will be proportionally scaled.</li>
 <li>If both Width and Height are not 0, the resolution is as specified by the user.</li>
 Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Width
@@ -71355,9 +72757,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Height(self):
-        r"""Maximum value of the video stream height (or short edge) in px. Value range: 0 and [128, 4,096].
+        r"""Maximum value of video stream height (or short side). Value ranges from 0 to [128, 4096]. Measurement unit: px.
 Note: If Codec is set to MV-HEVC, the maximum value can be 7680.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Height
@@ -71368,9 +72769,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Gop(self):
-        r"""Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
-If this parameter is 0, the system will automatically set the GOP length.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Interval between I-frames, customizable by frame or second. GOP length value ranges from 0 to [1, 100000].
+When set to 0, the system will automatically set the gop length.
         :rtype: int
         """
         return self._Gop
@@ -71381,11 +72781,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def GopUnit(self):
-        r"""GOP value unit. Optional values: 
+        r"""Gop value unit, value range: 
 frame: indicates frame 
 second: indicates second
 Default value: frame
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._GopUnit
@@ -71396,16 +72795,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FillType(self):
-        r"""Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. Valid values:
- <li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
-<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>
-<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
-<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
-
-<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
+        r"""Filling method, when video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is "padding". Optional filling mode:
+<li> stretch: Stretch, stretch each frame to fill the entire screen, possibly causing the transcoded video to be "squashed" or "stretched";</li>
+<li>black: Keep black, maintain video aspect ratio, edges filled with black.</li>
+<li>White: Leave blank, maintain video aspect ratio, edge remainder filled with white.</li>
+<li>gauss: Gaussian blur, maintain video aspect ratio, Gaussian blur filling for the rest of the edges.</li>
+<li>smarttailor: intelligent cropping. It smartly selects video images to ensure proportional image cropping.</li>
 Default value: black.
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._FillType
@@ -71416,13 +72812,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Vcrf(self):
-        r"""The control factor of video constant bitrate. Value range: [0, 51]. If not specified, it means "auto". It is recommended not to specify this parameter unless necessary.
-When the Mode parameter is set to VBR, if the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.
-When the Mode parameter is set to CRF, the Bitrate setting will be invalid, and the encoding will be based on the Vcrf value.
-When the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
+        r"""Control factor for constant video bitrate. Value range: [0, 51]. If this parameter is not specified, it means "auto". If there are no special requirements, it is advisable not to specify this parameter.
+When the Mode parameter is set to VBR, if the Vcrf value is configured at the same time, MPS processes video in VBR mode with consideration of both Vcrf and Bitrate parameter settings to balance video quality, bitrate, transcoding efficiency, and file size.
+When the Mode parameter is set to CRF, the Bitrate setting will become invalid, and encoding is performed based on the Vcrf value.
+When the Mode parameter is set to ABR or CBR, the Vcrf value requires no configuration.
 Note: When you need to set it to auto, fill in 100.
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Vcrf
@@ -71433,10 +72828,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ContentAdaptStream(self):
-        r"""Whether to enable adaptive encoding. Valid values:
-<li>0: Disable</li>
-<li>1: Enable</li>
-Default value: 0. If this parameter is set to `1`, multiple streams with different resolutions and bitrates will be generated automatically. The highest resolution, bitrate, and quality of the streams are determined by the values of `width` and `height`, `Bitrate`, and `Vcrf` in `VideoTemplate` respectively. If these parameters are not set in `VideoTemplate`, the highest resolution generated will be the same as that of the source video, and the highest video quality will be close to VMAF 95. To use this parameter or learn about the billing details of adaptive encoding, please contact your sales rep.
+        r"""Adaptive coding. Available values:
+<li>0: Not enabled</li>
+<li>1: Turn on</li>
+Default value: 0. When this parameter is enabled, multiple streams with different resolutions and bitrates will be self-adaptively generated. Among them, the width and height in VideoTemplate are the maximum resolution among the multiple streams, the bitrate in VideoTemplate is the highest bitrate among the multiple streams, and the vcrf in VideoTemplate is the highest quality among the multiple streams. When resolution, bitrate, and vcrf are not set, the highest resolution generated by the ContentAdaptStream parameter is the resolution of the video source, and the video quality is close to vmaf95. To enable this parameter or learn about billing details, contact your Tencent Cloud business.
         :rtype: int
         """
         return self._ContentAdaptStream
@@ -71447,10 +72842,9 @@ Default value: 0. If this parameter is set to `1`, multiple streams with differe
 
     @property
     def HlsTime(self):
-        r"""Average segment duration. Value range: (0-10], unit: second
+        r"""Average shard duration. Value range: (0-10], unit: second
 Default value: 10
-Note: It is used only in the format of HLS.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: It is used only in the HLS format.
         :rtype: int
         """
         return self._HlsTime
@@ -71461,15 +72855,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentType(self):
-        r"""HLS segment type. Valid values:
-<li>0: HLS+TS segment</li>
-<li>2: HLS+TS byte range</li>
-<li>7: HLS+MP4 segment</li>
-<li>5: HLS+MP4 byte range</li>
+        r"""hls fragment type, available values:
+<li>0: HLS+TS segment.</li>
+<li>2:HLS+TS byte range</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5:HLS+MP4 byte range</li>
 Default value: 0
-
-Note: This field is used for normal/Top Speed Codec transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field is used for ordinary/TSC transcoding settings and does not take effect for adaptive bitrate streams. If needed, you can use the outer field to configure the shard type for adaptive bitrate streams.
         :rtype: int
         """
         return self._SegmentType
@@ -71480,9 +72872,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FpsDenominator(self):
-        r"""Denominator of the frame rate.
+        r"""Denominator of the frame rate
 Note: The value must be greater than 0.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._FpsDenominator
@@ -71493,12 +72884,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stereo3dType(self):
-        r"""3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:
-<Li>side_by_side: the original video content is arranged in a left-right layout.</li>
-<Li>top_bottom: layout arrangement of the original video content from top to bottom.</li>
-The usage and charges will be reported based on the segmented resolution dimensions.
-Default value: side_by_side.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""3D video splicing mode, only mv-hevc, takes effect for 3D video, available values:
+<li>side_by_side: side-by-side layout of the original video content.</li>
+<li>top_bottom: top-bottom layout arrangement of the original video content.</li>
+Billing is based on the segmented resolution dimension to report usage amount and cost.
+Default value: side_by_side
         :rtype: str
         """
         return self._Stereo3dType
@@ -71511,12 +72901,11 @@ Note: This field may return null, indicating that no valid value can be obtained
     def VideoProfile(self):
         r"""Profile, suitable for different scenarios. 
 baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos. 
-main: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices. 
-high: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.
+Mainstream Profile, providing I-frames, P-frames, and B-frames, and supporting both interlaced and non-interlaced modes. It is primarily used in mainstream audio and video consumption products such as video players and streaming media transmission devices. 
+high: The highest encoding level, adding 8X8 prediction to the Main Profile and supporting custom quantification. Widely used in Blu-ray storage and HDTV scenarios.
 default: automatic filling along with the original video
 
-This configuration appears only when the encoding standard is set to H264. Default value: default
-Note: This field may return null, indicating that no valid value can be obtained.
+This configuration appears only when the encoding standard is set to H264. Default: default
         :rtype: str
         """
         return self._VideoProfile
@@ -71528,9 +72917,8 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def VideoLevel(self):
         r"""Encoder level. Default value: auto ("")
-If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1. 
-If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
-Note: This field may return null, indicating that no valid value can be obtained.
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, -1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1. 
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, -5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
         :rtype: str
         """
         return self._VideoLevel
@@ -71543,9 +72931,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     def Bframes(self):
         r"""Maximum number of consecutive B-frames. The default is auto, and 0 - 16 and -1 are supported.
 Note:
-
 -1 indicates auto.	
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Bframes
@@ -71557,12 +72943,11 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Mode(self):
         r"""Bitrate control mode. Optional values: 
-VBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements. 
-ABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained. 
-CBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming. 
-VCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired. 
+VBR (Variable Bit Rate): Dynamic bitrate adjusts the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements. 
+ABR (Average Bit Rate): Average bitrate. It aims to keep the average bitrate of the output video stable as much as possible, but allows short-term bitrate fluctuation. It is suitable for scenarios where you need to minimize overall bitrate while maintaining a certain image quality. 
+CBR (Constant Bit Rate): Constant bit rate. In video encoding, it maintains a constant output bitrate regardless of image complexity changes. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming. 
+VCRF (Constant Rate Factor): Constant quality factor. It controls video quality by setting a quality factor to achieve constant quality encoding of videos. Bitrate adjustment based on content complexity. Suitable for scenarios where maintaining a certain quality is desired. 
 VBR is selected by default.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Mode
@@ -71575,7 +72960,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     def Sar(self):
         r"""Display aspect ratio. Optional values: [1:1, 2:1, default]
 Default value: default
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Sar
@@ -71586,12 +72970,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def NoScenecut(self):
-        r"""Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values: 
-0: Disable the adaptive I-frame decision 
+        r"""Adaptive I-frame decision. When enabled, Media Processing Service automatically identifies transition points between different scenarios in the video (usually visually distinct frames, such as those of switching from one shot to another) and adaptively inserts keyframes (I-frames) at these points to improve the video's random accessibility and encoding efficiency. Optional values: 
+0: Disable adaptive I-frame decision 
 1: Enable the adaptive I-frame decision 
 Default value: 0	
-	
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._NoScenecut
@@ -71602,8 +72984,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BitDepth(self):
-        r"""Bit: 8/10 is supported. Default value: 8	
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Bit: 8/10 is supported. Default value: -	
         :rtype: int
         """
         return self._BitDepth
@@ -71614,11 +72995,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RawPts(self):
-        r"""Preservation of original timestamp. Optional values: 
+        r"""Preserve original timestamp. Optional values: 
 0: Disabled 
 1: Enabled 
 Default value: Disabled	
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._RawPts
@@ -71629,9 +73009,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Compress(self):
-        r"""Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100, optional values: [0-100] and -1 
+        r"""Proportional compression bitrate. When enabled, the output video's bitrate is adjusted according to the specified ratio. After the compression ratio is entered, the system automatically calculates the target output bitrate based on the video source bitrate. Compression ratio range: 0-100, optional values: [0-100] and -1. 
 Note: -1 indicates auto.	
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Compress
@@ -71642,8 +73021,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentSpecificInfo(self):
-        r"""Segment duration at startup.
-Note: This field may return null, indicating that no valid value can be obtained.
+        r"""Segment Duration at Startup
         :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
         return self._SegmentSpecificInfo
@@ -71654,14 +73032,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ScenarioBased(self):
-        r"""Indicates whether to enable scenario-based settings for the template. 
-0: Disable. 
+        r"""Whether to enable scenario-based settings for the template 
+0: disable 
 1: enable 
- 
 Default value: 0	
-	
-Note: This value takes effect only when the value of this field is 1.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: SceneType and CompressType field values are effective only when this field value is 1.
         :rtype: int
         """
         return self._ScenarioBased
@@ -71672,17 +73047,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SceneType(self):
-        r"""Video scenario. Valid values: 
-- normal: General transcoding scenario. General transcoding and compression scenario.
-- pgc: PGC HD TV shows and movies. At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
-- materials_video: HD materials. Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
-- ugc: UGC content. It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
-- e-commerce_video. Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
-- educational_video. Education. At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
-
+        r"""Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario. pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: Suitable for a wide range of UGC/short video scenarios, with optimized encoding bitrate for short video characteristics, image quality improvement, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: During compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: Compression emphasizes clarity and readability of text and images to help students better understand content and ensure clear conveyance of teaching content.
 Default value: normal.
-Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: To use this value, ScenarioBased must be 1, otherwise it does not take effect.
         :rtype: str
         """
         return self._SceneType
@@ -71693,16 +73065,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CompressType(self):
-        r"""Transcoding policy. Valid values: 
-- ultra_compress: Extreme compression. Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-- standard_compress: Comprehensively optimal. Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-- high_compress: Bitrate priority. Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-- low_compress: Image quality priority. Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
-
+        r"""Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for the policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of the compressed file may be relatively large. Only audio and video Top Speed Codec transcoding fees are charged for this policy. 
 Default value: standard_compress. 
-Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
-Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: To watch videos on TV, the ultra_compress policy is not recommended. The billing standard for the ultra_compress policy is TSC transcoding + audio/video enhancement - artifacts removal.
+Note: To use this value, ScenarioBased must be 1, otherwise it does not take effect.
         :rtype: str
         """
         return self._CompressType
@@ -72203,11 +73573,10 @@ class VolumeBalanceConfig(AbstractModel):
 <li>`OFF` </li>
 Default value: `ON`.
         :type Switch: str
-        :param _Type: The type. Valid values:
-<li>`loudNorm`: Loudness normalization.</li>
-<li>`gainControl`: Volume leveling.</li>
-Default value: `loudNorm`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: Type, available values:
+<li>loudNorm: Loudness normalization</li>
+<li>gainControl: Reduce abrupt change</li>
+Default value: loudNorm.
         :type Type: str
         """
         self._Switch = None
@@ -72229,11 +73598,10 @@ Default value: `ON`.
 
     @property
     def Type(self):
-        r"""The type. Valid values:
-<li>`loudNorm`: Loudness normalization.</li>
-<li>`gainControl`: Volume leveling.</li>
-Default value: `loudNorm`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Type, available values:
+<li>loudNorm: Loudness normalization</li>
+<li>gainControl: Reduce abrupt change</li>
+Default value: loudNorm.
         :rtype: str
         """
         return self._Type
@@ -73246,13 +74614,11 @@ class WorkflowTrigger(AbstractModel):
 
 
         :type Type: str
-        :param _CosFileUploadTrigger: This parameter is required and valid when `Type` is `CosFileUpload`, indicating the COS trigger rule.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CosFileUploadTrigger: Required and valid when Type is CosFileUpload. This is a COS trigger rule.
         :type CosFileUploadTrigger: :class:`tencentcloud.mps.v20190612.models.CosFileUploadTrigger`
-        :param _AwsS3FileUploadTrigger: The AWS S3 trigger. This parameter is valid and required if `Type` is `AwsS3FileUpload`.
+        :param _AwsS3FileUploadTrigger: Required and valid when Type is AwsS3FileUpload. This is the AWS S3 trigger rule.
 
-Note: Currently, the key for the AWS S3 bucket, the trigger SQS queue, and the callback SQS queue must be the same.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: Currently, the keys for AWS S3, the corresponding trigger queue SQS, and the callback queue SQS should be the same.
         :type AwsS3FileUploadTrigger: :class:`tencentcloud.mps.v20190612.models.AwsS3FileUploadTrigger`
         """
         self._Type = None
@@ -73276,8 +74642,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosFileUploadTrigger(self):
-        r"""This parameter is required and valid when `Type` is `CosFileUpload`, indicating the COS trigger rule.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Required and valid when Type is CosFileUpload. This is a COS trigger rule.
         :rtype: :class:`tencentcloud.mps.v20190612.models.CosFileUploadTrigger`
         """
         return self._CosFileUploadTrigger
@@ -73288,10 +74653,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AwsS3FileUploadTrigger(self):
-        r"""The AWS S3 trigger. This parameter is valid and required if `Type` is `AwsS3FileUpload`.
+        r"""Required and valid when Type is AwsS3FileUpload. This is the AWS S3 trigger rule.
 
-Note: Currently, the key for the AWS S3 bucket, the trigger SQS queue, and the callback SQS queue must be the same.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: Currently, the keys for AWS S3, the corresponding trigger queue SQS, and the callback queue SQS should be the same.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AwsS3FileUploadTrigger`
         """
         return self._AwsS3FileUploadTrigger

@@ -62,6 +62,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloneVoice(
+            self,
+            request: models.CloneVoiceRequest,
+            opts: Dict = None,
+    ) -> models.CloneVoiceResponse:
+        """
+        This API is used to clone a voice type from a reference audio.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloneVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloneVoiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAIAnalysisTemplate(
             self,
             request: models.CreateAIAnalysisTemplateRequest,
@@ -129,6 +147,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "CreateAiDramaTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAiDramaTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAiFissionTask(
+            self,
+            request: models.CreateAiFissionTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAiFissionTaskResponse:
+        """
+        Create an ai video fission task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAiFissionTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAiFissionTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -673,7 +709,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteAnimatedGraphicsTemplateResponse:
         """
-        This API is used to delete a custom animated image generating template.
+        This API is used to delete custom animated image generating templates.
         """
         
         kwargs = {}
@@ -727,7 +763,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteContentReviewTemplateResponse:
         """
-        This API is used to delete a custom content moderation template.
+        This API is used to delete a user-defined content moderation template.
         """
         
         kwargs = {}
@@ -745,7 +781,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteImageSpriteTemplateResponse:
         """
-        This API is used to delete an image sprite generating template.
+        This API is used to delete a sprite sheet template.
         """
         
         kwargs = {}
@@ -853,7 +889,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteSampleSnapshotTemplateResponse:
         """
-        This API is used to delete a custom sampled screencapturing template.
+        This API is used to delete a user-customized sampled screenshot template.
         """
         
         kwargs = {}
@@ -871,7 +907,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteScheduleResponse:
         """
-        This API is used to delete a scheme.
+        Delete orchestration
         """
         
         kwargs = {}
@@ -925,7 +961,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteSnapshotByTimeOffsetTemplateResponse:
         """
-        This API is used to delete a custom time point screencapturing template.
+        This API is used to delete a user-customized specified time point screenshot template.
         """
         
         kwargs = {}
@@ -997,7 +1033,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteWatermarkTemplateResponse:
         """
-        This API is used to delete a custom watermarking template.
+        This API is used to delete a user-customized watermark template.
         """
         
         kwargs = {}
@@ -1033,7 +1069,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteWorkflowResponse:
         """
-        This API is used to delete a workflow. An enabled workflow must be disabled before it can be deleted.
+        Delete workflow. For enabled workflows, they must be disabled before they can be deleted.
         """
         
         kwargs = {}
@@ -1130,6 +1166,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeAigcImageTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAigcImageTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcTaskList(
+            self,
+            request: models.DescribeAigcTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcTaskListResponse:
+        """
+        Query AIGC task list details
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcTaskListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1393,7 +1447,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMediaMetaDataResponse:
         """
-        This API is used to get the metadata of media, such as video image width/height, codec, length, and frame rate.
+        This API is used to obtain media meta information, including video image width, height, encoding format, duration, and frame rate.
         """
         
         kwargs = {}
@@ -1811,7 +1865,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DisableScheduleResponse:
         """
-        This API is used to disable a scheme.
+        Disable automated trigger orchestration tasks.
         """
         
         kwargs = {}
@@ -1895,7 +1949,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EnableScheduleResponse:
         """
-        This API is used to enable a scheme.
+        Enable automated trigger orchestration tasks.
         """
         
         kwargs = {}
@@ -1913,7 +1967,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EnableWorkflowResponse:
         """
-        This API is used to enable a workflow.
+        Enables a workflow.
         """
         
         kwargs = {}
@@ -1931,7 +1985,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ExecuteFunctionResponse:
         """
-        This API is reserved for special circumstances. Do not use it unless you are directed to use it by technical support.
+        This interface is only used for custom development in special scenarios. Unless a Media Processing Service customer service representative proactively informs you that you need to use this interface, do not call it in other cases.
         """
         
         kwargs = {}
@@ -2131,7 +2185,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLiveRecordTemplateResponse:
         """
-        This API is used to modify a live recording template.
+        This example shows you how to modify a live streaming recording template.
         """
         
         kwargs = {}
@@ -2517,7 +2571,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResetWorkflowResponse:
         """
-        This API is used to reset an existing workflow that is disabled.
+        This API is used to reset a workflow that already exists and is in disable status.
         """
         
         kwargs = {}
@@ -2542,6 +2596,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "SyncDubbing"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SyncDubbingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TextToSpeech(
+            self,
+            request: models.TextToSpeechRequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechResponse:
+        """
+        This API is used to generate speech synchronously based on input text and specified voice tone.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeech"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

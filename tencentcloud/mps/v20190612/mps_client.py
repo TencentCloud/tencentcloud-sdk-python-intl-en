@@ -73,6 +73,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloneVoice(self, request):
+        r"""This API is used to clone a voice type from a reference audio.
+
+        :param request: Request instance for CloneVoice.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CloneVoiceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAIAnalysisTemplate(self, request):
         r"""This API is used to create a custom content analysis template. Up to 50 templates can be created.
 
@@ -156,6 +179,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreateAiDramaTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAiDramaTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAiFissionTask(self, request):
+        r"""Create an ai video fission task
+
+        :param request: Request instance for CreateAiFissionTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAiFissionTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAiFissionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAiFissionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAiFissionTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -839,7 +885,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteAnimatedGraphicsTemplate(self, request):
-        r"""This API is used to delete a custom animated image generating template.
+        r"""This API is used to delete custom animated image generating templates.
 
         :param request: Request instance for DeleteAnimatedGraphicsTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAnimatedGraphicsTemplateRequest`
@@ -908,7 +954,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteContentReviewTemplate(self, request):
-        r"""This API is used to delete a custom content moderation template.
+        r"""This API is used to delete a user-defined content moderation template.
 
         :param request: Request instance for DeleteContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteContentReviewTemplateRequest`
@@ -931,7 +977,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteImageSpriteTemplate(self, request):
-        r"""This API is used to delete an image sprite generating template.
+        r"""This API is used to delete a sprite sheet template.
 
         :param request: Request instance for DeleteImageSpriteTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteImageSpriteTemplateRequest`
@@ -1069,7 +1115,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSampleSnapshotTemplate(self, request):
-        r"""This API is used to delete a custom sampled screencapturing template.
+        r"""This API is used to delete a user-customized sampled screenshot template.
 
         :param request: Request instance for DeleteSampleSnapshotTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSampleSnapshotTemplateRequest`
@@ -1092,7 +1138,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSchedule(self, request):
-        r"""This API is used to delete a scheme.
+        r"""Delete orchestration
 
         :param request: Request instance for DeleteSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteScheduleRequest`
@@ -1161,7 +1207,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteSnapshotByTimeOffsetTemplate(self, request):
-        r"""This API is used to delete a custom time point screencapturing template.
+        r"""This API is used to delete a user-customized specified time point screenshot template.
 
         :param request: Request instance for DeleteSnapshotByTimeOffsetTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSnapshotByTimeOffsetTemplateRequest`
@@ -1253,7 +1299,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteWatermarkTemplate(self, request):
-        r"""This API is used to delete a custom watermarking template.
+        r"""This API is used to delete a user-customized watermark template.
 
         :param request: Request instance for DeleteWatermarkTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWatermarkTemplateRequest`
@@ -1299,7 +1345,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteWorkflow(self, request):
-        r"""This API is used to delete a workflow. An enabled workflow must be disabled before it can be deleted.
+        r"""Delete workflow. For enabled workflows, they must be disabled before they can be deleted.
 
         :param request: Request instance for DeleteWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteWorkflowRequest`
@@ -1427,6 +1473,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeAigcImageTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAigcImageTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAigcTaskList(self, request):
+        r"""Query AIGC task list details
+
+        :param request: Request instance for DescribeAigcTaskList.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcTaskListRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAigcTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcTaskListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1759,7 +1828,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeMediaMetaData(self, request):
-        r"""This API is used to get the metadata of media, such as video image width/height, codec, length, and frame rate.
+        r"""This API is used to obtain media meta information, including video image width, height, encoding format, duration, and frame rate.
 
         :param request: Request instance for DescribeMediaMetaData.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeMediaMetaDataRequest`
@@ -2292,7 +2361,7 @@ class MpsClient(AbstractClient):
 
 
     def DisableSchedule(self, request):
-        r"""This API is used to disable a scheme.
+        r"""Disable automated trigger orchestration tasks.
 
         :param request: Request instance for DisableSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.DisableScheduleRequest`
@@ -2396,7 +2465,7 @@ class MpsClient(AbstractClient):
 
 
     def EnableSchedule(self, request):
-        r"""This API is used to enable a scheme.
+        r"""Enable automated trigger orchestration tasks.
 
         :param request: Request instance for EnableSchedule.
         :type request: :class:`tencentcloud.mps.v20190612.models.EnableScheduleRequest`
@@ -2419,7 +2488,7 @@ class MpsClient(AbstractClient):
 
 
     def EnableWorkflow(self, request):
-        r"""This API is used to enable a workflow.
+        r"""Enables a workflow.
 
         :param request: Request instance for EnableWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.EnableWorkflowRequest`
@@ -2442,7 +2511,7 @@ class MpsClient(AbstractClient):
 
 
     def ExecuteFunction(self, request):
-        r"""This API is reserved for special circumstances. Do not use it unless you are directed to use it by technical support.
+        r"""This interface is only used for custom development in special scenarios. Unless a Media Processing Service customer service representative proactively informs you that you need to use this interface, do not call it in other cases.
 
         :param request: Request instance for ExecuteFunction.
         :type request: :class:`tencentcloud.mps.v20190612.models.ExecuteFunctionRequest`
@@ -2697,7 +2766,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyLiveRecordTemplate(self, request):
-        r"""This API is used to modify a live recording template.
+        r"""This example shows you how to modify a live streaming recording template.
 
         :param request: Request instance for ModifyLiveRecordTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyLiveRecordTemplateRequest`
@@ -3183,7 +3252,7 @@ class MpsClient(AbstractClient):
 
 
     def ResetWorkflow(self, request):
-        r"""This API is used to reset an existing workflow that is disabled.
+        r"""This API is used to reset a workflow that already exists and is in disable status.
 
         :param request: Request instance for ResetWorkflow.
         :type request: :class:`tencentcloud.mps.v20190612.models.ResetWorkflowRequest`
@@ -3219,6 +3288,29 @@ class MpsClient(AbstractClient):
             body = self.call("SyncDubbing", params, headers=headers)
             response = json.loads(body)
             model = models.SyncDubbingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TextToSpeech(self, request):
+        r"""This API is used to generate speech synchronously based on input text and specified voice tone.
+
+        :param request: Request instance for TextToSpeech.
+        :type request: :class:`tencentcloud.mps.v20190612.models.TextToSpeechRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextToSpeechResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToSpeech", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToSpeechResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
