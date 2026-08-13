@@ -27,7 +27,7 @@ class AssessDeviceRiskPremiumProRequest(AbstractModel):
         r"""
         :param _DeviceToken: <p>Device fingerprint token, obtained after integration of the device fingerprint SDK into your website or application</p>
         :type DeviceToken: str
-        :param _UserIp: <p>User client IP address(IPv4 or IPv6)</p>
+        :param _UserIp: <p>User client IP address (IPv4 or IPv6)</p>
         :type UserIp: str
         """
         self._DeviceToken = None
@@ -46,7 +46,7 @@ class AssessDeviceRiskPremiumProRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        r"""<p>User client IP address(IPv4 or IPv6)</p>
+        r"""<p>User client IP address (IPv4 or IPv6)</p>
         :rtype: str
         """
         return self._UserIp
@@ -128,7 +128,6 @@ class AssessDeviceRiskPremiumRsp(AbstractModel):
         :param _Device: <p>The basic information of the device</p>
         :type Device: :class:`tencentcloud.rce.v20260130.models.Device`
         :param _Environment: <p>Basic IP environment information</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Environment: :class:`tencentcloud.rce.v20260130.models.Environment`
         """
         self._Decision = None
@@ -172,7 +171,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Environment(self):
         r"""<p>Basic IP environment information</p>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.rce.v20260130.models.Environment`
         """
         return self._Environment
@@ -214,7 +212,7 @@ class AssessDeviceRiskProRequest(AbstractModel):
         r"""
         :param _DeviceToken: <p>Device fingerprint token, obtained after integration of the device fingerprint SDK into your website or application</p>
         :type DeviceToken: str
-        :param _UserIp: <p>User client IP address(IPv4 or IPv6)</p>
+        :param _UserIp: <p>User client IP address (IPv4 or IPv6)</p>
         :type UserIp: str
         """
         self._DeviceToken = None
@@ -233,7 +231,7 @@ class AssessDeviceRiskProRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        r"""<p>User client IP address(IPv4 or IPv6)</p>
+        r"""<p>User client IP address (IPv4 or IPv6)</p>
         :rtype: str
         """
         return self._UserIp
@@ -312,9 +310,12 @@ class AssessDeviceRiskRsp(AbstractModel):
         :type Score: :class:`tencentcloud.rce.v20260130.models.DataScore`
         :param _Device: <p>The basic information of the device</p>
         :type Device: :class:`tencentcloud.rce.v20260130.models.Device`
+        :param _Environment: <p>Basic IP environment information</p>
+        :type Environment: :class:`tencentcloud.rce.v20260130.models.Environment`
         """
         self._Score = None
         self._Device = None
+        self._Environment = None
 
     @property
     def Score(self):
@@ -338,6 +339,17 @@ class AssessDeviceRiskRsp(AbstractModel):
     def Device(self, Device):
         self._Device = Device
 
+    @property
+    def Environment(self):
+        r"""<p>Basic IP environment information</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Environment`
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
 
     def _deserialize(self, params):
         if params.get("Score") is not None:
@@ -346,6 +358,9 @@ class AssessDeviceRiskRsp(AbstractModel):
         if params.get("Device") is not None:
             self._Device = Device()
             self._Device._deserialize(params.get("Device"))
+        if params.get("Environment") is not None:
+            self._Environment = Environment()
+            self._Environment._deserialize(params.get("Environment"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -503,9 +518,12 @@ class DataScore(AbstractModel):
         :type RiskLevel: int
         :param _RiskLabels: <p>Risk label</p>
         :type RiskLabels: list of RiskLabel
+        :param _RiskScore: <p>Comprehensive risk score.</p><p>Value ranges from 1 to 1000.</p><p>The larger the value, the larger the risk.</p>
+        :type RiskScore: int
         """
         self._RiskLevel = None
         self._RiskLabels = None
+        self._RiskScore = None
 
     @property
     def RiskLevel(self):
@@ -529,6 +547,17 @@ class DataScore(AbstractModel):
     def RiskLabels(self, RiskLabels):
         self._RiskLabels = RiskLabels
 
+    @property
+    def RiskScore(self):
+        r"""<p>Comprehensive risk score.</p><p>Value ranges from 1 to 1000.</p><p>The larger the value, the larger the risk.</p>
+        :rtype: int
+        """
+        return self._RiskScore
+
+    @RiskScore.setter
+    def RiskScore(self, RiskScore):
+        self._RiskScore = RiskScore
+
 
     def _deserialize(self, params):
         self._RiskLevel = params.get("RiskLevel")
@@ -538,6 +567,7 @@ class DataScore(AbstractModel):
                 obj = RiskLabel()
                 obj._deserialize(item)
                 self._RiskLabels.append(obj)
+        self._RiskScore = params.get("RiskScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -557,8 +587,11 @@ class Decision(AbstractModel):
         r"""
         :param _DecisionResult: <p>Decision result</p><ul><li>pass: Pass</li><li>review: Review</li><li>reject: Reject</li></ul>
         :type DecisionResult: str
+        :param _Disposition: <p>Decision action when a strategy is matched. Configurable in the console.</p>
+        :type Disposition: str
         """
         self._DecisionResult = None
+        self._Disposition = None
 
     @property
     def DecisionResult(self):
@@ -571,9 +604,21 @@ class Decision(AbstractModel):
     def DecisionResult(self, DecisionResult):
         self._DecisionResult = DecisionResult
 
+    @property
+    def Disposition(self):
+        r"""<p>Decision action when a strategy is matched. Configurable in the console.</p>
+        :rtype: str
+        """
+        return self._Disposition
+
+    @Disposition.setter
+    def Disposition(self, Disposition):
+        self._Disposition = Disposition
+
 
     def _deserialize(self, params):
         self._DecisionResult = params.get("DecisionResult")
+        self._Disposition = params.get("Disposition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -611,6 +656,10 @@ class Device(AbstractModel):
         :type SystemVersion: str
         :param _SdkBuildVersion: <p>The build version of SDK</p>
         :type SdkBuildVersion: str
+        :param _SignToken: <p>Signature verification token. Please contact us to enable signature verification</p>
+        :type SignToken: str
+        :param _TokenTime: <p>Token generation timestamp, in milliseconds</p>
+        :type TokenTime: str
         """
         self._DeviceId = None
         self._AppVersion = None
@@ -622,6 +671,8 @@ class Device(AbstractModel):
         self._Platform = None
         self._SystemVersion = None
         self._SdkBuildVersion = None
+        self._SignToken = None
+        self._TokenTime = None
 
     @property
     def DeviceId(self):
@@ -733,6 +784,28 @@ class Device(AbstractModel):
     def SdkBuildVersion(self, SdkBuildVersion):
         self._SdkBuildVersion = SdkBuildVersion
 
+    @property
+    def SignToken(self):
+        r"""<p>Signature verification token. Please contact us to enable signature verification</p>
+        :rtype: str
+        """
+        return self._SignToken
+
+    @SignToken.setter
+    def SignToken(self, SignToken):
+        self._SignToken = SignToken
+
+    @property
+    def TokenTime(self):
+        r"""<p>Token generation timestamp, in milliseconds</p>
+        :rtype: str
+        """
+        return self._TokenTime
+
+    @TokenTime.setter
+    def TokenTime(self, TokenTime):
+        self._TokenTime = TokenTime
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -745,6 +818,8 @@ class Device(AbstractModel):
         self._Platform = params.get("Platform")
         self._SystemVersion = params.get("SystemVersion")
         self._SdkBuildVersion = params.get("SdkBuildVersion")
+        self._SignToken = params.get("SignToken")
+        self._TokenTime = params.get("TokenTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

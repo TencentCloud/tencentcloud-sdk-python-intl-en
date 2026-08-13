@@ -32,6 +32,9 @@ FAILEDOPERATION_CAMCHECKRESOURCEERROR = 'FailedOperation.CamCheckResourceError'
 # Authentication failed. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_CAMSIGANDAUTHERROR = 'FailedOperation.CamSigAndAuthError'
 
+# VPC/subnet verification failure: {{1}}.
+FAILEDOPERATION_CHECKVPCANDSUBNETERROR = 'FailedOperation.CheckVpcAndSubnetError'
+
 # Create audit failure
 FAILEDOPERATION_CREATEAUDITFAILERROR = 'FailedOperation.CreateAuditFailError'
 
@@ -76,6 +79,9 @@ FAILEDOPERATION_MODIFYDEDUCTIONPRIORITYERROR = 'FailedOperation.ModifyDeductionP
 
 # Operation failed. Try again later. If the problem persists, contact customer service.
 FAILEDOPERATION_OPERATIONFAILEDERROR = 'FailedOperation.OperationFailedError'
+
+# Proxy verification failure: {{1}}.
+FAILEDOPERATION_PROXYCHECKERROR = 'FailedOperation.ProxyCheckError'
 
 # Failed to query the consumption details of a resource pack
 FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = 'FailedOperation.QuerySourcePackageDetailError'
