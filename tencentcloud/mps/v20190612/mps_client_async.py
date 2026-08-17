@@ -31,8 +31,8 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.BatchProcessMediaResponse:
         """
-        This API is used to initiate batch processing tasks for URL video links, with features including:
-        Smart subtitle (full speech, speech hotword, and speech translation).
+        This API is used to initiate batch processing tasks for URL video links, with features:
+        Smart subtitle (full speech, speech hotword, and speech translation)
         """
         
         kwargs = {}
@@ -86,7 +86,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAIAnalysisTemplateResponse:
         """
-        This API is used to create a custom content analysis template. Up to 50 templates can be created.
+        This API is used to create a user-defined content analysis template. Up to 50 templates can be created.
         """
         
         kwargs = {}
@@ -104,7 +104,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAIRecognitionTemplateResponse:
         """
-        This API is used to create a custom content recognition template. Up to 50 templates can be created.
+        This API is used to create a user-defined Content Recognition template. Up to 50 templates can be created.
         """
         
         kwargs = {}
@@ -302,7 +302,8 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateDocToVideoTaskResponse:
         """
-        Creates an AIGC document-to-video task
+        This API is used to create an AIGC documentation generation video task.
+        This API is used to query tasks.
         """
         
         kwargs = {}
@@ -446,23 +447,21 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateScheduleResponse:
         """
-        This API is used to set processing rules for uploaded media files under the specified Bucket directory in COS, including:.
-        This API is used to transcode videos with watermarks.
-        This API is used to generate animated images.
-        This API is used to take screenshots at specified time points.
-        This API is used to take sampled screenshots from videos.
-        This API is used to take sprite screenshots of videos.
-        This API is used to transcode to adaptive bitrate streaming.
-        This API is used to perform intelligent content moderation, including porn detection and sensitive information detection.
-        This API is used to perform intelligent content analysis (tag, category, cover, frame tagging).
-        This API is used to perform intelligent content identification (human face, full text, text keyword, full speech, speech keyword).
+        This API is used to set processing rules for uploaded media files under the directory of a specified Bucket in COS, including:
+        1. Video transcoding (watermarked);
+        2. Video-to-GIF conversion;
+        3. Screenshot taking at specified time points;
+        4. Sampled screenshot taking;
+        5. Sprite screenshot taking;
+        6. Transcoding to adaptive bitrate streaming;
+        7. Intelligent content moderation (porn detection and sensitive information detection);
+        8. Intelligent content analysis (tag, category, cover, frame tag).
+        9. Intelligent content identification (human face, full text, text keyword, full speech, speech keyword).
         10. Media quality inspection (live stream format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, black and white edges, black and white screens, screen glitch, noise, mosaic, QR code, and more), and no-reference scoring).
-
         11. Smart subtitle (full speech, speech hotword, and speech translation).
+        12. Smart erasing (watermark removal, subtitle removal, and privacy protection).
 
-        This API is used to perform intelligent erasure (watermark removal, subtitle removal, privacy protection).
-
-        This API is used to create an orchestration, which is in disable status by default and requires manual enablement.
+        Note: After orchestration is created successfully, it is in disable status and needs to be manually enabled.
         """
         
         kwargs = {}
@@ -673,7 +672,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteAIRecognitionTemplateResponse:
         """
-        This API is used to delete a custom content recognition template.
+        This API is used to delete a user-defined Content Recognition template.
         """
         
         kwargs = {}
@@ -997,7 +996,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteTranscodeTemplateResponse:
         """
-        This API is used to delete a custom transcoding template.
+        This API is used to delete custom transcoding templates.
         """
         
         kwargs = {}
@@ -1429,7 +1428,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLiveRecordTemplatesResponse:
         """
-        This API is used to get a live recording template.
+        This API is used to query a live recording template.
         """
         
         kwargs = {}
@@ -1720,7 +1719,7 @@ class MpsClient(AbstractClient):
     ) -> models.DescribeUsageDataResponse:
         """
         This API is used to return the daily Media Processing Service (MPS) usage information within the specified query time range.
-           1. MPS statistical data from the last 365 days can be queried.
+        1. MPS statistical data from the last 365 days can be queried.
            2. The query time span should not exceed 90 days.
         """
         
@@ -2059,7 +2058,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAIRecognitionTemplateResponse:
         """
-        This API is used to modify a custom content recognition template.
+        This API is used to modify a user-defined Content Recognition template.
         """
         
         kwargs = {}
@@ -2365,7 +2364,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyTranscodeTemplateResponse:
         """
-        This API is used to modify a custom transcoding template.
+        This API is used to modify custom transcoding template information.
         """
         
         kwargs = {}
@@ -2419,8 +2418,8 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ParseLiveStreamProcessNotificationResponse:
         """
-        This API is used to parse the content of an MPS live stream processing event notification from the `msgBody` field in the message received from CMQ.
-        Instead of initiating a video processing task, this API is used to help generate SDKs for various programming languages. You can parse the event notification based on the analytic function of the SDKs.
+        After receiving the message from CMQ, parse out the content of the MPS live stream processing event notification from the msgBody field of the message.
+        This API is not used to trigger network calls, but to help generate SDKs for each language platform. You can refer to the parsing implementation in the SDK to parse event notifications.
         """
         
         kwargs = {}
@@ -2438,8 +2437,8 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ParseNotificationResponse:
         """
-        This API is used to parse the content of an MPS event notification from the `msgBody` field in the message received from CMQ.
-        Instead of initiating a video processing task, this API is used to help generate SDKs for various programming languages. You can parse the event notification based on the analytic function of the SDKs.
+        After receiving a message from CMQ, parse out the content of the MPS event notification from the msgBody field of the message.
+        This API is not used to trigger network calls, but to help generate SDKs for each language platform. You can refer to the parsing function in the SDK to implement event notification parsing.
         """
         
         kwargs = {}
@@ -2479,15 +2478,15 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ProcessLiveStreamResponse:
         """
-        This API is used to initiate a processing task for live streaming. Features include:.
+        This API is used to initiate processing tasks on a live stream. Features include:
 
-        Intelligent content moderation (porn detection in images, sensitive information detection, audio pornography detection);.
-        * Smart content recognition (human faces, full texts, text keywords, full speech, speech keywords, real-time speech translation, object recognition, game tagging).
+        Intelligent content moderation (porn detection in images, sensitive information detection, audio pornography detection);
+        * Smart content recognition (human faces, full texts, text keywords, full speech, speech keywords, real-time speech translation, object recognition, and game tagging).
         Intelligent content analysis (clipping, highlights).
         Quality inspection (live stream format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, black and white edges, black and white screens, screen glitch, noise, mosaic, QR code, and more), and no-reference scoring).
-        recording.
+        Recording
 
-        Live stream processing event notification supports HTTP callback and also supports real-time writing to user-specified TDMQ CMQ. Users obtain event notification results from TDMQ CMQ. Meanwhile, if output files exist during the process, they will be written to the target storage specified by the user.
+        Live stream processing event notification supports HTTP callbacks and also supports real-time writing to the message queue CMQ specified by the user. The user obtains the event notification result from the message queue CMQ. Meanwhile, if an output file exists during the process, it will be written to the target storage of the output file specified by the user.
         """
         
         kwargs = {}

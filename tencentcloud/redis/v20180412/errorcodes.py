@@ -50,6 +50,9 @@ FAILEDOPERATION_PAYFAILED = 'FailedOperation.PayFailed'
 # No exact description for this error code for the time being.
 FAILEDOPERATION_REDOFLOWFAILED = 'FailedOperation.RedoFlowFailed'
 
+# Failed to access the Log service. Please retry later. If it remains unsuccessful, contact our customer service for assistance.
+FAILEDOPERATION_SERVICEACCESSERROR = 'FailedOperation.ServiceAccessError'
+
 # Failed to set the rule.
 FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 
@@ -110,6 +113,9 @@ INVALIDPARAMETER_INSTANCESGOVERLIMITERROR = 'InvalidParameter.InstanceSGOverLimi
 # Invalid service parameter.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
+# Invalid parameter.
+INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
+
 # The instance is not in a VPC.
 INVALIDPARAMETER_ISNOTVPCINSTANCE = 'InvalidParameter.IsNotVpcInstance'
 
@@ -137,11 +143,17 @@ INVALIDPARAMETERVALUE_BASENETWORKACCESSDENY = 'InvalidParameterValue.BaseNetWork
 # Business verification failed
 INVALIDPARAMETERVALUE_CHECKNOTPASS = 'InvalidParameterValue.CheckNotPass'
 
+# Data conversion failed
+INVALIDPARAMETERVALUE_DATACONVERTERROR = 'InvalidParameterValue.DataConvertError'
+
 # A renaming rule error occurred.
 INVALIDPARAMETERVALUE_INSTANCENAMERULEERROR = 'InvalidParameterValue.InstanceNameRuleError'
 
 # The type of instances requested for purchase is incorrect (TypeId - 1: Cluster Edition; 2: Master-Replica Edition, i.e., the legacy Master-Replica Edition).
 INVALIDPARAMETERVALUE_INVALIDINSTANCETYPEID = 'InvalidParameterValue.InvalidInstanceTypeId'
+
+# Illegal input.
+INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 
 # The `vpcid` or subnet ID in the VPC is invalid.
 INVALIDPARAMETERVALUE_INVALIDSUBNETID = 'InvalidParameterValue.InvalidSubnetId'

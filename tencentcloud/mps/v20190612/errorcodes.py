@@ -23,7 +23,7 @@ FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = 'FailedOperation.BucketNotifyAlreadyE
 # Operation failed: COS service is suspended.
 FAILEDOPERATION_COSSTATUSINAVLID = 'FailedOperation.CosStatusInavlid'
 
-# Failed to create an AIGC task
+# 
 FAILEDOPERATION_CREATEAIGCTASKFAILED = 'FailedOperation.CreateAIGCTaskFailed'
 
 # Resource generation failed.
@@ -41,13 +41,13 @@ FAILEDOPERATION_INVALIDUSER = 'FailedOperation.InvalidUser'
 # Operation failed due to a network error.
 FAILEDOPERATION_NETWORKERROR = 'FailedOperation.NetWorkError'
 
-# Error occurred while querying the task
+# 
 FAILEDOPERATION_QUERYAIGCTASKFAILED = 'FailedOperation.QueryAIGCTaskFailed'
 
 # Operation failure: error setting source notification.
 FAILEDOPERATION_SETSOURCENOTIFY = 'FailedOperation.SetSourceNotify'
 
-# User account has been suspended
+# 
 FAILEDOPERATION_USERARREARS = 'FailedOperation.UserArrears'
 
 # Internal error.
@@ -101,13 +101,13 @@ INVALIDPARAMETERVALUE_ASRHOTWORDSLIBRARYID = 'InvalidParameterValue.AsrHotWordsL
 # The value of the hotword lexicon switch parameter is incorrect.
 INVALIDPARAMETERVALUE_ASRHOTWORDSSWITCH = 'InvalidParameterValue.AsrHotWordsSwitch'
 
-# Parameter error: Audio stream bitrate.
+# Invalid parameter: audio stream bitrate.
 INVALIDPARAMETERVALUE_AUDIOBITRATE = 'InvalidParameterValue.AudioBitrate'
 
-# Incorrect parameter value: AudioChannel.
+# Parameter value error: AudioChannel.
 INVALIDPARAMETERVALUE_AUDIOCHANNEL = 'InvalidParameterValue.AudioChannel'
 
-# Parameter error: audio stream codec.
+# Invalid parameter: audio stream encoding format.
 INVALIDPARAMETERVALUE_AUDIOCODEC = 'InvalidParameterValue.AudioCodec'
 
 # Invalid audio data.
@@ -119,7 +119,7 @@ INVALIDPARAMETERVALUE_AUDIODATATOOLONG = 'InvalidParameterValue.AudioDataTooLong
 # Unsupported audio data format.
 INVALIDPARAMETERVALUE_AUDIOFORMAT = 'InvalidParameterValue.AudioFormat'
 
-# Parameter error: audio stream sample rate.
+# Invalid parameter: audio stream sampling rate.
 INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = 'InvalidParameterValue.AudioSampleRate'
 
 # The configuration for the automatic erasing area of the erasing template is incorrect.
@@ -131,7 +131,7 @@ INVALIDPARAMETERVALUE_BITRATE = 'InvalidParameterValue.Bitrate'
 # Incorrect parameter value: the value of the `BlockConfidence` parameter is invalid.
 INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = 'InvalidParameterValue.BlockConfidence'
 
-# Incorrect parameter value: the control field parameter for intelligent categorization is incorrect.
+# Parameter value error: Intelligent classification control field parameter error.
 INVALIDPARAMETERVALUE_CLASSIFCATIONCONFIGURE = 'InvalidParameterValue.ClassifcationConfigure'
 
 # Invalid audio/video codec.
@@ -143,7 +143,7 @@ INVALIDPARAMETERVALUE_COLUMNCOUNT = 'InvalidParameterValue.ColumnCount'
 # Parameter error: template description.
 INVALIDPARAMETERVALUE_COMMENT = 'InvalidParameterValue.Comment'
 
-# Parameter error: container format.
+# Invalid parameter: muxing format.
 INVALIDPARAMETERVALUE_CONTAINER = 'InvalidParameterValue.Container'
 
 # Incorrect parameter value: ContainerType.
@@ -152,13 +152,13 @@ INVALIDPARAMETERVALUE_CONTAINERTYPE = 'InvalidParameterValue.ContainerType'
 # Incorrect parameter value: CoordinateOrigin.
 INVALIDPARAMETERVALUE_COORDINATEORIGIN = 'InvalidParameterValue.CoordinateOrigin'
 
-# Incorrect parameter value: the control field parameter for intelligent cover generation is incorrect.
+# Parameter value error: Intelligent cover control field parameter error.
 INVALIDPARAMETERVALUE_COVERCONFIGURE = 'InvalidParameterValue.CoverConfigure'
 
 # The specified area of the erasing template is incorrect.
 INVALIDPARAMETERVALUE_CUSTOMAREAS = 'InvalidParameterValue.CustomAreas'
 
-# Incorrect parameter value: the default face library filter tag is invalid.
+# Parameter value error: the filter tag of the default human face library is invalid.
 INVALIDPARAMETERVALUE_DEFAULTLIBRARYLABELSET = 'InvalidParameterValue.DefaultLibraryLabelSet'
 
 # Parameter error: Definition.
@@ -170,7 +170,7 @@ INVALIDPARAMETERVALUE_DEFINITIONS = 'InvalidParameterValue.Definitions'
 # Incorrect parameter value: the default template cannot be deleted.
 INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = 'InvalidParameterValue.DeleteDefaultTemplate'
 
-# DestinationLanguage parameter error.
+# A DestinationLanguage parameter error occurs.
 INVALIDPARAMETERVALUE_DESTINATIONLANGUAGE = 'InvalidParameterValue.DestinationLanguage'
 
 # Invalid switch value used to prohibit transcoding from low bitrate to high bitrate.
@@ -203,10 +203,10 @@ INVALIDPARAMETERVALUE_ERASEWATERMARKCONFIG = 'InvalidParameterValue.EraseWaterma
 # Incorrect parameter value: duplicated face.
 INVALIDPARAMETERVALUE_FACEDUPLICATE = 'InvalidParameterValue.FaceDuplicate'
 
-# Incorrect parameter value: invalid face library parameter.
+# Parameter value error: the face library parameter is invalid.
 INVALIDPARAMETERVALUE_FACELIBRARY = 'InvalidParameterValue.FaceLibrary'
 
-# Incorrect parameter value: the value of the face score parameter is invalid.
+# Parameter value error: the Face Score parameter value is invalid.
 INVALIDPARAMETERVALUE_FACESCORE = 'InvalidParameterValue.FaceScore'
 
 # Invalid parameter: incorrect fill type.
@@ -224,7 +224,7 @@ INVALIDPARAMETERVALUE_FORMATWEBPWIDTHANDHEIGHTBOTHZERO = 'InvalidParameterValue.
 # Parameter error: video frame rate.
 INVALIDPARAMETERVALUE_FPS = 'InvalidParameterValue.Fps'
 
-# Incorrect parameter value: the control field parameter for intelligent frame-specific tagging is incorrect.
+# Parameter value error: Intelligent frame tagging control field parameter error.
 INVALIDPARAMETERVALUE_FRAMETAGCONFIGURE = 'InvalidParameterValue.FrameTagConfigure'
 
 # Parameter value error: FunctionArg.
@@ -254,7 +254,7 @@ INVALIDPARAMETERVALUE_IMAGETEMPLATE = 'InvalidParameterValue.ImageTemplate'
 # Incorrect input parameters.
 INVALIDPARAMETERVALUE_INPUTINFO = 'InvalidParameterValue.InputInfo'
 
-# The value of the parsed `Content` is invalid.
+# The value of Content is invalid.
 INVALIDPARAMETERVALUE_INVALIDCONTENT = 'InvalidParameterValue.InvalidContent'
 
 # Invalid operation type.
@@ -266,7 +266,7 @@ INVALIDPARAMETERVALUE_LABELSET = 'InvalidParameterValue.LabelSet'
 # Parameter error: Limit.
 INVALIDPARAMETERVALUE_LIMIT = 'InvalidParameterValue.Limit'
 
-# Incorrect parameter value: the default template cannot be modified.
+# Parameter value error: Default template not allowed to be modified.
 INVALIDPARAMETERVALUE_MODIFYDEFAULTTEMPLATE = 'InvalidParameterValue.ModifyDefaultTemplate'
 
 # Incorrect parameter value: `Name` exceeds the length limit.
@@ -275,7 +275,7 @@ INVALIDPARAMETERVALUE_NAME = 'InvalidParameterValue.Name'
 # Tasks not in processing status are not supported.
 INVALIDPARAMETERVALUE_NOTPROCESSINGTASK = 'InvalidParameterValue.NotProcessingTask'
 
-# Incorrect parameter value: object library parameter is invalid.
+# Parameter value error: the object library parameter is invalid.
 INVALIDPARAMETERVALUE_OBJECTLIBRARY = 'InvalidParameterValue.ObjectLibrary'
 
 # Incorrect parameter value: the OcrSwitch parameter value is invalid.
@@ -302,10 +302,10 @@ INVALIDPARAMETERVALUE_PROJECTNOTFOUND = 'InvalidParameterValue.ProjectNotFound'
 # Incorrect parameter value: Quality.
 INVALIDPARAMETERVALUE_QUALITY = 'InvalidParameterValue.Quality'
 
-# Incorrect parameter value: RemoveAudio.
+# Parameter value error: RemoveAudio.
 INVALIDPARAMETERVALUE_REMOVEAUDIO = 'InvalidParameterValue.RemoveAudio'
 
-# Incorrect parameter value: RemoveVideo.
+# Parameter value error: RemoveVideo.
 INVALIDPARAMETERVALUE_REMOVEVIDEO = 'InvalidParameterValue.RemoveVideo'
 
 # Parameter error: invalid `RepeatType`.
@@ -314,7 +314,7 @@ INVALIDPARAMETERVALUE_REPEATTYPE = 'InvalidParameterValue.RepeatType'
 # Parameter error: Incorrect resolution.
 INVALIDPARAMETERVALUE_RESOLUTION = 'InvalidParameterValue.Resolution'
 
-# Invalid ResolutionAdaptive
+# Invalid ResolutionAdaptive.
 INVALIDPARAMETERVALUE_RESOLUTIONADAPTIVE = 'InvalidParameterValue.ResolutionAdaptive'
 
 # Incorrect parameter value: The value of the `ReviewConfidence` parameter is invalid.
@@ -335,19 +335,19 @@ INVALIDPARAMETERVALUE_SAMPLETYPE = 'InvalidParameterValue.SampleType'
 # A service parameter value error occurs.
 INVALIDPARAMETERVALUE_SERVICE = 'InvalidParameterValue.Service'
 
-# `SessionContext` is too long.
+# The SessionContext is too long.
 INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = 'InvalidParameterValue.SessionContextTooLong'
 
-# The deduplication ID already exists. The request is removed due to duplication.
+# Duplicate recognition code, request deduplicated.
 INVALIDPARAMETERVALUE_SESSIONID = 'InvalidParameterValue.SessionId'
 
-# `SessionId` is too long.
+# SessionId is too long.
 INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = 'InvalidParameterValue.SessionIdTooLong'
 
 # Invalid parameter: incorrect audio channel system.
 INVALIDPARAMETERVALUE_SOUNDSYSTEM = 'InvalidParameterValue.SoundSystem'
 
-# SourceLanguage parameter error.
+# A SourceLanguage parameter error occurs.
 INVALIDPARAMETERVALUE_SOURCELANGUAGE = 'InvalidParameterValue.SourceLanguage'
 
 # A SourceText parameter error occurs.
@@ -362,7 +362,7 @@ INVALIDPARAMETERVALUE_SUBTITLEEMBEDID = 'InvalidParameterValue.SubtitleEmbedId'
 # The subtitle erasing method of the erasing template is incorrect.
 INVALIDPARAMETERVALUE_SUBTITLEERASEMETHOD = 'InvalidParameterValue.SubtitleEraseMethod'
 
-# Incorrect parameter value: The value of the `SubtitleFormat` parameter is invalid.
+# Parameter value error: the SubtitleFormat parameter is invalid.
 INVALIDPARAMETERVALUE_SUBTITLEFORMAT = 'InvalidParameterValue.SubtitleFormat'
 
 # The language for the subtitle erasing of the erasing template is incorrect.
@@ -386,10 +386,10 @@ INVALIDPARAMETERVALUE_SVGTEMPLATEWIDTH = 'InvalidParameterValue.SvgTemplateWidth
 # Incorrect parameter value: invalid `Switch` value.
 INVALIDPARAMETERVALUE_SWITCH = 'InvalidParameterValue.Switch'
 
-# Incorrect parameter value: invalid `TEHD Type` .
+# Parameter value error: TEHD Type invalid.
 INVALIDPARAMETERVALUE_TEHDTYPE = 'InvalidParameterValue.TEHDType'
 
-# Incorrect parameter value: the control field parameter for intelligent tagging is incorrect.
+# Parameter value error: Intelligent tag control field parameter error.
 INVALIDPARAMETERVALUE_TAGCONFIGURE = 'InvalidParameterValue.TagConfigure'
 
 # The task ID does not exist.
@@ -416,7 +416,7 @@ INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = 'InvalidParameterValue.TranslateDst
 # The value of the translation switch parameter is incorrect.
 INVALIDPARAMETERVALUE_TRANSLATESWITCH = 'InvalidParameterValue.TranslateSwitch'
 
-# Parameter error: incorrect `Type` value.
+# Parameter error: Type parameter value error.
 INVALIDPARAMETERVALUE_TYPE = 'InvalidParameterValue.Type'
 
 # Unknown detection category.
@@ -428,7 +428,7 @@ INVALIDPARAMETERVALUE_USEORIGINALPOS = 'InvalidParameterValue.UseOriginalPos'
 # UseOriginalSize Unavailable
 INVALIDPARAMETERVALUE_USEORIGINALSIZE = 'InvalidParameterValue.UseOriginalSize'
 
-# Incorrect parameter value: the custom face library filter tag is invalid.
+# Parameter value error: the filter tag of the custom face library is invalid.
 INVALIDPARAMETERVALUE_USERDEFINELIBRARYLABELSET = 'InvalidParameterValue.UserDefineLibraryLabelSet'
 
 # The user is not registered for MPS.
@@ -437,7 +437,7 @@ INVALIDPARAMETERVALUE_USERUNREGISTER = 'InvalidParameterValue.UserUnRegister'
 # Parameter error: video stream bitrate.
 INVALIDPARAMETERVALUE_VIDEOBITRATE = 'InvalidParameterValue.VideoBitrate'
 
-# Parameter error: video stream codec.
+# Invalid parameter: video stream encoding format.
 INVALIDPARAMETERVALUE_VIDEOCODEC = 'InvalidParameterValue.VideoCodec'
 
 # The value of the video source language parameter is incorrect.
@@ -458,7 +458,7 @@ INVALIDPARAMETERVALUE_XPOS = 'InvalidParameterValue.XPos'
 # The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported.
 INVALIDPARAMETERVALUE_YPOS = 'InvalidParameterValue.YPos'
 
-# Unable to create a task. The number of tasks being executed has reached the limit.
+# 
 LIMITEXCEEDED_CREATETASK = 'LimitExceeded.CreateTask'
 
 # The number of created hotword lexicons has reached the default upper limit.
@@ -485,7 +485,7 @@ RESOURCENOTFOUND_DOWNLOADERROR = 'ResourceNotFound.DownloadError'
 # The resource does not exist: figure.
 RESOURCENOTFOUND_PERSON = 'ResourceNotFound.Person'
 
-# The task does not exist
+# 
 RESOURCENOTFOUND_TASKNOTFOUND = 'ResourceNotFound.TaskNotFound'
 
 # The resource does not exist: the template does not exist.

@@ -1980,16 +1980,24 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _FailOver: Input failover
 Note: this field may return `null`, indicating that no valid value was found.
         :type FailOver: str
-        :param _RTMPPullSettings: 
+        :param _Zones: Available Zone Configuration: Under disaster recovery conditions, up to two are supported, corresponding to pipeline 0 and 1 in order. Otherwise, only one available zone is allowed.
+        :type Zones: list of str
+        :param _RTMPPullSettings: The input RTMP_PULL configuration information.
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPPullSettings`
-        :param _RTSPPullSettings: 
+        :param _RTSPPullSettings: The RTSP_PULL configuration information entered.
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTSPPullSettings`
-        :param _HLSPullSettings: 
+        :param _HLSPullSettings: The input HLS-PULL configuration information.
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputHLSPullSettings`
-        :param _ResilientStream: 
+        :param _ResilientStream: Extended smooth streaming configuration information.
         :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         :param _SecurityGroupIds: The bound security group ID.
         :type SecurityGroupIds: list of str
+        :param _RISTSettings: The input RIST configuration information.
+        :type RISTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRISTSettings`
+        :param _StreamUrls: Enter URL information related to module configuration, including the provided streaming address or the configured third-party source address
+        :type StreamUrls: list of StreamUrlDetail
+        :param _FailOverOption: Disaster recovery configuration items
+        :type FailOverOption: :class:`tencentcloud.mdc.v20200828.models.FailOverOption`
         """
         self._InputId = None
         self._InputName = None
@@ -2002,11 +2010,15 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._InputRegion = None
         self._RTMPSettings = None
         self._FailOver = None
+        self._Zones = None
         self._RTMPPullSettings = None
         self._RTSPPullSettings = None
         self._HLSPullSettings = None
         self._ResilientStream = None
         self._SecurityGroupIds = None
+        self._RISTSettings = None
+        self._StreamUrls = None
+        self._FailOverOption = None
 
     @property
     def InputId(self):
@@ -2134,8 +2146,19 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._FailOver = FailOver
 
     @property
+    def Zones(self):
+        r"""Available Zone Configuration: Under disaster recovery conditions, up to two are supported, corresponding to pipeline 0 and 1 in order. Otherwise, only one available zone is allowed.
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
     def RTMPPullSettings(self):
-        r"""
+        r"""The input RTMP_PULL configuration information.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPPullSettings`
         """
         return self._RTMPPullSettings
@@ -2146,7 +2169,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RTSPPullSettings(self):
-        r"""
+        r"""The RTSP_PULL configuration information entered.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -2157,7 +2180,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def HLSPullSettings(self):
-        r"""
+        r"""The input HLS-PULL configuration information.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -2168,7 +2191,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def ResilientStream(self):
-        r"""
+        r"""Extended smooth streaming configuration information.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         """
         return self._ResilientStream
@@ -2187,6 +2210,39 @@ Note: this field may return `null`, indicating that no valid value was found.
     @SecurityGroupIds.setter
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def RISTSettings(self):
+        r"""The input RIST configuration information.
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRISTSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
+    @property
+    def StreamUrls(self):
+        r"""Enter URL information related to module configuration, including the provided streaming address or the configured third-party source address
+        :rtype: list of StreamUrlDetail
+        """
+        return self._StreamUrls
+
+    @StreamUrls.setter
+    def StreamUrls(self, StreamUrls):
+        self._StreamUrls = StreamUrls
+
+    @property
+    def FailOverOption(self):
+        r"""Disaster recovery configuration items
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.FailOverOption`
+        """
+        return self._FailOverOption
+
+    @FailOverOption.setter
+    def FailOverOption(self, FailOverOption):
+        self._FailOverOption = FailOverOption
 
 
     def _deserialize(self, params):
@@ -2212,6 +2268,7 @@ Note: this field may return `null`, indicating that no valid value was found.
             self._RTMPSettings = DescribeInputRTMPSettings()
             self._RTMPSettings._deserialize(params.get("RTMPSettings"))
         self._FailOver = params.get("FailOver")
+        self._Zones = params.get("Zones")
         if params.get("RTMPPullSettings") is not None:
             self._RTMPPullSettings = DescribeInputRTMPPullSettings()
             self._RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
@@ -2225,6 +2282,18 @@ Note: this field may return `null`, indicating that no valid value was found.
             self._ResilientStream = ResilientStreamConf()
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = DescribeInputRISTSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
+        if params.get("StreamUrls") is not None:
+            self._StreamUrls = []
+            for item in params.get("StreamUrls"):
+                obj = StreamUrlDetail()
+                obj._deserialize(item)
+                self._StreamUrls.append(obj)
+        if params.get("FailOverOption") is not None:
+            self._FailOverOption = FailOverOption()
+            self._FailOverOption._deserialize(params.get("FailOverOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2266,6 +2335,72 @@ class DescribeInputHLSPullSettings(AbstractModel):
                 obj = DescribeHLSPullSourceAddress()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputRISTSettings(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 
+        :type Mode: str
+        :param _Profile: 
+        :type Profile: str
+        :param _Buffer: 
+        :type Buffer: int
+        """
+        self._Mode = None
+        self._Profile = None
+        self._Buffer = None
+
+    @property
+    def Mode(self):
+        r"""
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Profile(self):
+        r"""
+        :rtype: str
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Buffer(self):
+        r"""
+        :rtype: int
+        """
+        return self._Buffer
+
+    @Buffer.setter
+    def Buffer(self, Buffer):
+        self._Buffer = Buffer
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Profile = params.get("Profile")
+        self._Buffer = params.get("Buffer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4833,6 +4968,42 @@ class DescribeStreamLinkRegionsResponse(AbstractModel):
             self._Info = StreamLinkRegionInfo()
             self._Info._deserialize(params.get("Info"))
         self._RequestId = params.get("RequestId")
+
+
+class FailOverOption(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailOverType: 
+        :type FailOverType: str
+        """
+        self._FailOverType = None
+
+    @property
+    def FailOverType(self):
+        r"""
+        :rtype: str
+        """
+        return self._FailOverType
+
+    @FailOverType.setter
+    def FailOverType(self, FailOverType):
+        self._FailOverType = FailOverType
+
+
+    def _deserialize(self, params):
+        self._FailOverType = params.get("FailOverType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FlowAudio(AbstractModel):
@@ -8142,6 +8313,72 @@ class StreamSelector(AbstractModel):
         if params.get("TrackSelector") is not None:
             self._TrackSelector = TrackSelector()
             self._TrackSelector._deserialize(params.get("TrackSelector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StreamUrlDetail(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 
+        :type Label: str
+        :param _Url: URL 
+        :type Url: str
+        :param _Type: 
+        :type Type: str
+        """
+        self._Label = None
+        self._Url = None
+        self._Type = None
+
+    @property
+    def Label(self):
+        r"""
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Url(self):
+        r"""URL 
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Type(self):
+        r"""
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Url = params.get("Url")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

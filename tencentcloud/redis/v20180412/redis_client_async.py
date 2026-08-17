@@ -205,6 +205,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseLog(
+            self,
+            request: models.CloseLogRequest,
+            opts: Dict = None,
+    ) -> models.CloseLogResponse:
+        """
+        Disable logs
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CloseSSL(
             self,
             request: models.CloseSSLRequest,
@@ -218,6 +236,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "CloseSSL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CloseSSLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateExportTask(
+            self,
+            request: models.CreateExportTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateExportTaskResponse:
+        """
+        This API is used to create a log download task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateExportTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateExportTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -290,6 +326,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "CreateReplicationGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateReplicationGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteExportTask(
+            self,
+            request: models.DeleteExportTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteExportTaskResponse:
+        """
+        This API is used to delete log download tasks.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteExportTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteExportTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -470,6 +524,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "DescribeDBSecurityGroups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDBSecurityGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeExportTasks(
+            self,
+            request: models.DescribeExportTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExportTasksResponse:
+        """
+        This API is used to query download tasks for log files.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExportTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExportTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -902,6 +974,42 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "DescribeInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLogInstanceList(
+            self,
+            request: models.DescribeLogInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogInstanceListResponse:
+        """
+        This API is used to query log instances.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogInstanceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLogs(
+            self,
+            request: models.DescribeLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogsResponse:
+        """
+        This API is used to query logs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1645,6 +1753,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyLog(
+            self,
+            request: models.ModifyLogRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLogResponse:
+        """
+        change log
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyMaintenanceWindow(
             self,
             request: models.ModifyMaintenanceWindowRequest,
@@ -1712,6 +1838,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "ModifyReplicationGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyReplicationGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenLog(
+            self,
+            request: models.OpenLogRequest,
+            opts: Dict = None,
+    ) -> models.OpenLogResponse:
+        """
+        Enable logging
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenLogResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1993,7 +2137,7 @@ class RedisClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpgradeVersionToMultiAvailabilityZonesResponse:
         """
-        This API is used to upgrade an instance to support multiple AZs.
+        This API is deprecated.
         """
         
         kwargs = {}

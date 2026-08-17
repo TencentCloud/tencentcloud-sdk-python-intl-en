@@ -256,6 +256,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseLog(self, request):
+        r"""Disable logs
+
+        :param request: Request instance for CloseLog.
+        :type request: :class:`tencentcloud.redis.v20180412.models.CloseLogRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CloseLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseSSL(self, request):
         r"""This API is used to disable SSL encryption and authentication.
 
@@ -270,6 +293,29 @@ class RedisClient(AbstractClient):
             body = self.call("CloseSSL", params, headers=headers)
             response = json.loads(body)
             model = models.CloseSSLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateExportTask(self, request):
+        r"""This API is used to create a log download task.
+
+        :param request: Request instance for CreateExportTask.
+        :type request: :class:`tencentcloud.redis.v20180412.models.CreateExportTaskRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CreateExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExportTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExportTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -362,6 +408,29 @@ class RedisClient(AbstractClient):
             body = self.call("CreateReplicationGroup", params, headers=headers)
             response = json.loads(body)
             model = models.CreateReplicationGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteExportTask(self, request):
+        r"""This API is used to delete log download tasks.
+
+        :param request: Request instance for DeleteExportTask.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DeleteExportTaskRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DeleteExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteExportTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteExportTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -592,6 +661,29 @@ class RedisClient(AbstractClient):
             body = self.call("DescribeDBSecurityGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExportTasks(self, request):
+        r"""This API is used to query download tasks for log files.
+
+        :param request: Request instance for DescribeExportTasks.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeExportTasksRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeExportTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExportTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExportTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1144,6 +1236,52 @@ class RedisClient(AbstractClient):
             body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogInstanceList(self, request):
+        r"""This API is used to query log instances.
+
+        :param request: Request instance for DescribeLogInstanceList.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeLogInstanceListRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeLogInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogs(self, request):
+        r"""This API is used to query logs.
+
+        :param request: Request instance for DescribeLogs.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeLogsRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2096,6 +2234,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyLog(self, request):
+        r"""change log
+
+        :param request: Request instance for ModifyLog.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyLogRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMaintenanceWindow(self, request):
         r"""This API is used to modify the time of instance maintenance window. Instances that require the version or architecture upgrade will undergo time switching during the maintenance window. Note: If the version or architecture upgrade has been initiated for an instance, its maintenance window cannot be modified.
 
@@ -2179,6 +2340,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyReplicationGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyReplicationGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenLog(self, request):
+        r"""Enable logging
+
+        :param request: Request instance for OpenLog.
+        :type request: :class:`tencentcloud.redis.v20180412.models.OpenLogRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.OpenLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2534,7 +2718,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeVersionToMultiAvailabilityZones(self, request):
-        r"""This API is used to upgrade an instance to support multiple AZs.
+        r"""This API is deprecated.
 
         :param request: Request instance for UpgradeVersionToMultiAvailabilityZones.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeVersionToMultiAvailabilityZonesRequest`
