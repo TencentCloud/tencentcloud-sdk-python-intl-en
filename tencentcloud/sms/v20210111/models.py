@@ -3426,11 +3426,11 @@ class SendMultiStatus(AbstractModel):
         :type Fee: int
         :param _SessionContext: User session content.
         :type SessionContext: str
-        :param _Code: SMS request error code. For specific meanings, see [Error Codes](https://intl.cloud.tencent.com/zh/document/product/382/40536#6.-error-code). `Ok` will be returned for successful delivery.
+        :param _Code: SMS request error code. For specific meanings, see [Error Codes](https://www.tencentcloud.com/zh/document/product/382/79029#6.-Error-Code). `Ok` will be returned for successful delivery.
         :type Code: str
         :param _Message: SMS request error message.
         :type Message: str
-        :param _IsoCode: Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
+        :param _IsoCode: Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://www.tencentcloud.com/zh/document/product/382/8414).
         :type IsoCode: str
         """
         self._SerialNo = None
@@ -3487,7 +3487,7 @@ class SendMultiStatus(AbstractModel):
 
     @property
     def Code(self):
-        r"""SMS request error code. For specific meanings, see [Error Codes](https://intl.cloud.tencent.com/zh/document/product/382/40536#6.-error-code). `Ok` will be returned for successful delivery.
+        r"""SMS request error code. For specific meanings, see [Error Codes](https://www.tencentcloud.com/zh/document/product/382/79029#6.-Error-Code). `Ok` will be returned for successful delivery.
         :rtype: str
         """
         return self._Code
@@ -3509,7 +3509,7 @@ class SendMultiStatus(AbstractModel):
 
     @property
     def IsoCode(self):
-        r"""Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
+        r"""Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://www.tencentcloud.com/zh/document/product/382/8414).
         :rtype: str
         """
         return self._IsoCode
@@ -3747,11 +3747,11 @@ class SendStatus(AbstractModel):
         :type Fee: int
         :param _SessionContext: User session content.
         :type SessionContext: str
-        :param _Code: SMS request error code. For specific meanings, see [Error Codes](https://intl.cloud.tencent.com/zh/document/product/382/40536#6.-error-code). `Ok` will be returned for successful delivery.
+        :param _Code: SMS request error code. For specific meanings, see [Error Codes](https://www.tencentcloud.com/zh/document/product/382/40536#6.-Error-Code). `Ok` will be returned for successful delivery.
         :type Code: str
         :param _Message: SMS request error message.
         :type Message: str
-        :param _IsoCode: Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
+        :param _IsoCode: Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://www.tencentcloud.com/zh/document/product/382/8414).
         :type IsoCode: str
         """
         self._SerialNo = None
@@ -3808,7 +3808,7 @@ class SendStatus(AbstractModel):
 
     @property
     def Code(self):
-        r"""SMS request error code. For specific meanings, see [Error Codes](https://intl.cloud.tencent.com/zh/document/product/382/40536#6.-error-code). `Ok` will be returned for successful delivery.
+        r"""SMS request error code. For specific meanings, see [Error Codes](https://www.tencentcloud.com/zh/document/product/382/40536#6.-Error-Code). `Ok` will be returned for successful delivery.
         :rtype: str
         """
         return self._Code
@@ -3830,7 +3830,7 @@ class SendStatus(AbstractModel):
 
     @property
     def IsoCode(self):
-        r"""Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1).
+        r"""Country/Region code, such as US and MY. For unrecognized country/region codes, `DEF` is returned by default. For the specific list of supported values, please see [Global SMS Price Overview](https://www.tencentcloud.com/zh/document/product/382/8414).
         :rtype: str
         """
         return self._IsoCode
