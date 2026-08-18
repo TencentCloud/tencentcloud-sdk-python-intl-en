@@ -7942,7 +7942,7 @@ class CreateDashboardRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DashboardName: dashboard name
+        :param _DashboardName: Dashboard name
         :type DashboardName: str
         :param _Data: Dashboard configuration data
         :type Data: str
@@ -7955,7 +7955,7 @@ class CreateDashboardRequest(AbstractModel):
 
     @property
     def DashboardName(self):
-        r"""dashboard name
+        r"""Dashboard name
         :rtype: str
         """
         return self._DashboardName
@@ -8058,20 +8058,20 @@ class CreateDashboardSubscribeRequest(AbstractModel):
         r"""
         :param _Name: Dashboard subscription name.
 Input limit:
--Cannot be empty
--Length cannot exceed 128 bytes
--Cannot contain character '|'
+-cannot be empty
+-Length cannot exceed 128 bytes.
+-Cannot contain the character '|'
         :type Name: str
         :param _DashboardId: Dashboard Id.
--Get the dashboard Id by [searching for the dashboard](https://www.tencentcloud.com/document/product/614/95636?from_cn_redirect=1).
+-Get the dashboard Id by [searching for a dashboard](https://www.tencentcloud.com/document/product/614/95636?from_cn_redirect=1).
         :type DashboardId: str
         :param _Cron: Subscription time cron expression, in format {seconds} {minutes} {hours} {date} {month} {weekday}; (valid data: {minutes} {hours} {date} {month} {weekday})
--{seconds} Value ranges from 0 to 59. 
+-{seconds} value ranges from 0 to 59. 
 -{Minutes} Value ranges from 0 to 59. 
 -Hour. Value ranges from 0 to 23. 
--{Date} value ranges from 1 to 31 AND (last day of month: L) 
+-{Date} value ranges from 1 to 31 AND (dayOfMonth last day: L) 
 -{Month} value ranges from 1 to 12. 
--Week value ranges from 0 to 6 [0:Sunday, 6:Saturday]
+-Week value ranges from 0 to 6 [0:Sunday, 6:Saturday].
         :type Cron: str
         :param _SubscribeData: Dashboard subscription data.
         :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
@@ -8085,9 +8085,9 @@ Input limit:
     def Name(self):
         r"""Dashboard subscription name.
 Input limit:
--Cannot be empty
--Length cannot exceed 128 bytes
--Cannot contain character '|'
+-cannot be empty
+-Length cannot exceed 128 bytes.
+-Cannot contain the character '|'
         :rtype: str
         """
         return self._Name
@@ -8099,7 +8099,7 @@ Input limit:
     @property
     def DashboardId(self):
         r"""Dashboard Id.
--Get the dashboard Id by [searching for the dashboard](https://www.tencentcloud.com/document/product/614/95636?from_cn_redirect=1).
+-Get the dashboard Id by [searching for a dashboard](https://www.tencentcloud.com/document/product/614/95636?from_cn_redirect=1).
         :rtype: str
         """
         return self._DashboardId
@@ -8111,12 +8111,12 @@ Input limit:
     @property
     def Cron(self):
         r"""Subscription time cron expression, in format {seconds} {minutes} {hours} {date} {month} {weekday}; (valid data: {minutes} {hours} {date} {month} {weekday})
--{seconds} Value ranges from 0 to 59. 
+-{seconds} value ranges from 0 to 59. 
 -{Minutes} Value ranges from 0 to 59. 
 -Hour. Value ranges from 0 to 23. 
--{Date} value ranges from 1 to 31 AND (last day of month: L) 
+-{Date} value ranges from 1 to 31 AND (dayOfMonth last day: L) 
 -{Month} value ranges from 1 to 12. 
--Week value ranges from 0 to 6 [0:Sunday, 6:Saturday]
+-Week value ranges from 0 to 6 [0:Sunday, 6:Saturday].
         :rtype: str
         """
         return self._Cron
@@ -13577,6 +13577,202 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DashboardInfo(AbstractModel):
+    r"""Dashboard information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DashboardId: Dashboard ID
+        :type DashboardId: str
+        :param _DashboardName: Dashboard name
+        :type DashboardName: str
+        :param _Data: Dashboard data
+        :type Data: str
+        :param _CreateTime: Time when the dashboard was created. Format: YYYY-MM-DD HH:MM:SS
+        :type CreateTime: str
+        :param _AssumerUin: If AssumerUin is not empty, it indicates the UIN of the service party that created the log topic.
+        :type AssumerUin: int
+        :param _RoleName: If RoleName is not empty, it indicates the role of the service provider creating the log set.
+        :type RoleName: str
+        :param _AssumerName: If AssumerName is not empty, it indicates the name of the service provider creating the log topic.
+        :type AssumerName: str
+        :param _Tags: Information of tag bound to log topic
+        :type Tags: list of Tag
+        :param _DashboardRegion: Dashboard region: For compatibility with old regions.
+        :type DashboardRegion: str
+        :param _UpdateTime: Modify dashboard time. Format: YYYY-MM-DD HH:MM:SS
+        :type UpdateTime: str
+        :param _DashboardTopicInfos: Topic-related information corresponding to the dashboard
+        :type DashboardTopicInfos: list of DashboardTopicInfo
+        """
+        self._DashboardId = None
+        self._DashboardName = None
+        self._Data = None
+        self._CreateTime = None
+        self._AssumerUin = None
+        self._RoleName = None
+        self._AssumerName = None
+        self._Tags = None
+        self._DashboardRegion = None
+        self._UpdateTime = None
+        self._DashboardTopicInfos = None
+
+    @property
+    def DashboardId(self):
+        r"""Dashboard ID
+        :rtype: str
+        """
+        return self._DashboardId
+
+    @DashboardId.setter
+    def DashboardId(self, DashboardId):
+        self._DashboardId = DashboardId
+
+    @property
+    def DashboardName(self):
+        r"""Dashboard name
+        :rtype: str
+        """
+        return self._DashboardName
+
+    @DashboardName.setter
+    def DashboardName(self, DashboardName):
+        self._DashboardName = DashboardName
+
+    @property
+    def Data(self):
+        r"""Dashboard data
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def CreateTime(self):
+        r"""Time when the dashboard was created. Format: YYYY-MM-DD HH:MM:SS
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AssumerUin(self):
+        r"""If AssumerUin is not empty, it indicates the UIN of the service party that created the log topic.
+        :rtype: int
+        """
+        return self._AssumerUin
+
+    @AssumerUin.setter
+    def AssumerUin(self, AssumerUin):
+        self._AssumerUin = AssumerUin
+
+    @property
+    def RoleName(self):
+        r"""If RoleName is not empty, it indicates the role of the service provider creating the log set.
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def AssumerName(self):
+        r"""If AssumerName is not empty, it indicates the name of the service provider creating the log topic.
+        :rtype: str
+        """
+        return self._AssumerName
+
+    @AssumerName.setter
+    def AssumerName(self, AssumerName):
+        self._AssumerName = AssumerName
+
+    @property
+    def Tags(self):
+        r"""Information of tag bound to log topic
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DashboardRegion(self):
+        r"""Dashboard region: For compatibility with old regions.
+        :rtype: str
+        """
+        return self._DashboardRegion
+
+    @DashboardRegion.setter
+    def DashboardRegion(self, DashboardRegion):
+        self._DashboardRegion = DashboardRegion
+
+    @property
+    def UpdateTime(self):
+        r"""Modify dashboard time. Format: YYYY-MM-DD HH:MM:SS
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def DashboardTopicInfos(self):
+        r"""Topic-related information corresponding to the dashboard
+        :rtype: list of DashboardTopicInfo
+        """
+        return self._DashboardTopicInfos
+
+    @DashboardTopicInfos.setter
+    def DashboardTopicInfos(self, DashboardTopicInfos):
+        self._DashboardTopicInfos = DashboardTopicInfos
+
+
+    def _deserialize(self, params):
+        self._DashboardId = params.get("DashboardId")
+        self._DashboardName = params.get("DashboardName")
+        self._Data = params.get("Data")
+        self._CreateTime = params.get("CreateTime")
+        self._AssumerUin = params.get("AssumerUin")
+        self._RoleName = params.get("RoleName")
+        self._AssumerName = params.get("AssumerName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DashboardRegion = params.get("DashboardRegion")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("DashboardTopicInfos") is not None:
+            self._DashboardTopicInfos = []
+            for item in params.get("DashboardTopicInfos"):
+                obj = DashboardTopicInfo()
+                obj._deserialize(item)
+                self._DashboardTopicInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DashboardNoticeMode(AbstractModel):
     r"""Dashboard subscription notification method
 
@@ -13590,27 +13786,26 @@ class DashboardNoticeMode(AbstractModel):
 -Group: Tencent Cloud user group
 -WeCom: wecom callback
 -Email: Custom email
--DingTalk
+- DingTalk: DingTalk
 -Lark
         :type ReceiverType: str
-        :param _Values: Value of the known method.
+        :param _Values: Method corresponding value.
 -When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, Values must be empty and the Url field is required.
--When ReceiverType is `Uin`, `Group`, or `Email`, the Values field is required and the Url field must be empty.
--When ReceiverType is `Uin`, Values is the user id. Obtain the sub-user UID by [querying sub-users](https://www.tencentcloud.com/document/product/598/34587?from_cn_redirect=1).
--When ReceiverType is `Group`, Values is the user Group id. Obtain user Group id by querying the user Group list (https://www.tencentcloud.com/document/product/598/34589?from_cn_redirect=1).
--When ReceiverType is `Email`, Values is the user email info.
+-When ReceiverType is `Uin`, `Group`, or `Email`, the Values field is required, and the Url field must be empty.
+-When ReceiverType is `Uin`, Values is the user id. Obtain the sub-user UID by pulling sub-users (https://www.tencentcloud.com/document/product/598/34587?from_cn_redirect=1).
+-When ReceiverType is `Group`, Values is the user Group id. Query the user Group list (https://www.tencentcloud.com/document/product/598/34589?from_cn_redirect=1) to obtain the user Group id.
+-When ReceiverType is `Email`, Values is the user email.
         :type Values: list of str
         :param _ReceiverChannels: Dashboard notification channel.
 
 -Support: ["Email","Sms","WeChat","Phone"].
--When ReceiverType is `Email` or `WeCom`, ReceiverChannels is invalid.
-Note: This field may return null, indicating that no valid values can be obtained.
+-   When ReceiverType is `Email` or `WeCom`, ReceiverChannels is unavailable.
         :type ReceiverChannels: list of str
         :param _Url: Subscription method - Callback URL.
--When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, the Url field is required as the callback URL of each channel.
--When the value is `WeCom`, the Url is the enterprise wechat callback address.
--When the value is `DingTalk`, Url is the chatbot Webhook address.
--When `Lark`, Url is the chatbot Webhook address.
+-When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, the Url field is required as the callback URL for each channel.
+-When it is `WeCom`, the Url is the enterprise wechat callback address.
+-For `DingTalk`, the Url is the chatbot Webhook address.
+-When it is `Lark`, the Url is the chatbot Webhook address.
 -When ReceiverType is `Uin`, `Group`, or `Email`, the Url field must be empty.
         :type Url: str
         """
@@ -13627,7 +13822,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 -Group: Tencent Cloud user group
 -WeCom: wecom callback
 -Email: Custom email
--DingTalk
+- DingTalk: DingTalk
 -Lark
         :rtype: str
         """
@@ -13639,12 +13834,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Values(self):
-        r"""Value of the known method.
+        r"""Method corresponding value.
 -When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, Values must be empty and the Url field is required.
--When ReceiverType is `Uin`, `Group`, or `Email`, the Values field is required and the Url field must be empty.
--When ReceiverType is `Uin`, Values is the user id. Obtain the sub-user UID by [querying sub-users](https://www.tencentcloud.com/document/product/598/34587?from_cn_redirect=1).
--When ReceiverType is `Group`, Values is the user Group id. Obtain user Group id by querying the user Group list (https://www.tencentcloud.com/document/product/598/34589?from_cn_redirect=1).
--When ReceiverType is `Email`, Values is the user email info.
+-When ReceiverType is `Uin`, `Group`, or `Email`, the Values field is required, and the Url field must be empty.
+-When ReceiverType is `Uin`, Values is the user id. Obtain the sub-user UID by pulling sub-users (https://www.tencentcloud.com/document/product/598/34587?from_cn_redirect=1).
+-When ReceiverType is `Group`, Values is the user Group id. Query the user Group list (https://www.tencentcloud.com/document/product/598/34589?from_cn_redirect=1) to obtain the user Group id.
+-When ReceiverType is `Email`, Values is the user email.
         :rtype: list of str
         """
         return self._Values
@@ -13658,8 +13853,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         r"""Dashboard notification channel.
 
 -Support: ["Email","Sms","WeChat","Phone"].
--When ReceiverType is `Email` or `WeCom`, ReceiverChannels is invalid.
-Note: This field may return null, indicating that no valid values can be obtained.
+-   When ReceiverType is `Email` or `WeCom`, ReceiverChannels is unavailable.
         :rtype: list of str
         """
         return self._ReceiverChannels
@@ -13671,10 +13865,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Url(self):
         r"""Subscription method - Callback URL.
--When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, the Url field is required as the callback URL of each channel.
--When the value is `WeCom`, the Url is the enterprise wechat callback address.
--When the value is `DingTalk`, Url is the chatbot Webhook address.
--When `Lark`, Url is the chatbot Webhook address.
+-When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, the Url field is required as the callback URL for each channel.
+-When it is `WeCom`, the Url is the enterprise wechat callback address.
+-For `DingTalk`, the Url is the chatbot Webhook address.
+-When it is `Lark`, the Url is the chatbot Webhook address.
 -When ReceiverType is `Uin`, `Group`, or `Email`, the Url field must be empty.
         :rtype: str
         """
@@ -13710,10 +13904,8 @@ class DashboardSubscribeData(AbstractModel):
         :param _NoticeModes: Dashboard subscription notification method.
         :type NoticeModes: list of DashboardNoticeMode
         :param _DashboardTime: Dashboard subscription time. If this field is empty, the dashboard default time is used.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DashboardTime: list of str
         :param _TemplateVariables: Dashboard subscription template variable.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TemplateVariables: list of DashboardTemplateVariable
         :param _Timezone: Time zone. Refer to: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#SHANGHAI.
         :type Timezone: str
@@ -13746,7 +13938,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def DashboardTime(self):
         r"""Dashboard subscription time. If this field is empty, the dashboard default time is used.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._DashboardTime
@@ -13758,7 +13949,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TemplateVariables(self):
         r"""Dashboard subscription template variable.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DashboardTemplateVariable
         """
         return self._TemplateVariables
@@ -13859,9 +14049,9 @@ class DashboardSubscribeInfo(AbstractModel):
         :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
         :param _CreateTime: Creation time of dashboard subscription record. Format: `YYYY-MM-DD HH:MM:SS`
         :type CreateTime: str
-        :param _UpdateTime: Dashboard subscription record update time. Format: `YYYY-MM-DD HH:MM:SS`
+        :param _UpdateTime: Dashboard subscription record update time. Format: YYYY-MM-DD HH:MM:SS
         :type UpdateTime: str
-        :param _LastTime: Time sent successfully of dashboard subscription record. Format: `YYYY-MM-DD HH:MM:SS`
+        :param _LastTime: Last time for successful sending of dashboard subscription record. Format: `YYYY-MM-DD HH:MM:SS`
         :type LastTime: str
         :param _Uin: Cloud primary account ID.
         :type Uin: int
@@ -13950,7 +14140,7 @@ class DashboardSubscribeInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Dashboard subscription record update time. Format: `YYYY-MM-DD HH:MM:SS`
+        r"""Dashboard subscription record update time. Format: YYYY-MM-DD HH:MM:SS
         :rtype: str
         """
         return self._UpdateTime
@@ -13961,7 +14151,7 @@ class DashboardSubscribeInfo(AbstractModel):
 
     @property
     def LastTime(self):
-        r"""Time sent successfully of dashboard subscription record. Format: `YYYY-MM-DD HH:MM:SS`
+        r"""Last time for successful sending of dashboard subscription record. Format: `YYYY-MM-DD HH:MM:SS`
         :rtype: str
         """
         return self._LastTime
@@ -14069,6 +14259,101 @@ class DashboardTemplateVariable(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DashboardTopicInfo(AbstractModel):
+    r"""Dashboard associated topic information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: Topic ID
+        :type TopicId: str
+        :param _Region: Region of the topic.
+- 1: Guangzhou
+-4: Shanghai
+- 5: Hong Kong (China)
+- 7: Shanghai Finance
+-8: Beijing
+-9: Singapore
+- 11: Shenzhen Finance
+- 15: Silicon Valley
+-16: Chengdu
+-17: Frankfurt
+- 18: Seoul
+- 19: Chongqing
+- 22: Virginia
+- 23: Bangkok
+- 25: Tokyo
+- 33: Nanjing
+- 36: Tianjin
+-39: Taipei (China)
+- 46: Beijing Finance
+-72: Jakarta
+-74: São Paulo
+-78: Shanghai Autonomous Driving Cloud
+        :type Region: str
+        """
+        self._TopicId = None
+        self._Region = None
+
+    @property
+    def TopicId(self):
+        r"""Topic ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Region(self):
+        r"""Region of the topic.
+- 1: Guangzhou
+-4: Shanghai
+- 5: Hong Kong (China)
+- 7: Shanghai Finance
+-8: Beijing
+-9: Singapore
+- 11: Shenzhen Finance
+- 15: Silicon Valley
+-16: Chengdu
+-17: Frankfurt
+- 18: Seoul
+- 19: Chongqing
+- 22: Virginia
+- 23: Bangkok
+- 25: Tokyo
+- 33: Nanjing
+- 36: Tianjin
+-39: Taipei (China)
+- 46: Beijing Finance
+-72: Jakarta
+-74: São Paulo
+-78: Shanghai Autonomous Driving Cloud
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19848,7 +20133,7 @@ class DescribeDashboardSubscribesRequest(AbstractModel):
         r"""
         :param _Filters: dashboardId: Filter by [dashboard id]. Type: String. Required: No.
 
--Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) api.
+- Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
 -Input parameter example: dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 
 Each request can have up to 10 Filters. The upper limit of Filter.Values is 100.
@@ -19866,7 +20151,7 @@ Each request can have up to 10 Filters. The upper limit of Filter.Values is 100.
     def Filters(self):
         r"""dashboardId: Filter by [dashboard id]. Type: String. Required: No.
 
--Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) api.
+- Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
 -Input parameter example: dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
 
 Each request can have up to 10 Filters. The upper limit of Filter.Values is 100.
@@ -19980,6 +20265,280 @@ class DescribeDashboardSubscribesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DashboardSubscribeInfos.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDashboardsRequest(AbstractModel):
+    r"""DescribeDashboards request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Page offset. Default value: 0
+        :type Offset: int
+        :param _Limit: Maximum number of entries per page. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param _Filters: -dashboardId filter by [dashboard id], type: String, required: No.
+-Example value: dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
+-dashboardName: Filter by fuzzy search as dashboard name. Type: String. Required: No.
+-Example value: Business dashboard
+-dashboardRegion filter by dashboard region (compatible with legacy dashboards). This property for dashboards created via cloud API, type: String, required: No.
+-See [Regions and Availability Zones](https://www.tencentcloud.com/document/product/614/18940?from_cn_redirect=1)
+-Example: ap-guangzhou
+- tagKey - String - Required: No - Filter by the tag key.
+-Example value:
+    ```
+    "Filters":[
+        {
+            "Key": "tagKey",
+            "Values": [
+                "tag-key-test"
+            ]
+        }
+    ]
+    ```
+
+-tag:tagKey Filter by [tag key-value pair]. Replace tagKey with a specific tag key. Type: String. Required: No.
+-Refer to [Example 1](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1#4.-.E7.A4.BA.E4.BE.8B) for usage.
+    ```
+    "Filters": [
+        {
+            "Key": "tag:tag-key-test",
+            "Values": [
+                "12"
+            ]
+        }
+    ]
+    ```
+
+Each request can have up to 10 Filters. The upper limit of Filter.Values is 100.
+        :type Filters: list of Filter
+        :param _TopicIdRegionFilter: Filter is performed by topicId and regionId.
+-topicId: Log topic id.
+- Obtain the log topic Id through [Get Log Topic List](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1).
+-Example value: 439a5304-08f9-484b-9c4d-46ff57133816
+- regionId
+- 1: Guangzhou
+-4: Shanghai
+-5: Hong Kong (China)
+- 7: Shanghai Finance
+- 8: Beijing
+-9: Singapore
+- 11: Shenzhen Finance
+- 15: Silicon Valley
+- 16: Chengdu
+- 17: Frankfurt
+- 18: Seoul
+- 19: Chongqing
+- 22: Virginia
+- 23: Bangkok
+- 25: Tokyo
+- 33: Nanjing
+- 36: Tianjin
+-39: Taipei (China)
+- 46: Beijing Finance
+-72: Jakarta
+-74: São Paulo
+-78: Shanghai Autonomous Driving Cloud
+
+        :type TopicIdRegionFilter: list of TopicIdAndRegion
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._TopicIdRegionFilter = None
+
+    @property
+    def Offset(self):
+        r"""Page offset. Default value: 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Maximum number of entries per page. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""-dashboardId filter by [dashboard id], type: String, required: No.
+-Example value: dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5
+-dashboardName: Filter by fuzzy search as dashboard name. Type: String. Required: No.
+-Example value: Business dashboard
+-dashboardRegion filter by dashboard region (compatible with legacy dashboards). This property for dashboards created via cloud API, type: String, required: No.
+-See [Regions and Availability Zones](https://www.tencentcloud.com/document/product/614/18940?from_cn_redirect=1)
+-Example: ap-guangzhou
+- tagKey - String - Required: No - Filter by the tag key.
+-Example value:
+    ```
+    "Filters":[
+        {
+            "Key": "tagKey",
+            "Values": [
+                "tag-key-test"
+            ]
+        }
+    ]
+    ```
+
+-tag:tagKey Filter by [tag key-value pair]. Replace tagKey with a specific tag key. Type: String. Required: No.
+-Refer to [Example 1](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1#4.-.E7.A4.BA.E4.BE.8B) for usage.
+    ```
+    "Filters": [
+        {
+            "Key": "tag:tag-key-test",
+            "Values": [
+                "12"
+            ]
+        }
+    ]
+    ```
+
+Each request can have up to 10 Filters. The upper limit of Filter.Values is 100.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def TopicIdRegionFilter(self):
+        r"""Filter is performed by topicId and regionId.
+-topicId: Log topic id.
+- Obtain the log topic Id through [Get Log Topic List](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1).
+-Example value: 439a5304-08f9-484b-9c4d-46ff57133816
+- regionId
+- 1: Guangzhou
+-4: Shanghai
+-5: Hong Kong (China)
+- 7: Shanghai Finance
+- 8: Beijing
+-9: Singapore
+- 11: Shenzhen Finance
+- 15: Silicon Valley
+- 16: Chengdu
+- 17: Frankfurt
+- 18: Seoul
+- 19: Chongqing
+- 22: Virginia
+- 23: Bangkok
+- 25: Tokyo
+- 33: Nanjing
+- 36: Tianjin
+-39: Taipei (China)
+- 46: Beijing Finance
+-72: Jakarta
+-74: São Paulo
+-78: Shanghai Autonomous Driving Cloud
+
+        :rtype: list of TopicIdAndRegion
+        """
+        return self._TopicIdRegionFilter
+
+    @TopicIdRegionFilter.setter
+    def TopicIdRegionFilter(self, TopicIdRegionFilter):
+        self._TopicIdRegionFilter = TopicIdRegionFilter
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("TopicIdRegionFilter") is not None:
+            self._TopicIdRegionFilter = []
+            for item in params.get("TopicIdRegionFilter"):
+                obj = TopicIdAndRegion()
+                obj._deserialize(item)
+                self._TopicIdRegionFilter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDashboardsResponse(AbstractModel):
+    r"""DescribeDashboards response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of dashboards
+        :type TotalCount: int
+        :param _DashboardInfos: Dashboard details
+        :type DashboardInfos: list of DashboardInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DashboardInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""Number of dashboards
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DashboardInfos(self):
+        r"""Dashboard details
+        :rtype: list of DashboardInfo
+        """
+        return self._DashboardInfos
+
+    @DashboardInfos.setter
+    def DashboardInfos(self, DashboardInfos):
+        self._DashboardInfos = DashboardInfos
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DashboardInfos") is not None:
+            self._DashboardInfos = []
+            for item in params.get("DashboardInfos"):
+                obj = DashboardInfo()
+                obj._deserialize(item)
+                self._DashboardInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -28750,15 +29309,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Filter(AbstractModel):
-    r"""Filter
+    r"""Filters
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: Field to be filtered
+        :param _Key: Fields that need to be filtered.
         :type Key: str
-        :param _Values: Value to be filtered
+        :param _Values: Values to be filtered
         :type Values: list of str
         """
         self._Key = None
@@ -28766,7 +29325,7 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
-        r"""Field to be filtered
+        r"""Fields that need to be filtered.
         :rtype: str
         """
         return self._Key
@@ -28777,7 +29336,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""Value to be filtered
+        r"""Values to be filtered
         :rtype: list of str
         """
         return self._Values
@@ -35789,9 +36348,9 @@ class ModifyDashboardRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DashboardId: Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
+        :param _DashboardId: Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
         :type DashboardId: str
-        :param _DashboardName: dashboard name
+        :param _DashboardName: Dashboard name
         :type DashboardName: str
         :param _Data: Dashboard configuration data
         :type Data: str
@@ -35805,7 +36364,7 @@ class ModifyDashboardRequest(AbstractModel):
 
     @property
     def DashboardId(self):
-        r"""Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
+        r"""Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._DashboardId
@@ -35816,7 +36375,7 @@ class ModifyDashboardRequest(AbstractModel):
 
     @property
     def DashboardName(self):
-        r"""dashboard name
+        r"""Dashboard name
         :rtype: str
         """
         return self._DashboardName
@@ -35903,9 +36462,9 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Dashboard subscription id. Obtain the id through the [Get Dashboard Subscription List](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) api.
+        :param _Id: Dashboard subscription id. Obtain the Id through the [dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) API.
         :type Id: int
-        :param _DashboardId: Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) api.
+        :param _DashboardId: Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
         :type DashboardId: str
         :param _Name: Dashboard subscription name. Supports a maximum of 128 characters and does not support the '|' character.
         :type Name: str
@@ -35922,7 +36481,7 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""Dashboard subscription id. Obtain the id through the [Get Dashboard Subscription List](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) api.
+        r"""Dashboard subscription id. Obtain the Id through the [dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) API.
         :rtype: int
         """
         return self._Id
@@ -35933,7 +36492,7 @@ class ModifyDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
-        r"""Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) api.
+        r"""Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._DashboardId
@@ -45726,13 +46285,13 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DashboardId: Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
+        :param _DashboardId: Dashboard id. Obtain the DashboardId through the [search for a dashboard.](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
         :type DashboardId: str
         :param _SubscribeData: Dashboard subscription data.
         :type SubscribeData: :class:`tencentcloud.cls.v20201016.models.DashboardSubscribeData`
-        :param _Id: Dashboard subscription Id. Obtain through the api [Dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1).
+        :param _Id: Dashboard subscription Id. Obtain the Id through the [dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) api.
         :type Id: int
-        :param _Name: Dashboard subscription Name. Obtain through the api [Dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1).
+        :param _Name: Dashboard subscription name. Obtain the Name through the [dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) API.
         :type Name: str
         """
         self._DashboardId = None
@@ -45742,7 +46301,7 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def DashboardId(self):
-        r"""Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
+        r"""Dashboard id. Obtain the DashboardId through the [search for a dashboard.](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._DashboardId
@@ -45764,7 +46323,7 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""Dashboard subscription Id. Obtain through the api [Dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1).
+        r"""Dashboard subscription Id. Obtain the Id through the [dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) api.
         :rtype: int
         """
         return self._Id
@@ -45775,7 +46334,7 @@ class SearchDashboardSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Dashboard subscription Name. Obtain through the api [Dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1).
+        r"""Dashboard subscription name. Obtain the Name through the [dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._Name
@@ -47801,7 +48360,7 @@ class SplunkDeliverInfo(AbstractModel):
 
 
 class Tag(AbstractModel):
-    r"""Description of the tag pair bound to a resource instance when it is created
+    r"""Description of tag pairs bound at the time of resource instance creation
 
     """
 
@@ -48015,6 +48574,99 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("AnonymousAccess") is not None:
             self._AnonymousAccess = AnonymousInfo()
             self._AnonymousAccess._deserialize(params.get("AnonymousAccess"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicIdAndRegion(AbstractModel):
+    r"""Dashboard topic and region information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: Log topic id
+        :type TopicId: str
+        :param _RegionId: The ID of the region where the log topic ID is located.
+
+id, region, abbreviation information follows:
+- 1: Guangzhou, ap-guangzhou
+- 4: Shanghai, ap-shanghai
+-5, Hong Kong (China), ap-hongkong
+- 7: Shanghai Finance, ap-shanghai-fsi
+-8, Beijing, ap-beijing
+- 9, Singapore, ap-singapore
+- 11: Shenzhen Finance, ap-shenzhen-fsi
+-15, Silicon Valley, na-siliconvalley
+-16, Chengdu, ap-chengdu
+-17, Frankfurt, eu-frankfurt
+- 18, Seoul, ap-seoul
+- 19: Chongqing, ap-chongqing
+- 22, Virginia, na-ashburn
+- 23, Bangkok, ap-bangkok
+-25, Tokyo, ap-tokyo
+- 33, Nanjing, ap-nanjing
+-46, Beijing Finance, ap-beijing-fsi
+- 72, Jakarta, ap-jakarta
+-74, São Paulo, sa-saopaulo
+        :type RegionId: int
+        """
+        self._TopicId = None
+        self._RegionId = None
+
+    @property
+    def TopicId(self):
+        r"""Log topic id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def RegionId(self):
+        r"""The ID of the region where the log topic ID is located.
+
+id, region, abbreviation information follows:
+- 1: Guangzhou, ap-guangzhou
+- 4: Shanghai, ap-shanghai
+-5, Hong Kong (China), ap-hongkong
+- 7: Shanghai Finance, ap-shanghai-fsi
+-8, Beijing, ap-beijing
+- 9, Singapore, ap-singapore
+- 11: Shenzhen Finance, ap-shenzhen-fsi
+-15, Silicon Valley, na-siliconvalley
+-16, Chengdu, ap-chengdu
+-17, Frankfurt, eu-frankfurt
+- 18, Seoul, ap-seoul
+- 19: Chongqing, ap-chongqing
+- 22, Virginia, na-ashburn
+- 23, Bangkok, ap-bangkok
+-25, Tokyo, ap-tokyo
+- 33, Nanjing, ap-nanjing
+-46, Beijing Finance, ap-beijing-fsi
+- 72, Jakarta, ap-jakarta
+-74, São Paulo, sa-saopaulo
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

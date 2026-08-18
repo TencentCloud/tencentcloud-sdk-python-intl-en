@@ -1750,6 +1750,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDashboards(
+            self,
+            request: models.DescribeDashboardsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDashboardsResponse:
+        """
+        This API is used to obtain the dashboard.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDashboards"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDashboardsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataTransformInfo(
             self,
             request: models.DescribeDataTransformInfoRequest,

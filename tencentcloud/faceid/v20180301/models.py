@@ -329,7 +329,7 @@ Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photoco
         :param _Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
         :param _SdkVersion: BASIC: Basic version (Default).
-ENHANCE: Enhance version, enable additional output of device risk level field.
+ENHANCED: Enhance version, enable additional output of device risk level field.
 PRO: Pro version, enable additional output of attack type fields.
 PLUS: Plus version, enable additional output of device risk level and attack type fields.
 Please contact us to access enhance version & plus version.	
@@ -523,7 +523,7 @@ Optional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photoco
     @property
     def SdkVersion(self):
         r"""BASIC: Basic version (Default).
-ENHANCE: Enhance version, enable additional output of device risk level field.
+ENHANCED: Enhance version, enable additional output of device risk level field.
 PRO: Pro version, enable additional output of attack type fields.
 PLUS: Plus version, enable additional output of device risk level and attack type fields.
 Please contact us to access enhance version & plus version.	
@@ -5376,7 +5376,11 @@ class GetFaceIdTokenIntlRequest(AbstractModel):
         :type Extra: str
         :param _ActionList: <p>This API is used to control the sequence of actions. The action types are as follows:<br>"blink"<br>"mouth"<br>"nod"<br>"shake"<br>Choose 1-2 actions from the four.<br>Single action example: "blink"<br>Multi-action example: "blink,mouth".<br>Default value is blink.<br>Input this parameter only when SecureLevel is 2 or 4 for different action types to take effect; otherwise, the API returns an error.</p>
         :type ActionList: str
-        :param _SdkVersion: <p>PLUS: PLUS version, PRO: PRO version, ENHANCED: enhanced, BASIC: basic (default)</p>
+        :param _SdkVersion: BASIC: Basic version (Default).
+ENHANCED: Enhance version, enable additional output of device risk level field.
+PRO: Pro version, enable additional output of attack type fields.
+PLUS: Plus version, enable additional output of device risk level and attack type fields.
+Please contact us to access enhance version & plus version.	
         :type SdkVersion: str
         :param _RetryLimit: <p>Liveness retry count</p><p>Value ranges from 1 to 5</p><p>Default value: 5</p>
         :type RetryLimit: int
@@ -5447,7 +5451,11 @@ class GetFaceIdTokenIntlRequest(AbstractModel):
 
     @property
     def SdkVersion(self):
-        r"""<p>PLUS: PLUS version, PRO: PRO version, ENHANCED: enhanced, BASIC: basic (default)</p>
+        r"""BASIC: Basic version (Default).
+ENHANCED: Enhance version, enable additional output of device risk level field.
+PRO: Pro version, enable additional output of attack type fields.
+PLUS: Plus version, enable additional output of device risk level and attack type fields.
+Please contact us to access enhance version & plus version.	
         :rtype: str
         """
         return self._SdkVersion

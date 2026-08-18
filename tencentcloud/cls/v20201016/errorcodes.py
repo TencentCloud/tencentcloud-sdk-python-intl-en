@@ -89,7 +89,7 @@ FAILEDOPERATION_SHIPPERTASKNOTTORETRY = 'FailedOperation.ShipperTaskNotToRetry'
 # An error occurred while parsing the query statement.
 FAILEDOPERATION_SYNTAXERROR = 'FailedOperation.SyntaxError'
 
-# The frequency of tag service requests is limited.
+# Request tag service frequency.
 FAILEDOPERATION_TAGQPSLIMIT = 'FailedOperation.TagQpsLimit'
 
 # Operation timed out
@@ -128,7 +128,7 @@ INTERNALERROR_SEARCHFAILED = 'InternalError.SearchFailed'
 # Internal error server busy
 INTERNALERROR_SERVERBUSY = 'InternalError.ServerBusy'
 
-# Incorrect parameter.
+# Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
 # The alarm policy already exists.
@@ -155,7 +155,7 @@ INVALIDPARAMETER_DATAFROMTASKCONFLICT = 'InvalidParameter.DataFromTaskConflict'
 # The data processing task does not exist.
 INVALIDPARAMETER_DATAFROMTASKNOTEXIST = 'InvalidParameter.DataFromTaskNotExist'
 
-# The unique key of database conflicts.
+# Database unique key conflict.
 INVALIDPARAMETER_DBDUPLICATION = 'InvalidParameter.DbDuplication'
 
 # The export job already exists.
@@ -185,10 +185,10 @@ INVALIDPARAMETER_SHIPPERCONFLICT = 'InvalidParameter.ShipperConflict'
 # There is already a log topic with the same name in the specified logset.
 INVALIDPARAMETER_TOPICCONFLICT = 'InvalidParameter.TopicConflict'
 
-# Incorrect parameter value.
+# Parameter value error.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# The quota limit has been reached.
+# The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
 
 # A billing topic can only create one cos collection configuration
@@ -242,13 +242,13 @@ LIMITEXCEEDED_SEARCHRESULTTOOLARGE = 'LimitExceeded.SearchResultTooLarge'
 # The number of shipping rules exceeds the limit.
 LIMITEXCEEDED_SHIPPER = 'LimitExceeded.Shipper'
 
-# The number of tags exceeds the limit.
+# The tag number exceeds the limit.
 LIMITEXCEEDED_TAG = 'LimitExceeded.Tag'
 
 # The number of log topics exceeds the limit.
 LIMITEXCEEDED_TOPIC = 'LimitExceeded.Topic'
 
-# Missing parameter.
+# Parameters are missing.
 MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
@@ -260,7 +260,7 @@ OPERATIONDENIED_ACLFAILED = 'OperationDenied.ACLFailed'
 # The account has been terminated.
 OPERATIONDENIED_ACCOUNTDESTROY = 'OperationDenied.AccountDestroy'
 
-# The account has overdue payments.
+# Account arrears.
 OPERATIONDENIED_ACCOUNTISOLATE = 'OperationDenied.AccountIsolate'
 
 # The account does not exist.
@@ -314,10 +314,10 @@ RESOURCENOTFOUND_CLUSTERNOTFOUND = 'ResourceNotFound.ClusterNotFound'
 # The specified collection rule configuration does not exist.
 RESOURCENOTFOUND_CONFIGNOTEXIST = 'ResourceNotFound.ConfigNotExist'
 
-# The dashboard record does not exist.
+# Dashboard record does not exist.
 RESOURCENOTFOUND_DASHBOARDRECORDNOTEXIST = 'ResourceNotFound.DashboardRecordNotExist'
 
-# The dashboard subscription record does not exist.
+# Dashboard subscription record does not exist.
 RESOURCENOTFOUND_DASHBOARDSUBSCRIBERECORDNOTEXIST = 'ResourceNotFound.DashboardSubscribeRecordNotExist'
 
 # Data processing task does not exist.
@@ -356,7 +356,7 @@ UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 # Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
 
-# Unsupported operation.
+# The operation is not supported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # billing topic is not allowed to modify cos import configuration
