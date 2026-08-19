@@ -5480,11 +5480,14 @@ class PODAuditAIRequest(AbstractModel):
         :type WaybillNumber: str
         :param _SignType: <p>No      The acknowledge type, 0 is selected by default</p><p>Enumeration value:</p><ul><li>0: Doorstep/yard</li><li>1: Parcel reception room</li><li>2: Myself/others acknowledge</li><li>3: Front desk/reception</li><li>4: Express delivery collection point</li><li>5: Express cabinet</li></ul>
         :type SignType: int
+        :param _ShipToAddress: <p>Shipping address of the waybill in the business system</p>
+        :type ShipToAddress: str
         """
         self._ImageBase64List = None
         self._ImageUrlList = None
         self._WaybillNumber = None
         self._SignType = None
+        self._ShipToAddress = None
 
     @property
     def ImageBase64List(self):
@@ -5530,12 +5533,24 @@ class PODAuditAIRequest(AbstractModel):
     def SignType(self, SignType):
         self._SignType = SignType
 
+    @property
+    def ShipToAddress(self):
+        r"""<p>Shipping address of the waybill in the business system</p>
+        :rtype: str
+        """
+        return self._ShipToAddress
+
+    @ShipToAddress.setter
+    def ShipToAddress(self, ShipToAddress):
+        self._ShipToAddress = ShipToAddress
+
 
     def _deserialize(self, params):
         self._ImageBase64List = params.get("ImageBase64List")
         self._ImageUrlList = params.get("ImageUrlList")
         self._WaybillNumber = params.get("WaybillNumber")
         self._SignType = params.get("SignType")
+        self._ShipToAddress = params.get("ShipToAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5555,7 +5570,7 @@ class PODAuditAIResponse(AbstractModel):
         r"""
         :param _AuditorDecision: <p>0 means non-compliance 1 means compliance</p>
         :type AuditorDecision: int
-        :param _FailCode: <p>Reason code for non-compliance. If there are multiple, return a list of multiple codes.</p><p>Enumeration value:</p><ul><li>100: Wrong delivery address</li><li>101: No house number</li><li>104: Single question</li><li>200: No package</li><li>202: Privacy leakage</li></ul>
+        :param _FailCode: <p>Non-compliance reason code. If there are multiple, return a list of multiple codes</p><p>Enumeration values:</p><ul><li>-2: Not supported currently or internal logic error</li><li>100: Delivered to the wrong address</li><li>104: No shipping label</li><li>105: Shipping label number not the same as the system</li><li>200: Package delivery location unclear</li><li>202: Acknowledgment contains personal privacy</li></ul>
         :type FailCode: list of str
         :param _ResultAnalysis: <p>Entire approval result analysis content</p>
         :type ResultAnalysis: str
@@ -5583,7 +5598,7 @@ class PODAuditAIResponse(AbstractModel):
 
     @property
     def FailCode(self):
-        r"""<p>Reason code for non-compliance. If there are multiple, return a list of multiple codes.</p><p>Enumeration value:</p><ul><li>100: Wrong delivery address</li><li>101: No house number</li><li>104: Single question</li><li>200: No package</li><li>202: Privacy leakage</li></ul>
+        r"""<p>Non-compliance reason code. If there are multiple, return a list of multiple codes</p><p>Enumeration values:</p><ul><li>-2: Not supported currently or internal logic error</li><li>100: Delivered to the wrong address</li><li>104: No shipping label</li><li>105: Shipping label number not the same as the system</li><li>200: Package delivery location unclear</li><li>202: Acknowledgment contains personal privacy</li></ul>
         :rtype: list of str
         """
         return self._FailCode

@@ -687,6 +687,33 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLogAnalysisDownloadTask(self, request):
+        r"""This API is used to create a log analysis download task. After creation, you can query the download task via the DescribeLogAnalysisDownloadTasks API.
+        Note:
+        1. Supports up to 50 million log entries per download.
+        2. Log files are reserved for 3 days.
+        3. When multiple tasks exist at the same time, they are processed sequentially based on task creation time.
+
+        :param request: Request instance for CreateLogAnalysisDownloadTask.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateLogAnalysisDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateLogAnalysisDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLogAnalysisDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLogAnalysisDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMultiPathGateway(self, request):
         r"""Create a multi-channel security acceleration gateway via this API, including Cloud Gateway (gateway created and managed by Tencent Cloud) and private gateway (gateway deployed by users). Query the status using DescribeMultiPathGateway, and creation is successful if the status is online.
 
@@ -3924,7 +3951,7 @@ class TeoClient(AbstractClient):
 
 
     def ImportZoneConfig(self, request):
-        r"""This API is used to quickly import site configuration files. After the import is initiated, the API will return the corresponding task ID (TaskId). Users need to use the site configuration import result query API (DescribeZoneConfigImportResult) to obtain the results of this import task. This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.
+        r"""This API is used to quickly import site configuration files. After the import is initiated, the API will return the corresponding task ID. Users need to use the site configuration import result query API to obtain the execution result of this import task.
 
         :param request: Request instance for ImportZoneConfig.
         :type request: :class:`tencentcloud.teo.v20220901.models.ImportZoneConfigRequest`

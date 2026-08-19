@@ -12380,6 +12380,190 @@ class CreateLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLogAnalysisDownloadTaskRequest(AbstractModel):
+    r"""CreateLogAnalysisDownloadTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>Site ID.</p>
+        :type ZoneId: str
+        :param _Area: <p>Data service area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding Mainland China).</li></ul>Note: If the service area of the site is "global availability zone", you need to query the data of mainland and overseas separately to obtain all data.</p>
+        :type Area: str
+        :param _StartTime: <p>Start time, example value: 2020-04-29T00:00:00Z. The maximum span from the supported query start time to this day varies for different package versions. For details, see <a href="https://www.tencentcloud.com/document/product/1552/94165?from_cn_redirect=1#45435466-9103-4ff6-be22-e31717044fb2">Package Selection Comparison</a>.</p>
+        :type StartTime: str
+        :param _EndTime: <p>End time, for example, 2020-04-30T00:00:00Z. The time span from the start time to the end time per request is up to 31 days.</p>
+        :type EndTime: str
+        :param _LogType: <p>Log type. Value range: <ul><li> l7-access-logs: Layer 7 Access Logs;</li><li>web-attack: managed rule log.</li></ul>Defaults to l7-access-logs.</p>
+        :type LogType: str
+        :param _Condition: <p><a href="https://www.tencentcloud.com/document/product/1552/124662?from_cn_redirect=1">Log match condition</a>. Maximum length 12KB.</p>
+        :type Condition: str
+        :param _Format: <p>File format, available values: <ul><li>csv</li></ul>Defaults to csv.</p>
+        :type Format: str
+        :param _Sort: <p>Time sorting of raw logs. Available values: <ul><li>asc: ascending order;</li> <li>desc: descending order.</li></ul> Default is desc.</p>
+        :type Sort: str
+        """
+        self._ZoneId = None
+        self._Area = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LogType = None
+        self._Condition = None
+        self._Format = None
+        self._Sort = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>Site ID.</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Area(self):
+        r"""<p>Data service area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding Mainland China).</li></ul>Note: If the service area of the site is "global availability zone", you need to query the data of mainland and overseas separately to obtain all data.</p>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time, example value: 2020-04-29T00:00:00Z. The maximum span from the supported query start time to this day varies for different package versions. For details, see <a href="https://www.tencentcloud.com/document/product/1552/94165?from_cn_redirect=1#45435466-9103-4ff6-be22-e31717044fb2">Package Selection Comparison</a>.</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>End time, for example, 2020-04-30T00:00:00Z. The time span from the start time to the end time per request is up to 31 days.</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LogType(self):
+        r"""<p>Log type. Value range: <ul><li> l7-access-logs: Layer 7 Access Logs;</li><li>web-attack: managed rule log.</li></ul>Defaults to l7-access-logs.</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Condition(self):
+        r"""<p><a href="https://www.tencentcloud.com/document/product/1552/124662?from_cn_redirect=1">Log match condition</a>. Maximum length 12KB.</p>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Format(self):
+        r"""<p>File format, available values: <ul><li>csv</li></ul>Defaults to csv.</p>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Sort(self):
+        r"""<p>Time sorting of raw logs. Available values: <ul><li>asc: ascending order;</li> <li>desc: descending order.</li></ul> Default is desc.</p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Area = params.get("Area")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LogType = params.get("LogType")
+        self._Condition = params.get("Condition")
+        self._Format = params.get("Format")
+        self._Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLogAnalysisDownloadTaskResponse(AbstractModel):
+    r"""CreateLogAnalysisDownloadTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Log analysis download task ID.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Log analysis download task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateMultiPathGatewayLineRequest(AbstractModel):
     r"""CreateMultiPathGatewayLine request structure.
 
@@ -38348,9 +38532,9 @@ class ImportZoneConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Zone ID.
+        :param _ZoneId: <p>Site ID.</p>
         :type ZoneId: str
-        :param _Content: The configuration content to be imported, which should be in the JSON format and be encoded in the UTF-8 mode. The configuration content can be obtained through the site configuration export API (ExportZoneConfig). You can individually import "Site Acceleration - Global Acceleration Configuration" or "Site Acceleration - Rule Engine" by passing in the corresponding fields. Refer to the example below for details.
+        :param _Content: <p>Configuration content to be imported. Use JSON format and encode by UTF-8. You can obtain the configuration content through the site configuration export interface (ExportZoneConfig). You can individually import "Site Acceleration - Global Acceleration Configuration" or "Site Acceleration - Rule Engine". Just pass in the corresponding fields. For specific details, see the example below.<br>Note: AccelerationDomain (acceleration domain name configuration) and Origin (origin configuration) exported by ExportZoneConfig are temporary not supported for import through this interface. If the Content contains the above configuration content, it will cause import failure.</p>
         :type Content: str
         """
         self._ZoneId = None
@@ -38358,7 +38542,7 @@ class ImportZoneConfigRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Zone ID.
+        r"""<p>Site ID.</p>
         :rtype: str
         """
         return self._ZoneId
@@ -38369,7 +38553,7 @@ class ImportZoneConfigRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""The configuration content to be imported, which should be in the JSON format and be encoded in the UTF-8 mode. The configuration content can be obtained through the site configuration export API (ExportZoneConfig). You can individually import "Site Acceleration - Global Acceleration Configuration" or "Site Acceleration - Rule Engine" by passing in the corresponding fields. Refer to the example below for details.
+        r"""<p>Configuration content to be imported. Use JSON format and encode by UTF-8. You can obtain the configuration content through the site configuration export interface (ExportZoneConfig). You can individually import "Site Acceleration - Global Acceleration Configuration" or "Site Acceleration - Rule Engine". Just pass in the corresponding fields. For specific details, see the example below.<br>Note: AccelerationDomain (acceleration domain name configuration) and Origin (origin configuration) exported by ExportZoneConfig are temporary not supported for import through this interface. If the Content contains the above configuration content, it will cause import failure.</p>
         :rtype: str
         """
         return self._Content
@@ -38399,7 +38583,7 @@ class ImportZoneConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: It indicates the task ID of this import configuration. You can obtain the result of this import task through the site configuration import result query API (DescribeZoneConfigImportResult). Note: The import task ID is only retained for 7 days.
+        :param _TaskId: <p>Task Id of this import configuration. Use the site configuration import result query API (DescribeZoneConfigImportResult) to get the execution result of this import job. Note: The import task Id only supports querying the most recent 7 days of import tasks.</p>
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -38409,7 +38593,7 @@ class ImportZoneConfigResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""It indicates the task ID of this import configuration. You can obtain the result of this import task through the site configuration import result query API (DescribeZoneConfigImportResult). Note: The import task ID is only retained for 7 days.
+        r"""<p>Task Id of this import configuration. Use the site configuration import result query API (DescribeZoneConfigImportResult) to get the execution result of this import job. Note: The import task Id only supports querying the most recent 7 days of import tasks.</p>
         :rtype: str
         """
         return self._TaskId

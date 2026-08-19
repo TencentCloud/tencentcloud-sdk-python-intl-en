@@ -2245,7 +2245,7 @@ class PhoneNumberInfo(AbstractModel):
         :type PhoneNumber: str
         :param _IsoCode: Country or region code such as CN and US. If the country or region code cannot be identified, `DEF` will be returned by default.
         :type IsoCode: str
-        :param _IsoName: Country code or region name such as China. For more information, see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1#.E6.97.A5.E7.BB.93.E5.90.8E.E4.BB.98.E8.B4.B9.3Ca-id.3D.22post-payment.22.3E.3C.2Fa.3E)
+        :param _IsoName: Country code or region name such as China. For more information, see [Global SMS Price Overview](https://www.tencentcloud.com/document/product/382/8414?pg=#3c47bbea-5699-48a6-83d3-6b97cf2a23bc)
         :type IsoName: str
         """
         self._Code = None
@@ -2324,7 +2324,7 @@ class PhoneNumberInfo(AbstractModel):
 
     @property
     def IsoName(self):
-        r"""Country code or region name such as China. For more information, see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1#.E6.97.A5.E7.BB.93.E5.90.8E.E4.BB.98.E8.B4.B9.3Ca-id.3D.22post-payment.22.3E.3C.2Fa.3E)
+        r"""Country code or region name such as China. For more information, see [Global SMS Price Overview](https://www.tencentcloud.com/document/product/382/8414?pg=#3c47bbea-5699-48a6-83d3-6b97cf2a23bc)
         :rtype: str
         """
         return self._IsoName

@@ -20284,7 +20284,7 @@ class DescribeDashboardsRequest(AbstractModel):
 -dashboardName: Filter by fuzzy search as dashboard name. Type: String. Required: No.
 -Example value: Business dashboard
 -dashboardRegion filter by dashboard region (compatible with legacy dashboards). This property for dashboards created via cloud API, type: String, required: No.
--See [Regions and Availability Zones](https://www.tencentcloud.com/document/product/614/18940?from_cn_redirect=1)
+-See [Regions and Availability Zones](https://www.tencentcloud.com/document/product/614/18940)
 -Example: ap-guangzhou
 - tagKey - String - Required: No - Filter by the tag key.
 -Example value:
@@ -20300,7 +20300,7 @@ class DescribeDashboardsRequest(AbstractModel):
     ```
 
 -tag:tagKey Filter by [tag key-value pair]. Replace tagKey with a specific tag key. Type: String. Required: No.
--Refer to [Example 1](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1#4.-.E7.A4.BA.E4.BE.8B) for usage.
+-Refer to Example 1 for usage.
     ```
     "Filters": [
         {
@@ -20378,7 +20378,7 @@ Each request can have up to 10 Filters. The upper limit of Filter.Values is 100.
 -dashboardName: Filter by fuzzy search as dashboard name. Type: String. Required: No.
 -Example value: Business dashboard
 -dashboardRegion filter by dashboard region (compatible with legacy dashboards). This property for dashboards created via cloud API, type: String, required: No.
--See [Regions and Availability Zones](https://www.tencentcloud.com/document/product/614/18940?from_cn_redirect=1)
+-See [Regions and Availability Zones](https://www.tencentcloud.com/document/product/614/18940)
 -Example: ap-guangzhou
 - tagKey - String - Required: No - Filter by the tag key.
 -Example value:
@@ -20394,7 +20394,7 @@ Each request can have up to 10 Filters. The upper limit of Filter.Values is 100.
     ```
 
 -tag:tagKey Filter by [tag key-value pair]. Replace tagKey with a specific tag key. Type: String. Required: No.
--Refer to [Example 1](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1#4.-.E7.A4.BA.E4.BE.8B) for usage.
+-Refer to Example 1 for usage.
     ```
     "Filters": [
         {

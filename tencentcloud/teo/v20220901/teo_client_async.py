@@ -546,6 +546,28 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLogAnalysisDownloadTask(
+            self,
+            request: models.CreateLogAnalysisDownloadTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateLogAnalysisDownloadTaskResponse:
+        """
+        This API is used to create a log analysis download task. After creation, you can query the download task via the DescribeLogAnalysisDownloadTasks API.
+        Note:
+        1. Supports up to 50 million log entries per download.
+        2. Log files are reserved for 3 days.
+        3. When multiple tasks exist at the same time, they are processed sequentially based on task creation time.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLogAnalysisDownloadTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLogAnalysisDownloadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateMultiPathGateway(
             self,
             request: models.CreateMultiPathGatewayRequest,
@@ -3093,7 +3115,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ImportZoneConfigResponse:
         """
-        This API is used to quickly import site configuration files. After the import is initiated, the API will return the corresponding task ID (TaskId). Users need to use the site configuration import result query API (DescribeZoneConfigImportResult) to obtain the results of this import task. This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.
+        This API is used to quickly import site configuration files. After the import is initiated, the API will return the corresponding task ID. Users need to use the site configuration import result query API to obtain the execution result of this import task.
         """
         
         kwargs = {}
