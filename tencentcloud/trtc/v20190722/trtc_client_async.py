@@ -772,6 +772,24 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryAIMessageList(
+            self,
+            request: models.QueryAIMessageListRequest,
+            opts: Dict = None,
+    ) -> models.QueryAIMessageListResponse:
+        """
+        input a task ID to query the list of AI conversation context information.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryAIMessageList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryAIMessageListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RemoveUser(
             self,
             request: models.RemoveUserRequest,

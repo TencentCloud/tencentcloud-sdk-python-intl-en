@@ -11748,6 +11748,10 @@ class CynosdbClusterDetail(AbstractModel):
         :type IsOpenTDE: bool
         :param _RealZone: <p>Current instance availability zone</p>
         :type RealZone: str
+        :param _StorageOverUse: <p>Exceed limit enabled status</p><p>Enumeration value:</p><ul><li>yes: Exceed limit enabled</li><li>no: Exceed limit disabled</li></ul><p>Default value: no</p>
+        :type StorageOverUse: str
+        :param _StorageAutoExpand: <p>Auto-scaling enabled status</p><p>Enumeration value:</p><ul><li>yes: On</li><li>no: Off</li></ul><p>Default value: no</p>
+        :type StorageAutoExpand: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -11808,6 +11812,8 @@ class CynosdbClusterDetail(AbstractModel):
         self._ClusterLevel = None
         self._IsOpenTDE = None
         self._RealZone = None
+        self._StorageOverUse = None
+        self._StorageAutoExpand = None
 
     @property
     def ClusterId(self):
@@ -12458,6 +12464,28 @@ class CynosdbClusterDetail(AbstractModel):
     def RealZone(self, RealZone):
         self._RealZone = RealZone
 
+    @property
+    def StorageOverUse(self):
+        r"""<p>Exceed limit enabled status</p><p>Enumeration value:</p><ul><li>yes: Exceed limit enabled</li><li>no: Exceed limit disabled</li></ul><p>Default value: no</p>
+        :rtype: str
+        """
+        return self._StorageOverUse
+
+    @StorageOverUse.setter
+    def StorageOverUse(self, StorageOverUse):
+        self._StorageOverUse = StorageOverUse
+
+    @property
+    def StorageAutoExpand(self):
+        r"""<p>Auto-scaling enabled status</p><p>Enumeration value:</p><ul><li>yes: On</li><li>no: Off</li></ul><p>Default value: no</p>
+        :rtype: str
+        """
+        return self._StorageAutoExpand
+
+    @StorageAutoExpand.setter
+    def StorageAutoExpand(self, StorageAutoExpand):
+        self._StorageAutoExpand = StorageAutoExpand
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -12551,6 +12579,8 @@ class CynosdbClusterDetail(AbstractModel):
         self._ClusterLevel = params.get("ClusterLevel")
         self._IsOpenTDE = params.get("IsOpenTDE")
         self._RealZone = params.get("RealZone")
+        self._StorageOverUse = params.get("StorageOverUse")
+        self._StorageAutoExpand = params.get("StorageAutoExpand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
