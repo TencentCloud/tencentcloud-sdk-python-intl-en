@@ -298,21 +298,21 @@ Default value: 1
 4: Motion- and reflection-based liveness detection
 Default value: 4
         :type SecurityLevel: int
-        :param _IdCardType: Specifies the identity document type used for authentication. valid values:.  
+        :param _IdCardType: Specifies the identity document type used for authentication. Valid values:
 
-1. HK (default): hong kong (china) identity card.
-2. ML: malaysian identity card.
-3. Indonesian identity card.
-4. PhilippinesVoteID: specifies the voter card in the philippines.
-5. PhilippinesDrivingLicense: specifies the driving license in philippines.
-6. PhilippinesTinID: specifies the philippines tin id.
-7. PhilippinesSSSID: specifies the SSSID in the philippines.
-8. philippines UMID: specifies the philippines UMID.
-9. MLIDPassport: specifies the passport for hong kong (china), macao (china), and taiwan (china) as well as overseas passports.
-10. ThailandIDCard: specifies the thai identity card.
-11. Mainland id card.
-12. SingaporeIDCard: specifies the Singapore id card.
-13. HMTPermit: specifies the hong kong, macau and taiwan travel permit.
+1. HK (default): Hong Kong (China) Identity Card.
+2. ML: Malaysia Identity Card.
+3. IndonesiaIDCard: Indonesia Identity Card.
+4. PhilippinesVoteID: Philippines Voter's ID.
+5. PhilippinesDrivingLicense: Philippines Driving License.
+6. PhilippinesTinID: Philippines TIN ID.
+7. PhilippinesSSSID: Philippines SSS ID.
+8. PhilippinesUMID: Philippines UMID.
+9. MLIDPassport: Passports of Hong Kong (China), Macao (China), and Taiwan (China), as well as overseas regions.
+10. ThailandIDCard: Thailand Identity Card.
+11. MainlandIDCard: Chinese Mainland Identity Card.
+12. SingaporeIDCard: Singapore Identity Card.
+13. HMTPermit: Travel Permit for Hong Kong (China), Macao (China), and Taiwan (China).
         :type IdCardType: str
         :param _CompareImage: The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
         :type CompareImage: str
@@ -369,6 +369,9 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         :param _AllowUploadPhoto: <p>Whether uploading photos from the album is permitted for verification during the ID validation phase (prohibited when single-angle multi-image forgery detection is enabled)
  </p><p>Enumeration values:</p><ul><li>true: Album photo upload for verification enabled</li><li>false: Album photo upload for verification disabled</li></ul><p>Default value: false</p>
         :type AllowUploadPhoto: bool
+        :param _EnableBotBgDetection: <p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false</p>
+
+        :type EnableBotBgDetection: bool
         """
         self._CheckMode = None
         self._SecurityLevel = None
@@ -391,6 +394,7 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._SkipOcrConfirmPage = None
         self._HideProgressBar = None
         self._AllowUploadPhoto = None
+        self._EnableBotBgDetection = None
 
     @property
     def CheckMode(self):
@@ -425,21 +429,21 @@ Default value: 4
 
     @property
     def IdCardType(self):
-        r"""Specifies the identity document type used for authentication. valid values:.  
+        r"""Specifies the identity document type used for authentication. Valid values:
 
-1. HK (default): hong kong (china) identity card.
-2. ML: malaysian identity card.
-3. Indonesian identity card.
-4. PhilippinesVoteID: specifies the voter card in the philippines.
-5. PhilippinesDrivingLicense: specifies the driving license in philippines.
-6. PhilippinesTinID: specifies the philippines tin id.
-7. PhilippinesSSSID: specifies the SSSID in the philippines.
-8. philippines UMID: specifies the philippines UMID.
-9. MLIDPassport: specifies the passport for hong kong (china), macao (china), and taiwan (china) as well as overseas passports.
-10. ThailandIDCard: specifies the thai identity card.
-11. Mainland id card.
-12. SingaporeIDCard: specifies the Singapore id card.
-13. HMTPermit: specifies the hong kong, macau and taiwan travel permit.
+1. HK (default): Hong Kong (China) Identity Card.
+2. ML: Malaysia Identity Card.
+3. IndonesiaIDCard: Indonesia Identity Card.
+4. PhilippinesVoteID: Philippines Voter's ID.
+5. PhilippinesDrivingLicense: Philippines Driving License.
+6. PhilippinesTinID: Philippines TIN ID.
+7. PhilippinesSSSID: Philippines SSS ID.
+8. PhilippinesUMID: Philippines UMID.
+9. MLIDPassport: Passports of Hong Kong (China), Macao (China), and Taiwan (China), as well as overseas regions.
+10. ThailandIDCard: Thailand Identity Card.
+11. MainlandIDCard: Chinese Mainland Identity Card.
+12. SingaporeIDCard: Singapore Identity Card.
+13. HMTPermit: Travel Permit for Hong Kong (China), Macao (China), and Taiwan (China).
         :rtype: str
         """
         return self._IdCardType
@@ -669,6 +673,18 @@ false : Expired HKID is rejected and cannot enter the liveness process.
     def AllowUploadPhoto(self, AllowUploadPhoto):
         self._AllowUploadPhoto = AllowUploadPhoto
 
+    @property
+    def EnableBotBgDetection(self):
+        r"""<p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false</p>
+
+        :rtype: bool
+        """
+        return self._EnableBotBgDetection
+
+    @EnableBotBgDetection.setter
+    def EnableBotBgDetection(self, EnableBotBgDetection):
+        self._EnableBotBgDetection = EnableBotBgDetection
+
 
     def _deserialize(self, params):
         self._CheckMode = params.get("CheckMode")
@@ -692,6 +708,7 @@ false : Expired HKID is rejected and cannot enter the liveness process.
         self._SkipOcrConfirmPage = params.get("SkipOcrConfirmPage")
         self._HideProgressBar = params.get("HideProgressBar")
         self._AllowUploadPhoto = params.get("AllowUploadPhoto")
+        self._EnableBotBgDetection = params.get("EnableBotBgDetection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5384,6 +5401,9 @@ Please contact us to access enhance version & plus version.
         :type SdkVersion: str
         :param _RetryLimit: <p>Liveness retry count</p><p>Value ranges from 1 to 5</p><p>Default value: 5</p>
         :type RetryLimit: int
+        :param _EnableBotBgDetection: <p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false</p>
+
+        :type EnableBotBgDetection: bool
         """
         self._CheckMode = None
         self._SecureLevel = None
@@ -5392,6 +5412,7 @@ Please contact us to access enhance version & plus version.
         self._ActionList = None
         self._SdkVersion = None
         self._RetryLimit = None
+        self._EnableBotBgDetection = None
 
     @property
     def CheckMode(self):
@@ -5475,6 +5496,18 @@ Please contact us to access enhance version & plus version.
     def RetryLimit(self, RetryLimit):
         self._RetryLimit = RetryLimit
 
+    @property
+    def EnableBotBgDetection(self):
+        r"""<p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false</p>
+
+        :rtype: bool
+        """
+        return self._EnableBotBgDetection
+
+    @EnableBotBgDetection.setter
+    def EnableBotBgDetection(self, EnableBotBgDetection):
+        self._EnableBotBgDetection = EnableBotBgDetection
+
 
     def _deserialize(self, params):
         self._CheckMode = params.get("CheckMode")
@@ -5484,6 +5517,7 @@ Please contact us to access enhance version & plus version.
         self._ActionList = params.get("ActionList")
         self._SdkVersion = params.get("SdkVersion")
         self._RetryLimit = params.get("RetryLimit")
+        self._EnableBotBgDetection = params.get("EnableBotBgDetection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5503,10 +5537,13 @@ class GetFaceIdTokenIntlResponse(AbstractModel):
         r"""
         :param _SdkToken: <p>SdkToken, used to connect the identity verification process. The verification result can be retrieved with this token. Each SdkToken has a validity of 10 minutes.</p>
         :type SdkToken: str
+        :param _ServerParamInfo: Encrypted string of server-side parameters
+        :type ServerParamInfo: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._SdkToken = None
+        self._ServerParamInfo = None
         self._RequestId = None
 
     @property
@@ -5519,6 +5556,17 @@ class GetFaceIdTokenIntlResponse(AbstractModel):
     @SdkToken.setter
     def SdkToken(self, SdkToken):
         self._SdkToken = SdkToken
+
+    @property
+    def ServerParamInfo(self):
+        r"""Encrypted string of server-side parameters
+        :rtype: str
+        """
+        return self._ServerParamInfo
+
+    @ServerParamInfo.setter
+    def ServerParamInfo(self, ServerParamInfo):
+        self._ServerParamInfo = ServerParamInfo
 
     @property
     def RequestId(self):
@@ -5534,6 +5582,7 @@ class GetFaceIdTokenIntlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._SdkToken = params.get("SdkToken")
+        self._ServerParamInfo = params.get("ServerParamInfo")
         self._RequestId = params.get("RequestId")
 
 
