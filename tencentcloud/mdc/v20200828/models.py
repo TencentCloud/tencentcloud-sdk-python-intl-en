@@ -2799,18 +2799,28 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _RTMPPullSettings: RTMP pull configuration of the output
 Note: This field may return `null`, indicating that no valid value was found.
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPPullSettings`
-        :param _AllowIpList: CIDR allowlist
-This parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _AllowIpList: CIDR Whitelist List. Effective when Protocol is RTMP_PULL. Empty means no restriction on client IP.
         :type AllowIpList: list of str
-        :param _RTSPPullSettings: 
+        :param _RTSPPullSettings: The output RTSP streaming configuration information.
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTSPPullSettings`
-        :param _HLSPullSettings: 
+        :param _HLSPullSettings: Output the HLS streaming configuration information.
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputHLSPullSettings`
-        :param _MaxConcurrent: 
+        :param _MaxConcurrent: The maximum number of concurrent streams is 4, with a default of 4.
         :type MaxConcurrent: int
         :param _SecurityGroupIds: The bound security group IDs.
         :type SecurityGroupIds: list of str
+        :param _Zones: The available zone currently only supports a maximum of one output.
+        :type Zones: list of str
+        :param _RISTSettings: Output RIST configuration information.
+        :type RISTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRISTSettings`
+        :param _PidSelector: For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :type PidSelector: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
+        :param _OutputKind: Output module types, including Pinpoint (single point output, supporting up to four concurrent outputs); MultiMesh (Multi output, supports concurrent outputs greater than four, currently up to 200). The default type is Pinpoint output. For a single Flow, a region can only have a maximum of one MultiMesh output.
+        :type OutputKind: str
+        :param _StreamUrls: Output module configuration, relevant URLs, including provided streaming addresses or configured output to third-party forwarding addresses
+        :type StreamUrls: list of StreamUrlDetail
+        :param _StreamSelector: For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :type StreamSelector: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
         """
         self._OutputId = None
         self._OutputName = None
@@ -2828,6 +2838,12 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._HLSPullSettings = None
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
+        self._Zones = None
+        self._RISTSettings = None
+        self._PidSelector = None
+        self._OutputKind = None
+        self._StreamUrls = None
+        self._StreamSelector = None
 
     @property
     def OutputId(self):
@@ -2958,9 +2974,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AllowIpList(self):
-        r"""CIDR allowlist
-This parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.
-Note: This field may return `null`, indicating that no valid value was found.
+        r"""CIDR Whitelist List. Effective when Protocol is RTMP_PULL. Empty means no restriction on client IP.
         :rtype: list of str
         """
         return self._AllowIpList
@@ -2971,7 +2985,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RTSPPullSettings(self):
-        r"""
+        r"""The output RTSP streaming configuration information.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTSPPullSettings`
         """
         return self._RTSPPullSettings
@@ -2982,7 +2996,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def HLSPullSettings(self):
-        r"""
+        r"""Output the HLS streaming configuration information.
         :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputHLSPullSettings`
         """
         return self._HLSPullSettings
@@ -2993,7 +3007,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def MaxConcurrent(self):
-        r"""
+        r"""The maximum number of concurrent streams is 4, with a default of 4.
         :rtype: int
         """
         return self._MaxConcurrent
@@ -3012,6 +3026,76 @@ Note: This field may return `null`, indicating that no valid value was found.
     @SecurityGroupIds.setter
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def Zones(self):
+        r"""The available zone currently only supports a maximum of one output.
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def RISTSettings(self):
+        r"""Output RIST configuration information.
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRISTSettings`
+        """
+        return self._RISTSettings
+
+    @RISTSettings.setter
+    def RISTSettings(self, RISTSettings):
+        self._RISTSettings = RISTSettings
+
+    @property
+    def PidSelector(self):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
+        r"""For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.PidSelector`
+        """
+        return self._PidSelector
+
+    @PidSelector.setter
+    def PidSelector(self, PidSelector):
+        warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
+
+        self._PidSelector = PidSelector
+
+    @property
+    def OutputKind(self):
+        r"""Output module types, including Pinpoint (single point output, supporting up to four concurrent outputs); MultiMesh (Multi output, supports concurrent outputs greater than four, currently up to 200). The default type is Pinpoint output. For a single Flow, a region can only have a maximum of one MultiMesh output.
+        :rtype: str
+        """
+        return self._OutputKind
+
+    @OutputKind.setter
+    def OutputKind(self, OutputKind):
+        self._OutputKind = OutputKind
+
+    @property
+    def StreamUrls(self):
+        r"""Output module configuration, relevant URLs, including provided streaming addresses or configured output to third-party forwarding addresses
+        :rtype: list of StreamUrlDetail
+        """
+        return self._StreamUrls
+
+    @StreamUrls.setter
+    def StreamUrls(self, StreamUrls):
+        self._StreamUrls = StreamUrls
+
+    @property
+    def StreamSelector(self):
+        r"""For streams containing multiple audio/video tracks, you can specify the tracks that need to be used
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.StreamSelector`
+        """
+        return self._StreamSelector
+
+    @StreamSelector.setter
+    def StreamSelector(self, StreamSelector):
+        self._StreamSelector = StreamSelector
 
 
     def _deserialize(self, params):
@@ -3048,6 +3132,23 @@ Note: This field may return `null`, indicating that no valid value was found.
             self._HLSPullSettings._deserialize(params.get("HLSPullSettings"))
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
+        if params.get("RISTSettings") is not None:
+            self._RISTSettings = DescribeOutputRISTSettings()
+            self._RISTSettings._deserialize(params.get("RISTSettings"))
+        if params.get("PidSelector") is not None:
+            self._PidSelector = PidSelector()
+            self._PidSelector._deserialize(params.get("PidSelector"))
+        self._OutputKind = params.get("OutputKind")
+        if params.get("StreamUrls") is not None:
+            self._StreamUrls = []
+            for item in params.get("StreamUrls"):
+                obj = StreamUrlDetail()
+                obj._deserialize(item)
+                self._StreamUrls.append(obj)
+        if params.get("StreamSelector") is not None:
+            self._StreamSelector = StreamSelector()
+            self._StreamSelector._deserialize(params.get("StreamSelector"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3125,6 +3226,92 @@ class DescribeOutputHLSPullSettings(AbstractModel):
                 obj = DescribeOutputHLSPullServerUrl()
                 obj._deserialize(item)
                 self._ServerUrls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRISTSettings(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 
+        :type Mode: str
+        :param _Profile: 
+        :type Profile: str
+        :param _Buffer: 
+        :type Buffer: int
+        :param _SourceAddresses: 
+        :type SourceAddresses: list of OutputRISTSourceAddressResp
+        """
+        self._Mode = None
+        self._Profile = None
+        self._Buffer = None
+        self._SourceAddresses = None
+
+    @property
+    def Mode(self):
+        r"""
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Profile(self):
+        r"""
+        :rtype: str
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Buffer(self):
+        r"""
+        :rtype: int
+        """
+        return self._Buffer
+
+    @Buffer.setter
+    def Buffer(self, Buffer):
+        self._Buffer = Buffer
+
+    @property
+    def SourceAddresses(self):
+        r"""
+        :rtype: list of OutputRISTSourceAddressResp
+        """
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Profile = params.get("Profile")
+        self._Buffer = params.get("Buffer")
+        if params.get("SourceAddresses") is not None:
+            self._SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = OutputRISTSourceAddressResp()
+                obj._deserialize(item)
+                self._SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7543,6 +7730,57 @@ class OutputAddress(AbstractModel):
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputRISTSourceAddressResp(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: 
+        :type Ip: str
+        :param _Port: 
+        :type Port: int
+        """
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        r"""
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        r"""
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
