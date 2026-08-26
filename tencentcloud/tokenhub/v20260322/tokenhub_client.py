@@ -101,6 +101,56 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTokenPlanApiKeys(self, request):
+        r"""Batch create TokenPlan API Keys.
+
+        Import a name prefix and quantity to automatically generate names in the `{Api Key Name}-{serial number}` format (for example, aaa-1, aaa-2). Duplicate names are allowed. Partial success is supported for up to 100 entries.
+
+        :param request: Request instance for CreateTokenPlanApiKeys.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.CreateTokenPlanApiKeysRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.CreateTokenPlanApiKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTokenPlanApiKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTokenPlanApiKeysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateTokenPlanTeamOrderAndBuy(self, request):
+        r"""Purchase a package (This API is also used to reactivate and renew expired packages. The teamId of the expired package is required. After the renewal is successful, the total cycle count of the package will include historical cycles. The actual effective cycle of the package is determined by the effective time and expiration time.)
+
+        Initiate an order for a TokenPlan package and complete payment. Return the order ID and associated sub-orders and resource information upon success.
+
+        :param request: Request instance for CreateTokenPlanTeamOrderAndBuy.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.CreateTokenPlanTeamOrderAndBuyRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.CreateTokenPlanTeamOrderAndBuyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTokenPlanTeamOrderAndBuy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTokenPlanTeamOrderAndBuyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteApiKey(self, request):
         r"""This API is used to delete specified api keys and clean up associated model binding relationships.
 
@@ -165,6 +215,31 @@ class TokenhubClient(AbstractClient):
             body = self.call("DeleteGlossaryEntries", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteGlossaryEntriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTokenPlanApiKey(self, request):
+        r"""Delete the Token Plan API key.
+
+        Simultaneously delete the limit center sub-limit package and notify the Notification Gateway to purge cache.
+
+        :param request: Request instance for DeleteTokenPlanApiKey.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DeleteTokenPlanApiKeyRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DeleteTokenPlanApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTokenPlanApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTokenPlanApiKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -272,6 +347,156 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTokenPlan(self, request):
+        r"""Query the TokenPlan package details.
+
+        Return the package basic info and the remaining quota of the package.
+
+        :param request: Request instance for DescribeTokenPlan.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTokenPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTokenPlanApiKey(self, request):
+        r"""Query TokenPlan APIKey details.
+
+        Return the complete APIKey information (including the plaintext key) and the remaining quota of the sub-quota package.
+
+        :param request: Request instance for DescribeTokenPlanApiKey.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanApiKeyRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTokenPlanApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenPlanApiKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTokenPlanApiKeyList(self, request):
+        r"""Query the list of Token Plan API keys.
+
+        Returns the API key list under a specified package. Keys are masked. Root accounts can view all keys, while sub-accounts can only view keys created by themselves.
+
+        :param request: Request instance for DescribeTokenPlanApiKeyList.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanApiKeyListRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanApiKeyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTokenPlanApiKeyList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenPlanApiKeyListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTokenPlanApiKeySecret(self, request):
+        r"""Query the TokenPlan APIKey (plaintext).
+
+        Return the plaintext key value of the designated APIKey. Keep it safe.
+
+        :param request: Request instance for DescribeTokenPlanApiKeySecret.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanApiKeySecretRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanApiKeySecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTokenPlanApiKeySecret", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenPlanApiKeySecretResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTokenPlanApiKeyUsageDetail(self, request):
+        r"""Query the Token Plan APIKey call detail.
+
+        This API is used to query call details under a package from CLS log service, filter by team_id, and support cursor-based pagination.
+
+        :param request: Request instance for DescribeTokenPlanApiKeyUsageDetail.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanApiKeyUsageDetailRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanApiKeyUsageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTokenPlanApiKeyUsageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenPlanApiKeyUsageDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTokenPlanList(self, request):
+        r"""Query the list of Token Plan package options.
+
+        Supports pagination, filtering, and sorting. Root accounts can view all packages, while sub-accounts can only view packages created by themselves. Returned results include the main limit package details associated with each package in the limit center.
+
+        :param request: Request instance for DescribeTokenPlanList.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanListRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeTokenPlanListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTokenPlanList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenPlanListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyApiKeyInfo(self, request):
         r"""Refresh API key information.
 
@@ -336,6 +561,106 @@ class TokenhubClient(AbstractClient):
             body = self.call("ModifyGlossaryEntries", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyGlossaryEntriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTokenPlanApiKey(self, request):
+        r"""Modify the Token Plan APIKey configuration (field that the gateway focuses on).
+
+        After modification, automatically notify the gateway to update the cache and sync the limit center.
+
+        :param request: Request instance for ModifyTokenPlanApiKey.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.ModifyTokenPlanApiKeyRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModifyTokenPlanApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTokenPlanApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTokenPlanApiKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTokenPlanApiKeySecret(self, request):
+        r"""Reset the TokenPlan API Key.
+
+        Regenerate the key value. The key version increments and the old key expires immediately. The API Key ID remains unchanged. After resetting, the new key can be queried through DescribeTokenPlanApiKeySecret.
+
+        :param request: Request instance for ModifyTokenPlanApiKeySecret.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.ModifyTokenPlanApiKeySecretRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModifyTokenPlanApiKeySecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTokenPlanApiKeySecret", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTokenPlanApiKeySecretResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewTokenPlanTeamOrder(self, request):
+        r"""Renew a package.
+
+        Initiate a renewal order for an existing Token Plan package and complete payment. Return the order ID and associated sub-orders and resource information upon success.
+
+        :param request: Request instance for RenewTokenPlanTeamOrder.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.RenewTokenPlanTeamOrderRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.RenewTokenPlanTeamOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewTokenPlanTeamOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewTokenPlanTeamOrderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeTokenPlanTeamOrder(self, request):
+        r"""Upgrade the package.
+
+        Initiate an upgrade order for an existing Token Plan package and complete payment to expand point or token limits. Return the order ID and associated sub-orders and resource information upon success. The new limit must be greater than the current limit.
+
+        :param request: Request instance for UpgradeTokenPlanTeamOrder.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.UpgradeTokenPlanTeamOrderRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.UpgradeTokenPlanTeamOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeTokenPlanTeamOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeTokenPlanTeamOrderResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

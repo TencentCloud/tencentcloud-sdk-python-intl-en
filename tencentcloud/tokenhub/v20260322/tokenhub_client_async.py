@@ -85,6 +85,46 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTokenPlanApiKeys(
+            self,
+            request: models.CreateTokenPlanApiKeysRequest,
+            opts: Dict = None,
+    ) -> models.CreateTokenPlanApiKeysResponse:
+        """
+        Batch create TokenPlan API Keys.
+
+        Import a name prefix and quantity to automatically generate names in the `{Api Key Name}-{serial number}` format (for example, aaa-1, aaa-2). Duplicate names are allowed. Partial success is supported for up to 100 entries.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTokenPlanApiKeys"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTokenPlanApiKeysResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateTokenPlanTeamOrderAndBuy(
+            self,
+            request: models.CreateTokenPlanTeamOrderAndBuyRequest,
+            opts: Dict = None,
+    ) -> models.CreateTokenPlanTeamOrderAndBuyResponse:
+        """
+        Purchase a package (This API is also used to reactivate and renew expired packages. The teamId of the expired package is required. After the renewal is successful, the total cycle count of the package will include historical cycles. The actual effective cycle of the package is determined by the effective time and expiration time.)
+
+        Initiate an order for a TokenPlan package and complete payment. Return the order ID and associated sub-orders and resource information upon success.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTokenPlanTeamOrderAndBuy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTokenPlanTeamOrderAndBuyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteApiKey(
             self,
             request: models.DeleteApiKeyRequest,
@@ -138,6 +178,26 @@ class TokenhubClient(AbstractClient):
         kwargs["action"] = "DeleteGlossaryEntries"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteGlossaryEntriesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTokenPlanApiKey(
+            self,
+            request: models.DeleteTokenPlanApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTokenPlanApiKeyResponse:
+        """
+        Delete the Token Plan API key.
+
+        Simultaneously delete the limit center sub-limit package and notify the Notification Gateway to purge cache.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTokenPlanApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTokenPlanApiKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -221,6 +281,126 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTokenPlan(
+            self,
+            request: models.DescribeTokenPlanRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTokenPlanResponse:
+        """
+        Query the TokenPlan package details.
+
+        Return the package basic info and the remaining quota of the package.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTokenPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTokenPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTokenPlanApiKey(
+            self,
+            request: models.DescribeTokenPlanApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTokenPlanApiKeyResponse:
+        """
+        Query TokenPlan APIKey details.
+
+        Return the complete APIKey information (including the plaintext key) and the remaining quota of the sub-quota package.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTokenPlanApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTokenPlanApiKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTokenPlanApiKeyList(
+            self,
+            request: models.DescribeTokenPlanApiKeyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTokenPlanApiKeyListResponse:
+        """
+        Query the list of Token Plan API keys.
+
+        Returns the API key list under a specified package. Keys are masked. Root accounts can view all keys, while sub-accounts can only view keys created by themselves.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTokenPlanApiKeyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTokenPlanApiKeyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTokenPlanApiKeySecret(
+            self,
+            request: models.DescribeTokenPlanApiKeySecretRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTokenPlanApiKeySecretResponse:
+        """
+        Query the TokenPlan APIKey (plaintext).
+
+        Return the plaintext key value of the designated APIKey. Keep it safe.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTokenPlanApiKeySecret"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTokenPlanApiKeySecretResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTokenPlanApiKeyUsageDetail(
+            self,
+            request: models.DescribeTokenPlanApiKeyUsageDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTokenPlanApiKeyUsageDetailResponse:
+        """
+        Query the Token Plan APIKey call detail.
+
+        This API is used to query call details under a package from CLS log service, filter by team_id, and support cursor-based pagination.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTokenPlanApiKeyUsageDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTokenPlanApiKeyUsageDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTokenPlanList(
+            self,
+            request: models.DescribeTokenPlanListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTokenPlanListResponse:
+        """
+        Query the list of Token Plan package options.
+
+        Supports pagination, filtering, and sorting. Root accounts can view all packages, while sub-accounts can only view packages created by themselves. Returned results include the main limit package details associated with each package in the limit center.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTokenPlanList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTokenPlanListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyApiKeyInfo(
             self,
             request: models.ModifyApiKeyInfoRequest,
@@ -274,6 +454,86 @@ class TokenhubClient(AbstractClient):
         kwargs["action"] = "ModifyGlossaryEntries"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyGlossaryEntriesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyTokenPlanApiKey(
+            self,
+            request: models.ModifyTokenPlanApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTokenPlanApiKeyResponse:
+        """
+        Modify the Token Plan APIKey configuration (field that the gateway focuses on).
+
+        After modification, automatically notify the gateway to update the cache and sync the limit center.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTokenPlanApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTokenPlanApiKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyTokenPlanApiKeySecret(
+            self,
+            request: models.ModifyTokenPlanApiKeySecretRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTokenPlanApiKeySecretResponse:
+        """
+        Reset the TokenPlan API Key.
+
+        Regenerate the key value. The key version increments and the old key expires immediately. The API Key ID remains unchanged. After resetting, the new key can be queried through DescribeTokenPlanApiKeySecret.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTokenPlanApiKeySecret"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTokenPlanApiKeySecretResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RenewTokenPlanTeamOrder(
+            self,
+            request: models.RenewTokenPlanTeamOrderRequest,
+            opts: Dict = None,
+    ) -> models.RenewTokenPlanTeamOrderResponse:
+        """
+        Renew a package.
+
+        Initiate a renewal order for an existing Token Plan package and complete payment. Return the order ID and associated sub-orders and resource information upon success.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewTokenPlanTeamOrder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewTokenPlanTeamOrderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpgradeTokenPlanTeamOrder(
+            self,
+            request: models.UpgradeTokenPlanTeamOrderRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeTokenPlanTeamOrderResponse:
+        """
+        Upgrade the package.
+
+        Initiate an upgrade order for an existing Token Plan package and complete payment to expand point or token limits. Return the order ID and associated sub-orders and resource information upon success. The new limit must be greater than the current limit.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeTokenPlanTeamOrder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeTokenPlanTeamOrderResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -1412,6 +1412,8 @@ class CreateStreamPackageHarvestJobRequest(AbstractModel):
         :type Destination: str
         :param _Manifest: The file name of the recording file stored in Cos.
         :type Manifest: str
+        :param _CallbackURL: Callback address after recording completion
+        :type CallbackURL: str
         """
         self._ID = None
         self._ChannelName = None
@@ -1421,6 +1423,7 @@ class CreateStreamPackageHarvestJobRequest(AbstractModel):
         self._EndTime = None
         self._Destination = None
         self._Manifest = None
+        self._CallbackURL = None
 
     @property
     def ID(self):
@@ -1510,6 +1513,17 @@ class CreateStreamPackageHarvestJobRequest(AbstractModel):
     def Manifest(self, Manifest):
         self._Manifest = Manifest
 
+    @property
+    def CallbackURL(self):
+        r"""Callback address after recording completion
+        :rtype: str
+        """
+        return self._CallbackURL
+
+    @CallbackURL.setter
+    def CallbackURL(self, CallbackURL):
+        self._CallbackURL = CallbackURL
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -1520,6 +1534,7 @@ class CreateStreamPackageHarvestJobRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Destination = params.get("Destination")
         self._Manifest = params.get("Manifest")
+        self._CallbackURL = params.get("CallbackURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

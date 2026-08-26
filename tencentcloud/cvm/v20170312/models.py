@@ -2239,6 +2239,8 @@ Note: this field is in beta test.
 -Replace: if the template t contains this parameter with a value of Replace and metadata=[k1:v1, k2:v2], then when creating a cvm using RunInstances (with metadata=[k2:v3]) + t, the created cvm will use metadata=[k2:v3]. 
 Note: this field is in beta test.
         :type TemplateDataModifyAction: str
+        :param _NetworkInterfaces: Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+        :type NetworkInterfaces: list of NetworkInterfaces
         """
         self._LaunchTemplateName = None
         self._Placement = None
@@ -2271,6 +2273,7 @@ Note: this field is in beta test.
         self._LaunchTemplateTagSpecification = None
         self._Metadata = None
         self._TemplateDataModifyAction = None
+        self._NetworkInterfaces = None
 
     @property
     def LaunchTemplateName(self):
@@ -2629,6 +2632,17 @@ Note: this field is in beta test.
     def TemplateDataModifyAction(self, TemplateDataModifyAction):
         self._TemplateDataModifyAction = TemplateDataModifyAction
 
+    @property
+    def NetworkInterfaces(self):
+        r"""Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+        :rtype: list of NetworkInterfaces
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
+
 
     def _deserialize(self, params):
         self._LaunchTemplateName = params.get("LaunchTemplateName")
@@ -2697,6 +2711,12 @@ Note: this field is in beta test.
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
         self._TemplateDataModifyAction = params.get("TemplateDataModifyAction")
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterfaces()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2835,6 +2855,8 @@ Note: this field is in beta test.
 -Replace: if the template t contains this parameter with a value of Replace and metadata=[k1:v1, k2:v2], then when creating a cvm using RunInstances (with metadata=[k2:v3]) + t, the created cvm will use metadata=[k2:v3]. 
 Note: this field is in beta test.
         :type TemplateDataModifyAction: str
+        :param _NetworkInterfaces: Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+        :type NetworkInterfaces: list of NetworkInterfaces
         """
         self._Placement = None
         self._LaunchTemplateId = None
@@ -2867,6 +2889,7 @@ Note: this field is in beta test.
         self._EnableJumboFrame = None
         self._Metadata = None
         self._TemplateDataModifyAction = None
+        self._NetworkInterfaces = None
 
     @property
     def Placement(self):
@@ -3225,6 +3248,17 @@ Note: this field is in beta test.
     def TemplateDataModifyAction(self, TemplateDataModifyAction):
         self._TemplateDataModifyAction = TemplateDataModifyAction
 
+    @property
+    def NetworkInterfaces(self):
+        r"""Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+        :rtype: list of NetworkInterfaces
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -3288,6 +3322,12 @@ Note: this field is in beta test.
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
         self._TemplateDataModifyAction = params.get("TemplateDataModifyAction")
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterfaces()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10148,6 +10188,8 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type CpuTopology: :class:`tencentcloud.cvm.v20170312.models.CpuTopology`
         :param _LaunchTemplate: Instance launch template.
         :type LaunchTemplate: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplate`
+        :param _NetworkInterfaces: Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+        :type NetworkInterfaces: list of NetworkInterfaces
         """
         self._Placement = None
         self._ImageId = None
@@ -10171,6 +10213,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         self._HpcClusterId = None
         self._CpuTopology = None
         self._LaunchTemplate = None
+        self._NetworkInterfaces = None
 
     @property
     def Placement(self):
@@ -10419,6 +10462,17 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
     def LaunchTemplate(self, LaunchTemplate):
         self._LaunchTemplate = LaunchTemplate
 
+    @property
+    def NetworkInterfaces(self):
+        r"""Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+        :rtype: list of NetworkInterfaces
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -10475,6 +10529,12 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         if params.get("LaunchTemplate") is not None:
             self._LaunchTemplate = LaunchTemplate()
             self._LaunchTemplate._deserialize(params.get("LaunchTemplate"))
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterfaces()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15052,6 +15112,132 @@ class ModifyLaunchTemplateDefaultVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class NetworkInterfaces(AbstractModel):
+    r"""Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InterfaceType: Specifies whether the network interface is primary or secondary. Valid values must be uppercase. The `NetworkInterfaces` array must contain exactly one `PRIMARY` network interface and can contain multiple `SECONDARY` network interfaces. Valid values:<li>`PRIMARY`: Primary network interface.</li><li>`SECONDARY`: Secondary network interface.</li>
+        :type InterfaceType: str
+        :param _VpcId: VPC ID in the format of `vpc-xxx`. You can obtain a valid VPC ID from the [VPC console](https://console.tencentcloud.com/vpc/vpc?rid=1) or from the `VpcId` field returned by the [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778) API. If both `VpcId` and `SubnetId` are set to `DEFAULT` when creating an instance, the default VPC is used.
+        :type VpcId: str
+        :param _SubnetId: VPC subnet ID in the format of `subnet-xxx`. You can obtain a valid subnet ID from the [subnet console](https://console.tencentcloud.com/vpc/subnet) or from the `SubnetId` field returned by the [DescribeSubnets](https://www.tencentcloud.com/document/product/215/15784) API. If both `SubnetId` and `VpcId` are set to `DEFAULT` when creating an instance, the default VPC is used.
+        :type SubnetId: str
+        :param _PrivateIpv4AddressCount: Required. Specifies the number of private IPv4 addresses automatically assigned to each network interface. Manually specifying IP addresses and automatically assigning IP addresses at the same time is not supported. Valid range: [1, 50].
+        :type PrivateIpv4AddressCount: int
+        :param _NetworkInterfaceId: ID of an existing elastic network interface (ENI) to be attached. This parameter applies only to secondary network interfaces. The primary network interface is created automatically through the existing process and cannot be specified using this parameter. When an existing ENI is specified, `InstanceCount` must be set to 1.
+        :type NetworkInterfaceId: str
+        :param _SecurityGroupIds: Security groups associated with the instance. You can obtain the security group IDs from the `SecurityGroupId` field returned by the [DescribeSecurityGroups](https://www.tencentcloud.com/document/api/215/15808) API. If this parameter is not specified, the default security group of the specified project is associated. If no default security group exists, one is automatically created. Each user can configure up to 50 security groups per project in each region.
+        :type SecurityGroupIds: list of str
+        :param _DeleteWithInstance: Specifies whether the associated elastic network interface (ENI) is deleted when the CVM instance is terminated. This parameter applies only to secondary network interfaces. By default, secondary network interfaces are retained to preserve the existing behavior. This parameter does not apply to the primary network interface, which is always deleted when the instance is terminated. Default value: `false`.
+        :type DeleteWithInstance: bool
+        """
+        self._InterfaceType = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._PrivateIpv4AddressCount = None
+        self._NetworkInterfaceId = None
+        self._SecurityGroupIds = None
+        self._DeleteWithInstance = None
+
+    @property
+    def InterfaceType(self):
+        r"""Specifies whether the network interface is primary or secondary. Valid values must be uppercase. The `NetworkInterfaces` array must contain exactly one `PRIMARY` network interface and can contain multiple `SECONDARY` network interfaces. Valid values:<li>`PRIMARY`: Primary network interface.</li><li>`SECONDARY`: Secondary network interface.</li>
+        :rtype: str
+        """
+        return self._InterfaceType
+
+    @InterfaceType.setter
+    def InterfaceType(self, InterfaceType):
+        self._InterfaceType = InterfaceType
+
+    @property
+    def VpcId(self):
+        r"""VPC ID in the format of `vpc-xxx`. You can obtain a valid VPC ID from the [VPC console](https://console.tencentcloud.com/vpc/vpc?rid=1) or from the `VpcId` field returned by the [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778) API. If both `VpcId` and `SubnetId` are set to `DEFAULT` when creating an instance, the default VPC is used.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""VPC subnet ID in the format of `subnet-xxx`. You can obtain a valid subnet ID from the [subnet console](https://console.tencentcloud.com/vpc/subnet) or from the `SubnetId` field returned by the [DescribeSubnets](https://www.tencentcloud.com/document/product/215/15784) API. If both `SubnetId` and `VpcId` are set to `DEFAULT` when creating an instance, the default VPC is used.
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def PrivateIpv4AddressCount(self):
+        r"""Required. Specifies the number of private IPv4 addresses automatically assigned to each network interface. Manually specifying IP addresses and automatically assigning IP addresses at the same time is not supported. Valid range: [1, 50].
+        :rtype: int
+        """
+        return self._PrivateIpv4AddressCount
+
+    @PrivateIpv4AddressCount.setter
+    def PrivateIpv4AddressCount(self, PrivateIpv4AddressCount):
+        self._PrivateIpv4AddressCount = PrivateIpv4AddressCount
+
+    @property
+    def NetworkInterfaceId(self):
+        r"""ID of an existing elastic network interface (ENI) to be attached. This parameter applies only to secondary network interfaces. The primary network interface is created automatically through the existing process and cannot be specified using this parameter. When an existing ENI is specified, `InstanceCount` must be set to 1.
+        :rtype: str
+        """
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def SecurityGroupIds(self):
+        r"""Security groups associated with the instance. You can obtain the security group IDs from the `SecurityGroupId` field returned by the [DescribeSecurityGroups](https://www.tencentcloud.com/document/api/215/15808) API. If this parameter is not specified, the default security group of the specified project is associated. If no default security group exists, one is automatically created. Each user can configure up to 50 security groups per project in each region.
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def DeleteWithInstance(self):
+        r"""Specifies whether the associated elastic network interface (ENI) is deleted when the CVM instance is terminated. This parameter applies only to secondary network interfaces. By default, secondary network interfaces are retained to preserve the existing behavior. This parameter does not apply to the primary network interface, which is always deleted when the instance is terminated. Default value: `false`.
+        :rtype: bool
+        """
+        return self._DeleteWithInstance
+
+    @DeleteWithInstance.setter
+    def DeleteWithInstance(self, DeleteWithInstance):
+        self._DeleteWithInstance = DeleteWithInstance
+
+
+    def _deserialize(self, params):
+        self._InterfaceType = params.get("InterfaceType")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._PrivateIpv4AddressCount = params.get("PrivateIpv4AddressCount")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DeleteWithInstance = params.get("DeleteWithInstance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OperationCountLimit(AbstractModel):
     r"""Describes the maximum number of times you can perform an operation on a single instance.
 
@@ -17688,10 +17874,14 @@ If the dry run succeeds, the RequestId will be returned.
         :type DedicatedClusterId: str
         :param _ChcIds: Specify the CHC physical server that used to create the CHC CVM.
         :type ChcIds: list of str
+        :param _PartitionNumber: Partition number of the partition placement group. Valid values depend on the number of partitions in the selected placement group. If the selected placement group is a partition placement group and this parameter is not specified, a partition is randomly assigned. This feature is in beta test.
+        :type PartitionNumber: int
         :param _DisableApiTermination: Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: false.
         :type DisableApiTermination: bool
         :param _EnableJumboFrame: Whether the instance enables jumbo frames. valid values:<br><li/> true: means the instance enables jumbo frames. only models supporting jumbo frames can be set to true.<br><li/> false: means the instance disables jumbo frames. only models supporting jumbo frames can be set to false.<br> instance specifications supporting jumbo frames: [instance specifications](https://www.tencentcloud.com/document/product/213/11518?lang=en&pg=).
         :type EnableJumboFrame: bool
+        :param _NetworkInterfaces: Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+        :type NetworkInterfaces: list of NetworkInterfaces
         """
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
@@ -17723,8 +17913,10 @@ If the dry run succeeds, the RequestId will be returned.
         self._LaunchTemplate = None
         self._DedicatedClusterId = None
         self._ChcIds = None
+        self._PartitionNumber = None
         self._DisableApiTermination = None
         self._EnableJumboFrame = None
+        self._NetworkInterfaces = None
 
     @property
     def InstanceChargeType(self):
@@ -18078,6 +18270,17 @@ If the dry run succeeds, the RequestId will be returned.
         self._ChcIds = ChcIds
 
     @property
+    def PartitionNumber(self):
+        r"""Partition number of the partition placement group. Valid values depend on the number of partitions in the selected placement group. If the selected placement group is a partition placement group and this parameter is not specified, a partition is randomly assigned. This feature is in beta test.
+        :rtype: int
+        """
+        return self._PartitionNumber
+
+    @PartitionNumber.setter
+    def PartitionNumber(self, PartitionNumber):
+        self._PartitionNumber = PartitionNumber
+
+    @property
     def DisableApiTermination(self):
         r"""Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: false.
         :rtype: bool
@@ -18098,6 +18301,17 @@ If the dry run succeeds, the RequestId will be returned.
     @EnableJumboFrame.setter
     def EnableJumboFrame(self, EnableJumboFrame):
         self._EnableJumboFrame = EnableJumboFrame
+
+    @property
+    def NetworkInterfaces(self):
+        r"""Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+        :rtype: list of NetworkInterfaces
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
 
 
     def _deserialize(self, params):
@@ -18165,8 +18379,15 @@ If the dry run succeeds, the RequestId will be returned.
             self._LaunchTemplate._deserialize(params.get("LaunchTemplate"))
         self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._ChcIds = params.get("ChcIds")
+        self._PartitionNumber = params.get("PartitionNumber")
         self._DisableApiTermination = params.get("DisableApiTermination")
         self._EnableJumboFrame = params.get("EnableJumboFrame")
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterfaces()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

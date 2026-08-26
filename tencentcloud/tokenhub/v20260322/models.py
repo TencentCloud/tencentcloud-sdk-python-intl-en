@@ -319,6 +319,72 @@ class ApiKeyDetail(AbstractModel):
         
 
 
+class BatchCreateFailedItem(AbstractModel):
+    r"""Batch create failed items
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: Serial number of the failed item (starting from 1, corresponding to the suffix number).
+        :type Index: int
+        :param _Name: Name of the failed item.
+        :type Name: str
+        :param _Reason: Failure reason.
+        :type Reason: str
+        """
+        self._Index = None
+        self._Name = None
+        self._Reason = None
+
+    @property
+    def Index(self):
+        r"""Serial number of the failed item (starting from 1, corresponding to the suffix number).
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Name(self):
+        r"""Name of the failed item.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Reason(self):
+        r"""Failure reason.
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Name = params.get("Name")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindingItem(AbstractModel):
     r"""Bind Resource
 
@@ -417,6 +483,42 @@ class CreateApiKeyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class CreateApiKeysResultItem(AbstractModel):
+    r"""Batch create succeeded items
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: APIKey ID.
+        :type ApiKeyId: str
+        """
+        self._ApiKeyId = None
+
+    @property
+    def ApiKeyId(self):
+        r"""APIKey ID.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateGlossaryEntriesRequest(AbstractModel):
@@ -677,6 +779,362 @@ class CreateGlossaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTokenPlanApiKeysRequest(AbstractModel):
+    r"""CreateTokenPlanApiKeys request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TeamId: Package ID. You can obtain it through the DescribeTokenPlanList API.
+        :type TeamId: str
+        :param _ApiKeyName: API key name, up to 128 characters. If the number of API keys created exceeds 1, the actual name format is {ApiKeyName}-{serial number} (for example, mykey-1, mykey-2).
+        :type ApiKeyName: str
+        :param _Count: Number of creations. Value range: 1–10.
+        :type Count: int
+        :param _AllowedModels: List of available models. If the package type is the enterprise edition professional package, you can specify a model or pass in "all". "all" means all models supported by the package are available for use. To specify specific models, pass in Model IDs. "all" and specific Model IDs cannot be specified at the same time. If not provided, it indicates the API Key does not support any models, thereby impacting normal use of the API Key. If the package type is the enterprise edition lite package, this field will be force overwritten to ["auto"] regardless of whether it is provided and what value is passed in.
+        :type AllowedModels: list of str
+        :param _ExclusiveQuota: Exclusive reserved quota. If not passed in, the value is `0`, which means no exclusive reserved quota is assigned to the API Key. Measurement units are as follows:
+-Package type is professional, unit value is points;
+-Package type is lite package, and the measurement unit is token.
+        :type ExclusiveQuota: int
+        :param _TotalQuota: Total credit limit. -1 means unlimited. It must be -1 or greater than or equal to the current ExclusiveQuota of the API Key. If not passed, no upper limit is set. The units are as follows:
+-Package type is professional, unit value is points;
+-Package type is lite package, and the measurement unit is token.
+        :type TotalQuota: int
+        :param _TPM: TPM (Tokens Per Minute) limit. If not passed, the plan-level TPM is used. Must be >= 0 and <= the package TPM.
+        :type TPM: int
+        """
+        self._TeamId = None
+        self._ApiKeyName = None
+        self._Count = None
+        self._AllowedModels = None
+        self._ExclusiveQuota = None
+        self._TotalQuota = None
+        self._TPM = None
+
+    @property
+    def TeamId(self):
+        r"""Package ID. You can obtain it through the DescribeTokenPlanList API.
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def ApiKeyName(self):
+        r"""API key name, up to 128 characters. If the number of API keys created exceeds 1, the actual name format is {ApiKeyName}-{serial number} (for example, mykey-1, mykey-2).
+        :rtype: str
+        """
+        return self._ApiKeyName
+
+    @ApiKeyName.setter
+    def ApiKeyName(self, ApiKeyName):
+        self._ApiKeyName = ApiKeyName
+
+    @property
+    def Count(self):
+        r"""Number of creations. Value range: 1–10.
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def AllowedModels(self):
+        r"""List of available models. If the package type is the enterprise edition professional package, you can specify a model or pass in "all". "all" means all models supported by the package are available for use. To specify specific models, pass in Model IDs. "all" and specific Model IDs cannot be specified at the same time. If not provided, it indicates the API Key does not support any models, thereby impacting normal use of the API Key. If the package type is the enterprise edition lite package, this field will be force overwritten to ["auto"] regardless of whether it is provided and what value is passed in.
+        :rtype: list of str
+        """
+        return self._AllowedModels
+
+    @AllowedModels.setter
+    def AllowedModels(self, AllowedModels):
+        self._AllowedModels = AllowedModels
+
+    @property
+    def ExclusiveQuota(self):
+        r"""Exclusive reserved quota. If not passed in, the value is `0`, which means no exclusive reserved quota is assigned to the API Key. Measurement units are as follows:
+-Package type is professional, unit value is points;
+-Package type is lite package, and the measurement unit is token.
+        :rtype: int
+        """
+        return self._ExclusiveQuota
+
+    @ExclusiveQuota.setter
+    def ExclusiveQuota(self, ExclusiveQuota):
+        self._ExclusiveQuota = ExclusiveQuota
+
+    @property
+    def TotalQuota(self):
+        r"""Total credit limit. -1 means unlimited. It must be -1 or greater than or equal to the current ExclusiveQuota of the API Key. If not passed, no upper limit is set. The units are as follows:
+-Package type is professional, unit value is points;
+-Package type is lite package, and the measurement unit is token.
+        :rtype: int
+        """
+        return self._TotalQuota
+
+    @TotalQuota.setter
+    def TotalQuota(self, TotalQuota):
+        self._TotalQuota = TotalQuota
+
+    @property
+    def TPM(self):
+        r"""TPM (Tokens Per Minute) limit. If not passed, the plan-level TPM is used. Must be >= 0 and <= the package TPM.
+        :rtype: int
+        """
+        return self._TPM
+
+    @TPM.setter
+    def TPM(self, TPM):
+        self._TPM = TPM
+
+
+    def _deserialize(self, params):
+        self._TeamId = params.get("TeamId")
+        self._ApiKeyName = params.get("ApiKeyName")
+        self._Count = params.get("Count")
+        self._AllowedModels = params.get("AllowedModels")
+        self._ExclusiveQuota = params.get("ExclusiveQuota")
+        self._TotalQuota = params.get("TotalQuota")
+        self._TPM = params.get("TPM")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTokenPlanApiKeysResponse(AbstractModel):
+    r"""CreateTokenPlanApiKeys response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: Item list of successful creation.
+        :type Items: list of CreateApiKeysResultItem
+        :param _FailedItems: Item list that failed to be created.
+        :type FailedItems: list of BatchCreateFailedItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Items = None
+        self._FailedItems = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""Item list of successful creation.
+        :rtype: list of CreateApiKeysResultItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def FailedItems(self):
+        r"""Item list that failed to be created.
+        :rtype: list of BatchCreateFailedItem
+        """
+        return self._FailedItems
+
+    @FailedItems.setter
+    def FailedItems(self, FailedItems):
+        self._FailedItems = FailedItems
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = CreateApiKeysResultItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        if params.get("FailedItems") is not None:
+            self._FailedItems = []
+            for item in params.get("FailedItems"):
+                obj = BatchCreateFailedItem()
+                obj._deserialize(item)
+                self._FailedItems.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTokenPlanTeamOrderAndBuyRequest(AbstractModel):
+    r"""CreateTokenPlanTeamOrderAndBuy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductType: <p>Package type. Value: enterprise (enterprise edition professional package), enterprise-auto (enterprise edition lite package).</p>
+        :type ProductType: str
+        :param _TeamName: <p>Package name. It can only contain Chinese, letters, digits, underscores, and hyphens. It must start with a Chinese character or a letter and end with a Chinese character, letter, or digit. The length should be 2-50 characters.</p>
+        :type TeamName: str
+        :param _TimeSpan: <p>Purchase duration. Unit: Month. It must be greater than 0, supporting 1 to 12 months.</p>
+        :type TimeSpan: int
+        :param _CreditOrToken: <p>Specification of the purchased package. If the package type is enterprise, the measurement unit is point; if the package type is enterprise-auto, the measurement unit is tokens.</p>
+        :type CreditOrToken: int
+        :param _EnableAutoRenew: <p>Whether to enable auto-renewal. Not enabled by default.</p>
+        :type EnableAutoRenew: bool
+        :param _TeamId: <p>Existing package ID (if not empty, the renewal process is performed; if empty, a new purchase is performed)</p>
+        :type TeamId: str
+        """
+        self._ProductType = None
+        self._TeamName = None
+        self._TimeSpan = None
+        self._CreditOrToken = None
+        self._EnableAutoRenew = None
+        self._TeamId = None
+
+    @property
+    def ProductType(self):
+        r"""<p>Package type. Value: enterprise (enterprise edition professional package), enterprise-auto (enterprise edition lite package).</p>
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+    @property
+    def TeamName(self):
+        r"""<p>Package name. It can only contain Chinese, letters, digits, underscores, and hyphens. It must start with a Chinese character or a letter and end with a Chinese character, letter, or digit. The length should be 2-50 characters.</p>
+        :rtype: str
+        """
+        return self._TeamName
+
+    @TeamName.setter
+    def TeamName(self, TeamName):
+        self._TeamName = TeamName
+
+    @property
+    def TimeSpan(self):
+        r"""<p>Purchase duration. Unit: Month. It must be greater than 0, supporting 1 to 12 months.</p>
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def CreditOrToken(self):
+        r"""<p>Specification of the purchased package. If the package type is enterprise, the measurement unit is point; if the package type is enterprise-auto, the measurement unit is tokens.</p>
+        :rtype: int
+        """
+        return self._CreditOrToken
+
+    @CreditOrToken.setter
+    def CreditOrToken(self, CreditOrToken):
+        self._CreditOrToken = CreditOrToken
+
+    @property
+    def EnableAutoRenew(self):
+        r"""<p>Whether to enable auto-renewal. Not enabled by default.</p>
+        :rtype: bool
+        """
+        return self._EnableAutoRenew
+
+    @EnableAutoRenew.setter
+    def EnableAutoRenew(self, EnableAutoRenew):
+        self._EnableAutoRenew = EnableAutoRenew
+
+    @property
+    def TeamId(self):
+        r"""<p>Existing package ID (if not empty, the renewal process is performed; if empty, a new purchase is performed)</p>
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+
+    def _deserialize(self, params):
+        self._ProductType = params.get("ProductType")
+        self._TeamName = params.get("TeamName")
+        self._TimeSpan = params.get("TimeSpan")
+        self._CreditOrToken = params.get("CreditOrToken")
+        self._EnableAutoRenew = params.get("EnableAutoRenew")
+        self._TeamId = params.get("TeamId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTokenPlanTeamOrderAndBuyResponse(AbstractModel):
+    r"""CreateTokenPlanTeamOrderAndBuy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigOrderId: <p>Tencent Cloud order ID. Used to associate all sub-orders under a purchase operation.</p>
+        :type BigOrderId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BigOrderId = None
+        self._RequestId = None
+
+    @property
+    def BigOrderId(self):
+        r"""<p>Tencent Cloud order ID. Used to associate all sub-orders under a purchase operation.</p>
+        :rtype: str
+        """
+        return self._BigOrderId
+
+    @BigOrderId.setter
+    def BigOrderId(self, BigOrderId):
+        self._BigOrderId = BigOrderId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigOrderId = params.get("BigOrderId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteApiKeyRequest(AbstractModel):
     r"""DeleteApiKey request structure.
 
@@ -869,6 +1327,70 @@ class DeleteGlossaryRequest(AbstractModel):
 
 class DeleteGlossaryResponse(AbstractModel):
     r"""DeleteGlossary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTokenPlanApiKeyRequest(AbstractModel):
+    r"""DeleteTokenPlanApiKey request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: API Key ID. You can obtain it through the DescribeTokenPlanApiKeyList API.
+        :type ApiKeyId: str
+        """
+        self._ApiKeyId = None
+
+    @property
+    def ApiKeyId(self):
+        r"""API Key ID. You can obtain it through the DescribeTokenPlanApiKeyList API.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTokenPlanApiKeyResponse(AbstractModel):
+    r"""DeleteTokenPlanApiKey response structure.
 
     """
 
@@ -1781,6 +2303,863 @@ class DescribeGlossaryEntriesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTokenPlanApiKeyListRequest(AbstractModel):
+    r"""DescribeTokenPlanApiKeyList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TeamId: Package ID. You can obtain it through the DescribeTokenPlanList API.
+        :type TeamId: str
+        :param _Offset: Offset of paginated query. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of results returned by paging query. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param _Filters: Paginate the list of query filter criteria. Supported filter fields: ApiKeyId (API Key ID), Name (API Key name), Status (whether the API Key is available), StopReason (reason for disabling the API Key), UseStatus (API Key user-side switch).
+        :type Filters: list of RequestFilter
+        :param _Sorts: Paginate the list of sorting criteria. Supported sorting fields: CreatedAt (creation time) and UpdatedAt (update time). By default, results are sorted by CreatedAt in descending order.
+        :type Sorts: list of RequestSort
+        """
+        self._TeamId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Sorts = None
+
+    @property
+    def TeamId(self):
+        r"""Package ID. You can obtain it through the DescribeTokenPlanList API.
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def Offset(self):
+        r"""Offset of paginated query. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of results returned by paging query. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""Paginate the list of query filter criteria. Supported filter fields: ApiKeyId (API Key ID), Name (API Key name), Status (whether the API Key is available), StopReason (reason for disabling the API Key), UseStatus (API Key user-side switch).
+        :rtype: list of RequestFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Sorts(self):
+        r"""Paginate the list of sorting criteria. Supported sorting fields: CreatedAt (creation time) and UpdatedAt (update time). By default, results are sorted by CreatedAt in descending order.
+        :rtype: list of RequestSort
+        """
+        return self._Sorts
+
+    @Sorts.setter
+    def Sorts(self, Sorts):
+        self._Sorts = Sorts
+
+
+    def _deserialize(self, params):
+        self._TeamId = params.get("TeamId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RequestFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("Sorts") is not None:
+            self._Sorts = []
+            for item in params.get("Sorts"):
+                obj = RequestSort()
+                obj._deserialize(item)
+                self._Sorts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTokenPlanApiKeyListResponse(AbstractModel):
+    r"""DescribeTokenPlanApiKeyList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeySet: API Key list.
+        :type ApiKeySet: list of TokenPlanApiKeyListItem
+        :param _TotalCount: Total number of API Keys.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ApiKeySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ApiKeySet(self):
+        r"""API Key list.
+        :rtype: list of TokenPlanApiKeyListItem
+        """
+        return self._ApiKeySet
+
+    @ApiKeySet.setter
+    def ApiKeySet(self, ApiKeySet):
+        self._ApiKeySet = ApiKeySet
+
+    @property
+    def TotalCount(self):
+        r"""Total number of API Keys.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ApiKeySet") is not None:
+            self._ApiKeySet = []
+            for item in params.get("ApiKeySet"):
+                obj = TokenPlanApiKeyListItem()
+                obj._deserialize(item)
+                self._ApiKeySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTokenPlanApiKeyRequest(AbstractModel):
+    r"""DescribeTokenPlanApiKey request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: API Key ID. You can obtain it through the DescribeTokenPlanApiKeyList API.
+        :type ApiKeyId: str
+        """
+        self._ApiKeyId = None
+
+    @property
+    def ApiKeyId(self):
+        r"""API Key ID. You can obtain it through the DescribeTokenPlanApiKeyList API.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTokenPlanApiKeyResponse(AbstractModel):
+    r"""DescribeTokenPlanApiKey response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKey: API Key details.
+        :type ApiKey: :class:`tencentcloud.tokenhub.v20260322.models.TokenPlanApiKeyInfo`
+        :param _Balance: API Key limit and usage information.
+        :type Balance: :class:`tencentcloud.tokenhub.v20260322.models.SubPackageBalance`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ApiKey = None
+        self._Balance = None
+        self._RequestId = None
+
+    @property
+    def ApiKey(self):
+        r"""API Key details.
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.TokenPlanApiKeyInfo`
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def Balance(self):
+        r"""API Key limit and usage information.
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.SubPackageBalance`
+        """
+        return self._Balance
+
+    @Balance.setter
+    def Balance(self, Balance):
+        self._Balance = Balance
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ApiKey") is not None:
+            self._ApiKey = TokenPlanApiKeyInfo()
+            self._ApiKey._deserialize(params.get("ApiKey"))
+        if params.get("Balance") is not None:
+            self._Balance = SubPackageBalance()
+            self._Balance._deserialize(params.get("Balance"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTokenPlanApiKeySecretRequest(AbstractModel):
+    r"""DescribeTokenPlanApiKeySecret request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: API Key ID. You can obtain it through the DescribeTokenPlanApiKeyList API.
+        :type ApiKeyId: str
+        """
+        self._ApiKeyId = None
+
+    @property
+    def ApiKeyId(self):
+        r"""API Key ID. You can obtain it through the DescribeTokenPlanApiKeyList API.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTokenPlanApiKeySecretResponse(AbstractModel):
+    r"""DescribeTokenPlanApiKeySecret response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: APIKey ID.
+        :type ApiKeyId: str
+        :param _ApiKey: APIKey key value (plaintext). Keep it safe.
+        :type ApiKey: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ApiKeyId = None
+        self._ApiKey = None
+        self._RequestId = None
+
+    @property
+    def ApiKeyId(self):
+        r"""APIKey ID.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def ApiKey(self):
+        r"""APIKey key value (plaintext). Keep it safe.
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._ApiKey = params.get("ApiKey")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTokenPlanApiKeyUsageDetailRequest(AbstractModel):
+    r"""DescribeTokenPlanApiKeyUsageDetail request structure.
+
+    """
+
+
+class DescribeTokenPlanApiKeyUsageDetailResponse(AbstractModel):
+    r"""DescribeTokenPlanApiKeyUsageDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTokenPlanListRequest(AbstractModel):
+    r"""DescribeTokenPlanList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Offset of paginated query. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of results returned by paging query. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param _Filters: Paginate the query filter criteria list. Supported filter fields: TeamId (Package ID), Name (package name), StopReason (disable reason), ProductType (package type).
+        :type Filters: list of RequestFilter
+        :param _Sorts: List of sorting criteria. Supported sorting fields: CreatedAt (creation time) and UpdatedAt (update time). By default, results are sorted by CreatedAt in descending order.
+        :type Sorts: list of RequestSort
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Sorts = None
+
+    @property
+    def Offset(self):
+        r"""Offset of paginated query. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Number of results returned by paging query. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""Paginate the query filter criteria list. Supported filter fields: TeamId (Package ID), Name (package name), StopReason (disable reason), ProductType (package type).
+        :rtype: list of RequestFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Sorts(self):
+        r"""List of sorting criteria. Supported sorting fields: CreatedAt (creation time) and UpdatedAt (update time). By default, results are sorted by CreatedAt in descending order.
+        :rtype: list of RequestSort
+        """
+        return self._Sorts
+
+    @Sorts.setter
+    def Sorts(self, Sorts):
+        self._Sorts = Sorts
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RequestFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("Sorts") is not None:
+            self._Sorts = []
+            for item in params.get("Sorts"):
+                obj = RequestSort()
+                obj._deserialize(item)
+                self._Sorts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTokenPlanListResponse(AbstractModel):
+    r"""DescribeTokenPlanList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TokenPlanSet: List of package options.
+        :type TokenPlanSet: list of TokenPlanListItem
+        :param _TotalCount: Total number of packages.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TokenPlanSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TokenPlanSet(self):
+        r"""List of package options.
+        :rtype: list of TokenPlanListItem
+        """
+        return self._TokenPlanSet
+
+    @TokenPlanSet.setter
+    def TokenPlanSet(self, TokenPlanSet):
+        self._TokenPlanSet = TokenPlanSet
+
+    @property
+    def TotalCount(self):
+        r"""Total number of packages.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TokenPlanSet") is not None:
+            self._TokenPlanSet = []
+            for item in params.get("TokenPlanSet"):
+                obj = TokenPlanListItem()
+                obj._deserialize(item)
+                self._TokenPlanSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTokenPlanRequest(AbstractModel):
+    r"""DescribeTokenPlan request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TeamId: Package ID. You can obtain it through the DescribeTokenPlanList API.
+        :type TeamId: str
+        """
+        self._TeamId = None
+
+    @property
+    def TeamId(self):
+        r"""Package ID. You can obtain it through the DescribeTokenPlanList API.
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+
+    def _deserialize(self, params):
+        self._TeamId = params.get("TeamId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTokenPlanResponse(AbstractModel):
+    r"""DescribeTokenPlan response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TeamId: Package ID
+        :type TeamId: str
+        :param _Name: Package name.
+        :type Name: str
+        :param _AppId: Root account APP ID.
+        :type AppId: str
+        :param _Uin: Main account UIN.
+        :type Uin: str
+        :param _Status: Status. Valid values: enable, disable.
+        :type Status: str
+        :param _StopReason: Disablement reason. Value: NORMAL, ISOLATED, FROZEN, EXHAUSTED, DESTROYED.
+        :type StopReason: str
+        :param _ApiKeyMax: Maximum number of API Keys that can be created.
+        :type ApiKeyMax: int
+        :param _PrepayResourceID: Cloud billing prepaid resource package ID.
+        :type PrepayResourceID: str
+        :param _Creator: Creator. Packages created by a sub-account show the sub-account UIN.
+        :type Creator: str
+        :param _CreatedAt: Creation time.
+        :type CreatedAt: str
+        :param _UpdatedAt: Update time.
+        :type UpdatedAt: str
+        :param _PackageInfo: Basic information of the package.
+        :type PackageInfo: :class:`tencentcloud.tokenhub.v20260322.models.TokenPlanPackageInfo`
+        :param _AutoRenewFlag: Auto-renewal flag. Value: 0 (manual renewal), 1 (auto renewal), 2 (no automatic renewal). It is not returned if not bound to a prepaid resource.
+        :type AutoRenewFlag: int
+        :param _ApiKeyCount: Current number of created API Keys.
+        :type ApiKeyCount: int
+        :param _TokenSummary: Token usage details in the current cycle
+        :type TokenSummary: :class:`tencentcloud.tokenhub.v20260322.models.TokenSummary`
+        :param _ProductType: Package type. Values: enterprise (Enterprise Professional package), enterprise-auto (Enterprise Light package)
+        :type ProductType: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TeamId = None
+        self._Name = None
+        self._AppId = None
+        self._Uin = None
+        self._Status = None
+        self._StopReason = None
+        self._ApiKeyMax = None
+        self._PrepayResourceID = None
+        self._Creator = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._PackageInfo = None
+        self._AutoRenewFlag = None
+        self._ApiKeyCount = None
+        self._TokenSummary = None
+        self._ProductType = None
+        self._RequestId = None
+
+    @property
+    def TeamId(self):
+        r"""Package ID
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def Name(self):
+        r"""Package name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AppId(self):
+        r"""Root account APP ID.
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""Main account UIN.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Status(self):
+        r"""Status. Valid values: enable, disable.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StopReason(self):
+        r"""Disablement reason. Value: NORMAL, ISOLATED, FROZEN, EXHAUSTED, DESTROYED.
+        :rtype: str
+        """
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
+    @property
+    def ApiKeyMax(self):
+        r"""Maximum number of API Keys that can be created.
+        :rtype: int
+        """
+        return self._ApiKeyMax
+
+    @ApiKeyMax.setter
+    def ApiKeyMax(self, ApiKeyMax):
+        self._ApiKeyMax = ApiKeyMax
+
+    @property
+    def PrepayResourceID(self):
+        r"""Cloud billing prepaid resource package ID.
+        :rtype: str
+        """
+        return self._PrepayResourceID
+
+    @PrepayResourceID.setter
+    def PrepayResourceID(self, PrepayResourceID):
+        self._PrepayResourceID = PrepayResourceID
+
+    @property
+    def Creator(self):
+        r"""Creator. Packages created by a sub-account show the sub-account UIN.
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatedAt(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""Update time.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def PackageInfo(self):
+        r"""Basic information of the package.
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.TokenPlanPackageInfo`
+        """
+        return self._PackageInfo
+
+    @PackageInfo.setter
+    def PackageInfo(self, PackageInfo):
+        self._PackageInfo = PackageInfo
+
+    @property
+    def AutoRenewFlag(self):
+        r"""Auto-renewal flag. Value: 0 (manual renewal), 1 (auto renewal), 2 (no automatic renewal). It is not returned if not bound to a prepaid resource.
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def ApiKeyCount(self):
+        r"""Current number of created API Keys.
+        :rtype: int
+        """
+        return self._ApiKeyCount
+
+    @ApiKeyCount.setter
+    def ApiKeyCount(self, ApiKeyCount):
+        self._ApiKeyCount = ApiKeyCount
+
+    @property
+    def TokenSummary(self):
+        r"""Token usage details in the current cycle
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.TokenSummary`
+        """
+        return self._TokenSummary
+
+    @TokenSummary.setter
+    def TokenSummary(self, TokenSummary):
+        self._TokenSummary = TokenSummary
+
+    @property
+    def ProductType(self):
+        r"""Package type. Values: enterprise (Enterprise Professional package), enterprise-auto (Enterprise Light package)
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TeamId = params.get("TeamId")
+        self._Name = params.get("Name")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._Status = params.get("Status")
+        self._StopReason = params.get("StopReason")
+        self._ApiKeyMax = params.get("ApiKeyMax")
+        self._PrepayResourceID = params.get("PrepayResourceID")
+        self._Creator = params.get("Creator")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        if params.get("PackageInfo") is not None:
+            self._PackageInfo = TokenPlanPackageInfo()
+            self._PackageInfo._deserialize(params.get("PackageInfo"))
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._ApiKeyCount = params.get("ApiKeyCount")
+        if params.get("TokenSummary") is not None:
+            self._TokenSummary = TokenSummary()
+            self._TokenSummary._deserialize(params.get("TokenSummary"))
+        self._ProductType = params.get("ProductType")
+        self._RequestId = params.get("RequestId")
+
+
 class GlossaryEntryInput(AbstractModel):
     r"""Create terminology entry
 
@@ -2277,6 +3656,261 @@ class ModifyGlossaryEntryInput(AbstractModel):
         
 
 
+class ModifyTokenPlanApiKeyRequest(AbstractModel):
+    r"""ModifyTokenPlanApiKey request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: API Key ID.
+        :type ApiKeyId: str
+        :param _AllowedModels: Available model list. If this parameter is not specified, no modification is made.
+
+- If the package type is enterprise professional:
+1) Input "all": use all models supported by the package
+2) Import Model ID: specify a specific model. "all" and a specific Model ID cannot be specified at the same time.
+
+-If the package type is enterprise lightweight edition, do not pass in this parameter.
+        :type AllowedModels: list of str
+        :param _ExclusiveQuota: Dedicated limit. If this parameter is not specified, no modification will be made. Unit:
+
+-Package type: professional. Measurement unit: point.
+- Package type is lite package, and the measurement unit is token.
+        :type ExclusiveQuota: int
+        :param _TotalQuota: Total credit limit. -1 means unlimited. It must be -1 or greater than or equal to the current ExclusiveQuota of the API Key. If not passed, no modification is made. Measurement units are as follows:
+-Package type: professional. Measurement unit: point.
+- Package type is lite package, and the measurement unit is token.
+        :type TotalQuota: int
+        :param _UseStatus: Whether to enable the API Key. Values: enable (enable), disable (disable). If not passed, no modification is made.
+        :type UseStatus: str
+        :param _TPM: TPM (Tokens Per Minute) limit. If not passed, no modification will be made. Must be >= 0 and <= the package TPM.
+        :type TPM: int
+        """
+        self._ApiKeyId = None
+        self._AllowedModels = None
+        self._ExclusiveQuota = None
+        self._TotalQuota = None
+        self._UseStatus = None
+        self._TPM = None
+
+    @property
+    def ApiKeyId(self):
+        r"""API Key ID.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def AllowedModels(self):
+        r"""Available model list. If this parameter is not specified, no modification is made.
+
+- If the package type is enterprise professional:
+1) Input "all": use all models supported by the package
+2) Import Model ID: specify a specific model. "all" and a specific Model ID cannot be specified at the same time.
+
+-If the package type is enterprise lightweight edition, do not pass in this parameter.
+        :rtype: list of str
+        """
+        return self._AllowedModels
+
+    @AllowedModels.setter
+    def AllowedModels(self, AllowedModels):
+        self._AllowedModels = AllowedModels
+
+    @property
+    def ExclusiveQuota(self):
+        r"""Dedicated limit. If this parameter is not specified, no modification will be made. Unit:
+
+-Package type: professional. Measurement unit: point.
+- Package type is lite package, and the measurement unit is token.
+        :rtype: int
+        """
+        return self._ExclusiveQuota
+
+    @ExclusiveQuota.setter
+    def ExclusiveQuota(self, ExclusiveQuota):
+        self._ExclusiveQuota = ExclusiveQuota
+
+    @property
+    def TotalQuota(self):
+        r"""Total credit limit. -1 means unlimited. It must be -1 or greater than or equal to the current ExclusiveQuota of the API Key. If not passed, no modification is made. Measurement units are as follows:
+-Package type: professional. Measurement unit: point.
+- Package type is lite package, and the measurement unit is token.
+        :rtype: int
+        """
+        return self._TotalQuota
+
+    @TotalQuota.setter
+    def TotalQuota(self, TotalQuota):
+        self._TotalQuota = TotalQuota
+
+    @property
+    def UseStatus(self):
+        r"""Whether to enable the API Key. Values: enable (enable), disable (disable). If not passed, no modification is made.
+        :rtype: str
+        """
+        return self._UseStatus
+
+    @UseStatus.setter
+    def UseStatus(self, UseStatus):
+        self._UseStatus = UseStatus
+
+    @property
+    def TPM(self):
+        r"""TPM (Tokens Per Minute) limit. If not passed, no modification will be made. Must be >= 0 and <= the package TPM.
+        :rtype: int
+        """
+        return self._TPM
+
+    @TPM.setter
+    def TPM(self, TPM):
+        self._TPM = TPM
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._AllowedModels = params.get("AllowedModels")
+        self._ExclusiveQuota = params.get("ExclusiveQuota")
+        self._TotalQuota = params.get("TotalQuota")
+        self._UseStatus = params.get("UseStatus")
+        self._TPM = params.get("TPM")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTokenPlanApiKeyResponse(AbstractModel):
+    r"""ModifyTokenPlanApiKey response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTokenPlanApiKeySecretRequest(AbstractModel):
+    r"""ModifyTokenPlanApiKeySecret request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: API Key ID. You can obtain it through the DescribeTokenPlanApiKeyList API.
+        :type ApiKeyId: str
+        """
+        self._ApiKeyId = None
+
+    @property
+    def ApiKeyId(self):
+        r"""API Key ID. You can obtain it through the DescribeTokenPlanApiKeyList API.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTokenPlanApiKeySecretResponse(AbstractModel):
+    r"""ModifyTokenPlanApiKeySecret response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: API Key ID.
+        :type ApiKeyId: str
+        :param _KeyVersion: Key version after resetting.
+        :type KeyVersion: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ApiKeyId = None
+        self._KeyVersion = None
+        self._RequestId = None
+
+    @property
+    def ApiKeyId(self):
+        r"""API Key ID.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def KeyVersion(self):
+        r"""Key version after resetting.
+        :rtype: int
+        """
+        return self._KeyVersion
+
+    @KeyVersion.setter
+    def KeyVersion(self, KeyVersion):
+        self._KeyVersion = KeyVersion
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._KeyVersion = params.get("KeyVersion")
+        self._RequestId = params.get("RequestId")
+
+
 class QuotaInfo(AbstractModel):
     r"""Token quota information
 
@@ -2403,6 +4037,100 @@ class QuotaInfo(AbstractModel):
         
 
 
+class RenewTokenPlanTeamOrderRequest(AbstractModel):
+    r"""RenewTokenPlanTeamOrder request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TeamId: Package ID, which can be obtained through the DescribeTokenPlanList API.
+        :type TeamId: str
+        :param _TimeSpan: Renewal duration. Unit: month. Must be greater than 0.
+        :type TimeSpan: int
+        """
+        self._TeamId = None
+        self._TimeSpan = None
+
+    @property
+    def TeamId(self):
+        r"""Package ID, which can be obtained through the DescribeTokenPlanList API.
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def TimeSpan(self):
+        r"""Renewal duration. Unit: month. Must be greater than 0.
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+
+    def _deserialize(self, params):
+        self._TeamId = params.get("TeamId")
+        self._TimeSpan = params.get("TimeSpan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewTokenPlanTeamOrderResponse(AbstractModel):
+    r"""RenewTokenPlanTeamOrder response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigOrderId: Tencent Cloud order ID. Used to associate all sub-orders under a renewal operation.
+        :type BigOrderId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BigOrderId = None
+        self._RequestId = None
+
+    @property
+    def BigOrderId(self):
+        r"""Tencent Cloud order ID. Used to associate all sub-orders under a renewal operation.
+        :rtype: str
+        """
+        return self._BigOrderId
+
+    @BigOrderId.setter
+    def BigOrderId(self, BigOrderId):
+        self._BigOrderId = BigOrderId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigOrderId = params.get("BigOrderId")
+        self._RequestId = params.get("RequestId")
+
+
 class RequestFilter(AbstractModel):
     r"""Filter criteria
 
@@ -2518,3 +4246,1402 @@ class RequestSort(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SubPackageBalance(AbstractModel):
+    r"""API Key limit and usage information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExclusiveQuota: Dedicated limit. Units are as follows:
+-Package type: professional. Measurement unit: point.
+- Package type is lite package, and the measurement unit is token.
+        :type ExclusiveQuota: str
+        :param _ExclusiveUsed: Used amount of the dedicated limit. The measurement units are as follows:
+-Package type: professional. Measurement unit: point.
+- Package type is lite package, and the measurement unit is token.
+        :type ExclusiveUsed: str
+        :param _ExclusiveRemain: Remaining exclusive quota. Units are as follows:
+-Package type: professional. Measurement unit: point.
+-Package type: lite package. Measurement unit: token.
+        :type ExclusiveRemain: str
+        :param _SharedQuota: Shared credit limit. -1 means unlimited. Measurement units are as follows:
+-Package type is professional package, measurement unit value is point;
+-Package type: lite package. Measurement unit: token.
+        :type SharedQuota: str
+        :param _SharedUsed: Used amount of the shared quota. Measurement units are as follows:
+-Package type is professional package, measurement unit value is point;
+-Package type: lite package. Measurement unit: token.
+        :type SharedUsed: str
+        :param _SharedRemain: Remaining shared quota. Units are described as follows:
+-Package type is professional package, measurement unit value is point;
+-Package type: lite package. Measurement unit: token.
+        :type SharedRemain: str
+        :param _Status: API Key package status. Valid values: 0 (normal), 1 (exhausted).
+        :type Status: int
+        """
+        self._ExclusiveQuota = None
+        self._ExclusiveUsed = None
+        self._ExclusiveRemain = None
+        self._SharedQuota = None
+        self._SharedUsed = None
+        self._SharedRemain = None
+        self._Status = None
+
+    @property
+    def ExclusiveQuota(self):
+        r"""Dedicated limit. Units are as follows:
+-Package type: professional. Measurement unit: point.
+- Package type is lite package, and the measurement unit is token.
+        :rtype: str
+        """
+        return self._ExclusiveQuota
+
+    @ExclusiveQuota.setter
+    def ExclusiveQuota(self, ExclusiveQuota):
+        self._ExclusiveQuota = ExclusiveQuota
+
+    @property
+    def ExclusiveUsed(self):
+        r"""Used amount of the dedicated limit. The measurement units are as follows:
+-Package type: professional. Measurement unit: point.
+- Package type is lite package, and the measurement unit is token.
+        :rtype: str
+        """
+        return self._ExclusiveUsed
+
+    @ExclusiveUsed.setter
+    def ExclusiveUsed(self, ExclusiveUsed):
+        self._ExclusiveUsed = ExclusiveUsed
+
+    @property
+    def ExclusiveRemain(self):
+        r"""Remaining exclusive quota. Units are as follows:
+-Package type: professional. Measurement unit: point.
+-Package type: lite package. Measurement unit: token.
+        :rtype: str
+        """
+        return self._ExclusiveRemain
+
+    @ExclusiveRemain.setter
+    def ExclusiveRemain(self, ExclusiveRemain):
+        self._ExclusiveRemain = ExclusiveRemain
+
+    @property
+    def SharedQuota(self):
+        r"""Shared credit limit. -1 means unlimited. Measurement units are as follows:
+-Package type is professional package, measurement unit value is point;
+-Package type: lite package. Measurement unit: token.
+        :rtype: str
+        """
+        return self._SharedQuota
+
+    @SharedQuota.setter
+    def SharedQuota(self, SharedQuota):
+        self._SharedQuota = SharedQuota
+
+    @property
+    def SharedUsed(self):
+        r"""Used amount of the shared quota. Measurement units are as follows:
+-Package type is professional package, measurement unit value is point;
+-Package type: lite package. Measurement unit: token.
+        :rtype: str
+        """
+        return self._SharedUsed
+
+    @SharedUsed.setter
+    def SharedUsed(self, SharedUsed):
+        self._SharedUsed = SharedUsed
+
+    @property
+    def SharedRemain(self):
+        r"""Remaining shared quota. Units are described as follows:
+-Package type is professional package, measurement unit value is point;
+-Package type: lite package. Measurement unit: token.
+        :rtype: str
+        """
+        return self._SharedRemain
+
+    @SharedRemain.setter
+    def SharedRemain(self, SharedRemain):
+        self._SharedRemain = SharedRemain
+
+    @property
+    def Status(self):
+        r"""API Key package status. Valid values: 0 (normal), 1 (exhausted).
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ExclusiveQuota = params.get("ExclusiveQuota")
+        self._ExclusiveUsed = params.get("ExclusiveUsed")
+        self._ExclusiveRemain = params.get("ExclusiveRemain")
+        self._SharedQuota = params.get("SharedQuota")
+        self._SharedUsed = params.get("SharedUsed")
+        self._SharedRemain = params.get("SharedRemain")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokenPlanApiKeyInfo(AbstractModel):
+    r"""Token Plan API Key details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: API Key ID.
+        :type ApiKeyId: str
+        :param _ApiKey: API Key secret key value (masked).
+        :type ApiKey: str
+        :param _Name: API Key name.
+        :type Name: str
+        :param _TeamId: Bundle ID.
+        :type TeamId: str
+        :param _AppId: Account APP ID.
+        :type AppId: str
+        :param _Uin: Main account UIN.
+        :type Uin: str
+        :param _AllowedModels: API Key available model list (JSON array string).
+        :type AllowedModels: str
+        :param _Status: Whether the API Key is available. Values: enable (enable), disable (disable).
+        :type Status: str
+        :param _StopReason: Reason for disabling the API Key. Valid values: NORMAL (normal, default value), QUOTA_EXHAUSTED (API Key quota package exhausted), ABNORMAL (exception, human intervention required)
+        :type StopReason: str
+        :param _UseStatus: User-side switch. Valid values: enable, disable.
+        :type UseStatus: str
+        :param _KeyVersion: Key version.
+        :type KeyVersion: int
+        :param _LastRotatedAt: Last reset time (ISO 8601).
+        :type LastRotatedAt: str
+        :param _Creator: Creator. If it is created by a sub-account, this value is the sub-account UIN.
+        :type Creator: str
+        :param _CreatedAt: Creation time.
+        :type CreatedAt: str
+        :param _UpdatedAt: Update time.
+        :type UpdatedAt: str
+        :param _TPM: TPM limit (Tokens Per Minute).
+        :type TPM: int
+        :param _ProductType: Package type. Values: enterprise (Enterprise Professional package), enterprise-auto (Enterprise Light package)
+        :type ProductType: str
+        """
+        self._ApiKeyId = None
+        self._ApiKey = None
+        self._Name = None
+        self._TeamId = None
+        self._AppId = None
+        self._Uin = None
+        self._AllowedModels = None
+        self._Status = None
+        self._StopReason = None
+        self._UseStatus = None
+        self._KeyVersion = None
+        self._LastRotatedAt = None
+        self._Creator = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._TPM = None
+        self._ProductType = None
+
+    @property
+    def ApiKeyId(self):
+        r"""API Key ID.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def ApiKey(self):
+        r"""API Key secret key value (masked).
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def Name(self):
+        r"""API Key name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TeamId(self):
+        r"""Bundle ID.
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def AppId(self):
+        r"""Account APP ID.
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""Main account UIN.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AllowedModels(self):
+        r"""API Key available model list (JSON array string).
+        :rtype: str
+        """
+        return self._AllowedModels
+
+    @AllowedModels.setter
+    def AllowedModels(self, AllowedModels):
+        self._AllowedModels = AllowedModels
+
+    @property
+    def Status(self):
+        r"""Whether the API Key is available. Values: enable (enable), disable (disable).
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StopReason(self):
+        r"""Reason for disabling the API Key. Valid values: NORMAL (normal, default value), QUOTA_EXHAUSTED (API Key quota package exhausted), ABNORMAL (exception, human intervention required)
+        :rtype: str
+        """
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
+    @property
+    def UseStatus(self):
+        r"""User-side switch. Valid values: enable, disable.
+        :rtype: str
+        """
+        return self._UseStatus
+
+    @UseStatus.setter
+    def UseStatus(self, UseStatus):
+        self._UseStatus = UseStatus
+
+    @property
+    def KeyVersion(self):
+        r"""Key version.
+        :rtype: int
+        """
+        return self._KeyVersion
+
+    @KeyVersion.setter
+    def KeyVersion(self, KeyVersion):
+        self._KeyVersion = KeyVersion
+
+    @property
+    def LastRotatedAt(self):
+        r"""Last reset time (ISO 8601).
+        :rtype: str
+        """
+        return self._LastRotatedAt
+
+    @LastRotatedAt.setter
+    def LastRotatedAt(self, LastRotatedAt):
+        self._LastRotatedAt = LastRotatedAt
+
+    @property
+    def Creator(self):
+        r"""Creator. If it is created by a sub-account, this value is the sub-account UIN.
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatedAt(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""Update time.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def TPM(self):
+        r"""TPM limit (Tokens Per Minute).
+        :rtype: int
+        """
+        return self._TPM
+
+    @TPM.setter
+    def TPM(self, TPM):
+        self._TPM = TPM
+
+    @property
+    def ProductType(self):
+        r"""Package type. Values: enterprise (Enterprise Professional package), enterprise-auto (Enterprise Light package)
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._ApiKey = params.get("ApiKey")
+        self._Name = params.get("Name")
+        self._TeamId = params.get("TeamId")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._AllowedModels = params.get("AllowedModels")
+        self._Status = params.get("Status")
+        self._StopReason = params.get("StopReason")
+        self._UseStatus = params.get("UseStatus")
+        self._KeyVersion = params.get("KeyVersion")
+        self._LastRotatedAt = params.get("LastRotatedAt")
+        self._Creator = params.get("Creator")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._TPM = params.get("TPM")
+        self._ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokenPlanApiKeyListItem(AbstractModel):
+    r"""Token Plan API Key list item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: API Key ID.
+        :type ApiKeyId: str
+        :param _ApiKey: API Key secret key value (masking).
+        :type ApiKey: str
+        :param _Name: API Key name.
+        :type Name: str
+        :param _TeamId: Bundle ID
+        :type TeamId: str
+        :param _AppId: Account APP ID.
+        :type AppId: str
+        :param _Uin: Main account UIN. Maximum 128 characters.
+        :type Uin: str
+        :param _AllowedModels: API Key available model list (JSON array string).
+        :type AllowedModels: str
+        :param _Status: Whether the API Key is available. Values: enable (enable), disable (disable).
+        :type Status: str
+        :param _StopReason: Reason for disabling the API Key. Value: NORMAL (normal, default value), QUOTA_EXHAUSTED (API Key quota package exhausted), ABNORMAL (abnormal, requires human intervention)
+        :type StopReason: str
+        :param _UseStatus: User-side switch. Valid values: enable, disable.
+        :type UseStatus: str
+        :param _KeyVersion: Key version.
+        :type KeyVersion: int
+        :param _LastRotatedAt: Last reset time (ISO 8601).
+        :type LastRotatedAt: str
+        :param _Creator: Creator. If it is created by a sub-account, this value is the sub-account UIN.
+        :type Creator: str
+        :param _CreatedAt: Creation time.
+        :type CreatedAt: str
+        :param _UpdatedAt: Update time.
+        :type UpdatedAt: str
+        :param _Balance: API Key limit usage information
+        :type Balance: :class:`tencentcloud.tokenhub.v20260322.models.SubPackageBalance`
+        :param _ProductType: Package type. Values: enterprise (Enterprise Professional package), enterprise-auto (Enterprise Light package).
+        :type ProductType: str
+        """
+        self._ApiKeyId = None
+        self._ApiKey = None
+        self._Name = None
+        self._TeamId = None
+        self._AppId = None
+        self._Uin = None
+        self._AllowedModels = None
+        self._Status = None
+        self._StopReason = None
+        self._UseStatus = None
+        self._KeyVersion = None
+        self._LastRotatedAt = None
+        self._Creator = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._Balance = None
+        self._ProductType = None
+
+    @property
+    def ApiKeyId(self):
+        r"""API Key ID.
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def ApiKey(self):
+        r"""API Key secret key value (masking).
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def Name(self):
+        r"""API Key name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TeamId(self):
+        r"""Bundle ID
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def AppId(self):
+        r"""Account APP ID.
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""Main account UIN. Maximum 128 characters.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AllowedModels(self):
+        r"""API Key available model list (JSON array string).
+        :rtype: str
+        """
+        return self._AllowedModels
+
+    @AllowedModels.setter
+    def AllowedModels(self, AllowedModels):
+        self._AllowedModels = AllowedModels
+
+    @property
+    def Status(self):
+        r"""Whether the API Key is available. Values: enable (enable), disable (disable).
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StopReason(self):
+        r"""Reason for disabling the API Key. Value: NORMAL (normal, default value), QUOTA_EXHAUSTED (API Key quota package exhausted), ABNORMAL (abnormal, requires human intervention)
+        :rtype: str
+        """
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
+    @property
+    def UseStatus(self):
+        r"""User-side switch. Valid values: enable, disable.
+        :rtype: str
+        """
+        return self._UseStatus
+
+    @UseStatus.setter
+    def UseStatus(self, UseStatus):
+        self._UseStatus = UseStatus
+
+    @property
+    def KeyVersion(self):
+        r"""Key version.
+        :rtype: int
+        """
+        return self._KeyVersion
+
+    @KeyVersion.setter
+    def KeyVersion(self, KeyVersion):
+        self._KeyVersion = KeyVersion
+
+    @property
+    def LastRotatedAt(self):
+        r"""Last reset time (ISO 8601).
+        :rtype: str
+        """
+        return self._LastRotatedAt
+
+    @LastRotatedAt.setter
+    def LastRotatedAt(self, LastRotatedAt):
+        self._LastRotatedAt = LastRotatedAt
+
+    @property
+    def Creator(self):
+        r"""Creator. If it is created by a sub-account, this value is the sub-account UIN.
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatedAt(self):
+        r"""Creation time.
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""Update time.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def Balance(self):
+        r"""API Key limit usage information
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.SubPackageBalance`
+        """
+        return self._Balance
+
+    @Balance.setter
+    def Balance(self, Balance):
+        self._Balance = Balance
+
+    @property
+    def ProductType(self):
+        r"""Package type. Values: enterprise (Enterprise Professional package), enterprise-auto (Enterprise Light package).
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._ApiKey = params.get("ApiKey")
+        self._Name = params.get("Name")
+        self._TeamId = params.get("TeamId")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._AllowedModels = params.get("AllowedModels")
+        self._Status = params.get("Status")
+        self._StopReason = params.get("StopReason")
+        self._UseStatus = params.get("UseStatus")
+        self._KeyVersion = params.get("KeyVersion")
+        self._LastRotatedAt = params.get("LastRotatedAt")
+        self._Creator = params.get("Creator")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        if params.get("Balance") is not None:
+            self._Balance = SubPackageBalance()
+            self._Balance._deserialize(params.get("Balance"))
+        self._ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokenPlanListItem(AbstractModel):
+    r"""Token Plan package option
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TeamId: <p>Package ID.</p>
+        :type TeamId: str
+        :param _ProductType: <p>Package type. Values: enterprise (Enterprise Professional package), enterprise-auto (Enterprise Light package)</p>
+        :type ProductType: str
+        :param _Name: <p>Package name. Maximum 128 characters.</p>
+        :type Name: str
+        :param _AppId: <p>Account APP ID.</p>
+        :type AppId: str
+        :param _Uin: <p>Main account UIN.</p>
+        :type Uin: str
+        :param _Status: <p>Package status. Valid values: enable, disable.</p>
+        :type Status: str
+        :param _StopReason: <p>Reason for package disablement. Value: NORMAL, ISOLATED, FROZEN, EXHAUSTED, DESTROYED</p>
+        :type StopReason: str
+        :param _ApiKeyMax: <p>Maximum number of API Keys that can be created.</p>
+        :type ApiKeyMax: int
+        :param _ApiKeyCount: <p>Number of API Keys currently created</p>
+        :type ApiKeyCount: int
+        :param _PrepayResourceID: <p>Cloud billing prepaid resource package ID.</p>
+        :type PrepayResourceID: str
+        :param _Creator: <p>Creator. If the package is created by a sub-account, this value is the sub-account UIN.</p>
+        :type Creator: str
+        :param _CreatedAt: <p>Creation time.</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>Update time.</p>
+        :type UpdatedAt: str
+        :param _PackageInfo: <p>Basic information of the package.</p>
+        :type PackageInfo: :class:`tencentcloud.tokenhub.v20260322.models.TokenPlanPackageInfo`
+        :param _AutoRenewFlag: <p>Whether to enable auto-renewal. Value: 0 (not enabled), 1 (enabled)</p>
+        :type AutoRenewFlag: int
+        """
+        self._TeamId = None
+        self._ProductType = None
+        self._Name = None
+        self._AppId = None
+        self._Uin = None
+        self._Status = None
+        self._StopReason = None
+        self._ApiKeyMax = None
+        self._ApiKeyCount = None
+        self._PrepayResourceID = None
+        self._Creator = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._PackageInfo = None
+        self._AutoRenewFlag = None
+
+    @property
+    def TeamId(self):
+        r"""<p>Package ID.</p>
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def ProductType(self):
+        r"""<p>Package type. Values: enterprise (Enterprise Professional package), enterprise-auto (Enterprise Light package)</p>
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+    @property
+    def Name(self):
+        r"""<p>Package name. Maximum 128 characters.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AppId(self):
+        r"""<p>Account APP ID.</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>Main account UIN.</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Status(self):
+        r"""<p>Package status. Valid values: enable, disable.</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StopReason(self):
+        r"""<p>Reason for package disablement. Value: NORMAL, ISOLATED, FROZEN, EXHAUSTED, DESTROYED</p>
+        :rtype: str
+        """
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
+    @property
+    def ApiKeyMax(self):
+        r"""<p>Maximum number of API Keys that can be created.</p>
+        :rtype: int
+        """
+        return self._ApiKeyMax
+
+    @ApiKeyMax.setter
+    def ApiKeyMax(self, ApiKeyMax):
+        self._ApiKeyMax = ApiKeyMax
+
+    @property
+    def ApiKeyCount(self):
+        r"""<p>Number of API Keys currently created</p>
+        :rtype: int
+        """
+        return self._ApiKeyCount
+
+    @ApiKeyCount.setter
+    def ApiKeyCount(self, ApiKeyCount):
+        self._ApiKeyCount = ApiKeyCount
+
+    @property
+    def PrepayResourceID(self):
+        r"""<p>Cloud billing prepaid resource package ID.</p>
+        :rtype: str
+        """
+        return self._PrepayResourceID
+
+    @PrepayResourceID.setter
+    def PrepayResourceID(self, PrepayResourceID):
+        self._PrepayResourceID = PrepayResourceID
+
+    @property
+    def Creator(self):
+        r"""<p>Creator. If the package is created by a sub-account, this value is the sub-account UIN.</p>
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatedAt(self):
+        r"""<p>Creation time.</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>Update time.</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def PackageInfo(self):
+        r"""<p>Basic information of the package.</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.TokenPlanPackageInfo`
+        """
+        return self._PackageInfo
+
+    @PackageInfo.setter
+    def PackageInfo(self, PackageInfo):
+        self._PackageInfo = PackageInfo
+
+    @property
+    def AutoRenewFlag(self):
+        r"""<p>Whether to enable auto-renewal. Value: 0 (not enabled), 1 (enabled)</p>
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+
+    def _deserialize(self, params):
+        self._TeamId = params.get("TeamId")
+        self._ProductType = params.get("ProductType")
+        self._Name = params.get("Name")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._Status = params.get("Status")
+        self._StopReason = params.get("StopReason")
+        self._ApiKeyMax = params.get("ApiKeyMax")
+        self._ApiKeyCount = params.get("ApiKeyCount")
+        self._PrepayResourceID = params.get("PrepayResourceID")
+        self._Creator = params.get("Creator")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        if params.get("PackageInfo") is not None:
+            self._PackageInfo = TokenPlanPackageInfo()
+            self._PackageInfo._deserialize(params.get("PackageInfo"))
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokenPlanPackageInfo(AbstractModel):
+    r"""Main limit package info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalQuota: Total quota. The unit is determined by the package type: credits for the Enterprise Professional package and tokens for the Enterprise auto package.
+        :type TotalQuota: str
+        :param _TotalUsed: Total used quota. The unit varies by package type: credits (enterprise edition professional package), tokens (enterprise edition auto package)
+        :type TotalUsed: str
+        :param _TotalCycles: Total number of periods.
+        :type TotalCycles: int
+        :param _CycleUnit: Period unit. Value: month
+        :type CycleUnit: str
+        :param _StartTime: Package effective time.
+        :type StartTime: str
+        :param _ExpireTime: Package expiration time.
+        :type ExpireTime: str
+        :param _ExclusiveAllocated: Allocated quota for dedicated pool. The unit varies by package type: credits (enterprise edition professional package), tokens (enterprise edition auto package)
+        :type ExclusiveAllocated: str
+        :param _ExclusiveUsed: Used credit of the dedicated pool. The unit varies based on the package type: credits for the enterprise professional package, and tokens for the enterprise auto package.
+        :type ExclusiveUsed: str
+        :param _SharedPool: Total shared pool quota. The measurement unit varies based on the package type: credits (enterprise edition professional package), tokens (enterprise edition auto package).
+        :type SharedPool: str
+        :param _SharedUsed: Shared used credit. The unit varies by package type: credits (enterprise edition professional package), tokens (enterprise edition auto package)
+        :type SharedUsed: str
+        :param _CycleQuota: Current period limit. The unit varies by package type: credits (Enterprise Edition Professional), tokens (Enterprise Edition auto).
+        :type CycleQuota: str
+        :param _CurrentCycle: Current cycle.
+        :type CurrentCycle: int
+        :param _RemainCycles: Remaining cycle.
+        :type RemainCycles: int
+        """
+        self._TotalQuota = None
+        self._TotalUsed = None
+        self._TotalCycles = None
+        self._CycleUnit = None
+        self._StartTime = None
+        self._ExpireTime = None
+        self._ExclusiveAllocated = None
+        self._ExclusiveUsed = None
+        self._SharedPool = None
+        self._SharedUsed = None
+        self._CycleQuota = None
+        self._CurrentCycle = None
+        self._RemainCycles = None
+
+    @property
+    def TotalQuota(self):
+        r"""Total quota. The unit is determined by the package type: credits for the Enterprise Professional package and tokens for the Enterprise auto package.
+        :rtype: str
+        """
+        return self._TotalQuota
+
+    @TotalQuota.setter
+    def TotalQuota(self, TotalQuota):
+        self._TotalQuota = TotalQuota
+
+    @property
+    def TotalUsed(self):
+        r"""Total used quota. The unit varies by package type: credits (enterprise edition professional package), tokens (enterprise edition auto package)
+        :rtype: str
+        """
+        return self._TotalUsed
+
+    @TotalUsed.setter
+    def TotalUsed(self, TotalUsed):
+        self._TotalUsed = TotalUsed
+
+    @property
+    def TotalCycles(self):
+        r"""Total number of periods.
+        :rtype: int
+        """
+        return self._TotalCycles
+
+    @TotalCycles.setter
+    def TotalCycles(self, TotalCycles):
+        self._TotalCycles = TotalCycles
+
+    @property
+    def CycleUnit(self):
+        r"""Period unit. Value: month
+        :rtype: str
+        """
+        return self._CycleUnit
+
+    @CycleUnit.setter
+    def CycleUnit(self, CycleUnit):
+        self._CycleUnit = CycleUnit
+
+    @property
+    def StartTime(self):
+        r"""Package effective time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ExpireTime(self):
+        r"""Package expiration time.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ExclusiveAllocated(self):
+        r"""Allocated quota for dedicated pool. The unit varies by package type: credits (enterprise edition professional package), tokens (enterprise edition auto package)
+        :rtype: str
+        """
+        return self._ExclusiveAllocated
+
+    @ExclusiveAllocated.setter
+    def ExclusiveAllocated(self, ExclusiveAllocated):
+        self._ExclusiveAllocated = ExclusiveAllocated
+
+    @property
+    def ExclusiveUsed(self):
+        r"""Used credit of the dedicated pool. The unit varies based on the package type: credits for the enterprise professional package, and tokens for the enterprise auto package.
+        :rtype: str
+        """
+        return self._ExclusiveUsed
+
+    @ExclusiveUsed.setter
+    def ExclusiveUsed(self, ExclusiveUsed):
+        self._ExclusiveUsed = ExclusiveUsed
+
+    @property
+    def SharedPool(self):
+        r"""Total shared pool quota. The measurement unit varies based on the package type: credits (enterprise edition professional package), tokens (enterprise edition auto package).
+        :rtype: str
+        """
+        return self._SharedPool
+
+    @SharedPool.setter
+    def SharedPool(self, SharedPool):
+        self._SharedPool = SharedPool
+
+    @property
+    def SharedUsed(self):
+        r"""Shared used credit. The unit varies by package type: credits (enterprise edition professional package), tokens (enterprise edition auto package)
+        :rtype: str
+        """
+        return self._SharedUsed
+
+    @SharedUsed.setter
+    def SharedUsed(self, SharedUsed):
+        self._SharedUsed = SharedUsed
+
+    @property
+    def CycleQuota(self):
+        r"""Current period limit. The unit varies by package type: credits (Enterprise Edition Professional), tokens (Enterprise Edition auto).
+        :rtype: str
+        """
+        return self._CycleQuota
+
+    @CycleQuota.setter
+    def CycleQuota(self, CycleQuota):
+        self._CycleQuota = CycleQuota
+
+    @property
+    def CurrentCycle(self):
+        r"""Current cycle.
+        :rtype: int
+        """
+        return self._CurrentCycle
+
+    @CurrentCycle.setter
+    def CurrentCycle(self, CurrentCycle):
+        self._CurrentCycle = CurrentCycle
+
+    @property
+    def RemainCycles(self):
+        r"""Remaining cycle.
+        :rtype: int
+        """
+        return self._RemainCycles
+
+    @RemainCycles.setter
+    def RemainCycles(self, RemainCycles):
+        self._RemainCycles = RemainCycles
+
+
+    def _deserialize(self, params):
+        self._TotalQuota = params.get("TotalQuota")
+        self._TotalUsed = params.get("TotalUsed")
+        self._TotalCycles = params.get("TotalCycles")
+        self._CycleUnit = params.get("CycleUnit")
+        self._StartTime = params.get("StartTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ExclusiveAllocated = params.get("ExclusiveAllocated")
+        self._ExclusiveUsed = params.get("ExclusiveUsed")
+        self._SharedPool = params.get("SharedPool")
+        self._SharedUsed = params.get("SharedUsed")
+        self._CycleQuota = params.get("CycleQuota")
+        self._CurrentCycle = params.get("CurrentCycle")
+        self._RemainCycles = params.get("RemainCycles")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokenSummary(AbstractModel):
+    r"""Main package Token summary
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CycleSeq: Package serial number of the current billing cycle
+        :type CycleSeq: int
+        :param _CycleStartTime: Package billing cycle start time (RFC3339)
+        :type CycleStartTime: str
+        :param _CycleEndTime: Package billing cycle end time (RFC3339)
+        :type CycleEndTime: str
+        :param _BillingItems: Summary list of tokens grouped by billing item
+        :type BillingItems: list of TokenSummaryBillingItem
+        """
+        self._CycleSeq = None
+        self._CycleStartTime = None
+        self._CycleEndTime = None
+        self._BillingItems = None
+
+    @property
+    def CycleSeq(self):
+        r"""Package serial number of the current billing cycle
+        :rtype: int
+        """
+        return self._CycleSeq
+
+    @CycleSeq.setter
+    def CycleSeq(self, CycleSeq):
+        self._CycleSeq = CycleSeq
+
+    @property
+    def CycleStartTime(self):
+        r"""Package billing cycle start time (RFC3339)
+        :rtype: str
+        """
+        return self._CycleStartTime
+
+    @CycleStartTime.setter
+    def CycleStartTime(self, CycleStartTime):
+        self._CycleStartTime = CycleStartTime
+
+    @property
+    def CycleEndTime(self):
+        r"""Package billing cycle end time (RFC3339)
+        :rtype: str
+        """
+        return self._CycleEndTime
+
+    @CycleEndTime.setter
+    def CycleEndTime(self, CycleEndTime):
+        self._CycleEndTime = CycleEndTime
+
+    @property
+    def BillingItems(self):
+        r"""Summary list of tokens grouped by billing item
+        :rtype: list of TokenSummaryBillingItem
+        """
+        return self._BillingItems
+
+    @BillingItems.setter
+    def BillingItems(self, BillingItems):
+        self._BillingItems = BillingItems
+
+
+    def _deserialize(self, params):
+        self._CycleSeq = params.get("CycleSeq")
+        self._CycleStartTime = params.get("CycleStartTime")
+        self._CycleEndTime = params.get("CycleEndTime")
+        if params.get("BillingItems") is not None:
+            self._BillingItems = []
+            for item in params.get("BillingItems"):
+                obj = TokenSummaryBillingItem()
+                obj._deserialize(item)
+                self._BillingItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokenSummaryBillingItem(AbstractModel):
+    r"""Billing item for Token aggregation
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingItem: Billing item. Values: input (input Token), output (output Token), cache (cache Token), call_count (call count).
+        :type BillingItem: str
+        :param _TotalQty: Aggregated raw usage of this billing item during a period. Unit: tokens.
+        :type TotalQty: int
+        """
+        self._BillingItem = None
+        self._TotalQty = None
+
+    @property
+    def BillingItem(self):
+        r"""Billing item. Values: input (input Token), output (output Token), cache (cache Token), call_count (call count).
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+    @property
+    def TotalQty(self):
+        r"""Aggregated raw usage of this billing item during a period. Unit: tokens.
+        :rtype: int
+        """
+        return self._TotalQty
+
+    @TotalQty.setter
+    def TotalQty(self, TotalQty):
+        self._TotalQty = TotalQty
+
+
+    def _deserialize(self, params):
+        self._BillingItem = params.get("BillingItem")
+        self._TotalQty = params.get("TotalQty")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeTokenPlanTeamOrderRequest(AbstractModel):
+    r"""UpgradeTokenPlanTeamOrder request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TeamId: Package ID. You can obtain it through the DescribeTokenPlanList API.
+        :type TeamId: str
+        :param _NewCreditOrToken: Limit of the new specification after upgrade. For the enterprise package type, it refers to the point limit. For the enterprise-auto package type, it refers to the Token count. Must be greater than the current limit.
+        :type NewCreditOrToken: int
+        """
+        self._TeamId = None
+        self._NewCreditOrToken = None
+
+    @property
+    def TeamId(self):
+        r"""Package ID. You can obtain it through the DescribeTokenPlanList API.
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def NewCreditOrToken(self):
+        r"""Limit of the new specification after upgrade. For the enterprise package type, it refers to the point limit. For the enterprise-auto package type, it refers to the Token count. Must be greater than the current limit.
+        :rtype: int
+        """
+        return self._NewCreditOrToken
+
+    @NewCreditOrToken.setter
+    def NewCreditOrToken(self, NewCreditOrToken):
+        self._NewCreditOrToken = NewCreditOrToken
+
+
+    def _deserialize(self, params):
+        self._TeamId = params.get("TeamId")
+        self._NewCreditOrToken = params.get("NewCreditOrToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeTokenPlanTeamOrderResponse(AbstractModel):
+    r"""UpgradeTokenPlanTeamOrder response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigOrderId: Tencent Cloud order ID. Used to associate all sub-orders under an upgrade operation.
+        :type BigOrderId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BigOrderId = None
+        self._RequestId = None
+
+    @property
+    def BigOrderId(self):
+        r"""Tencent Cloud order ID. Used to associate all sub-orders under an upgrade operation.
+        :rtype: str
+        """
+        return self._BigOrderId
+
+    @BigOrderId.setter
+    def BigOrderId(self, BigOrderId):
+        self._BigOrderId = BigOrderId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigOrderId = params.get("BigOrderId")
+        self._RequestId = params.get("RequestId")

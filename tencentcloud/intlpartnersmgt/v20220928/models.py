@@ -536,85 +536,84 @@ class ApproveSubAgentApplyResponse(AbstractModel):
 
 
 class BillDetailData(AbstractModel):
-    r"""Customer bill details
+    r"""Customer Bill Details
 
     """
 
     def __init__(self):
         r"""
-        :param _PayerAccountId: reseller account.
+        :param _PayerAccountId: <p> Distributor account</p>
         :type PayerAccountId: int
-        :param _OwnerAccountId: Subaccount.
+        :param _OwnerAccountId: <p>Sub-Customer account</p>
         :type OwnerAccountId: int
-        :param _OperatorAccountId: Operator account.
+        :param _OperatorAccountId: <p>Operator account</p>
         :type OperatorAccountId: int
-        :param _ProductName: Product name.
+        :param _ProductName: <p>Product name.</p>
         :type ProductName: str
-        :param _BillingMode: Billing mode
-.
-Monthly subscription (annual and monthly).
-Pay-As-You-Go resources.
-Standard ri reserved instance.
+        :param _BillingMode: <p>Billing mode</p><p>Enumeration values:</p><ul><li>yearly/monthly subscription</li><li>Pay-As-You-Go resources</li></ul>
         :type BillingMode: str
-        :param _ProjectName: Project name.
-
+        :param _ProjectName: <p>Project name.</p>
         :type ProjectName: str
-        :param _Region: Resource region.
+        :param _Region: <p>Associated region of the resource</p>
         :type Region: str
-        :param _AvailabilityZone: Resource available zone.
+        :param _AvailabilityZone: <p>Availability zone of resource</p>
         :type AvailabilityZone: str
-        :param _InstanceId: Instance id.
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _InstanceName: Instance name.
+        :param _InstanceName: <p>Instance name.</p>
         :type InstanceName: str
-        :param _SubProductName: Sub-Product name
-.
-
+        :param _SubProductName: <p>Sub-product name</p>
         :type SubProductName: str
-        :param _TransactionType: Settlement type.
+        :param _TransactionType: <p>Settlement type</p>
         :type TransactionType: str
-        :param _TransactionId: <Transaction id>.
+        :param _TransactionId: <p>Transaction log ID</p>
         :type TransactionId: str
-        :param _TransactionTime: Settlement time.
-
+        :param _TransactionTime: <p>Time of settlement</p>
         :type TransactionTime: str
-        :param _UsageStartTime: <Resource start time>.
+        :param _UsageStartTime: <p>Resource usage start time</p>
         :type UsageStartTime: str
-        :param _UsageEndTime: <Resource end usage time>.
+        :param _UsageEndTime: <p>Resource usage end time</p>
         :type UsageEndTime: str
-        :param _ComponentType: Component.
+        :param _ComponentType: <p>Component</p>
         :type ComponentType: str
-        :param _ComponentName: Component name.
+        :param _ComponentName: <p>Component name</p>
         :type ComponentName: str
-        :param _ComponentListPrice: Component list price.
+        :param _ComponentListPrice: <p>Component list price</p>
         :type ComponentListPrice: str
-        :param _ComponentPriceMeasurementUnit: Price unit.
+        :param _ComponentPriceMeasurementUnit: <p>Price unit</p>
         :type ComponentPriceMeasurementUnit: str
-        :param _ComponentUsage: Component usage.
+        :param _ComponentUsage: <p>Component usage</p>
         :type ComponentUsage: str
-        :param _ComponentUsageUnit: Component usage unit.
+        :param _ComponentUsageUnit: <p>Component usage unit</p>
         :type ComponentUsageUnit: str
-        :param _UsageDuration: Resource usage duration.
+        :param _UsageDuration: <p>Resource usage duration</p>
         :type UsageDuration: str
-        :param _DurationUnit: duration unit.
+        :param _DurationUnit: <p>Duration unit</p>
         :type DurationUnit: str
-        :param _OriginalCost: Total original price.
-Original cost = component list price * component usage * usage duration.
+        :param _OriginalCost: <p>Original total price<br>Original Cost = Component List Price * Component Usage * Usage Duration</p>
         :type OriginalCost: str
-        :param _DiscountRate: Discount (default is 1) - abandoned.
+        :param _DiscountRate: <p>Discount (default: 1) - abandoned</p>
         :type DiscountRate: str
-        :param _Currency: Currency.
+        :param _Currency: <p>Currency.</p>
         :type Currency: str
-        :param _TotalAmountAfterDiscount: Total cost after discount.
+        :param _TotalAmountAfterDiscount: <p>Total cost after discount</p>
         :type TotalAmountAfterDiscount: str
-        :param _VoucherDeduction: Voucher deduction amount.
+        :param _VoucherDeduction: <p>Voucher deducted amount</p>
         :type VoucherDeduction: str
-        :param _TotalCost: = Total Amount After Discount - Voucher Deduction
+        :param _TotalCost: <p>= Total Amount After Discount - Voucher Deduction</p>
         :type TotalCost: str
-        :param _Id: Identifier (id).
+        :param _Id: <p>id</p>
         :type Id: str
-        :param _CustomerDiscountRate: customer discount rate. The discount rate applied to the reseller's customer, which set by reseller, default value equal to 1.
+        :param _CustomerDiscountRate: <p>customer discount rate. The discount rate for customers of resellers, set by the reseller. The default value is 1.</p>
         :type CustomerDiscountRate: str
+        :param _BusinessCode: <p>Product code</p>
+        :type BusinessCode: str
+        :param _ProductCode: <p>Sub-product code</p>
+        :type ProductCode: str
+        :param _ComponentCode: <p>Component type code</p>
+        :type ComponentCode: str
+        :param _ItemCode: <p>Component code</p>
+        :type ItemCode: str
         """
         self._PayerAccountId = None
         self._OwnerAccountId = None
@@ -648,10 +647,14 @@ Original cost = component list price * component usage * usage duration.
         self._TotalCost = None
         self._Id = None
         self._CustomerDiscountRate = None
+        self._BusinessCode = None
+        self._ProductCode = None
+        self._ComponentCode = None
+        self._ItemCode = None
 
     @property
     def PayerAccountId(self):
-        r"""reseller account.
+        r"""<p> Distributor account</p>
         :rtype: int
         """
         return self._PayerAccountId
@@ -662,7 +665,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def OwnerAccountId(self):
-        r"""Subaccount.
+        r"""<p>Sub-Customer account</p>
         :rtype: int
         """
         return self._OwnerAccountId
@@ -673,7 +676,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def OperatorAccountId(self):
-        r"""Operator account.
+        r"""<p>Operator account</p>
         :rtype: int
         """
         return self._OperatorAccountId
@@ -684,7 +687,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def ProductName(self):
-        r"""Product name.
+        r"""<p>Product name.</p>
         :rtype: str
         """
         return self._ProductName
@@ -695,11 +698,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def BillingMode(self):
-        r"""Billing mode
-.
-Monthly subscription (annual and monthly).
-Pay-As-You-Go resources.
-Standard ri reserved instance.
+        r"""<p>Billing mode</p><p>Enumeration values:</p><ul><li>yearly/monthly subscription</li><li>Pay-As-You-Go resources</li></ul>
         :rtype: str
         """
         return self._BillingMode
@@ -710,8 +709,7 @@ Standard ri reserved instance.
 
     @property
     def ProjectName(self):
-        r"""Project name.
-
+        r"""<p>Project name.</p>
         :rtype: str
         """
         return self._ProjectName
@@ -722,7 +720,7 @@ Standard ri reserved instance.
 
     @property
     def Region(self):
-        r"""Resource region.
+        r"""<p>Associated region of the resource</p>
         :rtype: str
         """
         return self._Region
@@ -733,7 +731,7 @@ Standard ri reserved instance.
 
     @property
     def AvailabilityZone(self):
-        r"""Resource available zone.
+        r"""<p>Availability zone of resource</p>
         :rtype: str
         """
         return self._AvailabilityZone
@@ -744,7 +742,7 @@ Standard ri reserved instance.
 
     @property
     def InstanceId(self):
-        r"""Instance id.
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -755,7 +753,7 @@ Standard ri reserved instance.
 
     @property
     def InstanceName(self):
-        r"""Instance name.
+        r"""<p>Instance name.</p>
         :rtype: str
         """
         return self._InstanceName
@@ -766,9 +764,7 @@ Standard ri reserved instance.
 
     @property
     def SubProductName(self):
-        r"""Sub-Product name
-.
-
+        r"""<p>Sub-product name</p>
         :rtype: str
         """
         return self._SubProductName
@@ -779,7 +775,7 @@ Standard ri reserved instance.
 
     @property
     def TransactionType(self):
-        r"""Settlement type.
+        r"""<p>Settlement type</p>
         :rtype: str
         """
         return self._TransactionType
@@ -790,7 +786,7 @@ Standard ri reserved instance.
 
     @property
     def TransactionId(self):
-        r"""<Transaction id>.
+        r"""<p>Transaction log ID</p>
         :rtype: str
         """
         return self._TransactionId
@@ -801,8 +797,7 @@ Standard ri reserved instance.
 
     @property
     def TransactionTime(self):
-        r"""Settlement time.
-
+        r"""<p>Time of settlement</p>
         :rtype: str
         """
         return self._TransactionTime
@@ -813,7 +808,7 @@ Standard ri reserved instance.
 
     @property
     def UsageStartTime(self):
-        r"""<Resource start time>.
+        r"""<p>Resource usage start time</p>
         :rtype: str
         """
         return self._UsageStartTime
@@ -824,7 +819,7 @@ Standard ri reserved instance.
 
     @property
     def UsageEndTime(self):
-        r"""<Resource end usage time>.
+        r"""<p>Resource usage end time</p>
         :rtype: str
         """
         return self._UsageEndTime
@@ -835,7 +830,7 @@ Standard ri reserved instance.
 
     @property
     def ComponentType(self):
-        r"""Component.
+        r"""<p>Component</p>
         :rtype: str
         """
         return self._ComponentType
@@ -846,7 +841,7 @@ Standard ri reserved instance.
 
     @property
     def ComponentName(self):
-        r"""Component name.
+        r"""<p>Component name</p>
         :rtype: str
         """
         return self._ComponentName
@@ -857,7 +852,7 @@ Standard ri reserved instance.
 
     @property
     def ComponentListPrice(self):
-        r"""Component list price.
+        r"""<p>Component list price</p>
         :rtype: str
         """
         return self._ComponentListPrice
@@ -868,7 +863,7 @@ Standard ri reserved instance.
 
     @property
     def ComponentPriceMeasurementUnit(self):
-        r"""Price unit.
+        r"""<p>Price unit</p>
         :rtype: str
         """
         return self._ComponentPriceMeasurementUnit
@@ -879,7 +874,7 @@ Standard ri reserved instance.
 
     @property
     def ComponentUsage(self):
-        r"""Component usage.
+        r"""<p>Component usage</p>
         :rtype: str
         """
         return self._ComponentUsage
@@ -890,7 +885,7 @@ Standard ri reserved instance.
 
     @property
     def ComponentUsageUnit(self):
-        r"""Component usage unit.
+        r"""<p>Component usage unit</p>
         :rtype: str
         """
         return self._ComponentUsageUnit
@@ -901,7 +896,7 @@ Standard ri reserved instance.
 
     @property
     def UsageDuration(self):
-        r"""Resource usage duration.
+        r"""<p>Resource usage duration</p>
         :rtype: str
         """
         return self._UsageDuration
@@ -912,7 +907,7 @@ Standard ri reserved instance.
 
     @property
     def DurationUnit(self):
-        r"""duration unit.
+        r"""<p>Duration unit</p>
         :rtype: str
         """
         return self._DurationUnit
@@ -923,8 +918,7 @@ Standard ri reserved instance.
 
     @property
     def OriginalCost(self):
-        r"""Total original price.
-Original cost = component list price * component usage * usage duration.
+        r"""<p>Original total price<br>Original Cost = Component List Price * Component Usage * Usage Duration</p>
         :rtype: str
         """
         return self._OriginalCost
@@ -935,7 +929,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def DiscountRate(self):
-        r"""Discount (default is 1) - abandoned.
+        r"""<p>Discount (default: 1) - abandoned</p>
         :rtype: str
         """
         return self._DiscountRate
@@ -946,7 +940,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def Currency(self):
-        r"""Currency.
+        r"""<p>Currency.</p>
         :rtype: str
         """
         return self._Currency
@@ -957,7 +951,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def TotalAmountAfterDiscount(self):
-        r"""Total cost after discount.
+        r"""<p>Total cost after discount</p>
         :rtype: str
         """
         return self._TotalAmountAfterDiscount
@@ -968,7 +962,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def VoucherDeduction(self):
-        r"""Voucher deduction amount.
+        r"""<p>Voucher deducted amount</p>
         :rtype: str
         """
         return self._VoucherDeduction
@@ -979,7 +973,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def TotalCost(self):
-        r"""= Total Amount After Discount - Voucher Deduction
+        r"""<p>= Total Amount After Discount - Voucher Deduction</p>
         :rtype: str
         """
         return self._TotalCost
@@ -990,7 +984,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def Id(self):
-        r"""Identifier (id).
+        r"""<p>id</p>
         :rtype: str
         """
         return self._Id
@@ -1001,7 +995,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def CustomerDiscountRate(self):
-        r"""customer discount rate. The discount rate applied to the reseller's customer, which set by reseller, default value equal to 1.
+        r"""<p>customer discount rate. The discount rate for customers of resellers, set by the reseller. The default value is 1.</p>
         :rtype: str
         """
         return self._CustomerDiscountRate
@@ -1009,6 +1003,50 @@ Original cost = component list price * component usage * usage duration.
     @CustomerDiscountRate.setter
     def CustomerDiscountRate(self, CustomerDiscountRate):
         self._CustomerDiscountRate = CustomerDiscountRate
+
+    @property
+    def BusinessCode(self):
+        r"""<p>Product code</p>
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def ProductCode(self):
+        r"""<p>Sub-product code</p>
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ComponentCode(self):
+        r"""<p>Component type code</p>
+        :rtype: str
+        """
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ItemCode(self):
+        r"""<p>Component code</p>
+        :rtype: str
+        """
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
 
 
     def _deserialize(self, params):
@@ -1044,6 +1082,10 @@ Original cost = component list price * component usage * usage duration.
         self._TotalCost = params.get("TotalCost")
         self._Id = params.get("Id")
         self._CustomerDiscountRate = params.get("CustomerDiscountRate")
+        self._BusinessCode = params.get("BusinessCode")
+        self._ProductCode = params.get("ProductCode")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ItemCode = params.get("ItemCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2346,7 +2388,7 @@ class CustomerBillDetailData(AbstractModel):
         :type ProductName: str
         :param _BillingMode: Billing mode
 .
-Monthly subscription.
+yearly/monthly subscription.
 Pay-As-You-Go resources.
 Standard ri reserved instances.
         :type BillingMode: str
@@ -2404,6 +2446,14 @@ Original cost = component list price * component usage * usage duration.
         :type Id: str
         :param _Tags: Tag information.
         :type Tags: list of TagInfo
+        :param _BusinessCode: Product code
+        :type BusinessCode: str
+        :param _ProductCode: Subproduct code
+        :type ProductCode: str
+        :param _ComponentCode: Component type code
+        :type ComponentCode: str
+        :param _ItemCode: Component code
+        :type ItemCode: str
         """
         self._PayerAccountId = None
         self._OwnerAccountId = None
@@ -2434,6 +2484,10 @@ Original cost = component list price * component usage * usage duration.
         self._TotalCost = None
         self._Id = None
         self._Tags = None
+        self._BusinessCode = None
+        self._ProductCode = None
+        self._ComponentCode = None
+        self._ItemCode = None
 
     @property
     def PayerAccountId(self):
@@ -2483,7 +2537,7 @@ Original cost = component list price * component usage * usage duration.
     def BillingMode(self):
         r"""Billing mode
 .
-Monthly subscription.
+yearly/monthly subscription.
 Pay-As-You-Go resources.
 Standard ri reserved instances.
         :rtype: str
@@ -2764,6 +2818,50 @@ Original cost = component list price * component usage * usage duration.
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def BusinessCode(self):
+        r"""Product code
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def ProductCode(self):
+        r"""Subproduct code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ComponentCode(self):
+        r"""Component type code
+        :rtype: str
+        """
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ItemCode(self):
+        r"""Component code
+        :rtype: str
+        """
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
 
     def _deserialize(self, params):
         self._PayerAccountId = params.get("PayerAccountId")
@@ -2800,6 +2898,10 @@ Original cost = component list price * component usage * usage duration.
                 obj = TagInfo()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._BusinessCode = params.get("BusinessCode")
+        self._ProductCode = params.get("ProductCode")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ItemCode = params.get("ItemCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2817,15 +2919,15 @@ class DescribeBillDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: Inquiry month, in the format of YYYY-MM, such as 2023-01
+        :param _Month: <p>Query month, in the format of YYYY-MM, such as 2023-01</p>
         :type Month: str
-        :param _PageSize: Page parameter: number of entries per page. Value range: [1, 200]
+        :param _PageSize: <p>Page parameter: number of entries per page. Value range: [1, 200]</p>
         :type PageSize: int
-        :param _Page: Page parameter: current page number. The minimum value is 1.
+        :param _Page: <p>Page parameter: current page number. The minimum value is 1.</p>
         :type Page: int
-        :param _PayMode: Billing mode. Valid values: prePay (Monthly subscription) and postPay (Pay-As-You-Go resources)
+        :param _PayMode: <p>Billing mode</p><p>Enumeration values:</p><ul><li>prePay: yearly/monthly subscription</li><li>postPay: Pay-As-You-Go resources</li></ul>
         :type PayMode: str
-        :param _ActionType: Transaction type. Valid values: prepay_purchase (Purchase), prepay_renew (Renewal), prepay_modify (Upgrade/Downgrade), prepay_return ( Monthly subscription refund), postpay_deduct (Pay-as-you-go), postpay_deduct_h (Hourly settlement), postpay_deduct_d (Daily settlement), postpay_deduct_m (Monthly settlement), offline_deduct (Offline project deduction), online_deduct (Offline product deduction), recon_deduct (Adjustment - deduction), recon_increase (Adjustment - compensation), ripay_purchase (One-off RI Fee), postpay_deduct_s (Spot), ri_hour_pay (Hourly RI fee), prePurchase (New monthly subscription), preRenew (Monthly subscription renewal), preUpgrade (Upgrade/Downgrade), preDowngrade (Upgrade/Downgrade), svp_hour_pay (Hourly Savings Plan fee), recon_guarantee (Minimum spend deduction), pre_purchase (New monthly subscription), pre_renew (Monthly subscription renewal), pre_upgrade (Upgrade/Downgrade), pre_downgrade (Upgrade/Downgrade)
+        :param _ActionType: <p>Transaction type</p><p>Enumeration values:</p><ul><li>prepay_purchase: Purchase</li><li>prepay_renew:  Renewal</li><li>prepay_modify: Upgrade/Downgrade</li><li>prepay_return: yearly/monthly subscription refund</li><li>postpay_deduct: Pay-as-you-go</li><li>postpay_deduct_h: Hourly settlement</li><li>postpay_deduct_d: Daily settlement</li><li>postpay_deduct_m: Monthly settlement</li><li>offline_deduct: Offline project deduction</li><li>online_deduct: Offline product deduction</li><li>recon_deduct: Adjustment - deduction</li><li>recon_increase: Adjustment - compensation</li><li>ripay_purchase: One-off RI Fee</li><li>postpay_deduct_s: Spot</li><li>ri_hour_pay: Hourly RI fee</li><li>prePurchase: New yearly/monthly subscription</li><li>preRenew: yearly/monthly subscription renewal</li><li>preUpgrade: Upgrade/Downgrade</li><li>preDowngrade: Upgrade/Downgrade</li><li>svp_hour_pay: Hourly Savings Plan fee</li><li>recon_guarantee: Minimum spend deduction</li><li>pre_purchase: New yearly/monthly subscription</li><li>pre_renew: yearly/monthly subscription renewal</li><li>pre_upgrade: Upgrade/Downgrade</li><li>pre_downgrade: Upgrade/Downgrade</li></ul>
         :type ActionType: str
         """
         self._Month = None
@@ -2836,7 +2938,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""Inquiry month, in the format of YYYY-MM, such as 2023-01
+        r"""<p>Query month, in the format of YYYY-MM, such as 2023-01</p>
         :rtype: str
         """
         return self._Month
@@ -2847,7 +2949,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""Page parameter: number of entries per page. Value range: [1, 200]
+        r"""<p>Page parameter: number of entries per page. Value range: [1, 200]</p>
         :rtype: int
         """
         return self._PageSize
@@ -2858,7 +2960,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""Page parameter: current page number. The minimum value is 1.
+        r"""<p>Page parameter: current page number. The minimum value is 1.</p>
         :rtype: int
         """
         return self._Page
@@ -2869,7 +2971,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""Billing mode. Valid values: prePay (Monthly subscription) and postPay (Pay-As-You-Go resources)
+        r"""<p>Billing mode</p><p>Enumeration values:</p><ul><li>prePay: yearly/monthly subscription</li><li>postPay: Pay-As-You-Go resources</li></ul>
         :rtype: str
         """
         return self._PayMode
@@ -2880,7 +2982,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""Transaction type. Valid values: prepay_purchase (Purchase), prepay_renew (Renewal), prepay_modify (Upgrade/Downgrade), prepay_return ( Monthly subscription refund), postpay_deduct (Pay-as-you-go), postpay_deduct_h (Hourly settlement), postpay_deduct_d (Daily settlement), postpay_deduct_m (Monthly settlement), offline_deduct (Offline project deduction), online_deduct (Offline product deduction), recon_deduct (Adjustment - deduction), recon_increase (Adjustment - compensation), ripay_purchase (One-off RI Fee), postpay_deduct_s (Spot), ri_hour_pay (Hourly RI fee), prePurchase (New monthly subscription), preRenew (Monthly subscription renewal), preUpgrade (Upgrade/Downgrade), preDowngrade (Upgrade/Downgrade), svp_hour_pay (Hourly Savings Plan fee), recon_guarantee (Minimum spend deduction), pre_purchase (New monthly subscription), pre_renew (Monthly subscription renewal), pre_upgrade (Upgrade/Downgrade), pre_downgrade (Upgrade/Downgrade)
+        r"""<p>Transaction type</p><p>Enumeration values:</p><ul><li>prepay_purchase: Purchase</li><li>prepay_renew:  Renewal</li><li>prepay_modify: Upgrade/Downgrade</li><li>prepay_return: yearly/monthly subscription refund</li><li>postpay_deduct: Pay-as-you-go</li><li>postpay_deduct_h: Hourly settlement</li><li>postpay_deduct_d: Daily settlement</li><li>postpay_deduct_m: Monthly settlement</li><li>offline_deduct: Offline project deduction</li><li>online_deduct: Offline product deduction</li><li>recon_deduct: Adjustment - deduction</li><li>recon_increase: Adjustment - compensation</li><li>ripay_purchase: One-off RI Fee</li><li>postpay_deduct_s: Spot</li><li>ri_hour_pay: Hourly RI fee</li><li>prePurchase: New yearly/monthly subscription</li><li>preRenew: yearly/monthly subscription renewal</li><li>preUpgrade: Upgrade/Downgrade</li><li>preDowngrade: Upgrade/Downgrade</li><li>svp_hour_pay: Hourly Savings Plan fee</li><li>recon_guarantee: Minimum spend deduction</li><li>pre_purchase: New yearly/monthly subscription</li><li>pre_renew: yearly/monthly subscription renewal</li><li>pre_upgrade: Upgrade/Downgrade</li><li>pre_downgrade: Upgrade/Downgrade</li></ul>
         :rtype: str
         """
         return self._ActionType
@@ -2913,9 +3015,9 @@ class DescribeBillDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DetailSet: Data details.
+        :param _DetailSet: <p>Data details</p>
         :type DetailSet: list of CustomerBillDetailData
-        :param _Total: Total number of entries.
+        :param _Total: <p>Total quantity.</p>
         :type Total: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2926,7 +3028,7 @@ class DescribeBillDetailResponse(AbstractModel):
 
     @property
     def DetailSet(self):
-        r"""Data details.
+        r"""<p>Data details</p>
         :rtype: list of CustomerBillDetailData
         """
         return self._DetailSet
@@ -2937,7 +3039,7 @@ class DescribeBillDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""Total number of entries.
+        r"""<p>Total quantity.</p>
         :rtype: int
         """
         return self._Total
@@ -3596,49 +3698,19 @@ class DescribeCustomerBillDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerUin: Sub-account UIN.
+        :param _CustomerUin: <p>Sub-customer uin</p>
         :type CustomerUin: int
-        :param _Month: Inquiry month, in the format of YYYY-MM, such as 2023-01.
+        :param _Month: <p>Inquiry month, in the format of YYYY-MM, such as 2023-01</p>
         :type Month: str
-        :param _PageSize: Page parameter: number of entries per page. Value range: [1, 200]
+        :param _PageSize: <p>Pagination parameter: entries per page. Value range: [1, 200]</p>
         :type PageSize: int
-        :param _Page: Page parameter: current page number. The minimum value is 1.
+        :param _Page: <p>Pagination parameter: current page number. The minimum value is 1.</p>
         :type Page: int
-        :param _PayMode: Billing mode. Valid values:
-prePay (Monthly subscription)
-postPay (Pay-As-You-Go resources)
+        :param _PayMode: <p>Billing mode</p><p>Enumeration values:</p><ul><li>prePay: yearly/monthly subscription</li><li>postPay: Pay-As-You-Go resources</li></ul>
         :type PayMode: str
-        :param _ActionType: Transaction type. Valid values:
-prepay_purchase (Purchase)
-prepay_renew (Renewal)
-prepay_modify (Upgrade/Downgrade)
-prepay_return ( Monthly subscription refund)
-postpay_deduct (Pay-as-you-go)
-postpay_deduct_h (Hourly settlement)
-postpay_deduct_d (Daily settlement)
-postpay_deduct_m (Monthly settlement)
-offline_deduct (Offline project deduction)
-online_deduct (Offline product deduction)
-recon_deduct (Adjustment - deduction)
-recon_increase (Adjustment - compensation)
-ripay_purchase (One-off RI Fee)
-postpay_deduct_s (Spot)
-ri_hour_pay (Hourly RI fee)
-prePurchase (New monthly subscription)
-preRenew (Monthly subscription renewal)
-preUpgrade (Upgrade/Downgrade)
-preDowngrade (Upgrade/Downgrade)
-svp_hour_pay (Hourly Savings Plan fee)
-recon_guarantee (Minimum spend deduction)
-pre_purchase (New monthly subscription)
-pre_renew (Monthly subscription renewal)
-pre_upgrade (Upgrade/Downgrade)
-pre_downgrade (Upgrade/Downgrade)
+        :param _ActionType: <p>Transaction type</p><p>Enumeration values:</p><ul><li>prepay_purchase: Purchase</li><li>prepay_renew: Renewal</li><li>prepay_modify: Upgrade/Downgrade</li><li>prepay_return: yearly/monthly subscription refund</li><li>postpay_deduct: Pay-as-you-go</li><li>postpay_deduct_h: Hourly settlement</li><li>postpay_deduct_d: Daily settlement</li><li>postpay_deduct_m: Monthly settlement</li><li>offline_deduct: Offline project deduction</li><li>online_deduct: Offline product deduction</li><li>recon_deduct: Adjustment - deduction</li><li>recon_increase: Adjustment - compensation</li><li>ripay_purchase: One-off RI Fee</li><li>postpay_deduct_s: Spot</li><li>ri_hour_pay: Hourly RI fee</li><li>prePurchase: New yearly/monthly subscription</li><li>preRenew: yearly/monthly subscription renewal</li><li>preUpgrade: Upgrade/Downgrade</li><li>preDowngrade: Upgrade/Downgrade</li><li>svp_hour_pay: Hourly Savings Plan fee</li><li>recon_guarantee: Minimum spend deduction</li><li>pre_purchase: New yearly/monthly subscription</li><li>pre_renew: yearly/monthly subscription renewal</li><li>pre_upgrade: Upgrade/Downgrade</li><li>pre_downgrade: Upgrade/Downgrade</li></ul>
         :type ActionType: str
-        :param _IsConfirmed: Payment status
-0: not distinguished
-1: paid
-2: unpaid
+        :param _IsConfirmed: <p>Payment Status<br>0: case-insensitive<br>1: paid<br>2: unpaid</p>
         :type IsConfirmed: str
         """
         self._CustomerUin = None
@@ -3651,7 +3723,7 @@ pre_downgrade (Upgrade/Downgrade)
 
     @property
     def CustomerUin(self):
-        r"""Sub-account UIN.
+        r"""<p>Sub-customer uin</p>
         :rtype: int
         """
         return self._CustomerUin
@@ -3662,7 +3734,7 @@ pre_downgrade (Upgrade/Downgrade)
 
     @property
     def Month(self):
-        r"""Inquiry month, in the format of YYYY-MM, such as 2023-01.
+        r"""<p>Inquiry month, in the format of YYYY-MM, such as 2023-01</p>
         :rtype: str
         """
         return self._Month
@@ -3673,7 +3745,7 @@ pre_downgrade (Upgrade/Downgrade)
 
     @property
     def PageSize(self):
-        r"""Page parameter: number of entries per page. Value range: [1, 200]
+        r"""<p>Pagination parameter: entries per page. Value range: [1, 200]</p>
         :rtype: int
         """
         return self._PageSize
@@ -3684,7 +3756,7 @@ pre_downgrade (Upgrade/Downgrade)
 
     @property
     def Page(self):
-        r"""Page parameter: current page number. The minimum value is 1.
+        r"""<p>Pagination parameter: current page number. The minimum value is 1.</p>
         :rtype: int
         """
         return self._Page
@@ -3695,9 +3767,7 @@ pre_downgrade (Upgrade/Downgrade)
 
     @property
     def PayMode(self):
-        r"""Billing mode. Valid values:
-prePay (Monthly subscription)
-postPay (Pay-As-You-Go resources)
+        r"""<p>Billing mode</p><p>Enumeration values:</p><ul><li>prePay: yearly/monthly subscription</li><li>postPay: Pay-As-You-Go resources</li></ul>
         :rtype: str
         """
         return self._PayMode
@@ -3708,32 +3778,7 @@ postPay (Pay-As-You-Go resources)
 
     @property
     def ActionType(self):
-        r"""Transaction type. Valid values:
-prepay_purchase (Purchase)
-prepay_renew (Renewal)
-prepay_modify (Upgrade/Downgrade)
-prepay_return ( Monthly subscription refund)
-postpay_deduct (Pay-as-you-go)
-postpay_deduct_h (Hourly settlement)
-postpay_deduct_d (Daily settlement)
-postpay_deduct_m (Monthly settlement)
-offline_deduct (Offline project deduction)
-online_deduct (Offline product deduction)
-recon_deduct (Adjustment - deduction)
-recon_increase (Adjustment - compensation)
-ripay_purchase (One-off RI Fee)
-postpay_deduct_s (Spot)
-ri_hour_pay (Hourly RI fee)
-prePurchase (New monthly subscription)
-preRenew (Monthly subscription renewal)
-preUpgrade (Upgrade/Downgrade)
-preDowngrade (Upgrade/Downgrade)
-svp_hour_pay (Hourly Savings Plan fee)
-recon_guarantee (Minimum spend deduction)
-pre_purchase (New monthly subscription)
-pre_renew (Monthly subscription renewal)
-pre_upgrade (Upgrade/Downgrade)
-pre_downgrade (Upgrade/Downgrade)
+        r"""<p>Transaction type</p><p>Enumeration values:</p><ul><li>prepay_purchase: Purchase</li><li>prepay_renew: Renewal</li><li>prepay_modify: Upgrade/Downgrade</li><li>prepay_return: yearly/monthly subscription refund</li><li>postpay_deduct: Pay-as-you-go</li><li>postpay_deduct_h: Hourly settlement</li><li>postpay_deduct_d: Daily settlement</li><li>postpay_deduct_m: Monthly settlement</li><li>offline_deduct: Offline project deduction</li><li>online_deduct: Offline product deduction</li><li>recon_deduct: Adjustment - deduction</li><li>recon_increase: Adjustment - compensation</li><li>ripay_purchase: One-off RI Fee</li><li>postpay_deduct_s: Spot</li><li>ri_hour_pay: Hourly RI fee</li><li>prePurchase: New yearly/monthly subscription</li><li>preRenew: yearly/monthly subscription renewal</li><li>preUpgrade: Upgrade/Downgrade</li><li>preDowngrade: Upgrade/Downgrade</li><li>svp_hour_pay: Hourly Savings Plan fee</li><li>recon_guarantee: Minimum spend deduction</li><li>pre_purchase: New yearly/monthly subscription</li><li>pre_renew: yearly/monthly subscription renewal</li><li>pre_upgrade: Upgrade/Downgrade</li><li>pre_downgrade: Upgrade/Downgrade</li></ul>
         :rtype: str
         """
         return self._ActionType
@@ -3744,10 +3789,7 @@ pre_downgrade (Upgrade/Downgrade)
 
     @property
     def IsConfirmed(self):
-        r"""Payment status
-0: not distinguished
-1: paid
-2: unpaid
+        r"""<p>Payment Status<br>0: case-insensitive<br>1: paid<br>2: unpaid</p>
         :rtype: str
         """
         return self._IsConfirmed
@@ -3782,9 +3824,9 @@ class DescribeCustomerBillDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: Total number of data entries
+        :param _Total: <p>total number of records</p>
         :type Total: int
-        :param _DetailSet: Data detailsNote: This field may return null, indicating that no valid values can be obtained.
+        :param _DetailSet: <p>Data details</p>
         :type DetailSet: list of BillDetailData
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3795,7 +3837,7 @@ class DescribeCustomerBillDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""Total number of data entries
+        r"""<p>total number of records</p>
         :rtype: int
         """
         return self._Total
@@ -3806,7 +3848,7 @@ class DescribeCustomerBillDetailResponse(AbstractModel):
 
     @property
     def DetailSet(self):
-        r"""Data detailsNote: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Data details</p>
         :rtype: list of BillDetailData
         """
         return self._DetailSet
@@ -3999,45 +4041,15 @@ class DescribeCustomerBillSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerUin: Customer UIN
+        :param _CustomerUin: <p>Sub-customer uin</p>
         :type CustomerUin: int
-        :param _Month: The queried month in "YYYY-MM" format, such as 2023-01.
+        :param _Month: <p>Inquiry month, in the format of YYYY-MM, such as 2023-01</p>
         :type Month: str
-        :param _PayMode: Billing mode. Valid values:
-`prePay` (Monthly subscription)
-`postPay` (Pay-as-you-go)
+        :param _PayMode: <p>Billing mode</p><p>Enumeration values:</p><ul><li>prePay: yearly/monthly subscription</li><li>postPay: Pay-As-You-Go resources</li></ul>
         :type PayMode: str
-        :param _ActionType: Transaction type. Valid values:
-`prepay_purchase` (Purchase)
-`prepay_renew` (Renewal)
-`prepay_modify` (Upgrade/Downgrade)
-`prepay_return` (Monthly subscription refund)
-`postpay_deduct` (Pay-as-you-go)
-`postpay_deduct_h` (Hourly settlement)
-`postpay_deduct_d` (Daily settlement)
-`postpay_deduct_m` (Monthly settlement)
-`offline_deduct` (Offline project deduction)
-`online_deduct` (Offline product deduction)
-`recon_deduct` (Adjustment - deduction)
-`recon_increase` (Adjustment - compensation)
-`ripay_purchase` (One-off RI Fee)
-`postpay_deduct_s` (Spot)
-`ri_hour_pay` (Hourly RI fee)
-`prePurchase` (New monthly subscription)
-`preRenew` (Monthly subscription renewal)
-`preUpgrade` (Upgrade/Downgrade)
-`preDowngrade` (Upgrade/Downgrade)
-`svp_hour_pay` (Hourly Savings Plan fee)
-`recon_guarantee` (Minimum spend deduction)
-`pre_purchase` (New monthly subscription)
-`pre_renew` (Monthly subscription renewal)
-`pre_upgrade` (Upgrade/Downgrade)
-`pre_downgrade` (Upgrade/Downgrade)
+        :param _ActionType: <p>Transaction type</p><p>Enumeration values:</p><ul><li>prepay_purchase: Purchase</li><li>prepay_renew: Renewal</li><li>prepay_modify: Upgrade/Downgrade</li><li>prepay_return: yearly/monthly subscription refund</li><li>postpay_deduct: Pay-as-you-go</li><li>postpay_deduct_h: Hourly settlement</li><li>postpay_deduct_d: Daily settlement</li><li>postpay_deduct_m: Monthly settlement</li><li>offline_deduct: Offline project deduction</li><li>online_deduct: Offline product deduction</li><li>recon_deduct: Adjustment - deduction</li><li>ripay_purchase: One-off RI Fee</li><li>postpay_deduct_s: Spot</li><li>ri_hour_pay: Hourly RI fee</li><li>prePurchase: New yearly/monthly subscription</li><li>preRenew: yearly/monthly subscription renewal</li><li>preUpgrade: Upgrade/Downgrade</li></ul>
         :type ActionType: str
-        :param _IsConfirmed: Payment status
-`0`: N/A
-`1`: Paid
-`2`: Unpaid
+        :param _IsConfirmed: <p>Payment Status<br>0: case-insensitive<br>1: paid<br>2: unpaid</p>
         :type IsConfirmed: str
         """
         self._CustomerUin = None
@@ -4048,7 +4060,7 @@ class DescribeCustomerBillSummaryRequest(AbstractModel):
 
     @property
     def CustomerUin(self):
-        r"""Customer UIN
+        r"""<p>Sub-customer uin</p>
         :rtype: int
         """
         return self._CustomerUin
@@ -4059,7 +4071,7 @@ class DescribeCustomerBillSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""The queried month in "YYYY-MM" format, such as 2023-01.
+        r"""<p>Inquiry month, in the format of YYYY-MM, such as 2023-01</p>
         :rtype: str
         """
         return self._Month
@@ -4070,9 +4082,7 @@ class DescribeCustomerBillSummaryRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""Billing mode. Valid values:
-`prePay` (Monthly subscription)
-`postPay` (Pay-as-you-go)
+        r"""<p>Billing mode</p><p>Enumeration values:</p><ul><li>prePay: yearly/monthly subscription</li><li>postPay: Pay-As-You-Go resources</li></ul>
         :rtype: str
         """
         return self._PayMode
@@ -4083,32 +4093,7 @@ class DescribeCustomerBillSummaryRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""Transaction type. Valid values:
-`prepay_purchase` (Purchase)
-`prepay_renew` (Renewal)
-`prepay_modify` (Upgrade/Downgrade)
-`prepay_return` (Monthly subscription refund)
-`postpay_deduct` (Pay-as-you-go)
-`postpay_deduct_h` (Hourly settlement)
-`postpay_deduct_d` (Daily settlement)
-`postpay_deduct_m` (Monthly settlement)
-`offline_deduct` (Offline project deduction)
-`online_deduct` (Offline product deduction)
-`recon_deduct` (Adjustment - deduction)
-`recon_increase` (Adjustment - compensation)
-`ripay_purchase` (One-off RI Fee)
-`postpay_deduct_s` (Spot)
-`ri_hour_pay` (Hourly RI fee)
-`prePurchase` (New monthly subscription)
-`preRenew` (Monthly subscription renewal)
-`preUpgrade` (Upgrade/Downgrade)
-`preDowngrade` (Upgrade/Downgrade)
-`svp_hour_pay` (Hourly Savings Plan fee)
-`recon_guarantee` (Minimum spend deduction)
-`pre_purchase` (New monthly subscription)
-`pre_renew` (Monthly subscription renewal)
-`pre_upgrade` (Upgrade/Downgrade)
-`pre_downgrade` (Upgrade/Downgrade)
+        r"""<p>Transaction type</p><p>Enumeration values:</p><ul><li>prepay_purchase: Purchase</li><li>prepay_renew: Renewal</li><li>prepay_modify: Upgrade/Downgrade</li><li>prepay_return: yearly/monthly subscription refund</li><li>postpay_deduct: Pay-as-you-go</li><li>postpay_deduct_h: Hourly settlement</li><li>postpay_deduct_d: Daily settlement</li><li>postpay_deduct_m: Monthly settlement</li><li>offline_deduct: Offline project deduction</li><li>online_deduct: Offline product deduction</li><li>recon_deduct: Adjustment - deduction</li><li>ripay_purchase: One-off RI Fee</li><li>postpay_deduct_s: Spot</li><li>ri_hour_pay: Hourly RI fee</li><li>prePurchase: New yearly/monthly subscription</li><li>preRenew: yearly/monthly subscription renewal</li><li>preUpgrade: Upgrade/Downgrade</li></ul>
         :rtype: str
         """
         return self._ActionType
@@ -4119,10 +4104,7 @@ class DescribeCustomerBillSummaryRequest(AbstractModel):
 
     @property
     def IsConfirmed(self):
-        r"""Payment status
-`0`: N/A
-`1`: Paid
-`2`: Unpaid
+        r"""<p>Payment Status<br>0: case-insensitive<br>1: paid<br>2: unpaid</p>
         :rtype: str
         """
         return self._IsConfirmed
@@ -4155,7 +4137,7 @@ class DescribeCustomerBillSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCost: Total amount
+        :param _TotalCost: <p>Total amount</p>
         :type TotalCost: float
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4165,7 +4147,7 @@ class DescribeCustomerBillSummaryResponse(AbstractModel):
 
     @property
     def TotalCost(self):
-        r"""Total amount
+        r"""<p>Total amount</p>
         :rtype: float
         """
         return self._TotalCost

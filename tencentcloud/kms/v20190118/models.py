@@ -6561,29 +6561,29 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Meaning matches the Offset in SQL queries, indicates the retrieval starts from the Offset-th element in a sequentially arranged array, defaults to 0.
+        :param _Offset: <p>It means the same as the Offset in SQL queries, indicating that this retrieval starts from the Offset-th element of the sequentially arranged array. It defaults to 0.</p>
         :type Offset: int
-        :param _Limit: Specifies the maximum number of elements to retrieve, same as the Limit in SQL queries. default value is 10. maximum value is 200.
+        :param _Limit: <p>The meaning is consistent with the Limit in SQL queries, indicating that this time up to Limit elements can be retrieved. The default value is 10, and the maximum value is 200.</p>
         :type Limit: int
-        :param _Role: Filter by creator role. default 0 means data keys created by the user, 1 means data keys automatically created by authorized cloud services.
+        :param _Role: <p>Filter by creator role. Default value 0 indicates data keys created by the user, and 1 indicates data keys automatically created by authorized other Cloud services.</p>
         :type Role: int
-        :param _OrderType: Sorts according to the creation time of DataKey. 0 indicates descending sort. 1 indicates ascending sort.
+        :param _OrderType: <p>Sort by DataKey creation time. 0 indicates sort in descending order, and 1 indicates sort in ascending order.</p>
         :type OrderType: int
-        :param _KeyState: Filter based on DataKey state. 0 means all datakeys, 1 means querying only Enabled datakeys, 2 means querying only Disabled datakeys, 3 means querying datakeys in PendingDelete state (keys in scheduled deletion status).
+        :param _KeyState: <p>Filter by DataKey status. 0 indicates all DataKeys, 1 indicates querying only Enabled DataKeys, 2 indicates querying only Disabled DataKeys, and 3 indicates querying DataKeys in PendingDelete state (keys in scheduled deletion status).</p>
         :type KeyState: int
-        :param _SearchKeyAlias: Performs a fuzzy match query based on DataKeyId or DataKeyName.
+        :param _SearchKeyAlias: <p>Perform a fuzzy match query by DataKeyId or DataKeyName</p>
         :type SearchKeyAlias: str
-        :param _Origin: Filters data keys by DateKey type. "TENCENT_KMS" filters data keys with key material created by KMS. "EXTERNAL" filters EXTERNAL type data keys requiring user-imported key material. "ALL" or leave unset queries both types. case-sensitive.
+        :param _Origin: <p>Filter by DateKey type. "TENCENT_KMS" filters data keys with key material created by KMS. "EXTERNAL" filters EXTERNAL type data keys with key material to import. "ALL" or leave unset queries both types. Case-sensitive.</p>
         :type Origin: str
-        :param _HsmClusterId: HSM cluster ID corresponding to KMS advanced edition.
+        :param _HsmClusterId: <p>HSM Cluster ID corresponding to the KMS advanced edition. When specifying a cluster ID, query the key list within the specified cluster. When specifying default, query the key list of the public cloud shared version. If empty, query all key lists by default, including cluster and non-cluster.</p>
         :type HsmClusterId: str
-        :param _KeyId: Specifies the globally unique identifier of the root key.
+        :param _KeyId: <p>Root key globally unique identifier</p>
         :type KeyId: str
-        :param _DataKeyLen: Length of the data key.
+        :param _DataKeyLen: <p>Length of the data key</p>
         :type DataKeyLen: int
-        :param _TagFilters: Tag filtering conditions.
+        :param _TagFilters: <p>Tag filtering condition</p>
         :type TagFilters: list of TagFilter
-        :param _MemberAccounts: Array of member account information.
+        :param _MemberAccounts: <p>Member account information array</p>
         :type MemberAccounts: list of MemberAccount
         """
         self._Offset = None
@@ -6601,7 +6601,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Meaning matches the Offset in SQL queries, indicates the retrieval starts from the Offset-th element in a sequentially arranged array, defaults to 0.
+        r"""<p>It means the same as the Offset in SQL queries, indicating that this retrieval starts from the Offset-th element of the sequentially arranged array. It defaults to 0.</p>
         :rtype: int
         """
         return self._Offset
@@ -6612,7 +6612,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Specifies the maximum number of elements to retrieve, same as the Limit in SQL queries. default value is 10. maximum value is 200.
+        r"""<p>The meaning is consistent with the Limit in SQL queries, indicating that this time up to Limit elements can be retrieved. The default value is 10, and the maximum value is 200.</p>
         :rtype: int
         """
         return self._Limit
@@ -6623,7 +6623,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def Role(self):
-        r"""Filter by creator role. default 0 means data keys created by the user, 1 means data keys automatically created by authorized cloud services.
+        r"""<p>Filter by creator role. Default value 0 indicates data keys created by the user, and 1 indicates data keys automatically created by authorized other Cloud services.</p>
         :rtype: int
         """
         return self._Role
@@ -6634,7 +6634,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""Sorts according to the creation time of DataKey. 0 indicates descending sort. 1 indicates ascending sort.
+        r"""<p>Sort by DataKey creation time. 0 indicates sort in descending order, and 1 indicates sort in ascending order.</p>
         :rtype: int
         """
         return self._OrderType
@@ -6645,7 +6645,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def KeyState(self):
-        r"""Filter based on DataKey state. 0 means all datakeys, 1 means querying only Enabled datakeys, 2 means querying only Disabled datakeys, 3 means querying datakeys in PendingDelete state (keys in scheduled deletion status).
+        r"""<p>Filter by DataKey status. 0 indicates all DataKeys, 1 indicates querying only Enabled DataKeys, 2 indicates querying only Disabled DataKeys, and 3 indicates querying DataKeys in PendingDelete state (keys in scheduled deletion status).</p>
         :rtype: int
         """
         return self._KeyState
@@ -6656,7 +6656,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def SearchKeyAlias(self):
-        r"""Performs a fuzzy match query based on DataKeyId or DataKeyName.
+        r"""<p>Perform a fuzzy match query by DataKeyId or DataKeyName</p>
         :rtype: str
         """
         return self._SearchKeyAlias
@@ -6667,7 +6667,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def Origin(self):
-        r"""Filters data keys by DateKey type. "TENCENT_KMS" filters data keys with key material created by KMS. "EXTERNAL" filters EXTERNAL type data keys requiring user-imported key material. "ALL" or leave unset queries both types. case-sensitive.
+        r"""<p>Filter by DateKey type. "TENCENT_KMS" filters data keys with key material created by KMS. "EXTERNAL" filters EXTERNAL type data keys with key material to import. "ALL" or leave unset queries both types. Case-sensitive.</p>
         :rtype: str
         """
         return self._Origin
@@ -6678,7 +6678,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def HsmClusterId(self):
-        r"""HSM cluster ID corresponding to KMS advanced edition.
+        r"""<p>HSM Cluster ID corresponding to the KMS advanced edition. When specifying a cluster ID, query the key list within the specified cluster. When specifying default, query the key list of the public cloud shared version. If empty, query all key lists by default, including cluster and non-cluster.</p>
         :rtype: str
         """
         return self._HsmClusterId
@@ -6689,7 +6689,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""Specifies the globally unique identifier of the root key.
+        r"""<p>Root key globally unique identifier</p>
         :rtype: str
         """
         return self._KeyId
@@ -6700,7 +6700,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def DataKeyLen(self):
-        r"""Length of the data key.
+        r"""<p>Length of the data key</p>
         :rtype: int
         """
         return self._DataKeyLen
@@ -6711,7 +6711,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""Tag filtering conditions.
+        r"""<p>Tag filtering condition</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -6722,7 +6722,7 @@ class ListDataKeyDetailRequest(AbstractModel):
 
     @property
     def MemberAccounts(self):
-        r"""Array of member account information.
+        r"""<p>Member account information array</p>
         :rtype: list of MemberAccount
         """
         return self._MemberAccounts
@@ -6772,9 +6772,9 @@ class ListDataKeyDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataKeyMetadatas: Returns the attribute information list.
+        :param _DataKeyMetadatas: <p>Returned attribute information list.</p>
         :type DataKeyMetadatas: list of DataKeyMetadata
-        :param _TotalCount: Total number of datakeys.
+        :param _TotalCount: <p>Total number of DataKeys</p>
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6785,7 +6785,7 @@ class ListDataKeyDetailResponse(AbstractModel):
 
     @property
     def DataKeyMetadatas(self):
-        r"""Returns the attribute information list.
+        r"""<p>Returned attribute information list.</p>
         :rtype: list of DataKeyMetadata
         """
         return self._DataKeyMetadatas
@@ -6796,7 +6796,7 @@ class ListDataKeyDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of datakeys.
+        r"""<p>Total number of DataKeys</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6979,27 +6979,27 @@ class ListKeyDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.
+        :param _Offset: <p>It means the same as the Offset in SQL queries, indicating that this retrieval starts from the Offset-th element of the sequentially arranged array. It defaults to 0.</p>
         :type Offset: int
-        :param _Limit: This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.
+        :param _Limit: <p>The meaning is consistent with the Limit in SQL queries, indicating that this time up to Limit elements can be retrieved. The default value is 10, and the maximum value is 200.</p>
         :type Limit: int
-        :param _Role: Filters by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service.
+        :param _Role: <p>Filter by creator role. Default value 0 indicates CMKs created by the user, and 1 indicates CMKs automatically created by authorized other Cloud services.</p>
         :type Role: int
-        :param _OrderType: Sorts by CMK creation time. 0: descending; 1: ascending
+        :param _OrderType: <p>Sort by CMK creation time. 0 indicates sort in descending order, and 1 indicates sort in ascending order.</p>
         :type OrderType: int
-        :param _KeyState: Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.
+        :param _KeyState: <p>Filter by CMK status. 0 indicates all CMKs, 1 indicates querying only Enabled CMKs, 2 indicates querying only Disabled CMKs, 3 indicates querying CMKs in PendingDelete state (keys in scheduled deletion status), 4 indicates querying CMKs in PendingImport state, and 5 indicates querying CMKs in Archived state.</p>
         :type KeyState: int
-        :param _SearchKeyAlias: Performs a fuzzy query by `KeyId` or `Alias`
+        :param _SearchKeyAlias: <p>Perform a fuzzy match query by KeyId or Alias</p>
         :type SearchKeyAlias: str
-        :param _Origin: Filters by CMK type. "TENCENT_KMS" indicates to filter CMKs whose key materials are created by KMS; "EXTERNAL" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; "ALL" or empty indicates to filter CMKs of both types. This value is case-sensitive.
+        :param _Origin: <p>Filter by CMK type. "TENCENT_KMS" means to filter CMKs whose key material is created by KMS. "EXTERNAL" means to filter EXTERNAL type CMKs whose key material needs user import. "ALL" or unset means to query both types. Case-sensitive.</p>
         :type Origin: str
-        :param _KeyUsage: Filters by the `KeyUsage` field value. Valid values: `ALL` (all CMKs), `ENCRYPT_DECRYPT` (used when this field is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.
+        :param _KeyUsage: <p>Filter by the KeyUsage of the CMK. ALL indicates filtering all. The parameters used can be: ALL, ENCRYPT_DECRYPT, ASYMMETRIC_DECRYPT_RSA_2048, ASYMMETRIC_DECRYPT_SM2, ASYMMETRIC_SIGN_VERIFY_SM2, ASYMMETRIC_SIGN_VERIFY_RSA_2048, or ASYMMETRIC_SIGN_VERIFY_ECC. If empty, it filters the ENCRYPT_DECRYPT type by default.</p>
         :type KeyUsage: str
-        :param _TagFilters: Tag filter condition
+        :param _TagFilters: <p>Tag filtering condition</p>
         :type TagFilters: list of TagFilter
-        :param _HsmClusterId: ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        :param _HsmClusterId: <p>HSM Cluster ID corresponding to the KMS advanced edition (only applicable to KMS exclusive/managed service instances). When specifying a cluster ID, query the key list within the specified cluster. When specifying default, query the key list of the public cloud shared version. If empty, query all key lists by default, including cluster and non-cluster.</p>
         :type HsmClusterId: str
-        :param _MemberAccounts: Array of trusted service member account information.
+        :param _MemberAccounts: <p>Array of member account information of the trusted service</p>
         :type MemberAccounts: list of MemberAccount
         """
         self._Offset = None
@@ -7016,7 +7016,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.
+        r"""<p>It means the same as the Offset in SQL queries, indicating that this retrieval starts from the Offset-th element of the sequentially arranged array. It defaults to 0.</p>
         :rtype: int
         """
         return self._Offset
@@ -7027,7 +7027,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.
+        r"""<p>The meaning is consistent with the Limit in SQL queries, indicating that this time up to Limit elements can be retrieved. The default value is 10, and the maximum value is 200.</p>
         :rtype: int
         """
         return self._Limit
@@ -7038,7 +7038,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Role(self):
-        r"""Filters by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service.
+        r"""<p>Filter by creator role. Default value 0 indicates CMKs created by the user, and 1 indicates CMKs automatically created by authorized other Cloud services.</p>
         :rtype: int
         """
         return self._Role
@@ -7049,7 +7049,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""Sorts by CMK creation time. 0: descending; 1: ascending
+        r"""<p>Sort by CMK creation time. 0 indicates sort in descending order, and 1 indicates sort in ascending order.</p>
         :rtype: int
         """
         return self._OrderType
@@ -7060,7 +7060,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def KeyState(self):
-        r"""Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.
+        r"""<p>Filter by CMK status. 0 indicates all CMKs, 1 indicates querying only Enabled CMKs, 2 indicates querying only Disabled CMKs, 3 indicates querying CMKs in PendingDelete state (keys in scheduled deletion status), 4 indicates querying CMKs in PendingImport state, and 5 indicates querying CMKs in Archived state.</p>
         :rtype: int
         """
         return self._KeyState
@@ -7071,7 +7071,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def SearchKeyAlias(self):
-        r"""Performs a fuzzy query by `KeyId` or `Alias`
+        r"""<p>Perform a fuzzy match query by KeyId or Alias</p>
         :rtype: str
         """
         return self._SearchKeyAlias
@@ -7082,7 +7082,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Origin(self):
-        r"""Filters by CMK type. "TENCENT_KMS" indicates to filter CMKs whose key materials are created by KMS; "EXTERNAL" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; "ALL" or empty indicates to filter CMKs of both types. This value is case-sensitive.
+        r"""<p>Filter by CMK type. "TENCENT_KMS" means to filter CMKs whose key material is created by KMS. "EXTERNAL" means to filter EXTERNAL type CMKs whose key material needs user import. "ALL" or unset means to query both types. Case-sensitive.</p>
         :rtype: str
         """
         return self._Origin
@@ -7093,7 +7093,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def KeyUsage(self):
-        r"""Filters by the `KeyUsage` field value. Valid values: `ALL` (all CMKs), `ENCRYPT_DECRYPT` (used when this field is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.
+        r"""<p>Filter by the KeyUsage of the CMK. ALL indicates filtering all. The parameters used can be: ALL, ENCRYPT_DECRYPT, ASYMMETRIC_DECRYPT_RSA_2048, ASYMMETRIC_DECRYPT_SM2, ASYMMETRIC_SIGN_VERIFY_SM2, ASYMMETRIC_SIGN_VERIFY_RSA_2048, or ASYMMETRIC_SIGN_VERIFY_ECC. If empty, it filters the ENCRYPT_DECRYPT type by default.</p>
         :rtype: str
         """
         return self._KeyUsage
@@ -7104,7 +7104,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""Tag filter condition
+        r"""<p>Tag filtering condition</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -7115,7 +7115,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def HsmClusterId(self):
-        r"""ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        r"""<p>HSM Cluster ID corresponding to the KMS advanced edition (only applicable to KMS exclusive/managed service instances). When specifying a cluster ID, query the key list within the specified cluster. When specifying default, query the key list of the public cloud shared version. If empty, query all key lists by default, including cluster and non-cluster.</p>
         :rtype: str
         """
         return self._HsmClusterId
@@ -7126,7 +7126,7 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def MemberAccounts(self):
-        r"""Array of trusted service member account information.
+        r"""<p>Array of member account information of the trusted service</p>
         :rtype: list of MemberAccount
         """
         return self._MemberAccounts
@@ -7175,9 +7175,9 @@ class ListKeyDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of CMKs
+        :param _TotalCount: <p>Total number of CMKs</p>
         :type TotalCount: int
-        :param _KeyMetadatas: Specifies the returned attribute information list.
+        :param _KeyMetadatas: <p>Returned attribute information list.</p>
         :type KeyMetadatas: list of KeyMetadata
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7188,7 +7188,7 @@ class ListKeyDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of CMKs
+        r"""<p>Total number of CMKs</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7199,7 +7199,7 @@ class ListKeyDetailResponse(AbstractModel):
 
     @property
     def KeyMetadatas(self):
-        r"""Specifies the returned attribute information list.
+        r"""<p>Returned attribute information list.</p>
         :rtype: list of KeyMetadata
         """
         return self._KeyMetadatas
