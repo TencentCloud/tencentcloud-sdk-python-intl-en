@@ -497,6 +497,41 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUsageRankList(self, request):
+        r"""Query the usage ranking list.
+
+        Metric family (MetricType)
+        - `tokens` (default): Token usage statistics. Supports Dimension = apikey / endpoint / model.
+        Metrics returned: TotalToken (total) / InputTotalToken (input) / OutputTotalToken (output) / CacheTotalToken (read cache).
+        - `search`: [To be launched] Online search usage statistics. Supports Dimension = apikey / endpoint / model.
+        Returns metrics: SearchRequestCount (search request count)/SearchCount (search engine call count).
+
+        content
+        -The MetricType field is used to switch metric families. The response echoes back MetricType and MetricKeys.
+        -TotalStats: The aggregated value of all objects over the entire time window.
+        -PageStats: The aggregated value of objects on the current page.
+        - TopList: A list of objects sorted by MetricKeys[0] in descending order, including the aggregated value over the entire period and point-in-time curves.
+
+        :param request: Request instance for DescribeUsageRankList.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeUsageRankListRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeUsageRankListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsageRankList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUsageRankListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyApiKeyInfo(self, request):
         r"""Refresh API key information.
 

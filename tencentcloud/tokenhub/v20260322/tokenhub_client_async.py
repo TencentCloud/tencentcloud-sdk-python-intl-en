@@ -401,6 +401,36 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeUsageRankList(
+            self,
+            request: models.DescribeUsageRankListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUsageRankListResponse:
+        """
+        Query the usage ranking list.
+
+        Metric family (MetricType)
+        - `tokens` (default): Token usage statistics. Supports Dimension = apikey / endpoint / model.
+        Metrics returned: TotalToken (total) / InputTotalToken (input) / OutputTotalToken (output) / CacheTotalToken (read cache).
+        - `search`: [To be launched] Online search usage statistics. Supports Dimension = apikey / endpoint / model.
+        Returns metrics: SearchRequestCount (search request count)/SearchCount (search engine call count).
+
+        content
+        -The MetricType field is used to switch metric families. The response echoes back MetricType and MetricKeys.
+        -TotalStats: The aggregated value of all objects over the entire time window.
+        -PageStats: The aggregated value of objects on the current page.
+        - TopList: A list of objects sorted by MetricKeys[0] in descending order, including the aggregated value over the entire period and point-in-time curves.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUsageRankList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUsageRankListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyApiKeyInfo(
             self,
             request: models.ModifyApiKeyInfoRequest,

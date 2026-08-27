@@ -3160,6 +3160,394 @@ class DescribeTokenPlanResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUsageRankListRequest(AbstractModel):
+    r"""DescribeUsageRankList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dimension: <p>Statistical dimension. Values: apikey (statistics by APIKey), endpoint (statistics by access point), model (statistics by model).</p>
+        :type Dimension: str
+        :param _StartTime: <p>Start time (inclusive interval), in RFC3339 format.</p>
+        :type StartTime: str
+        :param _EndTime: <p>End time (open interval) in RFC3339 format. The maximum span from StartTime is 90 days.</p>
+        :type EndTime: str
+        :param _MetricType: <p>Metric family switch field.</p><ul><li>tokens (default): Token consumption chart (statistics=sum), supports Dimension = apikey/endpoint/model</li><li>search [to be launched]: Online search call count (statistics=sum), only supports Dimension = model</li><li>Other values return InvalidParameter.</li></ul><p>Enum values:</p><ul><li>tokens: tokens</li></ul>
+        :type MetricType: str
+        :param _Target: <p>Dimension filtering value. An empty string indicates querying all objects; a non-empty string indicates querying only the specified single object (for example, a designated APIKey ID). Maximum 256 characters.</p>
+        :type Target: str
+        :param _Period: <p>Statistical granularity (seconds). Value: 60, 300, 3600, 86400. Must not be less than the lower limit corresponding to the span: span ≤ 1 day → 60; 1–5 days → 300; 5–10 days → 3600; &gt; 10 days → 86400. Used only when ShowAll=false.</p>
+        :type Period: int
+        :param _Offset: <p>Pagination starting point, starting from 0, default 0. Ignore timing when ShowAll=true. Page size fixed as 10.</p>
+        :type Offset: int
+        :param _ShowAll: <p>Whether to return full result.</p><ul><li>false (default): Return TopList in pages by Offset (10 items per page). Each object contains <br>Series time series points for drawing curves.</li><li>true: Ignore Offset and return the full object list without Series (CSV export scenario).</li></ul>
+        :type ShowAll: bool
+        """
+        self._Dimension = None
+        self._StartTime = None
+        self._EndTime = None
+        self._MetricType = None
+        self._Target = None
+        self._Period = None
+        self._Offset = None
+        self._ShowAll = None
+
+    @property
+    def Dimension(self):
+        r"""<p>Statistical dimension. Values: apikey (statistics by APIKey), endpoint (statistics by access point), model (statistics by model).</p>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def StartTime(self):
+        r"""<p>Start time (inclusive interval), in RFC3339 format.</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>End time (open interval) in RFC3339 format. The maximum span from StartTime is 90 days.</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MetricType(self):
+        r"""<p>Metric family switch field.</p><ul><li>tokens (default): Token consumption chart (statistics=sum), supports Dimension = apikey/endpoint/model</li><li>search [to be launched]: Online search call count (statistics=sum), only supports Dimension = model</li><li>Other values return InvalidParameter.</li></ul><p>Enum values:</p><ul><li>tokens: tokens</li></ul>
+        :rtype: str
+        """
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def Target(self):
+        r"""<p>Dimension filtering value. An empty string indicates querying all objects; a non-empty string indicates querying only the specified single object (for example, a designated APIKey ID). Maximum 256 characters.</p>
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Period(self):
+        r"""<p>Statistical granularity (seconds). Value: 60, 300, 3600, 86400. Must not be less than the lower limit corresponding to the span: span ≤ 1 day → 60; 1–5 days → 300; 5–10 days → 3600; &gt; 10 days → 86400. Used only when ShowAll=false.</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Offset(self):
+        r"""<p>Pagination starting point, starting from 0, default 0. Ignore timing when ShowAll=true. Page size fixed as 10.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ShowAll(self):
+        r"""<p>Whether to return full result.</p><ul><li>false (default): Return TopList in pages by Offset (10 items per page). Each object contains <br>Series time series points for drawing curves.</li><li>true: Ignore Offset and return the full object list without Series (CSV export scenario).</li></ul>
+        :rtype: bool
+        """
+        return self._ShowAll
+
+    @ShowAll.setter
+    def ShowAll(self, ShowAll):
+        self._ShowAll = ShowAll
+
+
+    def _deserialize(self, params):
+        self._Dimension = params.get("Dimension")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._MetricType = params.get("MetricType")
+        self._Target = params.get("Target")
+        self._Period = params.get("Period")
+        self._Offset = params.get("Offset")
+        self._ShowAll = params.get("ShowAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUsageRankListResponse(AbstractModel):
+    r"""DescribeUsageRankList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dimension: <p>Statistical dimension of the backfill request.</p>
+        :type Dimension: str
+        :param _MetricType: <p>Metrics family of the backfill request: tokens / search.</p>
+        :type MetricType: str
+        :param _MetricKeys: <p>List of metric keys actually included in Stats / Series / PageStats / TotalStats in this response, case-sensitive by MetricType: tokens=[Total,Input,Output,Cache], search=[SearchRequestCount,SearchCount]</p>
+        :type MetricKeys: list of str
+        :param _ViewName: <p>View (data source)</p>
+        :type ViewName: str
+        :param _Period: <p>Statistical granularity (in seconds) of the backfill request. It is 0 when ShowAll=true.</p>
+        :type Period: int
+        :param _StartTime: <p>Backfill the start time of the request.</p>
+        :type StartTime: str
+        :param _EndTime: <p>End time of the backfill request.</p>
+        :type EndTime: str
+        :param _Total: <p>Total number of objects.</p>
+        :type Total: int
+        :param _Offset: <p>Backfill the pagination starting point of the request. It is 0 when ShowAll=true.</p>
+        :type Offset: int
+        :param _Limit: <p>Page size. It is always 10. When ShowAll=true, it is Total.</p>
+        :type Limit: int
+        :param _Timestamps: <p>Timestamp sequence corresponding to the Series array (Unix seconds). Empty array when ShowAll=true.</p>
+        :type Timestamps: list of int
+        :param _TopList: <p>Object ranking list, sorted by <code>MetricKeys[0]</code> in descending order. When ShowAll=false, it is the 10 objects on the current page (including Series); when ShowAll=true, it is all objects (excluding Series, used for CSV export).</p>
+        :type TopList: list of UsageRankItem
+        :param _PageStats: <p>Pagination statistics result</p>
+        :type PageStats: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
+        :param _TotalStats: <p>Total statistics result</p>
+        :type TotalStats: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Dimension = None
+        self._MetricType = None
+        self._MetricKeys = None
+        self._ViewName = None
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Total = None
+        self._Offset = None
+        self._Limit = None
+        self._Timestamps = None
+        self._TopList = None
+        self._PageStats = None
+        self._TotalStats = None
+        self._RequestId = None
+
+    @property
+    def Dimension(self):
+        r"""<p>Statistical dimension of the backfill request.</p>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def MetricType(self):
+        r"""<p>Metrics family of the backfill request: tokens / search.</p>
+        :rtype: str
+        """
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def MetricKeys(self):
+        r"""<p>List of metric keys actually included in Stats / Series / PageStats / TotalStats in this response, case-sensitive by MetricType: tokens=[Total,Input,Output,Cache], search=[SearchRequestCount,SearchCount]</p>
+        :rtype: list of str
+        """
+        return self._MetricKeys
+
+    @MetricKeys.setter
+    def MetricKeys(self, MetricKeys):
+        self._MetricKeys = MetricKeys
+
+    @property
+    def ViewName(self):
+        r"""<p>View (data source)</p>
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def Period(self):
+        r"""<p>Statistical granularity (in seconds) of the backfill request. It is 0 when ShowAll=true.</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        r"""<p>Backfill the start time of the request.</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>End time of the backfill request.</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Total(self):
+        r"""<p>Total number of objects.</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Offset(self):
+        r"""<p>Backfill the pagination starting point of the request. It is 0 when ShowAll=true.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>Page size. It is always 10. When ShowAll=true, it is Total.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Timestamps(self):
+        r"""<p>Timestamp sequence corresponding to the Series array (Unix seconds). Empty array when ShowAll=true.</p>
+        :rtype: list of int
+        """
+        return self._Timestamps
+
+    @Timestamps.setter
+    def Timestamps(self, Timestamps):
+        self._Timestamps = Timestamps
+
+    @property
+    def TopList(self):
+        r"""<p>Object ranking list, sorted by <code>MetricKeys[0]</code> in descending order. When ShowAll=false, it is the 10 objects on the current page (including Series); when ShowAll=true, it is all objects (excluding Series, used for CSV export).</p>
+        :rtype: list of UsageRankItem
+        """
+        return self._TopList
+
+    @TopList.setter
+    def TopList(self, TopList):
+        self._TopList = TopList
+
+    @property
+    def PageStats(self):
+        r"""<p>Pagination statistics result</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
+        """
+        return self._PageStats
+
+    @PageStats.setter
+    def PageStats(self, PageStats):
+        self._PageStats = PageStats
+
+    @property
+    def TotalStats(self):
+        r"""<p>Total statistics result</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
+        """
+        return self._TotalStats
+
+    @TotalStats.setter
+    def TotalStats(self, TotalStats):
+        self._TotalStats = TotalStats
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Dimension = params.get("Dimension")
+        self._MetricType = params.get("MetricType")
+        self._MetricKeys = params.get("MetricKeys")
+        self._ViewName = params.get("ViewName")
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Total = params.get("Total")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Timestamps = params.get("Timestamps")
+        if params.get("TopList") is not None:
+            self._TopList = []
+            for item in params.get("TopList"):
+                obj = UsageRankItem()
+                obj._deserialize(item)
+                self._TopList.append(obj)
+        if params.get("PageStats") is not None:
+            self._PageStats = UsageStats()
+            self._PageStats._deserialize(params.get("PageStats"))
+        if params.get("TotalStats") is not None:
+            self._TotalStats = UsageStats()
+            self._TotalStats._deserialize(params.get("TotalStats"))
+        self._RequestId = params.get("RequestId")
+
+
 class GlossaryEntryInput(AbstractModel):
     r"""Create terminology entry
 
@@ -5645,3 +6033,327 @@ class UpgradeTokenPlanTeamOrderResponse(AbstractModel):
     def _deserialize(self, params):
         self._BigOrderId = params.get("BigOrderId")
         self._RequestId = params.get("RequestId")
+
+
+class UsageRankItem(AbstractModel):
+    r"""Usage item of an individual object in the ranking list, including the object identifier, statistical values within a time period (Stats), and a list of time series points within a time period (Series, returned only when ShowAll=false).
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rank: Global ranking (starting from 1). In pagination scenarios, this is still the position in the full sorting order, not the serial number within the page.
+        :type Rank: int
+        :param _Key: Object identifier. The apikey dimension is the APIKey ID; the endpoint dimension is the access point; the model dimension is the model name.
+        :type Key: str
+        :param _Name: Display name of the object. In the apikey dimension, return the APIKey name (deleted APIKeys retain their original names);
+Key whose endpoint and model dimensions are equal.
+        :type Name: str
+        :param _Stats: Statistical value within a time period
+        :type Stats: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
+        :param _Series: List of time series points within a time period
+        :type Series: :class:`tencentcloud.tokenhub.v20260322.models.UsageSeries`
+        """
+        self._Rank = None
+        self._Key = None
+        self._Name = None
+        self._Stats = None
+        self._Series = None
+
+    @property
+    def Rank(self):
+        r"""Global ranking (starting from 1). In pagination scenarios, this is still the position in the full sorting order, not the serial number within the page.
+        :rtype: int
+        """
+        return self._Rank
+
+    @Rank.setter
+    def Rank(self, Rank):
+        self._Rank = Rank
+
+    @property
+    def Key(self):
+        r"""Object identifier. The apikey dimension is the APIKey ID; the endpoint dimension is the access point; the model dimension is the model name.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        r"""Display name of the object. In the apikey dimension, return the APIKey name (deleted APIKeys retain their original names);
+Key whose endpoint and model dimensions are equal.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Stats(self):
+        r"""Statistical value within a time period
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
+        """
+        return self._Stats
+
+    @Stats.setter
+    def Stats(self, Stats):
+        self._Stats = Stats
+
+    @property
+    def Series(self):
+        r"""List of time series points within a time period
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.UsageSeries`
+        """
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+
+    def _deserialize(self, params):
+        self._Rank = params.get("Rank")
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
+        if params.get("Stats") is not None:
+            self._Stats = UsageStats()
+            self._Stats._deserialize(params.get("Stats"))
+        if params.get("Series") is not None:
+            self._Series = UsageSeries()
+            self._Series._deserialize(params.get("Series"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageSeries(AbstractModel):
+    r"""List of time series points within the usage time period (indexed by metric key). It is a JSON array in string form. The array length matches the response Timestamps, and null is used where there is no data point. The specific keys included are determined by the response MetricKeys.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalToken: <p>Amount of total tokens used within a time period in JSON string form, for example, <code>&quot;[12,null,15]&quot;</code>.</p>
+        :type TotalToken: str
+        :param _InputTotalToken: <p>Amount of input tokens used within a time period in JSON string form, for example, <code>&quot;[7,null,9]&quot;</code>.</p>
+        :type InputTotalToken: str
+        :param _OutputTotalToken: <p>Amount of output tokens used within a time period in JSON string form, for example, <code>&quot;[5,null,6]&quot;</code>.</p>
+        :type OutputTotalToken: str
+        :param _CacheTotalToken: <p>Read cache token count usage of the tokens family in JSON string form within a time period, for example, <code>&quot;[5,null,6]&quot;</code>.</p>
+        :type CacheTotalToken: str
+        :param _SearchRequestCount: <p>Usage of search requests in JSON string form within a time period, for example, <code>&quot;[5,null,6]&quot;</code>.</p>
+        :type SearchRequestCount: str
+        :param _SearchCount: <p>Usage of search engine call count in JSON string form within a time period, for example, <code>&quot;[5,null,6]&quot;</code>.</p>
+        :type SearchCount: str
+        """
+        self._TotalToken = None
+        self._InputTotalToken = None
+        self._OutputTotalToken = None
+        self._CacheTotalToken = None
+        self._SearchRequestCount = None
+        self._SearchCount = None
+
+    @property
+    def TotalToken(self):
+        r"""<p>Amount of total tokens used within a time period in JSON string form, for example, <code>&quot;[12,null,15]&quot;</code>.</p>
+        :rtype: str
+        """
+        return self._TotalToken
+
+    @TotalToken.setter
+    def TotalToken(self, TotalToken):
+        self._TotalToken = TotalToken
+
+    @property
+    def InputTotalToken(self):
+        r"""<p>Amount of input tokens used within a time period in JSON string form, for example, <code>&quot;[7,null,9]&quot;</code>.</p>
+        :rtype: str
+        """
+        return self._InputTotalToken
+
+    @InputTotalToken.setter
+    def InputTotalToken(self, InputTotalToken):
+        self._InputTotalToken = InputTotalToken
+
+    @property
+    def OutputTotalToken(self):
+        r"""<p>Amount of output tokens used within a time period in JSON string form, for example, <code>&quot;[5,null,6]&quot;</code>.</p>
+        :rtype: str
+        """
+        return self._OutputTotalToken
+
+    @OutputTotalToken.setter
+    def OutputTotalToken(self, OutputTotalToken):
+        self._OutputTotalToken = OutputTotalToken
+
+    @property
+    def CacheTotalToken(self):
+        r"""<p>Read cache token count usage of the tokens family in JSON string form within a time period, for example, <code>&quot;[5,null,6]&quot;</code>.</p>
+        :rtype: str
+        """
+        return self._CacheTotalToken
+
+    @CacheTotalToken.setter
+    def CacheTotalToken(self, CacheTotalToken):
+        self._CacheTotalToken = CacheTotalToken
+
+    @property
+    def SearchRequestCount(self):
+        r"""<p>Usage of search requests in JSON string form within a time period, for example, <code>&quot;[5,null,6]&quot;</code>.</p>
+        :rtype: str
+        """
+        return self._SearchRequestCount
+
+    @SearchRequestCount.setter
+    def SearchRequestCount(self, SearchRequestCount):
+        self._SearchRequestCount = SearchRequestCount
+
+    @property
+    def SearchCount(self):
+        r"""<p>Usage of search engine call count in JSON string form within a time period, for example, <code>&quot;[5,null,6]&quot;</code>.</p>
+        :rtype: str
+        """
+        return self._SearchCount
+
+    @SearchCount.setter
+    def SearchCount(self, SearchCount):
+        self._SearchCount = SearchCount
+
+
+    def _deserialize(self, params):
+        self._TotalToken = params.get("TotalToken")
+        self._InputTotalToken = params.get("InputTotalToken")
+        self._OutputTotalToken = params.get("OutputTotalToken")
+        self._CacheTotalToken = params.get("CacheTotalToken")
+        self._SearchRequestCount = params.get("SearchRequestCount")
+        self._SearchCount = params.get("SearchCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageStats(AbstractModel):
+    r"""Statistical aggregate values within a time period (indexed by metric key). Declares that both the tokens and search field families are in this schema, with values obtained based on the actual MetricKeys returned. See the top-level `MetricKeys` field in the response.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalToken: <p>Total tokens accumulated within a time period.</p>
+        :type TotalToken: int
+        :param _InputTotalToken: <p>[tokens family] Total input tokens within a time period.</p>
+        :type InputTotalToken: int
+        :param _OutputTotalToken: <p>[tokens family] Total output tokens within a time period.</p>
+        :type OutputTotalToken: int
+        :param _CacheTotalToken: <p>[token family] Cumulative number of tokens read from the cache within a time period (cache hit part)</p>
+        :type CacheTotalToken: int
+        :param _SearchRequestCount: <p>Total online search requests in the [search group]</p>
+        :type SearchRequestCount: int
+        :param _SearchCount: <p>[search family] Total search engine calls</p>
+        :type SearchCount: int
+        """
+        self._TotalToken = None
+        self._InputTotalToken = None
+        self._OutputTotalToken = None
+        self._CacheTotalToken = None
+        self._SearchRequestCount = None
+        self._SearchCount = None
+
+    @property
+    def TotalToken(self):
+        r"""<p>Total tokens accumulated within a time period.</p>
+        :rtype: int
+        """
+        return self._TotalToken
+
+    @TotalToken.setter
+    def TotalToken(self, TotalToken):
+        self._TotalToken = TotalToken
+
+    @property
+    def InputTotalToken(self):
+        r"""<p>[tokens family] Total input tokens within a time period.</p>
+        :rtype: int
+        """
+        return self._InputTotalToken
+
+    @InputTotalToken.setter
+    def InputTotalToken(self, InputTotalToken):
+        self._InputTotalToken = InputTotalToken
+
+    @property
+    def OutputTotalToken(self):
+        r"""<p>[tokens family] Total output tokens within a time period.</p>
+        :rtype: int
+        """
+        return self._OutputTotalToken
+
+    @OutputTotalToken.setter
+    def OutputTotalToken(self, OutputTotalToken):
+        self._OutputTotalToken = OutputTotalToken
+
+    @property
+    def CacheTotalToken(self):
+        r"""<p>[token family] Cumulative number of tokens read from the cache within a time period (cache hit part)</p>
+        :rtype: int
+        """
+        return self._CacheTotalToken
+
+    @CacheTotalToken.setter
+    def CacheTotalToken(self, CacheTotalToken):
+        self._CacheTotalToken = CacheTotalToken
+
+    @property
+    def SearchRequestCount(self):
+        r"""<p>Total online search requests in the [search group]</p>
+        :rtype: int
+        """
+        return self._SearchRequestCount
+
+    @SearchRequestCount.setter
+    def SearchRequestCount(self, SearchRequestCount):
+        self._SearchRequestCount = SearchRequestCount
+
+    @property
+    def SearchCount(self):
+        r"""<p>[search family] Total search engine calls</p>
+        :rtype: int
+        """
+        return self._SearchCount
+
+    @SearchCount.setter
+    def SearchCount(self, SearchCount):
+        self._SearchCount = SearchCount
+
+
+    def _deserialize(self, params):
+        self._TotalToken = params.get("TotalToken")
+        self._InputTotalToken = params.get("InputTotalToken")
+        self._OutputTotalToken = params.get("OutputTotalToken")
+        self._CacheTotalToken = params.get("CacheTotalToken")
+        self._SearchRequestCount = params.get("SearchRequestCount")
+        self._SearchCount = params.get("SearchCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
