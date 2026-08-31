@@ -2430,6 +2430,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIPGroupReferences(self, request):
+        r"""This API is used to query policy configurations that reference a specified IP group.
+
+        :param request: Request instance for DescribeIPGroupReferences.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeIPGroupReferencesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeIPGroupReferencesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIPGroupReferences", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIPGroupReferencesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIPRegion(self, request):
         r"""This API is used to check if the IP is an EdgeOne IP.
 

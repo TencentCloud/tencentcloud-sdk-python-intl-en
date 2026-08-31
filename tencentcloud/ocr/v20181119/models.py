@@ -4697,19 +4697,19 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: Passport ID
+        :param _ID: Parsed passport ID extracted from the MRZ (Machine-Readable Zone) of passport
         :type ID: str
-        :param _Name: Name
+        :param _Name: Parsed full name extracted from the MRZ (Machine-Readable Zone) of passport
         :type Name: str
-        :param _DateOfBirth: Date of birth
+        :param _DateOfBirth: Parsed date of birth extracted from the MRZ (Machine-Readable Zone) of passport
         :type DateOfBirth: str
-        :param _Sex: Gender (F: female, M: male)
+        :param _Sex: Parsed gender extracted from the MRZ (Machine-Readable Zone) of passport
         :type Sex: str
-        :param _DateOfExpiration: Expiration date
+        :param _DateOfExpiration: Parsed expiry date extracted from the MRZ (Machine-Readable Zone) of passport
         :type DateOfExpiration: str
-        :param _IssuingCountry: Issuing country
+        :param _IssuingCountry: Parsed issuing country extracted from the MRZ (Machine-Readable Zone) of passport
         :type IssuingCountry: str
-        :param _Nationality: Nationality code (MRZ field)
+        :param _Nationality: Parsed country-region code extracted from the MRZ (Machine-Readable Zone) of passport
         :type Nationality: str
         :param _Warn: This field is deprecated and will always return an empty array. Usage is not recommended.
         :type Warn: list of int
@@ -4717,17 +4717,15 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type Image: str
         :param _AdvancedInfo: This field is deprecated and will always return "1". Usage is not recommended.
         :type AdvancedInfo: str
-        :param _CodeSet: The first row of the machine-readable zone (MRZ) at the bottom
+        :param _CodeSet: Parsed MRZ line 1 raw sequence extracted from the MRZ (Machine-Readable Zone) of passport
         :type CodeSet: str
-        :param _CodeCrc: The second row of the MRZ at the bottom
+        :param _CodeCrc: Parsed MRZ line 2 raw sequence extracted from the MRZ (Machine-Readable Zone) of passport
         :type CodeCrc: str
-        :param _Surname: The surname.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Surname: Parsed surname extracted from the MRZ (Machine-Readable Zone) of passport
         :type Surname: str
-        :param _GivenName: The given name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _GivenName: Parsed given name extracted from the MRZ (Machine-Readable Zone) of passport
         :type GivenName: str
-        :param _Type: Type (in Machine Readable Zone)
+        :param _Type: Parsed document type extracted from the MRZ (Machine-Readable Zone) of passport
         :type Type: str
         :param _PassportRecognizeInfos: Document content in the visual zone
         :type PassportRecognizeInfos: :class:`tencentcloud.ocr.v20181119.models.PassportRecognizeInfos`
@@ -4736,7 +4734,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 -9101 Alarm for covered certificate
 -9102 Alarm for photocopied certificate
 -9103 Alarm for photographed certificate
--9104 Alarm for tamper certificate
+-9104 Alarm for PS certificate
 -9107 Alarm for reflective certificate
 -9108 Alarm for blurry certificate 
 -9109 This capability is not enabled. Please contact customer support to activate the alert service.
@@ -4771,7 +4769,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ID(self):
-        r"""Passport ID
+        r"""Parsed passport ID extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._ID
@@ -4782,7 +4780,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        r"""Name
+        r"""Parsed full name extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._Name
@@ -4793,7 +4791,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfBirth(self):
-        r"""Date of birth
+        r"""Parsed date of birth extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._DateOfBirth
@@ -4804,7 +4802,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
-        r"""Gender (F: female, M: male)
+        r"""Parsed gender extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._Sex
@@ -4815,7 +4813,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfExpiration(self):
-        r"""Expiration date
+        r"""Parsed expiry date extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._DateOfExpiration
@@ -4826,7 +4824,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuingCountry(self):
-        r"""Issuing country
+        r"""Parsed issuing country extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._IssuingCountry
@@ -4837,7 +4835,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nationality(self):
-        r"""Nationality code (MRZ field)
+        r"""Parsed country-region code extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._Nationality
@@ -4889,7 +4887,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CodeSet(self):
-        r"""The first row of the machine-readable zone (MRZ) at the bottom
+        r"""Parsed MRZ line 1 raw sequence extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._CodeSet
@@ -4900,7 +4898,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CodeCrc(self):
-        r"""The second row of the MRZ at the bottom
+        r"""Parsed MRZ line 2 raw sequence extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._CodeCrc
@@ -4911,8 +4909,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Surname(self):
-        r"""The surname.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parsed surname extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._Surname
@@ -4923,8 +4920,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GivenName(self):
-        r"""The given name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Parsed given name extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._GivenName
@@ -4935,7 +4931,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        r"""Type (in Machine Readable Zone)
+        r"""Parsed document type extracted from the MRZ (Machine-Readable Zone) of passport
         :rtype: str
         """
         return self._Type
@@ -4962,7 +4958,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 -9101 Alarm for covered certificate
 -9102 Alarm for photocopied certificate
 -9103 Alarm for photographed certificate
--9104 Alarm for tamper certificate
+-9104 Alarm for PS certificate
 -9107 Alarm for reflective certificate
 -9108 Alarm for blurry certificate 
 -9109 This capability is not enabled. Please contact customer support to activate the alert service.

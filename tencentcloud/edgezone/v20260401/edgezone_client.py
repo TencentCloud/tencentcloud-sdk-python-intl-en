@@ -50,6 +50,29 @@ class EdgezoneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateEdgeNodeService(self, request):
+        r"""Enable the billing service for edge nodes.
+
+        :param request: Request instance for CreateEdgeNodeService.
+        :type request: :class:`tencentcloud.edgezone.v20260401.models.CreateEdgeNodeServiceRequest`
+        :rtype: :class:`tencentcloud.edgezone.v20260401.models.CreateEdgeNodeServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEdgeNodeService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEdgeNodeServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInstances(self, request):
         r"""This API is used to create a physical machine instance. The system automatically allocates physical machine resources and completes installation. If the user is not in the current availability zone, the system automatically enables billing. It supports concurrent allocation of physical machine resources and async execution of network assignment and installation tasks.
 

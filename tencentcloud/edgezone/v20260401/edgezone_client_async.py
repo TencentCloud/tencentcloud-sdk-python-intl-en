@@ -44,6 +44,24 @@ class EdgezoneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateEdgeNodeService(
+            self,
+            request: models.CreateEdgeNodeServiceRequest,
+            opts: Dict = None,
+    ) -> models.CreateEdgeNodeServiceResponse:
+        """
+        Enable the billing service for edge nodes.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEdgeNodeService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEdgeNodeServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateInstances(
             self,
             request: models.CreateInstancesRequest,

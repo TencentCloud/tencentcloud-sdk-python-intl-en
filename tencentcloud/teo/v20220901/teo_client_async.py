@@ -1914,6 +1914,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeIPGroupReferences(
+            self,
+            request: models.DescribeIPGroupReferencesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIPGroupReferencesResponse:
+        """
+        This API is used to query policy configurations that reference a specified IP group.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIPGroupReferences"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIPGroupReferencesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeIPRegion(
             self,
             request: models.DescribeIPRegionRequest,

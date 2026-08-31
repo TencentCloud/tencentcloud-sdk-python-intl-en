@@ -68,6 +68,9 @@ LIMITEXCEEDED_QUOTAEXCEEDED = 'LimitExceeded.QuotaExceeded'
 # **BGP/OSPF mode**: The user has no IPv4 quota configuration in this availability zone.
 LIMITEXCEEDED_QUOTANOTCONFIGURED = 'LimitExceeded.QuotaNotConfigured'
 
+# Parameters are missing.
+MISSINGPARAMETER = 'MissingParameter'
+
 # The instance still has server binding. Release all physical machines first.
 RESOURCEINUSE_PRIVATEINSTANCEINUSE = 'ResourceInUse.PrivateInstanceInUse'
 
@@ -94,6 +97,9 @@ RESOURCENOTFOUND_PRIVATEINSTANCENOTFOUND = 'ResourceNotFound.PrivateInstanceNotF
 
 # The specified public network instance does not exist
 RESOURCENOTFOUND_PUBLICINSTANCENOTFOUND = 'ResourceNotFound.PublicInstanceNotFound'
+
+# ResourceNotFound.Zone
+RESOURCENOTFOUND_ZONE = 'ResourceNotFound.Zone'
 
 # AppId does not match the instance ownership
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
