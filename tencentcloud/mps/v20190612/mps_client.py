@@ -3204,6 +3204,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryHunyuan3DTask(self, request):
+        r"""Query the result corresponding to a Hunyuan3D task.
+
+        :param request: Request instance for QueryHunyuan3DTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.QueryHunyuan3DTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QueryHunyuan3DTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryHunyuan3DTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryHunyuan3DTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryProject(self, request):
         r"""This API is used to query an episode project.
 
@@ -3264,6 +3287,29 @@ class MpsClient(AbstractClient):
             body = self.call("ResetWorkflow", params, headers=headers)
             response = json.loads(body)
             model = models.ResetWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuan3DTask(self, request):
+        r"""Submit creation of a Hunyuan 3D task.
+
+        :param request: Request instance for SubmitHunyuan3DTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.SubmitHunyuan3DTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubmitHunyuan3DTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuan3DTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuan3DTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

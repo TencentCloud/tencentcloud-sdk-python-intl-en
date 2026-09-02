@@ -17,11 +17,29 @@
 # CAM signature/authentication error.
 AUTHFAILURE = 'AuthFailure'
 
-# The request would have succeeded, but the DryRun parameter was used.
+# DryRun operation means the request will be successful, but the DryRun parameter is passed.
 DRYRUNOPERATION = 'DryRunOperation'
 
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
+
+# FailedOperation.APIServerFail
+FAILEDOPERATION_APISERVERFAIL = 'FailedOperation.APIServerFail'
+
+# FailedOperation.DasbAmountNotEnough
+FAILEDOPERATION_DASBAMOUNTNOTENOUGH = 'FailedOperation.DasbAmountNotEnough'
+
+# FailedOperation.DasbErrorCode
+FAILEDOPERATION_DASBERRORCODE = 'FailedOperation.DasbErrorCode'
+
+# FailedOperation.DasbInvalidSecretId
+FAILEDOPERATION_DASBINVALIDSECRETID = 'FailedOperation.DasbInvalidSecretId'
+
+# FailedOperation.DasbInvalidSecretKey
+FAILEDOPERATION_DASBINVALIDSECRETKEY = 'FailedOperation.DasbInvalidSecretKey'
+
+# FailedOperation.Export
+FAILEDOPERATION_EXPORT = 'FailedOperation.Export'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -32,52 +50,109 @@ INVALIDFILTER = 'InvalidFilter'
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# InvalidParameter.DateRange
+INVALIDPARAMETER_DATERANGE = 'InvalidParameter.DateRange'
+
 # Decrypt error
 INVALIDPARAMETER_DECRYPTERROR = 'InvalidParameter.DecryptError'
 
-# Invalid parameter value.
+# InvalidParameter.DuplicateParameters
+INVALIDPARAMETER_DUPLICATEPARAMETERS = 'InvalidParameter.DuplicateParameters'
+
+# InvalidParameter.IllegalRequest
+INVALIDPARAMETER_ILLEGALREQUEST = 'InvalidParameter.IllegalRequest'
+
+# InvalidParameter.InstanceNotExist
+INVALIDPARAMETER_INSTANCENOTEXIST = 'InvalidParameter.InstanceNotExist'
+
+# InvalidParameter.InvalidFormat
+INVALIDPARAMETER_INVALIDFORMAT = 'InvalidParameter.InvalidFormat'
+
+# InvalidParameter.MissingParameter
+INVALIDPARAMETER_MISSINGPARAMETER = 'InvalidParameter.MissingParameter'
+
+# InvalidParameter.ParsingError
+INVALIDPARAMETER_PARSINGERROR = 'InvalidParameter.ParsingError'
+
+# InvalidParameter.RegexRuleError
+INVALIDPARAMETER_REGEXRULEERROR = 'InvalidParameter.RegexRuleError'
+
+# InvalidParameter.ResourceId
+INVALIDPARAMETER_RESOURCEID = 'InvalidParameter.ResourceId'
+
+# InvalidParameter.ResourceIdError
+INVALIDPARAMETER_RESOURCEIDERROR = 'InvalidParameter.ResourceIdError'
+
+# InvalidParameter.ReverShellKeyFieldAllEmpty
+INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = 'InvalidParameter.ReverShellKeyFieldAllEmpty'
+
+# InvalidParameter.RuleHostDuplicateErr
+INVALIDPARAMETER_RULEHOSTDUPLICATEERR = 'InvalidParameter.RuleHostDuplicateErr'
+
+# InvalidParameter.RuleHostipErr
+INVALIDPARAMETER_RULEHOSTIPERR = 'InvalidParameter.RuleHostipErr'
+
+# InvalidParameter.TopicNotExist
+INVALIDPARAMETER_TOPICNOTEXIST = 'InvalidParameter.TopicNotExist'
+
+# Invalid parameter combination
+INVALIDPARAMETERCOMBINATION = 'InvalidParameterCombination'
+
+# Parameter value error.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# The quota limit is reached.
+# SQL query failed
+INVALIDPARAMETERVALUE_SQLQUERYFAILED = 'InvalidParameterValue.SQLQueryFailed'
+
+# The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# Missing parameters.
+# LimitExceeded.AreaQuota
+LIMITEXCEEDED_AREAQUOTA = 'LimitExceeded.AreaQuota'
+
+# Parameters are missing.
 MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
-# Region error
+# Region error.
 REGIONERROR = 'RegionError'
 
-# Too many requests.
+# Number of requests exceeds the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
-# Occupied resource
+# The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
 
-# Resources are insufficient.
+# Insufficient resources.
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
-# The resource doesn't exist.
+# Insufficient log analysis capacity
+RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = 'ResourceInsufficient.LogAnalysisQuantityInsufficient'
+
+# The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
-# The resource is unavailable
+# Resources are unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
-# The resources have been sold out.
+# Resources are sold out.
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
-# The operation is unauthorized.
+# Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
-# Perform unauthorized operations on the "operation audit" product.
+# Unauthorized operation on the "Operation Audit" product.
 UNAUTHORIZEDOPERATION_CLOUDAUDIT = 'UnauthorizedOperation.CloudAudit'
 
-# Unauthorized operation on the "Object Storage" product.
+# Unauthorized operation on the "COS" product.
 UNAUTHORIZEDOPERATION_COS = 'UnauthorizedOperation.Cos'
 
-# The parameter is unknown.
+# UnauthorizedOperation.NoPermission
+UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
+
+# Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
 
 # The operation is not supported.

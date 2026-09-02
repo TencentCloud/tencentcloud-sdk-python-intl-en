@@ -2528,6 +2528,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryHunyuan3DTask(
+            self,
+            request: models.QueryHunyuan3DTaskRequest,
+            opts: Dict = None,
+    ) -> models.QueryHunyuan3DTaskResponse:
+        """
+        Query the result corresponding to a Hunyuan3D task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryHunyuan3DTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryHunyuan3DTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryProject(
             self,
             request: models.QueryProjectRequest,
@@ -2577,6 +2595,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "ResetWorkflow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ResetWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHunyuan3DTask(
+            self,
+            request: models.SubmitHunyuan3DTaskRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuan3DTaskResponse:
+        """
+        Submit creation of a Hunyuan 3D task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuan3DTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuan3DTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
