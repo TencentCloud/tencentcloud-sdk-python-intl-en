@@ -20821,6 +20821,374 @@ class CloneCDNDomainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloneVoiceAsyncRequest(AbstractModel):
+    r"""CloneVoiceAsync request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p>VOD application ID. For customers who activate on-demand services on or after December 25, 2023, this field must be filled in with the app ID to access resources in VOD applications, whether in the default or a newly created application.</p>
+        :type SubAppId: str
+        :param _AudioData: <p>Base64-encoded audio for cloning.</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>Cloning audio URL. Valid when AudioData is empty.</p>
+        :type AudioUrl: str
+        :param _AudioFileId: <p>Clone file FileID. Valid when AudioData and AudioUrl are empty</p>
+        :type AudioFileId: str
+        :param _LanguageBoost: <p>Language enhancement, such as "zh" "en" "auto", default "auto"</p>
+        :type LanguageBoost: str
+        :param _ExtParam: <p>Timbre clone expansion parameters. Supported fields of <code>ExtParam</code>: </p><ul><li><code>text</code> (string): Text for audition synthesis, up to 1000 characters; do not return the audition audio when empty or not passed.</li></ul>
+        :type ExtParam: str
+        :param _SessionContext: <p>Identifies the source context. This is used to pass user request information. The value of this field will be returned in callbacks and task flow status change callbacks. The maximum length is 1000 characters.</p>
+        :type SessionContext: str
+        :param _SessionId: <p>Identification Code for Task Deduplication. If a request with the same identification code has been sent within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, it indicates no deduplication.</p>
+        :type SessionId: str
+        """
+        self._SubAppId = None
+        self._AudioData = None
+        self._AudioUrl = None
+        self._AudioFileId = None
+        self._LanguageBoost = None
+        self._ExtParam = None
+        self._SessionContext = None
+        self._SessionId = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>VOD application ID. For customers who activate on-demand services on or after December 25, 2023, this field must be filled in with the app ID to access resources in VOD applications, whether in the default or a newly created application.</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def AudioData(self):
+        r"""<p>Base64-encoded audio for cloning.</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Cloning audio URL. Valid when AudioData is empty.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def AudioFileId(self):
+        r"""<p>Clone file FileID. Valid when AudioData and AudioUrl are empty</p>
+        :rtype: str
+        """
+        return self._AudioFileId
+
+    @AudioFileId.setter
+    def AudioFileId(self, AudioFileId):
+        self._AudioFileId = AudioFileId
+
+    @property
+    def LanguageBoost(self):
+        r"""<p>Language enhancement, such as "zh" "en" "auto", default "auto"</p>
+        :rtype: str
+        """
+        return self._LanguageBoost
+
+    @LanguageBoost.setter
+    def LanguageBoost(self, LanguageBoost):
+        self._LanguageBoost = LanguageBoost
+
+    @property
+    def ExtParam(self):
+        r"""<p>Timbre clone expansion parameters. Supported fields of <code>ExtParam</code>: </p><ul><li><code>text</code> (string): Text for audition synthesis, up to 1000 characters; do not return the audition audio when empty or not passed.</li></ul>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+    @property
+    def SessionContext(self):
+        r"""<p>Identifies the source context. This is used to pass user request information. The value of this field will be returned in callbacks and task flow status change callbacks. The maximum length is 1000 characters.</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""<p>Identification Code for Task Deduplication. If a request with the same identification code has been sent within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, it indicates no deduplication.</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._AudioFileId = params.get("AudioFileId")
+        self._LanguageBoost = params.get("LanguageBoost")
+        self._ExtParam = params.get("ExtParam")
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneVoiceAsyncResponse(AbstractModel):
+    r"""CloneVoiceAsync response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID. Use this ID to query the result.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID. Use this ID to query the result.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CloneVoiceSyncRequest(AbstractModel):
+    r"""CloneVoiceSync request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p>VOD application ID. Customers who activate on-demand services after December 25, 2023 must fill in this field with the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</p>
+        :type SubAppId: str
+        :param _AudioData: <p>Base64-encoded audio for cloning.</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>Cloning audio URL. Valid when AudioData is empty.</p>
+        :type AudioUrl: str
+        :param _AudioFileId: <p>File ID for cloning. Valid when AudioData and AudioUrl are empty</p>
+        :type AudioFileId: str
+        :param _LanguageBoost: <p>Language enhancement, such as "zh" "en" "auto", default "auto"</p>
+        :type LanguageBoost: str
+        :param _ExtParam: <p>Expansion parameters for synchronous timbre clone. Supported fields of <code>ExtParam</code>:</p><ul>  <li><code>text</code> (string): Audition synthesis text, up to <code>1000</code> characters. If not empty, <code>tts_model</code> must be passed simultaneously. Returns the audition audio <code>DemoAudio</code> upon successful clone.</li>  <li><code>model</code> (string): Clone model. Default: <code>minimax-voice-clone</code>.</li>  <li><code>tts_model</code> (string): Model used to synthesize the audition audio. Options: <code>minimax-speech-2.8-hd</code>, <code>minimax-speech-2.8-turbo</code>, <code>minimax-speech-2.6-hd</code>, <code>minimax-speech-2.6-turbo</code>, <code>minimax-speech-02-hd</code>, <code>minimax-speech-02-turbo</code>. Required when <code>text</code> is not empty.</li>  <li><code>text_lang</code> (string): Audition text language.</li>  <li><code>voice_profile</code> (object): Timbre profile. Optional fields:    <ul>      <li><code>name</code> (string): Timbre name.</li>      <li><code>description</code> (string): Timbre description.</li>      <li><code>gender</code> (string): Gender. Options: <code>male</code> / <code>female</code> / <code>unknown</code>.</li>      <li><code>age</code> (string): Age segment. Options: <code>child</code> / <code>teenager</code> / <code>youth</code> / <code>middle_aged</code> / <code>senior</code> / <code>unknown</code>.</li>      <li><code>languages</code> (string[]): Supported languages, for example <code>["zh", "en"]</code>.</li>      <li><code>labels</code> (string[]): Timbre tags, for example <code>["magnetic"]</code>.</li>      <li><code>scenes</code> (string[]): Application scenarios, for example <code>["commentary"]</code>.</li>    </ul>  </li></ul>
+        :type ExtParam: str
+        """
+        self._SubAppId = None
+        self._AudioData = None
+        self._AudioUrl = None
+        self._AudioFileId = None
+        self._LanguageBoost = None
+        self._ExtParam = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>VOD application ID. Customers who activate on-demand services after December 25, 2023 must fill in this field with the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def AudioData(self):
+        r"""<p>Base64-encoded audio for cloning.</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Cloning audio URL. Valid when AudioData is empty.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def AudioFileId(self):
+        r"""<p>File ID for cloning. Valid when AudioData and AudioUrl are empty</p>
+        :rtype: str
+        """
+        return self._AudioFileId
+
+    @AudioFileId.setter
+    def AudioFileId(self, AudioFileId):
+        self._AudioFileId = AudioFileId
+
+    @property
+    def LanguageBoost(self):
+        r"""<p>Language enhancement, such as "zh" "en" "auto", default "auto"</p>
+        :rtype: str
+        """
+        return self._LanguageBoost
+
+    @LanguageBoost.setter
+    def LanguageBoost(self, LanguageBoost):
+        self._LanguageBoost = LanguageBoost
+
+    @property
+    def ExtParam(self):
+        r"""<p>Expansion parameters for synchronous timbre clone. Supported fields of <code>ExtParam</code>:</p><ul>  <li><code>text</code> (string): Audition synthesis text, up to <code>1000</code> characters. If not empty, <code>tts_model</code> must be passed simultaneously. Returns the audition audio <code>DemoAudio</code> upon successful clone.</li>  <li><code>model</code> (string): Clone model. Default: <code>minimax-voice-clone</code>.</li>  <li><code>tts_model</code> (string): Model used to synthesize the audition audio. Options: <code>minimax-speech-2.8-hd</code>, <code>minimax-speech-2.8-turbo</code>, <code>minimax-speech-2.6-hd</code>, <code>minimax-speech-2.6-turbo</code>, <code>minimax-speech-02-hd</code>, <code>minimax-speech-02-turbo</code>. Required when <code>text</code> is not empty.</li>  <li><code>text_lang</code> (string): Audition text language.</li>  <li><code>voice_profile</code> (object): Timbre profile. Optional fields:    <ul>      <li><code>name</code> (string): Timbre name.</li>      <li><code>description</code> (string): Timbre description.</li>      <li><code>gender</code> (string): Gender. Options: <code>male</code> / <code>female</code> / <code>unknown</code>.</li>      <li><code>age</code> (string): Age segment. Options: <code>child</code> / <code>teenager</code> / <code>youth</code> / <code>middle_aged</code> / <code>senior</code> / <code>unknown</code>.</li>      <li><code>languages</code> (string[]): Supported languages, for example <code>["zh", "en"]</code>.</li>      <li><code>labels</code> (string[]): Timbre tags, for example <code>["magnetic"]</code>.</li>      <li><code>scenes</code> (string[]): Application scenarios, for example <code>["commentary"]</code>.</li>    </ul>  </li></ul>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._AudioFileId = params.get("AudioFileId")
+        self._LanguageBoost = params.get("LanguageBoost")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneVoiceSyncResponse(AbstractModel):
+    r"""CloneVoiceSync response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>Cloned timbre</p>
+        :type VoiceId: str
+        :param _DemoAudio: <p>Audition audio.</p>
+        :type DemoAudio: str
+        :param _ExtInfo: <p>Extended information.</p>
+        :type ExtInfo: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VoiceId = None
+        self._DemoAudio = None
+        self._ExtInfo = None
+        self._RequestId = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>Cloned timbre</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def DemoAudio(self):
+        r"""<p>Audition audio.</p>
+        :rtype: str
+        """
+        return self._DemoAudio
+
+    @DemoAudio.setter
+    def DemoAudio(self, DemoAudio):
+        self._DemoAudio = DemoAudio
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Extended information.</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._DemoAudio = params.get("DemoAudio")
+        self._ExtInfo = params.get("ExtInfo")
+        self._RequestId = params.get("RequestId")
+
+
 class ColorEnhanceInfo(AbstractModel):
     r"""Color enhancement configuration.
 
@@ -36499,6 +36867,85 @@ class DeleteVodDomainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteVoiceRequest(AbstractModel):
+    r"""DeleteVoice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _SubAppId: <p>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field with the app ID when accessing resources in on-demand applications, whether the default application or a newly created application.</p>
+        :type SubAppId: str
+        """
+        self._VoiceId = None
+        self._SubAppId = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def SubAppId(self):
+        r"""<p>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field with the app ID when accessing resources in on-demand applications, whether the default application or a newly created application.</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVoiceResponse(AbstractModel):
+    r"""DeleteVoice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteWatermarkTemplateRequest(AbstractModel):
     r"""DeleteWatermarkTemplate request structure.
 
@@ -46713,6 +47160,257 @@ class DescribeVodDomainsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVoicesRequest(AbstractModel):
+    r"""DescribeVoices request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p>VOD application ID. Starting from December 25, 2023, customers who activate on-demand services must set this field to the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</p>
+        :type SubAppId: str
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _VoiceType: <p>Voice type.</p><p>Enumeration values:</p><ul><li>system: system audio.</li><li>clone: cloned audio.</li><li>design: designed audio.</li><li>all: All voices (default).</li></ul>
+        :type VoiceType: str
+        :param _VoiceName: <p>Voice name.</p>
+        :type VoiceName: str
+        :param _Description: <p>Voice description.</p>
+        :type Description: str
+        :param _Gender: <p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :type Gender: str
+        :param _Age: <p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :type Age: str
+        :param _Languages: <p>Language.</p>
+        :type Languages: list of str
+        :param _Labels: <p>Tag.</p>
+        :type Labels: list of str
+        :param _Scenes: <p>Scenario.</p>
+        :type Scenes: list of str
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:
+voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>
+        :type ExtParam: str
+        """
+        self._SubAppId = None
+        self._VoiceId = None
+        self._VoiceType = None
+        self._VoiceName = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
+        self._ExtParam = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>VOD application ID. Starting from December 25, 2023, customers who activate on-demand services must set this field to the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def VoiceType(self):
+        r"""<p>Voice type.</p><p>Enumeration values:</p><ul><li>system: system audio.</li><li>clone: cloned audio.</li><li>design: designed audio.</li><li>all: All voices (default).</li></ul>
+        :rtype: str
+        """
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def VoiceName(self):
+        r"""<p>Voice name.</p>
+        :rtype: str
+        """
+        return self._VoiceName
+
+    @VoiceName.setter
+    def VoiceName(self, VoiceName):
+        self._VoiceName = VoiceName
+
+    @property
+    def Description(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>Language.</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>Tag.</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>Scenario.</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:
+voiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._VoiceId = params.get("VoiceId")
+        self._VoiceType = params.get("VoiceType")
+        self._VoiceName = params.get("VoiceName")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoicesResponse(AbstractModel):
+    r"""DescribeVoices response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Voices: <p>Available timbre list.</p>
+        :type Voices: list of VoiceInfo
+        :param _TotalCount: <p>Total number of available voices</p>
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Voices = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Voices(self):
+        r"""<p>Available timbre list.</p>
+        :rtype: list of VoiceInfo
+        """
+        return self._Voices
+
+    @Voices.setter
+    def Voices(self, Voices):
+        self._Voices = Voices
+
+    @property
+    def TotalCount(self):
+        r"""<p>Total number of available voices</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Voices") is not None:
+            self._Voices = []
+            for item in params.get("Voices"):
+                obj = VoiceInfo()
+                obj._deserialize(item)
+                self._Voices.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeWatermarkTemplatesRequest(AbstractModel):
     r"""DescribeWatermarkTemplates request structure.
 
@@ -47069,6 +47767,177 @@ class DescribeWordSamplesResponse(AbstractModel):
                 obj = AiSampleWord()
                 obj._deserialize(item)
                 self._WordSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DesignVoiceAsyncRequest(AbstractModel):
+    r"""DesignVoiceAsync request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: <p>Voice description.</p>
+        :type Prompt: str
+        :param _SubAppId: <p>VOD application ID. For customers who activated on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in VOD applications, whether it is the default application or a newly created application.</p>
+        :type SubAppId: str
+        :param _VoiceSettings: <p>Voice settings</p>
+        :type VoiceSettings: :class:`tencentcloud.vod.v20180717.models.VoiceSettings`
+        :param _PreviewText: <p>Audition synthesis text. Maximum 500 characters.</p>
+        :type PreviewText: str
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p>
+        :type ExtParam: str
+        :param _SessionContext: <p>Identifies the source context. This is used to pass through user request information. The callback and task flow status change callback return the value of this field. The maximum length is 1000 characters.</p>
+        :type SessionContext: str
+        :param _SessionId: <p>Identification Code for Task Deduplication. If a request with the same identification code has been made within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. Not specifying it or specifying an empty string means no deduplication.</p>
+        :type SessionId: str
+        """
+        self._Prompt = None
+        self._SubAppId = None
+        self._VoiceSettings = None
+        self._PreviewText = None
+        self._ExtParam = None
+        self._SessionContext = None
+        self._SessionId = None
+
+    @property
+    def Prompt(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def SubAppId(self):
+        r"""<p>VOD application ID. For customers who activated on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in VOD applications, whether it is the default application or a newly created application.</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def VoiceSettings(self):
+        r"""<p>Voice settings</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceSettings`
+        """
+        return self._VoiceSettings
+
+    @VoiceSettings.setter
+    def VoiceSettings(self, VoiceSettings):
+        self._VoiceSettings = VoiceSettings
+
+    @property
+    def PreviewText(self):
+        r"""<p>Audition synthesis text. Maximum 500 characters.</p>
+        :rtype: str
+        """
+        return self._PreviewText
+
+    @PreviewText.setter
+    def PreviewText(self, PreviewText):
+        self._PreviewText = PreviewText
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters in the format of a JSON string.</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+    @property
+    def SessionContext(self):
+        r"""<p>Identifies the source context. This is used to pass through user request information. The callback and task flow status change callback return the value of this field. The maximum length is 1000 characters.</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""<p>Identification Code for Task Deduplication. If a request with the same identification code has been made within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. Not specifying it or specifying an empty string means no deduplication.</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("VoiceSettings") is not None:
+            self._VoiceSettings = VoiceSettings()
+            self._VoiceSettings._deserialize(params.get("VoiceSettings"))
+        self._PreviewText = params.get("PreviewText")
+        self._ExtParam = params.get("ExtParam")
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DesignVoiceAsyncResponse(AbstractModel):
+    r"""DesignVoiceAsync response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID, used when querying a task.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID, used when querying a task.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -96571,6 +97440,450 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class TextToSpeechAsyncOutputOption(AbstractModel):
+    r"""Output parameter setting for asynchronous dubbing.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>fileId: Generate a new VOD file ID</li><li>url: Audio URL, valid for 24 hours.</li></ul>
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        r"""<p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>fileId: Generate a new VOD file ID</li><li>url: Audio URL, valid for 24 hours.</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechAsyncRequest(AbstractModel):
+    r"""TextToSpeechAsync request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>Text to convert to speech.</p>
+        :type Text: str
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _SubAppId: <p>VOD application ID. For customers who activate on-demand services on or after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</p>
+        :type SubAppId: str
+        :param _LanguageBoost: <p>Language enhancement, such as "zh" "en" "auto", default "auto"</p>
+        :type LanguageBoost: str
+        :param _ExtParam: <p>Extended parameters for text-to-speech (async). Fields supported by ExtParam:</p><ul><li>model (string): Synthesis model. Options: minimax-speech-2.8-hd, minimax-speech-2.8-turbo, minimax-speech-2.6-hd, minimax-speech-2.6-turbo, minimax-speech-02-hd, minimax-speech-02-turbo. Default: minimax-speech-2.8-hd.</li><li>text_lang (string): Text language, for example zh / en. Synonymous with the input parameter LanguageBoost. If both are passed, ExtParam takes precedence.</li><li>audio_setting (object): Audio output and voice type fine-tuning parameters. Note: For the async API, speaking rate, volume, pitch, and emotion are all under audio_setting, different from the voice_setting of the synchronous API. Optional fields:<ul><li>speed (float): Speaking rate, [0.5, 2.0]. Default: 1.0.</li><li>vol (float): Volume, (0, 10]. Default: 1.0.</li><li>pitch (int): Pitch, [-12, 12]. Default: 0.</li><li>emotion (string): Emotion. Options: happy, sad, angry, fearful, disgusted, surprised, calm, fluent, whisper.</li><li>sample_rate (int): Sampling rate. Options: 8000, 16000, 22050, 24000, 32000, 44100. Default: 16000.</li><li>format (string): Audio format. Options: mp3, wav. Default: wav.</li><li>duration (float): Target duration in seconds.</li><li>cut_silence (bool): Whether to trim silent segments.</li></ul></li></ul>
+        :type ExtParam: str
+        :param _Output: <p>Output parameters.</p><p>Specifies the output format, etc. The default output audio url.</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncOutputOption`
+        :param _SessionContext: <p>Identifies the source context. This is used to pass user request information. The value of this field will be returned in callbacks and task flow status change callbacks. The maximum length is 1000 characters.</p>
+        :type SessionContext: str
+        :param _SessionId: <p>Identification Code for Task Deduplication. If a request with the same identification code has been sent within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, it indicates no deduplication.</p>
+        :type SessionId: str
+        """
+        self._Text = None
+        self._VoiceId = None
+        self._SubAppId = None
+        self._LanguageBoost = None
+        self._ExtParam = None
+        self._Output = None
+        self._SessionContext = None
+        self._SessionId = None
+
+    @property
+    def Text(self):
+        r"""<p>Text to convert to speech.</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def SubAppId(self):
+        r"""<p>VOD application ID. For customers who activate on-demand services on or after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def LanguageBoost(self):
+        r"""<p>Language enhancement, such as "zh" "en" "auto", default "auto"</p>
+        :rtype: str
+        """
+        return self._LanguageBoost
+
+    @LanguageBoost.setter
+    def LanguageBoost(self, LanguageBoost):
+        self._LanguageBoost = LanguageBoost
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters for text-to-speech (async). Fields supported by ExtParam:</p><ul><li>model (string): Synthesis model. Options: minimax-speech-2.8-hd, minimax-speech-2.8-turbo, minimax-speech-2.6-hd, minimax-speech-2.6-turbo, minimax-speech-02-hd, minimax-speech-02-turbo. Default: minimax-speech-2.8-hd.</li><li>text_lang (string): Text language, for example zh / en. Synonymous with the input parameter LanguageBoost. If both are passed, ExtParam takes precedence.</li><li>audio_setting (object): Audio output and voice type fine-tuning parameters. Note: For the async API, speaking rate, volume, pitch, and emotion are all under audio_setting, different from the voice_setting of the synchronous API. Optional fields:<ul><li>speed (float): Speaking rate, [0.5, 2.0]. Default: 1.0.</li><li>vol (float): Volume, (0, 10]. Default: 1.0.</li><li>pitch (int): Pitch, [-12, 12]. Default: 0.</li><li>emotion (string): Emotion. Options: happy, sad, angry, fearful, disgusted, surprised, calm, fluent, whisper.</li><li>sample_rate (int): Sampling rate. Options: 8000, 16000, 22050, 24000, 32000, 44100. Default: 16000.</li><li>format (string): Audio format. Options: mp3, wav. Default: wav.</li><li>duration (float): Target duration in seconds.</li><li>cut_silence (bool): Whether to trim silent segments.</li></ul></li></ul>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+    @property
+    def Output(self):
+        r"""<p>Output parameters.</p><p>Specifies the output format, etc. The default output audio url.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionContext(self):
+        r"""<p>Identifies the source context. This is used to pass user request information. The value of this field will be returned in callbacks and task flow status change callbacks. The maximum length is 1000 characters.</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""<p>Identification Code for Task Deduplication. If a request with the same identification code has been sent within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, it indicates no deduplication.</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._VoiceId = params.get("VoiceId")
+        self._SubAppId = params.get("SubAppId")
+        self._LanguageBoost = params.get("LanguageBoost")
+        self._ExtParam = params.get("ExtParam")
+        if params.get("Output") is not None:
+            self._Output = TextToSpeechAsyncOutputOption()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechAsyncResponse(AbstractModel):
+    r"""TextToSpeechAsync response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID. Use this ID to query the result.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID. Use this ID to query the result.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class TextToSpeechSyncOutputOption(AbstractModel):
+    r"""Output parameter setting for synchronous text to speech.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>hex: Audio base64 encoding, </li><li>url: Audio URL, valid for 24 hours.</li></ul>
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        r"""<p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>hex: Audio base64 encoding, </li><li>url: Audio URL, valid for 24 hours.</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechSyncRequest(AbstractModel):
+    r"""TextToSpeechSync request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>Text for the synthesis. This is required for text to speech. The text cannot exceed 2000 bytes in length.</p>
+        :type Text: str
+        :param _VoiceId: <p>Voice Id. Fill in when synthesizing with a specified timbre. System, designed, and cloned timbres are supported.</p>
+        :type VoiceId: str
+        :param _SubAppId: <p>VOD application ID. Customers who activate on-demand services on or after December 25, 2023 must fill in this field with the application ID when accessing resources in VOD applications, whether in the default application or a newly created application.</p>
+        :type SubAppId: str
+        :param _LanguageBoost: <p>Language enhancement, such as "zh" "en" "auto", default "auto"</p>
+        :type LanguageBoost: str
+        :param _Output: <p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is base64.</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.TextToSpeechSyncOutputOption`
+        :param _ExtParam: <p>Synchronous speech synthesis expansion parameters. Fields supported by <code>ExtParam</code>:</p><ul>  <li><code>model</code> (string): Synthesis model. Options: <code>minimax-speech-2.8-hd</code>, <code>minimax-speech-2.8-turbo</code>, <code>minimax-speech-2.6-hd</code>, <code>minimax-speech-2.6-turbo</code>, <code>minimax-speech-02-hd</code>, <code>minimax-speech-02-turbo</code>. Default: <code>minimax-speech-2.8-hd</code>.</li>  <li><code>voice_setting</code> (object): Fine adjustment of voice type. Optional fields:    <ul>      <li><code>speed</code> (float): Speech speed, <code>[0.5, 2.0]</code>. Default: <code>1.0</code>.</li>      <li><code>vol</code> (float): Volume, <code>(0, 10]</code>. Default: <code>1.0</code>.</li>      <li><code>pitch</code> (int): Pitch, <code>[-12, 12]</code>. Default: <code>0</code>.</li>      <li><code>emotion</code> (string): Emotion. Options: <code>happy</code> / <code>sad</code> / <code>angry</code> / <code>fearful</code> / <code>disgusted</code> / <code>surprised</code> / <code>calm</code> / <code>fluent</code> / <code>whisper</code>.</li>    </ul>  </li>  <li><code>audio_setting</code> (object): Audio output parameter. Optional fields:    <ul>      <li><code>sample_rate</code> (int): Sampling rate. Options: <code>8000</code> / <code>16000</code> / <code>22050</code> / <code>24000</code> / <code>32000</code> / <code>44100</code>. Default: <code>16000</code>.</li>      <li><code>format</code> (string): Audio format. Options: <code>mp3</code> / <code>wav</code>. Default: <code>wav</code>.</li>      <li><code>duration</code> (float): Target duration (seconds).</li>      <li><code>cut_silence</code> (bool): Whether to trim silence segments.</li>    </ul>  </li></ul>
+        :type ExtParam: str
+        """
+        self._Text = None
+        self._VoiceId = None
+        self._SubAppId = None
+        self._LanguageBoost = None
+        self._Output = None
+        self._ExtParam = None
+
+    @property
+    def Text(self):
+        r"""<p>Text for the synthesis. This is required for text to speech. The text cannot exceed 2000 bytes in length.</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice Id. Fill in when synthesizing with a specified timbre. System, designed, and cloned timbres are supported.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def SubAppId(self):
+        r"""<p>VOD application ID. Customers who activate on-demand services on or after December 25, 2023 must fill in this field with the application ID when accessing resources in VOD applications, whether in the default application or a newly created application.</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def LanguageBoost(self):
+        r"""<p>Language enhancement, such as "zh" "en" "auto", default "auto"</p>
+        :rtype: str
+        """
+        return self._LanguageBoost
+
+    @LanguageBoost.setter
+    def LanguageBoost(self, LanguageBoost):
+        self._LanguageBoost = LanguageBoost
+
+    @property
+    def Output(self):
+        r"""<p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is base64.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechSyncOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ExtParam(self):
+        r"""<p>Synchronous speech synthesis expansion parameters. Fields supported by <code>ExtParam</code>:</p><ul>  <li><code>model</code> (string): Synthesis model. Options: <code>minimax-speech-2.8-hd</code>, <code>minimax-speech-2.8-turbo</code>, <code>minimax-speech-2.6-hd</code>, <code>minimax-speech-2.6-turbo</code>, <code>minimax-speech-02-hd</code>, <code>minimax-speech-02-turbo</code>. Default: <code>minimax-speech-2.8-hd</code>.</li>  <li><code>voice_setting</code> (object): Fine adjustment of voice type. Optional fields:    <ul>      <li><code>speed</code> (float): Speech speed, <code>[0.5, 2.0]</code>. Default: <code>1.0</code>.</li>      <li><code>vol</code> (float): Volume, <code>(0, 10]</code>. Default: <code>1.0</code>.</li>      <li><code>pitch</code> (int): Pitch, <code>[-12, 12]</code>. Default: <code>0</code>.</li>      <li><code>emotion</code> (string): Emotion. Options: <code>happy</code> / <code>sad</code> / <code>angry</code> / <code>fearful</code> / <code>disgusted</code> / <code>surprised</code> / <code>calm</code> / <code>fluent</code> / <code>whisper</code>.</li>    </ul>  </li>  <li><code>audio_setting</code> (object): Audio output parameter. Optional fields:    <ul>      <li><code>sample_rate</code> (int): Sampling rate. Options: <code>8000</code> / <code>16000</code> / <code>22050</code> / <code>24000</code> / <code>32000</code> / <code>44100</code>. Default: <code>16000</code>.</li>      <li><code>format</code> (string): Audio format. Options: <code>mp3</code> / <code>wav</code>. Default: <code>wav</code>.</li>      <li><code>duration</code> (float): Target duration (seconds).</li>      <li><code>cut_silence</code> (bool): Whether to trim silence segments.</li>    </ul>  </li></ul>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._VoiceId = params.get("VoiceId")
+        self._SubAppId = params.get("SubAppId")
+        self._LanguageBoost = params.get("LanguageBoost")
+        if params.get("Output") is not None:
+            self._Output = TextToSpeechSyncOutputOption()
+            self._Output._deserialize(params.get("Output"))
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechSyncResponse(AbstractModel):
+    r"""TextToSpeechSync response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioData: <p>base64-encoded synthetic audio in wav format.</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>Synthetic audio URL. It is valid for 24 hours.</p>
+        :type AudioUrl: str
+        :param _ExtInfo: <p>Extended information in the format of a JSON string. </p><p>duration: Duration of the resulting audio, in seconds.</p>
+        :type ExtInfo: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AudioData = None
+        self._AudioUrl = None
+        self._ExtInfo = None
+        self._RequestId = None
+
+    @property
+    def AudioData(self):
+        r"""<p>base64-encoded synthetic audio in wav format.</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Synthetic audio URL. It is valid for 24 hours.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def ExtInfo(self):
+        r"""<p>Extended information in the format of a JSON string. </p><p>duration: Duration of the resulting audio, in seconds.</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._ExtInfo = params.get("ExtInfo")
+        self._RequestId = params.get("RequestId")
+
+
 class TextWatermarkTemplateInput(AbstractModel):
     r"""Text watermarking template
 
@@ -98108,6 +99421,134 @@ class UpdateAigcApiTokenResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateVoiceRequest(AbstractModel):
+    r"""UpdateVoice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _VoiceFields: <p>Fields of the updated voice.</p>
+        :type VoiceFields: :class:`tencentcloud.vod.v20180717.models.VoiceUpdateFields`
+        :param _SubAppId: <p>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field as the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</p>
+        :type SubAppId: str
+        :param _ExtParam: <p>Extended parameters in the format of a JSON string.</p>
+        :type ExtParam: str
+        """
+        self._VoiceId = None
+        self._VoiceFields = None
+        self._SubAppId = None
+        self._ExtParam = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def VoiceFields(self):
+        r"""<p>Fields of the updated voice.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceUpdateFields`
+        """
+        return self._VoiceFields
+
+    @VoiceFields.setter
+    def VoiceFields(self, VoiceFields):
+        self._VoiceFields = VoiceFields
+
+    @property
+    def SubAppId(self):
+        r"""<p>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field as the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ExtParam(self):
+        r"""<p>Extended parameters in the format of a JSON string.</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        if params.get("VoiceFields") is not None:
+            self._VoiceFields = VoiceUpdateFields()
+            self._VoiceFields._deserialize(params.get("VoiceFields"))
+        self._SubAppId = params.get("SubAppId")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateVoiceResponse(AbstractModel):
+    r"""UpdateVoice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Voice: <p>Voice information after the update.</p>
+        :type Voice: :class:`tencentcloud.vod.v20180717.models.VoiceInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Voice = None
+        self._RequestId = None
+
+    @property
+    def Voice(self):
+        r"""<p>Voice information after the update.</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceInfo`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Voice") is not None:
+            self._Voice = VoiceInfo()
+            self._Voice._deserialize(params.get("Voice"))
         self._RequestId = params.get("RequestId")
 
 
@@ -100516,6 +101957,444 @@ class VoiceConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceInfo(AbstractModel):
+    r"""Voice information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>Voice ID.</p>
+        :type VoiceId: str
+        :param _Name: <p>Voice name.</p>
+        :type Name: str
+        :param _Description: <p>Voice description.</p>
+        :type Description: str
+        :param _Category: <p>Voice type.</p><p>Enumeration values:</p><ul><li>system: system audio.</li><li>clone: cloned audio.</li><li>design: designed audio.</li></ul>
+        :type Category: str
+        :param _Gender: <p>Gender. </p><p>Enumeration values: </p><ul><li>male: Male, </li><li>female: Female.</li></ul>
+        :type Gender: str
+        :param _Age: <p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :type Age: str
+        :param _Languages: <p>List of supported languages. </p><p>For example: en.</p>
+        :type Languages: list of str
+        :param _AudioUrl: <p>Audition audio URL.</p>
+        :type AudioUrl: str
+        :param _Labels: <p>List of tags. </p><p>For example: gentle.</p>
+        :type Labels: list of str
+        :param _Scenes: <p>Recommended scenarios. </p><p>For example: education.</p>
+        :type Scenes: list of str
+        """
+        self._VoiceId = None
+        self._Name = None
+        self._Description = None
+        self._Category = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._AudioUrl = None
+        self._Labels = None
+        self._Scenes = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>Voice ID.</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Name(self):
+        r"""<p>Voice name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Category(self):
+        r"""<p>Voice type.</p><p>Enumeration values:</p><ul><li>system: system audio.</li><li>clone: cloned audio.</li><li>design: designed audio.</li></ul>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Gender(self):
+        r"""<p>Gender. </p><p>Enumeration values: </p><ul><li>male: Male, </li><li>female: Female.</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>List of supported languages. </p><p>For example: en.</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Audition audio URL.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def Labels(self):
+        r"""<p>List of tags. </p><p>For example: gentle.</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>Recommended scenarios. </p><p>For example: education.</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Category = params.get("Category")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._AudioUrl = params.get("AudioUrl")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceSettings(AbstractModel):
+    r"""Voice attribute.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Voice name.</p>
+        :type Name: str
+        :param _Description: <p>Voice description.</p>
+        :type Description: str
+        :param _Gender: <p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :type Gender: str
+        :param _Age: <p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :type Age: str
+        :param _Languages: <p>Language. Supported languages:<br>zh Chinese<br>en English<br>ja Japanese<br>de German<br>fr French<br>ko Korean<br>ru Russian<br>uk Ukrainian<br>pt Portuguese<br>it Italian<br>es Spanish<br>id Indonesian<br>nl Dutch<br>tr Turkish<br>fil Filipino<br>ms Malay<br>el Greek<br>fi Finnish<br>hr Croatian<br>sk Slovak<br>pl Polish<br>sv Swedish<br>hi Hindi<br>bg Bulgarian<br>ro Romanian<br>ar Arabic<br>cs Czech<br>da Danish<br>ta Tamil<br>hun Hungarian<br>vi Vietnamese<br>no Norwegian<br>yue Cantonese<br>th Thai<br>he Hebrew<br>ca Catalan<br>nn Nynorsk<br>af Afrikaans<br>fa Persian<br>sl Slovenian</p>
+        :type Languages: list of str
+        :param _Labels: <p>Tag.</p>
+        :type Labels: list of str
+        :param _Scenes: <p>Scenario.</p>
+        :type Scenes: list of str
+        """
+        self._Name = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
+
+    @property
+    def Name(self):
+        r"""<p>Voice name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>Language. Supported languages:<br>zh Chinese<br>en English<br>ja Japanese<br>de German<br>fr French<br>ko Korean<br>ru Russian<br>uk Ukrainian<br>pt Portuguese<br>it Italian<br>es Spanish<br>id Indonesian<br>nl Dutch<br>tr Turkish<br>fil Filipino<br>ms Malay<br>el Greek<br>fi Finnish<br>hr Croatian<br>sk Slovak<br>pl Polish<br>sv Swedish<br>hi Hindi<br>bg Bulgarian<br>ro Romanian<br>ar Arabic<br>cs Czech<br>da Danish<br>ta Tamil<br>hun Hungarian<br>vi Vietnamese<br>no Norwegian<br>yue Cantonese<br>th Thai<br>he Hebrew<br>ca Catalan<br>nn Nynorsk<br>af Afrikaans<br>fa Persian<br>sl Slovenian</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>Tag.</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>Scenario.</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceUpdateFields(AbstractModel):
+    r"""Fields of the updated voice.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Voice name.</p>
+        :type Name: str
+        :param _Description: <p>Voice description.</p>
+        :type Description: str
+        :param _Gender: <p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :type Gender: str
+        :param _Age: <p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :type Age: str
+        :param _Languages: <p>Language.</p>
+        :type Languages: list of str
+        :param _Labels: <p>Tag.</p>
+        :type Labels: list of str
+        :param _Scenes: <p>Scenario.</p>
+        :type Scenes: list of str
+        :param _AudioUrl: <p>Audition audio.</p>
+        :type AudioUrl: str
+        """
+        self._Name = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
+        self._AudioUrl = None
+
+    @property
+    def Name(self):
+        r"""<p>Voice name.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Voice description.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>Language.</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>Tag.</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>Scenario.</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
+    def AudioUrl(self):
+        r"""<p>Audition audio.</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        self._AudioUrl = params.get("AudioUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

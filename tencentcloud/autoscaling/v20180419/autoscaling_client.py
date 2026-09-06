@@ -198,11 +198,11 @@ class AutoscalingClient(AbstractClient):
 
 
     def CreateLaunchConfiguration(self, request):
-        r"""This interface (CreateLaunchConfiguration) is used to create new launch configuration.
+        r"""This API is used to create a new launch configuration.
 
-        * To modify a launch configuration, use [ModifyLaunchConfigurationAttributes](https://intl.cloud.tencent.com/document/api/377/31298?from_cn_redirect=1) to partially modify fields. If needed, create a new launch configuration.
+        * Launch configuration can be partially modified through [ModifyLaunchConfigurationAttributes](https://www.tencentcloud.com/document/api/377/31298?from_cn_redirect=1). If a new launch configuration is needed, it is advisable to create a new one.
 
-        By default, 50 launch configurations can be created per region. For details, see [Usage Limits](https://intl.cloud.tencent.com/document/product/377/3120?from_cn_redirect=1).
+        * A maximum of 50 launch configurations can be created per region by default. For details, see usage limits (https://www.tencentcloud.com/document/product/377/3120?from_cn_redirect=1).
 
         :param request: Request instance for CreateLaunchConfiguration.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateLaunchConfigurationRequest`

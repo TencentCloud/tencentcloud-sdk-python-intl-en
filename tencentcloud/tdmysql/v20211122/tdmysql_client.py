@@ -26,6 +26,29 @@ class TdmysqlClient(AbstractClient):
     _service = 'tdmysql'
 
 
+    def BreakStandbyDBInstanceRelation(self, request):
+        r"""This API is used to terminate the replication between the primary instance and the disaster recovery instance.
+
+        :param request: Request instance for BreakStandbyDBInstanceRelation.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.BreakStandbyDBInstanceRelationRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.BreakStandbyDBInstanceRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BreakStandbyDBInstanceRelation", params, headers=headers)
+            response = json.loads(body)
+            model = models.BreakStandbyDBInstanceRelationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelIsolateDBInstances(self, request):
         r"""This API is used to lift isolation for instances in batch.
 
@@ -118,6 +141,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStandbyDBInstance(self, request):
+        r"""This API is used to create disaster recovery instances in batches.
+
+        :param request: Request instance for CreateStandbyDBInstance.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.CreateStandbyDBInstanceRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.CreateStandbyDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStandbyDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStandbyDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUsers(self, request):
         r"""This API is used to create users in batches.
 
@@ -178,6 +224,52 @@ class TdmysqlClient(AbstractClient):
             body = self.call("DeleteUsers", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBCharsets(self, request):
+        r"""This API is used to query supported character sets.
+
+        :param request: Request instance for DescribeDBCharsets.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBCharsetsRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBCharsetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCharsets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCharsetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBEngines(self, request):
+        r"""This API is used to obtain the DB engine version list.
+
+        :param request: Request instance for DescribeDBEngines.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBEnginesRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBEnginesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBEngines", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBEnginesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -509,6 +601,52 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFlowTypes(self, request):
+        r"""This API is used to obtain all task types.
+
+        :param request: Request instance for DescribeFlowTypes.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeFlowTypesRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeFlowTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlowTypes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFlowTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceDataReservedSpace(self, request):
+        r"""This API is used to query the data retention space of an instance.
+
+        :param request: Request instance for DescribeInstanceDataReservedSpace.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeInstanceDataReservedSpaceRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeInstanceDataReservedSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceDataReservedSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceDataReservedSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceSSLStatus(self, request):
         r"""This API is used to query the SSL status of an instance.
 
@@ -602,7 +740,7 @@ class TdmysqlClient(AbstractClient):
 
 
     def DescribeSpecs(self, request):
-        r"""This API is used to list available component specifications.
+        r"""This API is used to query sales specifications.
 
         :param request: Request instance for DescribeSpecs.
         :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeSpecsRequest`
@@ -615,6 +753,29 @@ class TdmysqlClient(AbstractClient):
             body = self.call("DescribeSpecs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStandbyDBInstanceRelationDetail(self, request):
+        r"""This API is used to query disaster recovery connection relationships of an instance.
+
+        :param request: Request instance for DescribeStandbyDBInstanceRelationDetail.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeStandbyDBInstanceRelationDetailRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeStandbyDBInstanceRelationDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStandbyDBInstanceRelationDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStandbyDBInstanceRelationDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -877,6 +1038,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceDataReservedSpace(self, request):
+        r"""This API is used to modify the reserved space for instance data.
+
+        :param request: Request instance for ModifyInstanceDataReservedSpace.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyInstanceDataReservedSpaceRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ModifyInstanceDataReservedSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceDataReservedSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceDataReservedSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceName(self, request):
         r"""This API is used to modify instance name.
 
@@ -992,20 +1176,20 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ResetUserPassword(self, request):
-        r"""This API is used to reset user password.
+    def ResetDbaAdminPrivileges(self, request):
+        r"""Reset the permissions of the dbaadmin account.
 
-        :param request: Request instance for ResetUserPassword.
-        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ResetUserPasswordRequest`
-        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ResetUserPasswordResponse`
+        :param request: Request instance for ResetDbaAdminPrivileges.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ResetDbaAdminPrivilegesRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ResetDbaAdminPrivilegesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ResetUserPassword", params, headers=headers)
+            body = self.call("ResetDbaAdminPrivileges", params, headers=headers)
             response = json.loads(body)
-            model = models.ResetUserPasswordResponse()
+            model = models.ResetDbaAdminPrivilegesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

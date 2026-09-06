@@ -1667,27 +1667,22 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationId: Launch configuration ID. obtain in the following ways:.
-<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.
-<li>Get the launch configuration ID by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.
+        :param _LaunchConfigurationId: <p>Launch configuration ID. Obtain it in the following ways:</p><li>Log in to the [console](https://console.cloud.tencent.com/autoscaling/config) and query the launch configuration ID.</li><li>Call the API [DescribeLaunchConfigurations](https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1) and obtain the launch configuration ID from the `LaunchConfigurationId` in the returned information.</li>
         :type LaunchConfigurationId: str
-        :param _ClearDataDisks: Whether to clear data disk information. This parameter is optional and the default value is `false`.
-Setting it to `true` will clear data disks, which means that CVM newly created on this launch configuration will have no data disk.
+        :param _ClearDataDisks: <p>Whether to clear data disk information. This parameter is optional and defaults to false.<br>Enter true to clear "data disk" information. After clearing, newly created CVMs will not contain any data disk.</p>
         :type ClearDataDisks: bool
-        :param _ClearHostNameSettings: Whether to clear the CVM hostname settings. This parameter is optional and the default value is `false`.
-Setting it to `true` will clear the hostname settings, which means that CVM newly created on this launch configuration will have no hostname.
+        :param _ClearHostNameSettings: <p>Whether to clear the MachineName-related settings of the CVM. Optional. It is false by default.<br>Set to true to clear the host name settings. After clearing, newly created CVMs will not have a host name configured.</p>
         :type ClearHostNameSettings: bool
-        :param _ClearInstanceNameSettings: Whether to clear the CVM instance name settings. This parameter is optional and the default value is `false`.
-Setting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the as-{{AutoScalingGroupName}} format.
+        :param _ClearInstanceNameSettings: <p>Whether to clear the CVM instance name related settings. This parameter is optional and is false by default.<br>If set to true, the host name setting information is cleared. After clearing, newly created CVMs will be configured based on "as-{{ scaling group AutoScalingGroupName }}".</p>
         :type ClearInstanceNameSettings: bool
-        :param _ClearDisasterRecoverGroupIds: Whether to clear placement group information. This parameter is optional. Default value: `false`.
-`True` means clearing placement group information. After that, no placement groups are specified for CVMs created based on the information.
+        :param _ClearDisasterRecoverGroupIds: <p>Whether to clear the placement group information. This parameter is optional and defaults to false.<br>Set it to true to clear the placement group information. After clearing, newly created hosts will not be assigned to any placement group.</p>
         :type ClearDisasterRecoverGroupIds: bool
-        :param _ClearInstanceTags: Whether to clear the instance tag list. This parameter is optional, and its default value is false.
-If true is filled in, it indicates that the instance tag list should be cleared. After the list is cleared, the CVMs created based on this will not be bound to the tags in the list.
+        :param _ClearInstanceTags: <p>Whether to clear the instance tag list. This parameter is optional and is false by default.<br>If true is filled in, it indicates that the instance tag list should be cleared. After the list is cleared, the CVMs created based on this will not be bound to the tags in the list.</p>
         :type ClearInstanceTags: bool
-        :param _ClearMetadata: Whether to clear metadata, optional, defaults to false. Setting it to true will clear metadata, the CVMs created based on this will not be associated with custom metadata.
+        :param _ClearMetadata: <p>Whether to clear MetaData. This parameter is optional and defaults to false. Enter true to clear MetaData. After clearing, newly created CVMs will not associate custom Metadata.</p>
         :type ClearMetadata: bool
+        :param _ClearNetworkInterfaces: <p>Whether to clear the NetworkInterfaces in the launch configuration. If the value is TRUE, clear it; if not passed or FALSE, this field will not be processed.</p>
+        :type ClearNetworkInterfaces: bool
         """
         self._LaunchConfigurationId = None
         self._ClearDataDisks = None
@@ -1696,12 +1691,11 @@ If true is filled in, it indicates that the instance tag list should be cleared.
         self._ClearDisasterRecoverGroupIds = None
         self._ClearInstanceTags = None
         self._ClearMetadata = None
+        self._ClearNetworkInterfaces = None
 
     @property
     def LaunchConfigurationId(self):
-        r"""Launch configuration ID. obtain in the following ways:.
-<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.
-<li>Get the launch configuration ID by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.
+        r"""<p>Launch configuration ID. Obtain it in the following ways:</p><li>Log in to the [console](https://console.cloud.tencent.com/autoscaling/config) and query the launch configuration ID.</li><li>Call the API [DescribeLaunchConfigurations](https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1) and obtain the launch configuration ID from the `LaunchConfigurationId` in the returned information.</li>
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -1712,8 +1706,7 @@ If true is filled in, it indicates that the instance tag list should be cleared.
 
     @property
     def ClearDataDisks(self):
-        r"""Whether to clear data disk information. This parameter is optional and the default value is `false`.
-Setting it to `true` will clear data disks, which means that CVM newly created on this launch configuration will have no data disk.
+        r"""<p>Whether to clear data disk information. This parameter is optional and defaults to false.<br>Enter true to clear "data disk" information. After clearing, newly created CVMs will not contain any data disk.</p>
         :rtype: bool
         """
         return self._ClearDataDisks
@@ -1724,8 +1717,7 @@ Setting it to `true` will clear data disks, which means that CVM newly created o
 
     @property
     def ClearHostNameSettings(self):
-        r"""Whether to clear the CVM hostname settings. This parameter is optional and the default value is `false`.
-Setting it to `true` will clear the hostname settings, which means that CVM newly created on this launch configuration will have no hostname.
+        r"""<p>Whether to clear the MachineName-related settings of the CVM. Optional. It is false by default.<br>Set to true to clear the host name settings. After clearing, newly created CVMs will not have a host name configured.</p>
         :rtype: bool
         """
         return self._ClearHostNameSettings
@@ -1736,8 +1728,7 @@ Setting it to `true` will clear the hostname settings, which means that CVM newl
 
     @property
     def ClearInstanceNameSettings(self):
-        r"""Whether to clear the CVM instance name settings. This parameter is optional and the default value is `false`.
-Setting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the as-{{AutoScalingGroupName}} format.
+        r"""<p>Whether to clear the CVM instance name related settings. This parameter is optional and is false by default.<br>If set to true, the host name setting information is cleared. After clearing, newly created CVMs will be configured based on "as-{{ scaling group AutoScalingGroupName }}".</p>
         :rtype: bool
         """
         return self._ClearInstanceNameSettings
@@ -1748,8 +1739,7 @@ Setting it to `true` will clear the instance name settings, which means that CVM
 
     @property
     def ClearDisasterRecoverGroupIds(self):
-        r"""Whether to clear placement group information. This parameter is optional. Default value: `false`.
-`True` means clearing placement group information. After that, no placement groups are specified for CVMs created based on the information.
+        r"""<p>Whether to clear the placement group information. This parameter is optional and defaults to false.<br>Set it to true to clear the placement group information. After clearing, newly created hosts will not be assigned to any placement group.</p>
         :rtype: bool
         """
         return self._ClearDisasterRecoverGroupIds
@@ -1760,8 +1750,7 @@ Setting it to `true` will clear the instance name settings, which means that CVM
 
     @property
     def ClearInstanceTags(self):
-        r"""Whether to clear the instance tag list. This parameter is optional, and its default value is false.
-If true is filled in, it indicates that the instance tag list should be cleared. After the list is cleared, the CVMs created based on this will not be bound to the tags in the list.
+        r"""<p>Whether to clear the instance tag list. This parameter is optional and is false by default.<br>If true is filled in, it indicates that the instance tag list should be cleared. After the list is cleared, the CVMs created based on this will not be bound to the tags in the list.</p>
         :rtype: bool
         """
         return self._ClearInstanceTags
@@ -1772,7 +1761,7 @@ If true is filled in, it indicates that the instance tag list should be cleared.
 
     @property
     def ClearMetadata(self):
-        r"""Whether to clear metadata, optional, defaults to false. Setting it to true will clear metadata, the CVMs created based on this will not be associated with custom metadata.
+        r"""<p>Whether to clear MetaData. This parameter is optional and defaults to false. Enter true to clear MetaData. After clearing, newly created CVMs will not associate custom Metadata.</p>
         :rtype: bool
         """
         return self._ClearMetadata
@@ -1780,6 +1769,17 @@ If true is filled in, it indicates that the instance tag list should be cleared.
     @ClearMetadata.setter
     def ClearMetadata(self, ClearMetadata):
         self._ClearMetadata = ClearMetadata
+
+    @property
+    def ClearNetworkInterfaces(self):
+        r"""<p>Whether to clear the NetworkInterfaces in the launch configuration. If the value is TRUE, clear it; if not passed or FALSE, this field will not be processed.</p>
+        :rtype: bool
+        """
+        return self._ClearNetworkInterfaces
+
+    @ClearNetworkInterfaces.setter
+    def ClearNetworkInterfaces(self, ClearNetworkInterfaces):
+        self._ClearNetworkInterfaces = ClearNetworkInterfaces
 
 
     def _deserialize(self, params):
@@ -1790,6 +1790,7 @@ If true is filled in, it indicates that the instance tag list should be cleared.
         self._ClearDisasterRecoverGroupIds = params.get("ClearDisasterRecoverGroupIds")
         self._ClearInstanceTags = params.get("ClearInstanceTags")
         self._ClearMetadata = params.get("ClearMetadata")
+        self._ClearNetworkInterfaces = params.get("ClearNetworkInterfaces")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2655,82 +2656,64 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationName: Display name of the launch configuration, which can contain letters, digits, underscores and hyphens (-), and dots. Up to of 60 bytes allowed..
+        :param _LaunchConfigurationName: <p>Display name of the launch configuration. The name only supports Chinese, English, numbers, underscores, the separator "-", and decimal points. The maximum length cannot exceed 60 bytes.</p>
         :type LaunchConfigurationName: str
-        :param _ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        :param _ImageId: <p>Specify a valid <a href="https://www.tencentcloud.com/document/product/213/4940?from_cn_redirect=1">image</a> ID, such as <code>img-8toqc6s3</code>. One and only one of image ID and image family name must be filled in. There are four image types:<br><li>Public image</li><li>Custom image</li><li>Shared image</li><li>Service market image</li><br>You can get available image IDs in the following ways:<br><li>You can query the image IDs of <code>public images</code>, <code>custom images</code>, and <code>shared images</code> by logging in to the <a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">console</a>; query the image IDs in the <code>service image market</code> in <a href="https://market.cloud.tencent.com/list">Marketplace</a>.</li><li>Call the <a href="https://www.tencentcloud.com/document/api/213/15715?from_cn_redirect=1">DescribeImages</a> API and get the <code>ImageId</code> field in the returned information.</li></p>
         :type ImageId: str
-        :param _ProjectId: Project ID of the launch configuration. default value is 0, indicating usage of the default project. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1).
-Note: the instance's project ID within the scaling group takes the project ID of the scaling group, which is irrelevant here.
+        :param _ProjectId: <p>The project ID of the launch configuration. Default value: 0, indicating the default project. Obtain this parameter by calling <a href="https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1">DescribeProject</a> and using the projectId field in the return value.<br>Note: The project ID of instances within the scaling group is the scaling group project ID, irrelevant to the value here.</p>
         :type ProjectId: int
-        :param _InstanceType: Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
-`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
+        :param _InstanceType: <p>Instance model. Different instance models specify different resource specifications. The specific values can be obtained by calling the <a href="https://www.tencentcloud.com/document/api/213/15749?from_cn_redirect=1">DescribeInstanceTypeConfigs</a> API to get the latest specification table or refer to the <a href="https://www.tencentcloud.com/document/product/213/11518?from_cn_redirect=1">instance type</a> description.<br>The <code>InstanceType</code> and <code>InstanceTypes</code> parameters are mutually exclusive, and one and only one must be filled in.</p>
         :type InstanceType: str
-        :param _SystemDisk: System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        :param _SystemDisk: <p>Instance system disk configuration information. If not specified, it will be allocated based on system default values.</p>
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param _DataDisks: Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.
+        :param _DataDisks: <p>Instance data disk configuration information. If not specified, no data disks are purchased by default, and a maximum of 11 data disks can be specified.</p>
         :type DataDisks: list of DataDisk
-        :param _InternetAccessible: Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
+        :param _InternetAccessible: <p>Public network bandwidth-related information settings. If not specified, the public network bandwidth defaults to 0 Mbps.</p>
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param _LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        :param _LoginSettings: <p>Instance login settings. Through this parameter, you can set the instance's login method to password, key, or maintain the image's original login settings. By default, a password will be randomly generated, and the user will be notified through an internal message.</p>
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
-        :param _SecurityGroupIds: The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.
+        :param _SecurityGroupIds: <p>Security group to which an instance belongs. The value of this parameter can be obtained from the returned <code>SecurityGroupId</code> field of the <a href="https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1">DescribeSecurityGroups</a> API. If this parameter is not specified, no security groups are associated by default.</p>
         :type SecurityGroupIds: list of str
-        :param _EnhancedService: Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
+        :param _EnhancedService: <p>Enhancement services. This parameter can be used to specify whether to enable services such as Cloud Monitor and cloud security. If not specified, cloud monitoring and cloud security services are enabled by default.</p>
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
-        :param _UserData: Base64-encoded custom data of up to 16 KB.
+        :param _UserData: <p>Custom data after Base64 encoding should not exceed 16KB.</p>
         :type UserData: str
-        :param _InstanceChargeType: Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:
-<li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>
-<li>SPOTPAID: spot instance</li>
-<li> CDCPAID: dedicated cluster</li>
+        :param _InstanceChargeType: <p>Instance billing type. The default value of CVM is handled as POSTPAID_BY_HOUR.</p><li>POSTPAID_BY_HOUR: hourly postpaid</li><li>SPOTPAID: spot payment</li><li>PREPAID: prepayment, which is monthly subscription</li><li>CDCPAID: dedicated cluster payment</li>
         :type InstanceChargeType: str
-        :param _InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+        :param _InstanceMarketOptions: <p>Market options of the instance, such as spot instance parameters. This parameter is required if the payment mode of the specified instance is spot payment.</p>
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param _InstanceTypes: Instance model list. different instance models specify different resource specifications. supports up to 10 instance models.
-The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+        :param _InstanceTypes: <p>Instance model list. Different instance models specify different resource specifications, and a maximum of 10 instance models are supported.<br>The <code>InstanceType</code> and <code>InstanceTypes</code> parameters are mutually exclusive. One and only one of them must be filled in. To obtain the specific values, call the API <a href="https://www.tencentcloud.com/document/api/213/15749?from_cn_redirect=1">DescribeInstanceTypeConfigs</a> to get the latest specification table or see <a href="https://www.tencentcloud.com/document/product/213/11518?from_cn_redirect=1">Instance Specifications</a>.</p>
         :type InstanceTypes: list of str
-        :param _CamRoleName: CAM role name. you can obtain it from the roleName in the return value from the API [DescribeRoleList](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
+        :param _CamRoleName: <p>CAM role name, which can be obtained from the roleName in the return value from the <a href="https://www.tencentcloud.com/document/product/598/36223?from_cn_redirect=1">DescribeRoleList</a> API.</p>
         :type CamRoleName: str
-        :param _InstanceTypesCheckPolicy: Instance type validation policy. valid values include ALL and ANY. default value: ANY. this parameter is valid only when the InstanceTypes parameter contains multiple instance types.
-<li>ALL: verification passes if ALL instancetypes are available; otherwise, a verification error will be reported.</li>.
-<li>ANY: verification passes if ANY InstanceType is available; otherwise, a verification error will be reported.</li>.
-
-Common reasons for unavailable instancetypes include the instancetype being sold out and the corresponding cloud disk being sold out.
-If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
+        :param _InstanceTypesCheckPolicy: <p>Instance type validation policy. Valid values include ALL and ANY. Default value: ANY. This parameter is valid only when InstanceTypes contains multiple models.</p><li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li><li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li><p>Common causes of InstanceTypes unavailable include the instance type sold out and the corresponding cloud disk sold out.<br>If a model in InstanceTypes does not exist or has been removed, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.</p>
         :type InstanceTypesCheckPolicy: str
-        :param _InstanceTags: List of tags. This parameter is used to bind up to 10 tags to newly added instances.
+        :param _InstanceTags: <p>Tag list. By specifying this parameter, the instances added through scale-out can be bound to the tag. A maximum of 10 tags can be specified.</p>
         :type InstanceTags: list of InstanceTag
-        :param _Tags: List of tags. You can specify tags that you want to bind to the launch configuration. Each launch configuration can have up to 30 tags.
+        :param _Tags: <p>Tag description list. By specifying this parameter, you can bind tags to a launch configuration. Each launch configuration supports up to 30 tags.</p>
         :type Tags: list of Tag
-        :param _HostNameSettings: Specifies the related settings for the cloud virtual machine HostName (HostName).
-windows instances do not support setting hostname. 
-When adding new attributes, the cloud virtual machine hostname must be transmitted. other fields not transmitted will be set as default.
-Validates whether the host name (with suffix added if it exists) exceeds the maximum of 46 characters.
+        :param _HostNameSettings: <p>Related settings of the CVM host name (HostName).<br>Setting the host name for windows instances is unsupported.<br>When adding this attribute, you must pass the CVM host name. Other unspecified fields will be set to default values.<br>The host name (with the suffix added if it exists) is verified against a maximum length of 46 characters.</p>
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param _InstanceNameSettings: Specifies the related settings of the cloud server instance name (InstanceName).
-If the user sets this field in the launch configuration, the instance name of the instance created by the scaling group will be set according to this field and passed to CVM. if the user does not set this field in the launch configuration, the instance name of the instance created by the scaling group will be set as "as-{{ scaling group AutoScalingGroupName }}" and passed to CVM.
-Specifies the instance name of the cloud virtual machine when adding this attribute. other fields not transmitted will be set as default.
-Verifies whether the instance name (add the suffix if it exists) exceeds the maximum of 108 characters.
+        :param _InstanceNameSettings: <p>Related settings of CVM instance name (InstanceName).<br>If the user sets this field in the launch configuration, the InstanceName of instances created by the scaling group is set according to this field and transmitted to CVM. If the user does not set this field in the launch configuration, the InstanceName of instances created by the scaling group is set as "as-{{ scaling group AutoScalingGroupName }}" and transmitted to CVM.<br>When adding new this attribute, the instance name of the CVM must be transmitted. Other fields not transmitted will be set as default values.<br>It will verify whether the instance name (plus the suffix if it exists) exceeds the maximum length of 108 characters.</p>
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
-        :param _InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :param _InstanceChargePrepaid: <p>Prepaid mode, that is, parameter settings related to monthly/annual subscription. By specifying this parameter, you can specify the purchase duration of annual and monthly subscription instances, whether to enable auto-renewal, and other attributes. If the billing mode of the specified instance is prepaid, this parameter must be passed.</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param _DiskTypePolicy: Cloud disk type selection policy, whose default value is ORIGINAL. Valid values:
-<li>ORIGINAL: Use the set cloud disk type.</li>
-<li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
+        :param _DiskTypePolicy: <p>Cloud disk type selection policy. Default value: ORIGINAL. Value range:</p><li>ORIGINAL: use the set cloud disk type</li><li>AUTOMATIC: automatically select the currently available cloud disk type</li>
         :type DiskTypePolicy: str
-        :param _HpcClusterId: High-Performance computing cluster ID. This parameter is not currently supported for the international site.
-Note: this field is empty by default.
+        :param _HpcClusterId: <p>Hyper Computing Cluster ID. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/product/213/83220?from_cn_redirect=1">DescribeHpcClusters</a> API.<br>Note: This field is empty by default.</p>
         :type HpcClusterId: str
-        :param _IPv6InternetAccessible: IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        :param _IPv6InternetAccessible: <p>Public network bandwidth-related information settings for IPv6. If the new instance contains an IPv6 address, this parameter can allocate public network bandwidth to the IPv6 address of the new instance. When the Ipv6AddressCount parameter of the scaling group associated with the launch configuration is 0, this parameter will not take effect.</p>
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
-        :param _DisasterRecoverGroupIds: Placement group ID. Only one is allowed.
+        :param _DisasterRecoverGroupIds: <p>Placement Group id. Only one can be specified.</p>
         :type DisasterRecoverGroupIds: list of str
-        :param _ImageFamily: Image family name. one and only one must be filled in between image Id and image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.
+        :param _ImageFamily: <p>Image family name. Either image Id or image family name must be specified, and one and only one must be filled in. This parameter can be obtained through the <a href="https://www.tencentcloud.com/document/product/213/15715?from_cn_redirect=1">DescribeImages</a> API.</p>
         :type ImageFamily: str
-        :param _DedicatedClusterId: Local exclusive cluster ID. this parameter can be obtained through the [DescribeDedicatedClusters](https://intl.cloud.tencent.com/document/product/1346/73758?from_cn_redirect=1) api.
+        :param _DedicatedClusterId: <p>CDC ID. Obtain this parameter through the <a href="https://www.tencentcloud.com/document/product/1346/73758?from_cn_redirect=1">DescribeDedicatedClusters</a> API.</p>
         :type DedicatedClusterId: str
-        :param _Metadata: Custom metadata.
+        :param _Metadata: <p>Custom metadata.</p>
         :type Metadata: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
+        :param _NetworkInterfaces: <p>Configure the elastic network interface for scale-out instances.</p><p>Input limits: up to 17 items. When configuring this parameter, you must explicitly include and can only include one PRIMARY. AS does not auto-complete the primary ENI. An explicitly empty array is illegal. Spot instances do not support this parameter.</p><p>The VPC and subnet are automatically injected by the scaling group based on the current candidate subnets. If not configured, they are not transmitted to CVM. The SecurityGroupIds parameter in the launch configuration is retained.</p>
+        :type NetworkInterfaces: list of NetworkInterface
         """
         self._LaunchConfigurationName = None
         self._ImageId = None
@@ -2760,10 +2743,11 @@ Note: this field is empty by default.
         self._ImageFamily = None
         self._DedicatedClusterId = None
         self._Metadata = None
+        self._NetworkInterfaces = None
 
     @property
     def LaunchConfigurationName(self):
-        r"""Display name of the launch configuration, which can contain letters, digits, underscores and hyphens (-), and dots. Up to of 60 bytes allowed..
+        r"""<p>Display name of the launch configuration. The name only supports Chinese, English, numbers, underscores, the separator "-", and decimal points. The maximum length cannot exceed 60 bytes.</p>
         :rtype: str
         """
         return self._LaunchConfigurationName
@@ -2774,7 +2758,7 @@ Note: this field is empty by default.
 
     @property
     def ImageId(self):
-        r"""[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        r"""<p>Specify a valid <a href="https://www.tencentcloud.com/document/product/213/4940?from_cn_redirect=1">image</a> ID, such as <code>img-8toqc6s3</code>. One and only one of image ID and image family name must be filled in. There are four image types:<br><li>Public image</li><li>Custom image</li><li>Shared image</li><li>Service market image</li><br>You can get available image IDs in the following ways:<br><li>You can query the image IDs of <code>public images</code>, <code>custom images</code>, and <code>shared images</code> by logging in to the <a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">console</a>; query the image IDs in the <code>service image market</code> in <a href="https://market.cloud.tencent.com/list">Marketplace</a>.</li><li>Call the <a href="https://www.tencentcloud.com/document/api/213/15715?from_cn_redirect=1">DescribeImages</a> API and get the <code>ImageId</code> field in the returned information.</li></p>
         :rtype: str
         """
         return self._ImageId
@@ -2785,8 +2769,7 @@ Note: this field is empty by default.
 
     @property
     def ProjectId(self):
-        r"""Project ID of the launch configuration. default value is 0, indicating usage of the default project. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1).
-Note: the instance's project ID within the scaling group takes the project ID of the scaling group, which is irrelevant here.
+        r"""<p>The project ID of the launch configuration. Default value: 0, indicating the default project. Obtain this parameter by calling <a href="https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1">DescribeProject</a> and using the projectId field in the return value.<br>Note: The project ID of instances within the scaling group is the scaling group project ID, irrelevant to the value here.</p>
         :rtype: int
         """
         return self._ProjectId
@@ -2797,8 +2780,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def InstanceType(self):
-        r"""Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
-`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
+        r"""<p>Instance model. Different instance models specify different resource specifications. The specific values can be obtained by calling the <a href="https://www.tencentcloud.com/document/api/213/15749?from_cn_redirect=1">DescribeInstanceTypeConfigs</a> API to get the latest specification table or refer to the <a href="https://www.tencentcloud.com/document/product/213/11518?from_cn_redirect=1">instance type</a> description.<br>The <code>InstanceType</code> and <code>InstanceTypes</code> parameters are mutually exclusive, and one and only one must be filled in.</p>
         :rtype: str
         """
         return self._InstanceType
@@ -2809,7 +2791,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def SystemDisk(self):
-        r"""System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        r"""<p>Instance system disk configuration information. If not specified, it will be allocated based on system default values.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
         """
         return self._SystemDisk
@@ -2820,7 +2802,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def DataDisks(self):
-        r"""Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.
+        r"""<p>Instance data disk configuration information. If not specified, no data disks are purchased by default, and a maximum of 11 data disks can be specified.</p>
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -2831,7 +2813,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def InternetAccessible(self):
-        r"""Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
+        r"""<p>Public network bandwidth-related information settings. If not specified, the public network bandwidth defaults to 0 Mbps.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -2842,7 +2824,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def LoginSettings(self):
-        r"""Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        r"""<p>Instance login settings. Through this parameter, you can set the instance's login method to password, key, or maintain the image's original login settings. By default, a password will be randomly generated, and the user will be notified through an internal message.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
         """
         return self._LoginSettings
@@ -2853,7 +2835,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def SecurityGroupIds(self):
-        r"""The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.
+        r"""<p>Security group to which an instance belongs. The value of this parameter can be obtained from the returned <code>SecurityGroupId</code> field of the <a href="https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1">DescribeSecurityGroups</a> API. If this parameter is not specified, no security groups are associated by default.</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -2864,7 +2846,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def EnhancedService(self):
-        r"""Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
+        r"""<p>Enhancement services. This parameter can be used to specify whether to enable services such as Cloud Monitor and cloud security. If not specified, cloud monitoring and cloud security services are enabled by default.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         """
         return self._EnhancedService
@@ -2875,7 +2857,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def UserData(self):
-        r"""Base64-encoded custom data of up to 16 KB.
+        r"""<p>Custom data after Base64 encoding should not exceed 16KB.</p>
         :rtype: str
         """
         return self._UserData
@@ -2886,10 +2868,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def InstanceChargeType(self):
-        r"""Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:
-<li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>
-<li>SPOTPAID: spot instance</li>
-<li> CDCPAID: dedicated cluster</li>
+        r"""<p>Instance billing type. The default value of CVM is handled as POSTPAID_BY_HOUR.</p><li>POSTPAID_BY_HOUR: hourly postpaid</li><li>SPOTPAID: spot payment</li><li>PREPAID: prepayment, which is monthly subscription</li><li>CDCPAID: dedicated cluster payment</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -2900,7 +2879,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def InstanceMarketOptions(self):
-        r"""Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+        r"""<p>Market options of the instance, such as spot instance parameters. This parameter is required if the payment mode of the specified instance is spot payment.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         """
         return self._InstanceMarketOptions
@@ -2911,8 +2890,7 @@ Note: the instance's project ID within the scaling group takes the project ID of
 
     @property
     def InstanceTypes(self):
-        r"""Instance model list. different instance models specify different resource specifications. supports up to 10 instance models.
-The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+        r"""<p>Instance model list. Different instance models specify different resource specifications, and a maximum of 10 instance models are supported.<br>The <code>InstanceType</code> and <code>InstanceTypes</code> parameters are mutually exclusive. One and only one of them must be filled in. To obtain the specific values, call the API <a href="https://www.tencentcloud.com/document/api/213/15749?from_cn_redirect=1">DescribeInstanceTypeConfigs</a> to get the latest specification table or see <a href="https://www.tencentcloud.com/document/product/213/11518?from_cn_redirect=1">Instance Specifications</a>.</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -2923,7 +2901,7 @@ The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one an
 
     @property
     def CamRoleName(self):
-        r"""CAM role name. you can obtain it from the roleName in the return value from the API [DescribeRoleList](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
+        r"""<p>CAM role name, which can be obtained from the roleName in the return value from the <a href="https://www.tencentcloud.com/document/product/598/36223?from_cn_redirect=1">DescribeRoleList</a> API.</p>
         :rtype: str
         """
         return self._CamRoleName
@@ -2934,12 +2912,7 @@ The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one an
 
     @property
     def InstanceTypesCheckPolicy(self):
-        r"""Instance type validation policy. valid values include ALL and ANY. default value: ANY. this parameter is valid only when the InstanceTypes parameter contains multiple instance types.
-<li>ALL: verification passes if ALL instancetypes are available; otherwise, a verification error will be reported.</li>.
-<li>ANY: verification passes if ANY InstanceType is available; otherwise, a verification error will be reported.</li>.
-
-Common reasons for unavailable instancetypes include the instancetype being sold out and the corresponding cloud disk being sold out.
-If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
+        r"""<p>Instance type validation policy. Valid values include ALL and ANY. Default value: ANY. This parameter is valid only when InstanceTypes contains multiple models.</p><li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li><li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li><p>Common causes of InstanceTypes unavailable include the instance type sold out and the corresponding cloud disk sold out.<br>If a model in InstanceTypes does not exist or has been removed, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.</p>
         :rtype: str
         """
         return self._InstanceTypesCheckPolicy
@@ -2950,7 +2923,7 @@ If a model in InstanceTypes does not exist or has been abolished, a verification
 
     @property
     def InstanceTags(self):
-        r"""List of tags. This parameter is used to bind up to 10 tags to newly added instances.
+        r"""<p>Tag list. By specifying this parameter, the instances added through scale-out can be bound to the tag. A maximum of 10 tags can be specified.</p>
         :rtype: list of InstanceTag
         """
         return self._InstanceTags
@@ -2961,7 +2934,7 @@ If a model in InstanceTypes does not exist or has been abolished, a verification
 
     @property
     def Tags(self):
-        r"""List of tags. You can specify tags that you want to bind to the launch configuration. Each launch configuration can have up to 30 tags.
+        r"""<p>Tag description list. By specifying this parameter, you can bind tags to a launch configuration. Each launch configuration supports up to 30 tags.</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -2972,10 +2945,7 @@ If a model in InstanceTypes does not exist or has been abolished, a verification
 
     @property
     def HostNameSettings(self):
-        r"""Specifies the related settings for the cloud virtual machine HostName (HostName).
-windows instances do not support setting hostname. 
-When adding new attributes, the cloud virtual machine hostname must be transmitted. other fields not transmitted will be set as default.
-Validates whether the host name (with suffix added if it exists) exceeds the maximum of 46 characters.
+        r"""<p>Related settings of the CVM host name (HostName).<br>Setting the host name for windows instances is unsupported.<br>When adding this attribute, you must pass the CVM host name. Other unspecified fields will be set to default values.<br>The host name (with the suffix added if it exists) is verified against a maximum length of 46 characters.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         return self._HostNameSettings
@@ -2986,10 +2956,7 @@ Validates whether the host name (with suffix added if it exists) exceeds the max
 
     @property
     def InstanceNameSettings(self):
-        r"""Specifies the related settings of the cloud server instance name (InstanceName).
-If the user sets this field in the launch configuration, the instance name of the instance created by the scaling group will be set according to this field and passed to CVM. if the user does not set this field in the launch configuration, the instance name of the instance created by the scaling group will be set as "as-{{ scaling group AutoScalingGroupName }}" and passed to CVM.
-Specifies the instance name of the cloud virtual machine when adding this attribute. other fields not transmitted will be set as default.
-Verifies whether the instance name (add the suffix if it exists) exceeds the maximum of 108 characters.
+        r"""<p>Related settings of CVM instance name (InstanceName).<br>If the user sets this field in the launch configuration, the InstanceName of instances created by the scaling group is set according to this field and transmitted to CVM. If the user does not set this field in the launch configuration, the InstanceName of instances created by the scaling group is set as "as-{{ scaling group AutoScalingGroupName }}" and transmitted to CVM.<br>When adding new this attribute, the instance name of the CVM must be transmitted. Other fields not transmitted will be set as default values.<br>It will verify whether the instance name (plus the suffix if it exists) exceeds the maximum length of 108 characters.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         return self._InstanceNameSettings
@@ -3000,7 +2967,7 @@ Verifies whether the instance name (add the suffix if it exists) exceeds the max
 
     @property
     def InstanceChargePrepaid(self):
-        r"""Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        r"""<p>Prepaid mode, that is, parameter settings related to monthly/annual subscription. By specifying this parameter, you can specify the purchase duration of annual and monthly subscription instances, whether to enable auto-renewal, and other attributes. If the billing mode of the specified instance is prepaid, this parameter must be passed.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -3011,9 +2978,7 @@ Verifies whether the instance name (add the suffix if it exists) exceeds the max
 
     @property
     def DiskTypePolicy(self):
-        r"""Cloud disk type selection policy, whose default value is ORIGINAL. Valid values:
-<li>ORIGINAL: Use the set cloud disk type.</li>
-<li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
+        r"""<p>Cloud disk type selection policy. Default value: ORIGINAL. Value range:</p><li>ORIGINAL: use the set cloud disk type</li><li>AUTOMATIC: automatically select the currently available cloud disk type</li>
         :rtype: str
         """
         return self._DiskTypePolicy
@@ -3024,8 +2989,7 @@ Verifies whether the instance name (add the suffix if it exists) exceeds the max
 
     @property
     def HpcClusterId(self):
-        r"""High-Performance computing cluster ID. This parameter is not currently supported for the international site.
-Note: this field is empty by default.
+        r"""<p>Hyper Computing Cluster ID. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/product/213/83220?from_cn_redirect=1">DescribeHpcClusters</a> API.<br>Note: This field is empty by default.</p>
         :rtype: str
         """
         return self._HpcClusterId
@@ -3036,7 +3000,7 @@ Note: this field is empty by default.
 
     @property
     def IPv6InternetAccessible(self):
-        r"""IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        r"""<p>Public network bandwidth-related information settings for IPv6. If the new instance contains an IPv6 address, this parameter can allocate public network bandwidth to the IPv6 address of the new instance. When the Ipv6AddressCount parameter of the scaling group associated with the launch configuration is 0, this parameter will not take effect.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         return self._IPv6InternetAccessible
@@ -3047,7 +3011,7 @@ Note: this field is empty by default.
 
     @property
     def DisasterRecoverGroupIds(self):
-        r"""Placement group ID. Only one is allowed.
+        r"""<p>Placement Group id. Only one can be specified.</p>
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -3058,7 +3022,7 @@ Note: this field is empty by default.
 
     @property
     def ImageFamily(self):
-        r"""Image family name. one and only one must be filled in between image Id and image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.
+        r"""<p>Image family name. Either image Id or image family name must be specified, and one and only one must be filled in. This parameter can be obtained through the <a href="https://www.tencentcloud.com/document/product/213/15715?from_cn_redirect=1">DescribeImages</a> API.</p>
         :rtype: str
         """
         return self._ImageFamily
@@ -3069,7 +3033,7 @@ Note: this field is empty by default.
 
     @property
     def DedicatedClusterId(self):
-        r"""Local exclusive cluster ID. this parameter can be obtained through the [DescribeDedicatedClusters](https://intl.cloud.tencent.com/document/product/1346/73758?from_cn_redirect=1) api.
+        r"""<p>CDC ID. Obtain this parameter through the <a href="https://www.tencentcloud.com/document/product/1346/73758?from_cn_redirect=1">DescribeDedicatedClusters</a> API.</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -3080,7 +3044,7 @@ Note: this field is empty by default.
 
     @property
     def Metadata(self):
-        r"""Custom metadata.
+        r"""<p>Custom metadata.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
         """
         return self._Metadata
@@ -3088,6 +3052,17 @@ Note: this field is empty by default.
     @Metadata.setter
     def Metadata(self, Metadata):
         self._Metadata = Metadata
+
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>Configure the elastic network interface for scale-out instances.</p><p>Input limits: up to 17 items. When configuring this parameter, you must explicitly include and can only include one PRIMARY. AS does not auto-complete the primary ENI. An explicitly empty array is illegal. Spot instances do not support this parameter.</p><p>The VPC and subnet are automatically injected by the scaling group based on the current candidate subnets. If not configured, they are not transmitted to CVM. The SecurityGroupIds parameter in the launch configuration is retained.</p>
+        :rtype: list of NetworkInterface
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
 
 
     def _deserialize(self, params):
@@ -3154,6 +3129,12 @@ Note: this field is empty by default.
         if params.get("Metadata") is not None:
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterface()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3171,7 +3152,7 @@ class CreateLaunchConfigurationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationId: This parameter is returned when a launch configuration is created through this API, indicating the launch configuration ID.
+        :param _LaunchConfigurationId: <p>When creating a launch configuration through this interface, this parameter will be returned, indicating the launch configuration ID.</p>
         :type LaunchConfigurationId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3181,7 +3162,7 @@ class CreateLaunchConfigurationResponse(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
-        r"""This parameter is returned when a launch configuration is created through this API, indicating the launch configuration ID.
+        r"""<p>When creating a launch configuration through this interface, this parameter will be returned, indicating the launch configuration ID.</p>
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -4114,40 +4095,22 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: Data disk type. for restrictions on data disk types, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.
-<Li>LOCAL_BASIC: local hard disk.</li>.
-<Li>LOCAL_SSD: local ssd.</li>.
-<Li>CLOUD_BASIC: general cloud disk.</li>.
-<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.
-<Li>CLOUD_SSD: cloud ssd</li>.
-<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
-<Li>CLOUD_TSSD: ultra ssd.</li>.
-<Li>CLOUD_BSSD: universal ssd cloud disk</li>.
-The default value is consistent with the system disk type (SystemDisk.DiskType).
+        :param _DiskType: <p>Data disk type. For detailed restrictions on data disk types, see <a href="https://www.tencentcloud.com/document/product/362/2353?from_cn_redirect=1">Cloud Disk Types</a>. Value range:</p><li>LOCAL_BASIC: local hard disk</li><li>LOCAL_SSD: local SSD</li><li>CLOUD_BASIC: basic cloud disk</li><li>CLOUD_PREMIUM: high-performance cloud block storage</li><li>CLOUD_SSD: SSD cloud disk</li><li>CLOUD_HSSD: enhanced SSD cloud disk</li><li>CLOUD_TSSD: ultra-fast SSD CBS</li><li>CLOUD_BSSD: universal SSD cloud disk</li>The default value is consistent with the system disk type (SystemDisk.DiskType).
         :type DiskType: str
-        :param _DiskSize: Data disk size, in GB. the value range varies according to the data disk type. for specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). default value: 0, which means no data disk is purchased. for more restrictions, see the [product documentation](https://intl.cloud.tencent.com/document/product/362/5145?from_cn_redirect=1).
+        :param _DiskSize: <p>Data disk size, in GB. The value range varies according to the data disk type. For specific restrictions, see <a href="https://www.tencentcloud.com/document/product/213/2177?from_cn_redirect=1">CVM instance configuration</a>. Default value: 0, which means that no data disk is purchased. For more restrictions, see the <a href="https://www.tencentcloud.com/document/product/362/5145?from_cn_redirect=1">product documentation</a>.</p>
         :type DiskSize: int
-        :param _SnapshotId: The data disk snapshot ID can be obtained through the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) api.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SnapshotId: <p>Data disk snapshot ID, obtain this parameter through the <a href="https://www.tencentcloud.com/document/product/362/15647?from_cn_redirect=1">DescribeSnapshots</a> API.</p>
         :type SnapshotId: str
-        :param _DeleteWithInstance: Whether the data disk is terminated along with the instance. Valid values:
-<li>TRUE: When the instance is terminated, the data disk is also terminated. This option is only supported for hourly postpaid cloud disks.</li>
-<li>FALSE: When the instance is terminated, the data disk is retained.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DeleteWithInstance: <p>Whether the data disk is destroyed with the instance. Value ranges from:</p><li>TRUE: When the instance is terminated, destroy the data disk. Only hourly postpaid cloud disks are supported.</li><li>FALSE: When the instance is terminated, retain the data disk.</li>
         :type DeleteWithInstance: bool
-        :param _Encrypt: Whether the data disk is encrypted. Valid values:
-<li>TRUE: Encrypted.</li>
-<li>FALSE: Not encrypted.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Encrypt: <p>Whether to encrypt the data disk. TRUE means encrypted, FALSE means not encrypted; the specific disk type, region, and KMS rules are validated by CVM.</p>
         :type Encrypt: bool
-        :param _ThroughputPerformance: Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/zh/document/product/362/39611).
-This feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ThroughputPerformance: <p>Cloud disk performance, unit: MB/s. Using this parameter can purchase additional performance for cloud disks. For feature introduction and type limitations, see: <a href="https://www.tencentcloud.com/document/product/362/51896?from_cn_redirect=1#.E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96.E6.80.A7.E8.83.BD">enhanced SSD cloud disk additional performance note</a>.<br>Currently only supports Extreme CBS (CLOUD_TSSD) and enhanced SSD cloud disks (CLOUD_HSSD) with capacity &gt; 460 GB.</p>
         :type ThroughputPerformance: int
-        :param _BurstPerformance: Burst performance. specifies whether to enable burst performance. default value is false. this parameter only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOUD disk (CLOUD_HSSD) with capacity > 460GB.
-Note: this feature is in beta test and requires a ticket to be submitted for usage.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BurstPerformance: <p>Burst performance. Whether to enable burst performance. The default value is false. Currently, this parameter only supports Extreme CBS (CLOUD_TSSD) and enhanced SSD CLOUD disk (CLOUD_HSSD) with capacity greater than 460 GB.<br>Note: In beta test. Requires ticket submission before usage.</p>
         :type BurstPerformance: bool
+        :param _KmsKeyId: <p>KMS Key ID used for data disk encryption. The key validity, permission, as well as adaptability to disk type and region are validated by CVM.</p>
+        :type KmsKeyId: str
         """
         self._DiskType = None
         self._DiskSize = None
@@ -4156,19 +4119,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Encrypt = None
         self._ThroughputPerformance = None
         self._BurstPerformance = None
+        self._KmsKeyId = None
 
     @property
     def DiskType(self):
-        r"""Data disk type. for restrictions on data disk types, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.
-<Li>LOCAL_BASIC: local hard disk.</li>.
-<Li>LOCAL_SSD: local ssd.</li>.
-<Li>CLOUD_BASIC: general cloud disk.</li>.
-<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.
-<Li>CLOUD_SSD: cloud ssd</li>.
-<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
-<Li>CLOUD_TSSD: ultra ssd.</li>.
-<Li>CLOUD_BSSD: universal ssd cloud disk</li>.
-The default value is consistent with the system disk type (SystemDisk.DiskType).
+        r"""<p>Data disk type. For detailed restrictions on data disk types, see <a href="https://www.tencentcloud.com/document/product/362/2353?from_cn_redirect=1">Cloud Disk Types</a>. Value range:</p><li>LOCAL_BASIC: local hard disk</li><li>LOCAL_SSD: local SSD</li><li>CLOUD_BASIC: basic cloud disk</li><li>CLOUD_PREMIUM: high-performance cloud block storage</li><li>CLOUD_SSD: SSD cloud disk</li><li>CLOUD_HSSD: enhanced SSD cloud disk</li><li>CLOUD_TSSD: ultra-fast SSD CBS</li><li>CLOUD_BSSD: universal SSD cloud disk</li>The default value is consistent with the system disk type (SystemDisk.DiskType).
         :rtype: str
         """
         return self._DiskType
@@ -4179,7 +4134,7 @@ The default value is consistent with the system disk type (SystemDisk.DiskType).
 
     @property
     def DiskSize(self):
-        r"""Data disk size, in GB. the value range varies according to the data disk type. for specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). default value: 0, which means no data disk is purchased. for more restrictions, see the [product documentation](https://intl.cloud.tencent.com/document/product/362/5145?from_cn_redirect=1).
+        r"""<p>Data disk size, in GB. The value range varies according to the data disk type. For specific restrictions, see <a href="https://www.tencentcloud.com/document/product/213/2177?from_cn_redirect=1">CVM instance configuration</a>. Default value: 0, which means that no data disk is purchased. For more restrictions, see the <a href="https://www.tencentcloud.com/document/product/362/5145?from_cn_redirect=1">product documentation</a>.</p>
         :rtype: int
         """
         return self._DiskSize
@@ -4190,8 +4145,7 @@ The default value is consistent with the system disk type (SystemDisk.DiskType).
 
     @property
     def SnapshotId(self):
-        r"""The data disk snapshot ID can be obtained through the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) api.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Data disk snapshot ID, obtain this parameter through the <a href="https://www.tencentcloud.com/document/product/362/15647?from_cn_redirect=1">DescribeSnapshots</a> API.</p>
         :rtype: str
         """
         return self._SnapshotId
@@ -4202,10 +4156,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteWithInstance(self):
-        r"""Whether the data disk is terminated along with the instance. Valid values:
-<li>TRUE: When the instance is terminated, the data disk is also terminated. This option is only supported for hourly postpaid cloud disks.</li>
-<li>FALSE: When the instance is terminated, the data disk is retained.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Whether the data disk is destroyed with the instance. Value ranges from:</p><li>TRUE: When the instance is terminated, destroy the data disk. Only hourly postpaid cloud disks are supported.</li><li>FALSE: When the instance is terminated, retain the data disk.</li>
         :rtype: bool
         """
         return self._DeleteWithInstance
@@ -4216,10 +4167,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Encrypt(self):
-        r"""Whether the data disk is encrypted. Valid values:
-<li>TRUE: Encrypted.</li>
-<li>FALSE: Not encrypted.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Whether to encrypt the data disk. TRUE means encrypted, FALSE means not encrypted; the specific disk type, region, and KMS rules are validated by CVM.</p>
         :rtype: bool
         """
         return self._Encrypt
@@ -4230,9 +4178,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThroughputPerformance(self):
-        r"""Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/zh/document/product/362/39611).
-This feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        r"""<p>Cloud disk performance, unit: MB/s. Using this parameter can purchase additional performance for cloud disks. For feature introduction and type limitations, see: <a href="https://www.tencentcloud.com/document/product/362/51896?from_cn_redirect=1#.E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96.E6.80.A7.E8.83.BD">enhanced SSD cloud disk additional performance note</a>.<br>Currently only supports Extreme CBS (CLOUD_TSSD) and enhanced SSD cloud disks (CLOUD_HSSD) with capacity &gt; 460 GB.</p>
         :rtype: int
         """
         return self._ThroughputPerformance
@@ -4243,9 +4189,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def BurstPerformance(self):
-        r"""Burst performance. specifies whether to enable burst performance. default value is false. this parameter only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOUD disk (CLOUD_HSSD) with capacity > 460GB.
-Note: this feature is in beta test and requires a ticket to be submitted for usage.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Burst performance. Whether to enable burst performance. The default value is false. Currently, this parameter only supports Extreme CBS (CLOUD_TSSD) and enhanced SSD CLOUD disk (CLOUD_HSSD) with capacity greater than 460 GB.<br>Note: In beta test. Requires ticket submission before usage.</p>
         :rtype: bool
         """
         return self._BurstPerformance
@@ -4253,6 +4197,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @BurstPerformance.setter
     def BurstPerformance(self, BurstPerformance):
         self._BurstPerformance = BurstPerformance
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>KMS Key ID used for data disk encryption. The key validity, permission, as well as adaptability to disk type and region are validated by CVM.</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
 
 
     def _deserialize(self, params):
@@ -4263,6 +4218,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Encrypt = params.get("Encrypt")
         self._ThroughputPerformance = params.get("ThroughputPerformance")
         self._BurstPerformance = params.get("BurstPerformance")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7579,22 +7535,19 @@ class HostNameSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostName: Specifies the cvm hostname.
-<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li>. 
-<Li>Windows instances are not supported.</li>. 
-<li>Instances of other types (such as Linux): specifies the character length should be within the range of [2, 42]. multiple dots (.) are allowed. each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-). using only digits is not allowed.</li>. 
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HostName: CVM HostName.
+<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li> 
+<li>Windows instances are not supported.</li> 
+<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [2, 42]. Multiple dots (.) are allowed. Each segment between dot marks can consist of letters (case-insensitive), digits, and hyphens (-). Using only digits is not allowed.</li>
         :type HostName: str
-        :param _HostNameStyle: The style of the CVM HostName. Valid values include ORIGINAL and UNIQUE, and the default value is ORIGINAL.
-<li>ORIGINAL: AS passes HostName filled in the input parameters to CVM. CVM may append serial numbers to HostName, which can result in conflicts with HostName of instances in the scaling group.</li>
+        :param _HostNameStyle: The style of the CVM host name. Valid values include ORIGINAL and UNIQUE, and the default value is ORIGINAL.
+<li>ORIGINAL: AS passes HostName filled in the input parameters to CVM. CVM may append serial numbers to HostName, which can result in conflicts with HostName of instances in the scaling group.</li> 
 <li> UNIQUE: HostName filled in the input parameters acts as a prefix for the HostName. AS and CVM will expand this prefix to ensure that HostName of the instance in the scaling group is unique.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type HostNameStyle: str
-        :param _HostNameSuffix: Specifies the hostname suffix for cvm.
-<li>Dots (.) and hyphens (-) cannot be used as the last character of HostNameSuffix, and cannot be used consecutively.</li>
-<Li>Windows instances are not supported.</li>
-<li>Instances of other types (such as Linux): The character length should be within the range of [1, 39], and the combined length with HostName cannot exceed 41. Multiple dots (.) are allowed. each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HostNameSuffix: Hostname suffix of a CVM instance.
+<li>Dots (.) and hyphens (-) cannot be used as the last character of HostNameSuffix, and cannot be used consecutively.</li> 
+<li>Windows instances are not supported.</li> 
+<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [1, 39], and the combined length with HostName should not exceed 41. Multiple dots (.) are allowed. Each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
         :type HostNameSuffix: str
         :param _HostNameDelimiter: Specifies the delimiter for the CVM host name. The default delimiter is a dot (.). Valid values: 
 - dot (.)
@@ -7613,11 +7566,10 @@ Delimiter used for concatenating host name, index, and suffix. Assuming host nam
 
     @property
     def HostName(self):
-        r"""Specifies the cvm hostname.
-<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li>. 
-<Li>Windows instances are not supported.</li>. 
-<li>Instances of other types (such as Linux): specifies the character length should be within the range of [2, 42]. multiple dots (.) are allowed. each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-). using only digits is not allowed.</li>. 
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""CVM HostName.
+<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li> 
+<li>Windows instances are not supported.</li> 
+<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [2, 42]. Multiple dots (.) are allowed. Each segment between dot marks can consist of letters (case-insensitive), digits, and hyphens (-). Using only digits is not allowed.</li>
         :rtype: str
         """
         return self._HostName
@@ -7628,10 +7580,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostNameStyle(self):
-        r"""The style of the CVM HostName. Valid values include ORIGINAL and UNIQUE, and the default value is ORIGINAL.
-<li>ORIGINAL: AS passes HostName filled in the input parameters to CVM. CVM may append serial numbers to HostName, which can result in conflicts with HostName of instances in the scaling group.</li>
+        r"""The style of the CVM host name. Valid values include ORIGINAL and UNIQUE, and the default value is ORIGINAL.
+<li>ORIGINAL: AS passes HostName filled in the input parameters to CVM. CVM may append serial numbers to HostName, which can result in conflicts with HostName of instances in the scaling group.</li> 
 <li> UNIQUE: HostName filled in the input parameters acts as a prefix for the HostName. AS and CVM will expand this prefix to ensure that HostName of the instance in the scaling group is unique.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._HostNameStyle
@@ -7642,11 +7593,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostNameSuffix(self):
-        r"""Specifies the hostname suffix for cvm.
-<li>Dots (.) and hyphens (-) cannot be used as the last character of HostNameSuffix, and cannot be used consecutively.</li>
-<Li>Windows instances are not supported.</li>
-<li>Instances of other types (such as Linux): The character length should be within the range of [1, 39], and the combined length with HostName cannot exceed 41. Multiple dots (.) are allowed. each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Hostname suffix of a CVM instance.
+<li>Dots (.) and hyphens (-) cannot be used as the last character of HostNameSuffix, and cannot be used consecutively.</li> 
+<li>Windows instances are not supported.</li> 
+<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [1, 39], and the combined length with HostName should not exceed 41. Multiple dots (.) are allowed. Each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
         :rtype: str
         """
         return self._HostNameSuffix
@@ -7696,16 +7646,13 @@ class IPv6InternetAccessible(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InternetChargeType: Network billing mode. Valid values: TRAFFIC_POSTPAID_BY_HOUR, BANDWIDTH_PACKAGE. Default value: TRAFFIC_POSTPAID_BY_HOUR. For the current account type, see [Account Type Description](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#judge).
-<br><li> IPv6 supports `TRAFFIC_POSTPAID_BY_HOUR` under a bill-by-IP account.
-<br><li> IPv6 supports `BANDWIDTH_PACKAGE` under a bill-by-CVM account.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _InternetChargeType: Network billing mode. Values include TRAFFIC_POSTPAID_BY_HOUR and BANDWIDTH_PACKAGE. Default value: TRAFFIC_POSTPAID_BY_HOUR. To view the current account type, see Account Type Description (https://www.tencentcloud.com/document/product/1199/49090?from_cn_redirect=1#judge).
+<br><li> IPv6 supports TRAFFIC_POSTPAID_BY_HOUR for standard account type.
+<br><li> IPv6 supports BANDWIDTH_PACKAGE for classic account type.
         :type InternetChargeType: str
-        :param _InternetMaxBandwidthOut: Outbound bandwidth cap of the public network (in Mbps). <br>It defaults to `0`, which indicates no public network bandwidth is allocated to IPv6. The value range of bandwidth caps varies with the model, availability zone and billing mode. For more information, see [Public Network Bandwidth Cap](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _InternetMaxBandwidthOut: Public network outbound bandwidth cap, unit: Mbps.<br>Default value: 0. At this point, no public network bandwidth is allocated to IPv6. The bandwidth cap range varies by model, availability zone, and billing mode. For specific limitations, see [Public Network Bandwidth Limit](https://www.tencentcloud.com/document/product/213/12523?from_cn_redirect=1).
         :type InternetMaxBandwidthOut: int
-        :param _BandwidthPackageId: Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _BandwidthPackageId: Bandwidth package ID, which can be obtained from the `BandwidthPackageId` in the return value from the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) API.
         :type BandwidthPackageId: str
         """
         self._InternetChargeType = None
@@ -7714,10 +7661,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InternetChargeType(self):
-        r"""Network billing mode. Valid values: TRAFFIC_POSTPAID_BY_HOUR, BANDWIDTH_PACKAGE. Default value: TRAFFIC_POSTPAID_BY_HOUR. For the current account type, see [Account Type Description](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#judge).
-<br><li> IPv6 supports `TRAFFIC_POSTPAID_BY_HOUR` under a bill-by-IP account.
-<br><li> IPv6 supports `BANDWIDTH_PACKAGE` under a bill-by-CVM account.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Network billing mode. Values include TRAFFIC_POSTPAID_BY_HOUR and BANDWIDTH_PACKAGE. Default value: TRAFFIC_POSTPAID_BY_HOUR. To view the current account type, see Account Type Description (https://www.tencentcloud.com/document/product/1199/49090?from_cn_redirect=1#judge).
+<br><li> IPv6 supports TRAFFIC_POSTPAID_BY_HOUR for standard account type.
+<br><li> IPv6 supports BANDWIDTH_PACKAGE for classic account type.
         :rtype: str
         """
         return self._InternetChargeType
@@ -7728,8 +7674,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""Outbound bandwidth cap of the public network (in Mbps). <br>It defaults to `0`, which indicates no public network bandwidth is allocated to IPv6. The value range of bandwidth caps varies with the model, availability zone and billing mode. For more information, see [Public Network Bandwidth Cap](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Public network outbound bandwidth cap, unit: Mbps.<br>Default value: 0. At this point, no public network bandwidth is allocated to IPv6. The bandwidth cap range varies by model, availability zone, and billing mode. For specific limitations, see [Public Network Bandwidth Limit](https://www.tencentcloud.com/document/product/213/12523?from_cn_redirect=1).
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -7740,8 +7685,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BandwidthPackageId(self):
-        r"""Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Bandwidth package ID, which can be obtained from the `BandwidthPackageId` in the return value from the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -8252,8 +8196,7 @@ class InstanceNameSettings(AbstractModel):
 
 `UNIQUE`: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the scaling group is unique.
         :type InstanceNameStyle: str
-        :param _InstanceNameSuffix: CVM instance name suffix. The suffix for a CVM instance name must be 1 to 105 characters in length. Additionally, the combined character count of the base instance name and the suffix must not exceed 107 characters.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceNameSuffix: Name suffix of a CVM instance. The suffix length must be 1 to 105 characters, and the total length of the InstanceName value plus the suffix cannot exceed 107 characters.
         :type InstanceNameSuffix: str
         :param _InstanceNameDelimiter: Specifies the delimiter for the CVM instance name. The default delimiter is a dot (.). Valid values: 
 - dot (.)
@@ -8298,8 +8241,7 @@ Delimiter used for concatenating instance name, index, and suffix. Assuming inst
 
     @property
     def InstanceNameSuffix(self):
-        r"""CVM instance name suffix. The suffix for a CVM instance name must be 1 to 105 characters in length. Additionally, the combined character count of the base instance name and the suffix must not exceed 107 characters.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Name suffix of a CVM instance. The suffix length must be 1 to 105 characters, and the total length of the InstanceName value plus the suffix cannot exceed 107 characters.
         :rtype: str
         """
         return self._InstanceNameSuffix
@@ -8401,16 +8343,12 @@ class InternetAccessible(AbstractModel):
     def __init__(self):
         r"""
         :param _InternetChargeType: Network billing type. Valid values: <li>BANDWIDTH_PREPAID: prepaid by bandwidth;</li> <li>TRAFFIC_POSTPAID_BY_HOUR: postpaid by traffic per hour;</li> <li>BANDWIDTH_POSTPAID_BY_HOUR: postpaid by bandwidth per hour;</li> <li>BANDWIDTH_PACKAGE: bandwidth package users.</li> Default value: TRAFFIC_POSTPAID_BY_HOUR.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type InternetChargeType: str
-        :param _InternetMaxBandwidthOut: The maximum outbound bandwidth in Mbps of the public network. The default value is 0 Mbps. The upper limit of bandwidth varies by model. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InternetMaxBandwidthOut: Public network outbound bandwidth cap. Unit: Mbps. Default value: 0 Mbps. Bandwidth cap range varies by model. For specific limitations, see [Purchase Network Bandwidth](https://www.tencentcloud.com/document/product/213/509?from_cn_redirect=1).
         :type InternetMaxBandwidthOut: int
-        :param _PublicIpAssigned: Whether to assign a public IP address. Valid values: <li>TRUE: Allocate a public IP address.</li> <li>FALSE: Do not allocate a public IP address.</li> When the public network bandwidth is greater than 0 Mbps, you can choose whether to enable this feature based on your needs. By default, this feature is enabled. When the public network bandwidth is 0, public IP address assignment is not allowed.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PublicIpAssigned: Whether to assign a public IP address. Valid values: <li>TRUE: Allocate a public IP address.</li><li>FALSE: Do not allocate a public IP address.</li>When the public network bandwidth is greater than 0 Mbps, you can choose whether to enable this feature. By default, a public IP address is assigned. When the public network bandwidth is 0, assigning a public IP address is not allowed.
         :type PublicIpAssigned: bool
-        :param _BandwidthPackageId: Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
-Note: this field may return null, indicating that no valid value was found.
+        :param _BandwidthPackageId: Bandwidth package ID, which can be obtained from the `BandwidthPackageId` in the return value from the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) API.
         :type BandwidthPackageId: str
         :param _InternetServiceProvider: Line type. for details on various types of lines and supported regions, refer to [EIP IP address type](https://www.tencentcloud.com/zh/document/product/213/5733). default value: BGP.
 
@@ -8455,7 +8393,6 @@ Changing this field configuration will take effect immediately for resources alr
     @property
     def InternetChargeType(self):
         r"""Network billing type. Valid values: <li>BANDWIDTH_PREPAID: prepaid by bandwidth;</li> <li>TRAFFIC_POSTPAID_BY_HOUR: postpaid by traffic per hour;</li> <li>BANDWIDTH_POSTPAID_BY_HOUR: postpaid by bandwidth per hour;</li> <li>BANDWIDTH_PACKAGE: bandwidth package users.</li> Default value: TRAFFIC_POSTPAID_BY_HOUR.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InternetChargeType
@@ -8466,8 +8403,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""The maximum outbound bandwidth in Mbps of the public network. The default value is 0 Mbps. The upper limit of bandwidth varies by model. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Public network outbound bandwidth cap. Unit: Mbps. Default value: 0 Mbps. Bandwidth cap range varies by model. For specific limitations, see [Purchase Network Bandwidth](https://www.tencentcloud.com/document/product/213/509?from_cn_redirect=1).
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -8478,8 +8414,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicIpAssigned(self):
-        r"""Whether to assign a public IP address. Valid values: <li>TRUE: Allocate a public IP address.</li> <li>FALSE: Do not allocate a public IP address.</li> When the public network bandwidth is greater than 0 Mbps, you can choose whether to enable this feature based on your needs. By default, this feature is enabled. When the public network bandwidth is 0, public IP address assignment is not allowed.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""Whether to assign a public IP address. Valid values: <li>TRUE: Allocate a public IP address.</li><li>FALSE: Do not allocate a public IP address.</li>When the public network bandwidth is greater than 0 Mbps, you can choose whether to enable this feature. By default, a public IP address is assigned. When the public network bandwidth is 0, assigning a public IP address is not allowed.
         :rtype: bool
         """
         return self._PublicIpAssigned
@@ -8490,8 +8425,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BandwidthPackageId(self):
-        r"""Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
-Note: this field may return null, indicating that no valid value was found.
+        r"""Bandwidth package ID, which can be obtained from the `BandwidthPackageId` in the return value from the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) API.
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -8704,79 +8638,74 @@ class LaunchConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: Project ID of the instance.
+        :param _ProjectId: <p>Project ID of the instance.</p>
         :type ProjectId: int
-        :param _LaunchConfigurationId: Launch configuration ID
+        :param _LaunchConfigurationId: <p>Launch configuration ID.</p>
         :type LaunchConfigurationId: str
-        :param _LaunchConfigurationName: Launch configuration name.
+        :param _LaunchConfigurationName: <p>Startup configuration name.</p>
         :type LaunchConfigurationName: str
-        :param _InstanceType: Instance model.
+        :param _InstanceType: <p>Instance model.</p>
         :type InstanceType: str
-        :param _SystemDisk: Information of the instance's system disk configuration.
+        :param _SystemDisk: <p>Instance system disk configuration information.</p>
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param _DataDisks: Information of the instance's data disk configuration.
+        :param _DataDisks: <p>Instance data disk configuration information.</p>
         :type DataDisks: list of DataDisk
-        :param _LoginSettings: Instance login settings.
+        :param _LoginSettings: <p>Instance login settings.</p>
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LimitedLoginSettings`
-        :param _InternetAccessible: Information of the public network bandwidth configuration.
+        :param _InternetAccessible: <p>Public network bandwidth-related information settings.</p>
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param _SecurityGroupIds: Security group of the instance.
+        :param _SecurityGroupIds: <p>Security group to which an instance belongs.</p>
         :type SecurityGroupIds: list of str
-        :param _AutoScalingGroupAbstractSet: Auto scaling group associated with the launch configuration.
+        :param _AutoScalingGroupAbstractSet: <p>The scaling group bound to the launch configuration.</p>
         :type AutoScalingGroupAbstractSet: list of AutoScalingGroupAbstract
-        :param _UserData: Custom data.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UserData: <p>Custom data.</p>
         :type UserData: str
-        :param _CreatedTime: Specifies the startup configuration creation time. uses UTC standard time.
+        :param _CreatedTime: <p>Launch configuration creation time, in standard <code>UTC</code> time.</p>
         :type CreatedTime: str
-        :param _EnhancedService: Conditions of enhancement services for the instance and their settings.
+        :param _EnhancedService: <p>Enhanced services enabling situation of the instance and its settings.</p>
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
-        :param _ImageId: Image ID.
+        :param _ImageId: <p>Image ID.</p>
         :type ImageId: str
-        :param _LaunchConfigurationStatus: Current status of the launch configuration. Valid values: <li>NORMAL: Normal.</li> <li>IMAGE_ABNORMAL: Image exception in the launch configuration.</li> <li>CBS_SNAP_ABNORMAL: Exception with data disk snapshot in the launch configuration.</li> <li>SECURITY_GROUP_ABNORMAL: Security group exception in the launch configuration.</li>
+        :param _LaunchConfigurationStatus: <p>Current status of the launch configuration. Value range: <li>NORMAL: Normal</li><li>IMAGE_ABNORMAL: The launch configuration image is exceptional</li><li>CBS_SNAP_ABNORMAL: The launch configuration data disk snapshot is exceptional</li><li>SECURITY_GROUP_ABNORMAL: The launch configuration security group is exceptional</li></p>
         :type LaunchConfigurationStatus: str
-        :param _InstanceChargeType: Instance billing type. valid values:.
-<Li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>.
-<Li>SPOTPAID: spot payment</li>.
-<Li>PREPAID: prepaid, i.e., monthly subscription</li>.
-<Li>CDCPAID: dedicated cluster payment</li>.
+        :param _InstanceChargeType: <p>Instance billing type. The value range is as follows:</p><li>POSTPAID_BY_HOUR: hourly postpaid</li><li>SPOTPAID: spot payment</li><li>PREPAID: prepaid, i.e. monthly subscription</li><li>CDCPAID: dedicated cluster payment</li>
         :type InstanceChargeType: str
-        :param _InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceMarketOptions: <p>Market-related options of the instance, such as spot instance parameters. If the payment mode of the specified instance is spot payment, this parameter is required.</p>
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param _InstanceTypes: List of instance models.
+        :param _InstanceTypes: <p>Instance model list.</p>
         :type InstanceTypes: list of str
-        :param _InstanceTags: List of instance tags, which will be added to instances created by the scale-out activity. Up to 10 tags allowed.
+        :param _InstanceTags: <p>Instance tag list. Instances scaled out will automatically come with tags, supporting up to 10 tags.</p>
         :type InstanceTags: list of InstanceTag
-        :param _Tags: Tag list. this parameter specifies tags only used for binding the launch configuration and will not be passed to CVM instances scaled out based on it.
+        :param _Tags: <p>Tag list. The tags in this parameter are only used to bind launch configurations and will not be passed to CVM instances scaled out based on the launch configuration.</p>
         :type Tags: list of Tag
-        :param _VersionNumber: Version
+        :param _VersionNumber: <p>Version number.</p>
         :type VersionNumber: int
-        :param _UpdatedTime: Last update time is in standard UTC time.
+        :param _UpdatedTime: <p>Update time in standard <code>UTC</code> format.</p>
         :type UpdatedTime: str
-        :param _CamRoleName: Role name of the CAM role. can be obtained from roleName in the return value from the [DescribeRoleList API](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
+        :param _CamRoleName: <p>CAM role name, which can be obtained from the roleName in the return value from the <a href="https://www.tencentcloud.com/document/product/598/36223?from_cn_redirect=1">DescribeRoleList</a> API.</p>
         :type CamRoleName: str
-        :param _LastOperationInstanceTypesCheckPolicy: Value of InstanceTypesCheckPolicy upon the last operation.
+        :param _LastOperationInstanceTypesCheckPolicy: <p>The value of InstanceTypesCheckPolicy last time when operating.</p>
         :type LastOperationInstanceTypesCheckPolicy: str
-        :param _HostNameSettings: CVM hostname settings.
+        :param _HostNameSettings: <p>Related settings for the CVM host name (HostName).</p>
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param _InstanceNameSettings: Settings of CVM instance names
+        :param _InstanceNameSettings: <p>Related settings for the cloud server instance name (InstanceName).</p>
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
-        :param _InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :param _InstanceChargePrepaid: <p>Prepaid mode, i.e., parameter settings related to monthly/annual subscription. By specifying this parameter, you can specify the purchase duration of annual and monthly subscription instances, whether to enable auto-renewal, and other attributes. This parameter is required if the billing mode for the specified instance is prepaid.</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param _DiskTypePolicy: Cloud disk type selection policy. Valid values: <li>ORIGINAL: Use the set cloud disk type.</li> <li>AUTOMATIC: Automatically select available cloud disk types in the current availability zone.</li>
+        :param _DiskTypePolicy: <p>Cloud disk type selection policy. Parameter value range: <li>ORIGINAL: use the set cloud disk type</li><li>AUTOMATIC: automatically select available cloud disk types in the current AZ</li></p>
         :type DiskTypePolicy: str
-        :param _HpcClusterId: HPC ID<br>
-Note: This field is default to empty
+        :param _HpcClusterId: <p>Hyper Computing Cluster ID.<br><br>Note: This field is empty by default.</p>
         :type HpcClusterId: str
-        :param _IPv6InternetAccessible: IPv6 public network bandwidth configuration.
+        :param _IPv6InternetAccessible: <p>IPv6 public network bandwidth-related information settings.</p>
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
-        :param _DisasterRecoverGroupIds: Placement group ID, supporting specification of only one.
+        :param _DisasterRecoverGroupIds: <p>Placement Group id. Only one can be specified.</p>
         :type DisasterRecoverGroupIds: list of str
-        :param _ImageFamily: Image family name.
+        :param _ImageFamily: <p>Image family name.</p>
         :type ImageFamily: str
-        :param _DedicatedClusterId: CDC ID.
+        :param _DedicatedClusterId: <p>Local dedicated cluster ID.</p>
         :type DedicatedClusterId: str
+        :param _NetworkInterfaces: <p>ENI configuration of the launch configuration.</p>
+        :type NetworkInterfaces: list of NetworkInterface
         """
         self._ProjectId = None
         self._LaunchConfigurationId = None
@@ -8811,10 +8740,11 @@ Note: This field is default to empty
         self._DisasterRecoverGroupIds = None
         self._ImageFamily = None
         self._DedicatedClusterId = None
+        self._NetworkInterfaces = None
 
     @property
     def ProjectId(self):
-        r"""Project ID of the instance.
+        r"""<p>Project ID of the instance.</p>
         :rtype: int
         """
         return self._ProjectId
@@ -8825,7 +8755,7 @@ Note: This field is default to empty
 
     @property
     def LaunchConfigurationId(self):
-        r"""Launch configuration ID
+        r"""<p>Launch configuration ID.</p>
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -8836,7 +8766,7 @@ Note: This field is default to empty
 
     @property
     def LaunchConfigurationName(self):
-        r"""Launch configuration name.
+        r"""<p>Startup configuration name.</p>
         :rtype: str
         """
         return self._LaunchConfigurationName
@@ -8847,7 +8777,7 @@ Note: This field is default to empty
 
     @property
     def InstanceType(self):
-        r"""Instance model.
+        r"""<p>Instance model.</p>
         :rtype: str
         """
         return self._InstanceType
@@ -8858,7 +8788,7 @@ Note: This field is default to empty
 
     @property
     def SystemDisk(self):
-        r"""Information of the instance's system disk configuration.
+        r"""<p>Instance system disk configuration information.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
         """
         return self._SystemDisk
@@ -8869,7 +8799,7 @@ Note: This field is default to empty
 
     @property
     def DataDisks(self):
-        r"""Information of the instance's data disk configuration.
+        r"""<p>Instance data disk configuration information.</p>
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -8880,7 +8810,7 @@ Note: This field is default to empty
 
     @property
     def LoginSettings(self):
-        r"""Instance login settings.
+        r"""<p>Instance login settings.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LimitedLoginSettings`
         """
         return self._LoginSettings
@@ -8891,7 +8821,7 @@ Note: This field is default to empty
 
     @property
     def InternetAccessible(self):
-        r"""Information of the public network bandwidth configuration.
+        r"""<p>Public network bandwidth-related information settings.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -8902,7 +8832,7 @@ Note: This field is default to empty
 
     @property
     def SecurityGroupIds(self):
-        r"""Security group of the instance.
+        r"""<p>Security group to which an instance belongs.</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -8913,7 +8843,7 @@ Note: This field is default to empty
 
     @property
     def AutoScalingGroupAbstractSet(self):
-        r"""Auto scaling group associated with the launch configuration.
+        r"""<p>The scaling group bound to the launch configuration.</p>
         :rtype: list of AutoScalingGroupAbstract
         """
         return self._AutoScalingGroupAbstractSet
@@ -8924,8 +8854,7 @@ Note: This field is default to empty
 
     @property
     def UserData(self):
-        r"""Custom data.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Custom data.</p>
         :rtype: str
         """
         return self._UserData
@@ -8936,7 +8865,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        r"""Specifies the startup configuration creation time. uses UTC standard time.
+        r"""<p>Launch configuration creation time, in standard <code>UTC</code> time.</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -8947,7 +8876,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnhancedService(self):
-        r"""Conditions of enhancement services for the instance and their settings.
+        r"""<p>Enhanced services enabling situation of the instance and its settings.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         """
         return self._EnhancedService
@@ -8958,7 +8887,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageId(self):
-        r"""Image ID.
+        r"""<p>Image ID.</p>
         :rtype: str
         """
         return self._ImageId
@@ -8969,7 +8898,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LaunchConfigurationStatus(self):
-        r"""Current status of the launch configuration. Valid values: <li>NORMAL: Normal.</li> <li>IMAGE_ABNORMAL: Image exception in the launch configuration.</li> <li>CBS_SNAP_ABNORMAL: Exception with data disk snapshot in the launch configuration.</li> <li>SECURITY_GROUP_ABNORMAL: Security group exception in the launch configuration.</li>
+        r"""<p>Current status of the launch configuration. Value range: <li>NORMAL: Normal</li><li>IMAGE_ABNORMAL: The launch configuration image is exceptional</li><li>CBS_SNAP_ABNORMAL: The launch configuration data disk snapshot is exceptional</li><li>SECURITY_GROUP_ABNORMAL: The launch configuration security group is exceptional</li></p>
         :rtype: str
         """
         return self._LaunchConfigurationStatus
@@ -8980,11 +8909,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargeType(self):
-        r"""Instance billing type. valid values:.
-<Li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>.
-<Li>SPOTPAID: spot payment</li>.
-<Li>PREPAID: prepaid, i.e., monthly subscription</li>.
-<Li>CDCPAID: dedicated cluster payment</li>.
+        r"""<p>Instance billing type. The value range is as follows:</p><li>POSTPAID_BY_HOUR: hourly postpaid</li><li>SPOTPAID: spot payment</li><li>PREPAID: prepaid, i.e. monthly subscription</li><li>CDCPAID: dedicated cluster payment</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -8995,8 +8920,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceMarketOptions(self):
-        r"""Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Market-related options of the instance, such as spot instance parameters. If the payment mode of the specified instance is spot payment, this parameter is required.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         """
         return self._InstanceMarketOptions
@@ -9007,7 +8931,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceTypes(self):
-        r"""List of instance models.
+        r"""<p>Instance model list.</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -9018,7 +8942,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceTags(self):
-        r"""List of instance tags, which will be added to instances created by the scale-out activity. Up to 10 tags allowed.
+        r"""<p>Instance tag list. Instances scaled out will automatically come with tags, supporting up to 10 tags.</p>
         :rtype: list of InstanceTag
         """
         return self._InstanceTags
@@ -9029,7 +8953,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        r"""Tag list. this parameter specifies tags only used for binding the launch configuration and will not be passed to CVM instances scaled out based on it.
+        r"""<p>Tag list. The tags in this parameter are only used to bind launch configurations and will not be passed to CVM instances scaled out based on the launch configuration.</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -9040,7 +8964,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionNumber(self):
-        r"""Version
+        r"""<p>Version number.</p>
         :rtype: int
         """
         return self._VersionNumber
@@ -9051,7 +8975,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedTime(self):
-        r"""Last update time is in standard UTC time.
+        r"""<p>Update time in standard <code>UTC</code> format.</p>
         :rtype: str
         """
         return self._UpdatedTime
@@ -9062,7 +8986,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CamRoleName(self):
-        r"""Role name of the CAM role. can be obtained from roleName in the return value from the [DescribeRoleList API](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
+        r"""<p>CAM role name, which can be obtained from the roleName in the return value from the <a href="https://www.tencentcloud.com/document/product/598/36223?from_cn_redirect=1">DescribeRoleList</a> API.</p>
         :rtype: str
         """
         return self._CamRoleName
@@ -9073,7 +8997,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastOperationInstanceTypesCheckPolicy(self):
-        r"""Value of InstanceTypesCheckPolicy upon the last operation.
+        r"""<p>The value of InstanceTypesCheckPolicy last time when operating.</p>
         :rtype: str
         """
         return self._LastOperationInstanceTypesCheckPolicy
@@ -9084,7 +9008,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostNameSettings(self):
-        r"""CVM hostname settings.
+        r"""<p>Related settings for the CVM host name (HostName).</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         return self._HostNameSettings
@@ -9095,7 +9019,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceNameSettings(self):
-        r"""Settings of CVM instance names
+        r"""<p>Related settings for the cloud server instance name (InstanceName).</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         return self._InstanceNameSettings
@@ -9106,7 +9030,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargePrepaid(self):
-        r"""Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        r"""<p>Prepaid mode, i.e., parameter settings related to monthly/annual subscription. By specifying this parameter, you can specify the purchase duration of annual and monthly subscription instances, whether to enable auto-renewal, and other attributes. This parameter is required if the billing mode for the specified instance is prepaid.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -9117,7 +9041,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskTypePolicy(self):
-        r"""Cloud disk type selection policy. Valid values: <li>ORIGINAL: Use the set cloud disk type.</li> <li>AUTOMATIC: Automatically select available cloud disk types in the current availability zone.</li>
+        r"""<p>Cloud disk type selection policy. Parameter value range: <li>ORIGINAL: use the set cloud disk type</li><li>AUTOMATIC: automatically select available cloud disk types in the current AZ</li></p>
         :rtype: str
         """
         return self._DiskTypePolicy
@@ -9128,8 +9052,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HpcClusterId(self):
-        r"""HPC ID<br>
-Note: This field is default to empty
+        r"""<p>Hyper Computing Cluster ID.<br><br>Note: This field is empty by default.</p>
         :rtype: str
         """
         return self._HpcClusterId
@@ -9140,7 +9063,7 @@ Note: This field is default to empty
 
     @property
     def IPv6InternetAccessible(self):
-        r"""IPv6 public network bandwidth configuration.
+        r"""<p>IPv6 public network bandwidth-related information settings.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         return self._IPv6InternetAccessible
@@ -9151,7 +9074,7 @@ Note: This field is default to empty
 
     @property
     def DisasterRecoverGroupIds(self):
-        r"""Placement group ID, supporting specification of only one.
+        r"""<p>Placement Group id. Only one can be specified.</p>
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -9162,7 +9085,7 @@ Note: This field is default to empty
 
     @property
     def ImageFamily(self):
-        r"""Image family name.
+        r"""<p>Image family name.</p>
         :rtype: str
         """
         return self._ImageFamily
@@ -9173,7 +9096,7 @@ Note: This field is default to empty
 
     @property
     def DedicatedClusterId(self):
-        r"""CDC ID.
+        r"""<p>Local dedicated cluster ID.</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -9181,6 +9104,17 @@ Note: This field is default to empty
     @DedicatedClusterId.setter
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>ENI configuration of the launch configuration.</p>
+        :rtype: list of NetworkInterface
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
 
 
     def _deserialize(self, params):
@@ -9255,6 +9189,12 @@ Note: This field is default to empty
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         self._ImageFamily = params.get("ImageFamily")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterface()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10027,7 +9967,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 <li>query the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>
 <li>obtain the launch configuration ID by calling the [DescribeLaunchConfigurations](https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1) api and retrieving the LaunchConfigurationId from the returned information.</li>
         :type LaunchConfigurationId: str
-        :param _MaxSize: <P>Maximum number of instances. value range: [0,2000]. to meet the requirement, the maximum value must be equal to or greater than the expected value, and the expected value must be equal to or greater than the minimum value.</p>.
+        :param _MaxSize: <p>Maximum instance count, value range: [0, 2000]. The maximum value must be greater than or equal to the expected value, and the expected value must be greater than or equal to the minimum value.</p><p>Value range: [0, 2000]</p>
         :type MaxSize: int
         :param _MinSize: <P>Minimum number of instances. value range: [0,2000]. to meet the requirement, the maximum value must be equal to or greater than the expected value, and the expected value must be equal to or greater than the minimum value.</p>.
         :type MinSize: int
@@ -10155,7 +10095,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def MaxSize(self):
-        r"""<P>Maximum number of instances. value range: [0,2000]. to meet the requirement, the maximum value must be equal to or greater than the expected value, and the expected value must be equal to or greater than the minimum value.</p>.
+        r"""<p>Maximum instance count, value range: [0, 2000]. The maximum value must be greater than or equal to the expected value, and the expected value must be greater than or equal to the minimum value.</p><p>Value range: [0, 2000]</p>
         :rtype: int
         """
         return self._MaxSize
@@ -10562,86 +10502,60 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationId: Launch configuration ID. obtain the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.
+        :param _LaunchConfigurationId: <p>Launch configuration ID. You can obtain it by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/config">console</a> or calling the <a href="https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1">DescribeLaunchConfigurations</a> API, and retrieving LaunchConfigurationId from the returned information.</p>
         :type LaunchConfigurationId: str
-        :param _ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        :param _ImageId: <p>Specify a valid <a href="https://www.tencentcloud.com/document/product/213/4940?from_cn_redirect=1">image</a> ID, such as <code>img-8toqc6s3</code>. There are four image types:<br><li>Public image</li><li>Custom image</li><li>Shared image</li><li>Service market image</li><br>You can obtain an available image ID in the following ways:<br><li>For <code>public images</code>, <code>custom images</code>, and <code>shared images</code>, query the image ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">console</a>. For <code>service market images</code>, query the image ID in the <a href="https://market.cloud.tencent.com/list">cloud market</a>.</li><li>Call the <a href="https://www.tencentcloud.com/document/api/213/15715?from_cn_redirect=1">DescribeImages</a> API and take the <code>ImageId</code> field from the returned information.</li></p>
         :type ImageId: str
-        :param _InstanceTypes: Types of cvm instances. different instance models specify different resource specifications. supports up to 10 instance models.
-The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+        :param _InstanceTypes: <p>Types of CVM instances. Different instance models specify different resource specifications, and a maximum of 10 instance models are supported.<br>InstanceType specifies a single instance type. By setting InstanceTypes, you can specify multiple instance types and invalidate the original InstanceType. Specific values can be obtained by calling the API <a href="https://www.tencentcloud.com/document/api/213/15749?from_cn_redirect=1">DescribeInstanceTypeConfigs</a> to obtain the latest specification table or see <a href="https://www.tencentcloud.com/document/product/213/11518?from_cn_redirect=1">Instance Specifications</a>.</p>
         :type InstanceTypes: list of str
-        :param _InstanceTypesCheckPolicy: InstanceType verification policy, which is effective when actual modification is made to InstanceTypes. Valid values include ALL and ANY and the default value is ANY.
-<li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
-<li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li>
-Common reasons for unavailable InstanceTypes include the InstanceType being sold out, and the corresponding cloud disk being sold out.
-If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
+        :param _InstanceTypesCheckPolicy: <p>Instance type validation policy, effective during actual modification of InstanceTypes. Valid values include ALL and ANY, default value: ANY.</p><li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li> <li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li> Common causes of InstanceTypes unavailable include InstanceType sold out, corresponding cloud disk sold out. If a model in InstanceTypes does not exist or has been removed, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.
         :type InstanceTypesCheckPolicy: str
-        :param _LaunchConfigurationName: Display name of the launch configuration, which can contain Chinese characters, letters, numbers, underscores, separators ("-"), and decimal points with a maximum length of 60 bytes.
+        :param _LaunchConfigurationName: <p>Display name of the launch configuration. The name only supports Chinese, English, numbers, underscores, separator "-", and decimal points. The maximum length cannot exceed 60 bytes.</p>
         :type LaunchConfigurationName: str
-        :param _UserData: Base64-encoded custom data of up to 16 KB. If you want to clear `UserData`, set it to an empty string.
+        :param _UserData: <p>The custom data after Base64 encoding should not exceed 16 KB. To clear UserData, assign it an empty string.</p>
         :type UserData: str
-        :param _SecurityGroupIds: Security group to which the instance belongs. This parameter can be obtained from the `SecurityGroupId` field in the response of the [`DescribeSecurityGroups`](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API.
-At least one security group is required for this parameter. The security group specified is sequential.
+        :param _SecurityGroupIds: <p>Security group to which the instance belongs. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1">DescribeSecurityGroups</a> API and getting the <code>SecurityGroupId</code> field in the return value.<br>If you specify this parameter, provide at least one security group, and the list order is sequential.</p>
         :type SecurityGroupIds: list of str
-        :param _InternetAccessible: Information of the public network bandwidth configuration.
-When the public outbound network bandwidth is 0 Mbps, assigning a public IP is not allowed. Accordingly, if a public IP is assigned, the new public network outbound bandwidth must be greater than 0 Mbps.
+        :param _InternetAccessible: <p>Public network bandwidth-related information settings.<br>When the public network outbound bandwidth cap is 0 Mbps, it cannot be modified to enable assigning public IP. Accordingly, when assigning public IP is currently enabled, the modified public network outbound bandwidth cap must be greater than 0 Mbps.</p>
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param _InstanceChargeType: Instance billing mode. Valid values:
-<li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>
-<li>SPOTPAID: spot instance</li>
-<li> CDCPAID: dedicated cluster</li>
+        :param _InstanceChargeType: <p>Instance billing type. Valid values:</p><li>POSTPAID_BY_HOUR: hourly postpaid</li><li>SPOTPAID: spot payment</li><li>PREPAID: prepaid, which is a Monthly Subscription</li><li>CDCPAID: dedicated cluster payment</li>
         :type InstanceChargeType: str
-        :param _InstanceChargePrepaid: Parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set the auto-renewal, and other attributes of the monthly-subscribed instances.
-This parameter is required when changing the instance billing mode to monthly subscription. It will be automatically discarded after you choose another billing mode.
-This field requires passing in the `Period` field. Other fields that are not passed in will use their default values.
-This field can be modified only when the current billing mode is monthly subscription.
+        :param _InstanceChargePrepaid: <p>Prepaid mode, that is, parameter settings related to monthly/annual subscription. By specifying this parameter, you can set attributes such as the duration of instance purchase and whether to enable auto-renewal.<br>If you change the payment mode of an instance to prepaid, this parameter is required. When changing from prepaid to other payment modes, the original info in this field is automatically discarded.<br>When adding this field, you must specify the duration of instance purchase. Other fields not specified will be set to default values.<br>When modifying this field, the current payment mode must be prepaid.</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param _InstanceMarketOptions: Market-related options for instances, such as parameters related to spot instances.
-This parameter is required when changing the instance billing mode to spot instance. It will be automatically discarded after you choose another instance billing mode.
-This field requires passing in the `MaxPrice` field under the `SpotOptions`. Other fields that are not passed in will use their default values.
-This field can be modified only when the current billing mode is spot instance.
+        :param _InstanceMarketOptions: <p>Market-related options of the instance, such as bidding instance parameters.<br>If you change the payment mode of the instance to spot payment, this parameter is required. When changing from spot payment to other payment modes, the original info in this field is automatically discarded.<br>When adding this field, you must transmit the bid price under relevant spot options. Other fields not transmitted will be set as default.<br>When modifying this field, the current payment mode must be spot payment.</p>
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param _DiskTypePolicy: Cloud disk type selection policy. Valid values:
-<li>ORIGINAL: Use the set cloud disk type.</li>
-<li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
+        :param _DiskTypePolicy: <p>Cloud disk type selection policy. Value range:</p><li>ORIGINAL: use the set cloud disk type.</li><li>AUTOMATIC: automatically select the currently available cloud disk type.</li>
         :type DiskTypePolicy: str
-        :param _SystemDisk: Instance system disk configurations
+        :param _SystemDisk: <p>Instance system disk configuration information.</p>
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param _DataDisks: Configuration information of instance data disks.
-Up to 11 data disks can be specified and will be collectively modified. Please provide all the new values for the modification.
-The default data disk should be the same as the system disk.
+        :param _DataDisks: <p>Instance data disk configuration information.<br>Supports up to 11 data disks. Apply the modification as a whole, so provide all values after modification.<br>The data disk type is consistent with the system disk type by default.</p>
         :type DataDisks: list of DataDisk
-        :param _HostNameSettings: Specifies the related settings for the cloud virtual machine HostName (HostName).
-windows instances do not support setting hostname.
-When adding new attributes, the cloud virtual machine hostname must be transmitted. other fields not transmitted will be set as default.
-Validates whether the host name (with suffix added if it exists) exceeds the maximum of 46 characters.
+        :param _HostNameSettings: <p>Settings for the CVM host name.<br>Configuring the host name for windows instances is not supported.<br>When adding this attribute, you must transmit the CVM host name. Other fields not transmitted will be set to default values.<br>The host name (with the suffix added if it exists) is verified to check whether it exceeds the maximum length of 46 characters.</p>
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param _InstanceNameSettings: Specifies the related settings of the cloud virtual machine (cvm) instance name. 
-If the user sets this field in the launch configuration, the instance name of the instance created by the scaling group will be set according to this field and passed to CVM. if the user does not set this field in the launch configuration, the instance name of the instance created by the scaling group will be set as "as-{{ scaling group AutoScalingGroupName }}" and passed to CVM.
-Specifies the instance name of the cloud virtual machine when adding this attribute. other fields not transmitted will be set as default.
-Verifies whether the instance name (add the suffix if it exists) exceeds the maximum of 108 characters.
+        :param _InstanceNameSettings: <p>Settings related to the CVM instance name (InstanceName).<br>If the user sets this field in the launch configuration, the InstanceName of instances created by the scaling group will be set according to this field and transmitted to CVM. If the user does not set this field in the launch configuration, the InstanceName of instances created by the scaling group will be set as "as-{{ AutoScalingGroupName }}" and transmitted to CVM.<br>When adding this attribute, the CVM instance name must be transmitted. Other fields not transmitted will be set to default values.<br>It will verify whether the instance name (with the suffix added if it exists) exceeds the maximum length of 108 characters.</p>
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
-        :param _EnhancedService: Specifies whether to enable additional services, such as security services and monitoring service.
+        :param _EnhancedService: <p>Enhanced service. This parameter can be used to specify whether to enable services such as cloud security and Cloud Monitor.</p>
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
-        :param _CamRoleName: Role name of the CAM role. can be obtained from roleName in the return value from the [DescribeRoleList API](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
+        :param _CamRoleName: <p>CAM role name, which can be obtained from the roleName in the return value from the <a href="https://www.tencentcloud.com/document/product/598/36223?from_cn_redirect=1">DescribeRoleList</a> API.</p>
         :type CamRoleName: str
-        :param _HpcClusterId: High-Performance computing cluster ID. See [Tencent Cloud HPC Documentation](https://www.tencentcloud.com/zh/document/product/1236) for more details.
-Note: this field is empty by default.
+        :param _HpcClusterId: <p>Hyper Computing Cluster ID. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/product/213/83220?from_cn_redirect=1">DescribeHpcClusters</a> API.<br>Note: This field is empty by default.</p>
         :type HpcClusterId: str
-        :param _IPv6InternetAccessible: IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        :param _IPv6InternetAccessible: <p>IPv6 public network bandwidth-related information settings. If the new instance includes an IPv6 address, this parameter can allocate public network bandwidth for the IPv6 address of the new instance. When the Ipv6AddressCount parameter of the scaling group associated with the launch configuration is 0, this parameter will not take effect.</p>
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
-        :param _DisasterRecoverGroupIds: Placement group id. only one can be specified. obtain through the API [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1).
+        :param _DisasterRecoverGroupIds: <p>Placement Group id. Only one can be specified. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/product/213/17810?from_cn_redirect=1">DescribeDisasterRecoverGroups</a> API.</p>
         :type DisasterRecoverGroupIds: list of str
-        :param _LoginSettings: Instance login settings, which include passwords, keys, or the original login settings inherited from the image. <br>Please note that specifying new login settings will overwrite the existing ones. For instance, if you previously used a password for login and then use this parameter to switch the login settings to a key, the original password will be removed.
+        :param _LoginSettings: <p>Instance login settings, including passwords, keys, or maintaining the image's original login settings.<br>Please note that specifying new login settings overwrites existing login settings. For example, if you previously used a password to login, use this parameter to change login settings to a key, and the original password is removed.</p>
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
-        :param _InstanceTags: Instance tag list. By specifying this parameter, the instances added through scale-out can be bound to the tag. Up to 10 Tags can be specified.
-This parameter will overwrite the original instance tag list. To add new tags, you need to pass the new tags along with the original tags.
+        :param _InstanceTags: <p>Instance tag list. By specifying this parameter, the instances added through scale-out can be bound to the tag. Up to 10 Tags can be specified.<br>This parameter overrides the original instance tag list. To add a tag, import both the new tag and the original tags.</p>
         :type InstanceTags: list of InstanceTag
-        :param _ImageFamily: Image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.
+        :param _ImageFamily: <p>Image family name. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/product/213/15715?from_cn_redirect=1">DescribeImages</a> API.</p>
         :type ImageFamily: str
-        :param _DedicatedClusterId: Cloud Dedicated Cluster (CDC) ID.
+        :param _DedicatedClusterId: <p>Local exclusive cluster ID.</p>
         :type DedicatedClusterId: str
-        :param _Metadata: Custom metadata.
+        :param _Metadata: <p>Custom metadata.</p>
         :type Metadata: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
+        :param _NetworkInterfaces: <p>Replace the ENI configuration in the launch configuration.</p><p>Input limits: up to 17 items; must explicitly include and can only contain one PRIMARY. AS does not auto-complete the primary ENI. An explicit empty array is illegal.</p><p>Field rules match CreateLaunchConfiguration. To clean up, call ClearLaunchConfigurationAttributes with ClearNetworkInterfaces=true.</p>
+        :type NetworkInterfaces: list of NetworkInterface
         """
         self._LaunchConfigurationId = None
         self._ImageId = None
@@ -10669,10 +10583,11 @@ This parameter will overwrite the original instance tag list. To add new tags, y
         self._ImageFamily = None
         self._DedicatedClusterId = None
         self._Metadata = None
+        self._NetworkInterfaces = None
 
     @property
     def LaunchConfigurationId(self):
-        r"""Launch configuration ID. obtain the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.
+        r"""<p>Launch configuration ID. You can obtain it by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/config">console</a> or calling the <a href="https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1">DescribeLaunchConfigurations</a> API, and retrieving LaunchConfigurationId from the returned information.</p>
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -10683,7 +10598,7 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def ImageId(self):
-        r"""[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        r"""<p>Specify a valid <a href="https://www.tencentcloud.com/document/product/213/4940?from_cn_redirect=1">image</a> ID, such as <code>img-8toqc6s3</code>. There are four image types:<br><li>Public image</li><li>Custom image</li><li>Shared image</li><li>Service market image</li><br>You can obtain an available image ID in the following ways:<br><li>For <code>public images</code>, <code>custom images</code>, and <code>shared images</code>, query the image ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">console</a>. For <code>service market images</code>, query the image ID in the <a href="https://market.cloud.tencent.com/list">cloud market</a>.</li><li>Call the <a href="https://www.tencentcloud.com/document/api/213/15715?from_cn_redirect=1">DescribeImages</a> API and take the <code>ImageId</code> field from the returned information.</li></p>
         :rtype: str
         """
         return self._ImageId
@@ -10694,8 +10609,7 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InstanceTypes(self):
-        r"""Types of cvm instances. different instance models specify different resource specifications. supports up to 10 instance models.
-The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeZoneInstanceConfigInfos](https://www.tencentcloud.com/document/product/213/33254) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+        r"""<p>Types of CVM instances. Different instance models specify different resource specifications, and a maximum of 10 instance models are supported.<br>InstanceType specifies a single instance type. By setting InstanceTypes, you can specify multiple instance types and invalidate the original InstanceType. Specific values can be obtained by calling the API <a href="https://www.tencentcloud.com/document/api/213/15749?from_cn_redirect=1">DescribeInstanceTypeConfigs</a> to obtain the latest specification table or see <a href="https://www.tencentcloud.com/document/product/213/11518?from_cn_redirect=1">Instance Specifications</a>.</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -10706,11 +10620,7 @@ The launch configuration uses `InstanceType` to indicate one single instance typ
 
     @property
     def InstanceTypesCheckPolicy(self):
-        r"""InstanceType verification policy, which is effective when actual modification is made to InstanceTypes. Valid values include ALL and ANY and the default value is ANY.
-<li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
-<li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li>
-Common reasons for unavailable InstanceTypes include the InstanceType being sold out, and the corresponding cloud disk being sold out.
-If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
+        r"""<p>Instance type validation policy, effective during actual modification of InstanceTypes. Valid values include ALL and ANY, default value: ANY.</p><li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li> <li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li> Common causes of InstanceTypes unavailable include InstanceType sold out, corresponding cloud disk sold out. If a model in InstanceTypes does not exist or has been removed, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.
         :rtype: str
         """
         return self._InstanceTypesCheckPolicy
@@ -10721,7 +10631,7 @@ If a model in InstanceTypes does not exist or has been abolished, a verification
 
     @property
     def LaunchConfigurationName(self):
-        r"""Display name of the launch configuration, which can contain Chinese characters, letters, numbers, underscores, separators ("-"), and decimal points with a maximum length of 60 bytes.
+        r"""<p>Display name of the launch configuration. The name only supports Chinese, English, numbers, underscores, separator "-", and decimal points. The maximum length cannot exceed 60 bytes.</p>
         :rtype: str
         """
         return self._LaunchConfigurationName
@@ -10732,7 +10642,7 @@ If a model in InstanceTypes does not exist or has been abolished, a verification
 
     @property
     def UserData(self):
-        r"""Base64-encoded custom data of up to 16 KB. If you want to clear `UserData`, set it to an empty string.
+        r"""<p>The custom data after Base64 encoding should not exceed 16 KB. To clear UserData, assign it an empty string.</p>
         :rtype: str
         """
         return self._UserData
@@ -10743,8 +10653,7 @@ If a model in InstanceTypes does not exist or has been abolished, a verification
 
     @property
     def SecurityGroupIds(self):
-        r"""Security group to which the instance belongs. This parameter can be obtained from the `SecurityGroupId` field in the response of the [`DescribeSecurityGroups`](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API.
-At least one security group is required for this parameter. The security group specified is sequential.
+        r"""<p>Security group to which the instance belongs. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/api/215/15808?from_cn_redirect=1">DescribeSecurityGroups</a> API and getting the <code>SecurityGroupId</code> field in the return value.<br>If you specify this parameter, provide at least one security group, and the list order is sequential.</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -10755,8 +10664,7 @@ At least one security group is required for this parameter. The security group s
 
     @property
     def InternetAccessible(self):
-        r"""Information of the public network bandwidth configuration.
-When the public outbound network bandwidth is 0 Mbps, assigning a public IP is not allowed. Accordingly, if a public IP is assigned, the new public network outbound bandwidth must be greater than 0 Mbps.
+        r"""<p>Public network bandwidth-related information settings.<br>When the public network outbound bandwidth cap is 0 Mbps, it cannot be modified to enable assigning public IP. Accordingly, when assigning public IP is currently enabled, the modified public network outbound bandwidth cap must be greater than 0 Mbps.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -10767,10 +10675,7 @@ When the public outbound network bandwidth is 0 Mbps, assigning a public IP is n
 
     @property
     def InstanceChargeType(self):
-        r"""Instance billing mode. Valid values:
-<li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>
-<li>SPOTPAID: spot instance</li>
-<li> CDCPAID: dedicated cluster</li>
+        r"""<p>Instance billing type. Valid values:</p><li>POSTPAID_BY_HOUR: hourly postpaid</li><li>SPOTPAID: spot payment</li><li>PREPAID: prepaid, which is a Monthly Subscription</li><li>CDCPAID: dedicated cluster payment</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -10781,10 +10686,7 @@ When the public outbound network bandwidth is 0 Mbps, assigning a public IP is n
 
     @property
     def InstanceChargePrepaid(self):
-        r"""Parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set the auto-renewal, and other attributes of the monthly-subscribed instances.
-This parameter is required when changing the instance billing mode to monthly subscription. It will be automatically discarded after you choose another billing mode.
-This field requires passing in the `Period` field. Other fields that are not passed in will use their default values.
-This field can be modified only when the current billing mode is monthly subscription.
+        r"""<p>Prepaid mode, that is, parameter settings related to monthly/annual subscription. By specifying this parameter, you can set attributes such as the duration of instance purchase and whether to enable auto-renewal.<br>If you change the payment mode of an instance to prepaid, this parameter is required. When changing from prepaid to other payment modes, the original info in this field is automatically discarded.<br>When adding this field, you must specify the duration of instance purchase. Other fields not specified will be set to default values.<br>When modifying this field, the current payment mode must be prepaid.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -10795,10 +10697,7 @@ This field can be modified only when the current billing mode is monthly subscri
 
     @property
     def InstanceMarketOptions(self):
-        r"""Market-related options for instances, such as parameters related to spot instances.
-This parameter is required when changing the instance billing mode to spot instance. It will be automatically discarded after you choose another instance billing mode.
-This field requires passing in the `MaxPrice` field under the `SpotOptions`. Other fields that are not passed in will use their default values.
-This field can be modified only when the current billing mode is spot instance.
+        r"""<p>Market-related options of the instance, such as bidding instance parameters.<br>If you change the payment mode of the instance to spot payment, this parameter is required. When changing from spot payment to other payment modes, the original info in this field is automatically discarded.<br>When adding this field, you must transmit the bid price under relevant spot options. Other fields not transmitted will be set as default.<br>When modifying this field, the current payment mode must be spot payment.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         """
         return self._InstanceMarketOptions
@@ -10809,9 +10708,7 @@ This field can be modified only when the current billing mode is spot instance.
 
     @property
     def DiskTypePolicy(self):
-        r"""Cloud disk type selection policy. Valid values:
-<li>ORIGINAL: Use the set cloud disk type.</li>
-<li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
+        r"""<p>Cloud disk type selection policy. Value range:</p><li>ORIGINAL: use the set cloud disk type.</li><li>AUTOMATIC: automatically select the currently available cloud disk type.</li>
         :rtype: str
         """
         return self._DiskTypePolicy
@@ -10822,7 +10719,7 @@ This field can be modified only when the current billing mode is spot instance.
 
     @property
     def SystemDisk(self):
-        r"""Instance system disk configurations
+        r"""<p>Instance system disk configuration information.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
         """
         return self._SystemDisk
@@ -10833,9 +10730,7 @@ This field can be modified only when the current billing mode is spot instance.
 
     @property
     def DataDisks(self):
-        r"""Configuration information of instance data disks.
-Up to 11 data disks can be specified and will be collectively modified. Please provide all the new values for the modification.
-The default data disk should be the same as the system disk.
+        r"""<p>Instance data disk configuration information.<br>Supports up to 11 data disks. Apply the modification as a whole, so provide all values after modification.<br>The data disk type is consistent with the system disk type by default.</p>
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -10846,10 +10741,7 @@ The default data disk should be the same as the system disk.
 
     @property
     def HostNameSettings(self):
-        r"""Specifies the related settings for the cloud virtual machine HostName (HostName).
-windows instances do not support setting hostname.
-When adding new attributes, the cloud virtual machine hostname must be transmitted. other fields not transmitted will be set as default.
-Validates whether the host name (with suffix added if it exists) exceeds the maximum of 46 characters.
+        r"""<p>Settings for the CVM host name.<br>Configuring the host name for windows instances is not supported.<br>When adding this attribute, you must transmit the CVM host name. Other fields not transmitted will be set to default values.<br>The host name (with the suffix added if it exists) is verified to check whether it exceeds the maximum length of 46 characters.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         return self._HostNameSettings
@@ -10860,10 +10752,7 @@ Validates whether the host name (with suffix added if it exists) exceeds the max
 
     @property
     def InstanceNameSettings(self):
-        r"""Specifies the related settings of the cloud virtual machine (cvm) instance name. 
-If the user sets this field in the launch configuration, the instance name of the instance created by the scaling group will be set according to this field and passed to CVM. if the user does not set this field in the launch configuration, the instance name of the instance created by the scaling group will be set as "as-{{ scaling group AutoScalingGroupName }}" and passed to CVM.
-Specifies the instance name of the cloud virtual machine when adding this attribute. other fields not transmitted will be set as default.
-Verifies whether the instance name (add the suffix if it exists) exceeds the maximum of 108 characters.
+        r"""<p>Settings related to the CVM instance name (InstanceName).<br>If the user sets this field in the launch configuration, the InstanceName of instances created by the scaling group will be set according to this field and transmitted to CVM. If the user does not set this field in the launch configuration, the InstanceName of instances created by the scaling group will be set as "as-{{ AutoScalingGroupName }}" and transmitted to CVM.<br>When adding this attribute, the CVM instance name must be transmitted. Other fields not transmitted will be set to default values.<br>It will verify whether the instance name (with the suffix added if it exists) exceeds the maximum length of 108 characters.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         return self._InstanceNameSettings
@@ -10874,7 +10763,7 @@ Verifies whether the instance name (add the suffix if it exists) exceeds the max
 
     @property
     def EnhancedService(self):
-        r"""Specifies whether to enable additional services, such as security services and monitoring service.
+        r"""<p>Enhanced service. This parameter can be used to specify whether to enable services such as cloud security and Cloud Monitor.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         """
         return self._EnhancedService
@@ -10885,7 +10774,7 @@ Verifies whether the instance name (add the suffix if it exists) exceeds the max
 
     @property
     def CamRoleName(self):
-        r"""Role name of the CAM role. can be obtained from roleName in the return value from the [DescribeRoleList API](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
+        r"""<p>CAM role name, which can be obtained from the roleName in the return value from the <a href="https://www.tencentcloud.com/document/product/598/36223?from_cn_redirect=1">DescribeRoleList</a> API.</p>
         :rtype: str
         """
         return self._CamRoleName
@@ -10896,8 +10785,7 @@ Verifies whether the instance name (add the suffix if it exists) exceeds the max
 
     @property
     def HpcClusterId(self):
-        r"""High-Performance computing cluster ID. See [Tencent Cloud HPC Documentation](https://www.tencentcloud.com/zh/document/product/1236) for more details.
-Note: this field is empty by default.
+        r"""<p>Hyper Computing Cluster ID. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/product/213/83220?from_cn_redirect=1">DescribeHpcClusters</a> API.<br>Note: This field is empty by default.</p>
         :rtype: str
         """
         return self._HpcClusterId
@@ -10908,7 +10796,7 @@ Note: this field is empty by default.
 
     @property
     def IPv6InternetAccessible(self):
-        r"""IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        r"""<p>IPv6 public network bandwidth-related information settings. If the new instance includes an IPv6 address, this parameter can allocate public network bandwidth for the IPv6 address of the new instance. When the Ipv6AddressCount parameter of the scaling group associated with the launch configuration is 0, this parameter will not take effect.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         return self._IPv6InternetAccessible
@@ -10919,7 +10807,7 @@ Note: this field is empty by default.
 
     @property
     def DisasterRecoverGroupIds(self):
-        r"""Placement group id. only one can be specified. obtain through the API [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1).
+        r"""<p>Placement Group id. Only one can be specified. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/product/213/17810?from_cn_redirect=1">DescribeDisasterRecoverGroups</a> API.</p>
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -10930,7 +10818,7 @@ Note: this field is empty by default.
 
     @property
     def LoginSettings(self):
-        r"""Instance login settings, which include passwords, keys, or the original login settings inherited from the image. <br>Please note that specifying new login settings will overwrite the existing ones. For instance, if you previously used a password for login and then use this parameter to switch the login settings to a key, the original password will be removed.
+        r"""<p>Instance login settings, including passwords, keys, or maintaining the image's original login settings.<br>Please note that specifying new login settings overwrites existing login settings. For example, if you previously used a password to login, use this parameter to change login settings to a key, and the original password is removed.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
         """
         return self._LoginSettings
@@ -10941,8 +10829,7 @@ Note: this field is empty by default.
 
     @property
     def InstanceTags(self):
-        r"""Instance tag list. By specifying this parameter, the instances added through scale-out can be bound to the tag. Up to 10 Tags can be specified.
-This parameter will overwrite the original instance tag list. To add new tags, you need to pass the new tags along with the original tags.
+        r"""<p>Instance tag list. By specifying this parameter, the instances added through scale-out can be bound to the tag. Up to 10 Tags can be specified.<br>This parameter overrides the original instance tag list. To add a tag, import both the new tag and the original tags.</p>
         :rtype: list of InstanceTag
         """
         return self._InstanceTags
@@ -10953,7 +10840,7 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def ImageFamily(self):
-        r"""Image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.
+        r"""<p>Image family name. You can obtain this parameter by calling the <a href="https://www.tencentcloud.com/document/product/213/15715?from_cn_redirect=1">DescribeImages</a> API.</p>
         :rtype: str
         """
         return self._ImageFamily
@@ -10964,7 +10851,7 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def DedicatedClusterId(self):
-        r"""Cloud Dedicated Cluster (CDC) ID.
+        r"""<p>Local exclusive cluster ID.</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -10975,7 +10862,7 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def Metadata(self):
-        r"""Custom metadata.
+        r"""<p>Custom metadata.</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
         """
         return self._Metadata
@@ -10983,6 +10870,17 @@ This parameter will overwrite the original instance tag list. To add new tags, y
     @Metadata.setter
     def Metadata(self, Metadata):
         self._Metadata = Metadata
+
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>Replace the ENI configuration in the launch configuration.</p><p>Input limits: up to 17 items; must explicitly include and can only contain one PRIMARY. AS does not auto-complete the primary ENI. An explicit empty array is illegal.</p><p>Field rules match CreateLaunchConfiguration. To clean up, call ClearLaunchConfigurationAttributes with ClearNetworkInterfaces=true.</p>
+        :rtype: list of NetworkInterface
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
 
 
     def _deserialize(self, params):
@@ -11042,6 +10940,12 @@ This parameter will overwrite the original instance tag list. To add new tags, y
         if params.get("Metadata") is not None:
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterface()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12056,6 +11960,87 @@ class ModifyScheduledActionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class NetworkInterface(AbstractModel):
+    r"""Elastic Network Interface configuration in the launch configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InterfaceType: <p>Network interface card type. This field is required in the request for each network interface.</p><p>Enumeration values:</p><ul><li>PRIMARY: Primary network interface</li><li>SECONDARY: Auxiliary network interface</li></ul><p>When configuring upper-level NetworkInterfaces, the array must explicitly contain and can only contain one PRIMARY. AS does not auto-complete the primary network interface.</p>
+        :type InterfaceType: str
+        :param _PrivateIpv4AddressCount: <p>Total number of private IPv4 addresses requested for the network interface card, including the primary IP.</p><p>Value range: [1, 40]</p><p>Required for SECONDARY network interface card requests; optional for PRIMARY network interface card requests. If left empty, it is processed as 1 only when constructing a CVM request copy during actual scaling, and is not written back to the launch configuration. The explicitly passed in value is passed through to CVM by AS, and finally validated by CVM/VPC.</p>
+        :type PrivateIpv4AddressCount: int
+        :param _SecurityGroupIds: <p>List of security group IDs bound to the ENI.</p><p>Input limit: up to 10.</p><p>For PRIMARY, a non-empty list explicitly configured in the network interface takes precedence over the SecurityGroupIds parameter in the launch configuration; if not configured in the network interface, the SecurityGroupIds parameter in the launch configuration is used. If neither is configured, AS does not specify security groups and proceeds with the CVM default rule. For SECONDARY, only the non-empty list explicitly configured in the network interface is passed through, and the SecurityGroupIds parameter in the launch configuration is not inherited.</p>
+        :type SecurityGroupIds: list of str
+        :param _IsKeepENI: <p>Whether to reserve the auxiliary network interface when instance is terminated. Only applicable to SECONDARY.</p><p>Enumeration values:</p><ul><li>false: Do not retain the auxiliary network interface. It will destroy with the instance.</li><li>true: Retain the auxiliary network interface.</li></ul><p>Default value: false</p><p>PRIMARY does not allow configuration of true.</p>
+        :type IsKeepENI: bool
+        """
+        self._InterfaceType = None
+        self._PrivateIpv4AddressCount = None
+        self._SecurityGroupIds = None
+        self._IsKeepENI = None
+
+    @property
+    def InterfaceType(self):
+        r"""<p>Network interface card type. This field is required in the request for each network interface.</p><p>Enumeration values:</p><ul><li>PRIMARY: Primary network interface</li><li>SECONDARY: Auxiliary network interface</li></ul><p>When configuring upper-level NetworkInterfaces, the array must explicitly contain and can only contain one PRIMARY. AS does not auto-complete the primary network interface.</p>
+        :rtype: str
+        """
+        return self._InterfaceType
+
+    @InterfaceType.setter
+    def InterfaceType(self, InterfaceType):
+        self._InterfaceType = InterfaceType
+
+    @property
+    def PrivateIpv4AddressCount(self):
+        r"""<p>Total number of private IPv4 addresses requested for the network interface card, including the primary IP.</p><p>Value range: [1, 40]</p><p>Required for SECONDARY network interface card requests; optional for PRIMARY network interface card requests. If left empty, it is processed as 1 only when constructing a CVM request copy during actual scaling, and is not written back to the launch configuration. The explicitly passed in value is passed through to CVM by AS, and finally validated by CVM/VPC.</p>
+        :rtype: int
+        """
+        return self._PrivateIpv4AddressCount
+
+    @PrivateIpv4AddressCount.setter
+    def PrivateIpv4AddressCount(self, PrivateIpv4AddressCount):
+        self._PrivateIpv4AddressCount = PrivateIpv4AddressCount
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>List of security group IDs bound to the ENI.</p><p>Input limit: up to 10.</p><p>For PRIMARY, a non-empty list explicitly configured in the network interface takes precedence over the SecurityGroupIds parameter in the launch configuration; if not configured in the network interface, the SecurityGroupIds parameter in the launch configuration is used. If neither is configured, AS does not specify security groups and proceeds with the CVM default rule. For SECONDARY, only the non-empty list explicitly configured in the network interface is passed through, and the SecurityGroupIds parameter in the launch configuration is not inherited.</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def IsKeepENI(self):
+        r"""<p>Whether to reserve the auxiliary network interface when instance is terminated. Only applicable to SECONDARY.</p><p>Enumeration values:</p><ul><li>false: Do not retain the auxiliary network interface. It will destroy with the instance.</li><li>true: Retain the auxiliary network interface.</li></ul><p>Default value: false</p><p>PRIMARY does not allow configuration of true.</p>
+        :rtype: bool
+        """
+        return self._IsKeepENI
+
+    @IsKeepENI.setter
+    def IsKeepENI(self, IsKeepENI):
+        self._IsKeepENI = IsKeepENI
+
+
+    def _deserialize(self, params):
+        self._InterfaceType = params.get("InterfaceType")
+        self._PrivateIpv4AddressCount = params.get("PrivateIpv4AddressCount")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._IsKeepENI = params.get("IsKeepENI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NotificationTarget(AbstractModel):
@@ -13119,16 +13104,14 @@ class RunAutomationServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether to enable [TencentCloud Automation Tools](https://intl.cloud.tencent.com/document/product/1340?from_cn_redirect=1). Valid values:<br><li>`TRUE`: Enable<br><li>`FALSE`: Not enable.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _Enabled: Enable [Tencent Cloud Automation Tools](https://www.tencentcloud.com/document/product/1340?from_cn_redirect=1) service or not. Valid values: <br><li>TRUE: enables the TAT service <br><li>FALSE: disables the TAT service
         :type Enabled: bool
         """
         self._Enabled = None
 
     @property
     def Enabled(self):
-        r"""Whether to enable [TencentCloud Automation Tools](https://intl.cloud.tencent.com/document/product/1340?from_cn_redirect=1). Valid values:<br><li>`TRUE`: Enable<br><li>`FALSE`: Not enable.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        r"""Enable [Tencent Cloud Automation Tools](https://www.tencentcloud.com/document/product/1340?from_cn_redirect=1) service or not. Valid values: <br><li>TRUE: enables the TAT service <br><li>FALSE: disables the TAT service
         :rtype: bool
         """
         return self._Enabled
@@ -14727,35 +14710,23 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: System disk type. for restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.
-<Li>LOCAL_BASIC: local hard disk.</li>.
-<Li>LOCAL_SSD: local ssd.</li>.
-<Li>CLOUD_BASIC: general cloud disk.</li>.
-<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.
-<Li>CLOUD_SSD: cloud ssd</li>.
-<Li>CLOUD_BSSD: universal ssd cloud disk</li>.
-<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
-<Li>CLOUD_TSSD: ultra ssd.</li>.
-<li>Default value: CLOUD_PREMIUM.</li>
+        :param _DiskType: <p>System disk type. For restrictions on system disk types, see <a href="https://www.tencentcloud.com/document/product/362/2353?from_cn_redirect=1">Cloud Disk Types</a>. Value range:</p><li>LOCAL_BASIC: local hard disk</li><li>LOCAL_SSD: local SSD</li><li>CLOUD_BASIC: basic cloud disk</li><li>CLOUD_PREMIUM: high-performance cloud block storage</li><li>CLOUD_SSD: SSD cloud disk</li><li>CLOUD_BSSD: universal SSD cloud disk</li><li>CLOUD_HSSD: enhanced SSD cloud disk</li><li>CLOUD_TSSD: ultra-fast SSD CBS</li><li>Default value: CLOUD_PREMIUM.</li>
         :type DiskType: str
-        :param _DiskSize: System disk size, in GB. Default value: 50.
+        :param _DiskSize: <p>System disk size (GB). Default value: 50</p>
         :type DiskSize: int
+        :param _Encrypt: <p>Whether to encrypt the system disk. TRUE means encrypted, FALSE means not encrypted. The specific disk type, region, and KMS rules are validated by CVM.</p>
+        :type Encrypt: bool
+        :param _KmsKeyId: <p>KMS Key ID used for system disk encryption. The key validity, permission, as well as adaptability to disk type and region are validated by CVM.</p>
+        :type KmsKeyId: str
         """
         self._DiskType = None
         self._DiskSize = None
+        self._Encrypt = None
+        self._KmsKeyId = None
 
     @property
     def DiskType(self):
-        r"""System disk type. for restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.
-<Li>LOCAL_BASIC: local hard disk.</li>.
-<Li>LOCAL_SSD: local ssd.</li>.
-<Li>CLOUD_BASIC: general cloud disk.</li>.
-<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.
-<Li>CLOUD_SSD: cloud ssd</li>.
-<Li>CLOUD_BSSD: universal ssd cloud disk</li>.
-<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
-<Li>CLOUD_TSSD: ultra ssd.</li>.
-<li>Default value: CLOUD_PREMIUM.</li>
+        r"""<p>System disk type. For restrictions on system disk types, see <a href="https://www.tencentcloud.com/document/product/362/2353?from_cn_redirect=1">Cloud Disk Types</a>. Value range:</p><li>LOCAL_BASIC: local hard disk</li><li>LOCAL_SSD: local SSD</li><li>CLOUD_BASIC: basic cloud disk</li><li>CLOUD_PREMIUM: high-performance cloud block storage</li><li>CLOUD_SSD: SSD cloud disk</li><li>CLOUD_BSSD: universal SSD cloud disk</li><li>CLOUD_HSSD: enhanced SSD cloud disk</li><li>CLOUD_TSSD: ultra-fast SSD CBS</li><li>Default value: CLOUD_PREMIUM.</li>
         :rtype: str
         """
         return self._DiskType
@@ -14766,7 +14737,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""System disk size, in GB. Default value: 50.
+        r"""<p>System disk size (GB). Default value: 50</p>
         :rtype: int
         """
         return self._DiskSize
@@ -14775,10 +14746,34 @@ class SystemDisk(AbstractModel):
     def DiskSize(self, DiskSize):
         self._DiskSize = DiskSize
 
+    @property
+    def Encrypt(self):
+        r"""<p>Whether to encrypt the system disk. TRUE means encrypted, FALSE means not encrypted. The specific disk type, region, and KMS rules are validated by CVM.</p>
+        :rtype: bool
+        """
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>KMS Key ID used for system disk encryption. The key validity, permission, as well as adaptability to disk type and region are validated by CVM.</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14796,11 +14791,11 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: Tag key
+        :param _Key: Tag key.
         :type Key: str
-        :param _Value: Tag value
+        :param _Value: Tag value.
         :type Value: str
-        :param _ResourceType: Specifies the resource type bound to the tag. type currently supported: "auto-scaling-group", "launch-configuration". valid values: scaling group resources and launch configuration resources respectively.
+        :param _ResourceType: Resource type bound to the tag. Type currently supported: "auto-scaling-group", "launch-configuration". They respectively represent scaling group resources and launch configuration resources.
         :type ResourceType: str
         """
         self._Key = None
@@ -14809,7 +14804,7 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
-        r"""Tag key
+        r"""Tag key.
         :rtype: str
         """
         return self._Key
@@ -14820,7 +14815,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        r"""Tag value
+        r"""Tag value.
         :rtype: str
         """
         return self._Value
@@ -14831,7 +14826,7 @@ class Tag(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""Specifies the resource type bound to the tag. type currently supported: "auto-scaling-group", "launch-configuration". valid values: scaling group resources and launch configuration resources respectively.
+        r"""Resource type bound to the tag. Type currently supported: "auto-scaling-group", "launch-configuration". They respectively represent scaling group resources and launch configuration resources.
         :rtype: str
         """
         return self._ResourceType

@@ -25,6 +25,24 @@ class TioneClient(AbstractClient):
     _endpoint = 'tione.intl.tencentcloudapi.com'
     _service = 'tione'
 
+    async def CreateTrainingTask(
+            self,
+            request: models.CreateTrainingTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateTrainingTaskResponse:
+        """
+        This API is used to create a model training task.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTrainingTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTrainingTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeModelServiceGroups(
             self,
             request: models.DescribeModelServiceGroupsRequest,

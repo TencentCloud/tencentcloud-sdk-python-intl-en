@@ -25,6 +25,24 @@ class TdmysqlClient(AbstractClient):
     _endpoint = 'tdmysql.intl.tencentcloudapi.com'
     _service = 'tdmysql'
 
+    async def BreakStandbyDBInstanceRelation(
+            self,
+            request: models.BreakStandbyDBInstanceRelationRequest,
+            opts: Dict = None,
+    ) -> models.BreakStandbyDBInstanceRelationResponse:
+        """
+        This API is used to terminate the replication between the primary instance and the disaster recovery instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BreakStandbyDBInstanceRelation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BreakStandbyDBInstanceRelationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CancelIsolateDBInstances(
             self,
             request: models.CancelIsolateDBInstancesRequest,
@@ -97,6 +115,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateStandbyDBInstance(
+            self,
+            request: models.CreateStandbyDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateStandbyDBInstanceResponse:
+        """
+        This API is used to create disaster recovery instances in batches.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateStandbyDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateStandbyDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateUsers(
             self,
             request: models.CreateUsersRequest,
@@ -146,6 +182,42 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "DeleteUsers"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBCharsets(
+            self,
+            request: models.DescribeDBCharsetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCharsetsResponse:
+        """
+        This API is used to query supported character sets.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCharsets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCharsetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBEngines(
+            self,
+            request: models.DescribeDBEnginesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBEnginesResponse:
+        """
+        This API is used to obtain the DB engine version list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBEngines"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBEnginesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -403,6 +475,42 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeFlowTypes(
+            self,
+            request: models.DescribeFlowTypesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlowTypesResponse:
+        """
+        This API is used to obtain all task types.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlowTypes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlowTypesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInstanceDataReservedSpace(
+            self,
+            request: models.DescribeInstanceDataReservedSpaceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceDataReservedSpaceResponse:
+        """
+        This API is used to query the data retention space of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceDataReservedSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceDataReservedSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstanceSSLStatus(
             self,
             request: models.DescribeInstanceSSLStatusRequest,
@@ -481,13 +589,31 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSpecsResponse:
         """
-        This API is used to list available component specifications.
+        This API is used to query sales specifications.
         """
         
         kwargs = {}
         kwargs["action"] = "DescribeSpecs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStandbyDBInstanceRelationDetail(
+            self,
+            request: models.DescribeStandbyDBInstanceRelationDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStandbyDBInstanceRelationDetailResponse:
+        """
+        This API is used to query disaster recovery connection relationships of an instance.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStandbyDBInstanceRelationDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStandbyDBInstanceRelationDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -691,6 +817,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInstanceDataReservedSpace(
+            self,
+            request: models.ModifyInstanceDataReservedSpaceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceDataReservedSpaceResponse:
+        """
+        This API is used to modify the reserved space for instance data.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceDataReservedSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceDataReservedSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyInstanceName(
             self,
             request: models.ModifyInstanceNameRequest,
@@ -781,19 +925,19 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ResetUserPassword(
+    async def ResetDbaAdminPrivileges(
             self,
-            request: models.ResetUserPasswordRequest,
+            request: models.ResetDbaAdminPrivilegesRequest,
             opts: Dict = None,
-    ) -> models.ResetUserPasswordResponse:
+    ) -> models.ResetDbaAdminPrivilegesResponse:
         """
-        This API is used to reset user password.
+        Reset the permissions of the dbaadmin account.
         """
         
         kwargs = {}
-        kwargs["action"] = "ResetUserPassword"
+        kwargs["action"] = "ResetDbaAdminPrivileges"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ResetUserPasswordResponse
+        kwargs["resp_cls"] = models.ResetDbaAdminPrivilegesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

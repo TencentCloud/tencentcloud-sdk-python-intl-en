@@ -14,8 +14,17 @@
 # limitations under the License.
 
 
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# InvalidParameter.Param
+INVALIDPARAMETER_PARAM = 'InvalidParameter.Param'
+
+# Unauthorized operation.
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

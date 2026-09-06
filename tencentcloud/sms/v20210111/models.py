@@ -3931,10 +3931,10 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).
+        :param _BeginTime: Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).Note: the statistical range includes the current hour.
         :type BeginTime: str
         :param _EndTime: End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).
-Note: `EndTime` must be after `BeginTime`.
+Note: `EndTime` must be after `BeginTime`, and the statistical range includes the current hour.
         :type EndTime: str
         :param _SmsSdkAppId: The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.
         :type SmsSdkAppId: str
@@ -3953,7 +3953,7 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def BeginTime(self):
-        r"""Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).
+        r"""Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).Note: the statistical range includes the current hour.
         :rtype: str
         """
         return self._BeginTime
@@ -3965,7 +3965,7 @@ Note: this parameter is currently fixed at 0.
     @property
     def EndTime(self):
         r"""End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).
-Note: `EndTime` must be after `BeginTime`.
+Note: `EndTime` must be after `BeginTime`, and the statistical range includes the current hour.
         :rtype: str
         """
         return self._EndTime

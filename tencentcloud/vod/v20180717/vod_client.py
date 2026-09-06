@@ -96,6 +96,52 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloneVoiceAsync(self, request):
+        r"""This API is used to initiate a voice cloning task. It generates an exclusive voice based on reference audio. The generated voice can be used for subsequent text to speech. Voice cloning is an asynchronous task. The voice ID and audio audition are generated after task completion.
+
+        :param request: Request instance for CloneVoiceAsync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneVoiceAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneVoiceAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CloneVoiceSync(self, request):
+        r"""This API is used to initiate a voice cloning task to clone an exclusive voice based on reference audio. The generated voice can be used for subsequent text to speech.
+
+        :param request: Request instance for CloneVoiceSync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CloneVoiceSyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CloneVoiceSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneVoiceSync", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneVoiceSyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CommitUpload(self, request):
         r"""This API is used to confirm the result of uploading a media file (and cover file) to VOD, store the media information, and return the playback address and ID of the file.
 
@@ -2069,6 +2115,31 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteVoice(self, request):
+        r"""This API is used to delete a specified voice by voice ID. Deletion is irreversible and the voice cannot be used for subsequent APIs. It only supports deletion of voices for this account. System preset voices cannot be deleted.
+
+        Note: Newly designed or cloned voice types cannot be deleted before activation (not found means non-operational). They are activated only after the newly created voice type is used for TTS once.
+
+        :param request: Request instance for DeleteVoice.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteVoiceRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteWatermarkTemplate(self, request):
         r"""This API is used to delete a custom watermarking template.
 
@@ -3500,6 +3571,31 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVoices(self, request):
+        r"""Query the available timbre list under the current account. It supports filtering by optional conditions such as voice ID, kind, name, gender, age, language, tag, and scenario.
+
+        Note: Newly designed or cloned voice types cannot be queried before activation. They are activated only after the newly created voice type is used for TTS once.
+
+        :param request: Request instance for DescribeVoices.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeVoicesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeVoicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVoices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVoicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeWatermarkTemplates(self, request):
         r"""This API is used to query custom watermarking templates and supports paged queries by filters.
 
@@ -3537,6 +3633,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeWordSamples", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWordSamplesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DesignVoiceAsync(self, request):
+        r"""This API is used to initiate a voice design task. It generates a custom voice based on a natural language description. You can also specify a voice profile, such as name, gender, age, language, tag, and scenario. If trial text is attached upon submission, an audio audition is generated after task completion. Voice design is an asynchronous task, and the voice ID is generated after task completion.
+
+        :param request: Request instance for DesignVoiceAsync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DesignVoiceAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DesignVoiceAsyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5422,6 +5541,52 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TextToSpeechAsync(self, request):
+        r"""Initiate a speech synthesis task to convert text into speech, oriented towards long text scenarios (maximum 200,000 characters), supporting specified timbre and synthesis parameters such as speaking rate, volume, pitch, sampling rate, and output format. Speech synthesis is an asynchronous task, and audio results are generated upon completion.
+
+        :param request: Request instance for TextToSpeechAsync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToSpeechAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToSpeechAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TextToSpeechSync(self, request):
+        r"""Initiate a speech synthesis task to convert text into speech.
+
+        :param request: Request instance for TextToSpeechSync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.TextToSpeechSyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToSpeechSync", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToSpeechSyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateAigcApiToken(self, request):
         r"""This API is used to create a Token for invoking the AIGC API. After creation, data sync has a delay. It becomes queryable or deletable after about 30 seconds.
 
@@ -5436,6 +5601,31 @@ class VodClient(AbstractClient):
             body = self.call("UpdateAigcApiToken", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAigcApiTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateVoice(self, request):
+        r"""This API is used to update the profile of a voice by voice ID, including its name, description, gender, age, language, tags, and scenarios, and returns the complete voice information after the update. Only voices under this account can be updated. System preset voices do not support update.
+
+        Note: Newly designed or cloned voice types cannot be updated before activation. They are activated only after the newly created voice type is used for TTS once.
+
+        :param request: Request instance for UpdateVoice.
+        :type request: :class:`tencentcloud.vod.v20180717.models.UpdateVoiceRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.UpdateVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateVoiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

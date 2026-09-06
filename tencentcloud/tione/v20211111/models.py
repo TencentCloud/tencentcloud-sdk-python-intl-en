@@ -223,6 +223,44 @@ class AuthTokenLimit(AbstractModel):
         
 
 
+class CBSConfig(AbstractModel):
+    r"""CBS storage configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeSizeInGB: Storage size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VolumeSizeInGB: int
+        """
+        self._VolumeSizeInGB = None
+
+    @property
+    def VolumeSizeInGB(self):
+        r"""Storage size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._VolumeSizeInGB
+
+    @VolumeSizeInGB.setter
+    def VolumeSizeInGB(self, VolumeSizeInGB):
+        self._VolumeSizeInGB = VolumeSizeInGB
+
+
+    def _deserialize(self, params):
+        self._VolumeSizeInGB = params.get("VolumeSizeInGB")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CFSConfig(AbstractModel):
     r"""CFS storage configurations.
 
@@ -294,6 +332,112 @@ class CFSConfig(AbstractModel):
         self._Path = params.get("Path")
         self._MountType = params.get("MountType")
         self._Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CFSTurbo(AbstractModel):
+    r"""Parameters for configuring CFSTurbo.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: CFSTurbo instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        :param _Path: CFSTurbo path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Path: str
+        """
+        self._Id = None
+        self._Path = None
+
+    @property
+    def Id(self):
+        r"""CFSTurbo instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Path(self):
+        r"""CFSTurbo path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CodeRepoConfig(AbstractModel):
+    r"""Code repository configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Code repository ID.
+        :type Id: str
+        :param _TargetPath: Target address for the code repository download.
+        :type TargetPath: str
+        """
+        self._Id = None
+        self._TargetPath = None
+
+    @property
+    def Id(self):
+        r"""Code repository ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TargetPath(self):
+        r"""Target address for the code repository download.
+        :rtype: str
+        """
+        return self._TargetPath
+
+    @TargetPath.setter
+    def TargetPath(self, TargetPath):
+        self._TargetPath = TargetPath
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TargetPath = params.get("TargetPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -551,6 +695,565 @@ class CosPathInfo(AbstractModel):
         
 
 
+class CreateTrainingTaskRequest(AbstractModel):
+    r"""CreateTrainingTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Training task name. The name cannot exceed 60 characters in length, and can contain only Chinese characters, letters, digits, underscores (_), and hyphens (-). It must start with a Chinese character, letter, or digit.
+        :type Name: str
+        :param _ChargeType: Billing mode. For example, PREPAID indicates yearly/monthly subscription (resource group).
+POSTPAID_BY_HOUR indicates pay-as-you-go mode.
+        :type ChargeType: str
+        :param _ResourceConfigInfos: Resource configuration. Specify the CVM instance specification ID and number of nodes. The API for querying the CVM instance specification ID is DescribeBillingSpecsPrice. For example, [{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}].
+        :type ResourceConfigInfos: list of ResourceConfigInfo
+        :param _TiProjectId: TI Workspace ID. Used solely for the "Workspace" allowlist feature. To use this feature, please contact a TI administrator to enable allowlisting.
+        :type TiProjectId: str
+        :param _FrameworkName: Training framework name, which can be queried via the DescribeTrainingFrameworks API. For example, SPARK, PYSPARK, TENSORFLOW, and PYTORCH.
+        :type FrameworkName: str
+        :param _FrameworkVersion: Training framework version, which can be queried via the DescribeTrainingFrameworks API. For example, 1.15 and 1.9.
+        :type FrameworkVersion: str
+        :param _FrameworkEnvironment: Training framework environment, which can be queried via the DescribeTrainingFrameworks API. For example, tf1.15-py3.7-cpu and torch1.9-py3.8-cuda11.1-gpu.
+        :type FrameworkEnvironment: str
+        :param _ResourceGroupId: ID of the prepaid dedicated resource group, which can be queried via the DescribeBillingResourceGroups API.
+        :type ResourceGroupId: str
+        :param _Tags: Tag configuration.
+        :type Tags: list of Tag
+        :param _ImageInfo: Custom image information.
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param _CodePackagePath: COS code package path.
+        :type CodePackagePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param _StartCmdInfo: Task startup command. Specify this parameter based on the task training mode. If the configuration fails due to special characters, use the EncodedStartCmdInfo parameter instead.
+        :type StartCmdInfo: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
+        :param _TrainingMode: Training mode, which can be queried via the DescribeTrainingFrameworks API. For example, PS_WORKER, DDP, MPI, and HOROVOD.
+        :type TrainingMode: str
+        :param _DataConfigs: Data configurations. This parameter depends on the DataSource field. The maximum number of configurations is 10.
+        :type DataConfigs: list of DataConfig
+        :param _VpcId: VPC Id
+        :type VpcId: str
+        :param _SubnetId: Subnet ID.
+        :type SubnetId: str
+        :param _Output: COS training output path.
+        :type Output: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param _LogConfig: CLS logging configuration.
+        :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param _TuningParameters: Tuning parameters. The value of this parameter cannot exceed 2048 characters in length.
+        :type TuningParameters: str
+        :param _LogEnable: Indicates whether to report logs.
+        :type LogEnable: bool
+        :param _Remark: Remarks. The value of this parameter cannot exceed 1024 characters.
+        :type Remark: str
+        :param _DataSource: Data source. For example, DATASET, COS, CFS, CFSTurbo, HDFS, and GooseFSx.
+        :type DataSource: str
+        :param _CallbackUrl: Callback URL. This parameter is used for the asynchronous callback to create, start, or stop training tasks. For the callback format and content, see [[TI-ONE API Callback Description]](https://www.tencentcloud.com/document/product/851/84292?from_cn_redirect=1).
+        :type CallbackUrl: str
+        :param _EncodedStartCmdInfo: Encoded task startup command. If StartCmdInfo is also configured, only this parameter takes effect.
+        :type EncodedStartCmdInfo: :class:`tencentcloud.tione.v20211111.models.EncodedStartCmdInfo`
+        :param _CodeRepos: Code repository configuration.
+        :type CodeRepos: list of CodeRepoConfig
+        :param _ExposeNetworkConfig: Network exposure configuration.
+        :type ExposeNetworkConfig: :class:`tencentcloud.tione.v20211111.models.ExposeNetworkConfig`
+        :param _Envs: Environment Variables.
+        :type Envs: list of EnvVar
+        :param _TrainToolConfig: Train tool configuration.
+        :type TrainToolConfig: :class:`tencentcloud.tione.v20211111.models.TrainToolConfig`
+        :param _ResourceSupplyAttribute: Training Diagnostic Tool Configuration.
+        :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        :param _Queues: Queue ID.
+        :type Queues: list of str
+        """
+        self._Name = None
+        self._ChargeType = None
+        self._ResourceConfigInfos = None
+        self._TiProjectId = None
+        self._FrameworkName = None
+        self._FrameworkVersion = None
+        self._FrameworkEnvironment = None
+        self._ResourceGroupId = None
+        self._Tags = None
+        self._ImageInfo = None
+        self._CodePackagePath = None
+        self._StartCmdInfo = None
+        self._TrainingMode = None
+        self._DataConfigs = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Output = None
+        self._LogConfig = None
+        self._TuningParameters = None
+        self._LogEnable = None
+        self._Remark = None
+        self._DataSource = None
+        self._CallbackUrl = None
+        self._EncodedStartCmdInfo = None
+        self._CodeRepos = None
+        self._ExposeNetworkConfig = None
+        self._Envs = None
+        self._TrainToolConfig = None
+        self._ResourceSupplyAttribute = None
+        self._Queues = None
+
+    @property
+    def Name(self):
+        r"""Training task name. The name cannot exceed 60 characters in length, and can contain only Chinese characters, letters, digits, underscores (_), and hyphens (-). It must start with a Chinese character, letter, or digit.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ChargeType(self):
+        r"""Billing mode. For example, PREPAID indicates yearly/monthly subscription (resource group).
+POSTPAID_BY_HOUR indicates pay-as-you-go mode.
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def ResourceConfigInfos(self):
+        r"""Resource configuration. Specify the CVM instance specification ID and number of nodes. The API for querying the CVM instance specification ID is DescribeBillingSpecsPrice. For example, [{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}].
+        :rtype: list of ResourceConfigInfo
+        """
+        return self._ResourceConfigInfos
+
+    @ResourceConfigInfos.setter
+    def ResourceConfigInfos(self, ResourceConfigInfos):
+        self._ResourceConfigInfos = ResourceConfigInfos
+
+    @property
+    def TiProjectId(self):
+        r"""TI Workspace ID. Used solely for the "Workspace" allowlist feature. To use this feature, please contact a TI administrator to enable allowlisting.
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def FrameworkName(self):
+        r"""Training framework name, which can be queried via the DescribeTrainingFrameworks API. For example, SPARK, PYSPARK, TENSORFLOW, and PYTORCH.
+        :rtype: str
+        """
+        return self._FrameworkName
+
+    @FrameworkName.setter
+    def FrameworkName(self, FrameworkName):
+        self._FrameworkName = FrameworkName
+
+    @property
+    def FrameworkVersion(self):
+        r"""Training framework version, which can be queried via the DescribeTrainingFrameworks API. For example, 1.15 and 1.9.
+        :rtype: str
+        """
+        return self._FrameworkVersion
+
+    @FrameworkVersion.setter
+    def FrameworkVersion(self, FrameworkVersion):
+        self._FrameworkVersion = FrameworkVersion
+
+    @property
+    def FrameworkEnvironment(self):
+        r"""Training framework environment, which can be queried via the DescribeTrainingFrameworks API. For example, tf1.15-py3.7-cpu and torch1.9-py3.8-cuda11.1-gpu.
+        :rtype: str
+        """
+        return self._FrameworkEnvironment
+
+    @FrameworkEnvironment.setter
+    def FrameworkEnvironment(self, FrameworkEnvironment):
+        self._FrameworkEnvironment = FrameworkEnvironment
+
+    @property
+    def ResourceGroupId(self):
+        r"""ID of the prepaid dedicated resource group, which can be queried via the DescribeBillingResourceGroups API.
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def Tags(self):
+        r"""Tag configuration.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ImageInfo(self):
+        r"""Custom image information.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
+        return self._ImageInfo
+
+    @ImageInfo.setter
+    def ImageInfo(self, ImageInfo):
+        self._ImageInfo = ImageInfo
+
+    @property
+    def CodePackagePath(self):
+        r"""COS code package path.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
+        return self._CodePackagePath
+
+    @CodePackagePath.setter
+    def CodePackagePath(self, CodePackagePath):
+        self._CodePackagePath = CodePackagePath
+
+    @property
+    def StartCmdInfo(self):
+        r"""Task startup command. Specify this parameter based on the task training mode. If the configuration fails due to special characters, use the EncodedStartCmdInfo parameter instead.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
+        """
+        return self._StartCmdInfo
+
+    @StartCmdInfo.setter
+    def StartCmdInfo(self, StartCmdInfo):
+        self._StartCmdInfo = StartCmdInfo
+
+    @property
+    def TrainingMode(self):
+        r"""Training mode, which can be queried via the DescribeTrainingFrameworks API. For example, PS_WORKER, DDP, MPI, and HOROVOD.
+        :rtype: str
+        """
+        return self._TrainingMode
+
+    @TrainingMode.setter
+    def TrainingMode(self, TrainingMode):
+        self._TrainingMode = TrainingMode
+
+    @property
+    def DataConfigs(self):
+        r"""Data configurations. This parameter depends on the DataSource field. The maximum number of configurations is 10.
+        :rtype: list of DataConfig
+        """
+        return self._DataConfigs
+
+    @DataConfigs.setter
+    def DataConfigs(self, DataConfigs):
+        self._DataConfigs = DataConfigs
+
+    @property
+    def VpcId(self):
+        r"""VPC Id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""Subnet ID.
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Output(self):
+        r"""COS training output path.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def LogConfig(self):
+        r"""CLS logging configuration.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
+    @property
+    def TuningParameters(self):
+        r"""Tuning parameters. The value of this parameter cannot exceed 2048 characters in length.
+        :rtype: str
+        """
+        return self._TuningParameters
+
+    @TuningParameters.setter
+    def TuningParameters(self, TuningParameters):
+        self._TuningParameters = TuningParameters
+
+    @property
+    def LogEnable(self):
+        r"""Indicates whether to report logs.
+        :rtype: bool
+        """
+        return self._LogEnable
+
+    @LogEnable.setter
+    def LogEnable(self, LogEnable):
+        self._LogEnable = LogEnable
+
+    @property
+    def Remark(self):
+        r"""Remarks. The value of this parameter cannot exceed 1024 characters.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def DataSource(self):
+        r"""Data source. For example, DATASET, COS, CFS, CFSTurbo, HDFS, and GooseFSx.
+        :rtype: str
+        """
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
+
+    @property
+    def CallbackUrl(self):
+        r"""Callback URL. This parameter is used for the asynchronous callback to create, start, or stop training tasks. For the callback format and content, see [[TI-ONE API Callback Description]](https://www.tencentcloud.com/document/product/851/84292?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def EncodedStartCmdInfo(self):
+        r"""Encoded task startup command. If StartCmdInfo is also configured, only this parameter takes effect.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.EncodedStartCmdInfo`
+        """
+        return self._EncodedStartCmdInfo
+
+    @EncodedStartCmdInfo.setter
+    def EncodedStartCmdInfo(self, EncodedStartCmdInfo):
+        self._EncodedStartCmdInfo = EncodedStartCmdInfo
+
+    @property
+    def CodeRepos(self):
+        r"""Code repository configuration.
+        :rtype: list of CodeRepoConfig
+        """
+        return self._CodeRepos
+
+    @CodeRepos.setter
+    def CodeRepos(self, CodeRepos):
+        self._CodeRepos = CodeRepos
+
+    @property
+    def ExposeNetworkConfig(self):
+        r"""Network exposure configuration.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ExposeNetworkConfig`
+        """
+        return self._ExposeNetworkConfig
+
+    @ExposeNetworkConfig.setter
+    def ExposeNetworkConfig(self, ExposeNetworkConfig):
+        self._ExposeNetworkConfig = ExposeNetworkConfig
+
+    @property
+    def Envs(self):
+        r"""Environment Variables.
+        :rtype: list of EnvVar
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def TrainToolConfig(self):
+        r"""Train tool configuration.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.TrainToolConfig`
+        """
+        return self._TrainToolConfig
+
+    @TrainToolConfig.setter
+    def TrainToolConfig(self, TrainToolConfig):
+        self._TrainToolConfig = TrainToolConfig
+
+    @property
+    def ResourceSupplyAttribute(self):
+        r"""Training Diagnostic Tool Configuration.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        """
+        return self._ResourceSupplyAttribute
+
+    @ResourceSupplyAttribute.setter
+    def ResourceSupplyAttribute(self, ResourceSupplyAttribute):
+        self._ResourceSupplyAttribute = ResourceSupplyAttribute
+
+    @property
+    def Queues(self):
+        r"""Queue ID.
+        :rtype: list of str
+        """
+        return self._Queues
+
+    @Queues.setter
+    def Queues(self, Queues):
+        self._Queues = Queues
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ChargeType = params.get("ChargeType")
+        if params.get("ResourceConfigInfos") is not None:
+            self._ResourceConfigInfos = []
+            for item in params.get("ResourceConfigInfos"):
+                obj = ResourceConfigInfo()
+                obj._deserialize(item)
+                self._ResourceConfigInfos.append(obj)
+        self._TiProjectId = params.get("TiProjectId")
+        self._FrameworkName = params.get("FrameworkName")
+        self._FrameworkVersion = params.get("FrameworkVersion")
+        self._FrameworkEnvironment = params.get("FrameworkEnvironment")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("ImageInfo") is not None:
+            self._ImageInfo = ImageInfo()
+            self._ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("CodePackagePath") is not None:
+            self._CodePackagePath = CosPathInfo()
+            self._CodePackagePath._deserialize(params.get("CodePackagePath"))
+        if params.get("StartCmdInfo") is not None:
+            self._StartCmdInfo = StartCmdInfo()
+            self._StartCmdInfo._deserialize(params.get("StartCmdInfo"))
+        self._TrainingMode = params.get("TrainingMode")
+        if params.get("DataConfigs") is not None:
+            self._DataConfigs = []
+            for item in params.get("DataConfigs"):
+                obj = DataConfig()
+                obj._deserialize(item)
+                self._DataConfigs.append(obj)
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("Output") is not None:
+            self._Output = CosPathInfo()
+            self._Output._deserialize(params.get("Output"))
+        if params.get("LogConfig") is not None:
+            self._LogConfig = LogConfig()
+            self._LogConfig._deserialize(params.get("LogConfig"))
+        self._TuningParameters = params.get("TuningParameters")
+        self._LogEnable = params.get("LogEnable")
+        self._Remark = params.get("Remark")
+        self._DataSource = params.get("DataSource")
+        self._CallbackUrl = params.get("CallbackUrl")
+        if params.get("EncodedStartCmdInfo") is not None:
+            self._EncodedStartCmdInfo = EncodedStartCmdInfo()
+            self._EncodedStartCmdInfo._deserialize(params.get("EncodedStartCmdInfo"))
+        if params.get("CodeRepos") is not None:
+            self._CodeRepos = []
+            for item in params.get("CodeRepos"):
+                obj = CodeRepoConfig()
+                obj._deserialize(item)
+                self._CodeRepos.append(obj)
+        if params.get("ExposeNetworkConfig") is not None:
+            self._ExposeNetworkConfig = ExposeNetworkConfig()
+            self._ExposeNetworkConfig._deserialize(params.get("ExposeNetworkConfig"))
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("TrainToolConfig") is not None:
+            self._TrainToolConfig = TrainToolConfig()
+            self._TrainToolConfig._deserialize(params.get("TrainToolConfig"))
+        if params.get("ResourceSupplyAttribute") is not None:
+            self._ResourceSupplyAttribute = ResourceSupplyAttribute()
+            self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
+        self._Queues = params.get("Queues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTrainingTaskResponse(AbstractModel):
+    r"""CreateTrainingTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Training task ID.
+        :type Id: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""Training task ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
 class CronScaleJob(AbstractModel):
     r"""Scheduled scaling task.
 
@@ -713,6 +1416,300 @@ class CrossTenantENIInfo(AbstractModel):
         
 
 
+class DataConfig(AbstractModel):
+    r"""Data configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MappingPath: Mapping path.
+        :type MappingPath: str
+        :param _DataSourceUsage: Storage purpose.
+Valid values: BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, and OTHER.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataSourceUsage: str
+        :param _DataSourceType: DATASET, COS, CFS, CFSTurbo, GooseFSx, HDFS, and WEDATA_HDFS
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataSourceType: str
+        :param _DataSetSource: Data from the data set.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataSetSource: :class:`tencentcloud.tione.v20211111.models.DataSetConfig`
+        :param _COSSource: Data from COS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type COSSource: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param _CFSSource: Data from CFS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CFSSource: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        :param _HDFSSource: Data from HDFS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HDFSSource: :class:`tencentcloud.tione.v20211111.models.HDFSConfig`
+        :param _GooseFSSource: GooseFS data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GooseFSSource: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        :param _CFSTurboSource: TurboFS data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CFSTurboSource: :class:`tencentcloud.tione.v20211111.models.CFSTurbo`
+        :param _LocalDiskSource: Information from local disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LocalDiskSource: :class:`tencentcloud.tione.v20211111.models.LocalDisk`
+        :param _CBSSource: CBS configuration information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CBSSource: :class:`tencentcloud.tione.v20211111.models.CBSConfig`
+        :param _HostPathSource: Host path information.
+        :type HostPathSource: :class:`tencentcloud.tione.v20211111.models.HostPath`
+        :param _PublicDataSource: 
+        :type PublicDataSource: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
+        """
+        self._MappingPath = None
+        self._DataSourceUsage = None
+        self._DataSourceType = None
+        self._DataSetSource = None
+        self._COSSource = None
+        self._CFSSource = None
+        self._HDFSSource = None
+        self._GooseFSSource = None
+        self._CFSTurboSource = None
+        self._LocalDiskSource = None
+        self._CBSSource = None
+        self._HostPathSource = None
+        self._PublicDataSource = None
+
+    @property
+    def MappingPath(self):
+        r"""Mapping path.
+        :rtype: str
+        """
+        return self._MappingPath
+
+    @MappingPath.setter
+    def MappingPath(self, MappingPath):
+        self._MappingPath = MappingPath
+
+    @property
+    def DataSourceUsage(self):
+        r"""Storage purpose.
+Valid values: BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, and OTHER.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DataSourceUsage
+
+    @DataSourceUsage.setter
+    def DataSourceUsage(self, DataSourceUsage):
+        self._DataSourceUsage = DataSourceUsage
+
+    @property
+    def DataSourceType(self):
+        r"""DATASET, COS, CFS, CFSTurbo, GooseFSx, HDFS, and WEDATA_HDFS
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
+    @property
+    def DataSetSource(self):
+        r"""Data from the data set.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DataSetConfig`
+        """
+        return self._DataSetSource
+
+    @DataSetSource.setter
+    def DataSetSource(self, DataSetSource):
+        self._DataSetSource = DataSetSource
+
+    @property
+    def COSSource(self):
+        r"""Data from COS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
+        return self._COSSource
+
+    @COSSource.setter
+    def COSSource(self, COSSource):
+        self._COSSource = COSSource
+
+    @property
+    def CFSSource(self):
+        r"""Data from CFS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        """
+        return self._CFSSource
+
+    @CFSSource.setter
+    def CFSSource(self, CFSSource):
+        self._CFSSource = CFSSource
+
+    @property
+    def HDFSSource(self):
+        r"""Data from HDFS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HDFSConfig`
+        """
+        return self._HDFSSource
+
+    @HDFSSource.setter
+    def HDFSSource(self, HDFSSource):
+        self._HDFSSource = HDFSSource
+
+    @property
+    def GooseFSSource(self):
+        r"""GooseFS data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        """
+        return self._GooseFSSource
+
+    @GooseFSSource.setter
+    def GooseFSSource(self, GooseFSSource):
+        self._GooseFSSource = GooseFSSource
+
+    @property
+    def CFSTurboSource(self):
+        r"""TurboFS data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CFSTurbo`
+        """
+        return self._CFSTurboSource
+
+    @CFSTurboSource.setter
+    def CFSTurboSource(self, CFSTurboSource):
+        self._CFSTurboSource = CFSTurboSource
+
+    @property
+    def LocalDiskSource(self):
+        r"""Information from local disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LocalDisk`
+        """
+        return self._LocalDiskSource
+
+    @LocalDiskSource.setter
+    def LocalDiskSource(self, LocalDiskSource):
+        self._LocalDiskSource = LocalDiskSource
+
+    @property
+    def CBSSource(self):
+        r"""CBS configuration information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CBSConfig`
+        """
+        return self._CBSSource
+
+    @CBSSource.setter
+    def CBSSource(self, CBSSource):
+        self._CBSSource = CBSSource
+
+    @property
+    def HostPathSource(self):
+        r"""Host path information.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.HostPath`
+        """
+        return self._HostPathSource
+
+    @HostPathSource.setter
+    def HostPathSource(self, HostPathSource):
+        self._HostPathSource = HostPathSource
+
+    @property
+    def PublicDataSource(self):
+        r"""
+        :rtype: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
+        """
+        return self._PublicDataSource
+
+    @PublicDataSource.setter
+    def PublicDataSource(self, PublicDataSource):
+        self._PublicDataSource = PublicDataSource
+
+
+    def _deserialize(self, params):
+        self._MappingPath = params.get("MappingPath")
+        self._DataSourceUsage = params.get("DataSourceUsage")
+        self._DataSourceType = params.get("DataSourceType")
+        if params.get("DataSetSource") is not None:
+            self._DataSetSource = DataSetConfig()
+            self._DataSetSource._deserialize(params.get("DataSetSource"))
+        if params.get("COSSource") is not None:
+            self._COSSource = CosPathInfo()
+            self._COSSource._deserialize(params.get("COSSource"))
+        if params.get("CFSSource") is not None:
+            self._CFSSource = CFSConfig()
+            self._CFSSource._deserialize(params.get("CFSSource"))
+        if params.get("HDFSSource") is not None:
+            self._HDFSSource = HDFSConfig()
+            self._HDFSSource._deserialize(params.get("HDFSSource"))
+        if params.get("GooseFSSource") is not None:
+            self._GooseFSSource = GooseFS()
+            self._GooseFSSource._deserialize(params.get("GooseFSSource"))
+        if params.get("CFSTurboSource") is not None:
+            self._CFSTurboSource = CFSTurbo()
+            self._CFSTurboSource._deserialize(params.get("CFSTurboSource"))
+        if params.get("LocalDiskSource") is not None:
+            self._LocalDiskSource = LocalDisk()
+            self._LocalDiskSource._deserialize(params.get("LocalDiskSource"))
+        if params.get("CBSSource") is not None:
+            self._CBSSource = CBSConfig()
+            self._CBSSource._deserialize(params.get("CBSSource"))
+        if params.get("HostPathSource") is not None:
+            self._HostPathSource = HostPath()
+            self._HostPathSource._deserialize(params.get("HostPathSource"))
+        if params.get("PublicDataSource") is not None:
+            self._PublicDataSource = PublicDataSourceFS()
+            self._PublicDataSource._deserialize(params.get("PublicDataSource"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataSetConfig(AbstractModel):
+    r"""Data set structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Data set ID.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""Data set ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeModelServiceGroupsRequest(AbstractModel):
     r"""DescribeModelServiceGroups request structure.
 
@@ -811,6 +1808,8 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         r"""Service classification.
         :rtype: str
         """
@@ -818,6 +1817,8 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @ServiceCategory.setter
     def ServiceCategory(self, ServiceCategory):
+        warnings.warn("parameter `ServiceCategory` is deprecated", DeprecationWarning) 
+
         self._ServiceCategory = ServiceCategory
 
 
@@ -912,6 +1913,42 @@ class DescribeModelServiceGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EncodedStartCmdInfo(AbstractModel):
+    r"""Encoded startup command information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartCmdInfo: Startup command of the task, which is input in base64 format. Note that the complete input of {"StartCmd":"","PsStartCmd":"","WorkerStartCmd":""} is required for conversion.
+        :type StartCmdInfo: str
+        """
+        self._StartCmdInfo = None
+
+    @property
+    def StartCmdInfo(self):
+        r"""Startup command of the task, which is input in base64 format. Note that the complete input of {"StartCmd":"","PsStartCmd":"","WorkerStartCmd":""} is required for conversion.
+        :rtype: str
+        """
+        return self._StartCmdInfo
+
+    @StartCmdInfo.setter
+    def StartCmdInfo(self, StartCmdInfo):
+        self._StartCmdInfo = StartCmdInfo
+
+
+    def _deserialize(self, params):
+        self._StartCmdInfo = params.get("StartCmdInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnvVar(AbstractModel):
     r"""Environment variables.
 
@@ -999,6 +2036,142 @@ class ExecAction(AbstractModel):
         
 
 
+class ExposeNetworkConfig(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SSHConfig: 
+        :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        :param _ExposePortConfig: 
+        :type ExposePortConfig: :class:`tencentcloud.tione.v20211111.models.ExposePortConfig`
+        """
+        self._SSHConfig = None
+        self._ExposePortConfig = None
+
+    @property
+    def SSHConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        """
+        return self._SSHConfig
+
+    @SSHConfig.setter
+    def SSHConfig(self, SSHConfig):
+        self._SSHConfig = SSHConfig
+
+    @property
+    def ExposePortConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ExposePortConfig`
+        """
+        return self._ExposePortConfig
+
+    @ExposePortConfig.setter
+    def ExposePortConfig(self, ExposePortConfig):
+        self._ExposePortConfig = ExposePortConfig
+
+
+    def _deserialize(self, params):
+        if params.get("SSHConfig") is not None:
+            self._SSHConfig = SSHConfig()
+            self._SSHConfig._deserialize(params.get("SSHConfig"))
+        if params.get("ExposePortConfig") is not None:
+            self._ExposePortConfig = ExposePortConfig()
+            self._ExposePortConfig._deserialize(params.get("ExposePortConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExposePortConfig(AbstractModel):
+    r"""Exposed port information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 
+        :type Enable: bool
+        :param _VpcId: 
+        :type VpcId: str
+        :param _ClbId: 
+        :type ClbId: str
+        :param _ClbHost: 
+        :type ClbHost: str
+        """
+        self._Enable = None
+        self._VpcId = None
+        self._ClbId = None
+        self._ClbHost = None
+
+    @property
+    def Enable(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def VpcId(self):
+        r"""
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def ClbId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClbId
+
+    @ClbId.setter
+    def ClbId(self, ClbId):
+        self._ClbId = ClbId
+
+    @property
+    def ClbHost(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClbHost
+
+    @ClbHost.setter
+    def ClbHost(self, ClbHost):
+        self._ClbHost = ClbHost
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._VpcId = params.get("VpcId")
+        self._ClbId = params.get("ClbId")
+        self._ClbHost = params.get("ClbHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""Filter.
 
@@ -1070,6 +2243,95 @@ class Filter(AbstractModel):
         self._Values = params.get("Values")
         self._Negative = params.get("Negative")
         self._Fuzzy = params.get("Fuzzy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GooseFS(AbstractModel):
+    r"""GooseFS configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: GooseFS instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        :param _Type: GooseFS type, including GooseFS and GooseFSx.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Path: Path to mount the GooseFSx instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Path: str
+        :param _NameSpace: GooseFS namespace.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NameSpace: str
+        """
+        self._Id = None
+        self._Type = None
+        self._Path = None
+        self._NameSpace = None
+
+    @property
+    def Id(self):
+        r"""GooseFS instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""GooseFS type, including GooseFS and GooseFSx.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Path(self):
+        r"""Path to mount the GooseFSx instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def NameSpace(self):
+        r"""GooseFS namespace.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._NameSpace
+
+    @NameSpace.setter
+    def NameSpace(self, NameSpace):
+        self._NameSpace = NameSpace
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Path = params.get("Path")
+        self._NameSpace = params.get("NameSpace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1172,6 +2434,57 @@ class GpuDetail(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HDFSConfig(AbstractModel):
+    r"""HDFS parameter configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Cluster instance ID, such as emr-xxxxxxxx.
+        :type Id: str
+        :param _Path: Path.
+        :type Path: str
+        """
+        self._Id = None
+        self._Path = None
+
+    @property
+    def Id(self):
+        r"""Cluster instance ID, such as emr-xxxxxxxx.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Path(self):
+        r"""Path.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1406,6 +2719,42 @@ class HorizontalPodAutoscaler(AbstractModel):
         
 
 
+class HostPath(AbstractModel):
+    r"""Host path mounting configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: Host path to be mounted.
+        :type Path: str
+        """
+        self._Path = None
+
+    @property
+    def Path(self):
+        r"""Host path to be mounted.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageInfo(AbstractModel):
     r"""Image description information.
 
@@ -1427,6 +2776,8 @@ class ImageInfo(AbstractModel):
         :type ImageName: str
         :param _SupportDataPipeline: Whether to support data generation.Note: This field may return null, indicating that no valid values can be obtained.
         :type SupportDataPipeline: bool
+        :param _ImageSecret: 
+        :type ImageSecret: :class:`tencentcloud.tione.v20211111.models.ImageSecret`
         """
         self._ImageType = None
         self._ImageUrl = None
@@ -1435,6 +2786,7 @@ class ImageInfo(AbstractModel):
         self._AllowSaveAllContent = None
         self._ImageName = None
         self._SupportDataPipeline = None
+        self._ImageSecret = None
 
     @property
     def ImageType(self):
@@ -1513,6 +2865,17 @@ class ImageInfo(AbstractModel):
     def SupportDataPipeline(self, SupportDataPipeline):
         self._SupportDataPipeline = SupportDataPipeline
 
+    @property
+    def ImageSecret(self):
+        r"""
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageSecret`
+        """
+        return self._ImageSecret
+
+    @ImageSecret.setter
+    def ImageSecret(self, ImageSecret):
+        self._ImageSecret = ImageSecret
+
 
     def _deserialize(self, params):
         self._ImageType = params.get("ImageType")
@@ -1522,6 +2885,90 @@ class ImageInfo(AbstractModel):
         self._AllowSaveAllContent = params.get("AllowSaveAllContent")
         self._ImageName = params.get("ImageName")
         self._SupportDataPipeline = params.get("SupportDataPipeline")
+        if params.get("ImageSecret") is not None:
+            self._ImageSecret = ImageSecret()
+            self._ImageSecret._deserialize(params.get("ImageSecret"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageSecret(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: 
+        :type KeyId: str
+        :param _Username: 
+        :type Username: str
+        :param _Password: 
+        :type Password: str
+        :param _SecretId: 
+        :type SecretId: str
+        """
+        self._KeyId = None
+        self._Username = None
+        self._Password = None
+        self._SecretId = None
+
+    @property
+    def KeyId(self):
+        r"""
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def Username(self):
+        r"""
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def SecretId(self):
+        r"""
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._SecretId = params.get("SecretId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1560,6 +3007,61 @@ class InferCodeInfo(AbstractModel):
         if params.get("CosPathInfo") is not None:
             self._CosPathInfo = CosPathInfo()
             self._CosPathInfo._deserialize(params.get("CosPathInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LocalDisk(AbstractModel):
+    r"""Local disk information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Node ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _LocalPath: Local path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LocalPath: str
+        """
+        self._InstanceId = None
+        self._LocalPath = None
+
+    @property
+    def InstanceId(self):
+        r"""Node ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LocalPath(self):
+        r"""Local path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LocalPath
+
+    @LocalPath.setter
+    def LocalPath(self, LocalPath):
+        self._LocalPath = LocalPath
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LocalPath = params.get("LocalPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1640,7 +3142,8 @@ class ModelInfo(AbstractModel):
         :type ModelSource: str
         :param _CosPathInfo: COS path information.
         :type CosPathInfo: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _GooseFSx: GooseFSx configurations, and is valid when ModelSource is GooseFSx.
+        :param _GooseFSx: GooseFSx configuration. This parameter takes effect if ModelSource is GooseFSx.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type GooseFSx: :class:`tencentcloud.tione.v20211111.models.GooseFSx`
         :param _AlgorithmFramework: Algorithm framework corresponding to the model (reserved field).Note: This field may return null, indicating that no valid values can be obtained.
         :type AlgorithmFramework: str
@@ -1737,7 +3240,8 @@ class ModelInfo(AbstractModel):
 
     @property
     def GooseFSx(self):
-        r"""GooseFSx configurations, and is valid when ModelSource is GooseFSx.
+        r"""GooseFSx configuration. This parameter takes effect if ModelSource is GooseFSx.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.tione.v20211111.models.GooseFSx`
         """
         return self._GooseFSx
@@ -2236,6 +3740,72 @@ class Pod(AbstractModel):
         
 
 
+class PodSSHInfo(AbstractModel):
+    r"""Information about Pod access over SSH.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: IP address of the Pod.
+        :type Host: str
+        :param _Port: SSH port of the Pod.
+        :type Port: int
+        :param _LoginCommand: SSH access command.
+        :type LoginCommand: str
+        """
+        self._Host = None
+        self._Port = None
+        self._LoginCommand = None
+
+    @property
+    def Host(self):
+        r"""IP address of the Pod.
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        r"""SSH port of the Pod.
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def LoginCommand(self):
+        r"""SSH access command.
+        :rtype: str
+        """
+        return self._LoginCommand
+
+    @LoginCommand.setter
+    def LoginCommand(self, LoginCommand):
+        self._LoginCommand = LoginCommand
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._LoginCommand = params.get("LoginCommand")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Probe(AbstractModel):
     r"""Probe structure information.
 
@@ -2487,6 +4057,272 @@ class PublicDataSourceFS(AbstractModel):
         
 
 
+class RDMAConfig(AbstractModel):
+    r"""RDMA configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: Whether to enable RDMA.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Enable: bool
+        """
+        self._Enable = None
+
+    @property
+    def Enable(self):
+        r"""Whether to enable RDMA.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceConfigInfo(AbstractModel):
+    r"""Resource configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: Role. For example, PS, WORKER, DRIVER, and EXECUTOR.
+        :type Role: str
+        :param _Cpu: Number of CPU cores, which is required to be configured when resource groups are used. Unit: 1/1000, where 1000 represents 1 core.
+        :type Cpu: int
+        :param _Memory: Memory size, in MB. This parameter needs to be configured when resource groups are used.
+        :type Memory: int
+        :param _GpuType: GPU card type, which is required to be configured when resource groups are used.
+        :type GpuType: str
+        :param _Gpu: Number of GPU cards, which is required to be configured when resource groups are used. Unit: 1/100, where 100 represents 1 card.
+        :type Gpu: int
+        :param _InstanceType: CVM instance specification ID.
+CVM instance specification (for postpaid billing). Valid values:
+TI.S.LARGE.POST: 4C8G 
+TI.S.2XLARGE16.POST:  8C16G 
+TI.S.2XLARGE32.POST:  8C32G 
+TI.S.4XLARGE32.POST:  16C32G
+TI.S.4XLARGE64.POST:  16C64G
+TI.S.6XLARGE48.POST:  24C48G
+TI.S.6XLARGE96.POST:  24C96G
+TI.S.8XLARGE64.POST:  32C64G
+TI.S.8XLARGE128.POST : 32C128G
+TI.GN10.2XLARGE40.POST: 8C40G V100*1 
+TI.GN10.5XLARGE80.POST:  18C80G V100*2 
+TI.GN10.10XLARGE160.POST :  32C160G V100*4
+TI.GN10.20XLARGE320.POST :  72C320G V100*8
+TI.GN7.8XLARGE128.POST: 32C128G T4*1 
+TI.GN7.10XLARGE160.POST: 40C160G T4*2 
+TI.GN7.20XLARGE320.POST: 80C32
+        :type InstanceType: str
+        :param _InstanceNum: Number of compute nodes.
+        :type InstanceNum: int
+        :param _InstanceTypeAlias: CVM instance specification name.
+CVM instance specification (for postpaid billing). Valid values:
+4C8G 
+8C16G 
+8C32G 
+16C32G
+6C64G
+24C48G
+24C96G
+32C64G
+32C128G
+8C40G V100*1 
+8C80G V100*2 
+32C160G V100*4
+72C320G V100*8
+32C128G T4*1 
+40C160G T4*2 
+80C32
+        :type InstanceTypeAlias: str
+        :param _RDMAConfig: RDMA configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RDMAConfig: :class:`tencentcloud.tione.v20211111.models.RDMAConfig`
+        """
+        self._Role = None
+        self._Cpu = None
+        self._Memory = None
+        self._GpuType = None
+        self._Gpu = None
+        self._InstanceType = None
+        self._InstanceNum = None
+        self._InstanceTypeAlias = None
+        self._RDMAConfig = None
+
+    @property
+    def Role(self):
+        r"""Role. For example, PS, WORKER, DRIVER, and EXECUTOR.
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Cpu(self):
+        r"""Number of CPU cores, which is required to be configured when resource groups are used. Unit: 1/1000, where 1000 represents 1 core.
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""Memory size, in MB. This parameter needs to be configured when resource groups are used.
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def GpuType(self):
+        r"""GPU card type, which is required to be configured when resource groups are used.
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def Gpu(self):
+        r"""Number of GPU cards, which is required to be configured when resource groups are used. Unit: 1/100, where 100 represents 1 card.
+        :rtype: int
+        """
+        return self._Gpu
+
+    @Gpu.setter
+    def Gpu(self, Gpu):
+        self._Gpu = Gpu
+
+    @property
+    def InstanceType(self):
+        r"""CVM instance specification ID.
+CVM instance specification (for postpaid billing). Valid values:
+TI.S.LARGE.POST: 4C8G 
+TI.S.2XLARGE16.POST:  8C16G 
+TI.S.2XLARGE32.POST:  8C32G 
+TI.S.4XLARGE32.POST:  16C32G
+TI.S.4XLARGE64.POST:  16C64G
+TI.S.6XLARGE48.POST:  24C48G
+TI.S.6XLARGE96.POST:  24C96G
+TI.S.8XLARGE64.POST:  32C64G
+TI.S.8XLARGE128.POST : 32C128G
+TI.GN10.2XLARGE40.POST: 8C40G V100*1 
+TI.GN10.5XLARGE80.POST:  18C80G V100*2 
+TI.GN10.10XLARGE160.POST :  32C160G V100*4
+TI.GN10.20XLARGE320.POST :  72C320G V100*8
+TI.GN7.8XLARGE128.POST: 32C128G T4*1 
+TI.GN7.10XLARGE160.POST: 40C160G T4*2 
+TI.GN7.20XLARGE320.POST: 80C32
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceNum(self):
+        r"""Number of compute nodes.
+        :rtype: int
+        """
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
+
+    @property
+    def InstanceTypeAlias(self):
+        r"""CVM instance specification name.
+CVM instance specification (for postpaid billing). Valid values:
+4C8G 
+8C16G 
+8C32G 
+16C32G
+6C64G
+24C48G
+24C96G
+32C64G
+32C128G
+8C40G V100*1 
+8C80G V100*2 
+32C160G V100*4
+72C320G V100*8
+32C128G T4*1 
+40C160G T4*2 
+80C32
+        :rtype: str
+        """
+        return self._InstanceTypeAlias
+
+    @InstanceTypeAlias.setter
+    def InstanceTypeAlias(self, InstanceTypeAlias):
+        self._InstanceTypeAlias = InstanceTypeAlias
+
+    @property
+    def RDMAConfig(self):
+        r"""RDMA configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.RDMAConfig`
+        """
+        return self._RDMAConfig
+
+    @RDMAConfig.setter
+    def RDMAConfig(self, RDMAConfig):
+        self._RDMAConfig = RDMAConfig
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._GpuType = params.get("GpuType")
+        self._Gpu = params.get("Gpu")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceNum = params.get("InstanceNum")
+        self._InstanceTypeAlias = params.get("InstanceTypeAlias")
+        if params.get("RDMAConfig") is not None:
+            self._RDMAConfig = RDMAConfig()
+            self._RDMAConfig._deserialize(params.get("RDMAConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceGroupInfo(AbstractModel):
     r"""Summarized information structure for the serviced resource group while an online service is provided.
 
@@ -2557,6 +4393,13 @@ class ResourceInfo(AbstractModel):
         :type RealGpu: int
         :param _RealGpuDetailSet: It is not required for creation or update operations. This field is used for display only. It involves detailed GPU usage information.
         :type RealGpuDetailSet: list of GpuDetail
+        :param _EnableRDMA: Indicates whether to enable RDMA.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnableRDMA: bool
+        :param _RootDisk: 
+        :type RootDisk: int
+        :param _DataDisk: 
+        :type DataDisk: int
         """
         self._Cpu = None
         self._Memory = None
@@ -2564,6 +4407,9 @@ class ResourceInfo(AbstractModel):
         self._GpuType = None
         self._RealGpu = None
         self._RealGpuDetailSet = None
+        self._EnableRDMA = None
+        self._RootDisk = None
+        self._DataDisk = None
 
     @property
     def Cpu(self):
@@ -2631,6 +4477,40 @@ class ResourceInfo(AbstractModel):
     def RealGpuDetailSet(self, RealGpuDetailSet):
         self._RealGpuDetailSet = RealGpuDetailSet
 
+    @property
+    def EnableRDMA(self):
+        r"""Indicates whether to enable RDMA.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._EnableRDMA
+
+    @EnableRDMA.setter
+    def EnableRDMA(self, EnableRDMA):
+        self._EnableRDMA = EnableRDMA
+
+    @property
+    def RootDisk(self):
+        r"""
+        :rtype: int
+        """
+        return self._RootDisk
+
+    @RootDisk.setter
+    def RootDisk(self, RootDisk):
+        self._RootDisk = RootDisk
+
+    @property
+    def DataDisk(self):
+        r"""
+        :rtype: int
+        """
+        return self._DataDisk
+
+    @DataDisk.setter
+    def DataDisk(self, DataDisk):
+        self._DataDisk = DataDisk
+
 
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
@@ -2644,6 +4524,60 @@ class ResourceInfo(AbstractModel):
                 obj = GpuDetail()
                 obj._deserialize(item)
                 self._RealGpuDetailSet.append(obj)
+        self._EnableRDMA = params.get("EnableRDMA")
+        self._RootDisk = params.get("RootDisk")
+        self._DataDisk = params.get("DataDisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceSupplyAttribute(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SupplyType: 
+        :type SupplyType: str
+        :param _ClusterType: 
+        :type ClusterType: str
+        """
+        self._SupplyType = None
+        self._ClusterType = None
+
+    @property
+    def SupplyType(self):
+        r"""
+        :rtype: str
+        """
+        return self._SupplyType
+
+    @SupplyType.setter
+    def SupplyType(self, SupplyType):
+        self._SupplyType = SupplyType
+
+    @property
+    def ClusterType(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+
+    def _deserialize(self, params):
+        self._SupplyType = params.get("SupplyType")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2699,6 +4633,131 @@ class RollingUpdate(AbstractModel):
         if params.get("MaxSurge") is not None:
             self._MaxSurge = NumOrPercent()
             self._MaxSurge._deserialize(params.get("MaxSurge"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SSHConfig(AbstractModel):
+    r"""Notebook SSH port configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: Whether to enable SSH.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Enable: bool
+        :param _PublicKey: Public key information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PublicKey: str
+        :param _Port: Port number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Port: int
+        :param _LoginCommand: Login command.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LoginCommand: str
+        :param _IsAddressChanged: Whether to change the login address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsAddressChanged: bool
+        :param _PodSSHInfo: Pod access information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PodSSHInfo: :class:`tencentcloud.tione.v20211111.models.PodSSHInfo`
+        """
+        self._Enable = None
+        self._PublicKey = None
+        self._Port = None
+        self._LoginCommand = None
+        self._IsAddressChanged = None
+        self._PodSSHInfo = None
+
+    @property
+    def Enable(self):
+        r"""Whether to enable SSH.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def PublicKey(self):
+        r"""Public key information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def Port(self):
+        r"""Port number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def LoginCommand(self):
+        r"""Login command.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LoginCommand
+
+    @LoginCommand.setter
+    def LoginCommand(self, LoginCommand):
+        self._LoginCommand = LoginCommand
+
+    @property
+    def IsAddressChanged(self):
+        r"""Whether to change the login address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsAddressChanged
+
+    @IsAddressChanged.setter
+    def IsAddressChanged(self, IsAddressChanged):
+        self._IsAddressChanged = IsAddressChanged
+
+    @property
+    def PodSSHInfo(self):
+        r"""Pod access information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tione.v20211111.models.PodSSHInfo`
+        """
+        return self._PodSSHInfo
+
+    @PodSSHInfo.setter
+    def PodSSHInfo(self, PodSSHInfo):
+        self._PodSSHInfo = PodSSHInfo
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._PublicKey = params.get("PublicKey")
+        self._Port = params.get("Port")
+        self._LoginCommand = params.get("LoginCommand")
+        self._IsAddressChanged = params.get("IsAddressChanged")
+        if params.get("PodSSHInfo") is not None:
+            self._PodSSHInfo = PodSSHInfo()
+            self._PodSSHInfo._deserialize(params.get("PodSSHInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4609,6 +6668,72 @@ class ServiceLimit(AbstractModel):
         
 
 
+class StartCmdInfo(AbstractModel):
+    r"""Startup command information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartCmd: Startup command.
+        :type StartCmd: str
+        :param _PsStartCmd: Startup command for ps nodes.
+        :type PsStartCmd: str
+        :param _WorkerStartCmd: Startup command for Worker nodes.
+        :type WorkerStartCmd: str
+        """
+        self._StartCmd = None
+        self._PsStartCmd = None
+        self._WorkerStartCmd = None
+
+    @property
+    def StartCmd(self):
+        r"""Startup command.
+        :rtype: str
+        """
+        return self._StartCmd
+
+    @StartCmd.setter
+    def StartCmd(self, StartCmd):
+        self._StartCmd = StartCmd
+
+    @property
+    def PsStartCmd(self):
+        r"""Startup command for ps nodes.
+        :rtype: str
+        """
+        return self._PsStartCmd
+
+    @PsStartCmd.setter
+    def PsStartCmd(self, PsStartCmd):
+        self._PsStartCmd = PsStartCmd
+
+    @property
+    def WorkerStartCmd(self):
+        r"""Startup command for Worker nodes.
+        :rtype: str
+        """
+        return self._WorkerStartCmd
+
+    @WorkerStartCmd.setter
+    def WorkerStartCmd(self, WorkerStartCmd):
+        self._WorkerStartCmd = WorkerStartCmd
+
+
+    def _deserialize(self, params):
+        self._StartCmd = params.get("StartCmd")
+        self._PsStartCmd = params.get("PsStartCmd")
+        self._WorkerStartCmd = params.get("WorkerStartCmd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StatefulSetCondition(AbstractModel):
     r"""Instance status.
 
@@ -4848,6 +6973,72 @@ class TagFilter(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValues = params.get("TagValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrainToolConfig(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableHangMonitor: 
+        :type EnableHangMonitor: bool
+        :param _HangMonitorNodes: 
+        :type HangMonitorNodes: list of str
+        :param _LogHangTimeoutInMinute: 
+        :type LogHangTimeoutInMinute: int
+        """
+        self._EnableHangMonitor = None
+        self._HangMonitorNodes = None
+        self._LogHangTimeoutInMinute = None
+
+    @property
+    def EnableHangMonitor(self):
+        r"""
+        :rtype: bool
+        """
+        return self._EnableHangMonitor
+
+    @EnableHangMonitor.setter
+    def EnableHangMonitor(self, EnableHangMonitor):
+        self._EnableHangMonitor = EnableHangMonitor
+
+    @property
+    def HangMonitorNodes(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._HangMonitorNodes
+
+    @HangMonitorNodes.setter
+    def HangMonitorNodes(self, HangMonitorNodes):
+        self._HangMonitorNodes = HangMonitorNodes
+
+    @property
+    def LogHangTimeoutInMinute(self):
+        r"""
+        :rtype: int
+        """
+        return self._LogHangTimeoutInMinute
+
+    @LogHangTimeoutInMinute.setter
+    def LogHangTimeoutInMinute(self, LogHangTimeoutInMinute):
+        self._LogHangTimeoutInMinute = LogHangTimeoutInMinute
+
+
+    def _deserialize(self, params):
+        self._EnableHangMonitor = params.get("EnableHangMonitor")
+        self._HangMonitorNodes = params.get("HangMonitorNodes")
+        self._LogHangTimeoutInMinute = params.get("LogHangTimeoutInMinute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

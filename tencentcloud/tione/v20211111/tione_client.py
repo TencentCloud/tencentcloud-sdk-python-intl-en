@@ -26,6 +26,29 @@ class TioneClient(AbstractClient):
     _service = 'tione'
 
 
+    def CreateTrainingTask(self, request):
+        r"""This API is used to create a model training task.
+
+        :param request: Request instance for CreateTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateTrainingTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTrainingTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTrainingTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeModelServiceGroups(self, request):
         r"""This API is used to list online inference service groups.
 

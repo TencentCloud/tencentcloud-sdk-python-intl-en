@@ -80,6 +80,42 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloneVoiceAsync(
+            self,
+            request: models.CloneVoiceAsyncRequest,
+            opts: Dict = None,
+    ) -> models.CloneVoiceAsyncResponse:
+        """
+        This API is used to initiate a voice cloning task. It generates an exclusive voice based on reference audio. The generated voice can be used for subsequent text to speech. Voice cloning is an asynchronous task. The voice ID and audio audition are generated after task completion.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloneVoiceAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloneVoiceAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CloneVoiceSync(
+            self,
+            request: models.CloneVoiceSyncRequest,
+            opts: Dict = None,
+    ) -> models.CloneVoiceSyncResponse:
+        """
+        This API is used to initiate a voice cloning task to clone an exclusive voice based on reference audio. The generated voice can be used for subsequent text to speech.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloneVoiceSync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloneVoiceSyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CommitUpload(
             self,
             request: models.CommitUploadRequest,
@@ -1638,6 +1674,26 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteVoice(
+            self,
+            request: models.DeleteVoiceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVoiceResponse:
+        """
+        This API is used to delete a specified voice by voice ID. Deletion is irreversible and the voice cannot be used for subsequent APIs. It only supports deletion of voices for this account. System preset voices cannot be deleted.
+
+        Note: Newly designed or cloned voice types cannot be deleted before activation (not found means non-operational). They are activated only after the newly created voice type is used for TTS once.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVoiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteWatermarkTemplate(
             self,
             request: models.DeleteWatermarkTemplateRequest,
@@ -2774,6 +2830,26 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVoices(
+            self,
+            request: models.DescribeVoicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVoicesResponse:
+        """
+        Query the available timbre list under the current account. It supports filtering by optional conditions such as voice ID, kind, name, gender, age, language, tag, and scenario.
+
+        Note: Newly designed or cloned voice types cannot be queried before activation. They are activated only after the newly created voice type is used for TTS once.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVoices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVoicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeWatermarkTemplates(
             self,
             request: models.DescribeWatermarkTemplatesRequest,
@@ -2805,6 +2881,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeWordSamples"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeWordSamplesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DesignVoiceAsync(
+            self,
+            request: models.DesignVoiceAsyncRequest,
+            opts: Dict = None,
+    ) -> models.DesignVoiceAsyncResponse:
+        """
+        This API is used to initiate a voice design task. It generates a custom voice based on a natural language description. You can also specify a voice profile, such as name, gender, age, language, tag, and scenario. If trial text is attached upon submission, an audio audition is generated after task completion. Voice design is an asynchronous task, and the voice ID is generated after task completion.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DesignVoiceAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DesignVoiceAsyncResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4316,6 +4410,42 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def TextToSpeechAsync(
+            self,
+            request: models.TextToSpeechAsyncRequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechAsyncResponse:
+        """
+        Initiate a speech synthesis task to convert text into speech, oriented towards long text scenarios (maximum 200,000 characters), supporting specified timbre and synthesis parameters such as speaking rate, volume, pitch, sampling rate, and output format. Speech synthesis is an asynchronous task, and audio results are generated upon completion.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeechAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TextToSpeechSync(
+            self,
+            request: models.TextToSpeechSyncRequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechSyncResponse:
+        """
+        Initiate a speech synthesis task to convert text into speech.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeechSync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechSyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateAigcApiToken(
             self,
             request: models.UpdateAigcApiTokenRequest,
@@ -4329,6 +4459,26 @@ class VodClient(AbstractClient):
         kwargs["action"] = "UpdateAigcApiToken"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateAigcApiTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateVoice(
+            self,
+            request: models.UpdateVoiceRequest,
+            opts: Dict = None,
+    ) -> models.UpdateVoiceResponse:
+        """
+        This API is used to update the profile of a voice by voice ID, including its name, description, gender, age, language, tags, and scenarios, and returns the complete voice information after the update. Only voices under this account can be updated. System preset voices do not support update.
+
+        Note: Newly designed or cloned voice types cannot be updated before activation. They are activated only after the newly created voice type is used for TTS once.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateVoiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
