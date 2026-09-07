@@ -23,11 +23,17 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# Insufficient account balance.
+FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
+
 # Internal error. Please try again later.
 INTERNALERROR = 'InternalError'
 
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# This parameter can only be used when the allowlist feature is enabled.
+INVALIDPARAMETER_SPECIALPARAMETERFORSPECIALACCOUNT = 'InvalidParameter.SpecialParameterForSpecialAccount'
 
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
@@ -67,3 +73,24 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# This business bandwidth is not supported.
+UNSUPPORTEDOPERATION_BANDWIDTHNOTSUPPORTED = 'UnsupportedOperation.BandwidthNotSupported'
+
+# This base protection bandwidth value is unsupported.
+UNSUPPORTEDOPERATION_BASICPROTECTBANDWIDTHNOTSUPPORTED = 'UnsupportedOperation.BasicProtectBandwidthNotSupported'
+
+# This elastic bandwidth value is not supported.
+UNSUPPORTEDOPERATION_ELASTICPROTECTBANDWIDTHNOTSUPPORTED = 'UnsupportedOperation.ElasticProtectBandwidthNotSupported'
+
+# This payment type is not supported.
+UNSUPPORTEDOPERATION_INSTANCECHARGETYPENOTSUPPORTED = 'UnsupportedOperation.InstanceChargeTypeNotSupported'
+
+# The billing period is not supported. see the corresponding billing periods supported by the anti-ddos pro package.
+UNSUPPORTEDOPERATION_PERIODNOTSUPPORTED = 'UnsupportedOperation.PeriodNotSupported'
+
+# The number of protected ips is not supported.
+UNSUPPORTEDOPERATION_PROTECTIPCOUNTNOTSUPPORTED = 'UnsupportedOperation.ProtectIpCountNotSupported'
+
+# This region is not supported.
+UNSUPPORTEDOPERATION_REGIONNOTSUPPORTED = 'UnsupportedOperation.RegionNotSupported'

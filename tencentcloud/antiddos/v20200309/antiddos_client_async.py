@@ -61,6 +61,24 @@ class AntiddosClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBgpInstance(
+            self,
+            request: models.CreateBgpInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateBgpInstanceResponse:
+        """
+        This API is used to purchase Anti-DDoS packages.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBgpInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBgpInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateBlackWhiteIpList(
             self,
             request: models.CreateBlackWhiteIpListRequest,

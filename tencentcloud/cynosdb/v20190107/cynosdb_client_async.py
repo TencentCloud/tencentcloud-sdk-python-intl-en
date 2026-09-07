@@ -1321,6 +1321,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterStorageAutoExpand(
+            self,
+            request: models.DescribeClusterStorageAutoExpandRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterStorageAutoExpandResponse:
+        """
+        This API is used to query the automated storage expansion configuration.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterStorageAutoExpand"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterStorageAutoExpandResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterTransparentEncryptInfo(
             self,
             request: models.DescribeClusterTransparentEncryptInfoRequest,
@@ -2756,6 +2774,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "ModifyClusterGlobalEncryption"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyClusterGlobalEncryptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyClusterLevel(
+            self,
+            request: models.ModifyClusterLevelRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterLevelResponse:
+        """
+        Modify cluster
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterLevel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterLevelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

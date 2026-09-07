@@ -855,7 +855,7 @@ class AddInstancesRequest(AbstractModel):
         :type ReadOnlyCount: int
         :param _DeviceType: <p>Instance Machine Type. Supported values are as follows:</p><ul><li>common: indicates universal type</li><li>exclusive: indicates exclusive</li></ul>
         :type DeviceType: str
-        :param _InstanceGrpId: <p>Instance group ID, used when adding new instances to an existing RO group. If not passed, a new RO group will be created. The current version does not recommend transmitting this value.</p>
+        :param _InstanceGrpId: <p>This field has been deprecated. The current version no longer transmits this value.</p>
         :type InstanceGrpId: str
         :param _VpcId: <p>ID of the associated VPC network.</p>
         :type VpcId: str
@@ -960,7 +960,7 @@ class AddInstancesRequest(AbstractModel):
     def InstanceGrpId(self):
         warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
 
-        r"""<p>Instance group ID, used when adding new instances to an existing RO group. If not passed, a new RO group will be created. The current version does not recommend transmitting this value.</p>
+        r"""<p>This field has been deprecated. The current version no longer transmits this value.</p>
         :rtype: str
         """
         return self._InstanceGrpId
@@ -2886,6 +2886,8 @@ class BackupFileInfo(AbstractModel):
         :type SnapShotType: str
         :param _BackupName: <p>Backup file remark</p>
         :type BackupName: str
+        :param _ExistRegions: <p>Region where backup files are located</p>
+        :type ExistRegions: list of BackupRegionAndIds
         :param _CopyStatus: <p>Delivery status</p>
         :type CopyStatus: str
         :param _EncryptKeyId: <p>Key id</p>
@@ -2909,6 +2911,7 @@ class BackupFileInfo(AbstractModel):
         self._BackupId = None
         self._SnapShotType = None
         self._BackupName = None
+        self._ExistRegions = None
         self._CopyStatus = None
         self._EncryptKeyId = None
         self._EncryptRegion = None
@@ -3048,6 +3051,17 @@ class BackupFileInfo(AbstractModel):
         self._BackupName = BackupName
 
     @property
+    def ExistRegions(self):
+        r"""<p>Region where backup files are located</p>
+        :rtype: list of BackupRegionAndIds
+        """
+        return self._ExistRegions
+
+    @ExistRegions.setter
+    def ExistRegions(self, ExistRegions):
+        self._ExistRegions = ExistRegions
+
+    @property
     def CopyStatus(self):
         r"""<p>Delivery status</p>
         :rtype: str
@@ -3116,6 +3130,12 @@ class BackupFileInfo(AbstractModel):
         self._BackupId = params.get("BackupId")
         self._SnapShotType = params.get("SnapShotType")
         self._BackupName = params.get("BackupName")
+        if params.get("ExistRegions") is not None:
+            self._ExistRegions = []
+            for item in params.get("ExistRegions"):
+                obj = BackupRegionAndIds()
+                obj._deserialize(item)
+                self._ExistRegions.append(obj)
         self._CopyStatus = params.get("CopyStatus")
         self._EncryptKeyId = params.get("EncryptKeyId")
         self._EncryptRegion = params.get("EncryptRegion")
@@ -12682,7 +12702,7 @@ class CynosdbInstance(AbstractModel):
         :type Region: str
         :param _Zone: <p>Primary availability zone of the cluster</p>
         :type Zone: str
-        :param _Status: <p>Instance status</p>
+        :param _Status: <p>Instance status</p><p>Enumeration values:</p><ul><li>creating: Under creation</li><li>running: Running</li><li>isolating: Isolating</li><li>isolated: Isolated</li><li>activating: Restoring from recycle bin</li><li>offlining: Offlining</li><li>offlined: Offline</li><li>deleting: Deleting</li><li>deleted: Deleted</li></ul>
         :type Status: str
         :param _StatusDesc: <p>Instance status description in Chinese</p>
         :type StatusDesc: str
@@ -12947,7 +12967,7 @@ class CynosdbInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>Instance status</p>
+        r"""<p>Instance status</p><p>Enumeration values:</p><ul><li>creating: Under creation</li><li>running: Running</li><li>isolating: Isolating</li><li>isolated: Isolated</li><li>activating: Restoring from recycle bin</li><li>offlining: Offlining</li><li>offlined: Offline</li><li>deleting: Deleting</li><li>deleted: Deleted</li></ul>
         :rtype: str
         """
         return self._Status
@@ -16506,11 +16526,11 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
         :type AccountName: str
         :param _Host: Host
         :type Host: str
-        :param _Db: When the database name is “*”, the value specified in `Type` and `TableName` will be ignored, indicating that the user's global permissions are being modified.
+        :param _Db: Database name. If it is `*`, Type/TableName are ignored, which means querying the user's global permission. If not passed, it defaults to `*`.
         :type Db: str
-        :param _Type: Object type in a specified database. Valid values: `table`, `*`.
+        :param _Type: Specific object types under the designated database. Options: "table", "*". Defaults to * if not specified. TableName must be specified when Type is table.
         :type Type: str
-        :param _TableName: The database name can be specified when `Type` is 'table'.
+        :param _TableName: When Type is "table", it is used to specify the table name. Required when Type is "table".
         :type TableName: str
         """
         self._ClusterId = None
@@ -16555,7 +16575,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Db(self):
-        r"""When the database name is “*”, the value specified in `Type` and `TableName` will be ignored, indicating that the user's global permissions are being modified.
+        r"""Database name. If it is `*`, Type/TableName are ignored, which means querying the user's global permission. If not passed, it defaults to `*`.
         :rtype: str
         """
         return self._Db
@@ -16566,7 +16586,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""Object type in a specified database. Valid values: `table`, `*`.
+        r"""Specific object types under the designated database. Options: "table", "*". Defaults to * if not specified. TableName must be specified when Type is table.
         :rtype: str
         """
         return self._Type
@@ -16577,7 +16597,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""The database name can be specified when `Type` is 'table'.
+        r"""When Type is "table", it is used to specify the table name. Required when Type is "table".
         :rtype: str
         """
         return self._TableName
@@ -19881,13 +19901,13 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: Cluster ID
+        :param _ClusterId: <p>Cluster ID.</p>
         :type ClusterId: str
-        :param _Offset: Offset. Default value: `0`.
+        :param _Offset: <p>Offset. Default value: 0.</p>
         :type Offset: int
-        :param _Limit: Number of returned results. Default value: `20`. Maximum value: `100`.
+        :param _Limit: <p>Number of returned results. Default: 20; maximum: 100</p>
         :type Limit: int
-        :param _DbName: Database name
+        :param _DbName: <p>Database name. Perform substring match by this field.</p>
         :type DbName: str
         """
         self._ClusterId = None
@@ -19897,7 +19917,7 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""Cluster ID
+        r"""<p>Cluster ID.</p>
         :rtype: str
         """
         return self._ClusterId
@@ -19908,7 +19928,7 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset. Default value: `0`.
+        r"""<p>Offset. Default value: 0.</p>
         :rtype: int
         """
         return self._Offset
@@ -19919,7 +19939,7 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of returned results. Default value: `20`. Maximum value: `100`.
+        r"""<p>Number of returned results. Default: 20; maximum: 100</p>
         :rtype: int
         """
         return self._Limit
@@ -19930,7 +19950,7 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     @property
     def DbName(self):
-        r"""Database name
+        r"""<p>Database name. Perform substring match by this field.</p>
         :rtype: str
         """
         return self._DbName
@@ -19962,9 +19982,9 @@ class DescribeClusterDetailDatabasesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbInfos: Database information
+        :param _DbInfos: <p>Database information.</p>
         :type DbInfos: list of DbInfo
-        :param _TotalCount: The total count
+        :param _TotalCount: <p>Total.</p>
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -19975,7 +19995,7 @@ class DescribeClusterDetailDatabasesResponse(AbstractModel):
 
     @property
     def DbInfos(self):
-        r"""Database information
+        r"""<p>Database information.</p>
         :rtype: list of DbInfo
         """
         return self._DbInfos
@@ -19986,7 +20006,7 @@ class DescribeClusterDetailDatabasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""The total count
+        r"""<p>Total.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -20677,6 +20697,130 @@ class DescribeClusterReadOnlyResponse(AbstractModel):
                 obj = ClusterReadOnlyValue()
                 obj._deserialize(item)
                 self._ClusterReadOnlyValues.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterStorageAutoExpandRequest(AbstractModel):
+    r"""DescribeClusterStorageAutoExpand request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterStorageAutoExpandResponse(AbstractModel):
+    r"""DescribeClusterStorageAutoExpand response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageUsageThreshold: <p>Storage utilization threshold</p>
+        :type StorageUsageThreshold: int
+        :param _ExpandStep: <p>Scaling increment</p>
+        :type ExpandStep: int
+        :param _MaxStorageLimit: <p>Maximum storage capacity limit</p>
+        :type MaxStorageLimit: int
+        :param _StorageAutoExpand: <p>Whether to enable: yes-enabled, no-disabled</p>
+        :type StorageAutoExpand: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._StorageUsageThreshold = None
+        self._ExpandStep = None
+        self._MaxStorageLimit = None
+        self._StorageAutoExpand = None
+        self._RequestId = None
+
+    @property
+    def StorageUsageThreshold(self):
+        r"""<p>Storage utilization threshold</p>
+        :rtype: int
+        """
+        return self._StorageUsageThreshold
+
+    @StorageUsageThreshold.setter
+    def StorageUsageThreshold(self, StorageUsageThreshold):
+        self._StorageUsageThreshold = StorageUsageThreshold
+
+    @property
+    def ExpandStep(self):
+        r"""<p>Scaling increment</p>
+        :rtype: int
+        """
+        return self._ExpandStep
+
+    @ExpandStep.setter
+    def ExpandStep(self, ExpandStep):
+        self._ExpandStep = ExpandStep
+
+    @property
+    def MaxStorageLimit(self):
+        r"""<p>Maximum storage capacity limit</p>
+        :rtype: int
+        """
+        return self._MaxStorageLimit
+
+    @MaxStorageLimit.setter
+    def MaxStorageLimit(self, MaxStorageLimit):
+        self._MaxStorageLimit = MaxStorageLimit
+
+    @property
+    def StorageAutoExpand(self):
+        r"""<p>Whether to enable: yes-enabled, no-disabled</p>
+        :rtype: str
+        """
+        return self._StorageAutoExpand
+
+    @StorageAutoExpand.setter
+    def StorageAutoExpand(self, StorageAutoExpand):
+        self._StorageAutoExpand = StorageAutoExpand
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StorageUsageThreshold = params.get("StorageUsageThreshold")
+        self._ExpandStep = params.get("ExpandStep")
+        self._MaxStorageLimit = params.get("MaxStorageLimit")
+        self._StorageAutoExpand = params.get("StorageAutoExpand")
         self._RequestId = params.get("RequestId")
 
 
@@ -22098,7 +22242,7 @@ class DescribeInstanceSpecsRequest(AbstractModel):
         :type IncludeZoneStocks: bool
         :param _DeviceType: <p>Instance machine type.</p>
         :type DeviceType: str
-        :param _ClusterLevel: <p>Cluster level, optional. For example P0, P1</p>
+        :param _ClusterLevel: <p>Cluster level. For example, P0, P1. If no availability zone is specified, the query for non-affinity resources will be downgraded for availability zones that do not support affinity.</p>
         :type ClusterLevel: str
         """
         self._DbType = None
@@ -22141,7 +22285,7 @@ class DescribeInstanceSpecsRequest(AbstractModel):
 
     @property
     def ClusterLevel(self):
-        r"""<p>Cluster level, optional. For example P0, P1</p>
+        r"""<p>Cluster level. For example, P0, P1. If no availability zone is specified, the query for non-affinity resources will be downgraded for availability zones that do not support affinity.</p>
         :rtype: str
         """
         return self._ClusterLevel
@@ -38854,6 +38998,100 @@ class ModifyClusterGlobalEncryptionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterLevelRequest(AbstractModel):
+    r"""ModifyClusterLevel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        :param _ClusterLevel: <p>Cluster level</p>
+        :type ClusterLevel: str
+        """
+        self._ClusterId = None
+        self._ClusterLevel = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterLevel(self):
+        r"""<p>Cluster level</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterLevel = params.get("ClusterLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterLevelResponse(AbstractModel):
+    r"""ModifyClusterLevel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyClusterNameRequest(AbstractModel):
     r"""ModifyClusterName request structure.
 
@@ -44823,6 +45061,9 @@ class Package(AbstractModel):
         :param _PackageType: Specifies the resource package type.
 CCU: compute resource package. DISK: storage resource package.
         :type PackageType: str
+        :param _PackageVersion: Resource package edition
+base - basic, common - general, enterprise - business
+        :type PackageVersion: str
         :param _PackageRegion: Resource package region of use.
 China - common in the chinese mainland. overseas - universally applicable in hong kong (china), macao (china), taiwan (china), and overseas.
         :type PackageRegion: str
@@ -44853,6 +45094,7 @@ Specifies that the fee has been refunded.
         self._PackageId = None
         self._PackageName = None
         self._PackageType = None
+        self._PackageVersion = None
         self._PackageRegion = None
         self._Status = None
         self._PackageTotalSpec = None
@@ -44907,6 +45149,18 @@ CCU: compute resource package. DISK: storage resource package.
     @PackageType.setter
     def PackageType(self, PackageType):
         self._PackageType = PackageType
+
+    @property
+    def PackageVersion(self):
+        r"""Resource package edition
+base - basic, common - general, enterprise - business
+        :rtype: str
+        """
+        return self._PackageVersion
+
+    @PackageVersion.setter
+    def PackageVersion(self, PackageVersion):
+        self._PackageVersion = PackageVersion
 
     @property
     def PackageRegion(self):
@@ -45020,6 +45274,7 @@ Specifies that the fee has been refunded.
         self._PackageId = params.get("PackageId")
         self._PackageName = params.get("PackageName")
         self._PackageType = params.get("PackageType")
+        self._PackageVersion = params.get("PackageVersion")
         self._PackageRegion = params.get("PackageRegion")
         self._Status = params.get("Status")
         self._PackageTotalSpec = params.get("PackageTotalSpec")
@@ -55642,6 +55897,36 @@ class TransferClusterPrepayToPostpayRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>Cluster ID.</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class TransferClusterPrepayToPostpayResponse(AbstractModel):
     r"""TransferClusterPrepayToPostpay response structure.
@@ -55650,10 +55935,80 @@ class TransferClusterPrepayToPostpayResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _BigDealIds: <p>Prepaid Total Order Number</p>
+        :type BigDealIds: list of str
+        :param _TranId: <p>Frozen transaction</p>
+        :type TranId: str
+        :param _DealNames: <p>Order ID.</p>
+        :type DealNames: list of str
+        :param _ResourceIds: <p>Resource id</p>
+        :type ResourceIds: list of str
+        :param _ClusterIds: <p>Cluster ID.</p>
+        :type ClusterIds: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._BigDealIds = None
+        self._TranId = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._ClusterIds = None
         self._RequestId = None
+
+    @property
+    def BigDealIds(self):
+        r"""<p>Prepaid Total Order Number</p>
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def TranId(self):
+        r"""<p>Frozen transaction</p>
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def DealNames(self):
+        r"""<p>Order ID.</p>
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        r"""<p>Resource id</p>
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def ClusterIds(self):
+        r"""<p>Cluster ID.</p>
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
 
     @property
     def RequestId(self):
@@ -55668,6 +56023,11 @@ class TransferClusterPrepayToPostpayResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._BigDealIds = params.get("BigDealIds")
+        self._TranId = params.get("TranId")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._ClusterIds = params.get("ClusterIds")
         self._RequestId = params.get("RequestId")
 
 

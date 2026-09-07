@@ -2989,6 +2989,218 @@ class CertIdInsL7Rules(AbstractModel):
         
 
 
+class CreateBgpInstanceRequest(AbstractModel):
+    r"""CreateBgpInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceChargeType: Payment type: payment mode: PREPAID (prepayment) POSTPAID_BY_MONTH (pay-as-you-go).
+        :type InstanceChargeType: str
+        :param _PackageType: High-Protection package type: specifies the high-protection package type. valid values: Enterprise (Enterprise edition), Standard (Standard version), StandardPlus (Standard version 2.0).
+        :type PackageType: str
+        :param _InstanceCount: Specifies the number of anti-ddos packages to purchase. valid values: one-time purchase of no more than 10.
+        :type InstanceCount: int
+        :param _InstanceChargePrepaid: { "Period": 3, "RenewFlag": "NOTIFY_AND_AUTO_RENEW" }
+        :type InstanceChargePrepaid: :class:`tencentcloud.antiddos.v20200309.models.InstanceChargePrepaid`
+        :param _EnterprisePackageConfig: { "Region": "ap-guangzhou", "ProtectIpCount": 1, "BasicProtectBandwidth": 300, "Bandwidth": 100, "ElasticProtectLimit": 0, "ElasticBandwidthFlag": true }
+        :type EnterprisePackageConfig: :class:`tencentcloud.antiddos.v20200309.models.EnterprisePackageConfig`
+        :param _StandardPackageConfig: { "Region": "ap-guangzhou", "ProtectIpCount": 1, "BasicProtectBandwidth": 300, "Bandwidth": 100, "ElasticProtectLimit": 0, "ElasticBandwidthFlag": true }
+        :type StandardPackageConfig: :class:`tencentcloud.antiddos.v20200309.models.StandardPackageConfig`
+        :param _StandardPlusPackageConfig: { "Region": "ap-guangzhou", "ProtectCount": "TWO_TIMES", "ProtectIpCount": 1, "Bandwidth": 100, "ElasticBandwidthFlag": true }
+        :type StandardPlusPackageConfig: :class:`tencentcloud.antiddos.v20200309.models.StandardPlusPackageConfig`
+        :param _TagInfoList: [ { "TagKey": "beal-test",                 "TagValue": "beal-test"               }             ]
+        :type TagInfoList: list of TagInfo
+        :param _DryRun: false by default. true indicates to perform parameter validation only without actual purchase.
+        :type DryRun: bool
+        """
+        self._InstanceChargeType = None
+        self._PackageType = None
+        self._InstanceCount = None
+        self._InstanceChargePrepaid = None
+        self._EnterprisePackageConfig = None
+        self._StandardPackageConfig = None
+        self._StandardPlusPackageConfig = None
+        self._TagInfoList = None
+        self._DryRun = None
+
+    @property
+    def InstanceChargeType(self):
+        r"""Payment type: payment mode: PREPAID (prepayment) POSTPAID_BY_MONTH (pay-as-you-go).
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def PackageType(self):
+        r"""High-Protection package type: specifies the high-protection package type. valid values: Enterprise (Enterprise edition), Standard (Standard version), StandardPlus (Standard version 2.0).
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def InstanceCount(self):
+        r"""Specifies the number of anti-ddos packages to purchase. valid values: one-time purchase of no more than 10.
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def InstanceChargePrepaid(self):
+        r"""{ "Period": 3, "RenewFlag": "NOTIFY_AND_AUTO_RENEW" }
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def EnterprisePackageConfig(self):
+        r"""{ "Region": "ap-guangzhou", "ProtectIpCount": 1, "BasicProtectBandwidth": 300, "Bandwidth": 100, "ElasticProtectLimit": 0, "ElasticBandwidthFlag": true }
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.EnterprisePackageConfig`
+        """
+        return self._EnterprisePackageConfig
+
+    @EnterprisePackageConfig.setter
+    def EnterprisePackageConfig(self, EnterprisePackageConfig):
+        self._EnterprisePackageConfig = EnterprisePackageConfig
+
+    @property
+    def StandardPackageConfig(self):
+        r"""{ "Region": "ap-guangzhou", "ProtectIpCount": 1, "BasicProtectBandwidth": 300, "Bandwidth": 100, "ElasticProtectLimit": 0, "ElasticBandwidthFlag": true }
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.StandardPackageConfig`
+        """
+        return self._StandardPackageConfig
+
+    @StandardPackageConfig.setter
+    def StandardPackageConfig(self, StandardPackageConfig):
+        self._StandardPackageConfig = StandardPackageConfig
+
+    @property
+    def StandardPlusPackageConfig(self):
+        r"""{ "Region": "ap-guangzhou", "ProtectCount": "TWO_TIMES", "ProtectIpCount": 1, "Bandwidth": 100, "ElasticBandwidthFlag": true }
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.StandardPlusPackageConfig`
+        """
+        return self._StandardPlusPackageConfig
+
+    @StandardPlusPackageConfig.setter
+    def StandardPlusPackageConfig(self, StandardPlusPackageConfig):
+        self._StandardPlusPackageConfig = StandardPlusPackageConfig
+
+    @property
+    def TagInfoList(self):
+        r"""[ { "TagKey": "beal-test",                 "TagValue": "beal-test"               }             ]
+        :rtype: list of TagInfo
+        """
+        return self._TagInfoList
+
+    @TagInfoList.setter
+    def TagInfoList(self, TagInfoList):
+        self._TagInfoList = TagInfoList
+
+    @property
+    def DryRun(self):
+        r"""false by default. true indicates to perform parameter validation only without actual purchase.
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+
+    def _deserialize(self, params):
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._PackageType = params.get("PackageType")
+        self._InstanceCount = params.get("InstanceCount")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("EnterprisePackageConfig") is not None:
+            self._EnterprisePackageConfig = EnterprisePackageConfig()
+            self._EnterprisePackageConfig._deserialize(params.get("EnterprisePackageConfig"))
+        if params.get("StandardPackageConfig") is not None:
+            self._StandardPackageConfig = StandardPackageConfig()
+            self._StandardPackageConfig._deserialize(params.get("StandardPackageConfig"))
+        if params.get("StandardPlusPackageConfig") is not None:
+            self._StandardPlusPackageConfig = StandardPlusPackageConfig()
+            self._StandardPlusPackageConfig._deserialize(params.get("StandardPlusPackageConfig"))
+        if params.get("TagInfoList") is not None:
+            self._TagInfoList = []
+            for item in params.get("TagInfoList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagInfoList.append(obj)
+        self._DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBgpInstanceResponse(AbstractModel):
+    r"""CreateBgpInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: bgpIds
+        :type ResourceIds: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ResourceIds = None
+        self._RequestId = None
+
+    @property
+    def ResourceIds(self):
+        r"""bgpIds
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBlackWhiteIpListRequest(AbstractModel):
     r"""CreateBlackWhiteIpList request structure.
 
@@ -11810,6 +12022,128 @@ class EipProductInfo(AbstractModel):
         
 
 
+class EnterprisePackageConfig(AbstractModel):
+    r"""{
+        "Region": "ap-guangzhou",
+        "ProtectIpCount": 1,
+        "BasicProtectBandwidth": 300,
+        "Bandwidth": 100,
+        "ElasticProtectBandwidth": 0,
+        "ElasticBandwidthFlag": true
+    }
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Specifies the region of the anti-ddos pro package.
+        :type Region: str
+        :param _ProtectIpCount: Number of protected ips.
+        :type ProtectIpCount: int
+        :param _BasicProtectBandwidth: Specifies the baseline protection bandwidth.
+        :type BasicProtectBandwidth: int
+        :param _Bandwidth: Business bandwidth scale.
+        :type Bandwidth: int
+        :param _ElasticProtectBandwidth: Elastic bandwidth in Gbps. valid values: 0, 400, 500, 600, 800, 1000.
+The default is 0.
+        :type ElasticProtectBandwidth: int
+        :param _ElasticBandwidthFlag: Elastic scaling enabled for business bandwidth.
+The default is false.
+        :type ElasticBandwidthFlag: bool
+        """
+        self._Region = None
+        self._ProtectIpCount = None
+        self._BasicProtectBandwidth = None
+        self._Bandwidth = None
+        self._ElasticProtectBandwidth = None
+        self._ElasticBandwidthFlag = None
+
+    @property
+    def Region(self):
+        r"""Specifies the region of the anti-ddos pro package.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ProtectIpCount(self):
+        r"""Number of protected ips.
+        :rtype: int
+        """
+        return self._ProtectIpCount
+
+    @ProtectIpCount.setter
+    def ProtectIpCount(self, ProtectIpCount):
+        self._ProtectIpCount = ProtectIpCount
+
+    @property
+    def BasicProtectBandwidth(self):
+        r"""Specifies the baseline protection bandwidth.
+        :rtype: int
+        """
+        return self._BasicProtectBandwidth
+
+    @BasicProtectBandwidth.setter
+    def BasicProtectBandwidth(self, BasicProtectBandwidth):
+        self._BasicProtectBandwidth = BasicProtectBandwidth
+
+    @property
+    def Bandwidth(self):
+        r"""Business bandwidth scale.
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def ElasticProtectBandwidth(self):
+        r"""Elastic bandwidth in Gbps. valid values: 0, 400, 500, 600, 800, 1000.
+The default is 0.
+        :rtype: int
+        """
+        return self._ElasticProtectBandwidth
+
+    @ElasticProtectBandwidth.setter
+    def ElasticProtectBandwidth(self, ElasticProtectBandwidth):
+        self._ElasticProtectBandwidth = ElasticProtectBandwidth
+
+    @property
+    def ElasticBandwidthFlag(self):
+        r"""Elastic scaling enabled for business bandwidth.
+The default is false.
+        :rtype: bool
+        """
+        return self._ElasticBandwidthFlag
+
+    @ElasticBandwidthFlag.setter
+    def ElasticBandwidthFlag(self, ElasticBandwidthFlag):
+        self._ElasticBandwidthFlag = ElasticBandwidthFlag
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._ProtectIpCount = params.get("ProtectIpCount")
+        self._BasicProtectBandwidth = params.get("BasicProtectBandwidth")
+        self._Bandwidth = params.get("Bandwidth")
+        self._ElasticProtectBandwidth = params.get("ElasticProtectBandwidth")
+        self._ElasticBandwidthFlag = params.get("ElasticBandwidthFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ForwardListener(AbstractModel):
     r"""Forwarding listener
 
@@ -12341,6 +12675,70 @@ Rule status. Values: `0` (Normal), `1` (Being configured), `2` (Configuration fa
         self._AppId = params.get("AppId")
         self._VirtualPort = params.get("VirtualPort")
         self._SSLId = params.get("SSLId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceChargePrepaid(AbstractModel):
+    r"""{
+            "Period": 12,
+            "RenewFlag": "NOTIFY_AND_AUTO_RENEW"
+    }
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: Purchase duration. unit: month.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Period: int
+        :param _RenewFlag: NOTIFY_AND_MANUAL_RENEW: notifies that the account is about to expire but does not automatically renew the account.
+NOTIFY_AND_AUTO_RENEW: specifies expiration notification and auto-renewal.
+DISABLE_NOTIFY_AND_MANUAL_RENEW: no notification is sent upon expiration, and the instance is not renewed automatically.
+Defaults to notify expiration without auto-renew.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RenewFlag: str
+        """
+        self._Period = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        r"""Purchase duration. unit: month.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        r"""NOTIFY_AND_MANUAL_RENEW: notifies that the account is about to expire but does not automatically renew the account.
+NOTIFY_AND_AUTO_RENEW: specifies expiration notification and auto-renewal.
+DISABLE_NOTIFY_AND_MANUAL_RENEW: no notification is sent upon expiration, and the instance is not renewed automatically.
+Defaults to notify expiration without auto-renew.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16196,6 +16594,220 @@ class SpeedValue(AbstractModel):
         
 
 
+class StandardPackageConfig(AbstractModel):
+    r"""{
+        "Region": "ap-guangzhou",
+        "ProtectIpCount": 1,
+        "Bandwidth": 100,
+        "ElasticBandwidthFlag": true
+    }
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Specifies the purchase region of the anti-ddos pro package.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param _ProtectIpCount: Specifies the number of protected ips.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProtectIpCount: int
+        :param _Bandwidth: Specifies the protection business bandwidth of 50Mbps.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Bandwidth: int
+        :param _ElasticBandwidthFlag: Specifies whether elastic protection bandwidth is enabled. valid values: enabled. 
+The default is false. disable.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ElasticBandwidthFlag: bool
+        """
+        self._Region = None
+        self._ProtectIpCount = None
+        self._Bandwidth = None
+        self._ElasticBandwidthFlag = None
+
+    @property
+    def Region(self):
+        r"""Specifies the purchase region of the anti-ddos pro package.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ProtectIpCount(self):
+        r"""Specifies the number of protected ips.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ProtectIpCount
+
+    @ProtectIpCount.setter
+    def ProtectIpCount(self, ProtectIpCount):
+        self._ProtectIpCount = ProtectIpCount
+
+    @property
+    def Bandwidth(self):
+        r"""Specifies the protection business bandwidth of 50Mbps.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def ElasticBandwidthFlag(self):
+        r"""Specifies whether elastic protection bandwidth is enabled. valid values: enabled. 
+The default is false. disable.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._ElasticBandwidthFlag
+
+    @ElasticBandwidthFlag.setter
+    def ElasticBandwidthFlag(self, ElasticBandwidthFlag):
+        self._ElasticBandwidthFlag = ElasticBandwidthFlag
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._ProtectIpCount = params.get("ProtectIpCount")
+        self._Bandwidth = params.get("Bandwidth")
+        self._ElasticBandwidthFlag = params.get("ElasticBandwidthFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandardPlusPackageConfig(AbstractModel):
+    r"""{
+        "Region": "ap-guangzhou",
+        "ProtectCount": "TWO_TIMES",
+        "ProtectIpCount": 1,
+        "Bandwidth": 50,
+        "ElasticBandwidthFlag": true
+    }
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Specifies the region of the anti-ddos pro package.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param _ProtectCount: Protection TIMES: TWO_TIMES: full protection twice. UNLIMITED: UNLIMITED protection.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProtectCount: str
+        :param _ProtectIpCount: Specifies the number of protected ips.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProtectIpCount: int
+        :param _Bandwidth: Protection bandwidth is 50 Mbps.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Bandwidth: int
+        :param _ElasticBandwidthFlag: Elastic scaling enabled for business bandwidth.
+true: enabled.
+Specifies whether the feature is disabled. valid values: false. 
+Disabled by default.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ElasticBandwidthFlag: bool
+        """
+        self._Region = None
+        self._ProtectCount = None
+        self._ProtectIpCount = None
+        self._Bandwidth = None
+        self._ElasticBandwidthFlag = None
+
+    @property
+    def Region(self):
+        r"""Specifies the region of the anti-ddos pro package.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ProtectCount(self):
+        r"""Protection TIMES: TWO_TIMES: full protection twice. UNLIMITED: UNLIMITED protection.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProtectCount
+
+    @ProtectCount.setter
+    def ProtectCount(self, ProtectCount):
+        self._ProtectCount = ProtectCount
+
+    @property
+    def ProtectIpCount(self):
+        r"""Specifies the number of protected ips.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ProtectIpCount
+
+    @ProtectIpCount.setter
+    def ProtectIpCount(self, ProtectIpCount):
+        self._ProtectIpCount = ProtectIpCount
+
+    @property
+    def Bandwidth(self):
+        r"""Protection bandwidth is 50 Mbps.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def ElasticBandwidthFlag(self):
+        r"""Elastic scaling enabled for business bandwidth.
+true: enabled.
+Specifies whether the feature is disabled. valid values: false. 
+Disabled by default.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._ElasticBandwidthFlag
+
+    @ElasticBandwidthFlag.setter
+    def ElasticBandwidthFlag(self, ElasticBandwidthFlag):
+        self._ElasticBandwidthFlag = ElasticBandwidthFlag
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._ProtectCount = params.get("ProtectCount")
+        self._ProtectIpCount = params.get("ProtectIpCount")
+        self._Bandwidth = params.get("Bandwidth")
+        self._ElasticBandwidthFlag = params.get("ElasticBandwidthFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StaticPackRelation(AbstractModel):
     r"""Non-BGP package details
 
@@ -16505,9 +17117,9 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: Tag key
+        :param _TagKey: Tag key.
         :type TagKey: str
-        :param _TagValue: Tag value
+        :param _TagValue: Tag value.
         :type TagValue: str
         """
         self._TagKey = None
@@ -16515,7 +17127,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""Tag key
+        r"""Tag key.
         :rtype: str
         """
         return self._TagKey
@@ -16526,7 +17138,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""Tag value
+        r"""Tag value.
         :rtype: str
         """
         return self._TagValue

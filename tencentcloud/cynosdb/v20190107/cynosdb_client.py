@@ -1682,6 +1682,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterStorageAutoExpand(self, request):
+        r"""This API is used to query the automated storage expansion configuration.
+
+        :param request: Request instance for DescribeClusterStorageAutoExpand.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterStorageAutoExpandRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterStorageAutoExpandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterStorageAutoExpand", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterStorageAutoExpandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterTransparentEncryptInfo(self, request):
         r"""This API is used to query cluster transparent encryption information.
 
@@ -3513,6 +3536,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyClusterGlobalEncryption", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterGlobalEncryptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterLevel(self, request):
+        r"""Modify cluster
+
+        :param request: Request instance for ModifyClusterLevel.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterLevelRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterLevelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterLevel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterLevelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -17,6 +17,9 @@
 # CAM signature/authentication error.
 AUTHFAILURE = 'AuthFailure'
 
+# Authentication failure. No permission to operate.
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # Operation failed
 FAILEDOPERATION = 'FailedOperation'
 
@@ -281,6 +284,9 @@ LIMITEXCEEDED_CLUSTERINSTANCELIMIT = 'LimitExceeded.ClusterInstanceLimit'
 # The number of instances exceeds the limit.
 LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
 
+# Insufficient permissions for the cloud account. This operation is not supported.
+OPERATIONDENIED_ACCOUNTOPERATIONDENIED = 'OperationDenied.AccountOperationDenied'
+
 # Audit log is disabled for instance {{1}}. operations cannot be performed.
 OPERATIONDENIED_AUDITLOGCLOSEDERROR = 'OperationDenied.AuditLogClosedError'
 
@@ -385,6 +391,9 @@ OPERATIONDENIED_PROXYVERSIONCHECKERROR = 'OperationDenied.ProxyVersionCheckError
 
 # Verification failure of proxy availability zone.
 OPERATIONDENIED_PROXYZONECHECKERROR = 'OperationDenied.ProxyZoneCheckError'
+
+# Instance does not exist
+OPERATIONDENIED_RESOURCENOTFUNDERROR = 'OperationDenied.ResourceNotFundError'
 
 # Unknown exception. Contact our customer service to handle.
 OPERATIONDENIED_SECONDARYCACHEUNKNOWNERROR = 'OperationDenied.SecondaryCacheUnknownError'

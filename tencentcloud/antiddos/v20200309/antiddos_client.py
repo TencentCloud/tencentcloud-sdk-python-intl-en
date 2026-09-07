@@ -72,6 +72,29 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBgpInstance(self, request):
+        r"""This API is used to purchase Anti-DDoS packages.
+
+        :param request: Request instance for CreateBgpInstance.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateBgpInstanceRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateBgpInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBgpInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBgpInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBlackWhiteIpList(self, request):
         r"""This API is used to add an Anti-DDoS IP blocklist/allowlist.
 
