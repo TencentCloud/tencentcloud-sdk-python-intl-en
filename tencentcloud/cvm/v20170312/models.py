@@ -11948,7 +11948,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class InternetAccessible(AbstractModel):
-    r"""Describes the accessibility of an instance in the public network, including its network billing method, maximum bandwidth, etc.
+    r"""Describes the public network accessibility of the instance's primary network interface, including the public network billing mode, maximum bandwidth, and other settings.
 
     """
 
@@ -15113,7 +15113,8 @@ class ModifyLaunchTemplateDefaultVersionResponse(AbstractModel):
 
 
 class NetworkInterfaces(AbstractModel):
-    r"""Network interface configuration for instance creation, including VPCs, subnets, and IP address allocation for primary and secondary network interfaces. This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
+    r"""Describes network interface configuration for instance creation, including networking parameters such as VPCs, subnets, and IP address allocation for primary and secondary network interfaces. Note that this parameter is mutually exclusive with `VirtualPrivateCloud`. If `NetworkInterfaces` is specified, do not specify `VirtualPrivateCloud`.
+    This feature is in beta test in selected regions. To use this feature, [submit a ticket](https://console.tencentcloud.com/workorder/category).
 
     """
 
@@ -19552,7 +19553,7 @@ class TerminateInstancesResponse(AbstractModel):
 
 
 class VirtualPrivateCloud(AbstractModel):
-    r"""Describes information on VPC, including subnets, IP addresses, etc.
+    r"""Describes VPC information for the primary network interface, including subnet and IP address information.
 
     """
 

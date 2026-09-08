@@ -25,6 +25,78 @@ class CaptchaClient(AbstractClient):
     _endpoint = 'captcha.intl.tencentcloudapi.com'
     _service = 'captcha'
 
+    async def CreateCaptchaInfoInternational(
+            self,
+            request: models.CreateCaptchaInfoInternationalRequest,
+            opts: Dict = None,
+    ) -> models.CreateCaptchaInfoInternationalResponse:
+        """
+        Create a captcha: You can create multiple Captcha based on different business needs. Each verification has different client types and security policies. The limit for new Captcha is 50.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCaptchaInfoInternational"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCaptchaInfoInternationalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateIpWhiteListInternational(
+            self,
+            request: models.CreateIpWhiteListInternationalRequest,
+            opts: Dict = None,
+    ) -> models.CreateIpWhiteListInternationalResponse:
+        """
+        Create an IP allowlist: You can create an IP allowlist based on different business needs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateIpWhiteListInternational"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateIpWhiteListInternationalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteIpWhiteListInternational(
+            self,
+            request: models.DeleteIpWhiteListInternationalRequest,
+            opts: Dict = None,
+    ) -> models.DeleteIpWhiteListInternationalResponse:
+        """
+        Delete an IP allowlist: You can delete an IP allowlist based on different business needs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteIpWhiteListInternational"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteIpWhiteListInternationalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCaptchaInfoListInternational(
+            self,
+            request: models.DescribeCaptchaInfoListInternationalRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCaptchaInfoListInternationalResponse:
+        """
+        Query the Captcha list to obtain all verification CaptchaAppIds, verification names, and other information internationally.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCaptchaInfoListInternational"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCaptchaInfoListInternationalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCaptchaResult(
             self,
             request: models.DescribeCaptchaResultRequest,
@@ -38,6 +110,78 @@ class CaptchaClient(AbstractClient):
         kwargs["action"] = "DescribeCaptchaResult"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCaptchaResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIpWhiteListInternational(
+            self,
+            request: models.DescribeIpWhiteListInternationalRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIpWhiteListInternationalResponse:
+        """
+        IP allowlist list: You can query the IP whitelist list based on different business needs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIpWhiteListInternational"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIpWhiteListInternationalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCaptchaInfoInternational(
+            self,
+            request: models.ModifyCaptchaInfoInternationalRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCaptchaInfoInternationalResponse:
+        """
+        Change the captcha configuration, including basic, appearance, and security settings such as captcha name, prompt language, and validation type.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCaptchaInfoInternational"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCaptchaInfoInternationalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyIpWhiteListInternational(
+            self,
+            request: models.ModifyIpWhiteListInternationalRequest,
+            opts: Dict = None,
+    ) -> models.ModifyIpWhiteListInternationalResponse:
+        """
+        Edit IP allowlist: You can edit the IP allowlist based on different business needs.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyIpWhiteListInternational"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyIpWhiteListInternationalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveCaptchaInfoInternational(
+            self,
+            request: models.RemoveCaptchaInfoInternationalRequest,
+            opts: Dict = None,
+    ) -> models.RemoveCaptchaInfoInternationalResponse:
+        """
+        Delete a captcha: once deleted, verification scenarios using this CaptchaAppId will fail to load the verification code on the frontend, and invoice verification will report an error on the backend. Proceed with caution.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveCaptchaInfoInternational"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveCaptchaInfoInternationalResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
