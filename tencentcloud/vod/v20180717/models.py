@@ -97713,7 +97713,7 @@ class TextToSpeechSyncRequest(AbstractModel):
         :type SubAppId: str
         :param _LanguageBoost: <p>Language enhancement, such as "zh" "en" "auto", default "auto"</p>
         :type LanguageBoost: str
-        :param _Output: <p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is base64.</p>
+        :param _Output: <p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is URL.</p>
         :type Output: :class:`tencentcloud.vod.v20180717.models.TextToSpeechSyncOutputOption`
         :param _ExtParam: <p>Synchronous speech synthesis expansion parameters. Fields supported by <code>ExtParam</code>:</p><ul>  <li><code>model</code> (string): Synthesis model. Options: <code>minimax-speech-2.8-hd</code>, <code>minimax-speech-2.8-turbo</code>, <code>minimax-speech-2.6-hd</code>, <code>minimax-speech-2.6-turbo</code>, <code>minimax-speech-02-hd</code>, <code>minimax-speech-02-turbo</code>. Default: <code>minimax-speech-2.8-hd</code>.</li>  <li><code>voice_setting</code> (object): Fine adjustment of voice type. Optional fields:    <ul>      <li><code>speed</code> (float): Speech speed, <code>[0.5, 2.0]</code>. Default: <code>1.0</code>.</li>      <li><code>vol</code> (float): Volume, <code>(0, 10]</code>. Default: <code>1.0</code>.</li>      <li><code>pitch</code> (int): Pitch, <code>[-12, 12]</code>. Default: <code>0</code>.</li>      <li><code>emotion</code> (string): Emotion. Options: <code>happy</code> / <code>sad</code> / <code>angry</code> / <code>fearful</code> / <code>disgusted</code> / <code>surprised</code> / <code>calm</code> / <code>fluent</code> / <code>whisper</code>.</li>    </ul>  </li>  <li><code>audio_setting</code> (object): Audio output parameter. Optional fields:    <ul>      <li><code>sample_rate</code> (int): Sampling rate. Options: <code>8000</code> / <code>16000</code> / <code>22050</code> / <code>24000</code> / <code>32000</code> / <code>44100</code>. Default: <code>16000</code>.</li>      <li><code>format</code> (string): Audio format. Options: <code>mp3</code> / <code>wav</code>. Default: <code>wav</code>.</li>      <li><code>duration</code> (float): Target duration (seconds).</li>      <li><code>cut_silence</code> (bool): Whether to trim silence segments.</li>    </ul>  </li></ul>
         :type ExtParam: str
@@ -97771,7 +97771,7 @@ class TextToSpeechSyncRequest(AbstractModel):
 
     @property
     def Output(self):
-        r"""<p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is base64.</p>
+        r"""<p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is URL.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechSyncOutputOption`
         """
         return self._Output
