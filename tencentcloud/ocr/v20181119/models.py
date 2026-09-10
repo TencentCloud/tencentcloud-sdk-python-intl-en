@@ -8067,16 +8067,16 @@ class RecognizeIndonesiaIDCardOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.
+        :param _ImageBase64: The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 2M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.
         :type ImageBase64: str
         :param _ImageUrl: The Url address of the image. 
 Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. 
-Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is no more than 3 seconds. 
+Supported image size: the downloaded image after Base64 encoding is no more than 2M. Image download time is no more than 3 seconds. 
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
 For a non-Tencent Cloud URL, the download speed and stability may be affected.
         :type ImageUrl: str
         :param _ReturnHeadImage: Whether to return the portrait photo.
-If selected true, image restrictions are: Image size after encoding must not exceed 5M, jpg format long side pixel cannot exceed 4000, other formats image long edge pixel maximum of 2000. Short side pixel of all format images not less than 64.
+If selected true, image restrictions are: Image size after encoding must not exceed 2M, jpg format long side pixel cannot exceed 4000, other formats image long edge pixel maximum of 2000. Short side pixel of all format images not less than 64.
 Support PNG, jpg, JPEG, BMP, no support for GIF images.
 If portrait matting fails, return an empty string.
         :type ReturnHeadImage: bool
@@ -8093,7 +8093,7 @@ V2
 
     @property
     def ImageBase64(self):
-        r"""The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.
+        r"""The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 2M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.
         :rtype: str
         """
         return self._ImageBase64
@@ -8106,7 +8106,7 @@ V2
     def ImageUrl(self):
         r"""The Url address of the image. 
 Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. 
-Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is no more than 3 seconds. 
+Supported image size: the downloaded image after Base64 encoding is no more than 2M. Image download time is no more than 3 seconds. 
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
 For a non-Tencent Cloud URL, the download speed and stability may be affected.
         :rtype: str
@@ -8120,7 +8120,7 @@ For a non-Tencent Cloud URL, the download speed and stability may be affected.
     @property
     def ReturnHeadImage(self):
         r"""Whether to return the portrait photo.
-If selected true, image restrictions are: Image size after encoding must not exceed 5M, jpg format long side pixel cannot exceed 4000, other formats image long edge pixel maximum of 2000. Short side pixel of all format images not less than 64.
+If selected true, image restrictions are: Image size after encoding must not exceed 2M, jpg format long side pixel cannot exceed 4000, other formats image long edge pixel maximum of 2000. Short side pixel of all format images not less than 64.
 Support PNG, jpg, JPEG, BMP, no support for GIF images.
 If portrait matting fails, return an empty string.
         :rtype: bool
@@ -8210,7 +8210,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         :type Kota: str
         :param _WarnCardInfos: Card Warning Information
 
--9101 Alarm for covered certificate
+-9101 Alarm for incomplete or covered certificate
 -9102 Alarm for photocopied certificate
 -9103 Alarm for photographed certificate
 -9104 Alarm for tamper certificate
@@ -8446,7 +8446,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
     def WarnCardInfos(self):
         r"""Card Warning Information
 
--9101 Alarm for covered certificate
+-9101 Alarm for incomplete or covered certificate
 -9102 Alarm for photocopied certificate
 -9103 Alarm for photographed certificate
 -9104 Alarm for tamper certificate

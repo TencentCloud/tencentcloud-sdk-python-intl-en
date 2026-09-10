@@ -19,22 +19,22 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AICrawlerDetection(AbstractModel):
-    r"""AI crawler detection configuration.
+    r"""Specific configuration for AI crawler detection.
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether AI crawler detection is enabled. valid values:.
+        :param _Enabled: Whether AI crawler detection is enabled. Valid values:
 <li>`on`: Enable;</li>
 <li>off: Disable.</li>
 
         :type Enabled: str
-        :param _Action: AI crawler detection execution action. this field is required when Enabled is on. valid values for the Name parameter in SecurityAction:.
-<Li>Deny: block;</li>.
-<Li>Monitor: observation.</li>.
-<Li>Allow: pass;</li>.
-<li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>.
+        :param _Action: Execution action of AI crawler detection. Required if Enabled is on. Name of SecurityAction only supports:
+<li>Deny: block;</li>
+<li>Monitor: observation;</li>
+<li>Allow: allow;</li>
+<li>Challenge: Among them, ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._Enabled = None
@@ -42,7 +42,7 @@ class AICrawlerDetection(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Whether AI crawler detection is enabled. valid values:.
+        r"""Whether AI crawler detection is enabled. Valid values:
 <li>`on`: Enable;</li>
 <li>off: Disable.</li>
 
@@ -56,11 +56,11 @@ class AICrawlerDetection(AbstractModel):
 
     @property
     def Action(self):
-        r"""AI crawler detection execution action. this field is required when Enabled is on. valid values for the Name parameter in SecurityAction:.
-<Li>Deny: block;</li>.
-<Li>Monitor: observation.</li>.
-<Li>Allow: pass;</li>.
-<li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>.
+        r"""Execution action of AI crawler detection. Required if Enabled is on. Name of SecurityAction only supports:
+<li>Deny: block;</li>
+<li>Monitor: observation;</li>
+<li>Allow: allow;</li>
+<li>Challenge: Among them, ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
