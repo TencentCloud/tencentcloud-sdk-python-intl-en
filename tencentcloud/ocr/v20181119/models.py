@@ -4049,6 +4049,388 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class HmtResidentPermitOCRRequest(AbstractModel):
+    r"""HmtResidentPermitOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: <p>Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: no more than 7M after the downloaded image is Base64-encoded. The image download must complete within 3 seconds.Either ImageUrl or ImageBase64 must be provided. If both are provided, only ImageUrl is used.</p>
+        :type ImageBase64: str
+        :param _ImageUrl: <p>Image URL.Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: no more than 7M after Base64 encoding. Image download time no more than 3 seconds. URLs stored in Tencent Cloud guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud. Speed and stability may be impacted for URLs not stored in Tencent Cloud.</p>
+        :type ImageUrl: str
+        :param _CardSide: <p>FRONT: the side with a photo (portrait side),<br>BACK: the side without a photo (national emblem side),<br>if this parameter is left empty or incorrect, the front or back side is automatically determined for you.</p>
+        :type CardSide: str
+        :param _CropPortrait: Whether to return the portrait image and position coordinates
+        :type CropPortrait: bool
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._CardSide = None
+        self._CropPortrait = None
+
+    @property
+    def ImageBase64(self):
+        r"""<p>Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: no more than 7M after the downloaded image is Base64-encoded. The image download must complete within 3 seconds.Either ImageUrl or ImageBase64 must be provided. If both are provided, only ImageUrl is used.</p>
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        r"""<p>Image URL.Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: no more than 7M after Base64 encoding. Image download time no more than 3 seconds. URLs stored in Tencent Cloud guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud. Speed and stability may be impacted for URLs not stored in Tencent Cloud.</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def CardSide(self):
+        r"""<p>FRONT: the side with a photo (portrait side),<br>BACK: the side without a photo (national emblem side),<br>if this parameter is left empty or incorrect, the front or back side is automatically determined for you.</p>
+        :rtype: str
+        """
+        return self._CardSide
+
+    @CardSide.setter
+    def CardSide(self, CardSide):
+        self._CardSide = CardSide
+
+    @property
+    def CropPortrait(self):
+        r"""Whether to return the portrait image and position coordinates
+        :rtype: bool
+        """
+        return self._CropPortrait
+
+    @CropPortrait.setter
+    def CropPortrait(self, CropPortrait):
+        self._CropPortrait = CropPortrait
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._CardSide = params.get("CardSide")
+        self._CropPortrait = params.get("CropPortrait")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HmtResidentPermitOCRResponse(AbstractModel):
+    r"""HmtResidentPermitOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Name on the document</p>
+        :type Name: str
+        :param _Sex: <p>Gender</p>
+        :type Sex: str
+        :param _Birth: <p>Date of birth</p>
+        :type Birth: str
+        :param _Address: <p>Address</p>
+        :type Address: str
+        :param _IdCardNo: <p>Identity card number</p>
+        :type IdCardNo: str
+        :param _CardType: <p>0-Front<br>1-Back</p>
+        :type CardType: int
+        :param _ValidDate: <p>Document validity period</p>
+        :type ValidDate: str
+        :param _Authority: <p>Issuing authority</p>
+        :type Authority: str
+        :param _VisaNum: <p>Number of issuances</p>
+        :type VisaNum: str
+        :param _PassNo: Travel permit number
+        :type PassNo: str
+        :param _PortraitImageInfo: Portrait image and coordinate information
+        :type PortraitImageInfo: :class:`tencentcloud.ocr.v20181119.models.PortraitImageInfo`
+        :param _WarnCardInfos: Card Warning Information
+
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9109 This capability is not enabled. Please contact customer support to activate the alert service
+        :type WarnCardInfos: list of int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Name = None
+        self._Sex = None
+        self._Birth = None
+        self._Address = None
+        self._IdCardNo = None
+        self._CardType = None
+        self._ValidDate = None
+        self._Authority = None
+        self._VisaNum = None
+        self._PassNo = None
+        self._PortraitImageInfo = None
+        self._WarnCardInfos = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        r"""<p>Name on the document</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Sex(self):
+        r"""<p>Gender</p>
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def Birth(self):
+        r"""<p>Date of birth</p>
+        :rtype: str
+        """
+        return self._Birth
+
+    @Birth.setter
+    def Birth(self, Birth):
+        self._Birth = Birth
+
+    @property
+    def Address(self):
+        r"""<p>Address</p>
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def IdCardNo(self):
+        r"""<p>Identity card number</p>
+        :rtype: str
+        """
+        return self._IdCardNo
+
+    @IdCardNo.setter
+    def IdCardNo(self, IdCardNo):
+        self._IdCardNo = IdCardNo
+
+    @property
+    def CardType(self):
+        r"""<p>0-Front<br>1-Back</p>
+        :rtype: int
+        """
+        return self._CardType
+
+    @CardType.setter
+    def CardType(self, CardType):
+        self._CardType = CardType
+
+    @property
+    def ValidDate(self):
+        r"""<p>Document validity period</p>
+        :rtype: str
+        """
+        return self._ValidDate
+
+    @ValidDate.setter
+    def ValidDate(self, ValidDate):
+        self._ValidDate = ValidDate
+
+    @property
+    def Authority(self):
+        r"""<p>Issuing authority</p>
+        :rtype: str
+        """
+        return self._Authority
+
+    @Authority.setter
+    def Authority(self, Authority):
+        self._Authority = Authority
+
+    @property
+    def VisaNum(self):
+        r"""<p>Number of issuances</p>
+        :rtype: str
+        """
+        return self._VisaNum
+
+    @VisaNum.setter
+    def VisaNum(self, VisaNum):
+        self._VisaNum = VisaNum
+
+    @property
+    def PassNo(self):
+        r"""Travel permit number
+        :rtype: str
+        """
+        return self._PassNo
+
+    @PassNo.setter
+    def PassNo(self, PassNo):
+        self._PassNo = PassNo
+
+    @property
+    def PortraitImageInfo(self):
+        r"""Portrait image and coordinate information
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.PortraitImageInfo`
+        """
+        return self._PortraitImageInfo
+
+    @PortraitImageInfo.setter
+    def PortraitImageInfo(self, PortraitImageInfo):
+        self._PortraitImageInfo = PortraitImageInfo
+
+    @property
+    def WarnCardInfos(self):
+        r"""Card Warning Information
+
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9109 This capability is not enabled. Please contact customer support to activate the alert service
+        :rtype: list of int
+        """
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Sex = params.get("Sex")
+        self._Birth = params.get("Birth")
+        self._Address = params.get("Address")
+        self._IdCardNo = params.get("IdCardNo")
+        self._CardType = params.get("CardType")
+        self._ValidDate = params.get("ValidDate")
+        self._Authority = params.get("Authority")
+        self._VisaNum = params.get("VisaNum")
+        self._PassNo = params.get("PassNo")
+        if params.get("PortraitImageInfo") is not None:
+            self._PortraitImageInfo = PortraitImageInfo()
+            self._PortraitImageInfo._deserialize(params.get("PortraitImageInfo"))
+        self._WarnCardInfos = params.get("WarnCardInfos")
+        self._RequestId = params.get("RequestId")
+
+
+class ImageCoordinates(AbstractModel):
+    r"""Avatar position coordinates
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: <p>Top-left horizontal coordinate of the avatar</p>
+        :type X: int
+        :param _Y: <p>Top-left vertical coordinate of the avatar</p>
+        :type Y: int
+        :param _Width: <p>Avatar frame width.</p><p>Unit: px.</p>
+        :type Width: int
+        :param _Height: <p>Avatar frame height.</p><p>Unit: px.</p>
+        :type Height: int
+        """
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def X(self):
+        r"""<p>Top-left horizontal coordinate of the avatar</p>
+        :rtype: int
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        r"""<p>Top-left vertical coordinate of the avatar</p>
+        :rtype: int
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        r"""<p>Avatar frame width.</p><p>Unit: px.</p>
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""<p>Avatar frame height.</p><p>Unit: px.</p>
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ItemCoord(AbstractModel):
     r"""Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.
 
@@ -6349,6 +6731,59 @@ class Polygon(AbstractModel):
         if params.get("LeftBottom") is not None:
             self._LeftBottom = Coord()
             self._LeftBottom._deserialize(params.get("LeftBottom"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PortraitImageInfo(AbstractModel):
+    r"""Avatar photo and coordinates
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PortraitImage: <p>Avatar</p>
+        :type PortraitImage: str
+        :param _ImageCoordinates: <p>Avatar coordinate</p>
+        :type ImageCoordinates: :class:`tencentcloud.ocr.v20181119.models.ImageCoordinates`
+        """
+        self._PortraitImage = None
+        self._ImageCoordinates = None
+
+    @property
+    def PortraitImage(self):
+        r"""<p>Avatar</p>
+        :rtype: str
+        """
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+    @property
+    def ImageCoordinates(self):
+        r"""<p>Avatar coordinate</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ImageCoordinates`
+        """
+        return self._ImageCoordinates
+
+    @ImageCoordinates.setter
+    def ImageCoordinates(self, ImageCoordinates):
+        self._ImageCoordinates = ImageCoordinates
+
+
+    def _deserialize(self, params):
+        self._PortraitImage = params.get("PortraitImage")
+        if params.get("ImageCoordinates") is not None:
+            self._ImageCoordinates = ImageCoordinates()
+            self._ImageCoordinates._deserialize(params.get("ImageCoordinates"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11214,13 +11649,13 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type PortraitImage: str
         :param _WarnCardInfos: Card Warning Information
 
--9101 Alarm for covered certificate,
--9102 Alarm for photocopied certificate,
--9103 Alarm for photographed certificate,
--9104 Alarm for PS certificate,
--9107 Alarm for reflective certificate,
--9108 Alarm for blurry image,
--9109 This capability is not enabled.
+-9101 Alarm for covered certificate
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9107 Alarm for reflective certificate
+-9108 Alarm for blurry certificate 
+-9109 This capability is not enabled. Please contact customer support to activate the alert service
         :type WarnCardInfos: list of int
         :param _AdvancedInfo: This field is deprecated and will always return "1". Usage is not recommended.
         :type AdvancedInfo: str
@@ -11422,13 +11857,13 @@ true: complete; false: incomplete
     def WarnCardInfos(self):
         r"""Card Warning Information
 
--9101 Alarm for covered certificate,
--9102 Alarm for photocopied certificate,
--9103 Alarm for photographed certificate,
--9104 Alarm for PS certificate,
--9107 Alarm for reflective certificate,
--9108 Alarm for blurry image,
--9109 This capability is not enabled.
+-9101 Alarm for covered certificate
+-9102 Alarm for photocopied certificate
+-9103 Alarm for photographed certificate
+-9104 Alarm for tamper certificate
+-9107 Alarm for reflective certificate
+-9108 Alarm for blurry certificate 
+-9109 This capability is not enabled. Please contact customer support to activate the alert service
         :rtype: list of int
         """
         return self._WarnCardInfos

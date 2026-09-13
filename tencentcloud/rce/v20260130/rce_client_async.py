@@ -78,3 +78,21 @@ class RceClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def ReportEvent(
+            self,
+            request: models.ReportEventRequest,
+            opts: Dict = None,
+    ) -> models.ReportEventResponse:
+        """
+        Used to report events that do not require real-time decision-making in your business. Our engine will perform computations and apply machine learning to mine risk features from these events, which are then used to support real-time event risk assessment.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReportEvent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReportEventResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

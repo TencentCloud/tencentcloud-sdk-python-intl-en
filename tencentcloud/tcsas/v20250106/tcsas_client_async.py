@@ -229,7 +229,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateMNGAppSecretResponse:
         """
-        This API is used to generate a mini game secret key.
+        This API is used to create a mini game secret key.
         """
         
         kwargs = {}
@@ -715,7 +715,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAPPDataDetailLineChartResponse:
         """
-        This API is used to query the line chart data for selected superapp metrics.
+        This API is used to query the time-series data for selected superapp metrics.
         """
         
         kwargs = {}
@@ -751,7 +751,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAdvertisingLineChartResponse:
         """
-        This API is used to query the advertising line chart data for a mini program within a specified date range.
+        This API is used to query the time-series advertising data for a mini program within a specified date range.
         """
         
         kwargs = {}
@@ -985,7 +985,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGAccessAnalysisLineChartResponse:
         """
-        This API is used to query the mini game visit analysis line chart.
+        This API is used to query the time-series visit data of a mini game.
         """
         
         kwargs = {}
@@ -1057,7 +1057,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGAdvertisingLineChartResponse:
         """
-        This API is used to query the mini game advertising data in a line chart format.
+        This API is used to query the time-series advertising data of a mini game.
         """
         
         kwargs = {}
@@ -1201,7 +1201,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGMAULineChartResponse:
         """
-        This API is used to query the mini game MAU line chart.
+        This API is used to query the time-series MAU data of a mini game.
         """
         
         kwargs = {}
@@ -1255,7 +1255,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNGPaymentLineChartResponse:
         """
-        This API is used to query the mini game payment line chart.
+        This API is used to query the time-series payment data of a mini game.
         """
         
         kwargs = {}
@@ -1501,6 +1501,42 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMNGVersionAuditDetail(
+            self,
+            request: models.DescribeMNGVersionAuditDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGVersionAuditDetailResponse:
+        """
+        This API is used to query mini game version approval details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGVersionAuditDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGVersionAuditDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNGVersionAuditList(
+            self,
+            request: models.DescribeMNGVersionAuditListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNGVersionAuditListResponse:
+        """
+        This API is used to query mini game version approval records.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNGVersionAuditList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNGVersionAuditListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMNP(
             self,
             request: models.DescribeMNPRequest,
@@ -1705,7 +1741,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPMAULineChartResponse:
         """
-        This API is used to query the mini program monthly active user data in a line chart format.
+        This API is used to query the time-series MAU data of a mini program.
         """
         
         kwargs = {}
@@ -1831,7 +1867,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMNPReportDataLineChartResponse:
         """
-        This API is used to query the mini program visit analysis line chart within a given date range.
+        This API is used to query the time-series visit data of a mini program within a given date range.
         """
         
         kwargs = {}
@@ -2023,6 +2059,42 @@ class TcsasClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMNPVersionAuditDetail(
+            self,
+            request: models.DescribeMNPVersionAuditDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPVersionAuditDetailResponse:
+        """
+        This API is used to query mini program version approval details.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPVersionAuditDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPVersionAuditDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMNPVersionAuditList(
+            self,
+            request: models.DescribeMNPVersionAuditListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMNPVersionAuditListResponse:
+        """
+        This API is used to query mini program version approval records.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMNPVersionAuditList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMNPVersionAuditListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePaymentDataDetail(
             self,
             request: models.DescribePaymentDataDetailRequest,
@@ -2047,7 +2119,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePaymentDataLineChartResponse:
         """
-        This API is used to query the mini program payment line chart within a specified date range.
+        This API is used to query the time-series payment data of a mini program.
         """
         
         kwargs = {}
@@ -2119,7 +2191,7 @@ class TcsasClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTeamListResponse:
         """
-        This API is used to query a list of teams.
+        This API is used to query the teams.
         """
         
         kwargs = {}

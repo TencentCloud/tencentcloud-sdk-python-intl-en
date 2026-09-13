@@ -20,7 +20,7 @@ FAILEDOPERATION_CARDSIDEERROR = 'FailedOperation.CardSideError'
 # File download failed.
 FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 
-# The image is empty.
+# Image content is empty.
 FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
 
 # Recognition by the engine timed out.
@@ -47,7 +47,7 @@ FAILEDOPERATION_IMAGENOIDCARD = 'FailedOperation.ImageNoIdCard'
 # Image is not of the specified card category.
 FAILEDOPERATION_IMAGENOSPECIFIEDCARD = 'FailedOperation.ImageNoSpecifiedCard'
 
-# No text is detected in the image.
+# No text detected in the image.
 FAILEDOPERATION_IMAGENOTEXT = 'FailedOperation.ImageNoText'
 
 # The image size exceeds the limit. Refer to the image size constraints in the input parameter description.
@@ -76,6 +76,9 @@ FAILEDOPERATION_NOMASIDCARD = 'FailedOperation.NoMASIDCard'
 
 # Not a passport.
 FAILEDOPERATION_NOPASSPORT = 'FailedOperation.NoPassport'
+
+# Not the specified document.
+FAILEDOPERATION_NOTAPPOINTCARD = 'FailedOperation.NotAppointCard'
 
 # OCR recognition failed.
 FAILEDOPERATION_OCRFAILED = 'FailedOperation.OcrFailed'
@@ -110,7 +113,7 @@ LIMITEXCEEDED_TOOLARGEFILEERROR = 'LimitExceeded.TooLargeFileError'
 # Image file download failed.
 RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = 'ResourceUnavailable.ImageDownloadError'
 
-# The account has insufficient balance.
+# The account balance is insufficient.
 RESOURCEUNAVAILABLE_INARREARS = 'ResourceUnavailable.InArrears'
 
 # The resource package has been exhausted.

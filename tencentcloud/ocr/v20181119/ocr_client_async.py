@@ -149,6 +149,26 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def HmtResidentPermitOCR(
+            self,
+            request: models.HmtResidentPermitOCRRequest,
+            opts: Dict = None,
+    ) -> models.HmtResidentPermitOCRResponse:
+        """
+        This API recognizes the Residence Permit for Hong Kong, Macao, and Taiwan, China Residents. Its OCR feature supports content detection and recognition of all fields on both sides, including name, sex, date of birth, address, identity card number, issuing authority, validity period, number of issuances, and travel permit number (a key field). It can be applied to information recognition scenarios for Residence Permit for Hong Kong, Macao, and Taiwan, China Residents, such as bank account opening and user registration.
+
+        Default API request rate limit: 20 requests/second.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "HmtResidentPermitOCR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.HmtResidentPermitOCRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def MLIDCardOCR(
             self,
             request: models.MLIDCardOCRRequest,

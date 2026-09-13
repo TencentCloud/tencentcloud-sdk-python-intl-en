@@ -339,6 +339,11 @@ def test_import_faceid_v20180301():
     from tencentcloud.faceid.v20180301 import models
 
 
+def test_import_ga2_v20250115():
+    from tencentcloud.ga2.v20250115 import ga2_client
+    from tencentcloud.ga2.v20250115 import models
+
+
 def test_import_gaap_v20180529():
     from tencentcloud.gaap.v20180529 import gaap_client
     from tencentcloud.gaap.v20180529 import models

@@ -93,3 +93,26 @@ class RceClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReportEvent(self, request):
+        r"""Used to report events that do not require real-time decision-making in your business. Our engine will perform computations and apply machine learning to mine risk features from these events, which are then used to support real-time event risk assessment.
+
+        :param request: Request instance for ReportEvent.
+        :type request: :class:`tencentcloud.rce.v20260130.models.ReportEventRequest`
+        :rtype: :class:`tencentcloud.rce.v20260130.models.ReportEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReportEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReportEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

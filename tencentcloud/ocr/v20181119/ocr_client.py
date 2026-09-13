@@ -180,6 +180,31 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def HmtResidentPermitOCR(self, request):
+        r"""This API recognizes the Residence Permit for Hong Kong, Macao, and Taiwan, China Residents. Its OCR feature supports content detection and recognition of all fields on both sides, including name, sex, date of birth, address, identity card number, issuing authority, validity period, number of issuances, and travel permit number (a key field). It can be applied to information recognition scenarios for Residence Permit for Hong Kong, Macao, and Taiwan, China Residents, such as bank account opening and user registration.
+
+        Default API request rate limit: 20 requests/second.
+
+        :param request: Request instance for HmtResidentPermitOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.HmtResidentPermitOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.HmtResidentPermitOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("HmtResidentPermitOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.HmtResidentPermitOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def MLIDCardOCR(self, request):
         r"""This API is used to recognize a Malaysian identity card, including identity card number, name, gender, and address. It is also used to crop identity photos and give alarms for photographed or photocopied certificates.
 

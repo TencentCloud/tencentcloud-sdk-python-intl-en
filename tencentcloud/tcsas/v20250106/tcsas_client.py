@@ -280,7 +280,7 @@ class TcsasClient(AbstractClient):
 
 
     def CreateMNGAppSecret(self, request):
-        r"""This API is used to generate a mini game secret key.
+        r"""This API is used to create a mini game secret key.
 
         :param request: Request instance for CreateMNGAppSecret.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.CreateMNGAppSecretRequest`
@@ -901,7 +901,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeAPPDataDetailLineChart(self, request):
-        r"""This API is used to query the line chart data for selected superapp metrics.
+        r"""This API is used to query the time-series data for selected superapp metrics.
 
         :param request: Request instance for DescribeAPPDataDetailLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAPPDataDetailLineChartRequest`
@@ -947,7 +947,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeAdvertisingLineChart(self, request):
-        r"""This API is used to query the advertising line chart data for a mini program within a specified date range.
+        r"""This API is used to query the time-series advertising data for a mini program within a specified date range.
 
         :param request: Request instance for DescribeAdvertisingLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeAdvertisingLineChartRequest`
@@ -1246,7 +1246,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGAccessAnalysisLineChart(self, request):
-        r"""This API is used to query the mini game visit analysis line chart.
+        r"""This API is used to query the time-series visit data of a mini game.
 
         :param request: Request instance for DescribeMNGAccessAnalysisLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAccessAnalysisLineChartRequest`
@@ -1338,7 +1338,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGAdvertisingLineChart(self, request):
-        r"""This API is used to query the mini game advertising data in a line chart format.
+        r"""This API is used to query the time-series advertising data of a mini game.
 
         :param request: Request instance for DescribeMNGAdvertisingLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGAdvertisingLineChartRequest`
@@ -1522,7 +1522,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGMAULineChart(self, request):
-        r"""This API is used to query the mini game MAU line chart.
+        r"""This API is used to query the time-series MAU data of a mini game.
 
         :param request: Request instance for DescribeMNGMAULineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGMAULineChartRequest`
@@ -1591,7 +1591,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNGPaymentLineChart(self, request):
-        r"""This API is used to query the mini game payment line chart.
+        r"""This API is used to query the time-series payment data of a mini game.
 
         :param request: Request instance for DescribeMNGPaymentLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGPaymentLineChartRequest`
@@ -1912,6 +1912,52 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMNGVersionAuditDetail(self, request):
+        r"""This API is used to query mini game version approval details.
+
+        :param request: Request instance for DescribeMNGVersionAuditDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGVersionAuditDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGVersionAuditDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGVersionAuditDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGVersionAuditDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNGVersionAuditList(self, request):
+        r"""This API is used to query mini game version approval records.
+
+        :param request: Request instance for DescribeMNGVersionAuditList.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGVersionAuditListRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNGVersionAuditListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNGVersionAuditList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNGVersionAuditListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMNP(self, request):
         r"""This API is used to query the mini program details.
 
@@ -2166,7 +2212,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPMAULineChart(self, request):
-        r"""This API is used to query the mini program monthly active user data in a line chart format.
+        r"""This API is used to query the time-series MAU data of a mini program.
 
         :param request: Request instance for DescribeMNPMAULineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPMAULineChartRequest`
@@ -2327,7 +2373,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeMNPReportDataLineChart(self, request):
-        r"""This API is used to query the mini program visit analysis line chart within a given date range.
+        r"""This API is used to query the time-series visit data of a mini program within a given date range.
 
         :param request: Request instance for DescribeMNPReportDataLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPReportDataLineChartRequest`
@@ -2579,6 +2625,52 @@ class TcsasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMNPVersionAuditDetail(self, request):
+        r"""This API is used to query mini program version approval details.
+
+        :param request: Request instance for DescribeMNPVersionAuditDetail.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPVersionAuditDetailRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPVersionAuditDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPVersionAuditDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPVersionAuditDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPVersionAuditList(self, request):
+        r"""This API is used to query mini program version approval records.
+
+        :param request: Request instance for DescribeMNPVersionAuditList.
+        :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPVersionAuditListRequest`
+        :rtype: :class:`tencentcloud.tcsas.v20250106.models.DescribeMNPVersionAuditListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPVersionAuditList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPVersionAuditListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePaymentDataDetail(self, request):
         r"""This API is used to query the mini program payment data details within a specified date range.
 
@@ -2603,7 +2695,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribePaymentDataLineChart(self, request):
-        r"""This API is used to query the mini program payment line chart within a specified date range.
+        r"""This API is used to query the time-series payment data of a mini program.
 
         :param request: Request instance for DescribePaymentDataLineChart.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribePaymentDataLineChartRequest`
@@ -2695,7 +2787,7 @@ class TcsasClient(AbstractClient):
 
 
     def DescribeTeamList(self, request):
-        r"""This API is used to query a list of teams.
+        r"""This API is used to query the teams.
 
         :param request: Request instance for DescribeTeamList.
         :type request: :class:`tencentcloud.tcsas.v20250106.models.DescribeTeamListRequest`
