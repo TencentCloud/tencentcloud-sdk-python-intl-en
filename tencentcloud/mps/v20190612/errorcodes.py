@@ -23,7 +23,7 @@ FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = 'FailedOperation.BucketNotifyAlreadyE
 # Operation failed: COS service is suspended.
 FAILEDOPERATION_COSSTATUSINAVLID = 'FailedOperation.CosStatusInavlid'
 
-# 
+# Failed to create an AIGC task
 FAILEDOPERATION_CREATEAIGCTASKFAILED = 'FailedOperation.CreateAIGCTaskFailed'
 
 # Resource generation failed.
@@ -32,7 +32,7 @@ FAILEDOPERATION_GENERATERESOURCE = 'FailedOperation.GenerateResource'
 # Operation failure: error retrieving source notification.
 FAILEDOPERATION_GETSOURCENOTIFY = 'FailedOperation.GetSourceNotify'
 
-# Operation failed: unauthorized MPS user.
+# Operation failed: illegal mps user.
 FAILEDOPERATION_INVALIDMPSUSER = 'FailedOperation.InvalidMpsUser'
 
 # Operation failed: invalid user.
@@ -47,7 +47,7 @@ FAILEDOPERATION_QUERYAIGCTASKFAILED = 'FailedOperation.QueryAIGCTaskFailed'
 # Operation failure: error setting source notification.
 FAILEDOPERATION_SETSOURCENOTIFY = 'FailedOperation.SetSourceNotify'
 
-# 
+# User account has been suspended
 FAILEDOPERATION_USERARREARS = 'FailedOperation.UserArrears'
 
 # Internal error.
@@ -86,10 +86,10 @@ INVALIDPARAMETER_NOTFOUND = 'InvalidParameter.NotFound'
 # JSON parsing failure; `Uin` / `SubAccountUin` / `Message` missing
 INVALIDPARAMETER_VALUE = 'InvalidParameter.Value'
 
-# Review blocklist for user-submitted input.
+# 
 INVALIDPARAMETER_VIOLATIONCONTENT = 'InvalidParameter.ViolationContent'
 
-# Incorrect parameter value.
+# Parameter value error.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # The value of the hotword lexicon configuration parameter is incorrect.
@@ -335,13 +335,13 @@ INVALIDPARAMETERVALUE_SAMPLETYPE = 'InvalidParameterValue.SampleType'
 # A service parameter value error occurs.
 INVALIDPARAMETERVALUE_SERVICE = 'InvalidParameterValue.Service'
 
-# The SessionContext is too long.
+# 
 INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = 'InvalidParameterValue.SessionContextTooLong'
 
-# Duplicate recognition code, request deduplicated.
+# 
 INVALIDPARAMETERVALUE_SESSIONID = 'InvalidParameterValue.SessionId'
 
-# SessionId is too long.
+# 
 INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = 'InvalidParameterValue.SessionIdTooLong'
 
 # Invalid parameter: incorrect audio channel system.
@@ -353,7 +353,7 @@ INVALIDPARAMETERVALUE_SOURCELANGUAGE = 'InvalidParameterValue.SourceLanguage'
 # A SourceText parameter error occurs.
 INVALIDPARAMETERVALUE_SOURCETEXT = 'InvalidParameterValue.SourceText'
 
-# Source file error.
+# 
 INVALIDPARAMETERVALUE_SRCFILE = 'InvalidParameterValue.SrcFile'
 
 # Subtitle suppression ID invalid
@@ -458,7 +458,7 @@ INVALIDPARAMETERVALUE_XPOS = 'InvalidParameterValue.XPos'
 # The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported.
 INVALIDPARAMETERVALUE_YPOS = 'InvalidParameterValue.YPos'
 
-# 
+# Unable to create a task. The number of tasks being executed has reached the limit.
 LIMITEXCEEDED_CREATETASK = 'LimitExceeded.CreateTask'
 
 # The number of created hotword lexicons has reached the default upper limit.

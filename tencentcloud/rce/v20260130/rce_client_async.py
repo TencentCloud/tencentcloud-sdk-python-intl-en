@@ -79,6 +79,24 @@ class RceClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AssessRisk(
+            self,
+            request: models.AssessRiskRequest,
+            opts: Dict = None,
+    ) -> models.AssessRiskResponse:
+        """
+        Used to obtain real-time risk information for events. It evaluates and returns risk decision results, risk scores, and risk tags based on device risk, environmental risk, account risk, behavioral risk, and historical reported event data for critical events in your business.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssessRisk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssessRiskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReportEvent(
             self,
             request: models.ReportEventRequest,

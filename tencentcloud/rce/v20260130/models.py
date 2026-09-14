@@ -992,6 +992,318 @@ class AssessEnvironmentRiskRsp(AbstractModel):
         
 
 
+class AssessRiskRequest(AbstractModel):
+    r"""AssessRisk request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventCode: <p>Event code. Used to specify the scenario node for business access.</p><p>Standard events under the account protection product include:</p><ul><li> login: Log in<p></p></li> <li>register: Register </li><li>sms: SMS </li><li>logout: Log out </li><li>modify_account: Modify account </li><li>modify_password: Modify password </li><li>security_verification: Security verification</li></ul><p>Standard events under the payment protection product include:</p><ul><li>create_order: Create an order </li><li>transaction: Transaction</li><li>charge_back: Chargeback</li></ul><p>Standard events under the promotion protection product include:</p><ul><li>add_promotion: Participate in promotions</li><li>redeem: Redeem a prize </li><li>withdraw: Withdraw</li><li>cust_event: Custom event, cust_xxx </li><li>scan_code: Scan a code </li><li>lucky_draw: Lucky draw </li><li>task: Complete a task </li><li>invitation: Invitation </li><li>claim_red_packet: Receive a red packet </li><li>browse: Browse</li></ul><p>Custom events can be evaluated for risk based on an agreement with RCE</p>
+        :type EventCode: str
+        :param _EventTime: <p>The time when the event occurred</p><p>Parameter format: Millisecond-level time with UTC time zone compliant with the ISO 8601 standard</p>
+        :type EventTime: str
+        :param _SessionId: <p>The user's current session ID used to associate with the actions before and after logging in. If UserId is not passed, SessionId is required. If missing, an empty string can be filled.</p>
+        :type SessionId: str
+        :param _DeviceToken: <p>Device fingerprint token, obtained after integration of the device fingerprint SDK into your website or application</p>
+        :type DeviceToken: str
+        :param _UserIp: <p>Client IP address (IPv4 or IPv6)</p>
+        :type UserIp: str
+        :param _EventDetail: <p>Event details. The event information is imported based on the event code you input.</p>
+        :type EventDetail: :class:`tencentcloud.rce.v20260130.models.EventDetail`
+        :param _UserId: <p>The user's account ID in your system</p>
+        :type UserId: str
+        :param _UserEmail: <p>Email of the user</p>
+        :type UserEmail: str
+        :param _UserPhone: <p>Phone number of the user.</p><p>Parameter format: Complies with the E.164 standard format, which includes "+", region code, and number</p>
+        :type UserPhone: str
+        :param _Browser: <p>The details of the browser. If you've already integrated our device SDK, this field is not required</p>
+        :type Browser: :class:`tencentcloud.rce.v20260130.models.Browser`
+        :param _App: <p>The details of the app, os and device.If you've already integrated our device SDK, this field is not required</p>
+        :type App: :class:`tencentcloud.rce.v20260130.models.App`
+        """
+        self._EventCode = None
+        self._EventTime = None
+        self._SessionId = None
+        self._DeviceToken = None
+        self._UserIp = None
+        self._EventDetail = None
+        self._UserId = None
+        self._UserEmail = None
+        self._UserPhone = None
+        self._Browser = None
+        self._App = None
+
+    @property
+    def EventCode(self):
+        r"""<p>Event code. Used to specify the scenario node for business access.</p><p>Standard events under the account protection product include:</p><ul><li> login: Log in<p></p></li> <li>register: Register </li><li>sms: SMS </li><li>logout: Log out </li><li>modify_account: Modify account </li><li>modify_password: Modify password </li><li>security_verification: Security verification</li></ul><p>Standard events under the payment protection product include:</p><ul><li>create_order: Create an order </li><li>transaction: Transaction</li><li>charge_back: Chargeback</li></ul><p>Standard events under the promotion protection product include:</p><ul><li>add_promotion: Participate in promotions</li><li>redeem: Redeem a prize </li><li>withdraw: Withdraw</li><li>cust_event: Custom event, cust_xxx </li><li>scan_code: Scan a code </li><li>lucky_draw: Lucky draw </li><li>task: Complete a task </li><li>invitation: Invitation </li><li>claim_red_packet: Receive a red packet </li><li>browse: Browse</li></ul><p>Custom events can be evaluated for risk based on an agreement with RCE</p>
+        :rtype: str
+        """
+        return self._EventCode
+
+    @EventCode.setter
+    def EventCode(self, EventCode):
+        self._EventCode = EventCode
+
+    @property
+    def EventTime(self):
+        r"""<p>The time when the event occurred</p><p>Parameter format: Millisecond-level time with UTC time zone compliant with the ISO 8601 standard</p>
+        :rtype: str
+        """
+        return self._EventTime
+
+    @EventTime.setter
+    def EventTime(self, EventTime):
+        self._EventTime = EventTime
+
+    @property
+    def SessionId(self):
+        r"""<p>The user's current session ID used to associate with the actions before and after logging in. If UserId is not passed, SessionId is required. If missing, an empty string can be filled.</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def DeviceToken(self):
+        r"""<p>Device fingerprint token, obtained after integration of the device fingerprint SDK into your website or application</p>
+        :rtype: str
+        """
+        return self._DeviceToken
+
+    @DeviceToken.setter
+    def DeviceToken(self, DeviceToken):
+        self._DeviceToken = DeviceToken
+
+    @property
+    def UserIp(self):
+        r"""<p>Client IP address (IPv4 or IPv6)</p>
+        :rtype: str
+        """
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def EventDetail(self):
+        r"""<p>Event details. The event information is imported based on the event code you input.</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.EventDetail`
+        """
+        return self._EventDetail
+
+    @EventDetail.setter
+    def EventDetail(self, EventDetail):
+        self._EventDetail = EventDetail
+
+    @property
+    def UserId(self):
+        r"""<p>The user's account ID in your system</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserEmail(self):
+        r"""<p>Email of the user</p>
+        :rtype: str
+        """
+        return self._UserEmail
+
+    @UserEmail.setter
+    def UserEmail(self, UserEmail):
+        self._UserEmail = UserEmail
+
+    @property
+    def UserPhone(self):
+        r"""<p>Phone number of the user.</p><p>Parameter format: Complies with the E.164 standard format, which includes "+", region code, and number</p>
+        :rtype: str
+        """
+        return self._UserPhone
+
+    @UserPhone.setter
+    def UserPhone(self, UserPhone):
+        self._UserPhone = UserPhone
+
+    @property
+    def Browser(self):
+        r"""<p>The details of the browser. If you've already integrated our device SDK, this field is not required</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Browser`
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def App(self):
+        r"""<p>The details of the app, os and device.If you've already integrated our device SDK, this field is not required</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.App`
+        """
+        return self._App
+
+    @App.setter
+    def App(self, App):
+        self._App = App
+
+
+    def _deserialize(self, params):
+        self._EventCode = params.get("EventCode")
+        self._EventTime = params.get("EventTime")
+        self._SessionId = params.get("SessionId")
+        self._DeviceToken = params.get("DeviceToken")
+        self._UserIp = params.get("UserIp")
+        if params.get("EventDetail") is not None:
+            self._EventDetail = EventDetail()
+            self._EventDetail._deserialize(params.get("EventDetail"))
+        self._UserId = params.get("UserId")
+        self._UserEmail = params.get("UserEmail")
+        self._UserPhone = params.get("UserPhone")
+        if params.get("Browser") is not None:
+            self._Browser = Browser()
+            self._Browser._deserialize(params.get("Browser"))
+        if params.get("App") is not None:
+            self._App = App()
+            self._App._deserialize(params.get("App"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssessRiskResponse(AbstractModel):
+    r"""AssessRisk response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>The results of AssessRisk</p>
+        :type Data: :class:`tencentcloud.rce.v20260130.models.AssessRiskRsp`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>The results of AssessRisk</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.AssessRiskRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = AssessRiskRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class AssessRiskRsp(AbstractModel):
+    r"""The results of AssessRisk
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Decision: <p>Decision information</p>
+        :type Decision: :class:`tencentcloud.rce.v20260130.models.Decision`
+        :param _Score: <p>Risk score, a scoring result calculated based on the product services you have enabled</p>
+        :type Score: :class:`tencentcloud.rce.v20260130.models.Score`
+        :param _ExtraInfo: <p>Extended information</p>
+        :type ExtraInfo: list of Cust
+        """
+        self._Decision = None
+        self._Score = None
+        self._ExtraInfo = None
+
+    @property
+    def Decision(self):
+        r"""<p>Decision information</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Decision`
+        """
+        return self._Decision
+
+    @Decision.setter
+    def Decision(self, Decision):
+        self._Decision = Decision
+
+    @property
+    def Score(self):
+        r"""<p>Risk score, a scoring result calculated based on the product services you have enabled</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Score`
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def ExtraInfo(self):
+        r"""<p>Extended information</p>
+        :rtype: list of Cust
+        """
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Decision") is not None:
+            self._Decision = Decision()
+            self._Decision._deserialize(params.get("Decision"))
+        if params.get("Score") is not None:
+            self._Score = Score()
+            self._Score._deserialize(params.get("Score"))
+        if params.get("ExtraInfo") is not None:
+            self._ExtraInfo = []
+            for item in params.get("ExtraInfo"):
+                obj = Cust()
+                obj._deserialize(item)
+                self._ExtraInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Billing(AbstractModel):
     r"""Bill information
 
@@ -6138,6 +6450,62 @@ class ScanCodeEvent(AbstractModel):
                 obj = Cust()
                 obj._deserialize(item)
                 self._Cust.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Score(AbstractModel):
+    r"""Risk score
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskScore: <p>Risk score. Range: 1–1000. The higher the score indicates the higher risk</p>
+        :type RiskScore: int
+        :param _RiskLabels: <p>Risk label</p>
+        :type RiskLabels: list of RiskLabel
+        """
+        self._RiskScore = None
+        self._RiskLabels = None
+
+    @property
+    def RiskScore(self):
+        r"""<p>Risk score. Range: 1–1000. The higher the score indicates the higher risk</p>
+        :rtype: int
+        """
+        return self._RiskScore
+
+    @RiskScore.setter
+    def RiskScore(self, RiskScore):
+        self._RiskScore = RiskScore
+
+    @property
+    def RiskLabels(self):
+        r"""<p>Risk label</p>
+        :rtype: list of RiskLabel
+        """
+        return self._RiskLabels
+
+    @RiskLabels.setter
+    def RiskLabels(self, RiskLabels):
+        self._RiskLabels = RiskLabels
+
+
+    def _deserialize(self, params):
+        self._RiskScore = params.get("RiskScore")
+        if params.get("RiskLabels") is not None:
+            self._RiskLabels = []
+            for item in params.get("RiskLabels"):
+                obj = RiskLabel()
+                obj._deserialize(item)
+                self._RiskLabels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

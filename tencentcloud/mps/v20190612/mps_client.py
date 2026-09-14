@@ -50,6 +50,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChangeVoice(self, request):
+        r"""Synchronize tone conversion to convert the input audio into the specified timbre based on the input audio and specified timbre.
+
+        :param request: Request instance for ChangeVoice.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ChangeVoiceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ChangeVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangeVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChangeVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloneViral(self, request):
         r"""Clone a hit product. Input a reference video of a hit product and a product image to generate a video with aligned style and pace.
 
@@ -373,7 +396,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateDocToVideoTask(self, request):
-        r"""This API is used to create an AIGC documentation generation video task.
+        r"""Creates an AIGC document-to-video task.
         This API is used to query tasks.
 
         :param request: Request instance for CreateDocToVideoTask.
@@ -2741,6 +2764,31 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDocToVideoTaskStatus(self, request):
+        r"""Modify the status of an AIGC document-to-video task.
+
+        Contains two actions: confirm and regenerate.
+
+        :param request: Request instance for ModifyDocToVideoTaskStatus.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyDocToVideoTaskStatusRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyDocToVideoTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDocToVideoTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDocToVideoTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyImageSpriteTemplate(self, request):
         r"""This API is used to modify a custom image sprite generating template.
 
@@ -3170,18 +3218,18 @@ class MpsClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        r"""This API is used to initiate a processing task for video URLs or media files in Cloud Object Storage (COS). Features include:
-        - Audio/Video transcoding (such as standard transcoding, top speed codec (TSC) transcoding, audio/video enhancement, visible watermark addition, and digital watermark addition).
+        r"""This API is used to initiate a processing task for URL video links or media files in COS. Features include:
+        - Audio/Video transcoding (such as standard transcoding, Top Speed Codec (TSC) transcoding, audio/video enhancement, visible watermark addition, and digital watermark addition).
         - Adaptive bitrate streaming conversion for audios/videos.
         - Video-to-GIF conversion.
-        - Time point screenshot of videos.
+        - Screenshot taking at specified time points.
         - Sampled screenshot of videos.
         - Image sprite of video screenshots.
-        - Media quality inspection (such as media format diagnosis, audio/video content detection, and scoring without reference, where audio/video content detection mainly covers jitter, blur, low light, overexposure, screen glitches, noise, mosaic, QR code, and other issues).
+        - Media quality inspection (such as media format diagnosis, audio/video content detection, and no-reference scoring, where audio/video content detection mainly covers jitter, blur, low light, overexposure, screen glitches, noise, mosaic, QR code, and other issues).
         - Smart subtitle (such as subtitle generation and translation).
         - Smart erasing (such as watermark removal, subtitle removal, and privacy protection).
-        - Smart content moderation (such as pornography detection and sensitive information detection).
-        - Smart content analysis (such as tags, classifications, covers, frame tags, video splitting, highlights, opening and ending clips, and marking points for games).
+        - Intelligent content moderation (such as pornography detection and sensitive information detection).
+        -.
         - Smart content recognition (such as human faces, full texts, text keywords, full speech, speech keywords, speech translation, and object recognition).
 
         :param request: Request instance for ProcessMedia.

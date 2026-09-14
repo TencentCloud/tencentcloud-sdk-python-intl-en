@@ -24672,11 +24672,14 @@ class DescribeMNPTeamMerchantInfoRes(AbstractModel):
         :type ID: str
         :param _MerchantName: <p>Merchant name.</p>
         :type MerchantName: str
+        :param _Currency: <p>Payment currency.</p>
+        :type Currency: str
         """
         self._MerchantID = None
         self._ApprovalStatus = None
         self._ID = None
         self._MerchantName = None
+        self._Currency = None
 
     @property
     def MerchantID(self):
@@ -24722,12 +24725,24 @@ class DescribeMNPTeamMerchantInfoRes(AbstractModel):
     def MerchantName(self, MerchantName):
         self._MerchantName = MerchantName
 
+    @property
+    def Currency(self):
+        r"""<p>Payment currency.</p>
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
 
     def _deserialize(self, params):
         self._MerchantID = params.get("MerchantID")
         self._ApprovalStatus = params.get("ApprovalStatus")
         self._ID = params.get("ID")
         self._MerchantName = params.get("MerchantName")
+        self._Currency = params.get("Currency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

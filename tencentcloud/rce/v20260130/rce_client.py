@@ -95,6 +95,29 @@ class RceClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AssessRisk(self, request):
+        r"""Used to obtain real-time risk information for events. It evaluates and returns risk decision results, risk scores, and risk tags based on device risk, environmental risk, account risk, behavioral risk, and historical reported event data for critical events in your business.
+
+        :param request: Request instance for AssessRisk.
+        :type request: :class:`tencentcloud.rce.v20260130.models.AssessRiskRequest`
+        :rtype: :class:`tencentcloud.rce.v20260130.models.AssessRiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssessRisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssessRiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReportEvent(self, request):
         r"""Used to report events that do not require real-time decision-making in your business. Our engine will perform computations and apply machine learning to mine risk features from these events, which are then used to support real-time event risk assessment.
 

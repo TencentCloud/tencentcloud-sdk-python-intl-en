@@ -44,6 +44,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ChangeVoice(
+            self,
+            request: models.ChangeVoiceRequest,
+            opts: Dict = None,
+    ) -> models.ChangeVoiceResponse:
+        """
+        Synchronize tone conversion to convert the input audio into the specified timbre based on the input audio and specified timbre.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ChangeVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ChangeVoiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CloneViral(
             self,
             request: models.CloneViralRequest,
@@ -302,7 +320,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateDocToVideoTaskResponse:
         """
-        This API is used to create an AIGC documentation generation video task.
+        Creates an AIGC document-to-video task.
         This API is used to query tasks.
         """
         
@@ -2160,6 +2178,26 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDocToVideoTaskStatus(
+            self,
+            request: models.ModifyDocToVideoTaskStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDocToVideoTaskStatusResponse:
+        """
+        Modify the status of an AIGC document-to-video task.
+
+        Contains two actions: confirm and regenerate.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDocToVideoTaskStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDocToVideoTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyImageSpriteTemplate(
             self,
             request: models.ModifyImageSpriteTemplateRequest,
@@ -2504,18 +2542,18 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ProcessMediaResponse:
         """
-        This API is used to initiate a processing task for video URLs or media files in Cloud Object Storage (COS). Features include:
-        - Audio/Video transcoding (such as standard transcoding, top speed codec (TSC) transcoding, audio/video enhancement, visible watermark addition, and digital watermark addition).
+        This API is used to initiate a processing task for URL video links or media files in COS. Features include:
+        - Audio/Video transcoding (such as standard transcoding, Top Speed Codec (TSC) transcoding, audio/video enhancement, visible watermark addition, and digital watermark addition).
         - Adaptive bitrate streaming conversion for audios/videos.
         - Video-to-GIF conversion.
-        - Time point screenshot of videos.
+        - Screenshot taking at specified time points.
         - Sampled screenshot of videos.
         - Image sprite of video screenshots.
-        - Media quality inspection (such as media format diagnosis, audio/video content detection, and scoring without reference, where audio/video content detection mainly covers jitter, blur, low light, overexposure, screen glitches, noise, mosaic, QR code, and other issues).
+        - Media quality inspection (such as media format diagnosis, audio/video content detection, and no-reference scoring, where audio/video content detection mainly covers jitter, blur, low light, overexposure, screen glitches, noise, mosaic, QR code, and other issues).
         - Smart subtitle (such as subtitle generation and translation).
         - Smart erasing (such as watermark removal, subtitle removal, and privacy protection).
-        - Smart content moderation (such as pornography detection and sensitive information detection).
-        - Smart content analysis (such as tags, classifications, covers, frame tags, video splitting, highlights, opening and ending clips, and marking points for games).
+        - Intelligent content moderation (such as pornography detection and sensitive information detection).
+        -.
         - Smart content recognition (such as human faces, full texts, text keywords, full speech, speech keywords, speech translation, and object recognition).
         """
         
