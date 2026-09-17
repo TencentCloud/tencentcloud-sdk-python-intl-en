@@ -5714,6 +5714,676 @@ class GetLivenessResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetNFCResultRequest(AbstractModel):
+    r"""GetNFCResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NFCToken: Unique ID returned by the frontend NFC SDK
+        :type NFCToken: str
+        :param _IdNum: Identity card number / passport number / Hong Kong, China and Macao, China travel permit
+        :type IdNum: str
+        :param _Name: Name
+        :type Name: str
+        :param _Picture: Base64 value of the portrait photo
+        :type Picture: str
+        :param _BirthDate: Date of birth (format: YYYYMMDD)
+        :type BirthDate: str
+        :param _BeginTime: Validity start time of the document (format: YYYYMMDD)
+        :type BeginTime: str
+        :param _EndTime: Document validity end time (format: YYYYMMDD)
+        :type EndTime: str
+        :param _Address: Address
+        :type Address: str
+        :param _Nation: Ethnicity
+        :type Nation: str
+        :param _Sex: Sex
+        :type Sex: str
+        :param _EnName: English name
+        :type EnName: str
+        :param _SigningOrganization: Issuing authority
+        :type SigningOrganization: str
+        :param _Nationality: Nationality
+        :type Nationality: str
+        :param _CountryCode: Country code
+        :type CountryCode: str
+        :param _MachineReadCode: Machine-readable code of the passport
+        :type MachineReadCode: str
+        """
+        self._NFCToken = None
+        self._IdNum = None
+        self._Name = None
+        self._Picture = None
+        self._BirthDate = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Address = None
+        self._Nation = None
+        self._Sex = None
+        self._EnName = None
+        self._SigningOrganization = None
+        self._Nationality = None
+        self._CountryCode = None
+        self._MachineReadCode = None
+
+    @property
+    def NFCToken(self):
+        r"""Unique ID returned by the frontend NFC SDK
+        :rtype: str
+        """
+        return self._NFCToken
+
+    @NFCToken.setter
+    def NFCToken(self, NFCToken):
+        self._NFCToken = NFCToken
+
+    @property
+    def IdNum(self):
+        r"""Identity card number / passport number / Hong Kong, China and Macao, China travel permit
+        :rtype: str
+        """
+        return self._IdNum
+
+    @IdNum.setter
+    def IdNum(self, IdNum):
+        self._IdNum = IdNum
+
+    @property
+    def Name(self):
+        r"""Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Picture(self):
+        r"""Base64 value of the portrait photo
+        :rtype: str
+        """
+        return self._Picture
+
+    @Picture.setter
+    def Picture(self, Picture):
+        self._Picture = Picture
+
+    @property
+    def BirthDate(self):
+        r"""Date of birth (format: YYYYMMDD)
+        :rtype: str
+        """
+        return self._BirthDate
+
+    @BirthDate.setter
+    def BirthDate(self, BirthDate):
+        self._BirthDate = BirthDate
+
+    @property
+    def BeginTime(self):
+        r"""Validity start time of the document (format: YYYYMMDD)
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""Document validity end time (format: YYYYMMDD)
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Address(self):
+        r"""Address
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Nation(self):
+        r"""Ethnicity
+        :rtype: str
+        """
+        return self._Nation
+
+    @Nation.setter
+    def Nation(self, Nation):
+        self._Nation = Nation
+
+    @property
+    def Sex(self):
+        r"""Sex
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def EnName(self):
+        r"""English name
+        :rtype: str
+        """
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
+    @property
+    def SigningOrganization(self):
+        r"""Issuing authority
+        :rtype: str
+        """
+        return self._SigningOrganization
+
+    @SigningOrganization.setter
+    def SigningOrganization(self, SigningOrganization):
+        self._SigningOrganization = SigningOrganization
+
+    @property
+    def Nationality(self):
+        r"""Nationality
+        :rtype: str
+        """
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
+    def CountryCode(self):
+        r"""Country code
+        :rtype: str
+        """
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def MachineReadCode(self):
+        r"""Machine-readable code of the passport
+        :rtype: str
+        """
+        return self._MachineReadCode
+
+    @MachineReadCode.setter
+    def MachineReadCode(self, MachineReadCode):
+        self._MachineReadCode = MachineReadCode
+
+
+    def _deserialize(self, params):
+        self._NFCToken = params.get("NFCToken")
+        self._IdNum = params.get("IdNum")
+        self._Name = params.get("Name")
+        self._Picture = params.get("Picture")
+        self._BirthDate = params.get("BirthDate")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Address = params.get("Address")
+        self._Nation = params.get("Nation")
+        self._Sex = params.get("Sex")
+        self._EnName = params.get("EnName")
+        self._SigningOrganization = params.get("SigningOrganization")
+        self._Nationality = params.get("Nationality")
+        self._CountryCode = params.get("CountryCode")
+        self._MachineReadCode = params.get("MachineReadCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetNFCResultResponse(AbstractModel):
+    r"""GetNFCResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChargeCode: Billing result code. Each successful NFC read is billed once. Permissible range: 
+
+0: Read successful, billed. 
+-1: Read failed, not billed.
+        :type ChargeCode: str
+        :param _IdType: Document type. Value range: 
+
+01: ID card. 
+02: Chinese passport. 
+03: Hong Kong, China and Macao, China travel permit. 
+99: Other document. 
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type IdType: str
+        :param _CheckMRTD: Document verification result. The items for NFC verification are as follows:
+{"result_issuer ":"Issuer certificate legitimacy verification result ","result_paper":"Document security object legitimacy verification result ","result_data" :"Data tampering prevention verification result ","result_chip" :"Document chip replication prevention verification result"} 
+Value range: 0: verification passed 1: verification failed 2: unverified 3: partially passed 
+When all four verification results are 0, the document is genuine.
+        :type CheckMRTD: str
+        :param _IdNumCompareResult: Comparison result of the passed-in identity card number, passport number, or Hong Kong, China and Macao, China travel permit with the identity card number recognized by NFC. 
+
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type IdNumCompareResult: str
+        :param _NameCompareResult: Comparison result of the passed-in name and the name recognized by NFC.
+0: Consistent
+-1: Not the same
+-2: NFC recognition failed, unable to compare
+        :type NameCompareResult: str
+        :param _PictureCompareSim: Similarity score between the passed-in face image and the portrait photo recognized by NFC.
+- Value range: [0.00, 100.00].
+- It is recommended to determine the same person when the similarity is equal to or greater than 70. Customers can also self-adjust the threshold based on specific scenarios (with a threshold of 70, the false pass rate is one in a thousand; with a threshold of 80, the false pass rate is one in ten thousand).
+        :type PictureCompareSim: float
+        :param _PictureCompareResult: Comparison result of the passed-in face image and the portrait photo recognized by NFC. 
+
+0: Same person (similarity equal to or greater than 70 points) 
+1: Not the same person (similarity less than 70 points) 
+2: Comparison failed (the input image quality is too low) 
+3: Comparison failed (the input image contains no human face, an incomplete face, or multiple faces) 
+4: Comparison failed (input image too large or too small) 
+5: Comparison failed (NFC cannot read the portrait photo) 
+6: Comparison failed (no input image data) 
+7: Comparison failed (other reason)
+        :type PictureCompareResult: str
+        :param _BirthDateCompareResult: Comparison result of the passed-in date of birth and the date of birth recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type BirthDateCompareResult: str
+        :param _BeginTimeCompareResult: Comparison result of the passed-in validity start time and the validity start time recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type BeginTimeCompareResult: str
+        :param _EndTimeCompareResult: Comparison result of the passed-in validity end time and the validity end time recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type EndTimeCompareResult: str
+        :param _AddressCompareResult: Comparison result of the passed-in address and the address recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type AddressCompareResult: str
+        :param _NationCompareResult: Comparison result of the passed-in ethnicity and the ethnicity recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type NationCompareResult: str
+        :param _SexCompareResult: Comparison result of the passed-in sex and the sex recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type SexCompareResult: str
+        :param _EnNameCompareResult: Comparison result of the passed-in English name and the English name recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type EnNameCompareResult: str
+        :param _SigningOrganizationCompareResult: Comparison result of the passed-in issuing authority and the issuing authority recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type SigningOrganizationCompareResult: str
+        :param _NationalityCompareResult: Comparison result of the passed-in nationality and the nationality recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type NationalityCompareResult: str
+        :param _CountryCodeCompareResult: Comparison result of the passed-in country code and the country code recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type CountryCodeCompareResult: str
+        :param _MachineReadCodeCompareResult: Comparison result of the passed-in machine-readable code and the machine-readable code recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :type MachineReadCodeCompareResult: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ChargeCode = None
+        self._IdType = None
+        self._CheckMRTD = None
+        self._IdNumCompareResult = None
+        self._NameCompareResult = None
+        self._PictureCompareSim = None
+        self._PictureCompareResult = None
+        self._BirthDateCompareResult = None
+        self._BeginTimeCompareResult = None
+        self._EndTimeCompareResult = None
+        self._AddressCompareResult = None
+        self._NationCompareResult = None
+        self._SexCompareResult = None
+        self._EnNameCompareResult = None
+        self._SigningOrganizationCompareResult = None
+        self._NationalityCompareResult = None
+        self._CountryCodeCompareResult = None
+        self._MachineReadCodeCompareResult = None
+        self._RequestId = None
+
+    @property
+    def ChargeCode(self):
+        r"""Billing result code. Each successful NFC read is billed once. Permissible range: 
+
+0: Read successful, billed. 
+-1: Read failed, not billed.
+        :rtype: str
+        """
+        return self._ChargeCode
+
+    @ChargeCode.setter
+    def ChargeCode(self, ChargeCode):
+        self._ChargeCode = ChargeCode
+
+    @property
+    def IdType(self):
+        r"""Document type. Value range: 
+
+01: ID card. 
+02: Chinese passport. 
+03: Hong Kong, China and Macao, China travel permit. 
+99: Other document. 
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._IdType
+
+    @IdType.setter
+    def IdType(self, IdType):
+        self._IdType = IdType
+
+    @property
+    def CheckMRTD(self):
+        r"""Document verification result. The items for NFC verification are as follows:
+{"result_issuer ":"Issuer certificate legitimacy verification result ","result_paper":"Document security object legitimacy verification result ","result_data" :"Data tampering prevention verification result ","result_chip" :"Document chip replication prevention verification result"} 
+Value range: 0: verification passed 1: verification failed 2: unverified 3: partially passed 
+When all four verification results are 0, the document is genuine.
+        :rtype: str
+        """
+        return self._CheckMRTD
+
+    @CheckMRTD.setter
+    def CheckMRTD(self, CheckMRTD):
+        self._CheckMRTD = CheckMRTD
+
+    @property
+    def IdNumCompareResult(self):
+        r"""Comparison result of the passed-in identity card number, passport number, or Hong Kong, China and Macao, China travel permit with the identity card number recognized by NFC. 
+
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._IdNumCompareResult
+
+    @IdNumCompareResult.setter
+    def IdNumCompareResult(self, IdNumCompareResult):
+        self._IdNumCompareResult = IdNumCompareResult
+
+    @property
+    def NameCompareResult(self):
+        r"""Comparison result of the passed-in name and the name recognized by NFC.
+0: Consistent
+-1: Not the same
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._NameCompareResult
+
+    @NameCompareResult.setter
+    def NameCompareResult(self, NameCompareResult):
+        self._NameCompareResult = NameCompareResult
+
+    @property
+    def PictureCompareSim(self):
+        r"""Similarity score between the passed-in face image and the portrait photo recognized by NFC.
+- Value range: [0.00, 100.00].
+- It is recommended to determine the same person when the similarity is equal to or greater than 70. Customers can also self-adjust the threshold based on specific scenarios (with a threshold of 70, the false pass rate is one in a thousand; with a threshold of 80, the false pass rate is one in ten thousand).
+        :rtype: float
+        """
+        return self._PictureCompareSim
+
+    @PictureCompareSim.setter
+    def PictureCompareSim(self, PictureCompareSim):
+        self._PictureCompareSim = PictureCompareSim
+
+    @property
+    def PictureCompareResult(self):
+        r"""Comparison result of the passed-in face image and the portrait photo recognized by NFC. 
+
+0: Same person (similarity equal to or greater than 70 points) 
+1: Not the same person (similarity less than 70 points) 
+2: Comparison failed (the input image quality is too low) 
+3: Comparison failed (the input image contains no human face, an incomplete face, or multiple faces) 
+4: Comparison failed (input image too large or too small) 
+5: Comparison failed (NFC cannot read the portrait photo) 
+6: Comparison failed (no input image data) 
+7: Comparison failed (other reason)
+        :rtype: str
+        """
+        return self._PictureCompareResult
+
+    @PictureCompareResult.setter
+    def PictureCompareResult(self, PictureCompareResult):
+        self._PictureCompareResult = PictureCompareResult
+
+    @property
+    def BirthDateCompareResult(self):
+        r"""Comparison result of the passed-in date of birth and the date of birth recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._BirthDateCompareResult
+
+    @BirthDateCompareResult.setter
+    def BirthDateCompareResult(self, BirthDateCompareResult):
+        self._BirthDateCompareResult = BirthDateCompareResult
+
+    @property
+    def BeginTimeCompareResult(self):
+        r"""Comparison result of the passed-in validity start time and the validity start time recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._BeginTimeCompareResult
+
+    @BeginTimeCompareResult.setter
+    def BeginTimeCompareResult(self, BeginTimeCompareResult):
+        self._BeginTimeCompareResult = BeginTimeCompareResult
+
+    @property
+    def EndTimeCompareResult(self):
+        r"""Comparison result of the passed-in validity end time and the validity end time recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._EndTimeCompareResult
+
+    @EndTimeCompareResult.setter
+    def EndTimeCompareResult(self, EndTimeCompareResult):
+        self._EndTimeCompareResult = EndTimeCompareResult
+
+    @property
+    def AddressCompareResult(self):
+        r"""Comparison result of the passed-in address and the address recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._AddressCompareResult
+
+    @AddressCompareResult.setter
+    def AddressCompareResult(self, AddressCompareResult):
+        self._AddressCompareResult = AddressCompareResult
+
+    @property
+    def NationCompareResult(self):
+        r"""Comparison result of the passed-in ethnicity and the ethnicity recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._NationCompareResult
+
+    @NationCompareResult.setter
+    def NationCompareResult(self, NationCompareResult):
+        self._NationCompareResult = NationCompareResult
+
+    @property
+    def SexCompareResult(self):
+        r"""Comparison result of the passed-in sex and the sex recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._SexCompareResult
+
+    @SexCompareResult.setter
+    def SexCompareResult(self, SexCompareResult):
+        self._SexCompareResult = SexCompareResult
+
+    @property
+    def EnNameCompareResult(self):
+        r"""Comparison result of the passed-in English name and the English name recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._EnNameCompareResult
+
+    @EnNameCompareResult.setter
+    def EnNameCompareResult(self, EnNameCompareResult):
+        self._EnNameCompareResult = EnNameCompareResult
+
+    @property
+    def SigningOrganizationCompareResult(self):
+        r"""Comparison result of the passed-in issuing authority and the issuing authority recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._SigningOrganizationCompareResult
+
+    @SigningOrganizationCompareResult.setter
+    def SigningOrganizationCompareResult(self, SigningOrganizationCompareResult):
+        self._SigningOrganizationCompareResult = SigningOrganizationCompareResult
+
+    @property
+    def NationalityCompareResult(self):
+        r"""Comparison result of the passed-in nationality and the nationality recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._NationalityCompareResult
+
+    @NationalityCompareResult.setter
+    def NationalityCompareResult(self, NationalityCompareResult):
+        self._NationalityCompareResult = NationalityCompareResult
+
+    @property
+    def CountryCodeCompareResult(self):
+        r"""Comparison result of the passed-in country code and the country code recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._CountryCodeCompareResult
+
+    @CountryCodeCompareResult.setter
+    def CountryCodeCompareResult(self, CountryCodeCompareResult):
+        self._CountryCodeCompareResult = CountryCodeCompareResult
+
+    @property
+    def MachineReadCodeCompareResult(self):
+        r"""Comparison result of the passed-in machine-readable code and the machine-readable code recognized by NFC. 
+0: Consistent 
+-1: Not the same 
+-2: NFC recognition failed, unable to compare
+        :rtype: str
+        """
+        return self._MachineReadCodeCompareResult
+
+    @MachineReadCodeCompareResult.setter
+    def MachineReadCodeCompareResult(self, MachineReadCodeCompareResult):
+        self._MachineReadCodeCompareResult = MachineReadCodeCompareResult
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChargeCode = params.get("ChargeCode")
+        self._IdType = params.get("IdType")
+        self._CheckMRTD = params.get("CheckMRTD")
+        self._IdNumCompareResult = params.get("IdNumCompareResult")
+        self._NameCompareResult = params.get("NameCompareResult")
+        self._PictureCompareSim = params.get("PictureCompareSim")
+        self._PictureCompareResult = params.get("PictureCompareResult")
+        self._BirthDateCompareResult = params.get("BirthDateCompareResult")
+        self._BeginTimeCompareResult = params.get("BeginTimeCompareResult")
+        self._EndTimeCompareResult = params.get("EndTimeCompareResult")
+        self._AddressCompareResult = params.get("AddressCompareResult")
+        self._NationCompareResult = params.get("NationCompareResult")
+        self._SexCompareResult = params.get("SexCompareResult")
+        self._EnNameCompareResult = params.get("EnNameCompareResult")
+        self._SigningOrganizationCompareResult = params.get("SigningOrganizationCompareResult")
+        self._NationalityCompareResult = params.get("NationalityCompareResult")
+        self._CountryCodeCompareResult = params.get("CountryCodeCompareResult")
+        self._MachineReadCodeCompareResult = params.get("MachineReadCodeCompareResult")
+        self._RequestId = params.get("RequestId")
+
+
 class GetNFCTokenRequest(AbstractModel):
     r"""GetNFCToken request structure.
 
@@ -6142,391 +6812,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._OCRResult.append(obj)
         self._Extra = params.get("Extra")
-        self._RequestId = params.get("RequestId")
-
-
-class GetWxNFCResultRequest(AbstractModel):
-    r"""GetWxNFCResult request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _NFCToken: <p>Unique identifier ID returned by the frontend NFC SDK</p>
-        :type NFCToken: str
-        """
-        self._NFCToken = None
-
-    @property
-    def NFCToken(self):
-        r"""<p>Unique identifier ID returned by the frontend NFC SDK</p>
-        :rtype: str
-        """
-        return self._NFCToken
-
-    @NFCToken.setter
-    def NFCToken(self, NFCToken):
-        self._NFCToken = NFCToken
-
-
-    def _deserialize(self, params):
-        self._NFCToken = params.get("NFCToken")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetWxNFCResultResponse(AbstractModel):
-    r"""GetWxNFCResult response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ResultCode: <p>NFC billing result code. Each successful NFC read is billed once (duplicate billing does not occur for repeated pull of the same NFC request). Permissible range of billing result codes:<br>  0: Read successful, billed<br>-1: Read fail, free of charge</p>
-        :type ResultCode: str
-        :param _IdNum: <p>Identity card number</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type IdNum: str
-        :param _Name: <p>name</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Name: str
-        :param _Picture: <p>Portrait photo in the document</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Picture: str
-        :param _IdCardFrontImg: <p>Front photo of the identity document (portrait side)</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type IdCardFrontImg: str
-        :param _IdCardBackImg: <p>Photo of the back of an identity document (national emblem side)</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type IdCardBackImg: str
-        :param _BirthDate: <p>Date of birth</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type BirthDate: str
-        :param _BeginTime: <p>Validity start time</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type BeginTime: str
-        :param _EndTime: <p>Validity end time</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EndTime: str
-        :param _Address: <p>Address</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Address: str
-        :param _Nation: <p>Ethnicity</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Nation: str
-        :param _Sex: <p>Gender</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Sex: str
-        :param _IdType: <p>Document type</p><p>Enumeration value:</p><ul><li>01: ID card</li><li>03: Chinese passport</li><li>06: Hong Kong and Macau travel permit</li><li>07: Taiwan travel permit</li><li>08: Foreign passport</li><li>13: Permanent residence permit for foreigners</li><li>14: Residence Permit for Hong Kong (China), Macao (China), and Taiwan (China) residents</li><li>15: Return Home Permit</li><li>16: Travel permit for Chinese mainland residents to Taiwan (China)</li><li>99: Other documents</li></ul>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type IdType: str
-        :param _EnName: <p>English name</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EnName: str
-        :param _SigningOrganization: <p>Issuing authority</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type SigningOrganization: str
-        :param _OtherIdNum: <p>Residence Permit for residents of Hong Kong (China), Macao (China) and Taiwan (China), passport number</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type OtherIdNum: str
-        :param _Nationality: <p>Travel document nationality</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Nationality: str
-        :param _PersonalNumber: <p>Characters 29 to 42 in the second line of the machine-readable zone of the travel document</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PersonalNumber: str
-        :param _CheckMRTD: <p>Verification result of the document</p><ul><li>JSON format as follows: {"result_issuer":"issuer certificate legitimacy verification result","result_paper":"Document security object legitimacy verification result","result_data":"data tampering prevention verification result","result_chip":"chip replication prevention verification result"}. - Value ranges from 0 to 3: 0: verified, 1: verification failed, 2: unverified, 3: partially passed. When all four verification results are 0, it means the document is genuine.</li></ul>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type CheckMRTD: str
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._ResultCode = None
-        self._IdNum = None
-        self._Name = None
-        self._Picture = None
-        self._IdCardFrontImg = None
-        self._IdCardBackImg = None
-        self._BirthDate = None
-        self._BeginTime = None
-        self._EndTime = None
-        self._Address = None
-        self._Nation = None
-        self._Sex = None
-        self._IdType = None
-        self._EnName = None
-        self._SigningOrganization = None
-        self._OtherIdNum = None
-        self._Nationality = None
-        self._PersonalNumber = None
-        self._CheckMRTD = None
-        self._RequestId = None
-
-    @property
-    def ResultCode(self):
-        r"""<p>NFC billing result code. Each successful NFC read is billed once (duplicate billing does not occur for repeated pull of the same NFC request). Permissible range of billing result codes:<br>  0: Read successful, billed<br>-1: Read fail, free of charge</p>
-        :rtype: str
-        """
-        return self._ResultCode
-
-    @ResultCode.setter
-    def ResultCode(self, ResultCode):
-        self._ResultCode = ResultCode
-
-    @property
-    def IdNum(self):
-        r"""<p>Identity card number</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._IdNum
-
-    @IdNum.setter
-    def IdNum(self, IdNum):
-        self._IdNum = IdNum
-
-    @property
-    def Name(self):
-        r"""<p>name</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Picture(self):
-        r"""<p>Portrait photo in the document</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Picture
-
-    @Picture.setter
-    def Picture(self, Picture):
-        self._Picture = Picture
-
-    @property
-    def IdCardFrontImg(self):
-        r"""<p>Front photo of the identity document (portrait side)</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._IdCardFrontImg
-
-    @IdCardFrontImg.setter
-    def IdCardFrontImg(self, IdCardFrontImg):
-        self._IdCardFrontImg = IdCardFrontImg
-
-    @property
-    def IdCardBackImg(self):
-        r"""<p>Photo of the back of an identity document (national emblem side)</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._IdCardBackImg
-
-    @IdCardBackImg.setter
-    def IdCardBackImg(self, IdCardBackImg):
-        self._IdCardBackImg = IdCardBackImg
-
-    @property
-    def BirthDate(self):
-        r"""<p>Date of birth</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._BirthDate
-
-    @BirthDate.setter
-    def BirthDate(self, BirthDate):
-        self._BirthDate = BirthDate
-
-    @property
-    def BeginTime(self):
-        r"""<p>Validity start time</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._BeginTime
-
-    @BeginTime.setter
-    def BeginTime(self, BeginTime):
-        self._BeginTime = BeginTime
-
-    @property
-    def EndTime(self):
-        r"""<p>Validity end time</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def Address(self):
-        r"""<p>Address</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Address
-
-    @Address.setter
-    def Address(self, Address):
-        self._Address = Address
-
-    @property
-    def Nation(self):
-        r"""<p>Ethnicity</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Nation
-
-    @Nation.setter
-    def Nation(self, Nation):
-        self._Nation = Nation
-
-    @property
-    def Sex(self):
-        r"""<p>Gender</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Sex
-
-    @Sex.setter
-    def Sex(self, Sex):
-        self._Sex = Sex
-
-    @property
-    def IdType(self):
-        r"""<p>Document type</p><p>Enumeration value:</p><ul><li>01: ID card</li><li>03: Chinese passport</li><li>06: Hong Kong and Macau travel permit</li><li>07: Taiwan travel permit</li><li>08: Foreign passport</li><li>13: Permanent residence permit for foreigners</li><li>14: Residence Permit for Hong Kong (China), Macao (China), and Taiwan (China) residents</li><li>15: Return Home Permit</li><li>16: Travel permit for Chinese mainland residents to Taiwan (China)</li><li>99: Other documents</li></ul>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._IdType
-
-    @IdType.setter
-    def IdType(self, IdType):
-        self._IdType = IdType
-
-    @property
-    def EnName(self):
-        r"""<p>English name</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._EnName
-
-    @EnName.setter
-    def EnName(self, EnName):
-        self._EnName = EnName
-
-    @property
-    def SigningOrganization(self):
-        r"""<p>Issuing authority</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._SigningOrganization
-
-    @SigningOrganization.setter
-    def SigningOrganization(self, SigningOrganization):
-        self._SigningOrganization = SigningOrganization
-
-    @property
-    def OtherIdNum(self):
-        r"""<p>Residence Permit for residents of Hong Kong (China), Macao (China) and Taiwan (China), passport number</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._OtherIdNum
-
-    @OtherIdNum.setter
-    def OtherIdNum(self, OtherIdNum):
-        self._OtherIdNum = OtherIdNum
-
-    @property
-    def Nationality(self):
-        r"""<p>Travel document nationality</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Nationality
-
-    @Nationality.setter
-    def Nationality(self, Nationality):
-        self._Nationality = Nationality
-
-    @property
-    def PersonalNumber(self):
-        r"""<p>Characters 29 to 42 in the second line of the machine-readable zone of the travel document</p>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._PersonalNumber
-
-    @PersonalNumber.setter
-    def PersonalNumber(self, PersonalNumber):
-        self._PersonalNumber = PersonalNumber
-
-    @property
-    def CheckMRTD(self):
-        r"""<p>Verification result of the document</p><ul><li>JSON format as follows: {"result_issuer":"issuer certificate legitimacy verification result","result_paper":"Document security object legitimacy verification result","result_data":"data tampering prevention verification result","result_chip":"chip replication prevention verification result"}. - Value ranges from 0 to 3: 0: verified, 1: verification failed, 2: unverified, 3: partially passed. When all four verification results are 0, it means the document is genuine.</li></ul>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._CheckMRTD
-
-    @CheckMRTD.setter
-    def CheckMRTD(self, CheckMRTD):
-        self._CheckMRTD = CheckMRTD
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._ResultCode = params.get("ResultCode")
-        self._IdNum = params.get("IdNum")
-        self._Name = params.get("Name")
-        self._Picture = params.get("Picture")
-        self._IdCardFrontImg = params.get("IdCardFrontImg")
-        self._IdCardBackImg = params.get("IdCardBackImg")
-        self._BirthDate = params.get("BirthDate")
-        self._BeginTime = params.get("BeginTime")
-        self._EndTime = params.get("EndTime")
-        self._Address = params.get("Address")
-        self._Nation = params.get("Nation")
-        self._Sex = params.get("Sex")
-        self._IdType = params.get("IdType")
-        self._EnName = params.get("EnName")
-        self._SigningOrganization = params.get("SigningOrganization")
-        self._OtherIdNum = params.get("OtherIdNum")
-        self._Nationality = params.get("Nationality")
-        self._PersonalNumber = params.get("PersonalNumber")
-        self._CheckMRTD = params.get("CheckMRTD")
         self._RequestId = params.get("RequestId")
 
 
@@ -7305,177 +7590,6 @@ No charge result code:
 
 
     def _deserialize(self, params):
-        self._Result = params.get("Result")
-        self._Description = params.get("Description")
-        self._RequestId = params.get("RequestId")
-
-
-class ImageRecognitionRequest(AbstractModel):
-    r"""ImageRecognition request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IdCard: <p>Identity card number</p>
-        :type IdCard: str
-        :param _Name: <p>Name. For Chinese, please use UTF-8 encode.</p>
-        :type Name: str
-        :param _ImageBase64: <p>Image for face comparison, the Base64 value of the image.<br>The size of the Base64-encoded image data should be no more than 3M. Only jpg and png formats are supported.<br>Please use the standard Base64 encoding type (with = padding). Refer to RFC4648 for the coding specification.</p>
-        :type ImageBase64: str
-        :param _Optional: <p>This parameter is not required for this API.</p>
-        :type Optional: str
-        :param _Encryption: <p>Sensitive data encryption information. Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.</p>
-        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        """
-        self._IdCard = None
-        self._Name = None
-        self._ImageBase64 = None
-        self._Optional = None
-        self._Encryption = None
-
-    @property
-    def IdCard(self):
-        r"""<p>Identity card number</p>
-        :rtype: str
-        """
-        return self._IdCard
-
-    @IdCard.setter
-    def IdCard(self, IdCard):
-        self._IdCard = IdCard
-
-    @property
-    def Name(self):
-        r"""<p>Name. For Chinese, please use UTF-8 encode.</p>
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def ImageBase64(self):
-        r"""<p>Image for face comparison, the Base64 value of the image.<br>The size of the Base64-encoded image data should be no more than 3M. Only jpg and png formats are supported.<br>Please use the standard Base64 encoding type (with = padding). Refer to RFC4648 for the coding specification.</p>
-        :rtype: str
-        """
-        return self._ImageBase64
-
-    @ImageBase64.setter
-    def ImageBase64(self, ImageBase64):
-        self._ImageBase64 = ImageBase64
-
-    @property
-    def Optional(self):
-        r"""<p>This parameter is not required for this API.</p>
-        :rtype: str
-        """
-        return self._Optional
-
-    @Optional.setter
-    def Optional(self, Optional):
-        self._Optional = Optional
-
-    @property
-    def Encryption(self):
-        r"""<p>Sensitive data encryption information. Users with encryption requirements for incoming information (name, identity card number) can use this parameter. For details, please click the left-side link.</p>
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        """
-        return self._Encryption
-
-    @Encryption.setter
-    def Encryption(self, Encryption):
-        self._Encryption = Encryption
-
-
-    def _deserialize(self, params):
-        self._IdCard = params.get("IdCard")
-        self._Name = params.get("Name")
-        self._ImageBase64 = params.get("ImageBase64")
-        self._Optional = params.get("Optional")
-        if params.get("Encryption") is not None:
-            self._Encryption = Encryption()
-            self._Encryption._deserialize(params.get("Encryption"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ImageRecognitionResponse(AbstractModel):
-    r"""ImageRecognition response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Sim: <p>Similarity, value ranges from 0.00 to 100.00. Recommend judging as the same person when similarity is at least 70. Threshold can be self-adjusted based on specific scenarios (pass rate for false matches is one in a thousand at threshold 70, and one in ten thousand at threshold 80).</p>
-        :type Sim: float
-        :param _Result: <p>Business error code. Successfully returns Success in successful case. For error conditions, refer to the FailedOperation part in the error code list below.</p>
-        :type Result: str
-        :param _Description: <p>Business result description.</p>
-        :type Description: str
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Sim = None
-        self._Result = None
-        self._Description = None
-        self._RequestId = None
-
-    @property
-    def Sim(self):
-        r"""<p>Similarity, value ranges from 0.00 to 100.00. Recommend judging as the same person when similarity is at least 70. Threshold can be self-adjusted based on specific scenarios (pass rate for false matches is one in a thousand at threshold 70, and one in ten thousand at threshold 80).</p>
-        :rtype: float
-        """
-        return self._Sim
-
-    @Sim.setter
-    def Sim(self, Sim):
-        self._Sim = Sim
-
-    @property
-    def Result(self):
-        r"""<p>Business error code. Successfully returns Success in successful case. For error conditions, refer to the FailedOperation part in the error code list below.</p>
-        :rtype: str
-        """
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def Description(self):
-        r"""<p>Business result description.</p>
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Sim = params.get("Sim")
         self._Result = params.get("Result")
         self._Description = params.get("Description")
         self._RequestId = params.get("RequestId")

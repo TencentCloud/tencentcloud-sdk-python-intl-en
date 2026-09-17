@@ -903,13 +903,13 @@ class TeoClient(AbstractClient):
 
     def CreateRealtimeLogDeliveryTask(self, request):
         r"""This API is used to create a real-time log delivery task. The following limits apply:
-        -When the data delivery type (LogType) is site acceleration log (Layer 7 Access Logs), four-layer proxy logs, or edge function logs, the same entity (L7 domain, L4 proxy instance, or edge function instance) under the same combination of data delivery type (LogType) and data delivery area (Area) can only be added to the following real-time log delivery task type (TaskType) combinations:
-        -A task to push to Tencent Cloud CLS, add another task to push to a custom HTTP(S) address.
-        -A task to push to Tencent Cloud CLS, add another task to push to S3-compatible object storage.
-        -When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the combination of the same data delivery type (LogType) and data delivery area (Area).
-        -When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only data delivery type (LogType) as site acceleration log (domain) or managed rule log (web-attack). Under the same site (ZoneId), same data delivery area (Area), and data combination, each data delivery type (LogType) can only add one real-time log delivery task pushed to EdgeOne log analysis.
+        -When the data delivery type (LogType) is Layer 7 Access Logs, four-layer proxy logs, or edge function logs, an entity (layer-7 domain name, L4 proxy instance, or edge function instance) can only be added to the following combination of real-time log delivery task types (TaskType) under the same combination of data delivery type (LogType) and data delivery area (Area):
+        -A task that pushes to Tencent Cloud CLS, add an additional task that pushes to a custom HTTP(S) address.
+        -A task to push to Tencent Cloud CLS, add another task to push to AWS S3-compatible object storage;
+        -When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the combination of the same data delivery type (LogType) and data delivery Area.
+        -When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only data delivery types (LogType) of Layer 7 Access Logs (l7-access-logs) or managed rule logs (web-attack). Under the combination of the same site (ZoneId), same data delivery area (Area), and data, each data delivery type (LogType) can only add one real-time log delivery task pushed to EdgeOne log analysis.
 
-        It is recommended to first query the real-time log delivery task list according to the entity via the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.com/document/product/1552/104110?from_cn_redirect=1) API, and check whether the entity has been added to another real-time log delivery task.
+        It is advisable to first query the real-time log delivery task list based on the physical entity using the DescribeRealtimeLogDeliveryTasks API (https://www.tencentcloud.com/document/product/1552/104110?from_cn_redirect=1) to check whether the entity has been added to another real-time log delivery task.
 
         :param request: Request instance for CreateRealtimeLogDeliveryTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateRealtimeLogDeliveryTaskRequest`

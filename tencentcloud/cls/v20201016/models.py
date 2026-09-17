@@ -2681,6 +2681,228 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CLSDeliverTaskInfo(AbstractModel):
+    r"""Delivery task information across different accounts
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _TaskName: <p>Task name</p>
+        :type TaskName: str
+        :param _Uin: <p>Main account id</p>
+        :type Uin: int
+        :param _SourceTopicConfig: <p>Source topic information</p>
+        :type SourceTopicConfig: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        :param _TargetTopicConfig: <p>Target topic information</p>
+        :type TargetTopicConfig: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        :param _DeliverRule: <p>Shipping Rule</p>
+        :type DeliverRule: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        :param _Compliance: <p>Compliance guarantee</p>
+        :type Compliance: int
+        :param _Status: <p>Task status.</p><p>Enumeration values: </p><ul><li>0: Running, </li><li>1: Paused, </li><li>2: Completed, </li><li>3: Exception.</li></ul>
+        :type Status: int
+        :param _Enable: <p>Status.</p><p>Enumeration values: </p><ul><li>0: Running, </li><li>1: Suspended.</li></ul>
+        :type Enable: int
+        :param _Progress: <p>Task progress percentage</p>
+        :type Progress: int
+        :param _HasServicesLog: <p>Whether delivery service log is enabled.</p><p>Enumeration values:</p><ul><li>1: Disabled</li><li>2: Enabled</li></ul>
+        :type HasServicesLog: int
+        :param _CreateTime: <p>Creation time.</p><p>Unit: unix second-level timestamp</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>Update time</p><p>Unit: unix second-level timestamp</p>
+        :type UpdateTime: int
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._Uin = None
+        self._SourceTopicConfig = None
+        self._TargetTopicConfig = None
+        self._DeliverRule = None
+        self._Compliance = None
+        self._Status = None
+        self._Enable = None
+        self._Progress = None
+        self._HasServicesLog = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>Task name</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Uin(self):
+        r"""<p>Main account id</p>
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SourceTopicConfig(self):
+        r"""<p>Source topic information</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        """
+        return self._SourceTopicConfig
+
+    @SourceTopicConfig.setter
+    def SourceTopicConfig(self, SourceTopicConfig):
+        self._SourceTopicConfig = SourceTopicConfig
+
+    @property
+    def TargetTopicConfig(self):
+        r"""<p>Target topic information</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        """
+        return self._TargetTopicConfig
+
+    @TargetTopicConfig.setter
+    def TargetTopicConfig(self, TargetTopicConfig):
+        self._TargetTopicConfig = TargetTopicConfig
+
+    @property
+    def DeliverRule(self):
+        r"""<p>Shipping Rule</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        """
+        return self._DeliverRule
+
+    @DeliverRule.setter
+    def DeliverRule(self, DeliverRule):
+        self._DeliverRule = DeliverRule
+
+    @property
+    def Compliance(self):
+        r"""<p>Compliance guarantee</p>
+        :rtype: int
+        """
+        return self._Compliance
+
+    @Compliance.setter
+    def Compliance(self, Compliance):
+        self._Compliance = Compliance
+
+    @property
+    def Status(self):
+        r"""<p>Task status.</p><p>Enumeration values: </p><ul><li>0: Running, </li><li>1: Paused, </li><li>2: Completed, </li><li>3: Exception.</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Enable(self):
+        r"""<p>Status.</p><p>Enumeration values: </p><ul><li>0: Running, </li><li>1: Suspended.</li></ul>
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Progress(self):
+        r"""<p>Task progress percentage</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>Whether delivery service log is enabled.</p><p>Enumeration values:</p><ul><li>1: Disabled</li><li>2: Enabled</li></ul>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def CreateTime(self):
+        r"""<p>Creation time.</p><p>Unit: unix second-level timestamp</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>Update time</p><p>Unit: unix second-level timestamp</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._Uin = params.get("Uin")
+        if params.get("SourceTopicConfig") is not None:
+            self._SourceTopicConfig = SourceTopicConfig()
+            self._SourceTopicConfig._deserialize(params.get("SourceTopicConfig"))
+        if params.get("TargetTopicConfig") is not None:
+            self._TargetTopicConfig = TargetTopicConfig()
+            self._TargetTopicConfig._deserialize(params.get("TargetTopicConfig"))
+        if params.get("DeliverRule") is not None:
+            self._DeliverRule = DeliverRule()
+            self._DeliverRule._deserialize(params.get("DeliverRule"))
+        self._Compliance = params.get("Compliance")
+        self._Status = params.get("Status")
+        self._Enable = params.get("Enable")
+        self._Progress = params.get("Progress")
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CallBackInfo(AbstractModel):
     r"""Callback configuration
 
@@ -6531,6 +6753,166 @@ class CreateAlarmShieldResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""Blocking Rule ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCLSDeliverTaskRequest(AbstractModel):
+    r"""CreateCLSDeliverTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: <p>Task name</p><p>Parameter format: <code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+        :type TaskName: str
+        :param _SourceTopicConfig: <p>Source topic information</p>
+        :type SourceTopicConfig: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        :param _TargetTopicConfig: <p>Target topic information</p>
+        :type TargetTopicConfig: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        :param _DeliverRule: <p>Shipping Rule</p>
+        :type DeliverRule: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        :param _Compliance: <p>Compliance commitment.</p><p>Enumeration values:</p><ul><li>1: Agree to the cross-border data transmission clause</li></ul>
+        :type Compliance: int
+        :param _HasServicesLog: <p>Whether to enable delivery service log.</p><p>Enumeration values:</p><ul><li>1: Disabled</li><li>2: Enabled</li></ul><p>Default value: 2</p>
+        :type HasServicesLog: int
+        """
+        self._TaskName = None
+        self._SourceTopicConfig = None
+        self._TargetTopicConfig = None
+        self._DeliverRule = None
+        self._Compliance = None
+        self._HasServicesLog = None
+
+    @property
+    def TaskName(self):
+        r"""<p>Task name</p><p>Parameter format: <code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def SourceTopicConfig(self):
+        r"""<p>Source topic information</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        """
+        return self._SourceTopicConfig
+
+    @SourceTopicConfig.setter
+    def SourceTopicConfig(self, SourceTopicConfig):
+        self._SourceTopicConfig = SourceTopicConfig
+
+    @property
+    def TargetTopicConfig(self):
+        r"""<p>Target topic information</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        """
+        return self._TargetTopicConfig
+
+    @TargetTopicConfig.setter
+    def TargetTopicConfig(self, TargetTopicConfig):
+        self._TargetTopicConfig = TargetTopicConfig
+
+    @property
+    def DeliverRule(self):
+        r"""<p>Shipping Rule</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        """
+        return self._DeliverRule
+
+    @DeliverRule.setter
+    def DeliverRule(self, DeliverRule):
+        self._DeliverRule = DeliverRule
+
+    @property
+    def Compliance(self):
+        r"""<p>Compliance commitment.</p><p>Enumeration values:</p><ul><li>1: Agree to the cross-border data transmission clause</li></ul>
+        :rtype: int
+        """
+        return self._Compliance
+
+    @Compliance.setter
+    def Compliance(self, Compliance):
+        self._Compliance = Compliance
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>Whether to enable delivery service log.</p><p>Enumeration values:</p><ul><li>1: Disabled</li><li>2: Enabled</li></ul><p>Default value: 2</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        if params.get("SourceTopicConfig") is not None:
+            self._SourceTopicConfig = SourceTopicConfig()
+            self._SourceTopicConfig._deserialize(params.get("SourceTopicConfig"))
+        if params.get("TargetTopicConfig") is not None:
+            self._TargetTopicConfig = TargetTopicConfig()
+            self._TargetTopicConfig._deserialize(params.get("TargetTopicConfig"))
+        if params.get("DeliverRule") is not None:
+            self._DeliverRule = DeliverRule()
+            self._DeliverRule._deserialize(params.get("DeliverRule"))
+        self._Compliance = params.get("Compliance")
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCLSDeliverTaskResponse(AbstractModel):
+    r"""CreateCLSDeliverTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
         :rtype: str
         """
         return self._TaskId
@@ -15220,6 +15602,70 @@ class DeleteAlarmShieldResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCLSDeliverTaskRequest(AbstractModel):
+    r"""DeleteCLSDeliverTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCLSDeliverTaskResponse(AbstractModel):
+    r"""DeleteCLSDeliverTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudProductLogCollectionRequest(AbstractModel):
     r"""DeleteCloudProductLogCollection request structure.
 
@@ -17727,6 +18173,42 @@ All logs, including daily logs generated by periodic execution of alarm policies
         
 
 
+class DeliverRule(AbstractModel):
+    r"""Shipping Rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataScope: <p>Data delivery range.</p><p>Enumeration values:</p><ul><li>1: History + newly added data</li><li>2: Custom time range</li><li>3: New additions only</li></ul><p>This time, only 3 newly added data is supported. Subsequent support: 2 custom time range and 1 history + newly added data</p>
+        :type DataScope: int
+        """
+        self._DataScope = None
+
+    @property
+    def DataScope(self):
+        r"""<p>Data delivery range.</p><p>Enumeration values:</p><ul><li>1: History + newly added data</li><li>2: Custom time range</li><li>3: New additions only</li></ul><p>This time, only 3 newly added data is supported. Subsequent support: 2 custom time range and 1 history + newly added data</p>
+        :rtype: int
+        """
+        return self._DataScope
+
+    @DataScope.setter
+    def DataScope(self, DataScope):
+        self._DataScope = DataScope
+
+
+    def _deserialize(self, params):
+        self._DataScope = params.get("DataScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Delta(AbstractModel):
     r"""Returned content.
 
@@ -18528,6 +19010,140 @@ class DescribeAlertRecordHistoryResponse(AbstractModel):
                 obj = AlertHistoryRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCLSDeliverTasksRequest(AbstractModel):
+    r"""DescribeCLSDeliverTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <ul><li>taskId Filter by task id. Type: String. Required: No.  </li><li>taskName Filter by task name. Type: String. Required: No.  </li><li>sourceLogsetId Filter by source logset. Type: String. Required: No.  </li><li>targetLogsetId Filter by destination log set. Type: String. Required: No.<br>The maximum number of Filters per request is 10, and the maximum number of Filter.Values is 10.</li></ul>
+        :type Filters: list of Filter
+        :param _Offset: <p>Pagination offset. Default value: 0.</p>
+        :type Offset: int
+        :param _Limit: <p>Number of entries per page. Default value: 20. Maximum value: 100.</p>
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""<ul><li>taskId Filter by task id. Type: String. Required: No.  </li><li>taskName Filter by task name. Type: String. Required: No.  </li><li>sourceLogsetId Filter by source logset. Type: String. Required: No.  </li><li>targetLogsetId Filter by destination log set. Type: String. Required: No.<br>The maximum number of Filters per request is 10, and the maximum number of Filter.Values is 10.</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>Pagination offset. Default value: 0.</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>Number of entries per page. Default value: 20. Maximum value: 100.</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCLSDeliverTasksResponse(AbstractModel):
+    r"""DescribeCLSDeliverTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: <p>Delivery task information list</p>
+        :type Infos: list of CLSDeliverTaskInfo
+        :param _Total: <p>Total number of qualified tasks.</p>
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""<p>Delivery task information list</p>
+        :rtype: list of CLSDeliverTaskInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def Total(self):
+        r"""<p>Total number of qualified tasks.</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = CLSDeliverTaskInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -35102,6 +35718,166 @@ class ModifyAlarmShieldResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCLSDeliverTaskRequest(AbstractModel):
+    r"""ModifyCLSDeliverTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>Task ID.</p>
+        :type TaskId: str
+        :param _TaskName: <p>Task name</p><p>Parameter format: <code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+        :type TaskName: str
+        :param _SourceTopicConfig: <p>Source topic information</p>
+        :type SourceTopicConfig: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        :param _TargetTopicConfig: <p>Target topic information</p>
+        :type TargetTopicConfig: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        :param _DeliverRule: <p>Shipping Rule</p>
+        :type DeliverRule: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        :param _Enable: <p>Status.</p><p>Enumeration values: </p><ul><li>0: Running, </li><li>1: Suspension.</li></ul>
+        :type Enable: int
+        :param _HasServicesLog: <p>Whether delivery service log is enabled.</p><p>Enumeration values:</p><ul><li>1: Disabled</li><li>2: Enabled</li></ul>
+        :type HasServicesLog: int
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._SourceTopicConfig = None
+        self._TargetTopicConfig = None
+        self._DeliverRule = None
+        self._Enable = None
+        self._HasServicesLog = None
+
+    @property
+    def TaskId(self):
+        r"""<p>Task ID.</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>Task name</p><p>Parameter format: <code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def SourceTopicConfig(self):
+        r"""<p>Source topic information</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        """
+        return self._SourceTopicConfig
+
+    @SourceTopicConfig.setter
+    def SourceTopicConfig(self, SourceTopicConfig):
+        self._SourceTopicConfig = SourceTopicConfig
+
+    @property
+    def TargetTopicConfig(self):
+        r"""<p>Target topic information</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        """
+        return self._TargetTopicConfig
+
+    @TargetTopicConfig.setter
+    def TargetTopicConfig(self, TargetTopicConfig):
+        self._TargetTopicConfig = TargetTopicConfig
+
+    @property
+    def DeliverRule(self):
+        r"""<p>Shipping Rule</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        """
+        return self._DeliverRule
+
+    @DeliverRule.setter
+    def DeliverRule(self, DeliverRule):
+        self._DeliverRule = DeliverRule
+
+    @property
+    def Enable(self):
+        r"""<p>Status.</p><p>Enumeration values: </p><ul><li>0: Running, </li><li>1: Suspension.</li></ul>
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>Whether delivery service log is enabled.</p><p>Enumeration values:</p><ul><li>1: Disabled</li><li>2: Enabled</li></ul>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        if params.get("SourceTopicConfig") is not None:
+            self._SourceTopicConfig = SourceTopicConfig()
+            self._SourceTopicConfig._deserialize(params.get("SourceTopicConfig"))
+        if params.get("TargetTopicConfig") is not None:
+            self._TargetTopicConfig = TargetTopicConfig()
+            self._TargetTopicConfig._deserialize(params.get("TargetTopicConfig"))
+        if params.get("DeliverRule") is not None:
+            self._DeliverRule = DeliverRule()
+            self._DeliverRule._deserialize(params.get("DeliverRule"))
+        self._Enable = params.get("Enable")
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCLSDeliverTaskResponse(AbstractModel):
+    r"""ModifyCLSDeliverTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCloudProductLogCollectionRequest(AbstractModel):
     r"""ModifyCloudProductLogCollection request structure.
 
@@ -47929,6 +48705,113 @@ class ShipperTaskInfo(AbstractModel):
         
 
 
+class SourceTopicConfig(AbstractModel):
+    r"""Source log topic configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicFilterType: <p>Log topic filtering method.</p><p>Enumeration values:</p><ul><li>1: Static selection</li></ul>
+        :type TopicFilterType: int
+        :param _LogsetId: <p>Source logset id</p>
+        :type LogsetId: str
+        :param _Topics: <p>Source log topic list</p><p>Required when TopicFilterType=1</p>
+        :type Topics: list of SourceTopicInfo
+        """
+        self._TopicFilterType = None
+        self._LogsetId = None
+        self._Topics = None
+
+    @property
+    def TopicFilterType(self):
+        r"""<p>Log topic filtering method.</p><p>Enumeration values:</p><ul><li>1: Static selection</li></ul>
+        :rtype: int
+        """
+        return self._TopicFilterType
+
+    @TopicFilterType.setter
+    def TopicFilterType(self, TopicFilterType):
+        self._TopicFilterType = TopicFilterType
+
+    @property
+    def LogsetId(self):
+        r"""<p>Source logset id</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Topics(self):
+        r"""<p>Source log topic list</p><p>Required when TopicFilterType=1</p>
+        :rtype: list of SourceTopicInfo
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+
+    def _deserialize(self, params):
+        self._TopicFilterType = params.get("TopicFilterType")
+        self._LogsetId = params.get("LogsetId")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = SourceTopicInfo()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceTopicInfo(AbstractModel):
+    r"""Source log topic information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>Log topic id.</p>
+        :type TopicId: str
+        """
+        self._TopicId = None
+
+    @property
+    def TopicId(self):
+        r"""<p>Log topic id.</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SplitPartitionRequest(AbstractModel):
     r"""SplitPartition request structure.
 
@@ -48400,6 +49283,117 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TargetTopicConfig(AbstractModel):
+    r"""Target topic configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountType: <p>Target account type.</p><p>Enumeration values:</p><ul><li>1: Current root account</li><li>2: Other root account</li></ul>
+        :type AccountType: int
+        :param _Region: <p>Target region</p><p>Parameter format: ap-guangzhou</p>
+        :type Region: str
+        :param _LogsetId: <p>Target logset id</p>
+        :type LogsetId: str
+        :param _TopicId: <p>Target log topic id.</p>
+        :type TopicId: str
+        :param _RoleArn: <p>Role ARN</p><p>Required when AccountType=2</p>
+        :type RoleArn: str
+        :param _ExternalId: <p>External ID</p><p>Required when AccountType=2</p>
+        :type ExternalId: str
+        """
+        self._AccountType = None
+        self._Region = None
+        self._LogsetId = None
+        self._TopicId = None
+        self._RoleArn = None
+        self._ExternalId = None
+
+    @property
+    def AccountType(self):
+        r"""<p>Target account type.</p><p>Enumeration values:</p><ul><li>1: Current root account</li><li>2: Other root account</li></ul>
+        :rtype: int
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Region(self):
+        r"""<p>Target region</p><p>Parameter format: ap-guangzhou</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def LogsetId(self):
+        r"""<p>Target logset id</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        r"""<p>Target log topic id.</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def RoleArn(self):
+        r"""<p>Role ARN</p><p>Required when AccountType=2</p>
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def ExternalId(self):
+        r"""<p>External ID</p><p>Required when AccountType=2</p>
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
+
+    def _deserialize(self, params):
+        self._AccountType = params.get("AccountType")
+        self._Region = params.get("Region")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        self._RoleArn = params.get("RoleArn")
+        self._ExternalId = params.get("ExternalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

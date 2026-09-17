@@ -605,6 +605,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckGatewayFlowMonitor(self, request):
+        r"""This API is used to query whether the gateway traffic monitoring is enabled.
+
+        :param request: Request instance for CheckGatewayFlowMonitor.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CheckGatewayFlowMonitorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CheckGatewayFlowMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckGatewayFlowMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckGatewayFlowMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckNetDetectState(self, request):
         r"""This API is used to verify the network detection status.
 
@@ -1978,7 +2001,7 @@ class VpcClient(AbstractClient):
 
     def DeleteNatGateway(self, request):
         r"""This API is used to delete a NAT gateway.
-        When a NAT gateway is deleted, all routes containing this gateway are deleted automatically, and the elastic IP is unbound.
+        When a NAT gateway is deleted, all routes containing this gateway are deleted automatically, and associated EIPs are unbound.When deleting a NAT gateway, you need to unbind the associated EIPs. Therefore, the caller must have CAM permissions for vpc:DisassociateAddress and vpc:ModifyAddressesBandwidth.
 
         :param request: Request instance for DeleteNatGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewayRequest`
@@ -3427,6 +3450,31 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNatGatewayFlowMonitorDetail(self, request):
+        r"""This API is used to query the traffic monitoring details of a NAT gateway.
+
+        - You can only use this API to query a single gateway instance. The input parameter `NatGatewayId` supports at most one value, and it must be passed.- If the gateway has traffic, but no data is returned when this API is called, please check whether gateway traffic monitoring is enabled in the corresponding gateway details page in the console.
+
+        :param request: Request instance for DescribeNatGatewayFlowMonitorDetail.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayFlowMonitorDetailRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayFlowMonitorDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNatGatewayFlowMonitorDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNatGatewayFlowMonitorDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNatGatewaySourceIpTranslationNatRules(self, request):
         r"""This API is used to query the NAT gateway's SNAT forwarding rules.
 
@@ -3441,6 +3489,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeNatGatewaySourceIpTranslationNatRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNatGatewaySourceIpTranslationNatRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeNatGatewayZones(self, request):
+        r"""This API is used to query the information of saleable availability zones (AZs) for NAT gateways.
+
+        :param request: Request instance for DescribeNatGatewayZones.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayZonesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNatGatewayZones", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNatGatewayZonesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6375,7 +6446,7 @@ class VpcClient(AbstractClient):
 
 
     def RefreshDirectConnectGatewayRouteToNatGateway(self, request):
-        r"""This API is used to refresh the route between a NAT gateway and  Direct Connect and update the associated route table.
+        r"""This API is used to refresh the route between a NAT gateway and Direct Connect and update the associated route table.
 
         :param request: Request instance for RefreshDirectConnectGatewayRouteToNatGateway.
         :type request: :class:`tencentcloud.vpc.v20170312.models.RefreshDirectConnectGatewayRouteToNatGatewayRequest`

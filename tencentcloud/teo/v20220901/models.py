@@ -13812,33 +13812,35 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Zone ID.
+        :param _ZoneId: <p>Site ID.</p>
         :type ZoneId: str
-        :param _Area: Data shipping area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding the Chinese mainland).</li></ul>
+        :param _Area: <p>Data shipping area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding the Chinese mainland).</li></ul></p>
         :type Area: str
-        :param _LogType: Data delivery type. Available values: <ul><li>domain: site acceleration log;</li><li>application: four-layer proxy logs;</li><li>function: edge function logs;</li><li>web-rateLiming: rate limit and CC attack defense log;</li><li>web-attack: managed rule log;</li><li>web-rule: custom rule logs;</li><li>web-bot: bot management log.</li></ul>
+        :param _LogType: <p>Data delivery type. Available values:</p><ul><li>l7-access-logs: Layer 7 Access Logs;</li><li>application: Layer 4 Proxy Logs;</li><li>function: Function Logs;</li><li>web-attack: Managed Rule Logs.</li></ul><p>The following types of logs are merged into l7-access-logs and no longer support adding:</p><ul><li>domain: Site Acceleration Logs;</li><li>web-rateLiming: Rate Limit and CC Attack Defense Logs;</li><li>web-rule: Custom Rule Logs;</li><li>web-bot: Bot Management Logs.</li></ul>
         :type LogType: str
-        :param _TaskName: Name of a real-time log delivery task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).
+        :param _TaskName: <p>Name of a real-time log delivery task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).</p>
         :type TaskName: str
-        :param _TaskType: Type of a real-time log shipping task. Valid values:<ul><li>cls: push to Tencent Cloud CLS;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>s3: push to an AWS S3-compatible bucket address;</li><li>log_analysis: push to EdgeOne log analytics. Only supported when LogType = domain or web-attack.</li></ul>
+        :param _TaskType: <p>Type of a real-time log shipping task. Valid values:<ul><li>cls: push to Tencent Cloud CLS;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>s3: push to an AWS S3-compatible bucket address;</li><li>log_analysis: push to EdgeOne log analytics. This is supported only when LogType = l7-access-logs or web-attack.</li></ul></p>
         :type TaskType: str
-        :param _EntityList: List of entities corresponding to the real-time log delivery task. Example values are as follows: <ul><li>Layer 7 domain: domain.example.com</li><li>L4 proxy instance: sid-2s69eb5wcms7</li><li>Cloud function instance: test-zone-2mxigizoh9l9-1257626257</li></ul>
+        :param _EntityList: <p>List of entities corresponding to real-time log delivery tasks. Example values:</p><ul><li>Layer 7 domain: domain.example.com</li><li>Layer 4 proxy instance: sid-2s69eb5wcms7</li><li>Edge function instance: test-zone-2mxigizoh9l9-1257626257</li></ul><p>For reference: <a href="https://www.tencentcloud.com/document/api/1552/103413?from_cn_redirect=1">DescribeL4Proxy</a></p>
         :type EntityList: list of str
-        :param _Fields: Predefined fields for delivery. Value reference: <ul><li>[Site acceleration log (Layer 7 Access Logs)](https://www.tencentcloud.com/document/product/1552/105791?from_cn_redirect=1)</li><li>[Four-layer proxy logs](https://www.tencentcloud.com/document/product/1552/105792?from_cn_redirect=1)</li><li>[Edge Function logs](https://www.tencentcloud.com/document/product/1552/115585?from_cn_redirect=1)</li></ul>
+        :param _Fields: <p>Predefined fields for delivery. For reference: <ul><li><a href="https://www.tencentcloud.com/document/product/1552/105791?from_cn_redirect=1">Layer 7 Access Logs (site acceleration log)</a></li><li><a href="https://www.tencentcloud.com/document/product/1552/105792?from_cn_redirect=1">four-layer proxy logs</a></li><li><a href="https://www.tencentcloud.com/document/product/1552/115585?from_cn_redirect=1">edge function logs</a></li></ul></p><p>For reference: DescribeLogFields</p>
         :type Fields: list of str
-        :param _CustomFields: The list of custom fields for log delivery, which supports extracting specified content from HTTP request headers, response headers, cookies, and request bodies. Custom field names must be unique. The number of custom fields cannot exceed a maximum of 200. A single real-time log delivery task can configure up to 5 custom fields of the request body type. Currently, only site acceleration logs (`LogType`=`domain`) support custom fields.
+        :param _CustomFields: <p>Custom fields for delivery support extracting specified content from HTTP request headers, response headers, cookies, and request bodies.<br>Custom field name must be unique. Only Layer 7 access logs (LogType= l7-access-logs or domain) support adding custom fields.<br>The count of custom fields allowed to be configured has a quota limit. If the quota is insufficient, please contact us (https://www.tencentcloud.com/contact-us).</p>
         :type CustomFields: list of CustomField
-        :param _DeliveryConditions: Filter criteria of log delivery. If this parameter is not specified, all logs will be delivered.
+        :param _CustomExpressionFields: <p>The list of custom expression fields for submission can be used to implement personalized real-time log content push through custom log push field names and value expressions. For usage details, refer to [Custom Log Field Expressions]().<br>Only Layer 7 Access Logs (LogType= l7-access-logs or domain) support  adding custom fields.<br>There is a quota limit on the count of custom fields that can be configured. If the quota is insufficient, please [contact us](https://www.tencentcloud.com/contact-us).<br>**Note**: If a field named in CustomExpressionFields has the same name as a field in Fields and CustomFields, the value in CustomExpressionFields takes precedence.</p>
+        :type CustomExpressionFields: list of CustomExpressionField
+        :param _DeliveryConditions: <p>Filter criteria of log shipping. If this parameter is not input, all logs will be shipped.</p>
         :type DeliveryConditions: list of DeliveryCondition
-        :param _Sample: Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not specified, the sampling ratio is 100%.
+        :param _Sample: <p>Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not input, the sampling ratio is 100%.</p>
         :type Sample: int
-        :param _LogFormat: Output format for log delivery. If left empty, the default format is used. The default format logic is as follows:<ul><li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, each JSON object represents a log entry;</li><li>When TaskType is 's3', the default format is JSON Lines;</li></ul>Particularly, when TaskType is 'cls' or 'log_analysis', the only allowed value for LogFormat.FormatType is 'json', and other parameters in LogFormat will be ignored. It is recommended not to transfer LogFormat.
+        :param _LogFormat: <p>Output format for log delivery. For usage details, see <a href="https://www.tencentcloud.com/document/product/1552/110448?from_cn_redirect=1">Custom Log Output Format</a>. If left blank, the default format applies. The default format logic is as follows:<ul><li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, each JSON object represents a log entry;</li><li>When TaskType is 's3', the default format is JSON Lines;</li></ul>Particularly, when TaskType is 'cls' or 'log_analysis', the only allowed value for LogFormat.FormatType is 'json', and other parameters in LogFormat will be ignored. It is recommended not to transfer LogFormat.</p>
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
-        :param _CLS: Configuration information of CLS. This parameter is required when `TaskType` is `cls`.
+        :param _CLS: <p>Configuration information of CLS. This parameter is required when TaskType is cls.</p>
         :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
-        :param _CustomEndpoint: Configuration information of the custom HTTP endpoint. This parameter is required when `TaskType` is `custom_endpoint`.
+        :param _CustomEndpoint: <p>Configuration information of the custom HTTP service. This parameter is required when TaskType is custom_endpoint.</p>
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
-        :param _S3: Configuration information of the AWS S3-compatible bucket. This parameter is required when `TaskType` is `s3`.
+        :param _S3: <p>Configuration information of the AWS S3-compatible bucket. This parameter is required when TaskType is s3.</p>
         :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
         """
         self._ZoneId = None
@@ -13849,6 +13851,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._EntityList = None
         self._Fields = None
         self._CustomFields = None
+        self._CustomExpressionFields = None
         self._DeliveryConditions = None
         self._Sample = None
         self._LogFormat = None
@@ -13858,7 +13861,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""Zone ID.
+        r"""<p>Site ID.</p>
         :rtype: str
         """
         return self._ZoneId
@@ -13869,7 +13872,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Area(self):
-        r"""Data shipping area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding the Chinese mainland).</li></ul>
+        r"""<p>Data shipping area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding the Chinese mainland).</li></ul></p>
         :rtype: str
         """
         return self._Area
@@ -13880,7 +13883,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""Data delivery type. Available values: <ul><li>domain: site acceleration log;</li><li>application: four-layer proxy logs;</li><li>function: edge function logs;</li><li>web-rateLiming: rate limit and CC attack defense log;</li><li>web-attack: managed rule log;</li><li>web-rule: custom rule logs;</li><li>web-bot: bot management log.</li></ul>
+        r"""<p>Data delivery type. Available values:</p><ul><li>l7-access-logs: Layer 7 Access Logs;</li><li>application: Layer 4 Proxy Logs;</li><li>function: Function Logs;</li><li>web-attack: Managed Rule Logs.</li></ul><p>The following types of logs are merged into l7-access-logs and no longer support adding:</p><ul><li>domain: Site Acceleration Logs;</li><li>web-rateLiming: Rate Limit and CC Attack Defense Logs;</li><li>web-rule: Custom Rule Logs;</li><li>web-bot: Bot Management Logs.</li></ul>
         :rtype: str
         """
         return self._LogType
@@ -13891,7 +13894,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""Name of a real-time log delivery task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).
+        r"""<p>Name of a real-time log delivery task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).</p>
         :rtype: str
         """
         return self._TaskName
@@ -13902,7 +13905,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""Type of a real-time log shipping task. Valid values:<ul><li>cls: push to Tencent Cloud CLS;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>s3: push to an AWS S3-compatible bucket address;</li><li>log_analysis: push to EdgeOne log analytics. Only supported when LogType = domain or web-attack.</li></ul>
+        r"""<p>Type of a real-time log shipping task. Valid values:<ul><li>cls: push to Tencent Cloud CLS;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>s3: push to an AWS S3-compatible bucket address;</li><li>log_analysis: push to EdgeOne log analytics. This is supported only when LogType = l7-access-logs or web-attack.</li></ul></p>
         :rtype: str
         """
         return self._TaskType
@@ -13913,7 +13916,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def EntityList(self):
-        r"""List of entities corresponding to the real-time log delivery task. Example values are as follows: <ul><li>Layer 7 domain: domain.example.com</li><li>L4 proxy instance: sid-2s69eb5wcms7</li><li>Cloud function instance: test-zone-2mxigizoh9l9-1257626257</li></ul>
+        r"""<p>List of entities corresponding to real-time log delivery tasks. Example values:</p><ul><li>Layer 7 domain: domain.example.com</li><li>Layer 4 proxy instance: sid-2s69eb5wcms7</li><li>Edge function instance: test-zone-2mxigizoh9l9-1257626257</li></ul><p>For reference: <a href="https://www.tencentcloud.com/document/api/1552/103413?from_cn_redirect=1">DescribeL4Proxy</a></p>
         :rtype: list of str
         """
         return self._EntityList
@@ -13924,7 +13927,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Fields(self):
-        r"""Predefined fields for delivery. Value reference: <ul><li>[Site acceleration log (Layer 7 Access Logs)](https://www.tencentcloud.com/document/product/1552/105791?from_cn_redirect=1)</li><li>[Four-layer proxy logs](https://www.tencentcloud.com/document/product/1552/105792?from_cn_redirect=1)</li><li>[Edge Function logs](https://www.tencentcloud.com/document/product/1552/115585?from_cn_redirect=1)</li></ul>
+        r"""<p>Predefined fields for delivery. For reference: <ul><li><a href="https://www.tencentcloud.com/document/product/1552/105791?from_cn_redirect=1">Layer 7 Access Logs (site acceleration log)</a></li><li><a href="https://www.tencentcloud.com/document/product/1552/105792?from_cn_redirect=1">four-layer proxy logs</a></li><li><a href="https://www.tencentcloud.com/document/product/1552/115585?from_cn_redirect=1">edge function logs</a></li></ul></p><p>For reference: DescribeLogFields</p>
         :rtype: list of str
         """
         return self._Fields
@@ -13935,7 +13938,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CustomFields(self):
-        r"""The list of custom fields for log delivery, which supports extracting specified content from HTTP request headers, response headers, cookies, and request bodies. Custom field names must be unique. The number of custom fields cannot exceed a maximum of 200. A single real-time log delivery task can configure up to 5 custom fields of the request body type. Currently, only site acceleration logs (`LogType`=`domain`) support custom fields.
+        r"""<p>Custom fields for delivery support extracting specified content from HTTP request headers, response headers, cookies, and request bodies.<br>Custom field name must be unique. Only Layer 7 access logs (LogType= l7-access-logs or domain) support adding custom fields.<br>The count of custom fields allowed to be configured has a quota limit. If the quota is insufficient, please contact us (https://www.tencentcloud.com/contact-us).</p>
         :rtype: list of CustomField
         """
         return self._CustomFields
@@ -13945,8 +13948,19 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._CustomFields = CustomFields
 
     @property
+    def CustomExpressionFields(self):
+        r"""<p>The list of custom expression fields for submission can be used to implement personalized real-time log content push through custom log push field names and value expressions. For usage details, refer to [Custom Log Field Expressions]().<br>Only Layer 7 Access Logs (LogType= l7-access-logs or domain) support  adding custom fields.<br>There is a quota limit on the count of custom fields that can be configured. If the quota is insufficient, please [contact us](https://www.tencentcloud.com/contact-us).<br>**Note**: If a field named in CustomExpressionFields has the same name as a field in Fields and CustomFields, the value in CustomExpressionFields takes precedence.</p>
+        :rtype: list of CustomExpressionField
+        """
+        return self._CustomExpressionFields
+
+    @CustomExpressionFields.setter
+    def CustomExpressionFields(self, CustomExpressionFields):
+        self._CustomExpressionFields = CustomExpressionFields
+
+    @property
     def DeliveryConditions(self):
-        r"""Filter criteria of log delivery. If this parameter is not specified, all logs will be delivered.
+        r"""<p>Filter criteria of log shipping. If this parameter is not input, all logs will be shipped.</p>
         :rtype: list of DeliveryCondition
         """
         return self._DeliveryConditions
@@ -13957,7 +13971,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Sample(self):
-        r"""Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not specified, the sampling ratio is 100%.
+        r"""<p>Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not input, the sampling ratio is 100%.</p>
         :rtype: int
         """
         return self._Sample
@@ -13968,7 +13982,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        r"""Output format for log delivery. If left empty, the default format is used. The default format logic is as follows:<ul><li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, each JSON object represents a log entry;</li><li>When TaskType is 's3', the default format is JSON Lines;</li></ul>Particularly, when TaskType is 'cls' or 'log_analysis', the only allowed value for LogFormat.FormatType is 'json', and other parameters in LogFormat will be ignored. It is recommended not to transfer LogFormat.
+        r"""<p>Output format for log delivery. For usage details, see <a href="https://www.tencentcloud.com/document/product/1552/110448?from_cn_redirect=1">Custom Log Output Format</a>. If left blank, the default format applies. The default format logic is as follows:<ul><li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, each JSON object represents a log entry;</li><li>When TaskType is 's3', the default format is JSON Lines;</li></ul>Particularly, when TaskType is 'cls' or 'log_analysis', the only allowed value for LogFormat.FormatType is 'json', and other parameters in LogFormat will be ignored. It is recommended not to transfer LogFormat.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         """
         return self._LogFormat
@@ -13979,7 +13993,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CLS(self):
-        r"""Configuration information of CLS. This parameter is required when `TaskType` is `cls`.
+        r"""<p>Configuration information of CLS. This parameter is required when TaskType is cls.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
         """
         return self._CLS
@@ -13990,7 +14004,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CustomEndpoint(self):
-        r"""Configuration information of the custom HTTP endpoint. This parameter is required when `TaskType` is `custom_endpoint`.
+        r"""<p>Configuration information of the custom HTTP service. This parameter is required when TaskType is custom_endpoint.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
         """
         return self._CustomEndpoint
@@ -14001,7 +14015,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def S3(self):
-        r"""Configuration information of the AWS S3-compatible bucket. This parameter is required when `TaskType` is `s3`.
+        r"""<p>Configuration information of the AWS S3-compatible bucket. This parameter is required when TaskType is s3.</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.S3`
         """
         return self._S3
@@ -14025,6 +14039,12 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
                 obj = CustomField()
                 obj._deserialize(item)
                 self._CustomFields.append(obj)
+        if params.get("CustomExpressionFields") is not None:
+            self._CustomExpressionFields = []
+            for item in params.get("CustomExpressionFields"):
+                obj = CustomExpressionField()
+                obj._deserialize(item)
+                self._CustomExpressionFields.append(obj)
         if params.get("DeliveryConditions") is not None:
             self._DeliveryConditions = []
             for item in params.get("DeliveryConditions"):
@@ -14061,7 +14081,7 @@ class CreateRealtimeLogDeliveryTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: ID of the successfully created task.
+        :param _TaskId: <p>ID of the successfully created task.</p>
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -14071,7 +14091,7 @@ class CreateRealtimeLogDeliveryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""ID of the successfully created task.
+        r"""<p>ID of the successfully created task.</p>
         :rtype: str
         """
         return self._TaskId
@@ -15555,6 +15575,72 @@ class CustomErrorPage(AbstractModel):
                 obj = ErrorPageReference()
                 obj._deserialize(item)
                 self._References.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomExpressionField(AbstractModel):
+    r"""Custom log fields in a real-time log delivery task are customizable and support value expression configurations. For usage details, see [Custom Log Field Expression]().
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Custom log field name. Enter 1-100 characters. Allowed characters are letters, digits, and _. It must start with a letter. This name must be unique.</p>
+        :type Name: str
+        :param _Expression: <p>The value expression of a custom log field. The maximum length of the expression is 4KB. For syntax explanation, see <a href="">Custom Log Field Expression</a>.</p>
+        :type Expression: str
+        :param _Enabled: <p>Whether to deliver this field. If left blank, it means not to deliver this field.</p>
+        :type Enabled: bool
+        """
+        self._Name = None
+        self._Expression = None
+        self._Enabled = None
+
+    @property
+    def Name(self):
+        r"""<p>Custom log field name. Enter 1-100 characters. Allowed characters are letters, digits, and _. It must start with a letter. This name must be unique.</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Expression(self):
+        r"""<p>The value expression of a custom log field. The maximum length of the expression is 4KB. For syntax explanation, see <a href="">Custom Log Field Expression</a>.</p>
+        :rtype: str
+        """
+        return self._Expression
+
+    @Expression.setter
+    def Expression(self, Expression):
+        self._Expression = Expression
+
+    @property
+    def Enabled(self):
+        r"""<p>Whether to deliver this field. If left blank, it means not to deliver this field.</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Expression = params.get("Expression")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42834,33 +42920,27 @@ class LoadBalancer(AbstractModel):
 
 
 class LogFormat(AbstractModel):
-    r"""Output format for real-time log delivery. You can directly use the specified predefined log output format (JSON Lines / csv) through the FormatType parameter, or define a variant output format through additional parameters based on the predefined log output format.
+    r"""Output format for real-time log delivery. You can directly use the specified predefined log output format (JSON Lines / csv) through the FormatType parameter, or define a variant output format through additional parameters based on the predefined log output format. For usage details, see Custom Log Output Format (https://www.tencentcloud.com/document/product/1552/110448?from_cn_redirect=1).
 
     """
 
     def __init__(self):
         r"""
-        :param _FormatType: Predefined output format for log shipping. Valid values:
-<li>json: Use JSON Lines as the predefined log output format. In each log entry, fields are displayed as key-value pairs.</li>
-<li>csv: Use the predefined log output format csv, where each log entry only is presented as field values only, excluding field names. </li>
+        :param _FormatType: <p>Log output format. Valid values:</p><ul><li>json: Use the predefined log output format JSON Lines, where each log entry is presented as key-value pairs;</li><li>csv: Use the predefined log output format CSV, where each log entry presents only field values, not field names.</li><li>template: Use a user-customized output template. Each log entry supports custom layout and concatenation based on the custom template, in conjunction with the RecordTemplate field.</li></ul>
         :type FormatType: str
-        :param _BatchPrefix: A string added before each log delivery batch. Each log delivery batch may contain multiple log records.
+        :param _BatchPrefix: <p>A string added before each log delivery batch. Each log delivery batch may contain multiple log records.</p>
         :type BatchPrefix: str
-        :param _BatchSuffix: A string appended after each log delivery batch.
+        :param _BatchSuffix: <p>A string appended after each log delivery batch.</p>
         :type BatchSuffix: str
-        :param _RecordPrefix: A string added before each log record.
+        :param _RecordPrefix: <p>Log prefix, a string added before each log record.</p>
         :type RecordPrefix: str
-        :param _RecordSuffix: A string appended after each log record.
+        :param _RecordSuffix: <p>Single-line log suffix, a string appended after each log record.</p>
         :type RecordSuffix: str
-        :param _RecordDelimiter: A string inserted between log records as a separator. Valid values:
-<li>\n: line break;</li>
-<li>\t: tab character;</li>
-<li>,: Half-width comma. </li>
+        :param _RecordDelimiter: <p>Log separator, a string inserted between log records as a separator. Valid values:</p><ul><li>\n: line break;</li><li>\t: tab character;</li><li>,: half-width comma.</li></ul>
         :type RecordDelimiter: str
-        :param _FieldDelimiter: A string inserted between fields as a separator within a single log record. Valid values:
-<li>\t: tab character;</li>
-<li>,: half-width comma;</li>
-<li>;: Half-width semicolon. </li>
+        :param _RecordTemplate: <p>Log template, output template for a single log, length limited to 4KB, takes effect only when FormatType = template. Supports custom layout and concatenation of configured push fields according to the template.</p>
+        :type RecordTemplate: str
+        :param _FieldDelimiter: <p>Field separator, a string inserted between fields within a single log record as a separator. It takes effect only when FormatType = csv. Valid values:</p><ul><li>\t: tab character;</li><li>,: half-width comma;</li><li>;: half-width semicolon.</li></ul>
         :type FieldDelimiter: str
         """
         self._FormatType = None
@@ -42869,13 +42949,12 @@ class LogFormat(AbstractModel):
         self._RecordPrefix = None
         self._RecordSuffix = None
         self._RecordDelimiter = None
+        self._RecordTemplate = None
         self._FieldDelimiter = None
 
     @property
     def FormatType(self):
-        r"""Predefined output format for log shipping. Valid values:
-<li>json: Use JSON Lines as the predefined log output format. In each log entry, fields are displayed as key-value pairs.</li>
-<li>csv: Use the predefined log output format csv, where each log entry only is presented as field values only, excluding field names. </li>
+        r"""<p>Log output format. Valid values:</p><ul><li>json: Use the predefined log output format JSON Lines, where each log entry is presented as key-value pairs;</li><li>csv: Use the predefined log output format CSV, where each log entry presents only field values, not field names.</li><li>template: Use a user-customized output template. Each log entry supports custom layout and concatenation based on the custom template, in conjunction with the RecordTemplate field.</li></ul>
         :rtype: str
         """
         return self._FormatType
@@ -42886,7 +42965,7 @@ class LogFormat(AbstractModel):
 
     @property
     def BatchPrefix(self):
-        r"""A string added before each log delivery batch. Each log delivery batch may contain multiple log records.
+        r"""<p>A string added before each log delivery batch. Each log delivery batch may contain multiple log records.</p>
         :rtype: str
         """
         return self._BatchPrefix
@@ -42897,7 +42976,7 @@ class LogFormat(AbstractModel):
 
     @property
     def BatchSuffix(self):
-        r"""A string appended after each log delivery batch.
+        r"""<p>A string appended after each log delivery batch.</p>
         :rtype: str
         """
         return self._BatchSuffix
@@ -42908,7 +42987,7 @@ class LogFormat(AbstractModel):
 
     @property
     def RecordPrefix(self):
-        r"""A string added before each log record.
+        r"""<p>Log prefix, a string added before each log record.</p>
         :rtype: str
         """
         return self._RecordPrefix
@@ -42919,7 +42998,7 @@ class LogFormat(AbstractModel):
 
     @property
     def RecordSuffix(self):
-        r"""A string appended after each log record.
+        r"""<p>Single-line log suffix, a string appended after each log record.</p>
         :rtype: str
         """
         return self._RecordSuffix
@@ -42930,10 +43009,7 @@ class LogFormat(AbstractModel):
 
     @property
     def RecordDelimiter(self):
-        r"""A string inserted between log records as a separator. Valid values:
-<li>\n: line break;</li>
-<li>\t: tab character;</li>
-<li>,: Half-width comma. </li>
+        r"""<p>Log separator, a string inserted between log records as a separator. Valid values:</p><ul><li>\n: line break;</li><li>\t: tab character;</li><li>,: half-width comma.</li></ul>
         :rtype: str
         """
         return self._RecordDelimiter
@@ -42943,11 +43019,19 @@ class LogFormat(AbstractModel):
         self._RecordDelimiter = RecordDelimiter
 
     @property
+    def RecordTemplate(self):
+        r"""<p>Log template, output template for a single log, length limited to 4KB, takes effect only when FormatType = template. Supports custom layout and concatenation of configured push fields according to the template.</p>
+        :rtype: str
+        """
+        return self._RecordTemplate
+
+    @RecordTemplate.setter
+    def RecordTemplate(self, RecordTemplate):
+        self._RecordTemplate = RecordTemplate
+
+    @property
     def FieldDelimiter(self):
-        r"""A string inserted between fields as a separator within a single log record. Valid values:
-<li>\t: tab character;</li>
-<li>,: half-width comma;</li>
-<li>;: Half-width semicolon. </li>
+        r"""<p>Field separator, a string inserted between fields within a single log record as a separator. It takes effect only when FormatType = csv. Valid values:</p><ul><li>\t: tab character;</li><li>,: half-width comma;</li><li>;: half-width semicolon.</li></ul>
         :rtype: str
         """
         return self._FieldDelimiter
@@ -42964,6 +43048,7 @@ class LogFormat(AbstractModel):
         self._RecordPrefix = params.get("RecordPrefix")
         self._RecordSuffix = params.get("RecordSuffix")
         self._RecordDelimiter = params.get("RecordDelimiter")
+        self._RecordTemplate = params.get("RecordTemplate")
         self._FieldDelimiter = params.get("FieldDelimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

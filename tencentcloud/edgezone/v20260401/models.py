@@ -198,38 +198,44 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: Availability zone code, such as ap-guangzhou-1.
+        :param _Zone: <p>Availability zone code, such as ap-guangzhou-1.</p>
         :type Zone: str
-        :param _InstanceType: Model specifications, such as BMS5.MEDIUM8.
+        :param _InstanceType: <p>Model specifications, such as BMS5.MEDIUM8.</p>
         :type InstanceType: str
-        :param _InstanceName: Instance name.
-        :type InstanceName: str
-        :param _PrivateNetworkId: Private network instance ID in the format of net-xxx.
+        :param _PrivateNetworkId: <p>Private network instance ID in the format of net-xxx.</p>
         :type PrivateNetworkId: str
-        :param _PublicNetworkId: Public network instance ID, in the format of net-xxx.
+        :param _PublicNetworkId: <p>Public network instance ID, in the format of net-xxx.</p>
         :type PublicNetworkId: str
-        :param _ImageId: Image ID, for example img-centos-7.9.
+        :param _InstanceName: <p>Instance name.</p>
+        :type InstanceName: str
+        :param _ImageId: <p>Image ID, for example img-centos-7.9.</p>
         :type ImageId: str
-        :param _InstanceCount: Specify the quantity. Default is 1. Maximum is 50.
+        :param _InstanceCount: <p>Specify the quantity. Default is 1. Maximum is 50.</p>
         :type InstanceCount: int
-        :param _VersionNumber: Image version number. Only public images have the concept of version.
+        :param _Password: <p>Login password. Either it or SSHKey is required.</p>
+        :type Password: str
+        :param _SSHKey: <p>Public key string of the SSH key. Either this parameter or Password must be specified.</p>
+        :type SSHKey: str
+        :param _VersionNumber: <p>Image version number. Only public images have the concept of version.</p>
         :type VersionNumber: str
-        :param _EnableIpv6: Whether to enable public IPv6, default false. Enabled, the system will allocate an additional IPv6 address after assigning an IPv4 address.
+        :param _EnableIpv6: <p>Whether to enable public IPv6, default false. Enabled, the system will allocate an additional IPv6 address after assigning an IPv4 address.</p>
         :type EnableIpv6: bool
         """
         self._Zone = None
         self._InstanceType = None
-        self._InstanceName = None
         self._PrivateNetworkId = None
         self._PublicNetworkId = None
+        self._InstanceName = None
         self._ImageId = None
         self._InstanceCount = None
+        self._Password = None
+        self._SSHKey = None
         self._VersionNumber = None
         self._EnableIpv6 = None
 
     @property
     def Zone(self):
-        r"""Availability zone code, such as ap-guangzhou-1.
+        r"""<p>Availability zone code, such as ap-guangzhou-1.</p>
         :rtype: str
         """
         return self._Zone
@@ -240,7 +246,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Model specifications, such as BMS5.MEDIUM8.
+        r"""<p>Model specifications, such as BMS5.MEDIUM8.</p>
         :rtype: str
         """
         return self._InstanceType
@@ -250,19 +256,8 @@ class CreateInstancesRequest(AbstractModel):
         self._InstanceType = InstanceType
 
     @property
-    def InstanceName(self):
-        r"""Instance name.
-        :rtype: str
-        """
-        return self._InstanceName
-
-    @InstanceName.setter
-    def InstanceName(self, InstanceName):
-        self._InstanceName = InstanceName
-
-    @property
     def PrivateNetworkId(self):
-        r"""Private network instance ID in the format of net-xxx.
+        r"""<p>Private network instance ID in the format of net-xxx.</p>
         :rtype: str
         """
         return self._PrivateNetworkId
@@ -273,7 +268,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def PublicNetworkId(self):
-        r"""Public network instance ID, in the format of net-xxx.
+        r"""<p>Public network instance ID, in the format of net-xxx.</p>
         :rtype: str
         """
         return self._PublicNetworkId
@@ -283,8 +278,19 @@ class CreateInstancesRequest(AbstractModel):
         self._PublicNetworkId = PublicNetworkId
 
     @property
+    def InstanceName(self):
+        r"""<p>Instance name.</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
     def ImageId(self):
-        r"""Image ID, for example img-centos-7.9.
+        r"""<p>Image ID, for example img-centos-7.9.</p>
         :rtype: str
         """
         return self._ImageId
@@ -295,7 +301,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        r"""Specify the quantity. Default is 1. Maximum is 50.
+        r"""<p>Specify the quantity. Default is 1. Maximum is 50.</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -305,36 +311,68 @@ class CreateInstancesRequest(AbstractModel):
         self._InstanceCount = InstanceCount
 
     @property
+    def Password(self):
+        r"""<p>Login password. Either it or SSHKey is required.</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def SSHKey(self):
+        r"""<p>Public key string of the SSH key. Either this parameter or Password must be specified.</p>
+        :rtype: str
+        """
+        return self._SSHKey
+
+    @SSHKey.setter
+    def SSHKey(self, SSHKey):
+        self._SSHKey = SSHKey
+
+    @property
     def VersionNumber(self):
-        r"""Image version number. Only public images have the concept of version.
+        warnings.warn("parameter `VersionNumber` is deprecated", DeprecationWarning) 
+
+        r"""<p>Image version number. Only public images have the concept of version.</p>
         :rtype: str
         """
         return self._VersionNumber
 
     @VersionNumber.setter
     def VersionNumber(self, VersionNumber):
+        warnings.warn("parameter `VersionNumber` is deprecated", DeprecationWarning) 
+
         self._VersionNumber = VersionNumber
 
     @property
     def EnableIpv6(self):
-        r"""Whether to enable public IPv6, default false. Enabled, the system will allocate an additional IPv6 address after assigning an IPv4 address.
+        warnings.warn("parameter `EnableIpv6` is deprecated", DeprecationWarning) 
+
+        r"""<p>Whether to enable public IPv6, default false. Enabled, the system will allocate an additional IPv6 address after assigning an IPv4 address.</p>
         :rtype: bool
         """
         return self._EnableIpv6
 
     @EnableIpv6.setter
     def EnableIpv6(self, EnableIpv6):
+        warnings.warn("parameter `EnableIpv6` is deprecated", DeprecationWarning) 
+
         self._EnableIpv6 = EnableIpv6
 
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._InstanceType = params.get("InstanceType")
-        self._InstanceName = params.get("InstanceName")
         self._PrivateNetworkId = params.get("PrivateNetworkId")
         self._PublicNetworkId = params.get("PublicNetworkId")
+        self._InstanceName = params.get("InstanceName")
         self._ImageId = params.get("ImageId")
         self._InstanceCount = params.get("InstanceCount")
+        self._Password = params.get("Password")
+        self._SSHKey = params.get("SSHKey")
         self._VersionNumber = params.get("VersionNumber")
         self._EnableIpv6 = params.get("EnableIpv6")
         memeber_set = set(params.keys())
@@ -354,9 +392,9 @@ class CreateInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIdSet: List of successfully created instance IDs.
+        :param _InstanceIdSet: <p>List of successfully created instance IDs.</p>
         :type InstanceIdSet: list of str
-        :param _FailedCount: Count of failed instances. This field is returned only when partially failed, not returned when all successful.
+        :param _FailedCount: <p>Count of failed instances. This field is returned only when partially failed, not returned when all successful.</p>
         :type FailedCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -367,7 +405,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        r"""List of successfully created instance IDs.
+        r"""<p>List of successfully created instance IDs.</p>
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -378,7 +416,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def FailedCount(self):
-        r"""Count of failed instances. This field is returned only when partially failed, not returned when all successful.
+        r"""<p>Count of failed instances. This field is returned only when partially failed, not returned when all successful.</p>
         :rtype: int
         """
         return self._FailedCount
@@ -805,8 +843,14 @@ class DescribeInstanceTypesRequest(AbstractModel):
         r"""
         :param _Zone: Availability zone code, such as ap-guangzhou-1. If not passed, return models under the account in all AZs.
         :type Zone: str
+        :param _Offset: Pagination offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Pagination size. Default value: 20. Maximum value: 100.
+        :type Limit: int
         """
         self._Zone = None
+        self._Offset = None
+        self._Limit = None
 
     @property
     def Zone(self):
@@ -819,9 +863,33 @@ class DescribeInstanceTypesRequest(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def Offset(self):
+        r"""Pagination offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""Pagination size. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -902,32 +970,38 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Instance ID list for filtering by instance ID
+        :param _InstanceIds: <p>Instance ID list for filtering by instance ID</p>
         :type InstanceIds: list of str
-        :param _InstanceName: Instance name, supports fuzzy matching
+        :param _InstanceName: <p>Instance name, supports fuzzy matching.</p>
         :type InstanceName: str
-        :param _Zone: Availability zone code for filtering instances in the specified availability zone
+        :param _Zone: <p>Availability zone code for filtering instances in the specified availability zone</p>
         :type Zone: str
-        :param _InstanceStatus: Instance status list for status filtering. Available values: allocating, running, isolating, isolated, terminating, error.
+        :param _InstanceStatus: <p>Instance status list for status filtering. Available values: allocating, running, isolating, isolated, terminating, error.</p>
         :type InstanceStatus: list of str
-        :param _PublicIps: Public IPv4 address list, used for filtering instances by public IP address
+        :param _PublicNetworkId: <p>Public network ID.</p>
+        :type PublicNetworkId: str
+        :param _PrivateNetworkId: <p>VPC ID.</p>
+        :type PrivateNetworkId: str
+        :param _PublicIps: <p>Public IPv4 address list, used for filtering instances by public IP address</p>
         :type PublicIps: list of str
-        :param _Offset: Offset. Default value: 0
+        :param _Offset: <p>Offset. Default value: 0.</p>
         :type Offset: int
-        :param _Limit: Number of returned results. Default 20. Maximum 100.
+        :param _Limit: <p>Number of returned results. Default 20. Maximum 100.</p>
         :type Limit: int
         """
         self._InstanceIds = None
         self._InstanceName = None
         self._Zone = None
         self._InstanceStatus = None
+        self._PublicNetworkId = None
+        self._PrivateNetworkId = None
         self._PublicIps = None
         self._Offset = None
         self._Limit = None
 
     @property
     def InstanceIds(self):
-        r"""Instance ID list for filtering by instance ID
+        r"""<p>Instance ID list for filtering by instance ID</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -938,7 +1012,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name, supports fuzzy matching
+        r"""<p>Instance name, supports fuzzy matching.</p>
         :rtype: str
         """
         return self._InstanceName
@@ -949,7 +1023,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Availability zone code for filtering instances in the specified availability zone
+        r"""<p>Availability zone code for filtering instances in the specified availability zone</p>
         :rtype: str
         """
         return self._Zone
@@ -960,7 +1034,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""Instance status list for status filtering. Available values: allocating, running, isolating, isolated, terminating, error.
+        r"""<p>Instance status list for status filtering. Available values: allocating, running, isolating, isolated, terminating, error.</p>
         :rtype: list of str
         """
         return self._InstanceStatus
@@ -970,8 +1044,30 @@ class DescribeInstancesRequest(AbstractModel):
         self._InstanceStatus = InstanceStatus
 
     @property
+    def PublicNetworkId(self):
+        r"""<p>Public network ID.</p>
+        :rtype: str
+        """
+        return self._PublicNetworkId
+
+    @PublicNetworkId.setter
+    def PublicNetworkId(self, PublicNetworkId):
+        self._PublicNetworkId = PublicNetworkId
+
+    @property
+    def PrivateNetworkId(self):
+        r"""<p>VPC ID.</p>
+        :rtype: str
+        """
+        return self._PrivateNetworkId
+
+    @PrivateNetworkId.setter
+    def PrivateNetworkId(self, PrivateNetworkId):
+        self._PrivateNetworkId = PrivateNetworkId
+
+    @property
     def PublicIps(self):
-        r"""Public IPv4 address list, used for filtering instances by public IP address
+        r"""<p>Public IPv4 address list, used for filtering instances by public IP address</p>
         :rtype: list of str
         """
         return self._PublicIps
@@ -982,7 +1078,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset. Default value: 0
+        r"""<p>Offset. Default value: 0.</p>
         :rtype: int
         """
         return self._Offset
@@ -993,7 +1089,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Number of returned results. Default 20. Maximum 100.
+        r"""<p>Number of returned results. Default 20. Maximum 100.</p>
         :rtype: int
         """
         return self._Limit
@@ -1008,6 +1104,8 @@ class DescribeInstancesRequest(AbstractModel):
         self._InstanceName = params.get("InstanceName")
         self._Zone = params.get("Zone")
         self._InstanceStatus = params.get("InstanceStatus")
+        self._PublicNetworkId = params.get("PublicNetworkId")
+        self._PrivateNetworkId = params.get("PrivateNetworkId")
         self._PublicIps = params.get("PublicIps")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
@@ -1028,9 +1126,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceSet: Instance detail list
+        :param _InstanceSet: <p>Instance detail list</p>
         :type InstanceSet: list of Instance
-        :param _TotalCount: Number of Eligible Instances
+        :param _TotalCount: <p>Number of eligible instances.</p>
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1041,7 +1139,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        r"""Instance detail list
+        r"""<p>Instance detail list</p>
         :rtype: list of Instance
         """
         return self._InstanceSet
@@ -1052,7 +1150,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Number of Eligible Instances
+        r"""<p>Number of eligible instances.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -1763,9 +1861,9 @@ class DescribeZonesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneSet: Availability zone list of all regions.
+        :param _ZoneSet: <p>AZ list of all regions.</p>
         :type ZoneSet: list of ZoneInfo
-        :param _TotalCount: Total number of availability zones.
+        :param _TotalCount: <p>Total number of availability zones.</p>
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1776,7 +1874,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
-        r"""Availability zone list of all regions.
+        r"""<p>AZ list of all regions.</p>
         :rtype: list of ZoneInfo
         """
         return self._ZoneSet
@@ -1787,7 +1885,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""Total number of availability zones.
+        r"""<p>Total number of availability zones.</p>
         :rtype: int
         """
         return self._TotalCount
@@ -1892,38 +1990,50 @@ class Instance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: <p>Instance ID.</p>
         :type InstanceId: str
-        :param _InstanceName: Instance name.
+        :param _InstanceName: <p>Instance name.</p>
         :type InstanceName: str
-        :param _MachineId: Bound Physical Machine ID
+        :param _MachineId: <p>Bound Physical Machine ID</p>
         :type MachineId: str
-        :param _InstanceType: Model specifications
+        :param _InstanceType: <p>Model specifications</p>
         :type InstanceType: str
-        :param _Zone: Availability zone code
+        :param _Zone: <p>Availability zone code</p>
         :type Zone: str
-        :param _ImageId: Image ID
+        :param _ImageId: <p>Image ID.</p>
         :type ImageId: str
-        :param _VersionNumber: Image version number
+        :param _VersionNumber: <p>Image version number</p>
         :type VersionNumber: str
-        :param _InstanceStatus: Instance status, value range: allocating, running, isolating, isolated, terminating, error.
+        :param _InstanceStatus: <p>Instance status, value range: allocating, running, isolating, isolated, terminating, error.</p>
         :type InstanceStatus: str
-        :param _OperateStatus: Operation status: normal, starting, stopping, stopped, rebooting.
+        :param _OperateStatus: <p>Operation status: normal, starting, stopping, stopped, rebooting.</p>
         :type OperateStatus: str
-        :param _PrivateNetworkId: VPC ID
+        :param _PrivateNetworkId: <p>VPC ID.</p>
         :type PrivateNetworkId: str
-        :param _PrivateIp: private IPv4 address
+        :param _PrivateIp: <p>Private IPv4 address</p>
         :type PrivateIp: str
-        :param _PrivateIpV6: private IPv6 address
+        :param _PrivateIpV6: <p>Private IPv6 address</p>
         :type PrivateIpV6: str
-        :param _PublicNetworkId: Public network ID
+        :param _PublicNetworkId: <p>Public network ID.</p>
         :type PublicNetworkId: str
-        :param _PublicIp: Public IPv4 address
+        :param _PublicIp: <p>Public IPv4 address</p>
         :type PublicIp: str
-        :param _PublicIpV6: Public IPv6 address
+        :param _PublicIpV6: <p>Public IPv6 address</p>
         :type PublicIpV6: str
-        :param _CreatedTime: Creation time, expressed according to the ISO8601 standard and using the UTC time. The format is YYYY-MM-DDThh:mm:ssZ.
+        :param _FileSystemType: <p>File System Type</p>
+        :type FileSystemType: str
+        :param _CreatedTime: <p>Creation time, in the ISO 8601 standard format, using UTC time. Format: YYYY-MM-DDThh:mm:ssZ.</p>
         :type CreatedTime: str
+        :param _InstanceFamily: <p>Instance family flag</p>
+        :type InstanceFamily: str
+        :param _InstanceFamilyName: <p>Model Family Name</p>
+        :type InstanceFamilyName: str
+        :param _CpuType: <p>CPU Model</p>
+        :type CpuType: str
+        :param _Cpu: <p>CPU cores.</p>
+        :type Cpu: int
+        :param _Memory: <p>Memory size.</p>
+        :type Memory: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -1940,11 +2050,17 @@ class Instance(AbstractModel):
         self._PublicNetworkId = None
         self._PublicIp = None
         self._PublicIpV6 = None
+        self._FileSystemType = None
         self._CreatedTime = None
+        self._InstanceFamily = None
+        self._InstanceFamilyName = None
+        self._CpuType = None
+        self._Cpu = None
+        self._Memory = None
 
     @property
     def InstanceId(self):
-        r"""Instance ID.
+        r"""<p>Instance ID.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1955,7 +2071,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name.
+        r"""<p>Instance name.</p>
         :rtype: str
         """
         return self._InstanceName
@@ -1966,7 +2082,7 @@ class Instance(AbstractModel):
 
     @property
     def MachineId(self):
-        r"""Bound Physical Machine ID
+        r"""<p>Bound Physical Machine ID</p>
         :rtype: str
         """
         return self._MachineId
@@ -1977,7 +2093,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""Model specifications
+        r"""<p>Model specifications</p>
         :rtype: str
         """
         return self._InstanceType
@@ -1988,7 +2104,7 @@ class Instance(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Availability zone code
+        r"""<p>Availability zone code</p>
         :rtype: str
         """
         return self._Zone
@@ -1999,7 +2115,7 @@ class Instance(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""Image ID
+        r"""<p>Image ID.</p>
         :rtype: str
         """
         return self._ImageId
@@ -2010,18 +2126,22 @@ class Instance(AbstractModel):
 
     @property
     def VersionNumber(self):
-        r"""Image version number
+        warnings.warn("parameter `VersionNumber` is deprecated", DeprecationWarning) 
+
+        r"""<p>Image version number</p>
         :rtype: str
         """
         return self._VersionNumber
 
     @VersionNumber.setter
     def VersionNumber(self, VersionNumber):
+        warnings.warn("parameter `VersionNumber` is deprecated", DeprecationWarning) 
+
         self._VersionNumber = VersionNumber
 
     @property
     def InstanceStatus(self):
-        r"""Instance status, value range: allocating, running, isolating, isolated, terminating, error.
+        r"""<p>Instance status, value range: allocating, running, isolating, isolated, terminating, error.</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -2032,7 +2152,7 @@ class Instance(AbstractModel):
 
     @property
     def OperateStatus(self):
-        r"""Operation status: normal, starting, stopping, stopped, rebooting.
+        r"""<p>Operation status: normal, starting, stopping, stopped, rebooting.</p>
         :rtype: str
         """
         return self._OperateStatus
@@ -2043,7 +2163,7 @@ class Instance(AbstractModel):
 
     @property
     def PrivateNetworkId(self):
-        r"""VPC ID
+        r"""<p>VPC ID.</p>
         :rtype: str
         """
         return self._PrivateNetworkId
@@ -2054,7 +2174,7 @@ class Instance(AbstractModel):
 
     @property
     def PrivateIp(self):
-        r"""private IPv4 address
+        r"""<p>Private IPv4 address</p>
         :rtype: str
         """
         return self._PrivateIp
@@ -2065,7 +2185,7 @@ class Instance(AbstractModel):
 
     @property
     def PrivateIpV6(self):
-        r"""private IPv6 address
+        r"""<p>Private IPv6 address</p>
         :rtype: str
         """
         return self._PrivateIpV6
@@ -2076,7 +2196,7 @@ class Instance(AbstractModel):
 
     @property
     def PublicNetworkId(self):
-        r"""Public network ID
+        r"""<p>Public network ID.</p>
         :rtype: str
         """
         return self._PublicNetworkId
@@ -2087,7 +2207,7 @@ class Instance(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""Public IPv4 address
+        r"""<p>Public IPv4 address</p>
         :rtype: str
         """
         return self._PublicIp
@@ -2098,7 +2218,7 @@ class Instance(AbstractModel):
 
     @property
     def PublicIpV6(self):
-        r"""Public IPv6 address
+        r"""<p>Public IPv6 address</p>
         :rtype: str
         """
         return self._PublicIpV6
@@ -2108,8 +2228,19 @@ class Instance(AbstractModel):
         self._PublicIpV6 = PublicIpV6
 
     @property
+    def FileSystemType(self):
+        r"""<p>File System Type</p>
+        :rtype: str
+        """
+        return self._FileSystemType
+
+    @FileSystemType.setter
+    def FileSystemType(self, FileSystemType):
+        self._FileSystemType = FileSystemType
+
+    @property
     def CreatedTime(self):
-        r"""Creation time, expressed according to the ISO8601 standard and using the UTC time. The format is YYYY-MM-DDThh:mm:ssZ.
+        r"""<p>Creation time, in the ISO 8601 standard format, using UTC time. Format: YYYY-MM-DDThh:mm:ssZ.</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -2117,6 +2248,61 @@ class Instance(AbstractModel):
     @CreatedTime.setter
     def CreatedTime(self, CreatedTime):
         self._CreatedTime = CreatedTime
+
+    @property
+    def InstanceFamily(self):
+        r"""<p>Instance family flag</p>
+        :rtype: str
+        """
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
+
+    @property
+    def InstanceFamilyName(self):
+        r"""<p>Model Family Name</p>
+        :rtype: str
+        """
+        return self._InstanceFamilyName
+
+    @InstanceFamilyName.setter
+    def InstanceFamilyName(self, InstanceFamilyName):
+        self._InstanceFamilyName = InstanceFamilyName
+
+    @property
+    def CpuType(self):
+        r"""<p>CPU Model</p>
+        :rtype: str
+        """
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
+    def Cpu(self):
+        r"""<p>CPU cores.</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""<p>Memory size.</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
 
 
     def _deserialize(self, params):
@@ -2135,7 +2321,13 @@ class Instance(AbstractModel):
         self._PublicNetworkId = params.get("PublicNetworkId")
         self._PublicIp = params.get("PublicIp")
         self._PublicIpV6 = params.get("PublicIpV6")
+        self._FileSystemType = params.get("FileSystemType")
         self._CreatedTime = params.get("CreatedTime")
+        self._InstanceFamily = params.get("InstanceFamily")
+        self._InstanceFamilyName = params.get("InstanceFamilyName")
+        self._CpuType = params.get("CpuType")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2159,6 +2351,8 @@ class InstanceTypeQuota(AbstractModel):
         :type InstanceType: str
         :param _InstanceFamily: Model family.
         :type InstanceFamily: str
+        :param _InstanceFamilyName: Model family name
+        :type InstanceFamilyName: str
         :param _CpuCores: Number of CPU cores.
         :type CpuCores: int
         :param _CpuType: CPU type.
@@ -2177,18 +2371,25 @@ class InstanceTypeQuota(AbstractModel):
         :type DataDiskSize: int
         :param _DataDiskCount: Number of data disks.
         :type DataDiskCount: int
+        :param _SecondaryDataDiskType: Second set of data disk types
+        :type SecondaryDataDiskType: str
+        :param _SecondaryDataDiskSize: Data disk size of the second group (GB)
+        :type SecondaryDataDiskSize: int
+        :param _SecondaryDataDiskCount: Number of data disks in the second set
+        :type SecondaryDataDiskCount: int
         :param _DiskType: Disk description string (backward compatibility).
         :type DiskType: str
         :param _NetworkInterfaceType: Network interface type.
         :type NetworkInterfaceType: str
         :param _GpuType: GPU type. Empty string if no GPU is available.
         :type GpuType: str
-        :param _Quota: Quota quantity. 0 indicates no restriction.
+        :param _Quota: Quota quantity
         :type Quota: int
         """
         self._Zone = None
         self._InstanceType = None
         self._InstanceFamily = None
+        self._InstanceFamilyName = None
         self._CpuCores = None
         self._CpuType = None
         self._MemoryGb = None
@@ -2198,6 +2399,9 @@ class InstanceTypeQuota(AbstractModel):
         self._DataDiskType = None
         self._DataDiskSize = None
         self._DataDiskCount = None
+        self._SecondaryDataDiskType = None
+        self._SecondaryDataDiskSize = None
+        self._SecondaryDataDiskCount = None
         self._DiskType = None
         self._NetworkInterfaceType = None
         self._GpuType = None
@@ -2235,6 +2439,17 @@ class InstanceTypeQuota(AbstractModel):
     @InstanceFamily.setter
     def InstanceFamily(self, InstanceFamily):
         self._InstanceFamily = InstanceFamily
+
+    @property
+    def InstanceFamilyName(self):
+        r"""Model family name
+        :rtype: str
+        """
+        return self._InstanceFamilyName
+
+    @InstanceFamilyName.setter
+    def InstanceFamilyName(self, InstanceFamilyName):
+        self._InstanceFamilyName = InstanceFamilyName
 
     @property
     def CpuCores(self):
@@ -2336,6 +2551,39 @@ class InstanceTypeQuota(AbstractModel):
         self._DataDiskCount = DataDiskCount
 
     @property
+    def SecondaryDataDiskType(self):
+        r"""Second set of data disk types
+        :rtype: str
+        """
+        return self._SecondaryDataDiskType
+
+    @SecondaryDataDiskType.setter
+    def SecondaryDataDiskType(self, SecondaryDataDiskType):
+        self._SecondaryDataDiskType = SecondaryDataDiskType
+
+    @property
+    def SecondaryDataDiskSize(self):
+        r"""Data disk size of the second group (GB)
+        :rtype: int
+        """
+        return self._SecondaryDataDiskSize
+
+    @SecondaryDataDiskSize.setter
+    def SecondaryDataDiskSize(self, SecondaryDataDiskSize):
+        self._SecondaryDataDiskSize = SecondaryDataDiskSize
+
+    @property
+    def SecondaryDataDiskCount(self):
+        r"""Number of data disks in the second set
+        :rtype: int
+        """
+        return self._SecondaryDataDiskCount
+
+    @SecondaryDataDiskCount.setter
+    def SecondaryDataDiskCount(self, SecondaryDataDiskCount):
+        self._SecondaryDataDiskCount = SecondaryDataDiskCount
+
+    @property
     def DiskType(self):
         r"""Disk description string (backward compatibility).
         :rtype: str
@@ -2370,7 +2618,7 @@ class InstanceTypeQuota(AbstractModel):
 
     @property
     def Quota(self):
-        r"""Quota quantity. 0 indicates no restriction.
+        r"""Quota quantity
         :rtype: int
         """
         return self._Quota
@@ -2384,6 +2632,7 @@ class InstanceTypeQuota(AbstractModel):
         self._Zone = params.get("Zone")
         self._InstanceType = params.get("InstanceType")
         self._InstanceFamily = params.get("InstanceFamily")
+        self._InstanceFamilyName = params.get("InstanceFamilyName")
         self._CpuCores = params.get("CpuCores")
         self._CpuType = params.get("CpuType")
         self._MemoryGb = params.get("MemoryGb")
@@ -2393,6 +2642,9 @@ class InstanceTypeQuota(AbstractModel):
         self._DataDiskType = params.get("DataDiskType")
         self._DataDiskSize = params.get("DataDiskSize")
         self._DataDiskCount = params.get("DataDiskCount")
+        self._SecondaryDataDiskType = params.get("SecondaryDataDiskType")
+        self._SecondaryDataDiskSize = params.get("SecondaryDataDiskSize")
+        self._SecondaryDataDiskCount = params.get("SecondaryDataDiskCount")
         self._DiskType = params.get("DiskType")
         self._NetworkInterfaceType = params.get("NetworkInterfaceType")
         self._GpuType = params.get("GpuType")
@@ -2578,6 +2830,8 @@ class ModifyInstanceAttributeRequest(AbstractModel):
 
     @property
     def NewPublicIp(self):
+        warnings.warn("parameter `NewPublicIp` is deprecated", DeprecationWarning) 
+
         r"""New public IP address (select from available IP addresses of the public network instance bound to the instance). Provide at least one of this or InstanceName.
         :rtype: str
         """
@@ -2585,10 +2839,14 @@ class ModifyInstanceAttributeRequest(AbstractModel):
 
     @NewPublicIp.setter
     def NewPublicIp(self, NewPublicIp):
+        warnings.warn("parameter `NewPublicIp` is deprecated", DeprecationWarning) 
+
         self._NewPublicIp = NewPublicIp
 
     @property
     def IpType(self):
+        warnings.warn("parameter `IpType` is deprecated", DeprecationWarning) 
+
         r"""IP type, ipv4 or ipv6. Default is ipv4. Valid only when NewPublicIp is specified.
         :rtype: str
         """
@@ -2596,6 +2854,8 @@ class ModifyInstanceAttributeRequest(AbstractModel):
 
     @IpType.setter
     def IpType(self, IpType):
+        warnings.warn("parameter `IpType` is deprecated", DeprecationWarning) 
+
         self._IpType = IpType
 
 
@@ -3393,14 +3653,14 @@ class TerminateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: Instance ID list. Maximum number of IDs: 100.
+        :param _InstanceIds: <p>Instance ID list. Maximum number of IDs: 100.</p>
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
 
     @property
     def InstanceIds(self):
-        r"""Instance ID list. Maximum number of IDs: 100.
+        r"""<p>Instance ID list. Maximum number of IDs: 100.</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -3429,10 +3689,9 @@ class TerminateInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIdSet: List of instance IDs successfully terminated.
+        :param _InstanceIdSet: <p>List of instance IDs successfully terminated.</p>
         :type InstanceIdSet: list of str
-        :param _FailedInstanceSet: List of instances with termination failed (returned when partially successful).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FailedInstanceSet: <p>List of instances with termination failed (returned when partially successful).</p>
         :type FailedInstanceSet: list of FailedInstance
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3443,7 +3702,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceIdSet(self):
-        r"""List of instance IDs successfully terminated.
+        r"""<p>List of instance IDs successfully terminated.</p>
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -3454,8 +3713,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailedInstanceSet(self):
-        r"""List of instances with termination failed (returned when partially successful).
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>List of instances with termination failed (returned when partially successful).</p>
         :rtype: list of FailedInstance
         """
         return self._FailedInstanceSet
@@ -3504,9 +3762,9 @@ class ZoneInfo(AbstractModel):
         :type ZoneNameEn: str
         :param _Region: Region code.
         :type Region: str
-        :param _Location: Area code
+        :param _Location: Area code.
         :type Location: str
-        :param _LocationName: Zone Name
+        :param _LocationName: Region name.
         :type LocationName: str
         """
         self._ZoneId = None
@@ -3574,7 +3832,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Location(self):
-        r"""Area code
+        r"""Area code.
         :rtype: str
         """
         return self._Location
@@ -3585,7 +3843,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def LocationName(self):
-        r"""Zone Name
+        r"""Region name.
         :rtype: str
         """
         return self._LocationName

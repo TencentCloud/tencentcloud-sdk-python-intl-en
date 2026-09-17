@@ -962,9 +962,9 @@ class AdBreakSetting(AbstractModel):
         :type AdSource: str
         :param _LSqueezeSetting: L-type compression recovery configuration
         :type LSqueezeSetting: :class:`tencentcloud.mdl.v20200326.models.LSqueezeSetting`
-        :param _PipSetting: 
+        :param _PipSetting: Picture in picture configuration
         :type PipSetting: :class:`tencentcloud.mdl.v20200326.models.PipSetting`
-        :param _BorderFrameSetting: 
+        :param _BorderFrameSetting: Circular setting
         :type BorderFrameSetting: :class:`tencentcloud.mdl.v20200326.models.BorderFrameSetting`
         """
         self._Format = None
@@ -1020,7 +1020,7 @@ class AdBreakSetting(AbstractModel):
 
     @property
     def PipSetting(self):
-        r"""
+        r"""Picture in picture configuration
         :rtype: :class:`tencentcloud.mdl.v20200326.models.PipSetting`
         """
         return self._PipSetting
@@ -1031,7 +1031,7 @@ class AdBreakSetting(AbstractModel):
 
     @property
     def BorderFrameSetting(self):
-        r"""
+        r"""Circular setting
         :rtype: :class:`tencentcloud.mdl.v20200326.models.BorderFrameSetting`
         """
         return self._BorderFrameSetting
@@ -1975,9 +1975,9 @@ class BorderFrameSetting(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LiveSourceLayout: 
+        :param _LiveSourceLayout: Live streaming source layout configuration
         :type LiveSourceLayout: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
-        :param _BackgroundImgUrl: 
+        :param _BackgroundImgUrl: Background image URL, starting with http/https and ending in jpg/jpeg/png, (only required for UPLOAD_CREATIVES)
         :type BackgroundImgUrl: str
         """
         self._LiveSourceLayout = None
@@ -1985,7 +1985,7 @@ class BorderFrameSetting(AbstractModel):
 
     @property
     def LiveSourceLayout(self):
-        r"""
+        r"""Live streaming source layout configuration
         :rtype: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
         """
         return self._LiveSourceLayout
@@ -1996,7 +1996,7 @@ class BorderFrameSetting(AbstractModel):
 
     @property
     def BackgroundImgUrl(self):
-        r"""
+        r"""Background image URL, starting with http/https and ending in jpg/jpeg/png, (only required for UPLOAD_CREATIVES)
         :rtype: str
         """
         return self._BackgroundImgUrl
@@ -8838,7 +8838,7 @@ class InputTracks(AbstractModel):
 
 
 class LSqueezeSetting(AbstractModel):
-    r"""
+    r"""Compression Recovery Configuration
 
     """
 
@@ -9651,7 +9651,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
         :type ImageSettings: :class:`tencentcloud.mdl.v20200326.models.CreateImageSettings`
         :param _TextSettings: Watermark text settings. This parameter is valid if `Type` is `TEXT`.
         :type TextSettings: :class:`tencentcloud.mdl.v20200326.models.CreateTextSettings`
-        :param _AbWatermarkSettings: 
+        :param _AbWatermarkSettings: AB watermark configuration.
         :type AbWatermarkSettings: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkSettingsReq`
         """
         self._Id = None
@@ -9706,7 +9706,7 @@ class ModifyStreamLiveWatermarkRequest(AbstractModel):
 
     @property
     def AbWatermarkSettings(self):
-        r"""
+        r"""AB watermark configuration.
         :rtype: :class:`tencentcloud.mdl.v20200326.models.AbWatermarkSettingsReq`
         """
         return self._AbWatermarkSettings
@@ -9767,7 +9767,7 @@ class ModifyStreamLiveWatermarkResponse(AbstractModel):
 
 
 class MotionGraphicsActivateSetting(AbstractModel):
-    r"""
+    r"""Dynamic graphic information.
 
     """
 
@@ -10079,21 +10079,21 @@ class OutputsStatistics(AbstractModel):
 
 
 class PipSetting(AbstractModel):
-    r"""
+    r"""Picture in Picture Settings
 
     """
 
     def __init__(self):
         r"""
-        :param _AudioSelection: 
+        :param _AudioSelection: Audio selection: LIVE_SOURCE or AD_SOURCE
         :type AudioSelection: str
-        :param _LiveSourceLayout: 
+        :param _LiveSourceLayout: Live streaming source layout configuration
         :type LiveSourceLayout: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
-        :param _AdSourceLayout: 
+        :param _AdSourceLayout: Advertisement source layout configuration
         :type AdSourceLayout: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
-        :param _BackgroundImgUrl: 
+        :param _BackgroundImgUrl: Background image URL, starting with http/https and ending in jpg/jpeg/png (only required for UPLOAD_CREATIVES)
         :type BackgroundImgUrl: str
-        :param _AdSourceUrl: 
+        :param _AdSourceUrl: Advertisement video URL, starting with http/https and ending in mp4 (only required for UPLOAD_CREATIVES)
         :type AdSourceUrl: str
         """
         self._AudioSelection = None
@@ -10104,7 +10104,7 @@ class PipSetting(AbstractModel):
 
     @property
     def AudioSelection(self):
-        r"""
+        r"""Audio selection: LIVE_SOURCE or AD_SOURCE
         :rtype: str
         """
         return self._AudioSelection
@@ -10115,7 +10115,7 @@ class PipSetting(AbstractModel):
 
     @property
     def LiveSourceLayout(self):
-        r"""
+        r"""Live streaming source layout configuration
         :rtype: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
         """
         return self._LiveSourceLayout
@@ -10126,7 +10126,7 @@ class PipSetting(AbstractModel):
 
     @property
     def AdSourceLayout(self):
-        r"""
+        r"""Advertisement source layout configuration
         :rtype: :class:`tencentcloud.mdl.v20200326.models.SourceLayout`
         """
         return self._AdSourceLayout
@@ -10137,7 +10137,7 @@ class PipSetting(AbstractModel):
 
     @property
     def BackgroundImgUrl(self):
-        r"""
+        r"""Background image URL, starting with http/https and ending in jpg/jpeg/png (only required for UPLOAD_CREATIVES)
         :rtype: str
         """
         return self._BackgroundImgUrl
@@ -10148,7 +10148,7 @@ class PipSetting(AbstractModel):
 
     @property
     def AdSourceUrl(self):
-        r"""
+        r"""Advertisement video URL, starting with http/https and ending in mp4 (only required for UPLOAD_CREATIVES)
         :rtype: str
         """
         return self._AdSourceUrl
@@ -11469,11 +11469,11 @@ class SourceLayout(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LeftOffset: 
+        :param _LeftOffset: Left margin offset percentage, picture in picture range 0-99, left offset+right offset<100; Return range 0-50, left offset+right offset<100
         :type LeftOffset: int
-        :param _RightOffset: 
+        :param _RightOffset: The offset percentage of the right margin, picture in picture range 0-99, left offset+right offset<100; Return range 0-50, left offset+right offset<100
         :type RightOffset: int
-        :param _BottomOffset: 
+        :param _BottomOffset: Offset percentage of bottom margin, range 0-50
         :type BottomOffset: int
         """
         self._LeftOffset = None
@@ -11482,7 +11482,7 @@ class SourceLayout(AbstractModel):
 
     @property
     def LeftOffset(self):
-        r"""
+        r"""Left margin offset percentage, picture in picture range 0-99, left offset+right offset<100; Return range 0-50, left offset+right offset<100
         :rtype: int
         """
         return self._LeftOffset
@@ -11493,7 +11493,7 @@ class SourceLayout(AbstractModel):
 
     @property
     def RightOffset(self):
-        r"""
+        r"""The offset percentage of the right margin, picture in picture range 0-99, left offset+right offset<100; Return range 0-50, left offset+right offset<100
         :rtype: int
         """
         return self._RightOffset
@@ -11504,7 +11504,7 @@ class SourceLayout(AbstractModel):
 
     @property
     def BottomOffset(self):
-        r"""
+        r"""Offset percentage of bottom margin, range 0-50
         :rtype: int
         """
         return self._BottomOffset

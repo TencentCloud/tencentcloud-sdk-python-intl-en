@@ -232,6 +232,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCLSDeliverTask(
+            self,
+            request: models.CreateCLSDeliverTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateCLSDeliverTaskResponse:
+        """
+        Create a CLS shipping task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCLSDeliverTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCLSDeliverTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCloudProductLogCollection(
             self,
             request: models.CreateCloudProductLogCollectionRequest,
@@ -863,6 +881,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteAlarmShield"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAlarmShieldResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCLSDeliverTask(
+            self,
+            request: models.DeleteCLSDeliverTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCLSDeliverTaskResponse:
+        """
+        Delete a CLS shipping task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCLSDeliverTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCLSDeliverTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1511,6 +1547,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeAlertRecordHistory"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAlertRecordHistoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCLSDeliverTasks(
+            self,
+            request: models.DescribeCLSDeliverTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCLSDeliverTasksResponse:
+        """
+        This API is used to get the CLS delivery task list.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCLSDeliverTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCLSDeliverTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2628,6 +2682,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyAlarmShield"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAlarmShieldResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCLSDeliverTask(
+            self,
+            request: models.ModifyCLSDeliverTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCLSDeliverTaskResponse:
+        """
+        Modify a CLS shipping task
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCLSDeliverTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCLSDeliverTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

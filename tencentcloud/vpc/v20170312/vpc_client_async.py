@@ -489,6 +489,24 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckGatewayFlowMonitor(
+            self,
+            request: models.CheckGatewayFlowMonitorRequest,
+            opts: Dict = None,
+    ) -> models.CheckGatewayFlowMonitorResponse:
+        """
+        This API is used to query whether the gateway traffic monitoring is enabled.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckGatewayFlowMonitor"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckGatewayFlowMonitorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckNetDetectState(
             self,
             request: models.CheckNetDetectStateRequest,
@@ -1587,7 +1605,7 @@ class VpcClient(AbstractClient):
     ) -> models.DeleteNatGatewayResponse:
         """
         This API is used to delete a NAT gateway.
-        When a NAT gateway is deleted, all routes containing this gateway are deleted automatically, and the elastic IP is unbound.
+        When a NAT gateway is deleted, all routes containing this gateway are deleted automatically, and associated EIPs are unbound.When deleting a NAT gateway, you need to unbind the associated EIPs. Therefore, the caller must have CAM permissions for vpc:DisassociateAddress and vpc:ModifyAddressesBandwidth.
         """
         
         kwargs = {}
@@ -2721,6 +2739,26 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNatGatewayFlowMonitorDetail(
+            self,
+            request: models.DescribeNatGatewayFlowMonitorDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNatGatewayFlowMonitorDetailResponse:
+        """
+        This API is used to query the traffic monitoring details of a NAT gateway.
+
+        - You can only use this API to query a single gateway instance. The input parameter `NatGatewayId` supports at most one value, and it must be passed.- If the gateway has traffic, but no data is returned when this API is called, please check whether gateway traffic monitoring is enabled in the corresponding gateway details page in the console.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNatGatewayFlowMonitorDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNatGatewayFlowMonitorDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNatGatewaySourceIpTranslationNatRules(
             self,
             request: models.DescribeNatGatewaySourceIpTranslationNatRulesRequest,
@@ -2734,6 +2772,24 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "DescribeNatGatewaySourceIpTranslationNatRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeNatGatewaySourceIpTranslationNatRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNatGatewayZones(
+            self,
+            request: models.DescribeNatGatewayZonesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNatGatewayZonesResponse:
+        """
+        This API is used to query the information of saleable availability zones (AZs) for NAT gateways.
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNatGatewayZones"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNatGatewayZonesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5044,7 +5100,7 @@ class VpcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RefreshDirectConnectGatewayRouteToNatGatewayResponse:
         """
-        This API is used to refresh the route between a NAT gateway and  Direct Connect and update the associated route table.
+        This API is used to refresh the route between a NAT gateway and Direct Connect and update the associated route table.
         """
         
         kwargs = {}

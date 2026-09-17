@@ -47,13 +47,13 @@ FAILEDOPERATION_NETDETECTTIMEOUT = 'FailedOperation.NetDetectTimeOut'
 # Task execution failed.
 FAILEDOPERATION_TASKFAILED = 'FailedOperation.TaskFailed'
 
-# An internal error occurred.
+# Internal error.
 INTERNALERROR = 'InternalError'
 
 # Failed to create the Ckafka route. Please retry later.
 INTERNALERROR_CREATECKAFKAROUTEERROR = 'InternalError.CreateCkafkaRouteError'
 
-# Internal module error
+# Internal module error.
 INTERNALERROR_MODULEERROR = 'InternalError.ModuleError'
 
 # Internal error.
@@ -125,7 +125,7 @@ INVALIDPARAMETER_VPGHAGROUPNOTFOUND = 'InvalidParameter.VpgHaGroupNotFound'
 # The two parameters cannot be specified at the same time, nor exist concurrently. EIP can only be bound to the instances or the specified private IPs of the specified ENIs.
 INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 
-# The parameter value is invalid.
+# Parameter value error.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # 
@@ -284,7 +284,7 @@ INVALIDPARAMETERVALUE_LBALREADYBINDEIP = 'InvalidParameterValue.LBAlreadyBindEip
 # The parameter value exceeds the limit.
 INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 
-# Invalid input parameter format.
+# Invalid input format.
 INVALIDPARAMETERVALUE_MALFORMED = 'InvalidParameterValue.Malformed'
 
 # The specified approval ticket number does not match the resource.
@@ -362,7 +362,7 @@ INVALIDPARAMETERVALUE_ONLYSUPPORTEDFORMASTERNETWORKCARD = 'InvalidParameterValue
 # Invalid parameter format
 INVALIDPARAMETERVALUE_PARAMETERMISMATCH = 'InvalidParameterValue.ParameterMismatch'
 
-# The parameter value is not in the specified range.
+# The parameter value is not within the specified range.
 INVALIDPARAMETERVALUE_RANGE = 'InvalidParameterValue.Range'
 
 # The parameter value is retained by the system.
@@ -632,6 +632,9 @@ RESOURCEINUSE = 'ResourceInUse'
 # The specified IP address is already in use.
 RESOURCEINUSE_ADDRESS = 'ResourceInUse.Address'
 
+# The current NAT gateway is associated with CFW and cannot be deleted.
+RESOURCEINUSE_NATUSEDBYCFW = 'ResourceInUse.NatUsedByCFW'
+
 # Insufficient resources.
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
@@ -680,7 +683,7 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 # Unknown parameter. Try similar parameters.
 UNKNOWNPARAMETER_WITHGUESS = 'UnknownParameter.WithGuess'
 
-# Unsupported operation.
+# The operation is not supported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # This account is not supported.
@@ -782,6 +785,9 @@ UNSUPPORTEDOPERATION_DELROUTEWITHSUBNET = 'UnsupportedOperation.DelRouteWithSubn
 # The VPN tunnel is updating/deleting/creating, and this operation is not supported.
 UNSUPPORTEDOPERATION_DELETEVPNCONNINVALIDSTATE = 'UnsupportedOperation.DeleteVpnConnInvalidState'
 
+# The NAT gateway has deletion protection enabled and cannot be deleted.
+UNSUPPORTEDOPERATION_DELETIONPROTECTIONENABLED = 'UnsupportedOperation.DeletionProtectionEnabled'
+
 # Delivery failed.
 UNSUPPORTEDOPERATION_DELIVERYFAILED = 'UnsupportedOperation.DeliveryFailed'
 
@@ -875,7 +881,7 @@ UNSUPPORTEDOPERATION_INVALIDRESOURCEINTERNETCHARGETYPE = 'UnsupportedOperation.I
 # Bandwidth packages inapplicable to this protocol
 UNSUPPORTEDOPERATION_INVALIDRESOURCEPROTOCOL = 'UnsupportedOperation.InvalidResourceProtocol'
 
-# Invalid resource status.
+# The resource status is invalid.
 UNSUPPORTEDOPERATION_INVALIDSTATE = 'UnsupportedOperation.InvalidState'
 
 # The current status of the route does not support publishing to CCN. Please retry later.
@@ -902,7 +908,7 @@ UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = 'UnsupportedOperation.ModifyAddres
 # The VPC instance has an account-level IPv6 whitelist and does not support associating with multi-cloud connect networks.
 UNSUPPORTEDOPERATION_MULTIPLEVPCNOTSUPPORTATTACHACCOUNTHASIPV6 = 'UnsupportedOperation.MultipleVpcNotSupportAttachAccountHasIpv6'
 
-# The resource mutual exclusion operation is being executed.
+# Exclusive operation task of resources is in progress.
 UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOperationTaskRunning'
 
 # The public IP of the NAT gateway does not exist. 
@@ -910,6 +916,18 @@ UNSUPPORTEDOPERATION_NATGATEWAYEIPNOTEXISTS = 'UnsupportedOperation.NatGatewayEi
 
 # There are IPs associated with this NAT gateway.
 UNSUPPORTEDOPERATION_NATGATEWAYHADEIPUNASSOCIATE = 'UnsupportedOperation.NatGatewayHadEipUnassociate'
+
+# The NAT gateway's recent peak inbound/outbound bandwidth (whichever is higher) exceeds the detection bandwidth threshold.
+UNSUPPORTEDOPERATION_NATGATEWAYHAVEHIGHTRAFFIC = 'UnsupportedOperation.NatGatewayHaveHighTraffic'
+
+# The NAT gateway has a route.
+UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTE = 'UnsupportedOperation.NatGatewayHaveRoute'
+
+# The NAT gateway has routes and its recent peak inbound/outbound bandwidth (whichever is higher) exceeds the detection bandwidth threshold.
+UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = 'UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic'
+
+# The NAT gateway is using traffic mirroring.
+UNSUPPORTEDOPERATION_NATGATEWAYHAVETRAFFICMIRROR = 'UnsupportedOperation.NatGatewayHaveTrafficMirror'
 
 # The NAT gateway has been blocked, and this operation is not supported.
 UNSUPPORTEDOPERATION_NATGATEWAYRESTRICTED = 'UnsupportedOperation.NatGatewayRestricted'
@@ -1093,6 +1111,9 @@ UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTCLB = 'UnsupportedOperation.TrafficM
 
 # The collector and receiver for traffic mirroring cannot be the same.
 UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = 'UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget'
+
+# The resource business bandwidth exceeds the anti-misoperation detection threshold.
+UNSUPPORTEDOPERATION_TRAFFICVALIDATIONFAILED = 'UnsupportedOperation.TrafficValidationFailed'
 
 # The account ID does not exist.
 UNSUPPORTEDOPERATION_UINNOTFOUND = 'UnsupportedOperation.UinNotFound'
