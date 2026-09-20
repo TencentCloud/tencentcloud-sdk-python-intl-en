@@ -17,6 +17,30 @@
 # CAM signature/authentication error.
 AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 
+# AML database operation error.
+FAILEDOPERATION_AMLDBERROR = 'FailedOperation.AMLDBError'
+
+# AML service internal error.
+FAILEDOPERATION_AMLINTERNALERROR = 'FailedOperation.AMLInternalError'
+
+# Ongoing screening is already enabled for this customer. No action needed.
+FAILEDOPERATION_AMLONGOINGSCREENINGALREADYENABLED = 'FailedOperation.AMLOngoingScreeningAlreadyEnabled'
+
+# Ongoing screening setup is incomplete. Please retry the screening request or contact support if the issue persists.
+FAILEDOPERATION_AMLONGOINGSCREENINGSETUPINCOMPLETE = 'FailedOperation.AMLOngoingScreeningSetupIncomplete'
+
+# AML provider service error.
+FAILEDOPERATION_AMLPROVIDERERROR = 'FailedOperation.AMLProviderError'
+
+# AML provider service timeout.
+FAILEDOPERATION_AMLPROVIDERTIMEOUT = 'FailedOperation.AMLProviderTimeout'
+
+# Failed to obtain AML provider access token.
+FAILEDOPERATION_AMLTOKENERROR = 'FailedOperation.AMLTokenError'
+
+# A webhook for this scene already exists.
+FAILEDOPERATION_AMLWEBHOOKDUPLICATE = 'FailedOperation.AMLWebhookDuplicate'
+
 # No motions of eye closing are detected.
 FAILEDOPERATION_ACTIONCLOSEEYE = 'FailedOperation.ActionCloseEye'
 
@@ -65,6 +89,9 @@ FAILEDOPERATION_COMPRESSVIDEOERROR = 'FailedOperation.CompressVideoError'
 # The face in the picture is blocked, please upload a picture without any blockage
 FAILEDOPERATION_COVEREDFACE = 'FailedOperation.CoveredFace'
 
+# Customer not found. Please check the UniqueCustomerID or call RunAMLNameScreening first.
+FAILEDOPERATION_CUSTOMERNOTFOUND = 'FailedOperation.CustomerNotFound'
+
 # Decryption failed.
 FAILEDOPERATION_DECRYPTSYSTEMERROR = 'FailedOperation.DecryptSystemError'
 
@@ -76,6 +103,9 @@ FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 
 # File download timed out.
 FAILEDOPERATION_DOWNLOADTIMEOUTERROR = 'FailedOperation.DownLoadTimeoutError'
+
+# A webhook for this scene already exists.
+FAILEDOPERATION_EKYCWEBHOOKDUPLICATE = 'FailedOperation.EKYCWebhookDuplicate'
 
 # Image content is empty.
 FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
@@ -272,20 +302,74 @@ INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = 'InvalidParameter.UnsupportEncryptField
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# Field validation failed
+INVALIDPARAMETERVALUE_AMLFIELDVALIDATION = 'InvalidParameterValue.AMLFieldValidation'
+
 # BizToken expired.
 INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = 'InvalidParameterValue.BizTokenExpired'
 
-# Invalid BizToken.
+# BizToken is invalid.
 INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = 'InvalidParameterValue.BizTokenIllegal'
+
+# Field validation failed.
+INVALIDPARAMETERVALUE_EKYCFIELDVALIDATION = 'InvalidParameterValue.EKYCFieldValidation'
+
+# EntityType must be PERSON or COMPANY.
+INVALIDPARAMETERVALUE_ENTITYTYPE = 'InvalidParameterValue.EntityType'
+
+# EntityType does not match the existing customer record.
+INVALIDPARAMETERVALUE_ENTITYTYPEMISMATCH = 'InvalidParameterValue.EntityTypeMismatch'
+
+# Company data is required when EntityType is COMPANY.
+INVALIDPARAMETERVALUE_MISSINGCOMPANY = 'InvalidParameterValue.MissingCompany'
+
+# Company CompanyName is required.
+INVALIDPARAMETERVALUE_MISSINGCOMPANYNAME = 'InvalidParameterValue.MissingCompanyName'
+
+# Person data is required when EntityType is PERSON.
+INVALIDPARAMETERVALUE_MISSINGPERSON = 'InvalidParameterValue.MissingPerson'
+
+# Person FullName or LastName is required.
+INVALIDPARAMETERVALUE_MISSINGPERSONNAME = 'InvalidParameterValue.MissingPersonName'
+
+# Person or Company data is required for first-time screening.
+INVALIDPARAMETERVALUE_MISSINGPERSONORCOMPANY = 'InvalidParameterValue.MissingPersonOrCompany'
+
+# Scene is required.
+INVALIDPARAMETERVALUE_MISSINGSCENE = 'InvalidParameterValue.MissingScene'
+
+# UniqueCustomerID is required.
+INVALIDPARAMETERVALUE_MISSINGUNIQUECUSTOMERID = 'InvalidParameterValue.MissingUniqueCustomerID'
+
+# WebhookName is required.
+INVALIDPARAMETERVALUE_MISSINGWEBHOOKNAME = 'InvalidParameterValue.MissingWebhookName'
+
+# EnableOngoingScreening does not match the current status. Please use UpdateAMLOngoingScreeningStatus to change it.
+INVALIDPARAMETERVALUE_ONGOINGSCREENINGMISMATCH = 'InvalidParameterValue.OngoingScreeningMismatch'
+
+# When FullName is set, FirstName, MiddleName and LastName must not be set.
+INVALIDPARAMETERVALUE_PERSONNAMECONFLICT = 'InvalidParameterValue.PersonNameConflict'
 
 # RuleId does not exist. Go to the eKYC console to apply.
 INVALIDPARAMETERVALUE_RULEIDNOTEXIST = 'InvalidParameterValue.RuleIdNotExist'
+
+# Webhook URL must be a valid HTTPS URL.
+INVALIDPARAMETERVALUE_WEBHOOKURL = 'InvalidParameterValue.WebhookURL'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
 # Number of requests exceeds the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
+# Customer mapping not found for the given identifier.
+RESOURCENOTFOUND_AMLCUSTOMER = 'ResourceNotFound.AMLCustomer'
+
+# Webhook configuration not found.
+RESOURCENOTFOUND_AMLWEBHOOKCONFIG = 'ResourceNotFound.AMLWebhookConfig'
+
+# Webhook configuration not found.
+RESOURCENOTFOUND_EKYCWEBHOOKCONFIG = 'ResourceNotFound.EKYCWebhookConfig'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

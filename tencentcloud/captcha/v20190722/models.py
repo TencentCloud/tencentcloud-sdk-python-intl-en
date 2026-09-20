@@ -1318,27 +1318,27 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaType: Fill with fixed value: 9.
+        :param _CaptchaType: <p>Fixed value: 9.</p>
         :type CaptchaType: int
-        :param _Ticket: The user verification ticket returned by the frontend callback function.
+        :param _Ticket: <p>User verification ticket returned by the frontend callback function</p>
         :type Ticket: str
-        :param _UserIp: The user public IP obtained from the customer backend server.
+        :param _UserIp: <p>Public network IP of the verification</p>
         :type UserIp: str
-        :param _Randstr: A random string returned by the frontend callback function
+        :param _Randstr: <p>Random string returned by the frontend callback function</p>
         :type Randstr: str
-        :param _CaptchaAppId: CAPTCHA's app ID. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the CaptchaAppId in the "Key" column of the CAPTCHA list.
+        :param _CaptchaAppId: <p>Captcha appId. Log in to the <a href="https://console.cloud.tencent.com/captcha/graphical">verification code console</a>. In the [Key] column of the verification list, you can see CaptchaAppId.</p>
         :type CaptchaAppId: int
-        :param _AppSecretKey: CAPTCHA's app key. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the AppSecretKey in the "Key" column of the CAPTCHA list. AppSecretKey is the key for CAPTCHA ticket verification performed by the server. Please keep it confidential and do not disclose it to any third parties.
+        :param _AppSecretKey: <p>Captcha application key. Log in to the <a href="https://console.cloud.tencent.com/captcha/graphical">verification code console</a>, and view AppSecretKey in the [Key] column of the verification list. AppSecretKey is a key for server-side verification of verification code tickets. Keep it confidential and do not leak it to third parties.</p>
         :type AppSecretKey: str
-        :param _BusinessId: Reserved field.
+        :param _BusinessId: <p>Reserved field</p>
         :type BusinessId: int
-        :param _SceneId: Reserved field.
+        :param _SceneId: <p>Reserved field</p>
         :type SceneId: int
-        :param _MacAddress: MAC address or unique identifier of a device
+        :param _MacAddress: <p>mac address or unique device identifier</p>
         :type MacAddress: str
-        :param _Imei: Mobile equipment identity number
+        :param _Imei: <p>Mobile device number</p>
         :type Imei: str
-        :param _NeedGetCaptchaTime: Indicates whether to return the time when the frontend obtains the CAPTCHA. Valid values: 1 (return the time) and others.
+        :param _NeedGetCaptchaTime: <p>Whether to return the time when the frontend obtains the verification code. Value: 1: need to return</p>
         :type NeedGetCaptchaTime: int
         """
         self._CaptchaType = None
@@ -1355,7 +1355,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaType(self):
-        r"""Fill with fixed value: 9.
+        r"""<p>Fixed value: 9.</p>
         :rtype: int
         """
         return self._CaptchaType
@@ -1366,7 +1366,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Ticket(self):
-        r"""The user verification ticket returned by the frontend callback function.
+        r"""<p>User verification ticket returned by the frontend callback function</p>
         :rtype: str
         """
         return self._Ticket
@@ -1377,7 +1377,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        r"""The user public IP obtained from the customer backend server.
+        r"""<p>Public network IP of the verification</p>
         :rtype: str
         """
         return self._UserIp
@@ -1388,7 +1388,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Randstr(self):
-        r"""A random string returned by the frontend callback function
+        r"""<p>Random string returned by the frontend callback function</p>
         :rtype: str
         """
         return self._Randstr
@@ -1399,7 +1399,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        r"""CAPTCHA's app ID. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the CaptchaAppId in the "Key" column of the CAPTCHA list.
+        r"""<p>Captcha appId. Log in to the <a href="https://console.cloud.tencent.com/captcha/graphical">verification code console</a>. In the [Key] column of the verification list, you can see CaptchaAppId.</p>
         :rtype: int
         """
         return self._CaptchaAppId
@@ -1410,7 +1410,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def AppSecretKey(self):
-        r"""CAPTCHA's app key. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the AppSecretKey in the "Key" column of the CAPTCHA list. AppSecretKey is the key for CAPTCHA ticket verification performed by the server. Please keep it confidential and do not disclose it to any third parties.
+        r"""<p>Captcha application key. Log in to the <a href="https://console.cloud.tencent.com/captcha/graphical">verification code console</a>, and view AppSecretKey in the [Key] column of the verification list. AppSecretKey is a key for server-side verification of verification code tickets. Keep it confidential and do not leak it to third parties.</p>
         :rtype: str
         """
         return self._AppSecretKey
@@ -1421,7 +1421,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        r"""Reserved field.
+        r"""<p>Reserved field</p>
         :rtype: int
         """
         return self._BusinessId
@@ -1432,7 +1432,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        r"""Reserved field.
+        r"""<p>Reserved field</p>
         :rtype: int
         """
         return self._SceneId
@@ -1443,7 +1443,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def MacAddress(self):
-        r"""MAC address or unique identifier of a device
+        r"""<p>mac address or unique device identifier</p>
         :rtype: str
         """
         return self._MacAddress
@@ -1454,7 +1454,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Imei(self):
-        r"""Mobile equipment identity number
+        r"""<p>Mobile device number</p>
         :rtype: str
         """
         return self._Imei
@@ -1465,7 +1465,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def NeedGetCaptchaTime(self):
-        r"""Indicates whether to return the time when the frontend obtains the CAPTCHA. Valid values: 1 (return the time) and others.
+        r"""<p>Whether to return the time when the frontend obtains the verification code. Value: 1: need to return</p>
         :rtype: int
         """
         return self._NeedGetCaptchaTime
@@ -1504,35 +1504,21 @@ class DescribeCaptchaResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaCode: OK indicates verification passed.
-7 captcha no match. the passed in Randstr is invalid. please check if the Randstr is consistent with the Randstr returned by the frontend.
-The passed-in ticket has expired (the valid period of the ticket is 5 minutes). generate the ticket and Randstr again for validation.
-The passed-in ticket is reused. generate the ticket and Randstr again for verification.
-15 decrypt fail. the passed-in Ticket is invalid. please check if the Ticket is consistent with the Ticket returned by the frontend.
-16 appid-ticket mismatch. the passed in CaptchaAppId is incorrect. please check if the CaptchaAppId is consistent with the CaptchaAppId passed in by the frontend, and ensure that the CaptchaAppId is obtained from the verification code console [verification management] -> [basic configuration].
-21 diff invoice verification exception. possible reasons: (1) if the Ticket contains the trerror prefix, generally because the user has a poor network connection, resulting in the frontend's automatic disaster recovery and generation of a disaster recovery Ticket. the business side may skip or post-process as needed. (2) if the Ticket does not include the trerror prefix, it is because the security risk of the request was detected by the CAPTCHA-intl risk control system. the business side may intercept as needed.
-100 appid-secretkey-ticket mismatch. parameter validation error. (1) please check whether the CaptchaAppId and AppSecretKey are correct. the CaptchaAppId and AppSecretKey need to be obtained from verification code console > verification management > basic configuration. (2) please check whether the passed-in ticket is generated by the passed-in CaptchaAppId.
+        :param _CaptchaCode: <p>1 OK verification passed<br>7 captcha no match The passed-in Randstr is invalid. Please check whether Randstr is consistent with the frontend Randstr.<br>8 ticket expired The passed-in ticket has expired (ticket valid period is 5 minutes). Please generate a new ticket and Randstr for verification.<br>9 ticket reused The passed-in ticket has been reused. Please generate a new ticket and Randstr for verification.<br>15 decrypt fail The passed-in ticket is invalid. Please check whether ticket is consistent with the frontend ticket.<br>16 appid-ticket mismatch The passed-in CaptchaAppId is incorrect. Please check whether CaptchaAppId is consistent with the frontend CaptchaAppId, and ensure that CaptchaAppId is obtained from [Verification Management] -> [Basic Configuration] in the verification code console.<br>21 diff Bill verification exception. Possible reasons: (1) If the ticket contains the trerror prefix, it is generally because the user has a poor network connection, which causes frontend automatic disaster recovery and generates a disaster recovery ticket. The business side can skip or post-process it based on needs. (2) If the ticket does not contain the trerror prefix, it is because the verification code risk control system has detected a security risk in the request. The business side can block it based on needs.<br>100 appid-secretkey-ticket mismatch Parameter validation error. (1) Please check whether CaptchaAppId and AppSecretKey are correct. CaptchaAppId and AppSecretKey need to be obtained from [Verification Management] > [Basic Configuration] in the verification code console. (2) Please check whether the passed-in ticket is generated by the passed-in CaptchaAppId.</p>
         :type CaptchaCode: int
-        :param _CaptchaMsg: Status description and verification error message.
+        :param _CaptchaMsg: <p>Description and error message</p>
         :type CaptchaMsg: str
-        :param _EvilLevel: In invisible verification mode, this parameter returns the verification result.
-EvilLevel=0 indicates that the request is not malicious.
-The parameter EvilLevel = 100 indicates that the request is malicious.
+        :param _EvilLevel: <p>In non-perception mode, this parameter returns the verification result:<br>EvilLevel=0: The request is not malicious<br>EvilLevel=100: The request is malicious</p>
         :type EvilLevel: int
-        :param _GetCaptchaTime: Frontend retrieval time of the captcha-intl, timestamp format.
+        :param _GetCaptchaTime: <p>Frontend verification code retrieval time, Timestamp Format</p>
         :type GetCaptchaTime: int
-        :param _EvilBitmap: Blocking type
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EvilBitmap: <p>Interception type</p>
         :type EvilBitmap: int
-        :param _SubmitCaptchaTime: The time when the CAPTCHA is submitted.
+        :param _SubmitCaptchaTime: <p>Time of submitting the verification code</p>
         :type SubmitCaptchaTime: int
-        :param _DeviceRiskCategory: Device risk category.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DeviceRiskCategory: <p>Device risk category</p>
         :type DeviceRiskCategory: str
-        :param _Score: CAPTCHA-Intl score.
-Note:The score ranges from 0 to 100 (e.g., 20, 70, 90).
-A higher score indicates a greater probability that the interaction was initiated by a bot or represents a bot attack.
-A lower score indicates a greater probability that the interaction was performed by a real human user.
+        :param _Score: <p>Verification code score</p><p>Value range: 0-100. Higher scores indicate higher risk</p>
         :type Score: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -1549,14 +1535,7 @@ A lower score indicates a greater probability that the interaction was performed
 
     @property
     def CaptchaCode(self):
-        r"""OK indicates verification passed.
-7 captcha no match. the passed in Randstr is invalid. please check if the Randstr is consistent with the Randstr returned by the frontend.
-The passed-in ticket has expired (the valid period of the ticket is 5 minutes). generate the ticket and Randstr again for validation.
-The passed-in ticket is reused. generate the ticket and Randstr again for verification.
-15 decrypt fail. the passed-in Ticket is invalid. please check if the Ticket is consistent with the Ticket returned by the frontend.
-16 appid-ticket mismatch. the passed in CaptchaAppId is incorrect. please check if the CaptchaAppId is consistent with the CaptchaAppId passed in by the frontend, and ensure that the CaptchaAppId is obtained from the verification code console [verification management] -> [basic configuration].
-21 diff invoice verification exception. possible reasons: (1) if the Ticket contains the trerror prefix, generally because the user has a poor network connection, resulting in the frontend's automatic disaster recovery and generation of a disaster recovery Ticket. the business side may skip or post-process as needed. (2) if the Ticket does not include the trerror prefix, it is because the security risk of the request was detected by the CAPTCHA-intl risk control system. the business side may intercept as needed.
-100 appid-secretkey-ticket mismatch. parameter validation error. (1) please check whether the CaptchaAppId and AppSecretKey are correct. the CaptchaAppId and AppSecretKey need to be obtained from verification code console > verification management > basic configuration. (2) please check whether the passed-in ticket is generated by the passed-in CaptchaAppId.
+        r"""<p>1 OK verification passed<br>7 captcha no match The passed-in Randstr is invalid. Please check whether Randstr is consistent with the frontend Randstr.<br>8 ticket expired The passed-in ticket has expired (ticket valid period is 5 minutes). Please generate a new ticket and Randstr for verification.<br>9 ticket reused The passed-in ticket has been reused. Please generate a new ticket and Randstr for verification.<br>15 decrypt fail The passed-in ticket is invalid. Please check whether ticket is consistent with the frontend ticket.<br>16 appid-ticket mismatch The passed-in CaptchaAppId is incorrect. Please check whether CaptchaAppId is consistent with the frontend CaptchaAppId, and ensure that CaptchaAppId is obtained from [Verification Management] -> [Basic Configuration] in the verification code console.<br>21 diff Bill verification exception. Possible reasons: (1) If the ticket contains the trerror prefix, it is generally because the user has a poor network connection, which causes frontend automatic disaster recovery and generates a disaster recovery ticket. The business side can skip or post-process it based on needs. (2) If the ticket does not contain the trerror prefix, it is because the verification code risk control system has detected a security risk in the request. The business side can block it based on needs.<br>100 appid-secretkey-ticket mismatch Parameter validation error. (1) Please check whether CaptchaAppId and AppSecretKey are correct. CaptchaAppId and AppSecretKey need to be obtained from [Verification Management] > [Basic Configuration] in the verification code console. (2) Please check whether the passed-in ticket is generated by the passed-in CaptchaAppId.</p>
         :rtype: int
         """
         return self._CaptchaCode
@@ -1567,7 +1546,7 @@ The passed-in ticket is reused. generate the ticket and Randstr again for verifi
 
     @property
     def CaptchaMsg(self):
-        r"""Status description and verification error message.
+        r"""<p>Description and error message</p>
         :rtype: str
         """
         return self._CaptchaMsg
@@ -1578,9 +1557,7 @@ The passed-in ticket is reused. generate the ticket and Randstr again for verifi
 
     @property
     def EvilLevel(self):
-        r"""In invisible verification mode, this parameter returns the verification result.
-EvilLevel=0 indicates that the request is not malicious.
-The parameter EvilLevel = 100 indicates that the request is malicious.
+        r"""<p>In non-perception mode, this parameter returns the verification result:<br>EvilLevel=0: The request is not malicious<br>EvilLevel=100: The request is malicious</p>
         :rtype: int
         """
         return self._EvilLevel
@@ -1591,7 +1568,7 @@ The parameter EvilLevel = 100 indicates that the request is malicious.
 
     @property
     def GetCaptchaTime(self):
-        r"""Frontend retrieval time of the captcha-intl, timestamp format.
+        r"""<p>Frontend verification code retrieval time, Timestamp Format</p>
         :rtype: int
         """
         return self._GetCaptchaTime
@@ -1602,8 +1579,7 @@ The parameter EvilLevel = 100 indicates that the request is malicious.
 
     @property
     def EvilBitmap(self):
-        r"""Blocking type
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Interception type</p>
         :rtype: int
         """
         return self._EvilBitmap
@@ -1614,7 +1590,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubmitCaptchaTime(self):
-        r"""The time when the CAPTCHA is submitted.
+        r"""<p>Time of submitting the verification code</p>
         :rtype: int
         """
         return self._SubmitCaptchaTime
@@ -1625,8 +1601,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeviceRiskCategory(self):
-        r"""Device risk category.
-Note: This field may return null, indicating that no valid values can be obtained.
+        r"""<p>Device risk category</p>
         :rtype: str
         """
         return self._DeviceRiskCategory
@@ -1637,10 +1612,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
-        r"""CAPTCHA-Intl score.
-Note:The score ranges from 0 to 100 (e.g., 20, 70, 90).
-A higher score indicates a greater probability that the interaction was initiated by a bot or represents a bot attack.
-A lower score indicates a greater probability that the interaction was performed by a real human user.
+        r"""<p>Verification code score</p><p>Value range: 0-100. Higher scores indicate higher risk</p>
         :rtype: int
         """
         return self._Score

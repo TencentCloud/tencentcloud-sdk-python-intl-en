@@ -17,10 +17,10 @@
 # The CardSide type of the ID card is incorrect.
 FAILEDOPERATION_CARDSIDEERROR = 'FailedOperation.CardSideError'
 
-# File download failed.
+# Failed to download the file.
 FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 
-# Image content is empty.
+# The image is empty.
 FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
 
 # Recognition by the engine timed out.
@@ -28,6 +28,9 @@ FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = 'FailedOperation.EngineRecognizeTimeout
 
 # The field value does not meet expectations.
 FAILEDOPERATION_FIELDEXCEPTION = 'FailedOperation.FieldException'
+
+# Failed to decode the uploaded file.
+FAILEDOPERATION_FILEDECODEFAILED = 'FailedOperation.FileDecodeFailed'
 
 # The ID card information (ID number, name, etc.) is invalid.
 FAILEDOPERATION_IDCARDINFOILLEGAL = 'FailedOperation.IdCardInfoIllegal'
@@ -38,7 +41,7 @@ FAILEDOPERATION_IDCARDTOOSMALL = 'FailedOperation.IdCardTooSmall'
 # The image is blurry.
 FAILEDOPERATION_IMAGEBLUR = 'FailedOperation.ImageBlur'
 
-# Image decoding failed.
+# Failed to decode the image.
 FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 
 # No ID card is detected in the image.
@@ -80,8 +83,11 @@ FAILEDOPERATION_NOPASSPORT = 'FailedOperation.NoPassport'
 # Not the specified document.
 FAILEDOPERATION_NOTAPPOINTCARD = 'FailedOperation.NotAppointCard'
 
-# OCR recognition failed.
+# OCR recognition failed. This error may be caused by unstable network connections, service anomalies, or other issues.
 FAILEDOPERATION_OCRFAILED = 'FailedOperation.OcrFailed'
+
+# Failed to parse the PDF file. The file may be corrupted, encrypted or contains unsupported content.
+FAILEDOPERATION_PDFPARSEFAILED = 'FailedOperation.PDFParseFailed'
 
 # Unknown error.
 FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnKnowError'
@@ -107,13 +113,13 @@ INVALIDPARAMETERVALUE_INVALIDFILECONTENTSIZE = 'InvalidParameterValue.InvalidFil
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = 'InvalidParameterValue.InvalidParameterValueLimit'
 
-# File content too large.
+# The file size exceeds the limit.
 LIMITEXCEEDED_TOOLARGEFILEERROR = 'LimitExceeded.TooLargeFileError'
 
 # Image file download failed.
 RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = 'ResourceUnavailable.ImageDownloadError'
 
-# The account balance is insufficient.
+# The account has insufficient balance.
 RESOURCEUNAVAILABLE_INARREARS = 'ResourceUnavailable.InArrears'
 
 # The resource package has been exhausted.

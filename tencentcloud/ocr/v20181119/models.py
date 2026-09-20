@@ -1914,6 +1914,10 @@ Default true.
         :param _OutputLanguage: When cn, the added key is chinese.  
 When set to en, the added key is english.
         :type OutputLanguage: str
+        :param _NewItemNames: Custom extraction field configuration, specify the custom extracted field name, field type and field prompt.
+        :type NewItemNames: list of ItemNames
+        :param _MultiModelVersion: The algorithm model version used by the multimodal document extraction recognition service. Valid values are '1.0' and '2.0'. Starting from July 20, 2026, the default is '2.0'. Accounts using this interface before that date default to '1.0' when the parameter is omitted. Accounts activated after July 20, 2026 only support '2.0'. Different versions adopt different extraction algorithms; the new version delivers better overall recognition result, and '2.0' is recommended.
+        :type MultiModelVersion: str
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -1926,6 +1930,8 @@ When set to en, the added key is english.
         self._OutputParentKey = None
         self._ConfigAdvanced = None
         self._OutputLanguage = None
+        self._NewItemNames = None
+        self._MultiModelVersion = None
 
     @property
     def ImageUrl(self):
@@ -2072,6 +2078,28 @@ When set to en, the added key is english.
     def OutputLanguage(self, OutputLanguage):
         self._OutputLanguage = OutputLanguage
 
+    @property
+    def NewItemNames(self):
+        r"""Custom extraction field configuration, specify the custom extracted field name, field type and field prompt.
+        :rtype: list of ItemNames
+        """
+        return self._NewItemNames
+
+    @NewItemNames.setter
+    def NewItemNames(self, NewItemNames):
+        self._NewItemNames = NewItemNames
+
+    @property
+    def MultiModelVersion(self):
+        r"""The algorithm model version used by the multimodal document extraction recognition service. Valid values are '1.0' and '2.0'. Starting from July 20, 2026, the default is '2.0'. Accounts using this interface before that date default to '1.0' when the parameter is omitted. Accounts activated after July 20, 2026 only support '2.0'. Different versions adopt different extraction algorithms; the new version delivers better overall recognition result, and '2.0' is recommended.
+        :rtype: str
+        """
+        return self._MultiModelVersion
+
+    @MultiModelVersion.setter
+    def MultiModelVersion(self, MultiModelVersion):
+        self._MultiModelVersion = MultiModelVersion
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -2087,6 +2115,13 @@ When set to en, the added key is english.
             self._ConfigAdvanced = ConfigAdvanced()
             self._ConfigAdvanced._deserialize(params.get("ConfigAdvanced"))
         self._OutputLanguage = params.get("OutputLanguage")
+        if params.get("NewItemNames") is not None:
+            self._NewItemNames = []
+            for item in params.get("NewItemNames"):
+                obj = ItemNames()
+                obj._deserialize(item)
+                self._NewItemNames.append(obj)
+        self._MultiModelVersion = params.get("MultiModelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4561,6 +4596,102 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Value") is not None:
             self._Value = Value()
             self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ItemNames(AbstractModel):
+    r"""
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyName: 
+        :type KeyName: str
+        :param _KeyType: 
+        :type KeyType: int
+        :param _KeyPrompt: 
+        :type KeyPrompt: str
+        :param _KeyExpectedValue: 
+        :type KeyExpectedValue: str
+        :param _KeyAuditPrompt: 
+        :type KeyAuditPrompt: str
+        """
+        self._KeyName = None
+        self._KeyType = None
+        self._KeyPrompt = None
+        self._KeyExpectedValue = None
+        self._KeyAuditPrompt = None
+
+    @property
+    def KeyName(self):
+        r"""
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def KeyType(self):
+        r"""
+        :rtype: int
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def KeyPrompt(self):
+        r"""
+        :rtype: str
+        """
+        return self._KeyPrompt
+
+    @KeyPrompt.setter
+    def KeyPrompt(self, KeyPrompt):
+        self._KeyPrompt = KeyPrompt
+
+    @property
+    def KeyExpectedValue(self):
+        r"""
+        :rtype: str
+        """
+        return self._KeyExpectedValue
+
+    @KeyExpectedValue.setter
+    def KeyExpectedValue(self, KeyExpectedValue):
+        self._KeyExpectedValue = KeyExpectedValue
+
+    @property
+    def KeyAuditPrompt(self):
+        r"""
+        :rtype: str
+        """
+        return self._KeyAuditPrompt
+
+    @KeyAuditPrompt.setter
+    def KeyAuditPrompt(self, KeyAuditPrompt):
+        self._KeyAuditPrompt = KeyAuditPrompt
+
+
+    def _deserialize(self, params):
+        self._KeyName = params.get("KeyName")
+        self._KeyType = params.get("KeyType")
+        self._KeyPrompt = params.get("KeyPrompt")
+        self._KeyExpectedValue = params.get("KeyExpectedValue")
+        self._KeyAuditPrompt = params.get("KeyAuditPrompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12816,12 +12947,12 @@ class VinOCRRequest(AbstractModel):
         r"""
         :param _ImageBase64: The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Supported image size: The downloaded image after Base64 encoding can be up to 10 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
         :type ImageBase64: str
         :param _ImageUrl: The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Supported image size: The downloaded image after Base64 encoding can be up to 10 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
@@ -12833,7 +12964,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
     def ImageBase64(self):
         r"""The Base64-encoded value of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Supported image size: The downloaded image after Base64 encoding can be up to 10 MB. The download time of the image cannot exceed 3s.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
         :rtype: str
         """
@@ -12847,7 +12978,7 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
     def ImageUrl(self):
         r"""The URL of the image.
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
-Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Supported image size: The downloaded image after Base64 encoding can be up to 10 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
         :rtype: str

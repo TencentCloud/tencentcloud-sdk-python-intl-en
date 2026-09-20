@@ -26,7 +26,7 @@ INTERNALERROR = 'InternalError'
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# Missing parameter.
+# Parameters are missing.
 MISSINGPARAMETER = 'MissingParameter'
 
 # Authentication failed.
