@@ -822,7 +822,7 @@ class FaceidClient(AbstractClient):
 
 
     def UpdateAMLOngoingScreeningStatus(self, request):
-        r"""Changes the status of continuous name list screening.
+        r"""Continuous name list screening status change
 
         :param request: Request instance for UpdateAMLOngoingScreeningStatus.
         :type request: :class:`tencentcloud.faceid.v20180301.models.UpdateAMLOngoingScreeningStatusRequest`

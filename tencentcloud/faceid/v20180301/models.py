@@ -4224,7 +4224,7 @@ class DetectAIFakeFacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaceInput: <p>Import the face image or facial video to be detected (currently only single face detection is supported) in base64 encoding. If your scenario involves both video and image, we recommend using video for detection. For better detection results, please note the following input data limits and suggestions:</p><ul><li><p>base64 value of the image:<br>Recommend an overall image resolution of 480x640, with the face size no less than 100x100, captured by the mobile front camera.<br>The size of the base64-encoded image data should not exceed 3M, with a maximum of 10M. Only jpg and png formats are supported.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li><li><p>base64 value of the video:<br>The size after base64 encoding should be within 8M, with a maximum of 10M. Supported formats include mp4, avi, and flv, captured by the mobile front camera.<br>Video duration is recommended to be 2–5s, with a maximum of 20s.<br>Video resolution is recommended at 480x640 (maximum support for 720p), with a frame rate between 25fps and 30fps.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li></ul><p>If you do not use Encryption for secure transmission, this field is a required parameter.</p>
+        :param _FaceInput: <p>Import the face image or facial video to be detected (currently only single face detection is supported) in base64 encoding. If your scenario involves both video and image, we recommend using video for detection. For better detection results, please note the following input data limits and suggestions:</p><ul><li><p>base64 value of the image:<br>Recommend an overall image resolution of 480x640, with the face size no less than 100x100, captured by the mobile front camera.<br>The size of the base64-encoded image data is recommended not to exceed 3M, with a maximum of 10M. Only jpg and png formats are supported.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li><li><p>base64 value of the video:<br>The size after base64 encoding is recommended to be within 8M, with a maximum of 10M. Supported formats include mp4, avi,flv,and mov, captured by the mobile front camera.<br>Video duration is recommended to be 2-5s, with a maximum of 20s.<br>Video resolution is recommended at 480x640 (maximum support for 720p), with a frame rate between 25fps and 30fps.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li></ul><p>If you do not use Encryption for secure transmission, this field is a required parameter.</p>
         :type FaceInput: str
         :param _FaceInputType: <p>Passed in type.</p><ul><li>Value ranges from 1 to 2:<br>1: Passed in image type.<br>2: Passed in video type.<br>Other: Return error code InvalidParameter.</li></ul><p>If you do not use Encryption for encrypting transmission, this field is mandatory.</p>
         :type FaceInputType: int
@@ -4240,7 +4240,7 @@ class DetectAIFakeFacesRequest(AbstractModel):
 
     @property
     def FaceInput(self):
-        r"""<p>Import the face image or facial video to be detected (currently only single face detection is supported) in base64 encoding. If your scenario involves both video and image, we recommend using video for detection. For better detection results, please note the following input data limits and suggestions:</p><ul><li><p>base64 value of the image:<br>Recommend an overall image resolution of 480x640, with the face size no less than 100x100, captured by the mobile front camera.<br>The size of the base64-encoded image data should not exceed 3M, with a maximum of 10M. Only jpg and png formats are supported.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li><li><p>base64 value of the video:<br>The size after base64 encoding should be within 8M, with a maximum of 10M. Supported formats include mp4, avi, and flv, captured by the mobile front camera.<br>Video duration is recommended to be 2–5s, with a maximum of 20s.<br>Video resolution is recommended at 480x640 (maximum support for 720p), with a frame rate between 25fps and 30fps.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li></ul><p>If you do not use Encryption for secure transmission, this field is a required parameter.</p>
+        r"""<p>Import the face image or facial video to be detected (currently only single face detection is supported) in base64 encoding. If your scenario involves both video and image, we recommend using video for detection. For better detection results, please note the following input data limits and suggestions:</p><ul><li><p>base64 value of the image:<br>Recommend an overall image resolution of 480x640, with the face size no less than 100x100, captured by the mobile front camera.<br>The size of the base64-encoded image data is recommended not to exceed 3M, with a maximum of 10M. Only jpg and png formats are supported.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li><li><p>base64 value of the video:<br>The size after base64 encoding is recommended to be within 8M, with a maximum of 10M. Supported formats include mp4, avi,flv,and mov, captured by the mobile front camera.<br>Video duration is recommended to be 2-5s, with a maximum of 20s.<br>Video resolution is recommended at 480x640 (maximum support for 720p), with a frame rate between 25fps and 30fps.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li></ul><p>If you do not use Encryption for secure transmission, this field is a required parameter.</p>
         :rtype: str
         """
         return self._FaceInput
@@ -13852,10 +13852,9 @@ class UpdateAMLOngoingScreeningStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UniqueCustomerID: End user's unique identifier in the customer system, up to 256 characters.
+        :param _UniqueCustomerID: <p>Unique identifier of the end user in the customer system, up to 256 characters.</p>
         :type UniqueCustomerID: str
-        :param _EnableOngoingScreening: Whether continuous monitoring screening is enabled. 
-Default value: false.
+        :param _EnableOngoingScreening: <p>Whether to enable continuous monitoring and screening. Default value: false</p><p>Default value: false</p>
         :type EnableOngoingScreening: bool
         """
         self._UniqueCustomerID = None
@@ -13863,7 +13862,7 @@ Default value: false.
 
     @property
     def UniqueCustomerID(self):
-        r"""End user's unique identifier in the customer system, up to 256 characters.
+        r"""<p>Unique identifier of the end user in the customer system, up to 256 characters.</p>
         :rtype: str
         """
         return self._UniqueCustomerID
@@ -13874,8 +13873,7 @@ Default value: false.
 
     @property
     def EnableOngoingScreening(self):
-        r"""Whether continuous monitoring screening is enabled. 
-Default value: false.
+        r"""<p>Whether to enable continuous monitoring and screening. Default value: false</p><p>Default value: false</p>
         :rtype: bool
         """
         return self._EnableOngoingScreening
@@ -13907,9 +13905,9 @@ class UpdateAMLOngoingScreeningStatusResponse(AbstractModel):
         r"""
         :param _UniqueCustomerID: <p>Unique identifier of the end user in the customer system</p>
         :type UniqueCustomerID: str
-        :param _EnableOngoingScreening: Whether continuous monitoring screening is enabled
+        :param _EnableOngoingScreening: <p>Whether continuous monitoring screening is enabled</p>
         :type EnableOngoingScreening: bool
-        :param _Description: <p>Description of results returned</p>
+        :param _Description: <p>Return result description</p>
         :type Description: str
         :param _Result: <p>Returned results</p>
         :type Result: str
@@ -13935,7 +13933,7 @@ class UpdateAMLOngoingScreeningStatusResponse(AbstractModel):
 
     @property
     def EnableOngoingScreening(self):
-        r"""Whether continuous monitoring screening is enabled
+        r"""<p>Whether continuous monitoring screening is enabled</p>
         :rtype: bool
         """
         return self._EnableOngoingScreening
@@ -13946,7 +13944,7 @@ class UpdateAMLOngoingScreeningStatusResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>Description of results returned</p>
+        r"""<p>Return result description</p>
         :rtype: str
         """
         return self._Description

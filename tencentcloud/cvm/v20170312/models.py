@@ -19682,9 +19682,9 @@ The names of availability zones across the network are as follows:
 <li> ap-singapore-2 </li>
 <li> ap-singapore-3 </li>
 <li>ap-singapore-4 </li>
-<li> ap-shanghai-fsi-1 </li>
 <li> ap-shanghai-fsi-2 </li>
 <li> ap-shanghai-fsi-3 </li>
+<li> ap-shanghai-fsi-4 </li>
 <li> ap-bangkok-1 </li>
 <li> ap-bangkok-2 </li>
 <li> ap-shanghai-2 </li>
@@ -19752,9 +19752,9 @@ The names of availability zones across the network are as follows:
 <li> ap-singapore-2 </li>
 <li> ap-singapore-3 </li>
 <li>ap-singapore-4 </li>
-<li> ap-shanghai-fsi-1 </li>
 <li> ap-shanghai-fsi-2 </li>
 <li> ap-shanghai-fsi-3 </li>
+<li> ap-shanghai-fsi-4 </li>
 <li> ap-bangkok-1 </li>
 <li> ap-bangkok-2 </li>
 <li> ap-shanghai-2 </li>

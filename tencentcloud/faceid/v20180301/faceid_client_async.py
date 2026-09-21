@@ -656,7 +656,7 @@ class FaceidClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateAMLOngoingScreeningStatusResponse:
         """
-        Changes the status of continuous name list screening.
+        Continuous name list screening status change
         """
         
         kwargs = {}
