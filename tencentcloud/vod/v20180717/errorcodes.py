@@ -20,10 +20,10 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# Operation failed: category level limit exceeded.
+# Operation failed: Category level limit exceeded.
 FAILEDOPERATION_CLASSLEVELLIMITEXCEEDED = 'FailedOperation.ClassLevelLimitExceeded'
 
-# Operation failed: duplicated category name.
+# Operation failed: duplicate category name.
 FAILEDOPERATION_CLASSNAMEDUPLICATE = 'FailedOperation.ClassNameDuplicate'
 
 # Operation failed: Category not found.
@@ -47,19 +47,19 @@ FAILEDOPERATION_INVALIDVODUSER = 'FailedOperation.InvalidVodUser'
 # Media is banned by the system.
 FAILEDOPERATION_MEDIAFORBIDEDBYSYSTEM = 'FailedOperation.MediaForbidedBySystem'
 
-# Operation failed: unsupported media type.
+# Operation failed: Unsupported media type.
 FAILEDOPERATION_MEDIATYPE = 'FailedOperation.MediaType'
 
 # Network error.
 FAILEDOPERATION_NETWORKERROR = 'FailedOperation.NetWorkError'
 
-# No need for bitrate reduction.
+# No need to perform bitrate reduction.
 FAILEDOPERATION_NONEEDTOREDUCEMEDIABITRATE = 'FailedOperation.NoNeedToReduceMediaBitrate'
 
-# Operation failed: Parent class ID not found.
+# Operation failed: Parent class ID does not exist.
 FAILEDOPERATION_PARENTIDNOFOUND = 'FailedOperation.ParentIdNoFound'
 
-# Operation failed: The number of subcategories exceeds the limit.
+# Operation failed: Subcategory limit exceeded.
 FAILEDOPERATION_SUBCLASSLIMITEXCEEDED = 'FailedOperation.SubclassLimitExceeded'
 
 # Operation failed: duplicate task.
@@ -77,7 +77,7 @@ INTERNALERROR = 'InternalError'
 # Internal error. Failed to access the DB.
 INTERNALERROR_DBERROR = 'InternalError.DBError'
 
-# Internal error: Failed to create a template ID.
+# Internal error: Failed to create the template ID.
 INTERNALERROR_GENDEFINITION = 'InternalError.GenDefinition'
 
 # Internal error: media file info error.
@@ -89,7 +89,7 @@ INTERNALERROR_GETMEDIALISTERROR = 'InternalError.GetMediaListError'
 # Time parsing error.
 INTERNALERROR_TIMEPARSEERROR = 'InternalError.TimeParseError'
 
-# Internal error: failed to refresh media file info.
+# Internal error: Failed to update media file info.
 INTERNALERROR_UPDATEMEDIAERROR = 'InternalError.UpdateMediaError'
 
 # Internal error: Error uploading the cover image.
@@ -104,7 +104,7 @@ INVALIDPARAMETER = 'InvalidParameter'
 # Task flow template name already exists.
 INVALIDPARAMETER_EXISTEDPROCEDURENAME = 'InvalidParameter.ExistedProcedureName'
 
-# Parameter value error. Expiration time.
+# Parameter value error: expiration time.
 INVALIDPARAMETER_EXPIRETIME = 'InvalidParameter.ExpireTime'
 
 # Parameter error: Tag error.
@@ -113,7 +113,7 @@ INVALIDPARAMETER_LABELS = 'InvalidParameter.Labels'
 # The task flow template name does not exist.
 INVALIDPARAMETER_PROCEDURENAMENOTEXIST = 'InvalidParameter.ProcedureNameNotExist'
 
-# Parameter value error. Storage region.
+# Parameter value error: storage region.
 INVALIDPARAMETER_STORAGEREGION = 'InvalidParameter.StorageRegion'
 
 # InvalidParameter.ViolationContent
@@ -143,22 +143,22 @@ INVALIDPARAMETERVALUE_AICONTENTREVIEWTASKDEFINITION = 'InvalidParameterValue.AiC
 # Parameter value error: AI recognition Definition.
 INVALIDPARAMETERVALUE_AIRECOGNITIONTASKDEFINITION = 'InvalidParameterValue.AiRecognitionTaskDefinition'
 
-# The VOD service is not activated.
+# The VOD service is not enabled.
 INVALIDPARAMETERVALUE_APPID = 'InvalidParameterValue.AppId'
 
 # Area parameter error.
 INVALIDPARAMETERVALUE_AREA = 'InvalidParameterValue.Area'
 
-# Parameter error: audio stream bitrate.
+# Invalid parameter: audio stream bit rate.
 INVALIDPARAMETERVALUE_AUDIOBITRATE = 'InvalidParameterValue.AudioBitrate'
 
 # Parameter value error: AudioChannel.
 INVALIDPARAMETERVALUE_AUDIOCHANNEL = 'InvalidParameterValue.AudioChannel'
 
-# Parameter error: audio stream encoding format.
+# Invalid parameter: audio stream encoding format.
 INVALIDPARAMETERVALUE_AUDIOCODEC = 'InvalidParameterValue.AudioCodec'
 
-# Parameter error: audio stream sampling rate.
+# Invalid parameter: audio stream sampling rate.
 INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = 'InvalidParameterValue.AudioSampleRate'
 
 # Invalid audio/video bitrate.
@@ -176,25 +176,25 @@ INVALIDPARAMETERVALUE_CLASSID = 'InvalidParameterValue.ClassId'
 # Parameter value error: ClassIds is invalid.
 INVALIDPARAMETERVALUE_CLASSIDS = 'InvalidParameterValue.ClassIds'
 
-# Parameter value error: ClassName is invalid.
+# Invalid parameter value: ClassName is invalid.
 INVALIDPARAMETERVALUE_CLASSNAME = 'InvalidParameterValue.ClassName'
 
-# Intelligent classification control field parameter error.
+# Intelligent categorization control field parameter error.
 INVALIDPARAMETERVALUE_CLASSIFCATIONCONFIGURE = 'InvalidParameterValue.ClassifcationConfigure'
 
 # Parameter value error: The cropping time period is too long.
 INVALIDPARAMETERVALUE_CLIPDURATION = 'InvalidParameterValue.ClipDuration'
 
-# Invalid audio/video coding format.
+# Invalid audio/video encoding format.
 INVALIDPARAMETERVALUE_CODEC = 'InvalidParameterValue.Codec'
 
-# Invalid parameter value: ColumnCount.
+# Parameter value error: ColumnCount.
 INVALIDPARAMETERVALUE_COLUMNCOUNT = 'InvalidParameterValue.ColumnCount'
 
 # Parameter error: description of this template.
 INVALIDPARAMETERVALUE_COMMENT = 'InvalidParameterValue.Comment'
 
-# Parameter error: Muxing format.
+# Parameter error: muxing format.
 INVALIDPARAMETERVALUE_CONTAINER = 'InvalidParameterValue.Container'
 
 # Parameter value error: ContainerType.
@@ -203,13 +203,13 @@ INVALIDPARAMETERVALUE_CONTAINERTYPE = 'InvalidParameterValue.ContainerType'
 # Parameter value error: CoordinateOrigin.
 INVALIDPARAMETERVALUE_COORDINATEORIGIN = 'InvalidParameterValue.CoordinateOrigin'
 
-# Intelligent cover control field parameter error.
+# Invalid parameter in the control field for intelligent cover.
 INVALIDPARAMETERVALUE_COVERCONFIGURE = 'InvalidParameterValue.CoverConfigure'
 
 # Parameter value error: Cover Type.
 INVALIDPARAMETERVALUE_COVERTYPE = 'InvalidParameterValue.CoverType'
 
-# Parameter value error: Cover URL.
+# Parameter value error: cover URL.
 INVALIDPARAMETERVALUE_COVERURL = 'InvalidParameterValue.CoverUrl'
 
 # Incorrect parameter value: the CutAndCrops parameter value is invalid.
@@ -218,13 +218,13 @@ INVALIDPARAMETERVALUE_CUTANDCROPS = 'InvalidParameterValue.CutAndCrops'
 # Parameter value error. Time granularity.
 INVALIDPARAMETERVALUE_DATAINTERVAL = 'InvalidParameterValue.DataInterval'
 
-# Parameter value error. Data types.
+# Parameter value error. Data type.
 INVALIDPARAMETERVALUE_DATATYPE = 'InvalidParameterValue.DataType'
 
-# Parameter value error: Date.
+# Invalid parameter value: Date.
 INVALIDPARAMETERVALUE_DATE = 'InvalidParameterValue.Date'
 
-# Parameter value error: The default face library filter tag is illegal.
+# Incorrect parameter value: the default human face library filter tag is invalid.
 INVALIDPARAMETERVALUE_DEFAULTLIBRARYLABELSET = 'InvalidParameterValue.DefaultLibraryLabelSet'
 
 # Parameter error: Definition.
@@ -233,19 +233,19 @@ INVALIDPARAMETERVALUE_DEFINITION = 'InvalidParameterValue.Definition'
 # Parameter error: Definitions.
 INVALIDPARAMETERVALUE_DEFINITIONS = 'InvalidParameterValue.Definitions'
 
-# Parameter value error: deletion of the default template is not allowed.
+# Parameter value error: The default template cannot be deleted.
 INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = 'InvalidParameterValue.DeleteDefaultTemplate'
 
 # Parameter value error: Description exceeds the length limit.
 INVALIDPARAMETERVALUE_DESCRIPTION = 'InvalidParameterValue.Description'
 
-# Invalid forbidden low-to-high bitrate switch value.
+# Invalid forbidden bitrate low-to-high switch value.
 INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = 'InvalidParameterValue.DisableHigherVideoBitrate'
 
-# Invalid forbidden low-to-high resolution switch value.
+# Invalid switch value for forbidding resolution upscaling.
 INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = 'InvalidParameterValue.DisableHigherVideoResolution'
 
-# Districts parameter value error.
+# District parameter value error.
 INVALIDPARAMETERVALUE_DISTRICTS = 'InvalidParameterValue.Districts'
 
 # Parameter error: non-existent domain name.
@@ -263,7 +263,7 @@ INVALIDPARAMETERVALUE_DRMTYPE = 'InvalidParameterValue.DrmType'
 # Parameter value error: EndDate is invalid.
 INVALIDPARAMETERVALUE_ENDDATE = 'InvalidParameterValue.EndDate'
 
-# Parameter value error: EndTime is invalid.
+# Invalid parameter value: EndTime is invalid.
 INVALIDPARAMETERVALUE_ENDTIME = 'InvalidParameterValue.EndTime'
 
 # Parameter error: invalid end time.
@@ -272,22 +272,22 @@ INVALIDPARAMETERVALUE_ENDTIMEOFFSET = 'InvalidParameterValue.EndTimeOffset'
 # Duplicate name.
 INVALIDPARAMETERVALUE_EXISTEDNAME = 'InvalidParameterValue.ExistedName'
 
-# Parameter value error: Incorrect ExpireTime format.
+# Invalid parameter value: Incorrect ExpireTime format.
 INVALIDPARAMETERVALUE_EXPIRETIME = 'InvalidParameterValue.ExpireTime'
 
 # ExpiredTime error.
 INVALIDPARAMETERVALUE_EXPIREDTIME = 'InvalidParameterValue.ExpiredTime'
 
-# Incorrect parameter value: the ExtendedParameter parameter value is invalid.
+# Parameter value error: Invalid ExtendedParameter value.
 INVALIDPARAMETERVALUE_EXTENDEDPARAMETER = 'InvalidParameterValue.ExtendedParameter'
 
 # Parameter value error: face duplication.
 INVALIDPARAMETERVALUE_FACEDUPLICATE = 'InvalidParameterValue.FaceDuplicate'
 
-# Parameter value error: The face library parameter is invalid.
+# Incorrect parameter value: invalid face library parameter.
 INVALIDPARAMETERVALUE_FACELIBRARY = 'InvalidParameterValue.FaceLibrary'
 
-# Parameter value error: The face score parameter value is invalid.
+# Incorrect parameter value: the face score parameter value is invalid.
 INVALIDPARAMETERVALUE_FACESCORE = 'InvalidParameterValue.FaceScore'
 
 # FileId does not exist.
@@ -305,46 +305,46 @@ INVALIDPARAMETERVALUE_FILEIDSOVERLIMIT = 'InvalidParameterValue.FileIdsOverLimit
 # Parameter value error: too many FileIds.
 INVALIDPARAMETERVALUE_FILEIDSTOOMANY = 'InvalidParameterValue.FileIdsTooMany'
 
-# Parameter error: incorrect filling method.
+# Parameter error: Incorrect filling method.
 INVALIDPARAMETERVALUE_FILLTYPE = 'InvalidParameterValue.FillType'
 
 # Parameter error: whether to remove video should be 0 or 1.
 INVALIDPARAMETERVALUE_FILTRATEAUDIO = 'InvalidParameterValue.FiltrateAudio'
 
-# Parameter error: remove video.
+# Parameter error: remove the video.
 INVALIDPARAMETERVALUE_FILTRATEVIDEO = 'InvalidParameterValue.FiltrateVideo'
 
 # Parameter value error: Format.
 INVALIDPARAMETERVALUE_FORMAT = 'InvalidParameterValue.Format'
 
-# Parameter value error: When Format is webp, Width and Height are empty.
+# Parameter value error: When Format is webp, Width and Height are both empty.
 INVALIDPARAMETERVALUE_FORMATWEBPLACKWIDTHANDHEIGHT = 'InvalidParameterValue.FormatWebpLackWidthAndHeight'
 
 # Parameter value error: When Format is webp, Width and Height cannot both be 0.
 INVALIDPARAMETERVALUE_FORMATWEBPWIDTHANDHEIGHTBOTHZERO = 'InvalidParameterValue.FormatWebpWidthAndHeightBothZero'
 
-# Parameter error: video frame rate.
+# Parameter error: Video frame rate.
 INVALIDPARAMETERVALUE_FPS = 'InvalidParameterValue.Fps'
 
-# Intelligent frame tagging control field parameter error.
+# Invalid parameter in the control field for intelligent frame tagging.
 INVALIDPARAMETERVALUE_FRAMETAGCONFIGURE = 'InvalidParameterValue.FrameTagConfigure'
 
-# Parameter value error: FunctionArg.
+# Invalid parameter value: FunctionArg.
 INVALIDPARAMETERVALUE_FUNCTIONARG = 'InvalidParameterValue.FunctionArg'
 
-# Parameter value error: FunctionName.
+# Invalid parameter value: FunctionName.
 INVALIDPARAMETERVALUE_FUNCTIONNAME = 'InvalidParameterValue.FunctionName'
 
 # Parameter error: height.
 INVALIDPARAMETERVALUE_HEIGHT = 'InvalidParameterValue.Height'
 
-# Intelligent highlights control parameter error.
+# Invalid parameter in the control field for intelligent highlight.
 INVALIDPARAMETERVALUE_HIGHLIGHTCONFIGURE = 'InvalidParameterValue.HighlightConfigure'
 
 # The ImageContent parameter value is invalid.
 INVALIDPARAMETERVALUE_IMAGECONTENT = 'InvalidParameterValue.ImageContent'
 
-# Failed to decode the Base64-encoded image.
+# Failed to decode the Base64 encoding of the image.
 INVALIDPARAMETERVALUE_IMAGEDECODEERROR = 'InvalidParameterValue.ImageDecodeError'
 
 # Parameter error: image watermark template.
@@ -353,13 +353,13 @@ INVALIDPARAMETERVALUE_IMAGETEMPLATE = 'InvalidParameterValue.ImageTemplate'
 # Index parameter error.
 INVALIDPARAMETERVALUE_INDEX = 'InvalidParameterValue.Index'
 
-# Parameter value error. Interval is invalid.
+# Invalid parameter value: Interval is invalid.
 INVALIDPARAMETERVALUE_INTERVAL = 'InvalidParameterValue.Interval'
 
-# Parameter error. Invalid operation type.
+# Parameter error: invalid operation type.
 INVALIDPARAMETERVALUE_INVALIDOPERATIONTYPE = 'InvalidParameterValue.InvalidOperationType'
 
-# Parameter value error: incorrectly fixed parameters.
+# Invalid parameter value: incorrectly fixed parameters.
 INVALIDPARAMETERVALUE_ISPERSISTENCE = 'InvalidParameterValue.IsPersistence'
 
 # Invalid Isps parameter.
@@ -368,10 +368,10 @@ INVALIDPARAMETERVALUE_ISPS = 'InvalidParameterValue.Isps'
 # ItemId error.
 INVALIDPARAMETERVALUE_ITEMID = 'InvalidParameterValue.ItemId'
 
-# Parameter value error: Dotting information content too long.
+# Invalid parameter value: timestamp information content too long.
 INVALIDPARAMETERVALUE_KEYFRAMEDESCCONTENTTOOLONG = 'InvalidParameterValue.KeyFrameDescContentTooLong'
 
-# Incorrect parameter value: the LabelSet parameter value is invalid.
+# Parameter value error: invalid LabelSet parameter value.
 INVALIDPARAMETERVALUE_LABELSET = 'InvalidParameterValue.LabelSet'
 
 # Parameter error: Tag error.
@@ -392,13 +392,13 @@ INVALIDPARAMETERVALUE_MEDIASTORAGEPATH = 'InvalidParameterValue.MediaStoragePath
 # Parameter value error: media type.
 INVALIDPARAMETERVALUE_MEDIATYPE = 'InvalidParameterValue.MediaType'
 
-# Parameter value error: Media file URL.
+# Parameter value error: media file URL.
 INVALIDPARAMETERVALUE_MEDIAURL = 'InvalidParameterValue.MediaUrl'
 
 # Parameter error: Metric is invalid.
 INVALIDPARAMETERVALUE_METRIC = 'InvalidParameterValue.Metric'
 
-# Parameter value error: The default template is not allowed to be modified.
+# Parameter value error: The default template cannot be modified.
 INVALIDPARAMETERVALUE_MODIFYDEFAULTTEMPLATE = 'InvalidParameterValue.ModifyDefaultTemplate'
 
 # Parameter value error: Name exceeds the length limit.
@@ -410,25 +410,25 @@ INVALIDPARAMETERVALUE_NAMEPREFIXES = 'InvalidParameterValue.NamePrefixes'
 # Too many elements in the Names array.
 INVALIDPARAMETERVALUE_NAMES = 'InvalidParameterValue.Names'
 
-# Parameter error: The file does not support unfreezing.
+# Parameter error: the file does not support unfreezing.
 INVALIDPARAMETERVALUE_NOTRESTORABLE = 'InvalidParameterValue.NotRestorable'
 
 # Parameter value error: Invalid object library parameter.
 INVALIDPARAMETERVALUE_OBJECTLIBRARY = 'InvalidParameterValue.ObjectLibrary'
 
-# Parameter value error. Offset is invalid.
+# Parameter value error: Offset is invalid.
 INVALIDPARAMETERVALUE_OFFSET = 'InvalidParameterValue.Offset'
 
-# Parameter value error: Offset is too large.
+# Invalid parameter value: Offset is too large.
 INVALIDPARAMETERVALUE_OFFSETTOOLARGE = 'InvalidParameterValue.OffsetTooLarge'
 
 # Parameter value error: Operation is invalid.
 INVALIDPARAMETERVALUE_OPERATION = 'InvalidParameterValue.Operation'
 
-# Parameter value error. The original storage type of the file is abnormal.
+# Parameter value error: The original storage type of the file is abnormal.
 INVALIDPARAMETERVALUE_ORIGINALSTORAGECLASS = 'InvalidParameterValue.OriginalStorageClass'
 
-# Parameter value error: Incorrect output media file type.
+# Parameter value error: incorrect output media file type.
 INVALIDPARAMETERVALUE_OUTPUTMEDIATYPE = 'InvalidParameterValue.OutputMediaType'
 
 # Parameter value error: ParentId is invalid.
@@ -437,7 +437,7 @@ INVALIDPARAMETERVALUE_PARENTID = 'InvalidParameterValue.ParentId'
 # Parameter value error: incorrect human face image format.
 INVALIDPARAMETERVALUE_PICFORMATERROR = 'InvalidParameterValue.PicFormatError'
 
-# Parameter value error: incorrect precision parameter.
+# Invalid parameter value: incorrect precision parameter.
 INVALIDPARAMETERVALUE_PRECISION = 'InvalidParameterValue.Precision'
 
 # Invalid parameter value: incorrect Procedure.
@@ -449,10 +449,10 @@ INVALIDPARAMETERVALUE_PROCEDURENAME = 'InvalidParameterValue.ProcedureName'
 # Parameter value error: Quality.
 INVALIDPARAMETERVALUE_QUALITY = 'InvalidParameterValue.Quality'
 
-# Invalid parameter value: RemoveAudio.
+# Parameter value error: RemoveAudio.
 INVALIDPARAMETERVALUE_REMOVEAUDIO = 'InvalidParameterValue.RemoveAudio'
 
-# Invalid parameter value: RemoveVideo.
+# Parameter value error: RemoveVideo.
 INVALIDPARAMETERVALUE_REMOVEVIDEO = 'InvalidParameterValue.RemoveVideo'
 
 # Parameter error: RepeatType is invalid.
@@ -464,10 +464,10 @@ INVALIDPARAMETERVALUE_RESOLUTION = 'InvalidParameterValue.Resolution'
 # Invalid ResolutionAdaptive.
 INVALIDPARAMETERVALUE_RESOLUTIONADAPTIVE = 'InvalidParameterValue.ResolutionAdaptive'
 
-# Parameter error: Invalid number of unfreeze days.
+# Parameter error: incorrect number of unfreeze days.
 INVALIDPARAMETERVALUE_RESTOREDAY = 'InvalidParameterValue.RestoreDay'
 
-# Parameter error: Unsupported thawing mode.
+# Parameter error: unsupported thawing mode.
 INVALIDPARAMETERVALUE_RESTORETIER = 'InvalidParameterValue.RestoreTier'
 
 # Incorrect parameter value: the ReviewConfidence parameter value is invalid.
@@ -479,16 +479,16 @@ INVALIDPARAMETERVALUE_REVIEWWALLSWITCH = 'InvalidParameterValue.ReviewWallSwitch
 # A playlist with the same ID already exists.
 INVALIDPARAMETERVALUE_ROUNDPLAYALREADYEXISTS = 'InvalidParameterValue.RoundPlayAlreadyExists'
 
-# RoundPlayId parameter error.
+# Invalid parameter: RoundPlayId.
 INVALIDPARAMETERVALUE_ROUNDPLAYID = 'InvalidParameterValue.RoundPlayId'
 
 # Invalid RoundPlaylist parameter length.
 INVALIDPARAMETERVALUE_ROUNDPLAYLIST = 'InvalidParameterValue.RoundPlaylist'
 
-# Invalid parameter value: RowCount.
+# Parameter value error: RowCount.
 INVALIDPARAMETERVALUE_ROWCOUNT = 'InvalidParameterValue.RowCount'
 
-# Invalid parameter value: SampleInterval.
+# Parameter value error: SampleInterval.
 INVALIDPARAMETERVALUE_SAMPLEINTERVAL = 'InvalidParameterValue.SampleInterval'
 
 # Invalid audio sample rate.
@@ -497,13 +497,13 @@ INVALIDPARAMETERVALUE_SAMPLERATE = 'InvalidParameterValue.SampleRate'
 # Parameter value error: SampleType.
 INVALIDPARAMETERVALUE_SAMPLETYPE = 'InvalidParameterValue.SampleType'
 
-# Invalid ScenarioType parameter value.
+# The scenario type parameter value is invalid.
 INVALIDPARAMETERVALUE_SCENARIOTYPE = 'InvalidParameterValue.ScenarioType'
 
 # Parameter error: Invalid Scheme.
 INVALIDPARAMETERVALUE_SCHEME = 'InvalidParameterValue.Scheme'
 
-# Domain name does not have https enabled.
+# https is not enabled for the domain name.
 INVALIDPARAMETERVALUE_SCHEMECONFLICT = 'InvalidParameterValue.SchemeConflict'
 
 # Incorrect parameter value: the ScreenshotInterval parameter value is invalid.
@@ -521,7 +521,7 @@ INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = 'InvalidParameterValue.SessionIdTooLong
 # Parameter value error: Sort is invalid.
 INVALIDPARAMETERVALUE_SORT = 'InvalidParameterValue.Sort'
 
-# Incorrect parameter: audio channel mode.
+# Parameter error: audio channel mode.
 INVALIDPARAMETERVALUE_SOUNDSYSTEM = 'InvalidParameterValue.SoundSystem'
 
 # Parameter value error: SourceType is invalid.
@@ -536,7 +536,7 @@ INVALIDPARAMETERVALUE_SRCFILE = 'InvalidParameterValue.SrcFile'
 # Parameter value error: StartDate is invalid.
 INVALIDPARAMETERVALUE_STARTDATE = 'InvalidParameterValue.StartDate'
 
-# Parameter value error: StartTime is invalid.
+# Invalid parameter value: StartTime is invalid.
 INVALIDPARAMETERVALUE_STARTTIME = 'InvalidParameterValue.StartTime'
 
 # Parameter error: invalid start time.
@@ -545,13 +545,13 @@ INVALIDPARAMETERVALUE_STARTTIMEOFFSET = 'InvalidParameterValue.StartTimeOffset'
 # Parameter value error: invalid manual confirmation result.
 INVALIDPARAMETERVALUE_STATUS = 'InvalidParameterValue.Status'
 
-# Parameter value error. The target storage type is not in the available values.
+# Parameter value error: The target storage type is not in the available values.
 INVALIDPARAMETERVALUE_STORAGECLASS = 'InvalidParameterValue.StorageClass'
 
 # Parameter value error: storage region.
 INVALIDPARAMETERVALUE_STORAGEREGION = 'InvalidParameterValue.StorageRegion'
 
-# Parameter value error. StorageRegions is invalid.
+# Parameter value error: StorageRegions is invalid.
 INVALIDPARAMETERVALUE_STORAGEREGIONS = 'InvalidParameterValue.StorageRegions'
 
 # Parameter value error: StorageType.
@@ -578,16 +578,16 @@ INVALIDPARAMETERVALUE_SVGTEMPLATEHEIGHT = 'InvalidParameterValue.SvgTemplateHeig
 # Parameter value error: SVG width.
 INVALIDPARAMETERVALUE_SVGTEMPLATEWIDTH = 'InvalidParameterValue.SvgTemplateWidth'
 
-# Parameter value error: invalid Switch parameter value.
+# Incorrect parameter value: the Switch parameter value is invalid.
 INVALIDPARAMETERVALUE_SWITCH = 'InvalidParameterValue.Switch'
 
 # Parameter value error: TEHD Type is invalid.
 INVALIDPARAMETERVALUE_TEHDTYPE = 'InvalidParameterValue.TEHDType'
 
-# Intelligent tag control field parameter error.
+# Invalid parameter in the control field for intelligent tag.
 INVALIDPARAMETERVALUE_TAGCONFIGURE = 'InvalidParameterValue.TagConfigure'
 
-# Parameter value error: Tag too long.
+# Invalid parameter value: tag too long.
 INVALIDPARAMETERVALUE_TAGTOOLONG = 'InvalidParameterValue.TagTooLong'
 
 # Parameter value error: Tags is invalid.
@@ -599,7 +599,7 @@ INVALIDPARAMETERVALUE_TASKID = 'InvalidParameterValue.TaskId'
 # Parameter value error: search text.
 INVALIDPARAMETERVALUE_TEXT = 'InvalidParameterValue.Text'
 
-# Parameter error: Text opacity.
+# Parameter error: text opacity.
 INVALIDPARAMETERVALUE_TEXTALPHA = 'InvalidParameterValue.TextAlpha'
 
 # Parameter error: text template.
@@ -620,31 +620,31 @@ INVALIDPARAMETERVALUE_TYPES = 'InvalidParameterValue.Types'
 # Duplicate recognition code within one day. Request deduplicated.
 INVALIDPARAMETERVALUE_UNIQUEIDENTIFIER = 'InvalidParameterValue.UniqueIdentifier'
 
-# Domain name cannot be set.
+# The domain name cannot be set.
 INVALIDPARAMETERVALUE_UNSUPPORTDOMAIN = 'InvalidParameterValue.UnsupportDomain'
 
 # Parameter value error: The file does not support this unfreeze method.
 INVALIDPARAMETERVALUE_UNSUPPORTEDRESTORETIER = 'InvalidParameterValue.UnsupportedRestoreTier'
 
-# Parameter value error. Unsupported target storage type. Deep archive is only supported in select parks.
+# Parameter value error: Unsupported target storage class. Deep Archive is only supported in some parks.
 INVALIDPARAMETERVALUE_UNSUPPORTEDSTORAGECLASS = 'InvalidParameterValue.UnsupportedStorageClass'
 
-# Parameter value error. Unsupported storage type switch.
+# Parameter value error: Unsupported storage type switch.
 INVALIDPARAMETERVALUE_UNSUPPORTEDTRANSITION = 'InvalidParameterValue.UnsupportedTransition'
 
-# Parameter error: Invalid Url.
+# Parameter error: invalid Url.
 INVALIDPARAMETERVALUE_URL = 'InvalidParameterValue.Url'
 
-# Parameter value error: The custom face library filter tag is illegal.
+# Parameter value error: the custom face library filter tag is invalid.
 INVALIDPARAMETERVALUE_USERDEFINELIBRARYLABELSET = 'InvalidParameterValue.UserDefineLibraryLabelSet'
 
 # Parameter error: vcrf.
 INVALIDPARAMETERVALUE_VCRF = 'InvalidParameterValue.Vcrf'
 
-# Parameter error: video stream bitrate.
+# Invalid parameter: video stream bitrate.
 INVALIDPARAMETERVALUE_VIDEOBITRATE = 'InvalidParameterValue.VideoBitrate'
 
-# Parameter error: video stream encoding format.
+# Invalid parameter: video stream encoding format.
 INVALIDPARAMETERVALUE_VIDEOCODEC = 'InvalidParameterValue.VideoCodec'
 
 # Invalid Vids parameter.
@@ -653,10 +653,10 @@ INVALIDPARAMETERVALUE_VIDS = 'InvalidParameterValue.Vids'
 # Parameter value error: VOD session.
 INVALIDPARAMETERVALUE_VODSESSIONKEY = 'InvalidParameterValue.VodSessionKey'
 
-# Parameter value error: Invalid Watermarks value.
+# Incorrect parameter value: the Watermarks parameter value is invalid.
 INVALIDPARAMETERVALUE_WATERMARKS = 'InvalidParameterValue.Watermarks'
 
-# Parameter error: width.
+# Parameter error: Width.
 INVALIDPARAMETERVALUE_WIDTH = 'InvalidParameterValue.Width'
 
 # Horizontal position of the watermark origin from the origin of coordinates of the video image. Supports % and px formats.
@@ -668,7 +668,7 @@ INVALIDPARAMETERVALUE_YPOS = 'InvalidParameterValue.YPos'
 # The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# Exceed the limit: The total count of new and old dotting information exceeds the limit.
+# Exceed the limit: The total count of old and new dotting information exceeds the limit.
 LIMITEXCEEDED_KEYFRAMEDESCCOUNTREACHMAX = 'LimitExceeded.KeyFrameDescCountReachMax'
 
 # Playlist length is too large.
@@ -680,7 +680,7 @@ LIMITEXCEEDED_QUOTA = 'LimitExceeded.Quota'
 # The playlist length exceeds the upper limit.
 LIMITEXCEEDED_ROUNDPLAYLIST = 'LimitExceeded.RoundPlaylist'
 
-# Exceeds the total number of playlists limit.
+# The total number of playlists limit is exceeded.
 LIMITEXCEEDED_ROUNDPLAYS = 'LimitExceeded.RoundPlays'
 
 # The number of running playlists exceeds the maximum limit.
@@ -689,7 +689,7 @@ LIMITEXCEEDED_RUNNINGROUNDPLAYS = 'LimitExceeded.RunningRoundPlays'
 # Exceed the limit: The total number of new and old tags exceeds the limit.
 LIMITEXCEEDED_TAGCOUNTREACHMAX = 'LimitExceeded.TagCountReachMax'
 
-# Exceed the limit: The number of templates exceeds the upper limit of 100. If needed, submit a ticket (https://console.cloud.tencent.com/workorder/category).
+# Exceed the limit: The number of templates exceeds the upper limit of 100. To request more, submit a ticket (https://console.cloud.tencent.com/workorder/category).
 LIMITEXCEEDED_TOOMUCHTEMPLATE = 'LimitExceeded.TooMuchTemplate'
 
 # Parameters are missing.
@@ -701,7 +701,7 @@ REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
-# Resource does not exist: cover not found.
+# Resource not found: cover does not exist.
 RESOURCENOTFOUND_COVERURL = 'ResourceNotFound.CoverUrl'
 
 # Resource does not exist: file not found.
@@ -740,5 +740,5 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 # The operation is not supported.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
-# Deletion is not supported for non-empty categories.
+# A non-empty category cannot be deleted.
 UNSUPPORTEDOPERATION_CLASSNOTEMPTY = 'UnsupportedOperation.ClassNotEmpty'

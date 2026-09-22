@@ -845,7 +845,7 @@ class FaceidClient(AbstractClient):
 
 
     def UpdateEKYCWebhook(self, request):
-        r"""This API updates the Webhook configuration.
+        r"""This API is used to update Webhook configurations.
 
         :param request: Request instance for UpdateEKYCWebhook.
         :type request: :class:`tencentcloud.faceid.v20180301.models.UpdateEKYCWebhookRequest`

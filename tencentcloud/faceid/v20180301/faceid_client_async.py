@@ -674,7 +674,7 @@ class FaceidClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateEKYCWebhookResponse:
         """
-        This API updates the Webhook configuration.
+        This API is used to update Webhook configurations.
         """
         
         kwargs = {}

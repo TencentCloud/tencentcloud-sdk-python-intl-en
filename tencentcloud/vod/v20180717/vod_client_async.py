@@ -31,8 +31,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ApplyUploadResponse:
         """
-        * We strongly recommend that you use the [server-side upload SDK](https://www.tencentcloud.com/document/product/266/33912#1.-initiate-upload) provided by VOD to upload files. Directly invoking the API for upload is significantly more difficult and involves a much larger workload than using the SDK.
-        This API is used to apply for uploading media files (and cover files), obtain the meta information for uploading files to VOD (including upload path and upload signature), and is used for subsequent upload APIs.
+        We strongly recommend that you use the [server-side upload SDK](https://www.tencentcloud.comhttps://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1?from_cn_redirect=1#1.-.E5.8F.91.E8.B5.B7.E4.B8.8A.E4.BC.A0) provided by VOD to upload files. Directly invoking the API for upload is significantly more difficult and involves a much larger workload than using the SDK.
+        * This API is used to apply for uploading media files (and cover files), obtain the meta-information for uploading files to VOD (including upload path and upload signature), for subsequent upload APIs.
         For the upload process, see [Server-Side Upload Overview](https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1).
         """
         
@@ -51,7 +51,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AttachMediaSubtitlesResponse:
         """
-        Associate media asset subtitles with the media output file corresponding to the designated adaptive bitrate streaming template ID (or disassociate them).
+        Associate a media asset subtitle with the media output file corresponding to the adaptive bitrate streaming template ID (or disassociate it).
         """
         
         kwargs = {}
@@ -87,7 +87,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloneVoiceAsyncResponse:
         """
-        This API is used to initiate a voice cloning task. It clones an exclusive voice based on reference audio. The generated voice can be used for subsequent text to speech. Voice cloning is an asynchronous task. The voice ID and audio audition are generated after task completion.
+        This API is used to trigger a voice cloning task. It clones a reference audio to generate an exclusive voice, which can be used for subsequent text to speech. Voice cloning is an asynchronous task. The voice ID and audio audition are generated after task completion.
         """
         
         kwargs = {}
@@ -105,7 +105,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloneVoiceSyncResponse:
         """
-        This API is used to initiate a voice cloning task. It clones an exclusive voice based on reference audio. The generated voice can be used for subsequent text to speech.
+        This API is used to trigger a voice cloning task. It clones a reference audio to generate an exclusive voice, which can be used for subsequent text to speech.
         """
         
         kwargs = {}
@@ -143,16 +143,16 @@ class VodClient(AbstractClient):
         """
         This API is used to compose media files to achieve the following effects:
 
-        1. **Image rotation**: Rotate the video or image by a certain degree, or flip it in a certain direction.
-        2. **Audio control**: Increase or reduce the volume of video and audio, or mute the video.
-        3. **Screen overlay**: Overlay frames from videos and images in sequence, for example, to achieve a Picture-in-Picture effect.
+        1. **Image rotation**: rotates the image of a video or picture by a certain degree, or flips it in a certain direction.
+        2. **Audio control**: Increase or reduce the volume of sound in video or audio, or mute the video.
+        3. **Screen Overlay**: Overlay frames from videos and images in sequence, for example, to achieve a Picture-in-Picture effect.
         4. **Audio mixing**: Mix the sound in video and audio together.
-        5. **Audio extraction**: Extract the audio from the video (visuals are not retained).
+        5. **Audio extraction**: Extract audio from the video (visuals are not retained).
         6. **Crop**: Crop a specified time period from video or audio.
         7. **Splicing**: Splice videos, audio, and images in chronological order.
         8. **Transitions**: When stitching multiple videos or images, you can add transition effects between paragraphs.
 
-        The muxing format of the composed media can be MP4 (video) or MP3 (audio). If event notification is used, the event notification type is [Video Synthesis Completed](https://www.tencentcloud.com/document/product/266/43000?from_cn_redirect=1).
+        The muxing format of the composed media can be MP4 (video) or MP3 (audio). If event notification is used, the event notification type is video synthesis completed (https://www.tencentcloud.com/document/product/266/43000?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -170,9 +170,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ConfirmEventsResponse:
         """
-        * Developers call the event notification pull API. After obtaining an event, they must call this API to acknowledge that the message has been received.
+        * Developers call event notification pull to obtain events, and then must call this API to ACK message received.
         * After the developer obtains the event handler, the validity time for pending confirmation is 30 seconds. If it exceeds 30 seconds, a parameter error (4000) will be reported.
-        * For more references on reliable callback for event notification, see [Reliable Callback](https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83).
+        * For more references on reliable callback of event notification, see [Reliable Callback](https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83).
         """
         
         kwargs = {}
@@ -190,7 +190,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAIAnalysisTemplateResponse:
         """
-        This API is used to create a user-defined audio and video content analysis template. Maximum quantity: 50. HLS format is not supported currently.
+        This API is used to create user-defined audio and video content analysis templates. Maximum number: 50. HLS format is not supported currently.
         """
         
         kwargs = {}
@@ -208,7 +208,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAIRecognitionTemplateResponse:
         """
-        This API is used to create a user-defined audio and video content recognition template. Maximum quantity: 50.
+        This API is used to create user-defined audio and video content recognition templates. Maximum number: 50.
         """
         
         kwargs = {}
@@ -226,7 +226,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAdaptiveDynamicStreamingTemplateResponse:
         """
-        Create adaptive bitrate streaming templates. Maximum quantity: 100.
+        Create an adaptive bitrate streaming template. Max: 100.
         """
         
         kwargs = {}
@@ -244,7 +244,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcAdvancedCustomElementResponse:
         """
-        This API is used to create an AIGC advanced custom subject.
+        This API is used to create an advanced custom AIGC subject.
         """
         
         kwargs = {}
@@ -262,7 +262,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcApiTokenResponse:
         """
-        This API is used to create a Token for AIGC API calls. Data sync may be delayed once created. It can be queried or deleted after about 30 seconds.
+        This API is used to create a Token for AIGC API calls. Data sync has a delay once created. It can be queried or deleted after about 30 seconds.
         """
         
         kwargs = {}
@@ -334,7 +334,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcCustomVoiceResponse:
         """
-        This API is used to create AIGC custom voice types. Note that calling this API incurs custom voice type creation fees. Refer to the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#5e5217e8-29fc-467e-ac2d-853648f988b7).
+        This API is used to create AIGC custom voice types. Note that calling this API incurs a fee for creating custom voice types. Refer to the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#5e5217e8-29fc-467e-ac2d-853648f988b7).
         """
         
         kwargs = {}
@@ -370,7 +370,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcImageTaskResponse:
         """
-        This API is used to generate AIGC images. The default limit is 1 concurrent processing. API calls will incur actual fees. Refer to the VOD AIGC image generation billing documentation. The settlement mode for the feature is pay-as-you-go. For daily billing customers, usage on the day is billed on the second day. For monthly settlement customers, the usage fees of the previous month are billed on the 1st of the next month.
+        This API is used to [generate AIGC images](https://www.tencentcloud.com/document/product/266/124473?from_cn_redirect=1). The default limit is 1 concurrent processing. API calls will incur actual fees. Refer to the VOD [AIGC image generation billing documentation](https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#9c4dc6ff-4b3f-4b25-bf2d-393889dfb9ac). The settlement mode for the feature is [pay-as-you-go](https://www.tencentcloud.com/document/product/266/2838?from_cn_redirect=1). For daily billing customers, usage on the day is billed on the second day. For monthly settlement customers, the previous month's usage fees are billed on the 1st of the next month.
         """
         
         kwargs = {}
@@ -388,11 +388,11 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcQuotaResponse:
         """
-        This API is used to create and enable AIGC quota configuration. Quota usage starts accumulating when the quota feature is enabled. Once the quota is reached, AIGC features will no longer be usable.
+        This API is used to create and enable AIGC quota configuration. Quota usage starts accumulating from the enablement of the quota feature. Once the quota is reached, AIGC features will no longer be usable.
 
         If the quota is deleted and re-enabled, the amount will be cleared and recalculated.
 
-        Since AGC content generation is an async task, real-time usage data cannot be obtained. Therefore, quota limits result in some errors, and precise control over the set limit cannot be achieved.
+        Since AGC content generation is an asynchronous task, real-time usage data cannot be obtained. Therefore, quota limits may result in some errors, and completely precise control over the set limit cannot be achieved.
         """
         
         kwargs = {}
@@ -428,7 +428,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcVideoRedrawTaskResponse:
         """
-        This API is used to generate AIGC videos. API calls incur actual fees. Refer to the VOD AIGC video generation billing documentation. The settlement mode of this feature is pay-as-you-go. For daily billing customers, usage on the day is billed on the second day. For monthly billing customers, usage fees of the previous month are billed on the 1st of the next month.
+        This API is used to generate AIGC videos. API calls incur actual fees. Refer to the VOD AIGC video generation billing documentation. The feature uses postpaid settlement. For daily billing customers, usage on the day is billed on the second day. For monthly billing customers, the previous month's usage fees are billed on the 1st of the next month.
         """
         
         kwargs = {}
@@ -446,7 +446,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAigcVideoTaskResponse:
         """
-        This API is used to generate AIGC videos. The default limit is 1 concurrent processing. API calls incur actual fees. Refer to the VOD AIGC video generation billing documentation. The feature uses postpaid settlement mode. For daily billing customers, usage on the day is billed on the second day. For monthly settlement customers, the previous month's usage fees are billed on the 1st of the next month.
+        This API is used to generate AIGC videos. The default limit is 1 concurrent processing. API calls incur actual fees. Refer to the VOD AIGC video generation billing documentation. The settlement mode for this feature is pay-as-you-go. For daily billing customers, usage on the day is billed on the second day. For monthly billing customers, the previous month's usage fees are billed on the 1st of the next month.
         """
         
         kwargs = {}
@@ -464,7 +464,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAnimatedGraphicsTemplateResponse:
         """
-        This API is used to create a custom animated image generating template. Maximum number: 16.
+        This API is used to create a user-customized animated image generating template. Maximum number: 16.
         """
         
         kwargs = {}
@@ -500,7 +500,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCDNDomainResponse:
         """
-        This API is used to add domain names to VOD. A user can add up to 20 domain names. 1. After the domain name is successfully added, VOD will deploy the domain name. It takes about 2 minutes for the domain name to change from the deployment state to the online status.
+        This API is used to add domain names to VOD. A user can add up to 20 domain names. After the domain name is successfully added, VOD will deploy the domain. It takes about 2 minutes for the domain to change from the deployment state to the online status.
         """
         
         kwargs = {}
@@ -536,7 +536,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCLSTopicResponse:
         """
-        This API is used to create a CLS log topic for VOD.
+        This API is used to create a CLS log topic under VOD.
         """
         
         kwargs = {}
@@ -555,9 +555,9 @@ class VodClient(AbstractClient):
     ) -> models.CreateClassResponse:
         """
         * Used to categorize and manage media;
-        * This API does not affect the category of existing media. To classify media, call the [ModifyMediaInfo](https://www.tencentcloud.com/document/product/266/31762?from_cn_redirect=1) API.
+        * This API does not affect the existing media category. To modify the media category, call the [ModifyMediaInfo](https://www.tencentcloud.com/document/product/266/31762?from_cn_redirect=1) API.
         * The classification hierarchy cannot exceed 4 levels.
-        * The number of subcategories in each category cannot exceed 500.
+        * The number of subcategories in each category must not exceed 500.
         """
         
         kwargs = {}
@@ -575,15 +575,15 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateComplexAdaptiveDynamicStreamingTaskResponse:
         """
-        Initiate a complex adaptive bitstream processing task. Features include:
-        1. Output HLS and DASH adaptive bitrate streams based on the designated adaptive bitrate template;
-        2. Content protection solutions for adaptive bitrate streams are available in unencrypted, Widevine, or FairPlay.
+        Initiate complex adaptive bitstream processing tasks. Features include:
+        1. Output HLS and DASH adaptive bitrate streams based on the specified adaptive bitrate template;
+        2. The content protection solution for adaptive bitrate streams is selectable as unencrypted, Widevine, or FairPlay.
         3. Support adding opening and ending segments;
-        4. The output adaptive bitrate stream can contain multilingual audio streams, with each language coming from a different media file;
-        5. The output adaptive bitrate stream can include multilingual subtitle streams.
+        4. The output adaptive bitrate stream can contain multilingual audio streams, each language comes from a different media file;
+        5. The output adaptive bitrate stream can contain multilingual subtitle streams.
 
         Notes:
-        1. When using an opening scene, the video stream in the opening scene media needs to align with the audio stream; otherwise, it will cause audio and video synchronization issues in the output.
+        1. When using an opening scene, the video stream in the opening scene media needs to align with the audio stream; otherwise, it will cause audio and video synchronization issues in the output content.
         2. If the output adaptive bitrate stream needs to include the audio of the main media, specify the FileId of the main media in the AudioSet parameter.
         3. To use subtitles, add them to the main media first via the ModifyMediaInfo API or the audio and video details page in the console.
         4. Top speed Codec and watermark are not currently supported.
@@ -604,7 +604,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateContentReviewTemplateResponse:
         """
-        This API is <font color=red>no longer maintained</font>. The new version of the moderation template supports video moderation and image moderation. For details, please see [Create Moderation Template](https://www.tencentcloud.com/document/api/266/84391?from_cn_redirect=1).
+        This API is <font color=red>no longer maintained</font>. The new version moderation template supports audio/video moderation and image moderation. For details, please see [Create Moderation Template](https://www.tencentcloud.com/document/api/266/84391?from_cn_redirect=1).
         This API is used to create a user-customized audio/video moderation template. Up to 50 templates can be created.
         """
         
@@ -623,7 +623,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateDomainVerifyRecordResponse:
         """
-        This API is used to generate a subdomain name resolution record and prompt the customer to add it to the domain name resolution for wildcard domain name and domain name retrieval ownership verification.
+        This API is used to generate a subdomain name resolution and prompt the customer to add it to the domain name resolution for wildcard domain name and domain name retrieval ownership verification.
         """
         
         kwargs = {}
@@ -641,8 +641,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateEnhanceMediaTemplateResponse:
         """
-        This API is <font color=red>no longer maintained</font>. The new version of the [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
-        Creates an Audio and Video Quality Rebirth Template.
+        This API is no longer maintained. The new version of the [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
+        Create an audio and video quality rebirth template.
         """
         
         kwargs = {}
@@ -660,7 +660,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateHeadTailTemplateResponse:
         """
-        Creates a title and trailer template.
+        This API is used to create a title and trailer template.
         -Maximum supported template quantity: 100.
         """
         
@@ -679,7 +679,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateImageProcessingTemplateResponse:
         """
-        Create a custom image processing template. Maximum quantity: 16. Supports up to ten operations, for example: crop - thumbnail - crop - blurry - thumbnail - crop - thumbnail - crop - blurry - thumbnail.
+        Create a user-defined image processing template. Maximum quantity: 16. Supports up to ten operations, for example: crop - thumbnail - crop - blur - thumbnail - crop - thumbnail - crop - blur - thumbnail.
         """
         
         kwargs = {}
@@ -751,7 +751,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateLLMComprehendTemplateResponse:
         """
-        This API is used to create a large model parsing template.
+        Create a large model parsing template.
         """
         
         kwargs = {}
@@ -769,14 +769,14 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateMPSTemplateResponse:
         """
-        This API is used to create a custom template for partial features of the ProcessMediaByMPS API.
-        When creating a template, fill in MPS related parameters in JSON format into the MPSCreateTemplateParams parameter. For specific task parameter configuration methods, refer to the MPS task template related documentation.
+        This API is used to create custom templates for partial features of the ProcessMediaByMPS API.
+        When creating a template, fill in the MPS related parameters in JSON format in the MPSCreateTemplateParams parameter. For specific task parameter configuration methods, see the MPS task template related documentation.
         Currently supported MPS features for creating custom templates:
         1. [Audio and video enhancement](https://www.tencentcloud.com/document/product/862/118703?from_cn_redirect=1).
         2. [Media AI](https://www.tencentcloud.com/document/product/862/113756?from_cn_redirect=1)
 
-        > Template for tasks created using this method:
-        > Template management is still completed in the VOD platform.
+        > Template for tasks created with this method:
+        > 1. Template management is still done in the VOD platform.
         > 2. The feature is currently in beta test. If needed, you can contact us for support.
         """
         
@@ -795,7 +795,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreatePersonSampleResponse:
         """
-        This API is used to create material samples for video processing such as content recognition and inappropriate video recognition through technologies like facial feature positioning.
+        This API is used to create material samples for video processing such as content recognition and inappropriate video recognition through facial feature positioning technology.
         """
         
         kwargs = {}
@@ -831,7 +831,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateProcessImageAsyncTemplateResponse:
         """
-        This API is used to create a user-customized image async processing template. Maximum quantity: 50. HLS format is not supported currently.
+        This API is used to create user-customized image asynchronous processing templates. Maximum number: 50. HLS format is not supported currently.
         """
         
         kwargs = {}
@@ -867,7 +867,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateRebuildMediaTemplateResponse:
         """
-        This API is no longer maintained. The new version of the [Audio and Video Quality Revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Revival Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
+        This API is no longer maintained. The new version of the [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
         This API is used to create a video rebirth template.
         """
         
@@ -886,8 +886,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateReviewTemplateResponse:
         """
-        This API is used to create a user-defined moderation template. Maximum quantity: 50.
-        >Template is applicable only to the [audio/video moderation (ReviewAudioVideo)](https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) and [image moderation (ReviewImage)](https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) APIs.
+        This API is used to create user-customized moderation templates. Maximum number: 50.
+        >Template is applicable only to the ReviewAudioVideo (https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) and ReviewImage (https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) APIs.
         """
         
         kwargs = {}
@@ -906,7 +906,7 @@ class VodClient(AbstractClient):
     ) -> models.CreateRoundPlayResponse:
         """
         This API is used to create a carousel playlist. Maximum quantity: 100.
-        Each file in the Carousel Playlist can specify a source file or a transcoded file.
+        Each file in the carousel playlist can specify a source file or a transcoded file.
         The designated file must be in hls format. All playlist files should preferably maintain the same bitrate and resolution.
         """
         
@@ -925,7 +925,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateSampleSnapshotTemplateResponse:
         """
-        This API is used to create a custom sampled screenshot template. Maximum number: 16.
+        This API is used to create a user-customized sampled screenshot template, with a maximum of 16.
         """
         
         kwargs = {}
@@ -943,7 +943,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateSceneAigcImageTaskResponse:
         """
-        This API is used to generate scenario-based AIGC images. API calls incur actual fees. Refer to the VOD [AIGC image generation billing document](https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#9c4dc6ff-4b3f-4b25-bf2d-393889dfb9ac). The feature uses the [postpaid](https://www.tencentcloud.com/document/product/266/2838?from_cn_redirect=1) settlement mode. For daily billing customers, usage on the day is billed on the second day. For monthly billing customers, the previous month's usage fees are billed on the 1st of the next month.
+        This API is used to generate scenario-based AIGC images. API calls incur actual fees. Refer to the VOD AIGC image generation billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#9c4dc6ff-4b3f-4b25-bf2d-393889dfb9ac). The feature uses postpaid settlement. For daily billing customers, usage on the day is billed on the second day. For monthly billing customers, the previous month's usage fees are billed on the 1st of the next month.
         """
         
         kwargs = {}
@@ -961,7 +961,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateSceneAigcVideoTaskResponse:
         """
-        This API is used to generate scenario-based AIGC images.
+        This API is used to generate scenario-based AIGC images. <b>The API is in beta. If needed, please [contact us](https://www.tencentcloud.com/online?from_cn_redirect=1-service?from=sales_sales&source=PRESALE). API calls will incur actual fees.</b>
         """
         
         kwargs = {}
@@ -979,7 +979,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateSnapshotByTimeOffsetTemplateResponse:
         """
-        This API is used to create a user-customized specified time point screenshot template. Maximum quantity: 16.
+        This API is used to create user-customized specified time point screenshot templates. Maximum quantity: 16.
         """
         
         kwargs = {}
@@ -998,7 +998,7 @@ class VodClient(AbstractClient):
     ) -> models.CreateStorageRegionResponse:
         """
         This API is used to enable storage in a region.
-        1. When a user enables on-demand services, storage in partial regions is enabled by default. To enable storage in other regions, use this API.
+        1. When a user enables the VOD service, storage in partial regions is enabled by default. If necessary, the user can use this API to enable storage in other regions.
         2. The DescribeStorageRegions API can query all storage regions and opened regions.
         """
         
@@ -1036,7 +1036,7 @@ class VodClient(AbstractClient):
     ) -> models.CreateSuperPlayerConfigResponse:
         """
         This API is <font color='red'>no longer maintained</font>. The new version of player signature no longer uses player configuration templates. For details, please see [Player Signature](https://www.tencentcloud.com/document/product/266/45554?from_cn_redirect=1).
-        This API is used to create player configurations. Maximum quantity: 100.
+        This API is used to create player configurations. Maximum number: 100.
         """
         
         kwargs = {}
@@ -1054,7 +1054,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateTranscodeTemplateResponse:
         """
-        Create custom transcoding templates. Maximum quantity: 100.
+        This API is used to create custom transcoding templates. Maximum quantity: 100.
         """
         
         kwargs = {}
@@ -1072,8 +1072,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateVodDomainResponse:
         """
-        This API is used to add an acceleration domain name to VOD. A user can add up to 20 acceleration domain names.
-        1. After the domain name is successfully added, VOD will deploy the domain. It takes about 2 minutes for the domain to change from deployment status to online status.
+        This API is used to add acceleration domain names to VOD. A user can add up to 20 acceleration domain names.
+        1. After the domain name is successfully added, VOD will deploy the domain name. It takes about 2 minutes for the domain name to change from deployment status to online status.
         """
         
         kwargs = {}
@@ -1109,7 +1109,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateWordSamplesResponse:
         """
-        This API is used to create keyword samples in batches. The samples are used for video processing such as inappropriate content recognition and content recognition through OCR and ASR technologies.
+        This API is used to create keyword samples in batches. Samples are used for video processing such as inappropriate content recognition and content recognition through OCR and ASR technology.
         """
         
         kwargs = {}
@@ -1165,7 +1165,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteAdaptiveDynamicStreamingTemplateResponse:
         """
-        Delete an adaptive bitrate streaming template
+        Deletes an adaptive bitrate streaming template
         """
         
         kwargs = {}
@@ -1183,7 +1183,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteAigcAdvancedCustomElementResponse:
         """
-        This API is used to delete AIGC advanced custom subjects.
+        This API is used to delete advanced custom AIGC subjects.
         """
         
         kwargs = {}
@@ -1201,7 +1201,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteAigcApiTokenResponse:
         """
-        Deletes an AIGC API Token. The associated AIGC quota will also be deleted.
+        Deletes an AIGC API Token. The AIGC quota associated with the Token will also be deleted.
         """
         
         kwargs = {}
@@ -1311,7 +1311,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteClassResponse:
         """
-        * A category can be deleted only when it has no subcategories and no associated media.
+        * A category can be deleted only when it has no subcategories and no media association.
         * Otherwise, execute [delete media](https://www.tencentcloud.com/document/product/266/31764?from_cn_redirect=1) and subcategories first, then delete the category;
         """
         
@@ -1330,7 +1330,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteContentReviewTemplateResponse:
         """
-        This API is <font color=red>no longer maintained</font>. The new version moderation template supports video moderation and image moderation. For details, please see [Delete Moderation Template](https://www.tencentcloud.com/document/api/266/84390?from_cn_redirect=1).
+        This API is <font color=red>no longer maintained</font>. The new version of the moderation template supports video moderation and image moderation. For details, please see [Delete Moderation Template](https://www.tencentcloud.com/document/api/266/84390?from_cn_redirect=1).
         Delete a user-customized audio/video moderation template.
         """
         
@@ -1349,8 +1349,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteEnhanceMediaTemplateResponse:
         """
-        This API is <font color=red>no longer maintained</font>. The new version of [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
-        Delete an audio and video quality rebirth template.
+        This API is <font color=red>no longer maintained</font>. The new version of [Audio and Video Quality Rebirth](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) interface uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
+        This API is used to delete an audio and video quality rebirth template.
         """
         
         kwargs = {}
@@ -1368,7 +1368,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteHeadTailTemplateResponse:
         """
-        Delete a title and trailer template.
+        This API is used to delete a title and trailer template.
         """
         
         kwargs = {}
@@ -1386,7 +1386,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteImageProcessingTemplateResponse:
         """
-        This API is used to delete a user-defined image processing template.
+        This API is used to delete a user-customized image processing template.
         """
         
         kwargs = {}
@@ -1404,7 +1404,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteImageSpriteTemplateResponse:
         """
-        Delete an image sprite template.
+        This API is used to delete an image sprite template.
         """
         
         kwargs = {}
@@ -1441,7 +1441,7 @@ class VodClient(AbstractClient):
     ) -> models.DeleteKnowledgeBaseResponse:
         """
         Delete a knowledge base.
-        After the API is called, the knowledge base will be in the "Deleting" status and the deletion operation will be performed in the backend.
+        After the API is called, the knowledge base will be in the "Deleting" status, and the deletion operation will be performed in the backend.
         """
         
         kwargs = {}
@@ -1459,9 +1459,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteLLMComprehendTemplateResponse:
         """
-        This API is used to delete a user-defined customized large model parsing template.
+        Delete a customized large model parsing template.
 
-        Note: Templates with IDs below 10000 are preset templates and cannot be deleted.
+        Note: Templates with IDs below 10000 are system-preset templates and cannot be deleted.
         """
         
         kwargs = {}
@@ -1498,8 +1498,8 @@ class VodClient(AbstractClient):
     ) -> models.DeleteMediaResponse:
         """
         * Delete media and its corresponding video processing files (raw files, such as transcoded videos, sprite sheets, screenshots, WeChat video releases, etc.);
-        * You can separately delete the source file, transcoded video, and WeChat-published video under a specified video file ID.
-        * Note: After the original file is deleted, you cannot initiate any video processing operation such as transcoding or publishing on WeChat.
+        * You can individually delete the source file, transcoded video, or WeChat video release under a specified video file ID.
+        * Note: After the original file is deleted, you cannot initiate any video processing operations such as transcoding or WeChat publishing.
         """
         
         kwargs = {}
@@ -1517,7 +1517,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeletePersonSampleResponse:
         """
-        This API is used to delete material samples based on character ID.
+        This API is used to delete material samples based on figure IDs.
         """
         
         kwargs = {}
@@ -1553,9 +1553,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteProcessImageAsyncTemplateResponse:
         """
-        This API is used to delete a user-customized asynchronous image processing template.
+        This API is used to delete a user-customized image asynchronous processing template.
 
-        Note: Templates with IDs below 10000 are preset templates and cannot be deleted.
+        Note: Templates with IDs below 10000 are system-preset templates and cannot be deleted.
         """
         
         kwargs = {}
@@ -1591,8 +1591,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteRebuildMediaTemplateResponse:
         """
-        This API is <font color=red>no longer maintained</font>. The new version of the [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
-        Delete a video rebirth template.
+        This API is <font color=red>no longer maintained</font>. The new version of [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
+        Deletes a video rebirth template.
         """
         
         kwargs = {}
@@ -1610,8 +1610,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteReviewTemplateResponse:
         """
-        This API is used to delete a user-defined moderation template.
-        >Template is applicable only to the [audio/video moderation (ReviewAudioVideo)](https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) and [image moderation (ReviewImage)](https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) APIs.
+        Delete a user-customized moderation template.
+        >Template is applicable only to the ReviewAudioVideo (https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) and ReviewImage (https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) APIs.
         """
         
         kwargs = {}
@@ -1684,7 +1684,7 @@ class VodClient(AbstractClient):
     ) -> models.DeleteSuperPlayerConfigResponse:
         """
         This API is <font color='red'>no longer maintained</font>. The new version of player signature no longer uses player configuration templates. For details, please see [Player Signature](https://www.tencentcloud.com/document/product/266/45554?from_cn_redirect=1).
-        This API is used to delete player configurations.
+        This API is used to delete a player configuration.
         *Note: The system preset player configuration cannot be deleted.*
         """
         
@@ -1722,7 +1722,7 @@ class VodClient(AbstractClient):
     ) -> models.DeleteVodDomainResponse:
         """
         This API is used to delete VOD acceleration domains.
-        1. Acceleration in all regions must be disabled before domain deletion.
+        1. Before domain deletion, acceleration in all regions must be disabled.
         """
         
         kwargs = {}
@@ -1740,9 +1740,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteVoiceResponse:
         """
-        Deletes a specified voice type by voice ID. The deletion cannot be undone, and the voice type cannot be used for subsequent APIs. Only voice types for this account can be deleted. System preset voice types cannot be deleted.
+        Delete a specified voice by voice ID. This operation cannot be undone, and the voice cannot be used for subsequent APIs. Only voices for this account can be deleted. System preset voices cannot be deleted.
 
-        Note: Newly designed or cloned voice types cannot be deleted before activation. They are activated only after the new voice type is used for TTS once.
+        Note: Newly designed or cloned voice types cannot be deleted before activation (not found means non-operational). They are activated only after the new voice type is used for TTS once.
         """
         
         kwargs = {}
@@ -1760,7 +1760,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteWatermarkTemplateResponse:
         """
-        This API is used to delete a user-defined watermark template.
+        This API is used to delete a user-customized watermark template.
         """
         
         kwargs = {}
@@ -1796,7 +1796,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAIAnalysisTemplatesResponse:
         """
-        This API is used to retrieve the audio/video content analysis template detail list based on the unique identifier of an audio/video content analysis template. The returned results include all eligible user-defined audio/video content analysis templates and [system preset audio/video content analysis templates](https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF).
+        This API is used to get the detail list of audio and video content analysis templates based on their unique identifiers. The returned results include all eligible user-defined audio and video content analysis templates and [system preset audio/video content analysis templates](https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF).
         """
         
         kwargs = {}
@@ -1814,7 +1814,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAIRecognitionTemplatesResponse:
         """
-        This API is used to get the list of audio/video content recognition templates by unique ID. The returned results include all eligible user-defined audio/video content recognition templates and [system preset audio/video content recognition templates](https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF).
+        This API is used to get the list of details of audio/video content recognition templates based on their unique IDs. The returned results include all eligible user-defined audio/video content recognition templates and system preset audio/video content recognition templates.
         """
         
         kwargs = {}
@@ -1868,7 +1868,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAigcApiTokensResponse:
         """
-        Query the list of AIGC API tokens. Data sync has a delay after creation or deletion. You can query the latest data after about 30 seconds.
+        This API is used to query the list of AIGC API Tokens. Data sync has a delay after creation or deletion. The latest data can be queried after about 30 seconds.
         """
         
         kwargs = {}
@@ -1940,10 +1940,10 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAigcUsageDataResponse:
         """
-        This API returns AIGC statistical information within a specified time range.
+        This API is used to return AIGC statistical information within a specified time range.
         1. AIGC statistical data from the last 365 days can be queried.
            2. The query time span should not exceed 90 days.
-        3. If the query time span exceeds 1 day, the data of day granularity is returned. Otherwise, the data of 5-minute granularity is returned.
+        3. If the query time span exceeds 1 day, the data returned is at day granularity. Otherwise, the data returned is at 5-minute granularity.
         """
         
         kwargs = {}
@@ -1979,7 +1979,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeAnimatedGraphicsTemplatesResponse:
         """
-        This API is used to query a list of rotating image templates, and the pagination query is supported based on conditions.
+        This API is used to query the list of rotating image templates based on conditions with paging.
         """
         
         kwargs = {}
@@ -1997,7 +1997,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBlindWatermarkTemplatesResponse:
         """
-        This API is used to query user-customized digital watermark templates.
+        This API is used to query user-customized digit watermark templates.
         """
         
         kwargs = {}
@@ -2015,7 +2015,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCDNDomainsResponse:
         """
-        This API is used to query on-demand domain names.
+        Queries an on-demand domain name.
         """
         
         kwargs = {}
@@ -2033,11 +2033,11 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCDNStatDetailsResponse:
         """
-        This API is used to query CDN bandwidth, traffic, and other stats for on-demand domain names.
+        This API is used to query CDN bandwidth, traffic, and other stats for a VOD domain.
         * The time span between the query start time and end time should not exceed 90 days.
-        * Data in different service regions can be queried.
-        * Statistical data within the Chinese mainland supports querying stats by designated region and carrier.
-        * Playback statistics only target VOD domains, excluding distribution from EdgeOne domain names.
+        * You can query data in different service regions.
+        * Statistical data support is available for querying specified regions and carriers within the Chinese mainland.
+        * Playback statistics only target VOD domains, excluding EdgeOne domain distribution.
         """
         
         kwargs = {}
@@ -2055,12 +2055,12 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCDNUsageDataResponse:
         """
-        This API is used to query VOD CDN stats such as traffic and bandwidth.
-        1. CDN usage data is retained on the system side for 13 months. You can only query usage data from the most recent 365 days through the API. If you need to retrieve historical usage data beyond 365 days, contact us.
+        This API is used to query VOD CDN traffic, bandwidth, and other stats.
+        1. CDN usage data is retained on the system side for 13 months. You can only query usage data from the most recent 365 days through the API. To retrieve historical usage data beyond 365 days, contact us.
            2. The query time span should not exceed 90 days.
         3. You can specify the time granularity of usage data, supporting 5-minute, 1-hour, and 1-day granularities.
         4. Traffic is the total traffic within the query time granularity, and bandwidth is the peak bandwidth within the query time granularity.
-        5. Playback statistics only target VOD domains, excluding distribution from EdgeOne domain names.
+        5. Playback statistics only target VOD domains, excluding EdgeOne domain distribution.
         """
         
         kwargs = {}
@@ -2078,7 +2078,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCLSLogsetsResponse:
         """
-        Query the CLS log set created by VOD.
+        Queries CLS log sets created by VOD.
         """
         
         kwargs = {}
@@ -2132,8 +2132,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCdnLogsResponse:
         """
-        This API is used to query the download URL of CDN access logs for an on-demand domain name, excluding EdgeOne origin-pull to VOD domains.
-        1. Can query CDN log download links from the most recent 30 days.
+        This API is used to query the download URL of CDN access logs for VOD domains, excluding EdgeOne origin-pull to VOD domains.
+        1. This API is used to query CDN log download links for the most recent 30 days.
         2. By default, CDN generates a log file per hour. If there is no CDN access in an hour, no log file is generated.
         3. The CDN log download link has a validity of 24 hours.
         """
@@ -2153,10 +2153,10 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClientUploadAccelerationUsageDataResponse:
         """
-        This API is used to return client upload acceleration statistics within a specified time range.
+        This API returns client upload acceleration statistics within a specified time range.
         1. Can query client upload acceleration statistics data for the most recent 365 days.
            2. The query time span should not exceed 90 days.
-        3. If the query time span exceeds 1 day, the data returned is at a daily granularity. Otherwise, the data returned is at a 5-minute granularity.
+        3. If the query time span exceeds 1 day, the data is returned at a granularity of 1 day. Otherwise, the data is returned at a granularity of 5 minutes.
         """
         
         kwargs = {}
@@ -2174,8 +2174,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeContentReviewTemplatesResponse:
         """
-        This API is <font color=red>no longer maintained</font>. The new version of the moderation template supports video and image moderation. For details, please see [Query the moderation template list](https://www.tencentcloud.com/document/api/266/84389?from_cn_redirect=1).
-        This API is used to obtain the list of audio/video moderation template details based on the unique identifier of the template. The returned results include all eligible custom templates and system preset content review templates (https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF).
+        This API is <font color=red>no longer maintained</font>. The new moderation template supports audio/video moderation and image moderation. For details, please see [Query Moderation Template List](https://www.tencentcloud.com/document/api/266/84389?from_cn_redirect=1).
+        This API is used to retrieve the list of details of audio/video moderation templates based on their unique identifiers. The returned results include all eligible custom templates and system preset content review templates (https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF).
         """
         
         kwargs = {}
@@ -2211,10 +2211,10 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDailyMediaPlayStatResponse:
         """
-        This API is used to query daily playback statistics within a specified date range.
-        Playback statistics from the past one year can be queried.
+        This API is used to query the daily playback statistics within a specified date range.
+        * Playback statistics for the past one year can be queried.
         * The time span between the start date and end date can be up to 90 days.
-        * Playback statistics only target VOD domains, excluding distribution from EdgeOne domain names.
+        * Playback statistics only target VOD domains (i.e., distribution from EdgeOne domain names is not included in playback statistics).
         * Due to data delay, you are advised to query the usage data of the previous day after 12:00 noon the next day.
         """
         
@@ -2233,13 +2233,13 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDailyMostPlayedStatResponse:
         """
-        This API is used to query daily playback statistics for the Top 100 media files.
+        This API is used to query daily playback statistics of the Top 100 media files.
         * Playback statistics from the past one year can be queried.
-        * You can query by number of plays or playback traffic.
-        * Playback count statistics description:
-        1. HLS file: The number of plays is counted when accessing M3U8 files, but not when accessing TS files.
+        * You can query by playback times or traffic volume.
+        * Statistical description of the number of plays:
+        1. HLS file: The number of plays is counted when an M3U8 file is accessed, but not when a TS file is accessed.
         2. Other files (for example, MP4 files): If a playback request includes the range parameter and the start parameter of range is not equal to 0, the number of plays is not counted. In other cases, the number of plays is counted.
-        * Playback statistics only target VOD domains (i.e., EdgeOne domain distribution is not included in playback statistics).
+        * Playback statistics only target VOD domains (i.e., distribution from EdgeOne domain names is not included in playback statistics).
         """
         
         kwargs = {}
@@ -2258,14 +2258,14 @@ class VodClient(AbstractClient):
     ) -> models.DescribeDailyPlayStatFileListResponse:
         """
         This API is used to query the download address of playback statistics files.
-        * You can query the download links for playback statistics files from the past one year. The time span between the start date and end date cannot exceed 90 days.
+        * Can query the playback statistics file download link for the past one year. The time span between the start date and end date of the query is no more than 90 days.
         VOD analyzes and processes the CDN request logs of the previous day to generate playback statistics files.
-        * The playback statistics file contains statistical information such as the number of plays and total traffic of media files.
-        * Playback count statistics description:
+        The playback statistics file contains statistical information such as the number of plays and total traffic of media files.
+        * Statistical description of the number of plays:
         1. HLS file: The number of plays is counted when an M3U8 file is accessed, but not when a TS file is accessed.
-        2. Other files (for example, MP4 files): If the playback request includes the range parameter and the start parameter of range is not equal to 0, the number of plays is not counted. In other cases, the number of plays is counted.
-        * Statistics of playback devices: If a playback request includes the UserAgent parameter and the UserAgent contains identifiers such as Android or iPhone, it is counted as a mobile playback count. Otherwise, it is counted as a PC playback count.
-        * Playback statistics only target VOD domains, excluding EdgeOne domain name distribution.
+        2. Other files (for example, MP4 files): If a playback request includes the range parameter and the start parameter of range is not equal to 0, the number of plays is not counted. In other cases, the number of plays is counted.
+        * Statistics of playback devices: If a playback request includes the UserAgent parameter and the UserAgent contains identifiers such as Android or iPhone, it is counted as a mobile playback. Otherwise, it is counted as a PC playback.
+        * Playback statistics only target VOD domains (i.e., distribution from EdgeOne domain names is not included in playback statistics).
         """
         
         kwargs = {}
@@ -2284,8 +2284,8 @@ class VodClient(AbstractClient):
     ) -> models.DescribeDefaultDistributionConfigResponse:
         """
         This API is used to query the default distribution configuration.
-        * Distribution domain name and distribution protocol, i.e., the domain name and protocol in the media file distribution URL. Media files are distributed based on the default distribution configuration.
-        * Playback key, used to calculate player signature.
+        * Distribution domain name and protocol, i.e., the domain name and protocol in the media file distribution URL. Media files are distributed based on the default distribution configuration.
+        Playback key, used to calculate player signature.
         """
         
         kwargs = {}
@@ -2303,7 +2303,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDrmKeyProviderInfoResponse:
         """
-        This API is used to query DRM Key Provider Information.
+        This API is used to query DRM key provider information.
         """
         
         kwargs = {}
@@ -2321,8 +2321,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeEnhanceMediaTemplatesResponse:
         """
-        This API is <font color=red>no longer maintained</font>. The new version of the [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
-        This API is used to get the audio and video quality rebirth template list.
+        This API is <font color=red>no longer maintained</font>. The new version of [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
+        This API is used to obtain the audio and video quality regeneration template list.
         """
         
         kwargs = {}
@@ -2340,9 +2340,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeEventConfigResponse:
         """
-        Tencent Cloud VOD provides media upload, media management, media processing, and other services. During or after the execution of these services, Tencent Cloud VOD also provides various event notifications, allowing developers to detect service processing status and perform next business operations.
+        Tencent Cloud Video on Demand (VOD) provides customers with media upload, media management, media processing, and other services. During or after these services are executed, VOD also provides various event notifications, helping developers detect service processing status and perform next business operations.
 
-        Developers can use this API to query the current configuration of event notification receiving methods, recipient addresses, and which events have callback notification enabled.
+        Developers can use this API to query the current configuration of the event notification receiving method, recipient address, and which events have callback notification enabled.
 
         Default API request rate limit: 100 requests/second.
         """
@@ -2362,9 +2362,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeFileAttributesResponse:
         """
-        Used to asynchronously get file attributes.
+        Used to get file attributes asynchronously.
         -Currently only support getting the Md5 and Sha1 of the source file.
-        -For HLS or DASH input files, only get the attributes of the index file.
+        -For HLS or DASH input files, only the attributes of index files are retrieved.
         """
         
         kwargs = {}
@@ -2382,7 +2382,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeHeadTailTemplatesResponse:
         """
-        This API is used to search for a list of title and trailer templates.
+        This API is used to search for title and trailer template lists.
         """
         
         kwargs = {}
@@ -2400,7 +2400,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeImageProcessingTemplatesResponse:
         """
-        This API is used to query the list of image processing templates, and the pagination query is supported based on conditions.
+        This API is used to query the list of image processing templates based on conditions with paging.
         """
         
         kwargs = {}
@@ -2418,10 +2418,10 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeImageReviewUsageDataResponse:
         """
-        This API is used to return the daily image moderation usage information within the specified query time range.
+        This API is used to return the daily image review usage information within the specified query time range.
         1. Image moderation statistics data from the last 365 days can be queried.
            2. The query time span should not exceed 90 days.
-        3. If the query time span exceeds 1 day, the data returned is at a daily granularity. Otherwise, the data returned is at a 5-minute granularity.
+        3. If the query time span exceeds 1 day, data at a day granularity is returned. Otherwise, data at a 5-minute granularity is returned.
         """
         
         kwargs = {}
@@ -2439,7 +2439,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeImageSpriteTemplatesResponse:
         """
-        This API is used to query image sprite templates based on conditions with paging.
+        Query image sprite templates based on conditions with paging.
         """
         
         kwargs = {}
@@ -2475,7 +2475,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeKnowledgeBasesResponse:
         """
-        Queries the knowledge base list. Returns all knowledge base info under the designated user.
+        Queries the knowledge base list. Returns all knowledge base information under the specified user.
         """
         
         kwargs = {}
@@ -2493,7 +2493,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLLMComprehendTemplatesResponse:
         """
-        This API is used to obtain the parsing template detail list of a large model based on the template unique identifier. The returned results include all user-customized large model parsing templates that meet the conditions.
+        According to the unique identifier of the large model parsing template, retrieve the large model parsing template detail list. The returned results include all user-customized large model parsing templates that meet the conditions.
         """
         
         kwargs = {}
@@ -2512,9 +2512,9 @@ class VodClient(AbstractClient):
     ) -> models.DescribeLicenseUsageDataResponse:
         """
         This API is used to return the daily License request count within the specified query time range.
-        1. License request count stats from the last 365 days can be queried.
+        1. License request count statistics from the last 365 days can be queried.
            2. The query time span should not exceed 90 days.
-        3. If the query time span exceeds 1 day, the data returned is at a daily granularity. Otherwise, the data returned is at a 5-minute granularity.
+        3. If the query time span exceeds 1 day, data is returned at a daily granularity. Otherwise, data is returned at a 5-minute granularity.
         """
         
         kwargs = {}
@@ -2532,8 +2532,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMPSTemplatesResponse:
         """
-        Query a user-customized media processing service task template.
-        To query the template list, fill in the MPS related parameters in MPSDescribeTemplateParams in JSON format. For task parameter configuration, see the MPS task template documentation.
+        This API is used to query user-customized media processing service task templates.
+        To query the template list, fill in the MPS related parameters in MPSDescribeTemplateParams in JSON format. For specific task parameter configuration methods, see the MPS task template documentation.
         """
         
         kwargs = {}
@@ -2552,17 +2552,17 @@ class VodClient(AbstractClient):
     ) -> models.DescribeMediaInfosResponse:
         """
         1. This API can obtain multiple types of info of multiple media files, including:
-        1. Basic information (basicInfo): including media name, category, playback address, cover image, etc.
+        1. basicInfo: including media name, category, playback address, cover image, etc.
         2. Meta information (metaData): including size, duration, video stream information, audio stream information, etc.
-        3. transcodeInfo: includes media addresses, video stream parameters, and audio stream parameters of various specifications generated for the media.
+        3. Transcoding result information (transcodeInfo): including media addresses, video stream parameters, and audio stream parameters of various specifications generated for this media.
         4. Animated graphics info (animatedGraphicsInfo): the animated graphics info after converting a video to GIF (for example, gif).
-        5. sampleSnapshotInfo: Screenshot information after sampling screenshots of a video.
-        6. Sprite image information (imageSpriteInfo): sprite image information after capturing sprite image files from a video.
-        7. snapshotByTimeOffsetInfo: screenshot information after taking screenshots of a video at specified time points.
+        5. sampleSnapshotInfo: Screenshot information after sampling a video.
+        6. Sprite image information (imageSpriteInfo): the sprite image information after capturing sprite images from a video.
+        7. snapshotByTimeOffsetInfo: screenshot information after taking screenshots of the video at specified time points.
         8. Video timestamp information (keyFrameDescInfo): Dotting information set for the video.
-        9. Adaptive Bitrate Streaming information (adaptiveDynamicStreamingInfo): information including specification, encryption type, packaging format, and other related details.
+        9. Adaptive Bitrate Streaming information (adaptiveDynamicStreamingInfo): including specification, encryption type, packaging format and other related information.
         10. Review information (reviewInfo): includes media moderation and media cover review information.
-        2. You can specify to only return partial info in the response.
+        2. You can specify to only return partial information in the response.
         """
         
         kwargs = {}
@@ -2581,10 +2581,10 @@ class VodClient(AbstractClient):
     ) -> models.DescribeMediaPlayStatDetailsResponse:
         """
         This API is used to query playback data of media files by specified time granularity.
-        * Playback statistics from the past one year can be queried.
+        * Playback statistics for the past one year can be queried.
         Time granularity: hr. The max span between the end time and start time is 7 days.
         Time granularity is day, and the maximum span between the end time and start time is 90 days.
-        * Playback statistics only target VOD domains, excluding distribution from EdgeOne domain names.
+        * Playback statistics only target VOD domains, excluding EdgeOne domain distribution.
         """
         
         kwargs = {}
@@ -2603,7 +2603,7 @@ class VodClient(AbstractClient):
     ) -> models.DescribeMediaProcessUsageDataResponse:
         """
         This API is used to return the daily video processing usage information within the specified query time range.
-        1. Video processing usage data is retained on the system side for 13 months. You can only query usage data from the most recent 365 days through the API. If you need to retrieve historical usage data beyond 365 days, contact us.
+        1. Video processing usage data is retained for 13 months in the data system. You can only query usage data from the most recent 365 days through the interface. To retrieve historical usage data beyond 365 days, contact us.
            2. The query time span should not exceed 90 days.
         """
         
@@ -2622,7 +2622,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePersonSamplesResponse:
         """
-        This API is used to query material sample information by material ID, name, or tag with pagination.
+        This API is used to query material sample information by material ID, name, or tag with paging.
         """
         
         kwargs = {}
@@ -2658,7 +2658,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeProcessImageAsyncTemplatesResponse:
         """
-        This API is used to obtain the template details list based on the Template Unique Identifier. The returned results include all eligible user-customized image asynchronous processing templates.
+        This API is used to obtain the template details list for asynchronous image processing based on the Template Unique Identifier. The returned results include all eligible user-customized asynchronous image processing templates.
         """
         
         kwargs = {}
@@ -2695,7 +2695,7 @@ class VodClient(AbstractClient):
     ) -> models.DescribeRebuildMediaTemplatesResponse:
         """
         This API is <font color=red>no longer maintained</font>. The new version of the [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
-        Queries the video rebirth template list.
+        This API is used to query the video rebirth template list.
         """
         
         kwargs = {}
@@ -2715,9 +2715,9 @@ class VodClient(AbstractClient):
         """
         <b>This API is not recommended. Use [DescribeMediaProcessUsageData](https://www.tencentcloud.com/document/product/266/41464?from_cn_redirect=1) as an alternative.</b>
 
-        This API is used to return the daily video content intelligent identification duration data within the specified query time range. Measurement unit: second.
+        This API is used to return the daily duration data of video content intelligent identification within the specified query time range. Measurement unit: seconds.
 
-        1. Video content intelligent identification duration stats from the last 365 days can be queried.
+        1. Intelligent video content identification duration statistics from the last 365 days can be queried.
         2. The query time span should not exceed 90 days.
         """
         
@@ -2736,8 +2736,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeReviewTemplatesResponse:
         """
-        Retrieves the moderation template list.
-        >Template is applicable only to the ReviewAudioVideo (https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) and ReviewImage (https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) APIs.
+        This API is used to get the moderation template list.
+        >Template is applicable only to the [ReviewAudioVideo](https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) and [ReviewImage](https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) APIs.
         """
         
         kwargs = {}
@@ -2828,9 +2828,9 @@ class VodClient(AbstractClient):
     ) -> models.DescribeStorageDetailsResponse:
         """
         This API is used to return the VOD storage space used within a specified time range, in bytes.
-        1. Storage usage data is reserved on the system side for 13 months. You can only query usage data from the most recent 365 days through the API. If you need to call historical usage data beyond 365 days, contact us;
+        1. Storage usage data is reserved on the system side for 13 months. You can only query usage data from the most recent 365 days through the API. If you need to retrieve historical usage data beyond 365 days, contact us;
         2. The query time span should not exceed 90 days.
-        3. The query span at a minute granularity should not exceed 7 days.
+        3. The query span at a minute granularity should not exceed 7 days;
         """
         
         kwargs = {}
@@ -2850,7 +2850,7 @@ class VodClient(AbstractClient):
         """
         This API is used to:
         1. Query the list of all storage campuses available for on-demand activation.
-        2. Query the opened park list.
+        2. Query the list of opened parks.
         3. Query the storage campus used by default.
         """
         
@@ -2887,8 +2887,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSuperPlayerConfigsResponse:
         """
-        This API is <font color='red'>no longer maintained</font>. The new version of player signature no longer uses the player configuration template. For details, please see [Player Signature](https://www.tencentcloud.com/document/product/266/45554?from_cn_redirect=1).
-        Queries player configurations based on conditions with paging.
+        This API is <font color='red'>no longer maintained</font>. The new version of player signature no longer uses player configuration templates. For details, please see [Player Signature](https://www.tencentcloud.com/document/product/266/45554?from_cn_redirect=1).
+        This API is used to query player configurations based on conditions with paging.
         """
         
         kwargs = {}
@@ -2926,7 +2926,7 @@ class VodClient(AbstractClient):
         """
         * This API is used to query the task list.
         * When the list contains a large amount of data, a single API call cannot pull the entire list. You can use the ScrollToken parameter to pull in batches.
-        * Only query tasks from the last three days (72 hr).
+        * Only tasks from the last three days (72 hours) can be queried.
         """
         
         kwargs = {}
@@ -2944,7 +2944,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTranscodeTemplatesResponse:
         """
-        This API is used to search the transcoding template detail list by transcoding template unique identifier. The returned results include all eligible custom templates and [system preset transcoding templates](https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+        This API is used to retrieve the transcoding template detail list based on the transcoding template unique identifier. The returned results include all eligible custom templates and [system preset transcoding templates](https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
         """
         
         kwargs = {}
@@ -2962,7 +2962,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeVodDomainsResponse:
         """
-        This API is used to query the information list of on-demand domain names.
+        This API is used to query the list of on-demand video domain names.
         """
         
         kwargs = {}
@@ -2980,7 +2980,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeVoicesResponse:
         """
-        Queries the list of available timbres under the current account, supporting filtering by optional conditions such as voice ID, type, name, gender, age, language, tag, and scenario.
+        Queries the available timbre list under the current account, supporting filtering by optional conditions such as voice ID, type, name, gender, age, language, tag, and scenario.
 
         Note: Newly designed or cloned voice types cannot be queried before activation. They are activated only after the new voice type is used for TTS once.
         """
@@ -3000,7 +3000,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeWatermarkTemplatesResponse:
         """
-        This API is used to query user-defined watermark templates, and the pagination query is supported based on conditions.
+        This API is used to query user-customized watermark templates, and the pagination query is supported based on conditions.
         """
         
         kwargs = {}
@@ -3018,7 +3018,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeWordSamplesResponse:
         """
-        This API is used to paginate keyword sample information by scenario, keyword, and tag.
+        This API is used to paging query keyword sample info by scenario, keyword, and tag.
         """
         
         kwargs = {}
@@ -3036,7 +3036,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DesignVoiceAsyncResponse:
         """
-        This API is used to initiate a voice design task. It generates a custom voice based on a natural language description. You can specify a voice profile at the same time, including name, gender, age, language, tag, and scenario. If trial text is attached during submission, audio audition is generated after task completion. Voice design is an asynchronous task. The voice ID is generated after task completion.
+        This API is used to trigger a voice design task. It generates a custom voice based on a natural language description. You can specify a voice profile at the same time, such as name, gender, age, language, tag, and scenario. If trial text is attached during submission, an audio audition is generated after task completion. Voice design is an asynchronous task. The voice ID is generated after task completion.
         """
         
         kwargs = {}
@@ -3054,21 +3054,21 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EditMediaResponse:
         """
-        This API is used to edit a video, such as clipping and concatenation, to generate a new video on demand. Editing features include:
+        This API is used to edit a video, such as clipping and splicing, to generate a new on-demand video. Editing features include:
 
-        1) Edit a file in on-demand video to generate a new video.
+        1) Edit a file in VOD to generate a new video.
         2) Splice multiple on-demand files to generate a new video.
-        3) Edit multiple on-demand video files and then splice them to generate a new video;
+        3) Edit multiple files in on-demand video and then splice them to generate a new video;
         4. Directly generate a new video for one of the streams in VOD;
-        5. Edit one of the VOD streams to generate a new video;
+        5. Edit one of the on-demand streams to generate a new video;
         6) Splice multiple on-demand streams to generate a new video.
         7) Edit multiple streams in VOD and then splice them to generate a new video.
 
-        For the generated new video, you can also specify whether to execute task flow for the generated video.
+        For the generated new video, you can also specify whether to execute task flow on the generated video.
 
-        >When editing or splicing a live stream, please ensure the stream ended before you operate. Otherwise, the generated video may be incomplete.
+        When editing or splicing a live stream, please ensure the stream has ended before operating. Otherwise, the generated video may be incomplete.
 
-        If event notification is used, its type is video editing completed (https://www.tencentcloud.com/document/product/266/33794?from_cn_redirect=1).
+        If event notification is used, its type is [video editing completed](https://www.tencentcloud.com/document/product/266/33794?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -3086,7 +3086,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EnhanceMediaByTemplateResponse:
         """
-        This API is <font color=red>no longer maintained</font>. Please use the new version of APIs for [audio and video quality revival](https://www.tencentcloud.com/document/api/266/102571?from_cn_redirect=1).
+        This API is <font color=red>no longer maintained</font>. Please use the new version of APIs [audio and video quality revival](https://www.tencentcloud.com/document/api/266/102571?from_cn_redirect=1).
         Use a template to initiate audio and video quality revival.
         """
         
@@ -3105,7 +3105,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EnhanceMediaQualityResponse:
         """
-        This API is used to initiate an audio and video quality regeneration task for on-demand audio-video media.
+        This API is used to trigger an audio and video quality regeneration task for on-demand audio-video media.
         """
         
         kwargs = {}
@@ -3123,7 +3123,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ExecuteFunctionResponse:
         """
-        This API is only used for special customized development scenarios. Do not call this API unless VOD customer service proactively informs you to do so.
+        This API is only used for special scenarios of customized development. Do not call this API unless VOD customer service proactively informs you that you need to use it.
         """
         
         kwargs = {}
@@ -3197,9 +3197,9 @@ class VodClient(AbstractClient):
         """
         Quickly splice and edit HLS videos in VOD to generate new media in HLS format.
 
-        Quickly splice or edit the generated video to generate a new FileId and solidify it. After successful solidification, the new video file exists independent of the original input video and is not affected by deletion of the original video.
+        Quickly splice or edit the generated video to generate a new FileId and solidify it. After successful solidification, the new video file exists independent of the original input video and is not affected by the deletion of the original video.
 
-        <font color='red'>Note:</font> Enable reception of editing solidification event notifications through the ModifyEventConfig API. After successful solidification, you will receive a PersistenceComplete event notification. Before receiving this event notification, you should not delete or reduce the storage class of the original input video. Otherwise, playback of the video generated by splicing and clipping may be abnormal.
+        <font color='red'>Note:</font> Enable reception of editing solidification event notifications through the ModifyEventConfig API. After successful solidification, you will receive a PersistenceComplete event notification. Before receiving this event notification, you should not delete or transition the original input video to colder storage. Otherwise, playback of the video generated by splicing and clipping may encounter exceptions.
         """
         
         kwargs = {}
@@ -3217,9 +3217,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ForbidMediaDistributionResponse:
         """
-        After media blocking, except for VOD console preview, accessing video resource URLs (raw files, transcoding output files, screenshots, etc.) for other scenarios will return 403.
-        It takes about 5 to 10 minutes for the block/unblock operation to take effect across the entire network.
-        * Note: Blocking media can only operate on media in standard storage and infrequent storage. Media in infrequent storage must be stored for at least 30 days. If deleted early or changed to another storage class, it is still billed for 30 days. If you block media in infrequent storage and its infrequent storage duration is less than 30 days, early deletion billing occurs. At the same time, after blocking, the infrequent storage duration of the media restarts from the current time. If the media is deleted or changed to another storage class before reaching 30 days, early deletion billing also occurs. For example, media 001 has been in infrequent storage for 10 days. If you block 001 at this point, infrequent storage is still billed for 30 days (early deletion billing duration: 30 - 10 = 20 days). After blocking, the infrequent storage duration of 001 restarts. If 001 is deleted on day 5 after blocking, infrequent storage is still billed for 30 days (early deletion billing duration: 30 - 5 = 25 days). The actual infrequent storage duration of 001 is 10 + 5 = 15 days, and the infrequent storage billing duration is 10 + 20 (early deletion billing) + 5 + 25 (early deletion billing) = 60 days.
+        * After media blocking, except for VOD console preview, accessing URLs of various video resources (raw files, transcoding output files, screenshots, etc.) for other scenarios will return 403.
+        It takes about 5 to 10 minutes for the ban/unban operation to take effect across the entire network.
+        * Note: Media blocking can only be performed on media stored in standard storage and infrequent storage. Media in infrequent storage must be stored for at least 30 days. If deleted early or changed to another storage class, it is still billed for 30 days. If you block media in infrequent storage and its infrequent storage duration is less than 30 days, early deletion fees will occur. At the same time, after blocking, the infrequent storage duration of the media restarts from the current time. If the media is deleted or changed to another storage class before reaching 30 days, early deletion fees will also occur. For example, media 001 has been in infrequent storage for 10 days. If you block 001 at this point, infrequent storage is still billed for 30 days (early deletion billing duration: 30 - 10 = 20 days). After blocking, the infrequent storage duration of 001 restarts. If 001 is deleted on day 5 after blocking, infrequent storage is still billed for 30 days (early deletion billing duration: 30 - 5 = 25 days). The actual infrequent storage duration of 001 is 10 + 5 = 15 days, while the billed infrequent storage duration is 10 + 20 (early deletion billing) + 5 + 25 (early deletion billing) = 60 days.
         """
         
         kwargs = {}
@@ -3237,7 +3237,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.HandleCurrentPlaylistResponse:
         """
-        Perform operations on the carousel current playlist. Supported operations: <li> Insert: insert a play program into the current playlist.</li><li> Delete: delete a play program from the playlist.</li>
+        Perform operations on the carousel current playlist. Supported operations: <li> Insert: Insert a program into the current playlist.</li><li> Delete: Delete a program in the playlist.</li>
         """
         
         kwargs = {}
@@ -3293,7 +3293,7 @@ class VodClient(AbstractClient):
         """
         This API is used to list stored file entries under a sub-app.
 
-        **This API is only available in FileID+Path mode**
+        **This API is only available in "FileID+Path" mode.**
         """
         
         kwargs = {}
@@ -3311,32 +3311,32 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.LiveRealTimeClipResponse:
         """
-        Live stream clipping refers to the ability for customers to select a segment from past live stream content during live streaming (when the live stream has not yet ended), generate a new video in real time (HLS format), and developers can share it instantly or store it for long-term preservation.
+        Live streaming instant editing means that during live streaming (i.e., before the live stream has ended), customers can select a segment from the live stream content and generate a new video (in HLS format) in real time. Developers can share it instantly or save it for long-term preservation.
 
-        Tencent Cloud VOD supports two real-time clipping modes:
-        - Clip solidification: Save the edited video as an independent video with its own FileId. This is suitable for long-term preservation of highlights.
-        - Editing is not solidified: The edited video is attached to the live streaming recording file and has no standalone FileId. This is suitable for scenarios where highlights are shared temporarily.
+        Tencent Cloud VOD supports two instant clipping modes:
+        - Clip solidification: Save the edited video as a standalone video with an independent FileId; suitable for long-term preservation of highlights.
+        - Editing is not solidified: The edited video is attached to the live streaming recording file and has no standalone FileId. It is suitable for scenarios where highlight clips are shared temporarily.
 
         Note:
-        - The premise for using the live stream clipping feature is that the target live stream has the time shifting and playback (https://www.tencentcloud.com/document/product/267/32742?from_cn_redirect=1) feature enabled.
-        -Live streaming Instant Editing is based on the m3u8 file generated by live recording, so its minimum editing precision is one ts slice. Second-level or more precise editing precision cannot be achieved.
-        -Since stream disconnection may occur during live streaming, the actual video duration generated by editing might differ from the expected duration. For example, if you edit a live stream from 2018-09-20T10:30:00Z to 2018-09-20T10:40:00Z, and a stream disconnection occurred during this time interval, the returned media asset file duration will be less than 10 minutes. In such cases, you can perceive it through the output parameter <a href="#p_segmentset">SegmentSet</a>.
+        - The premise for using the live stream clipping feature is that the target live stream has [time shifting](https://www.tencentcloud.com/document/product/267/32742?from_cn_redirect=1) enabled.
+        -Live streaming Instant Editing is based on the m3u8 file generated by live recording, so its minimum editing precision is one ts slicing. Second-level or more precise editing precision cannot be achieved.
+        -Since stream disconnection may occur during live streaming, the actual video duration generated by editing might not be the same as expected. For example, if you edit a live stream from 2018-09-20T10:30:00Z to 2018-09-20T10:40:00Z, and a stream disconnection occurred during this time interval, the duration of the returned media asset file will be less than 10 minutes. In such cases, you can perceive it through the output parameter <a href="#p_segmentset">SegmentSet</a>.
 
         ### Edit solidification
-        Editing solidification means saving the edited video as an independent video (with an independent FileId). Its lifecycle is not subject to any impact from the original live recorded video (even if the original recorded video is deleted, the clipping result will not be affected). It can also be transcoded, published on WeChat, or undergo other secondary processing.
+        Editing solidification refers to saving an edited video as an independent video (with an independent FileId). Its lifecycle is not subject to any impact from the original live recorded video (even if the original recorded video is deleted, the clipping result will not be affected). It can also be transcoded, published on WeChat, or undergo other secondary processing.
 
-        For example, a complete football match may last for more than 2 hours. The customer can store the original video for 2 months for cost savings, but can specify a longer storage period for the highlight reel from live stream clipping. You can also perform additional on-demand operations on the highlight reel, such as transcoding and publishing on WeChat. In this case, you can choose the live stream clipping and persistence solution.
+        For example, a complete football match may have a live recording of over 2 hours. For cost savings, the customer can store the original video for 2 months, but can specify longer storage for the highlight reel from live stream clipping. You can also perform additional on-demand operations on the highlight reel, such as transcoding and publishing on WeChat. In this case, you can choose the live stream clipping and persistence solution.
 
         The advantage of solidified editing is that its lifecycle is independent of the original recorded video, allowing for separate management and long-term preservation.
 
-        <font color='red'>Note:</font> If solidification is specified when editing, enable reception of editing solidification event notifications through the ModifyEventConfig API. After successful solidification, you will receive a PersistenceComplete event notification. Before receiving this event notification, you should not delete or transition the live video recording to colder storage. Otherwise, playback of the video generated by editing may be abnormal.
+        <font color='red'>Note:</font> If solidification is specified when editing, enable reception of editing solidification event notifications through the ModifyEventConfig API. After successful solidification, you will receive a PersistenceComplete event notification. Before receiving this event notification, you should not delete or archive the live video recording. Otherwise, playback of the generated video may be abnormal.
 
         ### Editing is not solidified
-        Editing is not solidified, meaning the result of editing (m3u8 file) shares the same TS segments with the live video recording. The newly generated video is not an independent and complete video (no standalone FileId, only a playback URL), and its valid period is consistent with that of the full live recording video. Once the live recording video is deleted, the clip will also become unplayable.
+        The so-called "editing is not solidified" means that the result of editing (m3u8 file) shares the same TS segments with the live video recording. The newly generated video is not an independent and complete video (no standalone FileId, only a playback URL), and its valid period is consistent with that of the full video from live recording. Once the video from live recording is deleted, the clip will also become unplayable.
 
-        Editing is not solidified. Since the clipping result is not an independent video, it is not included in video management of on-demand media assets. For example, the total number of videos in the console does not count this clip. You also cannot separately transcode, publish on WeChat, or perform any other video processing operation on this clip.
+        Editing is not solidified. Since the clipping result is not an independent video, it is not included in the video management of on-demand media assets. For example, the total number of videos in the console does not count this video clip. It is also unable to separately perform any video processing operation on this clip, such as transcoding or publishing on WeChat.
 
-        The advantage of editing not being solidified is that the editing operation is relatively "lightweight" and will not generate additional storage overhead. However, its shortcoming is that the lifecycle is identical to the original recorded video, and it is unable to further transcode or perform other video processing.
+        The advantage of editing not being solidified is that the editing operation is relatively "lightweight" and will not generate additional storage overhead. However, its shortcoming is that the lifecycle is identical to the original recorded video, and it cannot be further transcoded for video processing.
         """
         
         kwargs = {}
@@ -3372,7 +3372,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAIAnalysisTemplateResponse:
         """
-        Modify a user-defined audio and video content analysis template.
+        This API is used to modify a user-defined audio and video content analysis template.
 
         Note: Templates with IDs below 10000 are preset templates and are not allowed to be modified.
         """
@@ -3428,7 +3428,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyAigcQuotaResponse:
         """
-        Used to edit AIGC quota configuration. Quota usage is accumulated from the start of the quota feature. Once the quota is reached, the AIGC feature will no longer be usable.
+        This API is used to edit AIGC quota configuration. Quota usage starts accumulating when the quota feature is enabled. Once the quota is reached, AIGC features will no longer be usable.
 
         Since AGC content generation is an async task, real-time usage data cannot be obtained. Therefore, quota limits result in some errors, and precise control over the set limit cannot be achieved.
         """
@@ -3484,7 +3484,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyCDNDomainConfigResponse:
         """
-        This API is used to modify a CDN domain name configuration.
+        This API is used to modify CDN domain configuration.
         """
         
         kwargs = {}
@@ -3502,7 +3502,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyClassResponse:
         """
-        Modify media classification attributes.
+        Modifies media classification attributes.
         """
         
         kwargs = {}
@@ -3520,7 +3520,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyContentReviewTemplateResponse:
         """
-        This API is <font color=red>no longer maintained</font>. The new version of the moderation template supports video moderation and image moderation. For details, please see [Modify Moderation Template](https://www.tencentcloud.com/document/api/266/84388?from_cn_redirect=1).
+        This API is no longer maintained. The new version of the moderation template supports video and image moderation. For details, please see [Modify Moderation Template](https://www.tencentcloud.com/document/API/266/84388?from_cn_redirect=1).
         Modify a user-customized audio/video moderation template.
         """
         
@@ -3540,7 +3540,7 @@ class VodClient(AbstractClient):
     ) -> models.ModifyDefaultDistributionConfigResponse:
         """
         This API is used to modify the default distribution configuration.
-        * Distribution domain name and distribution protocol, i.e., the domain name and protocol in the media file distribution URL. Media files are distributed based on the default distribution configuration.
+        * Distribution domain name and distribution protocol, which are the domain name and protocol in the media file distribution URL. Media files are distributed based on the default distribution configuration.
         Playback key, used to calculate player signature.
         """
         
@@ -3577,8 +3577,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyEnhanceMediaTemplateResponse:
         """
-        This API is no longer maintained. The new version of the [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) interface uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
-        Modifies an Audio and Video Quality Rebirth Template.
+        This API is <font color=red>no longer maintained</font>. The new version of the [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
+        Modify an audio and video quality rebirth template.
         """
         
         kwargs = {}
@@ -3596,12 +3596,12 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyEventConfigResponse:
         """
-        Tencent Cloud Video on Demand (VOD) provides customers with media upload, media management, media processing, and other services. During or after these services are executed, VOD also offers various event notifications, helping developers detect service processing status and perform the next business operation.
+        Tencent Cloud VOD provides customers with media upload, media management, media processing, and other services. During or after the execution of these services, Tencent Cloud VOD also provides various event notifications, allowing developers to sense the service processing status and perform the next business operation.
 
-        Developers can call this interface to achieve the following:
-        - Set the type of callback notification to receive. Currently, there are two types: [HTTP callback notification](https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1) and [Reliable Notification Based on Message Queue](https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1).
-        - For [HTTP callback notification](https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1), you can set the address for 3.0 format callback. For the description of 3.0 format callback, see [Historical format callback](https://www.tencentcloud.com/document/product/266/33796?from_cn_redirect=1).
-        -Select to set receipt or ignore for notification events of a specific event service.
+        Developers can call this API to:
+        - Set the type for receiving callback notifications. There are two types: [HTTP callback notification](https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1) and [Reliable Notification Based on Message Queue](https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1).
+        - For [HTTP callback notification](https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1), you can set the address for 3.0 format callback. For details on 3.0 format callback, see [Historical format callback](https://www.tencentcloud.com/document/product/266/33796?from_cn_redirect=1).
+        -Select receipt or ignore settings for notification events of a specific event service.
         """
         
         kwargs = {}
@@ -3619,7 +3619,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyHeadTailTemplateResponse:
         """
-        Modifies a title and trailer template.
+        Modify a title and trailer template.
         """
         
         kwargs = {}
@@ -3637,7 +3637,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyImageSpriteTemplateResponse:
         """
-        Modify a custom image sprite template.
+        Modify a user-customized image sprite template.
         """
         
         kwargs = {}
@@ -3655,8 +3655,8 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyJustInTimeTranscodeTemplateResponse:
         """
-        This API is used to modify a just in time transcoding template.
-        -Note: After a just in time transcoding template is created, modification is not recommended. If parameter modification is needed, add a template.
+        Modify an instant transcoding template.
+        -Note: Once a just in time transcoding template is created, modification is not recommended. If parameter modification is needed, adding a new template is recommended.
         """
         
         kwargs = {}
@@ -3674,7 +3674,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyKnowledgeBaseResponse:
         """
-        This API is used to modify a knowledge base. The name and/or description of the knowledge base can be modified. A minimum of one field, Name or Description, is required.
+        Modify a knowledge base. The name and/or description of the knowledge base can be modified. At least one of the Name or Description fields is required.
         """
         
         kwargs = {}
@@ -3692,7 +3692,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLLMComprehendTemplateResponse:
         """
-        Modify a large model parsing template
+        Modifies a large model parsing template
         """
         
         kwargs = {}
@@ -3711,7 +3711,7 @@ class VodClient(AbstractClient):
     ) -> models.ModifyMPSTemplateResponse:
         """
         Modify a user-customized MPS task template.
-        When modifying a template, fill in MPS related parameters in MPSModifyTemplateParams in JSON format. For task parameter configuration methods, refer to the MPS task template documentation.
+        When modifying a template, fill in the MPS related parameters in JSON format into the MPSModifyTemplateParams parameter. For task parameter configuration methods, refer to the MPS task template documentation.
         """
         
         kwargs = {}
@@ -3729,7 +3729,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyMediaInfoResponse:
         """
-        This API is used to modify media file attributes, including category, name, description, tag, expiration time, dotting information, video cover, and subtitle information.
+        This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, dotting information, video cover, and subtitle information.
         """
         
         kwargs = {}
@@ -3748,7 +3748,7 @@ class VodClient(AbstractClient):
     ) -> models.ModifyMediaStorageClassResponse:
         """
         Modify the storage type of media files.
-        When the storage type of a media file is standard storage, it can be modified to the following types:
+        When the file storage type is standard storage, it can be modified to the following types:
         <li>Infrequent storage</li>
         <li>Archive storage</li>
         <li>DEEP_ARCHIVE</li>
@@ -3777,7 +3777,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyPersonSampleResponse:
         """
-        This API is used to modify material sample info based on the material ID, including modification of the name and description, as well as addition, deletion, and reset of facial features and tags. Ensure at least 1 image remains after facial feature deletion. Otherwise, use reset.
+        This API is used to modify material sample information based on the material ID, including the modification of the name and description, as well as the addition, deletion, and reset of facial features and tags. The deletion of facial features must ensure at least 1 image remains. Otherwise, please use the reset operation.
         """
         
         kwargs = {}
@@ -3797,7 +3797,7 @@ class VodClient(AbstractClient):
         """
         This API is used to modify a user-customized asynchronous image processing template.
 
-        Note: Templates with IDs below 10000 are preset templates and are not allowed to be modified.
+        Note: Templates with IDs below 10000 are system-preset templates and are not allowed to be modified.
         """
         
         kwargs = {}
@@ -3815,7 +3815,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyQualityInspectTemplateResponse:
         """
-        This API is used to modify an audio and video quality detection template.
+        Modifies an audio and video quality detection template.
         """
         
         kwargs = {}
@@ -3833,7 +3833,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyRebuildMediaTemplateResponse:
         """
-        This API is <font color=red>no longer maintained</font>. The new version of the [audio and video quality revival](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
+        This API is <font color=red>no longer maintained</font>. The new version of the [Audio and Video Quality Rebirth](https://www.tencentcloud.com/document/product/266/102571?from_cn_redirect=1) API uses preset templates. For details, see [Audio and Video Quality Rebirth Template](https://www.tencentcloud.com/document/product/266/102586?from_cn_redirect=1#50604b3f-0286-4a10-a3f7-18218116aff7).
         Modify a video rebirth template.
         """
         
@@ -3853,7 +3853,7 @@ class VodClient(AbstractClient):
     ) -> models.ModifyReviewTemplateResponse:
         """
         Modify a user-customized moderation template.
-        >Template is applicable only to the [audio/video moderation (ReviewAudioVideo)](https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) and [image moderation (ReviewImage)](https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) APIs.
+        >Template is applicable only to the [ReviewAudioVideo](https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) and [ReviewImage](https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) APIs.
         """
         
         kwargs = {}
@@ -3872,7 +3872,7 @@ class VodClient(AbstractClient):
     ) -> models.ModifyRoundPlayResponse:
         """
         This API is used to modify a carousel playlist.
-        After modification, only new playback requests will take effect. Users already playing can still play the playlist before modification within seven days.
+        After modification, only new playback requests will take effect. Users already playing can still play the original playlist within 7 days.
         """
         
         kwargs = {}
@@ -3926,7 +3926,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifySubAppIdInfoResponse:
         """
-        This API is used to change application information, but the default application information is not allowed to be modified.
+        This API is used to change application information, but the default application info is not allowed to be modified.
         """
         
         kwargs = {}
@@ -3944,7 +3944,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifySubAppIdStatusResponse:
         """
-        This API is used to enable or deactivate applications. Deactivated applications will have their corresponding domains blocked and console access restricted.
+        This API is used to enable or disable an application. A disabled application will have its corresponding domain blocked and console access restricted.
         """
         
         kwargs = {}
@@ -3963,7 +3963,7 @@ class VodClient(AbstractClient):
     ) -> models.ModifySuperPlayerConfigResponse:
         """
         This API is <font color='red'>no longer maintained</font>. The new version of player signature no longer uses player configuration templates. For details, please see [Player Signature](https://www.tencentcloud.com/document/product/266/45554?from_cn_redirect=1).
-        Modifies a player configuration.
+        This API is used to modify player configurations.
         """
         
         kwargs = {}
@@ -4000,7 +4000,7 @@ class VodClient(AbstractClient):
     ) -> models.ModifyVodDomainAccelerateConfigResponse:
         """
         This API is used to modify the acceleration region of a VOD domain.
-        1. The acceleration region can be modified only when the domain name deployment status is Online.
+        1. The acceleration region can be modified only when the domain name deployment state is Online.
         """
         
         kwargs = {}
@@ -4019,7 +4019,7 @@ class VodClient(AbstractClient):
     ) -> models.ModifyVodDomainConfigResponse:
         """
         This API is used to modify domain name configuration, including hotlink protection configuration.
-        1. The domain name configuration can be modified only when the deployment state is Online.
+        1. The domain name configuration can be modified only when the domain name deployment state is Online.
         """
         
         kwargs = {}
@@ -4073,7 +4073,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ParseStreamingManifestResponse:
         """
-        When uploading HLS videos, this API parses the index file content and returns the list of shard files to be uploaded. The sharded file path must be a relative path in the current directory or subdirectory. It cannot be a URL or an absolute path.
+        When uploading HLS videos, this API parses the index file content and returns a list of shard files to be uploaded. The shard file path must be a relative path in the current directory or subdirectory. It cannot be a URL or an absolute path.
         """
         
         kwargs = {}
@@ -4091,7 +4091,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ProcessImageAsyncResponse:
         """
-        This API is used to process image tasks.
+        This API is used to process image processing tasks.
         """
         
         kwargs = {}
@@ -4110,18 +4110,18 @@ class VodClient(AbstractClient):
     ) -> models.ProcessMediaResponse:
         """
         This API is used to initiate processing tasks for audio-video media in VOD, with features including:
-        1. Watermarked video transcoding;
+        1. Video transcoding (watermarked);
         2. Animated image generating;
         3. Screenshot taking at specified time points;
         4. Sampled screenshot taking;
         5. Capture CSS sprites for videos;
         6. Capture a frame from a video as the cover.
-        7. Transcoding to adaptive bitrate streaming with encryption;
-        8. Content review (offensive content, unsafe information, inappropriate information). It is <font color=red>not recommended</font> to use this API to initiate it. [Audio/Video Moderation (ReviewAudioVideo)](https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) or [Image Moderation (ReviewImage)](https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) is recommended;
-        9. Content analysis (tag, category, cover, frame tagging) is not supported for HLS format currently.
+        7. Transcoding to adaptive bitrate streaming and encrypting;
+        8. Content review (offensive content, unsafe information, inappropriate information). It is <font color=red>not recommended</font> to use this API to initiate it. [Audio/Video Moderation (ReviewAudioVideo)](https://www.tencentcloud.com/document/api/266/80283?from_cn_redirect=1) or [Image Moderation (ReviewImage)](https://www.tencentcloud.com/document/api/266/73217?from_cn_redirect=1) is recommended.
+        9. Content analysis (tag, categorization, cover, frame tagging) is not supported for HLS format currently.
         10. Content recognition (video intro and outro, human face, full text, text keyword, full speech, speech keyword, object).
 
-        If event notification is used, its type is task flow status change (https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1).
+        If event notification is used, the event notification type is task flow status change (https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -4139,16 +4139,16 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ProcessMediaByMPSResponse:
         """
-        Use the media processing capacity of the media processing service (MPS) to initiate media processing for videos in video-on-demand.
+        Use the media processing capability of the media processing service (MPS) to initiate media processing for videos in video-on-demand.
         Currently supported MPS features:
-        1. Smart subtitling: This feature supports processing offline audio files, video files, and live streams. It can extract subtitles in the video source language through ASR speech recognition or OCR text recognition, and implement multilingual translation. View details in the integration guide (https://www.tencentcloud.com/document/product/266/131210?from_cn_redirect=1).
-        2. Intelligent erasure: It can blur, mosaic, or seamlessly process elements such as logos, subtitles, human faces, and license plates in video footage, making it easy to spread and share content. The new video generated by this task will be assigned a new FileId and stored in a sub-application of the VOD platform. View details in the [Access Guide](https://www.tencentcloud.com/document/product/266/131211?from_cn_redirect=1).
-        3. AI analysis: This feature supports all-in-one translation (https://www.tencentcloud.com/document/product/266/131212?from_cn_redirect=1), highlights (https://www.tencentcloud.com/document/product/266/131213?from_cn_redirect=1), LLM video summary (https://www.tencentcloud.com/document/product/266/131214?from_cn_redirect=1), LLM audio/video understanding (https://www.tencentcloud.com/document/product/266/131215?from_cn_redirect=1), intelligent splitting (https://www.tencentcloud.com/document/product/266/131216?from_cn_redirect=1), intelligent landscape-to-portrait (https://www.tencentcloud.com/document/product/266/131217?from_cn_redirect=1), video deduplication (https://www.tencentcloud.com/document/product/266/131218?from_cn_redirect=1), and other features.
+        1. Smart subtitling: This feature supports processing offline audio files, video files, and live streams. It can extract source language captions from videos through ASR speech recognition or OCR text recognition, and implement multilingual translation. View details in the Access Guide (https://www.tencentcloud.com/document/product/266/131210?from_cn_redirect=1).
+        2. Intelligent erasure: It can blur, mosaic, or seamlessly process elements such as logos, subtitles, human faces, and license plates in video footage, making it easy to spread and share content. The new video generated by this task will be assigned a new FileId and stored in a sub-application of the VOD platform. View details in the Access Guide (https://www.tencentcloud.com/document/product/266/131211?from_cn_redirect=1).
+        3. AI analysis: This feature supports one-stop translation (https://www.tencentcloud.com/document/product/266/131212?from_cn_redirect=1), highlights (https://www.tencentcloud.com/document/product/266/131213?from_cn_redirect=1), LLM video summary (https://www.tencentcloud.com/document/product/266/131214?from_cn_redirect=1), LLM audio/video understanding (https://www.tencentcloud.com/document/product/266/131215?from_cn_redirect=1), intelligent splitting (https://www.tencentcloud.com/document/product/266/131216?from_cn_redirect=1), intelligent landscape-to-portrait (https://www.tencentcloud.com/document/product/266/131217?from_cn_redirect=1), video deduplication (https://www.tencentcloud.com/document/product/266/131218?from_cn_redirect=1), and other features.
 
 
         > Video processing task initiated this method:
-        > 1. Query of task status and results is still completed in the VOD platform. Use [DescribeTaskDetail](https://www.tencentcloud.com/document/product/266/33431?from_cn_redirect=1) or [DescribeTasks](https://www.tencentcloud.com/document/product/266/33430?from_cn_redirect=1) to query tasks.
-        > 2. The amount and bills of related features will be provided on the PS platform. Before using this feature, start by enabling Media Processing Service (MPS) in the console. For the activation method, see the preliminary operations in the integration guide.
+        > 1. Query task status and results on the VOD platform. Use [DescribeTaskDetail](https://www.tencentcloud.com/document/product/266/33431?from_cn_redirect=1) or [DescribeTasks](https://www.tencentcloud.com/document/product/266/33430?from_cn_redirect=1) to query tasks.
+        > 2. The usage and bills of related features will be provided on the PS platform. Before using this feature, start by enabling Media Processing Service (MPS) in the console. For the activation method, see the preliminary operations in the access documentation.
         """
         
         kwargs = {}
@@ -4171,7 +4171,7 @@ class VodClient(AbstractClient):
         1. Create and modify a task flow template in the console;
         2. Create a task flow template through the task flow template API.
 
-        For event notification, the type of event notifications other than audio/video moderation tasks is [task flow status change](https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1); the type of audio/video moderation task event notification is [audio/video moderation completed](https://www.tencentcloud.com/document/product/266/81258?from_cn_redirect=1).
+        If event notification is used, the type of event notification for tasks other than audio/video moderation tasks is task flow status change (https://www.tencentcloud.com/document/product/266/9636?from_cn_redirect=1); the type of event notification for audio/video moderation tasks is audio/video moderation completed (https://www.tencentcloud.com/document/product/266/81258?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -4207,9 +4207,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.PullEventsResponse:
         """
-        * This API is used for business servers to get event notifications via reliable callback (https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83).
-        * The API uses long polling mode. If there are unconsumed events on the server, they will be returned to the requester immediately. If there are no unconsumed events, the request will be suspended in the backend until a new event occurs.
-        * The request can be suspended for up to 5 seconds. It is advisable to set the timeout to 10 seconds for the requester.
+        * This API is used for the business server to get event notifications via reliable callback (https://www.tencentcloud.com/document/product/266/33779?from_cn_redirect=1#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83).
+        * The API uses long polling mode. If there are unconsumed events on the server, they will be returned to the requester immediately. If there are no unconsumed events, the request will be suspended in the background until a new event occurs.
+        * The request can be suspended for up to 5 seconds. It is advisable to set the timeout to 10 seconds for the requester;
         * Event notifications that are not pulled are retained for up to 4 days. Notifications exceeding this time limit may be purged.
         * If this API returns an event, the caller must call the [Confirm Event Notification](https://www.tencentcloud.com/document/product/266/33434?from_cn_redirect=1) API within <font color="red">30 seconds</font> to confirm that the event notification has been processed. Otherwise, the event notification will be pulled again after <font color="red">30 seconds</font>.
         * Currently, a maximum of 16 event notifications can be obtained per API call.
@@ -4248,9 +4248,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.PushUrlCacheResponse:
         """
-        1. Preheats a specified URL list.
+        1. Preheat a specified URL list.
         2. The domain name of the URL must be registered in VOD.
-        3. You can specify up to 20 URLs per request.
+        3. A single request can specify up to 20 URLs.
         4. The default prefetch quota is 10,000 URLs per day.
         """
         
@@ -4269,7 +4269,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RebuildMediaResponse:
         """
-        This API is <font color=red>no longer maintained</font>. Please use the new version of APIs [audio and video quality revival](https://www.tencentcloud.com/document/api/266/102571?from_cn_redirect=1).
+        The API is <font color=red>no longer maintained</font>. Please use the new version of APIs [Audio and Video Quality Revival](https://www.tencentcloud.com/document/api/266/102571?from_cn_redirect=1).
         This API is used to initiate audio and video quality revival.
         """
         
@@ -4288,7 +4288,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RebuildMediaByTemplateResponse:
         """
-        This API is <font color=red>no longer maintained</font>. Please use the new version of APIs for [audio and video quality revival](https://www.tencentcloud.com/document/api/266/102571?from_cn_redirect=1).
+        This API is <font color=red>no longer maintained</font>. Please use the new version of APIs [audio and video quality revival](https://www.tencentcloud.com/document/api/266/102571?from_cn_redirect=1).
         Use a template to initiate video rebirth.
         """
         
@@ -4307,9 +4307,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RefreshUrlCacheResponse:
         """
-        1. Refresh a specified URL list.
+        1. Refreshes a specified URL list.
         2. The domain name of the URL must be registered in VOD.
-        3. You can specify up to 20 URLs per request.
+        3. A maximum of 20 URLs can be specified per request.
         4. The default refresh quota is 100,000 URLs per day.
         """
         
@@ -4328,7 +4328,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RemoveWatermarkResponse:
         """
-        Watermark removal
+        Removes watermarks intelligently
         """
         
         kwargs = {}
@@ -4364,7 +4364,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RestoreMediaResponse:
         """
-        When the storage type of a media file is archive storage or deep archive storage, it is unreachable. If you need access, call this API to unfreeze it. The unfrozen media file is temporarily accessible and becomes unreachable after the validity period expires.
+        When the storage type of a media file is archive storage or deep archive storage, it is inaccessible. If you need access, call this API to unfreeze it. The unfrozen media file is temporarily accessible and becomes inaccessible after the validity period expires.
         """
         
         kwargs = {}
@@ -4382,9 +4382,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ReviewAudioVideoResponse:
         """
-        This API is used to initiate moderation tasks for on-demand audio-video media, intelligently detecting violative content in video footage, text in visuals, text in speech, and sound.
+        This API is used to initiate moderation tasks for on-demand audio-video media, intelligently detecting violative content in video footage, text in images, text in speech, and sounds.
 
-        If event notification is used, its type is audio/video moderation completed (https://www.tencentcloud.com/document/product/266/81258?from_cn_redirect=1).
+        If event notification is used, its type is [audio/video moderation completed](https://www.tencentcloud.com/document/product/266/81258?from_cn_redirect=1).
         """
         
         kwargs = {}
@@ -4402,11 +4402,11 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ReviewImageResponse:
         """
-        This API is used to initiate review tasks for image files in on-demand video, including offensive, unsafe, and inappropriate content.
+        Initiate a review task for image files in on-demand video for offensive, unsafe, and inappropriate information.
 
-        ><<li>Supported image file size: file < 5M;</li>
-        ><<li>Supported image file resolution: recommended resolution above 256x256, otherwise review effectiveness may be affected;</li>
-        ><<li>Supported image file formats: PNG, JPG, JPEG, BMP, GIF, WEBP.</li>
+        <li>Supported image file size: file < 5M;</li>
+        <li>Supported image file resolution: recommended resolution above 256x256, otherwise review effectiveness may be affected;</li>
+        <li>Image file formats supported: PNG, JPG, JPEG, BMP, GIF, WEBP.</li>
         """
         
         kwargs = {}
@@ -4424,48 +4424,48 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SearchMediaResponse:
         """
-        This API is used to search media information with conditional filtering, sort and filter returned results, and other features. This includes:
+        This API is used to search media information with multiple filter criteria, sort and filter returned results, and other features. This includes:
         -Specify the file ID collection FileIds to return media matching any ID in the collection.
-        -Perform fuzzy search by multiple media file names (Names) or descriptions (Descriptions).
+        -Do fuzzy search based on multiple media file Names or Descriptions.
         -Search by multiple filename prefixes NamePrefixes.
-        -Specify the category collection ClassIds (see input parameters), and media that meet any category in the collection will be returned. For example, media categories include movie, TV series, and variety show. The movie category has subcategories such as historical film, action film, and romance film. If ClassIds specifies movie and TV series, all subcategories under movie and TV series will be returned. If ClassIds specifies historical film and action film, only media under these two subcategories will be returned.
-        - Specify tag collection Tags (see input parameter) to return media that match any tag in the collection. For example, if media tags include ACG, palace intrigue, and parody remix, and Tags specifies ACG and parody remix, then media matching any one of these two tags will be retrieved.
-        -Specify the file type set Categories (see input parameters), and return media that meet any type in the collection. For example, file types include Video, Audio, and Image. If Categories specifies Video and Audio, media that meet these types will be retrieved.
+        - Specify the category collection ClassIds (see input parameters), and media that meet any category in the collection will be returned. For example, media categories include movies, TV series, and variety shows. The movie category has subcategories such as historical films, action films, and romance films. If ClassIds specifies movies and TV series, all subcategories under movies and TV series will be returned. If ClassIds specifies historical films and action films, only media under these two subcategories will be returned.
+        - Specify tag collection Tags (see input parameters) to return media that meets any tag in the collection. For example, if media tags include ACG, palace intrigue, and parody remix, and Tags specifies ACG and parody remix, any media that matches either of these two tags will be retrieved.
+        -Specify a collection of file types in Categories (see input parameters) to return media that meets any type in the collection. For example, file types include Video, Audio, and Image. If Categories specifies Video and Audio, media that meets these types will be retrieved.
         -Specify the source collection SourceTypes (see input parameters) to return media that meets any source in the collection. For example, media sources include Record (live recording), Upload, and so on. If SourceTypes specifies Record and Upload, media that meets these sources will be retrieved.
-        -Specify the file packaging format set MediaTypes (see input parameters) to return media that meets any packaging format in the collection. For example, packaging formats include MP4, AVI, MP3, and so on. If MediaTypes specifies MP4 and MP3, media that complies with these packaging formats will be retrieved.
-        -Specify the file status collection Status (see input parameters), and return media that meets any status in the collection. For example, file statuses include Normal, SystemForbidden (Platform Ban), and Forbidden (proactive ban). If Status specifies Normal and Forbidden, media that meets these statuses will be retrieved.
-        -Specify the file review result set ReviewResults (see input parameters) to return media that meets any status in the collection. For example, file review results include pass and block. If ReviewResults specifies both pass and block, media that meets these review results will be retrieved.
-        -Filter media for live streaming recording by specifying the collection of live streaming codes StreamIds (see input parameters).
-        -Filter media by the creation time range of the specified media.
+        -Specify the file muxing format set MediaTypes (see input parameters), and return media that meet any muxing format in the collection. For example, muxing formats include MP4, AVI, MP3, and so on. If MediaTypes specifies MP4 and MP3, media that comply with these muxing formats will be retrieved.
+        -Specify the file status collection Status (see input parameters) to return media that meets any status in the collection. For example, file statuses include Normal, SystemForbidden (Platform Ban), and Forbidden (proactive ban). If Status specifies Normal and Forbidden, media that meets these statuses will be retrieved.
+        -Specify the file moderation result set ReviewResults (see input parameters) to return media that meet any status in the collection. For example, file moderation results include pass and block. If ReviewResults specifies pass and block, media that meet these review results will be retrieved.
+        -Filter the media of live recording service by the specified collection of live streaming codes StreamIds (see input parameter).
+        -Filter media by the create time range of the specified media.
         -Specify a TRTC application ID collection to filter media.
         -Specify a TRTC room ID collection to filter media.
 
-        -The above parameters can be combined in any way for search. For example, filter media with a creation time between 2018-12-01 12:00:00 and 2018-12-08 12:00:00, categorized as movie or TV series, and tagged with palace intrigue and suspense. Note that for any parameter that supports array input, the search logic between its elements is OR. The logical relationship between all parameters is AND.
+        -The above parameters can be combined in any way for search. For example, filter media with a creation time between 2018-12-01 12:00:00 and 2018-12-08 12:00:00, categorized as movie or TV series, and tagged with palace intrigue and suspense. Note that for any parameter that supports array input, the search logic between its elements is "OR". The logical relationship between all parameters is "AND".
 
-        - Allow controlling the type of media information returned through Filters (return all information by default). Options include:
-        1. basicInfo: including media name, category, playback address, cover image, and more.
+        -Allow passage of Filters to control the type of media information returned (default return all information). Selectable inputs include:
+        1. Basic information (basicInfo): including media name, category, playback address, cover image, etc.
         2. Meta information (metaData): including size, duration, video stream information, and audio stream information.
-        3. transcodeInfo: includes media addresses, video stream parameters, audio stream parameters, and more for various specifications generated by transcoding this media.
-        4. Animated graphics info (animatedGraphicsInfo): the animated graphics info after converting a video to gif (for example, gif).
-        5. sampleSnapshotInfo: screenshot information after sampling screenshot taking from a video.
-        6. Sprite image information (imageSpriteInfo): sprite image information of the captured sprite image file from the video.
+        3. Transcode result information (transcodeInfo): includes media addresses, video stream parameters, and audio stream parameters of various specifications generated for the transcoded media.
+        4. animatedGraphicsInfo: The animated graphics info after converting a video to GIF (for example, gif).
+        5. sampleSnapshotInfo: Screenshot information after video sampling.
+        6. Sprite image information (imageSpriteInfo): sprite image information after capturing sprite images from a video.
         7. snapshotByTimeOffsetInfo: screenshot information after taking screenshots at specified time points.
-        8. Video timestamp information (keyFrameDescInfo): dotting information set for the video.
-        9. Adaptive Bitstreaming information (adaptiveDynamicStreamingInfo): includes specification, encryption type, packaging format and other related information.
+        8. Video timestamp information (keyFrameDescInfo): Dotting information set for the video.
+        9. Adaptive Bitrate Streaming information (adaptiveDynamicStreamingInfo): includes specification, encryption type, packaging format and other related information.
 
-        -Allow sorting results by creation time and return in pages. Use Offset and Limit (see input parameters) to control pagination.
+        -Allow sorting results by creation time and return them in pages. Use Offset and Limit (see input parameters) to control pagination.
 
         <div id="maxResultsDesc">API return result count limit:</div>
 
-        -<b><a href="#p_offset">Offset</a> and <a href="#p_limit">Limit</a> impact the number of results per pagination query. Special attention: when both values are omitted, this interface returns up to 10 query results only.</b>
-        -<b>Supports up to 5000 search results. Excess results are no longer queryable. If the search result volume is too large, use more granular criteria to reduce the results.</b>
+        - <b><a href="#p_offset">Offset</a> and <a href="#p_limit">Limit</a> both parameters impact the number of results per pagination query. Special attention: When both values are not specified, this interface returns up to 10 query results only.</b>
+        -<b>It supports returning up to 5000 search results. Results beyond this limit are no longer queryable. If the search result volume is too large, use more granular criteria to reduce the search results.</b>
 
         <br>Not recommended conditional filtering:
         -(Not recommended: use Names, NamePrefixes, or Descriptions instead) Specify a single Text to do fuzzy search on media file Names or Descriptions.
         -(Not recommended: use SourceTypes instead) Specify a single media file source SourceType for search.
-        -(Not recommended: use StreamIds instead) Specify a single push stream live code StreamId to search.
-        -(Not recommended: use CreateTime instead) Specify a single start creation time StartTime to search.
-        -(Not recommended: use CreateTime instead) Specify a single end time EndTime for search.
+        -(Not recommended: use StreamIds instead) Specify single push stream live code StreamId for search.
+        -(Not recommended: use CreateTime instead) Specify a single starting creation time StartTime to search.
+        -(Not recommended: use CreateTime instead) Specify a single ending creation time EndTime to search.
         """
         
         kwargs = {}
@@ -4501,7 +4501,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SetCLSPushTargetResponse:
         """
-        Set a delivery destination for CLS for the vod domain.
+        Set a delivery target for the VOD domain in CLS.
         """
         
         kwargs = {}
@@ -4537,7 +4537,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SetVodDomainCertificateResponse:
         """
-        Set the HTTPS certificate for the vod domain.
+        Set the HTTPS certificate for a vod domain.
         """
         
         kwargs = {}
@@ -4555,29 +4555,29 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SimpleHlsClipResponse:
         """
-        Crop an HLS video by time period to generate a new HLS video in real time. Developers can share it immediately or save it for long-term preservation.
+        Crop an HLS video by time period to generate a new HLS video in real time. Developers can share it immediately or store it for long-term preservation.
 
         Tencent Cloud VOD supports two editing modes:
-        -Clip and save: Save the edited video as an independent video with a separate FileId. This is suitable for long-term preservation of highlights.
-        -Editing is not solidified: The edited video is attached to the input file with no standalone FileId, suitable for temporary sharing of highlight clips.
+        -Edit and save: Save the edited video as an independent video with an independent FileId. This is suitable for long-term preservation of highlights.
+        - Editing is not solidified: The edited video is attached to the input file and has no standalone FileId. This is suitable for scenarios where highlight clips are shared temporarily.
 
-        This API is used to crop an m3u8 file based on input. The minimum editing precision is one ts slice, so second-level or more precise editing precision cannot be achieved.
+        This API is used to crop an m3u8 file based on input. Its minimum editing precision is one ts slice, so second-level or more precise editing precision cannot be achieved.
 
         ### Edit solidification
-        Editing and solidification refers to saving an edited video as an independent video with an independent FileId. Its lifecycle is not subject to any impact from the original input video. Even if the original input video is deleted, the clipping result is not affected. You can also transcode it or publish it on WeChat.
+        Editing solidification refers to saving an edited video as an independent video with its own FileId. Its lifecycle is not subject to the original input video. Even if the original input video is deleted, the clipping result is not impacted. You can also transcode it or publish it on WeChat.
 
-        For example, a complete football match raw video may last for over 2 hours. For cost savings, a customer can store this video for 2 months, but can specify longer storage for the edited "highlights" video. You can also separately transcode, publish on WeChat, and perform other additional on-demand operations on the "highlights" video. In this case, you can choose the edit and solidify solution.
+        For example, a complete football match raw video may last for 2 hours. For cost savings, a customer can store this video for 2 months, but can specify longer storage for the edited "highlights" video. You can also separately transcode the "highlights" video, publish it on WeChat, and perform other additional on-demand operations. In this case, you can choose the edit and solidify solution.
 
-        The advantage of solidified edits is that their lifecycle is independent of the original input video, allowing separate management and long-term preservation.
+        The advantage of edit solidification is that its lifecycle is independent of the original input video, allowing separate management and long-term preservation.
 
         <font color='red'>Note:</font> If solidification is specified when editing, enable reception of editing solidification event notifications through the ModifyEventConfig API. After successful solidification, you will receive a PersistenceComplete event notification. Before receiving this event notification, you should not delete or reduce the storage class of the original input video. Otherwise, playback of the generated video may be abnormal.
 
         ### Editing is not solidified
-        Editing is not solidified, meaning the result of editing (m3u8 file) shares the same TS segments with the original input video. The generated video is not an independent and complete video (no standalone FileId, only a playback URL), and its valid period is consistent with that of the original input full video. Once the original input video is deleted, the clip will also become unplayable.
+        Editing is not solidified, which means the result of editing (m3u8 file) shares the same TS segments with the original input video. The generated video is not an independent and complete video (no independent FileId, only a playback URL), and its valid period is consistent with that of the original input full video. Once the original input video is deleted, the clip will also become unplayable.
 
-        Editing is not solidified. Since the clipping result is not an independent video, it is not included in video management of on-demand media assets. For example, the total number of videos in the console does not include this video clip. You cannot separately perform any video processing operation on this clip, such as transcoding or publishing on WeChat.
+        Editing is not solidified. Since the clipping result is not an independent video, it is not included in video management of on-demand media assets (for example, the total number of videos in the console does not count this video clip), and no video processing operation such as transcoding or WeChat publishing can be performed on this video clip separately.
 
-        The advantage of non-solidified editing is that the editing operation is relatively "lightweight" and will not generate additional storage overhead. However, its shortcoming is that the lifecycle is the same as the original recorded video, and it is unable to further transcode or perform other video processing.
+        The advantage of non-solidified editing is that the editing operation is Relatively "lightweight" and will not generate additional storage overhead. However, its shortcoming is that the lifecycle is identical to the original recorded video, and it is unable to further perform video processing such as transcoding.
         """
         
         kwargs = {}
@@ -4595,7 +4595,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SplitMediaResponse:
         """
-        This API is used to split an on-demand video into multiple new on-demand videos.
+        This API is used to split an on-demand video and generate multiple new on-demand videos.
         """
         
         kwargs = {}
@@ -4631,7 +4631,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.TextToSpeechAsyncResponse:
         """
-        Initiate a speech synthesis task to convert text to speech for long text scenarios (up to 200,000 characters). It supports specifying voice tone, speaking rate, volume, pitch, sampling rate, output format, and other synthesis parameters. Speech synthesis is an asynchronous task, and audio results are generated upon completion.
+        This API is used to initiate a text to speech task, synthesizing text into speech for long text scenarios (up to 200,000 characters). It supports specifying voice tone and synthesis parameters such as speaking rate, volume, pitch, sampling rate, and output format. Text to speech is an asynchronous task, and audio is generated upon completion.
         """
         
         kwargs = {}
@@ -4649,7 +4649,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.TextToSpeechSyncResponse:
         """
-        This API is used to initiate a text to speech task.
+        Initiate a text to speech task to convert text into speech.
         """
         
         kwargs = {}
@@ -4667,7 +4667,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateAigcApiTokenResponse:
         """
-        This API is used to create a Token for AIGC API calls. Data sync may delay once created. It can be queried or deleted after about 30 seconds.
+        Creates a Token for invoking AIGC APIs. Data sync has a delay once created. It can be queried or deleted after about 30 seconds.
         """
         
         kwargs = {}
@@ -4685,7 +4685,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateVoiceResponse:
         """
-        This API is used to update the profile information of a voice type by voice ID, including name, description, gender, age, language, tag, and scenario. It returns the complete voice type information after the update. Only voice types for this account can be updated. System preset voice types do not support update.
+        This API is used to update the profile information of a voice by voice ID, including name, description, gender, age, language, tags, and scenarios, and return the complete voice information after the update. Only voices under this account can be updated. System preset voices do not support update.
 
         Note: Newly designed or cloned voice types cannot be updated before activation. They are activated only after the new voice type is used for TTS once.
         """
