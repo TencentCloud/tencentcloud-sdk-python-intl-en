@@ -322,7 +322,7 @@ class FaceidClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GetAMLScreeningResultResponse:
         """
-        Queries the AML name list screening result.
+        Status change of continuous name list screening
         """
         
         kwargs = {}
@@ -620,7 +620,7 @@ class FaceidClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RunAMLNameScreeningResponse:
         """
-        AML name list screening
+        AML list screening
         """
         
         kwargs = {}
@@ -638,7 +638,7 @@ class FaceidClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateAMLCustomerProfileResponse:
         """
-        AML name list screening
+        AML list screening
         """
         
         kwargs = {}

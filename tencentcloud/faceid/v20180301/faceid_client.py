@@ -398,7 +398,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetAMLScreeningResult(self, request):
-        r"""Queries the AML name list screening result.
+        r"""Status change of continuous name list screening
 
         :param request: Request instance for GetAMLScreeningResult.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetAMLScreeningResultRequest`
@@ -776,7 +776,7 @@ class FaceidClient(AbstractClient):
 
 
     def RunAMLNameScreening(self, request):
-        r"""AML name list screening
+        r"""AML list screening
 
         :param request: Request instance for RunAMLNameScreening.
         :type request: :class:`tencentcloud.faceid.v20180301.models.RunAMLNameScreeningRequest`
@@ -799,7 +799,7 @@ class FaceidClient(AbstractClient):
 
 
     def UpdateAMLCustomerProfile(self, request):
-        r"""AML name list screening
+        r"""AML list screening
 
         :param request: Request instance for UpdateAMLCustomerProfile.
         :type request: :class:`tencentcloud.faceid.v20180301.models.UpdateAMLCustomerProfileRequest`

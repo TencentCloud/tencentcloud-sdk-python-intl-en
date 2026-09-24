@@ -12787,29 +12787,29 @@ class AigcHunyuan3DTaskOutputFileInfo(AbstractModel):
 
 
 class AigcImageOutputConfig(AbstractModel):
-    r"""Output media file configuration for the AIGC image generation task.
+    r"""Output media file configuration for an AIGC image generation task.
 
     """
 
     def __init__(self):
         r"""
-        :param _StorageMode: <p>Storage mode</p><p>Enumeration values:</p><ul><li>Temporary: temporary storage. The generated video file will not be stored in VOD. You can obtain a temporary access URL in the event notification, valid for 7 days.</li><li>Permanent: permanent storage. The generated video file will be stored in VOD. You can obtain the FileId in the event notification.</li></ul><p>Default value: Temporary</p>
+        :param _StorageMode: <p>Storage mode</p><p>Enumeration values:</p><ul><li>Temporary: temporary storage. The generated video file will not be stored in VOD. A temporary access URL can be obtained in the event notification, with a valid period of 7 days.</li><li>Permanent: retained permanently. The generated video file will be stored in VOD. The FileId can be obtained in the event notification.</li></ul><p>Default value: Temporary</p>
         :type StorageMode: str
-        :param _MediaName: <p>Output filename, up to 64 characters. By default, the system generates the filename.</p>
+        :param _MediaName: <p>Output filename, up to 64 characters. By default, the system assigns the generated filename.</p>
         :type MediaName: str
-        :param _ClassId: <p>Category ID, used to categorize and manage media. You can create a category through the <a href="https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1">Create Category</a> API to obtain the category ID.</p><li>Default value: 0, indicating other categories.</li>
+        :param _ClassId: <p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID through the <a href="https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1">Create Category</a> API.</p><li>Default value: 0, indicating other categories.</li>
         :type ClassId: int
-        :param _ExpireTime: <p>Expiry date of the output file. The file will be deleted after this time. It never expires by default. Format according to the ISO 8601 standard. For details, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
+        :param _ExpireTime: <p>Expiry date of the output file. The file will be deleted after this time. It never expires by default. The format follows the ISO 8601 standard. For details, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :type ExpireTime: str
         :param _Resolution: <p>Resolution of the generated image. Available values for each model:</p><ul><li>OG: 1K, 2K, 4K. Default: 1K.</li><li>GG 2.5: 1K, 2K, 4K. Default: 1K.</li><li>GG 3.0: 1K, 2K, 4K. Default: 1K.</li><li>GG 3.1: 720P, 1K, 2K, 4K. Default: 1K.</li><li>Kling 2.1: 1k, 2k. Default: 1k.</li><li>Kling 3.0: 1k, 2k. Default: 1k.</li><li>Kling 3.0-Omni: 1k, 2k, 4k. Default: 1k.</li><li>Kling O1: 1k, 2k, 4k. Default: 1k.</li><li>SI 4.0: 1K, 2K, 4K. Default: 1K.</li><li>SI 4.5: 2K, 4K. Default: 2K.</li><li>SI 5.0-lite: 2K, 3K. Default: 2K.</li><li>Vidu q2: 1080p, 2K, 4K. Default: 1080p.</li><li>Hunyuan 3.0: This field is not currently supported. You can set the resolution through the <code>ExtInfo</code> field.</li><li>Qwen 0925: This field is not currently supported. You can set the resolution through the <code>ExtInfo</code> field.</li></ul>
         :type Resolution: str
-        :param _AspectRatio: <p>Specify the aspect ratio of the generated image.</p><ul><li>OG: 1:1, 3:2, 2:3, 3:4, 4:3, 16:9, 9:16, 21:9, 9:21;</li><li>GG 2.5: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.0: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.1: 1:1, 1:4, 1:8, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 16:9, 21:9;</li><li>Kling 2.1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0-Omni: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Kling O1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Vidu q2: 16:9, 9:16, 1:1, 3:4, 4:3, 21:9, 2:3, 3:2;</li><li>SI 4.0: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>SI 4.5: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>SI 5.0-lite: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>Hunyuan 3.0: not supported;</li><li>Qwen 2.0: not supported;</li><li>Qwen 0925: not supported;</li></ul>
+        :param _AspectRatio: <p>Specify the aspect ratio of the generated image.</p><ul><li>OG: 1:1, 3:2, 2:3, 3:4, 4:3, 16:9, 9:16, 21:9, 9:21;</li><li>GG 2.5: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.0: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.1: 1:1, 1:4, 1:8, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 16:9, 21:9;</li><li>Kling 2.1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0-Omni: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Kling O1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Vidu q2: 16:9, 9:16, 1:1, 3:4, 4:3, 21:9, 2:3, 3:2;</li><li>SI 4.0: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>SI 4.5: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>SI 5.0-lite: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>Hunyuan 3.0: unsupported;</li><li>Qwen 2.0: unsupported;</li><li>Qwen 0925: unsupported;</li></ul>
         :type AspectRatio: str
-        :param _PersonGeneration: <p>Whether to allow generation of people or human faces. Valid values: <li>AllowAdult: Allow generation of adults;</li> <li>Disallowed: Forbid people or human faces in images;</li></p>
+        :param _PersonGeneration: <p>Whether to allow generation of people or human faces. Valid values: <li>AllowAdult: allow generation of adults;</li> <li>Disallowed: forbid people or human faces in images;</li></p>
         :type PersonGeneration: str
-        :param _InputComplianceCheck: <p>Whether compliance check is enabled for the input content. Valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li></p>
+        :param _InputComplianceCheck: <p>Whether to enable compliance check on the input content. Valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li></p>
         :type InputComplianceCheck: str
-        :param _OutputComplianceCheck: <p>Whether compliance check is enabled for output content. Valid values: <li>Enabled: enabled;</li> <li>Disabled: disabled;</li></p>
+        :param _OutputComplianceCheck: <p>Whether to enable compliance check on output content. Valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li></p>
         :type OutputComplianceCheck: str
         :param _OutputImageCount: <p>Number of images generated. Available values for each model:</p><ul><li>Kling: value range 1-9;</li><li>OG: value range 1-8;</li></ul><p><strong>Not effective for other models.</strong></p>
         :type OutputImageCount: int
@@ -12833,7 +12833,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def StorageMode(self):
-        r"""<p>Storage mode</p><p>Enumeration values:</p><ul><li>Temporary: temporary storage. The generated video file will not be stored in VOD. You can obtain a temporary access URL in the event notification, valid for 7 days.</li><li>Permanent: permanent storage. The generated video file will be stored in VOD. You can obtain the FileId in the event notification.</li></ul><p>Default value: Temporary</p>
+        r"""<p>Storage mode</p><p>Enumeration values:</p><ul><li>Temporary: temporary storage. The generated video file will not be stored in VOD. A temporary access URL can be obtained in the event notification, with a valid period of 7 days.</li><li>Permanent: retained permanently. The generated video file will be stored in VOD. The FileId can be obtained in the event notification.</li></ul><p>Default value: Temporary</p>
         :rtype: str
         """
         return self._StorageMode
@@ -12844,7 +12844,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def MediaName(self):
-        r"""<p>Output filename, up to 64 characters. By default, the system generates the filename.</p>
+        r"""<p>Output filename, up to 64 characters. By default, the system assigns the generated filename.</p>
         :rtype: str
         """
         return self._MediaName
@@ -12855,7 +12855,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""<p>Category ID, used to categorize and manage media. You can create a category through the <a href="https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1">Create Category</a> API to obtain the category ID.</p><li>Default value: 0, indicating other categories.</li>
+        r"""<p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID through the <a href="https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1">Create Category</a> API.</p><li>Default value: 0, indicating other categories.</li>
         :rtype: int
         """
         return self._ClassId
@@ -12866,7 +12866,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""<p>Expiry date of the output file. The file will be deleted after this time. It never expires by default. Format according to the ISO 8601 standard. For details, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
+        r"""<p>Expiry date of the output file. The file will be deleted after this time. It never expires by default. The format follows the ISO 8601 standard. For details, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -12888,7 +12888,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""<p>Specify the aspect ratio of the generated image.</p><ul><li>OG: 1:1, 3:2, 2:3, 3:4, 4:3, 16:9, 9:16, 21:9, 9:21;</li><li>GG 2.5: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.0: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.1: 1:1, 1:4, 1:8, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 16:9, 21:9;</li><li>Kling 2.1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0-Omni: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Kling O1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Vidu q2: 16:9, 9:16, 1:1, 3:4, 4:3, 21:9, 2:3, 3:2;</li><li>SI 4.0: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>SI 4.5: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>SI 5.0-lite: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>Hunyuan 3.0: not supported;</li><li>Qwen 2.0: not supported;</li><li>Qwen 0925: not supported;</li></ul>
+        r"""<p>Specify the aspect ratio of the generated image.</p><ul><li>OG: 1:1, 3:2, 2:3, 3:4, 4:3, 16:9, 9:16, 21:9, 9:21;</li><li>GG 2.5: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.0: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9;</li><li>GG 3.1: 1:1, 1:4, 1:8, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 16:9, 21:9;</li><li>Kling 2.1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9;</li><li>Kling 3.0-Omni: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Kling O1: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9, auto;</li><li>Vidu q2: 16:9, 9:16, 1:1, 3:4, 4:3, 21:9, 2:3, 3:2;</li><li>SI 4.0: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>SI 4.5: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>SI 5.0-lite: <strong>does not support</strong> this parameter. You can specify 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 via prompt;</li><li>Hunyuan 3.0: unsupported;</li><li>Qwen 2.0: unsupported;</li><li>Qwen 0925: unsupported;</li></ul>
         :rtype: str
         """
         return self._AspectRatio
@@ -12899,7 +12899,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def PersonGeneration(self):
-        r"""<p>Whether to allow generation of people or human faces. Valid values: <li>AllowAdult: Allow generation of adults;</li> <li>Disallowed: Forbid people or human faces in images;</li></p>
+        r"""<p>Whether to allow generation of people or human faces. Valid values: <li>AllowAdult: allow generation of adults;</li> <li>Disallowed: forbid people or human faces in images;</li></p>
         :rtype: str
         """
         return self._PersonGeneration
@@ -12910,7 +12910,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def InputComplianceCheck(self):
-        r"""<p>Whether compliance check is enabled for the input content. Valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li></p>
+        r"""<p>Whether to enable compliance check on the input content. Valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li></p>
         :rtype: str
         """
         return self._InputComplianceCheck
@@ -12921,7 +12921,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def OutputComplianceCheck(self):
-        r"""<p>Whether compliance check is enabled for output content. Valid values: <li>Enabled: enabled;</li> <li>Disabled: disabled;</li></p>
+        r"""<p>Whether to enable compliance check on output content. Valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li></p>
         :rtype: str
         """
         return self._OutputComplianceCheck
@@ -13443,19 +13443,19 @@ class AigcImageTaskInput(AbstractModel):
 
 
 class AigcImageTaskInputFileInfo(AbstractModel):
-    r"""AIGC image generation task input file information.
+    r"""AIGC image generation task input file information
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: <p>Input file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible URL;</li> <li>Base64: Base64 string of an image or transcoded video;</li></p>
+        :param _Type: <p>Input file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible URL;</li> <li>Base64: Base64 string of an image or video for transcoding;</li></p>
         :type Type: str
-        :param _FileId: <p>Media file ID of the image file, which is the globally unique identifier of the file in VOD, assigned by the VOD backend after successful upload. You can obtain this field in the <a href="https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when Type is File.<br>Description:</p><ol><li>Images less than 7M are recommended.</li><li>Image format values: jpeg, jpg, png, webp.</li></ol>
+        :param _FileId: <p>Media file ID of the image file, which is the globally unique identifier of the file on VOD, assigned by the VOD backend after successful upload. You can obtain this field in the <a href="https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when Type is File.<br>Description:</p><ol><li>Images less than 7M are recommended.</li><li>Image format values: jpeg, jpg, png, webp.</li></ol>
         :type FileId: str
         :param _Url: <p>Accessible file URL. This parameter is valid when Type is Url.<br>Description:</p><ol><li>An image less than 7M is recommended.</li><li>Image format values: jpeg, jpg, png, webp.</li></ol>
         :type Url: str
-        :param _Base64: <p>Accessible file Base64. This parameter is valid when Type is Base64. Details:</p><ol><li>The total size of all files must not exceed 7 MB to avoid exceeding the 10 MB upper limit of message size for cloud APIs after conversion to Base64;</li><li>Image formats should be: jpeg, jpg, png, webp;</li><li>Do not include prefixes such as data:image/jpeg;base64,.</li></ol>
+        :param _Base64: <p>Accessible file Base64. This parameter is valid when Type is Base64. Details:</p><ol><li>The total size of all files must not exceed 7 MB to avoid exceeding the 10 MB upper limit of message size for cloud APIs after conversion to Base64;</li><li>Image format should be: jpeg, jpg, png, webp;</li><li>Do not include prefixes such as data:image/jpeg;base64,.</li></ol>
         :type Base64: str
         :param _Text: <p>Description of the input image, used to help the model understand the image. Only valid for GEM 2.5 and GEM 3.0.</p>
         :type Text: str
@@ -13471,7 +13471,7 @@ class AigcImageTaskInputFileInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""<p>Input file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible URL;</li> <li>Base64: Base64 string of an image or transcoded video;</li></p>
+        r"""<p>Input file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible URL;</li> <li>Base64: Base64 string of an image or video for transcoding;</li></p>
         :rtype: str
         """
         return self._Type
@@ -13482,7 +13482,7 @@ class AigcImageTaskInputFileInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""<p>Media file ID of the image file, which is the globally unique identifier of the file in VOD, assigned by the VOD backend after successful upload. You can obtain this field in the <a href="https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when Type is File.<br>Description:</p><ol><li>Images less than 7M are recommended.</li><li>Image format values: jpeg, jpg, png, webp.</li></ol>
+        r"""<p>Media file ID of the image file, which is the globally unique identifier of the file on VOD, assigned by the VOD backend after successful upload. You can obtain this field in the <a href="https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1">video upload completion event notification</a> or the <a href="https://console.cloud.tencent.com/vod/media">VOD console</a>. This parameter is valid when Type is File.<br>Description:</p><ol><li>Images less than 7M are recommended.</li><li>Image format values: jpeg, jpg, png, webp.</li></ol>
         :rtype: str
         """
         return self._FileId
@@ -13504,7 +13504,7 @@ class AigcImageTaskInputFileInfo(AbstractModel):
 
     @property
     def Base64(self):
-        r"""<p>Accessible file Base64. This parameter is valid when Type is Base64. Details:</p><ol><li>The total size of all files must not exceed 7 MB to avoid exceeding the 10 MB upper limit of message size for cloud APIs after conversion to Base64;</li><li>Image formats should be: jpeg, jpg, png, webp;</li><li>Do not include prefixes such as data:image/jpeg;base64,.</li></ol>
+        r"""<p>Accessible file Base64. This parameter is valid when Type is Base64. Details:</p><ol><li>The total size of all files must not exceed 7 MB to avoid exceeding the 10 MB upper limit of message size for cloud APIs after conversion to Base64;</li><li>Image format should be: jpeg, jpg, png, webp;</li><li>Do not include prefixes such as data:image/jpeg;base64,.</li></ol>
         :rtype: str
         """
         return self._Base64
@@ -16523,19 +16523,19 @@ class ApplyUploadRequest(AbstractModel):
         r"""
         :param _MediaType: <p>Media type. For available values, see <a href="https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B">upload capability summary</a>.</p>
         :type MediaType: str
-        :param _SubAppId: <p><b>Video-on-Demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services on or after December 25, 2023, this field must be set to the application ID when accessing resources in VOD applications, whether the default application or a newly created application.</b></p>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services after December 25, 2023, this field must be filled in with the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</b></p>
         :type SubAppId: int
         :param _MediaName: <p>Media name.</p>
         :type MediaName: str
         :param _CoverType: <p>Cover Type. For available values, see <a href="https://www.tencentcloud.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B">upload capability summary</a>.</p>
         :type CoverType: str
-        :param _Procedure: <p>Subsequent media task processing operations, i.e., automatic task initiation after media upload is completed. The parameter value is the task flow template name. VOD supports <a href="https://www.tencentcloud.com/document/product/266/33819?from_cn_redirect=1">creating a task flow template</a> and naming the template.</p>
+        :param _Procedure: <p>Subsequent media task processing operations, which can automatically initiate task flow operations after media upload is completed. The parameter value is the task flow template name. VOD supports <a href="https://www.tencentcloud.com/document/product/266/33819?from_cn_redirect=1">creating a task flow template</a> and naming the template.</p>
         :type Procedure: str
         :param _ExpireTime: <p>Media file expiry time, format according to the ISO 8601 standard representation. For details, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :type ExpireTime: str
-        :param _StorageRegion: <p>Specify the upload park. This is applicable only to the user with special requirements for the upload target region.</p>
+        :param _StorageRegion: <p>Designated upload park, applicable only to users with special requirements for the upload target region.</p>
         :type StorageRegion: str
-        :param _ClassId: <p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID through the <a href="https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1">Create Category</a> API.</p><li>Default value: 0, indicating other categories.</li>
+        :param _ClassId: <p>Category ID, used to categorize and manage media. You can create a category through the <a href="https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1">Create Category</a> API to obtain the category ID.</p><li>Default value: 0, indicating other categories.</li>
         :type ClassId: int
         :param _SourceContext: <p>Source context. This is used to pass user request information. The <a href="https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1">upload completion callback</a> returns the value of this field. The maximum length is 250 characters.</p>
         :type SourceContext: str
@@ -16572,7 +16572,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<p><b>Video-on-Demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services on or after December 25, 2023, this field must be set to the application ID when accessing resources in VOD applications, whether the default application or a newly created application.</b></p>
+        r"""<p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services after December 25, 2023, this field must be filled in with the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -16605,7 +16605,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def Procedure(self):
-        r"""<p>Subsequent media task processing operations, i.e., automatic task initiation after media upload is completed. The parameter value is the task flow template name. VOD supports <a href="https://www.tencentcloud.com/document/product/266/33819?from_cn_redirect=1">creating a task flow template</a> and naming the template.</p>
+        r"""<p>Subsequent media task processing operations, which can automatically initiate task flow operations after media upload is completed. The parameter value is the task flow template name. VOD supports <a href="https://www.tencentcloud.com/document/product/266/33819?from_cn_redirect=1">creating a task flow template</a> and naming the template.</p>
         :rtype: str
         """
         return self._Procedure
@@ -16627,7 +16627,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def StorageRegion(self):
-        r"""<p>Specify the upload park. This is applicable only to the user with special requirements for the upload target region.</p>
+        r"""<p>Designated upload park, applicable only to users with special requirements for the upload target region.</p>
         :rtype: str
         """
         return self._StorageRegion
@@ -16638,7 +16638,7 @@ class ApplyUploadRequest(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""<p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID through the <a href="https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1">Create Category</a> API.</p><li>Default value: 0, indicating other categories.</li>
+        r"""<p>Category ID, used to categorize and manage media. You can create a category through the <a href="https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1">Create Category</a> API to obtain the category ID.</p><li>Default value: 0, indicating other categories.</li>
         :rtype: int
         """
         return self._ClassId
@@ -16722,13 +16722,13 @@ class ApplyUploadResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageBucket: <p>Bucket, used as the bucket_name for uploading API URL.</p>
+        :param _StorageBucket: <p>Bucket, the bucket_name for uploading API URL.</p>
         :type StorageBucket: str
         :param _StorageRegion: <p>Storage campus, used for the Region of the upload API Host.</p>
         :type StorageRegion: str
-        :param _VodSessionKey: <p>VOD session, used for confirmation of the upload API parameter VodSessionKey.</p>
+        :param _VodSessionKey: <p>VOD session, used for the VodSessionKey parameter of the confirm upload API.</p>
         :type VodSessionKey: str
-        :param _MediaStoragePath: <p>Media storage path, the object Key for uploading and storing media through the API.</p>
+        :param _MediaStoragePath: <p>Media storage path, the object Key for uploading and storing media via the API.</p>
         :type MediaStoragePath: str
         :param _CoverStoragePath: <p>Cover storage path, the object Key for uploading and storing the cover via the API.</p>
         :type CoverStoragePath: str
@@ -16747,7 +16747,7 @@ class ApplyUploadResponse(AbstractModel):
 
     @property
     def StorageBucket(self):
-        r"""<p>Bucket, used as the bucket_name for uploading API URL.</p>
+        r"""<p>Bucket, the bucket_name for uploading API URL.</p>
         :rtype: str
         """
         return self._StorageBucket
@@ -16769,7 +16769,7 @@ class ApplyUploadResponse(AbstractModel):
 
     @property
     def VodSessionKey(self):
-        r"""<p>VOD session, used for confirmation of the upload API parameter VodSessionKey.</p>
+        r"""<p>VOD session, used for the VodSessionKey parameter of the confirm upload API.</p>
         :rtype: str
         """
         return self._VodSessionKey
@@ -16780,7 +16780,7 @@ class ApplyUploadResponse(AbstractModel):
 
     @property
     def MediaStoragePath(self):
-        r"""<p>Media storage path, the object Key for uploading and storing media through the API.</p>
+        r"""<p>Media storage path, the object Key for uploading and storing media via the API.</p>
         :rtype: str
         """
         return self._MediaStoragePath
@@ -28224,9 +28224,9 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <p><b>On-demand <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</b></p>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services from December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :type SubAppId: int
-        :param _ModelName: <p>Model name. Parameter values:</p><li>OG</li><li>GG</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
+        :param _ModelName: <p>Model name. Parameter Value:</p><li>OG</li><li>GG</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
         :type ModelName: str
         :param _ModelVersion: <p>Model version. Value:</p><li>When ModelName is OG, optional values: image2_low, image2_medium, image2_high;</li><li>When ModelName is GG, optional values: 2.5, 3.0, 3.1, 3.1-lite;</li><li>When ModelName is Hunyuan, optional values: 3.0, 3d_2.0, 3.5-preview;</li><li>When ModelName is Vidu, optional values: q2;</li><li>When ModelName is Kling, optional values: 2.1, 3.0, 3.0-Omni, O1, scene;</li><li>When ModelName is Mingmou, optional values: 1.0;</li>
         :type ModelVersion: str
@@ -28238,7 +28238,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type NegativePrompt: str
         :param _EnhancePrompt: <p>Whether to optimize Prompt content automatically. When Enabled, the passed in Prompt content will be optimized automatically to enhance generation quality. Valid values: <li>Enabled: enable;</li> <li>Disabled: disable;</li></p>
         :type EnhancePrompt: str
-        :param _OutputConfig: <p>Configuration of the output media file of the image generation task.</p>
+        :param _OutputConfig: <p>Output media file configuration for an image generation task.</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
         :param _InputRegion: <p>Input region information. Available values:</p><ul><li>Mainland: Chinese mainland;</li><li>Oversea: overseas;</li><li>OverseaUSWest: overseas - western United States;</li></ul>
         :type InputRegion: str
@@ -28248,11 +28248,11 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type Seed: int
         :param _SessionId: <p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>
         :type SessionId: str
-        :param _SessionContext: <p>Source context. This is used to pass user request information. The audio and video quality revival complete callback returns the value of this field. The maximum length is 1000 characters.</p>
+        :param _SessionContext: <p>Source context. This is used to pass user request information. The audio and video quality revival completion callback returns the value of this field. The maximum length is 1000 characters.</p>
         :type SessionContext: str
         :param _TasksPriority: <p>Task priority. The higher the value, the higher the priority. The value range is from -10 to 10. If this is not specified, the default value is 0.</p>
         :type TasksPriority: int
-        :param _ExtInfo: <p>Reserved field for special usage.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Supports free resolution width and height settings. Both width and height are within the pixel range of [512, 2048], and the product of width and height must be ≤ 1024x1024 pixels. Example: <code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>Supports free resolution width and height settings:<ul><li>The calculated pixel size must be divisible by 16.</li><li>The total pixel count must be at least 655,360 and should not exceed 8,294,400.</li><li>Example: <code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li>Supports setting a transparent layer:<ul><li>Example: <code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>Supports setting image expansion parameters. Example: <code>{&quot;AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>Common constraints:<ul><li>Value range: [0, 2];</li><li>The overall area of the new image should not exceed 3 times that of the original image;</li><li>Forward prompt content can be imported through the <code>Prompt</code> field.</li><li>Example description:<ul><li>up_expansion_ratio: The upward expansion range, calculated as a multiple of the original image height. If the original image height is 20 and the parameter value is 0.1, the distance from the top edge of the original image to the top edge of the new image is 20 × 0.1 = 2. This region is the expansion range.</li><li>down_expansion_ratio: The downward expansion range, calculated as a multiple of the original image height. If the original image height is 20 and the parameter value is 0.2, the distance from the bottom edge of the original image to the bottom edge of the new image is 20 × 0.2 = 4. This region is the expansion range.</li><li>left_expansion_ratio: The leftward expansion range, calculated as a multiple of the original image width. If the original image width is 30 and the parameter value is 0.3, the distance from the left edge of the original image to the left edge of the new image is 30 × 0.3 = 9. This region is the expansion range.</li><li>right_expansion_ratio: The rightward expansion range, calculated as a multiple of the original image width. If the original image width is 30 and the parameter value is 0.4, the distance from the right edge of the original image to the right edge of the new image is 30 × 0.4 = 12. This region is the expansion range.</li></ul></li></ul></li></ul></li></ul></li></ul>
+        :param _ExtInfo: <p>Reserved field for special usage.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Support setting resolution width and height freely. Both width and height are in the range of [512, 2048] pixels, and the product of width and height <= 1024x1024 pixels. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1024\"}"}</code></li></ul></li><li><p>OG</p><ul><li>Support setting resolution width and height freely:<ul><li>Calculate the pixel size, which must be divisible by 16</li><li>The total pixels must be at least 655,360 and should not exceed 8,294,400</li><li>Example: <code>{"AdditionalParameters": "{\"size\":\"728x1024\"}"}</code></li></ul></li><li>Support setting a transparent layer:<ul><li>Example: <code>{"AdditionalParameters": "{\"background\":\"transparent\"}"}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>Support setting expansion parameters. Example: <code>{"AdditionalParameters":"{\"down_expansion_ratio\":0.2,\"left_expansion_ratio\":0.3,\"right_expansion_ratio\":0.4,\"up_expansion_ratio\":0.1}}</code><ul><li>Common constraints:<ul><li>Value range: [0, 2];</li><li>The overall area of the new image should not exceed 3 times that of the original image;</li><li>Forward Prompt content can be input through the <code>Prompt</code> field.</li><li>Example description:<ul><li>up_expansion_ratio: expand upward, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.1, the distance from the top edge of the original image to the top edge of the new image is 20 x 0.1 = 2. This region is the expansion range.</li><li>down_expansion_ratio: expand downward, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.2, the distance from the bottom edge of the original image to the bottom edge of the new image is 20 x 0.2 = 4. This region is the expansion range.</li><li>left_expansion_ratio: expand to the left, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.3, the distance from the left edge of the original image to the left edge of the new image is 30 x 0.3 = 9. This region is the expansion range.</li><li>right_expansion_ratio: expand to the right, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.4, the distance from the right edge of the original image to the right edge of the new image is 30 x 0.4 = 12. This region is the expansion range.</li></ul></li></ul></li></ul></li></ul></li></ul>
         :type ExtInfo: str
         """
         self._SubAppId = None
@@ -28273,7 +28273,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<p><b>On-demand <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</b></p>
+        r"""<p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services from December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -28284,7 +28284,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>Model name. Parameter values:</p><li>OG</li><li>GG</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
+        r"""<p>Model name. Parameter Value:</p><li>OG</li><li>GG</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
         :rtype: str
         """
         return self._ModelName
@@ -28350,7 +28350,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""<p>Configuration of the output media file of the image generation task.</p>
+        r"""<p>Output media file configuration for an image generation task.</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
         """
         return self._OutputConfig
@@ -28405,7 +28405,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""<p>Source context. This is used to pass user request information. The audio and video quality revival complete callback returns the value of this field. The maximum length is 1000 characters.</p>
+        r"""<p>Source context. This is used to pass user request information. The audio and video quality revival completion callback returns the value of this field. The maximum length is 1000 characters.</p>
         :rtype: str
         """
         return self._SessionContext
@@ -28427,7 +28427,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""<p>Reserved field for special usage.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Supports free resolution width and height settings. Both width and height are within the pixel range of [512, 2048], and the product of width and height must be ≤ 1024x1024 pixels. Example: <code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>Supports free resolution width and height settings:<ul><li>The calculated pixel size must be divisible by 16.</li><li>The total pixel count must be at least 655,360 and should not exceed 8,294,400.</li><li>Example: <code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li>Supports setting a transparent layer:<ul><li>Example: <code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>Supports setting image expansion parameters. Example: <code>{&quot;AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>Common constraints:<ul><li>Value range: [0, 2];</li><li>The overall area of the new image should not exceed 3 times that of the original image;</li><li>Forward prompt content can be imported through the <code>Prompt</code> field.</li><li>Example description:<ul><li>up_expansion_ratio: The upward expansion range, calculated as a multiple of the original image height. If the original image height is 20 and the parameter value is 0.1, the distance from the top edge of the original image to the top edge of the new image is 20 × 0.1 = 2. This region is the expansion range.</li><li>down_expansion_ratio: The downward expansion range, calculated as a multiple of the original image height. If the original image height is 20 and the parameter value is 0.2, the distance from the bottom edge of the original image to the bottom edge of the new image is 20 × 0.2 = 4. This region is the expansion range.</li><li>left_expansion_ratio: The leftward expansion range, calculated as a multiple of the original image width. If the original image width is 30 and the parameter value is 0.3, the distance from the left edge of the original image to the left edge of the new image is 30 × 0.3 = 9. This region is the expansion range.</li><li>right_expansion_ratio: The rightward expansion range, calculated as a multiple of the original image width. If the original image width is 30 and the parameter value is 0.4, the distance from the right edge of the original image to the right edge of the new image is 30 × 0.4 = 12. This region is the expansion range.</li></ul></li></ul></li></ul></li></ul></li></ul>
+        r"""<p>Reserved field for special usage.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Support setting resolution width and height freely. Both width and height are in the range of [512, 2048] pixels, and the product of width and height <= 1024x1024 pixels. Example: <code>{"AdditionalParameters": "{\"size\":\"728x1024\"}"}</code></li></ul></li><li><p>OG</p><ul><li>Support setting resolution width and height freely:<ul><li>Calculate the pixel size, which must be divisible by 16</li><li>The total pixels must be at least 655,360 and should not exceed 8,294,400</li><li>Example: <code>{"AdditionalParameters": "{\"size\":\"728x1024\"}"}</code></li></ul></li><li>Support setting a transparent layer:<ul><li>Example: <code>{"AdditionalParameters": "{\"background\":\"transparent\"}"}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>Support setting expansion parameters. Example: <code>{"AdditionalParameters":"{\"down_expansion_ratio\":0.2,\"left_expansion_ratio\":0.3,\"right_expansion_ratio\":0.4,\"up_expansion_ratio\":0.1}}</code><ul><li>Common constraints:<ul><li>Value range: [0, 2];</li><li>The overall area of the new image should not exceed 3 times that of the original image;</li><li>Forward Prompt content can be input through the <code>Prompt</code> field.</li><li>Example description:<ul><li>up_expansion_ratio: expand upward, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.1, the distance from the top edge of the original image to the top edge of the new image is 20 x 0.1 = 2. This region is the expansion range.</li><li>down_expansion_ratio: expand downward, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.2, the distance from the bottom edge of the original image to the bottom edge of the new image is 20 x 0.2 = 4. This region is the expansion range.</li><li>left_expansion_ratio: expand to the left, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.3, the distance from the left edge of the original image to the left edge of the new image is 30 x 0.3 = 9. This region is the expansion range.</li><li>right_expansion_ratio: expand to the right, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.4, the distance from the right edge of the original image to the right edge of the new image is 30 x 0.4 = 12. This region is the expansion range.</li></ul></li></ul></li></ul></li></ul></li></ul>
         :rtype: str
         """
         return self._ExtInfo
@@ -35496,15 +35496,15 @@ class CreateVodDomainRequest(AbstractModel):
         r"""
         :param _Domain: Domain name for on-demand acceleration. Note: Filling in wildcard domains is not supported.
         :type Domain: str
-        :param _SubAppId: <b>ID of the on-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1). For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b>
+        :param _SubAppId: <b>VOD [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate VOD from December 25, 2023, this field must be filled in with the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</b>
         :type SubAppId: int
         :param _AccelerateArea: Regions where CDN acceleration needs to be enabled:
 <li>Chinese Mainland: within the Chinese mainland (excluding Hong Kong (China), Macao (China), and Taiwan (China)).</li>
 <li>Outside Chinese Mainland: outside the Chinese mainland.</li>
 <li>Global: around the world.</li>
-If AccelerateArea is not set, VOD will automatically activate CDN acceleration within or outside the Chinese mainland based on the user's regional information in Tencent Cloud Settings. To enable CDN acceleration within the Chinese mainland, the domain must be [ICP filed](https://www.tencentcloud.com/document/product/243/18905?from_cn_redirect=1) first.
+If AccelerateArea is not set, VOD will automatically activate CDN acceleration within or outside the Chinese mainland based on the regional information configured by the user in Tencent Cloud Settings. 
         :type AccelerateArea: str
-        :param _Type: Domain type. Valid values: <li>VOD: domain name used to distribute VOD products</li> <li>EdgeOne: domain name used to distribute EdgeOne products</li> If not specified, the default value is VOD.
+        :param _Type: Domain type. Valid values: <li>VOD: domain name for distribution using the VOD product.</li> <li>EdgeOne: domain name for distribution using the EdgeOne product.</li> If not specified, the default value is VOD.
         :type Type: str
         """
         self._Domain = None
@@ -35525,7 +35525,7 @@ If AccelerateArea is not set, VOD will automatically activate CDN acceleration w
 
     @property
     def SubAppId(self):
-        r"""<b>ID of the on-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1). For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b>
+        r"""<b>VOD [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1) ID. For customers who activate VOD from December 25, 2023, this field must be filled in with the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</b>
         :rtype: int
         """
         return self._SubAppId
@@ -35540,7 +35540,7 @@ If AccelerateArea is not set, VOD will automatically activate CDN acceleration w
 <li>Chinese Mainland: within the Chinese mainland (excluding Hong Kong (China), Macao (China), and Taiwan (China)).</li>
 <li>Outside Chinese Mainland: outside the Chinese mainland.</li>
 <li>Global: around the world.</li>
-If AccelerateArea is not set, VOD will automatically activate CDN acceleration within or outside the Chinese mainland based on the user's regional information in Tencent Cloud Settings. To enable CDN acceleration within the Chinese mainland, the domain must be [ICP filed](https://www.tencentcloud.com/document/product/243/18905?from_cn_redirect=1) first.
+If AccelerateArea is not set, VOD will automatically activate CDN acceleration within or outside the Chinese mainland based on the regional information configured by the user in Tencent Cloud Settings. 
         :rtype: str
         """
         return self._AccelerateArea
@@ -35551,7 +35551,7 @@ If AccelerateArea is not set, VOD will automatically activate CDN acceleration w
 
     @property
     def Type(self):
-        r"""Domain type. Valid values: <li>VOD: domain name used to distribute VOD products</li> <li>EdgeOne: domain name used to distribute EdgeOne products</li> If not specified, the default value is VOD.
+        r"""Domain type. Valid values: <li>VOD: domain name for distribution using the VOD product.</li> <li>EdgeOne: domain name for distribution using the EdgeOne product.</li> If not specified, the default value is VOD.
         :rtype: str
         """
         return self._Type
@@ -51315,11 +51315,11 @@ class DynamicRangeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Dynamic range info of the frame. Valid values:
-<li>SDR: Standard Dynamic Range</li>
+        :param _Type: Frame dynamic range information. Valid values:
+<li>SDR: Standard Dynamic Range;</li>
 <li>HDR: High Dynamic Range.</li>
         :type Type: str
-        :param _HDRType: High dynamic range type. Valid when Type is HDR. Currently supported valid values:
+        :param _HDRType: High dynamic range type. Valid when Type is HDR. Currently supports the following valid values:
 <li>hdr10: refers to the hdr10 standard;</li>
 <li>hlg: refers to the hlg standard.</li>
         :type HDRType: str
@@ -51329,8 +51329,8 @@ class DynamicRangeInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""Dynamic range info of the frame. Valid values:
-<li>SDR: Standard Dynamic Range</li>
+        r"""Frame dynamic range information. Valid values:
+<li>SDR: Standard Dynamic Range;</li>
 <li>HDR: High Dynamic Range.</li>
         :rtype: str
         """
@@ -51342,7 +51342,7 @@ class DynamicRangeInfo(AbstractModel):
 
     @property
     def HDRType(self):
-        r"""High dynamic range type. Valid when Type is HDR. Currently supported valid values:
+        r"""High dynamic range type. Valid when Type is HDR. Currently supports the following valid values:
 <li>hdr10: refers to the hdr10 standard;</li>
 <li>hlg: refers to the hlg standard.</li>
         :rtype: str
@@ -54873,19 +54873,20 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: URL of the media requiring watermark extraction.
         :type Url: str
-        :param _FileId: 
+        :param _FileId: Media file ID. Original media file ID corresponding to the Url.
+<li><font color=red>Note</font>: This field is required.</li>
         :type FileId: str
-        :param _SubAppId: 
+        :param _SubAppId: <b>ID of the on-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1). For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b>
         :type SubAppId: int
-        :param _SessionContext: 
+        :param _SessionContext: Source context identifier, used to pass through user request information. This field will be returned in the ExtractTraceWatermarkComplete callback and task flow status change callback. It can contain up to 1000 characters.
         :type SessionContext: str
-        :param _SessionId: 
+        :param _SessionId: Identification Code for Task Deduplication. If there has been a request with the same identification code within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or using an empty string indicates no deduplication.
         :type SessionId: str
-        :param _TasksPriority: 
+        :param _TasksPriority: Task Priority. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.
         :type TasksPriority: int
-        :param _ExtInfo: 
+        :param _ExtInfo: Reserved field, used for special purposes.
         :type ExtInfo: str
         """
         self._Url = None
@@ -54898,7 +54899,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""
+        r"""URL of the media requiring watermark extraction.
         :rtype: str
         """
         return self._Url
@@ -54909,7 +54910,8 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     @property
     def FileId(self):
-        r"""
+        r"""Media file ID. Original media file ID corresponding to the Url.
+<li><font color=red>Note</font>: This field is required.</li>
         :rtype: str
         """
         return self._FileId
@@ -54920,7 +54922,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""
+        r"""<b>ID of the on-demand [application](https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1). For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b>
         :rtype: int
         """
         return self._SubAppId
@@ -54931,7 +54933,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""
+        r"""Source context identifier, used to pass through user request information. This field will be returned in the ExtractTraceWatermarkComplete callback and task flow status change callback. It can contain up to 1000 characters.
         :rtype: str
         """
         return self._SessionContext
@@ -54942,7 +54944,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""
+        r"""Identification Code for Task Deduplication. If there has been a request with the same identification code within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or using an empty string indicates no deduplication.
         :rtype: str
         """
         return self._SessionId
@@ -54953,7 +54955,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
-        r"""
+        r"""Task Priority. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.
         :rtype: int
         """
         return self._TasksPriority
@@ -54964,7 +54966,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""
+        r"""Reserved field, used for special purposes.
         :rtype: str
         """
         return self._ExtInfo
@@ -54999,7 +55001,7 @@ class ExtractTraceWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 
+        :param _TaskId: Task ID.
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -55009,7 +55011,7 @@ class ExtractTraceWatermarkResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""
+        r"""Task ID.
         :rtype: str
         """
         return self._TaskId
@@ -61873,7 +61875,7 @@ class LiveRealTimeClipMediaSegmentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Segment start time. For the format, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        :param _StartTime: Segment start time. See [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I) for the format.
         :type StartTime: str
         :param _EndTime: Segment end time. For the format, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
         :type EndTime: str
@@ -61883,7 +61885,7 @@ class LiveRealTimeClipMediaSegmentInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Segment start time. For the format, see [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).
+        r"""Segment start time. See [ISO date format description](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I) for the format.
         :rtype: str
         """
         return self._StartTime
@@ -61930,15 +61932,15 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: <p>End time of stream clipping. For the format, see <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format description</a>.</p>
         :type EndTime: str
-        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services on or after December 25, 2023, when accessing resources in VOD applications (whether the default application or a newly created application), this field must be filled in with the application ID.</b></p>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services from December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :type SubAppId: int
-        :param _IsPersistence: <p>Whether solidified. 0: non-permanent, 1: solidified. Default: non-permanent.</p>
+        :param _IsPersistence: <p>Whether solidified. 0: non-permanent, 1: solidified. Default non-permanent.</p>
         :type IsPersistence: int
-        :param _ExpireTime: <p>Video storage expiry time after editing solidification. Format reference: <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>. Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding results, sprites, etc.) will be permanently deleted. Valid only when IsPersistence is 1. By default, videos solidified by editing never expire.</p>
+        :param _ExpireTime: <p>Video storage expiry time after editing solidification. Format reference: <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>. Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding results, sprites, etc.) will be permanently deleted. Valid only when IsPersistence is 1. By default, videos solidified through editing never expire.</p>
         :type ExpireTime: str
         :param _Procedure: <p>Post-editing Solidified Video On-demand Task Flow Processing. For details, see <a href="https://www.tencentcloud.com/document/product/266/9759?from_cn_redirect=1">upload specified task flow</a>. Valid only when IsPersistence is 1.</p>
         :type Procedure: str
-        :param _ClassId: <p>Category ID, used to categorize and manage media. You can call the <a href="https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1">create category</a> API to create a category and obtain the category ID.</p><li>Default value: 0, indicating other categories.</li>Valid only when IsPersistence is 1.
+        :param _ClassId: <p>Category ID, used to categorize and manage media. You can create a category via the <a href="https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1">Create Category</a> API to obtain the category ID.</p><li>Default value: 0, indicating other categories.</li>Valid only when IsPersistence is 1.
         :type ClassId: int
         :param _SourceContext: <p>Source context. This is used to pass user request information. The <a href="https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1">upload completion callback</a> returns the value of this field. The maximum length is 250 characters. Valid only when IsPersistence is 1.</p>
         :type SourceContext: str
@@ -61946,7 +61948,7 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type SessionContext: str
         :param _MetaDataRequired: <p>Whether to return edited video metadata. 0: not required, 1: required. By default, does not need.</p>
         :type MetaDataRequired: int
-        :param _Host: <p>The domain name added in VOD for time shift playback must already be <a href="https://www.tencentcloud.com/document/product/266/52220?from_cn_redirect=1#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">associated with a recording template and enabled for time-shift service</a> in Cloud Streaming Services. <strong>If the first call of this interface is after 2021-01-01T00:00:00Z, this field is required.</strong></p>
+        :param _Host: <p>The domain name added in VOD for time shift playback must be <a href="https://www.tencentcloud.com/document/product/266/52220?from_cn_redirect=1#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">bound to a recording template and enabled for time-shift service</a> in cloud streaming. <strong>If the first call of this interface is after 2021-01-01T00:00:00Z, this field is required.</strong></p>
         :type Host: str
         :param _StreamInfo: <p>Live stream information for editing:</p><li>Edit the original stream by default.</li><li>If the Type specified in StreamInfo is Transcoding, edit the live streaming transcoding stream corresponding to TemplateId.</li>
         :type StreamInfo: :class:`tencentcloud.vod.v20180717.models.LiveRealTimeClipStreamInfo`
@@ -62003,7 +62005,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services on or after December 25, 2023, when accessing resources in VOD applications (whether the default application or a newly created application), this field must be filled in with the application ID.</b></p>
+        r"""<p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services from December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -62014,7 +62016,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def IsPersistence(self):
-        r"""<p>Whether solidified. 0: non-permanent, 1: solidified. Default: non-permanent.</p>
+        r"""<p>Whether solidified. 0: non-permanent, 1: solidified. Default non-permanent.</p>
         :rtype: int
         """
         return self._IsPersistence
@@ -62025,7 +62027,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""<p>Video storage expiry time after editing solidification. Format reference: <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>. Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding results, sprites, etc.) will be permanently deleted. Valid only when IsPersistence is 1. By default, videos solidified by editing never expire.</p>
+        r"""<p>Video storage expiry time after editing solidification. Format reference: <a href="https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I">ISO date format</a>. Enter "9999-12-31T23:59:59Z" to indicate the video never expires. After expiry, the media file and its related resources (transcoding results, sprites, etc.) will be permanently deleted. Valid only when IsPersistence is 1. By default, videos solidified through editing never expire.</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -62047,7 +62049,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""<p>Category ID, used to categorize and manage media. You can call the <a href="https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1">create category</a> API to create a category and obtain the category ID.</p><li>Default value: 0, indicating other categories.</li>Valid only when IsPersistence is 1.
+        r"""<p>Category ID, used to categorize and manage media. You can create a category via the <a href="https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1">Create Category</a> API to obtain the category ID.</p><li>Default value: 0, indicating other categories.</li>Valid only when IsPersistence is 1.
         :rtype: int
         """
         return self._ClassId
@@ -62091,7 +62093,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""<p>The domain name added in VOD for time shift playback must already be <a href="https://www.tencentcloud.com/document/product/266/52220?from_cn_redirect=1#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">associated with a recording template and enabled for time-shift service</a> in Cloud Streaming Services. <strong>If the first call of this interface is after 2021-01-01T00:00:00Z, this field is required.</strong></p>
+        r"""<p>The domain name added in VOD for time shift playback must be <a href="https://www.tencentcloud.com/document/product/266/52220?from_cn_redirect=1#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">bound to a recording template and enabled for time-shift service</a> in cloud streaming. <strong>If the first call of this interface is after 2021-01-01T00:00:00Z, this field is required.</strong></p>
         :rtype: str
         """
         return self._Host
@@ -62261,7 +62263,7 @@ class LiveRealTimeClipResponse(AbstractModel):
 
 
 class LiveRealTimeClipStreamInfo(AbstractModel):
-    r"""Live streaming Instant Editing stream information
+    r"""Live streaming Instant Editing stream info
 
     """
 
@@ -67547,9 +67549,9 @@ class MediaAudioStreamItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bitrate: <p>Bitrate of the audio stream. Unit: bps.</p>
+        :param _Bitrate: <p>Audio stream bitrate, in bps.</p>
         :type Bitrate: int
-        :param _SamplingRate: <p>Sampling rate of the audio stream. Unit: hz.</p>
+        :param _SamplingRate: <p>Sampling rate of the audio stream, unit: hz.</p>
         :type SamplingRate: int
         :param _Codec: <p>Audio stream encoding format, for example, aac.</p>
         :type Codec: str
@@ -67560,7 +67562,7 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""<p>Bitrate of the audio stream. Unit: bps.</p>
+        r"""<p>Audio stream bitrate, in bps.</p>
         :rtype: int
         """
         return self._Bitrate
@@ -67571,7 +67573,7 @@ class MediaAudioStreamItem(AbstractModel):
 
     @property
     def SamplingRate(self):
-        r"""<p>Sampling rate of the audio stream. Unit: hz.</p>
+        r"""<p>Sampling rate of the audio stream, unit: hz.</p>
         :rtype: int
         """
         return self._SamplingRate
@@ -69409,25 +69411,25 @@ class MediaMetaData(AbstractModel):
         r"""
         :param _Size: Size of the uploaded media file (for HLS videos, the size is the sum of the m3u8 and ts file sizes), unit: byte.
         :type Size: int
-        :param _Container: Container type, for example, m4a and mp4.
+        :param _Container: Container type, such as m4a, mp4.
         :type Container: str
-        :param _Bitrate: Sum of the mean video stream bitrate and mean audio stream bitrate, in bps.
+        :param _Bitrate: Sum of the average video stream bitrate and average audio stream bitrate, in bps.
         :type Bitrate: int
-        :param _Height: Maximum height of the video stream. Unit: px.
+        :param _Height: Maximum value of the video stream height in px.
         :type Height: int
-        :param _Width: Maximum video stream width in px.
+        :param _Width: Maximum value of the video stream width in px.
         :type Width: int
-        :param _Duration: Video duration, in seconds.
+        :param _Duration: Video duration, unit: seconds.
         :type Duration: float
-        :param _Rotate: Selection angle during video shooting. Measurement unit: degree.
+        :param _Rotate: Selection angle during video shooting. Unit: degree.
         :type Rotate: int
         :param _VideoStreamSet: Video stream information.
         :type VideoStreamSet: list of MediaVideoStreamItem
         :param _AudioStreamSet: Audio stream information.
         :type AudioStreamSet: list of MediaAudioStreamItem
-        :param _VideoDuration: Video duration, in seconds.
+        :param _VideoDuration: Video duration, unit: seconds.
         :type VideoDuration: float
-        :param _AudioDuration: Audio duration in seconds.
+        :param _AudioDuration: Audio duration, in seconds.
         :type AudioDuration: float
         :param _Md5: Md5 value of the media file.
 <li><font color=red>Note</font>: To get the Md5 of a media file, call the DescribeFileAttributes API and get it after the task is completed.</li>
@@ -69459,7 +69461,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Container(self):
-        r"""Container type, for example, m4a and mp4.
+        r"""Container type, such as m4a, mp4.
         :rtype: str
         """
         return self._Container
@@ -69470,7 +69472,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""Sum of the mean video stream bitrate and mean audio stream bitrate, in bps.
+        r"""Sum of the average video stream bitrate and average audio stream bitrate, in bps.
         :rtype: int
         """
         return self._Bitrate
@@ -69481,7 +69483,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Height(self):
-        r"""Maximum height of the video stream. Unit: px.
+        r"""Maximum value of the video stream height in px.
         :rtype: int
         """
         return self._Height
@@ -69492,7 +69494,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Width(self):
-        r"""Maximum video stream width in px.
+        r"""Maximum value of the video stream width in px.
         :rtype: int
         """
         return self._Width
@@ -69503,7 +69505,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Duration(self):
-        r"""Video duration, in seconds.
+        r"""Video duration, unit: seconds.
         :rtype: float
         """
         return self._Duration
@@ -69514,7 +69516,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Rotate(self):
-        r"""Selection angle during video shooting. Measurement unit: degree.
+        r"""Selection angle during video shooting. Unit: degree.
         :rtype: int
         """
         return self._Rotate
@@ -69547,7 +69549,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def VideoDuration(self):
-        r"""Video duration, in seconds.
+        r"""Video duration, unit: seconds.
         :rtype: float
         """
         return self._VideoDuration
@@ -69558,7 +69560,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def AudioDuration(self):
-        r"""Audio duration in seconds.
+        r"""Audio duration, in seconds.
         :rtype: float
         """
         return self._AudioDuration
@@ -72769,17 +72771,17 @@ class MediaVideoStreamItem(AbstractModel):
         r"""
         :param _Bitrate: Bitrate of the video stream. Unit: bps.
         :type Bitrate: int
-        :param _Height: Height of the video stream. Unit: px.
+        :param _Height: Height of the video stream in px.
         :type Height: int
-        :param _Width: Video stream width. Unit: px.
+        :param _Width: Video stream width in px.
         :type Width: int
-        :param _Codec: Video stream encoding format, for example h264.
+        :param _Codec: Video stream encoding format, for example, h264.
         :type Codec: str
         :param _Fps: Frame rate. Unit: hz.
         :type Fps: int
-        :param _CodecTag: Encoding tag, valid only when Codec is hevc.
+        :param _CodecTag: Encoding tag. Valid only when Codec is hevc.
         :type CodecTag: str
-        :param _DynamicRangeInfo: Dynamic range information of the frame.
+        :param _DynamicRangeInfo: Visual dynamic range information.
 <li><font color=red>Note</font>: This field is valid for transcoded files processed after 2023-01-10T00:00:00Z.</li>
         :type DynamicRangeInfo: :class:`tencentcloud.vod.v20180717.models.DynamicRangeInfo`
         """
@@ -72804,7 +72806,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Height(self):
-        r"""Height of the video stream. Unit: px.
+        r"""Height of the video stream in px.
         :rtype: int
         """
         return self._Height
@@ -72815,7 +72817,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Width(self):
-        r"""Video stream width. Unit: px.
+        r"""Video stream width in px.
         :rtype: int
         """
         return self._Width
@@ -72826,7 +72828,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Codec(self):
-        r"""Video stream encoding format, for example h264.
+        r"""Video stream encoding format, for example, h264.
         :rtype: str
         """
         return self._Codec
@@ -72848,7 +72850,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def CodecTag(self):
-        r"""Encoding tag, valid only when Codec is hevc.
+        r"""Encoding tag. Valid only when Codec is hevc.
         :rtype: str
         """
         return self._CodecTag
@@ -72859,7 +72861,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def DynamicRangeInfo(self):
-        r"""Dynamic range information of the frame.
+        r"""Visual dynamic range information.
 <li><font color=red>Note</font>: This field is valid for transcoded files processed after 2023-01-10T00:00:00Z.</li>
         :rtype: :class:`tencentcloud.vod.v20180717.models.DynamicRangeInfo`
         """
@@ -78817,11 +78819,11 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
         r"""
         :param _Domain: <p>Domains requiring acceleration configuration.</p>
         :type Domain: str
-        :param _Area: <p>Region. Available values:</p><li>Chinese Mainland: within the Chinese mainland (excluding Hong Kong (China), Macao (China), and Taiwan (China)).</li><li>Outside Chinese Mainland: outside the Chinese mainland.</li><li>Global: global.</li>
+        :param _Area: <p>Region. Available values:</p><li>Chinese Mainland: within the Chinese mainland (excluding Hong Kong (China), Macao (China), and Taiwan (China)).</li><li>Outside Chinese Mainland: outside the Chinese mainland.</li><li>Global: around the world.</li>
         :type Area: str
-        :param _Status: <p>Enable or disable domain name acceleration for the selected region. Available values:</p><li>Enabled: Enable.</li><li>Disabled: Disable.</li>To enable acceleration for domains within the Chinese mainland, you must first [register the domain name](https://www.tencentcloud.com/document/product/243/18905?from_cn_redirect=1).
+        :param _Status: <p>Enable or disable domain name acceleration for the selected region. Available values:</p><li>Enabled: Enable.</li><li>Disabled: Disable.</li>
         :type Status: str
-        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services from December 25, 2023, if they access resources in VOD applications (whether the default application or a newly created application), they must fill in this field with the application ID.</b></p>
+        :param _SubAppId: <p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be filled in as the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :type SubAppId: int
         """
         self._Domain = None
@@ -78842,7 +78844,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 
     @property
     def Area(self):
-        r"""<p>Region. Available values:</p><li>Chinese Mainland: within the Chinese mainland (excluding Hong Kong (China), Macao (China), and Taiwan (China)).</li><li>Outside Chinese Mainland: outside the Chinese mainland.</li><li>Global: global.</li>
+        r"""<p>Region. Available values:</p><li>Chinese Mainland: within the Chinese mainland (excluding Hong Kong (China), Macao (China), and Taiwan (China)).</li><li>Outside Chinese Mainland: outside the Chinese mainland.</li><li>Global: around the world.</li>
         :rtype: str
         """
         return self._Area
@@ -78853,7 +78855,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>Enable or disable domain name acceleration for the selected region. Available values:</p><li>Enabled: Enable.</li><li>Disabled: Disable.</li>To enable acceleration for domains within the Chinese mainland, you must first [register the domain name](https://www.tencentcloud.com/document/product/243/18905?from_cn_redirect=1).
+        r"""<p>Enable or disable domain name acceleration for the selected region. Available values:</p><li>Enabled: Enable.</li><li>Disabled: Disable.</li>
         :rtype: str
         """
         return self._Status
@@ -78864,7 +78866,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate VOD services from December 25, 2023, if they access resources in VOD applications (whether the default application or a newly created application), they must fill in this field with the application ID.</b></p>
+        r"""<p><b>Video-on-demand (VOD) <a href="https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be filled in as the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>
         :rtype: int
         """
         return self._SubAppId

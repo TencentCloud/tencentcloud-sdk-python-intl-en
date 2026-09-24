@@ -41,7 +41,7 @@ FAILEDOPERATION_DOMAINDEPLOYING = 'FailedOperation.DomainDeploying'
 # User account exception.
 FAILEDOPERATION_INVALIDACCOUNT = 'FailedOperation.InvalidAccount'
 
-# The VOD service is not enabled.
+# VOD service is not enabled.
 FAILEDOPERATION_INVALIDVODUSER = 'FailedOperation.InvalidVodUser'
 
 # Media is banned by the system.
@@ -263,7 +263,7 @@ INVALIDPARAMETERVALUE_DRMTYPE = 'InvalidParameterValue.DrmType'
 # Parameter value error: EndDate is invalid.
 INVALIDPARAMETERVALUE_ENDDATE = 'InvalidParameterValue.EndDate'
 
-# Invalid parameter value: EndTime is invalid.
+# Parameter value error: EndTime is invalid.
 INVALIDPARAMETERVALUE_ENDTIME = 'InvalidParameterValue.EndTime'
 
 # Parameter error: invalid end time.
@@ -272,7 +272,7 @@ INVALIDPARAMETERVALUE_ENDTIMEOFFSET = 'InvalidParameterValue.EndTimeOffset'
 # Duplicate name.
 INVALIDPARAMETERVALUE_EXISTEDNAME = 'InvalidParameterValue.ExistedName'
 
-# Invalid parameter value: Incorrect ExpireTime format.
+# Parameter value error: Incorrect ExpireTime format.
 INVALIDPARAMETERVALUE_EXPIRETIME = 'InvalidParameterValue.ExpireTime'
 
 # ExpiredTime error.
@@ -536,7 +536,7 @@ INVALIDPARAMETERVALUE_SRCFILE = 'InvalidParameterValue.SrcFile'
 # Parameter value error: StartDate is invalid.
 INVALIDPARAMETERVALUE_STARTDATE = 'InvalidParameterValue.StartDate'
 
-# Invalid parameter value: StartTime is invalid.
+# Parameter value error: StartTime is invalid.
 INVALIDPARAMETERVALUE_STARTTIME = 'InvalidParameterValue.StartTime'
 
 # Parameter error: invalid start time.
@@ -557,7 +557,7 @@ INVALIDPARAMETERVALUE_STORAGEREGIONS = 'InvalidParameterValue.StorageRegions'
 # Parameter value error: StorageType.
 INVALIDPARAMETERVALUE_STORAGETYPE = 'InvalidParameterValue.StorageType'
 
-# Parameter value error: StreamId is invalid.
+# Parameter value error: invalid StreamId.
 INVALIDPARAMETERVALUE_STREAMIDINVALID = 'InvalidParameterValue.StreamIdInvalid'
 
 # Invalid stream ID parameter.
