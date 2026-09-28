@@ -2497,7 +2497,7 @@ class DataScore(AbstractModel):
         :type RiskLevel: int
         :param _RiskLabels: <p>Risk label</p>
         :type RiskLabels: list of RiskLabel
-        :param _RiskScore: <p>Comprehensive risk score.</p><p>Value ranges from 1 to 1000.</p><p>The larger the value, the larger the risk.</p>
+        :param _RiskScore: <p>Comprehensive risk score.</p><p>Value ranges from 1 to 1000.</p><p>The larger the value, the higher the risk.</p>
         :type RiskScore: int
         """
         self._RiskLevel = None
@@ -2528,7 +2528,7 @@ class DataScore(AbstractModel):
 
     @property
     def RiskScore(self):
-        r"""<p>Comprehensive risk score.</p><p>Value ranges from 1 to 1000.</p><p>The larger the value, the larger the risk.</p>
+        r"""<p>Comprehensive risk score.</p><p>Value ranges from 1 to 1000.</p><p>The larger the value, the higher the risk.</p>
         :rtype: int
         """
         return self._RiskScore

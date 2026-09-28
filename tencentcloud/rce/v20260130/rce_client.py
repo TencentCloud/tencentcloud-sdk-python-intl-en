@@ -73,7 +73,7 @@ class RceClient(AbstractClient):
 
 
     def AssessEnvironmentRisk(self, request):
-        r"""Environment Risk Assessment
+        r"""Performs risk identification based on the client IP provided as input. Provides environmental risk assessment (including risk level and risk labels), along with IP geolocation and network information.
 
         :param request: Request instance for AssessEnvironmentRisk.
         :type request: :class:`tencentcloud.rce.v20260130.models.AssessEnvironmentRiskRequest`
