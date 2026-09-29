@@ -2750,40 +2750,6 @@ class CLSNotice(AbstractModel):
         
 
 
-class CheckIsPrometheusNewUserRequest(AbstractModel):
-    r"""CheckIsPrometheusNewUser request structure.
-
-    """
-
-
-class CheckIsPrometheusNewUserResponse(AbstractModel):
-    r"""CheckIsPrometheusNewUser response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class CleanGrafanaInstanceRequest(AbstractModel):
     r"""CleanGrafanaInstance request structure.
 
@@ -6991,155 +6957,6 @@ class CreateSSOAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
-        self._RequestId = params.get("RequestId")
-
-
-class CreateServiceDiscoveryRequest(AbstractModel):
-    r"""CreateServiceDiscovery request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Prometheus instance ID
-        :type InstanceId: str
-        :param _KubeClusterId: <li>TKE: ID of the integrated TKE cluster</li>
-        :type KubeClusterId: str
-        :param _KubeType: Kubernetes cluster type:
-<li> 1 = TKE </li>
-        :type KubeType: int
-        :param _Type: Scrape configuration type. Valid values:
-<li> 1 = ServiceMonitor</li>
-<li> 2 = PodMonitor</li>
-<li> 3 = JobMonitor</li>
-        :type Type: int
-        :param _Yaml: Scrape configuration information
-        :type Yaml: str
-        """
-        self._InstanceId = None
-        self._KubeClusterId = None
-        self._KubeType = None
-        self._Type = None
-        self._Yaml = None
-
-    @property
-    def InstanceId(self):
-        r"""Prometheus instance ID
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def KubeClusterId(self):
-        r"""<li>TKE: ID of the integrated TKE cluster</li>
-        :rtype: str
-        """
-        return self._KubeClusterId
-
-    @KubeClusterId.setter
-    def KubeClusterId(self, KubeClusterId):
-        self._KubeClusterId = KubeClusterId
-
-    @property
-    def KubeType(self):
-        r"""Kubernetes cluster type:
-<li> 1 = TKE </li>
-        :rtype: int
-        """
-        return self._KubeType
-
-    @KubeType.setter
-    def KubeType(self, KubeType):
-        self._KubeType = KubeType
-
-    @property
-    def Type(self):
-        r"""Scrape configuration type. Valid values:
-<li> 1 = ServiceMonitor</li>
-<li> 2 = PodMonitor</li>
-<li> 3 = JobMonitor</li>
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def Yaml(self):
-        r"""Scrape configuration information
-        :rtype: str
-        """
-        return self._Yaml
-
-    @Yaml.setter
-    def Yaml(self, Yaml):
-        self._Yaml = Yaml
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._KubeClusterId = params.get("KubeClusterId")
-        self._KubeType = params.get("KubeType")
-        self._Type = params.get("Type")
-        self._Yaml = params.get("Yaml")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateServiceDiscoveryResponse(AbstractModel):
-    r"""CreateServiceDiscovery response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceDiscovery: The scrape configuration information returned after successful creation
-        :type ServiceDiscovery: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._ServiceDiscovery = None
-        self._RequestId = None
-
-    @property
-    def ServiceDiscovery(self):
-        r"""The scrape configuration information returned after successful creation
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
-        """
-        return self._ServiceDiscovery
-
-    @ServiceDiscovery.setter
-    def ServiceDiscovery(self, ServiceDiscovery):
-        self._ServiceDiscovery = ServiceDiscovery
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("ServiceDiscovery") is not None:
-            self._ServiceDiscovery = ServiceDiscoveryItem()
-            self._ServiceDiscovery._deserialize(params.get("ServiceDiscovery"))
         self._RequestId = params.get("RequestId")
 
 
@@ -20736,124 +20553,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
-class DescribePrometheusRecordRuleYamlRequest(AbstractModel):
-    r"""DescribePrometheusRecordRuleYaml request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Instance ID
-        :type InstanceId: str
-        :param _Offset: Page offset
-        :type Offset: int
-        :param _Limit: Number of results per page
-        :type Limit: int
-        :param _Filters: Filter. Valid values:
-`Name`: Name
-`Values`: List of target names
-        :type Filters: list of Filter
-        """
-        self._InstanceId = None
-        self._Offset = None
-        self._Limit = None
-        self._Filters = None
-
-    @property
-    def InstanceId(self):
-        r"""Instance ID
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def Offset(self):
-        r"""Page offset
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        r"""Number of results per page
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Filters(self):
-        r"""Filter. Valid values:
-`Name`: Name
-`Values`: List of target names
-        :rtype: list of Filter
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribePrometheusRecordRuleYamlResponse(AbstractModel):
-    r"""DescribePrometheusRecordRuleYaml response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class DescribePrometheusRecordRulesRequest(AbstractModel):
     r"""DescribePrometheusRecordRules request structure.
 
@@ -21926,124 +21625,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = GrafanaAccountInfo()
                 obj._deserialize(item)
                 self._AccountSet.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeServiceDiscoveryRequest(AbstractModel):
-    r"""DescribeServiceDiscovery request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Prometheus instance ID
-        :type InstanceId: str
-        :param _KubeClusterId: <li>TKE: ID of the integrated TKE cluster</li>
-        :type KubeClusterId: str
-        :param _KubeType: Kubernetes cluster type:
-<li> 1 = TKE </li>
-        :type KubeType: int
-        """
-        self._InstanceId = None
-        self._KubeClusterId = None
-        self._KubeType = None
-
-    @property
-    def InstanceId(self):
-        r"""Prometheus instance ID
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def KubeClusterId(self):
-        r"""<li>TKE: ID of the integrated TKE cluster</li>
-        :rtype: str
-        """
-        return self._KubeClusterId
-
-    @KubeClusterId.setter
-    def KubeClusterId(self, KubeClusterId):
-        self._KubeClusterId = KubeClusterId
-
-    @property
-    def KubeType(self):
-        r"""Kubernetes cluster type:
-<li> 1 = TKE </li>
-        :rtype: int
-        """
-        return self._KubeType
-
-    @KubeType.setter
-    def KubeType(self, KubeType):
-        self._KubeType = KubeType
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._KubeClusterId = params.get("KubeClusterId")
-        self._KubeType = params.get("KubeType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeServiceDiscoveryResponse(AbstractModel):
-    r"""DescribeServiceDiscovery response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceDiscoverySet: List of returned scrape configurations
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ServiceDiscoverySet: list of ServiceDiscoveryItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._ServiceDiscoverySet = None
-        self._RequestId = None
-
-    @property
-    def ServiceDiscoverySet(self):
-        r"""List of returned scrape configurations
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: list of ServiceDiscoveryItem
-        """
-        return self._ServiceDiscoverySet
-
-    @ServiceDiscoverySet.setter
-    def ServiceDiscoverySet(self, ServiceDiscoverySet):
-        self._ServiceDiscoverySet = ServiceDiscoverySet
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("ServiceDiscoverySet") is not None:
-            self._ServiceDiscoverySet = []
-            for item in params.get("ServiceDiscoverySet"):
-                obj = ServiceDiscoveryItem()
-                obj._deserialize(item)
-                self._ServiceDiscoverySet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -27810,13 +27391,13 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: <p>Instance ID</p>
         :type InstanceId: str
-        :param _InstanceName: Instance name
+        :param _InstanceName: <p>Instance name.</p>
         :type InstanceName: str
-        :param _DataRetentionTime: Storage period. Valid values: 15, 30, 45. This parameter is not applicable to yearly/monthly subscribed instances.
+        :param _DataRetentionTime: <p>Data retention period (in days). The limit value is one of 15, 30, 45, 90, 180, 365, 730</p>
         :type DataRetentionTime: int
-        :param _InstanceAttributes: 
+        :param _InstanceAttributes: <p>Flag for special attributes of a prom instance</p><p>Archive storage duration (days):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
         :type InstanceAttributes: list of PrometheusRuleKV
         """
         self._InstanceId = None
@@ -27826,7 +27407,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Instance ID
+        r"""<p>Instance ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -27837,7 +27418,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Instance name
+        r"""<p>Instance name.</p>
         :rtype: str
         """
         return self._InstanceName
@@ -27848,7 +27429,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def DataRetentionTime(self):
-        r"""Storage period. Valid values: 15, 30, 45. This parameter is not applicable to yearly/monthly subscribed instances.
+        r"""<p>Data retention period (in days). The limit value is one of 15, 30, 45, 90, 180, 365, 730</p>
         :rtype: int
         """
         return self._DataRetentionTime
@@ -27859,7 +27440,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceAttributes(self):
-        r"""
+        r"""<p>Flag for special attributes of a prom instance</p><p>Archive storage duration (days):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
         :rtype: list of PrometheusRuleKV
         """
         return self._InstanceAttributes
@@ -32698,9 +32279,9 @@ class PrometheusRuleKV(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: Key
+        :param _Key: <p>Key</p>
         :type Key: str
-        :param _Value: Value
+        :param _Value: <p>Value.</p>
         :type Value: str
         """
         self._Key = None
@@ -32708,7 +32289,7 @@ class PrometheusRuleKV(AbstractModel):
 
     @property
     def Key(self):
-        r"""Key
+        r"""<p>Key</p>
         :rtype: str
         """
         return self._Key
@@ -32719,7 +32300,7 @@ class PrometheusRuleKV(AbstractModel):
 
     @property
     def Value(self):
-        r"""Value
+        r"""<p>Value.</p>
         :rtype: str
         """
         return self._Value
@@ -34539,232 +34120,6 @@ class RunPrometheusInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
-
-
-class SendCustomAlarmMsgRequest(AbstractModel):
-    r"""SendCustomAlarmMsg request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Module: API component name. The value for the current API is monitor.
-        :type Module: str
-        :param _PolicyId: Message policy ID, which is configured on the custom message page.
-        :type PolicyId: str
-        :param _Msg: Custom message content that a user wants to send.
-        :type Msg: str
-        """
-        self._Module = None
-        self._PolicyId = None
-        self._Msg = None
-
-    @property
-    def Module(self):
-        r"""API component name. The value for the current API is monitor.
-        :rtype: str
-        """
-        return self._Module
-
-    @Module.setter
-    def Module(self, Module):
-        self._Module = Module
-
-    @property
-    def PolicyId(self):
-        r"""Message policy ID, which is configured on the custom message page.
-        :rtype: str
-        """
-        return self._PolicyId
-
-    @PolicyId.setter
-    def PolicyId(self, PolicyId):
-        self._PolicyId = PolicyId
-
-    @property
-    def Msg(self):
-        r"""Custom message content that a user wants to send.
-        :rtype: str
-        """
-        return self._Msg
-
-    @Msg.setter
-    def Msg(self, Msg):
-        self._Msg = Msg
-
-
-    def _deserialize(self, params):
-        self._Module = params.get("Module")
-        self._PolicyId = params.get("PolicyId")
-        self._Msg = params.get("Msg")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SendCustomAlarmMsgResponse(AbstractModel):
-    r"""SendCustomAlarmMsg response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class ServiceDiscoveryItem(AbstractModel):
-    r"""Prometheus scrape configuration information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Name: Scrape configuration name
-        :type Name: str
-        :param _Namespace: Namespace of the scrape configuration
-        :type Namespace: str
-        :param _Kind: Scrape configuration type: ServiceMonitor/PodMonitor
-        :type Kind: str
-        :param _NamespaceSelector: Namespace selection method
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type NamespaceSelector: str
-        :param _Selector: Label selection method
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Selector: str
-        :param _Endpoints: `Endpoints` information (PodMonitor does not have this parameter)
-        :type Endpoints: str
-        :param _Yaml: Scrape configuration information
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Yaml: str
-        """
-        self._Name = None
-        self._Namespace = None
-        self._Kind = None
-        self._NamespaceSelector = None
-        self._Selector = None
-        self._Endpoints = None
-        self._Yaml = None
-
-    @property
-    def Name(self):
-        r"""Scrape configuration name
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Namespace(self):
-        r"""Namespace of the scrape configuration
-        :rtype: str
-        """
-        return self._Namespace
-
-    @Namespace.setter
-    def Namespace(self, Namespace):
-        self._Namespace = Namespace
-
-    @property
-    def Kind(self):
-        r"""Scrape configuration type: ServiceMonitor/PodMonitor
-        :rtype: str
-        """
-        return self._Kind
-
-    @Kind.setter
-    def Kind(self, Kind):
-        self._Kind = Kind
-
-    @property
-    def NamespaceSelector(self):
-        r"""Namespace selection method
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._NamespaceSelector
-
-    @NamespaceSelector.setter
-    def NamespaceSelector(self, NamespaceSelector):
-        self._NamespaceSelector = NamespaceSelector
-
-    @property
-    def Selector(self):
-        r"""Label selection method
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Selector
-
-    @Selector.setter
-    def Selector(self, Selector):
-        self._Selector = Selector
-
-    @property
-    def Endpoints(self):
-        r"""`Endpoints` information (PodMonitor does not have this parameter)
-        :rtype: str
-        """
-        return self._Endpoints
-
-    @Endpoints.setter
-    def Endpoints(self, Endpoints):
-        self._Endpoints = Endpoints
-
-    @property
-    def Yaml(self):
-        r"""Scrape configuration information
-Note: This field may return null, indicating that no valid values can be obtained.
-        :rtype: str
-        """
-        return self._Yaml
-
-    @Yaml.setter
-    def Yaml(self, Yaml):
-        self._Yaml = Yaml
-
-
-    def _deserialize(self, params):
-        self._Name = params.get("Name")
-        self._Namespace = params.get("Namespace")
-        self._Kind = params.get("Kind")
-        self._NamespaceSelector = params.get("NamespaceSelector")
-        self._Selector = params.get("Selector")
-        self._Endpoints = params.get("Endpoints")
-        self._Yaml = params.get("Yaml")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class SetDefaultAlarmPolicyRequest(AbstractModel):

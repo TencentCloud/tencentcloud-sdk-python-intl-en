@@ -29,9 +29,6 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# Failed to access STS.
-FAILEDOPERATION_ACCESSSTSFAIL = 'FailedOperation.AccessSTSFail'
-
 # Failed to access the TKE cluster.
 FAILEDOPERATION_ACCESSTKEFAIL = 'FailedOperation.AccessTKEFail'
 
@@ -40,9 +37,6 @@ FAILEDOPERATION_ACCESSTAGFAIL = 'FailedOperation.AccessTagFail'
 
 # For the agent in this status, the operation is not allowed.
 FAILEDOPERATION_AGENTNOTALLOWED = 'FailedOperation.AgentNotAllowed'
-
-# The agent version does not support this operation. Upgrade the agent.
-FAILEDOPERATION_AGENTVERSIONNOTSUPPORTED = 'FailedOperation.AgentVersionNotSupported'
 
 # There are agents running on this instance.
 FAILEDOPERATION_AGENTSNOTINUNINSTALLSTAGE = 'FailedOperation.AgentsNotInUninstallStage'
@@ -184,12 +178,6 @@ FAILEDOPERATION_SENDREQUEST = 'FailedOperation.SendRequest'
 
 # The service is not enabled and can be used only after being enabled.
 FAILEDOPERATION_SERVICENOTENABLED = 'FailedOperation.ServiceNotEnabled'
-
-# There is no access to TKE.
-FAILEDOPERATION_TKECLIENTAUTHFAIL = 'FailedOperation.TKEClientAuthFail'
-
-# The TKE endpoint is inaccessible.
-FAILEDOPERATION_TKEENDPOINTSTATUSERROR = 'FailedOperation.TKEEndpointStatusError'
 
 # A conflict occurred while updating the TKE resource.
 FAILEDOPERATION_TKERESOURCECONFLICT = 'FailedOperation.TKEResourceConflict'

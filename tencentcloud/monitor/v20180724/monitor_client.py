@@ -72,29 +72,6 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CheckIsPrometheusNewUser(self, request):
-        r"""This API is used to determine whether the user is new to TMP, that is, whether the user has never created a TMP instance in any region.
-
-        :param request: Request instance for CheckIsPrometheusNewUser.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.CheckIsPrometheusNewUserRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.CheckIsPrometheusNewUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CheckIsPrometheusNewUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.CheckIsPrometheusNewUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CleanGrafanaInstance(self, request):
         r"""This API is used to forcibly terminate a Grafana instance.
 
@@ -597,31 +574,6 @@ class MonitorClient(AbstractClient):
             body = self.call("CreateSSOAccount", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSSOAccountResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateServiceDiscovery(self, request):
-        r"""This API is used to create a Prometheus scrape configuration in TKE.
-        <p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see
-        <a href="https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1" target="_blank">Agent Management</a>.</p>
-
-        :param request: Request instance for CreateServiceDiscovery.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateServiceDiscoveryRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateServiceDiscoveryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateServiceDiscovery", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateServiceDiscoveryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2155,29 +2107,6 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribePrometheusRecordRuleYaml(self, request):
-        r"""This API is used to get the YAML list of Prometheus recording rules.
-
-        :param request: Request instance for DescribePrometheusRecordRuleYaml.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRuleYamlRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRuleYamlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribePrometheusRecordRuleYaml", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribePrometheusRecordRuleYamlResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribePrometheusRecordRules(self, request):
         r"""This API is used to get the list of recording rules, including those created by CRD resources in the associated cluster.
 
@@ -2353,31 +2282,6 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribeSSOAccount", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSSOAccountResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeServiceDiscovery(self, request):
-        r"""This API is used to list Prometheus scrape configurations in TKE.
-        <p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see
-        <a href="https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1" target="_blank">Agent Management</a>.</p>
-
-        :param request: Request instance for DescribeServiceDiscovery.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeServiceDiscoveryRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeServiceDiscoveryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeServiceDiscovery", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeServiceDiscoveryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3055,29 +2959,6 @@ class MonitorClient(AbstractClient):
             body = self.call("RunPrometheusInstance", params, headers=headers)
             response = json.loads(body)
             model = models.RunPrometheusInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def SendCustomAlarmMsg(self, request):
-        r"""This API is used to send a custom alarm notification.
-
-        :param request: Request instance for SendCustomAlarmMsg.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.SendCustomAlarmMsgResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SendCustomAlarmMsg", params, headers=headers)
-            response = json.loads(body)
-            model = models.SendCustomAlarmMsgResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

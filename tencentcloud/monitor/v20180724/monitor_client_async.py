@@ -61,24 +61,6 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CheckIsPrometheusNewUser(
-            self,
-            request: models.CheckIsPrometheusNewUserRequest,
-            opts: Dict = None,
-    ) -> models.CheckIsPrometheusNewUserResponse:
-        """
-        This API is used to determine whether the user is new to TMP, that is, whether the user has never created a TMP instance in any region.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CheckIsPrometheusNewUser"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CheckIsPrometheusNewUserResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CleanGrafanaInstance(
             self,
             request: models.CleanGrafanaInstanceRequest,
@@ -475,26 +457,6 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "CreateSSOAccount"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateSSOAccountResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateServiceDiscovery(
-            self,
-            request: models.CreateServiceDiscoveryRequest,
-            opts: Dict = None,
-    ) -> models.CreateServiceDiscoveryResponse:
-        """
-        This API is used to create a Prometheus scrape configuration in TKE.
-        <p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see
-        <a href="https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1" target="_blank">Agent Management</a>.</p>
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateServiceDiscovery"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateServiceDiscoveryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1694,24 +1656,6 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribePrometheusRecordRuleYaml(
-            self,
-            request: models.DescribePrometheusRecordRuleYamlRequest,
-            opts: Dict = None,
-    ) -> models.DescribePrometheusRecordRuleYamlResponse:
-        """
-        This API is used to get the YAML list of Prometheus recording rules.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribePrometheusRecordRuleYaml"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribePrometheusRecordRuleYamlResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribePrometheusRecordRules(
             self,
             request: models.DescribePrometheusRecordRulesRequest,
@@ -1851,26 +1795,6 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "DescribeSSOAccount"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSSOAccountResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeServiceDiscovery(
-            self,
-            request: models.DescribeServiceDiscoveryRequest,
-            opts: Dict = None,
-    ) -> models.DescribeServiceDiscoveryResponse:
-        """
-        This API is used to list Prometheus scrape configurations in TKE.
-        <p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see
-        <a href="https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1" target="_blank">Agent Management</a>.</p>
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeServiceDiscovery"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeServiceDiscoveryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2408,24 +2332,6 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "RunPrometheusInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RunPrometheusInstanceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def SendCustomAlarmMsg(
-            self,
-            request: models.SendCustomAlarmMsgRequest,
-            opts: Dict = None,
-    ) -> models.SendCustomAlarmMsgResponse:
-        """
-        This API is used to send a custom alarm notification.
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "SendCustomAlarmMsg"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.SendCustomAlarmMsgResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
